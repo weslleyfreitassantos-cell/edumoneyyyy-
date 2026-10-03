@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/mapping-reviews-v1.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "candidatesHash", "statusContract", "summary", "reviews", "reviewHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.mapping-reviews.v1" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "candidatesHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sourceOfTruth": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "statusContract": { "type": "object" },
+    "summary": {
+      "type": "object",
+      "required": ["total", "technicallyReviewed", "technicallyClassified", "approveConservative", "needsHumanReview", "rejected", "canonicalGaps", "hierarchyOnly", "pedagogicalReviewPending", "promoted"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "technicallyReviewed": { "type": "integer", "minimum": 0 },
+        "technicallyClassified": { "type": "integer", "minimum": 0 },
+        "approveConservative": { "type": "integer", "minimum": 0 },
+        "needsHumanReview": { "type": "integer", "minimum": 0 },
+        "rejected": { "type": "integer", "minimum": 0 },
+        "canonicalGaps": { "type": "integer", "minimum": 0 },
+        "hierarchyOnly": { "type": "integer", "minimum": 0 },
+        "pedagogicalReviewPending": { "type": "integer", "minimum": 0 },
+        "promoted": { "const": 0 }
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["officialCode", "decision", "reviewStatus", "pedagogicalReviewStatus", "promotionStatus", "reason", "reviewedBy"],
+        "properties": {
+          "officialCode": { "type": "string" },
+          "decision": { "enum": ["APPROVE_CONSERVATIVE", "NEEDS_HUMAN_REVIEW", "REJECT", "CANONICAL_GAP", "HIERARCHY_ONLY"] },
+          "reviewStatus": { "enum": ["TECHNICALLY_REVIEWED", "TECHNICALLY_CLASSIFIED"] },
+          "pedagogicalReviewStatus": { "enum": ["PEDAGOGICAL_REVIEW_PENDING", "NOT_APPLICABLE"] },
+          "promotionStatus": { "const": "NOT_PROMOTED" },
+          "reason": { "type": "string", "minLength": 1 },
+          "reviewedBy": { "const": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1" }
+        }
+      }
+    },
+    "reviewHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

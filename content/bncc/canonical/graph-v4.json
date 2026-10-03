@@ -1,0 +1,1516 @@
+{
+  "schemaVersion": "tec-escola.bncc.canonical-graph.v1",
+  "sourceOfTruth": "TECESCOLA_CORE_V4_REGISTRY_AND_RELATIONSHIPS_PLUS_CANONICAL_SEED_REGISTRY",
+  "graphStatus": "AUDITED_NOT_BNCC_PROMOTED",
+  "statusContract": {
+    "targetableClasses": [
+      "LEAF",
+      "SEED_SKILL"
+    ],
+    "structuralClasses": [
+      "ANCHOR",
+      "OTHER_SEMANTIC_NODE"
+    ],
+    "unresolvedClass": "OTHER_SEMANTIC_NODE",
+    "unresolvedPolicy": "Não criar habilidade ou mapeamento BNCC automaticamente para nó semântico sem definição autoral."
+  },
+  "summary": {
+    "subjects": 15,
+    "anchors": 45,
+    "leaves": 52,
+    "seedSkills": 6,
+    "targetableSkills": 58,
+    "otherSemanticNodes": 13,
+    "hierarchyEdges": 65,
+    "orphanAnchors": [
+      "MATHEMATICS_NUMBERS"
+    ],
+    "orphanLeaves": [],
+    "unresolvedSemanticNodes": [
+      "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "HISTORY_COMPARE_PERSPECTIVES",
+      "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+      "HISTORY_INTERPRET_PERIODIZATION",
+      "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "PHYSICS_INTERPRET_ACCELERATION",
+      "PHYSICS_RELATIVE_SPEED",
+      "PHYSICS_UNIFORM_MOTION",
+      "PORTUGUESE_COMPARE_SOURCES",
+      "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+      "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+      "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+      "PORTUGUESE_SUMMARIZE_ARGUMENT"
+    ]
+  },
+  "nodes": [
+    {
+      "code": "ART_CONTEXT",
+      "class": "ANCHOR",
+      "subjectCode": "ART",
+      "subjectName": "Arte"
+    },
+    {
+      "code": "ART_ELEMENTS",
+      "class": "ANCHOR",
+      "subjectCode": "ART",
+      "subjectName": "Arte"
+    },
+    {
+      "code": "ART_INTERPRETATION",
+      "class": "ANCHOR",
+      "subjectCode": "ART",
+      "subjectName": "Arte"
+    },
+    {
+      "code": "BIOLOGY_CELL",
+      "class": "ANCHOR",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia"
+    },
+    {
+      "code": "BIOLOGY_ECOLOGY",
+      "class": "ANCHOR",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia"
+    },
+    {
+      "code": "BIOLOGY_INHERITANCE",
+      "class": "ANCHOR",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia"
+    },
+    {
+      "code": "CHEMISTRY_ATOMIC",
+      "class": "ANCHOR",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica"
+    },
+    {
+      "code": "CHEMISTRY_MATTER",
+      "class": "ANCHOR",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica"
+    },
+    {
+      "code": "CHEMISTRY_REACTIONS",
+      "class": "ANCHOR",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica"
+    },
+    {
+      "code": "COMPUTING_ALGORITHMS",
+      "class": "ANCHOR",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital"
+    },
+    {
+      "code": "COMPUTING_DATA",
+      "class": "ANCHOR",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital"
+    },
+    {
+      "code": "COMPUTING_SAFETY",
+      "class": "ANCHOR",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital"
+    },
+    {
+      "code": "ENGLISH_COMMUNICATION",
+      "class": "ANCHOR",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa"
+    },
+    {
+      "code": "ENGLISH_READING",
+      "class": "ANCHOR",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa"
+    },
+    {
+      "code": "ENGLISH_VOCABULARY",
+      "class": "ANCHOR",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa"
+    },
+    {
+      "code": "GEOGRAPHY_CARTOGRAPHY",
+      "class": "ANCHOR",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia"
+    },
+    {
+      "code": "GEOGRAPHY_SPACE",
+      "class": "ANCHOR",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia"
+    },
+    {
+      "code": "GEOGRAPHY_TERRITORY",
+      "class": "ANCHOR",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia"
+    },
+    {
+      "code": "HISTORY_CAUSALITY",
+      "class": "ANCHOR",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia"
+    },
+    {
+      "code": "HISTORY_SOURCES",
+      "class": "ANCHOR",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia"
+    },
+    {
+      "code": "HISTORY_TIME",
+      "class": "ANCHOR",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia"
+    },
+    {
+      "code": "MATHEMATICS_DATA",
+      "class": "ANCHOR",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica"
+    },
+    {
+      "code": "MATHEMATICS_NUMBERS",
+      "class": "ANCHOR",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica"
+    },
+    {
+      "code": "MATHEMATICS_PROPORTIONS",
+      "class": "ANCHOR",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica"
+    },
+    {
+      "code": "PE_BODY",
+      "class": "ANCHOR",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica"
+    },
+    {
+      "code": "PE_HEALTH",
+      "class": "ANCHOR",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica"
+    },
+    {
+      "code": "PE_SPORTS",
+      "class": "ANCHOR",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica"
+    },
+    {
+      "code": "PHILOSOPHY_ARGUMENT",
+      "class": "ANCHOR",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia"
+    },
+    {
+      "code": "PHILOSOPHY_CONCEPTS",
+      "class": "ANCHOR",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia"
+    },
+    {
+      "code": "PHILOSOPHY_ETHICS",
+      "class": "ANCHOR",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia"
+    },
+    {
+      "code": "PHYSICS_ENERGY",
+      "class": "ANCHOR",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica"
+    },
+    {
+      "code": "PHYSICS_MEASUREMENT",
+      "class": "ANCHOR",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica"
+    },
+    {
+      "code": "PHYSICS_MOTION",
+      "class": "ANCHOR",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica"
+    },
+    {
+      "code": "PORTUGUESE_ARGUMENTATION",
+      "class": "ANCHOR",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa"
+    },
+    {
+      "code": "PORTUGUESE_COHESION",
+      "class": "ANCHOR",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa"
+    },
+    {
+      "code": "PORTUGUESE_READING",
+      "class": "ANCHOR",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa"
+    },
+    {
+      "code": "RELIGIOUS_DIALOGUE",
+      "class": "ANCHOR",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso"
+    },
+    {
+      "code": "RELIGIOUS_DIVERSITY",
+      "class": "ANCHOR",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso"
+    },
+    {
+      "code": "RELIGIOUS_TRADITIONS",
+      "class": "ANCHOR",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso"
+    },
+    {
+      "code": "SCIENCE_EVIDENCE",
+      "class": "ANCHOR",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias"
+    },
+    {
+      "code": "SCIENCE_INVESTIGATION",
+      "class": "ANCHOR",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias"
+    },
+    {
+      "code": "SCIENCE_MATTER",
+      "class": "ANCHOR",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias"
+    },
+    {
+      "code": "SOCIOLOGY_INDIVIDUAL",
+      "class": "ANCHOR",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia"
+    },
+    {
+      "code": "SOCIOLOGY_INSTITUTIONS",
+      "class": "ANCHOR",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia"
+    },
+    {
+      "code": "SOCIOLOGY_STRUCTURE",
+      "class": "ANCHOR",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia"
+    },
+    {
+      "code": "ART_COMPARE_COMPOSITIONS",
+      "class": "LEAF",
+      "subjectCode": "ART",
+      "subjectName": "Arte",
+      "parent": "ART_ELEMENTS",
+      "title": "Comparar composicoes artisticas",
+      "objective": "Comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+      "domain": "ELEMENTOS",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ART_INTERPRET_WORK",
+      "class": "LEAF",
+      "subjectCode": "ART",
+      "subjectName": "Arte",
+      "parent": "ART_INTERPRETATION",
+      "title": "Interpretar elementos de uma obra",
+      "objective": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+      "domain": "INTERPRETACAO",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ART_RELATE_WORK_CONTEXT",
+      "class": "LEAF",
+      "subjectCode": "ART",
+      "subjectName": "Arte",
+      "parent": "ART_CONTEXT",
+      "title": "Relacionar obra e contexto cultural",
+      "objective": "Relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+      "domain": "CONTEXTO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_CELL_FUNCTION",
+      "class": "LEAF",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "parent": "BIOLOGY_CELL",
+      "title": "Relacionar estrutura e funcao celular",
+      "objective": "Relacionar uma estrutura celular a sua funcao em um organismo.",
+      "domain": "CELULA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+      "class": "LEAF",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "parent": "BIOLOGY_ECOLOGY",
+      "title": "Explicar interacoes em ecossistemas",
+      "objective": "Explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+      "domain": "ECOLOGIA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_EXPLAIN_INHERITANCE",
+      "class": "LEAF",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "parent": "BIOLOGY_INHERITANCE",
+      "title": "Explicar heranca genetica",
+      "objective": "Explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
+      "domain": "GENETICA",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_INTERPRET_POPULATION_DATA",
+      "class": "LEAF",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "parent": "BIOLOGY_ECOLOGY",
+      "title": "Interpretar dados de uma populacao",
+      "objective": "Interpretar variacoes de uma populacao usando dados de tamanho, ambiente e tempo.",
+      "domain": "ECOLOGIA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_ACID_BASE",
+      "class": "LEAF",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "parent": "CHEMISTRY_MATTER",
+      "title": "Interpretar acidez e basicidade",
+      "objective": "Interpretar pH como medida de acidez ou basicidade em uma solucao.",
+      "domain": "SOLUCOES",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_ATOMIC_STRUCTURE",
+      "class": "LEAF",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "parent": "CHEMISTRY_ATOMIC",
+      "title": "Interpretar modelos atomicos",
+      "objective": "Interpretar numero atomico, massa e particulas em um modelo de atomo.",
+      "domain": "ATOMOS",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_REACTION_EVIDENCE",
+      "class": "LEAF",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "parent": "CHEMISTRY_REACTIONS",
+      "title": "Identificar evidencia de transformacao quimica",
+      "objective": "Identificar evidencia observavel de uma transformacao quimica sem confundi-la com mudanca fisica.",
+      "domain": "REACOES",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_STOICHIOMETRY",
+      "class": "LEAF",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "parent": "CHEMISTRY_REACTIONS",
+      "title": "Raciocinar sobre proporcoes em reacoes",
+      "objective": "Relacionar quantidades de reagentes e produtos usando proporcoes da equacao.",
+      "domain": "REACOES",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_READ_TABLE_DATA",
+      "class": "LEAF",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital",
+      "parent": "COMPUTING_DATA",
+      "title": "Selecionar dados em uma tabela",
+      "objective": "Selecionar dados relevantes de uma tabela para responder a uma pergunta.",
+      "domain": "DADOS",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_RECOGNIZE_PHISHING",
+      "class": "LEAF",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital",
+      "parent": "COMPUTING_SAFETY",
+      "title": "Reconhecer sinais de phishing",
+      "objective": "Reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+      "domain": "SEGURANCA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_TRACE_ALGORITHM",
+      "class": "LEAF",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital",
+      "parent": "COMPUTING_ALGORITHMS",
+      "title": "Rastrear algoritmo com condicoes",
+      "objective": "Rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
+      "domain": "ALGORITMOS",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_INFER_FROM_TEXT",
+      "class": "LEAF",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa",
+      "parent": "ENGLISH_READING",
+      "title": "Inferir sentido em texto em ingles",
+      "objective": "Inferir sentido de um texto em ingles usando pistas lexicais, sintaticas e contextuais.",
+      "domain": "LEITURA",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+      "class": "LEAF",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa",
+      "parent": "ENGLISH_COMMUNICATION",
+      "title": "Relacionar linguagem e contexto cultural",
+      "objective": "Relacionar escolhas linguisticas a situacoes culturais e comunicativas.",
+      "domain": "CULTURA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_USE_CONTEXT_VOCABULARY",
+      "class": "LEAF",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa",
+      "parent": "ENGLISH_VOCABULARY",
+      "title": "Interpretar vocabulario pelo contexto",
+      "objective": "Interpretar o significado de uma palavra em ingles a partir do contexto em que aparece.",
+      "domain": "VOCABULARIO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+      "class": "LEAF",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia",
+      "parent": "GEOGRAPHY_SPACE",
+      "title": "Analisar dados climaticos",
+      "objective": "Analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+      "domain": "CLIMA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+      "class": "LEAF",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia",
+      "parent": "GEOGRAPHY_TERRITORY",
+      "title": "Interpretar territorio e paisagem",
+      "objective": "Interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+      "domain": "TERRITORIO",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "GEOGRAPHY_MAP_SCALE",
+      "class": "LEAF",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia",
+      "parent": "GEOGRAPHY_CARTOGRAPHY",
+      "title": "Interpretar escala cartografica",
+      "objective": "Interpretar a relacao entre distancia representada e distancia real em um mapa.",
+      "domain": "CARTOGRAFIA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_COMPARE_CAUSES",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_CAUSALITY",
+      "title": "Comparar causas e consequencias historicas",
+      "objective": "Comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+      "domain": "CAUSALIDADE",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_INTERPRET_EVIDENCE",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_SOURCES",
+      "title": "Interpretar evidencia historica",
+      "objective": "Interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
+      "domain": "FONTES",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_ORDER_EVENTS",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_TIME",
+      "title": "Ordenar acontecimentos no tempo",
+      "objective": "Ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+      "domain": "CRONOLOGIA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "MATH_IDENTIFY_PERCENT_BASE",
+      "class": "LEAF",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "title": "Identificar a base de uma porcentagem",
+      "objective": "Identificar o valor de referencia sobre o qual uma porcentagem incide.",
+      "domain": "PORCENTAGEM",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "MATH_INTERPRET_DATA_TABLE",
+      "class": "LEAF",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "parent": "MATHEMATICS_DATA",
+      "title": "Interpretar dados em tabela",
+      "objective": "Interpretar dados relevantes de uma tabela para responder a uma pergunta.",
+      "domain": "DADOS",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "MATH_PERCENT_INCREASE",
+      "class": "LEAF",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "title": "Resolver aumento percentual",
+      "objective": "Calcular aumento percentual e valor final sem trocar a base inicial.",
+      "domain": "PORCENTAGEM",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "MATH_PERCENT_OF_QUANTITY",
+      "class": "LEAF",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "title": "Calcular percentual de uma quantidade",
+      "objective": "Calcular um percentual de uma quantidade mantendo explicita a base do calculo.",
+      "domain": "PORCENTAGEM",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "MATH_RATIO_UNIT_RATE",
+      "class": "LEAF",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "title": "Interpretar razao e taxa unitaria",
+      "objective": "Interpretar uma razao e calcular a taxa correspondente a uma unidade.",
+      "domain": "RAZAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PE_ANALYZE_MOVEMENT",
+      "class": "LEAF",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica",
+      "parent": "PE_BODY",
+      "title": "Analisar movimento corporal",
+      "objective": "Analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+      "domain": "CORPO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PE_EXPLAIN_SPORT_PRINCIPLES",
+      "class": "LEAF",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica",
+      "parent": "PE_SPORTS",
+      "title": "Explicar principios de esportes",
+      "objective": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+      "domain": "ESPORTES",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PE_PLAN_SAFE_ACTIVITY",
+      "class": "LEAF",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica",
+      "parent": "PE_HEALTH",
+      "title": "Planejar atividade fisica segura",
+      "objective": "Planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+      "domain": "SAUDE",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+      "class": "LEAF",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia",
+      "parent": "PHILOSOPHY_ETHICS",
+      "title": "Aplicar principio etico a um caso",
+      "objective": "Aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+      "domain": "ETICA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+      "class": "LEAF",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia",
+      "parent": "PHILOSOPHY_CONCEPTS",
+      "title": "Distinguir conceito de opiniao",
+      "objective": "Distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+      "domain": "CONCEITO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "class": "LEAF",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia",
+      "parent": "PHILOSOPHY_ARGUMENT",
+      "title": "Avaliar argumento filosofico",
+      "objective": "Avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+      "domain": "ARGUMENTO",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_AVERAGE_SPEED",
+      "class": "LEAF",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "parent": "PHYSICS_MOTION",
+      "title": "Calcular velocidade media",
+      "objective": "Calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
+      "domain": "VELOCIDADE",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_INTERPRET_MOTION_GRAPH",
+      "class": "LEAF",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "parent": "PHYSICS_MOTION",
+      "title": "Interpretar grafico de movimento",
+      "objective": "Interpretar como inclinacao e trechos de um grafico representam um movimento.",
+      "domain": "MOVIMENTO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_MODEL_FORCE",
+      "class": "LEAF",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "parent": "PHYSICS_ENERGY",
+      "title": "Relacionar forca e movimento",
+      "objective": "Relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+      "domain": "INTERACOES",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_UNIT_CONVERSION",
+      "class": "LEAF",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "parent": "PHYSICS_MEASUREMENT",
+      "title": "Converter unidades de movimento",
+      "objective": "Converter unidades de distancia e tempo antes de comparar velocidades.",
+      "domain": "MEDIDAS",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "title": "Identificar tese e evidencia em textos argumentativos",
+      "objective": "Identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
+      "domain": "ARGUMENTACAO",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_CONNECT_IDEAS",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_COHESION",
+      "title": "Interpretar conectores e relacoes de sentido",
+      "objective": "Interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+      "domain": "COESAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "title": "Distinguir razao de evidencia",
+      "objective": "Distinguir a justificativa de uma afirmacao dos dados que a comprovam.",
+      "domain": "ARGUMENTACAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_INFER_FROM_CLUES",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_READING",
+      "title": "Inferir informacao a partir de pistas textuais",
+      "objective": "Inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+      "domain": "LEITURA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "RELIGIOUS_COMPARE_TRADITIONS",
+      "class": "LEAF",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso",
+      "parent": "RELIGIOUS_DIVERSITY",
+      "title": "Comparar tradicoes com respeito",
+      "objective": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+      "domain": "DIVERSIDADE",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "class": "LEAF",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso",
+      "parent": "RELIGIOUS_TRADITIONS",
+      "title": "Interpretar simbolos e narrativas",
+      "objective": "Interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+      "domain": "TRADICOES",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "RELIGIOUS_MEDIATE_DIALOGUE",
+      "class": "LEAF",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso",
+      "parent": "RELIGIOUS_DIALOGUE",
+      "title": "Mediar dialogo sobre conviccoes",
+      "objective": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+      "domain": "DIALOGO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_EVIDENCE_CONCLUSION",
+      "class": "LEAF",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "parent": "SCIENCE_EVIDENCE",
+      "title": "Relacionar evidencia e conclusao",
+      "objective": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+      "domain": "EVIDENCIA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "class": "LEAF",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "parent": "SCIENCE_MATTER",
+      "title": "Explicar transformacoes da materia",
+      "objective": "Explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+      "domain": "TRANSFORMACOES",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_IDENTIFY_VARIABLES",
+      "class": "LEAF",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "parent": "SCIENCE_INVESTIGATION",
+      "title": "Identificar variaveis experimentais",
+      "objective": "Identificar variavel manipulada, resposta medida e controles em um experimento.",
+      "domain": "INVESTIGACAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_PLAN_INVESTIGATION",
+      "class": "LEAF",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "parent": "SCIENCE_INVESTIGATION",
+      "title": "Planejar uma investigacao controlada",
+      "objective": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+      "domain": "INVESTIGACAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+      "class": "LEAF",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia",
+      "parent": "SOCIOLOGY_STRUCTURE",
+      "title": "Analisar dados de desigualdade",
+      "objective": "Analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+      "domain": "ESTRUTURA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+      "class": "LEAF",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia",
+      "parent": "SOCIOLOGY_INDIVIDUAL",
+      "title": "Distinguir norma de valor social",
+      "objective": "Distinguir regras de comportamento de valores que justificam essas regras.",
+      "domain": "CULTURA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+      "class": "LEAF",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia",
+      "parent": "SOCIOLOGY_INSTITUTIONS",
+      "title": "Explicar instituicoes sociais",
+      "objective": "Explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+      "domain": "INSTITUICOES",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "EQUATIONS",
+      "class": "SEED_SKILL",
+      "title": "Equações",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        8
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "FRACTIONS",
+      "class": "SEED_SKILL",
+      "title": "Fundamentos de frações",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "FUNCTIONS_INTRO",
+      "class": "SEED_SKILL",
+      "title": "Introdução a funções",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "LINEAR_FUNCTION",
+      "class": "SEED_SKILL",
+      "title": "Função afim",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PERCENTAGE",
+      "class": "SEED_SKILL",
+      "title": "Porcentagem",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        7
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "RATIO_PROPORTION",
+      "class": "SEED_SKILL",
+      "title": "Razão e proporção",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        7
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "HISTORY_COMPARE_PERSPECTIVES",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "HISTORY_INTERPRET_PERIODIZATION",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PHYSICS_INTERPRET_ACCELERATION",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PHYSICS_RELATIVE_SPEED",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PHYSICS_UNIFORM_MOTION",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PORTUGUESE_COMPARE_SOURCES",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    },
+    {
+      "code": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+      "class": "OTHER_SEMANTIC_NODE",
+      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
+      "resolution": "REVIEW_REQUIRED"
+    }
+  ],
+  "edges": [
+    {
+      "parent": "ART_CONTEXT",
+      "child": "ART_RELATE_WORK_CONTEXT"
+    },
+    {
+      "parent": "ART_ELEMENTS",
+      "child": "ART_COMPARE_COMPOSITIONS"
+    },
+    {
+      "parent": "ART_INTERPRETATION",
+      "child": "ART_INTERPRET_WORK"
+    },
+    {
+      "parent": "BIOLOGY_CELL",
+      "child": "BIOLOGY_CELL_FUNCTION"
+    },
+    {
+      "parent": "BIOLOGY_ECOLOGY",
+      "child": "BIOLOGY_ECOSYSTEM_INTERACTIONS"
+    },
+    {
+      "parent": "BIOLOGY_ECOLOGY",
+      "child": "BIOLOGY_INTERPRET_POPULATION_DATA"
+    },
+    {
+      "parent": "BIOLOGY_INHERITANCE",
+      "child": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "parent": "CHEMISTRY_ATOMIC",
+      "child": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "parent": "CHEMISTRY_MATTER",
+      "child": "CHEMISTRY_ACID_BASE"
+    },
+    {
+      "parent": "CHEMISTRY_REACTIONS",
+      "child": "CHEMISTRY_REACTION_EVIDENCE"
+    },
+    {
+      "parent": "CHEMISTRY_REACTIONS",
+      "child": "CHEMISTRY_STOICHIOMETRY"
+    },
+    {
+      "parent": "COMPUTING_ALGORITHMS",
+      "child": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "parent": "COMPUTING_DATA",
+      "child": "COMPUTING_READ_TABLE_DATA"
+    },
+    {
+      "parent": "COMPUTING_SAFETY",
+      "child": "COMPUTING_RECOGNIZE_PHISHING"
+    },
+    {
+      "parent": "ENGLISH_COMMUNICATION",
+      "child": "ENGLISH_RELATE_LANGUAGE_CULTURE"
+    },
+    {
+      "parent": "ENGLISH_READING",
+      "child": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "parent": "ENGLISH_VOCABULARY",
+      "child": "ENGLISH_USE_CONTEXT_VOCABULARY"
+    },
+    {
+      "parent": "GEOGRAPHY_CARTOGRAPHY",
+      "child": "GEOGRAPHY_MAP_SCALE"
+    },
+    {
+      "parent": "GEOGRAPHY_SPACE",
+      "child": "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+    },
+    {
+      "parent": "GEOGRAPHY_TERRITORY",
+      "child": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "parent": "HISTORY_CAUSALITY",
+      "child": "HISTORY_ANALYZE_CHANGE_CONTINUITY"
+    },
+    {
+      "parent": "HISTORY_CAUSALITY",
+      "child": "HISTORY_COMPARE_CAUSES"
+    },
+    {
+      "parent": "HISTORY_SOURCES",
+      "child": "HISTORY_COMPARE_PERSPECTIVES"
+    },
+    {
+      "parent": "HISTORY_SOURCES",
+      "child": "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+    },
+    {
+      "parent": "HISTORY_SOURCES",
+      "child": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "parent": "HISTORY_TIME",
+      "child": "HISTORY_INTERPRET_PERIODIZATION"
+    },
+    {
+      "parent": "HISTORY_TIME",
+      "child": "HISTORY_ORDER_EVENTS"
+    },
+    {
+      "parent": "MATHEMATICS_DATA",
+      "child": "MATH_INTERPRET_DATA_TABLE"
+    },
+    {
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "child": "MATH_IDENTIFY_PERCENT_BASE"
+    },
+    {
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "child": "MATH_PERCENT_INCREASE"
+    },
+    {
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "child": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "child": "MATH_RATIO_UNIT_RATE"
+    },
+    {
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "child": "MATH_SUCCESSIVE_PERCENT_CHANGE"
+    },
+    {
+      "parent": "PE_BODY",
+      "child": "PE_ANALYZE_MOVEMENT"
+    },
+    {
+      "parent": "PE_HEALTH",
+      "child": "PE_PLAN_SAFE_ACTIVITY"
+    },
+    {
+      "parent": "PE_SPORTS",
+      "child": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "parent": "PHILOSOPHY_ARGUMENT",
+      "child": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "parent": "PHILOSOPHY_CONCEPTS",
+      "child": "PHILOSOPHY_DISTINGUISH_CONCEPT"
+    },
+    {
+      "parent": "PHILOSOPHY_ETHICS",
+      "child": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE"
+    },
+    {
+      "parent": "PHYSICS_ENERGY",
+      "child": "PHYSICS_MODEL_FORCE"
+    },
+    {
+      "parent": "PHYSICS_MEASUREMENT",
+      "child": "PHYSICS_UNIT_CONVERSION"
+    },
+    {
+      "parent": "PHYSICS_MOTION",
+      "child": "PHYSICS_AVERAGE_SPEED"
+    },
+    {
+      "parent": "PHYSICS_MOTION",
+      "child": "PHYSICS_INTERPRET_ACCELERATION"
+    },
+    {
+      "parent": "PHYSICS_MOTION",
+      "child": "PHYSICS_INTERPRET_MOTION_GRAPH"
+    },
+    {
+      "parent": "PHYSICS_MOTION",
+      "child": "PHYSICS_RELATIVE_SPEED"
+    },
+    {
+      "parent": "PHYSICS_MOTION",
+      "child": "PHYSICS_UNIFORM_MOTION"
+    },
+    {
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "child": "PORTUGUESE_ARGUMENT_EVIDENCE"
+    },
+    {
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "child": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE"
+    },
+    {
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "child": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT"
+    },
+    {
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "child": "PORTUGUESE_SUMMARIZE_ARGUMENT"
+    },
+    {
+      "parent": "PORTUGUESE_COHESION",
+      "child": "PORTUGUESE_CONNECT_IDEAS"
+    },
+    {
+      "parent": "PORTUGUESE_READING",
+      "child": "PORTUGUESE_COMPARE_SOURCES"
+    },
+    {
+      "parent": "PORTUGUESE_READING",
+      "child": "PORTUGUESE_DISTINGUISH_FACT_OPINION"
+    },
+    {
+      "parent": "PORTUGUESE_READING",
+      "child": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+    },
+    {
+      "parent": "PORTUGUESE_READING",
+      "child": "PORTUGUESE_INFER_FROM_CLUES"
+    },
+    {
+      "parent": "RELIGIOUS_DIALOGUE",
+      "child": "RELIGIOUS_MEDIATE_DIALOGUE"
+    },
+    {
+      "parent": "RELIGIOUS_DIVERSITY",
+      "child": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "parent": "RELIGIOUS_TRADITIONS",
+      "child": "RELIGIOUS_INTERPRET_SYMBOLS"
+    },
+    {
+      "parent": "SCIENCE_EVIDENCE",
+      "child": "SCIENCE_EVIDENCE_CONCLUSION"
+    },
+    {
+      "parent": "SCIENCE_INVESTIGATION",
+      "child": "SCIENCE_IDENTIFY_VARIABLES"
+    },
+    {
+      "parent": "SCIENCE_INVESTIGATION",
+      "child": "SCIENCE_PLAN_INVESTIGATION"
+    },
+    {
+      "parent": "SCIENCE_MATTER",
+      "child": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "parent": "SOCIOLOGY_INDIVIDUAL",
+      "child": "SOCIOLOGY_DISTINGUISH_NORM_VALUE"
+    },
+    {
+      "parent": "SOCIOLOGY_INSTITUTIONS",
+      "child": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "parent": "SOCIOLOGY_STRUCTURE",
+      "child": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
+    }
+  ],
+  "graphHash": "ead924e0e10f77e27be37b13082e28cc8d6f9d1ed7040315f30b76884242e96a"
+}
