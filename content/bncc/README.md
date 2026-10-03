@@ -29,3 +29,8 @@ truth.
 Os arquivos baixados e os textos extraídos ficam em `.runtime/bncc/`, que é
 ignorado pelo Git. O catálogo versionado contém proveniência suficiente para
 reproduzir e auditar a extração sem commitar PDFs grandes.
+
+Os arquivos de skills por disciplina em `content/adaptive/tec-escola-core-v4`
+são a fonte de conteúdo autorado. `bncc:sync-v4-registries` reconcilia o
+registro agregado e o registro canônico sem promover automaticamente qualquer
+conteúdo a alinhamento BNCC.

@@ -17,30 +17,16 @@
   "summary": {
     "subjects": 15,
     "anchors": 45,
-    "leaves": 52,
+    "leaves": 65,
     "seedSkills": 6,
-    "targetableSkills": 58,
-    "otherSemanticNodes": 13,
+    "targetableSkills": 71,
+    "otherSemanticNodes": 0,
     "hierarchyEdges": 65,
     "orphanAnchors": [
       "MATHEMATICS_NUMBERS"
     ],
     "orphanLeaves": [],
-    "unresolvedSemanticNodes": [
-      "HISTORY_ANALYZE_CHANGE_CONTINUITY",
-      "HISTORY_COMPARE_PERSPECTIVES",
-      "HISTORY_DISTINGUISH_MEMORY_HISTORY",
-      "HISTORY_INTERPRET_PERIODIZATION",
-      "MATH_SUCCESSIVE_PERCENT_CHANGE",
-      "PHYSICS_INTERPRET_ACCELERATION",
-      "PHYSICS_RELATIVE_SPEED",
-      "PHYSICS_UNIFORM_MOTION",
-      "PORTUGUESE_COMPARE_SOURCES",
-      "PORTUGUESE_DISTINGUISH_FACT_OPINION",
-      "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
-      "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
-      "PORTUGUESE_SUMMARIZE_ARGUMENT"
-    ]
+    "unresolvedSemanticNodes": []
   },
   "nodes": [
     {
@@ -337,7 +323,7 @@
       "title": "Interpretar elementos de uma obra",
       "objective": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
       "domain": "INTERPRETACAO",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "contentAuthoringStatus": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
@@ -397,7 +383,7 @@
       "title": "Explicar heranca genetica",
       "objective": "Explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
       "domain": "GENETICA",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "contentAuthoringStatus": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
@@ -442,7 +428,7 @@
       "title": "Interpretar modelos atomicos",
       "objective": "Interpretar numero atomico, massa e particulas em um modelo de atomo.",
       "domain": "ATOMOS",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "contentAuthoringStatus": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
@@ -517,7 +503,7 @@
       "title": "Rastrear algoritmo com condicoes",
       "objective": "Rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
       "domain": "ALGORITMOS",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "contentAuthoringStatus": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
@@ -614,6 +600,21 @@
       "recommendedGradeTo": 9
     },
     {
+      "code": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_CAUSALITY",
+      "title": "Analisar mudanca e continuidade",
+      "objective": "Analisar o que se transforma e o que permanece em um processo historico.",
+      "domain": "MUDANCA_E_CONTINUIDADE",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
       "code": "HISTORY_COMPARE_CAUSES",
       "class": "LEAF",
       "subjectCode": "HISTORY",
@@ -622,6 +623,36 @@
       "title": "Comparar causas e consequencias historicas",
       "objective": "Comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
       "domain": "CAUSALIDADE",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_COMPARE_PERSPECTIVES",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_SOURCES",
+      "title": "Comparar perspectivas historicas",
+      "objective": "Comparar perspectivas de fontes historicas sem tratar uma narrativa como unica.",
+      "domain": "MULTIPERSPECTIVA",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_SOURCES",
+      "title": "Relacionar memoria e historia",
+      "objective": "Distinguir memoria social, experiencia vivida e interpretacao historica documentada.",
+      "domain": "MEMORIA",
       "readiness": "GRAPH_ONLY",
       "contentAuthoringStatus": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
@@ -639,6 +670,21 @@
       "domain": "FONTES",
       "readiness": "ADAPTIVE_READY",
       "contentAuthoringStatus": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_INTERPRET_PERIODIZATION",
+      "class": "LEAF",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "parent": "HISTORY_TIME",
+      "title": "Interpretar periodizacao",
+      "objective": "Interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades.",
+      "domain": "TEMPO_HISTORICO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
@@ -727,6 +773,21 @@
       "title": "Interpretar razao e taxa unitaria",
       "objective": "Interpretar uma razao e calcular a taxa correspondente a uma unidade.",
       "domain": "RAZAO",
+      "readiness": "ADAPTIVE_READY",
+      "contentAuthoringStatus": "AUTHORED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "class": "LEAF",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "title": "Raciocinar sobre variacoes percentuais sucessivas",
+      "objective": "Analisar duas ou mais variacoes percentuais atualizando a base de cada etapa.",
+      "domain": "PORCENTAGENS",
       "readiness": "GRAPH_ONLY",
       "contentAuthoringStatus": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
@@ -757,7 +818,7 @@
       "title": "Explicar principios de esportes",
       "objective": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
       "domain": "ESPORTES",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "contentAuthoringStatus": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
@@ -839,6 +900,21 @@
       "recommendedGradeTo": 3
     },
     {
+      "code": "PHYSICS_INTERPRET_ACCELERATION",
+      "class": "LEAF",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "parent": "PHYSICS_MOTION",
+      "title": "Interpretar aceleracao",
+      "objective": "Interpretar aceleracao como variacao da velocidade em um intervalo de tempo.",
+      "domain": "MOVIMENTO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
       "code": "PHYSICS_INTERPRET_MOTION_GRAPH",
       "class": "LEAF",
       "subjectCode": "PHYSICS",
@@ -867,6 +943,36 @@
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_RELATIVE_SPEED",
+      "class": "LEAF",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "parent": "PHYSICS_MOTION",
+      "title": "Interpretar velocidade relativa",
+      "objective": "Comparar velocidades de corpos em movimento considerando o referencial e o sentido do movimento.",
+      "domain": "MOVIMENTO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_UNIFORM_MOTION",
+      "class": "LEAF",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "parent": "PHYSICS_MOTION",
+      "title": "Interpretar movimento uniforme",
+      "objective": "Reconhecer movimento uniforme pela constancia da velocidade e pela representacao correspondente.",
+      "domain": "MOVIMENTO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
     },
     {
       "code": "PHYSICS_UNIT_CONVERSION",
@@ -899,6 +1005,21 @@
       "recommendedGradeTo": 9
     },
     {
+      "code": "PORTUGUESE_COMPARE_SOURCES",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_READING",
+      "title": "Comparar fontes e perspectivas",
+      "objective": "Comparar informacoes de fontes considerando convergencias, divergencias e contexto.",
+      "domain": "FONTES",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
       "code": "PORTUGUESE_CONNECT_IDEAS",
       "class": "LEAF",
       "subjectCode": "PORTUGUESE",
@@ -907,6 +1028,21 @@
       "title": "Interpretar conectores e relacoes de sentido",
       "objective": "Interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
       "domain": "COESAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_READING",
+      "title": "Distinguir fato de opiniao",
+      "objective": "Distinguir informacao verificavel de avaliacao ou posicionamento do autor.",
+      "domain": "LEITURA",
       "readiness": "GRAPH_ONLY",
       "contentAuthoringStatus": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
@@ -929,6 +1065,36 @@
       "recommendedGradeTo": 9
     },
     {
+      "code": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "title": "Identificar contraponto argumentativo",
+      "objective": "Identificar a ideia que responde, limita ou contrapoe uma tese em um texto.",
+      "domain": "ARGUMENTACAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_READING",
+      "title": "Identificar genero e finalidade",
+      "objective": "Relacionar genero textual, finalidade comunicativa e escolhas de linguagem.",
+      "domain": "GENEROS",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
       "code": "PORTUGUESE_INFER_FROM_CLUES",
       "class": "LEAF",
       "subjectCode": "PORTUGUESE",
@@ -944,6 +1110,21 @@
       "recommendedGradeTo": 9
     },
     {
+      "code": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+      "class": "LEAF",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "title": "Sintetizar um argumento",
+      "objective": "Resumir tese, razoes e evidencia sem acrescentar afirmacoes que o texto nao sustenta.",
+      "domain": "ARGUMENTACAO",
+      "readiness": "GRAPH_ONLY",
+      "contentAuthoringStatus": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
       "code": "RELIGIOUS_COMPARE_TRADITIONS",
       "class": "LEAF",
       "subjectCode": "RELIGIOUS_EDUCATION",
@@ -952,7 +1133,7 @@
       "title": "Comparar tradicoes com respeito",
       "objective": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
       "domain": "DIVERSIDADE",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "contentAuthoringStatus": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
@@ -1170,84 +1351,6 @@
         "MATEMATICA"
       ],
       "kind": "LEAF"
-    },
-    {
-      "code": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "HISTORY_COMPARE_PERSPECTIVES",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "HISTORY_INTERPRET_PERIODIZATION",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "MATH_SUCCESSIVE_PERCENT_CHANGE",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PHYSICS_INTERPRET_ACCELERATION",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PHYSICS_RELATIVE_SPEED",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PHYSICS_UNIFORM_MOTION",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PORTUGUESE_COMPARE_SOURCES",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
-    },
-    {
-      "code": "PORTUGUESE_SUMMARIZE_ARGUMENT",
-      "class": "OTHER_SEMANTIC_NODE",
-      "source": "TECESCOLA_CORE_V4_RELATIONSHIPS",
-      "resolution": "REVIEW_REQUIRED"
     }
   ],
   "edges": [
@@ -1512,5 +1615,5 @@
       "child": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
     }
   ],
-  "graphHash": "ead924e0e10f77e27be37b13082e28cc8d6f9d1ed7040315f30b76884242e96a"
+  "graphHash": "f4a12c11ab2f57230156d4c284fb264d820b8216d824b6153dbe58a1613c2c4a"
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "tec-escola.bncc.canonical-registry.v1",
-  "source": "TECESCOLA_CORE_V1 migration seed + TECESCOLA_CORE_V4 leaf registry",
+  "source": "TECESCOLA_CORE_V1 migration seed + TECESCOLA_CORE_V4 subject skill registries",
   "skills": [
     {
       "code": "ART_COMPARE_COMPOSITIONS",
@@ -364,7 +364,7 @@
         9
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "GEOGRAFIA"
       ],
       "title": "Analisar dados climaticos",
       "aliases": [
@@ -382,7 +382,7 @@
         9
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "GEOGRAFIA"
       ],
       "title": "Interpretar territorio e paisagem",
       "aliases": [
@@ -400,11 +400,29 @@
         9
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "GEOGRAFIA"
       ],
       "title": "Interpretar escala cartografica",
       "aliases": [
         "CARTOGRAFIA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "HISTORIA"
+      ],
+      "title": "Analisar mudanca e continuidade",
+      "aliases": [
+        "MUDANCA_E_CONTINUIDADE"
       ],
       "kind": "LEAF"
     },
@@ -418,11 +436,47 @@
         9
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "HISTORIA"
       ],
       "title": "Comparar causas e consequencias historicas",
       "aliases": [
         "CAUSALIDADE"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_COMPARE_PERSPECTIVES",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "HISTORIA"
+      ],
+      "title": "Comparar perspectivas historicas",
+      "aliases": [
+        "MULTIPERSPECTIVA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "HISTORIA"
+      ],
+      "title": "Relacionar memoria e historia",
+      "aliases": [
+        "MEMORIA"
       ],
       "kind": "LEAF"
     },
@@ -436,11 +490,29 @@
         9
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "HISTORIA"
       ],
       "title": "Interpretar evidencia historica",
       "aliases": [
         "FONTES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_INTERPRET_PERIODIZATION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "HISTORIA"
+      ],
+      "title": "Interpretar periodizacao",
+      "aliases": [
+        "TEMPO_HISTORICO"
       ],
       "kind": "LEAF"
     },
@@ -454,7 +526,7 @@
         9
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "HISTORIA"
       ],
       "title": "Ordenar acontecimentos no tempo",
       "aliases": [
@@ -571,6 +643,24 @@
       "kind": "LEAF"
     },
     {
+      "code": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Raciocinar sobre variacoes percentuais sucessivas",
+      "aliases": [
+        "PORCENTAGENS"
+      ],
+      "kind": "LEAF"
+    },
+    {
       "code": "PE_ANALYZE_MOVEMENT",
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeLevels": [
@@ -650,7 +740,7 @@
         3
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "FILOSOFIA"
       ],
       "title": "Aplicar principio etico a um caso",
       "aliases": [
@@ -667,7 +757,7 @@
         3
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "FILOSOFIA"
       ],
       "title": "Distinguir conceito de opiniao",
       "aliases": [
@@ -684,7 +774,7 @@
         3
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "FILOSOFIA"
       ],
       "title": "Avaliar argumento filosofico",
       "aliases": [
@@ -706,6 +796,24 @@
       "title": "Calcular velocidade media",
       "aliases": [
         "VELOCIDADE"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHYSICS_INTERPRET_ACCELERATION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Interpretar aceleracao",
+      "aliases": [
+        "MOVIMENTO"
       ],
       "kind": "LEAF"
     },
@@ -740,6 +848,42 @@
       "title": "Relacionar forca e movimento",
       "aliases": [
         "INTERACOES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHYSICS_RELATIVE_SPEED",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Interpretar velocidade relativa",
+      "aliases": [
+        "MOVIMENTO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHYSICS_UNIFORM_MOTION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Interpretar movimento uniforme",
+      "aliases": [
+        "MOVIMENTO"
       ],
       "kind": "LEAF"
     },
@@ -779,6 +923,24 @@
       "kind": "LEAF"
     },
     {
+      "code": "PORTUGUESE_COMPARE_SOURCES",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Comparar fontes e perspectivas",
+      "aliases": [
+        "FONTES"
+      ],
+      "kind": "LEAF"
+    },
+    {
       "code": "PORTUGUESE_CONNECT_IDEAS",
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeLevels": [
@@ -793,6 +955,24 @@
       "title": "Interpretar conectores e relacoes de sentido",
       "aliases": [
         "COESAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Distinguir fato de opiniao",
+      "aliases": [
+        "LEITURA"
       ],
       "kind": "LEAF"
     },
@@ -815,6 +995,42 @@
       "kind": "LEAF"
     },
     {
+      "code": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Identificar contraponto argumentativo",
+      "aliases": [
+        "ARGUMENTACAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Identificar genero e finalidade",
+      "aliases": [
+        "GENEROS"
+      ],
+      "kind": "LEAF"
+    },
+    {
       "code": "PORTUGUESE_INFER_FROM_CLUES",
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeLevels": [
@@ -829,6 +1045,24 @@
       "title": "Inferir informacao a partir de pistas textuais",
       "aliases": [
         "LEITURA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Sintetizar um argumento",
+      "aliases": [
+        "ARGUMENTACAO"
       ],
       "kind": "LEAF"
     },
@@ -984,7 +1218,7 @@
         3
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "SOCIOLOGIA"
       ],
       "title": "Analisar dados de desigualdade",
       "aliases": [
@@ -1001,7 +1235,7 @@
         3
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "SOCIOLOGIA"
       ],
       "title": "Distinguir norma de valor social",
       "aliases": [
@@ -1018,7 +1252,7 @@
         3
       ],
       "subjectAreas": [
-        "CIENCIAS_HUMANAS"
+        "SOCIOLOGIA"
       ],
       "title": "Explicar instituicoes sociais",
       "aliases": [
