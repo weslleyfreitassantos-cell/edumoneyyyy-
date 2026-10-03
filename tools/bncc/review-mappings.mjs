@@ -100,8 +100,12 @@ function reviewCandidate(candidate, catalogNode, skills) {
 
   const skillByCode = new Map(skills.map((skill) => [skill.code, skill]));
   const canonicalSkill = skillByCode.get(candidate.candidateCanonicalSkillCodes?.[0]);
+  const grade = gradeNumber(catalogNode.gradeOrRange);
+  const subjects = subjectAreasForNode(catalogNode);
   const eligible = skills
-    .filter((skill) => skill.stage === catalogNode.stage)
+    .filter((skill) => skill.stage === catalogNode.stage
+      && (grade === null || skill.gradeLevels?.includes(grade))
+      && subjects.some((subject) => skill.subjectAreas?.includes(subject)))
     .map((skill) => {
       const officialTokens = tokens(`${catalogNode.officialTextExcerpt} ${catalogNode.componentCode}`);
       const skillTokens = tokens(`${skill.title} ${(skill.aliases ?? []).join(' ')}`);

@@ -2,7 +2,7 @@
   "schemaVersion": "tec-escola.bncc.mapping-reviews.v1",
   "catalogVersion": "BNCC_2018_AND_COMPUTACAO_2022_TEXT_EXTRACTION",
   "catalogHash": "b0da60b72e055d8bbafe2366651f1ccc6676d92e83a65f9bf3e062c5026e3989",
-  "candidatesHash": "f28c62f1756fd3ad77c91156573e7fb6d944a28650f469940bde1688b4e5bf94",
+  "candidatesHash": "fda364d2547223646779cf0c183547797233318266afc40f5f3665859becada7",
   "sourceOfTruth": "official_catalog_plus_versioned_canonical_registry_plus_independent_technical_review",
   "generatedAt": "2026-10-03T00:00:00.000Z",
   "statusContract": {
@@ -27,10 +27,10 @@
     "total": 1723,
     "technicallyReviewed": 1619,
     "technicallyClassified": 104,
-    "approveConservative": 3,
-    "needsHumanReview": 98,
-    "rejected": 9,
-    "canonicalGaps": 1509,
+    "approveConservative": 4,
+    "needsHumanReview": 119,
+    "rejected": 0,
+    "canonicalGaps": 1496,
     "hierarchyOnly": 104,
     "pedagogicalReviewPending": 1619,
     "promoted": 0
@@ -11379,7 +11379,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.3333,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "explicar",
           "transformacoes"
@@ -11432,7 +11432,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "explicar",
           "transformacoes"
@@ -11830,7 +11830,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.3,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -11883,7 +11883,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.3,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -11959,7 +11959,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "dados",
           "selecionar"
@@ -12035,7 +12035,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.5,
         "lexicalOverlap": [
           "dados",
           "selecionar"
@@ -12088,7 +12088,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.5,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -12187,7 +12187,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.3,
         "lexicalOverlap": [
           "simbolos",
           "tradicoes"
@@ -12240,7 +12240,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.3,
         "lexicalOverlap": [
           "simbolos",
           "tradicoes"
@@ -12342,20 +12342,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "06",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.5,
+        "lexicalOverlap": [
+          "analisar",
+          "climaticos"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+        "title": "Analisar dados climaticos",
+        "aliases": [
+          "CLIMA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -12365,20 +12395,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "06",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.5,
+        "lexicalOverlap": [
+          "analisar",
+          "climaticos"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+        "title": "Analisar dados climaticos",
+        "aliases": [
+          "CLIMA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -12390,7 +12450,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12413,7 +12473,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12436,7 +12496,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12459,7 +12519,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12482,7 +12542,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12505,7 +12565,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12528,7 +12588,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12551,7 +12611,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12574,7 +12634,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12597,7 +12657,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12620,7 +12680,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12641,20 +12701,51 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "06",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "candidateConfidence": "HIGH",
+      "candidateConfidenceScore": 0.75,
+      "decision": "APPROVE_CONSERVATIVE",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade estrutural e evidência lexical fortes; aprovação conservadora ainda requer revisão pedagógica humana antes da promoção.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.75,
+        "scoreMatchesCandidate": true,
+        "margin": 0.4167,
+        "lexicalOverlap": [
+          "historico",
+          "periodizacao",
+          "tempo"
+        ],
+        "lexicalOverlapCount": 3
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_INTERPRET_PERIODIZATION",
+        "title": "Interpretar periodizacao",
+        "aliases": [
+          "TEMPO_HISTORICO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -12666,7 +12757,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12689,7 +12780,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12827,7 +12918,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12850,7 +12941,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12873,7 +12964,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12896,7 +12987,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12919,7 +13010,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12942,7 +13033,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12965,7 +13056,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -12988,7 +13079,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13011,7 +13102,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13034,7 +13125,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13057,7 +13148,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13677,8 +13768,8 @@
       "gradeOrRange": "06",
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13701,7 +13792,7 @@
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.1667,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13722,20 +13813,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "06",
       "componentCode": "LP",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "genero",
+          "identificar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+        "title": "Identificar genero e finalidade",
+        "aliases": [
+          "GENEROS"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "LINGUA_PORTUGUESA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -13746,8 +13867,8 @@
       "gradeOrRange": "06",
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.4,
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13769,8 +13890,8 @@
       "gradeOrRange": "06",
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.4,
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13885,7 +14006,7 @@
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.2,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -13931,7 +14052,7 @@
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.2,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -14225,7 +14346,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "base",
           "uma"
@@ -14278,7 +14399,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "base",
           "uma"
@@ -14461,7 +14582,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "base",
           "identificar"
@@ -14781,7 +14902,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "interpretar",
           "razao"
@@ -14910,7 +15031,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.0667,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -14963,7 +15084,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.0667,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -15016,7 +15137,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.0667,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -15069,7 +15190,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.0667,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -15513,7 +15634,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.3,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -15589,7 +15710,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.3,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -15642,7 +15763,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.3,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -15695,7 +15816,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -16052,7 +16173,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16075,7 +16196,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16098,7 +16219,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16119,20 +16240,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.4167,
+        "lexicalOverlap": [
+          "interpretar",
+          "territorio"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "title": "Interpretar territorio e paisagem",
+        "aliases": [
+          "TERRITORIO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16142,20 +16293,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.4167,
+        "lexicalOverlap": [
+          "interpretar",
+          "territorio"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "title": "Interpretar territorio e paisagem",
+        "aliases": [
+          "TERRITORIO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16165,20 +16346,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "interpretar",
+          "territorio"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "title": "Interpretar territorio e paisagem",
+        "aliases": [
+          "TERRITORIO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16188,20 +16399,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "interpretar",
+          "territorio"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "title": "Interpretar territorio e paisagem",
+        "aliases": [
+          "TERRITORIO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16211,20 +16452,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.4167,
+        "lexicalOverlap": [
+          "interpretar",
+          "territorio"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "title": "Interpretar territorio e paisagem",
+        "aliases": [
+          "TERRITORIO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16234,20 +16505,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.4167,
+        "lexicalOverlap": [
+          "interpretar",
+          "territorio"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "title": "Interpretar territorio e paisagem",
+        "aliases": [
+          "TERRITORIO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16257,20 +16558,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.4167,
+        "lexicalOverlap": [
+          "interpretar",
+          "territorio"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "title": "Interpretar territorio e paisagem",
+        "aliases": [
+          "TERRITORIO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16282,7 +16613,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16328,7 +16659,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16351,7 +16682,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16374,7 +16705,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16397,7 +16728,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16420,7 +16751,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16441,20 +16772,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "historico",
+          "tempo"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_INTERPRET_PERIODIZATION",
+        "title": "Interpretar periodizacao",
+        "aliases": [
+          "TEMPO_HISTORICO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16464,20 +16825,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "historico",
+          "tempo"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_INTERPRET_PERIODIZATION",
+        "title": "Interpretar periodizacao",
+        "aliases": [
+          "TEMPO_HISTORICO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16487,20 +16878,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "historico",
+          "tempo"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_INTERPRET_PERIODIZATION",
+        "title": "Interpretar periodizacao",
+        "aliases": [
+          "TEMPO_HISTORICO"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -16512,7 +16933,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16535,7 +16956,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16558,7 +16979,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16581,7 +17002,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16604,7 +17025,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16627,7 +17048,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16650,7 +17071,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16673,7 +17094,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16696,7 +17117,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -16737,7 +17158,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.35,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -16791,7 +17212,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.2,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -16845,7 +17266,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.2,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -16899,7 +17320,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.2,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -16953,7 +17374,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.4,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -17007,7 +17428,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.4,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -17061,7 +17482,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.35,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -17115,7 +17536,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.2667,
+        "margin": 0.35,
         "lexicalOverlap": [
           "leitura",
           "sentido",
@@ -17495,8 +17916,8 @@
       "gradeOrRange": "07",
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -17519,7 +17940,7 @@
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.1667,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -17541,8 +17962,8 @@
       "gradeOrRange": "07",
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.4,
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -17564,8 +17985,8 @@
       "gradeOrRange": "07",
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.4,
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -17793,20 +18214,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "07",
       "componentCode": "LP",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "generos",
+          "identificar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+        "title": "Identificar genero e finalidade",
+        "aliases": [
+          "GENEROS"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "LINGUA_PORTUGUESA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -17974,7 +18425,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "grandezas",
           "razao"
@@ -18026,7 +18477,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "grandezas",
           "razao"
@@ -18078,7 +18529,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "grandezas",
           "razao"
@@ -18711,7 +19162,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.2667,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -18764,7 +19215,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.2667,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -18817,7 +19268,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.0667,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -18870,7 +19321,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.0667,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "dados",
           "interpretar"
@@ -18992,7 +19443,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.6667,
         "lexicalOverlap": [
           "explicar",
           "transformacoes"
@@ -19045,7 +19496,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.2667,
+        "margin": 0.6667,
         "lexicalOverlap": [
           "explicar",
           "transformacoes"
@@ -19098,7 +19549,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.3333,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "explicar",
           "transformacoes"
@@ -19151,7 +19602,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.2667,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "explicar",
           "transformacoes"
@@ -19204,7 +19655,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "explicar",
           "transformacoes"
@@ -19288,11 +19739,11 @@
       ],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.5,
-      "decision": "REJECT",
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
         "exactlyOneCandidate": true,
@@ -19300,10 +19751,10 @@
         "stageCompatible": true,
         "gradeCompatible": true,
         "componentCompatible": true,
-        "candidateIsTopMatch": false,
+        "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "identificar",
           "variaveis"
@@ -19341,11 +19792,11 @@
       ],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.5,
-      "decision": "REJECT",
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
         "exactlyOneCandidate": true,
@@ -19353,10 +19804,10 @@
         "stageCompatible": true,
         "gradeCompatible": true,
         "componentCompatible": true,
-        "candidateIsTopMatch": false,
+        "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "identificar",
           "variaveis"
@@ -19568,7 +20019,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 1,
         "scoreMatchesCandidate": true,
-        "margin": 0.6,
+        "margin": 1,
         "lexicalOverlap": [
           "explicar",
           "materia",
@@ -19691,7 +20142,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.5,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -19790,7 +20241,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "dados",
           "selecionar"
@@ -19843,7 +20294,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "dados",
           "selecionar"
@@ -19965,7 +20416,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.25,
         "lexicalOverlap": [
           "conviccoes",
           "sobre"
@@ -20018,7 +20469,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.25,
         "lexicalOverlap": [
           "conviccoes",
           "sobre"
@@ -20071,7 +20522,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.25,
         "lexicalOverlap": [
           "conviccoes",
           "sobre"
@@ -20124,7 +20575,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.25,
         "lexicalOverlap": [
           "conviccoes",
           "sobre"
@@ -20177,7 +20628,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.25,
         "lexicalOverlap": [
           "conviccoes",
           "sobre"
@@ -20258,7 +20709,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20281,7 +20732,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20304,7 +20755,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20327,7 +20778,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20350,7 +20801,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20373,7 +20824,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20396,7 +20847,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20419,7 +20870,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20442,7 +20893,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20465,7 +20916,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20488,7 +20939,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20511,7 +20962,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20534,7 +20985,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20557,7 +21008,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20580,7 +21031,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20601,20 +21052,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "08",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_MAP_SCALE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "cartografica",
+          "interpretar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_MAP_SCALE",
+        "title": "Interpretar escala cartografica",
+        "aliases": [
+          "CARTOGRAFIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -20624,20 +21105,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "08",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_MAP_SCALE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "cartografica",
+          "interpretar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_MAP_SCALE",
+        "title": "Interpretar escala cartografica",
+        "aliases": [
+          "CARTOGRAFIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -20647,20 +21158,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "08",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_MAP_SCALE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "cartografica",
+          "interpretar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_MAP_SCALE",
+        "title": "Interpretar escala cartografica",
+        "aliases": [
+          "CARTOGRAFIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -20672,7 +21213,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20695,7 +21236,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20718,7 +21259,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20741,7 +21282,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20764,7 +21305,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20787,7 +21328,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20810,7 +21351,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20833,7 +21374,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20856,7 +21397,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20879,7 +21420,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20948,7 +21489,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20971,7 +21512,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -20994,7 +21535,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21017,7 +21558,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21040,7 +21581,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21063,7 +21604,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21086,7 +21627,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21132,7 +21673,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21155,7 +21696,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21178,7 +21719,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21201,7 +21742,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21224,7 +21765,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21247,7 +21788,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21270,7 +21811,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21293,7 +21834,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21316,7 +21857,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21339,7 +21880,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21362,7 +21903,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21385,7 +21926,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21408,7 +21949,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -21449,7 +21990,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.2,
+        "margin": 0.6,
         "lexicalOverlap": [
           "inferir",
           "sentido",
@@ -21503,7 +22044,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.2,
+        "margin": 0.4,
         "lexicalOverlap": [
           "inferir",
           "sentido",
@@ -21557,7 +22098,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.2,
+        "margin": 0.4,
         "lexicalOverlap": [
           "inferir",
           "sentido",
@@ -21982,20 +22523,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "08",
       "componentCode": "LP",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_COMPARE_SOURCES"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "comparar",
+          "fontes"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "PORTUGUESE_COMPARE_SOURCES",
+        "title": "Comparar fontes e perspectivas",
+        "aliases": [
+          "FONTES"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "LINGUA_PORTUGUESA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -22010,11 +22581,11 @@
       ],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.5,
-      "decision": "REJECT",
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
         "exactlyOneCandidate": true,
@@ -22022,10 +22593,10 @@
         "stageCompatible": true,
         "gradeCompatible": true,
         "componentCompatible": true,
-        "candidateIsTopMatch": false,
+        "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "argumentativos",
           "identificar",
@@ -22240,7 +22811,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.2667,
         "lexicalOverlap": [
           "coesao",
           "interpretar",
@@ -22320,51 +22891,20 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "08",
       "componentCode": "LP",
-      "candidateCanonicalSkillCodes": [
-        "PORTUGUESE_CONNECT_IDEAS"
-      ],
+      "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.6,
-      "decision": "REJECT",
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": false,
-        "scoreRecomputed": 0.6,
-        "scoreMatchesCandidate": true,
-        "margin": 0,
-        "lexicalOverlap": [
-          "coesao",
-          "relacoes",
-          "sentido"
-        ],
-        "lexicalOverlapCount": 3
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "PORTUGUESE_CONNECT_IDEAS",
-        "title": "Interpretar conectores e relacoes de sentido",
-        "aliases": [
-          "COESAO"
-        ],
-        "stage": "ENSINO_FUNDAMENTAL",
-        "gradeLevels": [
-          6,
-          7,
-          8,
-          9
-        ],
-        "subjectAreas": [
-          "LINGUA_PORTUGUESA"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -22379,11 +22919,11 @@
       ],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.6,
-      "decision": "REJECT",
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
         "exactlyOneCandidate": true,
@@ -22391,10 +22931,10 @@
         "stageCompatible": true,
         "gradeCompatible": true,
         "componentCompatible": true,
-        "candidateIsTopMatch": false,
+        "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.2667,
         "lexicalOverlap": [
           "coesao",
           "relacoes",
@@ -22433,11 +22973,11 @@
       ],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.6,
-      "decision": "REJECT",
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
         "exactlyOneCandidate": true,
@@ -22445,10 +22985,10 @@
         "stageCompatible": true,
         "gradeCompatible": true,
         "componentCompatible": true,
-        "candidateIsTopMatch": false,
+        "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.2667,
         "lexicalOverlap": [
           "coesao",
           "relacoes",
@@ -22794,7 +23334,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "identificar",
           "uma"
@@ -22847,7 +23387,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "identificar",
           "uma"
@@ -23268,7 +23808,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 1,
         "scoreMatchesCandidate": true,
-        "margin": 0.5,
+        "margin": 0.75,
         "lexicalOverlap": [
           "explicar",
           "materia",
@@ -23322,7 +23862,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6667,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.4167,
         "lexicalOverlap": [
           "materia",
           "transformacoes"
@@ -23720,7 +24260,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.25,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -23773,7 +24313,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.25,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -23872,7 +24412,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "dados",
           "uma"
@@ -23925,7 +24465,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1667,
+        "margin": 0.5,
         "lexicalOverlap": [
           "selecionar",
           "uma"
@@ -23978,7 +24518,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.5,
         "lexicalOverlap": [
           "selecionar",
           "uma"
@@ -24031,7 +24571,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.5,
         "lexicalOverlap": [
           "selecionar",
           "uma"
@@ -24084,7 +24624,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.3,
         "lexicalOverlap": [
           "selecionar",
           "uma"
@@ -24326,7 +24866,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24349,7 +24889,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24372,7 +24912,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24395,7 +24935,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24418,7 +24958,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24441,7 +24981,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24464,7 +25004,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24487,7 +25027,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24510,7 +25050,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24533,7 +25073,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24556,7 +25096,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24579,7 +25119,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24600,20 +25140,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "analisar",
+          "dados"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+        "title": "Analisar dados climaticos",
+        "aliases": [
+          "CLIMA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -24623,20 +25193,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "GE",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.5,
+        "scoreMatchesCandidate": true,
+        "margin": 0.1667,
+        "lexicalOverlap": [
+          "analisar",
+          "dados"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+        "title": "Analisar dados climaticos",
+        "aliases": [
+          "CLIMA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "GEOGRAFIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -24648,7 +25248,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24671,7 +25271,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24694,7 +25294,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24717,7 +25317,7 @@
       "componentCode": "GE",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24740,7 +25340,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24763,7 +25363,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24809,7 +25409,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24832,7 +25432,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24855,7 +25455,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24878,7 +25478,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24901,7 +25501,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24924,7 +25524,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24947,7 +25547,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24970,7 +25570,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -24993,7 +25593,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25016,7 +25616,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25039,7 +25639,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25062,7 +25662,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25083,20 +25683,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.6667,
+        "lexicalOverlap": [
+          "historia",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25106,20 +25736,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.3333,
+        "lexicalOverlap": [
+          "memoria",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25129,20 +25789,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.3333,
+        "lexicalOverlap": [
+          "memoria",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25152,20 +25842,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.3333,
+        "lexicalOverlap": [
+          "memoria",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25177,7 +25897,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25200,7 +25920,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25223,7 +25943,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25246,7 +25966,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25267,20 +25987,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.3333,
+        "lexicalOverlap": [
+          "historia",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25290,20 +26040,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.3333,
+        "lexicalOverlap": [
+          "historia",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25313,20 +26093,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.3333,
+        "lexicalOverlap": [
+          "historia",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25336,20 +26146,50 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "HI",
-      "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
-      "decision": "CANONICAL_GAP",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
-        "kindIsSkill": true,
-        "canonicalSkillPresent": false
+        "exactlyOneCandidate": true,
+        "canonicalSkillPresent": true,
+        "stageCompatible": true,
+        "gradeCompatible": true,
+        "componentCompatible": true,
+        "candidateIsTopMatch": true,
+        "scoreRecomputed": 0.6667,
+        "scoreMatchesCandidate": true,
+        "margin": 0.6667,
+        "lexicalOverlap": [
+          "historia",
+          "relacionar"
+        ],
+        "lexicalOverlapCount": 2
       },
-      "canonicalSkill": null,
+      "canonicalSkill": {
+        "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "title": "Relacionar memoria e historia",
+        "aliases": [
+          "MEMORIA"
+        ],
+        "stage": "ENSINO_FUNDAMENTAL",
+        "gradeLevels": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "subjectAreas": [
+          "HISTORIA"
+        ]
+      },
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -25361,7 +26201,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25384,7 +26224,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25407,7 +26247,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25430,7 +26270,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25453,7 +26293,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25476,7 +26316,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25499,7 +26339,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25522,7 +26362,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -25545,7 +26385,7 @@
       "componentCode": "HI",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -26046,7 +26886,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.25,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "argumentativos",
           "identificar",
@@ -26082,7 +26922,7 @@
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.1667,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -26218,51 +27058,20 @@
       "stage": "ENSINO_FUNDAMENTAL",
       "gradeOrRange": "09",
       "componentCode": "LP",
-      "candidateCanonicalSkillCodes": [
-        "PORTUGUESE_CONNECT_IDEAS"
-      ],
+      "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.6,
-      "decision": "REJECT",
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": false,
-        "scoreRecomputed": 0.6,
-        "scoreMatchesCandidate": true,
-        "margin": 0,
-        "lexicalOverlap": [
-          "coesao",
-          "relacoes",
-          "sentido"
-        ],
-        "lexicalOverlapCount": 3
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "PORTUGUESE_CONNECT_IDEAS",
-        "title": "Interpretar conectores e relacoes de sentido",
-        "aliases": [
-          "COESAO"
-        ],
-        "stage": "ENSINO_FUNDAMENTAL",
-        "gradeLevels": [
-          6,
-          7,
-          8,
-          9
-        ],
-        "subjectAreas": [
-          "LINGUA_PORTUGUESA"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -26320,7 +27129,7 @@
       "componentCode": "LP",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.1667,
+      "candidateConfidenceScore": 0.25,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -26343,7 +27152,7 @@
       "componentCode": "MA",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.25,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -26366,7 +27175,7 @@
       "componentCode": "MA",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.25,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -26389,7 +27198,7 @@
       "componentCode": "MA",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.25,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -26412,7 +27221,7 @@
       "componentCode": "MA",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.25,
+      "candidateConfidenceScore": 0.3333,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -26438,11 +27247,11 @@
       ],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.5,
-      "decision": "REJECT",
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
         "exactlyOneCandidate": true,
@@ -26450,10 +27259,10 @@
         "stageCompatible": true,
         "gradeCompatible": true,
         "componentCompatible": true,
-        "candidateIsTopMatch": false,
+        "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.25,
+        "margin": 0.1667,
         "lexicalOverlap": [
           "razao",
           "taxa"
@@ -26491,11 +27300,11 @@
       ],
       "candidateConfidence": "MEDIUM",
       "candidateConfidenceScore": 0.5,
-      "decision": "REJECT",
+      "decision": "NEEDS_HUMAN_REVIEW",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "A candidatura falhou em uma ou mais verificações independentes de estrutura, compatibilidade ou reprodução do score.",
+      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
       "checks": {
         "officialNodePresent": true,
         "exactlyOneCandidate": true,
@@ -26503,7 +27312,7 @@
         "stageCompatible": true,
         "gradeCompatible": true,
         "componentCompatible": true,
-        "candidateIsTopMatch": false,
+        "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
         "margin": 0.25,
@@ -26582,7 +27391,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0,
+        "margin": 0.25,
         "lexicalOverlap": [
           "base",
           "uma"
@@ -26635,7 +27444,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.5,
         "scoreMatchesCandidate": true,
-        "margin": 0.1,
+        "margin": 0.25,
         "lexicalOverlap": [
           "base",
           "uma"
@@ -37351,49 +38160,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "dados"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -37403,49 +38183,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "dados"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -37455,49 +38206,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "dados"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -37509,7 +38231,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37532,7 +38254,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37553,49 +38275,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -37607,7 +38300,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37630,7 +38323,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37653,7 +38346,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37676,7 +38369,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37699,7 +38392,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.4,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37722,7 +38415,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.4,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37745,7 +38438,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37768,7 +38461,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37791,7 +38484,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37814,7 +38507,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -37835,49 +38528,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -37887,49 +38551,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -37939,49 +38574,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -37991,49 +38597,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -38043,49 +38620,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -38097,7 +38645,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -38119,8 +38667,8 @@
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -38141,49 +38689,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1667,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -38195,7 +38714,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -38218,7 +38737,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -38241,7 +38760,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.3333,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -38264,7 +38783,7 @@
       "componentCode": "CHS",
       "candidateCanonicalSkillCodes": [],
       "candidateConfidence": "LOW",
-      "candidateConfidenceScore": 0.25,
+      "candidateConfidenceScore": 0,
       "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -38285,49 +38804,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.25,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -38337,49 +38827,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.25,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -38389,49 +38850,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.5,
-        "lexicalOverlap": [
-          "analisar",
-          "desigualdade"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -38441,49 +38873,20 @@
       "stage": "ENSINO_MEDIO",
       "gradeOrRange": "1-3",
       "componentCode": "CHS",
-      "candidateCanonicalSkillCodes": [
-        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
-      ],
-      "candidateConfidence": "MEDIUM",
-      "candidateConfidenceScore": 0.5,
-      "decision": "NEEDS_HUMAN_REVIEW",
+      "candidateCanonicalSkillCodes": [],
+      "candidateConfidence": "LOW",
+      "candidateConfidenceScore": 0,
+      "decision": "CANONICAL_GAP",
       "reviewStatus": "TECHNICALLY_REVIEWED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotionStatus": "NOT_PROMOTED",
-      "reason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+      "reason": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita.",
       "checks": {
         "officialNodePresent": true,
-        "exactlyOneCandidate": true,
-        "canonicalSkillPresent": true,
-        "stageCompatible": true,
-        "gradeCompatible": true,
-        "componentCompatible": true,
-        "candidateIsTopMatch": true,
-        "scoreRecomputed": 0.5,
-        "scoreMatchesCandidate": true,
-        "margin": 0.1,
-        "lexicalOverlap": [
-          "analisar",
-          "dados"
-        ],
-        "lexicalOverlapCount": 2
+        "kindIsSkill": true,
+        "canonicalSkillPresent": false
       },
-      "canonicalSkill": {
-        "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
-        "title": "Analisar dados de desigualdade",
-        "aliases": [
-          "ESTRUTURA"
-        ],
-        "stage": "ENSINO_MEDIO",
-        "gradeLevels": [
-          1,
-          2,
-          3
-        ],
-        "subjectAreas": [
-          "CIENCIAS_HUMANAS"
-        ]
-      },
+      "canonicalSkill": null,
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     },
     {
@@ -42689,7 +43092,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.2,
+        "margin": 0.4,
         "lexicalOverlap": [
           "funcoes",
           "relacao",
@@ -42743,7 +43146,7 @@
         "candidateIsTopMatch": true,
         "scoreRecomputed": 0.6,
         "scoreMatchesCandidate": true,
-        "margin": 0.2,
+        "margin": 0.4,
         "lexicalOverlap": [
           "funcoes",
           "relacao",
@@ -42863,5 +43266,5 @@
       "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
     }
   ],
-  "reviewHash": "81ea34dc2c2f0f7edb7caa9ef95d7d56f1d526e6a9be32c4e096d39ad77e72c9"
+  "reviewHash": "d63be460f0100552a8fa18577c72e03e7895efe9eed04241a1aa8e3d54f4265d"
 }
