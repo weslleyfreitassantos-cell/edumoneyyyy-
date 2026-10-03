@@ -27,6 +27,8 @@ describe('ENEM import plan', () => {
     expect(plan.sql).toContain("source_integrity");
     expect(plan.sql).toContain("pedagogical_enrichment");
     expect(plan.sql).toContain('\'"3"\'::jsonb');
+    expect(plan.sql).toContain("source_year, question_count");
+    expect(plan.sql).toContain("'ENEM 2025 · MATEMATICA · prática oficial'");
   });
 
   it('selects a small deterministic canary across areas', () => {

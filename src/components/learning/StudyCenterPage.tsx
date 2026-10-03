@@ -37,6 +37,7 @@ import {
   useLearningCanonicalProgress,
   useLearningReviewsDue,
   useLearningSimulations,
+  useLearningSimulationAttempts,
   useLearningDailyPlan,
   useLearningErrorNotebook,
   useLearningGamification,
@@ -151,6 +152,10 @@ export default function StudyCenterPage() {
     student.data?.id,
   );
   const simulations = useLearningSimulations(currentInstitutionId ?? undefined, showSecondaryStudyAreas);
+  const simulationAttempts = useLearningSimulationAttempts(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
   const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id, showSecondaryStudyAreas);
   const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
@@ -216,6 +221,23 @@ export default function StudyCenterPage() {
       hasEvidence: values.some((item) => item.evidence_count > 0),
     };
   }, [canonicalProgress.data]);
+
+  const enemSimulations = useMemo(
+    () => (simulations.data ?? []).filter((simulation) => simulation.source_year || simulation.title.toLocaleLowerCase('pt-BR').includes('enem')),
+    [simulations.data],
+  );
+  const areaSimulations = useMemo(
+    () => enemSimulations.filter((simulation) => simulation.simulation_type === 'AREA'),
+    [enemSimulations],
+  );
+  const historicalSimulations = useMemo(
+    () => enemSimulations.filter((simulation) => simulation.simulation_type === 'HISTORICAL_EXAM'),
+    [enemSimulations],
+  );
+  const recentSimulationAttempts = useMemo(
+    () => (simulationAttempts.data ?? []).filter((attempt) => attempt.status === 'COMPLETED').slice(0, 3),
+    [simulationAttempts.data],
+  );
 
   const selectedSubject = (subjects.data ?? []).find(
     (subject) => subject.id === selectedSubjectId,
@@ -408,12 +430,35 @@ export default function StudyCenterPage() {
 
       {showSecondaryStudyAreas ? (
         <>
+      <section aria-label="Preparação ENEM" className="rounded-xl border border-blue-200 bg-blue-50 p-4 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/20 sm:p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Preparação ENEM</p><h2 className="mt-1 font-bold text-blue-950 dark:text-blue-100">Estude com propósito</h2><p className="mt-1 text-xs text-blue-900 dark:text-blue-200">Simulados oficiais importados permanecem separados da nota escolar.</p></div>
+          {simulations.data?.length ? <Link to="/student/study/simulation" className="text-xs font-bold text-[#005bbf]">Abrir simulados</Link> : null}
+        </div>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Link to={simulations.data?.[0] ? `/student/study/simulation?simulation=${simulations.data[0].id}` : '/student/study/simulation'} className="rounded-lg border border-blue-200 bg-white p-3 text-sm font-bold text-blue-950 transition hover:border-[#005bbf] dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-100">Continuar simulado<span className="mt-1 block text-xs font-normal text-blue-800 dark:text-blue-200">Retome uma tentativa em aberto.</span></Link>
+          <Link to={simulations.data?.find((item) => item.simulation_type === 'MINI') ? `/student/study/simulation?simulation=${simulations.data.find((item) => item.simulation_type === 'MINI')!.id}` : '/student/study/simulation'} className="rounded-lg border border-blue-200 bg-white p-3 text-sm font-bold text-blue-950 transition hover:border-[#005bbf] dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-100">Simulado rápido<span className="mt-1 block text-xs font-normal text-blue-800 dark:text-blue-200">Uma prática curta para começar.</span></Link>
+          <Link to={areaSimulations.length ? `/student/study/simulation?simulation=${areaSimulations[0].id}` : '/student/study/simulation'} className="rounded-lg border border-blue-200 bg-white p-3 text-sm font-bold text-blue-950 transition hover:border-[#005bbf] dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-100">Por área<span className="mt-1 block text-xs font-normal text-blue-800 dark:text-blue-200">{areaSimulations.length ? `${areaSimulations.length} prática(s) disponível(is)` : 'Práticas por área em preparação.'}</span></Link>
+          <a href="#historical-exams" className="rounded-lg border border-blue-200 bg-white p-3 text-sm font-bold text-blue-950 transition hover:border-[#005bbf] dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-100">Provas anteriores<span className="mt-1 block text-xs font-normal text-blue-800 dark:text-blue-200">Acesse apenas provas completas.</span></a>
+        </div>
+      </section>
+
       <section aria-label="Simulados" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
         <div className="flex items-center justify-between gap-3">
           <div><h2 className="font-bold dark:text-white">Simulados</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Pratique sem transformar acertos em nota oficial.</p></div>
           {simulations.data?.length ? <Link to="/student/study/simulation" className="text-xs font-bold text-[#005bbf]">Abrir simulado</Link> : null}
         </div>
         <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{simulations.data?.length ? `${simulations.data[0].title} · ${simulations.data[0].learning_simulation_questions?.length ?? 0} questões` : 'Nenhum simulado disponível ainda.'}</p>
+      </section>
+
+      <section id="historical-exams" aria-label="Provas anteriores" className="scroll-mt-24 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <div className="flex items-start justify-between gap-3"><div><h2 className="font-bold dark:text-white">Provas anteriores</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Ano, aplicação e dia aparecem somente quando o corpus oficial está completo.</p></div><span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{historicalSimulations.length}</span></div>
+        {historicalSimulations.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2">{historicalSimulations.map((simulation) => <Link key={simulation.id} to={`/student/study/simulation?simulation=${simulation.id}`} className="rounded-lg border p-3 transition hover:border-[#005bbf] dark:border-slate-700"><p className="font-semibold dark:text-white">{simulation.title}</p><p className="mt-1 text-xs text-slate-500">{simulation.source_year ?? 'Ano não informado'} · {simulation.question_count || simulation.learning_simulation_questions?.length || 0} questões</p></Link>)}</div> : <p className="mt-4 text-sm text-slate-500">Nenhuma prova histórica completa está publicada ainda. O catálogo oficial está sendo processado sem promover conjuntos parciais como prova completa.</p>}
+      </section>
+
+      <section aria-label="Histórico de simulados" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <div className="flex items-start justify-between gap-3"><div><h2 className="font-bold dark:text-white">Últimos resultados</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Seu histórico de prática, sem ranking público.</p></div><span className="text-xs font-semibold text-slate-500">{recentSimulationAttempts.length}</span></div>
+        {recentSimulationAttempts.length ? <ul className="mt-4 divide-y dark:divide-slate-700">{recentSimulationAttempts.map((attempt) => { const simulation = Array.isArray(attempt.learning_simulations) ? attempt.learning_simulations[0] : attempt.learning_simulations; return <li key={attempt.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm"><span className="min-w-0 truncate dark:text-slate-200">{simulation?.title ?? 'Simulado'}<small className="mt-0.5 block text-xs text-slate-500">{new Date(attempt.completed_at ?? attempt.started_at).toLocaleDateString('pt-BR')} · {attempt.duration_seconds ? `${Math.round(attempt.duration_seconds / 60)} min` : 'duração não informada'}</small></span><strong className="text-[#005bbf]">{attempt.correct_count}/{attempt.total_questions} · {attempt.score}%</strong></li>; })}</ul> : <p className="mt-4 text-sm text-slate-500">Conclua um simulado para ver seu histórico aqui.</p>}
       </section>
 
       <section aria-label="Trilhas e pacotes" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">

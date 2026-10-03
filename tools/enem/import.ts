@@ -75,23 +75,27 @@ function buildQuestionLookup(parsed: EnemParseResult) {
 }
 
 function simulationGroups(questions: CanonicalEnemQuestion[]) {
-  const playable = questions.filter((question) => question.officialAnswer !== 'ANNULLED');
-  const areas = [...new Set(playable.map((question) => question.area))].sort();
-  const groups: Array<{ key: string; title: string; type: 'AREA' | 'MINI'; questions: CanonicalEnemQuestion[] }> = [];
-  for (const area of areas) {
+  const groups: Array<{ key: string; title: string; type: 'AREA' | 'MINI'; year: number; questions: CanonicalEnemQuestion[] }> = [];
+  for (const year of [...new Set(questions.map((question) => question.year))].sort()) {
+    const playable = questions.filter((question) => question.year === year && question.officialAnswer !== 'ANNULLED');
+    const areas = [...new Set(playable.map((question) => question.area))].sort();
+    for (const area of areas) {
+      groups.push({
+        key: year === 2025 ? `AREA:${area}` : `AREA:${year}:${area}`,
+        title: `ENEM ${year} · ${area.replaceAll('_', ' ')} · prática oficial`,
+        type: 'AREA',
+        year,
+        questions: playable.filter((question) => question.area === area).slice(0, 45),
+      });
+    }
     groups.push({
-      key: `AREA:${area}`,
-      title: `ENEM 2025 · ${area.replaceAll('_', ' ')} · prática oficial`,
-      type: 'AREA',
-      questions: playable.filter((question) => question.area === area).slice(0, 45),
+      key: year === 2025 ? 'MINI:2025:DIAGNOSTIC' : `MINI:${year}:DIAGNOSTIC`,
+      title: `ENEM ${year} · diagnóstico rápido`,
+      type: 'MINI',
+      year,
+      questions: playable.filter((_, index) => index % 4 === 0).slice(0, 10),
     });
   }
-  groups.push({
-    key: 'MINI:2025:DIAGNOSTIC',
-    title: 'ENEM 2025 · diagnóstico rápido',
-    type: 'MINI',
-    questions: playable.filter((_, index) => index % 4 === 0).slice(0, 10),
-  });
   return groups;
 }
 
@@ -147,7 +151,7 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
   for (const group of simulationGroups(ready)) {
     const questionCount = group.questions.length;
     lines.push(`  select id into v_simulation_id from public.learning_simulations where institution_id is null and metadata->>'enem_import_key' = ${sql(group.key)} limit 1;`);
-    lines.push(`  if v_simulation_id is null then insert into public.learning_simulations(institution_id, title, simulation_type, area, source_year, question_count, duration_minutes, status, metadata) values (null, ${sql(group.title)}, ${sql(group.type)}, ${group.type === 'AREA' ? sql(group.questions[0]?.area ?? null) : 'null'}, 2025, ${questionCount}, ${group.type === 'MINI' ? 25 : 90}, 'PUBLISHED', ${jsonSql({ enem_import_key: group.key, source_integrity: 'VERIFIED', pedagogical_enrichment: 'PENDING', adaptive_evidence_enabled: false })}) returning id into v_simulation_id; end if;`);
+    lines.push(`  if v_simulation_id is null then insert into public.learning_simulations(institution_id, title, simulation_type, area, source_year, question_count, duration_minutes, status, metadata) values (null, ${sql(group.title)}, ${sql(group.type)}, ${group.type === 'AREA' ? sql(group.questions[0]?.area ?? null) : 'null'}, ${group.year}, ${questionCount}, ${group.type === 'MINI' ? 25 : 90}, 'PUBLISHED', ${jsonSql({ enem_import_key: group.key, source_integrity: 'VERIFIED', pedagogical_enrichment: 'PENDING', adaptive_evidence_enabled: false })}) returning id into v_simulation_id; end if;`);
     lines.push(`  update public.learning_simulations set question_count = ${questionCount}, updated_at = now() where id = v_simulation_id;`);
     group.questions.forEach((question, index) => {
       lines.push(`  select id into v_question_id from public.learning_question_bank where source_type = 'ENEM_OFFICIAL' and metadata->>'canonical_id' = ${sql(question.canonicalId)} limit 1;`);

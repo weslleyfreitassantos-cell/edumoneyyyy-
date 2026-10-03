@@ -8,6 +8,10 @@ const state = vi.hoisted(() => ({
     { id: 'subject-math', name: 'Matemática' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa' },
   ],
+  simulations: [
+    { id: 'enem-area', title: 'ENEM 2025 · MATEMATICA · prática oficial', simulation_type: 'AREA', area: 'MATEMATICA', source_year: 2025, question_count: 1, duration_minutes: 90, metadata: {}, learning_simulation_questions: [] },
+    { id: 'enem-mini', title: 'ENEM 2025 · diagnóstico rápido', simulation_type: 'MINI', area: null, source_year: 2025, question_count: 1, duration_minutes: 25, metadata: {}, learning_simulation_questions: [] },
+  ],
   adaptiveGuidance: null as null | {
     message: string;
     steps: Array<{ id: string; title: string }>;
@@ -101,7 +105,8 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningDailyPlan: () => ({ data: null, isLoading: false }),
   useLearningGamification: () => ({ data: null, isLoading: false }),
   useLearningErrorNotebook: () => ({ data: [], isLoading: false }),
-  useLearningSimulations: () => ({ data: [], isLoading: false }),
+  useLearningSimulations: () => ({ data: state.simulations, isLoading: false }),
+  useLearningSimulationAttempts: () => ({ data: [], isLoading: false }),
   useStudentLearningPackages: () => ({ data: [], isLoading: false }),
   useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
   useStartGuidedLearningSessionV2: () => ({ mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1' }), isPending: false }),
@@ -148,6 +153,16 @@ describe('StudyCenterPage', () => {
     expect(screen.getAllByText('Continuamos conhecendo seu perfil de aprendizagem.').length).toBeGreaterThan(0);
     expect(screen.queryByText('práticas disponíveis')).toBeNull();
     expect(screen.queryByText('domínio médio')).toBeNull();
+  });
+
+  it('reveals the ENEM hub with honest historical availability', () => {
+    renderPage();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Explorar' }));
+    expect(screen.getByText('Preparação ENEM')).toBeTruthy();
+    expect(screen.getByText('Simulado rápido')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Provas anteriores' })).toBeTruthy();
+    expect(screen.getByText(/Nenhuma prova histórica completa está publicada/)).toBeTruthy();
   });
 
   it('selects a subject locally, filters practices and clears the search', () => {

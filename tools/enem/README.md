@@ -117,3 +117,21 @@ items that remain `REVIEW_REQUIRED`.
 The answer key is never granted to `authenticated`; server-side simulation
 scoring reads it only inside the submit RPC. A historical exam is not published
 as complete while an official booklet/key pair remains unavailable.
+
+## Geometry recovery second pass
+
+When the linear parser quarantines a question only because its alternatives are
+missing, the deterministic second pass can inspect the official PDF geometry.
+It preserves page coordinates and reading order, recognizes a complete A-E set,
+and removes only the `MISSING_OPTIONS` reason. Media, formula, text and source
+conflicts remain quarantined until independently verified:
+
+```bash
+npm run enem:second-pass -- \
+  --parsed .runtime/enem-parsed-2025.json \
+  --out .runtime/enem-second-pass-2025.json \
+  --parsed-out .runtime/enem-parsed-2025-second-pass.json
+```
+
+This pass is intentionally conservative: it does not infer answer content,
+does not promote an incomplete question, and does not write to the database.

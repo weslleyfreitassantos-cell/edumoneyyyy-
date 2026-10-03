@@ -20,6 +20,7 @@
     "enem:parse": "node --experimental-strip-types tools/enem/parse.ts",
     "enem:canonicalize": "node --experimental-strip-types tools/enem/canonicalize.ts",
     "enem:review": "node --experimental-strip-types tools/enem/review-report.ts",
+    "enem:second-pass": "node --experimental-strip-types tools/enem/second-pass.ts",
     "enem:dry-run": "node --experimental-strip-types tools/enem/dry-run.ts",
     "enem:import-sql": "node --experimental-strip-types tools/enem/import.ts",
     "enem:ingest": "node --experimental-strip-types tools/enem/ingest.ts",
