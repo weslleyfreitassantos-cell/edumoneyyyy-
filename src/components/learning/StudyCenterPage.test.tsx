@@ -108,7 +108,22 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningSimulations: () => ({ data: state.simulations, isLoading: false }),
   useLearningSimulationAttempts: () => ({ data: [], isLoading: false }),
   useStudentLearningSimulationAssignments: () => ({ data: [], isLoading: false }),
-  useStudentLearningPackages: () => ({ data: [], isLoading: false }),
+  useStudentLearningPackages: () => ({
+    data: [{
+      id: 'package-1',
+      package_id: 'package-1',
+      class_id: 'class-1',
+      student_id: 'student-1',
+      due_at: null,
+      learning_packages: {
+        id: 'package-1',
+        title: 'Percurso de Matemática',
+        subject_area: 'MATEMATICA',
+        learning_package_steps: [{ id: 'step-1', position: 0, title: 'Frações', lesson_id: 'lesson-1', activity_id: null }],
+      },
+    }],
+    isLoading: false,
+  }),
   useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
   useStartGuidedLearningSessionV2: () => ({ mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1' }), isPending: false }),
   useGuidedLearningSessionV2: () => ({ data: null, isLoading: false }),
@@ -149,6 +164,8 @@ describe('StudyCenterPage', () => {
     renderPage();
 
     expect(screen.getByRole('searchbox', { name: 'Pesquisar matéria ou assunto' })).toBeTruthy();
+    expect(screen.getByRole('region', { name: 'Conteúdo recomendado' })).toBeTruthy();
+    expect(screen.getByText('Percurso de Matemática')).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Práticas' }).getAttribute('href')).toBe('#study-practice');
     expect(screen.getByRole('link', { name: 'Coleções' }).getAttribute('href')).toBe('#study-resources');
     expect(screen.getAllByText('Continuamos conhecendo seu perfil de aprendizagem.').length).toBeGreaterThan(0);

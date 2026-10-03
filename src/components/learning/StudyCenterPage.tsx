@@ -162,7 +162,7 @@ export default function StudyCenterPage() {
     student.data?.id,
     showSecondaryStudyAreas,
   );
-  const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id, showSecondaryStudyAreas);
+  const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id);
   const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
@@ -427,12 +427,31 @@ export default function StudyCenterPage() {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="font-bold dark:text-white">Mais áreas de estudo</h2>
-              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Abra simulados, trilhas e materiais quando quiser explorar além do plano de hoje.</p>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Abra simulados e materiais quando quiser explorar além do conteúdo recomendado.</p>
             </div>
             <button type="button" onClick={() => setShowSecondaryStudyAreas(true)} className="inline-flex min-h-10 items-center rounded-lg border border-[#005bbf] px-3 py-2 text-xs font-bold text-[#005bbf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">Explorar</button>
           </div>
         </section>
       ) : null}
+
+      <section aria-label="Conteúdo recomendado" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h2 className="font-bold dark:text-white">Conteúdo recomendado</h2>
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Percursos disponíveis automaticamente para sua etapa.</p>
+          </div>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{packages.data?.length ?? 0}</span>
+        </div>
+        {packages.data?.length ? (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {packages.data.slice(0, 4).map((assignment) => {
+              const item = Array.isArray(assignment.learning_packages) ? assignment.learning_packages[0] : assignment.learning_packages;
+              if (!item) return null;
+              return <article key={assignment.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><p className="font-semibold dark:text-white">{item.title}</p><p className="mt-1 text-xs text-slate-500">{item.learning_package_steps?.length ?? 0} etapas · {item.subject_area ?? 'Trilha TecEscola'}</p><p className="mt-2 text-xs font-semibold text-[#005bbf]">{assignment.due_at ? `Entrega até ${new Date(assignment.due_at).toLocaleDateString('pt-BR')}` : 'Disponível para começar'}</p><ol className="mt-3 space-y-2">{item.learning_package_steps?.slice(0, 4).map((step) => <li key={step.id} className="flex items-center justify-between gap-2 text-xs"><span className="min-w-0 truncate text-slate-600 dark:text-slate-300">{step.position + 1}. {step.title}</span>{step.lesson_id ? <Link to={`/student/study/lesson/${step.lesson_id}`} className="shrink-0 font-bold text-[#005bbf]">Abrir</Link> : step.activity_id ? <Link to={`/student/study/activity/${step.activity_id}`} className="shrink-0 font-bold text-[#005bbf]">Praticar</Link> : null}</li>)}</ol></article>;
+            })}
+          </div>
+        ) : <p className="mt-4 text-sm text-slate-500">Nenhum conteúdo recomendado disponível ainda.</p>}
+      </section>
 
       {showSecondaryStudyAreas ? (
         <>
@@ -472,24 +491,6 @@ export default function StudyCenterPage() {
         {recentSimulationAttempts.length ? <ul className="mt-4 divide-y dark:divide-slate-700">{recentSimulationAttempts.map((attempt) => { const simulation = Array.isArray(attempt.learning_simulations) ? attempt.learning_simulations[0] : attempt.learning_simulations; return <li key={attempt.id} className="flex flex-wrap items-center justify-between gap-2 py-3 text-sm"><span className="min-w-0 truncate dark:text-slate-200">{simulation?.title ?? 'Simulado'}<small className="mt-0.5 block text-xs text-slate-500">{new Date(attempt.completed_at ?? attempt.started_at).toLocaleDateString('pt-BR')} · {attempt.duration_seconds ? `${Math.round(attempt.duration_seconds / 60)} min` : 'duração não informada'}</small></span><strong className="text-[#005bbf]">{attempt.correct_count}/{attempt.total_questions} · {attempt.score}%</strong></li>; })}</ul> : <p className="mt-4 text-sm text-slate-500">Conclua um simulado para ver seu histórico aqui.</p>}
       </section>
 
-      <section aria-label="Trilhas e pacotes" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <h2 className="font-bold dark:text-white">Trilhas e pacotes</h2>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Sequências recomendadas pela escola ou pelo seu professor.</p>
-          </div>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{packages.data?.length ?? 0}</span>
-        </div>
-        {packages.data?.length ? (
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {packages.data.slice(0, 4).map((assignment) => {
-              const item = Array.isArray(assignment.learning_packages) ? assignment.learning_packages[0] : assignment.learning_packages;
-              if (!item) return null;
-              return <article key={assignment.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><p className="font-semibold dark:text-white">{item.title}</p><p className="mt-1 text-xs text-slate-500">{item.learning_package_steps?.length ?? 0} etapas · {item.subject_area ?? 'Trilha TecEscola'}</p><p className="mt-2 text-xs font-semibold text-[#005bbf]">{assignment.due_at ? `Entrega até ${new Date(assignment.due_at).toLocaleDateString('pt-BR')}` : 'Disponível para começar'}</p><ol className="mt-3 space-y-2">{item.learning_package_steps?.slice(0, 4).map((step) => <li key={step.id} className="flex items-center justify-between gap-2 text-xs"><span className="min-w-0 truncate text-slate-600 dark:text-slate-300">{step.position + 1}. {step.title}</span>{step.lesson_id ? <Link to={`/student/study/lesson/${step.lesson_id}`} className="shrink-0 font-bold text-[#005bbf]">Abrir</Link> : step.activity_id ? <Link to={`/student/study/activity/${step.activity_id}`} className="shrink-0 font-bold text-[#005bbf]">Praticar</Link> : null}</li>)}</ol></article>;
-            })}
-          </div>
-        ) : <p className="mt-4 text-sm text-slate-500">Nenhuma trilha atribuída ainda.</p>}
-      </section>
         </>
       ) : null}
 
