@@ -30,5 +30,21 @@
     ],
     "estimatedMinutes": 9,
     "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+    "title": "Atualizar a base em variacoes sucessivas",
+    "objective": "Analisar duas ou mais variacoes percentuais atualizando a base de cada etapa.",
+    "summary": "Percentuais sucessivos incidem sobre bases diferentes; o resultado de uma etapa vira a base da proxima.",
+    "explanation": "Converta cada taxa em fator multiplicativo e aplique as etapas na ordem dada. Somar taxas so funciona quando a base de incidencia e a mesma.",
+    "workedExample": "R$ 100 com aumento de 10% vira R$ 110; um desconto de 10% depois incide sobre R$ 110 e resulta em R$ 99.",
+    "commonMistake": "Cancelar percentuais iguais sem atualizar a base entre as etapas.",
+    "tips": [
+      "Registre o valor depois de cada etapa.",
+      "Identifique a base de cada percentual.",
+      "Confira o sentido de aumento ou desconto."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
   }
 ]

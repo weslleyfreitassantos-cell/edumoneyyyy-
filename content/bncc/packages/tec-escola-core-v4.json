@@ -17,7 +17,7 @@
     "totalSkills": 65,
     "techValidatedSkills": 10,
     "scaffoldSkills": 55,
-    "totalLessons": 16,
+    "totalLessons": 29,
     "totalQuestions": 211
   },
   "packages": [
@@ -113,7 +113,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PROBE"
@@ -130,7 +130,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 2,
           "questionPurposes": [
             "PROBE",
@@ -148,7 +148,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PRACTICE"
@@ -165,7 +165,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "TRANSFER"
@@ -182,7 +182,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "REVIEW"
@@ -193,7 +193,7 @@
         "totalSkills": 9,
         "techValidatedSkills": 1,
         "scaffoldSkills": 8,
-        "lessons": 1,
+        "lessons": 6,
         "questions": 17
       }
     },
@@ -311,7 +311,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PRACTICE"
@@ -322,7 +322,7 @@
         "totalSkills": 6,
         "techValidatedSkills": 2,
         "scaffoldSkills": 4,
-        "lessons": 2,
+        "lessons": 3,
         "questions": 21
       }
     },
@@ -596,7 +596,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PRACTICE"
@@ -613,7 +613,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PRACTICE"
@@ -630,7 +630,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "LOCK_IN"
@@ -641,7 +641,7 @@
         "totalSkills": 7,
         "techValidatedSkills": 1,
         "scaffoldSkills": 6,
-        "lessons": 1,
+        "lessons": 4,
         "questions": 15
       }
     },
@@ -812,7 +812,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PRACTICE"
@@ -829,7 +829,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PRACTICE"
@@ -846,7 +846,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "PRACTICE"
@@ -863,7 +863,7 @@
           "readiness": "GRAPH_ONLY",
           "contentStatus": "SCAFFOLD",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
+          "lessonCount": 1,
           "questionCount": 1,
           "questionPurposes": [
             "LOCK_IN"
@@ -874,7 +874,7 @@
         "totalSkills": 7,
         "techValidatedSkills": 1,
         "scaffoldSkills": 6,
-        "lessons": 1,
+        "lessons": 5,
         "questions": 15
       }
     },
@@ -1476,5 +1476,5 @@
       }
     }
   ],
-  "contentHash": "a707dda0579bca6c8a681aa837fc671502f3bd58c822b657746f9b52a137d1f7"
+  "contentHash": "1eabcd24fda14ed6ded03a1168945817d74edf715f8d426369b0b5cf569d9220"
 }

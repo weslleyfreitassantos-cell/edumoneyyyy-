@@ -1,6 +1,6 @@
 {
   "campaign": "TECESCOLA_BNCC_MAPPING_GRAPH_CONTENT_AND_PRODUCT_COMPLETION_V4",
-  "updatedAt": "2026-10-03T23:40:56Z",
+  "updatedAt": "2026-10-03T23:49:40Z",
   "sourceFreeze": {
     "status": "FROZEN",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -59,7 +59,7 @@
       "defaultAutomaticEligible": 9,
       "techValidatedSkills": 10,
       "scaffoldSkills": 55,
-      "totalLessons": 16,
+      "totalLessons": 29,
       "totalQuestions": 211,
       "bnccAlignment": "NOT_CLAIMED"
     }

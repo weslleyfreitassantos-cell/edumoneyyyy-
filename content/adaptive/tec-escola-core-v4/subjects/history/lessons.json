@@ -14,5 +14,69 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "HISTORY_COMPARE_PERSPECTIVES",
+    "title": "Comparar perspectivas historicas",
+    "objective": "Comparar perspectivas de fontes historicas sem tratar uma narrativa como unica.",
+    "summary": "Fontes historicas selecionam acontecimentos a partir de lugares sociais e objetivos diferentes.",
+    "explanation": "Compare autoria, contexto, linguagem e evidencia. O objetivo e explicar a diferenca de perspectiva, nao escolher automaticamente uma fonte como neutra.",
+    "workedExample": "Um diario de trabalhador e um relatorio empresarial sobre a mesma greve podem concordar sobre a data e divergir sobre causas e efeitos.",
+    "commonMistake": "Tratar a fonte oficial como sempre mais verdadeira ou descartar uma fonte por ser parcial.",
+    "tips": [
+      "Identifique quem produziu cada fonte.",
+      "Separe dado comum de interpretacao.",
+      "Explique o contexto da divergencia."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "HISTORY_INTERPRET_PERIODIZATION",
+    "title": "Ler periodizacoes historicas",
+    "objective": "Interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades.",
+    "summary": "Periodizacao organiza o tempo para destacar processos, mas nao transforma mudancas em fronteiras absolutas.",
+    "explanation": "Pergunte qual criterio cria o periodo e quais continuidades atravessam a divisao. Um marco ajuda a analisar; ele nao encerra todos os processos anteriores.",
+    "workedExample": "Uma mudanca de governo pode marcar um periodo politico, embora praticas sociais e economicas continuem por mais tempo.",
+    "commonMistake": "Supor que toda sociedade muda no mesmo dia indicado pelo marco.",
+    "tips": [
+      "Nomeie o criterio do recorte.",
+      "Procure continuidades antes e depois.",
+      "Relacione marco e processo historico."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+    "title": "Relacionar memoria e historia",
+    "objective": "Distinguir memoria social, experiencia vivida e interpretacao historica documentada.",
+    "summary": "Memoria preserva experiencias e sentidos; historia investiga evidencias e interpreta processos com metodo.",
+    "explanation": "Uma lembranca e uma fonte importante, mas deve ser situada e comparada com outros registros. Memorias podem mudar com o tempo e com as necessidades do grupo.",
+    "workedExample": "Depoimentos de moradores sobre uma migracao registram experiencias; mapas, jornais e documentos ajudam a contextualiza-las.",
+    "commonMistake": "Tratar memoria individual como relato completo do processo historico.",
+    "tips": [
+      "Respeite a experiencia narrada.",
+      "Pergunte quando e por que o relato foi produzido.",
+      "Compare memoria e outras evidencias."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+    "title": "Analisar mudanca e continuidade",
+    "objective": "Analisar o que se transforma e o que permanece em um processo historico.",
+    "summary": "Mudanca e continuidade podem ocorrer juntas e devem ser justificadas por evidencias do processo estudado.",
+    "explanation": "Compare situacoes em momentos diferentes e separe aspectos que se alteraram daqueles que permaneceram. Depois, explique ritmos e causas sem reduzir tudo a uma unica data.",
+    "workedExample": "Uma cidade pode mudar sua tecnologia de transporte e manter desigualdades de acesso ao longo do mesmo periodo.",
+    "commonMistake": "Confundir novidade visivel com transformacao de todos os aspectos da sociedade.",
+    "tips": [
+      "Escolha o aspecto analisado.",
+      "Compare antes, durante e depois.",
+      "Sustente cada conclusao com evidencia."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
   }
 ]
