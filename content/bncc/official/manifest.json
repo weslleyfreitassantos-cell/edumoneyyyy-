@@ -1,0 +1,45 @@
+{
+  "manifestVersion": "tec-escola.bncc.official-freeze.v1",
+  "sourceFreezeDate": "2026-10-03",
+  "officialDocuments": [
+    {
+      "id": "BNCC_EI_EF_2018",
+      "title": "Base Nacional Comum Curricular — Educação Infantil e Ensino Fundamental",
+      "version": "versão final 2018",
+      "source": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "localArtifact": ".runtime/bncc/bncc-ei-ef-2018.pdf",
+      "sha256": "ad623d7b33986a4e87e1441a4e675064cd30db3650b86a75caefa476e802272b",
+      "bytes": 3058960,
+      "retrievedAt": "2026-10-03T00:00:00Z",
+      "status": "FROZEN"
+    },
+    {
+      "id": "BNCC_EM_2018",
+      "title": "Base Nacional Comum Curricular — Ensino Médio",
+      "version": "versão homologada 2018",
+      "source": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+      "localArtifact": ".runtime/bncc/bncc-em-2018.pdf",
+      "sha256": "880b4e5fce9f525588ba3dc808af127f3380ad3b04f9af18591b68fbd6d11fed",
+      "bytes": 1126820,
+      "retrievedAt": "2026-10-03T00:00:00Z",
+      "status": "FROZEN"
+    },
+    {
+      "id": "BNCC_COMPUTACAO_2022",
+      "title": "Normas sobre Computação na Educação Básica — Complemento à BNCC",
+      "version": "Parecer CNE/CEB nº 2/2022 e Resolução CNE/CEB nº 1/2022",
+      "source": "https://portal.mec.gov.br/docman/fevereiro-2022-pdf/236791-anexo-ao-parecer-ceceb-n-2-2022-bncc-computacao/file",
+      "localArtifact": ".runtime/bncc/bncc-computacao-2022.pdf",
+      "status": "BLOCKED_SOURCE_UNAVAILABLE",
+      "reason": "O host oficial portal.mec.gov.br não resolveu neste ambiente; não usar espelho como fonte de verdade."
+    }
+  ],
+  "catalogArtifact": "content/bncc/official/catalog-2018.json",
+  "catalogHash": "c99ff9ac6ead4417c44266db7bf4dd87c2492f9c4f354b0aa435ac766fa7ffda",
+  "extraction": {
+    "tool": "tools/bncc/extract-catalog.mjs",
+    "status": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED",
+    "sourceOverlapCodes": 185,
+    "officialCodesDetected": 1583
+  }
+}
