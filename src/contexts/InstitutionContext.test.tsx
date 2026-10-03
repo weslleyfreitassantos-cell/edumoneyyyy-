@@ -480,10 +480,10 @@ describe('InstitutionContext', () => {
   });
 
   describe('Requisitos Obrigatórios de Subdomínio, Autorização e Ausência de Fallback', () => {
-    it('hostname oficial tecescola.grupotec.dev.br -> classificado como plataforma, não chama resolveInstitutionBySubdomain nem exibe not-found', async () => {
+    it('hostname administrativo admin.grupotec.dev.br -> classificado como plataforma, sem resolver instituição', async () => {
       mockedInstitutionService.listForProfile.mockResolvedValue([ownedInstitution]);
 
-      renderWithProvider(<ContextStatus />, 'tecescola.grupotec.dev.br');
+      renderWithProvider(<ContextStatus />, 'admin.grupotec.dev.br');
 
       await waitFor(() => {
         expect(screen.getByTestId('resolution-state').textContent).toBe('platform');

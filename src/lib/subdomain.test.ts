@@ -76,9 +76,9 @@ describe('Subdomain Utilities', () => {
       });
     });
 
-    it('classifica tecescola.grupotec.dev.br como plataforma oficial', () => {
+    it('não classifica o host de marketing como plataforma do Edu', () => {
       expect(classifyHostname('tecescola.grupotec.dev.br')).toEqual({
-        type: 'platform',
+        type: 'invalid',
         hostname: 'tecescola.grupotec.dev.br',
       });
     });
@@ -168,7 +168,7 @@ describe('Subdomain Utilities', () => {
 
     it('nao altera a navegacao interna quando a origem ja e plataforma', () => {
       expect(
-        getInstitutionEntryUrl('tecescola.grupotec.dev.br', 'escola-tv'),
+        getInstitutionEntryUrl('admin.grupotec.dev.br', 'escola-tv'),
       ).toBeNull();
     });
 

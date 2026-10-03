@@ -1,6 +1,6 @@
 import { pathToFileURL } from 'node:url';
 
-const DEFAULT_SITE_URL = 'https://tecescola.grupotec.dev.br';
+const DEFAULT_SITE_URL = 'https://admin.grupotec.dev.br';
 const DEFAULT_SUPABASE_URL = 'https://api-edu-vps.grupotec.dev.br';
 
 async function probe(name, url, { fetchImpl, headers = {}, timeoutMs }) {

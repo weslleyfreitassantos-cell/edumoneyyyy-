@@ -12,6 +12,7 @@ type Fetcher = (
 ) => Promise<Response>;
 
 const TVESCOLA_HOSTNAME = 'tvescola.grupotec.dev.br';
+const TECESCOLA_MARKETING_HOSTNAME = 'tecescola.grupotec.dev.br';
 const TVESCOLA_ORIGIN = `https://${TVESCOLA_HOSTNAME}`;
 const GRUPOTEC_ROOT_DOMAIN = 'grupotec.dev.br';
 const NEONEWS_HOSTNAME = 'admin.in9midia.com';
@@ -104,7 +105,8 @@ export function shouldProxyNeoNewsRequest(
   return (
     normalizedHostname === TVESCOLA_HOSTNAME ||
     (pathname.startsWith('/neonews/') &&
-      isGrupotecSubdomain(normalizedHostname))
+      isGrupotecSubdomain(normalizedHostname) &&
+      normalizedHostname !== TECESCOLA_MARKETING_HOSTNAME)
   );
 }
 

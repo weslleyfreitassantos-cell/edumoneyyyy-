@@ -11,6 +11,9 @@
     "not_found_handling": "single-page-application"
   },
 
+  // The wildcard serves institution hosts. The reserved marketing host is
+  // excluded by a more-specific Cloudflare route with script=null; never add
+  // tecescola.grupotec.dev.br/* to this Worker configuration.
   "routes": [
     {
       "pattern": "*.grupotec.dev.br/*",

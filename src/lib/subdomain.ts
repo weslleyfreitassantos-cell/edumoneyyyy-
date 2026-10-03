@@ -150,7 +150,6 @@ export function classifyHostname(hostname: string): HostResolution {
 
   if (
     cleanHost === 'grupotec.dev.br' ||
-    cleanHost === 'tecescola.grupotec.dev.br' ||
     cleanHost === 'admin.grupotec.dev.br'
   ) {
     return { type: 'platform', hostname: cleanHost };

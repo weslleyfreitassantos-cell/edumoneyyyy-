@@ -17,11 +17,13 @@
     "e2e:production-smoke": "playwright test --config=e2e/production-smoke.config.ts",
     "enem:discover": "node --experimental-strip-types tools/enem/discover.ts",
     "enem:ingest": "node --experimental-strip-types tools/enem/ingest.ts",
+    "routing:guard": "node scripts/validate-domain-routing.mjs",
+    "deploy:worker": "npm run routing:guard && npm run build && npx wrangler deploy",
     "test:full:local": "node scripts/test-full-local.mjs",
     "health:prod": "node scripts/production-health.mjs",
     "adaptive:v4:validate": "node --experimental-strip-types tools/adaptive/compile-v4.ts validate",
     "adaptive:v4:compile": "node --experimental-strip-types tools/adaptive/compile-v4.ts compile",
-    "check": "npm run typecheck && npm run test && npm run build"
+    "check": "npm run routing:guard && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",

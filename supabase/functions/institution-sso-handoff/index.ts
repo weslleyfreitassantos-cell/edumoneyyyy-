@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import type { Database } from "../_shared/database.types.ts";
 
-const PLATFORM_ORIGIN = "https://tecescola.grupotec.dev.br";
+const PLATFORM_ORIGIN = "https://admin.grupotec.dev.br";
 
 class SsoHandoffError extends Error {
   status: number;
