@@ -34,13 +34,7 @@ export default function TeacherStudentDetailPage() {
   const students = useTeacherLearningStudents(currentInstitutionId ?? undefined);
   const detail = useTeacherLearningStudentDetail(currentInstitutionId ?? undefined, studentId);
   const knowledgeGraph = useTeacherStudentKnowledgeGraph(currentInstitutionId ?? undefined, studentId);
-
-  if (detail.isLoading) return <div className="grid min-h-48 place-items-center text-sm text-slate-500">Carregando desempenho...</div>;
-  if (detail.isError || !detail.data) return <section className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">Este aluno não está no seu escopo pedagógico.</section>;
-
-  const data = detail.data;
   const skills = knowledgeGraph.data ?? [];
-  const otherStudents = students.data?.filter((item) => item.student_id !== studentId).slice(0, 8) ?? [];
   const subjectGroups = useMemo(() => {
     const groups = new Map<string, { subjectName: string; skills: typeof skills }>();
     for (const skill of skills) {
@@ -54,6 +48,12 @@ export default function TeacherStudentDetailPage() {
       reviewSkills: group.skills.filter((skill) => skill.state === 'NEEDS_REVIEW'),
     }));
   }, [skills]);
+
+  if (detail.isLoading) return <div className="grid min-h-48 place-items-center text-sm text-slate-500">Carregando desempenho...</div>;
+  if (detail.isError || !detail.data) return <section className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">Este aluno não está no seu escopo pedagógico.</section>;
+
+  const data = detail.data;
+  const otherStudents = students.data?.filter((item) => item.student_id !== studentId).slice(0, 8) ?? [];
   const overallMastery = subjectGroups.length ? Math.round(subjectGroups.reduce((total, group) => total + group.average, 0) / subjectGroups.length) : 0;
 
   return (

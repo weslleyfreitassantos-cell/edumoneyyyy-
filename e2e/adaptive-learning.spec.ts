@@ -100,7 +100,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await expect(teacherPage.getByText('Alice Adaptive')).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByRole('link', { name: /Alice Adaptive/ }).click();
       await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
-      await expect(teacherPage.getByText('Pontos para revisar')).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByText('Vale revisar')).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto('/teacher/pedagogical-center/students');
       await teacherPage.getByRole('link', { name: /Maria Support/ }).click();
       await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
