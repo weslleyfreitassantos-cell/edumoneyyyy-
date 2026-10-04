@@ -38,8 +38,8 @@
       "masteryCapability": "Demonstrar que consegue relacionar quantidades de reagentes e produtos usando proporcoes da equacao.",
       "domain": "REACOES",
       "parent": "CHEMISTRY_REACTIONS",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3

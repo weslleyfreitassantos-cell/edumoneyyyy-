@@ -14,5 +14,21 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "ART_COMPARE_COMPOSITIONS",
+    "title": "Comparar composicoes e efeitos de sentido",
+    "objective": "Comparar escolhas de linha, cor, enquadramento e ritmo para justificar efeitos de sentido em obras visuais.",
+    "summary": "Uma leitura comparativa observa elementos, relacoes e contexto antes de concluir o que uma obra comunica.",
+    "explanation": "Compare primeiro os elementos visiveis e depois explique como a relacao entre eles orienta a leitura. Uma interpretacao precisa indicar a evidencia que a sustenta.",
+    "workedExample": "Duas fotografias mostram a mesma praca: o enquadramento aberto destaca o espaco coletivo, enquanto o enquadramento fechado concentra a atencao em uma pessoa.",
+    "commonMistake": "Escolher a obra mais bonita sem mencionar quais elementos produzem o efeito observado.",
+    "tips": [
+      "Descreva o elemento antes de interpretar.",
+      "Compare relacoes, nao apenas itens isolados.",
+      "Cite a evidencia visual que apoia sua leitura."
+    ],
+    "estimatedMinutes": 10,
+    "content_authoring_status": "AUTHORED"
   }
 ]

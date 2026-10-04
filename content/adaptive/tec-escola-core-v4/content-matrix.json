@@ -10,8 +10,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-art-art_interpretation-2",
@@ -65,8 +65,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-art-art_interpretation-7",
@@ -109,8 +109,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-art-art_interpretation-11",
@@ -144,6 +144,94 @@
       "transferSkills": [],
       "readiness": "CONTENT_READY",
       "selectionEligible": false
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-probe-01",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-probe-02",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-practice-03",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-practice-04",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-transfer-05",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-lock_in-06",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-review-07",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-art-art_compare_compositions-review-08",
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-biology-biology_genetics-1",
@@ -230,8 +318,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-biology-biology_genetics-9",
@@ -287,6 +375,94 @@
       "transferSkills": [],
       "readiness": "CONTENT_READY",
       "selectionEligible": false
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-probe-01",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-probe-02",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-practice-03",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-practice-04",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-transfer-05",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-lock_in-06",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-review-07",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-biology-biology_cell_function-review-08",
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-chemistry-chemistry_atoms-1",
@@ -417,8 +593,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v4-authored-chemistry-review-01",
@@ -430,6 +606,94 @@
       "transferSkills": [],
       "readiness": "CONTENT_READY",
       "selectionEligible": false
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-probe-01",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-probe-02",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-practice-03",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-practice-04",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-transfer-05",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-lock_in-06",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-review-07",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-chemistry-chemistry_stoichiometry-review-08",
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-computing-computing_algorithms-1",
@@ -538,8 +802,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-computing-computing_algorithms-11",
@@ -573,6 +837,94 @@
       "transferSkills": [],
       "readiness": "CONTENT_READY",
       "selectionEligible": false
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-probe-01",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-probe-02",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-practice-03",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-practice-04",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-transfer-05",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-lock_in-06",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-review-07",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-computing-computing_read_table_data-review-08",
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-english-english_reading-1",
@@ -1953,8 +2305,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-physical_education-pe_sport_principles-5",
@@ -1975,8 +2327,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-physical_education-pe_sport_principles-7",
@@ -2054,6 +2406,94 @@
       "transferSkills": [],
       "readiness": "CONTENT_READY",
       "selectionEligible": false
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-probe-01",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-probe-02",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-practice-03",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-practice-04",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-transfer-05",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-lock_in-06",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-review-07",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physical_education-pe_analyze_movement-review-08",
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-physics-physics_average_speed-1",
@@ -2466,8 +2906,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-religious_education-religious_diversity-5",
@@ -2532,8 +2972,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-religious_education-religious_diversity-11",
@@ -2567,6 +3007,94 @@
       "transferSkills": [],
       "readiness": "CONTENT_READY",
       "selectionEligible": false
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-probe-01",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-probe-02",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-practice-03",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-practice-04",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-transfer-05",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-lock_in-06",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-review-07",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-religious_education-religious_interpret_symbols-review-08",
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-science-science_transformations-1",

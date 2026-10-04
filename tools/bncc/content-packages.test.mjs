@@ -104,4 +104,27 @@ describe('BNCC content package factory', () => {
     });
     expect(skill.questionPurposes).toEqual(['LOCK_IN', 'PRACTICE', 'PROBE', 'REVIEW', 'TRANSFER']);
   });
+
+  it('publishes one authored adaptive slice for each remaining subject family', () => {
+    const output = buildContentPackages(packRoot);
+    const skills = output.packages.flatMap((item) => item.skills);
+    for (const code of [
+      'ART_COMPARE_COMPOSITIONS',
+      'BIOLOGY_CELL_FUNCTION',
+      'CHEMISTRY_STOICHIOMETRY',
+      'COMPUTING_READ_TABLE_DATA',
+      'PE_ANALYZE_MOVEMENT',
+      'RELIGIOUS_INTERPRET_SYMBOLS',
+    ]) {
+      const skill = skills.find((item) => item.code === code);
+      expect(skill).toMatchObject({
+        readiness: 'ADAPTIVE_READY',
+        contentStatus: 'TECH_VALIDATED',
+        lessonCount: 1,
+      });
+      expect(skill.questionCount).toBeGreaterThanOrEqual(8);
+      expect(skill.questionPurposes).toEqual(['LOCK_IN', 'PRACTICE', 'PROBE', 'REVIEW', 'TRANSFER']);
+      expect(skill.bnccAlignment).toBe('NOT_CLAIMED');
+    }
+  });
 });

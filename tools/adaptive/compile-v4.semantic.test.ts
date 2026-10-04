@@ -86,7 +86,7 @@ describe('V4 semantic ownership', () => {
     const validation = validateV4Pack(pack);
     expect(validation.valid).toBe(true);
     expect(validation.misconceptionAffectedSkillMismatches).toEqual([]);
-    expect(validation.topicOwnershipCount).toBe(199);
+    expect(validation.topicOwnershipCount).toBe(205);
     expect(matrix.find((item) => item.questionId === 'v3-history-history_interpretation-3')).toMatchObject({
       primarySkill: 'HISTORY_ORDER_EVENTS',
       readiness: 'GRAPH_ONLY',

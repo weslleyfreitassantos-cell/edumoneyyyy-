@@ -38,8 +38,8 @@
       "masteryCapability": "Demonstrar que consegue comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
       "domain": "ELEMENTOS",
       "parent": "ART_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9

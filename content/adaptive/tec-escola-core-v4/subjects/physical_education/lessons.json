@@ -14,5 +14,21 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "PE_ANALYZE_MOVEMENT",
+    "title": "Observar movimento com seguranca",
+    "objective": "Analisar equilibrio, direcao, apoio e controle em um movimento corporal sem confundir desempenho com valor pessoal.",
+    "summary": "A observacao de movimento descreve evidencias do gesto e considera seguranca, objetivo e contexto da atividade.",
+    "explanation": "Observe o que o corpo faz, em que direcao, com quais apoios e sob quais condicoes. Uma analise util descreve evidencias e sugere ajuste seguro.",
+    "workedExample": "Ao observar um salto, registrar a flexao dos joelhos na aterrissagem ajuda a discutir controle e seguranca.",
+    "commonMistake": "Julgar uma pessoa pelo resultado final sem observar tecnica, contexto e seguranca.",
+    "tips": [
+      "Descreva o movimento observavel.",
+      "Considere apoio e equilibrio.",
+      "Priorize seguranca e progressao."
+    ],
+    "estimatedMinutes": 10,
+    "content_authoring_status": "AUTHORED"
   }
 ]

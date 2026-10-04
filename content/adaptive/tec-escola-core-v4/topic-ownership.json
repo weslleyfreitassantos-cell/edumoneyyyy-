@@ -996,6 +996,36 @@
       "subject": "MATHEMATICS",
       "topic": "variacoes sucessivas",
       "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE"
+    },
+    {
+      "subject": "ART",
+      "topic": "comparar composicoes",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "funcao celular",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "proporcao na reacao",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "leitura de tabela computacional",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "analise de movimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "simbolos e contexto",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS"
     }
   ]
 }

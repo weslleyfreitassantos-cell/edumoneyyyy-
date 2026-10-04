@@ -38,8 +38,8 @@
       "masteryCapability": "Demonstrar que consegue relacionar uma estrutura celular a sua funcao em um organismo.",
       "domain": "CELULA",
       "parent": "BIOLOGY_CELL",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3

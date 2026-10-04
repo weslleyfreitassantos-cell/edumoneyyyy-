@@ -14,5 +14,21 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "COMPUTING_READ_TABLE_DATA",
+    "title": "Interpretar dados organizados em tabelas",
+    "objective": "Ler linhas, colunas e unidades de uma tabela para comparar dados e justificar uma conclusao computacional.",
+    "summary": "Uma tabela organiza dados; uma conclusao valida precisa respeitar os campos e os valores realmente registrados.",
+    "explanation": "Identifique o significado de cada coluna, compare valores na mesma unidade e separe observacao de explicacao causal.",
+    "workedExample": "Em uma tabela de acessos, comparar a coluna de dia e a coluna de quantidade permite localizar o maior valor sem inventar a causa.",
+    "commonMistake": "Confundir o nome da coluna com o valor ou afirmar uma causa que a tabela nao mediu.",
+    "tips": [
+      "Leia cabecalhos e unidades.",
+      "Compare valores equivalentes.",
+      "Diferencie dado observado de hipotese."
+    ],
+    "estimatedMinutes": 10,
+    "content_authoring_status": "AUTHORED"
   }
 ]

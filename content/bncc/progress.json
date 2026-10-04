@@ -1,6 +1,6 @@
 {
   "campaign": "TECESCOLA_BNCC_PEDAGOGICAL_GRAPH_CONTENT_FACTORY_AND_PRODUCT_CLOSURE_V5",
-  "updatedAt": "2026-10-04T04:31:07.644Z",
+  "updatedAt": "2026-10-04T04:55:03.350Z",
   "sourceFreeze": {
     "status": "FROZEN",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -79,10 +79,10 @@
       "packVersion": "tec-escola-core-v4",
       "totalPackages": 15,
       "defaultAutomaticEligible": 9,
-      "techValidatedSkills": 15,
-      "scaffoldSkills": 50,
-      "totalLessons": 32,
-      "totalQuestions": 250,
+      "techValidatedSkills": 21,
+      "scaffoldSkills": 44,
+      "totalLessons": 38,
+      "totalQuestions": 298,
       "safePromotionCanary": {
         "status": "TECHNICAL_CANARY_READY",
         "officialCodes": ["EF06HI01", "EF09CI01"],
