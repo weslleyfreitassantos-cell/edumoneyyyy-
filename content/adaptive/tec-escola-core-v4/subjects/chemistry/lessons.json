@@ -14,5 +14,21 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "CHEMISTRY_STOICHIOMETRY",
+    "title": "Ler proporcoes em transformacoes quimicas",
+    "objective": "Interpretar proporcoes entre reagentes e produtos em uma transformacao quimica representada por equacao.",
+    "summary": "Os coeficientes de uma equacao equilibrada indicam relacoes de quantidade entre as particulas envolvidas.",
+    "explanation": "Leia os coeficientes como uma proporcao entre quantidades de materia. Antes de calcular, confira se a equacao conserva os atomos de cada elemento.",
+    "workedExample": "Na formacao de agua, 2 H2 reagem com 1 O2 para formar 2 H2O; a proporcao vem dos coeficientes equilibrados.",
+    "commonMistake": "Usar os indices da formula como se fossem coeficientes ou ignorar a conservacao dos atomos.",
+    "tips": [
+      "Confira o balanceamento.",
+      "Separe coeficiente de indice.",
+      "Mantenha a proporcao ao mudar a escala."
+    ],
+    "estimatedMinutes": 10,
+    "content_authoring_status": "AUTHORED"
   }
 ]

@@ -12,13 +12,13 @@
   },
   "summary": {
     "totalPackages": 15,
-    "defaultAutomaticEligible": 9,
-    "curatorReviewRequired": 6,
+    "defaultAutomaticEligible": 15,
+    "curatorReviewRequired": 0,
     "totalSkills": 65,
-    "techValidatedSkills": 15,
-    "scaffoldSkills": 50,
-    "totalLessons": 32,
-    "totalQuestions": 250
+    "techValidatedSkills": 21,
+    "scaffoldSkills": 44,
+    "totalLessons": 38,
+    "totalQuestions": 298
   },
   "packages": [
     {
@@ -437,7 +437,7 @@
       "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
       "bnccAlignment": "NOT_CLAIMED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "availability": "CURATOR_REVIEW_REQUIRED",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
       "skills": [
         {
           "code": "BIOLOGY_EXPLAIN_INHERITANCE",
@@ -467,12 +467,16 @@
           "recommendedStage": "ENSINO_MEDIO",
           "recommendedGradeFrom": 1,
           "recommendedGradeTo": 3,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 1,
+          "lessonCount": 1,
+          "questionCount": 9,
           "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
             "TRANSFER"
           ]
         },
@@ -513,10 +517,10 @@
       ],
       "summary": {
         "totalSkills": 4,
-        "techValidatedSkills": 0,
-        "scaffoldSkills": 4,
-        "lessons": 1,
-        "questions": 13
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 3,
+        "lessons": 2,
+        "questions": 21
       }
     },
     {
@@ -669,7 +673,7 @@
       "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
       "bnccAlignment": "NOT_CLAIMED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "availability": "CURATOR_REVIEW_REQUIRED",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
       "skills": [
         {
           "code": "CHEMISTRY_ATOMIC_STRUCTURE",
@@ -698,13 +702,17 @@
           "recommendedStage": "ENSINO_MEDIO",
           "recommendedGradeFrom": 1,
           "recommendedGradeTo": 3,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 1,
+          "lessonCount": 1,
+          "questionCount": 9,
           "questionPurposes": [
-            "REVIEW"
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
           ]
         },
         {
@@ -746,10 +754,10 @@
       ],
       "summary": {
         "totalSkills": 4,
-        "techValidatedSkills": 0,
-        "scaffoldSkills": 4,
-        "lessons": 1,
-        "questions": 13
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 3,
+        "lessons": 2,
+        "questions": 21
       }
     },
     {
@@ -1126,7 +1134,7 @@
       "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
       "bnccAlignment": "NOT_CLAIMED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "availability": "CURATOR_REVIEW_REQUIRED",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
       "skills": [
         {
           "code": "ART_INTERPRET_WORK",
@@ -1157,15 +1165,17 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 3,
+          "lessonCount": 1,
+          "questionCount": 11,
           "questionPurposes": [
             "LOCK_IN",
             "PRACTICE",
-            "PROBE"
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
           ]
         },
         {
@@ -1190,10 +1200,10 @@
       ],
       "summary": {
         "totalSkills": 3,
-        "techValidatedSkills": 0,
-        "scaffoldSkills": 3,
-        "lessons": 1,
-        "questions": 13
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 2,
+        "questions": 21
       }
     },
     {
@@ -1204,7 +1214,7 @@
       "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
       "bnccAlignment": "NOT_CLAIMED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "availability": "CURATOR_REVIEW_REQUIRED",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
       "skills": [
         {
           "code": "PE_EXPLAIN_SPORT_PRINCIPLES",
@@ -1235,13 +1245,17 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 2,
+          "lessonCount": 1,
+          "questionCount": 10,
           "questionPurposes": [
-            "PRACTICE"
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
           ]
         },
         {
@@ -1265,10 +1279,10 @@
       ],
       "summary": {
         "totalSkills": 3,
-        "techValidatedSkills": 0,
-        "scaffoldSkills": 3,
-        "lessons": 1,
-        "questions": 13
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 2,
+        "questions": 21
       }
     },
     {
@@ -1354,7 +1368,7 @@
       "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
       "bnccAlignment": "NOT_CLAIMED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "availability": "CURATOR_REVIEW_REQUIRED",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
       "skills": [
         {
           "code": "RELIGIOUS_COMPARE_TRADITIONS",
@@ -1385,14 +1399,17 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 2,
+          "lessonCount": 1,
+          "questionCount": 10,
           "questionPurposes": [
             "LOCK_IN",
-            "PRACTICE"
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
           ]
         },
         {
@@ -1415,10 +1432,10 @@
       ],
       "summary": {
         "totalSkills": 3,
-        "techValidatedSkills": 0,
-        "scaffoldSkills": 3,
-        "lessons": 1,
-        "questions": 13
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 2,
+        "questions": 21
       }
     },
     {
@@ -1429,7 +1446,7 @@
       "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
       "bnccAlignment": "NOT_CLAIMED",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "availability": "CURATOR_REVIEW_REQUIRED",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
       "skills": [
         {
           "code": "COMPUTING_TRACE_ALGORITHM",
@@ -1459,13 +1476,17 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 1,
+          "lessonCount": 1,
+          "questionCount": 9,
           "questionPurposes": [
-            "LOCK_IN"
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
           ]
         },
         {
@@ -1489,12 +1510,12 @@
       ],
       "summary": {
         "totalSkills": 3,
-        "techValidatedSkills": 0,
-        "scaffoldSkills": 3,
-        "lessons": 1,
-        "questions": 13
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 2,
+        "questions": 21
       }
     }
   ],
-  "contentHash": "ce7de8896874925f488fa16c50c84bb614a27678323976e282925bd8171a1849"
+  "contentHash": "4dd2499be865e83df08f403a246ed0a283943f362aa5e48d345746c74b6ff812"
 }

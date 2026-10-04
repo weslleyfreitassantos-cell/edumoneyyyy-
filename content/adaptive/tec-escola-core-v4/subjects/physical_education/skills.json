@@ -38,8 +38,8 @@
       "masteryCapability": "Demonstrar que consegue analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
       "domain": "CORPO",
       "parent": "PE_BODY",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9

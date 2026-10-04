@@ -14,5 +14,21 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "RELIGIOUS_INTERPRET_SYMBOLS",
+    "title": "Interpretar simbolos em contexto",
+    "objective": "Interpretar simbolos e praticas religiosas considerando contexto, diversidade interna e respeito a diferentes conviccoes.",
+    "summary": "Um simbolo ganha sentidos em comunidades e contextos; interpreta-lo exige escuta, pesquisa e cuidado para nao estereotipar.",
+    "explanation": "Descreva o simbolo, investigue seu contexto e reconheca que pessoas da mesma tradicao podem atribuir sentidos diferentes.",
+    "workedExample": "Ao estudar um objeto usado em uma celebracao, registrar quem o utiliza e em qual contexto evita tratar o objeto como universal.",
+    "commonMistake": "Afirmar que um simbolo possui um unico significado para todas as pessoas de uma tradicao.",
+    "tips": [
+      "Pergunte pelo contexto de uso.",
+      "Diferencie descricao de julgamento.",
+      "Reconheca diversidade dentro das comunidades."
+    ],
+    "estimatedMinutes": 10,
+    "content_authoring_status": "AUTHORED"
   }
 ]

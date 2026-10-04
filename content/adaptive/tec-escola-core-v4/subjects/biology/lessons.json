@@ -14,5 +14,21 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "BIOLOGY_CELL_FUNCTION",
+    "title": "Relacionar estruturas e funcoes celulares",
+    "objective": "Relacionar estruturas celulares a funcoes de transporte, producao de energia e controle das atividades da celula.",
+    "summary": "Cada estrutura participa de processos especificos, e a funcao deve ser explicada com base na evidencia do caso.",
+    "explanation": "Identifique o processo descrito e relacione-o a estrutura que o realiza. Evite tratar a celula como uma lista de pecas sem funcao.",
+    "workedExample": "Se uma celula precisa liberar uma substancia produzida internamente, estruturas de transporte e membrana participam do processo.",
+    "commonMistake": "Atribuir toda funcao celular ao nucleo ou confundir estrutura com organismo inteiro.",
+    "tips": [
+      "Localize o processo descrito.",
+      "Associe estrutura e funcao.",
+      "Explique a relacao em uma frase completa."
+    ],
+    "estimatedMinutes": 10,
+    "content_authoring_status": "AUTHORED"
   }
 ]

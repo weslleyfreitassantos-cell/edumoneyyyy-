@@ -38,8 +38,8 @@
       "masteryCapability": "Demonstrar que consegue selecionar dados relevantes de uma tabela para responder a uma pergunta.",
       "domain": "DADOS",
       "parent": "COMPUTING_DATA",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
