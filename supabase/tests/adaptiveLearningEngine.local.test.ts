@@ -2,6 +2,13 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 type AnyClient = SupabaseClient<any, any, any>;
+type RuntimeActor = {
+  id: string;
+  email: string;
+  client: AnyClient;
+  accessToken: string;
+  refreshToken: string;
+};
 
 const localUrl = process.env.MULTI_TENANT_SUPABASE_URL;
 const anonKey = process.env.MULTI_TENANT_SUPABASE_ANON_KEY;
@@ -57,12 +64,19 @@ async function createActor(
   if (session.error || !session.data.session) {
     throw new Error(`sign in ${label}: ${session.error?.message ?? 'no session'}`);
   }
+  const actorSession = session.data.session;
   const currentUser = await client.auth.getUser();
   if (currentUser.error || currentUser.data.user?.id !== user.id) {
     throw new Error(`sign in ${label}: session identity mismatch`);
   }
 
-  return { id: user.id, email, client };
+  return {
+    id: user.id,
+    email,
+    client,
+    accessToken: actorSession.access_token,
+    refreshToken: actorSession.refresh_token,
+  } satisfies RuntimeActor;
 }
 
 runtimeDescribe('adaptive learning runtime database contract', () => {
@@ -76,10 +90,10 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
   let studentA: string;
   let studentUnassigned: string;
   let studentB: string;
-  let teacherA: { id: string; client: AnyClient };
-  let teacherB: { id: string; client: AnyClient };
-  let teacherForeign: { id: string; client: AnyClient };
-  let directorA: { id: string; client: AnyClient };
+  let teacherA: RuntimeActor;
+  let teacherB: RuntimeActor;
+  let teacherForeign: RuntimeActor;
+  let directorA: RuntimeActor;
   let studentClient: AnyClient;
   let activityId: string;
   let questionId: string;
@@ -225,8 +239,20 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
   }, 120_000);
 
   it('teacher roster RPC normalizes legacy enrollment statuses', async () => {
-    const rosterFor = async (client: AnyClient, institutionId: string) => {
-      const result = await client.rpc('list_teacher_learning_students', { p_institution_id: institutionId });
+    const authenticateActor = async (actor: RuntimeActor) => {
+      const restored = await actor.client.auth.setSession({
+        access_token: actor.accessToken,
+        refresh_token: actor.refreshToken,
+      });
+      expect(restored.error).toBeNull();
+      const currentUser = await actor.client.auth.getUser();
+      expect(currentUser.error).toBeNull();
+      expect(currentUser.data.user?.id).toBe(actor.id);
+    };
+
+    const rosterFor = async (actor: RuntimeActor, institutionId: string) => {
+      await authenticateActor(actor);
+      const result = await actor.client.rpc('list_teacher_learning_students', { p_institution_id: institutionId });
       expect(result.error).toBeNull();
       return (result.data ?? []) as Array<{
         student_id: string;
@@ -236,33 +262,35 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       }>;
     };
 
-    const expectOnlyAssignedStudent = async (client: AnyClient, institutionId: string) => {
-      const rows = await rosterFor(client, institutionId);
-      const managementCheck = await client.rpc('can_manage_institution_operations', {
+    const expectOnlyAssignedStudent = async (actor: RuntimeActor, institutionId: string) => {
+      const rows = await rosterFor(actor, institutionId);
+      const managementCheck = await actor.client.rpc('can_manage_institution_operations', {
         target_institution_id: institutionId,
       });
-      const institutionAdminCheck = await client.rpc('is_institution_admin', {
+      const institutionAdminCheck = await actor.client.rpc('is_institution_admin', {
         target_institution_id: institutionId,
       });
-      const platformAdminCheck = await client.rpc('is_platform_super_admin');
-      const membershipCheck = await client
+      const platformAdminCheck = await actor.client.rpc('is_platform_super_admin');
+      const membershipCheck = await actor.client
         .from('memberships')
         .select('role, active, institution_id')
         .eq('profile_id', teacherA.id)
         .eq('institution_id', institutionId)
         .maybeSingle();
-      const profileCheck = await client
+      const profileCheck = await actor.client
         .from('profiles')
         .select('role, platform_role, active')
         .eq('id', teacherA.id)
         .maybeSingle();
-      const userCheck = await client.auth.getUser();
       expect(
         managementCheck.error,
         `failed to inspect institution management scope: ${managementCheck.error?.message ?? ''}`,
       ).toBeNull();
       expect(institutionAdminCheck.error).toBeNull();
       expect(platformAdminCheck.error).toBeNull();
+      expect(managementCheck.data).toBe(false);
+      expect(institutionAdminCheck.data).toBe(false);
+      expect(platformAdminCheck.data).toBe(false);
       const identities = rows.map((row) => ({
         label:
           row.student_id === studentA
@@ -279,25 +307,39 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       }));
       expect(
         rows.map((row) => row.student_id),
-        `jwt_user=${userCheck.data.user?.id ?? 'none'}; expected_teacher=${teacherA.id}; management=${String(managementCheck.data)}; institution_admin=${String(institutionAdminCheck.data)}; platform_admin=${String(platformAdminCheck.data)}; membership=${JSON.stringify(membershipCheck.data)}; profile=${JSON.stringify(profileCheck.data)}; unexpected teacher roster identities: ${JSON.stringify(identities)}`,
+        `membership=${JSON.stringify(membershipCheck.data)}; profile=${JSON.stringify(profileCheck.data)}; unexpected roster identities: ${JSON.stringify(identities)}`,
       ).toEqual([studentA]);
     };
 
-    await expectOnlyAssignedStudent(teacherA.client, institutionA);
+    const expectManagerRoster = async (actor: RuntimeActor, institutionId: string) => {
+      const rows = await rosterFor(actor, institutionId);
+      const managementCheck = await actor.client.rpc('can_manage_institution_operations', {
+        target_institution_id: institutionId,
+      });
+      expect(managementCheck.error).toBeNull();
+      expect(managementCheck.data).toBe(true);
+      expect(rows).toHaveLength(2);
+      expect(rows.map((row) => row.student_id)).toEqual(
+        expect.arrayContaining([studentA, studentUnassigned]),
+      );
+      expect(rows.some((row) => row.student_id === studentB)).toBe(false);
+    };
+
+    await expectOnlyAssignedStudent(teacherA, institutionA);
 
     for (const status of ['ACTIVE', ' ACTIVE ']) {
       const update = await service.from('enrollments').update({ status }).eq('student_id', studentA).eq('class_id', classA);
       expect(update.error).toBeNull();
-      await expectOnlyAssignedStudent(teacherA.client, institutionA);
+      await expectOnlyAssignedStudent(teacherA, institutionA);
     }
 
-    const crossTenant = await rosterFor(teacherA.client, institutionB);
+    const crossTenant = await rosterFor(teacherA, institutionB);
     expect(crossTenant).toEqual([]);
 
-    const unauthorizedTeacher = await rosterFor(teacherA.client, institutionA);
+    const unauthorizedTeacher = await rosterFor(teacherA, institutionA);
     expect(unauthorizedTeacher.some((row) => row.student_id === studentUnassigned)).toBe(false);
 
-    await expectOnlyAssignedStudent(directorA.client, institutionA);
+    await expectManagerRoster(directorA, institutionA);
 
     const restore = await service.from('enrollments').update({ status: 'active' }).eq('student_id', studentA).eq('class_id', classA);
     expect(restore.error).toBeNull();
