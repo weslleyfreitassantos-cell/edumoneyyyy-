@@ -38,6 +38,10 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
   `PREREQUISITE` ou `TRANSFER` somente após evidência pedagógica independente;
   candidatos sem essa evidência ficam explicitamente em
   `HUMAN_REVIEW_BLOCKED`, fora do grafo adaptativo.
+- `curriculum/units-v5.json`: unidades navegáveis compiladas dos pacotes globais
+  TecEscola V4. Elas agrupam objetivos por matéria e domínio, preservam a
+  disponibilidade automática e não afirmam alinhamento BNCC enquanto a
+  relação oficial não estiver validada.
 
 O catálogo não exige que um professor faça atribuições manuais. A migration de
 disponibilidade automática expõe os pacotes globais versionados da TecEscola ao

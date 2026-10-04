@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/curriculum-units-v5.json",
+  "type": "object",
+  "required": ["schemaVersion", "sourceOfTruth", "packVersion", "statusContract", "summary", "units", "unitsHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.curriculum-units.v5" },
+    "sourceOfTruth": { "type": "string" },
+    "packVersion": { "type": "string" },
+    "statusContract": { "type": "object", "required": ["unitType", "officialMappingRule", "availabilityRule", "adaptiveRule"] },
+    "summary": {
+      "type": "object",
+      "required": ["totalUnits", "totalPackages", "totalSkills", "automaticEligibleUnits", "officialCodesClaimed"],
+      "properties": {
+        "totalUnits": { "type": "integer", "minimum": 1 },
+        "totalPackages": { "type": "integer", "minimum": 1 },
+        "totalSkills": { "type": "integer", "minimum": 1 },
+        "automaticEligibleUnits": { "type": "integer", "minimum": 0 },
+        "officialCodesClaimed": { "const": 0 }
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["unitId", "title", "description", "subjectCode", "domain", "officialCodes", "canonicalSkills", "learningGoals", "prerequisites", "sequence", "evidenceMode", "reviewStatus"],
+        "properties": {
+          "unitId": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "subjectCode": { "type": "string" },
+          "domain": { "type": "string" },
+          "officialCodes": { "type": "array", "maxItems": 0 },
+          "canonicalSkills": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "learningGoals": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "prerequisites": { "type": "array", "items": { "type": "string" } },
+          "sequence": { "type": "array", "minItems": 1 },
+          "evidenceMode": { "type": "string" },
+          "reviewStatus": { "type": "string" },
+          "bnccAlignment": { "const": "NOT_CLAIMED" }
+        }
+      }
+    },
+    "unitsHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
