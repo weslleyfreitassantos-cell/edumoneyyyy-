@@ -29,8 +29,6 @@ import {
   useTeacherLearningClasses,
   useTeacherLearningAttempts,
   useTeacherLearningCollections,
-  useLearningPackages,
-  useAssignLearningPackage,
   useTeacherQuestionBank,
   useTeacherLearningStudents,
   useTeacherLearningClassGaps,
@@ -153,12 +151,8 @@ export default function PedagogicalCenterPage() {
   const guidedInsightsV2 = useTeacherGuidedInsightsV2(currentInstitutionId ?? undefined);
   const resolveGuidedSessionV2 = useResolveTeacherGuidedSessionV2(currentInstitutionId ?? undefined);
   const questionBank = useTeacherQuestionBank(currentInstitutionId ?? undefined);
-  const packages = useLearningPackages(currentInstitutionId ?? undefined);
   const teacherClasses = useTeacherLearningClasses(profile?.id);
   const teacherStudents = useTeacherLearningStudents(currentInstitutionId ?? undefined);
-  const assignPackage = useAssignLearningPackage(currentInstitutionId ?? undefined);
-  const [packageId, setPackageId] = useState('');
-  const [packageClassId, setPackageClassId] = useState('');
   const [gapClassId, setGapClassId] = useState('');
   const classGaps = useTeacherLearningClassGaps(currentInstitutionId ?? undefined, gapClassId || undefined);
   const knowledgeHeatmap = useTeacherClassKnowledgeHeatmap(currentInstitutionId ?? undefined, gapClassId || undefined);
@@ -351,14 +345,6 @@ export default function PedagogicalCenterPage() {
     item.total_points > 0 && item.score / item.total_points < 0.6,
   );
 
-  const assignSelectedPackage = () => {
-    if (!packageId || !packageClassId) return;
-    assignPackage.mutate({ packageId, classId: packageClassId }, {
-      onSuccess: () => setMessage('Trilha atribuída à turma com sucesso.'),
-      onError: (error) => setMessage(error instanceof Error ? error.message : 'Não foi possível atribuir a trilha.'),
-    });
-  };
-
   return (
     <div className="space-y-6">
       <header>
@@ -500,33 +486,6 @@ export default function PedagogicalCenterPage() {
           <p className="mt-3 text-xs text-slate-500">{filteredQuestionBank.length} questão(ões) encontradas. A origem fica preservada no rascunho.</p>
           {filteredQuestionBank.length ? <div className="mt-3 grid gap-3 md:grid-cols-2">{filteredQuestionBank.slice(0, 12).map((item) => <article key={item.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><div className="flex items-start justify-between gap-2"><p className="line-clamp-2 text-sm font-semibold dark:text-white">{item.statement}</p><button type="button" onClick={() => useBankQuestion(item.id)} className="shrink-0 text-xs font-bold text-[#005bbf]">Adicionar à atividade</button></div><p className="mt-2 text-xs text-slate-500">{item.package_type} · {item.subject_area}{item.topic ? ` · ${item.topic}` : ''}{item.difficulty ? ` · ${item.difficulty}` : ''}</p></article>)}</div> : <p className="mt-3 text-sm text-slate-500">Nenhuma questão corresponde aos filtros.</p>}
         </> : <p className="mt-4 text-sm text-slate-500">O banco aparecerá quando houver questões publicadas para sua instituição.</p>}
-      </section>
-
-      <section aria-label="Trilhas e pacotes" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h2 className="font-bold dark:text-white">Trilhas e pacotes</h2>
-            <p className="mt-1 text-sm text-slate-500">Atribua uma sequência pronta sem alterar o domínio manualmente.</p>
-          </div>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{packages.data?.length ?? 0}</span>
-        </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <label className="text-sm font-semibold dark:text-white">Pacote
-            <select value={packageId} onChange={(event) => setPackageId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 dark:bg-slate-900">
-              <option value="">Selecione uma trilha</option>
-              {packages.data?.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}
-            </select>
-          </label>
-          <label className="text-sm font-semibold dark:text-white">Turma
-            <select value={packageClassId} onChange={(event) => setPackageClassId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 dark:bg-slate-900">
-              <option value="">Selecione uma turma</option>
-              {teacherClasses.data?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
-            </select>
-          </label>
-        </div>
-        <button type="button" disabled={!packageId || !packageClassId || assignPackage.isPending} onClick={assignSelectedPackage} className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">
-          {assignPackage.isPending ? 'Atribuindo...' : 'Atribuir trilha'}
-        </button>
       </section>
 
       <form id="nova-atividade" onSubmit={submit} className="space-y-4 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">

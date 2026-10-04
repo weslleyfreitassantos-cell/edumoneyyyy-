@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 
 const links = [
-  ['Visão geral', '/teacher/pedagogical-center'],
+  ['Acompanhamento', '/teacher/pedagogical-center'],
+  ['Pacotes', '/teacher/pedagogical-center/content'],
   ['Alunos', '/teacher/pedagogical-center/students'],
   ['Mapa', '/teacher/pedagogical-center/map'],
   ['Jornadas', '/teacher/pedagogical-center/journeys'],
-  ['Conteúdo', '/teacher/pedagogical-center/content'],
   ['Revisão', '/teacher/pedagogical-center/reviews'],
   ['Simulados', '/teacher/pedagogical-center/simulations'],
   ['Atividades', '/teacher/pedagogical-center/activities'],
