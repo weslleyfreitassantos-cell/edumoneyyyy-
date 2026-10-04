@@ -62,5 +62,37 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "MATH_PERCENT_INCREASE",
+    "title": "Resolver aumento percentual sem trocar a base",
+    "objective": "Calcular a variacao e o valor final de um aumento percentual usando o valor inicial como base.",
+    "summary": "Em um aumento percentual, a taxa incide sobre o valor inicial; a variacao e somada a essa base para obter o valor final.",
+    "explanation": "Converta a taxa em decimal, multiplique pelo valor inicial e some a variacao ao valor inicial. O valor final nao deve substituir a base durante o calculo da primeira taxa.",
+    "workedExample": "Uma mensalidade de R$ 80 aumenta 15%. A variacao e 0,15 x 80 = R$ 12; o novo valor e R$ 92.",
+    "commonMistake": "Aplicar a taxa ao valor final ou somar o numero percentual diretamente ao preco.",
+    "tips": [
+      "Identifique o valor inicial antes do aumento.",
+      "Calcule primeiro a variacao absoluta.",
+      "Some a variacao a base e confira a unidade da resposta."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "MATH_INTERPRET_DATA_TABLE",
+    "title": "Ler dados de uma tabela para justificar uma conclusao",
+    "objective": "Interpretar valores organizados em tabela, comparar categorias e justificar uma conclusao sem extrapolar os dados.",
+    "summary": "Uma tabela permite localizar, comparar e combinar valores; uma conclusao valida deve respeitar exatamente o que foi medido.",
+    "explanation": "Leia o titulo, as categorias e as unidades antes de comparar os valores. Depois, use apenas as relacoes mostradas na tabela e diferencie dado observado de explicacao causal.",
+    "workedExample": "Se uma tabela registra 12 livros em abril e 18 em maio, o aumento observado e de 6 livros; a tabela sozinha nao prova por que ele ocorreu.",
+    "commonMistake": "Confundir o maior valor com a maior variacao ou inventar uma causa que a tabela nao mediu.",
+    "tips": [
+      "Confira o que cada linha e coluna representa.",
+      "Compare valores usando a mesma unidade.",
+      "Escreva a conclusao com o alcance exato dos dados."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "AUTHORED"
   }
 ]

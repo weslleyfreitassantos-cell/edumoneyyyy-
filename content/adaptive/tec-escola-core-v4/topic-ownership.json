@@ -981,6 +981,21 @@
       "subject": "SOCIOLOGY",
       "topic": "Explicar instituicoes sociais",
       "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE"
     }
   ]
 }

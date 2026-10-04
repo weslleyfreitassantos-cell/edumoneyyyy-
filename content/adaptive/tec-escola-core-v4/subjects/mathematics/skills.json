@@ -52,8 +52,8 @@
       "masteryCapability": "Demonstrar que consegue calcular aumento percentual e valor final sem trocar a base inicial.",
       "domain": "PORCENTAGEM",
       "parent": "MATHEMATICS_PROPORTIONS",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
@@ -80,8 +80,8 @@
       "masteryCapability": "Demonstrar que consegue interpretar dados relevantes de uma tabela para responder a uma pergunta.",
       "domain": "DADOS",
       "parent": "MATHEMATICS_DATA",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
@@ -94,8 +94,8 @@
       "objective": "Analisar duas ou mais variacoes percentuais atualizando a base de cada etapa.",
       "description": "Analisar duas ou mais variacoes percentuais atualizando a base de cada etapa.",
       "masteryCapability": "Demonstrar que consegue analisar duas ou mais variacoes percentuais atualizando a base de cada etapa..",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "AUTHORED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
