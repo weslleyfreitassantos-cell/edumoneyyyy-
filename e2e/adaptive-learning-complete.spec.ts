@@ -210,23 +210,11 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(teacherPage.getByText('PHYSICS_AVERAGE_SPEED', { exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
       await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
-      await teacherPage.locator('select').selectOption(starterPackage.data.id);
-      await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).click();
-      await expect.poll(async () => {
-        const result = await service
-          .from('learning_package_assignments')
-          .select('id')
-          .eq('institution_id', institutionId)
-          .eq('package_id', starterPackage.data.id)
-          .eq('student_id', studentId)
-          .maybeSingle();
-        if (result.error) throw result.error;
-        return result.data?.id ?? null;
-      }, { timeout: 30_000, intervals: [250, 500, 1000] }).not.toBeNull();
-      const assignment = await service.from('learning_package_assignments').select('id').eq('institution_id', institutionId).eq('package_id', starterPackage.data.id).eq('student_id', studentId).single();
+      expect(await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).count()).toBe(0);
+      const assignment = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
       expect(assignment.error).toBeNull();
       const assignmentRetry = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
-      expect(assignmentRetry.data).toBe(assignment.data.id);
+      expect(assignmentRetry.data).toBe(assignment.data);
 
       const mariaPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       pages.push(mariaPage);

@@ -1,13 +1,10 @@
 import { ArrowLeft, CheckCircle2, CircleAlert, UsersRound } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import { useTeacherStudentKnowledgeGraph } from '../../hooks/useAdaptiveLearning';
 import {
-  useAssignLearningPackage,
-  useLearningPackages,
   useTeacherLearningStudentDetail,
   useTeacherLearningStudents,
 } from '../../hooks/useLearningCenter';
@@ -20,19 +17,11 @@ export default function TeacherStudentDetailPage() {
   const students = useTeacherLearningStudents(currentInstitutionId ?? undefined);
   const detail = useTeacherLearningStudentDetail(currentInstitutionId ?? undefined, studentId);
   const knowledgeGraph = useTeacherStudentKnowledgeGraph(currentInstitutionId ?? undefined, studentId);
-  const packages = useLearningPackages(currentInstitutionId ?? undefined);
-  const assign = useAssignLearningPackage(currentInstitutionId ?? undefined);
-  const [packageId, setPackageId] = useState('');
 
   if (detail.isLoading) return <div className="grid min-h-48 place-items-center text-sm text-slate-500">Carregando acompanhamento...</div>;
   if (detail.isError || !detail.data) return <section className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">Este aluno não está no seu escopo pedagógico.</section>;
 
   const data = detail.data;
-  const assignSelected = () => {
-    if (!packageId || !studentId) return;
-    assign.mutate({ packageId, studentId }, { onSuccess: () => setPackageId('') });
-  };
-
   return (
     <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -62,7 +51,7 @@ export default function TeacherStudentDetailPage() {
           </section>
         </main>
         <aside className="space-y-5">
-          <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-emerald-600" /><h2 className="font-bold dark:text-white">Próxima ação</h2></div><p className="mt-3 text-sm text-slate-500">Atribua uma trilha curta ou crie uma prática de reforço para este aluno.</p><select value={packageId} onChange={(event) => setPackageId(event.target.value)} className="mt-4 w-full rounded-lg border px-3 py-2 text-sm dark:bg-slate-900 dark:text-white"><option value="">Escolha uma trilha</option>{packages.data?.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}</select><button type="button" onClick={assignSelected} disabled={!packageId || assign.isPending} className="mt-3 w-full rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">{assign.isPending ? 'Atribuindo...' : 'Atribuir ao aluno'}</button><Link to={`/teacher/pedagogical-center/activities/new?studentId=${studentId ?? ''}&classId=${data.student.class_id ?? ''}`} className="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-bold text-[#005bbf]">Criar reforço</Link></section>
+          <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-emerald-600" /><h2 className="font-bold dark:text-white">Próxima ação</h2></div><p className="mt-3 text-sm text-slate-500">O conteúdo padrão já é disponibilizado automaticamente. Crie uma prática apenas quando os sinais indicarem necessidade de reforço.</p><Link to={`/teacher/pedagogical-center/activities/new?studentId=${studentId ?? ''}&classId=${data.student.class_id ?? ''}`} className="mt-4 inline-flex w-full items-center justify-center rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-bold text-[#005bbf]">Criar reforço</Link></section>
           <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-center gap-2"><UsersRound className="h-5 w-5 text-[#005bbf]" /><h2 className="font-bold dark:text-white">Outros alunos</h2></div><div className="mt-3 space-y-2">{students.data?.filter((item) => item.student_id !== studentId).slice(0, 8).map((item) => <Link key={item.student_id} to={`/teacher/pedagogical-center/students/${item.student_id}`} className="block rounded-lg border p-3 text-sm hover:border-[#005bbf] dark:border-slate-700"><p className="font-semibold dark:text-white">{item.full_name}</p><p className="text-xs text-slate-500">{item.class_name}</p></Link>)}</div></section>
         </aside>
       </div>
