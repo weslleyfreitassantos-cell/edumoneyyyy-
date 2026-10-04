@@ -23,7 +23,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
@@ -51,6 +51,7 @@ import {
   useStudentLearningSubjects,
   useGuidedLearningSession,
   useGuidedLearningSessionV2,
+  useStartGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
 import type { LearningActivity } from '../../services/learningCenterService';
 import { humanizePackageTitle, humanizeSkill, humanizeSubjectArea, packagePresentationKey } from '../../lib/learningPresentation';
@@ -96,6 +97,7 @@ function subjectIcon(subject: string): LucideIcon {
 }
 
 export default function StudyCenterPage() {
+  const navigate = useNavigate();
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
   const [search, setSearch] = useState('');
@@ -163,6 +165,10 @@ export default function StudyCenterPage() {
   );
   const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id);
   const guidedSessionV2 = useGuidedLearningSessionV2(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
@@ -239,10 +245,22 @@ export default function StudyCenterPage() {
     () => (simulationAttempts.data ?? []).filter((attempt) => attempt.status === 'COMPLETED').slice(0, 3),
     [simulationAttempts.data],
   );
+  const [startingActionId, setStartingActionId] = useState<string | null>(null);
+  const [startActionError, setStartActionError] = useState<string | null>(null);
+  const guidedSessionIsUsable = ['ACTIVE', 'PAUSED', 'NEEDS_TEACHER_SUPPORT'].includes(
+    guidedSessionV2.data?.status ?? '',
+  );
 
   const todayActions = useMemo(() => {
-    const actions: Array<{ id: string; title: string; detail: string; href: string; action: string }> = [];
-    if (guidedSessionV2.data?.status === 'ACTIVE') {
+    const actions: Array<{
+      id: string;
+      title: string;
+      detail: string;
+      href: string;
+      action: string;
+      targetCanonicalSkillId?: string;
+    }> = [];
+    if (guidedSessionV2.data?.status === 'ACTIVE' || guidedSessionV2.data?.status === 'PAUSED') {
       actions.push({
         id: `guided:${guidedSessionV2.data.id}`,
         title: guidedSessionV2.data.current_step?.position === undefined
@@ -252,8 +270,18 @@ export default function StudyCenterPage() {
         href: '/student/study/guided',
         action: 'Continuar',
       });
+    } else if (guidedSessionV2.data?.status === 'NEEDS_TEACHER_SUPPORT') {
+      actions.push({
+        id: `guided:${guidedSessionV2.data.id}`,
+        title: 'Seu estudo precisa de apoio',
+        detail: 'Veja a orientação da sua escola para continuar com segurança.',
+        href: '/student/study/guided',
+        action: 'Ver apoio',
+      });
     } else {
-      for (const item of dailyPlan.data?.learning_daily_plan_items ?? []) {
+      for (const item of (dailyPlan.data?.learning_daily_plan_items ?? []).filter(
+        (dailyItem) => dailyItem.status === 'PENDING' || dailyItem.status === 'IN_PROGRESS',
+      )) {
         const href = item.activity_id
           ? `/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`
           : item.lesson_id
@@ -262,19 +290,20 @@ export default function StudyCenterPage() {
         actions.push({
           id: `plan:${item.id}`,
           title: item.title,
-          detail: `${item.estimated_minutes} min · ${item.status === 'COMPLETED' ? 'Concluído' : 'Próxima atividade'}`,
+          detail: `${item.estimated_minutes} min · ${item.status === 'IN_PROGRESS' ? 'Em andamento' : 'Próxima atividade'}`,
           href,
-          action: item.status === 'COMPLETED' ? 'Revisar' : 'Começar',
+          action: item.activity_id || item.lesson_id ? (item.status === 'IN_PROGRESS' ? 'Continuar' : 'Começar') : 'Explorar',
         });
       }
     }
-    for (const review of reviewsDue.data ?? []) {
+    if (!guidedSessionIsUsable) for (const review of reviewsDue.data ?? []) {
       actions.push({
         id: `review:${review.id}`,
         title: humanizeSkill(review.canonical_skill_id, review.skill_title),
         detail: 'Revisão recomendada para fortalecer este conceito.',
-        href: '/student/study/guided',
-        action: 'Revisar',
+        href: review.canonical_skill_id ? '/student/study/guided' : '/student/study#study-subjects',
+        action: review.canonical_skill_id ? 'Revisar' : 'Explorar',
+        targetCanonicalSkillId: review.canonical_skill_id ?? undefined,
       });
     }
     for (const error of errorNotebook.data ?? []) {
@@ -293,6 +322,7 @@ export default function StudyCenterPage() {
         detail: 'Uma atividade curta para conhecer seu próximo tópico.',
         href: '/student/study/guided',
         action: 'Começar',
+        targetCanonicalSkillId: adaptiveTarget.data.canonicalSkillId,
       });
     }
     if (!actions.length && selectedActivities[0]) {
@@ -306,7 +336,25 @@ export default function StudyCenterPage() {
       });
     }
     return actions.slice(0, 4);
-  }, [adaptiveTarget.data, dailyPlan.data, errorNotebook.data, guidedSessionV2.data, reviewsDue.data, selectedActivities]);
+  }, [adaptiveTarget.data, dailyPlan.data, errorNotebook.data, guidedSessionIsUsable, guidedSessionV2.data, reviewsDue.data, selectedActivities]);
+
+  const handleTodayAction = async (item: (typeof todayActions)[number]) => {
+    if (!item.targetCanonicalSkillId) {
+      navigate(item.href);
+      return;
+    }
+
+    setStartActionError(null);
+    setStartingActionId(item.id);
+    try {
+      await startGuidedSessionV2.mutateAsync(item.targetCanonicalSkillId);
+      navigate('/student/study/guided');
+    } catch {
+      setStartActionError('Não foi possível iniciar esta jornada agora. Tente novamente.');
+    } finally {
+      setStartingActionId(null);
+    }
+  };
 
   const displayPackages = useMemo(() => {
     const seen = new Set<string>();
@@ -391,7 +439,8 @@ export default function StudyCenterPage() {
             </div>
           )}
         </div>
-        {dailyPlan.isLoading ? <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Organizando suas próximas ações...</p> : todayActions.length ? <ol className="mt-4 grid gap-2 sm:grid-cols-2">{todayActions.map((item, index) => <li key={item.id} className="flex items-center gap-3 rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/50"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-[#005bbf] dark:bg-blue-900/60 dark:text-blue-100">{index + 1}</span><div className="min-w-0 flex-1"><p className="truncate text-sm font-bold text-slate-900 dark:text-white">{item.title}</p><p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">{item.detail}</p></div><Link to={item.href} className="shrink-0 text-xs font-bold text-[#005bbf]">{item.action}</Link></li>)}</ol> : <a href="#study-subjects" className="mt-4 inline-flex text-sm font-bold text-[#005bbf]">Explorar matérias</a>}
+        {dailyPlan.isLoading ? <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Organizando suas próximas ações...</p> : todayActions.length ? <ol className="mt-4 grid gap-2 sm:grid-cols-2">{todayActions.map((item, index) => <li key={item.id} className="flex items-center gap-3 rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/50"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-[#005bbf] dark:bg-blue-900/60 dark:text-blue-100">{index + 1}</span><div className="min-w-0 flex-1"><p className="truncate text-sm font-bold text-slate-900 dark:text-white">{item.title}</p><p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">{item.detail}</p></div>{item.targetCanonicalSkillId ? <button type="button" onClick={() => void handleTodayAction(item)} disabled={startingActionId !== null || startGuidedSessionV2.isPending} className="shrink-0 text-xs font-bold text-[#005bbf] disabled:cursor-wait disabled:opacity-60">{startingActionId === item.id ? 'Abrindo...' : item.action}</button> : <Link to={item.href} className="shrink-0 text-xs font-bold text-[#005bbf]">{item.action}</Link>}</li>)}</ol> : <a href="#study-subjects" className="mt-4 inline-flex text-sm font-bold text-[#005bbf]">Explorar matérias</a>}
+        {startActionError ? <p role="alert" className="mt-3 text-sm font-semibold text-red-700 dark:text-red-300">{startActionError}</p> : null}
       </section>
 
       <section id="study-progress" aria-label="Seu progresso" className="scroll-mt-24 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
@@ -596,7 +645,7 @@ export default function StudyCenterPage() {
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
-              const subjectActivityCount = (activities.data ?? []).filter((activity) => activity.subject_id === subject.id).length;
+              const subjectAvailableActivityCount = (activities.data ?? []).filter((activity) => activity.subject_id === subject.id).length;
               return (
                 <button
                   key={subject.id}
@@ -606,7 +655,7 @@ export default function StudyCenterPage() {
                   className={`flex min-h-16 min-w-[220px] snap-start items-center gap-3 rounded-xl border p-4 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] sm:min-w-0 ${selectedSubjectId === subject.id ? 'border-[#005bbf] bg-blue-50 dark:bg-blue-950/30' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}
                 >
                   <Icon className="h-5 w-5 text-[#005bbf]" aria-hidden="true" />
-                  <span className="min-w-0 flex-1"><span className="block truncate font-semibold dark:text-white">{subject.name}</span><span className="mt-0.5 block truncate text-xs font-normal text-slate-500 dark:text-slate-400">{subjectActivityCount ? `${subjectActivityCount} atividade(s) para começar` : 'Explore os tópicos disponíveis'}</span></span>
+                  <span className="min-w-0 flex-1"><span className="block truncate font-semibold dark:text-white">{subject.name}</span><span className="mt-0.5 block truncate text-xs font-normal text-slate-500 dark:text-slate-400">{subjectAvailableActivityCount ? `${subjectAvailableActivityCount} atividade(s) disponíveis` : 'Explore os tópicos disponíveis'}</span></span>
                   <ChevronRight className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
                 </button>
               );
