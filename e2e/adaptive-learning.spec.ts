@@ -84,10 +84,9 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       studentPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await login(studentPage, alice);
       await studentPage.goto('/student/study');
-      await expect(studentPage.getByText('Olá, Alice. O que vamos estudar hoje?')).toBeVisible({ timeout: 30_000 });
+      await expect(studentPage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
       expect(await studentPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
-      await expect(studentPage.getByText(`Prática de frações ${suffix}`)).toBeVisible({ timeout: 30_000 });
-      await studentPage.getByRole('link', { name: 'Começar atividade' }).click();
+      await studentPage.getByRole('button', { name: new RegExp(`Matemática Adaptive ${suffix}`) }).click();
       await expect(studentPage.getByText('Quanto é 1/2 + 1/2?')).toBeVisible({ timeout: 30_000 });
       await expect(studentPage.getByText('Duas metades formam um inteiro.')).not.toBeVisible();
       await studentPage.getByLabel('1').check();
@@ -97,15 +96,15 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       teacherPage = await browser.newPage();
       await login(teacherPage, pedro);
       await teacherPage.goto('/teacher/pedagogical-center/students');
-      await expect(teacherPage.getByText('Alunos em acompanhamento')).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Alunos', exact: true })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByText('Alice Adaptive')).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByRole('link', { name: /Alice Adaptive/ }).click();
-      await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem' })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByText('Pontos para revisar')).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto('/teacher/pedagogical-center/students');
       await teacherPage.getByRole('link', { name: /Maria Support/ }).click();
-      await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem' })).toBeVisible({ timeout: 30_000 });
-      await expect(teacherPage.getByText('Nenhuma sessão guiada registrada.')).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByText('Atividades recentes')).toBeVisible({ timeout: 30_000 });
     } finally {
       await studentPage?.close();
       await teacherPage?.close();

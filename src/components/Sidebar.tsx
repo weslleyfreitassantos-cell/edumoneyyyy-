@@ -338,7 +338,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   { id: 'guardian-attendance', label: 'Frequência dos dependentes', path: '/guardian/attendance', section: 'personal', icon: ClipboardCheck, roles: ['parent'], activePaths: ['/guardian/attendance'], exactActivePath: true },
   { id: 'guardian-grades', label: 'Notas dos dependentes', path: '/guardian/grades', section: 'personal', icon: BadgeCheck, roles: ['parent'], activePaths: ['/guardian/grades'], exactActivePath: true },
   { id: 'guardian-report-card', label: 'Boletim dos dependentes', path: '/guardian/report-card', section: 'personal', icon: FileCheck2, roles: ['parent'], activePaths: ['/guardian/report-card'], exactActivePath: true },
-  { id: 'teacher-pedagogical-center', label: 'Central Pedagógica', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'] },
+  { id: 'teacher-pedagogical-center', label: 'Desempenho', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'] },
   {
     id: 'personalize-login',
     label: 'Personalizar login',

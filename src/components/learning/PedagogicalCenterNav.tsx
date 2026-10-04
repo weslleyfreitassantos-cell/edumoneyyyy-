@@ -1,16 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 
 const links = [
-  ['Visão da turma', '/teacher/pedagogical-center'],
+  ['Turma', '/teacher/pedagogical-center'],
   ['Alunos', '/teacher/pedagogical-center/students'],
-  ['Atividades', '/teacher/pedagogical-center/activities'],
-  ['Conteúdos', '/teacher/pedagogical-center/content'],
-  ['Resultados', '/teacher/pedagogical-center/map'],
 ] as const;
 
 export function PedagogicalCenterNav() {
   const location = useLocation();
-  return <nav aria-label="Áreas da Central Pedagógica" className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{links.map(([label, path]) => {
+  return <nav aria-label="Navegação de desempenho" className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">{links.map(([label, path]) => {
     const active = path === '/teacher/pedagogical-center'
       ? location.pathname === path
       : location.pathname.startsWith(path);
@@ -18,8 +15,8 @@ export function PedagogicalCenterNav() {
   })}</nav>;
 }
 
-export function PedagogicalCenterHeader({ subtitle = 'Decisões pedagógicas para suas turmas.' }: { subtitle?: string }) {
-  return <header><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">Professor</p><h1 className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">Central Pedagógica</h1><p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{subtitle}</p><div className="mt-4"><PedagogicalCenterNav /></div></header>;
+export function PedagogicalCenterHeader({ subtitle = 'Acompanhe sua turma e seus alunos.' }: { subtitle?: string }) {
+  return <header><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">Professor</p><h1 className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">Desempenho</h1><p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{subtitle}</p><div className="mt-4"><PedagogicalCenterNav /></div></header>;
 }
 
 export function PageState({ children, error = false }: { children: string; error?: boolean }) {

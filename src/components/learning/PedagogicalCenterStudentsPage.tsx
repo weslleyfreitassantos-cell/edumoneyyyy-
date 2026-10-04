@@ -22,7 +22,7 @@ export default function PedagogicalCenterStudentsPage() {
 
   return (
     <div className="space-y-6">
-      <PedagogicalCenterHeader subtitle="Encontre um aluno, entenda o sinal e escolha a próxima ação." />
+      <PedagogicalCenterHeader subtitle="Encontre um aluno e veja seu desempenho." />
       <section aria-label="Contexto dos alunos" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <label className="block max-w-md text-sm font-bold dark:text-white">
           Turma
@@ -43,11 +43,11 @@ export default function PedagogicalCenterStudentsPage() {
         </label>
         <p className="mt-2 text-xs text-slate-500">{selectedClass ? `Mostrando os alunos de ${selectedClass.name}.` : 'A lista mostra somente alunos das turmas em que você leciona.'}</p>
       </section>
-      <section aria-label="Alunos em acompanhamento" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <section aria-label="Alunos" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h2 className="font-bold dark:text-white">Alunos em acompanhamento</h2>
-            <p className="mt-1 text-sm text-slate-500">Abra um aluno para revisar sinais, desempenho e próxima ação.</p>
+            <h2 className="font-bold dark:text-white">Alunos</h2>
+            <p className="mt-1 text-sm text-slate-500">Abra um aluno para ver seu desempenho.</p>
           </div>
           <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{scopedStudents.length}</span>
         </div>

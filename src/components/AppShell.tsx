@@ -162,7 +162,7 @@ export function getRouteVisualContext(
     role === 'teacher' &&
     normalizedPath.startsWith('/teacher/pedagogical-center')
   ) {
-    return { section: 'Acadêmico', title: 'Central Pedagógica' };
+    return { section: 'Acadêmico', title: 'Desempenho' };
   }
 
   if (
