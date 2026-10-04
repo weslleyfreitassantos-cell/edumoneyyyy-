@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "tec-escola.bncc.canonical-relationships.v1",
+  "sourceOfTruth": "TECESCOLA_CANONICAL_REGISTRY_RECONCILIATION",
+  "hierarchy": [
+    [
+      "MATHEMATICS_NUMBERS",
+      "FRACTIONS"
+    ]
+  ]
+}

@@ -19,7 +19,7 @@ function hash(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
 }
 
-export function buildCanonicalGraph(v4Registry, relationships, canonicalRegistry) {
+export function buildCanonicalGraph(v4Registry, relationships, canonicalRegistry, canonicalRelationships = {}) {
   const v4Subjects = [...(v4Registry.subjects ?? [])].sort((left, right) => left.code.localeCompare(right.code));
   const anchors = new Map();
   const leaves = new Map();
@@ -60,7 +60,7 @@ export function buildCanonicalGraph(v4Registry, relationships, canonicalRegistry
     }));
 
   const knownCodes = new Set([...anchors.keys(), ...leaves.keys(), ...seedSkills.map((skill) => skill.code)]);
-  const edges = [...(relationships.hierarchy ?? [])]
+  const edges = [...(relationships.hierarchy ?? []), ...(canonicalRelationships.hierarchy ?? [])]
     .map(([parent, child]) => ({ parent, child }))
     .sort((left, right) => left.parent.localeCompare(right.parent) || left.child.localeCompare(right.child));
   const otherCodes = [...new Set(edges.flatMap((edge) => [edge.parent, edge.child]).filter((code) => !knownCodes.has(code)))].sort();
@@ -83,7 +83,7 @@ export function buildCanonicalGraph(v4Registry, relationships, canonicalRegistry
 
   const output = {
     schemaVersion: 'tec-escola.bncc.canonical-graph.v1',
-    sourceOfTruth: 'TECESCOLA_CORE_V4_REGISTRY_AND_RELATIONSHIPS_PLUS_CANONICAL_SEED_REGISTRY',
+    sourceOfTruth: 'TECESCOLA_CORE_V4_REGISTRY_AND_RELATIONSHIPS_PLUS_CANONICAL_SEED_REGISTRY_AND_BNCC_CANONICAL_RELATIONSHIPS',
     graphStatus: 'AUDITED_NOT_BNCC_PROMOTED',
     statusContract: {
       targetableClasses: ['LEAF', 'SEED_SKILL'],
@@ -113,11 +113,13 @@ function run() {
   const registryPath = path.resolve(root, process.argv[2] ?? 'content/adaptive/tec-escola-core-v4/registry.json');
   const relationshipsPath = path.resolve(root, process.argv[3] ?? 'content/adaptive/tec-escola-core-v4/relationships.json');
   const canonicalPath = path.resolve(root, process.argv[4] ?? 'content/bncc/canonical/registry.json');
-  const outputPath = path.resolve(root, process.argv[5] ?? 'content/bncc/canonical/graph-v4.json');
+  const canonicalRelationshipsPath = path.resolve(root, process.argv[5] ?? 'content/bncc/canonical/relationships-v4.json');
+  const outputPath = path.resolve(root, process.argv[6] ?? 'content/bncc/canonical/graph-v4.json');
   const output = buildCanonicalGraph(
     JSON.parse(fs.readFileSync(registryPath, 'utf8')),
     JSON.parse(fs.readFileSync(relationshipsPath, 'utf8')),
     JSON.parse(fs.readFileSync(canonicalPath, 'utf8')),
+    JSON.parse(fs.readFileSync(canonicalRelationshipsPath, 'utf8')),
   );
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8');

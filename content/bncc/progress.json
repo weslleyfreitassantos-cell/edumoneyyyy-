@@ -56,7 +56,7 @@
     },
     "canonicalGraph": {
       "status": "AUDITED_NOT_BNCC_PROMOTED",
-      "graphHash": "54d43c269c88252a430fc3c40e595df908d3db6ee8a5bd61e4c3e63b5b626bbb",
+      "graphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda",
       "subjects": 15,
       "anchors": 45,
       "leaves": 65,

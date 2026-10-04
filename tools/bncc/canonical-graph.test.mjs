@@ -32,6 +32,7 @@ describe('BNCC canonical graph audit', () => {
       JSON.parse(readFileSync('content/adaptive/tec-escola-core-v4/registry.json', 'utf8')),
       JSON.parse(readFileSync('content/adaptive/tec-escola-core-v4/relationships.json', 'utf8')),
       JSON.parse(readFileSync('content/bncc/canonical/registry.json', 'utf8')),
+      JSON.parse(readFileSync('content/bncc/canonical/relationships-v4.json', 'utf8')),
     );
     expect(output.summary.orphanAnchors).toEqual([]);
     expect(output.summary.otherSemanticNodes).toBe(0);

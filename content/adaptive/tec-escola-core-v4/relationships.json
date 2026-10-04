@@ -259,10 +259,6 @@
     [
       "PHYSICS_MOTION",
       "PHYSICS_INTERPRET_ACCELERATION"
-    ],
-    [
-      "MATHEMATICS_NUMBERS",
-      "FRACTIONS"
     ]
   ],
   "prerequisites": [
