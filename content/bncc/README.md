@@ -9,7 +9,10 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
   fontes usadas.
 - `schema/official-catalog.schema.json`: contrato estrutural do catálogo.
 - `mappings/coverage-2018.json`: uma linha por código oficial, distinguindo
-  `MAPPED`, `EXPLICITLY_NON_ADAPTIVE` e `UNACCOUNTED`; lacunas não são ocultadas.
+  `MAPPED`, `HIERARCHY_ONLY`, `EXPLICITLY_NON_ADAPTIVE` e
+  `SOURCE_REVIEW_REQUIRED`; `UNACCOUNTED` deve permanecer em zero.
+- `mappings/promoted-2018.json`: allowlist pequena de promoções técnicas
+  conservadoras; ela nunca afirma revisão pedagógica humana.
 - `mappings/reviews-2018.json`: revisão técnica independente, sem promoção
   pedagógica automática.
 - `canonical/graph-v4.json`: auditoria do grafo V4, separando âncoras, folhas

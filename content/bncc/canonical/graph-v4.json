@@ -1,6 +1,6 @@
 {
   "schemaVersion": "tec-escola.bncc.canonical-graph.v1",
-  "sourceOfTruth": "TECESCOLA_CORE_V4_REGISTRY_AND_RELATIONSHIPS_PLUS_CANONICAL_SEED_REGISTRY",
+  "sourceOfTruth": "TECESCOLA_CORE_V4_REGISTRY_AND_RELATIONSHIPS_PLUS_CANONICAL_SEED_REGISTRY_AND_BNCC_CANONICAL_RELATIONSHIPS",
   "graphStatus": "AUDITED_NOT_BNCC_PROMOTED",
   "statusContract": {
     "targetableClasses": [
@@ -21,10 +21,8 @@
     "seedSkills": 6,
     "targetableSkills": 71,
     "otherSemanticNodes": 0,
-    "hierarchyEdges": 65,
-    "orphanAnchors": [
-      "MATHEMATICS_NUMBERS"
-    ],
+    "hierarchyEdges": 66,
+    "orphanAnchors": [],
     "orphanLeaves": [],
     "unresolvedSemanticNodes": []
   },
@@ -1467,6 +1465,10 @@
       "child": "MATH_INTERPRET_DATA_TABLE"
     },
     {
+      "parent": "MATHEMATICS_NUMBERS",
+      "child": "FRACTIONS"
+    },
+    {
       "parent": "MATHEMATICS_PROPORTIONS",
       "child": "MATH_IDENTIFY_PERCENT_BASE"
     },
@@ -1615,5 +1617,5 @@
       "child": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
     }
   ],
-  "graphHash": "f4a12c11ab2f57230156d4c284fb264d820b8216d824b6153dbe58a1613c2c4a"
+  "graphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda"
 }

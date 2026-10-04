@@ -1,6 +1,6 @@
 {
-  "campaign": "TECESCOLA_BNCC_MAPPING_GRAPH_CONTENT_AND_PRODUCT_COMPLETION_V4",
-  "updatedAt": "2026-10-04T00:20:12Z",
+  "campaign": "TECESCOLA_BNCC_PEDAGOGICAL_GRAPH_CONTENT_FACTORY_AND_PRODUCT_CLOSURE_V5",
+  "updatedAt": "2026-10-04T00:00:00Z",
   "sourceFreeze": {
     "status": "FROZEN",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -13,15 +13,15 @@
     "catalogHash": "b0da60b72e055d8bbafe2366651f1ccc6676d92e83a65f9bf3e062c5026e3989"
   },
   "mapping": {
-    "status": "CANDIDATES_GENERATED",
-    "mappedCodes": 0,
+    "status": "ACCOUNTED_WITH_CONSERVATIVE_PROMOTIONS",
+    "mappedCodes": 2,
     "candidateCodes": 1723,
     "canonicalSkills": 71,
     "oneToOneCandidates": 123,
     "canonicalGaps": 1496,
     "hierarchyOnly": 104,
-    "unaccountedCodes": 1723,
-    "reviewRequiredCodes": 1723,
+    "unaccountedCodes": 0,
+    "reviewRequiredCodes": 1617,
     "candidateHash": "fda364d2547223646779cf0c183547797233318266afc40f5f3665859becada7",
     "technicalReview": {
       "status": "COMPLETE_WITH_PEDAGOGICAL_GATE",
@@ -32,7 +32,8 @@
       "needsHumanReview": 119,
       "canonicalGaps": 1496,
       "pedagogicalReviewPending": 1619,
-      "promotedCodes": 0
+      "promotedCodes": 2,
+      "promotedHash": "ab5ee6c0acb6c8e025b66d5315c5e04b2c7bde0e7b1b88c81b6003a8d171f6fd"
     },
     "semanticExpansion": {
       "status": "GENERATED_WITHOUT_PROMOTION",
@@ -55,14 +56,14 @@
     },
     "canonicalGraph": {
       "status": "AUDITED_NOT_BNCC_PROMOTED",
-      "graphHash": "f4a12c11ab2f57230156d4c284fb264d820b8216d824b6153dbe58a1613c2c4a",
+      "graphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda",
       "subjects": 15,
       "anchors": 45,
       "leaves": 65,
       "seedSkills": 6,
       "targetableSkills": 71,
       "otherSemanticNodes": 0,
-      "orphanAnchors": ["MATHEMATICS_NUMBERS"],
+      "orphanAnchors": [],
       "unresolvedSemanticNodes": 0
     }
   },
@@ -115,9 +116,9 @@
     "qaTenantHttp": 200
   },
   "blockers": [
-    "technical review is complete, but pedagogical review is still required before any mapping promotion",
     "official BNCC lesson/question coverage is not yet complete",
-    "one canonical anchor has no hierarchy edge: MATHEMATICS_NUMBERS"
+    "1617 source nodes remain SOURCE_REVIEW_REQUIRED and retain a pedagogical review gate",
+    "the 119 genuinely ambiguous cases remain reserved for human review"
   ],
-  "nextAction": "author and pedagogically review clustered gaps before promoting any BNCC mapping"
+  "nextAction": "enrich independent gap-cluster units and author a reviewed canary content slice without claiming full BNCC coverage"
 }

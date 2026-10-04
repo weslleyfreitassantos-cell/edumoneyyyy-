@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
 import { buildCanonicalGraph } from './build-canonical-graph.mjs';
 
 describe('BNCC canonical graph audit', () => {
@@ -24,5 +25,17 @@ describe('BNCC canonical graph audit', () => {
     expect(output.summary.otherSemanticNodes).toBe(1);
     expect(output.summary.orphanAnchors).toEqual(['MATH_NUMBERS']);
     expect(output.nodes.find((node) => node.code === 'MATH_MISSING_LEAF').class).toBe('OTHER_SEMANTIC_NODE');
+  });
+
+  it('keeps the frozen production graph free of orphan anchors', () => {
+    const output = buildCanonicalGraph(
+      JSON.parse(readFileSync('content/adaptive/tec-escola-core-v4/registry.json', 'utf8')),
+      JSON.parse(readFileSync('content/adaptive/tec-escola-core-v4/relationships.json', 'utf8')),
+      JSON.parse(readFileSync('content/bncc/canonical/registry.json', 'utf8')),
+      JSON.parse(readFileSync('content/bncc/canonical/relationships-v4.json', 'utf8')),
+    );
+    expect(output.summary.orphanAnchors).toEqual([]);
+    expect(output.summary.otherSemanticNodes).toBe(0);
+    expect(output.edges).toContainEqual({ parent: 'MATHEMATICS_NUMBERS', child: 'FRACTIONS' });
   });
 });
