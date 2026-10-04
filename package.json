@@ -36,6 +36,8 @@
     "bncc:validate-mapping-candidates": "node tools/bncc/validate-mapping-candidates.mjs",
     "bncc:review-mappings": "node tools/bncc/review-mappings.mjs",
     "bncc:validate-mapping-reviews": "node tools/bncc/validate-mapping-reviews.mjs",
+    "bncc:semantic-candidates": "node tools/bncc/expand-semantic-candidates.mjs",
+    "bncc:validate-semantic-candidates": "node tools/bncc/validate-semantic-candidates.mjs",
     "bncc:canonical-graph": "node tools/bncc/build-canonical-graph.mjs",
     "bncc:sync-v4-registries": "node tools/bncc/sync-v4-registries.mjs",
     "bncc:content-packages": "node tools/bncc/build-content-packages.mjs",
