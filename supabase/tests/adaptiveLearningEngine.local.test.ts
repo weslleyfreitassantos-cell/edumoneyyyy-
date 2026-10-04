@@ -230,6 +230,13 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
 
     const expectOnlyAssignedStudent = async (client: AnyClient, institutionId: string) => {
       const rows = await rosterFor(client, institutionId);
+      const managementCheck = await client.rpc('can_manage_institution_operations', {
+        target_institution_id: institutionId,
+      });
+      expect(
+        managementCheck.error,
+        `failed to inspect institution management scope: ${managementCheck.error?.message ?? ''}`,
+      ).toBeNull();
       const identities = rows.map((row) => ({
         label:
           row.student_id === studentA
@@ -246,7 +253,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       }));
       expect(
         rows.map((row) => row.student_id),
-        `unexpected teacher roster identities: ${JSON.stringify(identities)}`,
+        `management=${String(managementCheck.data)}; unexpected teacher roster identities: ${JSON.stringify(identities)}`,
       ).toEqual([studentA]);
     };
 
