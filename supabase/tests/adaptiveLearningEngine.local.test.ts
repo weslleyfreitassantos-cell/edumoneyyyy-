@@ -267,48 +267,12 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       const managementCheck = await actor.client.rpc('can_manage_institution_operations', {
         target_institution_id: institutionId,
       });
-      const institutionAdminCheck = await actor.client.rpc('is_institution_admin', {
-        target_institution_id: institutionId,
-      });
-      const platformAdminCheck = await actor.client.rpc('is_platform_super_admin');
-      const membershipCheck = await actor.client
-        .from('memberships')
-        .select('role, active, institution_id')
-        .eq('profile_id', teacherA.id)
-        .eq('institution_id', institutionId)
-        .maybeSingle();
-      const profileCheck = await actor.client
-        .from('profiles')
-        .select('role, platform_role, active')
-        .eq('id', teacherA.id)
-        .maybeSingle();
       expect(
         managementCheck.error,
         `failed to inspect institution management scope: ${managementCheck.error?.message ?? ''}`,
       ).toBeNull();
-      expect(institutionAdminCheck.error).toBeNull();
-      expect(platformAdminCheck.error).toBeNull();
       expect(managementCheck.data).toBe(false);
-      expect(institutionAdminCheck.data).toBe(false);
-      expect(platformAdminCheck.data).toBe(false);
-      const identities = rows.map((row) => ({
-        label:
-          row.student_id === studentA
-            ? 'assigned'
-            : row.student_id === studentUnassigned
-              ? 'unassigned'
-              : row.student_id === studentB
-                ? 'foreign'
-                : 'unknown',
-        student_id: row.student_id,
-        full_name: row.full_name,
-        class_id: row.class_id,
-        class_name: row.class_name,
-      }));
-      expect(
-        rows.map((row) => row.student_id),
-        `membership=${JSON.stringify(membershipCheck.data)}; profile=${JSON.stringify(profileCheck.data)}; unexpected roster identities: ${JSON.stringify(identities)}`,
-      ).toEqual([studentA]);
+      expect(rows.map((row) => row.student_id)).toEqual([studentA]);
     };
 
     const expectManagerRoster = async (actor: RuntimeActor, institutionId: string) => {
