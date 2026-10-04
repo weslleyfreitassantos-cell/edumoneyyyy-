@@ -28,6 +28,7 @@ function hash(value) {
 const nodes = [...(catalog.nodes ?? [])].sort((left, right) => left.code.localeCompare(right.code));
 const reviewByCode = new Map((reviews.reviews ?? []).map((review) => [review.officialCode, review]));
 const promotionByCode = new Map((promotions.promotions ?? []).map((promotion) => [promotion.officialCode, promotion]));
+const hasSourceIssue = (node, review) => node.sourceIssue === true || review?.sourceIssue === true;
 const mappings = nodes.map((node) => {
   const review = reviewByCode.get(node.code);
   const promotion = promotionByCode.get(node.code);
@@ -63,13 +64,30 @@ const mappings = nodes.map((node) => {
     };
   }
 
+  if (hasSourceIssue(node, review)) {
+    return {
+      ...base,
+      status: 'SOURCE_REVIEW_REQUIRED',
+      mappingSource: 'OFFICIAL_SOURCE_REVIEW_GATE',
+      reviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      canonicalSkillCodes: [],
+      rationale: review?.reason ?? 'A fonte oficial possui uma ocorrência explicitamente marcada para revisão antes do mapeamento.',
+    };
+  }
+
+  const mappingStatus = review?.decision === 'CANONICAL_GAP' || !review
+    ? 'CANONICAL_GAP'
+    : 'MAPPING_PENDING';
+
   return {
     ...base,
-    status: 'SOURCE_REVIEW_REQUIRED',
-    mappingSource: 'TECHNICAL_REVIEW_WITH_PEDAGOGICAL_GATE',
+    status: mappingStatus,
+    mappingSource: mappingStatus === 'CANONICAL_GAP'
+      ? 'CANONICAL_MAPPING_GAP'
+      : 'TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE',
     reviewStatus: review?.pedagogicalReviewStatus ?? 'PEDAGOGICAL_REVIEW_PENDING',
     canonicalSkillCodes: [],
-    rationale: review?.reason ?? 'A fonte oficial ou a correspondência canônica exige revisão antes de qualquer mapeamento.',
+    rationale: review?.reason ?? 'A fonte oficial está disponível, mas a correspondência canônica ainda está pendente de revisão.',
   };
 });
 
@@ -81,21 +99,26 @@ const by = (field) => Object.fromEntries(
 );
 
 const coverage = {
-  schemaVersion: 'tec-escola.bncc.mapping-coverage.v2',
+  schemaVersion: 'tec-escola.bncc.mapping-coverage.v3',
   catalogVersion: catalog.catalogVersion,
   catalogHash: catalog.catalogHash,
   sourceOfTruth: 'official_catalog_plus_independent_review_plus_safe_promotions',
   generatedAt: process.env.BNCC_GENERATED_AT ?? '2026-10-04T00:00:00.000Z',
   statusContract: {
-    accountedStatuses: ['MAPPED', 'HIERARCHY_ONLY', 'EXPLICITLY_NON_ADAPTIVE', 'SOURCE_REVIEW_REQUIRED'],
+    accountedStatuses: ['MAPPED', 'HIERARCHY_ONLY', 'EXPLICITLY_NON_ADAPTIVE', 'MAPPING_PENDING', 'CANONICAL_GAP', 'SOURCE_REVIEW_REQUIRED'],
     unaccountedStatus: 'UNACCOUNTED',
-    reviewRequiredStatus: 'SOURCE_REVIEW_REQUIRED',
+    mappingPendingStatus: 'MAPPING_PENDING',
+    canonicalGapStatus: 'CANONICAL_GAP',
+    sourceReviewRequiredStatus: 'SOURCE_REVIEW_REQUIRED',
+    sourceReviewRule: 'Somente nodes ou reviews explicitamente marcados com sourceIssue=true entram em SOURCE_REVIEW_REQUIRED.',
   },
   summary: {
     totalOfficialNodes: mappings.length,
     mapped: mappings.filter((mapping) => mapping.status === 'MAPPED').length,
     hierarchyOnly: mappings.filter((mapping) => mapping.status === 'HIERARCHY_ONLY').length,
     explicitlyNonAdaptive: 0,
+    mappingPending: mappings.filter((mapping) => mapping.status === 'MAPPING_PENDING').length,
+    canonicalGaps: mappings.filter((mapping) => mapping.status === 'CANONICAL_GAP').length,
     sourceReviewRequired: mappings.filter((mapping) => mapping.status === 'SOURCE_REVIEW_REQUIRED').length,
     unaccounted: mappings.filter((mapping) => mapping.status === 'UNACCOUNTED').length,
     byStage: by('stage'),
@@ -112,6 +135,8 @@ console.log(`BNCC_MAPPING_OUTPUT=${path.relative(root, outputPath)}`);
 console.log(`BNCC_MAPPING_TOTAL=${mappings.length}`);
 console.log(`BNCC_MAPPING_MAPPED=${coverage.summary.mapped}`);
 console.log(`BNCC_MAPPING_HIERARCHY_ONLY=${coverage.summary.hierarchyOnly}`);
+console.log(`BNCC_MAPPING_PENDING=${coverage.summary.mappingPending}`);
+console.log(`BNCC_MAPPING_CANONICAL_GAPS=${coverage.summary.canonicalGaps}`);
 console.log(`BNCC_MAPPING_SOURCE_REVIEW_REQUIRED=${coverage.summary.sourceReviewRequired}`);
 console.log(`BNCC_MAPPING_UNACCOUNTED=${coverage.summary.unaccounted}`);
 console.log(`BNCC_MAPPING_HASH=${coverage.coverageHash}`);
