@@ -31,6 +31,16 @@ export interface LearningClass {
   name: string;
 }
 
+interface TeacherLearningSubjectRow {
+  subject_id: string;
+  subject_name: string;
+}
+
+interface TeacherLearningClassRow {
+  class_id: string;
+  class_name: string;
+}
+
 export interface LearningCollection {
   id: string;
   subject_id: string;
@@ -689,6 +699,21 @@ export const learningCenterService = {
     );
   },
 
+  teacherLearningSubjects: (institutionId: string) =>
+    read<TeacherLearningSubjectRow[]>(
+      supabase.rpc('list_teacher_learning_subjects', {
+        p_institution_id: institutionId,
+      }),
+    ).then((rows) => rows.map((row) => ({ id: row.subject_id, name: row.subject_name }))),
+
+  teacherLearningClasses: (institutionId: string, subjectId: string) =>
+    read<TeacherLearningClassRow[]>(
+      supabase.rpc('list_teacher_learning_classes', {
+        p_institution_id: institutionId,
+        p_subject_id: subjectId,
+      }),
+    ).then((rows) => rows.map((row) => ({ id: row.class_id, name: row.class_name }))),
+
   studentCollections: (institutionId: string) =>
     read<LearningCollection[]>(
       supabase
@@ -1259,16 +1284,22 @@ export const learningCenterService = {
       p_confidence: input.confidence,
     })),
 
-  teacherStudents: (institutionId: string) =>
+  teacherStudents: (institutionId: string, classId: string, subjectId: string) =>
     read<LearningTeacherStudent[]>(
-      supabase.rpc('list_teacher_learning_students', { p_institution_id: institutionId }),
+      supabase.rpc('list_teacher_learning_students', {
+        p_institution_id: institutionId,
+        p_class_id: classId,
+        p_subject_id: subjectId,
+      }),
     ),
 
-  teacherStudentDetail: (institutionId: string, studentId: string) =>
+  teacherStudentDetail: (institutionId: string, studentId: string, classId: string, subjectId: string) =>
     read<LearningTeacherStudentDetail>(
       supabase.rpc('get_teacher_learning_student_detail', {
         p_institution_id: institutionId,
         p_student_id: studentId,
+        p_class_id: classId,
+        p_subject_id: subjectId,
       }),
     ),
 

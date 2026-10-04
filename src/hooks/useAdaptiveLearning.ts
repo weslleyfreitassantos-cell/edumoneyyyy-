@@ -27,17 +27,20 @@ export const adaptiveLearningKeys = {
     'teacher-guided-insights-v2',
     institutionId,
   ] as const,
-  teacherStudentKnowledgeGraph: (institutionId: string, studentId: string) => [
+  teacherStudentKnowledgeGraph: (institutionId: string, studentId: string, classId: string, subjectId: string) => [
     ...adaptiveLearningKeys.all,
     'teacher-student-knowledge-graph-v3',
     institutionId,
     studentId,
+    classId,
+    subjectId,
   ] as const,
-  teacherClassHeatmap: (institutionId: string, classId: string) => [
+  teacherClassHeatmap: (institutionId: string, classId: string, subjectId: string) => [
     ...adaptiveLearningKeys.all,
     'teacher-class-knowledge-heatmap-v3',
     institutionId,
     classId,
+    subjectId,
   ] as const,
   studentV3Plan: (institutionId: string, studentId: string, targetSkillId: string) => [
     ...adaptiveLearningKeys.all,
@@ -136,33 +139,33 @@ export function useTeacherGuidedInsightsV2(institutionId?: string) {
   });
 }
 
-export function useTeacherStudentKnowledgeGraph(institutionId?: string, studentId?: string) {
+export function useTeacherStudentKnowledgeGraph(institutionId?: string, studentId?: string, classId?: string, subjectId?: string) {
   return useQuery({
-    queryKey: adaptiveLearningKeys.teacherStudentKnowledgeGraph(institutionId ?? '', studentId ?? ''),
+    queryKey: adaptiveLearningKeys.teacherStudentKnowledgeGraph(institutionId ?? '', studentId ?? '', classId ?? '', subjectId ?? ''),
     queryFn: async () => {
       try {
-        return await adaptiveLearningService.teacherStudentKnowledgeGraph(institutionId!, studentId!);
+        return await adaptiveLearningService.teacherStudentKnowledgeGraph(institutionId!, studentId!, classId!, subjectId!);
       } catch {
         return [];
       }
     },
-    enabled: Boolean(institutionId && studentId),
+    enabled: Boolean(institutionId && studentId && classId && subjectId),
     staleTime: 60_000,
     retry: false,
   });
 }
 
-export function useTeacherClassKnowledgeHeatmap(institutionId?: string, classId?: string) {
+export function useTeacherClassKnowledgeHeatmap(institutionId?: string, classId?: string, subjectId?: string) {
   return useQuery({
-    queryKey: adaptiveLearningKeys.teacherClassHeatmap(institutionId ?? '', classId ?? ''),
+    queryKey: adaptiveLearningKeys.teacherClassHeatmap(institutionId ?? '', classId ?? '', subjectId ?? ''),
     queryFn: async () => {
       try {
-        return await adaptiveLearningService.teacherClassKnowledgeHeatmap(institutionId!, classId!);
+        return await adaptiveLearningService.teacherClassKnowledgeHeatmap(institutionId!, classId!, subjectId!);
       } catch {
         return [];
       }
     },
-    enabled: Boolean(institutionId && classId),
+    enabled: Boolean(institutionId && classId && subjectId),
     staleTime: 60_000,
     retry: false,
   });

@@ -42,7 +42,7 @@ async function login(page: import('@playwright/test').Page, actor: Actor): Promi
 }
 
 adaptiveDescribe('adaptive learning completion journeys', () => {
-  test('covers support, packages, daily plan, review and simulation recovery', async ({ browser }) => {
+  test('covers support, packages, daily plan, review and simulation recovery', async ({ browser }, testInfo) => {
     const service = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
     const suffix = Date.now().toString(36);
     const userIds: string[] = [];
@@ -98,6 +98,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       })).id;
       await insertOne(service, 'class_curriculum_items', { institution_id: institutionId, class_id: classId, subject_id: subjectId, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
       await insertOne(service, 'subject_offerings', { class_id: classId, subject_id: subjectId, teacher_profile_id: teacher.id, term_id: termId, active: true });
+      await insertOne(service, 'learning_curriculum_subject_links', { institution_id: institutionId, subject_id: subjectId, subject_area: 'MATEMATICA', active: true });
 
       studentId = (await insertOne(service, 'students', { institution_id: institutionId, profile_id: alice.id, registration_number: `COMPLETE-${suffix}`, active: true })).id;
       mariaStudentId = (await insertOne(service, 'students', { institution_id: institutionId, profile_id: maria.id, registration_number: `SUPPORT-COMPLETE-${suffix}`, active: true })).id;
@@ -143,7 +144,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
         });
       }
 
-      const aliceSession = await alice.client.rpc('start_guided_learning_session', { p_institution_id: institutionId, p_student_id: studentId, p_target_canonical_skill_id: canonicalSkillId });
+      const aliceSession = await alice.client.rpc('start_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId, p_target_canonical_skill_id: canonicalSkillId });
       expect(aliceSession.error).toBeNull();
       const mariaSession = await maria.client.rpc('start_guided_learning_session', { p_institution_id: institutionId, p_student_id: mariaStudentId, p_target_canonical_skill_id: canonicalSkillId });
       expect(mariaSession.error).toBeNull();
@@ -205,9 +206,21 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(teacherPage.getByRole('heading', { name: 'Desempenho', exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByLabel('Turma selecionada').selectOption(classId);
       await expect(teacherPage.getByRole('region', { name: 'Dificuldades da turma' })).toBeVisible({ timeout: 30_000 });
-      await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
+      await teacherPage.screenshot({ path: testInfo.outputPath('visual/teacher-class-desktop.png'), fullPage: true });
+      await teacherPage.setViewportSize({ width: 390, height: 844 });
+      await teacherPage.goto('/teacher/pedagogical-center');
+      await expect(teacherPage.getByRole('heading', { name: 'Desempenho', exact: true })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.getByLabel('Turma selecionada').selectOption(classId);
+      await expect(teacherPage.getByRole('region', { name: 'Dificuldades da turma' })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.screenshot({ path: testInfo.outputPath('visual/teacher-class-mobile.png'), fullPage: true });
+      await teacherPage.setViewportSize({ width: 1280, height: 900 });
+      await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}?class=${classId}&subject=${subjectId}`);
       await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).count()).toBe(0);
+      const scopedPerformance = teacherPage.getByRole('region', { name: 'Desempenho por matéria' });
+      await expect(scopedPerformance).toContainText(`Desempenho em Matemática Complete`);
+      await expect(scopedPerformance).not.toContainText('Português');
+      await teacherPage.screenshot({ path: testInfo.outputPath('visual/teacher-student-desktop.png'), fullPage: true });
       const assignment = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
       expect(assignment.error).toBeNull();
       const assignmentRetry = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
@@ -219,8 +232,9 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await mariaPage.goto('/student/study');
       await expect(mariaPage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
       expect(await mariaPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      await mariaPage.screenshot({ path: testInfo.outputPath('visual/student-home-mobile.png'), fullPage: true });
 
-      await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}`);
+      await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}?class=${classId}&subject=${subjectId}`);
       await expect(teacherPage.getByText('Desempenho do aluno', { exact: true })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
 
@@ -230,6 +244,19 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await alicePage.goto('/student/study');
       await expect(alicePage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
       expect(await alicePage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      await alicePage.screenshot({ path: testInfo.outputPath('visual/student-home-mobile-alice.png'), fullPage: true });
+      await alicePage.setViewportSize({ width: 1440, height: 900 });
+      await alicePage.goto('/student/study');
+      await expect(alicePage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
+      await alicePage.screenshot({ path: testInfo.outputPath('visual/student-home-desktop.png'), fullPage: true });
+      await alicePage.setViewportSize({ width: 390, height: 844 });
+      await alicePage.goto('/student/study/guided');
+      await expect(alicePage.getByText(/Sua jornada/).first()).toBeVisible({ timeout: 30_000 });
+      await alicePage.screenshot({ path: testInfo.outputPath('visual/subject-session-mobile.png'), fullPage: true });
+      await alicePage.setViewportSize({ width: 1440, height: 900 });
+      await alicePage.reload();
+      await expect(alicePage.getByText(/Sua jornada/).first()).toBeVisible({ timeout: 30_000 });
+      await alicePage.screenshot({ path: testInfo.outputPath('visual/subject-session-desktop.png'), fullPage: true });
 
       const simulation = await service.from('learning_simulations').select('id,learning_simulation_questions(position,question_bank_id)').eq('title', 'Matemática · diagnóstico rápido').is('institution_id', null).single();
       expect(simulation.error).toBeNull();

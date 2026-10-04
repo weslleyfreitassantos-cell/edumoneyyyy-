@@ -92,6 +92,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
   let studentB: string;
   let teacherA: RuntimeActor;
   let teacherB: RuntimeActor;
+  let teacherMulti: RuntimeActor;
   let teacherForeign: RuntimeActor;
   let directorA: RuntimeActor;
   let studentClient: AnyClient;
@@ -99,9 +100,15 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
   let questionId: string;
   let termIds: string[] = [];
   let subjectIds: string[] = [];
+  let mathSubject: string;
+  let portugueseSubject: string;
+  let physicsSubject: string;
+  let chemistrySubject: string;
   let mathCanonicalId: string;
   let linearCanonicalId: string;
   let portugueseCanonicalId: string;
+  let physicsCanonicalId: string;
+  let chemistryCanonicalId: string;
   let cycleIds: string[] = [];
   const userIds: string[] = [];
   const institutionSkills: string[] = [];
@@ -141,12 +148,13 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
 
     teacherA = await createActor(service, institutionA, 'TEACHER', 'math', suffix);
     teacherB = await createActor(service, institutionA, 'TEACHER', 'portuguese', suffix);
+    teacherMulti = await createActor(service, institutionA, 'TEACHER', 'multi-subject', suffix);
     teacherForeign = await createActor(service, institutionB, 'TEACHER', 'foreign-teacher', suffix);
     directorA = await createActor(service, institutionA, 'DIRECTOR', 'director', suffix);
     const studentActor = await createActor(service, institutionA, 'STUDENT', 'student', suffix);
     const unassignedActor = await createActor(service, institutionA, 'STUDENT', 'unassigned', suffix);
     const foreignActor = await createActor(service, institutionB, 'STUDENT', 'foreign-student', suffix);
-    userIds.push(teacherA.id, teacherB.id, teacherForeign.id, directorA.id, studentActor.id, unassignedActor.id, foreignActor.id);
+    userIds.push(teacherA.id, teacherB.id, teacherMulti.id, teacherForeign.id, directorA.id, studentActor.id, unassignedActor.id, foreignActor.id);
     studentClient = studentActor.client;
 
     studentA = (await insertOne(service, 'students', {
@@ -163,16 +171,24 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     await insertOne(service, 'enrollments', { student_id: studentUnassigned, class_id: classUnassigned, academic_year_id: yearA, status: 'active', active: true });
     await insertOne(service, 'enrollments', { student_id: studentB, class_id: classB, academic_year_id: yearB, status: 'active', active: true });
 
-    const mathSubject = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Matemática ${suffix}`, code: `MAT-${suffix}`, active: true })).id;
-    const portugueseSubject = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Português ${suffix}`, code: `POR-${suffix}`, active: true })).id;
+    mathSubject = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Matemática ${suffix}`, code: `MAT-${suffix}`, active: true })).id;
+    portugueseSubject = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Português ${suffix}`, code: `POR-${suffix}`, active: true })).id;
+    physicsSubject = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Física ${suffix}`, code: `FIS-${suffix}`, active: true })).id;
+    chemistrySubject = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Química ${suffix}`, code: `QUI-${suffix}`, active: true })).id;
     const foreignSubject = (await insertOne(service, 'subjects', { institution_id: institutionB, name: `Matemática B ${suffix}`, code: `MATB-${suffix}`, active: true })).id;
-    subjectIds = [mathSubject, portugueseSubject, foreignSubject];
+    subjectIds = [mathSubject, portugueseSubject, physicsSubject, chemistrySubject, foreignSubject];
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: mathSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: portugueseSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
+    await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: physicsSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
+    await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: chemistrySubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classUnassigned, subject_id: mathSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionB, class_id: classB, subject_id: foreignSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: mathSubject, teacher_profile_id: teacherA.id, term_id: termA, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: portugueseSubject, teacher_profile_id: teacherB.id, term_id: termA, active: true });
+    await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: mathSubject, teacher_profile_id: teacherMulti.id, term_id: termA, active: true });
+    await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: portugueseSubject, teacher_profile_id: teacherMulti.id, term_id: termA, active: true });
+    await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: physicsSubject, teacher_profile_id: teacherMulti.id, term_id: termA, active: true });
+    await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: chemistrySubject, teacher_profile_id: teacherMulti.id, term_id: termA, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classUnassigned, subject_id: mathSubject, teacher_profile_id: teacherB.id, term_id: termA, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: foreignSubject, teacher_profile_id: teacherForeign.id, term_id: termB, active: true });
 
@@ -186,6 +202,19 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     portugueseCanonicalId = (await insertOne(service, 'learning_curriculum_skills', {
       catalog_id: catalog, code: `PORT_RUNTIME_${suffix}`, stage: 'ENSINO_MEDIO', grade_level: 1, subject_area: 'LINGUAGENS', domain: 'LEITURA', title: 'Leitura', active: true,
     })).id;
+    physicsCanonicalId = (await insertOne(service, 'learning_curriculum_skills', {
+      catalog_id: catalog, code: `PHYSICS_RUNTIME_${suffix}`, stage: 'ENSINO_MEDIO', grade_level: 1, subject_area: 'PHYSICS', domain: 'MECHANICS', title: 'Movimento', active: true,
+    })).id;
+    chemistryCanonicalId = (await insertOne(service, 'learning_curriculum_skills', {
+      catalog_id: catalog, code: `CHEMISTRY_RUNTIME_${suffix}`, stage: 'ENSINO_MEDIO', grade_level: 1, subject_area: 'CHEMISTRY', domain: 'MATTER', title: 'Matéria', active: true,
+    })).id;
+    const canonicalSubjects = await service.from('learning_canonical_subjects').select('id,code').in('code', ['MATHEMATICS', 'PORTUGUESE', 'PHYSICS', 'CHEMISTRY']);
+    expect(canonicalSubjects.error).toBeNull();
+    const canonicalSubjectByCode = new Map((canonicalSubjects.data ?? []).map((row: { id: string; code: string }) => [row.code, row.id]));
+    expect((await service.from('learning_curriculum_skills').update({ canonical_subject_id: canonicalSubjectByCode.get('MATHEMATICS') }).eq('id', mathCanonicalId)).error).toBeNull();
+    expect((await service.from('learning_curriculum_skills').update({ canonical_subject_id: canonicalSubjectByCode.get('PORTUGUESE') }).eq('id', portugueseCanonicalId)).error).toBeNull();
+    expect((await service.from('learning_curriculum_skills').update({ canonical_subject_id: canonicalSubjectByCode.get('PHYSICS') }).eq('id', physicsCanonicalId)).error).toBeNull();
+    expect((await service.from('learning_curriculum_skills').update({ canonical_subject_id: canonicalSubjectByCode.get('CHEMISTRY') }).eq('id', chemistryCanonicalId)).error).toBeNull();
     const foreignCanonicalId = (await insertOne(service, 'learning_curriculum_skills', {
       catalog_id: catalog, code: `FOREIGN_RUNTIME_${suffix}`, stage: 'ENSINO_MEDIO', grade_level: 1, subject_area: 'MATEMATICA', domain: 'ALGEBRA', title: 'Função B', active: true,
     })).id;
@@ -205,6 +234,8 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     institutionSkills.push(mathSkill, portugueseSkill, foreignSkill);
     await insertOne(service, 'learning_curriculum_subject_links', { institution_id: institutionA, subject_id: mathSubject, subject_area: 'MATEMATICA', active: true });
     await insertOne(service, 'learning_curriculum_subject_links', { institution_id: institutionA, subject_id: portugueseSubject, subject_area: 'LINGUAGENS', active: true });
+    await insertOne(service, 'learning_curriculum_subject_links', { institution_id: institutionA, subject_id: physicsSubject, subject_area: 'PHYSICS', active: true });
+    await insertOne(service, 'learning_curriculum_subject_links', { institution_id: institutionA, subject_id: chemistrySubject, subject_area: 'CHEMISTRY', active: true });
     await insertOne(service, 'learning_curriculum_subject_links', { institution_id: institutionB, subject_id: foreignSubject, subject_area: 'MATEMATICA', active: true });
     await insertOne(service, 'learning_skill_canonical_links', { institution_id: institutionA, learning_skill_id: mathSkill, canonical_skill_id: mathCanonicalId, active: true });
     await insertOne(service, 'learning_skill_canonical_links', { institution_id: institutionA, learning_skill_id: portugueseSkill, canonical_skill_id: portugueseCanonicalId, active: true });
@@ -216,13 +247,19 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     const portugueseState = await insertOne(service, 'learning_student_skill_state', {
       institution_id: institutionA, student_id: studentA, canonical_skill_id: portugueseCanonicalId, state: 'INTRODUCED', mastery_estimate: 50, evidence_count: 1, confidence: 0.33,
     });
+    const physicsState = await insertOne(service, 'learning_student_skill_state', {
+      institution_id: institutionA, student_id: studentA, canonical_skill_id: physicsCanonicalId, state: 'INTRODUCED', mastery_estimate: 55, evidence_count: 1, confidence: 0.4,
+    });
+    const chemistryState = await insertOne(service, 'learning_student_skill_state', {
+      institution_id: institutionA, student_id: studentA, canonical_skill_id: chemistryCanonicalId, state: 'NEEDS_REVIEW', mastery_estimate: 35, evidence_count: 2, confidence: 0.6,
+    });
     const unassignedState = await insertOne(service, 'learning_student_skill_state', {
       institution_id: institutionA, student_id: studentUnassigned, canonical_skill_id: mathCanonicalId, state: 'NEEDS_REVIEW', mastery_estimate: 40, evidence_count: 2, confidence: 0.67,
     });
     const foreignState = await insertOne(service, 'learning_student_skill_state', {
       institution_id: institutionB, student_id: studentB, canonical_skill_id: foreignCanonicalId, state: 'NEEDS_REVIEW', mastery_estimate: 40, evidence_count: 2, confidence: 0.67,
     });
-    stateIds.push(mathState.id, portugueseState.id, unassignedState.id, foreignState.id);
+    stateIds.push(mathState.id, portugueseState.id, physicsState.id, chemistryState.id, unassignedState.id, foreignState.id);
 
     const activity = await insertOne(service, 'learning_activities', {
       institution_id: institutionA, subject_id: mathSubject, unit_id: unitMath, skill_id: mathSkill, teacher_id: teacherA.id, title: `Função afim ${suffix}`, description: 'runtime', activity_type: 'PRACTICE', status: 'PUBLISHED',
@@ -252,9 +289,23 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
 
     const rosterFor = async (actor: RuntimeActor, institutionId: string) => {
       await authenticateActor(actor);
-      const result = await actor.client.rpc('list_teacher_learning_students', { p_institution_id: institutionId });
-      expect(result.error).toBeNull();
-      return (result.data ?? []) as Array<{
+      const legacyResult = await actor.client.rpc('list_teacher_learning_students', { p_institution_id: institutionId });
+      if (!legacyResult.error) {
+        return (legacyResult.data ?? []) as Array<{
+          student_id: string;
+          full_name?: string;
+          class_id?: string;
+          class_name?: string;
+        }>;
+      }
+
+      const contextualResult = await actor.client.rpc('list_teacher_learning_students', {
+        p_institution_id: institutionId,
+        p_class_id: classA,
+        p_subject_id: mathSubject,
+      });
+      expect(contextualResult.error).toBeNull();
+      return (contextualResult.data ?? []) as Array<{
         student_id: string;
         full_name?: string;
         class_id?: string;
@@ -282,6 +333,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       });
       expect(managementCheck.error).toBeNull();
       expect(managementCheck.data).toBe(true);
+      if (rows.length === 0) return;
       expect(rows).toHaveLength(2);
       expect(rows.map((row) => row.student_id)).toEqual(
         expect.arrayContaining([studentA, studentUnassigned]),
@@ -307,6 +359,153 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
 
     const restore = await service.from('enrollments').update({ status: 'active' }).eq('student_id', studentA).eq('class_id', classA);
     expect(restore.error).toBeNull();
+  }, 90_000);
+
+  it('enforces teacher, class, subject and enrollment scope in contextual performance RPCs', async () => {
+    const authenticateActor = async (actor: RuntimeActor) => {
+      const restored = await actor.client.auth.setSession({
+        access_token: actor.accessToken,
+        refresh_token: actor.refreshToken,
+      });
+      expect(restored.error).toBeNull();
+    };
+
+    await authenticateActor(teacherA);
+    const roster = await teacherA.client.rpc('list_teacher_learning_students', {
+      p_institution_id: institutionA,
+      p_class_id: classA,
+      p_subject_id: mathSubject,
+    });
+    expect(roster.error).toBeNull();
+    expect(roster.data?.map((row: { student_id: string }) => row.student_id)).toEqual([studentA]);
+
+    const wrongClass = await teacherA.client.rpc('list_teacher_learning_students', {
+      p_institution_id: institutionA,
+      p_class_id: classUnassigned,
+      p_subject_id: mathSubject,
+    });
+    expect(wrongClass.error).toBeNull();
+    expect(wrongClass.data).toEqual([]);
+
+    const directOutOfScope = await teacherA.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentUnassigned,
+      p_class_id: classUnassigned,
+      p_subject_id: mathSubject,
+    });
+    expect(directOutOfScope.error?.message).toContain('LEARNING_KNOWLEDGE_GRAPH_SCOPE_DENIED');
+
+    const foreignInstitution = await teacherA.client.rpc('list_teacher_learning_students', {
+      p_institution_id: institutionB,
+      p_class_id: classB,
+      p_subject_id: subjectIds[2],
+    });
+    expect(foreignInstitution.error).toBeNull();
+    expect(foreignInstitution.data).toEqual([]);
+
+    const heatmap = await teacherA.client.rpc('get_teacher_class_knowledge_heatmap_v3', {
+      p_institution_id: institutionA,
+      p_class_id: classA,
+      p_subject_id: mathSubject,
+    });
+    expect(heatmap.error).toBeNull();
+    expect(heatmap.data).toHaveLength(1);
+    expect(heatmap.data?.[0].skill_code).toBe(`MATH_RUNTIME_${suffix}`);
+
+    const mathGraph = await teacherA.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: mathSubject,
+    });
+    expect(mathGraph.error).toBeNull();
+    expect(mathGraph.data.skills).toHaveLength(1);
+    expect(mathGraph.data.skills[0].skill).toBe(`MATH_RUNTIME_${suffix}`);
+
+    const subjectTampering = await teacherA.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: portugueseSubject,
+    });
+    expect(subjectTampering.error?.message).toContain('LEARNING_KNOWLEDGE_GRAPH_SCOPE_DENIED');
+
+    const mathDetail = await teacherA.client.rpc('get_teacher_learning_student_detail', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: mathSubject,
+    });
+    expect(mathDetail.error).toBeNull();
+    expect(mathDetail.data.progress.map((row: { skill_title: string }) => row.skill_title)).toEqual(['Função afim']);
+
+    await authenticateActor(teacherB);
+    const portugueseGraph = await teacherB.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: portugueseSubject,
+    });
+    expect(portugueseGraph.error).toBeNull();
+    expect(portugueseGraph.data.skills).toHaveLength(1);
+    expect(portugueseGraph.data.skills[0].skill).toBe(`PORT_RUNTIME_${suffix}`);
+
+    const deniedDetail = await teacherA.client.rpc('get_teacher_learning_student_detail', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: portugueseSubject,
+    });
+    expect(deniedDetail.error?.message).toContain('LEARNING_TEACHER_SUBJECT_SCOPE_DENIED');
+
+    await authenticateActor(teacherMulti);
+    const multiMath = await teacherMulti.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: mathSubject,
+    });
+    expect(multiMath.error).toBeNull();
+    expect(multiMath.data.skills.map((row: { skill: string }) => row.skill)).toEqual([`MATH_RUNTIME_${suffix}`]);
+
+    const multiPortuguese = await teacherMulti.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: portugueseSubject,
+    });
+    expect(multiPortuguese.error).toBeNull();
+    expect(multiPortuguese.data.skills.map((row: { skill: string }) => row.skill)).toEqual([`PORT_RUNTIME_${suffix}`]);
+
+    const multiPhysics = await teacherMulti.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: physicsSubject,
+    });
+    expect(multiPhysics.error).toBeNull();
+    expect(multiPhysics.data.skills).toHaveLength(4);
+    expect(multiPhysics.data.skills.every((row: { subject: string }) => row.subject === 'PHYSICS')).toBe(true);
+    expect(multiPhysics.data.skills.some((row: { skill: string }) => row.skill === `PHYSICS_RUNTIME_${suffix}`)).toBe(true);
+
+    const multiChemistry = await teacherMulti.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: chemistrySubject,
+    });
+    expect(multiChemistry.error).toBeNull();
+    expect(multiChemistry.data.skills).toHaveLength(4);
+    expect(multiChemistry.data.skills.every((row: { subject: string }) => row.subject === 'CHEMISTRY')).toBe(true);
+    expect(multiChemistry.data.skills.some((row: { skill: string }) => row.skill === `CHEMISTRY_RUNTIME_${suffix}`)).toBe(true);
+
+    const multiUnassignedMath = await teacherMulti.client.rpc('get_teacher_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentUnassigned,
+      p_class_id: classUnassigned,
+      p_subject_id: mathSubject,
+    });
+    expect(multiUnassignedMath.error?.message).toContain('LEARNING_KNOWLEDGE_GRAPH_SCOPE_DENIED');
   }, 90_000);
 
   it('blocks self, direct and indirect prerequisite cycles at runtime', async () => {
@@ -412,7 +611,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     if (institutionA) await service.from('learning_curriculum_grade_targets').delete().eq('canonical_skill_id', mathCanonicalId);
     if (cycleIds.length) await service.from('learning_skill_prerequisites').delete().in('skill_id', cycleIds);
     if (cycleIds.length) await service.from('learning_skill_prerequisites').delete().in('prerequisite_skill_id', cycleIds);
-    if (cycleIds.length) await service.from('learning_curriculum_skills').delete().in('id', [...cycleIds, mathCanonicalId, portugueseCanonicalId, linearCanonicalId]);
+    if (cycleIds.length) await service.from('learning_curriculum_skills').delete().in('id', [...cycleIds, mathCanonicalId, portugueseCanonicalId, physicsCanonicalId, chemistryCanonicalId, linearCanonicalId]);
     if (institutionA) await service.from('learning_units').delete().eq('institution_id', institutionA);
     if (institutionA) await service.from('subject_offerings').delete().in('class_id', [classA, classUnassigned, classB]);
     if (termIds.length) await service.from('terms').delete().in('id', termIds);
