@@ -11,11 +11,13 @@
       "EXPLICITLY_NON_ADAPTIVE",
       "MAPPING_PENDING",
       "CANONICAL_GAP",
+      "HUMAN_REVIEW_BLOCKED",
       "SOURCE_REVIEW_REQUIRED"
     ],
     "unaccountedStatus": "UNACCOUNTED",
     "mappingPendingStatus": "MAPPING_PENDING",
     "canonicalGapStatus": "CANONICAL_GAP",
+    "humanReviewBlockedStatus": "HUMAN_REVIEW_BLOCKED",
     "sourceReviewRequiredStatus": "SOURCE_REVIEW_REQUIRED",
     "sourceReviewRule": "Somente nodes ou reviews explicitamente marcados com sourceIssue=true entram em SOURCE_REVIEW_REQUIRED."
   },
@@ -24,8 +26,9 @@
     "mapped": 2,
     "hierarchyOnly": 104,
     "explicitlyNonAdaptive": 0,
-    "mappingPending": 121,
+    "mappingPending": 0,
     "canonicalGaps": 1496,
+    "humanReviewBlocked": 121,
     "sourceReviewRequired": 0,
     "unaccounted": 0,
     "byStage": {
@@ -7937,11 +7940,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 347
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06CI02",
@@ -7953,11 +7968,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 347
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06CI03",
@@ -8209,11 +8236,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 42
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06CO05",
@@ -8225,11 +8264,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 42
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06CO06",
@@ -8257,11 +8308,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 44
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06CO08",
@@ -8289,11 +8352,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 44
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06CO10",
@@ -8305,11 +8380,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 44
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06ER01",
@@ -8353,11 +8440,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 455
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_INTERPRET_SYMBOLS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06ER04",
@@ -8369,11 +8468,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 455
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_INTERPRET_SYMBOLS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06ER05",
@@ -8433,11 +8544,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 387
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06GE02",
@@ -8449,11 +8572,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 387
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06GE03",
@@ -9396,11 +9531,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 173
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06LP04",
@@ -9732,11 +9879,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 303
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA13",
@@ -9748,11 +9907,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 303
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA14",
@@ -9780,11 +9951,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 305
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade estrutural e evidência lexical fortes; aprovação conservadora ainda requer revisão pedagógica humana antes da promoção."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA16",
@@ -9796,11 +9979,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 305
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA17",
@@ -9812,11 +10007,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 305
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA18",
@@ -9940,11 +10147,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 305
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA26",
@@ -9956,11 +10175,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 305
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA27",
@@ -9972,11 +10203,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 305
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA28",
@@ -9988,11 +10231,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 305
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA29",
@@ -10020,11 +10275,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 307
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA31",
@@ -10036,11 +10303,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 307
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA32",
@@ -10052,11 +10331,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 307
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA33",
@@ -10068,11 +10359,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 307
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF06MA34",
@@ -10356,11 +10659,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 46
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07CO02",
@@ -10388,11 +10703,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 46
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07CO04",
@@ -10404,11 +10731,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 46
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07CO05",
@@ -10420,11 +10759,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 48
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07CO06",
@@ -10708,11 +11059,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 389
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07GE05",
@@ -10724,11 +11087,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 389
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07GE06",
@@ -10740,11 +11115,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 389
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07GE07",
@@ -10756,11 +11143,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 389
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07GE08",
@@ -10772,11 +11171,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 389
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07GE09",
@@ -10788,11 +11199,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 389
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07GE10",
@@ -10804,11 +11227,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 389
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07GE11",
@@ -10932,11 +11367,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 425
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07HI07",
@@ -10948,11 +11395,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 425
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07HI08",
@@ -10964,11 +11423,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 425
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07HI09",
@@ -11124,11 +11595,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI02",
@@ -11140,11 +11623,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI03",
@@ -11156,11 +11651,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI04",
@@ -11172,11 +11679,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI05",
@@ -11188,11 +11707,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI06",
@@ -11204,11 +11735,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI07",
@@ -11220,11 +11763,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI08",
@@ -11236,11 +11791,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 255
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07LI09",
@@ -11700,11 +12267,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 177
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA01",
@@ -11812,11 +12391,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 309
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA08",
@@ -11828,11 +12419,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 309
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA09",
@@ -11844,11 +12447,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 309
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA10",
@@ -12164,11 +12779,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 311
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA30",
@@ -12244,11 +12871,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 313
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA35",
@@ -12260,11 +12899,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 313
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA36",
@@ -12276,11 +12927,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 313
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF07MA37",
@@ -12292,11 +12955,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 313
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI01",
@@ -12356,11 +13031,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI05",
@@ -12372,11 +13059,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI06",
@@ -12388,11 +13087,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI07",
@@ -12404,11 +13115,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI08",
@@ -12420,11 +13143,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI09",
@@ -12468,11 +13203,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_IDENTIFY_VARIABLES",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI12",
@@ -12484,11 +13231,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_IDENTIFY_VARIABLES",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI13",
@@ -12500,11 +13259,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI14",
@@ -12516,11 +13287,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI15",
@@ -12532,11 +13315,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CI16",
@@ -12548,11 +13343,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 351
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade estrutural e evidência lexical fortes; aprovação conservadora ainda requer revisão pedagógica humana antes da promoção."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CO01",
@@ -12612,11 +13419,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 52
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CO05",
@@ -12660,11 +13479,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 54
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CO08",
@@ -12676,11 +13507,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 54
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08CO09",
@@ -12740,11 +13583,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 459
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08ER02",
@@ -12756,11 +13611,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 459
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08ER03",
@@ -12772,11 +13639,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 459
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08ER04",
@@ -12788,11 +13667,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 459
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08ER05",
@@ -12804,11 +13695,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 459
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08ER06",
@@ -13092,11 +13995,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 393
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08GE17",
@@ -13108,11 +14023,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 393
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08GE18",
@@ -13124,11 +14051,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 393
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08GE19",
@@ -13668,11 +14607,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 259
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LI02",
@@ -13684,11 +14635,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 259
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LI03",
@@ -13700,11 +14663,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 259
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LI04",
@@ -13988,11 +14963,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 179
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_COMPARE_SOURCES",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LP02",
@@ -14004,11 +14991,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 179
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_ARGUMENT_EVIDENCE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LP03",
@@ -14132,11 +15131,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 191
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LP11",
@@ -14196,11 +15207,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 193
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LP15",
@@ -14212,11 +15235,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 193
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08LP16",
@@ -14260,11 +15295,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 315
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "EQUATIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08MA03",
@@ -14276,11 +15323,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 315
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "EQUATIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08MA04",
@@ -14388,11 +15447,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 315
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08MA11",
@@ -14404,11 +15475,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 315
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF08MA12",
@@ -14695,11 +15778,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 353
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CI03",
@@ -14951,11 +16046,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 56
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CO02",
@@ -14967,11 +16074,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 56
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CO03",
@@ -15015,11 +16134,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 58
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CO06",
@@ -15031,11 +16162,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 58
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CO07",
@@ -15047,11 +16190,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 58
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CO08",
@@ -15063,11 +16218,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 58
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CO09",
@@ -15079,11 +16246,23 @@
         "id": "BNCC_COMPUTACAO_2022",
         "page": 58
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09CO10",
@@ -15431,11 +16610,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 395
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09GE14",
@@ -15447,11 +16638,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 397
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09GE15",
@@ -15767,11 +16970,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 431
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI17",
@@ -15783,11 +16998,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 433
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI18",
@@ -15799,11 +17026,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 433
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI19",
@@ -15815,11 +17054,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 433
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI20",
@@ -15895,11 +17146,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 433
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI25",
@@ -15911,11 +17174,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 433
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI26",
@@ -15927,11 +17202,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 433
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI27",
@@ -15943,11 +17230,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 433
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09HI28",
@@ -16423,11 +17722,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 179
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_ARGUMENT_EVIDENCE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09LP03",
@@ -16663,11 +17974,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 319
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09MA06",
@@ -16679,11 +18002,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 319
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09MA07",
@@ -16711,11 +18046,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 319
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09MA09",
@@ -16727,11 +18074,23 @@
         "id": "BNCC_EI_EF_2018",
         "page": 319
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EF09MA10",
@@ -24775,11 +26134,23 @@
         "id": "BNCC_EM_2018",
         "page": 117
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13CNT103",
@@ -24791,11 +26162,23 @@
         "id": "BNCC_EM_2018",
         "page": 117
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13CNT104",
@@ -24807,11 +26190,23 @@
         "id": "BNCC_EM_2018",
         "page": 117
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13CNT105",
@@ -24823,11 +26218,23 @@
         "id": "BNCC_EM_2018",
         "page": 117
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13CNT106",
@@ -24887,11 +26294,23 @@
         "id": "BNCC_EM_2018",
         "page": 119
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13CNT203",
@@ -24903,11 +26322,23 @@
         "id": "BNCC_EM_2018",
         "page": 119
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13CNT204",
@@ -27543,11 +28974,23 @@
         "id": "BNCC_EM_2018",
         "page": 109
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "FUNCTIONS_INTRO",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13MAT508",
@@ -27559,11 +29002,23 @@
         "id": "BNCC_EM_2018",
         "page": 109
       },
-      "status": "MAPPING_PENDING",
-      "mappingSource": "TECHNICAL_MAPPING_REVIEW_WITH_PEDAGOGICAL_GATE",
-      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "status": "HUMAN_REVIEW_BLOCKED",
+      "mappingSource": "MAPPING_RESOLUTION_GATE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "canonicalSkillCodes": [],
-      "rationale": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória."
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "FUNCTIONS_INTRO",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo."
     },
     {
       "officialCode": "EM13MAT509",
@@ -27630,5 +29085,5 @@
       "rationale": "Não existe habilidade canônica candidata; criar ou revisar uma skill exige decisão pedagógica explícita."
     }
   ],
-  "coverageHash": "93bf703b4e012f2ae8479bb7f503b3e770eebdac0961940af013e019542853d6"
+  "coverageHash": "ea522b033fc0d0fc9181c9fc7d2e0a9c1fc65354ef04d8d9e4370b015280e454"
 }

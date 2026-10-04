@@ -9,7 +9,7 @@ const coverage = JSON.parse(fs.readFileSync(coveragePath, 'utf8'));
 const failures = [];
 const catalogCodes = new Set((catalog.nodes ?? []).map((node) => node.code));
 const mappingCodes = new Set();
-const allowedStatuses = new Set(['MAPPED', 'HIERARCHY_ONLY', 'EXPLICITLY_NON_ADAPTIVE', 'MAPPING_PENDING', 'CANONICAL_GAP', 'SOURCE_REVIEW_REQUIRED', 'UNACCOUNTED']);
+const allowedStatuses = new Set(['MAPPED', 'HIERARCHY_ONLY', 'EXPLICITLY_NON_ADAPTIVE', 'MAPPING_PENDING', 'CANONICAL_GAP', 'HUMAN_REVIEW_BLOCKED', 'SOURCE_REVIEW_REQUIRED', 'UNACCOUNTED']);
 
 for (const mapping of coverage.mappings ?? []) {
   if (mappingCodes.has(mapping.officialCode)) failures.push(`duplicate:${mapping.officialCode}`);
@@ -34,6 +34,13 @@ for (const mapping of coverage.mappings ?? []) {
   if (mapping.status === 'MAPPING_PENDING' && mapping.kind !== 'SKILL') {
     failures.push(`non_skill_mapping_pending:${mapping.officialCode}`);
   }
+  if (mapping.status === 'HUMAN_REVIEW_BLOCKED') {
+    if (mapping.kind !== 'SKILL') failures.push(`non_skill_human_blocked:${mapping.officialCode}`);
+    if (mapping.reviewStatus !== 'REVIEW_REQUIRED') failures.push(`human_blocked_without_review:${mapping.officialCode}`);
+    if (mapping.mappingSource !== 'MAPPING_RESOLUTION_GATE') failures.push(`human_blocked_without_gate:${mapping.officialCode}`);
+    if (mapping.canonicalSkillCodes?.length > 0) failures.push(`human_blocked_with_canonical:${mapping.officialCode}`);
+    if (!mapping.rationale || !mapping.blockers?.length) failures.push(`human_blocked_without_rationale:${mapping.officialCode}`);
+  }
   if (mapping.status === 'CANONICAL_GAP' && mapping.kind !== 'SKILL') {
     failures.push(`non_skill_canonical_gap:${mapping.officialCode}`);
   }
@@ -54,6 +61,7 @@ const hierarchyOnly = (coverage.mappings ?? []).filter((mapping) => mapping.stat
 const explicitlyNonAdaptive = (coverage.mappings ?? []).filter((mapping) => mapping.status === 'EXPLICITLY_NON_ADAPTIVE').length;
 const mappingPending = (coverage.mappings ?? []).filter((mapping) => mapping.status === 'MAPPING_PENDING').length;
 const canonicalGaps = (coverage.mappings ?? []).filter((mapping) => mapping.status === 'CANONICAL_GAP').length;
+const humanReviewBlocked = (coverage.mappings ?? []).filter((mapping) => mapping.status === 'HUMAN_REVIEW_BLOCKED').length;
 const sourceReviewRequired = (coverage.mappings ?? []).filter((mapping) => mapping.status === 'SOURCE_REVIEW_REQUIRED').length;
 const unaccounted = (coverage.mappings ?? []).filter((mapping) => mapping.status === 'UNACCOUNTED').length;
 if (coverage.summary?.totalOfficialNodes !== catalogCodes.size) failures.push('summary.totalOfficialNodes');
@@ -62,6 +70,7 @@ if (coverage.summary?.hierarchyOnly !== hierarchyOnly) failures.push('summary.hi
 if (coverage.summary?.explicitlyNonAdaptive !== explicitlyNonAdaptive) failures.push('summary.explicitlyNonAdaptive');
 if (coverage.summary?.mappingPending !== mappingPending) failures.push('summary.mappingPending');
 if (coverage.summary?.canonicalGaps !== canonicalGaps) failures.push('summary.canonicalGaps');
+if (coverage.summary?.humanReviewBlocked !== humanReviewBlocked) failures.push('summary.humanReviewBlocked');
 if (coverage.summary?.sourceReviewRequired !== sourceReviewRequired) failures.push('summary.sourceReviewRequired');
 if (coverage.summary?.unaccounted !== unaccounted) failures.push('summary.unaccounted');
 if (coverage.catalogHash !== catalog.catalogHash) failures.push('catalogHash');
@@ -71,4 +80,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`BNCC_MAPPING_VALIDATION=PASS total=${catalogCodes.size} mapped=${mapped} hierarchy_only=${hierarchyOnly} mapping_pending=${mappingPending} canonical_gaps=${canonicalGaps} source_review_required=${sourceReviewRequired} explicit_non_adaptive=${explicitlyNonAdaptive} unaccounted=${unaccounted}`);
+console.log(`BNCC_MAPPING_VALIDATION=PASS total=${catalogCodes.size} mapped=${mapped} hierarchy_only=${hierarchyOnly} mapping_pending=${mappingPending} canonical_gaps=${canonicalGaps} human_review_blocked=${humanReviewBlocked} source_review_required=${sourceReviewRequired} explicit_non_adaptive=${explicitlyNonAdaptive} unaccounted=${unaccounted}`);

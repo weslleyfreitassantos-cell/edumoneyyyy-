@@ -22,13 +22,14 @@
     "contextHash": "7c0e0289ed6d1402fdee44cca200540bf15653b6a06001a9c0bd3d8036ff1272"
   },
   "mapping": {
-    "status": "ACCOUNTED_WITH_CONSERVATIVE_PROMOTIONS",
+    "status": "ACCOUNTED_WITH_EXPLICIT_HUMAN_BLOCKERS",
     "mappedCodes": 2,
     "candidateCodes": 1723,
     "canonicalSkills": 71,
     "oneToOneCandidates": 123,
     "canonicalGaps": 1496,
-    "mappingPending": 121,
+    "mappingPending": 0,
+    "humanReviewBlocked": 121,
     "hierarchyOnly": 104,
     "unaccountedCodes": 0,
     "reviewRequiredCodes": 1617,
@@ -84,6 +85,15 @@
       "promoted": 0,
       "proposalsHash": "a9385cadd73965918ef26924e4682d8212025984c0a214000ccdccf42ea4254f",
       "reviewHash": "bfcecca34e9f03159051e37c37bd29fadb59bf3b06aea7c11655ab85bb061133"
+    },
+    "v8MappingResolution": {
+      "status": "COMPLETE_WITH_EXPLICIT_HUMAN_REVIEW_BLOCKERS",
+      "mappingPendingBefore": 121,
+      "mappingPendingResolved": 121,
+      "mappingPendingHumanBlocked": 121,
+      "mappingPendingAfter": 0,
+      "relationDecisionsAsserted": 0,
+      "resolutionHash": "6f5bdda14521fcf1ac309a7716c9f4435944b59a195664d94b7fd2cb55a4dcb9"
     },
     "canonicalGraph": {
       "status": "AUDITED_NOT_BNCC_PROMOTED",
@@ -157,8 +167,8 @@
   },
   "blockers": [
     "official BNCC lesson/question coverage is not yet complete",
-    "1496 canonical gaps and 121 mapping-pending nodes retain a pedagogical review gate; no official source issue is currently flagged",
+    "1496 canonical gaps remain authoring work; 121 mapping candidates are explicitly HUMAN_REVIEW_BLOCKED because no relation type can be asserted safely from the available evidence; no official source issue is currently flagged",
     "the 119 genuinely ambiguous cases remain reserved for human review"
   ],
-  "nextAction": "resolve mapping-pending nodes with conservative relation decisions and build curriculum units from independently reviewed proposals"
+  "nextAction": "build curriculum units from independently reviewed proposals while retaining explicit human blockers"
 }

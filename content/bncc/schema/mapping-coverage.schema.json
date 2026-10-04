@@ -11,12 +11,13 @@
     "generatedAt": { "type": "string", "format": "date-time" },
     "statusContract": {
       "type": "object",
-      "required": ["accountedStatuses", "unaccountedStatus", "mappingPendingStatus", "canonicalGapStatus", "sourceReviewRequiredStatus", "sourceReviewRule"],
+      "required": ["accountedStatuses", "unaccountedStatus", "mappingPendingStatus", "canonicalGapStatus", "humanReviewBlockedStatus", "sourceReviewRequiredStatus", "sourceReviewRule"],
       "properties": {
-        "accountedStatuses": { "type": "array", "items": { "enum": ["MAPPED", "HIERARCHY_ONLY", "EXPLICITLY_NON_ADAPTIVE", "MAPPING_PENDING", "CANONICAL_GAP", "SOURCE_REVIEW_REQUIRED"] } },
+        "accountedStatuses": { "type": "array", "items": { "enum": ["MAPPED", "HIERARCHY_ONLY", "EXPLICITLY_NON_ADAPTIVE", "MAPPING_PENDING", "CANONICAL_GAP", "HUMAN_REVIEW_BLOCKED", "SOURCE_REVIEW_REQUIRED"] } },
         "unaccountedStatus": { "const": "UNACCOUNTED" },
         "mappingPendingStatus": { "const": "MAPPING_PENDING" },
         "canonicalGapStatus": { "const": "CANONICAL_GAP" },
+        "humanReviewBlockedStatus": { "const": "HUMAN_REVIEW_BLOCKED" },
         "sourceReviewRequiredStatus": { "const": "SOURCE_REVIEW_REQUIRED" },
         "sourceReviewRule": { "type": "string", "minLength": 1 }
       }
@@ -47,11 +48,13 @@
           "gradeOrRange": { "type": "string" },
           "componentCode": { "type": "string" },
           "officialSource": { "type": "object" },
-          "status": { "enum": ["MAPPED", "HIERARCHY_ONLY", "EXPLICITLY_NON_ADAPTIVE", "MAPPING_PENDING", "CANONICAL_GAP", "SOURCE_REVIEW_REQUIRED", "UNACCOUNTED"] },
+          "status": { "enum": ["MAPPED", "HIERARCHY_ONLY", "EXPLICITLY_NON_ADAPTIVE", "MAPPING_PENDING", "CANONICAL_GAP", "HUMAN_REVIEW_BLOCKED", "SOURCE_REVIEW_REQUIRED", "UNACCOUNTED"] },
           "mappingSource": { "type": "string" },
           "reviewStatus": { "enum": ["TECH_VALIDATED", "PEDAGOGICAL_REVIEW_PENDING", "PEDAGOGICAL_REVIEWED", "NOT_APPLICABLE", "REVIEW_REQUIRED"] },
           "pedagogicalReviewStatus": { "enum": ["PEDAGOGICAL_REVIEW_PENDING", "PEDAGOGICAL_REVIEWED"] },
           "canonicalSkillCodes": { "type": "array", "items": { "type": "string" } },
+          "relationCandidates": { "type": "array" },
+          "blockers": { "type": "array", "items": { "type": "string" } },
           "rationale": { "type": "string", "minLength": 1 }
         }
       }

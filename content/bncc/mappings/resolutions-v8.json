@@ -1,0 +1,3425 @@
+{
+  "schemaVersion": "tec-escola.bncc.mapping-resolutions.v8",
+  "catalogVersion": "BNCC_2018_AND_COMPUTACAO_2022_TEXT_EXTRACTION",
+  "catalogHash": "b0da60b72e055d8bbafe2366651f1ccc6676d92e83a65f9bf3e062c5026e3989",
+  "candidatesHash": "fda364d2547223646779cf0c183547797233318266afc40f5f3665859becada7",
+  "reviewsHash": "d63be460f0100552a8fa18577c72e03e7895efe9eed04241a1aa8e3d54f4265d",
+  "sourceOfTruth": "official_catalog_plus_contextual_candidates_plus_independent_review",
+  "generatedAt": "2026-10-04T00:00:00.000Z",
+  "statusContract": {
+    "relationTypes": [
+      "PRIMARY",
+      "SUPPORTING",
+      "PREREQUISITE",
+      "TRANSFER"
+    ],
+    "terminalStatuses": [
+      "MAPPED",
+      "HIERARCHY_ONLY",
+      "EXPLICITLY_NON_ADAPTIVE",
+      "HUMAN_REVIEW_BLOCKED",
+      "SOURCE_REVIEW_REQUIRED"
+    ],
+    "pendingStatus": "MAPPING_PENDING",
+    "blockedStatus": "HUMAN_REVIEW_BLOCKED",
+    "promotionRule": "A relation remains unasserted until an independent pedagogical review selects a relation type and validates the official context."
+  },
+  "summary": {
+    "mappingPendingBefore": 121,
+    "resolved": 121,
+    "humanReviewBlocked": 121,
+    "relationDecisionsAsserted": 0,
+    "duplicates": 0
+  },
+  "decisions": [
+    {
+      "officialCode": "EF06CI01",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06CI02",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06CO04",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06CO05",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06CO07",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06CO09",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06CO10",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06ER03",
+      "candidateCanonicalSkillCodes": [
+        "RELIGIOUS_INTERPRET_SYMBOLS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_INTERPRET_SYMBOLS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RELIGIOUS_INTERPRET_SYMBOLS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06ER04",
+      "candidateCanonicalSkillCodes": [
+        "RELIGIOUS_INTERPRET_SYMBOLS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_INTERPRET_SYMBOLS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RELIGIOUS_INTERPRET_SYMBOLS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06GE01",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_ANALYZE_CLIMATE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06GE02",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_ANALYZE_CLIMATE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06LP03",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_IDENTIFY_GENRE_PURPOSE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA12",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA13",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA15",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "HIGH",
+      "candidateConfidenceScore": 0.75,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "APPROVE_CONSERVATIVE",
+        "technicalReason": "Compatibilidade estrutural e evidência lexical fortes; aprovação conservadora ainda requer revisão pedagógica humana antes da promoção.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA16",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA17",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA25",
+      "candidateCanonicalSkillCodes": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_RATIO_UNIT_RATE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA26",
+      "candidateCanonicalSkillCodes": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_RATIO_UNIT_RATE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA27",
+      "candidateCanonicalSkillCodes": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_RATIO_UNIT_RATE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA28",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA30",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA31",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA32",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF06MA33",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07CO01",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07CO03",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07CO04",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07CO05",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07GE04",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_INTERPRET_TERRITORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07GE05",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_INTERPRET_TERRITORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07GE06",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_INTERPRET_TERRITORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07GE07",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_INTERPRET_TERRITORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07GE08",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_INTERPRET_TERRITORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07GE09",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_INTERPRET_TERRITORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07GE10",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_INTERPRET_TERRITORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07HI06",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_INTERPRET_PERIODIZATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07HI07",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_INTERPRET_PERIODIZATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07HI08",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_INTERPRET_PERIODIZATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_INTERPRET_PERIODIZATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI01",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI02",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI03",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI04",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI05",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI06",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI07",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LI08",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07LP14",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_IDENTIFY_GENRE_PURPOSE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA07",
+      "candidateCanonicalSkillCodes": [
+        "RATIO_PROPORTION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RATIO_PROPORTION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA08",
+      "candidateCanonicalSkillCodes": [
+        "RATIO_PROPORTION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RATIO_PROPORTION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA09",
+      "candidateCanonicalSkillCodes": [
+        "RATIO_PROPORTION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RATIO_PROPORTION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA29",
+      "candidateCanonicalSkillCodes": [
+        "RATIO_PROPORTION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RATIO_PROPORTION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RATIO_PROPORTION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA34",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA35",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA36",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF07MA37",
+      "candidateCanonicalSkillCodes": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_INTERPRET_DATA_TABLE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI04",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI05",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI06",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI07",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI08",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI11",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_IDENTIFY_VARIABLES"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_IDENTIFY_VARIABLES",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_IDENTIFY_VARIABLES); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI12",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_IDENTIFY_VARIABLES"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_IDENTIFY_VARIABLES",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_IDENTIFY_VARIABLES); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI13",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI14",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI15",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CI16",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "HIGH",
+      "candidateConfidenceScore": 1,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "APPROVE_CONSERVATIVE",
+        "technicalReason": "Compatibilidade estrutural e evidência lexical fortes; aprovação conservadora ainda requer revisão pedagógica humana antes da promoção.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CO04",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CO07",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08CO08",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08ER01",
+      "candidateCanonicalSkillCodes": [
+        "RELIGIOUS_MEDIATE_DIALOGUE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RELIGIOUS_MEDIATE_DIALOGUE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08ER02",
+      "candidateCanonicalSkillCodes": [
+        "RELIGIOUS_MEDIATE_DIALOGUE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RELIGIOUS_MEDIATE_DIALOGUE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08ER03",
+      "candidateCanonicalSkillCodes": [
+        "RELIGIOUS_MEDIATE_DIALOGUE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RELIGIOUS_MEDIATE_DIALOGUE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08ER04",
+      "candidateCanonicalSkillCodes": [
+        "RELIGIOUS_MEDIATE_DIALOGUE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RELIGIOUS_MEDIATE_DIALOGUE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08ER05",
+      "candidateCanonicalSkillCodes": [
+        "RELIGIOUS_MEDIATE_DIALOGUE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (RELIGIOUS_MEDIATE_DIALOGUE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08GE16",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_MAP_SCALE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_MAP_SCALE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08GE17",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_MAP_SCALE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_MAP_SCALE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08GE18",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_MAP_SCALE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_MAP_SCALE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LI01",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LI02",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LI03",
+      "candidateCanonicalSkillCodes": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "ENGLISH_INFER_FROM_TEXT",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (ENGLISH_INFER_FROM_TEXT); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LP01",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_COMPARE_SOURCES"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_COMPARE_SOURCES",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_COMPARE_SOURCES); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LP02",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_ARGUMENT_EVIDENCE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_ARGUMENT_EVIDENCE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_ARGUMENT_EVIDENCE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LP10",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_CONNECT_IDEAS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_CONNECT_IDEAS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LP14",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_CONNECT_IDEAS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_CONNECT_IDEAS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08LP15",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_CONNECT_IDEAS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_CONNECT_IDEAS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08MA02",
+      "candidateCanonicalSkillCodes": [
+        "EQUATIONS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "EQUATIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (EQUATIONS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08MA03",
+      "candidateCanonicalSkillCodes": [
+        "EQUATIONS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "EQUATIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (EQUATIONS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08MA10",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF08MA11",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CI02",
+      "candidateCanonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (SCIENCE_EXPLAIN_MATTER_TRANSFORMATION); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CO01",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CO02",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CO05",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CO06",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CO07",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CO08",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09CO09",
+      "candidateCanonicalSkillCodes": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (COMPUTING_READ_TABLE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09GE13",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_ANALYZE_CLIMATE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09GE14",
+      "candidateCanonicalSkillCodes": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (GEOGRAPHY_ANALYZE_CLIMATE_DATA); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI16",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI17",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI18",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI19",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI24",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI25",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI26",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09HI27",
+      "candidateCanonicalSkillCodes": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6667,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (HISTORY_DISTINGUISH_MEMORY_HISTORY); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09LP02",
+      "candidateCanonicalSkillCodes": [
+        "PORTUGUESE_ARGUMENT_EVIDENCE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "PORTUGUESE_ARGUMENT_EVIDENCE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (PORTUGUESE_ARGUMENT_EVIDENCE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09MA05",
+      "candidateCanonicalSkillCodes": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_RATIO_UNIT_RATE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09MA06",
+      "candidateCanonicalSkillCodes": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_RATIO_UNIT_RATE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09MA08",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EF09MA09",
+      "candidateCanonicalSkillCodes": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (MATH_IDENTIFY_PERCENT_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13CNT102",
+      "candidateCanonicalSkillCodes": [
+        "CHEMISTRY_ACID_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (CHEMISTRY_ACID_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13CNT103",
+      "candidateCanonicalSkillCodes": [
+        "CHEMISTRY_ACID_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (CHEMISTRY_ACID_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13CNT104",
+      "candidateCanonicalSkillCodes": [
+        "CHEMISTRY_ACID_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (CHEMISTRY_ACID_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13CNT105",
+      "candidateCanonicalSkillCodes": [
+        "CHEMISTRY_ACID_BASE"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "CHEMISTRY_ACID_BASE",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (CHEMISTRY_ACID_BASE); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13CNT202",
+      "candidateCanonicalSkillCodes": [
+        "BIOLOGY_ECOSYSTEM_INTERACTIONS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (BIOLOGY_ECOSYSTEM_INTERACTIONS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13CNT203",
+      "candidateCanonicalSkillCodes": [
+        "BIOLOGY_ECOSYSTEM_INTERACTIONS"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.5,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (BIOLOGY_ECOSYSTEM_INTERACTIONS); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13MAT507",
+      "candidateCanonicalSkillCodes": [
+        "FUNCTIONS_INTRO"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "FUNCTIONS_INTRO",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (FUNCTIONS_INTRO); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    },
+    {
+      "officialCode": "EM13MAT508",
+      "candidateCanonicalSkillCodes": [
+        "FUNCTIONS_INTRO"
+      ],
+      "candidateConfidence": "MEDIUM",
+      "candidateConfidenceScore": 0.6,
+      "relationCandidates": [
+        {
+          "canonicalSkillCode": "FUNCTIONS_INTRO",
+          "relationType": null,
+          "decision": "NOT_ASSERTED"
+        }
+      ],
+      "resolutionStatus": "HUMAN_REVIEW_BLOCKED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "blockers": [
+        "SEMANTIC_EQUIVALENCE_NOT_PROVEN",
+        "PEDAGOGICAL_SIGNOFF_REQUIRED"
+      ],
+      "rationale": "A candidatura técnica pode orientar revisão, mas não prova equivalência semântica nem permite escolher PRIMARY, SUPPORTING, PREREQUISITE ou TRANSFER de forma segura. O nó fica explicitamente bloqueado para revisão humana e fora do grafo adaptativo.",
+      "evidence": {
+        "candidateRationale": "Candidato compatível por etapa, ano, componente e sobreposição lexical (FUNCTIONS_INTRO); requer revisão pedagógica antes da promoção.",
+        "technicalDecision": "NEEDS_HUMAN_REVIEW",
+        "technicalReason": "Compatibilidade técnica encontrada, mas a evidência não é suficiente para aprovação automatizada; revisão pedagógica humana é obrigatória.",
+        "reviewedBy": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1"
+      }
+    }
+  ],
+  "resolutionHash": "6f5bdda14521fcf1ac309a7716c9f4435944b59a195664d94b7fd2cb55a4dcb9"
+}
