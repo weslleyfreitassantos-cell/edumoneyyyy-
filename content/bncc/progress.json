@@ -1,6 +1,6 @@
 {
   "campaign": "TECESCOLA_BNCC_PEDAGOGICAL_GRAPH_CONTENT_FACTORY_AND_PRODUCT_CLOSURE_V5",
-  "updatedAt": "2026-10-04T03:34:29.960Z",
+  "updatedAt": "2026-10-04T03:54:27.429Z",
   "sourceFreeze": {
     "status": "FROZEN",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -19,9 +19,11 @@
     "canonicalSkills": 71,
     "oneToOneCandidates": 123,
     "canonicalGaps": 1496,
+    "mappingPending": 121,
     "hierarchyOnly": 104,
     "unaccountedCodes": 0,
     "reviewRequiredCodes": 1617,
+    "sourceReviewRequiredCodes": 0,
     "candidateHash": "fda364d2547223646779cf0c183547797233318266afc40f5f3665859becada7",
     "technicalReview": {
       "status": "COMPLETE_WITH_PEDAGOGICAL_GATE",
@@ -126,7 +128,7 @@
   },
   "blockers": [
     "official BNCC lesson/question coverage is not yet complete",
-    "1617 source nodes remain SOURCE_REVIEW_REQUIRED and retain a pedagogical review gate",
+    "1496 canonical gaps and 121 mapping-pending nodes retain a pedagogical review gate; no official source issue is currently flagged",
     "the 119 genuinely ambiguous cases remain reserved for human review"
   ],
   "nextAction": "enrich independent gap-cluster units and author a reviewed canary content slice without claiming full BNCC coverage"
