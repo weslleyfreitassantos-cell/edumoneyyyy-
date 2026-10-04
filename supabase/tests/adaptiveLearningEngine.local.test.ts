@@ -233,10 +233,16 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       const managementCheck = await client.rpc('can_manage_institution_operations', {
         target_institution_id: institutionId,
       });
+      const institutionAdminCheck = await client.rpc('is_institution_admin', {
+        target_institution_id: institutionId,
+      });
+      const platformAdminCheck = await client.rpc('is_platform_super_admin');
       expect(
         managementCheck.error,
         `failed to inspect institution management scope: ${managementCheck.error?.message ?? ''}`,
       ).toBeNull();
+      expect(institutionAdminCheck.error).toBeNull();
+      expect(platformAdminCheck.error).toBeNull();
       const identities = rows.map((row) => ({
         label:
           row.student_id === studentA
@@ -253,7 +259,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       }));
       expect(
         rows.map((row) => row.student_id),
-        `management=${String(managementCheck.data)}; unexpected teacher roster identities: ${JSON.stringify(identities)}`,
+        `management=${String(managementCheck.data)}; institution_admin=${String(institutionAdminCheck.data)}; platform_admin=${String(platformAdminCheck.data)}; unexpected teacher roster identities: ${JSON.stringify(identities)}`,
       ).toEqual([studentA]);
     };
 
