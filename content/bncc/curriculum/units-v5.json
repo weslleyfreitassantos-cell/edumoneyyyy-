@@ -1,0 +1,2115 @@
+{
+  "schemaVersion": "tec-escola.bncc.curriculum-units.v5",
+  "sourceOfTruth": "tec-escola-core-v4-content-packages",
+  "packVersion": "tec-escola-core-v4",
+  "generatedAt": "2026-10-04T00:00:00.000Z",
+  "statusContract": {
+    "unitType": "NAVIGABLE_CURRICULUM_UNIT",
+    "officialMappingRule": "officialCodes remain empty while BNCC alignment is NOT_CLAIMED",
+    "availabilityRule": "units inherit DEFAULT_AUTOMATIC_ELIGIBLE from their global package",
+    "adaptiveRule": "units expose V4 readiness without changing the Adaptive V4 engine"
+  },
+  "summary": {
+    "totalUnits": 53,
+    "totalPackages": 15,
+    "totalSkills": 65,
+    "automaticEligibleUnits": 53,
+    "officialCodesClaimed": 0
+  },
+  "units": [
+    {
+      "unitId": "V5_PORTUGUESE_ARGUMENTACAO",
+      "title": "Lingua Portuguesa - Argumentacao",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "domain": "ARGUMENTACAO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PORTUGUESE_ARGUMENT_EVIDENCE",
+        "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+        "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+        "PORTUGUESE_SUMMARIZE_ARGUMENT"
+      ],
+      "learningGoals": [
+        "Identificar tese e evidencia em textos argumentativos",
+        "Distinguir razao de evidencia",
+        "Identificar contraponto argumentativo",
+        "Sintetizar um argumento"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PORTUGUESE_ARGUMENT_EVIDENCE",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 8
+        },
+        {
+          "position": 2,
+          "skillCode": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 2
+        },
+        {
+          "position": 3,
+          "skillCode": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        },
+        {
+          "position": 4,
+          "skillCode": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-portuguese",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PORTUGUESE_COESAO",
+      "title": "Lingua Portuguesa - Coesao",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "domain": "COESAO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PORTUGUESE_CONNECT_IDEAS"
+      ],
+      "learningGoals": [
+        "Interpretar conectores e relacoes de sentido"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 0
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-portuguese",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PORTUGUESE_FONTES",
+      "title": "Lingua Portuguesa - Fontes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "domain": "FONTES",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PORTUGUESE_COMPARE_SOURCES"
+      ],
+      "learningGoals": [
+        "Comparar fontes e perspectivas"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PORTUGUESE_COMPARE_SOURCES",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-portuguese",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PORTUGUESE_GENEROS",
+      "title": "Lingua Portuguesa - Generos",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "domain": "GENEROS",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+      ],
+      "learningGoals": [
+        "Identificar genero e finalidade"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 2
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-portuguese",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PORTUGUESE_LEITURA",
+      "title": "Lingua Portuguesa - Leitura",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "domain": "LEITURA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+        "PORTUGUESE_INFER_FROM_CLUES"
+      ],
+      "learningGoals": [
+        "Distinguir fato de opiniao",
+        "Inferir informacao a partir de pistas textuais"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        },
+        {
+          "position": 2,
+          "skillCode": "PORTUGUESE_INFER_FROM_CLUES",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-portuguese",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_MATHEMATICS_DADOS",
+      "title": "Matematica - Dados",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "domain": "DADOS",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "MATH_INTERPRET_DATA_TABLE"
+      ],
+      "learningGoals": [
+        "Interpretar dados em tabela"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "MATH_INTERPRET_DATA_TABLE",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 10
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-mathematics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_MATHEMATICS_PORCENTAGEM",
+      "title": "Matematica - Porcentagem",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "domain": "PORCENTAGEM",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE",
+        "MATH_PERCENT_INCREASE",
+        "MATH_PERCENT_OF_QUANTITY"
+      ],
+      "learningGoals": [
+        "Identificar a base de uma porcentagem",
+        "Resolver aumento percentual",
+        "Calcular percentual de uma quantidade"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "MATH_IDENTIFY_PERCENT_BASE",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 8
+        },
+        {
+          "position": 2,
+          "skillCode": "MATH_PERCENT_INCREASE",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 10
+        },
+        {
+          "position": 3,
+          "skillCode": "MATH_PERCENT_OF_QUANTITY",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 8
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-mathematics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_MATHEMATICS_PORCENTAGENS",
+      "title": "Matematica - Porcentagens",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "domain": "PORCENTAGENS",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "MATH_SUCCESSIVE_PERCENT_CHANGE"
+      ],
+      "learningGoals": [
+        "Raciocinar sobre variacoes percentuais sucessivas"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-mathematics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_MATHEMATICS_RAZAO",
+      "title": "Matematica - Razao",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "domain": "RAZAO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "learningGoals": [
+        "Interpretar razao e taxa unitaria"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "MATH_RATIO_UNIT_RATE",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 8
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-mathematics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_SCIENCE_EVIDENCIA",
+      "title": "Ciencias - Evidencia",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "domain": "EVIDENCIA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SCIENCE_EVIDENCE_CONCLUSION"
+      ],
+      "learningGoals": [
+        "Relacionar evidencia e conclusao"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "SCIENCE_EVIDENCE_CONCLUSION",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 0
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-science",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_SCIENCE_INVESTIGACAO",
+      "title": "Ciencias - Investigacao",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "domain": "INVESTIGACAO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SCIENCE_IDENTIFY_VARIABLES",
+        "SCIENCE_PLAN_INVESTIGATION"
+      ],
+      "learningGoals": [
+        "Identificar variaveis experimentais",
+        "Planejar uma investigacao controlada"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "SCIENCE_IDENTIFY_VARIABLES",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        },
+        {
+          "position": 2,
+          "skillCode": "SCIENCE_PLAN_INVESTIGATION",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 0
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-science",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_SCIENCE_TRANSFORMACOES",
+      "title": "Ciencias - Transformacoes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "domain": "TRANSFORMACOES",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "learningGoals": [
+        "Explicar transformacoes da materia"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 12
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-science",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_BIOLOGY_CELULA",
+      "title": "Biologia - Celula",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "domain": "CELULA",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "BIOLOGY_CELL_FUNCTION"
+      ],
+      "learningGoals": [
+        "Relacionar estrutura e funcao celular"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "BIOLOGY_CELL_FUNCTION",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-biology",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_BIOLOGY_ECOLOGIA",
+      "title": "Biologia - Ecologia",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "domain": "ECOLOGIA",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+        "BIOLOGY_INTERPRET_POPULATION_DATA"
+      ],
+      "learningGoals": [
+        "Explicar interacoes em ecossistemas",
+        "Interpretar dados de uma populacao"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 0
+        },
+        {
+          "position": 2,
+          "skillCode": "BIOLOGY_INTERPRET_POPULATION_DATA",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 3
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-biology",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_BIOLOGY_GENETICA",
+      "title": "Biologia - Genetica",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "domain": "GENETICA",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "BIOLOGY_EXPLAIN_INHERITANCE"
+      ],
+      "learningGoals": [
+        "Explicar heranca genetica"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "BIOLOGY_EXPLAIN_INHERITANCE",
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-biology",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHYSICS_INTERACOES",
+      "title": "Fisica - Interacoes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "domain": "INTERACOES",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PHYSICS_MODEL_FORCE"
+      ],
+      "learningGoals": [
+        "Relacionar forca e movimento"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PHYSICS_MODEL_FORCE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 0
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-physics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHYSICS_MEDIDAS",
+      "title": "Fisica - Medidas",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "domain": "MEDIDAS",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PHYSICS_UNIT_CONVERSION"
+      ],
+      "learningGoals": [
+        "Converter unidades de movimento"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PHYSICS_UNIT_CONVERSION",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 2
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-physics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHYSICS_MOVIMENTO",
+      "title": "Fisica - Movimento",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "domain": "MOVIMENTO",
+      "stage": "MULTI_STAGE",
+      "gradeFrom": 1,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PHYSICS_INTERPRET_ACCELERATION",
+        "PHYSICS_INTERPRET_MOTION_GRAPH",
+        "PHYSICS_RELATIVE_SPEED",
+        "PHYSICS_UNIFORM_MOTION"
+      ],
+      "learningGoals": [
+        "Interpretar aceleracao",
+        "Interpretar grafico de movimento",
+        "Interpretar velocidade relativa",
+        "Interpretar movimento uniforme"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PHYSICS_INTERPRET_ACCELERATION",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        },
+        {
+          "position": 2,
+          "skillCode": "PHYSICS_INTERPRET_MOTION_GRAPH",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 2
+        },
+        {
+          "position": 3,
+          "skillCode": "PHYSICS_RELATIVE_SPEED",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        },
+        {
+          "position": 4,
+          "skillCode": "PHYSICS_UNIFORM_MOTION",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-physics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHYSICS_VELOCIDADE",
+      "title": "Fisica - Velocidade",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "domain": "VELOCIDADE",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PHYSICS_AVERAGE_SPEED"
+      ],
+      "learningGoals": [
+        "Calcular velocidade media"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PHYSICS_AVERAGE_SPEED",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 8
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-physics",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_CHEMISTRY_ATOMOS",
+      "title": "Quimica - Atomos",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "domain": "ATOMOS",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "CHEMISTRY_ATOMIC_STRUCTURE"
+      ],
+      "learningGoals": [
+        "Interpretar modelos atomicos"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "CHEMISTRY_ATOMIC_STRUCTURE",
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 7
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-chemistry",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_CHEMISTRY_REACOES",
+      "title": "Quimica - Reacoes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "domain": "REACOES",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "CHEMISTRY_REACTION_EVIDENCE",
+        "CHEMISTRY_STOICHIOMETRY"
+      ],
+      "learningGoals": [
+        "Identificar evidencia de transformacao quimica",
+        "Raciocinar sobre proporcoes em reacoes"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "CHEMISTRY_REACTION_EVIDENCE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 4
+        },
+        {
+          "position": 2,
+          "skillCode": "CHEMISTRY_STOICHIOMETRY",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-chemistry",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_CHEMISTRY_SOLUCOES",
+      "title": "Quimica - Solucoes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "domain": "SOLUCOES",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "CHEMISTRY_ACID_BASE"
+      ],
+      "learningGoals": [
+        "Interpretar acidez e basicidade"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "CHEMISTRY_ACID_BASE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-chemistry",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_HISTORY_CAUSALIDADE",
+      "title": "Historia - Causalidade",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "CAUSALIDADE",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_COMPARE_CAUSES"
+      ],
+      "learningGoals": [
+        "Comparar causas e consequencias historicas"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "HISTORY_COMPARE_CAUSES",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-history",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_HISTORY_CRONOLOGIA",
+      "title": "Historia - Cronologia",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "CRONOLOGIA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_ORDER_EVENTS"
+      ],
+      "learningGoals": [
+        "Ordenar acontecimentos no tempo"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "HISTORY_ORDER_EVENTS",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-history",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_HISTORY_FONTES",
+      "title": "Historia - Fontes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "FONTES",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_INTERPRET_EVIDENCE"
+      ],
+      "learningGoals": [
+        "Interpretar evidencia historica"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "HISTORY_INTERPRET_EVIDENCE",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-history",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_HISTORY_MEMORIA",
+      "title": "Historia - Memoria",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "MEMORIA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+      ],
+      "learningGoals": [
+        "Relacionar memoria e historia"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-history",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_HISTORY_MUDANCA_E_CONTINUIDADE",
+      "title": "Historia - Mudanca E Continuidade",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "MUDANCA_E_CONTINUIDADE",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_ANALYZE_CHANGE_CONTINUITY"
+      ],
+      "learningGoals": [
+        "Analisar mudanca e continuidade"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-history",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_HISTORY_MULTIPERSPECTIVA",
+      "title": "Historia - Multiperspectiva",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "MULTIPERSPECTIVA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_COMPARE_PERSPECTIVES"
+      ],
+      "learningGoals": [
+        "Comparar perspectivas historicas"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "HISTORY_COMPARE_PERSPECTIVES",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-history",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_HISTORY_TEMPO_HISTORICO",
+      "title": "Historia - Tempo Historico",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "TEMPO_HISTORICO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "learningGoals": [
+        "Interpretar periodizacao"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "HISTORY_INTERPRET_PERIODIZATION",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 8
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-history",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_GEOGRAPHY_CARTOGRAFIA",
+      "title": "Geografia - Cartografia",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia",
+      "domain": "CARTOGRAFIA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "GEOGRAPHY_MAP_SCALE"
+      ],
+      "learningGoals": [
+        "Interpretar escala cartografica"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "GEOGRAPHY_MAP_SCALE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 2
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-geography",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_GEOGRAPHY_CLIMA",
+      "title": "Geografia - Clima",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia",
+      "domain": "CLIMA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+      ],
+      "learningGoals": [
+        "Analisar dados climaticos"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-geography",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_GEOGRAPHY_TERRITORIO",
+      "title": "Geografia - Territorio",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia",
+      "domain": "TERRITORIO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "GEOGRAPHY_INTERPRET_TERRITORY"
+      ],
+      "learningGoals": [
+        "Interpretar territorio e paisagem"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 10
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-geography",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHILOSOPHY_ARGUMENTO",
+      "title": "Filosofia - Argumento",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia",
+      "domain": "ARGUMENTO",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PHILOSOPHY_EVALUATE_ARGUMENT"
+      ],
+      "learningGoals": [
+        "Avaliar argumento filosofico"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PHILOSOPHY_EVALUATE_ARGUMENT",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 12
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-philosophy",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHILOSOPHY_CONCEITO",
+      "title": "Filosofia - Conceito",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia",
+      "domain": "CONCEITO",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PHILOSOPHY_DISTINGUISH_CONCEPT"
+      ],
+      "learningGoals": [
+        "Distinguir conceito de opiniao"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 0
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-philosophy",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHILOSOPHY_ETICA",
+      "title": "Filosofia - Etica",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia",
+      "domain": "ETICA",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE"
+      ],
+      "learningGoals": [
+        "Aplicar principio etico a um caso"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-philosophy",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_SOCIOLOGY_CULTURA",
+      "title": "Sociologia - Cultura",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia",
+      "domain": "CULTURA",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SOCIOLOGY_DISTINGUISH_NORM_VALUE"
+      ],
+      "learningGoals": [
+        "Distinguir norma de valor social"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 0
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-sociology",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_SOCIOLOGY_ESTRUTURA",
+      "title": "Sociologia - Estrutura",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia",
+      "domain": "ESTRUTURA",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
+      ],
+      "learningGoals": [
+        "Analisar dados de desigualdade"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 2
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-sociology",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_SOCIOLOGY_INSTITUICOES",
+      "title": "Sociologia - Instituicoes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia",
+      "domain": "INSTITUICOES",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+      ],
+      "learningGoals": [
+        "Explicar instituicoes sociais"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 11
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-sociology",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_ART_CONTEXTO",
+      "title": "Arte - Contexto",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "ART",
+      "subjectName": "Arte",
+      "domain": "CONTEXTO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "ART_RELATE_WORK_CONTEXT"
+      ],
+      "learningGoals": [
+        "Relacionar obra e contexto cultural"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "ART_RELATE_WORK_CONTEXT",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 4
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-art",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_ART_ELEMENTOS",
+      "title": "Arte - Elementos",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "ART",
+      "subjectName": "Arte",
+      "domain": "ELEMENTOS",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "ART_COMPARE_COMPOSITIONS"
+      ],
+      "learningGoals": [
+        "Comparar composicoes artisticas"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "ART_COMPARE_COMPOSITIONS",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 11
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-art",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_ART_INTERPRETACAO",
+      "title": "Arte - Interpretacao",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "ART",
+      "subjectName": "Arte",
+      "domain": "INTERPRETACAO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "ART_INTERPRET_WORK"
+      ],
+      "learningGoals": [
+        "Interpretar elementos de uma obra"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "ART_INTERPRET_WORK",
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 6
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-art",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHYSICAL_EDUCATION_CORPO",
+      "title": "Educacao Fisica - Corpo",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica",
+      "domain": "CORPO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PE_ANALYZE_MOVEMENT"
+      ],
+      "learningGoals": [
+        "Analisar movimento corporal"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PE_ANALYZE_MOVEMENT",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 10
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-physical_education",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHYSICAL_EDUCATION_ESPORTES",
+      "title": "Educacao Fisica - Esportes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica",
+      "domain": "ESPORTES",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PE_EXPLAIN_SPORT_PRINCIPLES"
+      ],
+      "learningGoals": [
+        "Explicar principios de esportes"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PE_EXPLAIN_SPORT_PRINCIPLES",
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-physical_education",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_PHYSICAL_EDUCATION_SAUDE",
+      "title": "Educacao Fisica - Saude",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica",
+      "domain": "SAUDE",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PE_PLAN_SAFE_ACTIVITY"
+      ],
+      "learningGoals": [
+        "Planejar atividade fisica segura"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "PE_PLAN_SAFE_ACTIVITY",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 2
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-physical_education",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_ENGLISH_CULTURA",
+      "title": "Lingua Inglesa - Cultura",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa",
+      "domain": "CULTURA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "ENGLISH_RELATE_LANGUAGE_CULTURE"
+      ],
+      "learningGoals": [
+        "Relacionar linguagem e contexto cultural"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-english",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_ENGLISH_LEITURA",
+      "title": "Lingua Inglesa - Leitura",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa",
+      "domain": "LEITURA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "ENGLISH_INFER_FROM_TEXT"
+      ],
+      "learningGoals": [
+        "Inferir sentido em texto em ingles"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "ENGLISH_INFER_FROM_TEXT",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 10
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-english",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_ENGLISH_VOCABULARIO",
+      "title": "Lingua Inglesa - Vocabulario",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa",
+      "domain": "VOCABULARIO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "ENGLISH_USE_CONTEXT_VOCABULARY"
+      ],
+      "learningGoals": [
+        "Interpretar vocabulario pelo contexto"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "ENGLISH_USE_CONTEXT_VOCABULARY",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 2
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-english",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_RELIGIOUS_EDUCATION_DIALOGO",
+      "title": "Ensino Religioso - Dialogo",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso",
+      "domain": "DIALOGO",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "RELIGIOUS_MEDIATE_DIALOGUE"
+      ],
+      "learningGoals": [
+        "Mediar dialogo sobre conviccoes"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 1
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-religious_education",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_RELIGIOUS_EDUCATION_DIVERSIDADE",
+      "title": "Ensino Religioso - Diversidade",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso",
+      "domain": "DIVERSIDADE",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "RELIGIOUS_COMPARE_TRADITIONS"
+      ],
+      "learningGoals": [
+        "Comparar tradicoes com respeito"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "RELIGIOUS_COMPARE_TRADITIONS",
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 10
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-religious_education",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_RELIGIOUS_EDUCATION_TRADICOES",
+      "title": "Ensino Religioso - Tradicoes",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso",
+      "domain": "TRADICOES",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "RELIGIOUS_INTERPRET_SYMBOLS"
+      ],
+      "learningGoals": [
+        "Interpretar simbolos e narrativas"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "RELIGIOUS_INTERPRET_SYMBOLS",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 10
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-religious_education",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_COMPUTING_ALGORITMOS",
+      "title": "Computacao e Educacao Digital - Algoritmos",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital",
+      "domain": "ALGORITMOS",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "COMPUTING_TRACE_ALGORITHM"
+      ],
+      "learningGoals": [
+        "Rastrear algoritmo com condicoes"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "COMPUTING_TRACE_ALGORITHM",
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-computing",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_COMPUTING_DADOS",
+      "title": "Computacao e Educacao Digital - Dados",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital",
+      "domain": "DADOS",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "COMPUTING_READ_TABLE_DATA"
+      ],
+      "learningGoals": [
+        "Selecionar dados em uma tabela"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "COMPUTING_READ_TABLE_DATA",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "evidenceMode": "OBJECTIVE",
+          "lessonCount": 1,
+          "questionCount": 9
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_WITH_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-computing",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "unitId": "V5_COMPUTING_SEGURANCA",
+      "title": "Computacao e Educacao Digital - Seguranca",
+      "description": "Unidade derivada do pacote global tec-escola-core-v4, organizada por domínio para navegação progressiva.",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital",
+      "domain": "SEGURANCA",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 9,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "COMPUTING_RECOGNIZE_PHISHING"
+      ],
+      "learningGoals": [
+        "Reconhecer sinais de phishing"
+      ],
+      "prerequisites": [],
+      "sequence": [
+        {
+          "position": 1,
+          "skillCode": "COMPUTING_RECOGNIZE_PHISHING",
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "evidenceMode": "OBJECTIVE_SCAFFOLD",
+          "lessonCount": 0,
+          "questionCount": 3
+        }
+      ],
+      "evidenceMode": "OBJECTIVE_SCAFFOLD",
+      "packageId": "tec-escola-core-v4-computing",
+      "packageVersion": "tec-escola-core-v4",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+    }
+  ],
+  "unitsHash": "3f33da738665c8449d77986f7b9a7533640392a2fc857b1933938b12ff2a761c"
+}

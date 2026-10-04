@@ -95,6 +95,15 @@
       "relationDecisionsAsserted": 0,
       "resolutionHash": "6f5bdda14521fcf1ac309a7716c9f4435944b59a195664d94b7fd2cb55a4dcb9"
     },
+    "v5CurriculumUnits": {
+      "status": "COMPILED_FROM_EXISTING_TECEscola_V4_CONTENT",
+      "totalUnits": 53,
+      "totalPackages": 15,
+      "totalSkills": 65,
+      "officialCodesClaimed": 0,
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
     "canonicalGraph": {
       "status": "AUDITED_NOT_BNCC_PROMOTED",
       "graphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda",
@@ -170,5 +179,5 @@
     "1496 canonical gaps remain authoring work; 121 mapping candidates are explicitly HUMAN_REVIEW_BLOCKED because no relation type can be asserted safely from the available evidence; no official source issue is currently flagged",
     "the 119 genuinely ambiguous cases remain reserved for human review"
   ],
-  "nextAction": "build curriculum units from independently reviewed proposals while retaining explicit human blockers"
+  "nextAction": "expand authored content by unit and subject, then connect package availability to teacher/student UX"
 }

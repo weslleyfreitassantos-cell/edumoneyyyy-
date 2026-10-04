@@ -48,6 +48,8 @@
     "bncc:review-proposals-v8": "node tools/bncc/review-proposals-v8.mjs",
     "bncc:resolve-mapping-pending-v8": "node tools/bncc/resolve-mapping-pending-v8.mjs && node tools/bncc/generate-coverage.mjs",
     "bncc:validate-mapping-resolutions-v8": "node tools/bncc/validate-mapping-resolutions-v8.mjs",
+    "bncc:curriculum-units-v5": "node tools/bncc/build-curriculum-units-v5.mjs",
+    "bncc:validate-curriculum-units-v5": "node tools/bncc/validate-curriculum-units-v5.mjs",
     "bncc:validate-multimodal-canaries": "node tools/bncc/validate-multimodal-canaries.mjs",
     "bncc:canonical-graph": "node tools/bncc/build-canonical-graph.mjs",
     "bncc:sync-v4-registries": "node tools/bncc/sync-v4-registries.mjs",
