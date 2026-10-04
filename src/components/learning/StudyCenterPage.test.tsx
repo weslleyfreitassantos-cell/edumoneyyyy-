@@ -163,6 +163,8 @@ describe('StudyCenterPage', () => {
   it('organizes the mobile journey without legacy KPI clutter', () => {
     renderPage();
 
+    expect(screen.getByRole('region', { name: 'Para hoje' })).toBeTruthy();
+    expect(screen.getAllByText('Revisão de frações').length).toBeGreaterThan(0);
     expect(screen.getByRole('searchbox', { name: 'Pesquisar matéria ou assunto' })).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Conteúdo recomendado' })).toBeTruthy();
     expect(screen.getByText('Percurso de Matemática')).toBeTruthy();
@@ -195,7 +197,7 @@ describe('StudyCenterPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Matemática/ }));
     expect(screen.getByRole('button', { name: /Matemática/ }).getAttribute('aria-pressed')).toBe('true');
     expect(screen.getByText('Minha trilha')).toBeTruthy();
-    expect(screen.getByText('Revisão de frações')).toBeTruthy();
+    expect(screen.getAllByText('Revisão de frações').length).toBeGreaterThan(0);
     expect(screen.queryByText('Leitura e interpretação')).toBeNull();
   });
 
