@@ -15,10 +15,10 @@
     "defaultAutomaticEligible": 9,
     "curatorReviewRequired": 6,
     "totalSkills": 65,
-    "techValidatedSkills": 11,
-    "scaffoldSkills": 54,
-    "totalLessons": 29,
-    "totalQuestions": 218
+    "techValidatedSkills": 12,
+    "scaffoldSkills": 53,
+    "totalLessons": 30,
+    "totalQuestions": 226
   },
   "packages": [
     {
@@ -236,12 +236,18 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 0,
-          "questionPurposes": []
+          "lessonCount": 1,
+          "questionCount": 8,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
         },
         {
           "code": "MATH_PERCENT_INCREASE",
@@ -320,10 +326,10 @@
       ],
       "summary": {
         "totalSkills": 6,
-        "techValidatedSkills": 2,
-        "scaffoldSkills": 4,
-        "lessons": 3,
-        "questions": 21
+        "techValidatedSkills": 3,
+        "scaffoldSkills": 3,
+        "lessons": 4,
+        "questions": 29
       }
     },
     {
@@ -1480,5 +1486,5 @@
       }
     }
   ],
-  "contentHash": "55d47d74fecffe67e5f522fd795346699e27c240e075bca6288c1da5ec721b94"
+  "contentHash": "a8dcd62557cd2ca30bb7a1bed002fa91c073a3c7249716578dca823836f81f67"
 }

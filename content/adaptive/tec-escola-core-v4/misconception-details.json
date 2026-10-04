@@ -88,7 +88,8 @@
     "title": "Desconto confundido com preco final",
     "description": "Subtrai o preco final em vez de identificar o desconto calculado sobre o preco inicial.",
     "affectedSkills": [
-      "MATH_PERCENT_OF_QUANTITY"
+      "MATH_PERCENT_OF_QUANTITY",
+      "MATH_IDENTIFY_PERCENT_BASE"
     ]
   },
   "PERCENT_AS_ABSOLUTE_VALUE": {
@@ -102,7 +103,8 @@
     "title": "Denominador do percentual ignorado",
     "description": "A resposta revela percentual denominador ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
     "affectedSkills": [
-      "MATH_PERCENT_OF_QUANTITY"
+      "MATH_PERCENT_OF_QUANTITY",
+      "MATH_IDENTIFY_PERCENT_BASE"
     ]
   },
   "DECIMAL_PERCENT_SHIFT": {
@@ -123,7 +125,8 @@
     "title": "Variacoes sucessivas tratadas como cancelamento",
     "description": "Soma ou cancela percentuais sucessivos sem atualizar a base de cada etapa.",
     "affectedSkills": [
-      "MATH_SUCCESSIVE_PERCENT_CHANGE"
+      "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "MATH_IDENTIFY_PERCENT_BASE"
     ]
   },
   "PERCENT_NOT_SIMPLIFIED": {
@@ -137,7 +140,8 @@
     "title": "Aumento calculado sobre a base nova",
     "description": "A resposta revela aumento uses nova base. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
     "affectedSkills": [
-      "MATH_INTERPRET_DATA_TABLE"
+      "MATH_INTERPRET_DATA_TABLE",
+      "MATH_IDENTIFY_PERCENT_BASE"
     ]
   },
   "RATE_TREATED_AS_AMOUNT": {
@@ -151,7 +155,8 @@
     "title": "Parte e todo invertidos",
     "description": "A resposta revela parte todo invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
     "affectedSkills": [
-      "MATH_INTERPRET_DATA_TABLE"
+      "MATH_INTERPRET_DATA_TABLE",
+      "MATH_IDENTIFY_PERCENT_BASE"
     ]
   },
   "COMMISSION_RATE_MISREAD": {
@@ -165,7 +170,8 @@
     "title": "Percentuais comparados sem considerar a base",
     "description": "A resposta revela percentual comparado sem base. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
     "affectedSkills": [
-      "MATH_PERCENT_OF_QUANTITY"
+      "MATH_PERCENT_OF_QUANTITY",
+      "MATH_IDENTIFY_PERCENT_BASE"
     ]
   },
   "STATE_CHANGE_DIRECTION_CONFUSED": {
