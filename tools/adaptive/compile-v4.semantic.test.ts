@@ -54,7 +54,8 @@ describe('V4 semantic ownership', () => {
     expect(migration).toContain('CONTENT_NOT_READY');
     expect(migration).not.toContain("event_type, step_id, idempotency_key, payload) values (session_row.institution_id, session_row.id, session_row.student_id, 'CONTENT_NOT_READY'");
     expect(migration).not.toContain("event_type, step_id, idempotency_key, payload) values (session_row.institution_id, session_row.id, session_row.student_id, 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED'");
-    expect(migration).toContain('v4-authored-mathematics-ratio-probe-01');
+    const contentImport = readFileSync('supabase/migrations/20261004000100_adaptive_learning_content_pack_v4.sql', 'utf8');
+    expect(contentImport).toContain('v4-authored-mathematics-ratio-probe-01');
   });
 
   it('separates Portuguese inference, thesis/evidence, genre and source comparison', () => {
@@ -94,7 +95,7 @@ describe('V4 semantic ownership', () => {
     expect(matrix.find((item) => item.questionId === 'v4-authored-mathematics-review-01')).toMatchObject({
       primarySkill: 'MATH_PERCENT_OF_QUANTITY',
     });
-    const migration = readFileSync('supabase/migrations/20261001000100_adaptive_learning_pedagogical_depth_v4.sql', 'utf8');
+    const migration = readFileSync('supabase/migrations/20261004000100_adaptive_learning_content_pack_v4.sql', 'utf8');
     expect(migration).toContain('semantic_topic_owner');
     expect(migration).toContain('v4-authored-mathematics-review-01');
     expect(migration).toContain('if v_set_id is not null then insert into public.learning_question_set_items');

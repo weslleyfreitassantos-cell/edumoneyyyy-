@@ -37,7 +37,7 @@ interface TopicOwnership { subject: string; topic: string; primarySkill: string 
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const PACK = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v4');
-const MIGRATION = join(ROOT, 'supabase', 'migrations', '20261001000100_adaptive_learning_pedagogical_depth_v4.sql');
+const CONTENT_IMPORT_MIGRATION = join(ROOT, 'supabase', 'migrations', '20261004000100_adaptive_learning_content_pack_v4.sql');
 const PURPOSES: readonly Purpose[] = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'];
 
 function readJson<T>(path: string): T { return JSON.parse(readFileSync(path, 'utf8')) as T; }
@@ -825,7 +825,7 @@ export function compileV4Pack() {
   if (!result.valid) throw new Error(`V4_CONTENT_INVALID\n${result.errors.join('\n')}`);
   writeFileSync(join(PACK, 'coverage.json'), `${JSON.stringify(buildCoverage(pack, result), null, 2)}\n`);
   writeFileSync(join(PACK, 'content-matrix.json'), `${JSON.stringify(buildContentMatrix(pack), null, 2)}\n`);
-  writeFileSync(MIGRATION, `${buildMigration(pack, result)}\n`);
+  writeFileSync(CONTENT_IMPORT_MIGRATION, `${buildMigration(pack, result)}\n`);
   return result;
 }
 
