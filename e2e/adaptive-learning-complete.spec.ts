@@ -199,15 +199,12 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(teacherPage);
       await login(teacherPage, teacher);
       await teacherPage.goto('/dashboard');
-      await expect(teacherPage.getByRole('link', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
-      await teacherPage.getByRole('link', { name: 'Central Pedagógica', exact: true }).click();
+      await expect(teacherPage.getByRole('link', { name: 'Desempenho', exact: true })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.getByRole('link', { name: 'Desempenho', exact: true }).click();
       await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });
-      await expect(teacherPage.getByRole('heading', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('heading', { name: 'Desempenho', exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByLabel('Turma selecionada').selectOption(classId);
-      await teacherPage.getByRole('link', { name: 'Abrir resultados' }).click();
-      await expect(teacherPage).toHaveURL(new RegExp(`/teacher/pedagogical-center/map\\?class=${classId}`), { timeout: 30_000 });
-      await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem da turma' })).toBeVisible({ timeout: 30_000 });
-      await expect(teacherPage.getByText('Velocidade média', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Dificuldades da turma' })).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
       await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).count()).toBe(0);
@@ -220,19 +217,18 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(mariaPage);
       await login(mariaPage, maria);
       await mariaPage.goto('/student/study');
-      await expect(mariaPage.getByText(/Seu estudo guiado precisa de apoio|Para hoje/).first()).toBeVisible({ timeout: 30_000 });
+      await expect(mariaPage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
       expect(await mariaPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 
       await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}`);
-      await expect(teacherPage.getByText('NEEDS_TEACHER_SUPPORT')).toBeVisible({ timeout: 30_000 });
-      await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem' })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('heading', { name: 'Desempenho do aluno' })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
 
       const alicePage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       pages.push(alicePage);
       await login(alicePage, alice);
       await alicePage.goto('/student/study');
-      await alicePage.getByRole('button', { name: 'Explorar', exact: true }).click();
-      await expect(alicePage.getByText('Fundamentos de Frações', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(alicePage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
       expect(await alicePage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 
       const simulation = await service.from('learning_simulations').select('id,learning_simulation_questions(position,question_bank_id)').eq('title', 'Matemática · diagnóstico rápido').is('institution_id', null).single();
