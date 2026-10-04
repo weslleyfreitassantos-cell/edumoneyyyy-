@@ -77,10 +77,19 @@
       "packVersion": "tec-escola-core-v4",
       "totalPackages": 15,
       "defaultAutomaticEligible": 9,
-      "techValidatedSkills": 10,
-      "scaffoldSkills": 55,
+      "techValidatedSkills": 11,
+      "scaffoldSkills": 54,
       "totalLessons": 29,
-      "totalQuestions": 211,
+      "totalQuestions": 218,
+      "safePromotionCanary": {
+        "status": "TECHNICAL_CANARY_READY",
+        "officialCodes": ["EF06HI01", "EF09CI01"],
+        "canonicalSkills": [
+          "HISTORY_INTERPRET_PERIODIZATION",
+          "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+        ],
+        "pedagogicalReview": "PENDING"
+      },
       "bnccAlignment": "NOT_CLAIMED"
     }
   },

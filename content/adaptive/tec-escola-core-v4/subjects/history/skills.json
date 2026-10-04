@@ -80,8 +80,8 @@
       "objective": "Interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades.",
       "description": "Interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades.",
       "masteryCapability": "Demonstrar que consegue interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades..",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9

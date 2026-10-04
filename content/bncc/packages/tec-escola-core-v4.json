@@ -15,10 +15,10 @@
     "defaultAutomaticEligible": 9,
     "curatorReviewRequired": 6,
     "totalSkills": 65,
-    "techValidatedSkills": 10,
-    "scaffoldSkills": 55,
+    "techValidatedSkills": 11,
+    "scaffoldSkills": 54,
     "totalLessons": 29,
-    "totalQuestions": 211
+    "totalQuestions": 218
   },
   "packages": [
     {
@@ -826,13 +826,17 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
           "lessonCount": 1,
-          "questionCount": 1,
+          "questionCount": 8,
           "questionPurposes": [
-            "PRACTICE"
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
           ]
         },
         {
@@ -872,10 +876,10 @@
       ],
       "summary": {
         "totalSkills": 7,
-        "techValidatedSkills": 1,
-        "scaffoldSkills": 6,
+        "techValidatedSkills": 2,
+        "scaffoldSkills": 5,
         "lessons": 5,
-        "questions": 15
+        "questions": 22
       }
     },
     {
@@ -1476,5 +1480,5 @@
       }
     }
   ],
-  "contentHash": "1eabcd24fda14ed6ded03a1168945817d74edf715f8d426369b0b5cf569d9220"
+  "contentHash": "55d47d74fecffe67e5f522fd795346699e27c240e075bca6288c1da5ec721b94"
 }
