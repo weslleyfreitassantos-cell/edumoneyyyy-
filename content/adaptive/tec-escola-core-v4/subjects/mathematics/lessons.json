@@ -46,5 +46,21 @@
     ],
     "estimatedMinutes": 9,
     "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "MATH_IDENTIFY_PERCENT_BASE",
+    "title": "Encontrar a base de uma porcentagem",
+    "objective": "Identificar o valor de referencia sobre o qual uma porcentagem incide em situacoes de desconto, aumento e comparacao.",
+    "summary": "A base e o valor de referencia da taxa; ela pode mudar quando uma nova porcentagem incide sobre o resultado de uma etapa anterior.",
+    "explanation": "Leia o enunciado e pergunte: porcentagem de qual quantidade? Em descontos e aumentos, a primeira taxa costuma incidir sobre o valor inicial; em etapas sucessivas, a base da proxima taxa e o resultado da etapa anterior.",
+    "workedExample": "Uma conta de R$ 180 recebe 10% de desconto. A base do desconto e R$ 180, o valor antes da reducao. Se depois houver outra taxa sobre o preco ja reduzido, a nova base sera o preco intermediario.",
+    "commonMistake": "Usar a porcentagem, o valor da variacao ou o resultado final como base sem verificar qual quantidade o enunciado apresenta como referencia.",
+    "tips": [
+      "Sublinhe a quantidade que representa o todo ou o valor inicial.",
+      "Separe base, taxa e parte calculada.",
+      "Em etapas sucessivas, registre a nova base antes de aplicar a proxima taxa."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
   }
 ]

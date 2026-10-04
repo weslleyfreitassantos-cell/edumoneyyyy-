@@ -38,7 +38,7 @@ describe('V4 semantic ownership', () => {
       }
       expect(new Set(questions.map((question) => question.contextFamily)).size).toBeGreaterThanOrEqual(4);
     }
-    expect(pack.leaves.find((item) => item.code === 'MATH_IDENTIFY_PERCENT_BASE')?.readiness).toBe('GRAPH_ONLY');
+    expect(pack.leaves.find((item) => item.code === 'MATH_IDENTIFY_PERCENT_BASE')?.readiness).toBe('ADAPTIVE_READY');
     expect(pack.leaves.find((item) => item.code === 'PORTUGUESE_INFER_FROM_CLUES')?.readiness).toBe('GRAPH_ONLY');
     expect(pack.leaves.find((item) => item.code === 'HISTORY_ORDER_EVENTS')?.readiness).toBe('GRAPH_ONLY');
   });
@@ -85,7 +85,7 @@ describe('V4 semantic ownership', () => {
     const validation = validateV4Pack(pack);
     expect(validation.valid).toBe(true);
     expect(validation.misconceptionAffectedSkillMismatches).toEqual([]);
-    expect(validation.topicOwnershipCount).toBe(195);
+    expect(validation.topicOwnershipCount).toBe(196);
     expect(matrix.find((item) => item.questionId === 'v3-history-history_interpretation-3')).toMatchObject({
       primarySkill: 'HISTORY_ORDER_EVENTS',
       readiness: 'GRAPH_ONLY',

@@ -1364,6 +1364,96 @@
       "selectionEligible": true
     },
     {
+      "questionId": "v4-authored-mathematics-percent-base-probe-01",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-base-probe-02",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-base-practice-01",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-base-practice-02",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-base-transfer-01",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [
+        "MATH_PERCENT_OF_QUANTITY"
+      ],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-base-lock-in-01",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-base-review-01",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-base-review-02",
+      "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
       "questionId": "v3-philosophy-philosophy_argument-1",
       "subject": "PHILOSOPHY",
       "topic": "justica",

@@ -1,6 +1,6 @@
 {
   "packVersion": "tec-escola-core-v4",
-  "canonicalHash": "eb0f5b80d5cfba9fd1f66f17ff69b435956e3a6808135302bcd32b4e61659e23",
+  "canonicalHash": "3d4b6baa4c55d69e4793d7c45bde4f9dd6eceba52afb64fa0760d681eba74b4a",
   "subjects": [
     {
       "code": "ART",
@@ -379,23 +379,26 @@
       "code": "MATHEMATICS",
       "skills": 9,
       "leafs": 6,
-      "adaptiveReady": 2,
-      "graphOnly": 4,
-      "lessons": 3,
-      "questions": 21,
+      "adaptiveReady": 3,
+      "graphOnly": 3,
+      "lessons": 4,
+      "questions": 29,
       "purposes": {
-        "PROBE": 5,
-        "PRACTICE": 5,
-        "TRANSFER": 4,
-        "LOCK_IN": 3,
-        "REVIEW": 4
+        "PROBE": 7,
+        "PRACTICE": 7,
+        "TRANSFER": 5,
+        "LOCK_IN": 4,
+        "REVIEW": 6
       },
       "contextFamilies": [
         "ABASTECIMENTO",
         "AUMENTO",
+        "BIBLIOTECA",
         "COMISSAO",
+        "COMPARACAO",
         "CONSUMO_DE_AGUA",
         "DESCONTO",
+        "ETAPAS_SUCESSIVAS",
         "FRACAO_PERCENTUAL",
         "GRAFICO",
         "JUROS_SIMPLES",
@@ -411,7 +414,9 @@
         "REVIEW_APLICADA",
         "TAXA_EQUIVALENTE",
         "TECNOLOGIA",
-        "TRANSPORTE"
+        "TRANSPORTE",
+        "TURMA",
+        "VARIACAO"
       ],
       "misconceptions": 12,
       "hierarchy": 6,

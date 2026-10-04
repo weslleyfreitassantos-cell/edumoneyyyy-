@@ -474,6 +474,11 @@
     },
     {
       "subject": "MATHEMATICS",
+      "topic": "base percentual",
+      "primarySkill": "MATH_IDENTIFY_PERCENT_BASE"
+    },
+    {
+      "subject": "MATHEMATICS",
       "topic": "taxa equivalente",
       "primarySkill": "MATH_PERCENT_OF_QUANTITY"
     },

@@ -38,8 +38,8 @@
       "masteryCapability": "Demonstrar que consegue identificar o valor de referencia sobre o qual uma porcentagem incide.",
       "domain": "PORCENTAGEM",
       "parent": "MATHEMATICS_PROPORTIONS",
-      "readiness": "GRAPH_ONLY",
-      "content_authoring_status": "SCAFFOLD",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9

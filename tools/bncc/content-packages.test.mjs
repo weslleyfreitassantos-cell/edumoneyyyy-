@@ -73,4 +73,17 @@ describe('BNCC content package factory', () => {
     });
     expect(skill.questionPurposes).toEqual(['LOCK_IN', 'PRACTICE', 'PROBE', 'REVIEW', 'TRANSFER']);
   });
+
+  it('publishes the mathematics base prerequisite only after complete canary coverage', () => {
+    const output = buildContentPackages(packRoot);
+    const skill = output.packages.flatMap((item) => item.skills)
+      .find((item) => item.code === 'MATH_IDENTIFY_PERCENT_BASE');
+    expect(skill).toMatchObject({
+      readiness: 'ADAPTIVE_READY',
+      contentStatus: 'TECH_VALIDATED',
+      lessonCount: 1,
+      questionCount: 8,
+    });
+    expect(skill.questionPurposes).toEqual(['LOCK_IN', 'PRACTICE', 'PROBE', 'REVIEW', 'TRANSFER']);
+  });
 });

@@ -618,5 +618,229 @@
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-probe-01",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "BIBLIOTECA",
+    "statement": "Uma escola recebeu 200 livros e separou 15% para a biblioteca movel. Sobre qual quantidade a porcentagem incide?",
+    "options": [
+      "30 livros",
+      "200 livros",
+      "15 livros",
+      "185 livros"
+    ],
+    "correctAnswer": "200 livros",
+    "explanation": "A base e a quantidade total de livros recebidos antes de separar a parte percentual.",
+    "misconceptions": {
+      "30 livros": ["PERCENT_DENOMINATOR_IGNORED"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-probe-02",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "TURMA",
+    "statement": "Em uma turma de 32 estudantes, 25% participaram de uma oficina. Qual e a base da porcentagem?",
+    "options": [
+      "25 estudantes",
+      "8 estudantes",
+      "32 estudantes",
+      "25%"
+    ],
+    "correctAnswer": "32 estudantes",
+    "explanation": "A taxa incide sobre o total da turma, que e 32 estudantes.",
+    "misconceptions": {
+      "8 estudantes": ["PART_WHOLE_REVERSED"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-practice-01",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DESCONTO",
+    "statement": "Uma conta de R$ 180 recebeu 10% de desconto. Qual valor deve ser usado como base para calcular o desconto?",
+    "options": [
+      "R$ 10",
+      "R$ 18, valor do desconto",
+      "R$ 162, depois do desconto",
+      "R$ 180, antes do desconto"
+    ],
+    "correctAnswer": "R$ 180, antes do desconto",
+    "explanation": "A primeira taxa de desconto incide sobre o valor inicial da conta.",
+    "misconceptions": {
+      "R$ 162, depois do desconto": ["DISCOUNT_CONFUSED_WITH_FINAL_PRICE"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-practice-02",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "AUMENTO",
+    "statement": "Uma tarifa de R$ 50 teve aumento de 8%. Qual quantidade representa a base do aumento?",
+    "options": [
+      "8%",
+      "R$ 50, tarifa antes do aumento",
+      "R$ 4, valor do aumento",
+      "R$ 54, tarifa depois do aumento"
+    ],
+    "correctAnswer": "R$ 50, tarifa antes do aumento",
+    "explanation": "A base da primeira taxa de aumento e a tarifa anterior a ele.",
+    "misconceptions": {
+      "R$ 54, tarifa depois do aumento": ["INCREASE_USES_NEW_BASE"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-transfer-01",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": ["MATH_PERCENT_OF_QUANTITY"],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "PLANEJAMENTO_DE_RECURSOS",
+    "statement": "Um projeto tem orçamento de R$ 1.200 e reserva 30% para materiais. Antes de calcular a parte, qual e a base?",
+    "options": [
+      "30%",
+      "R$ 360, parte reservada",
+      "R$ 1.200, orçamento total",
+      "R$ 840, saldo restante"
+    ],
+    "correctAnswer": "R$ 1.200, orçamento total",
+    "explanation": "A parcela de 30% é calculada sobre o orçamento total do projeto.",
+    "misconceptions": {
+      "R$ 840, saldo restante": ["PERCENT_COMPARED_WITHOUT_BASE"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-lock-in-01",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "COMPARACAO",
+    "statement": "Duas lojas anunciam 20% de desconto, mas uma parte de R$ 150 e outra de R$ 240. O que deve ser comparado primeiro?",
+    "options": [
+      "Somente o número 20",
+      "A soma das duas taxas",
+      "A diferença entre os preços finais sem conhecer os iniciais",
+      "A base inicial de cada preço"
+    ],
+    "correctAnswer": "A base inicial de cada preço",
+    "explanation": "A mesma taxa gera descontos absolutos diferentes quando as bases iniciais são diferentes.",
+    "misconceptions": {
+      "Somente o número 20": ["PERCENT_COMPARED_WITHOUT_BASE"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-review-01",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "VARIACAO",
+    "statement": "Uma quantidade passa de 80 para 100. Para calcular o aumento percentual, qual valor funciona como base?",
+    "options": [
+      "100, valor final",
+      "80, valor inicial",
+      "20, aumento absoluto",
+      "A média entre 80 e 100"
+    ],
+    "correctAnswer": "80, valor inicial",
+    "explanation": "A variação percentual do aumento usa o valor inicial como referência.",
+    "misconceptions": {
+      "100, valor final": ["INCREASE_USES_NEW_BASE"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-mathematics-percent-base-review-02",
+    "subject": "MATHEMATICS",
+    "domain": "NUMEROS",
+    "topic": "base percentual",
+    "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "ETAPAS_SUCESSIVAS",
+    "statement": "Um produto custa R$ 100, sobe 10% e depois recebe 20% de desconto. Qual e a base do segundo percentual?",
+    "options": [
+      "R$ 100, preço inicial",
+      "20%",
+      "R$ 110, preço após o aumento",
+      "R$ 20, desconto"
+    ],
+    "correctAnswer": "R$ 110, preço após o aumento",
+    "explanation": "Na segunda etapa, a nova base é o preço que resultou da primeira etapa.",
+    "misconceptions": {
+      "R$ 100, preço inicial": ["SUCCESSIVE_PERCENTAGES_CANCELLED"]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "TECH_VALIDATED"
   }
 ]
