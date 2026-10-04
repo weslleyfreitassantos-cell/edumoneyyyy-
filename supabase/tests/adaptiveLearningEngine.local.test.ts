@@ -47,11 +47,19 @@ async function createActor(
   });
 
   const client = createClient(localUrl!, anonKey!, {
-    auth: { autoRefreshToken: false, persistSession: false },
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+      storageKey: `adaptive-${suffix}-${label}-auth`,
+    },
   });
   const session = await client.auth.signInWithPassword({ email, password });
   if (session.error || !session.data.session) {
     throw new Error(`sign in ${label}: ${session.error?.message ?? 'no session'}`);
+  }
+  const currentUser = await client.auth.getUser();
+  if (currentUser.error || currentUser.data.user?.id !== user.id) {
+    throw new Error(`sign in ${label}: session identity mismatch`);
   }
 
   return { id: user.id, email, client };
