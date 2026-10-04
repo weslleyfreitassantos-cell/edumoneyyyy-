@@ -1133,8 +1133,8 @@
         "MATH_IDENTIFY_PERCENT_BASE"
       ],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-3",
@@ -1183,8 +1183,8 @@
         "MATH_PERCENT_INCREASE"
       ],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-7",
@@ -1207,8 +1207,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-9",
@@ -1220,8 +1220,8 @@
         "MATH_IDENTIFY_PERCENT_BASE"
       ],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-10",
@@ -1231,8 +1231,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-11",
@@ -1449,6 +1449,322 @@
       "primarySkill": "MATH_IDENTIFY_PERCENT_BASE",
       "supportingSkills": [],
       "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-probe-01",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-probe-02",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-practice-01",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-practice-02",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-transfer-01",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [
+        "MATH_PERCENT_OF_QUANTITY"
+      ],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-lock-in-01",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-review-01",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-probe-01",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-probe-02",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-practice-01",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-practice-02",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-transfer-01",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-lock-in-01",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-review-01",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-probe-01",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-probe-02",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-practice-01",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-practice-02",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-transfer-01",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
+      "transferSkills": [
+        "MATH_PERCENT_OF_QUANTITY"
+      ],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-lock-in-01",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-review-01",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-review-02",
+      "subject": "MATHEMATICS",
+      "topic": "aumento percentual",
+      "primarySkill": "MATH_PERCENT_INCREASE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-review-02",
+      "subject": "MATHEMATICS",
+      "topic": "leitura de tabela",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-successive-review-02",
+      "subject": "MATHEMATICS",
+      "topic": "variacoes sucessivas",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [
+        "MATH_PERCENT_INCREASE"
+      ],
       "transferSkills": [],
       "readiness": "ADAPTIVE_READY",
       "selectionEligible": true

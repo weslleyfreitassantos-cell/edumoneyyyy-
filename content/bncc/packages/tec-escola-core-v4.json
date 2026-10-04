@@ -15,10 +15,10 @@
     "defaultAutomaticEligible": 9,
     "curatorReviewRequired": 6,
     "totalSkills": 65,
-    "techValidatedSkills": 12,
-    "scaffoldSkills": 53,
-    "totalLessons": 30,
-    "totalQuestions": 226
+    "techValidatedSkills": 15,
+    "scaffoldSkills": 50,
+    "totalLessons": 32,
+    "totalQuestions": 250
   },
   "packages": [
     {
@@ -257,13 +257,16 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 2,
+          "lessonCount": 1,
+          "questionCount": 10,
           "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
             "PROBE",
+            "REVIEW",
             "TRANSFER"
           ]
         },
@@ -296,13 +299,16 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
-          "lessonCount": 0,
-          "questionCount": 2,
+          "lessonCount": 1,
+          "questionCount": 10,
           "questionPurposes": [
             "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
             "TRANSFER"
           ]
         },
@@ -314,22 +320,26 @@
           "recommendedStage": "FUNDAMENTAL_II",
           "recommendedGradeFrom": 6,
           "recommendedGradeTo": 9,
-          "readiness": "GRAPH_ONLY",
-          "contentStatus": "SCAFFOLD",
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
           "bnccAlignment": "NOT_CLAIMED",
           "lessonCount": 1,
-          "questionCount": 1,
+          "questionCount": 9,
           "questionPurposes": [
-            "PRACTICE"
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
           ]
         }
       ],
       "summary": {
         "totalSkills": 6,
-        "techValidatedSkills": 3,
-        "scaffoldSkills": 3,
-        "lessons": 4,
-        "questions": 29
+        "techValidatedSkills": 6,
+        "scaffoldSkills": 0,
+        "lessons": 6,
+        "questions": 53
       }
     },
     {
@@ -1486,5 +1496,5 @@
       }
     }
   ],
-  "contentHash": "a8dcd62557cd2ca30bb7a1bed002fa91c073a3c7249716578dca823836f81f67"
+  "contentHash": "ce7de8896874925f488fa16c50c84bb614a27678323976e282925bd8171a1849"
 }
