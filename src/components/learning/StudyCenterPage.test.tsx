@@ -21,7 +21,7 @@ const state = vi.hoisted(() => ({
     canonicalSkillId: string;
     target: { subjectArea: string };
   },
-  guidedSessionV2: null as null | { id: string; status: string; current_step?: { position?: number } | null },
+  guidedSessionV2: null as null | { id: string; status: string; current_step_id: string; current_step?: { position?: number } | null },
   dailyPlan: null as null | {
     learning_daily_plan_items: Array<{
       id: string;
@@ -146,6 +146,9 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
   useStartGuidedLearningSessionV2: () => ({ mutateAsync: state.startGuidedSession, isPending: false }),
   useGuidedLearningSessionV2: () => ({ data: state.guidedSessionV2, isLoading: false }),
+  useGuidedLearningStepV2: () => ({ data: state.guidedSessionV2 ? { id: 'step-1', position: 0, step_type: 'LESSON', lesson: { title: 'Aula guiada', content_markdown: 'Conteúdo da jornada.' }, questions: [] } : null, isLoading: false }),
+  useAdvanceGuidedLearningSessionV2: () => ({ mutateAsync: vi.fn(), isPending: false }),
+  useSubmitGuidedStepV2: () => ({ mutateAsync: vi.fn(), isPending: false, data: null, isError: false }),
   useGuidedLearningSession: () => ({ data: null, isLoading: false }),
 }));
 
@@ -156,6 +159,7 @@ vi.mock('../../hooks/useAdaptiveLearning', () => ({
 }));
 
 import StudyCenterPage from './StudyCenterPage';
+import GuidedJourneyPage from './GuidedJourneyPage';
 
 afterEach(() => {
   cleanup();
@@ -172,7 +176,7 @@ function renderPage() {
     <MemoryRouter initialEntries={['/student/study']}>
       <Routes>
         <Route path="/student/study" element={<StudyCenterPage />} />
-        <Route path="/student/study/guided" element={<p>Jornada guiada ativa</p>} />
+        <Route path="/student/study/guided" element={<GuidedJourneyPage />} />
       </Routes>
     </MemoryRouter>,
   );
@@ -262,23 +266,31 @@ describe('StudyCenterPage', () => {
       canonicalSkillId: 'canonical-skill-1',
       target: { subjectArea: 'MATEMATICA' },
     };
+    state.startGuidedSession.mockImplementationOnce(async () => {
+      state.guidedSessionV2 = { id: 'session-1', status: 'ACTIVE', current_step_id: 'step-1', current_step: { position: 0 } };
+      return { session_id: 'session-1' };
+    });
 
     renderPage();
     fireEvent.click(screen.getByRole('button', { name: 'Começar' }));
 
     await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('canonical-skill-1'));
-    expect(await screen.findByText('Jornada guiada ativa')).toBeTruthy();
+    expect(await screen.findByText('Aula guiada')).toBeTruthy();
     expect(screen.queryByText(/Nenhuma jornada guiada está ativa/)).toBeNull();
   });
 
   it('starts a review session when no guided session exists', async () => {
     state.reviewsDue = [{ id: 'review-1', canonical_skill_id: 'canonical-review-1', skill_title: 'Frações' }];
+    state.startGuidedSession.mockImplementationOnce(async () => {
+      state.guidedSessionV2 = { id: 'session-1', status: 'ACTIVE', current_step_id: 'step-1', current_step: { position: 0 } };
+      return { session_id: 'session-1' };
+    });
 
     renderPage();
     fireEvent.click(screen.getByRole('button', { name: 'Revisar' }));
 
     await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('canonical-review-1'));
-    expect(await screen.findByText('Jornada guiada ativa')).toBeTruthy();
+    expect(await screen.findByText('Aula guiada')).toBeTruthy();
     expect(screen.queryByText(/Nenhuma jornada guiada está ativa/)).toBeNull();
   });
 
@@ -294,7 +306,7 @@ describe('StudyCenterPage', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Começar' }));
 
     expect((await screen.findByRole('alert')).textContent).toContain('Não foi possível iniciar esta jornada agora.');
-    expect(screen.queryByText('Jornada guiada ativa')).toBeNull();
+    expect(screen.queryByText('Aula guiada')).toBeNull();
   });
 
   it('does not put completed daily plan items in the next-action queue', () => {
