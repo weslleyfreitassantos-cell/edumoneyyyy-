@@ -3,6 +3,7 @@ import type {
   V3TeacherHeatmapRow,
   V3KnowledgeGraphSkill,
 } from '../../services/adaptiveLearningService';
+import { humanizeSkill, humanizeSubjectArea } from '../../lib/learningPresentation';
 
 interface TeacherKnowledgeGraphPanelProps {
   skills?: V3KnowledgeGraphSkill[];
@@ -77,11 +78,11 @@ export function TeacherKnowledgeGraphPanel({
     <section aria-label="Mapa de aprendizagem" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div>
         <h2 className="font-bold dark:text-white">Mapa de aprendizagem</h2>
-        <p className="mt-1 text-sm text-slate-500">Acompanhe estado, evidências e sinais confirmados por habilidade.</p>
+        <p className="mt-1 text-sm text-slate-500">Acompanhe o que a turma já fortaleceu e onde precisa de mais prática.</p>
       </div>
       {isLoading ? <PanelState>Carregando mapa de aprendizagem...</PanelState> : null}
       {isError ? <PanelState tone="red">Não foi possível carregar o mapa de aprendizagem.</PanelState> : null}
-      {!isLoading && !isError && skills.length === 0 ? <PanelState>Ainda não há evidências mapeadas para este aluno.</PanelState> : null}
+      {!isLoading && !isError && skills.length === 0 ? <PanelState>Ainda não há resultados suficientes para este aluno.</PanelState> : null}
       {!isLoading && !isError && skills.length > 0 ? (
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {skills.map((skill) => (
@@ -96,8 +97,8 @@ export function TeacherKnowledgeGraphPanel({
               <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300">
                 <span>Domínio: <strong>{percent(skill.mastery)}%</strong></span>
                 <span>Confiança: <strong>{percent(skill.confidence)}%</strong></span>
-                <span>{skill.evidenceCount} evidência(s)</span>
-                <span>{skill.strongEvidenceCount} forte(s)</span>
+                <span>{skill.evidenceCount} atividade(s) analisada(s)</span>
+                <span>{skill.strongEvidenceCount} resultado(s) consistente(s)</span>
               </div>
               {skill.confirmedMisconceptions.length > 0 ? (
                 <p className="mt-3 text-xs text-amber-800 dark:text-amber-200">
@@ -121,17 +122,17 @@ export function TeacherKnowledgeHeatmap({
     <section aria-label="Mapa de aprendizagem da turma" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div>
         <h2 className="font-bold dark:text-white">Mapa da turma</h2>
-        <p className="mt-1 text-sm text-slate-500">Veja a distribuição por habilidade sem ranking entre alunos.</p>
+        <p className="mt-1 text-sm text-slate-500">Veja onde a turma avança e onde vale planejar um reforço, sem ranking entre alunos.</p>
       </div>
       {isLoading ? <PanelState>Carregando mapa da turma...</PanelState> : null}
       {isError ? <PanelState tone="red">Não foi possível carregar o mapa da turma.</PanelState> : null}
-      {!isLoading && !isError && rows.length === 0 ? <PanelState>Escolha uma turma com evidências para visualizar o mapa.</PanelState> : null}
+      {!isLoading && !isError && rows.length === 0 ? <PanelState>Escolha uma turma com resultados para visualizar o mapa.</PanelState> : null}
       {!isLoading && !isError && rows.length > 0 ? (
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {rows.map((row) => (
             <article key={`${row.subjectCode}-${row.skillCode}`} className="rounded-lg border p-4 dark:border-slate-700">
-              <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">{row.subjectCode}</p>
-              <h3 className="mt-1 font-semibold dark:text-white">{row.skillCode}</h3>
+              <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">{humanizeSubjectArea(row.subjectCode)}</p>
+              <h3 className="mt-1 font-semibold dark:text-white">{humanizeSkill(row.skillCode)}</h3>
               <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold">
                 <span className="rounded-full bg-emerald-100 px-2 py-1 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200">Dominado {row.masteredCount}</span>
                 <span className="rounded-full bg-blue-100 px-2 py-1 text-blue-800 dark:bg-blue-950/40 dark:text-blue-200">Em prática {row.practicingCount}</span>

@@ -638,7 +638,7 @@ export const learningCenterService = {
     );
   },
 
-  teacherClasses: async (teacherId: string) => {
+  teacherClasses: async (institutionId: string, teacherId: string) => {
     const classIds = await uniqueIds(
       supabase
         .from('subject_offerings')
@@ -655,6 +655,7 @@ export const learningCenterService = {
         .from('classes')
         .select('id,name')
         .in('id', classIds)
+        .eq('institution_id', institutionId)
         .eq('active', true)
         .order('name'),
     );

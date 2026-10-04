@@ -3,8 +3,16 @@
 **Status:** validado contra a VPS self-hosted em 2026-09-28; checks operacionais
 e restore offsite foram executados. Entrega remota de alertas e metricas HTTP
 5xx continuam bloqueadas/indisponiveis, conforme registrado abaixo.
-**Limite:** nao use `supabase db push`, `migration repair`, `config push` ou SQL
-de escrita remota como procedimento de deploy.
+**Limite:** nao use `supabase db push` generico a partir do checkout completo,
+`migration repair`, `config push` ou SQL de escrita remota como procedimento de
+deploy.
+
+Uma migration da aplicacao pode ser promovida somente por
+`scripts/db/promote-single-migration.sh`, usando um workdir temporario montado
+a partir do ledger remoto. O guard exige commit e SHA conhecidos, backup gate
+verde, dry-run com exatamente uma migration e recusa migrations inesperadas.
+Nao use `--include-all`, nao edite o ledger manualmente e nao passe migrations
+BNCC pendentes para o workdir.
 
 ## Estado operacional da VPS
 

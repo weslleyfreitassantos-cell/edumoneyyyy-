@@ -2,6 +2,13 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 type AnyClient = SupabaseClient<any, any, any>;
+type RuntimeActor = {
+  id: string;
+  email: string;
+  client: AnyClient;
+  accessToken: string;
+  refreshToken: string;
+};
 
 const localUrl = process.env.MULTI_TENANT_SUPABASE_URL;
 const anonKey = process.env.MULTI_TENANT_SUPABASE_ANON_KEY;
@@ -22,7 +29,7 @@ async function insertOne(client: AnyClient, table: string, row: Record<string, u
 async function createActor(
   service: AnyClient,
   institutionId: string,
-  role: 'TEACHER' | 'STUDENT',
+  role: 'TEACHER' | 'STUDENT' | 'DIRECTOR',
   label: string,
   suffix: string,
 ) {
@@ -47,14 +54,29 @@ async function createActor(
   });
 
   const client = createClient(localUrl!, anonKey!, {
-    auth: { autoRefreshToken: false, persistSession: false },
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+      storageKey: `adaptive-${suffix}-${label}-auth`,
+    },
   });
   const session = await client.auth.signInWithPassword({ email, password });
   if (session.error || !session.data.session) {
     throw new Error(`sign in ${label}: ${session.error?.message ?? 'no session'}`);
   }
+  const actorSession = session.data.session;
+  const currentUser = await client.auth.getUser();
+  if (currentUser.error || currentUser.data.user?.id !== user.id) {
+    throw new Error(`sign in ${label}: session identity mismatch`);
+  }
 
-  return { id: user.id, email, client };
+  return {
+    id: user.id,
+    email,
+    client,
+    accessToken: actorSession.access_token,
+    refreshToken: actorSession.refresh_token,
+  } satisfies RuntimeActor;
 }
 
 runtimeDescribe('adaptive learning runtime database contract', () => {
@@ -68,9 +90,10 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
   let studentA: string;
   let studentUnassigned: string;
   let studentB: string;
-  let teacherA: { id: string; client: AnyClient };
-  let teacherB: { id: string; client: AnyClient };
-  let teacherForeign: { id: string; client: AnyClient };
+  let teacherA: RuntimeActor;
+  let teacherB: RuntimeActor;
+  let teacherForeign: RuntimeActor;
+  let directorA: RuntimeActor;
   let studentClient: AnyClient;
   let activityId: string;
   let questionId: string;
@@ -119,10 +142,11 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     teacherA = await createActor(service, institutionA, 'TEACHER', 'math', suffix);
     teacherB = await createActor(service, institutionA, 'TEACHER', 'portuguese', suffix);
     teacherForeign = await createActor(service, institutionB, 'TEACHER', 'foreign-teacher', suffix);
+    directorA = await createActor(service, institutionA, 'DIRECTOR', 'director', suffix);
     const studentActor = await createActor(service, institutionA, 'STUDENT', 'student', suffix);
     const unassignedActor = await createActor(service, institutionA, 'STUDENT', 'unassigned', suffix);
     const foreignActor = await createActor(service, institutionB, 'STUDENT', 'foreign-student', suffix);
-    userIds.push(teacherA.id, teacherB.id, teacherForeign.id, studentActor.id, unassignedActor.id, foreignActor.id);
+    userIds.push(teacherA.id, teacherB.id, teacherForeign.id, directorA.id, studentActor.id, unassignedActor.id, foreignActor.id);
     studentClient = studentActor.client;
 
     studentA = (await insertOne(service, 'students', {
@@ -213,6 +237,77 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     });
     userIds.push(teacherA.id, teacherB.id, teacherForeign.id, studentActor.id, unassignedActor.id, foreignActor.id);
   }, 120_000);
+
+  it('teacher roster RPC normalizes legacy enrollment statuses', async () => {
+    const authenticateActor = async (actor: RuntimeActor) => {
+      const restored = await actor.client.auth.setSession({
+        access_token: actor.accessToken,
+        refresh_token: actor.refreshToken,
+      });
+      expect(restored.error).toBeNull();
+      const currentUser = await actor.client.auth.getUser();
+      expect(currentUser.error).toBeNull();
+      expect(currentUser.data.user?.id).toBe(actor.id);
+    };
+
+    const rosterFor = async (actor: RuntimeActor, institutionId: string) => {
+      await authenticateActor(actor);
+      const result = await actor.client.rpc('list_teacher_learning_students', { p_institution_id: institutionId });
+      expect(result.error).toBeNull();
+      return (result.data ?? []) as Array<{
+        student_id: string;
+        full_name?: string;
+        class_id?: string;
+        class_name?: string;
+      }>;
+    };
+
+    const expectOnlyAssignedStudent = async (actor: RuntimeActor, institutionId: string) => {
+      const rows = await rosterFor(actor, institutionId);
+      const managementCheck = await actor.client.rpc('can_manage_institution_operations', {
+        target_institution_id: institutionId,
+      });
+      expect(
+        managementCheck.error,
+        `failed to inspect institution management scope: ${managementCheck.error?.message ?? ''}`,
+      ).toBeNull();
+      expect(managementCheck.data).toBe(false);
+      expect(rows.map((row) => row.student_id)).toEqual([studentA]);
+    };
+
+    const expectManagerRoster = async (actor: RuntimeActor, institutionId: string) => {
+      const rows = await rosterFor(actor, institutionId);
+      const managementCheck = await actor.client.rpc('can_manage_institution_operations', {
+        target_institution_id: institutionId,
+      });
+      expect(managementCheck.error).toBeNull();
+      expect(managementCheck.data).toBe(true);
+      expect(rows).toHaveLength(2);
+      expect(rows.map((row) => row.student_id)).toEqual(
+        expect.arrayContaining([studentA, studentUnassigned]),
+      );
+      expect(rows.some((row) => row.student_id === studentB)).toBe(false);
+    };
+
+    await expectOnlyAssignedStudent(teacherA, institutionA);
+
+    for (const status of ['ACTIVE', ' ACTIVE ']) {
+      const update = await service.from('enrollments').update({ status }).eq('student_id', studentA).eq('class_id', classA);
+      expect(update.error).toBeNull();
+      await expectOnlyAssignedStudent(teacherA, institutionA);
+    }
+
+    const crossTenant = await rosterFor(teacherA, institutionB);
+    expect(crossTenant).toEqual([]);
+
+    const unauthorizedTeacher = await rosterFor(teacherA, institutionA);
+    expect(unauthorizedTeacher.some((row) => row.student_id === studentUnassigned)).toBe(false);
+
+    await expectManagerRoster(directorA, institutionA);
+
+    const restore = await service.from('enrollments').update({ status: 'active' }).eq('student_id', studentA).eq('class_id', classA);
+    expect(restore.error).toBeNull();
+  }, 90_000);
 
   it('blocks self, direct and indirect prerequisite cycles at runtime', async () => {
     const self = await service.from('learning_skill_prerequisites').insert({ skill_id: cycleIds[0], prerequisite_skill_id: cycleIds[0] });

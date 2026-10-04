@@ -1,14 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 
 const links = [
-  ['Acompanhamento', '/teacher/pedagogical-center'],
-  ['Pacotes', '/teacher/pedagogical-center/content'],
+  ['Visão da turma', '/teacher/pedagogical-center'],
   ['Alunos', '/teacher/pedagogical-center/students'],
-  ['Mapa', '/teacher/pedagogical-center/map'],
-  ['Jornadas', '/teacher/pedagogical-center/journeys'],
-  ['Revisão', '/teacher/pedagogical-center/reviews'],
-  ['Simulados', '/teacher/pedagogical-center/simulations'],
   ['Atividades', '/teacher/pedagogical-center/activities'],
+  ['Conteúdos', '/teacher/pedagogical-center/content'],
+  ['Resultados', '/teacher/pedagogical-center/map'],
 ] as const;
 
 export function PedagogicalCenterNav() {

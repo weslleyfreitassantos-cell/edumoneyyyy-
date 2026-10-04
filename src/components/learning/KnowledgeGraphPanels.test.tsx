@@ -66,7 +66,7 @@ describe('KnowledgeGraphPanels', () => {
 
   it('mostra estados vazio, carregando e erro sem quebrar a tela', () => {
     const { rerender } = render(<TeacherKnowledgeGraphPanel />);
-    expect(screen.getByText('Ainda não há evidências mapeadas para este aluno.')).toBeTruthy();
+    expect(screen.getByText('Ainda não há resultados suficientes para este aluno.')).toBeTruthy();
 
     rerender(<TeacherKnowledgeHeatmap isLoading />);
     expect(screen.getByText('Carregando mapa da turma...')).toBeTruthy();

@@ -34,6 +34,7 @@ import {
   useTeacherLearningClassGaps,
 } from '../../hooks/useLearningCenter';
 import { learningCenterService } from '../../services/learningCenterService';
+import { humanizeDifficulty, humanizePackageSource, humanizeSubjectArea } from '../../lib/learningPresentation';
 import { TeacherKnowledgeHeatmap } from './KnowledgeGraphPanels';
 
 interface ActivityDraft {
@@ -151,7 +152,7 @@ export default function PedagogicalCenterPage() {
   const guidedInsightsV2 = useTeacherGuidedInsightsV2(currentInstitutionId ?? undefined);
   const resolveGuidedSessionV2 = useResolveTeacherGuidedSessionV2(currentInstitutionId ?? undefined);
   const questionBank = useTeacherQuestionBank(currentInstitutionId ?? undefined);
-  const teacherClasses = useTeacherLearningClasses(profile?.id);
+  const teacherClasses = useTeacherLearningClasses(currentInstitutionId ?? undefined, profile?.id);
   const teacherStudents = useTeacherLearningStudents(currentInstitutionId ?? undefined);
   const [gapClassId, setGapClassId] = useState('');
   const classGaps = useTeacherLearningClassGaps(currentInstitutionId ?? undefined, gapClassId || undefined);
@@ -362,11 +363,11 @@ export default function PedagogicalCenterPage() {
 
       <nav aria-label="Áreas da Central Pedagógica" className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
         {[
-          ['pedagogical-overview', 'Visão geral'],
+          ['pedagogical-overview', 'Visão da turma'],
           ['pedagogical-students', 'Alunos'],
-          ['pedagogical-diagnostics', 'Diagnóstico'],
-          ['pedagogical-content', 'Conteúdo'],
           ['pedagogical-activities', 'Atividades'],
+          ['pedagogical-content', 'Conteúdos'],
+          ['pedagogical-results', 'Resultados'],
         ].map(([id, label]) => (
           <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-600 transition hover:border-[#005bbf] hover:text-[#005bbf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
             {label}
@@ -404,7 +405,7 @@ export default function PedagogicalCenterPage() {
       </section>
 
       <section
-        id="pedagogical-diagnostics"
+        id="pedagogical-results"
         aria-label="Aprendizagem adaptativa"
         className="scroll-mt-24 rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30"
       >
@@ -440,12 +441,12 @@ export default function PedagogicalCenterPage() {
         </div>
       </section>
 
-      <section aria-label="Jornadas guiadas V2" className="rounded-xl border border-amber-200 bg-amber-50 p-5 shadow-sm dark:border-amber-900/60 dark:bg-amber-950/20">
+      <section aria-label="Ações que precisam de atenção" className="rounded-xl border border-amber-200 bg-amber-50 p-5 shadow-sm dark:border-amber-900/60 dark:bg-amber-950/20">
         <div className="flex items-start justify-between gap-3">
-          <div><h2 className="font-bold text-amber-950 dark:text-amber-100">Jornadas que precisam de atenção</h2><p className="mt-1 text-sm text-amber-900 dark:text-amber-200">O motivo é estruturado e não expõe respostas ou raciocínio interno.</p></div>
+          <div><h2 className="font-bold text-amber-950 dark:text-amber-100">Próximas ações</h2><p className="mt-1 text-sm text-amber-900 dark:text-amber-200">Veja onde uma orientação ou reforço pode ajudar seus alunos.</p></div>
           <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-200">{guidedInsightsV2.data?.length ?? 0}</span>
         </div>
-        {guidedInsightsV2.data?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2">{guidedInsightsV2.data.map((item) => <article key={item.sessionId} className="rounded-lg border border-amber-200 bg-white p-4 dark:border-amber-800 dark:bg-amber-950/40"><p className="font-semibold text-slate-900 dark:text-white">{item.studentName}</p><p className="mt-1 text-xs text-slate-500">{item.status} · {item.decisionReason ?? 'REVIEW_REQUIRED'} · {item.replanCount} replanejamento(s)</p>{Object.keys(item.misconceptionSummary).length > 0 && <p className="mt-3 text-xs text-amber-900 dark:text-amber-100">Sinais para revisar: {formatMisconceptions(item.misconceptionSummary)}</p>}<div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'RESUME' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-amber-400 px-3 py-1.5 text-xs font-bold text-amber-900 dark:text-amber-100">Retomar jornada</button><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'CLOSE' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200">Encerrar apoio</button></div></article>)}</div> : <p className="mt-4 text-sm text-amber-900 dark:text-amber-200">Nenhuma jornada precisa de intervenção no momento.</p>}
+        {guidedInsightsV2.data?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2">{guidedInsightsV2.data.map((item) => <article key={item.sessionId} className="rounded-lg border border-amber-200 bg-white p-4 dark:border-amber-800 dark:bg-amber-950/40"><p className="font-semibold text-slate-900 dark:text-white">{item.studentName}</p><p className="mt-1 text-xs text-slate-500">{item.replanCount} tentativa(s) de orientação</p>{Object.keys(item.misconceptionSummary).length > 0 && <p className="mt-3 text-xs text-amber-900 dark:text-amber-100">Sinais para revisar: {formatMisconceptions(item.misconceptionSummary)}</p>}<div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'RESUME' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-amber-400 px-3 py-1.5 text-xs font-bold text-amber-900 dark:text-amber-100">Retomar estudo</button><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'CLOSE' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200">Encerrar apoio</button></div></article>)}</div> : <p className="mt-4 text-sm text-amber-900 dark:text-amber-200">Nenhuma ação precisa de intervenção no momento.</p>}
       </section>
 
       <section aria-label="Lacunas por turma" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
@@ -484,7 +485,7 @@ export default function PedagogicalCenterPage() {
             </select>
           </div>
           <p className="mt-3 text-xs text-slate-500">{filteredQuestionBank.length} questão(ões) encontradas. A origem fica preservada no rascunho.</p>
-          {filteredQuestionBank.length ? <div className="mt-3 grid gap-3 md:grid-cols-2">{filteredQuestionBank.slice(0, 12).map((item) => <article key={item.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><div className="flex items-start justify-between gap-2"><p className="line-clamp-2 text-sm font-semibold dark:text-white">{item.statement}</p><button type="button" onClick={() => useBankQuestion(item.id)} className="shrink-0 text-xs font-bold text-[#005bbf]">Adicionar à atividade</button></div><p className="mt-2 text-xs text-slate-500">{item.package_type} · {item.subject_area}{item.topic ? ` · ${item.topic}` : ''}{item.difficulty ? ` · ${item.difficulty}` : ''}</p></article>)}</div> : <p className="mt-3 text-sm text-slate-500">Nenhuma questão corresponde aos filtros.</p>}
+          {filteredQuestionBank.length ? <div className="mt-3 grid gap-3 md:grid-cols-2">{filteredQuestionBank.slice(0, 12).map((item) => <article key={item.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><div className="flex items-start justify-between gap-2"><p className="line-clamp-2 text-sm font-semibold dark:text-white">{item.statement}</p><button type="button" onClick={() => useBankQuestion(item.id)} className="shrink-0 text-xs font-bold text-[#005bbf]">Adicionar à atividade</button></div><p className="mt-2 text-xs text-slate-500">{humanizePackageSource(item.package_type)} · {humanizeSubjectArea(item.subject_area)}{item.topic ? ` · ${item.topic}` : ''}{humanizeDifficulty(item.difficulty) ? ` · ${humanizeDifficulty(item.difficulty)}` : ''}</p></article>)}</div> : <p className="mt-3 text-sm text-slate-500">Nenhuma questão corresponde aos filtros.</p>}
         </> : <p className="mt-4 text-sm text-slate-500">O banco aparecerá quando houver questões publicadas para sua instituição.</p>}
       </section>
 
@@ -559,7 +560,7 @@ export default function PedagogicalCenterPage() {
             <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300">Reutilizar do banco (opcional)
               <select value={question.questionBankId} onChange={(event) => useBankQuestionForAdditional(index, event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm dark:bg-slate-900 dark:text-white">
                 <option value="">Escrever nova questão</option>
-                {filteredQuestionBank.slice(0, 20).map((item) => <option key={item.id} value={item.id}>{item.package_type} · {item.statement.slice(0, 90)}</option>)}
+                {filteredQuestionBank.slice(0, 20).map((item) => <option key={item.id} value={item.id}>{humanizePackageSource(item.package_type)} · {item.statement.slice(0, 90)}</option>)}
               </select>
             </label>
             <textarea required value={question.question} onChange={(event) => updateAdditionalQuestion(index, 'question', event.target.value)} rows={3} placeholder="Enunciado" className="w-full rounded-lg border px-3 py-2" />

@@ -21,7 +21,7 @@ export default function TeacherSimulationWorkflowPage() {
   const [message, setMessage] = useState('');
 
   const simulations = useLearningSimulations(currentInstitutionId ?? undefined);
-  const classes = useTeacherLearningClasses(profile?.id);
+  const classes = useTeacherLearningClasses(currentInstitutionId ?? undefined, profile?.id);
   const assignments = useTeacherLearningSimulationAssignments(currentInstitutionId ?? undefined);
   const results = useTeacherLearningSimulationResults(currentInstitutionId ?? undefined, selectedAssignmentId);
   const assign = useAssignLearningSimulation(currentInstitutionId ?? undefined);

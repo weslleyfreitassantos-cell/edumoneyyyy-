@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const state = vi.hoisted(() => ({
@@ -16,6 +16,25 @@ const state = vi.hoisted(() => ({
     message: string;
     steps: Array<{ id: string; title: string }>;
   },
+  adaptiveTarget: null as null | {
+    institutionSkillId: string;
+    canonicalSkillId: string;
+    target: { subjectArea: string };
+  },
+  guidedSessionV2: null as null | { id: string; status: string; current_step_id: string; current_step?: { position?: number } | null },
+  dailyPlan: null as null | {
+    learning_daily_plan_items: Array<{
+      id: string;
+      title: string;
+      estimated_minutes: number;
+      status: string;
+      activity_id: string | null;
+      lesson_id: string | null;
+      step_id: string | null;
+    }>;
+  },
+  reviewsDue: [] as Array<{ id: string; canonical_skill_id: string | null; skill_title?: string | null }>,
+  startGuidedSession: vi.fn().mockResolvedValue({ session_id: 'session-1' }),
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -99,10 +118,10 @@ vi.mock('../../hooks/useLearningCenter', () => ({
     isLoading: false,
   }),
   useLearningCanonicalProgress: () => ({ data: [], isLoading: false }),
-  useLearningReviewsDue: () => ({ data: [], isLoading: false }),
+  useLearningReviewsDue: () => ({ data: state.reviewsDue, isLoading: false }),
   useCompleteLearningDailyPlanItem: () => ({ mutate: vi.fn(), isPending: false }),
   useCompleteLearningSkillReview: () => ({ mutate: vi.fn(), isPending: false }),
-  useLearningDailyPlan: () => ({ data: null, isLoading: false }),
+  useLearningDailyPlan: () => ({ data: state.dailyPlan, isLoading: false }),
   useLearningGamification: () => ({ data: null, isLoading: false }),
   useLearningErrorNotebook: () => ({ data: [], isLoading: false }),
   useLearningSimulations: () => ({ data: state.simulations, isLoading: false }),
@@ -125,28 +144,40 @@ vi.mock('../../hooks/useLearningCenter', () => ({
     isLoading: false,
   }),
   useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
-  useStartGuidedLearningSessionV2: () => ({ mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1' }), isPending: false }),
-  useGuidedLearningSessionV2: () => ({ data: null, isLoading: false }),
+  useStartGuidedLearningSessionV2: () => ({ mutateAsync: state.startGuidedSession, isPending: false }),
+  useGuidedLearningSessionV2: () => ({ data: state.guidedSessionV2, isLoading: false }),
+  useGuidedLearningStepV2: () => ({ data: state.guidedSessionV2 ? { id: 'step-1', position: 0, step_type: 'LESSON', lesson: { title: 'Aula guiada', content_markdown: 'Conteúdo da jornada.' }, questions: [] } : null, isLoading: false }),
+  useAdvanceGuidedLearningSessionV2: () => ({ mutateAsync: vi.fn(), isPending: false }),
+  useSubmitGuidedStepV2: () => ({ mutateAsync: vi.fn(), isPending: false, data: null, isError: false }),
   useGuidedLearningSession: () => ({ data: null, isLoading: false }),
 }));
 
 vi.mock('../../hooks/useAdaptiveLearning', () => ({
-  useStudentAdaptiveTarget: () => ({ data: null, isLoading: false }),
+  useStudentAdaptiveTarget: () => ({ data: state.adaptiveTarget, isLoading: false }),
   useStudentAdaptiveGuidance: () => ({ data: state.adaptiveGuidance, isLoading: false }),
   useStudentAdaptiveV3Plan: () => ({ data: null, isLoading: false }),
 }));
 
 import StudyCenterPage from './StudyCenterPage';
+import GuidedJourneyPage from './GuidedJourneyPage';
 
 afterEach(() => {
   cleanup();
   state.adaptiveGuidance = null;
+  state.adaptiveTarget = null;
+  state.guidedSessionV2 = null;
+  state.dailyPlan = null;
+  state.reviewsDue = [];
+  state.startGuidedSession.mockReset().mockResolvedValue({ session_id: 'session-1' });
 });
 
 function renderPage() {
   return render(
-    <MemoryRouter>
-      <StudyCenterPage />
+    <MemoryRouter initialEntries={['/student/study']}>
+      <Routes>
+        <Route path="/student/study" element={<StudyCenterPage />} />
+        <Route path="/student/study/guided" element={<GuidedJourneyPage />} />
+      </Routes>
     </MemoryRouter>,
   );
 }
@@ -163,12 +194,16 @@ describe('StudyCenterPage', () => {
   it('organizes the mobile journey without legacy KPI clutter', () => {
     renderPage();
 
+    expect(screen.getByRole('region', { name: 'Para hoje' })).toBeTruthy();
+    expect(screen.getAllByText('Revisão de frações').length).toBeGreaterThan(0);
     expect(screen.getByRole('searchbox', { name: 'Pesquisar matéria ou assunto' })).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Conteúdo recomendado' })).toBeTruthy();
     expect(screen.getByText('Percurso de Matemática')).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Práticas' }).getAttribute('href')).toBe('#study-practice');
     expect(screen.getByRole('link', { name: 'Coleções' }).getAttribute('href')).toBe('#study-resources');
     expect(screen.getAllByText('Continuamos conhecendo seu perfil de aprendizagem.').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('1 atividade(s) disponíveis').length).toBeGreaterThan(0);
+    expect(screen.queryByText(/atividade\(s\) para começar/)).toBeNull();
     expect(screen.queryByText('práticas disponíveis')).toBeNull();
     expect(screen.queryByText('domínio médio')).toBeNull();
   });
@@ -195,7 +230,7 @@ describe('StudyCenterPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Matemática/ }));
     expect(screen.getByRole('button', { name: /Matemática/ }).getAttribute('aria-pressed')).toBe('true');
     expect(screen.getByText('Minha trilha')).toBeTruthy();
-    expect(screen.getByText('Revisão de frações')).toBeTruthy();
+    expect(screen.getAllByText('Revisão de frações').length).toBeGreaterThan(0);
     expect(screen.queryByText('Leitura e interpretação')).toBeNull();
   });
 
@@ -223,5 +258,73 @@ describe('StudyCenterPage', () => {
     expect(screen.getByRole('region', { name: 'Seu próximo passo' })).toBeTruthy();
     expect(screen.getByText(/fortalecer Frações/)).toBeTruthy();
     expect(screen.getByText('Função afim')).toBeTruthy();
+  });
+
+  it('starts an adaptive session before navigating to the guided journey', async () => {
+    state.adaptiveTarget = {
+      institutionSkillId: 'institution-skill-1',
+      canonicalSkillId: 'canonical-skill-1',
+      target: { subjectArea: 'MATEMATICA' },
+    };
+    state.startGuidedSession.mockImplementationOnce(async () => {
+      state.guidedSessionV2 = { id: 'session-1', status: 'ACTIVE', current_step_id: 'step-1', current_step: { position: 0 } };
+      return { session_id: 'session-1' };
+    });
+
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: 'Começar' }));
+
+    await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('canonical-skill-1'));
+    expect(await screen.findByText('Aula guiada')).toBeTruthy();
+    expect(screen.queryByText(/Nenhuma jornada guiada está ativa/)).toBeNull();
+  });
+
+  it('starts a review session when no guided session exists', async () => {
+    state.reviewsDue = [{ id: 'review-1', canonical_skill_id: 'canonical-review-1', skill_title: 'Frações' }];
+    state.startGuidedSession.mockImplementationOnce(async () => {
+      state.guidedSessionV2 = { id: 'session-1', status: 'ACTIVE', current_step_id: 'step-1', current_step: { position: 0 } };
+      return { session_id: 'session-1' };
+    });
+
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: 'Revisar' }));
+
+    await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('canonical-review-1'));
+    expect(await screen.findByText('Aula guiada')).toBeTruthy();
+    expect(screen.queryByText(/Nenhuma jornada guiada está ativa/)).toBeNull();
+  });
+
+  it('keeps the guided-start error visible and does not navigate on failure', async () => {
+    state.adaptiveTarget = {
+      institutionSkillId: 'institution-skill-1',
+      canonicalSkillId: 'canonical-skill-1',
+      target: { subjectArea: 'MATEMATICA' },
+    };
+    state.startGuidedSession.mockRejectedValueOnce(new Error('start failed'));
+
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: 'Começar' }));
+
+    expect((await screen.findByRole('alert')).textContent).toContain('Não foi possível iniciar esta jornada agora.');
+    expect(screen.queryByText('Aula guiada')).toBeNull();
+  });
+
+  it('does not put completed daily plan items in the next-action queue', () => {
+    state.dailyPlan = {
+      learning_daily_plan_items: [{
+        id: 'daily-completed',
+        title: 'Atividade já concluída',
+        estimated_minutes: 15,
+        status: 'COMPLETED',
+        activity_id: 'activity-1',
+        lesson_id: null,
+        step_id: null,
+      }],
+    };
+
+    renderPage();
+
+    expect(screen.queryByText('Atividade já concluída')).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Revisar' })).toBeNull();
   });
 });

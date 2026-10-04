@@ -50,10 +50,11 @@ import {
   usePublishedLearningActivities,
   useStudentLearningSubjects,
   useGuidedLearningSession,
-  useStartGuidedLearningSessionV2,
   useGuidedLearningSessionV2,
+  useStartGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
 import type { LearningActivity } from '../../services/learningCenterService';
+import { humanizePackageTitle, humanizeSkill, humanizeSubjectArea, packagePresentationKey } from '../../lib/learningPresentation';
 import { StudentAdaptiveBridgeCard } from './KnowledgeGraphPanels';
 
 function subjectName(activity: LearningActivity): string | undefined {
@@ -96,9 +97,9 @@ function subjectIcon(subject: string): LucideIcon {
 }
 
 export default function StudyCenterPage() {
+  const navigate = useNavigate();
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
-  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [selectedSubjectId, setSelectedSubjectId] = useState('');
   const [selectedUnitId, setSelectedUnitId] = useState('');
@@ -163,11 +164,11 @@ export default function StudyCenterPage() {
     showSecondaryStudyAreas,
   );
   const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id);
-  const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
+  const guidedSessionV2 = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
-  const guidedSessionV2 = useGuidedLearningSessionV2(
+  const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
@@ -244,6 +245,128 @@ export default function StudyCenterPage() {
     () => (simulationAttempts.data ?? []).filter((attempt) => attempt.status === 'COMPLETED').slice(0, 3),
     [simulationAttempts.data],
   );
+  const [startingActionId, setStartingActionId] = useState<string | null>(null);
+  const [startActionError, setStartActionError] = useState<string | null>(null);
+  const guidedSessionIsUsable = ['ACTIVE', 'PAUSED', 'NEEDS_TEACHER_SUPPORT'].includes(
+    guidedSessionV2.data?.status ?? '',
+  );
+
+  const todayActions = useMemo(() => {
+    const actions: Array<{
+      id: string;
+      title: string;
+      detail: string;
+      href: string;
+      action: string;
+      targetCanonicalSkillId?: string;
+    }> = [];
+    if (guidedSessionV2.data?.status === 'ACTIVE' || guidedSessionV2.data?.status === 'PAUSED') {
+      actions.push({
+        id: `guided:${guidedSessionV2.data.id}`,
+        title: guidedSessionV2.data.current_step?.position === undefined
+          ? 'Continuar seu estudo guiado'
+          : `Continuar etapa ${(guidedSessionV2.data.current_step.position ?? 0) + 1}`,
+        detail: 'Siga a próxima atividade indicada para você.',
+        href: '/student/study/guided',
+        action: 'Continuar',
+      });
+    } else if (guidedSessionV2.data?.status === 'NEEDS_TEACHER_SUPPORT') {
+      actions.push({
+        id: `guided:${guidedSessionV2.data.id}`,
+        title: 'Seu estudo precisa de apoio',
+        detail: 'Veja a orientação da sua escola para continuar com segurança.',
+        href: '/student/study/guided',
+        action: 'Ver apoio',
+      });
+    } else {
+      for (const item of (dailyPlan.data?.learning_daily_plan_items ?? []).filter(
+        (dailyItem) => dailyItem.status === 'PENDING' || dailyItem.status === 'IN_PROGRESS',
+      )) {
+        const href = item.activity_id
+          ? `/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`
+          : item.lesson_id
+            ? `/student/study/lesson/${item.lesson_id}/${item.step_id ?? ''}`
+            : '/student/study#study-subjects';
+        actions.push({
+          id: `plan:${item.id}`,
+          title: item.title,
+          detail: `${item.estimated_minutes} min · ${item.status === 'IN_PROGRESS' ? 'Em andamento' : 'Próxima atividade'}`,
+          href,
+          action: item.activity_id || item.lesson_id ? (item.status === 'IN_PROGRESS' ? 'Continuar' : 'Começar') : 'Explorar',
+        });
+      }
+    }
+    if (!guidedSessionIsUsable) for (const review of reviewsDue.data ?? []) {
+      actions.push({
+        id: `review:${review.id}`,
+        title: humanizeSkill(review.canonical_skill_id, review.skill_title),
+        detail: 'Revisão recomendada para fortalecer este conceito.',
+        href: review.canonical_skill_id ? '/student/study/guided' : '/student/study#study-subjects',
+        action: review.canonical_skill_id ? 'Revisar' : 'Explorar',
+        targetCanonicalSkillId: review.canonical_skill_id ?? undefined,
+      });
+    }
+    for (const error of errorNotebook.data ?? []) {
+      actions.push({
+        id: `error:${error.id}`,
+        title: humanizeSkill(error.canonical_skill_id),
+        detail: `Você teve dificuldade neste conceito em ${error.error_count} tentativa(s).`,
+        href: `/student/study/error/${error.id}`,
+        action: 'Praticar',
+      });
+    }
+    if (!actions.length && adaptiveTarget.data) {
+      actions.push({
+        id: `target:${adaptiveTarget.data.institutionSkillId}`,
+        title: `Começar em ${humanizeSubjectArea(adaptiveTarget.data.target.subjectArea)}`,
+        detail: 'Uma atividade curta para conhecer seu próximo tópico.',
+        href: '/student/study/guided',
+        action: 'Começar',
+        targetCanonicalSkillId: adaptiveTarget.data.canonicalSkillId,
+      });
+    }
+    if (!actions.length && selectedActivities[0]) {
+      const activity = selectedActivities[0];
+      actions.push({
+        id: `activity:${activity.id}`,
+        title: activity.title,
+        detail: `${subjectName(activity) ?? 'Atividade'} · ${activity.learning_questions?.length ?? 0} questões`,
+        href: `/student/study/activity/${activity.id}`,
+        action: 'Começar',
+      });
+    }
+    return actions.slice(0, 4);
+  }, [adaptiveTarget.data, dailyPlan.data, errorNotebook.data, guidedSessionIsUsable, guidedSessionV2.data, reviewsDue.data, selectedActivities]);
+
+  const handleTodayAction = async (item: (typeof todayActions)[number]) => {
+    if (!item.targetCanonicalSkillId) {
+      navigate(item.href);
+      return;
+    }
+
+    setStartActionError(null);
+    setStartingActionId(item.id);
+    try {
+      await startGuidedSessionV2.mutateAsync(item.targetCanonicalSkillId);
+      navigate('/student/study/guided');
+    } catch {
+      setStartActionError('Não foi possível iniciar esta jornada agora. Tente novamente.');
+    } finally {
+      setStartingActionId(null);
+    }
+  };
+
+  const displayPackages = useMemo(() => {
+    const seen = new Set<string>();
+    return (packages.data ?? []).flatMap((assignment) => {
+      const item = Array.isArray(assignment.learning_packages) ? assignment.learning_packages[0] : assignment.learning_packages;
+      if (!item) return [];
+      const key = packagePresentationKey(item.title, item.subject_area);
+      if (seen.has(key)) return [];
+      seen.add(key);
+      return [{ assignment, item }];
+    }).slice(0, 4);
+  }, [packages.data]);
 
   const selectedSubject = (subjects.data ?? []).find(
     (subject) => subject.id === selectedSubjectId,
@@ -266,14 +389,14 @@ export default function StudyCenterPage() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Seu próximo passo</p>
-              <h1 className="mt-1 text-2xl font-bold text-blue-950 dark:text-blue-100">Continue estudando</h1>
+              <h1 className="mt-1 text-2xl font-bold text-blue-950 dark:text-blue-100">Continue de onde parou</h1>
               <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">
                 Olá, {profile?.full_name?.split(' ')[0] ?? 'aluno'}. O que vamos estudar hoje?
               </p>
             </div>
             {guidedSessionV2.data?.status === 'ACTIVE' ? (
               <Link to="/student/study/guided" className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">
-                Continuar jornada
+                Continuar estudo
               </Link>
             ) : (
               <a href="#study-subjects" className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-bold text-[#005bbf]">
@@ -294,25 +417,19 @@ export default function StudyCenterPage() {
       )}
 
       <section
-        aria-label="Plano de hoje"
+        aria-label="Para hoje"
         className="rounded-xl border border-blue-200 bg-blue-50 p-4 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/30 sm:p-5"
       >
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">
-              {guidedSessionV2.data ? 'Sua jornada de hoje · ~20 min' : 'Plano de hoje'}
+              {guidedSessionV2.data?.status === 'ACTIVE' ? 'Para hoje · estudo guiado' : 'Para hoje'}
             </p>
             <h2 className="mt-1 text-lg font-bold text-blue-950 dark:text-blue-100">
-              {guidedSessionV2.data
-                ? `Jornada guiada · etapa ${(guidedSessionV2.data.current_step?.position ?? 0) + 1}`
-                : dailyPlan.data?.estimated_minutes
-                  ? `Seu plano · ${dailyPlan.data.estimated_minutes} min`
-                  : 'Um próximo passo por vez'}
+              {todayActions.length ? 'Sua próxima ação' : 'Nada pendente por enquanto'}
             </h2>
             <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">
-              {guidedSessionV2.data
-                ? 'Você responde, recebe feedback e segue para o próximo passo indicado pelo servidor.'
-                : 'Diagnóstico, estudo e prática no ritmo que suas evidências indicam.'}
+              {todayActions.length ? 'Reunimos em um só lugar o que merece sua atenção agora.' : 'Quando houver uma nova atividade ou revisão, ela aparecerá aqui.'}
             </p>
           </div>
           {gamification.data && (
@@ -322,45 +439,17 @@ export default function StudyCenterPage() {
             </div>
           )}
         </div>
-        {guidedSessionV2.data?.status === 'ACTIVE' && (
-          <Link to="/student/study/guided" className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</Link>
-        )}
-        {dailyPlan.isLoading ? (
-          <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Montando seu plano...</p>
-        ) : adaptiveTarget.data && !guidedSessionV2.data ? (
-          <button
-            type="button"
-            onClick={() => void startGuidedSessionV2.mutateAsync(adaptiveTarget.data!.canonicalSkillId).then(() => navigate('/student/study/guided'))}
-            disabled={startGuidedSessionV2.isPending}
-            className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
-          >
-            {startGuidedSessionV2.isPending ? 'Preparando...' : 'Começar estudo guiado'}
-          </button>
-        ) : dailyPlan.data?.learning_daily_plan_items?.length ? (
-          <ol className="mt-4 grid gap-2 sm:grid-cols-2">
-            {dailyPlan.data.learning_daily_plan_items.map((item) => (
-              <li key={item.id} className="flex items-center gap-3 rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/50">
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-[#005bbf] dark:bg-blue-900/60 dark:text-blue-100">{item.position + 1}</span>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-bold text-slate-900 dark:text-white">{item.title}</p>
-                  <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">{item.estimated_minutes} min · {item.status === 'COMPLETED' ? 'Concluído' : 'Pendente'}</p>
-                </div>
-                {item.activity_id ? <Link to={`/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.lesson_id ? <Link to={`/student/study/lesson/${item.lesson_id}/${item.step_id ?? ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.status === 'PENDING' ? <span className="shrink-0 text-[11px] font-semibold text-slate-500">Aguardando evidência</span> : null}
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Escolha uma matéria para continuar sua trilha.</p>
-        )}
+        {dailyPlan.isLoading ? <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Organizando suas próximas ações...</p> : todayActions.length ? <ol className="mt-4 grid gap-2 sm:grid-cols-2">{todayActions.map((item, index) => <li key={item.id} className="flex items-center gap-3 rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/50"><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-[#005bbf] dark:bg-blue-900/60 dark:text-blue-100">{index + 1}</span><div className="min-w-0 flex-1"><p className="truncate text-sm font-bold text-slate-900 dark:text-white">{item.title}</p><p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">{item.detail}</p></div>{item.targetCanonicalSkillId ? <button type="button" onClick={() => void handleTodayAction(item)} disabled={startingActionId !== null || startGuidedSessionV2.isPending} className="shrink-0 text-xs font-bold text-[#005bbf] disabled:cursor-wait disabled:opacity-60">{startingActionId === item.id ? 'Abrindo...' : item.action}</button> : <Link to={item.href} className="shrink-0 text-xs font-bold text-[#005bbf]">{item.action}</Link>}</li>)}</ol> : <a href="#study-subjects" className="mt-4 inline-flex text-sm font-bold text-[#005bbf]">Explorar matérias</a>}
+        {startActionError ? <p role="alert" className="mt-3 text-sm font-semibold text-red-700 dark:text-red-300">{startActionError}</p> : null}
       </section>
 
       <section id="study-progress" aria-label="Seu progresso" className="scroll-mt-24 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <h2 className="font-bold dark:text-white">Seu progresso</h2>
-            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Habilidades organizadas pelo que suas evidências mostram hoje.</p>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Seu desempenho organiza o que você já fortaleceu e o que pode praticar agora.</p>
           </div>
-          <span className="text-xs font-semibold text-slate-500">{canonicalSummary.evidence} evidência(s)</span>
+          <span className="text-xs font-semibold text-slate-500">{canonicalSummary.evidence ? `${canonicalSummary.evidence} atividade(s) analisada(s)` : 'Acompanhamento começando'}</span>
         </div>
         {canonicalProgress.isLoading ? <p className="mt-4 text-sm text-slate-500">Conhecendo seu perfil...</p> : canonicalSummary.hasEvidence ? (
           <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
@@ -375,50 +464,10 @@ export default function StudyCenterPage() {
         <section aria-label="Objetivo atual" className="rounded-xl border border-indigo-200 bg-indigo-50 p-4 dark:border-indigo-900/50 dark:bg-indigo-950/20 sm:p-5">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-indigo-700 dark:text-indigo-300">Seu caminho agora</p>
           <div className="mt-3 grid gap-3 sm:grid-cols-3">
-            <div><p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">Objetivo</p><p className="mt-1 font-bold text-indigo-950 dark:text-indigo-100">{adaptiveTarget.data.target.subjectArea}</p></div>
+            <div><p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">Objetivo</p><p className="mt-1 font-bold text-indigo-950 dark:text-indigo-100">{humanizeSubjectArea(adaptiveTarget.data.target.subjectArea)}</p></div>
             <div><p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">Agora</p><p className="mt-1 font-semibold text-indigo-950 dark:text-indigo-100">Diagnóstico da próxima habilidade</p></div>
             <div><p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">Depois</p><p className="mt-1 font-semibold text-indigo-950 dark:text-indigo-100">Prática orientada pelas suas respostas</p></div>
           </div>
-        </section>
-      ) : null}
-
-      {errorNotebook.data?.length ? (
-        <section aria-label="Pontos para fortalecer" className="rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20 sm:p-5">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h2 className="font-bold text-amber-950 dark:text-amber-100">Pontos para fortalecer</h2>
-              <p className="mt-1 text-sm text-amber-900 dark:text-amber-200">Conceitos que merecem uma nova tentativa.</p>
-            </div>
-            <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-200">{errorNotebook.data.length} aberta(s)</span>
-          </div>
-          <div className="mt-4 grid gap-2 sm:grid-cols-3">
-            {errorNotebook.data.slice(0, 3).map((error) => (
-              <Link key={error.id} to={`/student/study/error/${error.id}`} className="rounded-lg border border-amber-200 bg-white p-3 text-sm font-semibold text-amber-950 transition hover:border-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
-                Revisar agora
-                <span className="mt-1 block text-xs font-normal text-amber-800 dark:text-amber-200">{error.error_count} erro(s) nesta questão</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
-      {reviewsDue.data?.length ? (
-        <section aria-label="Revisões vencidas" className="rounded-xl border border-violet-200 bg-violet-50 p-4 dark:border-violet-900/60 dark:bg-violet-950/20 sm:p-5">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h2 className="font-bold text-violet-950 dark:text-violet-100">Revisões de hoje</h2>
-              <p className="mt-1 text-sm text-violet-900 dark:text-violet-200">Uma revisão curta ajuda a manter o que você já aprendeu.</p>
-            </div>
-            <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-violet-800 dark:bg-violet-950/60 dark:text-violet-200">{reviewsDue.data.length}</span>
-          </div>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-            {reviewsDue.data.slice(0, 4).map((review) => (
-              <li key={review.id} className="flex items-center justify-between gap-3 rounded-lg border border-violet-200 bg-white p-3 text-sm dark:border-violet-800 dark:bg-violet-950/40">
-                <span className="min-w-0 truncate font-semibold text-violet-950 dark:text-violet-100">{review.skill_title ?? 'Revisar habilidade'}</span>
-                <Link to="/student/study/guided" className="shrink-0 rounded-md bg-violet-700 px-2 py-1 text-[11px] font-bold text-white">Abrir revisão</Link>
-              </li>
-            ))}
-          </ul>
         </section>
       ) : null}
 
@@ -440,15 +489,11 @@ export default function StudyCenterPage() {
             <h2 className="font-bold dark:text-white">Conteúdo recomendado</h2>
             <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Percursos disponíveis automaticamente para sua etapa.</p>
           </div>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{packages.data?.length ?? 0}</span>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{displayPackages.length}</span>
         </div>
-        {packages.data?.length ? (
+        {displayPackages.length ? (
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {packages.data.slice(0, 4).map((assignment) => {
-              const item = Array.isArray(assignment.learning_packages) ? assignment.learning_packages[0] : assignment.learning_packages;
-              if (!item) return null;
-              return <article key={assignment.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><p className="font-semibold dark:text-white">{item.title}</p><p className="mt-1 text-xs text-slate-500">{item.learning_package_steps?.length ?? 0} etapas · {item.subject_area ?? 'Trilha TecEscola'}</p><p className="mt-2 text-xs font-semibold text-[#005bbf]">{assignment.due_at ? `Entrega até ${new Date(assignment.due_at).toLocaleDateString('pt-BR')}` : 'Disponível para começar'}</p><ol className="mt-3 space-y-2">{item.learning_package_steps?.slice(0, 4).map((step) => <li key={step.id} className="flex items-center justify-between gap-2 text-xs"><span className="min-w-0 truncate text-slate-600 dark:text-slate-300">{step.position + 1}. {step.title}</span>{step.lesson_id ? <Link to={`/student/study/lesson/${step.lesson_id}`} className="shrink-0 font-bold text-[#005bbf]">Abrir</Link> : step.activity_id ? <Link to={`/student/study/activity/${step.activity_id}`} className="shrink-0 font-bold text-[#005bbf]">Praticar</Link> : null}</li>)}</ol></article>;
-            })}
+            {displayPackages.map(({ assignment, item }) => <article key={assignment.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><p className="font-semibold dark:text-white">{humanizePackageTitle(item.title, item.subject_area)}</p><p className="mt-1 text-xs text-slate-500">{humanizeSubjectArea(item.subject_area)} · {item.learning_package_steps?.length ?? 0} etapas</p><p className="mt-2 text-xs font-semibold text-[#005bbf]">{assignment.due_at ? `Entrega até ${new Date(assignment.due_at).toLocaleDateString('pt-BR')}` : 'Disponível para começar'}</p><ol className="mt-3 space-y-2">{item.learning_package_steps?.slice(0, 4).map((step) => <li key={step.id} className="flex items-center justify-between gap-2 text-xs"><span className="min-w-0 truncate text-slate-600 dark:text-slate-300">{step.position + 1}. {step.title}</span>{step.lesson_id ? <Link to={`/student/study/lesson/${step.lesson_id}`} className="shrink-0 font-bold text-[#005bbf]">Abrir</Link> : step.activity_id ? <Link to={`/student/study/activity/${step.activity_id}`} className="shrink-0 font-bold text-[#005bbf]">Praticar</Link> : null}</li>)}</ol></article>)}
           </div>
         ) : <p className="mt-4 text-sm text-slate-500">Nenhum conteúdo recomendado disponível ainda.</p>}
       </section>
@@ -600,6 +645,7 @@ export default function StudyCenterPage() {
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
             {filteredSubjects.map((subject) => {
               const Icon = subjectIcon(subject.name);
+              const subjectAvailableActivityCount = (activities.data ?? []).filter((activity) => activity.subject_id === subject.id).length;
               return (
                 <button
                   key={subject.id}
@@ -609,7 +655,7 @@ export default function StudyCenterPage() {
                   className={`flex min-h-16 min-w-[220px] snap-start items-center gap-3 rounded-xl border p-4 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] sm:min-w-0 ${selectedSubjectId === subject.id ? 'border-[#005bbf] bg-blue-50 dark:bg-blue-950/30' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}
                 >
                   <Icon className="h-5 w-5 text-[#005bbf]" aria-hidden="true" />
-                  <span className="min-w-0 flex-1 truncate font-semibold dark:text-white">{subject.name}</span>
+                  <span className="min-w-0 flex-1"><span className="block truncate font-semibold dark:text-white">{subject.name}</span><span className="mt-0.5 block truncate text-xs font-normal text-slate-500 dark:text-slate-400">{subjectAvailableActivityCount ? `${subjectAvailableActivityCount} atividade(s) disponíveis` : 'Explore os tópicos disponíveis'}</span></span>
                   <ChevronRight className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
                 </button>
               );
