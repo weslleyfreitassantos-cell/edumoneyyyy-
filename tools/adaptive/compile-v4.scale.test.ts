@@ -32,7 +32,7 @@ describe('adaptive V4 source-of-truth and honest content gates', () => {
     expect(result.adaptiveReadyCount).toBe(10);
     expect(result.graphOnlyCount).toBeGreaterThan(0);
     expect(result.contentReadyCount).toBe(6);
-    expect(result.lessonCount).toBe(16);
+    expect(result.lessonCount).toBe(29);
     expect(result.questionCount).toBe(211);
     expect(result.reusedV2V3Questions).toBe(180);
     expect(result.newRealV4Questions).toBe(31);

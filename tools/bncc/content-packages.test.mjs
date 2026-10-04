@@ -34,4 +34,31 @@ describe('BNCC content package factory', () => {
     const checkedIn = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
     expect(checkedIn.contentHash).toBe(buildContentPackages(packRoot).contentHash);
   });
+
+  it('keeps a lesson paired with each newly reconciled graph skill', () => {
+    const output = buildContentPackages(packRoot);
+    const newlyReconciled = [
+      'HISTORY_COMPARE_PERSPECTIVES',
+      'HISTORY_INTERPRET_PERIODIZATION',
+      'HISTORY_DISTINGUISH_MEMORY_HISTORY',
+      'HISTORY_ANALYZE_CHANGE_CONTINUITY',
+      'MATH_SUCCESSIVE_PERCENT_CHANGE',
+      'PHYSICS_RELATIVE_SPEED',
+      'PHYSICS_UNIFORM_MOTION',
+      'PHYSICS_INTERPRET_ACCELERATION',
+      'PORTUGUESE_DISTINGUISH_FACT_OPINION',
+      'PORTUGUESE_IDENTIFY_GENRE_PURPOSE',
+      'PORTUGUESE_COMPARE_SOURCES',
+      'PORTUGUESE_IDENTIFY_COUNTERARGUMENT',
+      'PORTUGUESE_SUMMARIZE_ARGUMENT',
+    ];
+    const skills = output.packages.flatMap((item) => item.skills);
+    for (const code of newlyReconciled) {
+      const skill = skills.find((item) => item.code === code);
+      expect(skill?.lessonCount).toBe(1);
+      expect(skill?.questionCount).toBeGreaterThan(0);
+      expect(skill?.readiness).toBe('GRAPH_ONLY');
+      expect(skill?.contentStatus).toBe('SCAFFOLD');
+    }
+  });
 });

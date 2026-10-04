@@ -14,5 +14,53 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "PHYSICS_RELATIVE_SPEED",
+    "title": "Comparar velocidades relativas",
+    "objective": "Comparar velocidades de corpos em movimento considerando o referencial e o sentido do movimento.",
+    "summary": "A velocidade relativa depende do referencial escolhido e da direcao dos movimentos comparados.",
+    "explanation": "Escolha o referencial, represente os sentidos e entao some ou subtraia as velocidades conforme os corpos se aproximam ou se afastam.",
+    "workedExample": "Dois ciclistas seguem no mesmo sentido a 18 km/h e 12 km/h; para um deles, a velocidade do outro e 6 km/h.",
+    "commonMistake": "Somar velocidades de corpos que se movem no mesmo sentido sem definir o referencial.",
+    "tips": [
+      "Defina quem observa o movimento.",
+      "Marque os sentidos antes de calcular.",
+      "Use unidade unica para comparar."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "PHYSICS_UNIFORM_MOTION",
+    "title": "Reconhecer movimento uniforme",
+    "objective": "Reconhecer movimento uniforme pela constancia da velocidade e pela representacao correspondente.",
+    "summary": "No movimento uniforme, a velocidade permanece constante e a distancia varia proporcionalmente ao tempo.",
+    "explanation": "Observe se o corpo percorre distancias iguais em tempos iguais. Em um grafico de posicao pelo tempo, isso aparece como uma reta de inclinacao constante.",
+    "workedExample": "Um trem que percorre 2 km a cada 2 minutos mantem 1 km/min enquanto essa proporcao nao muda.",
+    "commonMistake": "Confundir velocidade constante com corpo parado ou exigir que a posicao seja constante.",
+    "tips": [
+      "Compare intervalos iguais de tempo.",
+      "Separe posicao de velocidade.",
+      "Leia a inclinacao do grafico."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "PHYSICS_INTERPRET_ACCELERATION",
+    "title": "Interpretar variacao da velocidade",
+    "objective": "Interpretar aceleracao como variacao da velocidade em um intervalo de tempo.",
+    "summary": "A aceleracao mede quanto a velocidade muda por unidade de tempo, incluindo aumento, reducao ou mudanca de sentido.",
+    "explanation": "Compare a velocidade inicial e final e divida a variacao pelo intervalo de tempo. O sinal depende da convencao de sentido adotada.",
+    "workedExample": "Se a velocidade passa de 4 m/s para 10 m/s em 3 s, a aceleracao media e 2 m/s².",
+    "commonMistake": "Usar a velocidade final no lugar da variacao ou ignorar o intervalo de tempo.",
+    "tips": [
+      "Anote velocidade inicial e final.",
+      "Calcule primeiro a variacao.",
+      "Mantenha as unidades consistentes."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
   }
 ]

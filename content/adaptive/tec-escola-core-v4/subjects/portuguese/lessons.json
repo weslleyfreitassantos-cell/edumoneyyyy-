@@ -14,5 +14,85 @@
     ],
     "estimatedMinutes": 8,
     "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+    "title": "Separar fato de opiniao",
+    "objective": "Distinguir informacao verificavel de avaliacao ou posicionamento do autor.",
+    "summary": "Fatos podem ser conferidos; opinioes expressam avaliacao, interpretacao ou julgamento.",
+    "explanation": "Leia a afirmacao e procure a evidencia que permitiria confirma-la. Palavras avaliativas podem indicar opiniao, mas o contexto e a possibilidade de verificacao devem orientar a classificacao.",
+    "workedExample": "A frase 'a biblioteca recebeu 200 livros' pode ser conferida em um registro; 'a biblioteca e excelente' expressa avaliacao.",
+    "commonMistake": "Tratar toda frase sem numero como opiniao ou todo numero como prova suficiente.",
+    "tips": [
+      "Pergunte que evidencia poderia confirmar a afirmacao.",
+      "Observe marcas de avaliacao e julgamento.",
+      "Explique a classificacao com base no texto."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+    "title": "Relacionar genero e finalidade",
+    "objective": "Relacionar genero textual, finalidade comunicativa e escolhas de linguagem.",
+    "summary": "O genero orienta a forma do texto e a finalidade explica o que o autor pretende fazer.",
+    "explanation": "Considere quem fala, para quem, em qual suporte e com qual objetivo. Um aviso informa e orienta; uma noticia relata; um artigo de opiniao defende uma posicao.",
+    "workedExample": "Um texto com manchete, data, fatos e fonte tem marcas de noticia e busca informar sobre um acontecimento.",
+    "commonMistake": "Classificar o genero apenas pelo assunto, sem observar a finalidade e a organizacao do texto.",
+    "tips": [
+      "Identifique o destinatario e o suporte.",
+      "Procure a acao comunicativa principal.",
+      "Relacione forma, linguagem e finalidade."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "PORTUGUESE_COMPARE_SOURCES",
+    "title": "Comparar fontes e perspectivas",
+    "objective": "Comparar informacoes de fontes considerando convergencias, divergencias e contexto.",
+    "summary": "Fontes podem concordar em dados e divergir em selecao, linguagem ou interpretacao.",
+    "explanation": "Compare o que cada fonte afirma, quais evidencias apresenta e de que lugar social ou comunicativo fala. A diferenca nao torna automaticamente uma fonte falsa.",
+    "workedExample": "Duas noticias relatam a mesma enchente, mas uma destaca os danos e outra as acoes de reparo; a comparacao separa fato comum de enfoque.",
+    "commonMistake": "Escolher a fonte mais convincente sem verificar autoria, evidencia e finalidade.",
+    "tips": [
+      "Liste informacoes comuns e diferentes.",
+      "Observe autoria, data e finalidade.",
+      "Diferencie dado apresentado de interpretacao."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+    "title": "Localizar o contraponto argumentativo",
+    "objective": "Identificar a ideia que responde, limita ou contrapoe uma tese em um texto.",
+    "summary": "Um contraponto apresenta uma objecao ou uma ressalva para qualificar o argumento.",
+    "explanation": "Depois de localizar a tese, observe conectores como 'porem', 'embora' e 'por outro lado'. O contraponto nao e necessariamente a conclusao; ele participa da construcao da resposta do autor.",
+    "workedExample": "'Embora o transporte seja rapido, seu custo limita o acesso' apresenta uma vantagem e o contraponto que a restringe.",
+    "commonMistake": "Confundir qualquer informacao diferente com uma contra-argumentacao.",
+    "tips": [
+      "Encontre primeiro a tese principal.",
+      "Observe conectores de oposicao ou ressalva.",
+      "Explique como a objecao afeta a tese."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "skill": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+    "title": "Sintetizar um argumento",
+    "objective": "Resumir tese, razoes e evidencia sem acrescentar afirmacoes que o texto nao sustenta.",
+    "summary": "Um bom resumo preserva a relacao entre tese, razoes e evidencias sem copiar detalhes secundarios.",
+    "explanation": "Selecione a ideia defendida, as razoes decisivas e a evidencia que as apoia. Retire repeticoes e exemplos que nao mudam o sentido central.",
+    "workedExample": "O resumo de um texto sobre leitura deve registrar a tese sobre seus beneficios e a razao apresentada, sem listar cada exemplo do autor.",
+    "commonMistake": "Reduzir o texto a um tema ou acrescentar uma opiniao propria.",
+    "tips": [
+      "Escreva a tese em uma frase.",
+      "Mantenha as razoes que sustentam a tese.",
+      "Confira se nada foi inventado no resumo."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
   }
 ]
