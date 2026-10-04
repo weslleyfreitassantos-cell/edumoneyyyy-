@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronLeft, CircleAlert, Send } from 'lucide-react';
+import { BookOpenCheck, CheckCircle2, ChevronLeft, CircleAlert, Send } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -34,6 +34,14 @@ export default function GuidedJourneyPage() {
     [step.data?.questions],
   );
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
+  const stepHeading = step.data?.step_type === 'LESSON'
+    ? step.data.lesson?.title ?? 'Aprender'
+    : step.data?.step_type === 'PROBE'
+      ? 'Vamos descobrir seu ponto de partida'
+      : step.data?.step_type === 'RETURN_TO_TARGET'
+        ? 'Voltar ao objetivo'
+        : 'Vamos praticar esta habilidade';
+  const stepTypeLabel = step.data?.step_type === 'LESSON' ? 'Leitura guiada' : step.data?.step_type === 'PROBE' ? 'Primeiro passo' : 'Prática';
 
   if (submitted && submit.data) {
     return <div className="mx-auto max-w-2xl space-y-5">
@@ -82,25 +90,42 @@ export default function GuidedJourneyPage() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl space-y-5">
+    <div className="mx-auto max-w-3xl space-y-6">
       <Link to="/student/study" className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"><ChevronLeft className="h-4 w-4" />Central de Estudos</Link>
-      <header className="rounded-xl border border-blue-200 bg-blue-50 p-5 dark:border-blue-900/60 dark:bg-blue-950/30">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Sua jornada · etapa {step.data.position + 1}</p>
-        <h1 className="mt-1 text-2xl font-bold text-blue-950 dark:text-blue-100">{step.data.step_type === 'LESSON' ? step.data.lesson?.title ?? 'Aprender' : step.data.step_type === 'PROBE' ? 'Vamos descobrir seu ponto de partida' : step.data.step_type === 'RETURN_TO_TARGET' ? 'Voltar ao objetivo' : 'Vamos praticar esta habilidade'}</h1>
-        <p className="mt-2 text-sm text-blue-900 dark:text-blue-200">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
+      <header className="rounded-2xl border border-blue-900/20 bg-[#073b78] p-5 text-white shadow-sm sm:p-7">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-200">Sua jornada</p>
+            <div className="mt-3 flex items-center gap-2 text-sm font-semibold text-blue-100"><BookOpenCheck className="h-4 w-4" aria-hidden="true" />{stepTypeLabel}</div>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{stepHeading}</h1>
+          </div>
+          <span className="shrink-0 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold text-blue-100">Etapa {step.data.position + 1}</span>
+        </div>
+        <p className="mt-4 max-w-2xl text-sm leading-6 text-blue-100">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
       </header>
 
       {step.data.step_type === 'LESSON' ? (
-        <article className="space-y-5 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
+        <article className="space-y-5 rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
           <p className="whitespace-pre-wrap text-[15px] leading-7 text-slate-700 dark:text-slate-200">{step.data.lesson?.content_markdown ?? step.data.lesson?.summary}</p>
           {step.data.lesson?.worked_example && <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-100"><strong>Exemplo guiado</strong><br />{step.data.lesson.worked_example}</div>}
           <button type="button" onClick={finishLesson} disabled={advance.isPending || lessonDone} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><CheckCircle2 className="h-4 w-4" />{advance.isPending ? 'Salvando...' : lessonDone ? 'Etapa registrada' : 'Continuar para a prática'}</button>
         </article>
       ) : step.data.step_type === 'RETURN_TO_TARGET' ? (
-        <article className="rounded-xl border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><CheckCircle2 className="h-8 w-8 text-emerald-500" /><h2 className="mt-3 text-xl font-bold dark:text-white">Você fortaleceu a base</h2><p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Agora vamos voltar ao objetivo original e conferir o que ficou consolidado.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button></article>
+        <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm dark:border-emerald-900/60 dark:bg-emerald-950/20"><CheckCircle2 className="h-8 w-8 text-emerald-600" /><h2 className="mt-3 text-xl font-bold text-emerald-950 dark:text-emerald-100">Você fortaleceu a base</h2><p className="mt-2 text-sm text-emerald-900 dark:text-emerald-200">Agora vamos voltar ao objetivo original e conferir o que ficou consolidado.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button></article>
       ) : (
         <section className="space-y-5">
-          {questions.map((question, index) => <fieldset key={question.id} className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><legend className="text-sm font-bold dark:text-white">Questão {index + 1} de {questions.length}</legend><p className="mt-3 text-base leading-6 dark:text-slate-200">{question.statement}</p><div className="mt-5 space-y-2">{question.options.map((option) => <label key={option} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-slate-200 p-3 text-sm hover:border-[#005bbf] dark:border-slate-700 dark:text-slate-200"><input type="radio" name={question.id} value={option} checked={answers[question.id] === option} onChange={() => setAnswers((current) => ({ ...current, [question.id]: option }))} />{option}</label>)}</div></fieldset>)}
+          {questions.map((question, index) => (
+            <fieldset key={question.id} className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
+              <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">Questão {index + 1} de {questions.length}</legend>
+              <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{question.statement}</p>
+              <div className="mt-6 grid gap-3">
+                {question.options.map((option) => {
+                  const selected = answers[question.id] === option;
+                  return <label key={option} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border p-4 text-base transition hover:border-[#005bbf] focus-within:ring-2 focus-within:ring-blue-200 dark:border-slate-700 dark:text-slate-200 ${selected ? 'border-[#005bbf] bg-blue-50 text-blue-950 dark:bg-blue-950/40 dark:text-blue-100' : 'bg-white dark:bg-slate-900'}`}><input className="h-4 w-4 accent-[#005bbf]" type="radio" name={question.id} value={option} checked={selected} onChange={() => setAnswers((current) => ({ ...current, [question.id]: option }))} />{option}</label>;
+                })}
+              </div>
+            </fieldset>
+          ))}
           <button type="button" onClick={submitAnswers} disabled={!allAnswered || submit.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><Send className="h-4 w-4" />{submit.isPending ? 'Corrigindo...' : 'Enviar respostas'}</button>
           {submit.isError && <p role="alert" className="text-sm text-red-600">{submit.error.message}</p>}
         </section>

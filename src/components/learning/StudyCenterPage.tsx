@@ -111,6 +111,7 @@ export default function StudyCenterPage() {
   const hasEnemSimulation = (simulations.data ?? []).some(
     (simulation) => simulation.source_year || simulation.title.toLocaleLowerCase('pt-BR').includes('enem'),
   );
+  const subjectCount = subjects.data?.length ?? 0;
 
   const selectSubject = (subjectId: string) => {
     setSelectedSubjectId(subjectId);
@@ -144,26 +145,34 @@ export default function StudyCenterPage() {
   };
 
   return (
-    <div className="w-full space-y-6 overflow-x-hidden">
-      <header className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5 shadow-sm dark:border-blue-900/60 dark:from-blue-950/40 dark:to-slate-900 sm:p-7">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#005bbf]">Central de Estudos</p>
-            <h1 className="mt-1 text-2xl font-bold text-blue-950 dark:text-blue-100 sm:text-3xl">O que você quer estudar?</h1>
-            <p className="mt-2 text-sm text-blue-900 dark:text-blue-200">Escolha uma matéria e avance no seu ritmo.</p>
+    <div className="w-full space-y-8 overflow-x-hidden">
+      <header className="overflow-hidden rounded-2xl border border-blue-900/20 bg-[#073b78] text-white shadow-sm dark:border-blue-800">
+        <div className="flex flex-col gap-6 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-8">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 text-blue-100">
+              <BookOpen className="h-5 w-5" aria-hidden="true" />
+              <p className="text-xs font-bold uppercase tracking-[0.18em]">Central de Estudos</p>
+            </div>
+            <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">O que você quer estudar?</h1>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-blue-100 sm:text-base">Escolha uma matéria para continuar praticando ou reserve um momento para se preparar para o ENEM.</p>
           </div>
           {hasActiveGuidedSession ? (
-            <Link to="/student/study/guided" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">
-              <PlayCircle className="h-4 w-4" />Continuar estudo
+            <Link to="/student/study/guided" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-[#073b78] shadow-sm transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+              <PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar estudo
             </Link>
           ) : null}
+        </div>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-white/15 bg-black/10 px-5 py-3 text-xs font-semibold text-blue-100 sm:px-8">
+          <span>{subjectCount} {subjectCount === 1 ? 'matéria disponível' : 'matérias disponíveis'}</span>
+          <span>Aprenda no seu ritmo</span>
         </div>
       </header>
 
       <section id="study-subjects" aria-label="Matérias" className="space-y-4 scroll-mt-24">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">Escolha uma matéria</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#005bbf]">Seu próximo passo</p>
+            <h2 className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">Matérias</h2>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Comece pelo conteúdo que você quer praticar hoje.</p>
           </div>
           <label className="relative block sm:w-64">
@@ -194,11 +203,11 @@ export default function StudyCenterPage() {
                 aria-pressed={isSelected}
                 onClick={() => void startSubject(subject)}
                 disabled={startGuidedSession.isPending || isStarting}
-                className={`group flex min-h-28 items-center gap-4 rounded-xl border bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-70 dark:bg-slate-900 ${isSelected ? 'border-[#005bbf] ring-2 ring-blue-100 dark:ring-blue-900/60' : 'border-slate-200 dark:border-slate-700'}`}
+                className={`group flex min-h-32 items-start gap-4 rounded-xl border bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-70 dark:bg-slate-900 ${isSelected ? 'border-[#005bbf] ring-2 ring-blue-100 dark:ring-blue-900/60' : 'border-slate-200 dark:border-slate-700'}`}
               >
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-6 w-6" /></span>
-                <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-1 block text-xs font-semibold text-[#005bbf]">{isStarting ? 'Abrindo...' : 'Estudar'}</span></span>
-                <ChevronRight className="h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" />
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
+                <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{isStarting ? 'Abrindo...' : 'Praticar agora'}</span></span>
+                <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
               </button>
             );
           })}
@@ -207,12 +216,12 @@ export default function StudyCenterPage() {
       </section>
 
       {selectedSubject ? (
-        <section aria-label={`Estudo de ${selectedSubject.name}`} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-6">
+        <section aria-label={`Estudo de ${selectedSubject.name}`} className="rounded-2xl border border-blue-200 bg-blue-50/70 p-5 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/20 sm:p-6">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Matéria selecionada</p>
-              <h2 className="mt-1 text-xl font-bold dark:text-white">{selectedSubject.name}</h2>
-              <p className="mt-1 text-sm text-slate-500">Continue de onde parou ou escolha um conteúdo.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Agora em foco</p>
+              <h2 className="mt-1 text-xl font-bold text-blue-950 dark:text-blue-100">{selectedSubject.name}</h2>
+              <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">Continue de onde parou ou escolha um conteúdo.</p>
             </div>
             {subjectActivities[0] ? <Link to={`/student/study/activity/${subjectActivities[0].id}`} className="inline-flex min-h-10 items-center justify-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar</Link> : null}
           </div>
@@ -223,11 +232,11 @@ export default function StudyCenterPage() {
         </section>
       ) : null}
 
-      <section aria-label="Preparação para o ENEM" className="rounded-xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <section aria-label="Preparação para o ENEM" className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-indigo-700 dark:text-indigo-300">Preparação para o ENEM</p>
-            <h2 className="mt-1 text-xl font-bold text-indigo-950 dark:text-indigo-100">Simulado ENEM</h2>
+            <div className="flex items-center gap-2 text-indigo-700 dark:text-indigo-300"><Landmark className="h-5 w-5" aria-hidden="true" /><p className="text-xs font-bold uppercase tracking-[0.16em]">Preparação para o ENEM</p></div>
+            <h2 className="mt-2 text-2xl font-bold text-indigo-950 dark:text-indigo-100">Simulado ENEM</h2>
             <p className="mt-1 text-sm text-indigo-900 dark:text-indigo-200">Questões oficiais para testar seus conhecimentos por área.</p>
           </div>
           <Link to="/student/study/simulation" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-indigo-700 px-4 py-2 text-sm font-bold text-white hover:bg-indigo-800"><PlayCircle className="h-4 w-4" />Começar simulado</Link>

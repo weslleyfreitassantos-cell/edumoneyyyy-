@@ -206,3 +206,11 @@ jobs:
             test-results/
             e2e/.runtime/
           if-no-files-found: ignore
+
+      - name: Anexar evidências visuais da campanha UI
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: minimal-ui-visual-evidence-${{ github.run_id }}
+          path: test-results/**/visual/*.png
+          if-no-files-found: ignore
