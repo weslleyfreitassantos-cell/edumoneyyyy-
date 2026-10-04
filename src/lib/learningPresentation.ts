@@ -25,6 +25,7 @@ const SKILL_LABELS: Record<string, string> = {
   ART_ELEMENTS: 'Elementos da linguagem visual',
   ART_INTERPRETATION: 'Interpretação de obras',
   MATH_PERCENT_OF_QUANTITY: 'Porcentagem de uma quantidade',
+  PHYSICS_AVERAGE_SPEED: 'Velocidade média',
 };
 
 function key(value: string): string {
