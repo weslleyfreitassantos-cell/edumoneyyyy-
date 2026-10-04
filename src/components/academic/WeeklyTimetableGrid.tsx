@@ -5,6 +5,7 @@ import {
   MapPin,
   Utensils,
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 import type { TimetableEntryRow } from '../../services/timetableService';
 import type { SchoolScheduleBreakRow } from '../../services/academicAutomationService';
@@ -14,6 +15,10 @@ import {
   getWeekDayForDate,
   type TimetableOccurrence,
 } from '../../lib/academic/timetableOccurrences';
+import {
+  getTimetableNowOffsetPercent,
+  getTimetableNowSnapshot,
+} from '../../lib/academic/timetableNow';
 
 type ScheduleBreak = Pick<
   SchoolScheduleBreakRow,
@@ -80,24 +85,38 @@ function TimetableLessonCard({
   entry,
   occurrence,
   audience,
+  isCurrent = false,
 }: {
   entry: TimetableEntryRow;
   occurrence?: TimetableOccurrence;
   audience: 'student' | 'teacher';
+  isCurrent?: boolean;
 }) {
   const secondaryLabel = audience === 'student' ? 'Docente' : 'Turma';
   const secondaryValue =
     audience === 'student'
       ? entry.teacher_name || 'Docente não informado'
       : entry.class_name || 'Turma não informada';
+  const isSuspended = occurrence?.state === 'SUSPENDED';
+  const isCurrentLesson = isCurrent && !isSuspended;
 
   return (
     <article className={`rounded-lg border bg-white p-2.5 shadow-sm transition hover:border-[#1769c2] hover:shadow-md dark:bg-[#18212f] dark:hover:border-[#60a5fa] ${
-      occurrence?.state === 'SUSPENDED'
+      isCurrentLesson
+        ? 'border-[#1769c2] ring-2 ring-[#1769c2]/20 dark:border-[#60a5fa] dark:ring-[#60a5fa]/20'
+        : isSuspended
         ? 'border-[#f2c46d] dark:border-[#b45309]'
         : 'border-[#d8e0ec] dark:border-[#334155]'
     }`}>
       <div className="min-w-0">
+        {isCurrentLesson && (
+          <span
+            className="mb-1 inline-flex rounded-full bg-[#1769c2] px-2 py-0.5 text-[10px] font-bold text-white"
+            data-testid="timetable-current-lesson"
+          >
+            Agora
+          </span>
+        )}
         <h3
           className="break-words text-xs font-bold leading-4 text-[#181c20]"
           title={entry.subject_name || 'Disciplina não informada'}
@@ -131,21 +150,37 @@ function TimetableLessonCard({
   );
 }
 
-function TimetableBreakCard({ scheduleBreak }: { scheduleBreak: ScheduleBreak }) {
+function TimetableBreakCard({
+  scheduleBreak,
+  isCurrent = false,
+}: {
+  scheduleBreak: ScheduleBreak;
+  isCurrent?: boolean;
+}) {
   const Icon = isLunch(scheduleBreak) ? Utensils : Coffee;
 
   return (
     <article
-      className="rounded-lg border border-[#f2c46d] bg-[#fff8e7] p-2.5 text-[#8a4b08] dark:border-[#b45309] dark:bg-[#451a03] dark:text-[#fcd34d]"
+      className={`rounded-lg border border-[#f2c46d] bg-[#fff8e7] p-2.5 text-[#8a4b08] dark:border-[#b45309] dark:bg-[#451a03] dark:text-[#fcd34d] ${isCurrent ? 'ring-2 ring-[#d97706]/30' : ''}`}
       data-testid="timetable-break"
     >
-      <div className="flex items-start gap-2">
-        <Icon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-        <div className="min-w-0">
-          <p className="break-words text-xs font-bold leading-4">
-            {scheduleBreak.name}
-          </p>
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex min-w-0 items-start gap-2">
+          <Icon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+          <div className="min-w-0">
+            <p className="break-words text-xs font-bold leading-4">
+              {scheduleBreak.name}
+            </p>
+          </div>
         </div>
+        {isCurrent && (
+          <span
+            className="shrink-0 rounded-full bg-[#f2c46d] px-2 py-0.5 text-[10px] font-bold text-[#8a4b08]"
+            data-testid="timetable-current-break"
+          >
+            Agora
+          </span>
+        )}
       </div>
     </article>
   );
@@ -157,12 +192,14 @@ export default function WeeklyTimetableGrid({
   audience,
   occurrences,
   weekStartDate,
+  now,
 }: {
   entries: TimetableEntryRow[];
   scheduleBreaks: ScheduleBreak[];
   audience: 'student' | 'teacher';
   occurrences?: TimetableOccurrence[];
   weekStartDate?: string;
+  now?: Date;
 }) {
   const lessonEntries = occurrences?.map((occurrence) => occurrence.entry) ?? entries;
   const displayedLessonCount = occurrences?.length ?? entries.length;
@@ -177,6 +214,21 @@ export default function WeeklyTimetableGrid({
     ]),
   );
   const itemsBySlot = new Map<string, TimetableItem[]>();
+  const [currentNow, setCurrentNow] = useState(() => now ?? new Date());
+
+  useEffect(() => {
+    if (now) {
+      setCurrentNow(now);
+      return;
+    }
+
+    const updateNow = () => setCurrentNow(new Date());
+    const intervalId = window.setInterval(updateNow, 30_000);
+
+    return () => window.clearInterval(intervalId);
+  }, [now]);
+
+  const nowSnapshot = getTimetableNowSnapshot(currentNow);
 
   for (const occurrence of occurrences ?? []) {
     const entry = occurrence.entry;
@@ -299,13 +351,35 @@ export default function WeeklyTimetableGrid({
                 {WEEK_DAYS.map(({ value }) => {
                   const key = slotKey(value, slot.startTime, slot.endTime);
                   const items = itemsBySlot.get(key) ?? [];
+                  const currentDate = weekStartDate
+                    ? getDateForWeekDay(weekStartDate, value)
+                    : null;
+                  const nowOffset = currentDate === nowSnapshot.date
+                    ? getTimetableNowOffsetPercent(
+                        nowSnapshot.minutes,
+                        slot.startTime,
+                        slot.endTime,
+                      )
+                    : null;
 
                   return (
                     <div
                       key={key}
-                      className="border-r border-[#e4e8f1] bg-white p-2 last:border-r-0 dark:border-[#334155] dark:bg-[#18212f]"
+                      className="relative border-r border-[#e4e8f1] bg-white p-2 last:border-r-0 dark:border-[#334155] dark:bg-[#18212f]"
                       role="cell"
                     >
+                      {nowOffset !== null && (
+                        <div
+                          aria-label={`Agora, ${nowSnapshot.timeLabel}`}
+                          className="pointer-events-none absolute left-0 right-0 z-20 border-t-2 border-[#1769c2] dark:border-[#60a5fa]"
+                          data-testid="timetable-now-line"
+                          style={{ top: `${nowOffset}%` }}
+                        >
+                          <span className="absolute -top-3 right-1 rounded-full bg-[#1769c2] px-1.5 py-0.5 text-[9px] font-bold text-white dark:bg-[#60a5fa] dark:text-[#10233d]">
+                            {nowSnapshot.timeLabel}
+                          </span>
+                        </div>
+                      )}
                       {items.length === 0 ? (
                         <span className="flex min-h-[96px] items-center justify-center text-xs text-[#c0c7d4] dark:text-[#64748b]">
                           —
@@ -329,12 +403,14 @@ export default function WeeklyTimetableGrid({
                               {item.kind === 'break' ? (
                                 <TimetableBreakCard
                                   scheduleBreak={item.scheduleBreak}
+                                  isCurrent={nowOffset !== null}
                                 />
                               ) : (
                                 <TimetableLessonCard
                                   entry={item.entry}
                                   occurrence={item.occurrence}
                                   audience={audience}
+                                  isCurrent={nowOffset !== null}
                                 />
                               )}
                             </div>,
