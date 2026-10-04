@@ -14,8 +14,9 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
 - `schema/official-catalog.schema.json`: contrato estrutural do catálogo.
 - `mappings/coverage-2018.json`: uma linha por código oficial, distinguindo
   `MAPPED`, `HIERARCHY_ONLY`, `EXPLICITLY_NON_ADAPTIVE`, `MAPPING_PENDING`,
-  `CANONICAL_GAP` e `SOURCE_REVIEW_REQUIRED`; `UNACCOUNTED` deve permanecer
-  em zero.
+  `CANONICAL_GAP`, `HUMAN_REVIEW_BLOCKED` e `SOURCE_REVIEW_REQUIRED`;
+  `UNACCOUNTED` deve permanecer em zero. `MAPPING_PENDING` é temporário e não
+  pode permanecer depois de uma decisão explícita.
 - `mappings/promoted-2018.json`: allowlist pequena de promoções técnicas
   conservadoras; ela nunca afirma revisão pedagógica humana.
 - `mappings/reviews-2018.json`: revisão técnica independente, sem promoção
@@ -32,6 +33,11 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
 - `mappings/proposals-v8.json` e `mappings/proposal-reviews-v8.json`: propostas
   de reuso/criação e sua revisão estrutural independente. Propostas novas ficam
   em `HUMAN_REVIEW_REQUIRED`; nenhum desses arquivos declara revisão pedagógica.
+- `mappings/resolutions-v8.json`: resolução terminal dos candidatos que estavam
+  em `MAPPING_PENDING`. Uma resolução pode afirmar `PRIMARY`, `SUPPORTING`,
+  `PREREQUISITE` ou `TRANSFER` somente após evidência pedagógica independente;
+  candidatos sem essa evidência ficam explicitamente em
+  `HUMAN_REVIEW_BLOCKED`, fora do grafo adaptativo.
 
 O catálogo não exige que um professor faça atribuições manuais. A migration de
 disponibilidade automática expõe os pacotes globais versionados da TecEscola ao

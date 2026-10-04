@@ -16,8 +16,9 @@ describe('BNCC mapping coverage accounting', () => {
     expect(coverage.summary.totalOfficialNodes).toBe(catalog.nodes.length);
     expect(coverage.summary.mapped).toBe(2);
     expect(coverage.summary.hierarchyOnly).toBe(104);
-    expect(coverage.summary.mappingPending).toBe(121);
+    expect(coverage.summary.mappingPending).toBe(0);
     expect(coverage.summary.canonicalGaps).toBe(1496);
+    expect(coverage.summary.humanReviewBlocked).toBe(121);
     expect(coverage.summary.sourceReviewRequired).toBe(0);
     expect(coverage.summary.unaccounted).toBe(0);
     expect(coverage.mappings.every((mapping) => [
@@ -25,11 +26,12 @@ describe('BNCC mapping coverage accounting', () => {
       'HIERARCHY_ONLY',
       'MAPPING_PENDING',
       'CANONICAL_GAP',
+      'HUMAN_REVIEW_BLOCKED',
       'SOURCE_REVIEW_REQUIRED',
       'EXPLICITLY_NON_ADAPTIVE',
     ].includes(mapping.status))).toBe(true);
-    expect(coverage.mappings.filter((mapping) => mapping.status === 'MAPPING_PENDING')
-      .every((mapping) => mapping.reviewStatus === 'PEDAGOGICAL_REVIEW_PENDING')).toBe(true);
+    expect(coverage.mappings.filter((mapping) => mapping.status === 'HUMAN_REVIEW_BLOCKED')
+      .every((mapping) => mapping.reviewStatus === 'REVIEW_REQUIRED')).toBe(true);
     expect(coverage.mappings.filter((mapping) => mapping.status === 'CANONICAL_GAP')
       .every((mapping) => mapping.reviewStatus === 'PEDAGOGICAL_REVIEW_PENDING')).toBe(true);
     expect(coverage.mappings.filter((mapping) => mapping.status === 'HIERARCHY_ONLY')

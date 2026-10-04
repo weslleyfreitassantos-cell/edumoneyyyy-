@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/mapping-resolutions-v8.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "statusContract", "summary", "decisions", "resolutionHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.mapping-resolutions.v8" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "candidatesHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "reviewsHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "statusContract": {
+      "type": "object",
+      "required": ["relationTypes", "terminalStatuses", "pendingStatus", "blockedStatus", "promotionRule"],
+      "properties": {
+        "relationTypes": { "type": "array", "items": { "enum": ["PRIMARY", "SUPPORTING", "PREREQUISITE", "TRANSFER"] } },
+        "terminalStatuses": { "type": "array", "items": { "enum": ["MAPPED", "HIERARCHY_ONLY", "EXPLICITLY_NON_ADAPTIVE", "HUMAN_REVIEW_BLOCKED", "SOURCE_REVIEW_REQUIRED"] } },
+        "pendingStatus": { "const": "MAPPING_PENDING" },
+        "blockedStatus": { "const": "HUMAN_REVIEW_BLOCKED" },
+        "promotionRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["mappingPendingBefore", "resolved", "humanReviewBlocked", "relationDecisionsAsserted", "duplicates"],
+      "properties": {
+        "mappingPendingBefore": { "type": "integer", "minimum": 0 },
+        "resolved": { "type": "integer", "minimum": 0 },
+        "humanReviewBlocked": { "type": "integer", "minimum": 0 },
+        "relationDecisionsAsserted": { "type": "integer", "minimum": 0 },
+        "duplicates": { "const": 0 }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["officialCode", "candidateCanonicalSkillCodes", "relationCandidates", "resolutionStatus", "reviewStatus", "blockers", "rationale"],
+        "properties": {
+          "officialCode": { "type": "string" },
+          "candidateCanonicalSkillCodes": { "type": "array", "items": { "type": "string" } },
+          "candidateConfidence": { "type": "string" },
+          "candidateConfidenceScore": { "type": "number" },
+          "relationCandidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["canonicalSkillCode", "relationType", "decision"],
+              "properties": {
+                "canonicalSkillCode": { "type": "string" },
+                "relationType": { "type": ["string", "null"], "enum": ["PRIMARY", "SUPPORTING", "PREREQUISITE", "TRANSFER", null] },
+                "decision": { "type": "string" }
+              }
+            }
+          },
+          "resolutionStatus": { "const": "HUMAN_REVIEW_BLOCKED" },
+          "reviewStatus": { "const": "REVIEW_REQUIRED" },
+          "blockers": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "rationale": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "resolutionHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

@@ -7,9 +7,13 @@ const catalogPath = path.resolve(root, process.argv[2] ?? 'content/bncc/official
 const reviewsPath = path.resolve(root, process.argv[3] ?? 'content/bncc/mappings/reviews-2018.json');
 const promotionsPath = path.resolve(root, process.argv[4] ?? 'content/bncc/mappings/promoted-2018.json');
 const outputPath = path.resolve(root, process.argv[5] ?? 'content/bncc/mappings/coverage-2018.json');
+const resolutionsPath = path.resolve(root, process.env.BNCC_RESOLUTIONS_PATH ?? 'content/bncc/mappings/resolutions-v8.json');
 const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
 const reviews = JSON.parse(fs.readFileSync(reviewsPath, 'utf8'));
 const promotions = JSON.parse(fs.readFileSync(promotionsPath, 'utf8'));
+const resolutions = fs.existsSync(resolutionsPath)
+  ? JSON.parse(fs.readFileSync(resolutionsPath, 'utf8'))
+  : { decisions: [] };
 
 function stableJson(value) {
   return JSON.stringify(value, (_key, current) => {
@@ -28,6 +32,7 @@ function hash(value) {
 const nodes = [...(catalog.nodes ?? [])].sort((left, right) => left.code.localeCompare(right.code));
 const reviewByCode = new Map((reviews.reviews ?? []).map((review) => [review.officialCode, review]));
 const promotionByCode = new Map((promotions.promotions ?? []).map((promotion) => [promotion.officialCode, promotion]));
+const resolutionByCode = new Map((resolutions.decisions ?? []).map((resolution) => [resolution.officialCode, resolution]));
 const hasSourceIssue = (node, review) => node.sourceIssue === true || review?.sourceIssue === true;
 const mappings = nodes.map((node) => {
   const review = reviewByCode.get(node.code);
@@ -75,6 +80,21 @@ const mappings = nodes.map((node) => {
     };
   }
 
+  const resolution = resolutionByCode.get(node.code);
+  if (resolution?.resolutionStatus === 'HUMAN_REVIEW_BLOCKED') {
+    return {
+      ...base,
+      status: 'HUMAN_REVIEW_BLOCKED',
+      mappingSource: 'MAPPING_RESOLUTION_GATE',
+      reviewStatus: 'REVIEW_REQUIRED',
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      canonicalSkillCodes: [],
+      relationCandidates: resolution.relationCandidates,
+      blockers: resolution.blockers,
+      rationale: resolution.rationale,
+    };
+  }
+
   const mappingStatus = review?.decision === 'CANONICAL_GAP' || !review
     ? 'CANONICAL_GAP'
     : 'MAPPING_PENDING';
@@ -105,10 +125,11 @@ const coverage = {
   sourceOfTruth: 'official_catalog_plus_independent_review_plus_safe_promotions',
   generatedAt: process.env.BNCC_GENERATED_AT ?? '2026-10-04T00:00:00.000Z',
   statusContract: {
-    accountedStatuses: ['MAPPED', 'HIERARCHY_ONLY', 'EXPLICITLY_NON_ADAPTIVE', 'MAPPING_PENDING', 'CANONICAL_GAP', 'SOURCE_REVIEW_REQUIRED'],
+    accountedStatuses: ['MAPPED', 'HIERARCHY_ONLY', 'EXPLICITLY_NON_ADAPTIVE', 'MAPPING_PENDING', 'CANONICAL_GAP', 'HUMAN_REVIEW_BLOCKED', 'SOURCE_REVIEW_REQUIRED'],
     unaccountedStatus: 'UNACCOUNTED',
     mappingPendingStatus: 'MAPPING_PENDING',
     canonicalGapStatus: 'CANONICAL_GAP',
+    humanReviewBlockedStatus: 'HUMAN_REVIEW_BLOCKED',
     sourceReviewRequiredStatus: 'SOURCE_REVIEW_REQUIRED',
     sourceReviewRule: 'Somente nodes ou reviews explicitamente marcados com sourceIssue=true entram em SOURCE_REVIEW_REQUIRED.',
   },
@@ -119,6 +140,7 @@ const coverage = {
     explicitlyNonAdaptive: 0,
     mappingPending: mappings.filter((mapping) => mapping.status === 'MAPPING_PENDING').length,
     canonicalGaps: mappings.filter((mapping) => mapping.status === 'CANONICAL_GAP').length,
+    humanReviewBlocked: mappings.filter((mapping) => mapping.status === 'HUMAN_REVIEW_BLOCKED').length,
     sourceReviewRequired: mappings.filter((mapping) => mapping.status === 'SOURCE_REVIEW_REQUIRED').length,
     unaccounted: mappings.filter((mapping) => mapping.status === 'UNACCOUNTED').length,
     byStage: by('stage'),
