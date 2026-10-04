@@ -2,6 +2,38 @@ begin;
 
 -- Keep the teacher roster aligned with the knowledge map when legacy imports
 -- use ACTIVE instead of the canonical lowercase enrollment status.
+create or replace function private.learning_teacher_can_access_student_any(
+  target_institution_id uuid,
+  target_student_id uuid
+)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+      from public.memberships membership
+      join public.enrollments enrollment
+        on enrollment.student_id = target_student_id
+       and enrollment.active
+       and lower(btrim(enrollment.status)) = 'active'
+      join public.classes enrolled_class
+        on enrolled_class.id = enrollment.class_id
+       and enrolled_class.institution_id = target_institution_id
+       and enrolled_class.active
+      join public.subject_offerings offering
+        on offering.class_id = enrollment.class_id
+       and offering.teacher_profile_id = auth.uid()
+       and offering.active
+     where membership.profile_id = auth.uid()
+       and membership.institution_id = target_institution_id
+       and membership.role = 'TEACHER'::public.user_role
+       and membership.active
+  );
+$$;
+
 create or replace function public.list_teacher_learning_students(p_institution_id uuid)
 returns table (
   student_id uuid,

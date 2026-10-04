@@ -67,6 +67,9 @@ jobs:
       - name: Validar projeto
         run: npm run check
 
+      - name: Testar guard de promoção seletiva de migration
+        run: bash scripts/db/promote-single-migration.test.sh
+
   database:
     runs-on: ubuntu-latest
 
@@ -114,6 +117,30 @@ jobs:
 
       - name: Iniciar Supabase descartável
         run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,studio,supavisor,vector
+
+      - name: Provar baseline de produção mais a migration da PR #277
+        run: npx supabase db reset --local --version 20261003001200 --no-seed
+
+      - name: Exportar credenciais locais para a prova isolada sem exibição
+        shell: bash
+        run: |
+          set -euo pipefail
+          status_output="$(npx supabase status -o env)"
+          value_for() {
+            printf '%s\n' "$status_output" |
+              sed -n "s/^$1=//p" |
+              head -n 1 |
+              sed -E "s/^[\\\"']//; s/[\\\"']$//"
+          }
+
+          {
+            echo "MULTI_TENANT_SUPABASE_URL=$(value_for API_URL)"
+            echo "MULTI_TENANT_SUPABASE_ANON_KEY=$(value_for ANON_KEY)"
+            echo "MULTI_TENANT_SUPABASE_SERVICE_ROLE_KEY=$(value_for SERVICE_ROLE_KEY)"
+          } >> "$GITHUB_ENV"
+
+      - name: Teste dinâmico isolado do roster da PR #277
+        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts -t "teacher roster RPC normalizes legacy enrollment statuses"
 
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local

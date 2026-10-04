@@ -14,4 +14,13 @@ describe('teacher roster scope migration', () => {
     expect(migration).toContain('private.learning_teacher_can_access_student_any');
     expect(migration).not.toContain("enrollment.status = 'ACTIVE'");
   });
+
+  it('keeps the private teacher authorization helper aligned with the roster query', () => {
+    const helperStart = migration.indexOf('create or replace function private.learning_teacher_can_access_student_any');
+    const rosterStart = migration.indexOf('create or replace function public.list_teacher_learning_students');
+
+    expect(helperStart).toBeGreaterThanOrEqual(0);
+    expect(rosterStart).toBeGreaterThan(helperStart);
+    expect(migration.slice(helperStart, rosterStart)).toContain("lower(btrim(enrollment.status)) = 'active'");
+  });
 });
