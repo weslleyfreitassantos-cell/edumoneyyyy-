@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/canonical-gaps-v8.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "contextHash", "statusContract", "summary", "clusters", "gapsHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.canonical-gaps.v8" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "contextHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "statusContract": { "type": "object", "required": ["gapStatus", "reviewStatus", "promotionRule"] },
+    "summary": { "type": "object", "required": ["officialGapCodes", "gapClusters", "contextualizedClusters", "unresolvedSemanticObjectClusters", "clustersWithSemanticSignals", "promoted"] },
+    "clusters": { "type": "array", "items": { "type": "object", "required": ["clusterId", "officialCodes", "stage", "gradeRange", "component", "subject", "domain", "subdomain", "semanticObject", "cognitiveOperation", "officialContext", "currentCandidates", "reviewStatus", "promotionStatus"] } },
+    "gapsHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

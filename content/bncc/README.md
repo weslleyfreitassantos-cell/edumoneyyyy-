@@ -7,6 +7,10 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
   com etapa, componente, página e trecho de contexto da fonte.
 - `official/manifest.json`: versão, URLs, hashes e estado de disponibilidade das
   fontes usadas.
+- `official/context-index.json`: índice determinístico dos campos estruturais e
+  dos trechos disponíveis por nó. Campos que não existem no catálogo congelado
+  permanecem `null`; vizinhos são apenas estruturais e não equivalem a
+  mapeamento semântico.
 - `schema/official-catalog.schema.json`: contrato estrutural do catálogo.
 - `mappings/coverage-2018.json`: uma linha por código oficial, distinguindo
   `MAPPED`, `HIERARCHY_ONLY`, `EXPLICITLY_NON_ADAPTIVE`, `MAPPING_PENDING`,
@@ -22,6 +26,12 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
 - `canaries/multimodal-v1.json`: canário técnico de modos objetivo,
   construído, observacional, prático e computacional; não afirma revisão
   pedagógica humana nem habilita escala automática.
+- `canonical/clusters-v8.json`: clusters de lacunas por etapa, ano, componente,
+  operação cognitiva e família temática textual. É uma fila de revisão e não
+  promove habilidades nem afirma alinhamento BNCC.
+- `mappings/proposals-v8.json` e `mappings/proposal-reviews-v8.json`: propostas
+  de reuso/criação e sua revisão estrutural independente. Propostas novas ficam
+  em `HUMAN_REVIEW_REQUIRED`; nenhum desses arquivos declara revisão pedagógica.
 
 O catálogo não exige que um professor faça atribuições manuais. A migration de
 disponibilidade automática expõe os pacotes globais versionados da TecEscola ao

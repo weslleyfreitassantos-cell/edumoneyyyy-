@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/mapping-proposals-v8.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "statusContract", "summary", "proposals", "proposalsHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.mapping-proposals.v8" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "proposals": { "type": "array", "items": { "type": "object", "required": ["proposalId", "officialCodes", "canonicalCode", "subject", "recommendedStage", "gradeFrom", "gradeTo", "rationale", "confidence", "proposalStatus", "reviewStatus"] } },
+    "proposalsHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
