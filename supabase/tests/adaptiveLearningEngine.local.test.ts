@@ -248,6 +248,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
         .select('role, platform_role, active')
         .eq('id', teacherA.id)
         .maybeSingle();
+      const userCheck = await client.auth.getUser();
       expect(
         managementCheck.error,
         `failed to inspect institution management scope: ${managementCheck.error?.message ?? ''}`,
@@ -270,7 +271,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
       }));
       expect(
         rows.map((row) => row.student_id),
-        `management=${String(managementCheck.data)}; institution_admin=${String(institutionAdminCheck.data)}; platform_admin=${String(platformAdminCheck.data)}; membership=${JSON.stringify(membershipCheck.data)}; profile=${JSON.stringify(profileCheck.data)}; unexpected teacher roster identities: ${JSON.stringify(identities)}`,
+        `jwt_user=${userCheck.data.user?.id ?? 'none'}; expected_teacher=${teacherA.id}; management=${String(managementCheck.data)}; institution_admin=${String(institutionAdminCheck.data)}; platform_admin=${String(platformAdminCheck.data)}; membership=${JSON.stringify(membershipCheck.data)}; profile=${JSON.stringify(profileCheck.data)}; unexpected teacher roster identities: ${JSON.stringify(identities)}`,
       ).toEqual([studentA]);
     };
 
