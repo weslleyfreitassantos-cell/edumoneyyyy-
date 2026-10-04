@@ -415,11 +415,13 @@ export const adaptiveLearningService = {
     }));
   },
 
-  teacherStudentKnowledgeGraph: async (institutionId: string, studentId: string): Promise<V3KnowledgeGraphSkill[]> => {
+  teacherStudentKnowledgeGraph: async (institutionId: string, studentId: string, classId: string, subjectId: string): Promise<V3KnowledgeGraphSkill[]> => {
     const graph = await read<{ skills?: RawV3KnowledgeGraphSkill[] }>(
       supabase.rpc('get_teacher_student_knowledge_graph_v3', {
         p_institution_id: institutionId,
         p_student_id: studentId,
+        p_class_id: classId,
+        p_subject_id: subjectId,
       }),
     );
     return (graph.skills ?? []).map((row) => ({
@@ -436,11 +438,12 @@ export const adaptiveLearningService = {
     }));
   },
 
-  teacherClassKnowledgeHeatmap: async (institutionId: string, classId: string): Promise<V3TeacherHeatmapRow[]> => {
+  teacherClassKnowledgeHeatmap: async (institutionId: string, classId: string, subjectId: string): Promise<V3TeacherHeatmapRow[]> => {
     const rows = await read<RawV3HeatmapRow[]>(
       supabase.rpc('get_teacher_class_knowledge_heatmap_v3', {
         p_institution_id: institutionId,
         p_class_id: classId,
+        p_subject_id: subjectId,
       }),
     );
     return rows.map((row) => ({

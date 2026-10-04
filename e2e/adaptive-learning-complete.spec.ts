@@ -98,6 +98,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       })).id;
       await insertOne(service, 'class_curriculum_items', { institution_id: institutionId, class_id: classId, subject_id: subjectId, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
       await insertOne(service, 'subject_offerings', { class_id: classId, subject_id: subjectId, teacher_profile_id: teacher.id, term_id: termId, active: true });
+      await insertOne(service, 'learning_curriculum_subject_links', { institution_id: institutionId, subject_id: subjectId, subject_area: 'MATEMATICA', active: true });
 
       studentId = (await insertOne(service, 'students', { institution_id: institutionId, profile_id: alice.id, registration_number: `COMPLETE-${suffix}`, active: true })).id;
       mariaStudentId = (await insertOne(service, 'students', { institution_id: institutionId, profile_id: maria.id, registration_number: `SUPPORT-COMPLETE-${suffix}`, active: true })).id;
@@ -213,9 +214,12 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(teacherPage.getByRole('region', { name: 'Dificuldades da turma' })).toBeVisible({ timeout: 30_000 });
       await teacherPage.screenshot({ path: testInfo.outputPath('visual/teacher-class-mobile.png'), fullPage: true });
       await teacherPage.setViewportSize({ width: 1280, height: 900 });
-      await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
+      await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}?class=${classId}&subject=${subjectId}`);
       await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).count()).toBe(0);
+      const scopedPerformance = teacherPage.getByRole('region', { name: 'Desempenho por matéria' });
+      await expect(scopedPerformance).toContainText(`Desempenho em Matemática Complete`);
+      await expect(scopedPerformance).not.toContainText('Português');
       await teacherPage.screenshot({ path: testInfo.outputPath('visual/teacher-student-desktop.png'), fullPage: true });
       const assignment = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
       expect(assignment.error).toBeNull();
@@ -230,7 +234,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       expect(await mariaPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       await mariaPage.screenshot({ path: testInfo.outputPath('visual/student-home-mobile.png'), fullPage: true });
 
-      await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}`);
+      await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}?class=${classId}&subject=${subjectId}`);
       await expect(teacherPage.getByText('Desempenho do aluno', { exact: true })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
 
