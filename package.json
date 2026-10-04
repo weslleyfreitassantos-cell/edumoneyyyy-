@@ -44,6 +44,7 @@
     "bncc:sync-v4-registries": "node tools/bncc/sync-v4-registries.mjs",
     "bncc:content-packages": "node tools/bncc/build-content-packages.mjs",
     "bncc:validate-content-packages": "node tools/bncc/validate-content-packages.mjs",
+    "bncc:reconcile-progress": "node tools/bncc/reconcile-progress.mjs",
     "check": "npm run routing:guard && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
