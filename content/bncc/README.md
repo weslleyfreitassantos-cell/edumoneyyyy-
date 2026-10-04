@@ -19,6 +19,9 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
 - `canonical/graph-v4.json`: auditoria do grafo V4, separando âncoras, folhas
   targetáveis, seeds legadas e nós semânticos ainda não resolvidos.
 - `schema/mapping-coverage.schema.json`: contrato da matriz de mapeamento.
+- `canaries/multimodal-v1.json`: canário técnico de modos objetivo,
+  construído, observacional, prático e computacional; não afirma revisão
+  pedagógica humana nem habilita escala automática.
 
 O catálogo não exige que um professor faça atribuições manuais. A migration de
 disponibilidade automática expõe os pacotes globais versionados da TecEscola ao
