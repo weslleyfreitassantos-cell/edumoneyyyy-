@@ -1,6 +1,6 @@
 {
   "campaign": "TECESCOLA_BNCC_MAPPING_GRAPH_CONTENT_AND_PRODUCT_COMPLETION_V4",
-  "updatedAt": "2026-10-04T00:07:19Z",
+  "updatedAt": "2026-10-04T00:20:12Z",
   "sourceFreeze": {
     "status": "FROZEN",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -40,6 +40,16 @@
       "candidateNodesWithSuggestions": 349,
       "maxCandidatesPerNode": 3,
       "candidatesHash": "131635d657c4a21f872a5e05f962f7621f7dffc8e6fcc7634c9df92583f69d92",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "promotedCodes": 0
+    },
+    "gapAnalysis": {
+      "status": "CLUSTERED_WITHOUT_AUTHORING",
+      "officialGapCodes": 1496,
+      "gapClusters": 552,
+      "clustersWithSemanticSignals": 131,
+      "unresolvedDomainClusters": 552,
+      "gapsHash": "93d66aeec2ee996d888e503628cde91fcf79ec19e1d482cb56bf8e00da2dc236",
       "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotedCodes": 0
     },
@@ -109,5 +119,5 @@
     "official BNCC lesson/question coverage is not yet complete",
     "one canonical anchor has no hierarchy edge: MATHEMATICS_NUMBERS"
   ],
-  "nextAction": "cluster canonical gaps and submit semantic candidates for pedagogical review before promoting any BNCC mapping"
+  "nextAction": "author and pedagogically review clustered gaps before promoting any BNCC mapping"
 }

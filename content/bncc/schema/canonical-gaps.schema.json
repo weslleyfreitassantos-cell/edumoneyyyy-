@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/canonical-gaps-v1.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "statusContract", "summary", "clusters", "gapsHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.canonical-gaps.v1" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sourceOfTruth": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "statusContract": {
+      "type": "object",
+      "required": ["gapStatus", "reviewStatus", "promotionRule"],
+      "properties": {
+        "gapStatus": { "const": "CANONICAL_GAP_REVIEW_REQUIRED" },
+        "reviewStatus": { "const": "PEDAGOGICAL_REVIEW_PENDING" },
+        "promotionRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["officialGapCodes", "gapClusters", "clustersWithSemanticSignals", "unresolvedDomainClusters", "promoted"],
+      "properties": {
+        "officialGapCodes": { "type": "integer", "minimum": 0 },
+        "gapClusters": { "type": "integer", "minimum": 0 },
+        "clustersWithSemanticSignals": { "type": "integer", "minimum": 0 },
+        "unresolvedDomainClusters": { "type": "integer", "minimum": 0 },
+        "promoted": { "const": 0 }
+      }
+    },
+    "clusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["clusterId", "officialCodes", "stage", "gradeRange", "componentCode", "subject", "domain", "cognitiveOperation", "suggestedSkill", "objective", "capability", "rationale", "confidence", "reviewStatus", "promotionStatus"],
+        "properties": {
+          "clusterId": { "type": "string" },
+          "officialCodes": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+          "stage": { "type": "string" },
+          "gradeRange": { "type": "string" },
+          "componentCode": { "type": "string" },
+          "subject": { "type": "string" },
+          "domain": { "type": ["string", "null"] },
+          "cognitiveOperation": { "type": "string" },
+          "suggestedSkill": { "type": ["string", "null"] },
+          "objective": { "type": ["string", "null"] },
+          "capability": { "type": ["string", "null"] },
+          "semanticCandidateSkills": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "rationale": { "type": "string", "minLength": 1 },
+          "confidence": { "enum": ["LOW", "MEDIUM", "HIGH"] },
+          "reviewStatus": { "const": "PEDAGOGICAL_REVIEW_PENDING" },
+          "promotionStatus": { "const": "NOT_PROMOTED" }
+        }
+      }
+    },
+    "gapsHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
