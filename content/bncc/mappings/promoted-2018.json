@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "tec-escola.bncc.safe-promotions.v1",
+  "catalogVersion": "BNCC_2018_AND_COMPUTACAO_2022_TEXT_EXTRACTION",
+  "catalogHash": "b0da60b72e055d8bbafe2366651f1ccc6676d92e83a65f9bf3e062c5026e3989",
+  "candidatesHash": "fda364d2547223646779cf0c183547797233318266afc40f5f3665859becada7",
+  "sourceOfTruth": "official_catalog_plus_independent_technical_review_plus_strict_allowlist",
+  "generatedAt": "2026-10-03T00:00:00.000Z",
+  "statusContract": {
+    "mappedStatus": "MAPPED",
+    "technicalReviewStatus": "TECH_VALIDATED",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "humanReviewClaim": "Never infer PEDAGOGICAL_REVIEWED from automated promotion."
+  },
+  "summary": {
+    "promoted": 2,
+    "pedagogicalReviewPending": 2
+  },
+  "promotions": [
+    {
+      "officialCode": "EF06HI01",
+      "canonicalSkillCodes": [
+        "HISTORY_INTERPRET_PERIODIZATION"
+      ],
+      "status": "MAPPED",
+      "reviewStatus": "TECH_VALIDATED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "promotionStatus": "AUTOMATED_SAFE_PROMOTION",
+      "reviewSource": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1",
+      "reviewMethod": "STRICT_STRUCTURAL_AND_OFFICIAL_EVIDENCE_RULES",
+      "reviewedAt": "2026-10-03T00:00:00.000Z",
+      "reviewerType": "AUTOMATED_INDEPENDENT_VALIDATOR",
+      "rationale": "Promoção técnica conservadora: etapa, componente, faixa e candidato único compatíveis, com evidência semântica explícita no trecho oficial congelado. Revisão pedagógica humana continua pendente.",
+      "evidence": [
+        "periodização dos processos históricos"
+      ]
+    },
+    {
+      "officialCode": "EF09CI01",
+      "canonicalSkillCodes": [
+        "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+      ],
+      "status": "MAPPED",
+      "reviewStatus": "TECH_VALIDATED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "promotionStatus": "AUTOMATED_SAFE_PROMOTION",
+      "reviewSource": "TECESCOLA_AUTOMATED_INDEPENDENT_REVIEW_V1",
+      "reviewMethod": "STRICT_STRUCTURAL_AND_OFFICIAL_EVIDENCE_RULES",
+      "reviewedAt": "2026-10-03T00:00:00.000Z",
+      "reviewerType": "AUTOMATED_INDEPENDENT_VALIDATOR",
+      "rationale": "Promoção técnica conservadora: etapa, componente, faixa e candidato único compatíveis, com evidência semântica explícita no trecho oficial congelado. Revisão pedagógica humana continua pendente.",
+      "evidence": [
+        "mudanças de estado físico da matéria",
+        "constituição submicroscópica"
+      ]
+    }
+  ],
+  "promotionHash": "ab5ee6c0acb6c8e025b66d5315c5e04b2c7bde0e7b1b88c81b6003a8d171f6fd"
+}

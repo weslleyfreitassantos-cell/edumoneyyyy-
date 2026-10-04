@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/mapping-coverage-v1.json",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/mapping-coverage-v2.json",
   "type": "object",
   "required": ["schemaVersion", "catalogVersion", "catalogHash", "statusContract", "summary", "mappings", "coverageHash"],
   "properties": {
-    "schemaVersion": { "const": "tec-escola.bncc.mapping-coverage.v1" },
+    "schemaVersion": { "const": "tec-escola.bncc.mapping-coverage.v2" },
     "catalogVersion": { "type": "string" },
     "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
     "sourceOfTruth": { "type": "string" },
@@ -13,18 +13,20 @@
       "type": "object",
       "required": ["accountedStatuses", "unaccountedStatus", "reviewRequiredStatus"],
       "properties": {
-        "accountedStatuses": { "type": "array", "items": { "enum": ["MAPPED", "EXPLICITLY_NON_ADAPTIVE"] } },
+        "accountedStatuses": { "type": "array", "items": { "enum": ["MAPPED", "HIERARCHY_ONLY", "EXPLICITLY_NON_ADAPTIVE", "SOURCE_REVIEW_REQUIRED"] } },
         "unaccountedStatus": { "const": "UNACCOUNTED" },
-        "reviewRequiredStatus": { "const": "REVIEW_REQUIRED" }
+        "reviewRequiredStatus": { "const": "SOURCE_REVIEW_REQUIRED" }
       }
     },
     "summary": {
       "type": "object",
-      "required": ["totalOfficialNodes", "mapped", "explicitlyNonAdaptive", "unaccounted"],
+      "required": ["totalOfficialNodes", "mapped", "hierarchyOnly", "explicitlyNonAdaptive", "sourceReviewRequired", "unaccounted"],
       "properties": {
         "totalOfficialNodes": { "type": "integer", "minimum": 0 },
         "mapped": { "type": "integer", "minimum": 0 },
+        "hierarchyOnly": { "type": "integer", "minimum": 0 },
         "explicitlyNonAdaptive": { "type": "integer", "minimum": 0 },
+        "sourceReviewRequired": { "type": "integer", "minimum": 0 },
         "unaccounted": { "type": "integer", "minimum": 0 }
       }
     },
@@ -40,9 +42,10 @@
           "gradeOrRange": { "type": "string" },
           "componentCode": { "type": "string" },
           "officialSource": { "type": "object" },
-          "status": { "enum": ["MAPPED", "EXPLICITLY_NON_ADAPTIVE", "UNACCOUNTED"] },
+          "status": { "enum": ["MAPPED", "HIERARCHY_ONLY", "EXPLICITLY_NON_ADAPTIVE", "SOURCE_REVIEW_REQUIRED", "UNACCOUNTED"] },
           "mappingSource": { "type": "string" },
-          "reviewStatus": { "enum": ["REVIEW_REQUIRED", "REVIEWED"] },
+          "reviewStatus": { "enum": ["TECH_VALIDATED", "PEDAGOGICAL_REVIEW_PENDING", "PEDAGOGICAL_REVIEWED", "NOT_APPLICABLE", "REVIEW_REQUIRED"] },
+          "pedagogicalReviewStatus": { "enum": ["PEDAGOGICAL_REVIEW_PENDING", "PEDAGOGICAL_REVIEWED"] },
           "canonicalSkillCodes": { "type": "array", "items": { "type": "string" } },
           "rationale": { "type": "string", "minLength": 1 }
         }
