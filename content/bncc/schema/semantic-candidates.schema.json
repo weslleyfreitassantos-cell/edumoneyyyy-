@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/semantic-candidates-v1.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "statusContract", "summary", "candidates", "candidatesHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.semantic-candidates.v1" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sourceOfTruth": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "statusContract": {
+      "type": "object",
+      "required": ["candidateStatus", "reviewStatus", "promotionRule"],
+      "properties": {
+        "candidateStatus": { "const": "SEMANTIC_CANDIDATE" },
+        "reviewStatus": { "const": "PEDAGOGICAL_REVIEW_PENDING" },
+        "promotionRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["totalOfficialNodes", "eligibleSkillNodes", "candidatesWithSuggestions", "semanticSuggestions", "hierarchyOnly", "promoted", "maxCandidatesPerNode"],
+      "properties": {
+        "totalOfficialNodes": { "type": "integer", "minimum": 0 },
+        "eligibleSkillNodes": { "type": "integer", "minimum": 0 },
+        "candidatesWithSuggestions": { "type": "integer", "minimum": 0 },
+        "semanticSuggestions": { "type": "integer", "minimum": 0 },
+        "hierarchyOnly": { "type": "integer", "minimum": 0 },
+        "promoted": { "const": 0 },
+        "maxCandidatesPerNode": { "const": 3 }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["officialCode", "stage", "kind", "gradeOrRange", "componentCode", "descriptor", "candidates", "reviewStatus", "promotionStatus"],
+        "properties": {
+          "officialCode": { "type": "string" },
+          "stage": { "type": "string" },
+          "kind": { "type": "string" },
+          "gradeOrRange": { "type": "string" },
+          "componentCode": { "type": "string" },
+          "descriptor": { "type": "string" },
+          "reviewStatus": { "enum": ["PEDAGOGICAL_REVIEW_PENDING", "NOT_APPLICABLE"] },
+          "promotionStatus": { "const": "NOT_PROMOTED" },
+          "candidates": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": ["canonicalSkillCode", "score", "confidence", "rationale", "differences"],
+              "properties": {
+                "canonicalSkillCode": { "type": "string" },
+                "score": { "type": "number", "minimum": 0, "maximum": 1 },
+                "confidence": { "enum": ["LOW", "MEDIUM", "HIGH"] },
+                "rationale": { "type": "string", "minLength": 1 },
+                "differences": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "candidatesHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
