@@ -143,7 +143,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
         });
       }
 
-      const aliceSession = await alice.client.rpc('start_guided_learning_session', { p_institution_id: institutionId, p_student_id: studentId, p_target_canonical_skill_id: canonicalSkillId });
+      const aliceSession = await alice.client.rpc('start_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId, p_target_canonical_skill_id: canonicalSkillId });
       expect(aliceSession.error).toBeNull();
       const mariaSession = await maria.client.rpc('start_guided_learning_session', { p_institution_id: institutionId, p_student_id: mariaStudentId, p_target_canonical_skill_id: canonicalSkillId });
       expect(mariaSession.error).toBeNull();
