@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/official-context-index-v1.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "contextContract", "summary", "nodes", "contextHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.official-context-index.v1" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "contextContract": { "type": "object", "required": ["semanticStatus", "nullMeans", "hierarchyRule", "neighborRule"] },
+    "summary": { "type": "object", "required": ["officialNodes", "nodesWithDescriptor", "nodesWithThematicUnit", "nodesWithKnowledgeObject", "nodesWithParentOrChild", "nodesWithStructuralNeighbors"] },
+    "nodes": { "type": "array", "items": { "type": "object", "required": ["code", "stage", "yearOrRange", "kind", "component", "officialContext", "parentNodes", "childNodes", "neighborNodes", "officialPath", "sourceProvenance", "contextAvailability"] } },
+    "contextHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

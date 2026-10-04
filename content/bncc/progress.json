@@ -1,6 +1,6 @@
 {
-  "campaign": "TECESCOLA_BNCC_PEDAGOGICAL_GRAPH_CONTENT_FACTORY_AND_PRODUCT_CLOSURE_V5",
-  "updatedAt": "2026-10-04T04:55:03.350Z",
+  "campaign": "TECESCOLA_BNCC_CANONICAL_GRAPH_MAPPING_CONTENT_AND_PRODUCT_AUTONOMOUS_CLOSURE_V8",
+  "updatedAt": "2026-10-04T00:00:00.000Z",
   "sourceFreeze": {
     "status": "FROZEN",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -11,6 +11,15 @@
     "status": "COMPLETE_FOR_FROZEN_SOURCES",
     "uniqueCodes": 1723,
     "catalogHash": "b0da60b72e055d8bbafe2366651f1ccc6676d92e83a65f9bf3e062c5026e3989"
+  },
+  "contextIndex": {
+    "status": "COMPLETE_WITH_AVAILABLE_CONTEXT_ONLY",
+    "uniqueCodes": 1723,
+    "nodesWithDescriptor": 1723,
+    "thematicUnits": 0,
+    "knowledgeObjects": 0,
+    "hierarchyLinks": 0,
+    "contextHash": "7c0e0289ed6d1402fdee44cca200540bf15653b6a06001a9c0bd3d8036ff1272"
   },
   "mapping": {
     "status": "ACCOUNTED_WITH_CONSERVATIVE_PROMOTIONS",
@@ -55,6 +64,26 @@
       "gapsHash": "93d66aeec2ee996d888e503628cde91fcf79ec19e1d482cb56bf8e00da2dc236",
       "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "promotedCodes": 0
+    },
+    "v8GapAnalysis": {
+      "status": "CONTEXTUALIZED_WITHOUT_PROMOTION",
+      "officialGapCodes": 1496,
+      "gapClusters": 919,
+      "contextualizedClusters": 919,
+      "unresolvedSemanticObjectClusters": 0,
+      "gapsHash": "e5b912ebeac1cd901eb3761c55039128537221084f58490a8c616ced20294a0c",
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "promotedCodes": 0
+    },
+    "v8Proposals": {
+      "status": "GENERATED_AND_INDEPENDENTLY_REVIEWED_WITHOUT_PROMOTION",
+      "proposals": 919,
+      "reuseExisting": 181,
+      "newSkillPendingReview": 738,
+      "humanReviewRequired": 738,
+      "promoted": 0,
+      "proposalsHash": "a9385cadd73965918ef26924e4682d8212025984c0a214000ccdccf42ea4254f",
+      "reviewHash": "bfcecca34e9f03159051e37c37bd29fadb59bf3b06aea7c11655ab85bb061133"
     },
     "canonicalGraph": {
       "status": "AUDITED_NOT_BNCC_PROMOTED",
@@ -131,5 +160,5 @@
     "1496 canonical gaps and 121 mapping-pending nodes retain a pedagogical review gate; no official source issue is currently flagged",
     "the 119 genuinely ambiguous cases remain reserved for human review"
   ],
-  "nextAction": "enrich independent gap-cluster units and author a reviewed canary content slice without claiming full BNCC coverage"
+  "nextAction": "resolve mapping-pending nodes with conservative relation decisions and build curriculum units from independently reviewed proposals"
 }

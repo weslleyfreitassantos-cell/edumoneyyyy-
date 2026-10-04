@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/mapping-proposal-reviews-v8.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "proposalsHash", "statusContract", "summary", "reviews", "reviewHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.mapping-proposal-reviews.v8" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "proposalsHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "reviews": { "type": "array", "items": { "type": "object", "required": ["proposalId", "decision", "checks", "reviewStatus", "promotionStatus", "reviewedBy"] } },
+    "reviewHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
