@@ -220,12 +220,34 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     const rosterFor = async (client: AnyClient, institutionId: string) => {
       const result = await client.rpc('list_teacher_learning_students', { p_institution_id: institutionId });
       expect(result.error).toBeNull();
-      return (result.data ?? []) as Array<{ student_id: string }>;
+      return (result.data ?? []) as Array<{
+        student_id: string;
+        full_name?: string;
+        class_id?: string;
+        class_name?: string;
+      }>;
     };
 
     const expectOnlyAssignedStudent = async (client: AnyClient, institutionId: string) => {
       const rows = await rosterFor(client, institutionId);
-      expect(rows.map((row) => row.student_id)).toEqual([studentA]);
+      const identities = rows.map((row) => ({
+        label:
+          row.student_id === studentA
+            ? 'assigned'
+            : row.student_id === studentUnassigned
+              ? 'unassigned'
+              : row.student_id === studentB
+                ? 'foreign'
+                : 'unknown',
+        student_id: row.student_id,
+        full_name: row.full_name,
+        class_id: row.class_id,
+        class_name: row.class_name,
+      }));
+      expect(
+        rows.map((row) => row.student_id),
+        `unexpected teacher roster identities: ${JSON.stringify(identities)}`,
+      ).toEqual([studentA]);
     };
 
     await expectOnlyAssignedStudent(teacherA.client, institutionA);
