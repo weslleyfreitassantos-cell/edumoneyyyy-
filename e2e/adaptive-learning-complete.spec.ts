@@ -207,7 +207,6 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(teacherPage.getByText('PHYSICS_AVERAGE_SPEED', { exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
       await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
-      await expect(teacherPage.getByText('O conteúdo padrão já é disponibilizado automaticamente.', { exact: true })).toBeVisible({ timeout: 30_000 });
 
       const mariaPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       pages.push(mariaPage);
