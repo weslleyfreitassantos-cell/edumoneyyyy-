@@ -96,7 +96,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       teacherPage = await browser.newPage();
       await login(teacherPage, pedro);
       await teacherPage.goto('/teacher/pedagogical-center/students');
-      await expect(teacherPage.getByRole('region', { name: 'Alunos' })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Alunos', exact: true })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByText('Alice Adaptive')).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByRole('link', { name: /Alice Adaptive/ }).click();
       await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });

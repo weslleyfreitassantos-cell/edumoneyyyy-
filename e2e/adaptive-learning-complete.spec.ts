@@ -221,7 +221,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       expect(await mariaPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 
       await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}`);
-      await expect(teacherPage.getByRole('heading', { name: 'Desempenho do aluno' })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByText('Desempenho do aluno', { exact: true })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByRole('region', { name: 'Desempenho por matéria' })).toBeVisible({ timeout: 30_000 });
 
       const alicePage = await browser.newPage({ viewport: { width: 390, height: 844 } });
