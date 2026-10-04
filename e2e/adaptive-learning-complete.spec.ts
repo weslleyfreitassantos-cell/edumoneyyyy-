@@ -206,6 +206,13 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await teacherPage.getByLabel('Turma selecionada').selectOption(classId);
       await expect(teacherPage.getByRole('region', { name: 'Dificuldades da turma' })).toBeVisible({ timeout: 30_000 });
       await teacherPage.screenshot({ path: testInfo.outputPath('visual/teacher-class-desktop.png'), fullPage: true });
+      await teacherPage.setViewportSize({ width: 390, height: 844 });
+      await teacherPage.goto('/teacher/pedagogical-center');
+      await expect(teacherPage.getByRole('heading', { name: 'Desempenho', exact: true })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.getByLabel('Turma selecionada').selectOption(classId);
+      await expect(teacherPage.getByRole('region', { name: 'Dificuldades da turma' })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.screenshot({ path: testInfo.outputPath('visual/teacher-class-mobile.png'), fullPage: true });
+      await teacherPage.setViewportSize({ width: 1280, height: 900 });
       await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
       await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).count()).toBe(0);
