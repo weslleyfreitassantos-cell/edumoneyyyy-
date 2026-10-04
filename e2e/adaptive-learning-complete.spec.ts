@@ -192,6 +192,9 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       const mariaSupport = await service.from('learning_guided_sessions').select('status').eq('id', mariaSession.data.session_id).single();
       expect(mariaSupport.data?.status).toBe('NEEDS_TEACHER_SUPPORT');
 
+      const starterPackage = await service.from('learning_packages').select('id').eq('title', 'Fundamentos de Frações').eq('visibility', 'GLOBAL').single();
+      expect(starterPackage.error).toBeNull();
+
       const teacherPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
       pages.push(teacherPage);
       await login(teacherPage, teacher);
@@ -207,6 +210,11 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(teacherPage.getByText('PHYSICS_AVERAGE_SPEED', { exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
       await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
+      expect(await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).count()).toBe(0);
+      const assignment = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
+      expect(assignment.error).toBeNull();
+      const assignmentRetry = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
+      expect(assignmentRetry.data).toBe(assignment.data);
 
       const mariaPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       pages.push(mariaPage);
