@@ -925,8 +925,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-history-history_interpretation-7",
@@ -1023,6 +1023,87 @@
       "subject": "HISTORY",
       "topic": "contexto",
       "primarySkill": "HISTORY_INTERPRET_EVIDENCE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-history-periodization-probe-01",
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-history-periodization-probe-02",
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-history-periodization-practice-01",
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-history-periodization-transfer-01",
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [
+        "HISTORY_ANALYZE_CHANGE_CONTINUITY"
+      ],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-history-periodization-lock-in-01",
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [
+        "HISTORY_ANALYZE_CHANGE_CONTINUITY"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-history-periodization-review-01",
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-history-periodization-review-02",
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION",
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],

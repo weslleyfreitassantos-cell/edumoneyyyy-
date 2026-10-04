@@ -29,14 +29,14 @@ describe('adaptive V4 source-of-truth and honest content gates', () => {
     const result = validateV4Pack(pack);
     expect(result.valid).toBe(true);
     expect(result.subjectCount).toBe(15);
-    expect(result.adaptiveReadyCount).toBe(10);
+    expect(result.adaptiveReadyCount).toBe(11);
     expect(result.graphOnlyCount).toBeGreaterThan(0);
     expect(result.contentReadyCount).toBe(6);
     expect(result.lessonCount).toBe(29);
-    expect(result.questionCount).toBe(211);
+    expect(result.questionCount).toBe(218);
     expect(result.reusedV2V3Questions).toBe(180);
-    expect(result.newRealV4Questions).toBe(31);
-    expect(result.realSelectableQuestions).toBe(96);
+    expect(result.newRealV4Questions).toBe(38);
+    expect(result.realSelectableQuestions).toBe(104);
     expect(result.questionsRemapped).toBe(180);
     expect(result.topicOwnershipCount).toBe(195);
     expect(result.genericTemplateQuestions).toBe(0);

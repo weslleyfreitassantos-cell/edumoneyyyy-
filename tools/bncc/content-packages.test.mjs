@@ -39,7 +39,6 @@ describe('BNCC content package factory', () => {
     const output = buildContentPackages(packRoot);
     const newlyReconciled = [
       'HISTORY_COMPARE_PERSPECTIVES',
-      'HISTORY_INTERPRET_PERIODIZATION',
       'HISTORY_DISTINGUISH_MEMORY_HISTORY',
       'HISTORY_ANALYZE_CHANGE_CONTINUITY',
       'MATH_SUCCESSIVE_PERCENT_CHANGE',
@@ -60,5 +59,18 @@ describe('BNCC content package factory', () => {
       expect(skill?.readiness).toBe('GRAPH_ONLY');
       expect(skill?.contentStatus).toBe('SCAFFOLD');
     }
+  });
+
+  it('publishes the safe history promotion only after complete canary coverage', () => {
+    const output = buildContentPackages(packRoot);
+    const skill = output.packages.flatMap((item) => item.skills)
+      .find((item) => item.code === 'HISTORY_INTERPRET_PERIODIZATION');
+    expect(skill).toMatchObject({
+      readiness: 'ADAPTIVE_READY',
+      contentStatus: 'TECH_VALIDATED',
+      lessonCount: 1,
+      questionCount: 8,
+    });
+    expect(skill.questionPurposes).toEqual(['LOCK_IN', 'PRACTICE', 'PROBE', 'REVIEW', 'TRANSFER']);
   });
 });
