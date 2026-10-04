@@ -278,13 +278,13 @@ describe('getRouteVisualContext', () => {
       getRouteVisualContext('/teacher/pedagogical-center', 'teacher'),
     ).toEqual({
       section: 'Acadêmico',
-      title: 'Central Pedagógica',
+      title: 'Desempenho',
     });
     expect(
       getRouteVisualContext('/teacher/pedagogical-center/activities', 'teacher'),
     ).toEqual({
       section: 'Acadêmico',
-      title: 'Central Pedagógica',
+      title: 'Desempenho',
     });
     expect(
       getRouteVisualContext('/student/report-card', 'student'),
