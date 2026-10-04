@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "tec-escola.bncc.multimodal-canaries.v1",
+  "canarySetVersion": "tec-escola-bncc-multimodal-v1",
+  "sourceOfTruth": "official BNCC catalog plus versioned TecEscola content pack",
+  "technicalReviewStatus": "TECH_VALIDATED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "promotionRule": "Canaries prove content-shape support; they do not assert human pedagogical approval or BNCC promotion.",
+  "canaries": [
+    {
+      "id": "math-objective-percent-base",
+      "mode": "OBJECTIVE",
+      "officialCode": "EF06MA15",
+      "canonicalSkill": "MATH_IDENTIFY_PERCENT_BASE",
+      "mappingStatus": "MAPPING_PENDING",
+      "contentIds": ["MATH_IDENTIFY_PERCENT_BASE"],
+      "content": {
+        "lesson": true,
+        "workedExample": true,
+        "probe": true,
+        "practice": true,
+        "transfer": true,
+        "lockIn": true,
+        "review": true
+      }
+    },
+    {
+      "id": "history-mapped-periodization",
+      "mode": "OBJECTIVE",
+      "officialCode": "EF06HI01",
+      "canonicalSkill": "HISTORY_INTERPRET_PERIODIZATION",
+      "mappingStatus": "MAPPED",
+      "contentIds": ["HISTORY_INTERPRET_PERIODIZATION"],
+      "content": {
+        "lesson": true,
+        "workedExample": true,
+        "probe": true,
+        "practice": true,
+        "transfer": true,
+        "lockIn": true,
+        "review": true
+      }
+    },
+    {
+      "id": "science-mapped-matter-transformation",
+      "mode": "OBJECTIVE",
+      "officialCode": "EF09CI01",
+      "canonicalSkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "mappingStatus": "MAPPED",
+      "contentIds": ["SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"],
+      "content": {
+        "lesson": true,
+        "workedExample": true,
+        "probe": true,
+        "practice": true,
+        "transfer": true,
+        "lockIn": true,
+        "review": true
+      }
+    },
+    {
+      "id": "portuguese-constructed-evidence",
+      "mode": "CONSTRUCTED",
+      "officialCode": "EF06LP01",
+      "canonicalSkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "mappingStatus": "CANONICAL_GAP",
+      "content": {
+        "guidance": "Leia a tese, localize a evidencia e explique por que ela sustenta a afirmacao.",
+        "example": "Em um editorial sobre bibliotecas, um dado de emprestimos sustenta a tese quando se relaciona diretamente ao acesso a leitura.",
+        "constructedTask": "Escreva uma resposta curta identificando a tese de um texto e citando uma evidencia que a sustente.",
+        "rubric": [
+          "identifica a tese sem apenas copiar uma frase secundaria",
+          "cita evidencia verificavel do texto",
+          "explica a relacao entre evidencia e tese"
+        ],
+        "review": "Revisao docente registra evidencia citada, relacao explicada e proximo passo.",
+        "evidenceMode": "TEXT_RESPONSE"
+      }
+    },
+    {
+      "id": "early-childhood-observation-body-expression",
+      "mode": "OBSERVATIONAL",
+      "officialCode": "EI03CG01",
+      "canonicalSkill": null,
+      "mappingStatus": "NOT_ADAPTIVE",
+      "content": {
+        "educatorGuidance": "Convide a crianca a representar sentimentos com gestos e movimentos, sem exigir uma resposta unica.",
+        "experience": "Proponha uma sequencia de musicas e convide a crianca a criar movimentos para cada emocao escolhida.",
+        "materials": ["musicas curtas", "espaco livre", "cartoes de emocoes"],
+        "observationCriteria": [
+          "explora mais de um movimento ou gesto",
+          "relaciona movimento e emocao com apoio do adulto",
+          "respeita o espaco e as propostas dos colegas"
+        ],
+        "reflectionRecord": "Registre a iniciativa da crianca, os apoios oferecidos e uma proxima oportunidade de exploracao.",
+        "childQuiz": false,
+        "evidenceMode": "EDUCATOR_RECORD"
+      }
+    },
+    {
+      "id": "physical-education-practical-strategy",
+      "mode": "PRACTICAL_OBSERVATIONAL_CONSTRUCTED",
+      "officialCode": "EF67EF05",
+      "canonicalSkill": "PE_PLAN_SAFE_ACTIVITY",
+      "mappingStatus": "CANONICAL_GAP",
+      "content": {
+        "guidance": "Organize uma pratica cooperativa e combine criterios de seguranca, participacao e tomada de decisao.",
+        "task": "Em grupo, planeje uma estrategia para superar um desafio motor e explique as escolhas feitas antes da pratica.",
+        "materials": ["cones", "bolas leves", "fita para demarcar espacos"],
+        "evidence": "Plano do grupo, observacao durante a pratica e breve explicacao final.",
+        "rubric": [
+          "planeja uma estrategia coerente com o desafio",
+          "ajusta a estrategia a partir do que observa",
+          "participa com seguranca e coopera com o grupo"
+        ],
+        "review": "Professor registra evidencia do plano, da pratica e do ajuste realizado.",
+        "evidenceMode": "PRACTICAL_PERFORMANCE"
+      }
+    },
+    {
+      "id": "computing-objective-algorithm",
+      "mode": "OBJECTIVE_COMPUTATIONAL",
+      "officialCode": "EF01CO02",
+      "canonicalSkill": "COMPUTING_TRACE_ALGORITHM",
+      "mappingStatus": "CANONICAL_GAP",
+      "content": {
+        "lesson": true,
+        "workedExample": true,
+        "probe": true,
+        "practice": true,
+        "evidenceMode": "TRACE_SEQUENCE"
+      }
+    }
+  ],
+  "gate": {
+    "objectiveCanary": "math-objective-percent-base",
+    "constructedCanary": "portuguese-constructed-evidence",
+    "observationalCanary": "early-childhood-observation-body-expression",
+    "practicalCanary": "physical-education-practical-strategy",
+    "computationalCanary": "computing-objective-algorithm",
+    "massAuthoringAllowed": false,
+    "reason": "Canaries are technically validated; pedagogical review and runtime product wiring remain separate gates."
+  }
+}
