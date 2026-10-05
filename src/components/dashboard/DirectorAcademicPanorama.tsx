@@ -284,19 +284,19 @@ function AttendanceTrend({
           role="img"
           aria-label="Frequência média semanal em barras"
         >
-          <div className="pointer-events-none absolute inset-x-10 bottom-10 top-3">
+          <div className="pointer-events-none absolute bottom-10 left-2 right-10 top-3">
             {guideValues.map((value) => (
               <div
                 key={value}
                 className="absolute inset-x-0 flex -translate-y-1/2 items-center gap-2"
                 style={{ bottom: `${value}%` }}
               >
-                <span className={`w-8 text-right text-[10px] ${value === 75 ? 'font-bold text-[#a66b06]' : 'text-[#98a2b3]'}`}>{value}%</span>
+                <span className={`w-10 shrink-0 text-right text-[10px] ${value === 75 ? 'font-bold text-[#a66b06]' : 'text-[#98a2b3]'}`}>{value}%</span>
                 <span className={`h-px flex-1 ${value === 75 ? 'border-t border-dashed border-[#d99a2b]' : 'bg-[#dfe6ee] dark:bg-slate-700'}`} />
               </div>
             ))}
           </div>
-          <div className="absolute inset-x-10 bottom-10 top-3 flex items-end gap-2">
+          <div className="absolute bottom-10 left-14 right-10 top-3 flex items-end gap-2">
             {sessions.map((point, index) => {
               const rate = Math.max(0, Math.min(100, point.attendanceRate));
               const isLatest = index === sessions.length - 1;
@@ -315,10 +315,10 @@ function AttendanceTrend({
               );
             })}
           </div>
-          <div className="absolute inset-x-10 bottom-0 flex items-start gap-2">
-            {sessions.map((point, index) => (
-              <span key={point.key} className="min-w-3 flex-1 text-center text-[10px] text-[#667085] dark:text-slate-400">
-                {labelIndexes.includes(index) ? point.label : ''}
+          <div className="absolute bottom-0 left-14 right-10 flex items-start justify-between">
+            {labelIndexes.map((index) => (
+              <span key={sessions[index].key} className="whitespace-nowrap text-[10px] text-[#667085] dark:text-slate-400">
+                {sessions[index].label}
               </span>
             ))}
           </div>
