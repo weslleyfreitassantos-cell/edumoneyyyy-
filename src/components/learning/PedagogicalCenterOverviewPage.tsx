@@ -10,7 +10,7 @@ import { useTeacherClassKnowledgeHeatmap } from '../../hooks/useAdaptiveLearning
 import { useTeacherLearningScopedClasses, useTeacherLearningStudents, useTeacherLearningSubjects } from '../../hooks/useLearningCenter';
 import { humanizeSkill, humanizeSubjectArea } from '../../lib/learningPresentation';
 import type { LearningTeacherStudent } from '../../services/learningCenterService';
-import { PageState, PedagogicalCenterHeader } from './PedagogicalCenterNav';
+import { PageState } from './PedagogicalCenterNav';
 
 const PAGE_SIZE = 6;
 
@@ -109,8 +109,7 @@ export default function PedagogicalCenterOverviewPage() {
   return (
     <div className="space-y-7">
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
-        <PedagogicalCenterHeader subtitle="Uma leitura rápida da turma para decidir onde olhar primeiro." showNav={false} />
-        <div className="mt-6 flex flex-col gap-3 border-t border-slate-100 pt-5 dark:border-slate-800 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Contexto pedagógico</p>
             <p className="mt-1 text-sm text-slate-500">Escolha a disciplina e a turma para ver somente os alunos e sinais do seu vínculo.</p>

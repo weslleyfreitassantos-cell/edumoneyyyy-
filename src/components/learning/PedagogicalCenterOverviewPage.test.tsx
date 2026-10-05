@@ -46,7 +46,10 @@ describe('PedagogicalCenterOverviewPage', () => {
   it('mantém uma única tela com tabela paginada e ação de detalhe', () => {
     renderPage();
 
-    expect(screen.getByRole('heading', { name: 'Desempenho' })).toBeTruthy();
+    expect(screen.getByText('Contexto pedagógico')).toBeTruthy();
+    expect(screen.queryByText('Professor')).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Desempenho' })).toBeNull();
+    expect(screen.queryByText('Uma leitura rápida da turma para decidir onde olhar primeiro.')).toBeNull();
     expect(screen.queryByRole('link', { name: 'Turma' })).toBeNull();
     expect(screen.queryByRole('link', { name: 'Alunos' })).toBeNull();
     expect(screen.getByRole('searchbox', { name: 'Buscar aluno' })).toBeTruthy();
