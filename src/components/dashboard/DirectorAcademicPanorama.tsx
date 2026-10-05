@@ -186,8 +186,27 @@ function KpiCard({
   return <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">{content}</article>;
 }
 
-function EmptyChart({ children = 'Sem dados no período selecionado.' }: { children?: string }) {
-  return <p className="rounded-lg border border-dashed border-[#d6dce5] px-4 py-8 text-center text-sm text-[#667085] dark:border-slate-700 dark:text-slate-400">{children}</p>;
+function EmptyChart({
+  children = 'Sem dados no período selecionado.',
+  action,
+}: {
+  children?: string;
+  action?: { label: string; onClick: () => void };
+}) {
+  return (
+    <div className="rounded-lg border border-dashed border-[#d6dce5] px-4 py-6 text-center text-sm text-[#667085] dark:border-slate-700 dark:text-slate-400">
+      <p>{children}</p>
+      {action && (
+        <button
+          type="button"
+          className="mt-3 rounded-lg border border-[#b8c7db] bg-white px-3 py-2 text-xs font-semibold text-[#005bbf] transition hover:border-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 dark:border-slate-600 dark:bg-slate-900 dark:text-blue-300 dark:hover:border-blue-400 dark:hover:bg-slate-800"
+          onClick={action.onClick}
+        >
+          {action.label}
+        </button>
+      )}
+    </div>
+  );
 }
 
 function LoadingChart() {
@@ -215,13 +234,23 @@ function AttendanceTrend({
   sessions,
   loading,
   error,
+  onRetry,
 }: {
   sessions: ReturnType<typeof buildWeeklyAttendanceTrend>;
   loading: boolean;
   error: boolean;
+  onRetry: () => void;
 }) {
   if (loading) return <LoadingChart />;
-  if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
+  if (error) {
+    return (
+      <EmptyChart
+        action={{ label: 'Tentar novamente', onClick: onRetry }}
+      >
+        Não foi possível carregar agora.
+      </EmptyChart>
+    );
+  }
   if (sessions.length === 0) return <EmptyChart />;
   const latest = sessions[sessions.length - 1];
   const latestDelta = Math.round((latest.attendanceRate - 75) * 10) / 10;
@@ -471,7 +500,12 @@ export default function DirectorAcademicPanorama({
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(19rem,0.8fr)]">
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><CalendarCheck2 className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Frequência média ao longo do tempo</h3><p className="text-xs text-[#667085] dark:text-slate-400">Acompanhamento semanal com referência de 75%.</p></div></div>
-          <AttendanceTrend sessions={attendanceTrend} loading={attendanceLoading} error={attendanceQuery.isError && !attendanceQuery.data} />
+          <AttendanceTrend
+            sessions={attendanceTrend}
+            loading={attendanceLoading}
+            error={attendanceQuery.isError && !attendanceQuery.data}
+            onRetry={() => void attendanceQuery.refetch()}
+          />
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><UsersRound className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Situação dos estudantes</h3><p className="text-xs text-[#667085] dark:text-slate-400">Frequência e desempenho combinados.</p></div></div>

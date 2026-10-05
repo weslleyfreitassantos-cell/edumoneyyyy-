@@ -6,6 +6,7 @@ import {
 } from './academicCalendarService';
 import { resolveAcademicDateStatus } from '../lib/academicCalendarStatus';
 import {
+  ACADEMIC_ATTENDANCE_SUMMARY_TIMEOUT_MS,
   isAbortError,
   withAcademicReadTimeout,
 } from '../lib/academicReadTimeout';
@@ -2668,7 +2669,8 @@ export const attendanceService = {
     institutionId: string,
     filters: AttendanceInstitutionFilters = {},
   ): Promise<InstitutionAttendanceSummary> {
-    return withAcademicReadTimeout(async (signal) => {
+    try {
+      return await withAcademicReadTimeout(async (signal) => {
       const fromDate =
         filters.fromDate ?? '1900-01-01';
       const toDate =
@@ -2890,7 +2892,13 @@ export const attendanceService = {
         sessions: filteredSessions,
         filters: buildFilterOptions(sessions),
       };
-    });
+      }, ACADEMIC_ATTENDANCE_SUMMARY_TIMEOUT_MS);
+    } catch (error) {
+      throw createAttendanceError(
+        error,
+        'ATTENDANCE_LOAD_FAILED',
+      );
+    }
   },
 
   async getInstitutionPendingAttendanceSummary(
