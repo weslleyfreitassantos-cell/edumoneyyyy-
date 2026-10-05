@@ -235,9 +235,9 @@ describe('TeacherDashboard', () => {
     );
 
     const image = screen.getByRole('img', { name: 'Foto de Professor Teste' });
-    expect(image.className).toContain('object-cover');
+    expect(image.className).toContain('object-fill');
     expect(image.parentElement?.className).toContain('aspect-[3/4]');
-    expect(image.parentElement?.className).toContain('w-24');
+    expect(image.parentElement?.className).toContain('w-36');
   });
 
   it('mantém o fallback do professor quando não há avatar', () => {

@@ -10,7 +10,7 @@ afterEach(() => {
 });
 
 describe('ProfileHeroAvatar', () => {
-  it('renders the shared 3:4 object-cover slot', () => {
+  it('renders the shared 3:4 object-fill slot', () => {
     render(
       <ProfileHeroAvatar
         avatarUrl="https://storage.example/avatar.webp"
@@ -21,10 +21,10 @@ describe('ProfileHeroAvatar', () => {
 
     const image = screen.getByRole('img', { name: 'Foto de Ana Silva' });
 
-    expect(image.className).toContain('object-cover');
+    expect(image.className).toContain('object-fill');
     expect(image.parentElement?.className).toContain('aspect-[3/4]');
-    expect(image.parentElement?.className).toContain('w-24');
-    expect(image.parentElement?.className).not.toContain('sm:w-40');
+    expect(image.parentElement?.className).toContain('w-36');
+    expect(image.parentElement?.className).toContain('sm:w-40');
   });
 
   it('falls back when the image cannot be loaded', () => {
