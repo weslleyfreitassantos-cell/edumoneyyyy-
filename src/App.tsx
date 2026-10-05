@@ -499,7 +499,7 @@ export function DirectorLoginBrandingRoute() {
 
 function DirectorCamerasRoute() {
   const { profile } = useAuth();
-  const { currentRole, isLoading } = useInstitution();
+  const { currentRole, currentInstitution, isLoading } = useInstitution();
 
   if (isLoading) {
     return <PageLoading />;
@@ -507,6 +507,10 @@ function DirectorCamerasRoute() {
 
   if (currentRole !== 'DIRECTOR' && profile?.role !== 'DIRECTOR') {
     return <Navigate to="/unauthorized" replace />;
+  }
+
+  if (currentInstitution?.plan === 'BASIC') {
+    return <Navigate to="/admin?module=overview" replace />;
   }
 
   return <CamerasPage />;

@@ -120,12 +120,14 @@ export default function AdminPage() {
           module,
           institutionQuery.currentRole,
           profile?.platform_role,
+          institutionQuery.currentInstitution?.plan,
         ),
       ),
     [
       profile?.platform_role,
       profile?.role,
       institutionQuery.currentRole,
+      institutionQuery.currentInstitution?.plan,
     ],
   );
 

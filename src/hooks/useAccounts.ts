@@ -28,6 +28,8 @@ import {
   type UpdateInstitutionNameResponse,
   type UpdateInstitutionStatusInput,
   type UpdateInstitutionStatusResponse,
+  type UpdateInstitutionPlanInput,
+  type UpdateInstitutionPlanResponse,
   type UpdateClientAccountInput,
   type UpdateClientAccountResponse,
 } from '../services/accountService';
@@ -276,6 +278,24 @@ export function useUpdateInstitutionStatus() {
         queryClient.invalidateQueries({
           queryKey: userInstitutionKeys.all,
         }),
+      ]);
+    },
+  });
+}
+
+export function useUpdateInstitutionPlan() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    UpdateInstitutionPlanResponse,
+    Error,
+    UpdateInstitutionPlanInput
+  >({
+    mutationFn: (input) => accountService.updateInstitutionPlan(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: accountKeys.all }),
+        queryClient.invalidateQueries({ queryKey: userInstitutionKeys.all }),
       ]);
     },
   });

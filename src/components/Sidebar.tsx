@@ -62,6 +62,7 @@ import {
 import type {
   SystemPermission,
 } from '../lib/permissions';
+import type { InstitutionPlan } from '../services/accountService';
 import {
   getEffectiveRole,
   hasAnyPermission,
@@ -94,6 +95,7 @@ interface SidebarProps {
   profile: Profile;
   branding: PublicBranding;
   currentInstitutionRole: string | null;
+  currentInstitutionPlan?: InstitutionPlan | null;
   isDesktopHidden: boolean;
   isMobileOpen: boolean;
   isLoggingOut: boolean;
@@ -425,11 +427,13 @@ function preloadEmailPage(): void {
 export function getSidebarNavigationItems({
   profile,
   currentInstitutionRole,
+  currentInstitutionPlan,
   currentUserRole,
   pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
+  currentInstitutionPlan?: InstitutionPlan | null;
   currentUserRole: User['role'];
   pathname?: string;
 }): SidebarNavigationItem[] {
@@ -452,6 +456,10 @@ export function getSidebarNavigationItems({
         isPlatformSuperAdmin &&
         !isAdminPath(pathname)
       ) {
+        return false;
+      }
+
+      if (item.id === 'cameras' && currentInstitutionPlan === 'BASIC') {
         return false;
       }
 
@@ -496,11 +504,13 @@ export function getSidebarNavigationItems({
 export function getSidebarAdminModules({
   profile,
   currentInstitutionRole,
+  currentInstitutionPlan,
   currentUserRole,
   pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
+  currentInstitutionPlan?: InstitutionPlan | null;
   currentUserRole: User['role'];
   pathname?: string;
 }): AdminModuleDefinition[] {
@@ -541,6 +551,7 @@ export function getSidebarAdminModules({
         module,
         effectiveRole,
         profile.platform_role,
+        currentInstitutionPlan,
       )
     ) {
       return false;
@@ -564,6 +575,7 @@ export default function Sidebar({
   profile,
   branding,
   currentInstitutionRole,
+  currentInstitutionPlan,
   isDesktopHidden,
   isMobileOpen,
   isLoggingOut,
@@ -581,12 +593,14 @@ export default function Sidebar({
   const navigationItems = getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
+    currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
   });
   const adminModules = getSidebarAdminModules({
     profile,
     currentInstitutionRole,
+    currentInstitutionPlan,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
   });

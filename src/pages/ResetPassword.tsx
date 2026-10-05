@@ -533,6 +533,7 @@ export default function ResetPassword() {
         heroVariant="default"
         layoutVariant="login"
         showBrand={false}
+        backgroundImageUrl={branding.loginBackgroundUrl}
         footer={footer}
       >
         <div style={brandStyle}>
@@ -563,6 +564,7 @@ export default function ResetPassword() {
         heroVariant="default"
         layoutVariant="login"
         showBrand={false}
+        backgroundImageUrl={branding.loginBackgroundUrl}
         footer={footer}
       >
         <div style={brandStyle}>
@@ -601,6 +603,7 @@ export default function ResetPassword() {
         heroVariant="default"
         layoutVariant="login"
         showBrand={false}
+        backgroundImageUrl={branding.loginBackgroundUrl}
         footer={footer}
       >
         <div style={brandStyle}>
@@ -647,6 +650,7 @@ export default function ResetPassword() {
       heroVariant="default"
       layoutVariant="login"
       showBrand={false}
+      backgroundImageUrl={branding.loginBackgroundUrl}
       footer={footer}
     >
       <div style={brandStyle}>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import {
   useMutation,
   useQuery,
@@ -23,6 +23,93 @@ function getWindowHostname(): string {
   }
 
   return window.location.hostname;
+}
+
+const publicBrandingCachePrefix = 'tecescola:public-branding:';
+const publicBrandingCacheVersion = 1;
+
+interface CachedPublicBranding {
+  version: number;
+  cachedAt: number;
+  branding: PublicBranding;
+}
+
+function getPublicBrandingCacheKey(hostname: string): string {
+  return `${publicBrandingCachePrefix}${normalizeHostnameValue(hostname || 'unknown')}`;
+}
+
+function isPublicBranding(value: unknown): value is PublicBranding {
+  if (!value || typeof value !== 'object') {
+    return false;
+  }
+
+  const branding = value as Partial<PublicBranding>;
+  return (
+    (branding.scope === 'GLOBAL' ||
+      branding.scope === 'ACCOUNT' ||
+      branding.scope === 'INSTITUTION' ||
+      branding.scope === 'FALLBACK') &&
+    (branding.displayName === null || typeof branding.displayName === 'string') &&
+    (branding.logoUrl === null || typeof branding.logoUrl === 'string') &&
+    (branding.faviconUrl === null || typeof branding.faviconUrl === 'string') &&
+    (branding.loginBackgroundUrl === null ||
+      typeof branding.loginBackgroundUrl === 'string') &&
+    typeof branding.primaryColor === 'string' &&
+    typeof branding.secondaryColor === 'string'
+  );
+}
+
+function readCachedPublicBranding(
+  hostname: string,
+): CachedPublicBranding | null {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  try {
+    const raw = window.localStorage.getItem(
+      getPublicBrandingCacheKey(hostname),
+    );
+    if (!raw) {
+      return null;
+    }
+
+    const parsed = JSON.parse(raw) as Partial<CachedPublicBranding>;
+    if (
+      parsed.version !== publicBrandingCacheVersion ||
+      typeof parsed.cachedAt !== 'number' ||
+      !isPublicBranding(parsed.branding)
+    ) {
+      return null;
+    }
+
+    return parsed as CachedPublicBranding;
+  } catch {
+    return null;
+  }
+}
+
+function writeCachedPublicBranding(
+  hostname: string,
+  branding: PublicBranding,
+): void {
+  if (typeof window === 'undefined' || branding.scope === 'FALLBACK') {
+    return;
+  }
+
+  try {
+    const cached: CachedPublicBranding = {
+      version: publicBrandingCacheVersion,
+      cachedAt: Date.now(),
+      branding,
+    };
+    window.localStorage.setItem(
+      getPublicBrandingCacheKey(hostname),
+      JSON.stringify(cached),
+    );
+  } catch {
+    // Storage may be unavailable or full; the network path remains authoritative.
+  }
 }
 
 export const brandingKeys = {
@@ -53,15 +140,29 @@ export function useResolvedBranding(
   const normalizedHostname = normalizeHostnameValue(
     hostname || 'unknown',
   );
+  const cachedBranding = useMemo(
+    () => readCachedPublicBranding(normalizedHostname),
+    [normalizedHostname],
+  );
 
-  return useQuery<PublicBranding>({
+  const query = useQuery<PublicBranding>({
     queryKey: brandingKeys.public(normalizedHostname),
     queryFn: () =>
       brandingService.resolveForHostname(normalizedHostname),
+    initialData: cachedBranding?.branding,
+    initialDataUpdatedAt: cachedBranding?.cachedAt,
     retry: false,
     staleTime: 1000 * 60 * 10,
     gcTime: 1000 * 60 * 60,
   });
+
+  useEffect(() => {
+    if (query.data) {
+      writeCachedPublicBranding(normalizedHostname, query.data);
+    }
+  }, [normalizedHostname, query.data]);
+
+  return query;
 }
 
 export function useHostBranding(

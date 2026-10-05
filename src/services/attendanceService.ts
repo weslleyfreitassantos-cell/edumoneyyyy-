@@ -2761,12 +2761,10 @@ export const attendanceService = {
     const offeringIds = Array.from(
       new Set(sessionRows.map((row) => row.subject_offering_id)),
     );
-    const offeringRows: OfferingQueryRow[] = [];
-
-    for (const offeringIdChunk of chunkValues(
+    const offeringPages = await Promise.all(chunkValues(
       offeringIds,
       ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
-    )) {
+    ).map(async (offeringIdChunk) => {
       let offeringQuery = supabase
         .from('subject_offerings')
         .select(ATTENDANCE_SUMMARY_OFFERING_FIELDS)
@@ -2794,18 +2792,15 @@ export const attendanceService = {
         throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
       }
 
-      offeringRows.push(
-        ...((data ?? []) as unknown as OfferingQueryRow[]),
-      );
-    }
+      return (data ?? []) as unknown as OfferingQueryRow[];
+    }));
+    const offeringRows = offeringPages.flat();
 
     const sessionIds = sessionRows.map((row) => row.id);
-    const recordRows: AttendanceRecordQueryRow[] = [];
-
-    for (const sessionIdChunk of chunkValues(
+    const recordPages = await Promise.all(chunkValues(
       sessionIds,
       ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
-    )) {
+    ).map(async (sessionIdChunk) => {
       const { data, error } = await supabase
         .from('attendance_records')
         .select(ATTENDANCE_SUMMARY_RECORD_FIELDS)
@@ -2817,20 +2812,17 @@ export const attendanceService = {
         throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
       }
 
-      recordRows.push(
-        ...((data ?? []) as unknown as AttendanceRecordQueryRow[]),
-      );
-    }
+      return (data ?? []) as unknown as AttendanceRecordQueryRow[];
+    }));
+    const recordRows = recordPages.flat();
 
     const studentIds = Array.from(
       new Set(recordRows.map((record) => record.student_id)),
     );
-    const studentRows = new Map<string, StudentRelation>();
-
-    for (const studentIdChunk of chunkValues(
+    const studentPages = await Promise.all(chunkValues(
       studentIds,
       ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
-    )) {
+    ).map(async (studentIdChunk) => {
       const { data, error } = await supabase
         .from('students')
         .select(ATTENDANCE_SUMMARY_STUDENT_FIELDS)
@@ -2841,10 +2833,11 @@ export const attendanceService = {
         throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
       }
 
-      for (const student of (data ?? []) as unknown as StudentRelation[]) {
-        studentRows.set(student.id, student);
-      }
-    }
+      return (data ?? []) as unknown as StudentRelation[];
+    }));
+    const studentRows = new Map(
+      studentPages.flat().map((student) => [student.id, student]),
+    );
 
     const offeringsById = new Map(
       offeringRows.map((offering) => [offering.id, offering]),
@@ -2941,29 +2934,32 @@ export const attendanceService = {
 
     if (offerings.length === 0) return { pendingCount: 0 };
 
-    const { data: timetableData, error: timetableError } = await supabase
-      .from('timetable_entries')
-      .select('subject_offering_id, day_of_week, start_time, end_time, active')
-      .eq('institution_id', institutionId)
-      .in('subject_offering_id', offerings.map((offering) => offering.id))
-      .eq('active', true);
+    const [timetableResult, sessionKeys, blockingEvents] = await Promise.all([
+      supabase
+        .from('timetable_entries')
+        .select('subject_offering_id, day_of_week, start_time, end_time, active')
+        .eq('institution_id', institutionId)
+        .in('subject_offering_id', offerings.map((offering) => offering.id))
+        .eq('active', true),
+      listInstitutionDiarySessionKeys(institutionId, fromDate, toDate),
+      academicCalendarService.listBlockingEventsForRange(
+        institutionId,
+        fromDate,
+        toDate,
+      ),
+    ]);
 
-    if (timetableError) {
-      throw createAttendanceError(timetableError, 'ATTENDANCE_FORBIDDEN');
+    if (timetableResult.error) {
+      throw createAttendanceError(timetableResult.error, 'ATTENDANCE_FORBIDDEN');
     }
 
-    const sessionKeys = await listInstitutionDiarySessionKeys(institutionId, fromDate, toDate);
+    const timetableData = timetableResult.data;
     const existingSlots = new Set(
       sessionKeys.map((session) => institutionDiarySessionKey(
         session.subject_offering_id,
         session.session_date,
         session.starts_at,
       )),
-    );
-    const blockingEvents = await academicCalendarService.listBlockingEventsForRange(
-      institutionId,
-      fromDate,
-      toDate,
     );
     const calendarCache = new Map<string, AcademicDateStatus>();
     const offeringById = new Map(offerings.map((offering) => [offering.id, offering]));

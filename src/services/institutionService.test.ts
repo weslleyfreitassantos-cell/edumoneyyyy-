@@ -48,6 +48,7 @@ describe('Institution Service Authorization & Security', () => {
         login_background_url: null,
         primary_color: '#005bbf',
         secondary_color: '#6ffbbe',
+        plan: 'PROFESSIONAL',
         active: true,
         account_id: null,
       });
@@ -97,6 +98,7 @@ describe('Institution Service Authorization & Security', () => {
         login_background_url: null,
         primary_color: null,
         secondary_color: null,
+        plan: 'PROFESSIONAL',
         active: true,
         account_id: 'acc-1',
       });

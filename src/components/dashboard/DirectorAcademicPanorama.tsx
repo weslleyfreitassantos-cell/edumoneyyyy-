@@ -25,6 +25,7 @@ import {
   buildWeeklyAttendanceTrend,
   countPendingAcademicItems,
   DEFAULT_PANORAMA_PERIOD,
+  getAttendanceChartDomain,
   mergeStudentSignals,
   mergePanoramaClassOptions,
   getPanoramaMetricDisplay,
@@ -191,7 +192,7 @@ function EmptyChart({ children = 'Sem dados no período selecionado.' }: { child
 }
 
 function LoadingChart() {
-  return <div className="h-52 animate-pulse rounded-lg bg-slate-100 dark:bg-slate-800" role="status" aria-label="Carregando dados" />;
+  return <div className="h-56 animate-pulse rounded-xl bg-slate-100 dark:bg-slate-800" role="status" aria-label="Carregando dados" />;
 }
 
 function AttendanceTrend({
@@ -206,32 +207,105 @@ function AttendanceTrend({
   if (loading) return <LoadingChart />;
   if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
   if (sessions.length === 0) return <EmptyChart />;
-  const width = 640;
-  const height = 220;
-  const chartTop = 18;
-  const chartBottom = 184;
-  const xStep = sessions.length === 1 ? 0 : (width - 48) / (sessions.length - 1);
-  const points = sessions.map((point, index) => {
-    const x = 24 + index * xStep;
-    const y = chartBottom - (Math.max(0, Math.min(100, point.attendanceRate)) / 100) * (chartBottom - chartTop);
-    return `${x},${y}`;
-  }).join(' ');
-  const referenceY = chartBottom - 0.75 * (chartBottom - chartTop);
+  const width = 720;
+  const height = 232;
+  const chartLeft = 52;
+  const chartRight = width - 20;
+  const chartTop = 16;
+  const chartBottom = 170;
+  const chartWidth = chartRight - chartLeft;
+  const chartHeight = chartBottom - chartTop;
+  const domain = getAttendanceChartDomain(sessions);
+  const xStep = sessions.length === 1 ? 0 : chartWidth / (sessions.length - 1);
+  const xFor = (index: number) => chartLeft + index * xStep;
+  const yFor = (value: number) => chartBottom - ((value - domain.min) / (domain.max - domain.min)) * chartHeight;
+  const coordinates = sessions.map((point, index) => ({
+    x: xFor(index),
+    y: yFor(point.attendanceRate),
+  }));
+  const linePath = coordinates.map(({ x, y }, index) => `${index === 0 ? 'M' : 'L'} ${x} ${y}`).join(' ');
+  const areaPath = `M ${chartLeft} ${chartBottom} ${coordinates.map(({ x, y }) => `L ${x} ${y}`).join(' ')} L ${xFor(sessions.length - 1)} ${chartBottom} Z`;
+  const referenceY = yFor(75);
+  const targetInDomain = 75 >= domain.min && 75 <= domain.max;
+  const tickValues = Array.from(new Set([
+    domain.max,
+    Math.round(((domain.min + domain.max) / 2) / 5) * 5,
+    75,
+    domain.min,
+  ])).filter((value) => value >= domain.min && value <= domain.max).sort((first, second) => second - first);
+  const labelIndexes = sessions.length <= 2
+    ? sessions.map((_, index) => index)
+    : [0, Math.floor((sessions.length - 1) / 2), sessions.length - 1];
+  const latest = sessions[sessions.length - 1];
+  const latestPoint = coordinates[coordinates.length - 1];
+  const latestDelta = Math.round((latest.attendanceRate - 75) * 10) / 10;
+  const latestStatus = latestDelta >= 0 ? 'Acima da meta' : 'Abaixo da meta';
+  const latestStatusClass = latestDelta >= 0
+    ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'
+    : 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300';
+  const latestLabelWidth = 82;
+  const latestLabelX = Math.min(
+    Math.max(chartLeft, latestPoint.x - latestLabelWidth + 8),
+    chartRight - latestLabelWidth,
+  );
+  const latestLabelY = Math.max(2, latestPoint.y - 34);
 
   return (
-    <div>
-      <svg viewBox={`0 0 ${width} ${height}`} className="h-52 w-full" role="img" aria-label="Frequência média semanal">
-        <line x1="24" x2={width - 24} y1={referenceY} y2={referenceY} stroke="#d97706" strokeDasharray="5 5" strokeWidth="1.5" />
-        <polyline points={points} fill="none" stroke="#005bbf" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-        {sessions.map((point, index) => {
-          const x = 24 + index * xStep;
-          const y = chartBottom - (Math.max(0, Math.min(100, point.attendanceRate)) / 100) * (chartBottom - chartTop);
-          return <circle key={point.key} cx={x} cy={y} r="4" fill="#005bbf"><title>{`${point.label}: ${formatPercent(point.attendanceRate)}`}</title></circle>;
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-center gap-2 text-xs">
+        <span className="rounded-full bg-blue-50 px-3 py-1.5 font-semibold text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">
+          Última semana: {formatPercent(latest.attendanceRate)}
+        </span>
+        <span className="rounded-full bg-slate-100 px-3 py-1.5 font-medium text-[#667085] dark:bg-slate-800 dark:text-slate-300">
+          Meta: 75%
+        </span>
+        <span className={`rounded-full px-3 py-1.5 font-medium ${latestStatusClass}`}>
+          {latestStatus}
+        </span>
+      </div>
+      <div className="rounded-xl border border-[#e5eaf0] bg-slate-50/70 px-2 py-3 dark:border-slate-700 dark:bg-slate-950/30 sm:px-3">
+        <svg viewBox={`0 0 ${width} ${height}`} className="h-56 w-full" role="img" aria-label="Frequência média semanal">
+        <defs>
+          <linearGradient id="attendance-area-fill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="#1677c8" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#1677c8" stopOpacity="0.02" />
+          </linearGradient>
+        </defs>
+        {tickValues.map((value) => {
+          const y = yFor(value);
+          return (
+            <g key={value}>
+              <line x1={chartLeft} x2={chartRight} y1={y} y2={y} stroke={value === 75 ? '#d99a2b' : '#dfe6ee'} strokeDasharray={value === 75 ? '6 5' : undefined} strokeWidth={value === 75 ? '1.5' : '1'} />
+              <text x={chartLeft - 12} y={y + 4} fill="#667085" fontSize="11" fontWeight={value === 75 ? '700' : '400'} textAnchor="end">{value}%</text>
+            </g>
+          );
         })}
-        <text x="24" y="211" fill="currentColor" fontSize="11">{sessions[0].label}</text>
-        <text x={width - 24} y="211" fill="currentColor" fontSize="11" textAnchor="end">{sessions[sessions.length - 1].label}</text>
-        <text x={width - 24} y={referenceY - 6} fill="#b45309" fontSize="11" textAnchor="end">Meta 75%</text>
-      </svg>
+        <path d={areaPath} fill="url(#attendance-area-fill)" />
+        <path d={linePath} fill="none" stroke="#0b67b2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" />
+        {sessions.map((point, index) => {
+          const { x, y } = coordinates[index];
+          const isLatest = index === sessions.length - 1;
+          return (
+            <g key={point.key}>
+              {isLatest && <circle cx={x} cy={y} r="9" fill="#0b67b2" opacity="0.13" />}
+              <circle cx={x} cy={y} r={isLatest ? '5' : '4'} fill="#0b67b2" stroke="white" strokeWidth="2">
+                <title>{`${point.label}: ${formatPercent(point.attendanceRate)} (${point.totalRecords} registros)`}</title>
+              </circle>
+            </g>
+          );
+        })}
+        {labelIndexes.map((index) => (
+          <text key={sessions[index].key} x={xFor(index)} y="207" fill="#667085" fontSize="11" textAnchor={index === 0 ? 'start' : index === sessions.length - 1 ? 'end' : 'middle'}>{sessions[index].label}</text>
+        ))}
+        {targetInDomain && (
+          <text x={chartRight} y={referenceY - 8} fill="#a66b06" fontSize="11" fontWeight="700" textAnchor="end">Meta 75%</text>
+        )}
+        <g transform={`translate(${latestLabelX}, ${latestLabelY})`}>
+          <rect width={latestLabelWidth} height="22" rx="11" fill="#0b67b2" />
+          <text x={latestLabelWidth / 2} y="15" fill="white" fontSize="11" fontWeight="700" textAnchor="middle">{formatPercent(latest.attendanceRate)}</text>
+        </g>
+        </svg>
+      </div>
       <p className="text-xs text-[#667085] dark:text-slate-400">Média calculada sobre registros lançados; atrasos contam como presença.</p>
     </div>
   );
@@ -334,8 +408,11 @@ export default function DirectorAcademicPanorama({
   }), [classId, dateRange.fromDate, dateRange.toDate]);
 
   const attendanceQuery = useInstitutionAttendanceSummary(queryInstitutionId, filters);
-  const pendingAttendanceQuery = useInstitutionPendingAttendanceSummary(queryInstitutionId, filters);
   const gradesQuery = useInstitutionGradeSummary(queryInstitutionId, filters);
+  const coreSummaryLoaded = attendanceQuery.isFetched || gradesQuery.isFetched;
+  const pendingAttendanceQuery = useInstitutionPendingAttendanceSummary(queryInstitutionId, filters, {
+    enabled: coreSummaryLoaded,
+  });
   const classOptionsQuery = useClassOptions(institutionId);
   const classes = useMemo(() => mergePanoramaClassOptions(
     classOptionsQuery.data?.map((option) => ({ id: option.id, label: option.name })) ?? [],
@@ -353,17 +430,18 @@ export default function DirectorAcademicPanorama({
   const attendanceUnavailable = attendanceQuery.isError && !attendanceQuery.data;
   const gradesUnavailable = gradesQuery.isError && !gradesQuery.data;
   const pendingAttendanceUnavailable = pendingAttendanceQuery.isError && !pendingAttendanceQuery.data;
+  const pendingAttendanceLoading = !pendingAttendanceQuery.data && (!coreSummaryLoaded || pendingAttendanceQuery.isFetching);
   const attentionUnavailable = attendanceUnavailable && gradesUnavailable;
   const attendanceLoading = !attendanceQuery.data && attendanceQuery.isPending;
   const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
   const attentionLoading = !attentionUnavailable && !attendanceQuery.data && !gradesQuery.data && (attendanceQuery.isPending || gradesQuery.isPending);
   const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
   const pendingMetrics = [
-    { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, moduleId: 'class-diary' as AdminModuleId },
-    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, moduleId: 'grades' as AdminModuleId },
-    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, moduleId: 'grades' as AdminModuleId },
+    { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, loading: pendingAttendanceLoading, moduleId: 'class-diary' as AdminModuleId },
+    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, loading: false, moduleId: 'grades' as AdminModuleId },
+    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, loading: false, moduleId: 'grades' as AdminModuleId },
   ];
-  const availablePendingValues = pendingMetrics.filter((metric) => !metric.unavailable).map((metric) => metric.value);
+  const availablePendingValues = pendingMetrics.filter((metric) => !metric.unavailable && !metric.loading).map((metric) => metric.value);
   const pendingMax = Math.max(1, ...availablePendingValues);
 
   return (
@@ -421,11 +499,11 @@ export default function DirectorAcademicPanorama({
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><ClipboardList className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Pendências acadêmicas</h3><p className="text-xs text-[#667085] dark:text-slate-400">Itens que ainda precisam de ação.</p></div></div>
           <div className="space-y-4">
             {pendingMetrics.map((metric) => {
-              const navigable = !metric.unavailable && availableModuleIds.includes(metric.moduleId) && Boolean(onNavigateToModule);
+              const navigable = !metric.unavailable && !metric.loading && availableModuleIds.includes(metric.moduleId) && Boolean(onNavigateToModule);
               return (
                 <button key={metric.label} type="button" disabled={!navigable} onClick={() => onNavigateToModule?.(metric.moduleId)} className={`w-full text-left ${navigable ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : 'cursor-default'}`}>
-                  <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{metric.label}</span><strong className="text-[#181c20] dark:text-white">{getPanoramaMetricDisplay(formatCount(metric.value), metric.unavailable)}</strong></div>
-                  <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><span className="block h-full rounded-full bg-[#005bbf]" style={{ width: `${getPanoramaMetricProgress(metric.value, pendingMax, metric.unavailable)}%` }} /></div>
+                  <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{metric.label}</span><strong className="text-[#181c20] dark:text-white">{metric.loading ? 'Carregando...' : getPanoramaMetricDisplay(formatCount(metric.value), metric.unavailable)}</strong></div>
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><span className="block h-full rounded-full bg-[#005bbf]" style={{ width: `${getPanoramaMetricProgress(metric.value, pendingMax, metric.unavailable || metric.loading)}%` }} /></div>
                 </button>
               );
             })}

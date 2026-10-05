@@ -170,7 +170,7 @@ describe('Login', () => {
     const loginShell = container.firstElementChild;
 
     expect(loginShell?.getAttribute('style')).toContain(
-      'background-image: url("https://cdn.example.com/background.jpg?v=1")',
+      'background-image: url("https://cdn.example.com/background.jpg?v=1"), url("/media/ff2-optimized.webp")',
     );
     expect(loginShell?.getAttribute('style')).toContain('background-size: cover');
     expect(loginShell?.getAttribute('style')).toContain('background-position: center');

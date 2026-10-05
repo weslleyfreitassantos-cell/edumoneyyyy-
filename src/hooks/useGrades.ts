@@ -252,6 +252,7 @@ export function useInstitutionGradeSummary(
     enabled: Boolean(institutionId),
     staleTime: 1000 * 60 * 3,
     placeholderData: keepPreviousData,
-    retry: false,
+    retry: 1,
+    retryDelay: (attempt) => Math.min(1000 * (attempt + 1), 2000),
   });
 }

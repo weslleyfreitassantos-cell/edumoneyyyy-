@@ -589,6 +589,7 @@ export default function AppShell({
     ...getSidebarNavigationItems({
       profile,
       currentInstitutionRole: institutionContext.currentRole,
+      currentInstitutionPlan: institutionContext.currentInstitution?.plan,
       currentUserRole: currentRole,
       pathname: location.pathname,
     }).map((item) => ({
@@ -599,6 +600,7 @@ export default function AppShell({
     ...getSidebarAdminModules({
       profile,
       currentInstitutionRole: institutionContext.currentRole,
+      currentInstitutionPlan: institutionContext.currentInstitution?.plan,
       currentUserRole: currentRole,
       pathname: location.pathname,
     }).map((module) => ({
@@ -675,6 +677,9 @@ export default function AppShell({
         branding={branding}
         currentInstitutionRole={
           institutionContext.currentRole
+        }
+        currentInstitutionPlan={
+          institutionContext.currentInstitution?.plan
         }
         isDesktopHidden={isSidebarHidden}
         isMobileOpen={isMobileSidebarOpen}

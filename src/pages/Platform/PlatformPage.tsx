@@ -43,6 +43,7 @@ import {
   useUpdateClientAdminPassword,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
+  useUpdateInstitutionPlan,
 } from '../../hooks/useAccounts';
 import {
   useActivateDomain,
@@ -56,6 +57,7 @@ import {
   AccountServiceError,
   type AccountInstitutionSummary,
   type AccountSummaryRow,
+  type InstitutionPlan,
 } from '../../services/accountService';
 import { BrandingEditor } from '../../components/branding/BrandingEditor';
 import { ActionGroup } from '../../components/ActionGroup';
@@ -126,6 +128,11 @@ const statusStyles: Record<AccountStatus, string> = {
   ACTIVE: 'bg-[#e6f4ea] text-[#0f6d3a]',
   SUSPENDED: 'bg-[#fff4ce] text-[#7a4d00]',
   CANCELED: 'bg-[#ffdad6] text-[#93000a]',
+};
+
+const institutionPlanLabels: Record<InstitutionPlan, string> = {
+  BASIC: 'Básico',
+  PROFESSIONAL: 'Profissional',
 };
 
 const canceledAdminEmailMessage =
@@ -484,6 +491,8 @@ export default function PlatformPage() {
   const updateAccount = useUpdateClientAccount();
   const updateInstitutionStatusMutation =
     useUpdateInstitutionStatus();
+  const updateInstitutionPlanMutation =
+    useUpdateInstitutionPlan();
   const deleteInstitutionMutation =
     useDeleteInstitution();
   const closeAccount = useCloseClientAccount();
@@ -1362,6 +1371,49 @@ export default function PlatformPage() {
     }
   }
 
+  async function changeInstitutionPlan(
+    institution: AccountInstitutionSummary,
+    plan: InstitutionPlan,
+  ): Promise<void> {
+    const previousDialog = institutionAccessDialog;
+
+    if (institution.plan === plan) {
+      return;
+    }
+
+    try {
+      await updateInstitutionPlanMutation.mutateAsync({
+        institutionId: institution.id,
+        plan,
+      });
+
+      setInstitutionAccessDialog((current) =>
+        current
+          ? {
+              ...current,
+              account: {
+                ...current.account,
+                institutions: current.account.institutions.map((item) =>
+                  item.id === institution.id ? { ...item, plan } : item,
+                ),
+              },
+              error: null,
+            }
+          : current,
+      );
+      setFeedback({
+        type: 'success',
+        message: `Plano de ${institution.name} alterado para ${institutionPlanLabels[plan]}.`,
+      });
+    } catch (error) {
+      setInstitutionAccessDialog(previousDialog);
+      setFeedback({
+        type: 'error',
+        message: getPlatformErrorMessage(error),
+      });
+    }
+  }
+
   async function deleteInstitutionFromAccessDialog(
     institution: AccountInstitutionSummary,
   ): Promise<void> {
@@ -1477,6 +1529,7 @@ export default function PlatformPage() {
             isLoading={globalBrandingQuery.isLoading}
             isSaving={saveGlobalBranding.isPending}
             showBackground
+            loginUrl="https://admin.grupotec.dev.br/login"
             onSave={(input) =>
               saveGlobalBranding
                 .mutateAsync(input)
@@ -2149,6 +2202,28 @@ export default function PlatformPage() {
                                     </span>
                                   </span>
                                 </button>
+
+                                <label className="flex shrink-0 items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-[#757682] dark:text-[#94a3b8]">
+                                  <span className="sr-only">Plano de {institution.name}</span>
+                                  <select
+                                    aria-label={`Plano de ${institution.name}`}
+                                    value={institution.plan ?? 'PROFESSIONAL'}
+                                    onChange={(event) =>
+                                      void changeInstitutionPlan(
+                                        institution,
+                                        event.target.value as InstitutionPlan,
+                                      )
+                                    }
+                                    disabled={
+                                      isAccessingInstitution ||
+                                      updateInstitutionPlanMutation.isPending
+                                    }
+                                    className="h-9 rounded-lg border border-[#c5c5d3] bg-white px-2 text-xs font-semibold normal-case tracking-normal text-[#344054] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-[#005bbf]/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0]"
+                                  >
+                                    <option value="BASIC">Básico</option>
+                                    <option value="PROFESSIONAL">Profissional</option>
+                                  </select>
+                                </label>
 
                                 {institutionAccessDialog.account
                                   .status === 'ACTIVE' && (

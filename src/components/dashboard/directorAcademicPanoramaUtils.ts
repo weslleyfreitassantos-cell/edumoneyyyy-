@@ -20,6 +20,11 @@ export interface WeeklyAttendancePoint {
   totalRecords: number;
 }
 
+export interface AttendanceChartDomain {
+  min: number;
+  max: number;
+}
+
 export interface ClassPerformancePoint {
   classId: string;
   className: string;
@@ -173,6 +178,7 @@ export function buildWeeklyAttendanceTrend(
 
   return Array.from(weeks.entries())
     .sort(([first], [second]) => first.localeCompare(second))
+    .filter(([, totals]) => totals.total > 0)
     .map(([key, totals]) => ({
       key,
       label: formatWeekLabel(key),
@@ -181,6 +187,30 @@ export function buildWeeklyAttendanceTrend(
         : Math.round((totals.present / totals.total) * 1000) / 10,
       totalRecords: totals.total,
     }));
+}
+
+export function getAttendanceChartDomain(
+  points: readonly WeeklyAttendancePoint[],
+  reference = 75,
+): AttendanceChartDomain {
+  if (points.length === 0) {
+    return { min: 0, max: 100 };
+  }
+
+  const values = points.map((point) => Math.max(0, Math.min(100, point.attendanceRate)));
+  const lowest = Math.min(reference, ...values);
+  const highest = Math.max(reference, ...values);
+  const padding = Math.max(5, Math.ceil((highest - lowest) * 0.15));
+  let min = Math.max(0, Math.floor((lowest - padding) / 5) * 5);
+  let max = Math.min(100, Math.ceil((highest + padding) / 5) * 5);
+
+  if (max - min < 20) {
+    const midpoint = (min + max) / 2;
+    min = Math.max(0, Math.floor((midpoint - 10) / 5) * 5);
+    max = Math.min(100, Math.ceil((midpoint + 10) / 5) * 5);
+  }
+
+  return { min, max: max > min ? max : Math.min(100, min + 20) };
 }
 
 export function buildClassPerformance(

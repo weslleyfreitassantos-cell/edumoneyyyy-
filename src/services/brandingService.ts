@@ -182,12 +182,6 @@ function assertColor(value: string, label: string): string {
   return normalized;
 }
 
-function buildVersionedPublicUrl(publicUrl: string): string {
-  const separator = publicUrl.includes('?') ? '&' : '?';
-
-  return `${publicUrl}${separator}v=${Date.now()}`;
-}
-
 function normalizeBrandingAssetPath(
   value: unknown,
   options: BrandingAssetPathOptions = {},
@@ -213,9 +207,7 @@ function getPublicBrandingAssetUrl(
       ? data.publicUrl
       : null;
 
-  return publicUrl
-    ? buildVersionedPublicUrl(publicUrl)
-    : null;
+  return publicUrl;
 }
 
 function normalizePublicBrandingRow(

@@ -1597,12 +1597,10 @@ async function getInstitutionAssessmentsForSummary(
   }
 
   const assessmentIds = assessmentRows.map((row) => row.id);
-  const gradesByAssessment = new Map<string, GradeQueryRow[]>();
-
-  for (const assessmentIdChunk of chunkGradeValues(
+  const gradePages = await Promise.all(chunkGradeValues(
     assessmentIds,
     GRADE_SUMMARY_QUERY_CHUNK_SIZE,
-  )) {
+  ).map(async (assessmentIdChunk) => {
     let gradeQuery = supabase
       .from('grades')
       .select(GRADE_SUMMARY_GRADE_FIELDS)
@@ -1619,11 +1617,14 @@ async function getInstitutionAssessmentsForSummary(
       throw createGradeError(error, 'ASSESSMENT_FORBIDDEN');
     }
 
-    for (const grade of (data ?? []) as unknown as GradeQueryRow[]) {
-      const grades = gradesByAssessment.get(grade.assessment_id) ?? [];
-      grades.push(grade);
-      gradesByAssessment.set(grade.assessment_id, grades);
-    }
+    return (data ?? []) as unknown as GradeQueryRow[];
+  }));
+  const gradesByAssessment = new Map<string, GradeQueryRow[]>();
+
+  for (const grade of gradePages.flat()) {
+    const grades = gradesByAssessment.get(grade.assessment_id) ?? [];
+    grades.push(grade);
+    gradesByAssessment.set(grade.assessment_id, grades);
   }
 
   return assessmentRows.map((assessment) => ({
@@ -1656,12 +1657,10 @@ async function getEnrollmentsForClasses(
   const studentIds = Array.from(
     new Set(enrollmentRows.map((row) => row.student_id)),
   );
-  const studentsById = new Map<string, StudentRelation>();
-
-  for (const studentIdChunk of chunkGradeValues(
+  const studentPages = await Promise.all(chunkGradeValues(
     studentIds,
     GRADE_SUMMARY_QUERY_CHUNK_SIZE,
-  )) {
+  ).map(async (studentIdChunk) => {
     const { data: studentData, error: studentError } = await supabase
       .from('students')
       .select(GRADE_SUMMARY_STUDENT_FIELDS)
@@ -1672,10 +1671,11 @@ async function getEnrollmentsForClasses(
       throw createGradeError(studentError, 'GRADE_FORBIDDEN');
     }
 
-    for (const student of (studentData ?? []) as unknown as StudentRelation[]) {
-      studentsById.set(student.id, student);
-    }
-  }
+    return (studentData ?? []) as unknown as StudentRelation[];
+  }));
+  const studentsById = new Map(
+    studentPages.flat().map((student) => [student.id, student]),
+  );
 
   return enrollmentRows.map((row) => ({
     ...row,
@@ -1687,12 +1687,10 @@ async function getStudentsByIds(
   institutionId: string,
   studentIds: readonly string[],
 ): Promise<Map<string, StudentRelation>> {
-  const studentsById = new Map<string, StudentRelation>();
-
-  for (const studentIdChunk of chunkGradeValues(
+  const studentPages = await Promise.all(chunkGradeValues(
     studentIds,
     GRADE_SUMMARY_QUERY_CHUNK_SIZE,
-  )) {
+  ).map(async (studentIdChunk) => {
     const { data, error } = await supabase
       .from('students')
       .select(GRADE_SUMMARY_STUDENT_FIELDS)
@@ -1703,10 +1701,11 @@ async function getStudentsByIds(
       throw createGradeError(error, 'GRADE_FORBIDDEN');
     }
 
-    for (const student of (data ?? []) as unknown as StudentRelation[]) {
-      studentsById.set(student.id, student);
-    }
-  }
+    return (data ?? []) as unknown as StudentRelation[];
+  }));
+  const studentsById = new Map(
+    studentPages.flat().map((student) => [student.id, student]),
+  );
 
   return studentsById;
 }

@@ -86,6 +86,9 @@ const authInputBaseClass =
 export const DEFAULT_LOGIN_BACKGROUND_IMAGE =
   'image-set(url(/media/ff2-optimized.webp) type("image/webp"), url(/media/ff2.png) type("image/png"))';
 
+const LOGIN_BACKGROUND_FALLBACK =
+  'url(/media/ff2-optimized.webp)';
+
 export const authPlainLinkClass =
   'inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#1e3a8a] underline-offset-4 transition hover:text-[#00236f] hover:underline focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30';
 
@@ -113,7 +116,7 @@ export function AuthShell({
     const shellBg = theme === 'dark' ? darkBg : lightBg;
     const loginBackgroundStyle: CSSProperties = {
       backgroundImage: backgroundImageUrl?.trim()
-        ? `url(${JSON.stringify(backgroundImageUrl.trim())})`
+        ? `url(${JSON.stringify(backgroundImageUrl.trim())}), ${LOGIN_BACKGROUND_FALLBACK}`
         : DEFAULT_LOGIN_BACKGROUND_IMAGE,
       backgroundSize: 'cover',
       backgroundPosition: 'center',

@@ -26,6 +26,7 @@ const hookMock = vi.hoisted(() => ({
   updateClientAdminPassword: {} as any,
   updateAccount: {} as any,
   updateInstitutionStatus: {} as any,
+  updateInstitutionPlan: {} as any,
   deleteInstitution: {} as any,
   closeAccount: {} as any,
   restoreAccount: {} as any,
@@ -41,6 +42,7 @@ const hookMock = vi.hoisted(() => ({
   updateClientAdminPasswordMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
   updateInstitutionStatusMutateAsync: vi.fn(),
+  updateInstitutionPlanMutateAsync: vi.fn(),
   deleteInstitutionMutateAsync: vi.fn(),
   closeMutateAsync: vi.fn(),
   restoreMutateAsync: vi.fn(),
@@ -67,6 +69,8 @@ vi.mock('../../hooks/useAccounts', () => ({
   useUpdateClientAccount: () => hookMock.updateAccount,
   useUpdateInstitutionStatus: () =>
     hookMock.updateInstitutionStatus,
+  useUpdateInstitutionPlan: () =>
+    hookMock.updateInstitutionPlan,
   useDeleteInstitution: () => hookMock.deleteInstitution,
   useCloseClientAccount: () => hookMock.closeAccount,
   useRestoreClientAccount: () => hookMock.restoreAccount,
@@ -297,6 +301,11 @@ describe('PlatformPage', () => {
       mutateAsync:
         hookMock.updateInstitutionStatusMutateAsync,
     };
+    hookMock.updateInstitutionPlan = {
+      isPending: false,
+      mutateAsync:
+        hookMock.updateInstitutionPlanMutateAsync,
+    };
     hookMock.deleteInstitution = {
       isPending: false,
       mutateAsync: hookMock.deleteInstitutionMutateAsync,
@@ -397,6 +406,11 @@ describe('PlatformPage', () => {
       institutionLimit: 3,
       remainingSlots: 2,
       suspendedByScope: 'PLATFORM',
+    });
+    hookMock.updateInstitutionPlanMutateAsync.mockResolvedValue({
+      success: true,
+      institutionId: 'institution-1',
+      plan: 'BASIC',
     });
     hookMock.deleteInstitutionMutateAsync.mockResolvedValue({
       success: true,
@@ -628,6 +642,29 @@ describe('PlatformPage', () => {
     });
   });
 
+  it('permite alterar o plano da escola no dialogo de acesso', async () => {
+    const dialog = openInstitutionAccessDialog();
+    const planSelect = within(dialog).getByLabelText(
+      'Plano de Escola Alpha',
+    ) as HTMLSelectElement;
+
+    expect(planSelect.value).toBe('PROFESSIONAL');
+
+    fireEvent.change(planSelect, {
+      target: { value: 'BASIC' },
+    });
+
+    await waitFor(() => {
+      expect(
+        hookMock.updateInstitutionPlanMutateAsync,
+      ).toHaveBeenCalledWith({
+        institutionId: 'institution-1',
+        plan: 'BASIC',
+      });
+    });
+    expect(planSelect.value).toBe('BASIC');
+  });
+
   it('bloqueia acesso direto a escolas de conta suspensa', () => {
     renderPage();
 
@@ -702,11 +739,46 @@ describe('PlatformPage', () => {
       screen.getByText(/Imagem de fundo do login/i),
     ).toBeDefined();
     expect(
+      screen.getByRole('link', {
+        name: 'https://admin.grupotec.dev.br/login',
+      }),
+    ).toBeDefined();
+    expect(
       screen.getByRole('heading', {
         name: /Solicitacoes de dominio/i,
       }),
     ).toBeDefined();
     expect(screen.getByText('alfa.example.com')).toBeDefined();
+  });
+
+  it('abre a pre-visualizacao responsiva da identidade da plataforma sem salvar', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText(/Nome exibido/i), {
+      target: { value: 'Tec Escola Preview' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', { name: /Visualizar no desktop/i }),
+    );
+
+    expect(screen.getByRole('dialog')).toBeDefined();
+    expect(
+      screen.getByRole('heading', { name: /Demonstração do login/i }),
+    ).toBeDefined();
+    expect(screen.getByText(/Prévia desktop/i)).toBeDefined();
+    expect(screen.getByText('Tec Escola Preview')).toBeDefined();
+    expect(hookMock.saveGlobalBrandingMutateAsync).not.toHaveBeenCalled();
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /Voltar para personalização/i }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: /Visualizar no celular/i }),
+    );
+
+    expect(screen.getByText(/Prévia celular/i)).toBeDefined();
+    expect(screen.getByText('Tec Escola Preview')).toBeDefined();
+    expect(hookMock.saveGlobalBrandingMutateAsync).not.toHaveBeenCalled();
   });
 
   it('renderiza estado vazio', () => {

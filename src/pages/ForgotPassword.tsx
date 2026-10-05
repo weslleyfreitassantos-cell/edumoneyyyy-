@@ -177,6 +177,7 @@ export default function ForgotPassword() {
       heroVariant="default"
       layoutVariant="login"
       showBrand={false}
+      backgroundImageUrl={branding.loginBackgroundUrl}
       footer={footer}
     >
       <div style={brandStyle}>

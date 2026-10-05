@@ -4,6 +4,7 @@ import type {
   AccountStatus,
   CurrentDatabaseRole,
 } from '../lib/permissions';
+import type { InstitutionPlan } from './accountService';
 
 export interface InstitutionSummary {
   id: string;
@@ -17,6 +18,7 @@ export interface InstitutionSummary {
   secondary_color?: string | null;
   active: boolean | null;
   account_id: string | null;
+  plan?: InstitutionPlan | null;
 }
 
 export interface AccountSummary {
@@ -58,6 +60,7 @@ interface InstitutionRelation {
   secondary_color?: string | null;
   active: boolean | null;
   account_id: string | null;
+  plan?: InstitutionPlan | string | null;
   accounts?: AccountSummary | AccountSummary[] | null;
 }
 
@@ -168,6 +171,7 @@ function normalizeInstitution(
     secondary_color: institution.secondary_color ?? null,
     active: institution.active ?? true,
     account_id: institution.account_id ?? null,
+    plan: institution.plan === 'BASIC' ? 'BASIC' : 'PROFESSIONAL',
   };
 }
 
@@ -316,6 +320,7 @@ export const institutionService = {
         name,
         active,
         account_id,
+        plan,
         accounts:account_id (
           id,
           name,
@@ -352,6 +357,7 @@ export const institutionService = {
             name: inst.name,
             active: inst.active ?? true,
             account_id: inst.account_id ?? null,
+            plan: inst.plan === 'BASIC' ? 'BASIC' : 'PROFESSIONAL',
           },
           account:
             account && isAccountStatus(account.status)
@@ -397,7 +403,8 @@ export const institutionService = {
               primary_color,
               secondary_color,
               active,
-              account_id
+              account_id,
+              plan
             )
           `,
           )
@@ -423,6 +430,7 @@ export const institutionService = {
               secondary_color,
               active,
               account_id,
+              plan,
               accounts:account_id (
                 id,
                 name,
@@ -561,7 +569,7 @@ export async function updateInstitutionSubdomain({
     .from('institutions')
     .update({ subdomain: normalized, updated_at: new Date().toISOString() })
     .eq('id', institutionId)
-    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, login_background_url, primary_color, secondary_color, active, account_id')
+    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, login_background_url, primary_color, secondary_color, active, account_id, plan')
     .single();
 
   if (error || !data) {
@@ -661,6 +669,7 @@ export async function resolveInstitutionBySubdomain(
             secondary_color: row.secondary_color ?? null,
             active: true,
             account_id: null,
+            plan: row.plan === 'BASIC' ? 'BASIC' : 'PROFESSIONAL',
           },
           error: null,
         };
@@ -689,6 +698,7 @@ export async function resolveInstitutionBySubdomain(
       secondary_color,
       active,
       account_id,
+      plan,
       accounts:account_id (
         id,
         status
@@ -729,6 +739,7 @@ export async function resolveInstitutionBySubdomain(
     secondary_color: data.secondary_color ?? null,
     active: data.active ?? true,
     account_id: data.account_id ?? null,
+    plan: data.plan === 'BASIC' ? 'BASIC' : 'PROFESSIONAL',
   };
 
   return { institution, error: null };

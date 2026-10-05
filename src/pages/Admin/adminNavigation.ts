@@ -2,6 +2,7 @@ import type {
   SystemPermission,
 } from '../../lib/permissions';
 import type { CurrentDatabaseRole } from '../../lib/permissions';
+import type { InstitutionPlan } from '../../services/accountService';
 
 export type AdminModuleId =
   | 'overview'
@@ -332,8 +333,15 @@ export function isAdminModuleAvailable(
   module: AdminModuleDefinition,
   currentRole: string | null | undefined,
   platformRole?: string | null | undefined,
+  institutionPlan?: InstitutionPlan | null,
 ): boolean {
   if (platformRole === 'SUPER_ADMIN') return true;
+  if (
+    institutionPlan === 'BASIC' &&
+    (module.id === 'finance' || module.id === 'access')
+  ) {
+    return false;
+  }
   if (!module.allowedRoles) return true;
   return typeof currentRole === 'string' && module.allowedRoles.includes(currentRole as CurrentDatabaseRole);
 }

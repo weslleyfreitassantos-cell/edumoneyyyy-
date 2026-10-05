@@ -8,6 +8,8 @@ import { supabase } from '../lib/supabaseClient';
 
 import type { AccountStatus } from '../lib/permissions';
 
+export type InstitutionPlan = 'BASIC' | 'PROFESSIONAL';
+
 export interface AccountOwnerSummary {
   id: string;
   full_name: string;
@@ -25,6 +27,7 @@ export interface AccountInstitutionSummary {
   account_id: string | null;
   logoUrl: string | null;
   publicSlug: string | null;
+  plan?: InstitutionPlan;
   suspendedByProfileId?: string | null;
   suspendedByScope?: 'PLATFORM' | 'ACCOUNT' | null;
   suspendedAt?: string | null;
@@ -208,6 +211,17 @@ export interface UpdateInstitutionStatusResponse {
   remainingSlots: number;
 }
 
+export interface UpdateInstitutionPlanInput {
+  institutionId: string;
+  plan: InstitutionPlan;
+}
+
+export interface UpdateInstitutionPlanResponse {
+  success: true;
+  institutionId: string;
+  plan: InstitutionPlan;
+}
+
 export interface DeleteInstitutionInput {
   accountId: string;
   institutionId: string;
@@ -239,6 +253,7 @@ interface AccountQueryRow {
         suspended_by_profile_id: string | null;
         suspended_by_scope: string | null;
         suspended_at: string | null;
+        plan: string | null;
       })
     | (AccountInstitutionSummary & {
         logo_url: string | null;
@@ -246,6 +261,7 @@ interface AccountQueryRow {
         suspended_by_profile_id: string | null;
         suspended_by_scope: string | null;
         suspended_at: string | null;
+        plan: string | null;
       })[]
     | null;
   client_admin_invitations?:
@@ -336,6 +352,12 @@ function normalizeStatus(
   return 'ACTIVE';
 }
 
+function normalizeInstitutionPlan(
+  value: string | null | undefined,
+): InstitutionPlan {
+  return value === 'BASIC' ? 'BASIC' : 'PROFESSIONAL';
+}
+
 function normalizeInvitationStatus(
   value: string,
 ): ClientAdminInvitationStatus {
@@ -364,6 +386,7 @@ function normalizeAccountRow(
       account_id: inst.account_id,
       logoUrl: inst.logo_url ?? null,
       publicSlug: inst.public_slug ?? null,
+      plan: normalizeInstitutionPlan(inst.plan),
       suspendedByProfileId: inst.suspended_by_profile_id ?? null,
       suspendedByScope,
       suspendedAt: inst.suspended_at ?? null,
@@ -875,17 +898,18 @@ export const accountService = {
           account_id,
           logo_url,
           public_slug,
-           suspended_by_profile_id,
-           suspended_by_scope,
-           suspended_at
-         ),
-         client_admin_invitations:client_admin_invitations (
-           id,
-           status,
-           attempt_count,
-           last_attempt_at,
-           sent_at
-         )
+          plan,
+          suspended_by_profile_id,
+          suspended_by_scope,
+          suspended_at
+        ),
+        client_admin_invitations:client_admin_invitations (
+          id,
+          status,
+          attempt_count,
+          last_attempt_at,
+          sent_at
+        )
       `,
       )
       .order('created_at', {
@@ -927,17 +951,18 @@ export const accountService = {
           account_id,
           logo_url,
           public_slug,
-           suspended_by_profile_id,
-           suspended_by_scope,
-           suspended_at
-         ),
-         client_admin_invitations:client_admin_invitations (
-           id,
-           status,
-           attempt_count,
-           last_attempt_at,
-           sent_at
-         )
+          plan,
+          suspended_by_profile_id,
+          suspended_by_scope,
+          suspended_at
+        ),
+        client_admin_invitations:client_admin_invitations (
+          id,
+          status,
+          attempt_count,
+          last_attempt_at,
+          sent_at
+        )
       `,
       )
       .eq('owner_profile_id', profileId)
@@ -1105,6 +1130,32 @@ export const accountService = {
     }
 
     return assertUpdateInstitutionStatusResponse(data);
+  },
+
+  async updateInstitutionPlan(
+    input: UpdateInstitutionPlanInput,
+  ): Promise<UpdateInstitutionPlanResponse> {
+    const { data, error } = await supabase.rpc(
+      'update_platform_institution_plan',
+      {
+        target_institution_id: input.institutionId,
+        new_plan: input.plan,
+      },
+    );
+
+    const row = Array.isArray(data) ? data[0] : data;
+    if (error || !row || row.id !== input.institutionId) {
+      throw new AccountServiceError(
+        error?.message || 'Não foi possível atualizar o plano da escola.',
+        error?.code === '42501' ? 'SUPER_ADMIN_REQUIRED' : 'INSTITUTION_PLAN_UPDATE_FAILED',
+      );
+    }
+
+    return {
+      success: true,
+      institutionId: row.id,
+      plan: normalizeInstitutionPlan(row.plan),
+    };
   },
 
   async updateInstitutionName(

@@ -14,6 +14,7 @@ import {
   DEFAULT_PANORAMA_PERIOD,
   getPanoramaMetricDisplay,
   getPanoramaMetricProgress,
+  getAttendanceChartDomain,
   mergePanoramaClassOptions,
   PANORAMA_UNAVAILABLE_MESSAGE,
 } from './directorAcademicPanoramaUtils';
@@ -182,6 +183,25 @@ describe('director academic panorama helpers', () => {
     expect(points).toHaveLength(1);
     expect(points[0].attendanceRate).toBe(75);
     expect(points[0].totalRecords).toBe(4);
+  });
+
+  it('ignora semanas sem registros para não desenhar uma queda falsa para zero', () => {
+    const points = buildWeeklyAttendanceTrend([
+      session('2026-03-02', []),
+      session('2026-03-04', [
+        { studentId: 'student-1', status: 'PRESENT' },
+      ]),
+    ]);
+
+    expect(points).toHaveLength(1);
+    expect(points[0].attendanceRate).toBe(100);
+  });
+
+  it('aproxima a escala do gráfico dos dados e mantém a meta visível', () => {
+    expect(getAttendanceChartDomain([
+      { key: '1', label: '02 fev', attendanceRate: 82, totalRecords: 10 },
+      { key: '2', label: '09 fev', attendanceRate: 91, totalRecords: 10 },
+    ])).toEqual({ min: 70, max: 100 });
   });
 
   it('separa desempenho por turma contando alunos únicos, não avaliações', () => {

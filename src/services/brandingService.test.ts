@@ -155,9 +155,9 @@ describe('brandingService', () => {
     expect(result).toEqual({
       scope: 'ACCOUNT',
       displayName: 'Conta A',
-      logoUrl: `${derivedPublicUrl(generatedLogoPath)}?v=9876`,
-      faviconUrl: `${derivedPublicUrl(generatedFaviconPath)}?v=9876`,
-      loginBackgroundUrl: `${derivedPublicUrl(generatedBackgroundPath)}?v=9876`,
+      logoUrl: derivedPublicUrl(generatedLogoPath),
+      faviconUrl: derivedPublicUrl(generatedFaviconPath),
+      loginBackgroundUrl: derivedPublicUrl(generatedBackgroundPath),
       primaryColor: '#112233',
       secondaryColor: '#445566',
     });
@@ -418,7 +418,7 @@ describe('brandingService', () => {
       previousLogoPath,
     ]);
     expect(result.logoUrl).toBe(
-      `${derivedPublicUrl(generatedLogoPath)}?v=9876`,
+      derivedPublicUrl(generatedLogoPath),
     );
     expect(upload).toHaveBeenCalledWith(
       generatedLogoPath,

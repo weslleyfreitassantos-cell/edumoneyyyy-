@@ -56,6 +56,7 @@ function renderSidebar({
   profile = baseProfile,
   currentUser = baseUser,
   currentInstitutionRole = 'ADMIN',
+  currentInstitutionPlan,
   isDesktopHidden = false,
   isMobileOpen = false,
 }: {
@@ -63,6 +64,7 @@ function renderSidebar({
   profile?: Profile;
   currentUser?: User;
   currentInstitutionRole?: string | null;
+  currentInstitutionPlan?: 'BASIC' | 'PROFESSIONAL' | null;
   isDesktopHidden?: boolean;
   isMobileOpen?: boolean;
 } = {}) {
@@ -77,6 +79,9 @@ function renderSidebar({
         branding={baseBranding}
         currentInstitutionRole={
           currentInstitutionRole
+        }
+        currentInstitutionPlan={
+          currentInstitutionPlan
         }
         isDesktopHidden={isDesktopHidden}
         isMobileOpen={isMobileOpen}
@@ -854,6 +859,37 @@ describe('sidebar navigation helpers', () => {
       });
       expect(items.map((item) => item.id)).not.toContain('cameras');
     }
+  });
+
+  it('oculta recursos exclusivos do plano profissional no plano basico', () => {
+    const basicItems = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionPlan: 'BASIC',
+      currentUserRole: 'director',
+      pathname: '/admin',
+    });
+    const basicModules = getSidebarAdminModules({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionPlan: 'BASIC',
+      currentUserRole: 'director',
+      pathname: '/admin',
+    });
+
+    expect(basicItems.map((item) => item.id)).not.toContain('cameras');
+    expect(basicModules.map((module) => module.id)).not.toContain('finance');
+    expect(basicModules.map((module) => module.id)).not.toContain('access');
+
+    const professionalItems = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionPlan: 'PROFESSIONAL',
+      currentUserRole: 'director',
+      pathname: '/admin',
+    });
+
+    expect(professionalItems.map((item) => item.id)).toContain('cameras');
   });
 
   it('mantem TV Escola e E-mail fora do acesso de TEACHER, STUDENT e GUARDIAN', () => {

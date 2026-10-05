@@ -14,10 +14,7 @@ import {
 
 import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
-import {
-  LoginBrandingDemoScreen,
-  type LoginBrandingPreviewMode,
-} from '../components/branding/LoginBrandingDemoScreen';
+import { LoginBrandingDemoScreen } from '../components/branding/LoginBrandingDemoScreen';
 import { updateInstitutionBranding } from '../services/institutionService';
 import {
   useRemoveInstitutionBackground,
@@ -27,6 +24,7 @@ import {
   useRemoveInstitutionFavicon,
   useRemoveInstitutionLogo,
 } from '../hooks/useInstitutionBranding';
+import { useLoginBrandingPreview } from '../hooks/useLoginBrandingPreview';
 
 const DEFAULT_PRIMARY = '#005bbf';
 const DEFAULT_SECONDARY = '#6ffbbe';
@@ -82,7 +80,8 @@ export function DirectorLoginBrandingPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [previewMode, setPreviewMode] = useState<LoginBrandingPreviewMode | null>(null);
+  const { previewMode, openPreview, closePreview } =
+    useLoginBrandingPreview();
 
   useEffect(() => {
     setLoginDisplayName(
@@ -376,7 +375,7 @@ export function DirectorLoginBrandingPage() {
         secondaryColor={previewSecondary}
         logoUrl={logoPreviewUrl ?? savedLogoUrl}
         backgroundUrl={previewBackground}
-        onClose={() => setPreviewMode(null)}
+        onClose={closePreview}
       />
     );
   }
@@ -758,7 +757,7 @@ export function DirectorLoginBrandingPage() {
             <div className="mt-4 flex flex-col gap-2 border-t border-slate-200 pt-4 sm:flex-row dark:border-slate-700">
               <button
                 type="button"
-                onClick={() => setPreviewMode('desktop')}
+                onClick={() => openPreview('desktop')}
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               >
                 <Monitor className="h-4 w-4" aria-hidden="true" />
@@ -766,7 +765,7 @@ export function DirectorLoginBrandingPage() {
               </button>
               <button
                 type="button"
-                onClick={() => setPreviewMode('mobile')}
+                onClick={() => openPreview('mobile')}
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               >
                 <Smartphone className="h-4 w-4" aria-hidden="true" />

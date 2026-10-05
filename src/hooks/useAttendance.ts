@@ -237,13 +237,15 @@ export function useInstitutionAttendanceSummary(
     enabled: Boolean(institutionId),
     staleTime: 1000 * 60 * 3,
     placeholderData: keepPreviousData,
-    retry: false,
+    retry: 1,
+    retryDelay: (attempt) => Math.min(1000 * (attempt + 1), 2000),
   });
 }
 
 export function useInstitutionPendingAttendanceSummary(
   institutionId: string | undefined,
   filters: AttendanceInstitutionFilters,
+  options?: { enabled?: boolean },
 ) {
   return useQuery<InstitutionPendingAttendanceSummary>({
     queryKey: attendanceKeys.institutionPendingSummary(institutionId, filters),
@@ -253,10 +255,11 @@ export function useInstitutionPendingAttendanceSummary(
       }
       return attendanceService.getInstitutionPendingAttendanceSummary(institutionId, filters);
     },
-    enabled: Boolean(institutionId),
+    enabled: Boolean(institutionId && (options?.enabled ?? true)),
     staleTime: 1000 * 60 * 3,
     placeholderData: keepPreviousData,
-    retry: false,
+    retry: 1,
+    retryDelay: (attempt) => Math.min(1000 * (attempt + 1), 2000),
   });
 }
 
