@@ -265,6 +265,22 @@ describe('DirectorLoginBrandingPage', () => {
     ).toContain('background-image: url("blob:background-preview")');
   });
 
+  it('abre e fecha a demonstração responsiva sem salvar alterações', () => {
+    renderPage();
+
+    fireEvent.click(screen.getByRole('button', { name: /Abrir prévia em celular/i }));
+
+    expect(screen.getByRole('dialog')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: /Demonstração do login/i })).toBeTruthy();
+    expect(screen.getByText(/Prévia celular/i)).toBeTruthy();
+    expect(screen.getByText(/Esta é uma demonstração visual do login/i)).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: /Voltar para personalização/i }));
+
+    expect(screen.getByRole('heading', { name: /Personalizar login/i })).toBeTruthy();
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
   it('salva o background pela mutation específica', async () => {
     saveBackground.mockResolvedValue({
       id: 'institution-1',
