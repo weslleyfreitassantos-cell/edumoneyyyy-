@@ -86,6 +86,12 @@ describe('brandingValidation', () => {
     ).toBe(true);
     expect(
       isValidBrandingAssetPath(
+        `branding/global/background/${assetId}.webp`,
+        { scope: 'GLOBAL', kind: 'background' },
+      ),
+    ).toBe(true);
+    expect(
+      isValidBrandingAssetPath(
         `branding/global/logo/sub/${assetId}.png`,
       ),
     ).toBe(false);

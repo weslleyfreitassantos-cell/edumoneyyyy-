@@ -31,6 +31,7 @@ interface BrandingEditorProps {
   branding: BrandingRecord | null | undefined;
   isLoading: boolean;
   isSaving: boolean;
+  showBackground?: boolean;
   onSave: (input: SaveBrandingInput) => Promise<void>;
 }
 
@@ -118,7 +119,7 @@ function AssetControl({
             <img
               src={currentUrl}
               alt={label}
-              className="h-full w-full object-contain"
+              className={`h-full w-full ${kind === 'background' ? 'object-cover' : 'object-contain'}`}
             />
           ) : (
             <ImageIcon
@@ -207,6 +208,7 @@ export function BrandingEditor({
   branding,
   isLoading,
   isSaving,
+  showBackground = false,
   onSave,
 }: BrandingEditorProps) {
   const [displayName, setDisplayName] = useState('');
@@ -219,6 +221,8 @@ export function BrandingEditor({
   const [logoDraft, setLogoDraft] =
     useState<AssetDraft>(initialAssetDraft);
   const [faviconDraft, setFaviconDraft] =
+    useState<AssetDraft>(initialAssetDraft);
+  const [backgroundDraft, setBackgroundDraft] =
     useState<AssetDraft>(initialAssetDraft);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -244,12 +248,17 @@ export function BrandingEditor({
       revokePreview(current.previewUrl);
       return initialAssetDraft;
     });
+    setBackgroundDraft((current) => {
+      revokePreview(current.previewUrl);
+      return initialAssetDraft;
+    });
   }, [
     branding?.displayName,
     branding?.primaryColor,
     branding?.secondaryColor,
     branding?.logoUrl,
     branding?.faviconUrl,
+    branding?.loginBackgroundUrl,
   ]);
 
   useEffect(() => {
@@ -271,8 +280,13 @@ export function BrandingEditor({
       );
       revokePreview(logoDraft.previewUrl);
       revokePreview(faviconDraft.previewUrl);
+      revokePreview(backgroundDraft.previewUrl);
     };
-  }, [faviconDraft.previewUrl, logoDraft.previewUrl]);
+  }, [
+    backgroundDraft.previewUrl,
+    faviconDraft.previewUrl,
+    logoDraft.previewUrl,
+  ]);
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>,
@@ -288,8 +302,14 @@ export function BrandingEditor({
         secondaryColor,
         logoFile: logoDraft.file,
         faviconFile: faviconDraft.file,
+        backgroundFile: showBackground
+          ? backgroundDraft.file
+          : null,
         removeLogo: logoDraft.remove,
         removeFavicon: faviconDraft.remove,
+        removeBackground: showBackground
+          ? backgroundDraft.remove
+          : false,
       });
       setSuccess('Identidade visual salva.');
     } catch (saveError) {
@@ -309,6 +329,12 @@ export function BrandingEditor({
     faviconDraft,
     branding?.faviconUrl,
   );
+  const previewBackgroundUrl = showBackground
+    ? getAssetUrl(
+        backgroundDraft,
+        branding?.loginBackgroundUrl,
+      )
+    : null;
 
   return (
     <section className="rounded-lg border border-[#d8deea] bg-white p-5 shadow-sm">
@@ -460,6 +486,17 @@ export function BrandingEditor({
                   persistedUrl={branding?.faviconUrl}
                   onChange={setFaviconDraft}
                 />
+                {showBackground && (
+                  <AssetControl
+                    id={`${title}-background`}
+                    label="Imagem de fundo do login"
+                    helper="PNG, JPEG ou WebP. Limite: 5 MB."
+                    kind="background"
+                    draft={backgroundDraft}
+                    persistedUrl={branding?.loginBackgroundUrl}
+                    onChange={setBackgroundDraft}
+                  />
+                )}
               </div>
             </div>
 
@@ -472,6 +509,15 @@ export function BrandingEditor({
                 style={{
                   '--brand-primary': primaryColor,
                   '--brand-secondary': secondaryColor,
+                  backgroundImage: previewBackgroundUrl
+                    ? `url(${JSON.stringify(previewBackgroundUrl)})`
+                    : undefined,
+                  backgroundSize: previewBackgroundUrl
+                    ? 'cover'
+                    : undefined,
+                  backgroundPosition: previewBackgroundUrl
+                    ? 'center'
+                    : undefined,
                 } as CSSProperties}
               >
                 <div

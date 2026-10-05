@@ -816,15 +816,45 @@ export default function SchoolUsersTab({
   }, [feedback]);
 
   const users = usersQuery.data ?? [];
+  const isDirectorView =
+    institutionQuery.currentRole === 'DIRECTOR' &&
+    profile?.platform_role !== 'SUPER_ADMIN';
+
+  const visibleUsers = useMemo(
+    () => isDirectorView
+      ? users.filter((user) => user.role !== 'ADMIN')
+      : users,
+    [isDirectorView, users],
+  );
+
+  const visibleRoles = useMemo(
+    () => isDirectorView
+      ? CURRENT_DATABASE_ROLES.filter((role) => role !== 'ADMIN')
+      : CURRENT_DATABASE_ROLES,
+    [isDirectorView],
+  );
+
+  const visibleFilterOptions = useMemo(
+    () => isDirectorView
+      ? filterOptions.filter((option) => option.value !== 'ADMIN')
+      : filterOptions,
+    [isDirectorView],
+  );
 
   const effectiveSelectedRole =
     fixedRole ?? selectedRole;
 
+  useEffect(() => {
+    if (isDirectorView && selectedRole === 'ADMIN') {
+      setSelectedRole('ALL');
+    }
+  }, [isDirectorView, selectedRole]);
+
   const scopedUsers = useMemo(
     () => fixedRole
-      ? users.filter((user) => user.role === fixedRole)
-      : users,
-    [fixedRole, users],
+      ? visibleUsers.filter((user) => user.role === fixedRole)
+      : visibleUsers,
+    [fixedRole, visibleUsers],
   );
 
   const summary = useMemo(
@@ -836,11 +866,11 @@ export default function SchoolUsersTab({
   const filteredUsers = useMemo(
     () =>
       filterSchoolUsers(
-        users,
+        visibleUsers,
         effectiveSelectedRole,
         searchTerm,
       ),
-    [effectiveSelectedRole, searchTerm, users],
+    [effectiveSelectedRole, searchTerm, visibleUsers],
   );
 
   const totalPages = Math.max(
@@ -1085,7 +1115,7 @@ export default function SchoolUsersTab({
             </p>
 
             <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-              {CURRENT_DATABASE_ROLES.map(
+              {visibleRoles.map(
                 (role) => (
                   <div
                     key={role}
@@ -1143,7 +1173,7 @@ export default function SchoolUsersTab({
               className="flex flex-wrap gap-2"
               aria-label="Filtrar usuários por papel"
             >
-              {filterOptions.map((option) => (
+              {visibleFilterOptions.map((option) => (
                 <button
                   key={option.value}
                   type="button"

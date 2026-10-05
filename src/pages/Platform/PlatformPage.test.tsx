@@ -329,6 +329,7 @@ describe('PlatformPage', () => {
         logoPath: null,
         faviconUrl: null,
         faviconPath: null,
+        loginBackgroundPath: null,
         primaryColor: '#005bbf',
         secondaryColor: '#6ffbbe',
       },
@@ -696,6 +697,9 @@ describe('PlatformPage', () => {
     ).toBeDefined();
     expect(
       screen.getByText(/serve como padrao para contas sem marca propria/i),
+    ).toBeDefined();
+    expect(
+      screen.getByText(/Imagem de fundo do login/i),
     ).toBeDefined();
     expect(
       screen.getByRole('heading', {

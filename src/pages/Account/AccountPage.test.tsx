@@ -241,6 +241,7 @@ beforeEach(() => {
       logoPath: null,
       faviconUrl: null,
       faviconPath: null,
+      loginBackgroundPath: null,
       primaryColor: '#005bbf',
       secondaryColor: '#6ffbbe',
     },

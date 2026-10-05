@@ -1472,10 +1472,11 @@ export default function PlatformPage() {
         {isSuperAdmin && (
           <BrandingEditor
             title="Identidade da plataforma"
-            description="Esta identidade e exibida no dominio principal da plataforma e serve como padrao para contas sem marca propria."
+            description="Esta identidade e exibida no acesso da plataforma em admin.grupotec.dev.br e serve como padrao para contas sem marca propria."
             branding={globalBrandingQuery.data}
             isLoading={globalBrandingQuery.isLoading}
             isSaving={saveGlobalBranding.isPending}
+            showBackground
             onSave={(input) =>
               saveGlobalBranding
                 .mutateAsync(input)

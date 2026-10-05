@@ -175,9 +175,11 @@ const secretaryPanelUsers: SchoolUserRow[] = [
 function mockTabState({
   institutionId = 'institution-1',
   currentRole = 'ADMIN',
+  usersData = users,
 }: {
   institutionId?: string;
   currentRole?: string | null;
+  usersData?: SchoolUserRow[];
 } = {}) {
   mockedUseAuth.mockReturnValue({
     user: null,
@@ -230,7 +232,7 @@ function mockTabState({
   });
 
   mockedUseSchoolUsers.mockReturnValue({
-    data: users,
+    data: usersData,
     isLoading: false,
     isError: false,
     error: null,
@@ -444,6 +446,20 @@ describe('SchoolUsersTab integration', () => {
     expect(screen.getByText('Usuários vinculados')).toBeTruthy();
     expect(screen.getByText('Vínculos ativos')).toBeTruthy();
     expect(screen.getByText('Vínculos inativos')).toBeTruthy();
+  });
+
+  it('remove administração da visão do diretor', () => {
+    mockTabState({ currentRole: 'DIRECTOR' });
+
+    render(createElement(SchoolUsersTab));
+
+    const totalCard = screen.getByText('Usuários vinculados').closest('article');
+
+    expect(totalCard?.textContent).toContain('2');
+    expect(screen.queryByText('Ana Admin')).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Administração' })).toBeNull();
+    expect(screen.queryByText('Administração')).toBeNull();
+    expect(screen.getAllByText('Direção').length).toBeGreaterThan(0);
   });
 
   it('mostra acoes de editar e excluir usuarios', () => {

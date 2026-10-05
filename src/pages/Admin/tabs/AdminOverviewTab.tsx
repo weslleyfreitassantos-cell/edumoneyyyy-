@@ -15,12 +15,17 @@ import { useAdminOverview } from '../../../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import SchoolSetupProgress from '../../../components/academic/SchoolSetupProgress';
 import DirectorAcademicPanorama from '../../../components/dashboard/DirectorAcademicPanorama';
+import ProfileHeroAvatar from '../../../components/ProfileHeroAvatar';
 import type { AdminModuleId } from '../adminNavigation';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 import { canManageAcademicStructure } from '../../../lib/permissions';
 
 function getErrorMessage(error: unknown): string {
   return getUserFacingErrorMessage(error, 'Não foi possível carregar a visão geral.');
+}
+
+function getFirstName(fullName: string | null | undefined): string {
+  return fullName?.trim().split(/\s+/).at(0) || 'Diretor';
 }
 
 interface MetricCardProps {
@@ -171,6 +176,11 @@ export default function AdminOverviewTab({
   }
 
   const { metrics } = overviewQuery.data;
+  const profileName = profile?.full_name?.trim() || 'Diretor';
+  const firstName = getFirstName(profileName);
+  const areaLabel = institutionQuery.currentRole === 'DIRECTOR'
+    ? 'Área da direção'
+    : 'Área administrativa';
   const primaryMetrics: Array<Omit<MetricCardProps, 'availableModuleIds' | 'onNavigateToModule' | 'emphasis'>> = [
     {
       label: 'Estudantes ativos',
@@ -237,6 +247,30 @@ export default function AdminOverviewTab({
 
   return (
     <div className="space-y-6">
+      <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+        <div className="flex items-center justify-between gap-4">
+          <div className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
+              {areaLabel}
+            </p>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight">
+              Olá, {firstName}!
+            </h1>
+          </div>
+
+          <ProfileHeroAvatar
+            avatarUrl={profile?.avatar_url}
+            fullName={profileName}
+            fallback={
+              <GraduationCap
+                className="h-8 w-8"
+                aria-hidden="true"
+              />
+            }
+          />
+        </div>
+      </section>
+
       <SchoolSetupProgress
         institutionId={institutionId}
         canEditAcademic={canEditAcademic}

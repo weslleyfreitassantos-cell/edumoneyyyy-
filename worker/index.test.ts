@@ -139,6 +139,26 @@ describe('Worker script', () => {
     ).toBe(false);
   });
 
+  it('não devolve o shell SPA como JavaScript para asset versionado ausente', async () => {
+    const assets = {
+      fetch: vi.fn().mockResolvedValue(
+        new Response('<!doctype html><html></html>', {
+          status: 200,
+          headers: { 'content-type': 'text/html' },
+        }),
+      ),
+    };
+
+    const response = await worker.fetch(
+      new Request('https://admin.grupotec.dev.br/assets/old-chunk.js'),
+      { ASSETS: assets },
+    );
+
+    expect(response.status).toBe(404);
+    expect(response.headers.get('content-type')).toContain('text/plain');
+    expect(await response.text()).toBe('Static asset not found.');
+  });
+
   it('proxyfica NeoNews no caminho same-origin de qualquer tenant', () => {
     expect(
       shouldProxyNeoNewsRequest(

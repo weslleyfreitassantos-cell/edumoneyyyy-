@@ -17,6 +17,7 @@ import {
   Routes,
   RouterProvider,
   useLocation,
+  useRouteError,
 } from 'react-router-dom';
 
 import {
@@ -250,6 +251,87 @@ class AppErrorBoundary extends Component<
 
     return this.props.children;
   }
+}
+
+const CHUNK_RECOVERY_KEY = 'edumanager-chunk-recovery-at';
+const CHUNK_RECOVERY_WINDOW_MS = 30_000;
+
+function isDynamicImportError(error: unknown): boolean {
+  const message = error instanceof Error
+    ? error.message
+    : typeof error === 'object' && error !== null && 'message' in error
+      ? String(error.message)
+      : String(error);
+
+  return /failed to fetch dynamically imported module|importing a module script failed|loading chunk/i.test(message);
+}
+
+function getRouteErrorMessage(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (typeof error === 'object' && error !== null && 'statusText' in error) {
+    return String(error.statusText);
+  }
+
+  return String(error);
+}
+
+function RouteErrorElement() {
+  const error = useRouteError();
+  const isChunkError = isDynamicImportError(error);
+
+  useEffect(() => {
+    if (!isChunkError) {
+      return undefined;
+    }
+
+    try {
+      const previousAttempt = Number(
+        window.sessionStorage.getItem(CHUNK_RECOVERY_KEY) ?? 0,
+      );
+      const now = Date.now();
+
+      if (
+        Number.isFinite(previousAttempt) &&
+        now - previousAttempt < CHUNK_RECOVERY_WINDOW_MS
+      ) {
+        return undefined;
+      }
+
+      window.sessionStorage.setItem(CHUNK_RECOVERY_KEY, String(now));
+      const timeoutId = window.setTimeout(() => {
+        window.location.reload();
+      }, 50);
+
+      return () => window.clearTimeout(timeoutId);
+    } catch {
+      return undefined;
+    }
+  }, [isChunkError]);
+
+  return (
+    <main className="grid min-h-screen place-items-center bg-slate-50 p-6">
+      <section className="w-full max-w-md rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-sm">
+        <h1 className="text-xl font-bold text-[#181c20]">
+          {isChunkError ? 'Atualizando o sistema' : 'Não foi possível carregar esta página'}
+        </h1>
+        <p className="mt-3 text-sm text-[#727785]">
+          {isChunkError
+            ? 'Esta versão foi atualizada. A página será recarregada automaticamente.'
+            : getRouteErrorMessage(error)}
+        </p>
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-[#1a73e8] focus:outline-none focus:ring-2 focus:ring-[#005bbf] focus:ring-offset-2"
+        >
+          Atualizar página
+        </button>
+      </section>
+    </main>
+  );
 }
 
 function PageLoading() {
@@ -852,6 +934,7 @@ const appRouter = createBrowserRouter([
   {
     path: '*',
     element: <AppRouteProviders />,
+    errorElement: <RouteErrorElement />,
   },
 ]);
 

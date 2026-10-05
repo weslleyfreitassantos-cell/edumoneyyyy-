@@ -33,6 +33,8 @@ const previousLogoPath =
   `branding/accounts/${accountId}/logo/99999999-9999-4999-8999-999999999999.png`;
 const generatedFaviconPath =
   `branding/accounts/${accountId}/favicon/${generatedAssetId}.png`;
+const generatedBackgroundPath =
+  `branding/global/background/${generatedAssetId}.webp`;
 const storageOrigin =
   'https://trusted-storage.example/storage/v1/object/public/institution-branding';
 
@@ -97,6 +99,7 @@ const currentAccountBranding: BrandingRecord = {
   logoPath: previousLogoPath,
   faviconUrl: null,
   faviconPath: null,
+  loginBackgroundPath: null,
   primaryColor: '#005bbf',
   secondaryColor: '#6ffbbe',
 };
@@ -129,6 +132,7 @@ describe('brandingService', () => {
           display_name: 'Conta A',
           logo_path: generatedLogoPath,
           favicon_path: generatedFaviconPath,
+          login_background_path: generatedBackgroundPath,
           primary_color: '#112233',
           secondary_color: '#445566',
         },
@@ -153,13 +157,14 @@ describe('brandingService', () => {
       displayName: 'Conta A',
       logoUrl: `${derivedPublicUrl(generatedLogoPath)}?v=9876`,
       faviconUrl: `${derivedPublicUrl(generatedFaviconPath)}?v=9876`,
-      loginBackgroundUrl: null,
+      loginBackgroundUrl: `${derivedPublicUrl(generatedBackgroundPath)}?v=9876`,
       primaryColor: '#112233',
       secondaryColor: '#445566',
     });
     expect('accountId' in result).toBe(false);
     expect(getPublicUrl).toHaveBeenCalledWith(generatedLogoPath);
     expect(getPublicUrl).toHaveBeenCalledWith(generatedFaviconPath);
+    expect(getPublicUrl).toHaveBeenCalledWith(generatedBackgroundPath);
   });
 
   it('resolve branding institucional pelo subdominio publico', async () => {
@@ -352,6 +357,7 @@ describe('brandingService', () => {
         display_name: currentAccountBranding.displayName,
         logo_path: currentAccountBranding.logoPath,
         favicon_path: null,
+        login_background_path: null,
         primary_color: currentAccountBranding.primaryColor,
         secondary_color: currentAccountBranding.secondaryColor,
       },
@@ -365,6 +371,7 @@ describe('brandingService', () => {
         display_name: 'Conta A',
         logo_path: generatedLogoPath,
         favicon_path: null,
+        login_background_path: null,
         primary_color: '#005bbf',
         secondary_color: '#6ffbbe',
       },
@@ -472,6 +479,32 @@ describe('brandingService', () => {
       expect.any(File),
       expect.objectContaining({
         contentType: 'image/png',
+      }),
+    );
+  });
+
+  it('faz upload de background global no namespace protegido', async () => {
+    const upload = vi.fn().mockResolvedValue({ error: null });
+
+    vi.mocked(supabase.storage.from).mockReturnValue({
+      upload,
+    } as never);
+
+    const result = await brandingService.uploadBackground({
+      scope: 'GLOBAL',
+      accountId: null,
+      file: pngFile(),
+    });
+
+    expect(result.path).toBe(
+      `branding/global/background/${generatedAssetId}.png`,
+    );
+    expect(upload).toHaveBeenCalledWith(
+      result.path,
+      expect.any(File),
+      expect.objectContaining({
+        contentType: 'image/png',
+        upsert: false,
       }),
     );
   });

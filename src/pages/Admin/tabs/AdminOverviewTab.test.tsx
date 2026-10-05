@@ -87,19 +87,23 @@ const overviewData = {
 function mockOverviewState({
   profileRole = 'DIRECTOR',
   currentRole = profileRole,
+  profileName = 'Ana Admin',
+  avatarUrl = null,
 }: {
   profileRole?: DatabaseRole;
   currentRole?: DatabaseRole | null;
+  profileName?: string;
+  avatarUrl?: string | null;
 } = {}) {
   mockedUseAuth.mockReturnValue({
     user: null,
     profile: {
       id: 'profile-1',
-      full_name: 'Ana Admin',
+      full_name: profileName,
       email: 'ana@example.com',
       role: profileRole,
       platform_role: 'USER',
-      avatar_url: null,
+      avatar_url: avatarUrl,
     },
     loading: false,
     signIn: vi.fn(),
@@ -184,6 +188,23 @@ afterEach(() => {
 });
 
 describe('AdminOverviewTab', () => {
+  it('exibe a saudação e a foto do diretor na faixa de boas-vindas', () => {
+    mockOverviewState({
+      profileName: 'Ana Lúcia',
+      avatarUrl: 'https://storage.example/director.webp',
+    });
+
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('heading', { name: 'Olá, Ana!' })).toBeTruthy();
+    expect(screen.getByText('Área da direção')).toBeTruthy();
+    expect(screen.getByAltText('Foto de Ana Lúcia')).toBeTruthy();
+  });
+
   it('renderiza os cards de métricas e a revisão quando a escola está configurada', () => {
     render(
       <MemoryRouter>

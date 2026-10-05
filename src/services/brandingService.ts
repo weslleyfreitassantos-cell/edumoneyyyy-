@@ -40,6 +40,7 @@ export interface BrandingRecord extends PublicBranding {
   accountId: string | null;
   logoPath: string | null;
   faviconPath: string | null;
+  loginBackgroundPath: string | null;
 }
 
 export interface SaveBrandingInput {
@@ -48,8 +49,10 @@ export interface SaveBrandingInput {
   secondaryColor: string;
   logoFile?: File | null;
   faviconFile?: File | null;
+  backgroundFile?: File | null;
   removeLogo?: boolean;
   removeFavicon?: boolean;
+  removeBackground?: boolean;
 }
 
 export interface AccountDomain {
@@ -71,6 +74,7 @@ interface PublicBrandingRow {
   display_name?: unknown;
   logo_path?: unknown;
   favicon_path?: unknown;
+  login_background_path?: unknown;
   primary_color?: unknown;
   secondary_color?: unknown;
 }
@@ -93,6 +97,7 @@ interface BrandingSettingsRow extends PublicBrandingRow {
   account_id?: unknown;
   logo_path?: unknown;
   favicon_path?: unknown;
+  login_background_path?: unknown;
 }
 
 interface AccountDomainRow {
@@ -112,6 +117,7 @@ const brandingSelect = [
   'display_name',
   'logo_path',
   'favicon_path',
+  'login_background_path',
   'primary_color',
   'secondary_color',
 ].join(', ');
@@ -230,6 +236,10 @@ function normalizePublicBrandingRow(
     row?.favicon_path,
     { kind: 'favicon' },
   );
+  const backgroundPath = normalizeBrandingAssetPath(
+    row?.login_background_path,
+    { kind: 'background' },
+  );
 
   return {
     scope,
@@ -239,7 +249,7 @@ function normalizePublicBrandingRow(
         : null,
     logoUrl: getPublicBrandingAssetUrl(logoPath),
     faviconUrl: getPublicBrandingAssetUrl(faviconPath),
-    loginBackgroundUrl: null,
+    loginBackgroundUrl: getPublicBrandingAssetUrl(backgroundPath),
     primaryColor: sanitizeBrandColor(
       typeof row?.primary_color === 'string'
         ? row.primary_color
@@ -345,6 +355,14 @@ function normalizeBrandingRecord(
       kind: 'favicon',
     },
   );
+  const backgroundPath = normalizeBrandingAssetPath(
+    row.login_background_path,
+    {
+      scope,
+      accountId,
+      kind: 'background',
+    },
+  );
 
   return {
     ...normalizePublicBrandingRow({
@@ -352,6 +370,7 @@ function normalizeBrandingRecord(
       display_name: row.display_name,
       logo_path: logoPath,
       favicon_path: faviconPath,
+      login_background_path: backgroundPath,
       primary_color: row.primary_color,
       secondary_color: row.secondary_color,
     }),
@@ -360,6 +379,7 @@ function normalizeBrandingRecord(
     accountId,
     logoPath,
     faviconPath,
+    loginBackgroundPath: backgroundPath,
   };
 }
 
@@ -525,6 +545,7 @@ async function persistBrandingRecord({
   input,
   logo,
   favicon,
+  background,
 }: {
   current: BrandingRecord | null;
   scope: BrandingScope;
@@ -536,6 +557,9 @@ async function persistBrandingRecord({
   favicon: {
     path: string | null;
   };
+  background: {
+    path: string | null;
+  };
 }): Promise<BrandingRecord> {
   const payload = {
     scope_type: scope,
@@ -543,6 +567,7 @@ async function persistBrandingRecord({
     display_name: normalizeDisplayName(input.displayName),
     logo_path: logo.path,
     favicon_path: favicon.path,
+    login_background_path: background.path,
     primary_color: assertColor(input.primaryColor, 'Cor principal'),
     secondary_color: assertColor(input.secondaryColor, 'Cor secundaria'),
   };
@@ -592,6 +617,11 @@ async function saveBranding(
       ? null
       : current?.faviconPath ?? null,
   };
+  let background = {
+    path: input.removeBackground
+      ? null
+      : current?.loginBackgroundPath ?? null,
+  };
 
   try {
     if (input.logoFile) {
@@ -621,6 +651,20 @@ async function saveBranding(
       };
     }
 
+    if (input.backgroundFile) {
+      const uploadedBackground =
+        await brandingService.uploadBackground({
+          scope,
+          accountId,
+          file: input.backgroundFile,
+        });
+
+      uploadedAssets.push(uploadedBackground);
+      background = {
+        path: uploadedBackground.path,
+      };
+    }
+
     const saved = await persistBrandingRecord({
       current,
       scope,
@@ -628,6 +672,7 @@ async function saveBranding(
       input,
       logo,
       favicon,
+      background,
     });
 
     if (
@@ -636,6 +681,14 @@ async function saveBranding(
       current.logoPath !== saved.logoPath
     ) {
       await removeStoragePath(current.logoPath);
+    }
+
+    if (
+      (input.backgroundFile || input.removeBackground) &&
+      current?.loginBackgroundPath &&
+      current.loginBackgroundPath !== saved.loginBackgroundPath
+    ) {
+      await removeStoragePath(current.loginBackgroundPath);
     }
 
     if (
@@ -891,11 +944,26 @@ export const brandingService = {
     });
   },
 
+  uploadBackground(input: {
+    scope: BrandingScope;
+    accountId: string | null;
+    file: File;
+  }): Promise<UploadedBrandingAsset> {
+    return uploadBrandingAsset({
+      ...input,
+      kind: 'background',
+    });
+  },
+
   removeLogo(path: string | null): Promise<void> {
     return removeStoragePath(path);
   },
 
   removeFavicon(path: string | null): Promise<void> {
+    return removeStoragePath(path);
+  },
+
+  removeBackground(path: string | null): Promise<void> {
     return removeStoragePath(path);
   },
 };

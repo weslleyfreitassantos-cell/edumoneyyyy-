@@ -87,6 +87,27 @@ function createAssetRequest(request: Request): Request {
   return new Request(url, { headers });
 }
 
+function isSpaFallbackForStaticAsset(
+  request: Request,
+  response: Response,
+): boolean {
+  return (
+    !isDocumentRequest(request) &&
+    response.status === 200 &&
+    /text\/html/i.test(response.headers.get('content-type') ?? '')
+  );
+}
+
+function missingStaticAssetResponse(): Response {
+  return new Response('Static asset not found.', {
+    status: 404,
+    headers: {
+      'content-type': 'text/plain; charset=UTF-8',
+      'cache-control': 'no-store',
+    },
+  });
+}
+
 function isGrupotecSubdomain(hostname: string): boolean {
   const suffix = `.${GRUPOTEC_ROOT_DOMAIN}`;
   return (
@@ -467,8 +488,19 @@ export default {
       return proxyTvescolaRequest(request);
     }
 
-    return withSecurityHeaders(
-      await env.ASSETS.fetch(createAssetRequest(request)),
+    const assetResponse = await env.ASSETS.fetch(
+      createAssetRequest(request),
     );
+
+    // SPA fallback is correct for navigation URLs, but a missing hashed JS/CSS
+    // asset must stay a 404 instead of returning index.html as a module.
+    const response = isSpaFallbackForStaticAsset(
+      request,
+      assetResponse,
+    )
+      ? missingStaticAssetResponse()
+      : assetResponse;
+
+    return withSecurityHeaders(response);
   },
 };

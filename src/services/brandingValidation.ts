@@ -126,7 +126,7 @@ export function isValidBrandingAssetPath(
       (options.scope === undefined || options.scope === 'GLOBAL') &&
       !options.accountId &&
       (options.kind === undefined || options.kind === kind) &&
-      (kind === 'logo' || kind === 'favicon') &&
+      (kind === 'logo' || kind === 'favicon' || kind === 'background') &&
       uuidFilenamePattern.test(fileName)
     );
   }
@@ -140,7 +140,7 @@ export function isValidBrandingAssetPath(
       accountIdPattern.test(accountId) &&
       (options.accountId == null || options.accountId === accountId) &&
       (options.kind === undefined || options.kind === kind) &&
-      (kind === 'logo' || kind === 'favicon') &&
+      (kind === 'logo' || kind === 'favicon' || kind === 'background') &&
       uuidFilenamePattern.test(fileName)
     );
   }
