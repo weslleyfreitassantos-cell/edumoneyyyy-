@@ -395,7 +395,7 @@ export default function TeacherDashboard() {
             />
 
             <h3 className="mt-4 text-sm font-bold text-[#181c20]">
-              Nenhuma atribuição encontrada
+              Nenhuma atribuição encontrada para o período atual.
             </h3>
 
             <p className="mt-2 text-xs text-[#727785]">
