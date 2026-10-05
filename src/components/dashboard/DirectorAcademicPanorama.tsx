@@ -258,9 +258,12 @@ function AttendanceTrend({
   const latestStatusClass = latestDelta >= 0
     ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'
     : 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300';
-  const labelIndexes = sessions.length <= 2
-    ? sessions.map((_, index) => index)
-    : [0, Math.floor((sessions.length - 1) / 2), sessions.length - 1];
+  const labelStep = Math.max(1, Math.ceil(sessions.length / 10));
+  const labelIndexes = new Set(
+    sessions
+      .map((_, index) => index)
+      .filter((index) => index % labelStep === 0 || index === sessions.length - 1),
+  );
   const chartMinWidth = Math.max(640, sessions.length * 22);
   const guideValues = [100, 75, 50, 25, 0];
 
@@ -306,7 +309,12 @@ function AttendanceTrend({
                   ? 'bg-[#3b82f6]'
                   : 'bg-[#d99a2b]';
               return (
-                <div key={point.key} className="flex h-full min-w-3 flex-1 items-end" title={`${point.label}: ${formatPercent(point.attendanceRate)} (${point.totalRecords} registros)`}>
+                <div
+                  key={point.key}
+                  className="flex h-full min-w-3 flex-1 items-end"
+                  title={`${point.label}: ${formatPercent(point.attendanceRate)} (${point.totalRecords} registros)`}
+                  aria-label={`${point.label}: ${formatPercent(point.attendanceRate)} (${point.totalRecords} registros)`}
+                >
                   <span
                     className={`block w-full rounded-t-md transition-[height] ${barClass}`}
                     style={{ height: `${Math.max(4, rate)}%` }}
@@ -315,16 +323,23 @@ function AttendanceTrend({
               );
             })}
           </div>
-          <div className="absolute bottom-0 left-14 right-10 flex items-start justify-between">
-            {labelIndexes.map((index) => (
-              <span key={sessions[index].key} className="whitespace-nowrap text-[10px] text-[#667085] dark:text-slate-400">
-                {sessions[index].label}
+          <div
+            className="absolute bottom-0 left-14 right-10 grid items-start gap-2"
+            style={{ gridTemplateColumns: `repeat(${sessions.length}, minmax(0, 1fr))` }}
+            aria-hidden="true"
+          >
+            {sessions.map((point, index) => (
+              <span
+                key={point.key}
+                className={`min-w-0 text-center text-[10px] text-[#667085] dark:text-slate-400 ${labelIndexes.has(index) ? 'whitespace-nowrap' : 'invisible'}`}
+              >
+                {point.label}
               </span>
             ))}
           </div>
         </div>
       </div>
-      <p className="text-xs text-[#667085] dark:text-slate-400">Cada barra representa uma semana; atrasos contam como presença. Passe o cursor sobre uma barra para ver os registros.</p>
+      <p className="text-xs text-[#667085] dark:text-slate-400">Cada barra representa uma semana; as datas marcam aproximadamente uma a cada {labelStep} semanas. Passe o cursor sobre qualquer barra para ver a data exata e os registros.</p>
     </div>
   );
 }
