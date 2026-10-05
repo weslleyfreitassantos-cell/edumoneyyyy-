@@ -1,13 +1,17 @@
 import { describe, expect, it } from 'vitest';
 
 import type { InstitutionAttendanceSession, InstitutionClassDiaryEntry } from '../../services/attendanceService';
-import type { InstitutionAssessmentResult } from '../../services/gradeService';
+import type {
+  InstitutionAssessmentResult,
+  InstitutionStudentPerformance,
+} from '../../services/gradeService';
 import {
   buildClassPerformance,
   buildStudentSituationSummary,
   buildWeeklyAttendanceTrend,
   classifyStudentSituation,
   countPendingAcademicItems,
+  DEFAULT_PANORAMA_PERIOD,
 } from './directorAcademicPanoramaUtils';
 
 function session(
@@ -137,6 +141,10 @@ describe('director academic panorama helpers', () => {
     expect(classifyStudentSituation(null, null)).toBe('NO_DATA');
   });
 
+  it('usa o ano letivo como período inicial do panorama', () => {
+    expect(DEFAULT_PANORAMA_PERIOD).toBe('year');
+  });
+
   it('agrega frequência semanal contando atraso como presença', () => {
     const points = buildWeeklyAttendanceTrend([
       session('2026-03-02', [
@@ -154,17 +162,20 @@ describe('director academic panorama helpers', () => {
     expect(points[0].totalRecords).toBe(4);
   });
 
-  it('separa desempenho por turma e ignora avaliações sem lançamento', () => {
-    const points = buildClassPerformance([
-      assessment('class-1', '1ª Série A', 80, 2),
-      assessment('class-1', '1ª Série A', 55, 1),
-      assessment('class-1', '1ª Série A', null, 0),
-      assessment('class-2', '2ª Série A', 40, 2),
-    ]);
+  it('separa desempenho por turma contando alunos únicos, não avaliações', () => {
+    const students: InstitutionStudentPerformance[] = [
+      { studentId: 'student-1', studentName: 'Ana', classId: 'class-1', className: '1ª Série A', performancePercent: 80 },
+      { studentId: 'student-1', studentName: 'Ana', classId: 'class-1', className: '1ª Série A', performancePercent: 80 },
+      { studentId: 'student-2', studentName: 'Bruno', classId: 'class-1', className: '1ª Série A', performancePercent: 55 },
+      { studentId: 'student-3', studentName: 'Caio', classId: 'class-1', className: '1ª Série A', performancePercent: null },
+      { studentId: 'student-4', studentName: 'Dani', classId: 'class-2', className: '2ª Série A', performancePercent: 40 },
+    ];
+
+    const points = buildClassPerformance(students);
 
     expect(points).toEqual([
-      expect.objectContaining({ className: '1ª Série A', adequate: 1, attention: 1, critical: 0, total: 2 }),
-      expect.objectContaining({ className: '2ª Série A', adequate: 0, attention: 0, critical: 1, total: 1 }),
+      expect.objectContaining({ className: '1ª Série A', adequate: 1, attention: 1, critical: 0, total: 2, withoutPerformance: 1 }),
+      expect.objectContaining({ className: '2ª Série A', adequate: 0, attention: 0, critical: 1, total: 1, withoutPerformance: 0 }),
     ]);
   });
 

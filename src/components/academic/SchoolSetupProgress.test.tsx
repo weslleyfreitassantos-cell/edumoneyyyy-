@@ -69,6 +69,56 @@ afterEach(() => {
 });
 
 describe('SchoolSetupProgress', () => {
+  it('não exibe um resultado incompleto em cache enquanto a prontidão é revalidada', () => {
+    mockedUseSchoolSetupReadiness.mockReturnValue({
+      data: readinessFixture(),
+      isLoading: false,
+      isFetching: true,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolSetupReadiness>);
+
+    render(
+      <MemoryRouter>
+        <SchoolSetupProgress institutionId="institution-1" />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByLabelText('Configuração da escola')).toBeTruthy();
+    expect(screen.queryByText(/Prontidão da escola/i)).toBeNull();
+    expect(screen.queryByText(/Faltam 1 requisito/i)).toBeNull();
+  });
+
+  it('mantém uma prontidão positiva confirmada durante o refresh em segundo plano', () => {
+    mockedUseSchoolSetupReadiness.mockReturnValue({
+      data: readinessFixture({
+        configured: true,
+        academicSetupConfigured: true,
+        academicSetupStatus: 'CONFIGURED',
+        status: 'CONFIGURED',
+        operationalReadiness: {
+          blockers: [],
+          completedCount: 1,
+          totalCount: 1,
+          progress: 100,
+          ready: true,
+        },
+      }),
+      isLoading: false,
+      isFetching: true,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolSetupReadiness>);
+
+    render(
+      <MemoryRouter>
+        <SchoolSetupProgress institutionId="institution-1" />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText('Escola pronta para operar')).toBeTruthy();
+  });
+
   it('separa branding opcional da configuração acadêmica e exige grade publicada', () => {
     mockedUseSchoolSetupReadiness.mockReturnValue({
       data: readinessFixture(),
