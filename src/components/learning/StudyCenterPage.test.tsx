@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -39,6 +39,7 @@ vi.mock('../../hooks/useAdaptiveLearning', () => ({
 }));
 
 import StudyCenterPage from './StudyCenterPage';
+import StudentSubjectPage from './StudentSubjectPage';
 
 afterEach(() => {
   cleanup();
@@ -53,6 +54,7 @@ function renderPage() {
     <MemoryRouter initialEntries={['/student/study']}>
       <Routes>
         <Route path="/student/study" element={<StudyCenterPage />} />
+        <Route path="/student/study/subject/:subjectId" element={<StudentSubjectPage />} />
         <Route path="/student/study/activity/:activityId" element={<p>Atividade aberta</p>} />
         <Route path="/student/study/guided" element={<p>Jornada guiada aberta</p>} />
         <Route path="/student/study/simulation" element={<p>Simulado ENEM aberto</p>} />
@@ -62,14 +64,17 @@ function renderPage() {
 }
 
 describe('StudyCenterPage', () => {
-  it('apresenta matérias e o acesso direto ao simulado ENEM', () => {
+  it('mantém a home enxuta, com ENEM antes das matérias', () => {
     renderPage();
 
     expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: /Matemática/ })).toBeTruthy();
-    expect(screen.getByRole('button', { name: /Língua Portuguesa/ })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Matemática/ })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Língua Portuguesa/ })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Começar simulado' }).getAttribute('href')).toBe('/student/study/simulation');
+    expect(screen.queryByText('Central de Estudos')).toBeNull();
+    expect(screen.queryByText('Seu próximo passo')).toBeNull();
+    expect(screen.getByRole('heading', { name: 'Simulado ENEM' }).compareDocumentPosition(screen.getByRole('region', { name: 'Matérias' }))).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
   it('filtra as matérias sem misturar outros conteúdos', () => {
@@ -77,52 +82,17 @@ describe('StudyCenterPage', () => {
 
     fireEvent.change(screen.getByRole('textbox', { name: 'Pesquisar matéria' }), { target: { value: 'mat' } });
 
-    expect(screen.getByRole('button', { name: /Matemática/ })).toBeTruthy();
-    expect(screen.queryByRole('button', { name: /Língua Portuguesa/ })).toBeNull();
+    expect(screen.getByRole('link', { name: /Matemática/ })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
   });
 
-  it('mostra o conteúdo da matéria escolhida quando não há atividade publicada', () => {
+  it('abre a área própria da matéria ao clicar no card', () => {
     renderPage();
 
-    fireEvent.click(screen.getByRole('button', { name: /Matemática/ }));
-    fireEvent.click(screen.getByRole('button', { name: /Números/ }));
+    fireEvent.click(screen.getByRole('link', { name: /Matemática/ }));
 
     expect(screen.getByRole('region', { name: 'Estudo de Matemática' })).toBeTruthy();
     expect(screen.getByText('Números')).toBeTruthy();
-    expect(screen.getByText('Resolver problemas')).toBeTruthy();
-  });
-
-  it('abre uma atividade publicada diretamente pela matéria escolhida', () => {
-    state.activities = [{ id: 'activity-1', subject_id: 'subject-math', unit_id: 'unit-1', skill_id: 'skill-1', title: 'Porcentagem' }];
-    renderPage();
-
-    fireEvent.click(screen.getByRole('button', { name: /Matemática/ }));
-
-    expect(screen.getByText('Atividade aberta')).toBeTruthy();
-  });
-
-  it('inicia a jornada antes de navegar quando a matéria usa o objetivo adaptativo', async () => {
-    state.adaptiveTarget = { canonicalSkillId: 'canonical-skill-1', target: { subjectArea: 'MATEMATICA' } };
-    state.startGuidedSession.mockImplementationOnce(async () => {
-      state.guidedSession = { id: 'session-1', status: 'ACTIVE' };
-      return { session_id: 'session-1' };
-    });
-    renderPage();
-
-    fireEvent.click(screen.getByRole('button', { name: /Matemática/ }));
-
-    await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('canonical-skill-1'));
-    expect(await screen.findByText('Jornada guiada aberta')).toBeTruthy();
-  });
-
-  it('mantém o erro de início visível e não navega quando a jornada falha', async () => {
-    state.adaptiveTarget = { canonicalSkillId: 'canonical-skill-1', target: { subjectArea: 'MATEMATICA' } };
-    state.startGuidedSession.mockRejectedValueOnce(new Error('start failed'));
-    renderPage();
-
-    fireEvent.click(screen.getByRole('button', { name: /Matemática/ }));
-
-    expect((await screen.findByRole('alert')).textContent).toContain('Não foi possível abrir esta matéria agora. Tente novamente.');
-    expect(screen.queryByText('Jornada guiada aberta')).toBeNull();
+    expect(screen.queryByText('O que você quer estudar?')).toBeNull();
   });
 });

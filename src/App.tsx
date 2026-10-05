@@ -104,6 +104,7 @@ const LearningContentPage = lazy(
   () => import('./components/learning/LearningContentPage'),
 );
 const StudyCenterPage = lazy(() => import('./components/learning/StudyCenterPage'));
+const StudentSubjectPage = lazy(() => import('./components/learning/StudentSubjectPage'));
 const GuidedJourneyPage = lazy(() => import('./components/learning/GuidedJourneyPage'));
 const PedagogicalCenterPage = lazy(() => import('./components/learning/PedagogicalCenterPage'));
 const PedagogicalCenterOverviewPage = lazy(() => import('./components/learning/PedagogicalCenterOverviewPage'));
@@ -710,6 +711,7 @@ function AppRoutes() {
           }
         />
         <Route path="/student/study" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudyCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/subject/:subjectId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentSubjectPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedJourneyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/activity/:activityId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><PracticePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/lesson/:lessonId/:stepId?" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><LessonPage /></AuthenticatedRouteContent></ProtectedRoute>} />
