@@ -25,6 +25,7 @@ import AcademicStudentContext from './academic/AcademicStudentContext';
 import GuardianReportCard from './academic/GuardianReportCard';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
+import ProfileHeroAvatar from './ProfileHeroAvatar';
 
 function getStudentDisplayName(student: GuardianStudentDashboard['student']['student']): string {
   return student.profile?.full_name?.trim() || 'Estudante sem nome informado';
@@ -342,12 +343,16 @@ export default function ParentDashboard() {
             </h1>
           </div>
 
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">
-            <UsersRound
-              className="h-8 w-8"
-              aria-hidden="true"
-            />
-          </div>
+          <ProfileHeroAvatar
+            avatarUrl={profile.avatar_url}
+            fullName={profile.full_name}
+            fallback={
+              <UsersRound
+                className="h-8 w-8"
+                aria-hidden="true"
+              />
+            }
+          />
         </div>
       </section>
 

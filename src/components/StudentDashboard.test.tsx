@@ -438,9 +438,19 @@ describe('StudentDashboard', () => {
     expect(image.getAttribute('src')).toBe(
       'https://cdn.example.com/aluno.webp',
     );
-    expect(image.classList.contains('object-fill')).toBe(true);
+    expect(image.classList.contains('object-cover')).toBe(true);
     expect(image.parentElement?.classList.contains('aspect-[3/4]')).toBe(true);
     expect(image.parentElement?.classList.contains('w-24')).toBe(true);
+  });
+
+  it('mantém o fallback do aluno quando não há avatar', () => {
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole('img')).toBeNull();
   });
 
   it('prioriza turma sem repetir atalhos acadêmicos ou destacar RA e dados pessoais', () => {

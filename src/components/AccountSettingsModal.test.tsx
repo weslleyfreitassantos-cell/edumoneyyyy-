@@ -55,7 +55,7 @@ describe('AccountSettingsModal', () => {
     expect(screen.getByText('JPG, PNG ou WebP')).toBeTruthy();
     expect(screen.queryByText(/5 MB/i)).toBeNull();
     expect(screen.getByAltText('Foto de Ana Silva').className).toContain(
-      'object-fill',
+      'object-cover',
     );
 
     const file = new File(

@@ -216,6 +216,40 @@ describe('TeacherDashboard', () => {
     );
   });
 
+  it('exibe o avatar do professor no slot 3:4 compartilhado', () => {
+    vi.mocked(useAuth).mockReturnValue({
+      profile: {
+        id: teacherProfileId,
+        full_name: 'Professor Teste',
+        email: 'professor@example.com',
+        avatar_url: 'https://storage.example/teacher.webp',
+        role: 'TEACHER',
+        platform_role: 'USER',
+      },
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <TeacherDashboard />
+      </MemoryRouter>,
+    );
+
+    const image = screen.getByRole('img', { name: 'Foto de Professor Teste' });
+    expect(image.className).toContain('object-cover');
+    expect(image.parentElement?.className).toContain('aspect-[3/4]');
+    expect(image.parentElement?.className).toContain('w-24');
+  });
+
+  it('mantém o fallback do professor quando não há avatar', () => {
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <TeacherDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole('img')).toBeNull();
+  });
+
   it('informa quando não há aula publicada para o professor', () => {
     vi.mocked(useTeacherTimetable).mockReturnValue({
       data: [],

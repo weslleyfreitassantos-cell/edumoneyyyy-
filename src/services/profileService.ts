@@ -118,15 +118,33 @@ async function getCurrentUserId(): Promise<string> {
   return user.id;
 }
 
-function isHttpsUrl(value: string): boolean {
-  return /^https:\/\//i.test(value);
-}
-
 function isCanonicalAvatarPath(
   value: string,
   userId: string,
 ): boolean {
   return value === `${userId}/avatar.webp`;
+}
+
+function isTrustedProfileAvatarUrl(
+  value: string,
+  userId: string,
+): boolean {
+  try {
+    const configuredOrigin = new URL(import.meta.env.VITE_SUPABASE_URL).origin;
+    const url = new URL(value);
+    const pathname = decodeURIComponent(url.pathname);
+    const canonicalPath = `${userId}/avatar.webp`;
+
+    return url.protocol === 'https:' &&
+      url.origin === configuredOrigin &&
+      [
+        `/storage/v1/object/sign/${PROFILE_AVATARS_BUCKET}/${canonicalPath}`,
+        `/storage/v1/object/public/${PROFILE_AVATARS_BUCKET}/${canonicalPath}`,
+        `/storage/v1/object/authenticated/${PROFILE_AVATARS_BUCKET}/${canonicalPath}`,
+      ].includes(pathname);
+  } catch {
+    return false;
+  }
 }
 
 export function getCurrentProfileAvatarPath(
@@ -135,12 +153,16 @@ export function getCurrentProfileAvatarPath(
 ): string | null {
   const reference = avatarReference?.trim();
 
-  if (!reference || isHttpsUrl(reference)) {
+  if (!reference) {
     return null;
   }
 
-  return isCanonicalAvatarPath(reference, userId)
-    ? reference
+  if (isCanonicalAvatarPath(reference, userId)) {
+    return reference;
+  }
+
+  return isTrustedProfileAvatarUrl(reference, userId)
+    ? `${userId}/avatar.webp`
     : null;
 }
 
@@ -178,10 +200,6 @@ export async function resolveCurrentProfileAvatar(
 
   if (!reference) {
     return null;
-  }
-
-  if (isHttpsUrl(reference)) {
-    return reference;
   }
 
   const userId = expectedUserId ?? await getCurrentUserId();

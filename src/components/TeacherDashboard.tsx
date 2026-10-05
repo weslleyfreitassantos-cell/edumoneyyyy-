@@ -30,6 +30,7 @@ import AcademicRecoveryPanel from './academic/AcademicRecoveryPanel';
 import TeacherClassCouncilsPanel from './academic/TeacherClassCouncilsPanel';
 import TeacherTimetableView from './TeacherTimetableView';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
+import ProfileHeroAvatar from './ProfileHeroAvatar';
 
 function getFirstName(
   fullName: string,
@@ -302,12 +303,16 @@ export default function TeacherDashboard() {
 
           </div>
 
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">
-            <GraduationCap
-              className="h-8 w-8"
-              aria-hidden="true"
-            />
-          </div>
+          <ProfileHeroAvatar
+            avatarUrl={profile.avatar_url}
+            fullName={profile.full_name}
+            fallback={
+              <GraduationCap
+                className="h-8 w-8"
+                aria-hidden="true"
+              />
+            }
+          />
         </div>
       </section>
 
