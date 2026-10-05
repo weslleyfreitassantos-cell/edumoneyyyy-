@@ -53,6 +53,25 @@ if (!publishableKey || publishableKey.includes('placeholder')) {
   );
 }
 
+let authHealthResponse;
+try {
+  authHealthResponse = await fetch(`${supabaseUrl}/auth/v1/health`, {
+    headers: { apikey: publishableKey },
+    signal: AbortSignal.timeout(8000),
+  });
+  await authHealthResponse.body?.cancel();
+} catch {
+  throw new Error(
+    'PRODUCTION_CONFIG_GUARD_FAILED: self-hosted Auth health check was unreachable',
+  );
+}
+
+if (!authHealthResponse.ok) {
+  throw new Error(
+    `PRODUCTION_CONFIG_GUARD_FAILED: public key was rejected by self-hosted Auth (HTTP ${authHealthResponse.status})`,
+  );
+}
+
 process.stdout.write(
   `PRODUCTION_CONFIG_GUARD=PASS supabase=${REQUIRED_SUPABASE_URL}\n`,
 );
