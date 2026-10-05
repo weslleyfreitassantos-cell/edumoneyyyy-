@@ -1,4 +1,5 @@
 import {
+  keepPreviousData,
   useMutation,
   useQuery,
   useQueryClient,
@@ -11,6 +12,7 @@ import {
   type AttendanceOffering,
   type AttendanceScheduleSlotSelection,
   type InstitutionAttendanceSummary,
+  type InstitutionPendingAttendanceSummary,
   type InstitutionClassDiaryFilters,
   type InstitutionClassDiarySummary,
   type SaveAttendanceRollCallInput,
@@ -77,6 +79,10 @@ export const attendanceKeys = {
       institutionId,
       filters,
     ] as const,
+  institutionPendingSummary: (
+    institutionId: string | undefined,
+    filters: AttendanceInstitutionFilters,
+  ) => [...attendanceKeys.all, 'institution-pending-summary', institutionId, filters] as const,
 };
 
 export function useTeacherAttendanceOfferings(
@@ -229,7 +235,28 @@ export function useInstitutionAttendanceSummary(
         );
     },
     enabled: Boolean(institutionId),
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 60 * 3,
+    placeholderData: keepPreviousData,
+    retry: false,
+  });
+}
+
+export function useInstitutionPendingAttendanceSummary(
+  institutionId: string | undefined,
+  filters: AttendanceInstitutionFilters,
+) {
+  return useQuery<InstitutionPendingAttendanceSummary>({
+    queryKey: attendanceKeys.institutionPendingSummary(institutionId, filters),
+    queryFn: () => {
+      if (!institutionId) {
+        throw new Error('Instituição é obrigatória para carregar chamadas pendentes.');
+      }
+      return attendanceService.getInstitutionPendingAttendanceSummary(institutionId, filters);
+    },
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 60 * 3,
+    placeholderData: keepPreviousData,
+    retry: false,
   });
 }
 

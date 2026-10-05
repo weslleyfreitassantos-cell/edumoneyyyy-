@@ -417,6 +417,10 @@ export interface InstitutionAttendanceSummary {
   };
 }
 
+export interface InstitutionPendingAttendanceSummary {
+  pendingCount: number;
+}
+
 export type InstitutionDiaryEntryStatus =
   | 'COMPLETED'
   | 'DRAFT'
@@ -2723,6 +2727,129 @@ export const attendanceService = {
       sessions: filteredSessions,
       filters: buildFilterOptions(sessions),
     };
+  },
+
+  async getInstitutionPendingAttendanceSummary(
+    institutionId: string,
+    filters: AttendanceInstitutionFilters = {},
+  ): Promise<InstitutionPendingAttendanceSummary> {
+    const today = localDateKey(new Date());
+    const fromDate = filters.fromDate ?? addLocalDays(today, -14);
+    const requestedToDate = filters.toDate ?? today;
+    const toDate = requestedToDate < today ? requestedToDate : today;
+
+    if (fromDate > toDate) return { pendingCount: 0 };
+
+    const { data: offeringData, error: offeringError } = await supabase
+      .from('subject_offerings')
+      .select(`
+        id,
+        class_id,
+        subject_id,
+        teacher_profile_id,
+        term_id,
+        active,
+        created_at,
+        classes:class_id (id, institution_id, name, grade_level, shift, capacity, active),
+        subjects:subject_id (id, institution_id, name, code, workload, active),
+        profiles:teacher_profile_id (full_name, email, active),
+        terms:term_id (
+          id, academic_year_id, name, start_date, end_date, active,
+          academic_years:academic_year_id (id, name)
+        )
+      `)
+      .eq('active', true);
+
+    if (offeringError) {
+      throw createAttendanceError(offeringError, 'ATTENDANCE_FORBIDDEN');
+    }
+
+    const offerings = (offeringData ?? [])
+      .map((row) => normalizeOffering(row as unknown as OfferingQueryRow, institutionId))
+      .filter((offering): offering is AttendanceOffering =>
+        offering !== null
+        && offering.institutionId === institutionId
+        && (!filters.classId || offering.classId === filters.classId)
+        && (!filters.subjectId || offering.subjectId === filters.subjectId)
+        && (!filters.teacherProfileId || offering.teacherProfileId === filters.teacherProfileId)
+        && (!filters.termId || offering.termId === filters.termId)
+        && (!filters.academicYearId || offering.academicYearId === filters.academicYearId),
+      );
+
+    if (offerings.length === 0) return { pendingCount: 0 };
+
+    const { data: timetableData, error: timetableError } = await supabase
+      .from('timetable_entries')
+      .select('subject_offering_id, day_of_week, start_time, end_time, active')
+      .eq('institution_id', institutionId)
+      .in('subject_offering_id', offerings.map((offering) => offering.id))
+      .eq('active', true);
+
+    if (timetableError) {
+      throw createAttendanceError(timetableError, 'ATTENDANCE_FORBIDDEN');
+    }
+
+    const sessionKeys = await listInstitutionDiarySessionKeys(institutionId, fromDate, toDate);
+    const existingSlots = new Set(
+      sessionKeys.map((session) => institutionDiarySessionKey(
+        session.subject_offering_id,
+        session.session_date,
+        session.starts_at,
+      )),
+    );
+    const blockingEvents = await academicCalendarService.listBlockingEventsForRange(
+      institutionId,
+      fromDate,
+      toDate,
+    );
+    const calendarCache = new Map<string, AcademicDateStatus>();
+    const offeringById = new Map(offerings.map((offering) => [offering.id, offering]));
+    let pendingCount = 0;
+
+    for (const date of dateRange(fromDate, toDate)) {
+      const dayOfWeek = getAttendanceDayOfWeek(date);
+      for (const slot of (timetableData ?? []) as unknown as TimetableEntryForDiary[]) {
+        const offering = offeringById.get(slot.subject_offering_id);
+        if (!offering || slot.day_of_week !== dayOfWeek || !isDiaryOccurrencePast(date, slot.end_time)) {
+          continue;
+        }
+        if (
+          offering.termStartDate
+          && offering.termEndDate
+          && !isAcademicTermDateWithinRange(date, offering.termStartDate, offering.termEndDate)
+        ) {
+          continue;
+        }
+
+        const cacheKey = [
+          date,
+          offering.academicYearId ?? '',
+          offering.classId,
+          offering.subjectId,
+        ].join('|');
+        let calendarStatus = calendarCache.get(cacheKey);
+        if (!calendarStatus) {
+          calendarStatus = resolveAcademicDateStatus(
+            date,
+            blockingEvents,
+            {
+              institutionId,
+              academicYearId: offering.academicYearId,
+              classId: offering.classId,
+              subjectId: offering.subjectId,
+            },
+          );
+          calendarCache.set(cacheKey, calendarStatus);
+        }
+        if (calendarStatus.blocked) continue;
+
+        if (!existingSlots.has(institutionDiarySessionKey(offering.id, date, slot.start_time))) {
+          pendingCount += 1;
+        }
+      }
+    }
+
+    return { pendingCount };
   },
 
   async listInstitutionClassDiary(

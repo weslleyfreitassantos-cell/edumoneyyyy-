@@ -9,7 +9,10 @@ import {
   UsersRound,
 } from 'lucide-react';
 
-import { useInstitutionAttendanceSummary, useInstitutionClassDiary } from '../../hooks/useAttendance';
+import {
+  useInstitutionAttendanceSummary,
+  useInstitutionPendingAttendanceSummary,
+} from '../../hooks/useAttendance';
 import { useAcademicYears } from '../../hooks/useAcademicTermClosing';
 import { useInstitutionGradeSummary } from '../../hooks/useGrades';
 import { getLocalDateInputValue } from '../../lib/academicTermDates';
@@ -133,6 +136,8 @@ function KpiCard({
   moduleId,
   availableModuleIds,
   onNavigateToModule,
+  loading = false,
+  updating = false,
 }: {
   label: string;
   value: string;
@@ -141,6 +146,8 @@ function KpiCard({
   moduleId?: AdminModuleId;
   availableModuleIds: readonly AdminModuleId[];
   onNavigateToModule?: (moduleId: AdminModuleId) => void;
+  loading?: boolean;
+  updating?: boolean;
 }) {
   const navigable = Boolean(
     moduleId && onNavigateToModule && availableModuleIds.includes(moduleId),
@@ -149,8 +156,10 @@ function KpiCard({
     <div className="flex items-start justify-between gap-3">
       <div className="min-w-0">
         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#667085] dark:text-slate-400">{label}</p>
-        <p className="mt-2 text-2xl font-extrabold text-[#181c20] dark:text-white">{value}</p>
-        <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">{detail}</p>
+        <p className="mt-2 text-2xl font-extrabold text-[#181c20] dark:text-white">
+          {loading ? <span className="inline-block h-7 w-24 animate-pulse rounded bg-slate-200 align-middle dark:bg-slate-700" aria-label="Carregando" /> : value}
+        </p>
+        <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">{updating ? 'Atualizando...' : detail}</p>
       </div>
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">
         <Icon className="h-5 w-5" aria-hidden="true" />
@@ -177,7 +186,21 @@ function EmptyChart({ children = 'Sem dados no período selecionado.' }: { child
   return <p className="rounded-lg border border-dashed border-[#d6dce5] px-4 py-8 text-center text-sm text-[#667085] dark:border-slate-700 dark:text-slate-400">{children}</p>;
 }
 
-function AttendanceTrend({ sessions }: { sessions: ReturnType<typeof buildWeeklyAttendanceTrend> }) {
+function LoadingChart() {
+  return <div className="h-52 animate-pulse rounded-lg bg-slate-100 dark:bg-slate-800" role="status" aria-label="Carregando dados" />;
+}
+
+function AttendanceTrend({
+  sessions,
+  loading,
+  error,
+}: {
+  sessions: ReturnType<typeof buildWeeklyAttendanceTrend>;
+  loading: boolean;
+  error: boolean;
+}) {
+  if (loading) return <LoadingChart />;
+  if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
   if (sessions.length === 0) return <EmptyChart />;
   const width = 640;
   const height = 220;
@@ -210,7 +233,17 @@ function AttendanceTrend({ sessions }: { sessions: ReturnType<typeof buildWeekly
   );
 }
 
-function ClassPerformance({ points }: { points: ReturnType<typeof buildClassPerformance> }) {
+function ClassPerformance({
+  points,
+  loading,
+  error,
+}: {
+  points: ReturnType<typeof buildClassPerformance>;
+  loading: boolean;
+  error: boolean;
+}) {
+  if (loading) return <LoadingChart />;
+  if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
   if (points.length === 0 || points.every((point) => point.total === 0)) {
     return <EmptyChart>Sem notas lançadas no período selecionado.</EmptyChart>;
   }
@@ -238,7 +271,17 @@ function ClassPerformance({ points }: { points: ReturnType<typeof buildClassPerf
   );
 }
 
-function StudentSituation({ summaries }: { summaries: ReturnType<typeof buildStudentSituationSummary> }) {
+function StudentSituation({
+  summaries,
+  loading,
+  error,
+}: {
+  summaries: ReturnType<typeof buildStudentSituationSummary>;
+  loading: boolean;
+  error: boolean;
+}) {
+  if (loading) return <LoadingChart />;
+  if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
   const total = summaries.reduce((sum, item) => sum + item.count, 0);
   if (total === 0) return <EmptyChart>Sem estudantes com dados no período selecionado.</EmptyChart>;
   let offset = 0;
@@ -287,7 +330,7 @@ export default function DirectorAcademicPanorama({
   }), [classId, dateRange.fromDate, dateRange.toDate]);
 
   const attendanceQuery = useInstitutionAttendanceSummary(queryInstitutionId, filters);
-  const diaryQuery = useInstitutionClassDiary(queryInstitutionId, filters);
+  const pendingAttendanceQuery = useInstitutionPendingAttendanceSummary(queryInstitutionId, filters);
   const gradesQuery = useInstitutionGradeSummary(queryInstitutionId, filters);
   const classes = useMemo(() => {
     const options = new Map<string, string>();
@@ -298,9 +341,15 @@ export default function DirectorAcademicPanorama({
   const attendanceTrend = useMemo(() => buildWeeklyAttendanceTrend(attendanceQuery.data?.sessions ?? []), [attendanceQuery.data?.sessions]);
   const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.studentPerformance ?? []), [gradesQuery.data?.studentPerformance]);
   const studentSummaries = useMemo(() => buildStudentSituationSummary(mergeStudentSignals(attendanceQuery.data?.sessions ?? [], gradesQuery.data?.studentPerformance ?? [])), [attendanceQuery.data?.sessions, gradesQuery.data?.studentPerformance]);
-  const pendingItems = useMemo(() => countPendingAcademicItems(diaryQuery.data?.entries ?? [], gradesQuery.data?.assessments ?? []), [diaryQuery.data?.entries, gradesQuery.data?.assessments]);
+  const pendingItems = useMemo(() => ({
+    ...countPendingAcademicItems([], gradesQuery.data?.assessments ?? []),
+    attendancePending: pendingAttendanceQuery.data?.pendingCount ?? 0,
+  }), [gradesQuery.data?.assessments, pendingAttendanceQuery.data?.pendingCount]);
   const attentionCount = (studentSummaries.find((item) => item.situation === 'ATTENTION')?.count ?? 0) + (studentSummaries.find((item) => item.situation === 'CRITICAL')?.count ?? 0);
-  const hasError = attendanceQuery.isError || diaryQuery.isError || gradesQuery.isError || yearsQuery.isError;
+  const attendanceLoading = !attendanceQuery.data && attendanceQuery.isPending;
+  const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
+  const attentionLoading = !attendanceQuery.data && !gradesQuery.data && (attendanceQuery.isPending || gradesQuery.isPending);
+  const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError;
 
   return (
     <section aria-labelledby="director-academic-panorama-heading" className="space-y-5">
@@ -332,26 +381,26 @@ export default function DirectorAcademicPanorama({
       {hasError && <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">Alguns indicadores não puderam ser carregados agora. Os dados disponíveis continuam visíveis.</p>}
 
       <div className="grid gap-3 md:grid-cols-3">
-        <KpiCard label="Frequência média" value={formatPercent(attendanceQuery.data?.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} />
-        <KpiCard label="Desempenho médio" value={formatPercent(gradesQuery.data?.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} />
-        <KpiCard label="Estudantes em atenção" value={formatCount(attentionCount)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} />
+        <KpiCard label="Frequência média" value={attendanceQuery.isError && !attendanceQuery.data ? 'Não foi possível carregar agora.' : formatPercent(attendanceQuery.data?.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attendanceLoading} updating={Boolean(attendanceQuery.data && attendanceQuery.isFetching)} />
+        <KpiCard label="Desempenho médio" value={gradesQuery.isError && !gradesQuery.data ? 'Não foi possível carregar agora.' : formatPercent(gradesQuery.data?.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={gradesLoading} updating={Boolean(gradesQuery.data && gradesQuery.isFetching)} />
+        <KpiCard label="Estudantes em atenção" value={formatCount(attentionCount)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attentionLoading} updating={Boolean((attendanceQuery.data || gradesQuery.data) && (attendanceQuery.isFetching || gradesQuery.isFetching))} />
       </div>
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(19rem,0.8fr)]">
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><CalendarCheck2 className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Frequência média ao longo do tempo</h3><p className="text-xs text-[#667085] dark:text-slate-400">Acompanhamento semanal com referência de 75%.</p></div></div>
-          <AttendanceTrend sessions={attendanceTrend} />
+          <AttendanceTrend sessions={attendanceTrend} loading={attendanceLoading} error={attendanceQuery.isError && !attendanceQuery.data} />
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><UsersRound className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Situação dos estudantes</h3><p className="text-xs text-[#667085] dark:text-slate-400">Frequência e desempenho combinados.</p></div></div>
-          <StudentSituation summaries={studentSummaries} />
+          <StudentSituation summaries={studentSummaries} loading={attentionLoading} error={Boolean((attendanceQuery.isError && !attendanceQuery.data) && (gradesQuery.isError && !gradesQuery.data))} />
         </article>
       </div>
 
       <div className="grid gap-4 xl:grid-cols-2">
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><GraduationCap className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Desempenho por turma</h3><p className="text-xs text-[#667085] dark:text-slate-400">Distribuição de alunos com nota lançada.</p></div></div>
-          <ClassPerformance points={classPerformance} />
+          <ClassPerformance points={classPerformance} loading={gradesLoading} error={gradesQuery.isError && !gradesQuery.data} />
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><ClipboardList className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Pendências acadêmicas</h3><p className="text-xs text-[#667085] dark:text-slate-400">Itens que ainda precisam de ação.</p></div></div>
@@ -362,7 +411,7 @@ export default function DirectorAcademicPanorama({
               const navigable = availableModuleIds.includes(moduleId as AdminModuleId) && Boolean(onNavigateToModule);
               return (
                 <button key={label as string} type="button" disabled={!navigable} onClick={() => onNavigateToModule?.(moduleId as AdminModuleId)} className={`w-full text-left ${navigable ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : 'cursor-default'}`}>
-                  <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{label as string}</span><strong className="text-[#181c20] dark:text-white">{formatCount(numericValue)}</strong></div>
+                  <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{label as string}</span><strong className="text-[#181c20] dark:text-white">{label === 'Chamadas pendentes' && pendingAttendanceQuery.isError && !pendingAttendanceQuery.data ? 'Não foi possível carregar agora.' : formatCount(numericValue)}</strong></div>
                   <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><span className="block h-full rounded-full bg-[#005bbf]" style={{ width: `${(numericValue / max) * 100}%` }} /></div>
                 </button>
               );
