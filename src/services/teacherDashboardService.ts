@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabaseClient';
 import {
   getAcademicTermForDate,
   getLocalDateInputValue,
+  isAcademicTermDateWithinRange,
 } from '../lib/academicTermDates';
 
 interface ClassRelation {
@@ -96,6 +97,12 @@ export interface TeacherDashboardData {
   enrollmentAccessAvailable: boolean;
 }
 
+interface TeacherOfferingTermBound {
+  termId: string;
+  termStartDate: string | null;
+  termEndDate: string | null;
+}
+
 function normalizeRelation<T>(
   relation: T | T[] | null,
 ): T | null {
@@ -106,18 +113,46 @@ function normalizeRelation<T>(
   return relation;
 }
 
-function calculateEffectiveDate(startDate: string, endDate: string): string {
-  const today = getLocalDateInputValue();
-
-  if (today < startDate) {
-    return startDate;
+export function filterTeacherOfferingsToCurrentTerm<
+  T extends TeacherOfferingTermBound,
+>(
+  offerings: readonly T[],
+  value: string = getLocalDateInputValue(),
+): T[] {
+  if (offerings.length === 0) {
+    return [];
   }
 
-  if (today > endDate) {
-    return endDate;
+  const terms = Array.from(
+    new Map(
+      offerings.map((offering) => [
+        offering.termId,
+        {
+          id: offering.termId,
+          startDate: offering.termStartDate,
+          endDate: offering.termEndDate,
+          active: true,
+        },
+      ]),
+    ).values(),
+  );
+
+  const currentTerm = getAcademicTermForDate(terms, value);
+
+  if (
+    !currentTerm ||
+    !isAcademicTermDateWithinRange(
+      value,
+      currentTerm.startDate,
+      currentTerm.endDate,
+    )
+  ) {
+    return [];
   }
 
-  return today;
+  return offerings.filter(
+    (offering) => offering.termId === currentTerm.id,
+  );
 }
 
 export function selectTeacherOfferingForDate(
@@ -147,6 +182,7 @@ export const teacherDashboardService = {
   async getDashboard(
     profileId: string,
     institutionId: string,
+    today: string = getLocalDateInputValue(),
   ): Promise<TeacherDashboardData> {
     const {
       data: offeringData,
@@ -235,6 +271,7 @@ export const teacherDashboardService = {
     const institutionRows =
       normalizedRows.filter(
         ({
+          row,
           classRecord,
           subjectRecord,
           termRecord,
@@ -245,51 +282,42 @@ export const teacherDashboardService = {
             institutionId &&
           classRecord.active !== false &&
           subjectRecord.active !== false &&
+          row.active !== false &&
           termRecord?.active !== false,
       );
+
+    const currentTermRows = filterTeacherOfferingsToCurrentTerm(
+      institutionRows.map((item) => ({
+        ...item,
+        termId: item.row.term_id,
+        termStartDate: item.termRecord?.start_date ?? null,
+        termEndDate: item.termRecord?.end_date ?? null,
+      })),
+      today,
+    );
 
     const studentsByOffering =
       new Map<string, Set<string>>();
 
     let enrollmentAccessAvailable = true;
 
-    if (institutionRows.length > 0) {
-      const offeringsByDate = new Map<string, string[]>();
-      
-      for (const { row, termRecord } of institutionRows) {
-        if (!termRecord) continue;
-        
-        const effectiveDate = calculateEffectiveDate(
-          termRecord.start_date,
-          termRecord.end_date
-        );
-        
-        const dateGroup = offeringsByDate.get(effectiveDate) ?? [];
-        dateGroup.push(row.id);
-        offeringsByDate.set(effectiveDate, dateGroup);
-      }
-
-      const fetchPromises = Array.from(offeringsByDate.entries()).map(
-        async ([date, ids]) => {
-          const { data, error } = await supabase.rpc(
-            'get_teacher_offering_rosters',
-            {
-              target_offering_ids: ids,
-              effective_date: date,
-            },
-          );
-          
-          if (error) {
-            throw error;
-          }
-          
-          return data as RosterQueryRow[];
-        }
-      );
-
+    if (currentTermRows.length > 0) {
       try {
-        const results = await Promise.all(fetchPromises);
-        const rosters = results.flat();
+        const { data, error } = await supabase.rpc(
+          'get_teacher_offering_rosters',
+          {
+            target_offering_ids: currentTermRows.map(
+              ({ row }) => row.id,
+            ),
+            effective_date: today,
+          },
+        );
+
+        if (error) {
+          throw error;
+        }
+
+        const rosters = (data ?? []) as RosterQueryRow[];
         
         for (const roster of rosters) {
           const currentStudents =
@@ -317,7 +345,7 @@ export const teacherDashboardService = {
     }
 
     const offerings: TeacherOffering[] =
-      institutionRows
+      currentTermRows
         .map(
           ({
             row,

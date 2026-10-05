@@ -271,6 +271,34 @@ describe('TeacherDashboard', () => {
     ).toBeTruthy();
   });
 
+  it('informa quando não há atribuição no período atual', () => {
+    vi.mocked(useTeacherDashboard).mockReturnValue({
+      data: {
+        offerings: [],
+        totals: {
+          offerings: 0,
+          classes: 0,
+          subjects: 0,
+          students: 0,
+        },
+        enrollmentAccessAvailable: true,
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <TeacherDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(
+      screen.getByText('Nenhuma atribuição encontrada para o período atual.'),
+    ).toBeTruthy();
+  });
+
   it('remove a introdução duplicada ao abrir o Diário de Classe', () => {
     render(
       <MemoryRouter initialEntries={['/dashboard/class-diary']}>
