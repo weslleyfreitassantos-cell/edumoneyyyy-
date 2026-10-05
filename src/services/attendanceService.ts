@@ -2052,6 +2052,7 @@ function chunkValues<T>(values: readonly T[], size: number): T[][] {
 }
 
 const ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE = 100;
+const ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE = 250;
 
 const ATTENDANCE_SESSION_SUMMARY_FIELDS = `
   id,
@@ -2680,6 +2681,14 @@ export const attendanceService = {
       };
     }
 
+    if (filters.limit === 0 && !filters.sessionIds) {
+      return {
+        summary: calculateAttendanceSummary([]),
+        sessions: [],
+        filters: buildFilterOptions([]),
+      };
+    }
+
     const sessionRows: AttendanceSessionQueryRow[] = [];
     const sessionIdChunks = filters.sessionIds
       ? chunkValues(
@@ -2689,33 +2698,56 @@ export const attendanceService = {
       : [null];
 
     for (const sessionIdChunk of sessionIdChunks) {
-      let sessionQuery = supabase
-        .from('attendance_sessions')
-        .select(ATTENDANCE_SESSION_SUMMARY_FIELDS)
-        .eq('institution_id', institutionId)
-        .gte('session_date', fromDate)
-        .lte('session_date', toDate)
-        .order('session_date', { ascending: false });
+      let sessionOffset = 0;
+      const hasExplicitLimit =
+        !sessionIdChunk &&
+        filters.limit !== undefined &&
+        filters.limit !== null;
 
-      if (!filters.includeCanceled) {
-        sessionQuery = sessionQuery.neq('status', 'CANCELED');
+      while (true) {
+        let sessionQuery = supabase
+          .from('attendance_sessions')
+          .select(ATTENDANCE_SESSION_SUMMARY_FIELDS)
+          .eq('institution_id', institutionId)
+          .gte('session_date', fromDate)
+          .lte('session_date', toDate)
+          .order('session_date', { ascending: false })
+          .order('id', { ascending: false });
+
+        if (!filters.includeCanceled) {
+          sessionQuery = sessionQuery.neq('status', 'CANCELED');
+        }
+
+        if (sessionIdChunk) {
+          sessionQuery = sessionQuery.in('id', sessionIdChunk);
+        } else if (hasExplicitLimit) {
+          sessionQuery = sessionQuery.limit(filters.limit as number);
+        } else {
+          sessionQuery = sessionQuery.range(
+            sessionOffset,
+            sessionOffset + ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE - 1,
+          );
+        }
+
+        const { data, error } = await sessionQuery;
+
+        if (error) {
+          throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+        }
+
+        const page = (data ?? []) as unknown as AttendanceSessionQueryRow[];
+        sessionRows.push(...page);
+
+        if (
+          sessionIdChunk ||
+          hasExplicitLimit ||
+          page.length < ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE
+        ) {
+          break;
+        }
+
+        sessionOffset += ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE;
       }
-
-      if (sessionIdChunk) {
-        sessionQuery = sessionQuery.in('id', sessionIdChunk);
-      } else if (filters.limit !== null) {
-        sessionQuery = sessionQuery.limit(filters.limit ?? 250);
-      }
-
-      const { data, error } = await sessionQuery;
-
-      if (error) {
-        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
-      }
-
-      sessionRows.push(
-        ...((data ?? []) as unknown as AttendanceSessionQueryRow[]),
-      );
     }
 
     if (sessionRows.length === 0) {

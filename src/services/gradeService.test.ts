@@ -32,6 +32,7 @@ interface MockQuery {
   neq: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
   limit: ReturnType<typeof vi.fn>;
+  range: ReturnType<typeof vi.fn>;
   then: Promise<unknown>['then'];
 }
 
@@ -46,6 +47,7 @@ function createQuery(response: unknown): MockQuery {
   query.neq = vi.fn(() => query);
   query.order = vi.fn(() => query);
   query.limit = vi.fn(() => query);
+  query.range = vi.fn(() => query);
   query.then = (
     resolve,
     reject,
@@ -148,6 +150,13 @@ describe('gradeService', () => {
     expect(summary.averageScore).toBe(6.5);
     expect(summary.averagePercent).toBe(65);
     expect(summary.weightedAveragePercent).toBe(70);
+  });
+
+  it('agrega duas notas reais sem perder a média do estudante', () => {
+    expect(calculateGradeSummary([
+      { score: 8, maxScore: 10, weight: 1, status: 'GRADED' },
+      { score: 6, maxScore: 10, weight: 1, status: 'GRADED' },
+    ]).averagePercent).toBe(70);
   });
 
   it('valida matrícula ativa na data da avaliação', () => {
@@ -382,16 +391,7 @@ describe('gradeService', () => {
       error: null,
     });
     const enrollmentQuery = createQuery({
-      data: [{
-        id: 'enrollment-1',
-        student_id: 'student-1',
-        class_id: 'class-1',
-        academic_year_id: 'year-1',
-        status: 'ACTIVE',
-        active: true,
-        enrolled_at: '2026-01-01T00:00:00.000Z',
-        created_at: '2026-01-01T00:00:00.000Z',
-      }],
+      data: [],
       error: null,
     });
     const studentsQuery = createQuery({
@@ -427,6 +427,13 @@ describe('gradeService', () => {
       expectedStudentCount: 1,
       averagePercent: 80,
     });
+    expect(summary.studentPerformance).toEqual([
+      expect.objectContaining({
+        studentId: 'student-1',
+        studentName: 'Ana Silva',
+        performancePercent: 80,
+      }),
+    ]);
     expect(assessmentQuery.select).toHaveBeenCalledWith(
       expect.not.stringContaining('grades ('),
     );
@@ -434,6 +441,89 @@ describe('gradeService', () => {
     expect(supabase.from).toHaveBeenCalledWith('grades');
     expect(supabase.from).toHaveBeenCalledWith('enrollments');
     expect(supabase.from).toHaveBeenCalledWith('students');
+  });
+
+  it('pagina avaliações anuais além do limite de 250 registros', async () => {
+    const offering = {
+      id: 'offering-1',
+      class_id: 'class-1',
+      subject_id: 'subject-1',
+      teacher_profile_id: 'teacher-1',
+      term_id: 'term-1',
+      active: true,
+      created_at: '2026-03-01T00:00:00.000Z',
+      classes: {
+        id: 'class-1',
+        institution_id: 'institution-1',
+        academic_year_id: 'year-1',
+        name: '1A',
+        grade_level: '1º ano',
+        shift: 'Manhã',
+        active: true,
+      },
+      subjects: {
+        id: 'subject-1',
+        institution_id: 'institution-1',
+        name: 'Matemática',
+        code: 'MAT',
+        workload: 80,
+        active: true,
+      },
+      profiles: null,
+      terms: {
+        id: 'term-1',
+        academic_year_id: 'year-1',
+        name: '1º bimestre',
+        active: true,
+      },
+    };
+    const createAssessment = (index: number) => ({
+      id: `assessment-${index}`,
+      institution_id: 'institution-1',
+      subject_offering_id: 'offering-1',
+      term_id: 'term-1',
+      title: `Avaliação ${index}`,
+      description: null,
+      assessment_type: 'EXAM',
+      assessment_date: '2026-03-10',
+      max_score: 10,
+      weight: 1,
+      status: 'PUBLISHED',
+      created_by: 'teacher-1',
+      published_at: '2026-03-01T00:00:00.000Z',
+      created_at: '2026-03-01T00:00:00.000Z',
+      updated_at: '2026-03-01T00:00:00.000Z',
+      subject_offerings: offering,
+    });
+    const assessmentPageOne = createQuery({
+      data: Array.from({ length: 250 }, (_, index) => createAssessment(index)),
+      error: null,
+    });
+    const assessmentPageTwo = createQuery({
+      data: [createAssessment(250)],
+      error: null,
+    });
+    const gradesQueries = Array.from({ length: 3 }, () =>
+      createQuery({ data: [], error: null }),
+    );
+    const enrollmentQuery = createQuery({ data: [], error: null });
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(assessmentPageOne as never)
+      .mockReturnValueOnce(assessmentPageTwo as never);
+    for (const query of gradesQueries) {
+      vi.mocked(supabase.from).mockReturnValueOnce(query as never);
+    }
+    vi.mocked(supabase.from).mockReturnValueOnce(enrollmentQuery as never);
+
+    const summary = await gradeService.getInstitutionGradeSummary(
+      'institution-1',
+      { fromDate: '2026-03-01', toDate: '2026-12-31' },
+    );
+
+    expect(summary.assessments).toHaveLength(251);
+    expect(assessmentPageOne.range).toHaveBeenCalledWith(0, 249);
+    expect(assessmentPageTwo.range).toHaveBeenCalledWith(250, 499);
   });
 
   it('preserva erro da consulta de notas em vez de retornar avaliações vazias', async () => {

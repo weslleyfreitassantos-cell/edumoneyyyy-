@@ -1550,37 +1550,52 @@ async function getInstitutionAssessmentsForSummary(
     }
   }
 
-  let assessmentQuery = supabase
-    .from('assessments')
-    .select(GRADE_SUMMARY_ASSESSMENT_FIELDS)
-    .eq('institution_id', institutionId)
-    .neq('status', 'CANCELED')
-    .gte('assessment_date', fromDate)
-    .lte('assessment_date', toDate)
-    .order('assessment_date', { ascending: false })
-    .limit(250);
+  const assessmentRows: AssessmentQueryRow[] = [];
+  const assessmentPageSize = 250;
+  let assessmentOffset = 0;
 
-  if (eligibleOfferingIds) {
-    assessmentQuery = assessmentQuery.in(
-      'subject_offering_id',
-      eligibleOfferingIds,
-    );
+  while (true) {
+    let assessmentQuery = supabase
+      .from('assessments')
+      .select(GRADE_SUMMARY_ASSESSMENT_FIELDS)
+      .eq('institution_id', institutionId)
+      .neq('status', 'CANCELED')
+      .gte('assessment_date', fromDate)
+      .lte('assessment_date', toDate)
+      .order('assessment_date', { ascending: false })
+      .order('id', { ascending: false })
+      .range(assessmentOffset, assessmentOffset + assessmentPageSize - 1);
+
+    if (eligibleOfferingIds) {
+      assessmentQuery = assessmentQuery.in(
+        'subject_offering_id',
+        eligibleOfferingIds,
+      );
+    }
+    if (filters.termId) {
+      assessmentQuery = assessmentQuery.eq('term_id', filters.termId);
+    }
+
+    const { data: assessmentData, error: assessmentError } =
+      await assessmentQuery;
+
+    if (assessmentError) {
+      throw createGradeError(
+        assessmentError,
+        'ASSESSMENT_FORBIDDEN',
+      );
+    }
+
+    const page = (assessmentData ?? []) as unknown as AssessmentQueryRow[];
+    assessmentRows.push(...page);
+
+    if (page.length < assessmentPageSize) {
+      break;
+    }
+
+    assessmentOffset += assessmentPageSize;
   }
-  if (filters.termId) {
-    assessmentQuery = assessmentQuery.eq('term_id', filters.termId);
-  }
 
-  const { data: assessmentData, error: assessmentError } =
-    await assessmentQuery;
-
-  if (assessmentError) {
-    throw createGradeError(
-      assessmentError,
-      'ASSESSMENT_FORBIDDEN',
-    );
-  }
-
-  const assessmentRows = (assessmentData ?? []) as unknown as AssessmentQueryRow[];
   const assessmentIds = assessmentRows.map((row) => row.id);
   const gradesByAssessment = new Map<string, GradeQueryRow[]>();
 
@@ -1666,6 +1681,34 @@ async function getEnrollmentsForClasses(
     ...row,
     students: studentsById.get(row.student_id) ?? null,
   }));
+}
+
+async function getStudentsByIds(
+  institutionId: string,
+  studentIds: readonly string[],
+): Promise<Map<string, StudentRelation>> {
+  const studentsById = new Map<string, StudentRelation>();
+
+  for (const studentIdChunk of chunkGradeValues(
+    studentIds,
+    GRADE_SUMMARY_QUERY_CHUNK_SIZE,
+  )) {
+    const { data, error } = await supabase
+      .from('students')
+      .select(GRADE_SUMMARY_STUDENT_FIELDS)
+      .eq('institution_id', institutionId)
+      .in('id', studentIdChunk);
+
+    if (error) {
+      throw createGradeError(error, 'GRADE_FORBIDDEN');
+    }
+
+    for (const student of (data ?? []) as unknown as StudentRelation[]) {
+      studentsById.set(student.id, student);
+    }
+  }
+
+  return studentsById;
 }
 
 function buildStudentGradeRecords(
@@ -1859,6 +1902,7 @@ function buildInstitutionStudentPerformance(
     grades: GradeQueryRow[];
   }[],
   enrollmentRows: readonly EnrollmentQueryRow[],
+  studentsById: ReadonlyMap<string, StudentRelation>,
   institutionId: string,
   studentId?: string,
 ): InstitutionStudentPerformance[] {
@@ -1877,7 +1921,9 @@ function buildInstitutionStudentPerformance(
     }
 
     for (const enrollment of enrollmentRows) {
-      const student = normalizeRelation(enrollment.students);
+      const student =
+        studentsById.get(enrollment.student_id) ??
+        normalizeRelation(enrollment.students);
       const profile = normalizeRelation(student?.profiles);
 
       if (
@@ -1907,7 +1953,9 @@ function buildInstitutionStudentPerformance(
         continue;
       }
 
-      const student = normalizeRelation(grade.students);
+      const student =
+        studentsById.get(grade.student_id) ??
+        normalizeRelation(grade.students);
       const profile = normalizeRelation(student?.profiles);
       if (!student || !profile || student.institution_id !== institutionId) {
         continue;
@@ -2440,15 +2488,39 @@ export const gradeService = {
       classIds,
       institutionId,
     );
+    const studentsById = new Map<string, StudentRelation>();
+
+    for (const enrollment of enrollmentRows) {
+      const student = normalizeRelation(enrollment.students);
+      if (student) {
+        studentsById.set(student.id, student);
+      }
+    }
+
+    const missingGradeStudentIds = Array.from(
+      new Set(
+        assessments.flatMap(({ grades }) =>
+          grades.map((grade) => grade.student_id),
+        ),
+      ),
+    ).filter((studentId) => !studentsById.has(studentId));
+    const gradeStudentsById = await getStudentsByIds(
+      institutionId,
+      missingGradeStudentIds,
+    );
+
+    for (const [studentId, student] of gradeStudentsById) {
+      studentsById.set(studentId, student);
+    }
 
     const results = assessments.map(({ assessment, grades }) => {
       const offering = assessment.offering;
       const expectedStudentIds = new Set(
         enrollmentRows
           .filter((enrollment) => {
-            const student = normalizeRelation(
-              enrollment.students,
-            );
+            const student =
+              studentsById.get(enrollment.student_id) ??
+              normalizeRelation(enrollment.students);
 
             return (
               offering !== null &&
@@ -2532,6 +2604,7 @@ export const gradeService = {
         filteredResults,
         assessments,
         enrollmentRows,
+        studentsById,
         institutionId,
         filters.studentId,
       ),
