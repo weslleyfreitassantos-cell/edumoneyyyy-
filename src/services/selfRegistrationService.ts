@@ -42,6 +42,7 @@ export interface SelfRegistrationHealth {
 
 export interface StudentSelfRegistration {
   role: 'STUDENT';
+  selfRegistrationConfirmed: boolean;
   profile: SelfRegistrationProfile;
   student: {
     birthDate: string;
@@ -63,6 +64,7 @@ export interface StudentSelfRegistration {
 
 export interface GuardianSelfRegistration {
   role: 'GUARDIAN';
+  selfRegistrationConfirmed: false;
   profile: SelfRegistrationProfile;
 }
 
@@ -77,6 +79,7 @@ export interface StudentSelfRegistrationUpdate {
     phone: string;
   };
   student: StudentSelfRegistration['student'];
+  confirmProtectedData?: boolean;
 }
 
 export interface GuardianSelfRegistrationUpdate {
@@ -167,7 +170,7 @@ function normalizeData(value: unknown): SelfRegistrationData {
   };
 
   if (record.role === 'GUARDIAN') {
-    return { role: 'GUARDIAN', profile };
+    return { role: 'GUARDIAN', selfRegistrationConfirmed: false, profile };
   }
 
   if (record.role !== 'STUDENT') {
@@ -180,6 +183,7 @@ function normalizeData(value: unknown): SelfRegistrationData {
 
   return {
     role: 'STUDENT',
+    selfRegistrationConfirmed: record.self_registration_confirmed === true,
     profile,
     student: {
       birthDate: text(studentValue.birth_date),
@@ -213,6 +217,7 @@ function toPayload(input: SelfRegistrationUpdate): Record<string, unknown> {
   return {
     role: input.role,
     profile,
+    confirm_protected_data: input.confirmProtectedData === true,
     student: {
       birth_date: input.student.birthDate,
       cpf: input.student.cpf,

@@ -1,4 +1,5 @@
 import {
+  keepPreviousData,
   useMutation,
   useQuery,
   useQueryClient,
@@ -249,6 +250,8 @@ export function useInstitutionGradeSummary(
       );
     },
     enabled: Boolean(institutionId),
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 60 * 3,
+    placeholderData: keepPreviousData,
+    retry: false,
   });
 }

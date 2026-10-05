@@ -27,6 +27,12 @@ import {
   type StudentSelfRegistration,
 } from '../services/selfRegistrationService';
 import {
+  normalizeStudentFullName,
+  normalizeStudentPhone,
+  normalizeStudentRegistration,
+  validateStudentRegistrationForConfirmation,
+} from '../services/studentSelfRegistrationSchema';
+import {
   AvatarFileError,
   validateAvatarFile,
 } from '../services/avatarImageService';
@@ -123,6 +129,15 @@ const inputClass =
 
 const textareaClass =
   'mt-1 min-h-20 w-full rounded-lg border border-[#c5cbd6] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-[#005bbf]/20 disabled:cursor-wait disabled:bg-[#f3f6fb] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:caret-[#f8fafc] dark:placeholder:text-[#64748b] dark:disabled:bg-[#111827]';
+
+interface PendingAccountSave {
+  normalizedName: string;
+  shouldUpdateName: boolean;
+  shouldUpdatePassword: boolean;
+  shouldUpdateSelfRegistration: boolean;
+  password: string;
+  selfRegistrationInput?: SelfRegistrationUpdate;
+}
 
 function fieldLabel(text: string): string {
   return `block text-xs font-bold text-[#414754] dark:text-[#cbd5e1]`;
@@ -295,6 +310,7 @@ export default function AccountSettingsModal({
   const [avatarFailed, setAvatarFailed] = useState(false);
   const [isExportingPrivacyData, setIsExportingPrivacyData] = useState(false);
   const [privacyMessage, setPrivacyMessage] = useState<string | null>(null);
+  const [pendingAccountSave, setPendingAccountSave] = useState<PendingAccountSave | null>(null);
   const initialSelfRegistrationRef = useRef<string | null>(null);
   const avatarInputId = `${titleId}-avatar-input`;
 
@@ -349,8 +365,16 @@ export default function AccountSettingsModal({
         setFullName(data.profile.fullName);
         setPhone(data.profile.phone);
         initialSelfRegistrationRef.current = JSON.stringify({
-          profile: data.profile,
-          student: data.role === 'STUDENT' ? data.student : null,
+          profile: {
+            fullName: normalizeStudentFullName(data.profile.fullName),
+            email: data.profile.email,
+            phone: data.role === 'STUDENT'
+              ? normalizeStudentPhone(data.profile.phone)
+              : data.profile.phone.trim(),
+          },
+          student: data.role === 'STUDENT'
+            ? normalizeStudentRegistration(data.student)
+            : null,
         });
       })
       .catch((loadError: unknown) => {
@@ -548,6 +572,67 @@ export default function AccountSettingsModal({
     }
   }
 
+  async function commitAccountSave(pending: PendingAccountSave): Promise<void> {
+    if (submittingRef.current) return;
+
+    submittingRef.current = true;
+    setIsSaving(true);
+    let nameUpdated = false;
+
+    try {
+      if (pending.shouldUpdateSelfRegistration && pending.selfRegistrationInput) {
+        await onUpdateSelfRegistration(pending.selfRegistrationInput);
+        nameUpdated = pending.shouldUpdateName;
+      } else if (pending.shouldUpdateName) {
+        await onUpdateName(pending.normalizedName);
+        nameUpdated = true;
+      }
+
+      if (pending.shouldUpdatePassword) {
+        try {
+          await onUpdatePassword(pending.password);
+        } catch (passwordError) {
+          setError(
+            nameUpdated
+              ? 'Seu nome foi atualizado, mas não foi possível alterar sua senha.'
+              : getOperationErrorMessage(passwordError, 'password'),
+          );
+          return;
+        }
+      }
+
+      setNewPassword('');
+      setPasswordConfirmation('');
+      const profileUpdated = isSelfRegistration
+        ? pending.shouldUpdateSelfRegistration
+        : pending.shouldUpdateName;
+      onSuccess(
+        profileUpdated && pending.shouldUpdatePassword
+          ? isSelfRegistration
+            ? 'Cadastro e senha atualizados com sucesso.'
+            : 'Dados da conta atualizados com sucesso.'
+          : pending.shouldUpdatePassword
+            ? 'Senha alterada com sucesso.'
+            : profileUpdated
+              ? isSelfRegistration
+                ? 'Cadastro atualizado com sucesso.'
+                : 'Nome atualizado com sucesso.'
+              : 'Nome atualizado com sucesso.',
+      );
+      onClose();
+    } catch (updateError) {
+      setError(
+        getOperationErrorMessage(
+          updateError,
+          pending.shouldUpdateSelfRegistration ? 'registration' : 'name',
+        ),
+      );
+    } finally {
+      submittingRef.current = false;
+      setIsSaving(false);
+    }
+  }
+
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
@@ -575,18 +660,32 @@ export default function AccountSettingsModal({
       return;
     }
 
-    const normalizedName = result.data.fullName;
-    const shouldUpdateName = normalizedName !== currentName.trim();
+    let normalizedName: string;
+    let normalizedPhone = phone.trim();
+    let normalizedStudent: StudentSelfRegistration['student'] | null = null;
+
+    try {
+      normalizedName = normalizeStudentFullName(result.data.fullName);
+      if (selfRegistration?.role === 'STUDENT') {
+        normalizedPhone = normalizeStudentPhone(phone);
+        normalizedStudent = normalizeStudentRegistration(selfRegistration.student);
+      }
+    } catch (normalizationError) {
+      setError(normalizationError instanceof Error ? normalizationError.message : 'Revise os dados informados.');
+      return;
+    }
+
+    const shouldUpdateName = normalizedName !== normalizeStudentFullName(currentName);
     const shouldUpdatePassword = result.data.newPassword.length > 0;
     const currentSelfRegistrationSnapshot = selfRegistration
       ? JSON.stringify({
           profile: {
             fullName: normalizedName,
             email: selfRegistration.profile.email,
-            phone: phone.trim(),
+            phone: normalizedPhone,
           },
-          student: selfRegistration.role === 'STUDENT'
-            ? selfRegistration.student
+          student: selfRegistration.role === 'STUDENT' && normalizedStudent
+            ? normalizedStudent
             : null,
         })
       : null;
@@ -600,73 +699,55 @@ export default function AccountSettingsModal({
       return;
     }
 
-    submittingRef.current = true;
-    setIsSaving(true);
-    let nameUpdated = false;
-
-    try {
-      if (shouldUpdateSelfRegistration && selfRegistration) {
-        const input: SelfRegistrationUpdate = selfRegistration.role === 'STUDENT'
+    if (shouldUpdateSelfRegistration && selfRegistration) {
+      const input: SelfRegistrationUpdate = selfRegistration.role === 'STUDENT'
           ? {
               role: 'STUDENT',
-              profile: { fullName: normalizedName, phone: phone.trim() },
-              student: selfRegistration.student,
+              profile: { fullName: normalizedName, phone: normalizedPhone },
+              student: normalizedStudent!,
             }
           : {
               role: 'GUARDIAN',
-              profile: { fullName: normalizedName, phone: phone.trim() },
+              profile: { fullName: normalizedName, phone: normalizedPhone },
             };
 
-        await onUpdateSelfRegistration(input);
-        nameUpdated = normalizedName !== currentName.trim();
-      } else if (shouldUpdateName) {
-        await onUpdateName(normalizedName);
-        nameUpdated = true;
-      }
-
-      if (shouldUpdatePassword) {
+      if (selfRegistration.role === 'STUDENT' && !selfRegistration.selfRegistrationConfirmed) {
         try {
-          await onUpdatePassword(result.data.newPassword);
-        } catch (passwordError) {
-          setError(
-            nameUpdated
-              ? 'Seu nome foi atualizado, mas não foi possível alterar sua senha.'
-              : getOperationErrorMessage(passwordError, 'password'),
-          );
+          validateStudentRegistrationForConfirmation(normalizedStudent!, normalizedPhone);
+        } catch (validationError) {
+          setError(validationError instanceof Error ? validationError.message : 'Complete os dados cadastrais antes de confirmar.');
           return;
         }
+        setPendingAccountSave({
+          normalizedName,
+          shouldUpdateName,
+          shouldUpdatePassword,
+          shouldUpdateSelfRegistration: true,
+          password: result.data.newPassword,
+          selfRegistrationInput: input,
+        });
+        setError(null);
+        return;
       }
 
-      setNewPassword('');
-      setPasswordConfirmation('');
-      const profileUpdated = isSelfRegistration
-        ? shouldUpdateSelfRegistration
-        : shouldUpdateName;
-      onSuccess(
-        profileUpdated && shouldUpdatePassword
-          ? isSelfRegistration
-            ? 'Cadastro e senha atualizados com sucesso.'
-            : 'Dados da conta atualizados com sucesso.'
-          : shouldUpdatePassword
-            ? 'Senha alterada com sucesso.'
-            : profileUpdated
-            ? isSelfRegistration
-              ? 'Cadastro atualizado com sucesso.'
-                : 'Nome atualizado com sucesso.'
-              : 'Nome atualizado com sucesso.',
-      );
-      onClose();
-    } catch (updateError) {
-      setError(
-        getOperationErrorMessage(
-          updateError,
-          shouldUpdateSelfRegistration ? 'registration' : 'name',
-        ),
-      );
-    } finally {
-      submittingRef.current = false;
-      setIsSaving(false);
+      await commitAccountSave({
+        normalizedName,
+        shouldUpdateName,
+        shouldUpdatePassword,
+        shouldUpdateSelfRegistration: true,
+        password: result.data.newPassword,
+        selfRegistrationInput: input,
+      });
+      return;
     }
+
+    await commitAccountSave({
+      normalizedName,
+      shouldUpdateName,
+      shouldUpdatePassword,
+      shouldUpdateSelfRegistration: false,
+      password: result.data.newPassword,
+    });
   }
 
   return createPortal(
@@ -851,7 +932,7 @@ export default function AccountSettingsModal({
               id={`${titleId}-name`}
               value={fullName}
               onChange={(event) => setFullName(event.target.value)}
-              disabled={isSaving || avatarStatus === 'uploading'}
+              disabled={isSaving || avatarStatus === 'uploading' || (currentRole === 'student' && selfRegistration?.role === 'STUDENT' && selfRegistration.selfRegistrationConfirmed)}
               autoComplete="name"
               maxLength={120}
               required
@@ -861,6 +942,12 @@ export default function AccountSettingsModal({
 
           {isSelfRegistration && (
             <>
+              {currentRole === 'student' && selfRegistration?.role === 'STUDENT' && selfRegistration.selfRegistrationConfirmed && (
+                <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-3 text-sm text-blue-900 dark:border-blue-900/60 dark:bg-blue-950/30 dark:text-blue-100">
+                  <strong>Dados cadastrais confirmados.</strong>{' '}
+                  Essas informações fazem parte do seu cadastro escolar e não podem mais ser alteradas diretamente. Para solicitar uma correção, procure a secretaria ou direção da escola.
+                </div>
+              )}
               <div>
                 <label
                   htmlFor={`${titleId}-phone`}
@@ -888,7 +975,7 @@ export default function AccountSettingsModal({
               ) : selfRegistration?.role === 'STUDENT' ? (
                 <StudentRegistrationFields
                   data={selfRegistration.student}
-                  disabled={isSaving || avatarStatus === 'uploading'}
+                  disabled={isSaving || avatarStatus === 'uploading' || selfRegistration.selfRegistrationConfirmed}
                   onChange={(student) =>
                     setSelfRegistration({ ...selfRegistration, student })
                   }
@@ -1006,6 +1093,20 @@ export default function AccountSettingsModal({
           </div>
         </form>
       </section>
+      {pendingAccountSave && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/35 px-4">
+          <section role="dialog" aria-modal="true" aria-labelledby={`${titleId}-confirm-heading`} className="w-full max-w-lg rounded-xl bg-white p-5 shadow-2xl dark:bg-[#182235]">
+            <h3 id={`${titleId}-confirm-heading`} className="text-lg font-bold text-[#181c20] dark:text-white">Confirme seus dados</h3>
+            <p className="mt-2 text-sm leading-6 text-[#667085] dark:text-slate-300">Revise estas informações com atenção. Depois da confirmação, os dados cadastrais protegidos não poderão mais ser alterados diretamente por esta conta. Caso precise fazer uma correção depois, procure a secretaria ou direção da escola.</p>
+            <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button type="button" onClick={() => setPendingAccountSave(null)} disabled={isSaving} className="inline-flex h-10 items-center justify-center rounded-lg border border-[#c5cbd6] px-4 text-sm font-bold text-[#414754] disabled:opacity-60">Voltar e revisar</button>
+              <button type="button" onClick={() => pendingAccountSave && void commitAccountSave({ ...pendingAccountSave, selfRegistrationInput: pendingAccountSave.selfRegistrationInput && { ...pendingAccountSave.selfRegistrationInput, ...(pendingAccountSave.selfRegistrationInput.role === 'STUDENT' ? { confirmProtectedData: true } : {}) } })} disabled={isSaving} className="inline-flex h-10 items-center justify-center rounded-lg bg-[#005bbf] px-4 text-sm font-bold text-white disabled:opacity-60">
+                {isSaving ? 'Salvando...' : 'Confirmar dados'}
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
     </div>,
     document.body,
   );

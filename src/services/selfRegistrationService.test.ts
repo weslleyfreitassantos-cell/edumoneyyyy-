@@ -45,6 +45,7 @@ describe('selfRegistrationService', () => {
 
     await expect(selfRegistrationService.getCurrent()).resolves.toEqual({
       role: 'STUDENT',
+      selfRegistrationConfirmed: false,
       profile: {
         fullName: 'Ana Souza',
         email: 'ana@example.com',
@@ -89,6 +90,7 @@ describe('selfRegistrationService', () => {
 
     await expect(selfRegistrationService.getCurrent()).resolves.toEqual({
       role: 'GUARDIAN',
+      selfRegistrationConfirmed: false,
       profile: {
         fullName: 'Carlos Souza',
         email: 'carlos@example.com',
