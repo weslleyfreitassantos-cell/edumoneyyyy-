@@ -21,7 +21,7 @@ export default function ProfileHeroAvatar({
     <div className="flex aspect-[3/4] w-36 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20 sm:w-40">
       {avatarUrl && !imageFailed ? (
         <img
-          className="h-full w-full object-fill"
+          className="h-full w-full object-cover"
           src={avatarUrl}
           alt={`Foto de ${fullName}`}
           referrerPolicy="no-referrer"

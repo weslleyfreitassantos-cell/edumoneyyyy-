@@ -41,31 +41,7 @@ function createCanvas(): HTMLCanvasElement {
   return canvas;
 }
 
-function drawContained(
-  context: CanvasRenderingContext2D,
-  source: CanvasImageSource,
-  sourceWidth: number,
-  sourceHeight: number,
-): void {
-  const scale = Math.min(
-    AVATAR_OUTPUT_WIDTH / sourceWidth,
-    AVATAR_OUTPUT_HEIGHT / sourceHeight,
-  );
-  const drawnWidth = sourceWidth * scale;
-  const drawnHeight = sourceHeight * scale;
-
-  context.filter = 'none';
-  context.globalAlpha = 1;
-  context.drawImage(
-    source,
-    (AVATAR_OUTPUT_WIDTH - drawnWidth) / 2,
-    (AVATAR_OUTPUT_HEIGHT - drawnHeight) / 2,
-    drawnWidth,
-    drawnHeight,
-  );
-}
-
-function drawFilledBackground(
+function drawCover(
   context: CanvasRenderingContext2D,
   source: CanvasImageSource,
   sourceWidth: number,
@@ -78,8 +54,8 @@ function drawFilledBackground(
   const drawnWidth = sourceWidth * scale;
   const drawnHeight = sourceHeight * scale;
 
-  context.filter = 'blur(18px)';
-  context.globalAlpha = 0.42;
+  context.filter = 'none';
+  context.globalAlpha = 1;
   context.drawImage(
     source,
     (AVATAR_OUTPUT_WIDTH - drawnWidth) / 2,
@@ -87,8 +63,6 @@ function drawFilledBackground(
     drawnWidth,
     drawnHeight,
   );
-  context.filter = 'none';
-  context.globalAlpha = 1;
 }
 
 function canvasToWebp(canvas: HTMLCanvasElement): Promise<Blob> {
@@ -136,13 +110,7 @@ async function prepareWithImageBitmap(file: File): Promise<Blob> {
       );
     }
 
-    drawFilledBackground(
-      context,
-      bitmap,
-      bitmap.width,
-      bitmap.height,
-    );
-    drawContained(
+    drawCover(
       context,
       bitmap,
       bitmap.width,
@@ -191,13 +159,7 @@ async function prepareWithImageElement(file: File): Promise<Blob> {
       );
     }
 
-    drawFilledBackground(
-      context,
-      image,
-      image.naturalWidth,
-      image.naturalHeight,
-    );
-    drawContained(
+    drawCover(
       context,
       image,
       image.naturalWidth,

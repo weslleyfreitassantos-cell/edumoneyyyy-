@@ -42,7 +42,7 @@ describe('avatarImageService', () => {
     { width: 400, height: 600 },
     { width: 2000, height: 3000 },
   ])(
-    'keeps the full image inside the vertical WebP frame for $width x $height',
+    'fills the vertical WebP frame with an automatic cover crop for $width x $height',
     async ({ width, height }) => {
       const bitmap = {
         width,
@@ -72,7 +72,20 @@ describe('avatarImageService', () => {
       expect(canvasSizes).toEqual([
         { width: AVATAR_OUTPUT_WIDTH, height: AVATAR_OUTPUT_HEIGHT },
       ]);
-      expect(drawCalls).toHaveLength(2);
+      expect(drawCalls).toHaveLength(1);
+      const [, x, y, drawnWidth, drawnHeight] = drawCalls[0] as [
+        CanvasImageSource,
+        number,
+        number,
+        number,
+        number,
+      ];
+      expect(drawnWidth).toBeGreaterThanOrEqual(AVATAR_OUTPUT_WIDTH);
+      expect(drawnHeight).toBeGreaterThanOrEqual(AVATAR_OUTPUT_HEIGHT);
+      expect(x).toBeLessThanOrEqual(0);
+      expect(y).toBeLessThanOrEqual(0);
+      expect(x + drawnWidth).toBeGreaterThanOrEqual(AVATAR_OUTPUT_WIDTH);
+      expect(y + drawnHeight).toBeGreaterThanOrEqual(AVATAR_OUTPUT_HEIGHT);
       expect(bitmap.close).toHaveBeenCalledOnce();
     },
   );
