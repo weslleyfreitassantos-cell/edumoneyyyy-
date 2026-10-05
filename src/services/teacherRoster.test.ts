@@ -73,7 +73,7 @@ describe('Teacher Roster Visibility', () => {
       expect(result.totals.students).toBe(2);
     });
 
-    it('should handle offerings in different periods by grouping them properly', async () => {
+    it('should exclude offerings outside the current period before loading rosters', async () => {
       const mockOfferings = {
         data: [
           {
@@ -116,10 +116,13 @@ describe('Teacher Roster Visibility', () => {
         error: null,
       });
 
-      await teacherDashboardService.getDashboard('teacher-1', 'inst-1');
-      
-      // Should group by effective date. Since term-1 and term-2 have different dates, there should be 2 RPC calls.
-      expect(supabase.rpc).toHaveBeenCalledTimes(2);
+      const result = await teacherDashboardService.getDashboard('teacher-1', 'inst-1', '2026-10-05');
+
+      expect(supabase.rpc).toHaveBeenCalledTimes(1);
+      const callArgs = (supabase.rpc as any).mock.calls[0];
+      expect(callArgs[1].target_offering_ids).toEqual(['offering-1']);
+      expect(callArgs[1].effective_date).toBe('2026-10-05');
+      expect(result.offerings.map((offering) => offering.id)).toEqual(['offering-1']);
     });
 
     it('should not mask RPC errors as 0 students', async () => {
