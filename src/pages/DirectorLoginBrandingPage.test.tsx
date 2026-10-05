@@ -265,6 +265,37 @@ describe('DirectorLoginBrandingPage', () => {
     ).toContain('background-image: url("blob:background-preview")');
   });
 
+  it('abre as prévias responsivas com o estado atual sem salvar alterações', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText(/Nome exibido/i), {
+      target: { value: 'Preview Escola Luz' },
+    });
+
+    fireEvent.click(screen.getByRole('button', { name: /Visualizar no desktop/i }));
+
+    expect(screen.getByRole('dialog')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: /Demonstração do login/i })).toBeTruthy();
+    expect(screen.getByText(/Prévia desktop/i)).toBeTruthy();
+    expect(screen.getByText('Preview Escola Luz')).toBeTruthy();
+    expect(screen.getByRole('img', { name: /Logo de Preview Escola Luz/i })).toBeTruthy();
+    expect(screen.getByText('ENTRAR').getAttribute('style')).toContain('linear-gradient');
+    expect(screen.getByText(/Esta é uma demonstração visual do login/i)).toBeTruthy();
+    expect(mockedUpdateInstitutionBranding).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole('button', { name: /Voltar para personalização/i }));
+
+    expect(screen.getByRole('heading', { name: /Personalizar login/i })).toBeTruthy();
+    expect(screen.queryByRole('dialog')).toBeNull();
+
+    fireEvent.click(screen.getByRole('button', { name: /Visualizar no celular/i }));
+
+    expect(screen.getByText(/Prévia celular/i)).toBeTruthy();
+    expect(screen.getByText('Preview Escola Luz')).toBeTruthy();
+    expect(screen.getByRole('img', { name: /Logo de Preview Escola Luz/i })).toBeTruthy();
+    expect(mockedUpdateInstitutionBranding).not.toHaveBeenCalled();
+  });
+
   it('salva o background pela mutation específica', async () => {
     saveBackground.mockResolvedValue({
       id: 'institution-1',

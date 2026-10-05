@@ -15,6 +15,7 @@ import {
 } from '../../hooks/useAttendance';
 import { useAcademicYears } from '../../hooks/useAcademicTermClosing';
 import { useInstitutionGradeSummary } from '../../hooks/useGrades';
+import { useClassOptions } from '../../hooks/useClasses';
 import { getLocalDateInputValue } from '../../lib/academicTermDates';
 import type { AdminModuleId } from '../../pages/Admin/adminNavigation';
 import type { AcademicYearOption } from '../../services/academicPolicyService';
@@ -25,6 +26,7 @@ import {
   countPendingAcademicItems,
   DEFAULT_PANORAMA_PERIOD,
   mergeStudentSignals,
+  mergePanoramaClassOptions,
   type PanoramaStudentSituation,
 } from './directorAcademicPanoramaUtils';
 
@@ -332,12 +334,12 @@ export default function DirectorAcademicPanorama({
   const attendanceQuery = useInstitutionAttendanceSummary(queryInstitutionId, filters);
   const pendingAttendanceQuery = useInstitutionPendingAttendanceSummary(queryInstitutionId, filters);
   const gradesQuery = useInstitutionGradeSummary(queryInstitutionId, filters);
-  const classes = useMemo(() => {
-    const options = new Map<string, string>();
-    for (const option of attendanceQuery.data?.filters.classes ?? []) options.set(option.id, option.label);
-    for (const option of gradesQuery.data?.filters.classes ?? []) options.set(option.id, option.label);
-    return Array.from(options.entries()).sort((first, second) => first[1].localeCompare(second[1], 'pt-BR'));
-  }, [attendanceQuery.data?.filters.classes, gradesQuery.data?.filters.classes]);
+  const classOptionsQuery = useClassOptions(institutionId);
+  const classes = useMemo(() => mergePanoramaClassOptions(
+    classOptionsQuery.data?.map((option) => ({ id: option.id, label: option.name })) ?? [],
+    attendanceQuery.data?.filters.classes ?? [],
+    gradesQuery.data?.filters.classes ?? [],
+  ), [attendanceQuery.data?.filters.classes, classOptionsQuery.data, gradesQuery.data?.filters.classes]);
   const attendanceTrend = useMemo(() => buildWeeklyAttendanceTrend(attendanceQuery.data?.sessions ?? []), [attendanceQuery.data?.sessions]);
   const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.studentPerformance ?? []), [gradesQuery.data?.studentPerformance]);
   const studentSummaries = useMemo(() => buildStudentSituationSummary(mergeStudentSignals(attendanceQuery.data?.sessions ?? [], gradesQuery.data?.studentPerformance ?? [])), [attendanceQuery.data?.sessions, gradesQuery.data?.studentPerformance]);
@@ -349,7 +351,7 @@ export default function DirectorAcademicPanorama({
   const attendanceLoading = !attendanceQuery.data && attendanceQuery.isPending;
   const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
   const attentionLoading = !attendanceQuery.data && !gradesQuery.data && (attendanceQuery.isPending || gradesQuery.isPending);
-  const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError;
+  const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
 
   return (
     <section aria-labelledby="director-academic-panorama-heading" className="space-y-5">

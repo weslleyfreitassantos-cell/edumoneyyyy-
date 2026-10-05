@@ -12,6 +12,7 @@ import {
   classifyStudentSituation,
   countPendingAcademicItems,
   DEFAULT_PANORAMA_PERIOD,
+  mergePanoramaClassOptions,
 } from './directorAcademicPanoramaUtils';
 
 function session(
@@ -143,6 +144,17 @@ describe('director academic panorama helpers', () => {
 
   it('usa o ano letivo como período inicial do panorama', () => {
     expect(DEFAULT_PANORAMA_PERIOD).toBe('year');
+  });
+
+  it('mantém turmas sem lançamentos no filtro do panorama', () => {
+    expect(mergePanoramaClassOptions(
+      [{ id: 'class-2', label: '2ª Série A' }],
+      [{ id: 'class-1', label: '1ª Série A' }],
+      [{ id: 'class-2', label: '2ª Série A' }],
+    )).toEqual([
+      ['class-1', '1ª Série A'],
+      ['class-2', '2ª Série A'],
+    ]);
   });
 
   it('agrega frequência semanal contando atraso como presença', () => {

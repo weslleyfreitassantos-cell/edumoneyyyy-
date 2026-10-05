@@ -49,7 +49,31 @@ export interface StudentSituationSummary {
   count: number;
 }
 
+export interface PanoramaClassOption {
+  id: string;
+  label: string;
+}
+
 export const DEFAULT_PANORAMA_PERIOD = 'year' as const;
+
+export function mergePanoramaClassOptions(
+  ...groups: readonly PanoramaClassOption[][]
+): Array<[string, string]> {
+  const options = new Map<string, string>();
+
+  for (const group of groups) {
+    for (const option of group) {
+      const label = option.label.trim();
+      if (option.id && label) {
+        options.set(option.id, label);
+      }
+    }
+  }
+
+  return Array.from(options.entries()).sort((first, second) =>
+    first[1].localeCompare(second[1], 'pt-BR'),
+  );
+}
 
 function parseDateKey(value: string): Date {
   const [year, month, day] = value.slice(0, 10).split('-').map(Number);

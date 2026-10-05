@@ -62,6 +62,11 @@ export interface ClassRow {
   updated_at?: string;
 }
 
+export interface ClassOption {
+  id: string;
+  name: string;
+}
+
 export interface ClassDeletionImpact {
   enrollmentCount: number;
   offeringCount: number;
@@ -197,6 +202,23 @@ function normalizeClass(
 }
 
 export const classService = {
+  async listOptions(
+    institutionId: string,
+  ): Promise<ClassOption[]> {
+    const { data, error } = await supabase
+      .from('classes')
+      .select('id, name')
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .order('name', { ascending: true });
+
+    if (error) {
+      throw error;
+    }
+
+    return (data ?? []) as ClassOption[];
+  },
+
   async list(
     institutionId: string,
   ): Promise<ClassRow[]> {

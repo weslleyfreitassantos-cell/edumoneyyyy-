@@ -5,13 +5,19 @@ import {
   Globe,
   Image as ImageIcon,
   Loader2,
+  Monitor,
   Palette,
+  Smartphone,
   Upload,
   Trash2,
 } from 'lucide-react';
 
 import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
+import {
+  LoginBrandingDemoScreen,
+  type LoginBrandingPreviewMode,
+} from '../components/branding/LoginBrandingDemoScreen';
 import { updateInstitutionBranding } from '../services/institutionService';
 import {
   useRemoveInstitutionBackground,
@@ -76,6 +82,7 @@ export function DirectorLoginBrandingPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [previewMode, setPreviewMode] = useState<LoginBrandingPreviewMode | null>(null);
 
   useEffect(() => {
     setLoginDisplayName(
@@ -359,6 +366,20 @@ export function DirectorLoginBrandingPage() {
   const previewPrimary = primaryColor || DEFAULT_PRIMARY;
   const previewSecondary = secondaryColor || DEFAULT_SECONDARY;
   const previewBackground = backgroundPreviewUrl ?? savedBackgroundUrl;
+
+  if (previewMode) {
+    return (
+      <LoginBrandingDemoScreen
+        mode={previewMode}
+        displayName={previewDisplayName}
+        primaryColor={previewPrimary}
+        secondaryColor={previewSecondary}
+        logoUrl={logoPreviewUrl ?? savedLogoUrl}
+        backgroundUrl={previewBackground}
+        onClose={() => setPreviewMode(null)}
+      />
+    );
+  }
 
   return (
     <main className="min-h-screen bg-slate-50 p-6 dark:bg-slate-900">
@@ -733,6 +754,24 @@ export function DirectorLoginBrandingPage() {
                 </div>
               </div>
               </div>
+            </div>
+            <div className="mt-4 flex flex-col gap-2 border-t border-slate-200 pt-4 sm:flex-row dark:border-slate-700">
+              <button
+                type="button"
+                onClick={() => setPreviewMode('desktop')}
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+              >
+                <Monitor className="h-4 w-4" aria-hidden="true" />
+                Visualizar no desktop
+              </button>
+              <button
+                type="button"
+                onClick={() => setPreviewMode('mobile')}
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+              >
+                <Smartphone className="h-4 w-4" aria-hidden="true" />
+                Visualizar no celular
+              </button>
             </div>
           </div>
         </div>
