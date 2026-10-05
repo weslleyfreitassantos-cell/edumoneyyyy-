@@ -30,6 +30,10 @@ import type { DatabaseRole } from '../../../lib/roles';
 
 import AdminOverviewTab from './AdminOverviewTab';
 
+vi.mock('../../../components/dashboard/DirectorAcademicPanorama', () => ({
+  default: () => <div data-testid="director-academic-panorama" />,
+}));
+
 vi.mock('../../../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
 }));
@@ -215,7 +219,8 @@ describe('AdminOverviewTab', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: 'Resumo da escola' })).toBeTruthy();
+    expect(screen.getByTestId('director-academic-panorama')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Resumo da escola' })).toBeNull();
     expect(screen.getByRole('heading', { name: 'Resumo operacional' })).toBeTruthy();
     expect(screen.getByText('842')).toBeTruthy();
     expect(screen.getByText('47')).toBeTruthy();

@@ -344,9 +344,18 @@ export interface InstitutionAssessmentResult {
   averagePercent: number | null;
 }
 
+export interface InstitutionStudentPerformance {
+  studentId: string;
+  studentName: string;
+  classId: string;
+  className: string;
+  performancePercent: number | null;
+}
+
 export interface InstitutionGradeSummary {
   summary: GradeSummary;
   assessments: InstitutionAssessmentResult[];
+  studentPerformance: InstitutionStudentPerformance[];
   filters: {
     terms: GradeFilterOption[];
     classes: GradeFilterOption[];
@@ -1637,6 +1646,96 @@ function filterInstitutionAssessments(
   });
 }
 
+function buildInstitutionStudentPerformance(
+  filteredResults: readonly InstitutionAssessmentResult[],
+  assessments: readonly {
+    assessment: AssessmentRecord;
+    grades: GradeQueryRow[];
+  }[],
+  enrollmentRows: readonly EnrollmentQueryRow[],
+  institutionId: string,
+  studentId?: string,
+): InstitutionStudentPerformance[] {
+  const assessmentById = new Map(
+    assessments.map((entry) => [entry.assessment.id, entry]),
+  );
+  const inputsByStudent = new Map<string, GradeSummaryInput[]>();
+  const metadataByStudent = new Map<string, Omit<InstitutionStudentPerformance, 'performancePercent'>>();
+
+  for (const result of filteredResults) {
+    const offering = result.assessment.offering;
+    const source = assessmentById.get(result.assessment.id);
+
+    if (!offering || !source) {
+      continue;
+    }
+
+    for (const enrollment of enrollmentRows) {
+      const student = normalizeRelation(enrollment.students);
+      const profile = normalizeRelation(student?.profiles);
+
+      if (
+        enrollment.class_id !== offering.classId ||
+        !student ||
+        student.institution_id !== institutionId ||
+        !profile ||
+        !isEnrollmentValidForAssessmentDate(enrollment, result.assessment.assessmentDate) ||
+        (studentId && student.id !== studentId)
+      ) {
+        continue;
+      }
+
+      metadataByStudent.set(student.id, {
+        studentId: student.id,
+        studentName: profile.full_name,
+        classId: offering.classId,
+        className: offering.className,
+      });
+      if (!inputsByStudent.has(student.id)) {
+        inputsByStudent.set(student.id, []);
+      }
+    }
+
+    for (const grade of source.grades) {
+      if (studentId && grade.student_id !== studentId) {
+        continue;
+      }
+
+      const student = normalizeRelation(grade.students);
+      const profile = normalizeRelation(student?.profiles);
+      if (!student || !profile || student.institution_id !== institutionId) {
+        continue;
+      }
+
+      metadataByStudent.set(student.id, {
+        studentId: student.id,
+        studentName: profile.full_name,
+        classId: offering.classId,
+        className: offering.className,
+      });
+      const inputs = inputsByStudent.get(student.id) ?? [];
+      inputs.push({
+        score: grade.score === null ? null : toNumber(grade.score),
+        maxScore: result.assessment.maxScore,
+        weight: result.assessment.weight,
+        status: normalizeGradeStatus(grade.status),
+      });
+      inputsByStudent.set(student.id, inputs);
+    }
+  }
+
+  return Array.from(metadataByStudent.values())
+    .map((student) => ({
+      ...student,
+      performancePercent:
+        calculateGradeSummary(inputsByStudent.get(student.studentId) ?? [])
+          .averagePercent,
+    }))
+    .sort((first, second) =>
+      first.studentName.localeCompare(second.studentName, 'pt-BR'),
+    );
+}
+
 export const gradeService = {
   async listTeacherOfferings(
     profileId: string,
@@ -2312,6 +2411,13 @@ export const gradeService = {
     return {
       summary: calculateGradeSummary(allGradeRecords),
       assessments: filteredResults,
+      studentPerformance: buildInstitutionStudentPerformance(
+        filteredResults,
+        assessments,
+        enrollmentRows,
+        institutionId,
+        filters.studentId,
+      ),
       filters: buildFilterOptions(results, enrollmentRows),
     };
   },
