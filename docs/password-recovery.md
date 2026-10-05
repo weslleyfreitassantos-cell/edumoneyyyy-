@@ -50,3 +50,15 @@ Antes de testar envio real em staging/producao, confirmar no Supabase:
 - template de recuperacao de senha apontando para o callback da aplicacao;
 - SMTP;
 - envio real e abertura do link recebido.
+
+## Template de producao
+
+O template versionado de recuperacao fica em
+`public/auth/recovery.html`. No Supabase self-hosted de producao, o servico
+Auth o consome pelo `templates-server` privado do stack, sem gravar tokens ou
+links no banco. O assunto configurado e `Redefinicao de senha | EduManager`.
+
+O layout do e-mail usa somente CSS inline e o placeholder dinamico
+`{{ .ConfirmationURL }}`. A classificacao como spam depende tambem da
+autenticacao do dominio remetente (SPF, DKIM e DMARC) e da reputacao do
+provedor SMTP; o template, sozinho, nao garante entrega na caixa principal.
