@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabaseClient';
 import {
+  afterEach,
   beforeEach,
   describe,
   expect,
@@ -8,6 +9,7 @@ import {
 } from 'vitest';
 import {
   ProfileServiceError,
+  getCurrentProfileAvatarPath,
   removeCurrentProfileAvatar,
   resolveCurrentProfileAvatar,
   updateCurrentProfileAvatar,
@@ -44,6 +46,10 @@ vi.mock('./avatarImageService', async () => {
 describe('profileService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
   });
 
   it('atualiza somente full_name do usuário autenticado e retorna o perfil', async () => {
@@ -291,7 +297,7 @@ describe('profileService', () => {
     expect(remove).toHaveBeenCalledWith(['user-1/avatar.webp']);
   });
 
-  it('não assina path de outro usuário e mantém URL HTTPS legada', async () => {
+  it('aceita somente a referência canônica do próprio usuário', async () => {
     const createSignedUrl = vi.fn();
     vi.mocked(supabase.storage.from).mockReturnValue({ createSignedUrl } as never);
 
@@ -303,8 +309,46 @@ describe('profileService', () => {
         'https://legacy.example/avatar.jpg',
         'user-1',
       ),
-    ).resolves.toBe('https://legacy.example/avatar.jpg');
+    ).resolves.toBeNull();
+    await expect(
+      resolveCurrentProfileAvatar(
+        'https://storage.example/storage/v1/object/sign/other-bucket/user-1/avatar.webp?token=abc',
+        'user-1',
+      ),
+    ).resolves.toBeNull();
+    await expect(
+      resolveCurrentProfileAvatar(
+        'https://storage.example/storage/v1/object/sign/profile-avatars/user-2/avatar.webp?token=abc',
+        'user-1',
+      ),
+    ).resolves.toBeNull();
+    expect(getCurrentProfileAvatarPath('user-1/avatar.webp', 'user-1')).toBe(
+      'user-1/avatar.webp',
+    );
     expect(createSignedUrl).not.toHaveBeenCalled();
+  });
+
+  it('renova uma URL legada somente quando ela aponta ao objeto canônico do mesmo usuário', async () => {
+    vi.stubEnv('VITE_SUPABASE_URL', 'https://api.example.com');
+    const createSignedUrl = vi.fn().mockResolvedValue({
+      data: { signedUrl: 'https://api.example.com/storage/v1/object/sign/profile-avatars/user-1/avatar.webp?token=new' },
+      error: null,
+    });
+    vi.mocked(supabase.storage.from).mockReturnValue({ createSignedUrl } as never);
+
+    await expect(
+      resolveCurrentProfileAvatar(
+        'https://api.example.com/storage/v1/object/sign/profile-avatars/user-1/avatar.webp?token=old',
+        'user-1',
+      ),
+    ).resolves.toBe(
+      'https://api.example.com/storage/v1/object/sign/profile-avatars/user-1/avatar.webp?token=new',
+    );
+    expect(getCurrentProfileAvatarPath(
+      'https://api.example.com/storage/v1/object/public/profile-avatars/user-1/avatar.webp',
+      'user-1',
+    )).toBe('user-1/avatar.webp');
+    expect(createSignedUrl).toHaveBeenCalledWith('user-1/avatar.webp', 3600);
   });
 
   it('limpa o objeto se a RPC de perfil falhar', async () => {

@@ -39,6 +39,7 @@ import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummary
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import AcademicStudentContext from './academic/AcademicStudentContext';
 import StudentReportCard from './academic/StudentReportCard';
+import ProfileHeroAvatar from './ProfileHeroAvatar';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
@@ -521,21 +522,16 @@ export default function StudentDashboard() {
             </h1>
           </div>
 
-          <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20">
-            {avatarUrl ? (
-              <img
-                className="h-full w-full object-fill"
-                src={avatarUrl}
-                alt={`Foto de ${profile.full_name}`}
-                referrerPolicy="no-referrer"
-              />
-            ) : (
+          <ProfileHeroAvatar
+            avatarUrl={avatarUrl}
+            fullName={profile.full_name}
+            fallback={
               <GraduationCap
                 className="h-8 w-8"
                 aria-hidden="true"
               />
-            )}
-          </div>
+            }
+          />
         </div>
       </section>
 

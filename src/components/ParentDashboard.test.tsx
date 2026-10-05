@@ -165,6 +165,40 @@ describe('ParentDashboard', () => {
     ).toBeTruthy();
   });
 
+  it('exibe o avatar do responsável no slot 3:4 compartilhado', () => {
+    vi.mocked(useAuth).mockReturnValue({
+      profile: {
+        id: 'guardian-1',
+        full_name: 'Responsável Teste',
+        email: 'guardian@example.com',
+        avatar_url: 'https://storage.example/guardian.webp',
+        role: 'GUARDIAN',
+        platform_role: 'USER',
+      },
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <ParentDashboard />
+      </MemoryRouter>,
+    );
+
+    const image = screen.getByRole('img', { name: 'Foto de Responsável Teste' });
+    expect(image.className).toContain('object-cover');
+    expect(image.parentElement?.className).toContain('aspect-[3/4]');
+    expect(image.parentElement?.className).toContain('w-24');
+  });
+
+  it('mantém o fallback do responsável quando não há avatar', () => {
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <ParentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole('img')).toBeNull();
+  });
+
   it('troca o dependente e atualiza o painel acadêmico dedicado', () => {
     render(
       <MemoryRouter initialEntries={['/guardian/grades?student=student-2']}>
