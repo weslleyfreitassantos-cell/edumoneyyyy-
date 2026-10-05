@@ -10,6 +10,7 @@ import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   classService,
   type ClassDeletionImpact,
+  type ClassOption,
   type ClassRow,
 } from '../services/classService';
 
@@ -27,6 +28,9 @@ export const classKeys = {
       institutionId,
     ] as const,
 
+  options: (institutionId: string) =>
+    [...classKeys.all, 'options', institutionId] as const,
+
   deletionImpact: (institutionId: string, classId: string) =>
     [...classKeys.all, 'deletion-impact', institutionId, classId] as const,
 };
@@ -42,6 +46,9 @@ function invalidateClasses(
       queryKey: classKeys.list(
         institutionId,
       ),
+    }),
+    queryClient.invalidateQueries({
+      queryKey: classKeys.options(institutionId),
     }),
     queryClient.invalidateQueries({
       queryKey:
@@ -61,6 +68,17 @@ export function useClasses(
     queryFn: () =>
       classService.list(institutionId),
     enabled: Boolean(institutionId),
+  });
+}
+
+export function useClassOptions(
+  institutionId: string,
+) {
+  return useQuery<ClassOption[]>({
+    queryKey: classKeys.options(institutionId),
+    queryFn: () => classService.listOptions(institutionId),
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 60 * 5,
   });
 }
 
