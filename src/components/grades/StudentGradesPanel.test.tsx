@@ -42,6 +42,14 @@ const record = {
   recordedAt: '2026-09-10T10:00:00Z',
 };
 
+const records = Array.from({ length: 8 }, (_, index) => ({
+  ...record,
+  assessmentId: `assessment-${index + 1}`,
+  gradeId: `grade-${index + 1}`,
+  title: index === 6 ? 'Avaliação I' : `Prova de álgebra ${index + 1}`,
+  subjectName: index === 7 ? 'História' : 'Matemática',
+}));
+
 beforeEach(() => {
   vi.clearAllMocks();
 });
@@ -51,9 +59,9 @@ afterEach(() => {
 });
 
 describe('StudentGradesPanel', () => {
-  it('mostra os indicadores úteis e apenas a nota acadêmica da avaliação', () => {
+  it('mostra todas as avaliações com busca e paginação', () => {
     vi.mocked(useStudentGradeSummary).mockReturnValue({
-      data: { summary, records: [record], recentRecords: [record] },
+      data: { summary, records, recentRecords: records.slice(0, 6) },
       isLoading: false,
       isError: false,
       error: null,
@@ -68,18 +76,46 @@ describe('StudentGradesPanel', () => {
     );
 
     expect(screen.getByRole('heading', { name: 'Avaliações publicadas' })).toBeTruthy();
-    expect(screen.getByText('Avaliações recentes')).toBeTruthy();
-    expect(screen.getByText('Prova de álgebra')).toBeTruthy();
-    expect(screen.getByText('Nota')).toBeTruthy();
-    expect(screen.getByText('Situação')).toBeTruthy();
-    expect(screen.getByText('Lançada')).toBeTruthy();
+    expect(screen.getByText('Todas as avaliações')).toBeTruthy();
+    expect(screen.queryByText('Avaliações recentes')).toBeNull();
+    expect(screen.getByRole('searchbox', { name: 'Buscar avaliação' })).toBeTruthy();
+    expect(screen.getByPlaceholderText('Nome da avaliação ou disciplina')).toBeTruthy();
+    expect(screen.getByText('Prova de álgebra 1')).toBeTruthy();
+    expect(screen.getByText('Prova de álgebra 6')).toBeTruthy();
+    expect(screen.queryByText('Avaliação I')).toBeNull();
+    expect(screen.getByText('Mostrando 1–6 de 8')).toBeTruthy();
+    expect(screen.getByText('Página 1 de 2')).toBeTruthy();
+    expect(screen.getAllByText('Nota')).toHaveLength(6);
+    expect(screen.getAllByText('Situação')).toHaveLength(6);
+    expect(screen.getAllByText('Lançada')).toHaveLength(6);
     expect(screen.getByText('Média ponderada')).toBeTruthy();
     expect(screen.queryByText('Média simples')).toBeNull();
     expect(screen.queryByText('Avaliações registradas')).toBeNull();
     expect(screen.getByText('Avaliações pendentes')).toBeTruthy();
     expect(screen.getByText('70%')).toBeTruthy();
-    expect(screen.getByText('8,5/10')).toBeTruthy();
+    expect(screen.getAllByText('8,5/10')).toHaveLength(6);
     expect(screen.queryByText('85%')).toBeNull();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima página' }));
+    expect(screen.getByText('Avaliação I')).toBeTruthy();
+    expect(screen.getByText('Mostrando 7–8 de 8')).toBeTruthy();
+
+    fireEvent.change(screen.getByRole('searchbox', { name: 'Buscar avaliação' }), {
+      target: { value: 'avaliacao i' },
+    });
+    expect(screen.getByText('Avaliação I')).toBeTruthy();
+
+    fireEvent.change(screen.getByRole('searchbox', { name: 'Buscar avaliação' }), {
+      target: { value: 'matematica' },
+    });
+    expect(screen.getByText('Prova de álgebra 2')).toBeTruthy();
+    expect(screen.getByText('Mostrando 1–6 de 7')).toBeTruthy();
+    expect(screen.getByText('Página 1 de 2')).toBeTruthy();
+
+    fireEvent.change(screen.getByRole('searchbox', { name: 'Buscar avaliação' }), {
+      target: { value: 'nao existe' },
+    });
+    expect(screen.getByText('Nenhuma avaliação encontrada.')).toBeTruthy();
   });
 
   it('mostra loading, erro de forma segura com recuperação e estado vazio', () => {

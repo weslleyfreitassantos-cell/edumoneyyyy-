@@ -2,7 +2,9 @@ import {
   BookMarked,
   CalendarDays,
 } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
 
+import { ListPagination, ListSearch, normalizeListSearch } from '../ListControls';
 import { useStudentGradeSummary } from '../../hooks/useGrades';
 import {
   ASSESSMENT_TYPE_LABELS,
@@ -13,6 +15,12 @@ import {
 } from './gradeDisplay';
 import GradeSummaryCard from './GradeSummaryCard';
 import { getUserFacingErrorMessage } from '../../lib/userFacingError';
+
+const PAGE_SIZE = 6;
+
+function normalizeGradeSearch(value: string): string {
+  return normalizeListSearch(value).replace(/\s+/g, ' ');
+}
 
 export default function StudentGradesPanel({
   institutionId,
@@ -27,6 +35,40 @@ export default function StudentGradesPanel({
     institutionId,
     studentId,
   );
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setSearchTerm('');
+    setCurrentPage(1);
+  }, [studentId]);
+
+  const records = gradesQuery.data?.records ?? [];
+  const normalizedSearch = normalizeGradeSearch(searchTerm);
+  const filteredRecords = useMemo(
+    () => records.filter((record) => {
+      if (!normalizedSearch) return true;
+      const searchableText = normalizeGradeSearch(
+        `${record.title} ${record.subjectName}`,
+      );
+      return searchableText.includes(normalizedSearch);
+    }),
+    [normalizedSearch, records],
+  );
+  const totalPages = Math.max(1, Math.ceil(filteredRecords.length / PAGE_SIZE));
+  const pageRecords = filteredRecords.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
+
+  const setSearch = (value: string) => {
+    setSearchTerm(value);
+    setCurrentPage(1);
+  };
 
   return (
     <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
@@ -75,12 +117,24 @@ export default function StudentGradesPanel({
 
             <div>
               <h3 className="text-sm font-bold uppercase tracking-wide text-[#005bbf] dark:text-blue-300">
-                Avaliações recentes
+                Todas as avaliações
               </h3>
 
-              <div className="mt-3 divide-y divide-[#eef1f5] rounded-lg border border-[#dfe3e8] dark:divide-slate-700 dark:border-slate-700">
-                {gradesQuery.data.recentRecords.map(
-                  (record) => (
+              <ListSearch
+                id="student-grades-search"
+                label="Buscar avaliação"
+                placeholder="Nome da avaliação ou disciplina"
+                value={searchTerm}
+                onChange={setSearch}
+              />
+
+              {filteredRecords.length === 0 ? (
+                <div role="status" className="mt-3 rounded-lg border border-dashed border-[#c1c6d6] p-6 text-center text-sm text-[#727785] dark:border-slate-700 dark:text-slate-400">
+                  Nenhuma avaliação encontrada.
+                </div>
+              ) : (
+                <div className="mt-3 divide-y divide-[#eef1f5] rounded-lg border border-[#dfe3e8] dark:divide-slate-700 dark:border-slate-700">
+                  {pageRecords.map((record) => (
                     <div
                       key={record.assessmentId}
                       className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between"
@@ -133,9 +187,20 @@ export default function StudentGradesPanel({
                         </div>
                       </div>
                     </div>
-                  ),
-                )}
-              </div>
+                  ))}
+                </div>
+              )}
+
+              {filteredRecords.length > 0 ? (
+                <div className="mt-3">
+                  <ListPagination
+                    page={currentPage}
+                    pageSize={PAGE_SIZE}
+                    totalItems={filteredRecords.length}
+                    onPageChange={setCurrentPage}
+                  />
+                </div>
+              ) : null}
             </div>
           </div>
         )}
