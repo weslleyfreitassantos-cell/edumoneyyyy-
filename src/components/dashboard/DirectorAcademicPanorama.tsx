@@ -25,7 +25,6 @@ import {
   buildWeeklyAttendanceTrend,
   countPendingAcademicItems,
   DEFAULT_PANORAMA_PERIOD,
-  getAttendanceChartDomain,
   mergeStudentSignals,
   mergePanoramaClassOptions,
   getPanoramaMetricDisplay,
@@ -192,7 +191,24 @@ function EmptyChart({ children = 'Sem dados no período selecionado.' }: { child
 }
 
 function LoadingChart() {
-  return <div className="h-56 animate-pulse rounded-xl bg-slate-100 dark:bg-slate-800" role="status" aria-label="Carregando dados" />;
+  return (
+    <div
+      className="rounded-xl border border-[#e5eaf0] bg-slate-50/70 p-4 dark:border-slate-700 dark:bg-slate-950/30"
+      role="status"
+      aria-label="Carregando dados"
+    >
+      <div className="flex h-44 items-end gap-3 px-3 pb-7 pt-3">
+        {[42, 68, 54, 76, 61, 84, 72].map((height, index) => (
+          <span
+            key={index}
+            className="w-full animate-pulse rounded-t-md bg-slate-200 dark:bg-slate-700"
+            style={{ height: `${height}%` }}
+          />
+        ))}
+      </div>
+      <p className="text-center text-xs text-[#667085] dark:text-slate-400">Carregando dados do gráfico...</p>
+    </div>
+  );
 }
 
 function AttendanceTrend({
@@ -207,48 +223,17 @@ function AttendanceTrend({
   if (loading) return <LoadingChart />;
   if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
   if (sessions.length === 0) return <EmptyChart />;
-  const width = 720;
-  const height = 232;
-  const chartLeft = 52;
-  const chartRight = width - 20;
-  const chartTop = 16;
-  const chartBottom = 170;
-  const chartWidth = chartRight - chartLeft;
-  const chartHeight = chartBottom - chartTop;
-  const domain = getAttendanceChartDomain(sessions);
-  const xStep = sessions.length === 1 ? 0 : chartWidth / (sessions.length - 1);
-  const xFor = (index: number) => chartLeft + index * xStep;
-  const yFor = (value: number) => chartBottom - ((value - domain.min) / (domain.max - domain.min)) * chartHeight;
-  const coordinates = sessions.map((point, index) => ({
-    x: xFor(index),
-    y: yFor(point.attendanceRate),
-  }));
-  const linePath = coordinates.map(({ x, y }, index) => `${index === 0 ? 'M' : 'L'} ${x} ${y}`).join(' ');
-  const areaPath = `M ${chartLeft} ${chartBottom} ${coordinates.map(({ x, y }) => `L ${x} ${y}`).join(' ')} L ${xFor(sessions.length - 1)} ${chartBottom} Z`;
-  const referenceY = yFor(75);
-  const targetInDomain = 75 >= domain.min && 75 <= domain.max;
-  const tickValues = Array.from(new Set([
-    domain.max,
-    Math.round(((domain.min + domain.max) / 2) / 5) * 5,
-    75,
-    domain.min,
-  ])).filter((value) => value >= domain.min && value <= domain.max).sort((first, second) => second - first);
-  const labelIndexes = sessions.length <= 2
-    ? sessions.map((_, index) => index)
-    : [0, Math.floor((sessions.length - 1) / 2), sessions.length - 1];
   const latest = sessions[sessions.length - 1];
-  const latestPoint = coordinates[coordinates.length - 1];
   const latestDelta = Math.round((latest.attendanceRate - 75) * 10) / 10;
   const latestStatus = latestDelta >= 0 ? 'Acima da meta' : 'Abaixo da meta';
   const latestStatusClass = latestDelta >= 0
     ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'
     : 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300';
-  const latestLabelWidth = 82;
-  const latestLabelX = Math.min(
-    Math.max(chartLeft, latestPoint.x - latestLabelWidth + 8),
-    chartRight - latestLabelWidth,
-  );
-  const latestLabelY = Math.max(2, latestPoint.y - 34);
+  const labelIndexes = sessions.length <= 2
+    ? sessions.map((_, index) => index)
+    : [0, Math.floor((sessions.length - 1) / 2), sessions.length - 1];
+  const chartMinWidth = Math.max(640, sessions.length * 22);
+  const guideValues = [100, 75, 50, 25, 0];
 
   return (
     <div className="space-y-3">
@@ -263,50 +248,54 @@ function AttendanceTrend({
           {latestStatus}
         </span>
       </div>
-      <div className="rounded-xl border border-[#e5eaf0] bg-slate-50/70 px-2 py-3 dark:border-slate-700 dark:bg-slate-950/30 sm:px-3">
-        <svg viewBox={`0 0 ${width} ${height}`} className="h-56 w-full" role="img" aria-label="Frequência média semanal">
-        <defs>
-          <linearGradient id="attendance-area-fill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#1677c8" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#1677c8" stopOpacity="0.02" />
-          </linearGradient>
-        </defs>
-        {tickValues.map((value) => {
-          const y = yFor(value);
-          return (
-            <g key={value}>
-              <line x1={chartLeft} x2={chartRight} y1={y} y2={y} stroke={value === 75 ? '#d99a2b' : '#dfe6ee'} strokeDasharray={value === 75 ? '6 5' : undefined} strokeWidth={value === 75 ? '1.5' : '1'} />
-              <text x={chartLeft - 12} y={y + 4} fill="#667085" fontSize="11" fontWeight={value === 75 ? '700' : '400'} textAnchor="end">{value}%</text>
-            </g>
-          );
-        })}
-        <path d={areaPath} fill="url(#attendance-area-fill)" />
-        <path d={linePath} fill="none" stroke="#0b67b2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3.5" />
-        {sessions.map((point, index) => {
-          const { x, y } = coordinates[index];
-          const isLatest = index === sessions.length - 1;
-          return (
-            <g key={point.key}>
-              {isLatest && <circle cx={x} cy={y} r="9" fill="#0b67b2" opacity="0.13" />}
-              <circle cx={x} cy={y} r={isLatest ? '5' : '4'} fill="#0b67b2" stroke="white" strokeWidth="2">
-                <title>{`${point.label}: ${formatPercent(point.attendanceRate)} (${point.totalRecords} registros)`}</title>
-              </circle>
-            </g>
-          );
-        })}
-        {labelIndexes.map((index) => (
-          <text key={sessions[index].key} x={xFor(index)} y="207" fill="#667085" fontSize="11" textAnchor={index === 0 ? 'start' : index === sessions.length - 1 ? 'end' : 'middle'}>{sessions[index].label}</text>
-        ))}
-        {targetInDomain && (
-          <text x={chartRight} y={referenceY - 8} fill="#a66b06" fontSize="11" fontWeight="700" textAnchor="end">Meta 75%</text>
-        )}
-        <g transform={`translate(${latestLabelX}, ${latestLabelY})`}>
-          <rect width={latestLabelWidth} height="22" rx="11" fill="#0b67b2" />
-          <text x={latestLabelWidth / 2} y="15" fill="white" fontSize="11" fontWeight="700" textAnchor="middle">{formatPercent(latest.attendanceRate)}</text>
-        </g>
-        </svg>
+      <div className="overflow-x-auto rounded-xl border border-[#e5eaf0] bg-slate-50/70 px-2 py-3 dark:border-slate-700 dark:bg-slate-950/30 sm:px-3">
+        <div
+          className="relative h-64"
+          style={{ minWidth: `${chartMinWidth}px` }}
+          role="img"
+          aria-label="Frequência média semanal em barras"
+        >
+          <div className="pointer-events-none absolute inset-x-10 bottom-10 top-3">
+            {guideValues.map((value) => (
+              <div
+                key={value}
+                className="absolute inset-x-0 flex -translate-y-1/2 items-center gap-2"
+                style={{ bottom: `${value}%` }}
+              >
+                <span className={`w-8 text-right text-[10px] ${value === 75 ? 'font-bold text-[#a66b06]' : 'text-[#98a2b3]'}`}>{value}%</span>
+                <span className={`h-px flex-1 ${value === 75 ? 'border-t border-dashed border-[#d99a2b]' : 'bg-[#dfe6ee] dark:bg-slate-700'}`} />
+              </div>
+            ))}
+          </div>
+          <div className="absolute inset-x-10 bottom-10 top-3 flex items-end gap-2">
+            {sessions.map((point, index) => {
+              const rate = Math.max(0, Math.min(100, point.attendanceRate));
+              const isLatest = index === sessions.length - 1;
+              const barClass = isLatest
+                ? 'bg-[#005bbf]'
+                : rate >= 75
+                  ? 'bg-[#3b82f6]'
+                  : 'bg-[#d99a2b]';
+              return (
+                <div key={point.key} className="flex h-full min-w-3 flex-1 items-end" title={`${point.label}: ${formatPercent(point.attendanceRate)} (${point.totalRecords} registros)`}>
+                  <span
+                    className={`block w-full rounded-t-md transition-[height] ${barClass}`}
+                    style={{ height: `${Math.max(4, rate)}%` }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <div className="absolute inset-x-10 bottom-0 flex items-start gap-2">
+            {sessions.map((point, index) => (
+              <span key={point.key} className="min-w-3 flex-1 text-center text-[10px] text-[#667085] dark:text-slate-400">
+                {labelIndexes.includes(index) ? point.label : ''}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
-      <p className="text-xs text-[#667085] dark:text-slate-400">Média calculada sobre registros lançados; atrasos contam como presença.</p>
+      <p className="text-xs text-[#667085] dark:text-slate-400">Cada barra representa uma semana; atrasos contam como presença. Passe o cursor sobre uma barra para ver os registros.</p>
     </div>
   );
 }

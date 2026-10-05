@@ -2668,221 +2668,229 @@ export const attendanceService = {
     institutionId: string,
     filters: AttendanceInstitutionFilters = {},
   ): Promise<InstitutionAttendanceSummary> {
-    const fromDate =
-      filters.fromDate ?? '1900-01-01';
-    const toDate =
-      filters.toDate ?? '2999-12-31';
+    return withAcademicReadTimeout(async (signal) => {
+      const fromDate =
+        filters.fromDate ?? '1900-01-01';
+      const toDate =
+        filters.toDate ?? '2999-12-31';
 
-    if (filters.sessionIds?.length === 0) {
-      return {
-        summary: calculateAttendanceSummary([]),
-        sessions: [],
-        filters: buildFilterOptions([]),
-      };
-    }
+      if (filters.sessionIds?.length === 0) {
+        return {
+          summary: calculateAttendanceSummary([]),
+          sessions: [],
+          filters: buildFilterOptions([]),
+        };
+      }
 
-    if (filters.limit === 0 && !filters.sessionIds) {
-      return {
-        summary: calculateAttendanceSummary([]),
-        sessions: [],
-        filters: buildFilterOptions([]),
-      };
-    }
+      if (filters.limit === 0 && !filters.sessionIds) {
+        return {
+          summary: calculateAttendanceSummary([]),
+          sessions: [],
+          filters: buildFilterOptions([]),
+        };
+      }
 
-    const sessionRows: AttendanceSessionQueryRow[] = [];
-    const sessionIdChunks = filters.sessionIds
-      ? chunkValues(
-          [...filters.sessionIds],
-          ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
-        )
-      : [null];
+      const sessionRows: AttendanceSessionQueryRow[] = [];
+      const sessionIdChunks = filters.sessionIds
+        ? chunkValues(
+            [...filters.sessionIds],
+            ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+          )
+        : [null];
 
-    for (const sessionIdChunk of sessionIdChunks) {
-      let sessionOffset = 0;
-      const hasExplicitLimit =
-        !sessionIdChunk &&
-        filters.limit !== undefined &&
-        filters.limit !== null;
+      for (const sessionIdChunk of sessionIdChunks) {
+        let sessionOffset = 0;
+        const hasExplicitLimit =
+          !sessionIdChunk &&
+          filters.limit !== undefined &&
+          filters.limit !== null;
 
-      while (true) {
-        let sessionQuery = supabase
-          .from('attendance_sessions')
-          .select(ATTENDANCE_SESSION_SUMMARY_FIELDS)
-          .eq('institution_id', institutionId)
-          .gte('session_date', fromDate)
-          .lte('session_date', toDate)
-          .order('session_date', { ascending: false })
-          .order('id', { ascending: false });
+        while (true) {
+          let sessionQuery = supabase
+            .from('attendance_sessions')
+            .select(ATTENDANCE_SESSION_SUMMARY_FIELDS)
+            .eq('institution_id', institutionId)
+            .gte('session_date', fromDate)
+            .lte('session_date', toDate)
+            .order('session_date', { ascending: false })
+            .order('id', { ascending: false });
 
-        if (!filters.includeCanceled) {
-          sessionQuery = sessionQuery.neq('status', 'CANCELED');
+          if (!filters.includeCanceled) {
+            sessionQuery = sessionQuery.neq('status', 'CANCELED');
+          }
+
+          if (sessionIdChunk) {
+            sessionQuery = sessionQuery.in('id', sessionIdChunk);
+          } else if (hasExplicitLimit) {
+            sessionQuery = sessionQuery.limit(filters.limit as number);
+          } else {
+            sessionQuery = sessionQuery.range(
+              sessionOffset,
+              sessionOffset + ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE - 1,
+            );
+          }
+
+          sessionQuery = sessionQuery.abortSignal(signal);
+          const { data, error } = await sessionQuery;
+
+          if (error) {
+            throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+          }
+
+          const page = (data ?? []) as unknown as AttendanceSessionQueryRow[];
+          sessionRows.push(...page);
+
+          if (
+            sessionIdChunk ||
+            hasExplicitLimit ||
+            page.length < ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE
+          ) {
+            break;
+          }
+
+          sessionOffset += ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE;
         }
+      }
 
-        if (sessionIdChunk) {
-          sessionQuery = sessionQuery.in('id', sessionIdChunk);
-        } else if (hasExplicitLimit) {
-          sessionQuery = sessionQuery.limit(filters.limit as number);
-        } else {
-          sessionQuery = sessionQuery.range(
-            sessionOffset,
-            sessionOffset + ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE - 1,
+      if (sessionRows.length === 0) {
+        return {
+          summary: calculateAttendanceSummary([]),
+          sessions: [],
+          filters: buildFilterOptions([]),
+        };
+      }
+
+      const offeringIds = Array.from(
+        new Set(sessionRows.map((row) => row.subject_offering_id)),
+      );
+      const offeringPages = await Promise.all(chunkValues(
+        offeringIds,
+        ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+      ).map(async (offeringIdChunk) => {
+        let offeringQuery = supabase
+          .from('subject_offerings')
+          .select(ATTENDANCE_SUMMARY_OFFERING_FIELDS)
+          .in('id', offeringIdChunk);
+
+        if (filters.classId) {
+          offeringQuery = offeringQuery.eq('class_id', filters.classId);
+        }
+        if (filters.subjectId) {
+          offeringQuery = offeringQuery.eq('subject_id', filters.subjectId);
+        }
+        if (filters.teacherProfileId) {
+          offeringQuery = offeringQuery.eq(
+            'teacher_profile_id',
+            filters.teacherProfileId,
           );
         }
+        if (filters.termId) {
+          offeringQuery = offeringQuery.eq('term_id', filters.termId);
+        }
 
-        const { data, error } = await sessionQuery;
+        offeringQuery = offeringQuery.abortSignal(signal);
+        const { data, error } = await offeringQuery;
 
         if (error) {
           throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
         }
 
-        const page = (data ?? []) as unknown as AttendanceSessionQueryRow[];
-        sessionRows.push(...page);
+        return (data ?? []) as unknown as OfferingQueryRow[];
+      }));
+      const offeringRows = offeringPages.flat();
 
-        if (
-          sessionIdChunk ||
-          hasExplicitLimit ||
-          page.length < ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE
-        ) {
-          break;
+      const sessionIds = sessionRows.map((row) => row.id);
+      const recordPages = await Promise.all(chunkValues(
+        sessionIds,
+        ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+      ).map(async (sessionIdChunk) => {
+        let recordQuery = supabase
+          .from('attendance_records')
+          .select(ATTENDANCE_SUMMARY_RECORD_FIELDS)
+          .eq('institution_id', institutionId)
+          .in('attendance_session_id', sessionIdChunk)
+          .order('created_at', { ascending: true });
+        recordQuery = recordQuery.abortSignal(signal);
+        const { data, error } = await recordQuery;
+
+        if (error) {
+          throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
         }
 
-        sessionOffset += ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE;
-      }
-    }
+        return (data ?? []) as unknown as AttendanceRecordQueryRow[];
+      }));
+      const recordRows = recordPages.flat();
 
-    if (sessionRows.length === 0) {
-      return {
-        summary: calculateAttendanceSummary([]),
-        sessions: [],
-        filters: buildFilterOptions([]),
-      };
-    }
+      const studentIds = Array.from(
+        new Set(recordRows.map((record) => record.student_id)),
+      );
+      const studentPages = await Promise.all(chunkValues(
+        studentIds,
+        ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+      ).map(async (studentIdChunk) => {
+        let studentQuery = supabase
+          .from('students')
+          .select(ATTENDANCE_SUMMARY_STUDENT_FIELDS)
+          .eq('institution_id', institutionId)
+          .in('id', studentIdChunk);
+        studentQuery = studentQuery.abortSignal(signal);
+        const { data, error } = await studentQuery;
 
-    const offeringIds = Array.from(
-      new Set(sessionRows.map((row) => row.subject_offering_id)),
-    );
-    const offeringPages = await Promise.all(chunkValues(
-      offeringIds,
-      ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
-    ).map(async (offeringIdChunk) => {
-      let offeringQuery = supabase
-        .from('subject_offerings')
-        .select(ATTENDANCE_SUMMARY_OFFERING_FIELDS)
-        .in('id', offeringIdChunk);
+        if (error) {
+          throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+        }
 
-      if (filters.classId) {
-        offeringQuery = offeringQuery.eq('class_id', filters.classId);
-      }
-      if (filters.subjectId) {
-        offeringQuery = offeringQuery.eq('subject_id', filters.subjectId);
-      }
-      if (filters.teacherProfileId) {
-        offeringQuery = offeringQuery.eq(
-          'teacher_profile_id',
-          filters.teacherProfileId,
-        );
-      }
-      if (filters.termId) {
-        offeringQuery = offeringQuery.eq('term_id', filters.termId);
-      }
-
-      const { data, error } = await offeringQuery;
-
-      if (error) {
-        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
-      }
-
-      return (data ?? []) as unknown as OfferingQueryRow[];
-    }));
-    const offeringRows = offeringPages.flat();
-
-    const sessionIds = sessionRows.map((row) => row.id);
-    const recordPages = await Promise.all(chunkValues(
-      sessionIds,
-      ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
-    ).map(async (sessionIdChunk) => {
-      const { data, error } = await supabase
-        .from('attendance_records')
-        .select(ATTENDANCE_SUMMARY_RECORD_FIELDS)
-        .eq('institution_id', institutionId)
-        .in('attendance_session_id', sessionIdChunk)
-        .order('created_at', { ascending: true });
-
-      if (error) {
-        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
-      }
-
-      return (data ?? []) as unknown as AttendanceRecordQueryRow[];
-    }));
-    const recordRows = recordPages.flat();
-
-    const studentIds = Array.from(
-      new Set(recordRows.map((record) => record.student_id)),
-    );
-    const studentPages = await Promise.all(chunkValues(
-      studentIds,
-      ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
-    ).map(async (studentIdChunk) => {
-      const { data, error } = await supabase
-        .from('students')
-        .select(ATTENDANCE_SUMMARY_STUDENT_FIELDS)
-        .eq('institution_id', institutionId)
-        .in('id', studentIdChunk);
-
-      if (error) {
-        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
-      }
-
-      return (data ?? []) as unknown as StudentRelation[];
-    }));
-    const studentRows = new Map(
-      studentPages.flat().map((student) => [student.id, student]),
-    );
-
-    const offeringsById = new Map(
-      offeringRows.map((offering) => [offering.id, offering]),
-    );
-    const recordsBySessionId = new Map<string, AttendanceRecordQueryRow[]>();
-
-    for (const record of recordRows) {
-      const records = recordsBySessionId.get(record.attendance_session_id) ?? [];
-      records.push({
-        ...record,
-        students: studentRows.get(record.student_id) ?? null,
-      });
-      recordsBySessionId.set(record.attendance_session_id, records);
-    }
-
-    const sessions = sessionRows
-      .map((row) =>
-        normalizeInstitutionSession(
-          {
-            ...row,
-            subject_offerings:
-              offeringsById.get(row.subject_offering_id) ?? null,
-            attendance_records: recordsBySessionId.get(row.id) ?? [],
-          },
-          institutionId,
-        ),
-      )
-      .filter(
-        (
-          session,
-        ): session is InstitutionAttendanceSession =>
-          session !== null,
+        return (data ?? []) as unknown as StudentRelation[];
+      }));
+      const studentRows = new Map(
+        studentPages.flat().map((student) => [student.id, student]),
       );
 
-    const filteredSessions =
-      filterInstitutionSessions(sessions, filters);
-    const records = filteredSessions.flatMap(
-      (session) => session.records,
-    );
+      const offeringsById = new Map(
+        offeringRows.map((offering) => [offering.id, offering]),
+      );
+      const recordsBySessionId = new Map<string, AttendanceRecordQueryRow[]>();
 
-    return {
-      summary: calculateAttendanceSummary(records),
-      sessions: filteredSessions,
-      filters: buildFilterOptions(sessions),
-    };
+      for (const record of recordRows) {
+        const records = recordsBySessionId.get(record.attendance_session_id) ?? [];
+        records.push({
+          ...record,
+          students: studentRows.get(record.student_id) ?? null,
+        });
+        recordsBySessionId.set(record.attendance_session_id, records);
+      }
+
+      const sessions = sessionRows
+        .map((row) =>
+          normalizeInstitutionSession(
+            {
+              ...row,
+              subject_offerings:
+                offeringsById.get(row.subject_offering_id) ?? null,
+              attendance_records: recordsBySessionId.get(row.id) ?? [],
+            },
+            institutionId,
+          ),
+        )
+        .filter(
+          (
+            session,
+          ): session is InstitutionAttendanceSession =>
+            session !== null,
+        );
+
+      const filteredSessions =
+        filterInstitutionSessions(sessions, filters);
+      const records = filteredSessions.flatMap(
+        (session) => session.records,
+      );
+
+      return {
+        summary: calculateAttendanceSummary(records),
+        sessions: filteredSessions,
+        filters: buildFilterOptions(sessions),
+      };
+    });
   },
 
   async getInstitutionPendingAttendanceSummary(
