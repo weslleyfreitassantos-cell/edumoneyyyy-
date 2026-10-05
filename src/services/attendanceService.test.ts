@@ -1241,4 +1241,92 @@ describe('institution class diary status', () => {
       { id: 'year-1', label: '2026' },
     ]);
   });
+
+  it('decompõe o resumo institucional sem perder a relação da chamada', async () => {
+    const sessionQuery = createQuery({
+      data: [createSession()],
+      error: null,
+    });
+    const offeringQuery = createQuery({
+      data: [attendanceOfferingRow],
+      error: null,
+    });
+    const recordsQuery = createQuery({
+      data: [{
+        id: 'record-1',
+        institution_id: 'institution-1',
+        attendance_session_id: 'session-1',
+        student_id: 'student-1',
+        status: 'PRESENT',
+        notes: null,
+        recorded_by: 'teacher-1',
+        recorded_at: '2026-02-02T10:00:00.000Z',
+        created_at: '2026-02-02T10:00:00.000Z',
+        updated_at: '2026-02-02T10:00:00.000Z',
+      }],
+      error: null,
+    });
+    const studentsQuery = createQuery({
+      data: [{
+        id: 'student-1',
+        profile_id: 'profile-1',
+        institution_id: 'institution-1',
+        registration_number: 'RA-001',
+        active: true,
+        profiles: {
+          full_name: 'Ana Silva',
+          email: 'ana@escola.com',
+          avatar_url: null,
+        },
+      }],
+      error: null,
+    });
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(sessionQuery as never)
+      .mockReturnValueOnce(offeringQuery as never)
+      .mockReturnValueOnce(recordsQuery as never)
+      .mockReturnValueOnce(studentsQuery as never);
+
+    const summary = await attendanceService.getInstitutionAttendanceSummary(
+      'institution-1',
+      { fromDate: '2026-02-01', toDate: '2026-02-28' },
+    );
+
+    expect(summary.sessions).toHaveLength(1);
+    expect(summary.sessions[0].offering.subjectName).toBe('Matemática');
+    expect(summary.sessions[0].records[0]).toMatchObject({
+      studentId: 'student-1',
+      studentName: 'Ana Silva',
+      status: 'PRESENT',
+    });
+    expect(sessionQuery.select).toHaveBeenCalledWith(
+      expect.not.stringContaining('attendance_records'),
+    );
+    expect(supabase.from).toHaveBeenCalledWith('attendance_sessions');
+    expect(supabase.from).toHaveBeenCalledWith('subject_offerings');
+    expect(supabase.from).toHaveBeenCalledWith('attendance_records');
+    expect(supabase.from).toHaveBeenCalledWith('students');
+  });
+
+  it('preserva erro de consulta no resumo em vez de retornar zero', async () => {
+    vi.mocked(supabase.from).mockReturnValueOnce(
+      createQuery({
+        data: null,
+        error: {
+          code: '57014',
+          message: 'canceling statement due to statement timeout',
+        },
+      }) as never,
+    );
+
+    await expect(
+      attendanceService.getInstitutionAttendanceSummary(
+        'institution-1',
+        { fromDate: '2026-02-01', toDate: '2026-12-18' },
+      ),
+    ).rejects.toMatchObject({
+      code: 'ATTENDANCE_FORBIDDEN',
+    } satisfies Partial<AttendanceServiceError>);
+  });
 });

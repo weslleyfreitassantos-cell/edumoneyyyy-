@@ -1417,8 +1417,209 @@ async function getStudentGrades(
   return (data ?? []) as unknown as GradeQueryRow[];
 }
 
+const GRADE_SUMMARY_QUERY_CHUNK_SIZE = 100;
+
+function chunkGradeValues<T>(
+  values: readonly T[],
+  size: number,
+): T[][] {
+  const chunks: T[][] = [];
+
+  for (let index = 0; index < values.length; index += size) {
+    chunks.push(values.slice(index, index + size) as T[]);
+  }
+
+  return chunks;
+}
+
+const GRADE_SUMMARY_ASSESSMENT_FIELDS = `
+  id,
+  institution_id,
+  subject_offering_id,
+  term_id,
+  title,
+  description,
+  assessment_type,
+  assessment_date,
+  max_score,
+  weight,
+  status,
+  created_by,
+  published_at,
+  created_at,
+  updated_at,
+  subject_offerings:subject_offering_id (
+    id,
+    class_id,
+    subject_id,
+    teacher_profile_id,
+    term_id,
+    active,
+    created_at,
+    classes:class_id (
+      id,
+      institution_id,
+      academic_year_id,
+      name,
+      grade_level,
+      shift,
+      active
+    ),
+    subjects:subject_id (
+      id,
+      institution_id,
+      name,
+      code,
+      workload,
+      active
+    ),
+    profiles:teacher_profile_id (
+      full_name,
+      email,
+      active
+    ),
+    terms:term_id (
+      id,
+      academic_year_id,
+      name,
+      active
+    )
+  )
+`;
+
+const GRADE_SUMMARY_GRADE_FIELDS = `
+  id,
+  institution_id,
+  assessment_id,
+  student_id,
+  score,
+  status,
+  feedback,
+  recorded_by,
+  recorded_at,
+  created_at,
+  updated_at
+`;
+
+const GRADE_SUMMARY_ENROLLMENT_FIELDS = `
+  id,
+  student_id,
+  class_id,
+  academic_year_id,
+  status,
+  active,
+  enrolled_at,
+  created_at
+`;
+
+const GRADE_SUMMARY_STUDENT_FIELDS = `
+  id,
+  profile_id,
+  institution_id,
+  registration_number,
+  active,
+  profiles:profile_id (
+    full_name,
+    email,
+    avatar_url
+  )
+`;
+
+async function getInstitutionAssessmentsForSummary(
+  institutionId: string,
+  filters: InstitutionGradeFilters,
+  fromDate: string,
+  toDate: string,
+): Promise<AssessmentWithGradesQueryRow[]> {
+  let eligibleOfferingIds: string[] | null = null;
+
+  if (filters.classId) {
+    const { data, error } = await supabase
+      .from('subject_offerings')
+      .select('id')
+      .eq('class_id', filters.classId);
+
+    if (error) {
+      throw createGradeError(error, 'ASSESSMENT_FORBIDDEN');
+    }
+
+    eligibleOfferingIds = (data ?? []).map((row) => row.id as string);
+
+    if (eligibleOfferingIds.length === 0) {
+      return [];
+    }
+  }
+
+  let assessmentQuery = supabase
+    .from('assessments')
+    .select(GRADE_SUMMARY_ASSESSMENT_FIELDS)
+    .eq('institution_id', institutionId)
+    .neq('status', 'CANCELED')
+    .gte('assessment_date', fromDate)
+    .lte('assessment_date', toDate)
+    .order('assessment_date', { ascending: false })
+    .limit(250);
+
+  if (eligibleOfferingIds) {
+    assessmentQuery = assessmentQuery.in(
+      'subject_offering_id',
+      eligibleOfferingIds,
+    );
+  }
+  if (filters.termId) {
+    assessmentQuery = assessmentQuery.eq('term_id', filters.termId);
+  }
+
+  const { data: assessmentData, error: assessmentError } =
+    await assessmentQuery;
+
+  if (assessmentError) {
+    throw createGradeError(
+      assessmentError,
+      'ASSESSMENT_FORBIDDEN',
+    );
+  }
+
+  const assessmentRows = (assessmentData ?? []) as unknown as AssessmentQueryRow[];
+  const assessmentIds = assessmentRows.map((row) => row.id);
+  const gradesByAssessment = new Map<string, GradeQueryRow[]>();
+
+  for (const assessmentIdChunk of chunkGradeValues(
+    assessmentIds,
+    GRADE_SUMMARY_QUERY_CHUNK_SIZE,
+  )) {
+    let gradeQuery = supabase
+      .from('grades')
+      .select(GRADE_SUMMARY_GRADE_FIELDS)
+      .eq('institution_id', institutionId)
+      .in('assessment_id', assessmentIdChunk);
+
+    if (filters.studentId) {
+      gradeQuery = gradeQuery.eq('student_id', filters.studentId);
+    }
+
+    const { data, error } = await gradeQuery;
+
+    if (error) {
+      throw createGradeError(error, 'ASSESSMENT_FORBIDDEN');
+    }
+
+    for (const grade of (data ?? []) as unknown as GradeQueryRow[]) {
+      const grades = gradesByAssessment.get(grade.assessment_id) ?? [];
+      grades.push(grade);
+      gradesByAssessment.set(grade.assessment_id, grades);
+    }
+  }
+
+  return assessmentRows.map((assessment) => ({
+    ...assessment,
+    grades: gradesByAssessment.get(assessment.id) ?? [],
+  }));
+}
+
 async function getEnrollmentsForClasses(
   classIds: readonly string[],
+  institutionId: string,
 ): Promise<EnrollmentQueryRow[]> {
   if (classIds.length === 0) {
     return [];
@@ -1426,30 +1627,7 @@ async function getEnrollmentsForClasses(
 
   const { data, error } = await supabase
     .from('enrollments')
-    .select(
-      `
-      id,
-      student_id,
-      class_id,
-      academic_year_id,
-      status,
-      active,
-      enrolled_at,
-      created_at,
-      students:student_id (
-        id,
-        profile_id,
-        institution_id,
-        registration_number,
-        active,
-        profiles:profile_id (
-          full_name,
-          email,
-          avatar_url
-        )
-      )
-    `,
-    )
+    .select(GRADE_SUMMARY_ENROLLMENT_FIELDS)
     .in('class_id', [...classIds])
     .order('created_at', {
       ascending: true,
@@ -1459,7 +1637,35 @@ async function getEnrollmentsForClasses(
     throw createGradeError(error, 'GRADE_FORBIDDEN');
   }
 
-  return (data ?? []) as unknown as EnrollmentQueryRow[];
+  const enrollmentRows = (data ?? []) as unknown as EnrollmentQueryRow[];
+  const studentIds = Array.from(
+    new Set(enrollmentRows.map((row) => row.student_id)),
+  );
+  const studentsById = new Map<string, StudentRelation>();
+
+  for (const studentIdChunk of chunkGradeValues(
+    studentIds,
+    GRADE_SUMMARY_QUERY_CHUNK_SIZE,
+  )) {
+    const { data: studentData, error: studentError } = await supabase
+      .from('students')
+      .select(GRADE_SUMMARY_STUDENT_FIELDS)
+      .eq('institution_id', institutionId)
+      .in('id', studentIdChunk);
+
+    if (studentError) {
+      throw createGradeError(studentError, 'GRADE_FORBIDDEN');
+    }
+
+    for (const student of (studentData ?? []) as unknown as StudentRelation[]) {
+      studentsById.set(student.id, student);
+    }
+  }
+
+  return enrollmentRows.map((row) => ({
+    ...row,
+    students: studentsById.get(row.student_id) ?? null,
+  }));
 }
 
 function buildStudentGradeRecords(
@@ -2196,104 +2402,13 @@ export const gradeService = {
     const fromDate = filters.fromDate ?? '1900-01-01';
     const toDate = filters.toDate ?? '2999-12-31';
 
-    const { data, error } = await supabase
-      .from('assessments')
-      .select(
-        `
-        id,
-        institution_id,
-        subject_offering_id,
-        term_id,
-        title,
-        description,
-        assessment_type,
-        assessment_date,
-        max_score,
-        weight,
-        status,
-        created_by,
-        published_at,
-        created_at,
-        updated_at,
-        subject_offerings:subject_offering_id (
-          id,
-          class_id,
-          subject_id,
-          teacher_profile_id,
-          term_id,
-          active,
-          created_at,
-          classes:class_id (
-            id,
-            institution_id,
-            academic_year_id,
-            name,
-            grade_level,
-            shift,
-            active
-          ),
-          subjects:subject_id (
-            id,
-            institution_id,
-            name,
-            code,
-            workload,
-            active
-          ),
-          profiles:teacher_profile_id (
-            full_name,
-            email,
-            active
-          ),
-          terms:term_id (
-            id,
-            academic_year_id,
-            name,
-            active
-          )
-        ),
-        grades (
-          id,
-          institution_id,
-          assessment_id,
-          student_id,
-          score,
-          status,
-          feedback,
-          recorded_by,
-          recorded_at,
-          created_at,
-          updated_at,
-          students:student_id (
-            id,
-            profile_id,
-            institution_id,
-            registration_number,
-            active,
-            profiles:profile_id (
-              full_name,
-              email,
-              avatar_url
-            )
-          )
-        )
-      `,
-      )
-      .eq('institution_id', institutionId)
-      .neq('status', 'CANCELED')
-      .gte('assessment_date', fromDate)
-      .lte('assessment_date', toDate)
-      .order('assessment_date', {
-        ascending: false,
-      })
-      .limit(250);
-
-    if (error) {
-      throw createGradeError(error, 'ASSESSMENT_FORBIDDEN');
-    }
-
     const assessments = (
-      (data ?? []) as unknown as AssessmentWithGradesQueryRow[]
+      await getInstitutionAssessmentsForSummary(
+        institutionId,
+        filters,
+        fromDate,
+        toDate,
+      )
     )
       .map((row) => ({
         assessment: normalizeAssessment(row, institutionId),
@@ -2321,8 +2436,10 @@ export const gradeService = {
           ),
       ),
     );
-    const enrollmentRows =
-      await getEnrollmentsForClasses(classIds);
+    const enrollmentRows = await getEnrollmentsForClasses(
+      classIds,
+      institutionId,
+    );
 
     const results = assessments.map(({ assessment, grades }) => {
       const offering = assessment.offering;

@@ -2051,6 +2051,92 @@ function chunkValues<T>(values: readonly T[], size: number): T[][] {
   return chunks;
 }
 
+const ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE = 100;
+
+const ATTENDANCE_SESSION_SUMMARY_FIELDS = `
+  id,
+  institution_id,
+  subject_offering_id,
+  session_date,
+  starts_at,
+  ends_at,
+  topic,
+  class_activity,
+  homework,
+  notes,
+  status,
+  created_by,
+  closed_at,
+  created_at,
+  updated_at
+`;
+
+const ATTENDANCE_SUMMARY_OFFERING_FIELDS = `
+  id,
+  class_id,
+  subject_id,
+  teacher_profile_id,
+  term_id,
+  active,
+  created_at,
+  classes:class_id (
+    id,
+    institution_id,
+    name,
+    grade_level,
+    shift,
+    active
+  ),
+  subjects:subject_id (
+    id,
+    institution_id,
+    name,
+    code,
+    workload,
+    active
+  ),
+  profiles:teacher_profile_id (
+    full_name,
+    email,
+    active
+  ),
+  terms:term_id (
+    id,
+    academic_year_id,
+    name,
+    start_date,
+    end_date,
+    active,
+    academic_years:academic_year_id (id, name)
+  )
+`;
+
+const ATTENDANCE_SUMMARY_RECORD_FIELDS = `
+  id,
+  institution_id,
+  attendance_session_id,
+  student_id,
+  status,
+  notes,
+  recorded_by,
+  recorded_at,
+  created_at,
+  updated_at
+`;
+
+const ATTENDANCE_SUMMARY_STUDENT_FIELDS = `
+  id,
+  profile_id,
+  institution_id,
+  registration_number,
+  active,
+  profiles:profile_id (
+    full_name,
+    email,
+    avatar_url
+  )
+`;
+
 export const attendanceService = {
   async listTeacherOfferings(
     profileId: string,
@@ -2586,128 +2672,173 @@ export const attendanceService = {
     const toDate =
       filters.toDate ?? '2999-12-31';
 
-    let sessionQuery = supabase
-      .from('attendance_sessions')
-      .select(
-        `
-        id,
-        institution_id,
-        subject_offering_id,
-        session_date,
-        starts_at,
-        ends_at,
-        topic,
-        class_activity,
-        homework,
-        notes,
-        status,
-        created_by,
-        closed_at,
-        created_at,
-        updated_at,
-        subject_offerings:subject_offering_id (
-          id,
-          class_id,
-          subject_id,
-          teacher_profile_id,
-          term_id,
-          active,
-          created_at,
-          classes:class_id (
-            id,
-            institution_id,
-            name,
-            grade_level,
-            shift,
-            capacity,
-            active
-          ),
-          subjects:subject_id (
-            id,
-            institution_id,
-            name,
-            code,
-            workload,
-            active
-          ),
-          profiles:teacher_profile_id (
-            full_name,
-            email,
-            active
-          ),
-          terms:term_id (
-            id,
-            academic_year_id,
-            name,
-            active,
-            academic_years:academic_year_id (id, name)
-          )
-        ),
-        attendance_records (
-          id,
-          institution_id,
-          attendance_session_id,
-          student_id,
-          status,
-          notes,
-          recorded_by,
-          recorded_at,
-          created_at,
-          updated_at,
-          students:student_id (
-            id,
-            profile_id,
-            institution_id,
-            registration_number,
-            active,
-            profiles:profile_id (
-              full_name,
-              email,
-              avatar_url
-            )
-          )
-        )
-      `,
-      )
-      .eq('institution_id', institutionId)
-      .gte('session_date', fromDate)
-      .lte('session_date', toDate)
-      .order('session_date', {
-        ascending: false,
-      });
-
-    if (!filters.includeCanceled) {
-      sessionQuery = sessionQuery.neq('status', 'CANCELED');
+    if (filters.sessionIds?.length === 0) {
+      return {
+        summary: calculateAttendanceSummary([]),
+        sessions: [],
+        filters: buildFilterOptions([]),
+      };
     }
 
-    if (filters.sessionIds) {
-      if (filters.sessionIds.length === 0) {
-        return {
-          summary: calculateAttendanceSummary([]),
-          sessions: [],
-          filters: buildFilterOptions([]),
-        };
+    const sessionRows: AttendanceSessionQueryRow[] = [];
+    const sessionIdChunks = filters.sessionIds
+      ? chunkValues(
+          [...filters.sessionIds],
+          ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+        )
+      : [null];
+
+    for (const sessionIdChunk of sessionIdChunks) {
+      let sessionQuery = supabase
+        .from('attendance_sessions')
+        .select(ATTENDANCE_SESSION_SUMMARY_FIELDS)
+        .eq('institution_id', institutionId)
+        .gte('session_date', fromDate)
+        .lte('session_date', toDate)
+        .order('session_date', { ascending: false });
+
+      if (!filters.includeCanceled) {
+        sessionQuery = sessionQuery.neq('status', 'CANCELED');
       }
 
-      sessionQuery = sessionQuery.in('id', [...filters.sessionIds]);
-    }
+      if (sessionIdChunk) {
+        sessionQuery = sessionQuery.in('id', sessionIdChunk);
+      } else if (filters.limit !== null) {
+        sessionQuery = sessionQuery.limit(filters.limit ?? 250);
+      }
 
-    const { data, error } = filters.sessionIds || filters.limit === null
-      ? await sessionQuery
-      : await sessionQuery.limit(filters.limit ?? 250);
+      const { data, error } = await sessionQuery;
 
-    if (error) {
-      throw createAttendanceError(
-        error,
-        'ATTENDANCE_FORBIDDEN',
+      if (error) {
+        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+      }
+
+      sessionRows.push(
+        ...((data ?? []) as unknown as AttendanceSessionQueryRow[]),
       );
     }
 
-    const sessions = (
-      (data ?? []) as unknown as AttendanceSessionWithRecordsQueryRow[]
-    )
+    if (sessionRows.length === 0) {
+      return {
+        summary: calculateAttendanceSummary([]),
+        sessions: [],
+        filters: buildFilterOptions([]),
+      };
+    }
+
+    const offeringIds = Array.from(
+      new Set(sessionRows.map((row) => row.subject_offering_id)),
+    );
+    const offeringRows: OfferingQueryRow[] = [];
+
+    for (const offeringIdChunk of chunkValues(
+      offeringIds,
+      ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+    )) {
+      let offeringQuery = supabase
+        .from('subject_offerings')
+        .select(ATTENDANCE_SUMMARY_OFFERING_FIELDS)
+        .in('id', offeringIdChunk);
+
+      if (filters.classId) {
+        offeringQuery = offeringQuery.eq('class_id', filters.classId);
+      }
+      if (filters.subjectId) {
+        offeringQuery = offeringQuery.eq('subject_id', filters.subjectId);
+      }
+      if (filters.teacherProfileId) {
+        offeringQuery = offeringQuery.eq(
+          'teacher_profile_id',
+          filters.teacherProfileId,
+        );
+      }
+      if (filters.termId) {
+        offeringQuery = offeringQuery.eq('term_id', filters.termId);
+      }
+
+      const { data, error } = await offeringQuery;
+
+      if (error) {
+        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+      }
+
+      offeringRows.push(
+        ...((data ?? []) as unknown as OfferingQueryRow[]),
+      );
+    }
+
+    const sessionIds = sessionRows.map((row) => row.id);
+    const recordRows: AttendanceRecordQueryRow[] = [];
+
+    for (const sessionIdChunk of chunkValues(
+      sessionIds,
+      ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+    )) {
+      const { data, error } = await supabase
+        .from('attendance_records')
+        .select(ATTENDANCE_SUMMARY_RECORD_FIELDS)
+        .eq('institution_id', institutionId)
+        .in('attendance_session_id', sessionIdChunk)
+        .order('created_at', { ascending: true });
+
+      if (error) {
+        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+      }
+
+      recordRows.push(
+        ...((data ?? []) as unknown as AttendanceRecordQueryRow[]),
+      );
+    }
+
+    const studentIds = Array.from(
+      new Set(recordRows.map((record) => record.student_id)),
+    );
+    const studentRows = new Map<string, StudentRelation>();
+
+    for (const studentIdChunk of chunkValues(
+      studentIds,
+      ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE,
+    )) {
+      const { data, error } = await supabase
+        .from('students')
+        .select(ATTENDANCE_SUMMARY_STUDENT_FIELDS)
+        .eq('institution_id', institutionId)
+        .in('id', studentIdChunk);
+
+      if (error) {
+        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+      }
+
+      for (const student of (data ?? []) as unknown as StudentRelation[]) {
+        studentRows.set(student.id, student);
+      }
+    }
+
+    const offeringsById = new Map(
+      offeringRows.map((offering) => [offering.id, offering]),
+    );
+    const recordsBySessionId = new Map<string, AttendanceRecordQueryRow[]>();
+
+    for (const record of recordRows) {
+      const records = recordsBySessionId.get(record.attendance_session_id) ?? [];
+      records.push({
+        ...record,
+        students: studentRows.get(record.student_id) ?? null,
+      });
+      recordsBySessionId.set(record.attendance_session_id, records);
+    }
+
+    const sessions = sessionRows
       .map((row) =>
-        normalizeInstitutionSession(row, institutionId),
+        normalizeInstitutionSession(
+          {
+            ...row,
+            subject_offerings:
+              offeringsById.get(row.subject_offering_id) ?? null,
+            attendance_records: recordsBySessionId.get(row.id) ?? [],
+          },
+          institutionId,
+        ),
       )
       .filter(
         (

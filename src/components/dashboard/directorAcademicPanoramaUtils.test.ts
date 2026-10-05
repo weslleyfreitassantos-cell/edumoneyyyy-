@@ -12,7 +12,10 @@ import {
   classifyStudentSituation,
   countPendingAcademicItems,
   DEFAULT_PANORAMA_PERIOD,
+  getPanoramaMetricDisplay,
+  getPanoramaMetricProgress,
   mergePanoramaClassOptions,
+  PANORAMA_UNAVAILABLE_MESSAGE,
 } from './directorAcademicPanoramaUtils';
 
 function session(
@@ -155,6 +158,13 @@ describe('director academic panorama helpers', () => {
       ['class-1', '1ª Série A'],
       ['class-2', '2ª Série A'],
     ]);
+  });
+
+  it('não transforma métrica indisponível em zero ou progresso falso', () => {
+    expect(getPanoramaMetricDisplay(0, true)).toBe(PANORAMA_UNAVAILABLE_MESSAGE);
+    expect(getPanoramaMetricDisplay(4, false)).toBe(4);
+    expect(getPanoramaMetricProgress(0, 4, true)).toBe(0);
+    expect(getPanoramaMetricProgress(2, 4, false)).toBe(50);
   });
 
   it('agrega frequência semanal contando atraso como presença', () => {
