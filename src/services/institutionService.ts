@@ -12,6 +12,7 @@ export interface InstitutionSummary {
   login_display_name?: string | null;
   logo_url?: string | null;
   favicon_url?: string | null;
+  login_background_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
   active: boolean | null;
@@ -52,6 +53,7 @@ interface InstitutionRelation {
   login_display_name?: string | null;
   logo_url?: string | null;
   favicon_url?: string | null;
+  login_background_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
   active: boolean | null;
@@ -161,6 +163,7 @@ function normalizeInstitution(
     login_display_name: institution.login_display_name ?? null,
     logo_url: institution.logo_url ?? null,
     favicon_url: institution.favicon_url ?? null,
+    login_background_url: institution.login_background_url ?? null,
     primary_color: institution.primary_color ?? null,
     secondary_color: institution.secondary_color ?? null,
     active: institution.active ?? true,
@@ -390,6 +393,7 @@ export const institutionService = {
               login_display_name,
               logo_url,
               favicon_url,
+              login_background_url,
               primary_color,
               secondary_color,
               active,
@@ -414,6 +418,7 @@ export const institutionService = {
               login_display_name,
               logo_url,
               favicon_url,
+              login_background_url,
               primary_color,
               secondary_color,
               active,
@@ -556,7 +561,7 @@ export async function updateInstitutionSubdomain({
     .from('institutions')
     .update({ subdomain: normalized, updated_at: new Date().toISOString() })
     .eq('id', institutionId)
-    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, primary_color, secondary_color, active, account_id')
+    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, login_background_url, primary_color, secondary_color, active, account_id')
     .single();
 
   if (error || !data) {
@@ -576,6 +581,7 @@ export async function updateInstitutionBranding({
   login_display_name,
   logo_url,
   favicon_url,
+  login_background_url,
   primary_color,
   secondary_color,
 }: {
@@ -584,6 +590,7 @@ export async function updateInstitutionBranding({
   login_display_name?: string | null;
   logo_url?: string | null;
   favicon_url?: string | null;
+  login_background_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
 }): Promise<InstitutionSummary> {
@@ -597,6 +604,8 @@ export async function updateInstitutionBranding({
       set_logo_url: logo_url !== undefined,
       new_favicon_url: favicon_url ?? null,
       set_favicon_url: favicon_url !== undefined,
+      new_login_background_url: login_background_url ?? null,
+      set_login_background_url: login_background_url !== undefined,
       new_primary_color: primary_color ?? null,
       set_primary_color: primary_color !== undefined,
       new_secondary_color: secondary_color ?? null,
@@ -647,6 +656,7 @@ export async function resolveInstitutionBySubdomain(
             login_display_name: row.login_display_name ?? null,
             logo_url: row.logo_url ?? null,
             favicon_url: row.favicon_url ?? null,
+            login_background_url: row.login_background_url ?? null,
             primary_color: row.primary_color ?? null,
             secondary_color: row.secondary_color ?? null,
             active: true,
@@ -674,6 +684,7 @@ export async function resolveInstitutionBySubdomain(
       login_display_name,
       logo_url,
       favicon_url,
+      login_background_url,
       primary_color,
       secondary_color,
       active,
@@ -713,6 +724,7 @@ export async function resolveInstitutionBySubdomain(
     login_display_name: data.login_display_name ?? null,
     logo_url: data.logo_url ?? null,
     favicon_url: data.favicon_url ?? null,
+    login_background_url: data.login_background_url ?? null,
     primary_color: data.primary_color ?? null,
     secondary_color: data.secondary_color ?? null,
     active: data.active ?? true,

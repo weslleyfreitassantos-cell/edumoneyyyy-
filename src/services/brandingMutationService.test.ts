@@ -20,6 +20,7 @@ vi.mock('../lib/supabaseClient', () => ({
 }));
 
 vi.mock('./brandingValidation', () => ({
+  validateInstitutionBackgroundFile: vi.fn(async () => null),
   validateInstitutionLogoFile: vi.fn(async () => null),
   getStorageExtension: vi.fn(() => 'png'),
 }));
@@ -80,6 +81,55 @@ describe('brandingMutationService', () => {
     );
     expect(supabase.from).not.toHaveBeenCalled();
     expect(result.logoUrl).toContain('?v=123456');
+  });
+
+  it('salva background na pasta da instituicao e atualiza a RPC', async () => {
+    const upload = vi.fn().mockResolvedValue({ error: null });
+    const getPublicUrl = vi.fn().mockReturnValue({
+      data: {
+        publicUrl:
+          'https://storage.example.com/institution-1/background.png',
+      },
+    });
+
+    vi.mocked(supabase.storage.from).mockReturnValue({
+      upload,
+      getPublicUrl,
+    } as never);
+
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: {
+        id: 'institution-1',
+        name: 'Escola Centro',
+        login_background_url:
+          'https://storage.example.com/institution-1/background.png?v=123456',
+      },
+      error: null,
+    } as never);
+
+    const result = await brandingMutationService.saveBackground({
+      institutionId: 'institution-1',
+      institutionName: 'Escola Centro',
+      currentPublicSlug: null,
+      file: new File(['background'], 'background.png', {
+        type: 'image/png',
+      }),
+    });
+
+    expect(upload).toHaveBeenCalledWith(
+      'institution-1/background.png',
+      expect.any(File),
+      expect.objectContaining({ upsert: true }),
+    );
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'update_institution_login_branding',
+      expect.objectContaining({
+        new_login_background_url:
+          'https://storage.example.com/institution-1/background.png?v=123456',
+        set_login_background_url: true,
+      }),
+    );
+    expect(result.loginBackgroundUrl).toContain('?v=123456');
   });
 
   it('retorna erro controlado quando o update nao retorna linha', async () => {

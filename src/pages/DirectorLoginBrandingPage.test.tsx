@@ -26,8 +26,10 @@ import { DirectorLoginBrandingRoute } from '../App';
 import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
 import {
+  useRemoveInstitutionBackground,
   useRemoveInstitutionFavicon,
   useRemoveInstitutionLogo,
+  useSaveInstitutionBackground,
   useSaveInstitutionFavicon,
   useSaveInstitutionLogo,
 } from '../hooks/useInstitutionBranding';
@@ -43,10 +45,12 @@ vi.mock('../contexts/InstitutionContext', () => ({
 }));
 
 vi.mock('../hooks/useInstitutionBranding', () => ({
+  useSaveInstitutionBackground: vi.fn(),
   useSaveInstitutionLogo: vi.fn(),
   useRemoveInstitutionLogo: vi.fn(),
   useSaveInstitutionFavicon: vi.fn(),
   useRemoveInstitutionFavicon: vi.fn(),
+  useRemoveInstitutionBackground: vi.fn(),
 }));
 
 vi.mock('../services/institutionService', () => ({
@@ -63,6 +67,8 @@ const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseInstitution = vi.mocked(useInstitution);
 const mockedUseSaveInstitutionLogo = vi.mocked(useSaveInstitutionLogo);
 const mockedUseRemoveInstitutionLogo = vi.mocked(useRemoveInstitutionLogo);
+const mockedUseSaveInstitutionBackground = vi.mocked(useSaveInstitutionBackground);
+const mockedUseRemoveInstitutionBackground = vi.mocked(useRemoveInstitutionBackground);
 const mockedUseSaveInstitutionFavicon = vi.mocked(useSaveInstitutionFavicon);
 const mockedUseRemoveInstitutionFavicon = vi.mocked(useRemoveInstitutionFavicon);
 const mockedUpdateInstitutionBranding = vi.mocked(updateInstitutionBranding);
@@ -72,6 +78,8 @@ const saveLogo = vi.fn();
 const removeLogo = vi.fn();
 const saveFavicon = vi.fn();
 const removeFavicon = vi.fn();
+const saveBackground = vi.fn();
+const removeBackground = vi.fn();
 
 function mockDirectorContext(
   overrides: Partial<ReturnType<typeof useInstitution>> = {},
@@ -85,6 +93,7 @@ function mockDirectorContext(
       login_display_name: 'Login Luz',
       logo_url: 'https://cdn.example.com/logo.png',
       favicon_url: 'https://cdn.example.com/favicon.png',
+      login_background_url: null,
       primary_color: '#123456',
       secondary_color: '#abcdef',
       active: true,
@@ -142,6 +151,12 @@ beforeEach(() => {
   mockedUseRemoveInstitutionFavicon.mockReturnValue({
     mutateAsync: removeFavicon,
   } as never);
+  mockedUseSaveInstitutionBackground.mockReturnValue({
+    mutateAsync: saveBackground,
+  } as never);
+  mockedUseRemoveInstitutionBackground.mockReturnValue({
+    mutateAsync: removeBackground,
+  } as never);
   mockedUpdateInstitutionBranding.mockResolvedValue({
     id: 'institution-1',
     name: 'Escola Luz',
@@ -149,6 +164,7 @@ beforeEach(() => {
     login_display_name: 'Login Luz Atualizado',
     logo_url: 'https://cdn.example.com/logo.png',
     favicon_url: 'https://cdn.example.com/favicon.png',
+    login_background_url: null,
     primary_color: '#223344',
     secondary_color: '#ddeeff',
     active: true,
@@ -158,6 +174,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
+  vi.unstubAllGlobals();
 });
 
 describe('DirectorLoginBrandingPage', () => {
@@ -225,6 +242,98 @@ describe('DirectorLoginBrandingPage', () => {
     expect(
       await screen.findByText('Falha controlada'),
     ).toBeTruthy();
+  });
+
+  it('atualiza o preview de background antes de salvar', () => {
+    vi.stubGlobal('URL', {
+      ...URL,
+      createObjectURL: vi.fn(() => 'blob:background-preview'),
+      revokeObjectURL: vi.fn(),
+    });
+
+    renderPage();
+    fireEvent.change(screen.getByLabelText('Selecionar background'), {
+      target: {
+        files: [new File(['background'], 'background.png', { type: 'image/png' })],
+      },
+    });
+
+    expect(
+      screen
+        .getByRole('img', { name: 'Preview do background atual' })
+        .getAttribute('style'),
+    ).toContain('background-image: url("blob:background-preview")');
+  });
+
+  it('salva o background pela mutation específica', async () => {
+    saveBackground.mockResolvedValue({
+      id: 'institution-1',
+      name: 'Escola Luz',
+      logoUrl: 'https://cdn.example.com/logo.png',
+      faviconUrl: 'https://cdn.example.com/favicon.png',
+      loginBackgroundUrl: 'https://cdn.example.com/background.png?v=1',
+      publicSlug: 'escola-luz',
+      backgroundPath: 'institution-1/background.png',
+    });
+
+    vi.stubGlobal('URL', {
+      ...URL,
+      createObjectURL: vi.fn(() => 'blob:background-preview'),
+      revokeObjectURL: vi.fn(),
+    });
+
+    renderPage();
+    fireEvent.change(screen.getByLabelText('Selecionar background'), {
+      target: {
+        files: [new File(['background'], 'background.png', { type: 'image/png' })],
+      },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /^Salvar$/i }));
+
+    await waitFor(() => {
+      expect(saveBackground).toHaveBeenCalledWith(
+        expect.objectContaining({
+          institutionId: 'institution-1',
+          file: expect.any(File),
+        }),
+      );
+    });
+  });
+
+  it('remove o background salvo pela mutation específica', async () => {
+    mockDirectorContext({
+      currentInstitution: {
+        id: 'institution-1',
+        name: 'Escola Luz',
+        subdomain: 'escola-luz',
+        login_display_name: 'Login Luz',
+        logo_url: 'https://cdn.example.com/logo.png',
+        favicon_url: 'https://cdn.example.com/favicon.png',
+        login_background_url: 'https://cdn.example.com/background.png?v=1',
+        primary_color: '#123456',
+        secondary_color: '#abcdef',
+        active: true,
+        account_id: 'account-1',
+      },
+    });
+
+    removeBackground.mockResolvedValue({
+      id: 'institution-1',
+      name: 'Escola Luz',
+      logoUrl: 'https://cdn.example.com/logo.png',
+      faviconUrl: 'https://cdn.example.com/favicon.png',
+      loginBackgroundUrl: null,
+      publicSlug: 'escola-luz',
+    });
+
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: /Remover background/i }));
+
+    await waitFor(() => {
+      expect(removeBackground).toHaveBeenCalledWith(
+        expect.objectContaining({ institutionId: 'institution-1' }),
+      );
+    });
   });
 });
 

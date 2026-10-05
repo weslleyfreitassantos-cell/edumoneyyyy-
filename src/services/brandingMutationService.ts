@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabaseClient';
 import {
   AllowedLogoMimeType,
   getStorageExtension,
+  validateInstitutionBackgroundFile,
   validateInstitutionFaviconFile,
   validateInstitutionLogoFile,
 } from './brandingValidation';
@@ -17,6 +18,7 @@ export interface InstitutionBranding {
   name: string;
   logoUrl: string | null;
   faviconUrl: string | null;
+  loginBackgroundUrl: string | null;
   publicSlug: string | null;
 }
 
@@ -54,11 +56,29 @@ export interface SaveInstitutionFaviconResponse extends InstitutionBranding {
   faviconPath: string;
 }
 
+export interface SaveInstitutionBackgroundInput {
+  institutionId: string;
+  institutionName: string;
+  currentPublicSlug: string | null;
+  file: File;
+}
+
+export interface RemoveInstitutionBackgroundInput {
+  institutionId: string;
+  institutionName: string;
+  currentPublicSlug: string | null;
+}
+
+export interface SaveInstitutionBackgroundResponse extends InstitutionBranding {
+  backgroundPath: string;
+}
+
 interface BrandingRow {
   id?: unknown;
   name?: unknown;
   logo_url?: unknown;
   favicon_url?: unknown;
+  login_background_url?: unknown;
   public_slug?: unknown;
 }
 
@@ -72,6 +92,10 @@ function normalizeBrandingRow(row: BrandingRow): InstitutionBranding {
     name: row.name,
     logoUrl: typeof row.logo_url === 'string' ? row.logo_url : null,
     faviconUrl: typeof row.favicon_url === 'string' ? row.favicon_url : null,
+    loginBackgroundUrl:
+      typeof row.login_background_url === 'string'
+        ? row.login_background_url
+        : null,
     publicSlug: typeof row.public_slug === 'string' ? row.public_slug : null,
   };
 }
@@ -81,6 +105,7 @@ async function updateInstitutionBranding(
   logoUrl: string | null | undefined,
   publicSlug: string,
   faviconUrl?: string | null,
+  loginBackgroundUrl?: string | null,
 ): Promise<InstitutionBranding> {
   const { data, error } = await supabase.rpc(
     'update_institution_login_branding',
@@ -92,6 +117,8 @@ async function updateInstitutionBranding(
       set_logo_url: logoUrl !== undefined,
       new_favicon_url: faviconUrl ?? null,
       set_favicon_url: faviconUrl !== undefined,
+      new_login_background_url: loginBackgroundUrl ?? null,
+      set_login_background_url: loginBackgroundUrl !== undefined,
       new_primary_color: null,
       set_primary_color: false,
       new_secondary_color: null,
@@ -161,6 +188,23 @@ async function removeKnownFaviconFiles(
       `${institutionId}/favicon.jpg`,
       `${institutionId}/favicon.jpeg`,
       `${institutionId}/favicon.webp`,
+    ]);
+
+  if (error) {
+    throw error;
+  }
+}
+
+async function removeKnownBackgroundFiles(
+  institutionId: string,
+): Promise<void> {
+  const { error } = await supabase.storage
+    .from(INSTITUTION_BRANDING_BUCKET)
+    .remove([
+      `${institutionId}/background.png`,
+      `${institutionId}/background.jpg`,
+      `${institutionId}/background.jpeg`,
+      `${institutionId}/background.webp`,
     ]);
 
   if (error) {
@@ -304,6 +348,78 @@ export const brandingMutationService = {
     );
 
     await removeKnownFaviconFiles(input.institutionId);
+
+    return branding;
+  },
+
+  async saveBackground(
+    input: SaveInstitutionBackgroundInput,
+  ): Promise<SaveInstitutionBackgroundResponse> {
+    const validationError = await validateInstitutionBackgroundFile(input.file);
+
+    if (validationError) {
+      throw new Error(validationError);
+    }
+
+    const mimeType = input.file.type as AllowedLogoMimeType;
+    const extension = getStorageExtension(mimeType);
+    const backgroundPath = `${input.institutionId}/background.${extension}`;
+    const storage = supabase.storage.from(INSTITUTION_BRANDING_BUCKET);
+
+    const { error: uploadError } = await storage.upload(backgroundPath, input.file, {
+      cacheControl: '3600',
+      contentType: mimeType,
+      upsert: true,
+    });
+
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    const { data: publicUrlData } = storage.getPublicUrl(backgroundPath);
+    const publicBackgroundUrl = publicUrlData.publicUrl;
+
+    if (!publicBackgroundUrl) {
+      throw new Error('Nao foi possivel gerar a URL publica do background.');
+    }
+
+    const loginBackgroundUrl = buildVersionedPublicUrl(publicBackgroundUrl);
+    const publicSlug = resolvePublicSlug(
+      input.institutionName,
+      input.currentPublicSlug,
+    );
+    const branding = await updateInstitutionBranding(
+      input.institutionId,
+      undefined,
+      publicSlug,
+      undefined,
+      loginBackgroundUrl,
+    );
+
+    return {
+      ...branding,
+      loginBackgroundUrl,
+      backgroundPath,
+    };
+  },
+
+  async removeBackground(
+    input: RemoveInstitutionBackgroundInput,
+  ): Promise<InstitutionBranding> {
+    const publicSlug = resolvePublicSlug(
+      input.institutionName,
+      input.currentPublicSlug,
+    );
+
+    const branding = await updateInstitutionBranding(
+      input.institutionId,
+      undefined,
+      publicSlug,
+      undefined,
+      null,
+    );
+
+    await removeKnownBackgroundFiles(input.institutionId);
 
     return branding;
   },

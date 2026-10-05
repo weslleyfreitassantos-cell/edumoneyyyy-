@@ -6,6 +6,7 @@ import {
 
 import {
   FAVICON_MAX_SIZE_BYTES,
+  BACKGROUND_MAX_SIZE_BYTES,
   isValidBrandingAssetPath,
   LOGO_MAX_SIZE_BYTES,
   validateAccountDomainHostname,
@@ -178,6 +179,19 @@ describe('brandingValidation', () => {
         'favicon',
       ),
     ).toMatch(/512 KB/i);
+
+    expect(
+      await validateBrandingImageFile(
+        pngFile(BACKGROUND_MAX_SIZE_BYTES),
+        'background',
+      ),
+    ).toBeNull();
+    expect(
+      await validateBrandingImageFile(
+        pngFile(BACKGROUND_MAX_SIZE_BYTES + 1),
+        'background',
+      ),
+    ).toMatch(/5 MB/i);
   });
 
   it('valida PNG, JPEG e WebP coerentes', async () => {

@@ -15,7 +15,10 @@ import {
 import {
   brandingMutationService,
   type RemoveInstitutionFaviconInput,
+  type RemoveInstitutionBackgroundInput,
   type RemoveInstitutionLogoInput,
+  type SaveInstitutionBackgroundInput,
+  type SaveInstitutionBackgroundResponse,
   type SaveInstitutionFaviconInput,
   type SaveInstitutionFaviconResponse,
   type SaveInstitutionLogoInput,
@@ -174,6 +177,58 @@ export function useRemoveInstitutionFavicon() {
             ),
         }),
         invalidateSchoolSetupReadiness(queryClient, response.id),
+      ]);
+    },
+  });
+}
+
+export function useSaveInstitutionBackground() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    SaveInstitutionBackgroundResponse,
+    Error,
+    SaveInstitutionBackgroundInput
+  >({
+    mutationFn: (input) =>
+      brandingMutationService.saveBackground(input),
+    onSuccess: async (response) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: institutionBrandingKeys.public(response.publicSlug),
+        }),
+      ]);
+    },
+  });
+}
+
+export function useRemoveInstitutionBackground() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    InstitutionBranding,
+    Error,
+    RemoveInstitutionBackgroundInput
+  >({
+    mutationFn: (input) =>
+      brandingMutationService.removeBackground(input),
+    onSuccess: async (response) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: institutionBrandingKeys.public(response.publicSlug),
+        }),
       ]);
     },
   });
