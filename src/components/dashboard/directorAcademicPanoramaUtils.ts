@@ -56,6 +56,31 @@ export interface PanoramaClassOption {
 
 export const DEFAULT_PANORAMA_PERIOD = 'year' as const;
 
+export const PANORAMA_UNAVAILABLE_MESSAGE = 'Não foi possível carregar agora.';
+
+export function getPanoramaMetricDisplay(
+  value: string,
+  unavailable: boolean,
+): string;
+export function getPanoramaMetricDisplay(
+  value: number,
+  unavailable: boolean,
+): number | string;
+export function getPanoramaMetricDisplay(
+  value: number | string,
+  unavailable: boolean,
+): number | string {
+  return unavailable ? PANORAMA_UNAVAILABLE_MESSAGE : value;
+}
+
+export function getPanoramaMetricProgress(
+  value: number,
+  max: number,
+  unavailable: boolean,
+): number {
+  return unavailable ? 0 : (value / Math.max(1, max)) * 100;
+}
+
 export function mergePanoramaClassOptions(
   ...groups: readonly PanoramaClassOption[][]
 ): Array<[string, string]> {

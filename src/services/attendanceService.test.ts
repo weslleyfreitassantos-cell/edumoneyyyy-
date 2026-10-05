@@ -1241,4 +1241,163 @@ describe('institution class diary status', () => {
       { id: 'year-1', label: '2026' },
     ]);
   });
+
+  it('decompõe o resumo institucional sem perder a relação da chamada', async () => {
+    const sessionQuery = createQuery({
+      data: [createSession()],
+      error: null,
+    });
+    const offeringQuery = createQuery({
+      data: [attendanceOfferingRow],
+      error: null,
+    });
+    const recordsQuery = createQuery({
+      data: [{
+        id: 'record-1',
+        institution_id: 'institution-1',
+        attendance_session_id: 'session-1',
+        student_id: 'student-1',
+        status: 'PRESENT',
+        notes: null,
+        recorded_by: 'teacher-1',
+        recorded_at: '2026-02-02T10:00:00.000Z',
+        created_at: '2026-02-02T10:00:00.000Z',
+        updated_at: '2026-02-02T10:00:00.000Z',
+      }],
+      error: null,
+    });
+    const studentsQuery = createQuery({
+      data: [{
+        id: 'student-1',
+        profile_id: 'profile-1',
+        institution_id: 'institution-1',
+        registration_number: 'RA-001',
+        active: true,
+        profiles: {
+          full_name: 'Ana Silva',
+          email: 'ana@escola.com',
+          avatar_url: null,
+        },
+      }],
+      error: null,
+    });
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(sessionQuery as never)
+      .mockReturnValueOnce(offeringQuery as never)
+      .mockReturnValueOnce(recordsQuery as never)
+      .mockReturnValueOnce(studentsQuery as never);
+
+    const summary = await attendanceService.getInstitutionAttendanceSummary(
+      'institution-1',
+      { fromDate: '2026-02-01', toDate: '2026-02-28' },
+    );
+
+    expect(summary.sessions).toHaveLength(1);
+    expect(summary.sessions[0].offering.subjectName).toBe('Matemática');
+    expect(summary.sessions[0].records[0]).toMatchObject({
+      studentId: 'student-1',
+      studentName: 'Ana Silva',
+      status: 'PRESENT',
+    });
+    expect(sessionQuery.select).toHaveBeenCalledWith(
+      expect.not.stringContaining('attendance_records'),
+    );
+    expect(supabase.from).toHaveBeenCalledWith('attendance_sessions');
+    expect(supabase.from).toHaveBeenCalledWith('subject_offerings');
+    expect(supabase.from).toHaveBeenCalledWith('attendance_records');
+    expect(supabase.from).toHaveBeenCalledWith('students');
+  });
+
+  it('preserva erro de consulta no resumo em vez de retornar zero', async () => {
+    vi.mocked(supabase.from).mockReturnValueOnce(
+      createQuery({
+        data: null,
+        error: {
+          code: '57014',
+          message: 'canceling statement due to statement timeout',
+        },
+      }) as never,
+    );
+
+    await expect(
+      attendanceService.getInstitutionAttendanceSummary(
+        'institution-1',
+        { fromDate: '2026-02-01', toDate: '2026-12-18' },
+      ),
+    ).rejects.toMatchObject({
+      code: 'ATTENDANCE_FORBIDDEN',
+    } satisfies Partial<AttendanceServiceError>);
+  });
+
+  it('pagina todas as sessões do período sem truncar em 250', async () => {
+    const firstPage = Array.from({ length: 250 }, (_, index) =>
+      createSession('07:00:00', '07:50:00', `session-${index}`),
+    );
+    const secondPage = Array.from({ length: 70 }, (_, index) =>
+      createSession('07:00:00', '07:50:00', `session-${250 + index}`),
+    );
+    const firstSessionsQuery = createQuery({
+      data: firstPage,
+      error: null,
+    });
+    const secondSessionsQuery = createQuery({
+      data: secondPage,
+      error: null,
+    });
+    const offeringQuery = createQuery({
+      data: [attendanceOfferingRow],
+      error: null,
+    });
+    const recordQueries = Array.from({ length: 4 }, () =>
+      createQuery({ data: [], error: null }),
+    );
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(firstSessionsQuery as never)
+      .mockReturnValueOnce(secondSessionsQuery as never)
+      .mockReturnValueOnce(offeringQuery as never);
+    for (const query of recordQueries) {
+      vi.mocked(supabase.from).mockReturnValueOnce(query as never);
+    }
+
+    const summary = await attendanceService.getInstitutionAttendanceSummary(
+      'institution-1',
+      { fromDate: '2026-02-01', toDate: '2026-12-18' },
+    );
+
+    expect(summary.sessions).toHaveLength(320);
+    expect(firstSessionsQuery.range).toHaveBeenCalledWith(0, 249);
+    expect(secondSessionsQuery.range).toHaveBeenCalledWith(250, 499);
+  });
+
+  it('respeita limite explícito do resumo institucional', async () => {
+    const sessions = Array.from({ length: 100 }, (_, index) =>
+      createSession('07:00:00', '07:50:00', `session-${index}`),
+    );
+    const sessionsQuery = createQuery({ data: sessions, error: null });
+    const offeringQuery = createQuery({
+      data: [attendanceOfferingRow],
+      error: null,
+    });
+    const recordsQuery = createQuery({ data: [], error: null });
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(sessionsQuery as never)
+      .mockReturnValueOnce(offeringQuery as never)
+      .mockReturnValueOnce(recordsQuery as never);
+
+    const summary = await attendanceService.getInstitutionAttendanceSummary(
+      'institution-1',
+      {
+        fromDate: '2026-02-01',
+        toDate: '2026-12-18',
+        limit: 100,
+      },
+    );
+
+    expect(summary.sessions).toHaveLength(100);
+    expect(sessionsQuery.limit).toHaveBeenCalledWith(100);
+    expect(sessionsQuery.range).not.toHaveBeenCalled();
+  });
 });

@@ -27,6 +27,8 @@ import {
   DEFAULT_PANORAMA_PERIOD,
   mergeStudentSignals,
   mergePanoramaClassOptions,
+  getPanoramaMetricDisplay,
+  getPanoramaMetricProgress,
   type PanoramaStudentSituation,
 } from './directorAcademicPanoramaUtils';
 
@@ -348,10 +350,21 @@ export default function DirectorAcademicPanorama({
     attendancePending: pendingAttendanceQuery.data?.pendingCount ?? 0,
   }), [gradesQuery.data?.assessments, pendingAttendanceQuery.data?.pendingCount]);
   const attentionCount = (studentSummaries.find((item) => item.situation === 'ATTENTION')?.count ?? 0) + (studentSummaries.find((item) => item.situation === 'CRITICAL')?.count ?? 0);
+  const attendanceUnavailable = attendanceQuery.isError && !attendanceQuery.data;
+  const gradesUnavailable = gradesQuery.isError && !gradesQuery.data;
+  const pendingAttendanceUnavailable = pendingAttendanceQuery.isError && !pendingAttendanceQuery.data;
+  const attentionUnavailable = attendanceUnavailable && gradesUnavailable;
   const attendanceLoading = !attendanceQuery.data && attendanceQuery.isPending;
   const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
-  const attentionLoading = !attendanceQuery.data && !gradesQuery.data && (attendanceQuery.isPending || gradesQuery.isPending);
+  const attentionLoading = !attentionUnavailable && !attendanceQuery.data && !gradesQuery.data && (attendanceQuery.isPending || gradesQuery.isPending);
   const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
+  const pendingMetrics = [
+    { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, moduleId: 'class-diary' as AdminModuleId },
+    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, moduleId: 'grades' as AdminModuleId },
+    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, moduleId: 'grades' as AdminModuleId },
+  ];
+  const availablePendingValues = pendingMetrics.filter((metric) => !metric.unavailable).map((metric) => metric.value);
+  const pendingMax = Math.max(1, ...availablePendingValues);
 
   return (
     <section aria-labelledby="director-academic-panorama-heading" className="space-y-5">
@@ -383,9 +396,9 @@ export default function DirectorAcademicPanorama({
       {hasError && <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">Alguns indicadores não puderam ser carregados agora. Os dados disponíveis continuam visíveis.</p>}
 
       <div className="grid gap-3 md:grid-cols-3">
-        <KpiCard label="Frequência média" value={attendanceQuery.isError && !attendanceQuery.data ? 'Não foi possível carregar agora.' : formatPercent(attendanceQuery.data?.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attendanceLoading} updating={Boolean(attendanceQuery.data && attendanceQuery.isFetching)} />
-        <KpiCard label="Desempenho médio" value={gradesQuery.isError && !gradesQuery.data ? 'Não foi possível carregar agora.' : formatPercent(gradesQuery.data?.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={gradesLoading} updating={Boolean(gradesQuery.data && gradesQuery.isFetching)} />
-        <KpiCard label="Estudantes em atenção" value={formatCount(attentionCount)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attentionLoading} updating={Boolean((attendanceQuery.data || gradesQuery.data) && (attendanceQuery.isFetching || gradesQuery.isFetching))} />
+        <KpiCard label="Frequência média" value={attendanceUnavailable ? 'Não foi possível carregar agora.' : formatPercent(attendanceQuery.data?.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attendanceLoading} updating={Boolean(attendanceQuery.data && attendanceQuery.isFetching)} />
+        <KpiCard label="Desempenho médio" value={gradesUnavailable ? 'Não foi possível carregar agora.' : formatPercent(gradesQuery.data?.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={gradesLoading} updating={Boolean(gradesQuery.data && gradesQuery.isFetching)} />
+        <KpiCard label="Estudantes em atenção" value={getPanoramaMetricDisplay(formatCount(attentionCount), attentionUnavailable)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attentionLoading} updating={Boolean((attendanceQuery.data || gradesQuery.data) && (attendanceQuery.isFetching || gradesQuery.isFetching))} />
       </div>
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(19rem,0.8fr)]">
@@ -407,14 +420,12 @@ export default function DirectorAcademicPanorama({
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><ClipboardList className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Pendências acadêmicas</h3><p className="text-xs text-[#667085] dark:text-slate-400">Itens que ainda precisam de ação.</p></div></div>
           <div className="space-y-4">
-            {[['Chamadas pendentes', pendingItems.attendancePending, 'class-diary' as AdminModuleId], ['Notas faltantes', pendingItems.missingGrades, 'grades' as AdminModuleId], ['Avaliações sem lançamento', pendingItems.assessmentsWithoutLaunch, 'grades' as AdminModuleId]].map(([label, value, moduleId]) => {
-              const numericValue = value as number;
-              const max = Math.max(1, pendingItems.attendancePending, pendingItems.missingGrades, pendingItems.assessmentsWithoutLaunch);
-              const navigable = availableModuleIds.includes(moduleId as AdminModuleId) && Boolean(onNavigateToModule);
+            {pendingMetrics.map((metric) => {
+              const navigable = !metric.unavailable && availableModuleIds.includes(metric.moduleId) && Boolean(onNavigateToModule);
               return (
-                <button key={label as string} type="button" disabled={!navigable} onClick={() => onNavigateToModule?.(moduleId as AdminModuleId)} className={`w-full text-left ${navigable ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : 'cursor-default'}`}>
-                  <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{label as string}</span><strong className="text-[#181c20] dark:text-white">{label === 'Chamadas pendentes' && pendingAttendanceQuery.isError && !pendingAttendanceQuery.data ? 'Não foi possível carregar agora.' : formatCount(numericValue)}</strong></div>
-                  <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><span className="block h-full rounded-full bg-[#005bbf]" style={{ width: `${(numericValue / max) * 100}%` }} /></div>
+                <button key={metric.label} type="button" disabled={!navigable} onClick={() => onNavigateToModule?.(metric.moduleId)} className={`w-full text-left ${navigable ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : 'cursor-default'}`}>
+                  <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{metric.label}</span><strong className="text-[#181c20] dark:text-white">{getPanoramaMetricDisplay(formatCount(metric.value), metric.unavailable)}</strong></div>
+                  <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><span className="block h-full rounded-full bg-[#005bbf]" style={{ width: `${getPanoramaMetricProgress(metric.value, pendingMax, metric.unavailable)}%` }} /></div>
                 </button>
               );
             })}

@@ -26,7 +26,13 @@ vi.mock('../lib/supabaseClient', () => ({
 interface MockQuery {
   select: ReturnType<typeof vi.fn>;
   eq: ReturnType<typeof vi.fn>;
+  in: ReturnType<typeof vi.fn>;
+  gte: ReturnType<typeof vi.fn>;
+  lte: ReturnType<typeof vi.fn>;
+  neq: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
+  limit: ReturnType<typeof vi.fn>;
+  range: ReturnType<typeof vi.fn>;
   then: Promise<unknown>['then'];
 }
 
@@ -35,7 +41,13 @@ function createQuery(response: unknown): MockQuery {
 
   query.select = vi.fn(() => query);
   query.eq = vi.fn(() => query);
+  query.in = vi.fn(() => query);
+  query.gte = vi.fn(() => query);
+  query.lte = vi.fn(() => query);
+  query.neq = vi.fn(() => query);
   query.order = vi.fn(() => query);
+  query.limit = vi.fn(() => query);
+  query.range = vi.fn(() => query);
   query.then = (
     resolve,
     reject,
@@ -138,6 +150,13 @@ describe('gradeService', () => {
     expect(summary.averageScore).toBe(6.5);
     expect(summary.averagePercent).toBe(65);
     expect(summary.weightedAveragePercent).toBe(70);
+  });
+
+  it('agrega duas notas reais sem perder a média do estudante', () => {
+    expect(calculateGradeSummary([
+      { score: 8, maxScore: 10, weight: 1, status: 'GRADED' },
+      { score: 6, maxScore: 10, weight: 1, status: 'GRADED' },
+    ]).averagePercent).toBe(70);
   });
 
   it('valida matrícula ativa na data da avaliação', () => {
@@ -294,5 +313,237 @@ describe('gradeService', () => {
       'teacher_profile_id',
       'teacher-1',
     );
+  });
+
+  it('decompõe o resumo institucional em avaliações, notas e matrículas', async () => {
+    const offering = {
+      id: 'offering-1',
+      class_id: 'class-1',
+      subject_id: 'subject-1',
+      teacher_profile_id: 'teacher-1',
+      term_id: 'term-1',
+      active: true,
+      created_at: '2026-03-01T00:00:00.000Z',
+      classes: {
+        id: 'class-1',
+        institution_id: 'institution-1',
+        academic_year_id: 'year-1',
+        name: '1A',
+        grade_level: '1º ano',
+        shift: 'Manhã',
+        active: true,
+      },
+      subjects: {
+        id: 'subject-1',
+        institution_id: 'institution-1',
+        name: 'Matemática',
+        code: 'MAT',
+        workload: 80,
+        active: true,
+      },
+      profiles: {
+        full_name: 'Professora Ana',
+        email: 'ana@escola.com',
+        active: true,
+      },
+      terms: {
+        id: 'term-1',
+        academic_year_id: 'year-1',
+        name: '1º bimestre',
+        active: true,
+      },
+    };
+    const assessmentQuery = createQuery({
+      data: [{
+        id: 'assessment-1',
+        institution_id: 'institution-1',
+        subject_offering_id: 'offering-1',
+        term_id: 'term-1',
+        title: 'Prova 1',
+        description: null,
+        assessment_type: 'EXAM',
+        assessment_date: '2026-03-10',
+        max_score: 10,
+        weight: 1,
+        status: 'PUBLISHED',
+        created_by: 'teacher-1',
+        published_at: '2026-03-01T00:00:00.000Z',
+        created_at: '2026-03-01T00:00:00.000Z',
+        updated_at: '2026-03-01T00:00:00.000Z',
+        subject_offerings: offering,
+      }],
+      error: null,
+    });
+    const gradesQuery = createQuery({
+      data: [{
+        id: 'grade-1',
+        institution_id: 'institution-1',
+        assessment_id: 'assessment-1',
+        student_id: 'student-1',
+        score: 8,
+        status: 'GRADED',
+        feedback: null,
+        recorded_by: 'teacher-1',
+        recorded_at: '2026-03-11T00:00:00.000Z',
+        created_at: '2026-03-11T00:00:00.000Z',
+        updated_at: '2026-03-11T00:00:00.000Z',
+      }],
+      error: null,
+    });
+    const enrollmentQuery = createQuery({
+      data: [],
+      error: null,
+    });
+    const studentsQuery = createQuery({
+      data: [{
+        id: 'student-1',
+        profile_id: 'profile-1',
+        institution_id: 'institution-1',
+        registration_number: 'RA-001',
+        active: true,
+        profiles: {
+          full_name: 'Ana Silva',
+          email: 'ana@escola.com',
+          avatar_url: null,
+        },
+      }],
+      error: null,
+    });
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(assessmentQuery as never)
+      .mockReturnValueOnce(gradesQuery as never)
+      .mockReturnValueOnce(enrollmentQuery as never)
+      .mockReturnValueOnce(studentsQuery as never);
+
+    const summary = await gradeService.getInstitutionGradeSummary(
+      'institution-1',
+      { fromDate: '2026-03-01', toDate: '2026-03-31' },
+    );
+
+    expect(summary.assessments).toHaveLength(1);
+    expect(summary.assessments[0]).toMatchObject({
+      launchedCount: 1,
+      expectedStudentCount: 1,
+      averagePercent: 80,
+    });
+    expect(summary.studentPerformance).toEqual([
+      expect.objectContaining({
+        studentId: 'student-1',
+        studentName: 'Ana Silva',
+        performancePercent: 80,
+      }),
+    ]);
+    expect(assessmentQuery.select).toHaveBeenCalledWith(
+      expect.not.stringContaining('grades ('),
+    );
+    expect(supabase.from).toHaveBeenCalledWith('assessments');
+    expect(supabase.from).toHaveBeenCalledWith('grades');
+    expect(supabase.from).toHaveBeenCalledWith('enrollments');
+    expect(supabase.from).toHaveBeenCalledWith('students');
+  });
+
+  it('pagina avaliações anuais além do limite de 250 registros', async () => {
+    const offering = {
+      id: 'offering-1',
+      class_id: 'class-1',
+      subject_id: 'subject-1',
+      teacher_profile_id: 'teacher-1',
+      term_id: 'term-1',
+      active: true,
+      created_at: '2026-03-01T00:00:00.000Z',
+      classes: {
+        id: 'class-1',
+        institution_id: 'institution-1',
+        academic_year_id: 'year-1',
+        name: '1A',
+        grade_level: '1º ano',
+        shift: 'Manhã',
+        active: true,
+      },
+      subjects: {
+        id: 'subject-1',
+        institution_id: 'institution-1',
+        name: 'Matemática',
+        code: 'MAT',
+        workload: 80,
+        active: true,
+      },
+      profiles: null,
+      terms: {
+        id: 'term-1',
+        academic_year_id: 'year-1',
+        name: '1º bimestre',
+        active: true,
+      },
+    };
+    const createAssessment = (index: number) => ({
+      id: `assessment-${index}`,
+      institution_id: 'institution-1',
+      subject_offering_id: 'offering-1',
+      term_id: 'term-1',
+      title: `Avaliação ${index}`,
+      description: null,
+      assessment_type: 'EXAM',
+      assessment_date: '2026-03-10',
+      max_score: 10,
+      weight: 1,
+      status: 'PUBLISHED',
+      created_by: 'teacher-1',
+      published_at: '2026-03-01T00:00:00.000Z',
+      created_at: '2026-03-01T00:00:00.000Z',
+      updated_at: '2026-03-01T00:00:00.000Z',
+      subject_offerings: offering,
+    });
+    const assessmentPageOne = createQuery({
+      data: Array.from({ length: 250 }, (_, index) => createAssessment(index)),
+      error: null,
+    });
+    const assessmentPageTwo = createQuery({
+      data: [createAssessment(250)],
+      error: null,
+    });
+    const gradesQueries = Array.from({ length: 3 }, () =>
+      createQuery({ data: [], error: null }),
+    );
+    const enrollmentQuery = createQuery({ data: [], error: null });
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(assessmentPageOne as never)
+      .mockReturnValueOnce(assessmentPageTwo as never);
+    for (const query of gradesQueries) {
+      vi.mocked(supabase.from).mockReturnValueOnce(query as never);
+    }
+    vi.mocked(supabase.from).mockReturnValueOnce(enrollmentQuery as never);
+
+    const summary = await gradeService.getInstitutionGradeSummary(
+      'institution-1',
+      { fromDate: '2026-03-01', toDate: '2026-12-31' },
+    );
+
+    expect(summary.assessments).toHaveLength(251);
+    expect(assessmentPageOne.range).toHaveBeenCalledWith(0, 249);
+    expect(assessmentPageTwo.range).toHaveBeenCalledWith(250, 499);
+  });
+
+  it('preserva erro da consulta de notas em vez de retornar avaliações vazias', async () => {
+    vi.mocked(supabase.from).mockReturnValueOnce(
+      createQuery({
+        data: null,
+        error: {
+          code: '57014',
+          message: 'canceling statement due to statement timeout',
+        },
+      }) as never,
+    );
+
+    await expect(
+      gradeService.getInstitutionGradeSummary(
+        'institution-1',
+        { fromDate: '2026-02-01', toDate: '2026-12-18' },
+      ),
+    ).rejects.toMatchObject({
+      code: 'ASSESSMENT_FORBIDDEN',
+    } satisfies Partial<GradeServiceError>);
   });
 });
