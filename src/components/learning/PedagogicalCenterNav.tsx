@@ -15,8 +15,8 @@ export function PedagogicalCenterNav() {
   })}</nav>;
 }
 
-export function PedagogicalCenterHeader({ subtitle = 'Acompanhe sua turma e seus alunos.' }: { subtitle?: string }) {
-  return <header><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">Professor</p><h1 className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">Desempenho</h1><p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{subtitle}</p><div className="mt-4"><PedagogicalCenterNav /></div></header>;
+export function PedagogicalCenterHeader({ subtitle = 'Acompanhe sua turma e seus alunos.', showNav = true }: { subtitle?: string; showNav?: boolean }) {
+  return <header><p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">Professor</p><h1 className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">Desempenho</h1><p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{subtitle}</p>{showNav ? <div className="mt-4"><PedagogicalCenterNav /></div> : null}</header>;
 }
 
 export function PageState({ children, error = false }: { children: string; error?: boolean }) {
