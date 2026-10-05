@@ -20,6 +20,7 @@ import {
   buildStudentSituationSummary,
   buildWeeklyAttendanceTrend,
   countPendingAcademicItems,
+  DEFAULT_PANORAMA_PERIOD,
   mergeStudentSignals,
   type PanoramaStudentSituation,
 } from './directorAcademicPanoramaUtils';
@@ -210,14 +211,16 @@ function AttendanceTrend({ sessions }: { sessions: ReturnType<typeof buildWeekly
 }
 
 function ClassPerformance({ points }: { points: ReturnType<typeof buildClassPerformance> }) {
-  if (points.length === 0) return <EmptyChart>Sem notas lançadas no período selecionado.</EmptyChart>;
+  if (points.length === 0 || points.every((point) => point.total === 0)) {
+    return <EmptyChart>Sem notas lançadas no período selecionado.</EmptyChart>;
+  }
   return (
     <div className="space-y-4">
       {points.map((point) => (
         <div key={point.classId}>
           <div className="mb-1 flex items-center justify-between gap-3 text-sm">
             <span className="truncate font-semibold text-[#344054] dark:text-slate-200">{point.className}</span>
-            <span className="shrink-0 text-xs text-[#667085] dark:text-slate-400">{point.total} avaliações</span>
+            <span className="shrink-0 text-xs text-[#667085] dark:text-slate-400">{point.total} alunos com nota{point.withoutPerformance > 0 ? ` · ${point.withoutPerformance} sem notas` : ''}</span>
           </div>
           <div className="flex h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800" aria-label={`${point.className}: ${point.adequate} adequadas, ${point.attention} em atenção, ${point.critical} críticas`}>
             {point.adequate > 0 && <span className="bg-[#159570]" style={{ width: `${(point.adequate / point.total) * 100}%` }} />}
@@ -269,21 +272,23 @@ export default function DirectorAcademicPanorama({
   availableModuleIds,
   onNavigateToModule,
 }: DirectorAcademicPanoramaProps) {
-  const [period, setPeriod] = useState<PanoramaPeriod>('30d');
+  const [period, setPeriod] = useState<PanoramaPeriod>(DEFAULT_PANORAMA_PERIOD);
   const [classId, setClassId] = useState('');
   const today = getLocalDateInputValue();
   const yearsQuery = useAcademicYears(institutionId);
   const currentYear = useMemo(() => getCurrentAcademicYear(yearsQuery.data ?? [], today), [today, yearsQuery.data]);
   const dateRange = useMemo(() => getDateRange(period, today, currentYear), [currentYear, period, today]);
+  const waitingForAcademicYear = period === 'year' && !currentYear && yearsQuery.isFetching;
+  const queryInstitutionId = waitingForAcademicYear ? undefined : institutionId;
   const filters = useMemo(() => ({
     fromDate: dateRange.fromDate,
     toDate: dateRange.toDate,
     ...(classId ? { classId } : {}),
   }), [classId, dateRange.fromDate, dateRange.toDate]);
 
-  const attendanceQuery = useInstitutionAttendanceSummary(institutionId, filters);
-  const diaryQuery = useInstitutionClassDiary(institutionId, filters);
-  const gradesQuery = useInstitutionGradeSummary(institutionId, filters);
+  const attendanceQuery = useInstitutionAttendanceSummary(queryInstitutionId, filters);
+  const diaryQuery = useInstitutionClassDiary(queryInstitutionId, filters);
+  const gradesQuery = useInstitutionGradeSummary(queryInstitutionId, filters);
   const classes = useMemo(() => {
     const options = new Map<string, string>();
     for (const option of attendanceQuery.data?.filters.classes ?? []) options.set(option.id, option.label);
@@ -291,7 +296,7 @@ export default function DirectorAcademicPanorama({
     return Array.from(options.entries()).sort((first, second) => first[1].localeCompare(second[1], 'pt-BR'));
   }, [attendanceQuery.data?.filters.classes, gradesQuery.data?.filters.classes]);
   const attendanceTrend = useMemo(() => buildWeeklyAttendanceTrend(attendanceQuery.data?.sessions ?? []), [attendanceQuery.data?.sessions]);
-  const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.assessments ?? []), [gradesQuery.data?.assessments]);
+  const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.studentPerformance ?? []), [gradesQuery.data?.studentPerformance]);
   const studentSummaries = useMemo(() => buildStudentSituationSummary(mergeStudentSignals(attendanceQuery.data?.sessions ?? [], gradesQuery.data?.studentPerformance ?? [])), [attendanceQuery.data?.sessions, gradesQuery.data?.studentPerformance]);
   const pendingItems = useMemo(() => countPendingAcademicItems(diaryQuery.data?.entries ?? [], gradesQuery.data?.assessments ?? []), [diaryQuery.data?.entries, gradesQuery.data?.assessments]);
   const attentionCount = (studentSummaries.find((item) => item.situation === 'ATTENTION')?.count ?? 0) + (studentSummaries.find((item) => item.situation === 'CRITICAL')?.count ?? 0);
@@ -322,7 +327,7 @@ export default function DirectorAcademicPanorama({
         </div>
       </div>
 
-      <p className="text-xs text-[#667085] dark:text-slate-400">Período aplicado: <strong className="text-[#344054] dark:text-slate-200">{dateRange.label}</strong> ({dateRange.fromDate} a {dateRange.toDate}).</p>
+      <p className="text-xs text-[#667085] dark:text-slate-400">Período aplicado: <strong className="text-[#344054] dark:text-slate-200">{waitingForAcademicYear ? 'carregando ano letivo' : dateRange.label}</strong>{!waitingForAcademicYear && ` (${dateRange.fromDate} a ${dateRange.toDate}).`}</p>
 
       {hasError && <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">Alguns indicadores não puderam ser carregados agora. Os dados disponíveis continuam visíveis.</p>}
 
@@ -345,7 +350,7 @@ export default function DirectorAcademicPanorama({
 
       <div className="grid gap-4 xl:grid-cols-2">
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
-          <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><GraduationCap className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Desempenho por turma</h3><p className="text-xs text-[#667085] dark:text-slate-400">Distribuição das avaliações com lançamento.</p></div></div>
+          <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><GraduationCap className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Desempenho por turma</h3><p className="text-xs text-[#667085] dark:text-slate-400">Distribuição de alunos com nota lançada.</p></div></div>
           <ClassPerformance points={classPerformance} />
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">

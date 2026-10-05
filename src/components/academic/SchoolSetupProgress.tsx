@@ -248,7 +248,13 @@ export default function SchoolSetupProgress({
   const readinessQuery = useSchoolSetupReadiness(institutionId);
   const [showCompletedDetails, setShowCompletedDetails] = useState(false);
 
-  if (readinessQuery.isLoading) {
+  const isRefreshingIncompleteReadiness = Boolean(
+    readinessQuery.data &&
+      readinessQuery.isFetching &&
+      !readinessQuery.data.operationalReadiness.ready,
+  );
+
+  if (readinessQuery.isLoading || isRefreshingIncompleteReadiness) {
     return (
       <section aria-label="Configuração da escola" className="space-y-3">
         {[1, 2, 3].map((item) => (

@@ -27,6 +27,7 @@ export interface ClassPerformancePoint {
   attention: number;
   critical: number;
   total: number;
+  withoutPerformance: number;
 }
 
 export interface StudentSituationInput {
@@ -47,6 +48,8 @@ export interface StudentSituationSummary {
   situation: PanoramaStudentSituation;
   count: number;
 }
+
+export const DEFAULT_PANORAMA_PERIOD = 'year' as const;
 
 function parseDateKey(value: string): Date {
   const [year, month, day] = value.slice(0, 10).split('-').map(Number);
@@ -132,34 +135,42 @@ export function buildWeeklyAttendanceTrend(
 }
 
 export function buildClassPerformance(
-  assessments: readonly InstitutionAssessmentResult[],
+  students: readonly InstitutionStudentPerformance[],
 ): ClassPerformancePoint[] {
   const classes = new Map<string, ClassPerformancePoint>();
+  const studentsByClass = new Map<string, Set<string>>();
 
-  for (const result of assessments) {
-    const offering = result.assessment.offering;
-    if (!offering || result.averagePercent === null || result.launchedCount === 0) {
-      continue;
-    }
-
-    const current = classes.get(offering.classId) ?? {
-      classId: offering.classId,
-      className: offering.className,
+  for (const student of students) {
+    const current = classes.get(student.classId) ?? {
+      classId: student.classId,
+      className: student.className,
       adequate: 0,
       attention: 0,
       critical: 0,
       total: 0,
+      withoutPerformance: 0,
     };
+    const seenStudents = studentsByClass.get(student.classId) ?? new Set<string>();
 
-    current.total += 1;
-    if (result.averagePercent >= 70) {
+    if (seenStudents.has(student.studentId)) {
+      continue;
+    }
+    seenStudents.add(student.studentId);
+    studentsByClass.set(student.classId, seenStudents);
+
+    if (student.performancePercent === null) {
+      current.withoutPerformance += 1;
+    } else if (student.performancePercent >= 70) {
+      current.total += 1;
       current.adequate += 1;
-    } else if (result.averagePercent >= 50) {
+    } else if (student.performancePercent >= 50) {
+      current.total += 1;
       current.attention += 1;
     } else {
+      current.total += 1;
       current.critical += 1;
     }
-    classes.set(offering.classId, current);
+    classes.set(student.classId, current);
   }
 
   return Array.from(classes.values()).sort((first, second) =>

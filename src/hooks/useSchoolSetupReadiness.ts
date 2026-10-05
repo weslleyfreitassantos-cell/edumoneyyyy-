@@ -28,5 +28,8 @@ export function useSchoolSetupReadiness(
     queryKey: schoolSetupKeys.detail(institutionId),
     queryFn: () => schoolSetupService.getReadiness(institutionId),
     enabled: Boolean(institutionId),
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   });
 }
