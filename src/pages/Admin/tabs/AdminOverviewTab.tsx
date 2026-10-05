@@ -14,6 +14,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useAdminOverview } from '../../../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import SchoolSetupProgress from '../../../components/academic/SchoolSetupProgress';
+import DirectorAcademicPanorama from '../../../components/dashboard/DirectorAcademicPanorama';
 import type { AdminModuleId } from '../adminNavigation';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 import { canManageAcademicStructure } from '../../../lib/permissions';
@@ -243,19 +244,7 @@ export default function AdminOverviewTab({
         showOnlyFoundation={institutionQuery.currentRole === 'ADMIN'}
         configurationHref={availableModuleIds.includes('school-users') ? '/admin?module=school-users' : '/admin?module=overview'}
       />
-      <section aria-labelledby="admin-overview-heading" className="space-y-4">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf] dark:text-blue-400">
-            Resumo institucional
-          </p>
-          <h2 id="admin-overview-heading" className="mt-1 text-xl font-extrabold text-[#181c20] dark:text-white">
-            Resumo da escola
-          </h2>
-          <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">
-            Visão rápida da estrutura e da comunidade escolar.
-          </p>
-        </div>
-
+      <section aria-label="Indicadores institucionais" className="space-y-4">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {primaryMetrics.map((metric) => (
             <MetricCard
@@ -288,6 +277,12 @@ export default function AdminOverviewTab({
           ))}
         </div>
       </section>
+
+      <DirectorAcademicPanorama
+        institutionId={institutionId}
+        availableModuleIds={availableModuleIds}
+        onNavigateToModule={onNavigateToModule}
+      />
     </div>
   );
 }
