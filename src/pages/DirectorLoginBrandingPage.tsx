@@ -762,7 +762,7 @@ export function DirectorLoginBrandingPage() {
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               >
                 <Monitor className="h-4 w-4" aria-hidden="true" />
-                Abrir prévia em desktop
+                Visualizar no desktop
               </button>
               <button
                 type="button"
@@ -770,7 +770,7 @@ export function DirectorLoginBrandingPage() {
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
               >
                 <Smartphone className="h-4 w-4" aria-hidden="true" />
-                Abrir prévia em celular
+                Visualizar no celular
               </button>
             </div>
           </div>
