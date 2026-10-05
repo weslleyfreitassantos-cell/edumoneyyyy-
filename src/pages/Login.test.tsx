@@ -30,6 +30,7 @@ const brandingMock = vi.hoisted(() => ({
     displayName: string | null;
     logoUrl: string | null;
     faviconUrl: string | null;
+    loginBackgroundUrl?: string | null;
     primaryColor: string;
     secondaryColor: string;
   },
@@ -152,6 +153,27 @@ describe('Login', () => {
 
     expect(screen.queryByRole('img')).toBeNull();
     expect(screen.getAllByText('Colegio Sem Logo')).toBeDefined();
+  });
+
+  it('aplica o background publico da instituicao na tela inteira', () => {
+    brandingMock.data = {
+      scope: 'ACCOUNT',
+      displayName: 'Colegio Azul',
+      logoUrl: null,
+      faviconUrl: null,
+      loginBackgroundUrl: 'https://cdn.example.com/background.jpg?v=1',
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
+    };
+
+    const { container } = renderLogin();
+    const loginShell = container.firstElementChild;
+
+    expect(loginShell?.getAttribute('style')).toContain(
+      'background-image: url("https://cdn.example.com/background.jpg?v=1")',
+    );
+    expect(loginShell?.getAttribute('style')).toContain('background-size: cover');
+    expect(loginShell?.getAttribute('style')).toContain('background-position: center');
   });
 
   it('atualiza favicon, titulo e cores dinamicamente', () => {

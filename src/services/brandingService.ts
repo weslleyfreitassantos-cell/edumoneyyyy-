@@ -29,6 +29,7 @@ export interface PublicBranding {
   displayName: string | null;
   logoUrl: string | null;
   faviconUrl: string | null;
+  loginBackgroundUrl?: string | null;
   primaryColor: string;
   secondaryColor: string;
 }
@@ -81,6 +82,7 @@ interface PublicInstitutionBrandingRow {
   login_display_name?: unknown;
   logo_url?: unknown;
   favicon_url?: unknown;
+  login_background_url?: unknown;
   primary_color?: unknown;
   secondary_color?: unknown;
 }
@@ -129,6 +131,7 @@ export const FALLBACK_BRANDING: PublicBranding = {
   displayName: null,
   logoUrl: null,
   faviconUrl: null,
+  loginBackgroundUrl: null,
   primaryColor: DEFAULT_BRAND_PRIMARY_COLOR,
   secondaryColor: DEFAULT_BRAND_SECONDARY_COLOR,
 };
@@ -236,6 +239,7 @@ function normalizePublicBrandingRow(
         : null,
     logoUrl: getPublicBrandingAssetUrl(logoPath),
     faviconUrl: getPublicBrandingAssetUrl(faviconPath),
+    loginBackgroundUrl: null,
     primaryColor: sanitizeBrandColor(
       typeof row?.primary_color === 'string'
         ? row.primary_color
@@ -268,6 +272,10 @@ function normalizePublicInstitutionBrandingRow(
     faviconUrl:
       typeof row.favicon_url === 'string'
         ? row.favicon_url
+        : null,
+    loginBackgroundUrl:
+      typeof row.login_background_url === 'string'
+        ? row.login_background_url
         : null,
     primaryColor: sanitizeBrandColor(
       typeof row.primary_color === 'string'

@@ -10,7 +10,7 @@
   Pencil,
   type LucideIcon,
 } from 'lucide-react';
-import { useRef, useEffect, type ReactNode, type SyntheticEvent } from 'react';
+import { useRef, useEffect, type CSSProperties, type ReactNode, type SyntheticEvent } from 'react';
 import { useThemePreference } from '../../contexts/ThemeContext';
 
 interface AuthShellProps {
@@ -20,6 +20,7 @@ interface AuthShellProps {
   heroVariant?: 'video' | 'default';
   layoutVariant?: 'default' | 'login';
   showBrand?: boolean;
+  backgroundImageUrl?: string | null;
 }
 
 interface AuthPageHeaderProps {
@@ -82,6 +83,9 @@ const defaultFooter =
 const authInputBaseClass =
   'h-12 w-full rounded-lg border border-[#c5c5d3] bg-white text-sm text-[#191c1d] outline-none transition placeholder:text-[#757682] focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20';
 
+export const DEFAULT_LOGIN_BACKGROUND_IMAGE =
+  'image-set(url(/media/ff2-optimized.webp) type("image/webp"), url(/media/ff2.png) type("image/png"))';
+
 export const authPlainLinkClass =
   'inline-flex items-center justify-center gap-2 text-sm font-semibold text-[#1e3a8a] underline-offset-4 transition hover:text-[#00236f] hover:underline focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30';
 
@@ -98,6 +102,7 @@ export function AuthShell({
   heroVariant = 'default',
   layoutVariant = 'default',
   showBrand = true,
+  backgroundImageUrl = null,
 }: AuthShellProps) {
   const { theme } = useThemePreference();
 
@@ -106,10 +111,19 @@ export function AuthShell({
     const darkBg = 'bg-[#060d1f] text-[#e8eaf6]';
     const lightBg = 'bg-[#eef3fc] text-[#111]';
     const shellBg = theme === 'dark' ? darkBg : lightBg;
+    const loginBackgroundStyle: CSSProperties = {
+      backgroundImage: backgroundImageUrl?.trim()
+        ? `url(${JSON.stringify(backgroundImageUrl.trim())})`
+        : DEFAULT_LOGIN_BACKGROUND_IMAGE,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor: '#eef3fc',
+    };
 
     if (!showHero) {
       return (
-        <div className="relative min-h-dvh font-sans flex flex-col items-center justify-center px-4 py-8 text-[#111]" style={{ backgroundImage: 'image-set(url(/media/ff2-optimized.webp) type("image/webp"), url(/media/ff2.png) type("image/png"))', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#eef3fc' }}>
+        <div className="relative min-h-dvh font-sans flex flex-col items-center justify-center px-4 py-8 text-[#111]" style={loginBackgroundStyle}>
           <div className="w-full max-w-[420px]">
             <div className={`rounded-2xl border ${theme === 'dark' ? 'border-[#235bbe]/15 bg-[#0b1430]/95' : 'border-[#c7d9f8] bg-white'} px-6 py-8 shadow-sm sm:px-8 sm:py-10 ${contentClassName}`}>
               {children}

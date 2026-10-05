@@ -153,6 +153,7 @@ describe('brandingService', () => {
       displayName: 'Conta A',
       logoUrl: `${derivedPublicUrl(generatedLogoPath)}?v=9876`,
       faviconUrl: `${derivedPublicUrl(generatedFaviconPath)}?v=9876`,
+      loginBackgroundUrl: null,
       primaryColor: '#112233',
       secondaryColor: '#445566',
     });
@@ -172,6 +173,8 @@ describe('brandingService', () => {
           logo_url: 'https://cdn.example.com/escola-luz/logo.png',
           favicon_url:
             'https://cdn.example.com/escola-luz/favicon.png',
+          login_background_url:
+            'https://cdn.example.com/escola-luz/background.jpg?v=1',
           primary_color: '#123456',
           secondary_color: '#abcdef',
         },
@@ -194,6 +197,8 @@ describe('brandingService', () => {
       logoUrl: 'https://cdn.example.com/escola-luz/logo.png',
       faviconUrl:
         'https://cdn.example.com/escola-luz/favicon.png',
+      loginBackgroundUrl:
+        'https://cdn.example.com/escola-luz/background.jpg?v=1',
       primaryColor: '#123456',
       secondaryColor: '#abcdef',
     });

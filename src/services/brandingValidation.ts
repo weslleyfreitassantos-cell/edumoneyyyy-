@@ -3,6 +3,7 @@ export const PLATFORM_PRIMARY_HOSTNAME =
 
 export const LOGO_MAX_SIZE_BYTES = 2 * 1024 * 1024;
 export const FAVICON_MAX_SIZE_BYTES = 512 * 1024;
+export const BACKGROUND_MAX_SIZE_BYTES = 5 * 1024 * 1024;
 export const DEFAULT_BRAND_PRIMARY_COLOR = '#005bbf';
 export const DEFAULT_BRAND_SECONDARY_COLOR = '#6ffbbe';
 
@@ -18,6 +19,7 @@ export const ALLOWED_LOGO_MIME_TYPES =
 export const BRANDING_IMAGE_LIMITS = {
   logo: LOGO_MAX_SIZE_BYTES,
   favicon: FAVICON_MAX_SIZE_BYTES,
+  background: BACKGROUND_MAX_SIZE_BYTES,
 } as const;
 
 export type BrandingImageKind =
@@ -286,9 +288,15 @@ export async function validateBrandingImageFile(
   const maxSize = BRANDING_IMAGE_LIMITS[kind];
 
   if (file.size > maxSize) {
-    return kind === 'logo'
-      ? 'A logo deve ter no maximo 2 MB.'
-      : 'O favicon deve ter no maximo 512 KB.';
+    if (kind === 'logo') {
+      return 'A logo deve ter no maximo 2 MB.';
+    }
+
+    if (kind === 'favicon') {
+      return 'O favicon deve ter no maximo 512 KB.';
+    }
+
+    return 'O background deve ter no maximo 5 MB.';
   }
 
   if (!isAllowedMimeType(file.type)) {
@@ -326,4 +334,10 @@ export async function validateInstitutionFaviconFile(
   file: File,
 ): Promise<string | null> {
   return validateBrandingImageFile(file, 'favicon');
+}
+
+export async function validateInstitutionBackgroundFile(
+  file: File,
+): Promise<string | null> {
+  return validateBrandingImageFile(file, 'background');
 }
