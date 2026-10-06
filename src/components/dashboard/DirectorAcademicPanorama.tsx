@@ -573,8 +573,8 @@ export default function DirectorAcademicPanorama({
   const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
   const pendingMetrics = [
     { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, loading: pendingAttendanceLoading, moduleId: 'class-diary' as AdminModuleId },
-    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, loading: false, moduleId: 'grades' as AdminModuleId },
-    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, loading: false, moduleId: 'grades' as AdminModuleId },
+    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
+    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
   ];
   const availablePendingValues = pendingMetrics.filter((metric) => !metric.unavailable && !metric.loading).map((metric) => metric.value);
   const pendingMax = Math.max(1, ...availablePendingValues);
@@ -631,7 +631,7 @@ export default function DirectorAcademicPanorama({
             loading={attentionLoading}
             error={Boolean((attendanceQuery.isError && !attendanceQuery.data) && (gradesQuery.isError && !gradesQuery.data))}
             activityPerformance={activityPerformance}
-            activityLoading={gradesLoading}
+            activityLoading={gradesQuery.isFetching}
             activityUnavailable={gradesUnavailable}
           />
         </article>
