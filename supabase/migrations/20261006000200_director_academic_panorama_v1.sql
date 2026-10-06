@@ -275,9 +275,19 @@ begin
      and grade.student_id = scope.student_id
     group by scope.student_id, scope.class_id, scope.class_name
   ),
+  student_performance_context as (
+    select distinct on (student_id)
+      student_id,
+      class_id,
+      class_name
+    from student_assessment_scope
+    order by student_id, class_name, class_id
+  ),
   student_performance_overall as (
     select
       scope.student_id,
+      context.class_id,
+      context.class_name,
       round(avg(
         case
           when upper(trim(grade.status)) = 'GRADED'
@@ -290,10 +300,12 @@ begin
       select distinct student_id, assessment_id
       from student_assessment_scope
     ) as scope
+    join student_performance_context as context
+      on context.student_id = scope.student_id
     left join selected_grades as grade
       on grade.assessment_id = scope.assessment_id
      and grade.student_id = scope.student_id
-    group by scope.student_id
+    group by scope.student_id, context.class_id, context.class_name
   ),
   student_signals as (
     select

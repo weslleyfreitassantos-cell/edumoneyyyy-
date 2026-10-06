@@ -28,6 +28,7 @@ describe('director academic panorama aggregation migration', () => {
     expect(migration).not.toContain('min(class_id)');
     expect(migration).not.toContain('min(class_name)');
     expect(migration).toContain('assessment_results_fixed');
+    expect(migration).toContain('student_performance_context');
     expect(migration).toContain('student_situation_counts');
     expect(migration).toContain('class_performance');
     expect(migration).toContain('pending_attendance');
