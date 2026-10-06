@@ -235,6 +235,14 @@ localDescribe('Director Panorama runtime RPC', () => {
       end_time: '08:00:00',
       active: true,
     });
+    await insertOne(directorA.client, 'timetable_entries', {
+      institution_id: institutionA,
+      subject_offering_id: offeringA,
+      day_of_week: dayOfWeek(attendanceDateB),
+      start_time: '07:00:00',
+      end_time: '08:00:00',
+      active: true,
+    });
 
     const assessmentRows = await Promise.all([
       insertOne(service, 'assessments', {
