@@ -20,6 +20,11 @@ export interface WeeklyAttendancePoint {
   totalRecords: number;
 }
 
+export interface WeeklyAttendanceSource {
+  sessionDate: string;
+  records: ReadonlyArray<{ status: string }>;
+}
+
 export interface AttendanceChartDomain {
   min: number;
   max: number;
@@ -158,7 +163,7 @@ export function classifyStudentSituation(
 }
 
 export function buildWeeklyAttendanceTrend(
-  sessions: readonly InstitutionAttendanceSession[],
+  sessions: readonly WeeklyAttendanceSource[],
 ): WeeklyAttendancePoint[] {
   const weeks = new Map<string, { present: number; total: number }>();
 

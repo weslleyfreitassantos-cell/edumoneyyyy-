@@ -11,6 +11,7 @@ import {
 
 import {
   useInstitutionAttendanceSummary,
+  useInstitutionAttendanceTrend,
   useInstitutionPendingAttendanceSummary,
 } from '../../hooks/useAttendance';
 import { useAcademicYears } from '../../hooks/useAcademicTermClosing';
@@ -212,20 +213,15 @@ function EmptyChart({
 function LoadingChart() {
   return (
     <div
-      className="rounded-xl border border-[#e5eaf0] bg-slate-50/70 p-4 dark:border-slate-700 dark:bg-slate-950/30"
+      className="flex h-56 items-center justify-center rounded-xl border border-[#e5eaf0] bg-slate-50/70 dark:border-slate-700 dark:bg-slate-950/30"
       role="status"
       aria-label="Carregando dados"
+      aria-busy="true"
     >
-      <div className="flex h-44 items-end gap-3 px-3 pb-7 pt-3">
-        {[42, 68, 54, 76, 61, 84, 72].map((height, index) => (
-          <span
-            key={index}
-            className="w-full animate-pulse rounded-t-md bg-slate-200 dark:bg-slate-700"
-            style={{ height: `${height}%` }}
-          />
-        ))}
-      </div>
-      <p className="text-center text-xs text-[#667085] dark:text-slate-400">Carregando dados do gráfico...</p>
+      <span className="inline-flex items-center gap-2 text-xs text-[#667085] dark:text-slate-400">
+        <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-[#005bbf]" aria-hidden="true" />
+        Carregando dados do gráfico...
+      </span>
     </div>
   );
 }
@@ -258,7 +254,7 @@ function AttendanceTrend({
   const latestStatusClass = latestDelta >= 0
     ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'
     : 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300';
-  const labelStep = Math.max(1, Math.ceil(sessions.length / 6));
+  const labelStep = Math.max(1, Math.ceil(Math.max(1, sessions.length - 1) / 5));
   const labelIndexes = new Set(
     sessions
       .map((_, index) => index)
@@ -366,16 +362,18 @@ function AttendanceTrend({
             if (!labelIndexes.has(index)) return null;
             const isFirst = index === 0;
             const isLast = index === sessions.length - 1;
+            const [day, month] = point.label.split(' de ');
             return (
               <text
                 key={point.key}
                 x={xForIndex(index)}
-                y={plotBottom + 38}
+                y={plotBottom + 29}
                 textAnchor={isFirst ? 'start' : isLast ? 'end' : 'middle'}
                 fontSize="11"
                 fill="#667085"
               >
-                {point.label}
+                <tspan x={xForIndex(index)}>{day}</tspan>
+                <tspan x={xForIndex(index)} dy="14">{month ?? ''}</tspan>
               </text>
             );
           })}
@@ -483,6 +481,7 @@ export default function DirectorAcademicPanorama({
   }), [classId, dateRange.fromDate, dateRange.toDate]);
 
   const attendanceQuery = useInstitutionAttendanceSummary(queryInstitutionId, filters);
+  const attendanceTrendQuery = useInstitutionAttendanceTrend(queryInstitutionId, filters);
   const gradesQuery = useInstitutionGradeSummary(queryInstitutionId, filters);
   const coreSummaryLoaded = attendanceQuery.isFetched || gradesQuery.isFetched;
   const pendingAttendanceQuery = useInstitutionPendingAttendanceSummary(queryInstitutionId, filters, {
@@ -494,7 +493,9 @@ export default function DirectorAcademicPanorama({
     attendanceQuery.data?.filters.classes ?? [],
     gradesQuery.data?.filters.classes ?? [],
   ), [attendanceQuery.data?.filters.classes, classOptionsQuery.data, gradesQuery.data?.filters.classes]);
-  const attendanceTrend = useMemo(() => buildWeeklyAttendanceTrend(attendanceQuery.data?.sessions ?? []), [attendanceQuery.data?.sessions]);
+  const attendanceTrend = useMemo(() => buildWeeklyAttendanceTrend(
+    classId ? attendanceQuery.data?.sessions ?? [] : attendanceTrendQuery.data ?? [],
+  ), [attendanceQuery.data?.sessions, attendanceTrendQuery.data, classId]);
   const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.studentPerformance ?? []), [gradesQuery.data?.studentPerformance]);
   const studentSummaries = useMemo(() => buildStudentSituationSummary(mergeStudentSignals(attendanceQuery.data?.sessions ?? [], gradesQuery.data?.studentPerformance ?? [])), [attendanceQuery.data?.sessions, gradesQuery.data?.studentPerformance]);
   const pendingItems = useMemo(() => ({
@@ -508,6 +509,14 @@ export default function DirectorAcademicPanorama({
   const pendingAttendanceLoading = !pendingAttendanceQuery.data && (!coreSummaryLoaded || pendingAttendanceQuery.isFetching);
   const attentionUnavailable = attendanceUnavailable && gradesUnavailable;
   const attendanceLoading = !attendanceQuery.data && attendanceQuery.isPending;
+  const attendanceTrendLoading = waitingForAcademicYear || (
+    classId
+      ? attendanceLoading
+      : !attendanceTrendQuery.data && attendanceTrendQuery.isPending
+  );
+  const attendanceTrendError = classId
+    ? attendanceQuery.isError && !attendanceQuery.data
+    : attendanceTrendQuery.isError && !attendanceTrendQuery.data;
   const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
   const attentionLoading = !attentionUnavailable && !attendanceQuery.data && !gradesQuery.data && (attendanceQuery.isPending || gradesQuery.isPending);
   const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
@@ -559,9 +568,9 @@ export default function DirectorAcademicPanorama({
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><CalendarCheck2 className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Frequência média ao longo do tempo</h3><p className="text-xs text-[#667085] dark:text-slate-400">Acompanhamento semanal com referência de 75%.</p></div></div>
           <AttendanceTrend
             sessions={attendanceTrend}
-            loading={attendanceLoading}
-            error={attendanceQuery.isError && !attendanceQuery.data}
-            onRetry={() => void attendanceQuery.refetch()}
+            loading={attendanceTrendLoading}
+            error={attendanceTrendError}
+            onRetry={() => void (classId ? attendanceQuery.refetch() : attendanceTrendQuery.refetch())}
           />
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">

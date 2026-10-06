@@ -166,6 +166,17 @@ interface AttendanceSessionQueryRow {
   updated_at: string;
 }
 
+interface AttendanceTrendSessionQueryRow {
+  id: string;
+  subject_offering_id: string;
+  session_date: string;
+}
+
+interface AttendanceTrendRecordQueryRow {
+  attendance_session_id: string;
+  status: string;
+}
+
 interface AttendanceScheduleQueryRow {
   day_of_week: number;
   start_time: string;
@@ -416,6 +427,13 @@ export interface InstitutionAttendanceSummary {
     academicYears: AttendanceFilterOption[];
     terms: AttendanceFilterOption[];
   };
+}
+
+export interface InstitutionAttendanceTrendSession {
+  sessionDate: string;
+  records: Array<{
+    status: AttendanceStatus;
+  }>;
 }
 
 export interface InstitutionPendingAttendanceSummary {
@@ -2054,6 +2072,8 @@ function chunkValues<T>(values: readonly T[], size: number): T[][] {
 
 const ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE = 100;
 const ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE = 250;
+const ATTENDANCE_TREND_QUERY_CHUNK_SIZE = 500;
+const ATTENDANCE_TREND_QUERY_PAGE_SIZE = 500;
 
 const ATTENDANCE_SESSION_SUMMARY_FIELDS = `
   id,
@@ -2662,6 +2682,118 @@ export const attendanceService = {
         error,
         'ATTENDANCE_LOAD_FAILED',
       );
+    }
+  },
+
+  async getInstitutionAttendanceTrend(
+    institutionId: string,
+    filters: AttendanceInstitutionFilters = {},
+  ): Promise<InstitutionAttendanceTrendSession[]> {
+    try {
+      return await withAcademicReadTimeout(async (signal) => {
+        const fromDate = filters.fromDate ?? '1900-01-01';
+        const toDate = filters.toDate ?? '2999-12-31';
+
+        if (filters.limit === 0 || filters.sessionIds?.length === 0) {
+          return [];
+        }
+
+        let offeringIds: string[] | null = null;
+        if (filters.classId || filters.subjectId || filters.teacherProfileId || filters.termId) {
+          let offeringQuery = supabase
+            .from('subject_offerings')
+            .select('id');
+
+          if (filters.classId) offeringQuery = offeringQuery.eq('class_id', filters.classId);
+          if (filters.subjectId) offeringQuery = offeringQuery.eq('subject_id', filters.subjectId);
+          if (filters.teacherProfileId) offeringQuery = offeringQuery.eq('teacher_profile_id', filters.teacherProfileId);
+          if (filters.termId) offeringQuery = offeringQuery.eq('term_id', filters.termId);
+
+          offeringQuery = offeringQuery.abortSignal(signal);
+          const { data, error } = await offeringQuery;
+          if (error) {
+            throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+          }
+
+          offeringIds = ((data ?? []) as Array<{ id: string }>).map((offering) => offering.id);
+          if (offeringIds.length === 0) return [];
+        }
+
+        const sessionRows: AttendanceTrendSessionQueryRow[] = [];
+        let sessionOffset = 0;
+
+        while (true) {
+          let sessionQuery = supabase
+            .from('attendance_sessions')
+            .select('id, subject_offering_id, session_date')
+            .eq('institution_id', institutionId)
+            .gte('session_date', fromDate)
+            .lte('session_date', toDate)
+            .order('session_date', { ascending: true })
+            .order('id', { ascending: true });
+
+          if (!filters.includeCanceled) {
+            sessionQuery = sessionQuery.neq('status', 'CANCELED');
+          }
+          if (filters.status) {
+            sessionQuery = sessionQuery.eq('status', filters.status);
+          }
+          if (offeringIds) {
+            sessionQuery = sessionQuery.in('subject_offering_id', offeringIds);
+          }
+          if (filters.sessionIds) {
+            sessionQuery = sessionQuery.in('id', [...filters.sessionIds]);
+          }
+
+          sessionQuery = sessionQuery
+            .range(sessionOffset, sessionOffset + ATTENDANCE_TREND_QUERY_PAGE_SIZE - 1)
+            .abortSignal(signal);
+          const { data, error } = await sessionQuery;
+
+          if (error) {
+            throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+          }
+
+          const page = (data ?? []) as unknown as AttendanceTrendSessionQueryRow[];
+          sessionRows.push(...page);
+          if (page.length < ATTENDANCE_TREND_QUERY_PAGE_SIZE) break;
+          sessionOffset += ATTENDANCE_TREND_QUERY_PAGE_SIZE;
+        }
+
+        if (sessionRows.length === 0) return [];
+
+        const recordPages = await Promise.all(chunkValues(
+          sessionRows.map((row) => row.id),
+          ATTENDANCE_TREND_QUERY_CHUNK_SIZE,
+        ).map(async (sessionIdChunk) => {
+          const { data, error } = await supabase
+            .from('attendance_records')
+            .select('attendance_session_id, status')
+            .eq('institution_id', institutionId)
+            .in('attendance_session_id', sessionIdChunk)
+            .abortSignal(signal);
+
+          if (error) {
+            throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+          }
+
+          return (data ?? []) as unknown as AttendanceTrendRecordQueryRow[];
+        }));
+
+        const recordsBySessionId = new Map<string, Array<{ status: AttendanceStatus }>>();
+        for (const record of recordPages.flat()) {
+          const records = recordsBySessionId.get(record.attendance_session_id) ?? [];
+          records.push({ status: record.status as AttendanceStatus });
+          recordsBySessionId.set(record.attendance_session_id, records);
+        }
+
+        return sessionRows.map((session) => ({
+          sessionDate: session.session_date,
+          records: recordsBySessionId.get(session.id) ?? [],
+        }));
+      });
+    } catch (error) {
+      throw createAttendanceError(error, 'ATTENDANCE_LOAD_FAILED');
     }
   },
 

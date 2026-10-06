@@ -12,6 +12,7 @@ import {
   type AttendanceOffering,
   type AttendanceScheduleSlotSelection,
   type InstitutionAttendanceSummary,
+  type InstitutionAttendanceTrendSession,
   type InstitutionPendingAttendanceSummary,
   type InstitutionClassDiaryFilters,
   type InstitutionClassDiarySummary,
@@ -69,6 +70,10 @@ export const attendanceKeys = {
       institutionId,
       filters,
     ] as const,
+  institutionTrend: (
+    institutionId: string | undefined,
+    filters: AttendanceInstitutionFilters,
+  ) => [...attendanceKeys.all, 'institution-trend', institutionId, filters] as const,
   institutionDiary: (
     institutionId: string | undefined,
     filters: InstitutionClassDiaryFilters,
@@ -239,6 +244,27 @@ export function useInstitutionAttendanceSummary(
     placeholderData: keepPreviousData,
     retry: 1,
     retryDelay: (attempt) => Math.min(1000 * (attempt + 1), 2000),
+  });
+}
+
+export function useInstitutionAttendanceTrend(
+  institutionId: string | undefined,
+  filters: AttendanceInstitutionFilters,
+) {
+  return useQuery<InstitutionAttendanceTrendSession[]>({
+    queryKey: attendanceKeys.institutionTrend(institutionId, filters),
+    queryFn: () => {
+      if (!institutionId) {
+        throw new Error(
+          'Instituição é obrigatória para carregar a tendência de frequência.',
+        );
+      }
+
+      return attendanceService.getInstitutionAttendanceTrend(institutionId, filters);
+    },
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 60 * 3,
+    retry: false,
   });
 }
 
