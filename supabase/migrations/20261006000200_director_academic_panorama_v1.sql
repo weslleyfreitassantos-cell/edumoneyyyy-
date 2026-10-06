@@ -361,7 +361,7 @@ begin
   pending_attendance as (
     select count(*)::integer as pending_count
     from generate_series(p_from_date, v_pending_to_date, interval '1 day') as day_record(day)
-    join timetable_entries as timetable
+    join public.timetable_entries as timetable
       on timetable.institution_id = p_institution_id
      and timetable.active is true
      and timetable.day_of_week = extract(isodow from day_record.day)::smallint

@@ -32,6 +32,7 @@ describe('director academic panorama aggregation migration', () => {
     expect(migration).toContain('student_situation_counts');
     expect(migration).toContain('class_performance');
     expect(migration).toContain('pending_attendance');
+    expect(migration).toContain('join public.timetable_entries as timetable');
     expect(migration).toContain("'attendance'");
     expect(migration).toContain("'performance'");
     expect(migration).toContain("'pending'");
