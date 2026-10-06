@@ -440,13 +440,6 @@ function StudentSituation({
   if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
   const total = summaries.reduce((sum, item) => sum + item.count, 0);
   if (total === 0) return <EmptyChart>Sem estudantes com dados no período selecionado.</EmptyChart>;
-  const regularCount = summaries.find((item) => item.situation === "REGULAR")?.count ?? 0;
-  const attentionCount = summaries.find((item) => item.situation === "ATTENTION")?.count ?? 0;
-  const criticalCount = summaries.find((item) => item.situation === "CRITICAL")?.count ?? 0;
-  const noDataCount = summaries.find((item) => item.situation === "NO_DATA")?.count ?? 0;
-  const followUpCount = attentionCount + criticalCount;
-  const withDataCount = total - noDataCount;
-  const regularRate = Math.round((regularCount / total) * 100);
   let offset = 0;
   const segments = summaries.map((item) => {
     const start = offset;
@@ -455,8 +448,7 @@ function StudentSituation({
   }).join(', ');
 
   return (
-    <div className="space-y-5">
-      <div className="flex w-full flex-col items-center gap-5 sm:flex-row sm:items-center">
+    <div className="flex w-full flex-col items-center gap-5 sm:flex-row sm:items-center">
       <div className="relative h-36 w-36 shrink-0 rounded-full" style={{ background: `conic-gradient(${segments})` }} role="img" aria-label={`Situação de ${total} estudantes`}>
         <div className="absolute inset-4 flex items-center justify-center rounded-full bg-white text-center dark:bg-slate-900">
           <span className="text-2xl font-extrabold text-[#181c20] dark:text-white">{total}</span>
@@ -469,34 +461,6 @@ function StudentSituation({
             <strong className="text-[#181c20] dark:text-white">{item.count}</strong>
           </div>
         ))}
-      </div>
-      </div>
-      <div className="w-full border-t border-[#e5eaf0] pt-4 dark:border-slate-700">
-        <div className="mb-2 flex items-center justify-between gap-3">
-          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#667085] dark:text-slate-400">Leitura do período</p>
-          <strong className="text-xs text-[#344054] dark:text-slate-200">{regularRate}% regulares</strong>
-        </div>
-        <div className="mb-4 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800" role="img" aria-label="Percentual de estudantes regulares">
-          <span className="block h-full rounded-full bg-[#159570]" style={{ width: String(regularRate) + "%" }} />
-        </div>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs">
-          <div>
-            <p className="text-[#667085] dark:text-slate-400">Regulares</p>
-            <strong className="text-base text-[#181c20] dark:text-white">{formatCount(regularCount)}</strong>
-          </div>
-          <div>
-            <p className="text-[#667085] dark:text-slate-400">Acompanhamento</p>
-            <strong className="text-base text-[#181c20] dark:text-white">{formatCount(followUpCount)}</strong>
-          </div>
-          <div>
-            <p className="text-[#667085] dark:text-slate-400">Com dados</p>
-            <strong className="text-base text-[#181c20] dark:text-white">{formatCount(withDataCount)}</strong>
-          </div>
-          <div>
-            <p className="text-[#667085] dark:text-slate-400">Sem dados</p>
-            <strong className="text-base text-[#181c20] dark:text-white">{formatCount(noDataCount)}</strong>
-          </div>
-        </div>
       </div>
     </div>
   );
