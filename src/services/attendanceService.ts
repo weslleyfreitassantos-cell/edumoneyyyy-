@@ -148,6 +148,21 @@ interface EnrollmentQueryRow {
   students: StudentRelation | StudentRelation[] | null;
 }
 
+interface AttendanceEnrollmentEligibilityRow {
+  id: string;
+  student_id: string;
+  class_id: string;
+  status: string | null;
+  active: boolean | null;
+  enrolled_at: string | null;
+}
+
+interface AttendanceEnrollmentEligibilityStudentRow {
+  id: string;
+  institution_id: string;
+  active: boolean | null;
+}
+
 interface AttendanceSessionQueryRow {
   id: string;
   institution_id: string;
@@ -2070,6 +2085,75 @@ function chunkValues<T>(values: readonly T[], size: number): T[][] {
   return chunks;
 }
 
+async function listInstitutionAttendanceEnrollmentEligibility(
+  institutionId: string,
+  classIds: readonly string[],
+): Promise<{
+  enrollments: AttendanceEnrollmentEligibilityRow[];
+  activeStudentIds: Set<string>;
+}> {
+  const enrollments: AttendanceEnrollmentEligibilityRow[] = [];
+  const uniqueClassIds = [...new Set(classIds)];
+
+  for (const classIdChunk of chunkValues(uniqueClassIds, 100)) {
+    let offset = 0;
+
+    while (true) {
+      const { data, error } = await supabase
+        .from('enrollments')
+        .select('id, student_id, class_id, status, active, enrolled_at')
+        .in('class_id', classIdChunk)
+        .eq('active', true)
+        .order('id', { ascending: true })
+        .range(offset, offset + DIARY_SESSION_PAGE_SIZE - 1);
+
+      if (error) {
+        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+      }
+
+      const page = (data ?? []) as unknown as AttendanceEnrollmentEligibilityRow[];
+      enrollments.push(...page);
+
+      if (page.length < DIARY_SESSION_PAGE_SIZE) break;
+      offset += DIARY_SESSION_PAGE_SIZE;
+    }
+  }
+
+  const studentIds = [...new Set(enrollments.map((row) => row.student_id))];
+  const activeStudentIds = new Set<string>();
+
+  for (const studentIdChunk of chunkValues(studentIds, 250)) {
+    let offset = 0;
+
+    while (true) {
+      const { data, error } = await supabase
+        .from('students')
+        .select('id, institution_id, active')
+        .in('id', studentIdChunk)
+        .eq('institution_id', institutionId)
+        .eq('active', true)
+        .order('id', { ascending: true })
+        .range(offset, offset + 249);
+
+      if (error) {
+        throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+      }
+
+      const page = (data ?? []) as unknown as AttendanceEnrollmentEligibilityStudentRow[];
+      for (const student of page) {
+        if (student.institution_id === institutionId && student.active === true) {
+          activeStudentIds.add(student.id);
+        }
+      }
+
+      if (page.length < 250) break;
+      offset += 250;
+    }
+  }
+
+  return { enrollments, activeStudentIds };
+}
+
 const ATTENDANCE_SUMMARY_QUERY_CHUNK_SIZE = 100;
 const ATTENDANCE_SUMMARY_QUERY_PAGE_SIZE = 250;
 const ATTENDANCE_TREND_QUERY_CHUNK_SIZE = 500;
@@ -3082,7 +3166,7 @@ export const attendanceService = {
 
     if (offerings.length === 0) return { pendingCount: 0 };
 
-    const [timetableResult, sessionKeys, blockingEvents] = await Promise.all([
+    const [timetableResult, sessionKeys, blockingEvents, enrollmentEligibility] = await Promise.all([
       supabase
         .from('timetable_entries')
         .select('subject_offering_id, day_of_week, start_time, end_time, active')
@@ -3094,6 +3178,10 @@ export const attendanceService = {
         institutionId,
         fromDate,
         toDate,
+      ),
+      listInstitutionAttendanceEnrollmentEligibility(
+        institutionId,
+        offerings.map((offering) => offering.classId),
       ),
     ]);
 
@@ -3111,6 +3199,13 @@ export const attendanceService = {
     );
     const calendarCache = new Map<string, AcademicDateStatus>();
     const offeringById = new Map(offerings.map((offering) => [offering.id, offering]));
+    const enrollmentsByClass = new Map<string, AttendanceEnrollmentEligibilityRow[]>();
+    for (const enrollment of enrollmentEligibility.enrollments) {
+      const rows = enrollmentsByClass.get(enrollment.class_id) ?? [];
+      rows.push(enrollment);
+      enrollmentsByClass.set(enrollment.class_id, rows);
+    }
+    const rosterCache = new Map<string, boolean>();
     let pendingCount = 0;
 
     for (const date of dateRange(fromDate, toDate)) {
@@ -3150,9 +3245,19 @@ export const attendanceService = {
         }
         if (calendarStatus.blocked) continue;
 
-        if (!existingSlots.has(institutionDiarySessionKey(offering.id, date, slot.start_time))) {
-          pendingCount += 1;
+        if (existingSlots.has(institutionDiarySessionKey(offering.id, date, slot.start_time))) continue;
+
+        const rosterKey = `${offering.classId}|${date}`;
+        let hasEligibleStudents = rosterCache.get(rosterKey);
+        if (hasEligibleStudents === undefined) {
+          hasEligibleStudents = (enrollmentsByClass.get(offering.classId) ?? []).some(
+            (enrollment) => enrollmentEligibility.activeStudentIds.has(enrollment.student_id)
+              && isEnrollmentValidForAttendanceDate(enrollment, date),
+          );
+          rosterCache.set(rosterKey, hasEligibleStudents);
         }
+
+        if (hasEligibleStudents) pendingCount += 1;
       }
     }
 
