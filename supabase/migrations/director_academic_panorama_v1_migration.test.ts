@@ -22,6 +22,11 @@ describe('director academic panorama aggregation migration', () => {
 
   it('aggregates attendance, assessments, student situations and pending work in one response', () => {
     expect(migration).toContain('selected_attendance_records');
+    expect(migration).toContain('attendance_student_totals');
+    expect(migration).toContain('attendance_student_context');
+    expect(migration).toContain('select distinct on (student_id)');
+    expect(migration).not.toContain('min(class_id)');
+    expect(migration).not.toContain('min(class_name)');
     expect(migration).toContain('assessment_results_fixed');
     expect(migration).toContain('student_situation_counts');
     expect(migration).toContain('class_performance');

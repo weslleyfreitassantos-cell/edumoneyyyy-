@@ -82,6 +82,7 @@ begin
   ),
   selected_attendance_records as materialized (
     select
+      session_record.id as session_id,
       session_record.session_date,
       session_record.subject_offering_id,
       session_record.class_id,
@@ -111,15 +112,32 @@ begin
     group by 1
     having count(*) > 0
   ),
-  attendance_students as (
+  attendance_student_totals as (
     select
       student_id,
-      min(class_id) as class_id,
-      min(class_name) as class_name,
       count(*)::integer as total_records,
       count(*) filter (where upper(trim(status)) in ('PRESENT', 'LATE'))::integer as present_records
     from selected_attendance_records
     group by student_id
+  ),
+  attendance_student_context as (
+    select distinct on (student_id)
+      student_id,
+      class_id,
+      class_name
+    from selected_attendance_records
+    order by student_id, session_date desc, subject_offering_id desc, session_id desc
+  ),
+  attendance_students as (
+    select
+      totals.student_id,
+      context.class_id,
+      context.class_name,
+      totals.total_records,
+      totals.present_records
+    from attendance_student_totals as totals
+    left join attendance_student_context as context
+      on context.student_id = totals.student_id
   ),
   selected_assessments as materialized (
     select
