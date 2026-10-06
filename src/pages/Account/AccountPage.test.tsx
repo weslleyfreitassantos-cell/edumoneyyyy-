@@ -315,9 +315,7 @@ describe('AccountPage', () => {
     expect(
       screen.queryByText('Painel institucional'),
     ).toBeNull();
-    expect(
-      screen.getAllByText('Conta Sol').length,
-    ).toBeGreaterThan(0);
+    expect(screen.queryByText('Conta Sol')).toBeNull();
     expect(screen.getByText('Escola Sol')).toBeTruthy();
     expect(screen.getAllByText('Ativa')).toHaveLength(2);
     expect(screen.getByText('Licenças restantes')).toBeTruthy();
