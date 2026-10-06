@@ -10,29 +10,22 @@ import {
 } from 'lucide-react';
 
 import {
-  useInstitutionAttendanceSummary,
-  useInstitutionAttendanceTrend,
-  useInstitutionPendingAttendanceSummary,
-} from '../../hooks/useAttendance';
+  useDirectorPanorama,
+} from '../../hooks/useDirectorPanorama';
 import { useAcademicYears } from '../../hooks/useAcademicTermClosing';
-import { useInstitutionGradeSummary } from '../../hooks/useGrades';
 import { useClassOptions } from '../../hooks/useClasses';
 import { getLocalDateInputValue } from '../../lib/academicTermDates';
 import type { AdminModuleId } from '../../pages/Admin/adminNavigation';
 import type { AcademicYearOption } from '../../services/academicPolicyService';
 import {
-  buildClassPerformance,
-  buildActivityPerformanceSummary,
-  buildStudentSituationSummary,
-  buildWeeklyAttendanceTrend,
-  countPendingAcademicItems,
   DEFAULT_PANORAMA_PERIOD,
-  mergeStudentSignals,
-  mergePanoramaClassOptions,
   getPanoramaMetricDisplay,
   getPanoramaMetricProgress,
-  type PanoramaStudentSituation,
   type ActivityPerformanceSummary,
+  type ClassPerformancePoint,
+  type PanoramaStudentSituation,
+  type StudentSituationSummary,
+  type WeeklyAttendancePoint,
 } from './directorAcademicPanoramaUtils';
 
 type PanoramaPeriod = '7d' | '30d' | '90d' | 'term' | 'year';
@@ -239,7 +232,7 @@ function AttendanceTrend({
   error,
   onRetry,
 }: {
-  sessions: ReturnType<typeof buildWeeklyAttendanceTrend>;
+  sessions: WeeklyAttendancePoint[];
   loading: boolean;
   error: boolean;
   onRetry: () => void;
@@ -396,7 +389,7 @@ function ClassPerformance({
   loading,
   error,
 }: {
-  points: ReturnType<typeof buildClassPerformance>;
+  points: ClassPerformancePoint[];
   loading: boolean;
   error: boolean;
 }) {
@@ -437,7 +430,7 @@ function StudentSituation({
   activityLoading,
   activityUnavailable,
 }: {
-  summaries: ReturnType<typeof buildStudentSituationSummary>;
+  summaries: StudentSituationSummary[];
   loading: boolean;
   error: boolean;
   activityPerformance: ActivityPerformanceSummary;
@@ -521,6 +514,9 @@ export default function DirectorAcademicPanorama({
   const today = getLocalDateInputValue();
   const yearsQuery = useAcademicYears(institutionId);
   const currentYear = useMemo(() => getCurrentAcademicYear(yearsQuery.data ?? [], today), [today, yearsQuery.data]);
+  const currentTerm = useMemo(() => currentYear?.terms.find((term) =>
+    term.active && isDateWithinRange(today, term.startDate, term.endDate),
+  ) ?? null, [currentYear, today]);
   const dateRange = useMemo(() => getDateRange(period, today, currentYear), [currentYear, period, today]);
   const waitingForAcademicYear = ['term', 'year'].includes(period) && !currentYear && yearsQuery.isFetching;
   const queryInstitutionId = waitingForAcademicYear ? undefined : institutionId;
@@ -528,53 +524,48 @@ export default function DirectorAcademicPanorama({
     fromDate: dateRange.fromDate,
     toDate: dateRange.toDate,
     ...(classId ? { classId } : {}),
-  }), [classId, dateRange.fromDate, dateRange.toDate]);
+    ...(period === 'term' && currentTerm ? { termId: currentTerm.id } : {}),
+    ...(period === 'year' && currentYear ? { academicYearId: currentYear.id } : {}),
+  }), [classId, currentTerm, currentYear, dateRange.fromDate, dateRange.toDate, period]);
 
-  const attendanceQuery = useInstitutionAttendanceSummary(queryInstitutionId, filters);
-  const attendanceTrendQuery = useInstitutionAttendanceTrend(queryInstitutionId, filters);
-  const gradesQuery = useInstitutionGradeSummary(queryInstitutionId, filters);
-  const coreSummaryLoaded = attendanceQuery.isFetched || gradesQuery.isFetched;
-  const pendingAttendanceQuery = useInstitutionPendingAttendanceSummary(queryInstitutionId, filters, {
-    enabled: coreSummaryLoaded,
-  });
+  const panoramaQuery = useDirectorPanorama(queryInstitutionId, filters);
   const classOptionsQuery = useClassOptions(institutionId);
-  const classes = useMemo(() => mergePanoramaClassOptions(
-    classOptionsQuery.data?.map((option) => ({ id: option.id, label: option.name })) ?? [],
-    attendanceQuery.data?.filters.classes ?? [],
-    gradesQuery.data?.filters.classes ?? [],
-  ), [attendanceQuery.data?.filters.classes, classOptionsQuery.data, gradesQuery.data?.filters.classes]);
-  const attendanceTrend = useMemo(() => buildWeeklyAttendanceTrend(
-    classId ? attendanceQuery.data?.sessions ?? [] : attendanceTrendQuery.data ?? [],
-  ), [attendanceQuery.data?.sessions, attendanceTrendQuery.data, classId]);
-  const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.studentPerformance ?? []), [gradesQuery.data?.studentPerformance]);
-  const activityPerformance = useMemo(() => buildActivityPerformanceSummary(gradesQuery.data?.assessments ?? []), [gradesQuery.data?.assessments]);
-  const studentSummaries = useMemo(() => buildStudentSituationSummary(mergeStudentSignals(attendanceQuery.data?.sessions ?? [], gradesQuery.data?.studentPerformance ?? [])), [attendanceQuery.data?.sessions, gradesQuery.data?.studentPerformance]);
-  const pendingItems = useMemo(() => ({
-    ...countPendingAcademicItems([], gradesQuery.data?.assessments ?? []),
-    attendancePending: pendingAttendanceQuery.data?.pendingCount ?? 0,
-  }), [gradesQuery.data?.assessments, pendingAttendanceQuery.data?.pendingCount]);
+  const classes = useMemo(() => (classOptionsQuery.data ?? [])
+    .map((option) => [option.id, option.name] as [string, string])
+    .sort((first, second) => first[1].localeCompare(second[1], 'pt-BR')),
+  [classOptionsQuery.data]);
+  const attendanceTrend = panoramaQuery.data?.attendance.weekly ?? [];
+  const classPerformance = panoramaQuery.data?.classes ?? [];
+  const activityPerformance: ActivityPerformanceSummary = panoramaQuery.data?.performance.activities ?? {
+    totalActivities: 0,
+    aboveTarget: 0,
+    attention: 0,
+    critical: 0,
+    withoutAverage: 0,
+    launchedActivities: 0,
+    pendingGrades: 0,
+  };
+  const studentSummaries = panoramaQuery.data?.students.situations ?? [];
+  const pendingItems = panoramaQuery.data?.pending ?? {
+    attendancePending: 0,
+    missingGrades: 0,
+    assessmentsWithoutLaunch: 0,
+  };
   const attentionCount = (studentSummaries.find((item) => item.situation === 'ATTENTION')?.count ?? 0) + (studentSummaries.find((item) => item.situation === 'CRITICAL')?.count ?? 0);
-  const attendanceUnavailable = attendanceQuery.isError && !attendanceQuery.data;
-  const gradesUnavailable = gradesQuery.isError && !gradesQuery.data;
-  const pendingAttendanceUnavailable = pendingAttendanceQuery.isError && !pendingAttendanceQuery.data;
-  const pendingAttendanceLoading = !pendingAttendanceQuery.data && (!coreSummaryLoaded || pendingAttendanceQuery.isFetching);
-  const attentionUnavailable = attendanceUnavailable && gradesUnavailable;
-  const attendanceLoading = !attendanceQuery.data && attendanceQuery.isPending;
-  const attendanceTrendLoading = waitingForAcademicYear || (
-    classId
-      ? attendanceLoading
-      : !attendanceTrendQuery.data && attendanceTrendQuery.isPending
-  );
-  const attendanceTrendError = classId
-    ? attendanceQuery.isError && !attendanceQuery.data
-    : attendanceTrendQuery.isError && !attendanceTrendQuery.data;
-  const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
-  const attentionLoading = !attentionUnavailable && (!attendanceQuery.isFetched || !gradesQuery.isFetched);
-  const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
+  const panoramaUnavailable = panoramaQuery.isError && !panoramaQuery.data;
+  const attendanceUnavailable = panoramaUnavailable;
+  const gradesUnavailable = panoramaUnavailable;
+  const attentionUnavailable = panoramaUnavailable;
+  const attendanceLoading = !panoramaQuery.data && panoramaQuery.isPending;
+  const attendanceTrendLoading = waitingForAcademicYear || attendanceLoading;
+  const attendanceTrendError = panoramaUnavailable;
+  const gradesLoading = attendanceLoading;
+  const attentionLoading = !panoramaUnavailable && attendanceLoading;
+  const hasError = panoramaQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
   const pendingMetrics = [
-    { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, loading: pendingAttendanceLoading, moduleId: 'class-diary' as AdminModuleId },
-    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
-    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
+    { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: panoramaUnavailable, loading: attendanceLoading, moduleId: 'class-diary' as AdminModuleId },
+    { label: 'Notas pendentes', value: pendingItems.missingGrades, detail: 'Lançamentos aluno × avaliação que ainda precisam ser preenchidos.', unavailable: panoramaUnavailable, loading: gradesLoading, moduleId: 'grades' as AdminModuleId },
+    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: panoramaUnavailable, loading: gradesLoading, moduleId: 'grades' as AdminModuleId },
   ];
   const availablePendingValues = pendingMetrics.filter((metric) => !metric.unavailable && !metric.loading).map((metric) => metric.value);
   const pendingMax = Math.max(1, ...availablePendingValues);
@@ -609,9 +600,9 @@ export default function DirectorAcademicPanorama({
       {hasError && <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">Alguns indicadores não puderam ser carregados agora. Os dados disponíveis continuam visíveis.</p>}
 
       <div className="grid gap-3 md:grid-cols-3">
-        <KpiCard label="Frequência média" value={attendanceUnavailable ? 'Não foi possível carregar agora.' : formatPercent(attendanceQuery.data?.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attendanceLoading} updating={Boolean(attendanceQuery.data && attendanceQuery.isFetching)} />
-        <KpiCard label="Desempenho médio" value={gradesUnavailable ? 'Não foi possível carregar agora.' : formatPercent(gradesQuery.data?.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={gradesLoading} updating={Boolean(gradesQuery.data && gradesQuery.isFetching)} />
-        <KpiCard label="Estudantes em atenção" value={getPanoramaMetricDisplay(formatCount(attentionCount), attentionUnavailable)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attentionLoading} updating={Boolean((attendanceQuery.data || gradesQuery.data) && (attendanceQuery.isFetching || gradesQuery.isFetching))} />
+        <KpiCard label="Frequência média" value={attendanceUnavailable ? 'Não foi possível carregar agora.' : formatPercent(panoramaQuery.data?.attendance.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attendanceLoading} updating={Boolean(panoramaQuery.data && panoramaQuery.isFetching)} />
+        <KpiCard label="Desempenho médio" value={gradesUnavailable ? 'Não foi possível carregar agora.' : formatPercent(panoramaQuery.data?.performance.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={gradesLoading} updating={Boolean(panoramaQuery.data && panoramaQuery.isFetching)} />
+        <KpiCard label="Estudantes em atenção" value={getPanoramaMetricDisplay(formatCount(attentionCount), attentionUnavailable)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attentionLoading} updating={Boolean(panoramaQuery.data && panoramaQuery.isFetching)} />
       </div>
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(19rem,0.8fr)]">
@@ -621,7 +612,7 @@ export default function DirectorAcademicPanorama({
             sessions={attendanceTrend}
             loading={attendanceTrendLoading}
             error={attendanceTrendError}
-            onRetry={() => void (classId ? attendanceQuery.refetch() : attendanceTrendQuery.refetch())}
+            onRetry={() => void panoramaQuery.refetch()}
           />
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
@@ -629,9 +620,9 @@ export default function DirectorAcademicPanorama({
           <StudentSituation
             summaries={studentSummaries}
             loading={attentionLoading}
-            error={Boolean((attendanceQuery.isError && !attendanceQuery.data) && (gradesQuery.isError && !gradesQuery.data))}
+            error={panoramaUnavailable}
             activityPerformance={activityPerformance}
-            activityLoading={gradesQuery.isFetching}
+            activityLoading={gradesLoading}
             activityUnavailable={gradesUnavailable}
           />
         </article>
@@ -640,7 +631,7 @@ export default function DirectorAcademicPanorama({
       <div className="grid gap-4 xl:grid-cols-2">
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><GraduationCap className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Desempenho por turma</h3><p className="text-xs text-[#667085] dark:text-slate-400">Distribuição de alunos com nota lançada.</p></div></div>
-          <ClassPerformance points={classPerformance} loading={gradesLoading} error={gradesQuery.isError && !gradesQuery.data} />
+          <ClassPerformance points={classPerformance} loading={gradesLoading} error={panoramaUnavailable} />
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><ClipboardList className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Pendências acadêmicas</h3><p className="text-xs text-[#667085] dark:text-slate-400">Itens que ainda precisam de ação.</p></div></div>
@@ -650,6 +641,7 @@ export default function DirectorAcademicPanorama({
               return (
                 <button key={metric.label} type="button" disabled={!navigable} onClick={() => onNavigateToModule?.(metric.moduleId)} className={`w-full text-left ${navigable ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : 'cursor-default'}`}>
                   <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{metric.label}</span><strong className="text-[#181c20] dark:text-white">{metric.loading ? 'Carregando...' : getPanoramaMetricDisplay(formatCount(metric.value), metric.unavailable)}</strong></div>
+                  {metric.detail && <p className="mb-1 text-xs text-[#667085] dark:text-slate-400">{metric.detail}</p>}
                   <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><span className="block h-full rounded-full bg-[#005bbf]" style={{ width: `${getPanoramaMetricProgress(metric.value, pendingMax, metric.unavailable || metric.loading)}%` }} /></div>
                 </button>
               );
