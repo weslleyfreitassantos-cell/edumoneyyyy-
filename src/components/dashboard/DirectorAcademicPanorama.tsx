@@ -35,7 +35,7 @@ import {
   type ActivityPerformanceSummary,
 } from './directorAcademicPanoramaUtils';
 
-type PanoramaPeriod = '7d' | '30d' | '90d' | 'term' | 'year';
+type PanoramaPeriod = '7d' | '30d' | '90d' | 'term3' | 'term' | 'year';
 
 interface DirectorAcademicPanoramaProps {
   institutionId: string;
@@ -50,6 +50,7 @@ interface DateRange {
 }
 
 const periodOptions: Array<{ value: PanoramaPeriod; label: string }> = [
+  { value: 'term3', label: '3º Bimestre' },
   { value: '7d', label: 'Últimos 7 dias' },
   { value: '30d', label: 'Últimos 30 dias' },
   { value: '90d', label: 'Últimos 3 meses' },
@@ -103,6 +104,19 @@ function getDateRange(
 
   if (period === '90d') {
     return { fromDate: addLocalDays(today, -89), toDate: today, label: 'últimos 3 meses' };
+  }
+
+  const orderedTerms = [...(currentYear?.terms ?? [])].sort((first, second) =>
+    first.startDate.localeCompare(second.startDate),
+  );
+  const thirdTerm = orderedTerms[2];
+
+  if (period === 'term3' && thirdTerm) {
+    return {
+      fromDate: thirdTerm.startDate,
+      toDate: thirdTerm.endDate,
+      label: thirdTerm.name,
+    };
   }
 
   const currentTerm = currentYear?.terms.find((term) =>
@@ -522,7 +536,7 @@ export default function DirectorAcademicPanorama({
   const yearsQuery = useAcademicYears(institutionId);
   const currentYear = useMemo(() => getCurrentAcademicYear(yearsQuery.data ?? [], today), [today, yearsQuery.data]);
   const dateRange = useMemo(() => getDateRange(period, today, currentYear), [currentYear, period, today]);
-  const waitingForAcademicYear = period === 'year' && !currentYear && yearsQuery.isFetching;
+  const waitingForAcademicYear = ['term3', 'term', 'year'].includes(period) && !currentYear && yearsQuery.isFetching;
   const queryInstitutionId = waitingForAcademicYear ? undefined : institutionId;
   const filters = useMemo(() => ({
     fromDate: dateRange.fromDate,
