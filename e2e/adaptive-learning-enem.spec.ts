@@ -42,7 +42,7 @@ async function login(page: import('@playwright/test').Page, actor: Actor): Promi
 }
 
 adaptiveDescribe('official ENEM learning journey', () => {
-  test('runs a historical question through attempt, error notebook and review', async ({ browser }) => {
+  test('keeps historical practice hidden until dynamic readiness gates pass', async ({ browser }) => {
     const service = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
     const suffix = Date.now().toString(36);
     const userIds: string[] = [];
@@ -129,58 +129,10 @@ adaptiveDescribe('official ENEM learning journey', () => {
         source_reference: 'https://download.inep.gov.br/enem/provas_e_gabaritos/2023_PV_impresso_D2_CD5.pdf',
       });
 
-      const options = question.data.options as string[];
-      const correctAnswer = String(question.data.correct_answer);
-      const wrongAnswer = options.find((option) => option !== correctAnswer) ?? options[0];
-
       page = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await login(page, student);
       await page.goto('/student/study/simulation');
-      await expect(page.getByRole('heading', { name: 'ENEM 2023 · Matemática · Caderno 5', exact: true })).toBeVisible({ timeout: 30_000 });
-      await page.getByRole('button', { name: 'Começar simulado' }).click();
-      await page.getByRole('radio', { name: wrongAnswer, exact: true }).check();
-      await expect(page.getByRole('status')).toContainText('Resposta salva.', { timeout: 30_000 });
-      await page.reload();
-      await expect(page.getByRole('radio', { name: wrongAnswer, exact: true })).toBeChecked({ timeout: 30_000 });
-      await page.getByRole('button', { name: 'Revisar e finalizar' }).click();
-      await page.getByRole('button', { name: 'Finalizar simulado' }).click();
-      await expect(page.getByText('Simulado concluído')).toBeVisible({ timeout: 30_000 });
-
-      const attempt = await service
-        .from('learning_simulation_attempts')
-        .select('id,status,score,answers')
-        .eq('simulation_id', simulation.data.id)
-        .eq('student_id', studentId)
-        .single();
-      expect(attempt.error).toBeNull();
-      expect(attempt.data).toMatchObject({ status: 'COMPLETED', score: 0 });
-      expect(attempt.data.answers[question.data.id]).toMatchObject({ answer: wrongAnswer, is_correct: false });
-
-      const errorNote = await service
-        .from('learning_error_notebook')
-        .select('id,canonical_skill_id,status')
-        .eq('student_id', studentId)
-        .eq('question_bank_id', question.data.id)
-        .single();
-      expect(errorNote.error).toBeNull();
-      expect(errorNote.data).toMatchObject({ status: 'OPEN' });
-      expect(errorNote.data.canonical_skill_id).toBeTruthy();
-
-      const review = await student.client.rpc('get_learning_error_review', { p_error_id: errorNote.data.id });
-      expect(review.error).toBeNull();
-      expect(review.data).toMatchObject({ source: 'QUESTION_BANK', question_bank_id: question.data.id, canonical_skill_id: errorNote.data.canonical_skill_id });
-      const reviewed = await student.client.rpc('submit_learning_error_review', { p_error_id: errorNote.data.id, p_answer: correctAnswer });
-      expect(reviewed.error).toBeNull();
-      expect(reviewed.data).toMatchObject({ is_correct: true, status: 'RESOLVED' });
-
-      const skillState = await service
-        .from('learning_student_skill_state')
-        .select('state,evidence_count,mastery_estimate')
-        .eq('student_id', studentId)
-        .eq('canonical_skill_id', errorNote.data.canonical_skill_id)
-        .single();
-      expect(skillState.error).toBeNull();
-      expect(skillState.data).toMatchObject({ state: 'NEEDS_REVIEW', evidence_count: 2 });
+      await expect(page.getByText(/Ainda não há prática oficial disponível/)).toBeVisible({ timeout: 30_000 });
     } finally {
       await page?.close();
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
