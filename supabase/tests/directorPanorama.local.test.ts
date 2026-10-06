@@ -227,7 +227,7 @@ localDescribe('Director Panorama runtime RPC', () => {
       });
     }
 
-    await insertOne(service, 'timetable_entries', {
+    await insertOne(directorA.client, 'timetable_entries', {
       institution_id: institutionA,
       subject_offering_id: offeringA,
       day_of_week: dayOfWeek(attendanceDateA),
