@@ -125,6 +125,9 @@ localDescribe('Director Panorama runtime RPC', () => {
       attendanceDateA = shiftDate(attendanceDateA, -1);
     }
     attendanceDateB = shiftDate(attendanceDateA, -1);
+    while (dayOfWeek(attendanceDateB) > 6) {
+      attendanceDateB = shiftDate(attendanceDateB, -1);
+    }
 
     const adminA = await createActor(service, 'ADMIN', 'admin-a', suffix);
     directorA = await createActor(service, 'DIRECTOR', 'director-a', suffix);
