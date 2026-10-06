@@ -6,6 +6,7 @@ import type {
   InstitutionStudentPerformance,
 } from '../../services/gradeService';
 import {
+  buildActivityPerformanceSummary,
   buildClassPerformance,
   buildStudentSituationSummary,
   buildWeeklyAttendanceTrend,
@@ -219,6 +220,23 @@ describe('director academic panorama helpers', () => {
       expect.objectContaining({ className: '1ª Série A', adequate: 1, attention: 1, critical: 0, total: 2, withoutPerformance: 1 }),
       expect.objectContaining({ className: '2ª Série A', adequate: 0, attention: 0, critical: 1, total: 1, withoutPerformance: 0 }),
     ]);
+  });
+
+  it('resume o desempenho das atividades por faixa', () => {
+    expect(buildActivityPerformanceSummary([
+      assessment('class-1', '1ª Série A', 85, 2),
+      assessment('class-1', '1ª Série A', 65, 1),
+      assessment('class-1', '1ª Série A', 40, 2),
+      assessment('class-1', '1ª Série A', null, 0),
+    ])).toEqual({
+      totalActivities: 4,
+      aboveTarget: 1,
+      attention: 1,
+      critical: 1,
+      withoutAverage: 1,
+      launchedActivities: 3,
+      pendingGrades: 3,
+    });
   });
 
   it('conta pendências reais do diário e das notas', () => {

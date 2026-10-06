@@ -59,6 +59,16 @@ export interface StudentSituationSummary {
   count: number;
 }
 
+export interface ActivityPerformanceSummary {
+  totalActivities: number;
+  aboveTarget: number;
+  attention: number;
+  critical: number;
+  withoutAverage: number;
+  launchedActivities: number;
+  pendingGrades: number;
+}
+
 export interface PanoramaClassOption {
   id: string;
   label: string;
@@ -283,6 +293,40 @@ export function buildStudentSituationSummary(
     situation,
     count: counts[situation],
   }));
+}
+
+export function buildActivityPerformanceSummary(
+  assessments: readonly InstitutionAssessmentResult[],
+): ActivityPerformanceSummary {
+  return assessments.reduce<ActivityPerformanceSummary>(
+    (current, result) => {
+      const average = result.averagePercent;
+      current.totalActivities += 1;
+      current.launchedActivities += result.launchedCount > 0 ? 1 : 0;
+      current.pendingGrades += result.missingCount;
+
+      if (average === null) {
+        current.withoutAverage += 1;
+      } else if (average >= 70) {
+        current.aboveTarget += 1;
+      } else if (average >= 50) {
+        current.attention += 1;
+      } else {
+        current.critical += 1;
+      }
+
+      return current;
+    },
+    {
+      totalActivities: 0,
+      aboveTarget: 0,
+      attention: 0,
+      critical: 0,
+      withoutAverage: 0,
+      launchedActivities: 0,
+      pendingGrades: 0,
+    },
+  );
 }
 
 export function mergeStudentSignals(

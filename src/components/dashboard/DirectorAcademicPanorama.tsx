@@ -22,6 +22,7 @@ import type { AdminModuleId } from '../../pages/Admin/adminNavigation';
 import type { AcademicYearOption } from '../../services/academicPolicyService';
 import {
   buildClassPerformance,
+  buildActivityPerformanceSummary,
   buildStudentSituationSummary,
   buildWeeklyAttendanceTrend,
   countPendingAcademicItems,
@@ -31,6 +32,7 @@ import {
   getPanoramaMetricDisplay,
   getPanoramaMetricProgress,
   type PanoramaStudentSituation,
+  type ActivityPerformanceSummary,
 } from './directorAcademicPanoramaUtils';
 
 type PanoramaPeriod = '7d' | '30d' | '90d' | 'term' | 'year';
@@ -431,10 +433,16 @@ function StudentSituation({
   summaries,
   loading,
   error,
+  activityPerformance,
+  activityLoading,
+  activityUnavailable,
 }: {
   summaries: ReturnType<typeof buildStudentSituationSummary>;
   loading: boolean;
   error: boolean;
+  activityPerformance: ActivityPerformanceSummary;
+  activityLoading: boolean;
+  activityUnavailable: boolean;
 }) {
   if (loading) return <LoadingChart />;
   if (error) return <EmptyChart>Não foi possível carregar agora.</EmptyChart>;
@@ -448,19 +456,56 @@ function StudentSituation({
   }).join(', ');
 
   return (
-    <div className="flex w-full flex-col items-center gap-5 sm:flex-row sm:items-center">
-      <div className="relative h-36 w-36 shrink-0 rounded-full" style={{ background: `conic-gradient(${segments})` }} role="img" aria-label={`Situação de ${total} estudantes`}>
-        <div className="absolute inset-4 flex items-center justify-center rounded-full bg-white text-center dark:bg-slate-900">
-          <span className="text-2xl font-extrabold text-[#181c20] dark:text-white">{total}</span>
+    <div className="space-y-5">
+      <div className="flex w-full flex-col items-center gap-5 sm:flex-row sm:items-center">
+        <div className="relative h-36 w-36 shrink-0 rounded-full" style={{ background: `conic-gradient(${segments})` }} role="img" aria-label={`Situação de ${total} estudantes`}>
+          <div className="absolute inset-4 flex items-center justify-center rounded-full bg-white text-center dark:bg-slate-900">
+            <span className="text-2xl font-extrabold text-[#181c20] dark:text-white">{total}</span>
+          </div>
+        </div>
+        <div className="grid w-full grid-cols-2 gap-3 text-sm">
+          {summaries.map((item) => (
+            <div key={item.situation} className="flex items-center justify-between gap-2">
+              <span className="flex items-center gap-2 text-[#667085] dark:text-slate-400"><i className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: situationColors[item.situation] }} />{situationLabels[item.situation]}</span>
+              <strong className="text-[#181c20] dark:text-white">{item.count}</strong>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="grid w-full grid-cols-2 gap-3 text-sm">
-        {summaries.map((item) => (
-          <div key={item.situation} className="flex items-center justify-between gap-2">
-            <span className="flex items-center gap-2 text-[#667085] dark:text-slate-400"><i className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: situationColors[item.situation] }} />{situationLabels[item.situation]}</span>
-            <strong className="text-[#181c20] dark:text-white">{item.count}</strong>
+
+      <div className="w-full border-t border-[#e5eaf0] pt-4 dark:border-slate-700">
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#667085] dark:text-slate-400">Desempenho nas atividades</p>
+            <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">Distribuição das avaliações do período.</p>
           </div>
-        ))}
+          {!activityLoading && !activityUnavailable && activityPerformance.totalActivities > 0 && (
+            <strong className="text-xs text-[#344054] dark:text-slate-200">{formatCount(activityPerformance.totalActivities)} atividades</strong>
+          )}
+        </div>
+        {activityLoading ? (
+          <div className="rounded-lg bg-slate-50 px-3 py-4 text-center text-xs text-[#667085] dark:bg-slate-800/50 dark:text-slate-400">Carregando desempenho...</div>
+        ) : activityUnavailable ? (
+          <div className="rounded-lg bg-slate-50 px-3 py-4 text-center text-xs text-[#667085] dark:bg-slate-800/50 dark:text-slate-400">Não foi possível carregar o desempenho das atividades.</div>
+        ) : activityPerformance.totalActivities === 0 ? (
+          <div className="rounded-lg bg-slate-50 px-3 py-4 text-center text-xs text-[#667085] dark:bg-slate-800/50 dark:text-slate-400">Nenhuma atividade avaliada no período.</div>
+        ) : (
+          <>
+            <div className="flex h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800" role="img" aria-label="Distribuição do desempenho nas atividades">
+              <span className="bg-[#159570]" style={{ width: `${(activityPerformance.aboveTarget / activityPerformance.totalActivities) * 100}%` }} />
+              <span className="bg-[#d97706]" style={{ width: `${(activityPerformance.attention / activityPerformance.totalActivities) * 100}%` }} />
+              <span className="bg-[#dc4b4b]" style={{ width: `${(activityPerformance.critical / activityPerformance.totalActivities) * 100}%` }} />
+              <span className="bg-slate-300 dark:bg-slate-600" style={{ width: `${(activityPerformance.withoutAverage / activityPerformance.totalActivities) * 100}%` }} />
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3 text-xs sm:grid-cols-4">
+              <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-[#159570]" />70% ou mais</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.aboveTarget)}</strong></div>
+              <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-[#d97706]" />50% a 69%</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.attention)}</strong></div>
+              <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-[#dc4b4b]" />Abaixo de 50%</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.critical)}</strong></div>
+              <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />Sem média</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.withoutAverage)}</strong></div>
+            </div>
+            <p className="mt-3 text-xs text-[#667085] dark:text-slate-400">{formatCount(activityPerformance.launchedActivities)} com lançamento · {formatCount(activityPerformance.pendingGrades)} notas pendentes</p>
+          </>
+        )}
       </div>
     </div>
   );
@@ -502,6 +547,7 @@ export default function DirectorAcademicPanorama({
     classId ? attendanceQuery.data?.sessions ?? [] : attendanceTrendQuery.data ?? [],
   ), [attendanceQuery.data?.sessions, attendanceTrendQuery.data, classId]);
   const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.studentPerformance ?? []), [gradesQuery.data?.studentPerformance]);
+  const activityPerformance = useMemo(() => buildActivityPerformanceSummary(gradesQuery.data?.assessments ?? []), [gradesQuery.data?.assessments]);
   const studentSummaries = useMemo(() => buildStudentSituationSummary(mergeStudentSignals(attendanceQuery.data?.sessions ?? [], gradesQuery.data?.studentPerformance ?? [])), [attendanceQuery.data?.sessions, gradesQuery.data?.studentPerformance]);
   const pendingItems = useMemo(() => ({
     ...countPendingAcademicItems([], gradesQuery.data?.assessments ?? []),
@@ -580,7 +626,14 @@ export default function DirectorAcademicPanorama({
         </article>
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><UsersRound className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Situação dos estudantes</h3><p className="text-xs text-[#667085] dark:text-slate-400">Frequência e desempenho combinados.</p></div></div>
-          <StudentSituation summaries={studentSummaries} loading={attentionLoading} error={Boolean((attendanceQuery.isError && !attendanceQuery.data) && (gradesQuery.isError && !gradesQuery.data))} />
+          <StudentSituation
+            summaries={studentSummaries}
+            loading={attentionLoading}
+            error={Boolean((attendanceQuery.isError && !attendanceQuery.data) && (gradesQuery.isError && !gradesQuery.data))}
+            activityPerformance={activityPerformance}
+            activityLoading={gradesLoading}
+            activityUnavailable={gradesUnavailable}
+          />
         </article>
       </div>
 
