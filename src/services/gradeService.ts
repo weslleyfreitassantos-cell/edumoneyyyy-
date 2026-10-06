@@ -336,6 +336,7 @@ export interface GradeFilterOption {
 export interface InstitutionAssessmentResult {
   assessment: AssessmentRecord;
   studentIds: string[];
+  missingStudentIds: string[];
   expectedStudentCount: number;
   launchedCount: number;
   missingCount: number;
@@ -2557,12 +2558,28 @@ export const gradeService = {
           ? 1
           : 0
         : expectedStudentIds.size;
+      const launchedStudentIds = new Set(
+        relevantGrades
+          .filter((grade) => {
+            const status = normalizeGradeStatus(grade.status);
+            return status === 'EXCUSED' || (
+              status === 'GRADED' &&
+              grade.score !== null &&
+              assessment.maxScore > 0
+            );
+          })
+          .map((grade) => grade.student_id),
+      );
+      const missingStudentIds = Array.from(expectedStudentIds).filter(
+        (studentId) => !launchedStudentIds.has(studentId),
+      );
       const launchedCount =
         summary.gradedCount + summary.excusedCount;
 
       return {
         assessment,
         studentIds: Array.from(expectedStudentIds),
+        missingStudentIds,
         expectedStudentCount,
         launchedCount,
         missingCount: Math.max(

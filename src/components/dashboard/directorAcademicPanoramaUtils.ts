@@ -66,7 +66,7 @@ export interface ActivityPerformanceSummary {
   critical: number;
   withoutAverage: number;
   launchedActivities: number;
-  pendingGrades: number;
+  studentsWithPendingGrades: number;
 }
 
 export interface PanoramaClassOption {
@@ -298,12 +298,13 @@ export function buildStudentSituationSummary(
 export function buildActivityPerformanceSummary(
   assessments: readonly InstitutionAssessmentResult[],
 ): ActivityPerformanceSummary {
-  return assessments.reduce<ActivityPerformanceSummary>(
+  const pendingStudentIds = new Set<string>();
+  const summary = assessments.reduce<ActivityPerformanceSummary>(
     (current, result) => {
       const average = result.averagePercent;
       current.totalActivities += 1;
       current.launchedActivities += result.launchedCount > 0 ? 1 : 0;
-      current.pendingGrades += result.missingCount;
+      result.missingStudentIds.forEach((studentId) => pendingStudentIds.add(studentId));
 
       if (average === null) {
         current.withoutAverage += 1;
@@ -324,9 +325,14 @@ export function buildActivityPerformanceSummary(
       critical: 0,
       withoutAverage: 0,
       launchedActivities: 0,
-      pendingGrades: 0,
+      studentsWithPendingGrades: 0,
     },
   );
+
+  return {
+    ...summary,
+    studentsWithPendingGrades: pendingStudentIds.size,
+  };
 }
 
 export function mergeStudentSignals(
@@ -386,11 +392,16 @@ export function countPendingAcademicItems(
   diaryEntries: readonly InstitutionClassDiaryEntry[],
   assessments: readonly InstitutionAssessmentResult[],
 ) {
+  const pendingStudentIds = new Set(
+    assessments.flatMap((result) => result.missingStudentIds),
+  );
+
   return {
     attendancePending: diaryEntries.filter(
       (entry) => entry.diaryStatus === 'PENDING' || entry.diaryStatus === 'DRAFT',
     ).length,
     missingGrades: assessments.reduce((total, result) => total + result.missingCount, 0),
+    pendingStudents: pendingStudentIds.size,
     assessmentsWithoutLaunch: assessments.filter(
       (result) => result.expectedStudentCount > 0 && result.launchedCount === 0,
     ).length,

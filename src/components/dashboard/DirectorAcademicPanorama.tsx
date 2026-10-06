@@ -503,7 +503,7 @@ function StudentSituation({
               <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-[#dc4b4b]" />Abaixo de 50%</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.critical)}</strong></div>
               <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-600" />Sem média</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.withoutAverage)}</strong></div>
             </div>
-            <p className="mt-3 text-xs text-[#667085] dark:text-slate-400">{formatCount(activityPerformance.launchedActivities)} com lançamento · {formatCount(activityPerformance.pendingGrades)} notas pendentes</p>
+            <p className="mt-3 text-xs text-[#667085] dark:text-slate-400">{formatCount(activityPerformance.launchedActivities)} atividades com lançamento · {formatCount(activityPerformance.studentsWithPendingGrades)} alunos com pendência</p>
           </>
         )}
       </div>
@@ -573,7 +573,7 @@ export default function DirectorAcademicPanorama({
   const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
   const pendingMetrics = [
     { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, loading: pendingAttendanceLoading, moduleId: 'class-diary' as AdminModuleId },
-    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
+    { label: 'Alunos com notas pendentes', value: pendingItems.pendingStudents, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
     { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
   ];
   const availablePendingValues = pendingMetrics.filter((metric) => !metric.unavailable && !metric.loading).map((metric) => metric.value);
