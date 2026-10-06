@@ -455,10 +455,15 @@ export default function AccountPage() {
           </div>
         </section>
 
-        <p className="text-sm text-[#727785]">
-          Conta {getAccountStatusLabel(account.status)} ·{' '}
-          {usedLicenses}/{limit} instituições usadas
-        </p>
+        <section>
+          <h2 className="text-2xl font-bold text-[#181c20]">
+            {account.name}
+          </h2>
+          <p className="mt-1 text-sm text-[#727785]">
+            Conta {getAccountStatusLabel(account.status)} ·{' '}
+            {usedLicenses}/{limit} instituições usadas
+          </p>
+        </section>
 
         {account.status !== 'ACTIVE' && (
           <div
@@ -484,13 +489,13 @@ export default function AccountPage() {
 
         {feedback?.type === 'success' && institutionContext.currentInstitutionId && (
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800">
-            <span>Escola criada. Agora configure a estrutura acadêmica.</span>
+            <span>Escola criada. Cadastre a direção para iniciar a configuração acadêmica.</span>
             <button
               type="button"
-              onClick={() => navigate('/admin?module=overview')}
+              onClick={() => navigate('/admin?module=directors')}
               className="rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white hover:bg-[#004a9b]"
             >
-              Configurar escola
+              Cadastrar direção
             </button>
           </div>
         )}
