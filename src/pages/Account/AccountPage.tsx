@@ -1,5 +1,4 @@
 import {
-  Building2,
   DoorOpen,
   Loader2,
   PauseCircle,
@@ -7,6 +6,7 @@ import {
   PlayCircle,
   Plus,
   Trash2,
+  UserRound,
 } from 'lucide-react';
 import {
   useState,
@@ -22,6 +22,7 @@ import {
   type SelectInstitutionResult,
 } from '../../contexts/InstitutionContext';
 import { AdminInstitutionSubdomainSection } from '../../components/account/AdminInstitutionSubdomainSection';
+import ProfileHeroAvatar from '../../components/ProfileHeroAvatar';
 import {
   useCreateInstitution,
   useDeleteInstitution,
@@ -71,6 +72,10 @@ interface InstitutionEditState {
 
 function getErrorMessage(error: unknown): string {
   return getUserFacingErrorMessage(error, 'Operação não concluída.');
+}
+
+function getFirstName(fullName: string | null | undefined): string {
+  return fullName?.trim().split(/\s+/).at(0) || 'Administrador';
 }
 
 type SelectInstitutionFailure = Extract<
@@ -130,6 +135,8 @@ export default function AccountPage() {
     useState<Record<string, string>>({});
 
   const account = accountQuery.data;
+  const profileName = profile?.full_name?.trim() || 'Administrador';
+  const firstName = getFirstName(profileName);
   const canEditInstitutions = profile?.role === 'ADMIN';
   const usedLicenses =
     account?.institutions.length ?? 0;
@@ -430,24 +437,28 @@ export default function AccountPage() {
   return (
     <div className="min-h-screen bg-slate-50 p-6">
       <div className="mx-auto max-w-7xl space-y-6">
-        <header>
-          <div>
-            <div className="flex items-center gap-2">
-              <Building2
-                className="h-6 w-6 text-[#005bbf]"
-                aria-hidden="true"
-              />
-              <h1 className="text-2xl font-bold text-[#181c20]">
-                {account.name}
+        <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
+                Área administrativa
+              </p>
+              <h1 className="mt-2 text-3xl font-bold tracking-tight">
+                Olá, {firstName}!
               </h1>
             </div>
-            <p className="mt-1 text-sm text-[#727785]">
-              Conta {getAccountStatusLabel(account.status)} Â·{' '}
-              {usedLicenses}/{limit}{' '}
-              instituições usadas
-            </p>
+            <ProfileHeroAvatar
+              avatarUrl={profile?.avatar_url}
+              fullName={profileName}
+              fallback={<UserRound className="h-8 w-8" aria-hidden="true" />}
+            />
           </div>
-        </header>
+        </section>
+
+        <p className="text-sm text-[#727785]">
+          Conta {getAccountStatusLabel(account.status)} ·{' '}
+          {usedLicenses}/{limit} instituições usadas
+        </p>
 
         {account.status !== 'ACTIVE' && (
           <div
