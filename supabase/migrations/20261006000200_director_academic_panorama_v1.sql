@@ -358,8 +358,72 @@ begin
       coalesce(sum(missing_count), 0)::integer as pending_grades
     from assessment_results_fixed
   ),
-  pending_attendance as (
-    select count(*)::integer as pending_count
+  pending_class_enrollments as materialized (
+    select
+      enrollment.class_id,
+      enrollment.enrolled_at
+    from public.enrollments as enrollment
+    join public.students as student
+      on student.id = enrollment.student_id
+     and student.institution_id = p_institution_id
+     and student.active is true
+    join (
+      select distinct class_id
+      from selected_offerings
+    ) as relevant_class
+      on relevant_class.class_id = enrollment.class_id
+    where enrollment.active is true
+      and coalesce(nullif(upper(trim(enrollment.status)), ''), 'ACTIVE') = 'ACTIVE'
+  ),
+  pending_class_eligibility as materialized (
+    select
+      class_id,
+      bool_or(enrolled_at is null) as has_unbounded_enrollment,
+      min(enrolled_at) filter (where enrolled_at is not null) as first_enrolled_at
+    from pending_class_enrollments
+    group by class_id
+  ),
+  pending_existing_slots as materialized (
+    select distinct
+      existing_session.subject_offering_id,
+      existing_session.session_date,
+      existing_session.starts_at
+    from public.attendance_sessions as existing_session
+    join selected_offerings as offering
+      on offering.id = existing_session.subject_offering_id
+    where existing_session.institution_id = p_institution_id
+      and existing_session.session_date between p_from_date and v_pending_to_date
+  ),
+  pending_blocking_events as materialized (
+    select
+      calendar_event.academic_year_id,
+      calendar_event.class_id,
+      calendar_event.subject_id,
+      calendar_event.starts_at,
+      calendar_event.ends_at
+    from public.academic_calendar_events as calendar_event
+    where calendar_event.institution_id = p_institution_id
+      and calendar_event.active is true
+      and calendar_event.all_day is true
+      and calendar_event.event_type in (
+        'HOLIDAY'::public.academic_calendar_event_type,
+        'RECESS'::public.academic_calendar_event_type,
+        'CLASS_SUSPENSION'::public.academic_calendar_event_type
+      )
+      and calendar_event.starts_at < ((v_pending_to_date + 1)::timestamp at time zone 'UTC')
+      and (
+        calendar_event.ends_at is null
+        or calendar_event.ends_at >= (p_from_date::timestamp at time zone 'UTC')
+      )
+  ),
+  pending_candidate_occurrences as materialized (
+    select
+      day_record.day::date as occurrence_date,
+      timetable.subject_offering_id,
+      timetable.start_time,
+      offering.academic_year_id,
+      offering.class_id,
+      offering.subject_id
     from generate_series(p_from_date, v_pending_to_date, interval '1 day') as day_record(day)
     join public.timetable_entries as timetable
       on timetable.institution_id = p_institution_id
@@ -373,47 +437,31 @@ begin
        or offering.term_end_date is null
        or day_record.day::date between offering.term_start_date and offering.term_end_date
      )
-      where (day_record.day::date + timetable.end_time)
+    join pending_class_eligibility as eligibility
+      on eligibility.class_id = offering.class_id
+    where (day_record.day::date + timetable.end_time)
       <= (current_timestamp at time zone 'America/Sao_Paulo')::timestamp
-      and exists (
-        select 1
-        from public.enrollments as enrollment
-        join public.students as student
-          on student.id = enrollment.student_id
-         and student.institution_id = p_institution_id
-         and student.active is true
-        where enrollment.class_id = offering.class_id
-          and enrollment.active is true
-          and coalesce(nullif(upper(trim(enrollment.status)), ''), 'ACTIVE') = 'ACTIVE'
-          and (
-            enrollment.enrolled_at is null
-            or enrollment.enrolled_at < (day_record.day::date + 1)::timestamp
-          )
+      and (
+        eligibility.has_unbounded_enrollment
+        or eligibility.first_enrolled_at < (day_record.day::date + 1)::timestamp
       )
+  ),
+  pending_attendance as (
+    select count(*)::integer as pending_count
+    from pending_candidate_occurrences as occurrence
+    left join pending_existing_slots as existing
+      on existing.subject_offering_id = occurrence.subject_offering_id
+     and existing.session_date = occurrence.occurrence_date
+     and existing.starts_at = occurrence.start_time
+    where existing.subject_offering_id is null
       and not exists (
         select 1
-        from public.attendance_sessions as existing_session
-        where existing_session.institution_id = p_institution_id
-          and existing_session.subject_offering_id = offering.id
-          and existing_session.session_date = day_record.day::date
-          and existing_session.starts_at = timetable.start_time
-      )
-      and not exists (
-        select 1
-        from public.academic_calendar_events as calendar_event
-        where calendar_event.institution_id = p_institution_id
-          and calendar_event.active is true
-          and calendar_event.all_day is true
-          and calendar_event.event_type in (
-            'HOLIDAY'::public.academic_calendar_event_type,
-            'RECESS'::public.academic_calendar_event_type,
-            'CLASS_SUSPENSION'::public.academic_calendar_event_type
-          )
-          and (calendar_event.starts_at at time zone 'UTC')::date <= day_record.day::date
-          and (coalesce(calendar_event.ends_at, calendar_event.starts_at) at time zone 'UTC')::date >= day_record.day::date
-          and (calendar_event.academic_year_id is null or calendar_event.academic_year_id = offering.academic_year_id)
-          and (calendar_event.class_id is null or calendar_event.class_id = offering.class_id)
-          and (calendar_event.subject_id is null or calendar_event.subject_id = offering.subject_id)
+        from pending_blocking_events as calendar_event
+        where (calendar_event.starts_at at time zone 'UTC')::date <= occurrence.occurrence_date
+          and (coalesce(calendar_event.ends_at, calendar_event.starts_at) at time zone 'UTC')::date >= occurrence.occurrence_date
+          and (calendar_event.academic_year_id is null or calendar_event.academic_year_id = occurrence.academic_year_id)
+          and (calendar_event.class_id is null or calendar_event.class_id = occurrence.class_id)
+          and (calendar_event.subject_id is null or calendar_event.subject_id = occurrence.subject_id)
       )
   )
   select jsonb_build_object(

@@ -103,6 +103,8 @@ localDescribe('Director Panorama runtime RPC', () => {
   let offeringA: string;
   let studentA: string;
   let studentB: string;
+  let enrollmentA: string;
+  let enrollmentB: string;
   let assessmentA: string;
   let assessmentB: string;
   let sessionA: string;
@@ -219,16 +221,18 @@ localDescribe('Director Panorama runtime RPC', () => {
       registration_number: `B-${suffix}`,
       active: true,
     })).id;
-    for (const studentId of [studentA, studentB]) {
-      await insertOne(service, 'enrollments', {
+    const enrollmentRows = await Promise.all([studentA, studentB].map((studentId) =>
+      insertOne(service, 'enrollments', {
         student_id: studentId,
         class_id: classA,
         academic_year_id: yearA,
         status: 'ACTIVE',
         active: true,
         enrolled_at: `${year}-01-01T00:00:00Z`,
-      });
-    }
+      }),
+    ));
+    enrollmentA = enrollmentRows[0].id;
+    enrollmentB = enrollmentRows[1].id;
 
     await insertOne(directorA.client, 'timetable_entries', {
       institution_id: institutionA,
@@ -343,6 +347,70 @@ localDescribe('Director Panorama runtime RPC', () => {
     });
     expect(beforeSession.error).toBeNull();
     expect(beforeSession.data.pending.attendancePending).toBe(1);
+
+    const calendarBlocker = await insertOne(service, 'academic_calendar_events', {
+      institution_id: institutionA,
+      academic_year_id: yearA,
+      title: `Feriado do panorama ${Date.now()}`,
+      event_type: 'HOLIDAY',
+      starts_at: `${attendanceDateA}T00:00:00Z`,
+      ends_at: null,
+      all_day: true,
+      audience: 'ALL',
+      active: true,
+      created_by: directorA.id,
+    });
+    const blockedByCalendar = await directorA.client.rpc('get_director_academic_panorama_v1', {
+      p_institution_id: institutionA,
+      p_from_date: fromDate,
+      p_to_date: toDate,
+      p_term_id: termA,
+    });
+    expect(blockedByCalendar.error).toBeNull();
+    expect(blockedByCalendar.data.pending.attendancePending).toBe(0);
+
+    const removedCalendarBlocker = await service
+      .from('academic_calendar_events')
+      .delete()
+      .eq('id', calendarBlocker.id);
+    expect(removedCalendarBlocker.error).toBeNull();
+
+    const futureEnrollmentDate = shiftDate(attendanceDateA, 1);
+    const futureEnrollmentUpdates = await Promise.all([
+      service.from('enrollments').update({ enrolled_at: `${futureEnrollmentDate}T00:00:00Z` }).eq('id', enrollmentA),
+      service.from('enrollments').update({ enrolled_at: `${futureEnrollmentDate}T00:00:00Z` }).eq('id', enrollmentB),
+    ]);
+    expect(futureEnrollmentUpdates.every(({ error }) => error === null)).toBe(true);
+
+    const beforeEnrollment = await directorA.client.rpc('get_director_academic_panorama_v1', {
+      p_institution_id: institutionA,
+      p_from_date: fromDate,
+      p_to_date: toDate,
+      p_term_id: termA,
+    });
+    expect(beforeEnrollment.error).toBeNull();
+    expect(beforeEnrollment.data.pending.attendancePending).toBe(0);
+
+    const eligibleEnrollment = await service
+      .from('enrollments')
+      .update({ enrolled_at: `${shiftDate(attendanceDateA, -1)}T00:00:00Z` })
+      .eq('id', enrollmentA);
+    expect(eligibleEnrollment.error).toBeNull();
+
+    const afterEnrollment = await directorA.client.rpc('get_director_academic_panorama_v1', {
+      p_institution_id: institutionA,
+      p_from_date: fromDate,
+      p_to_date: toDate,
+      p_term_id: termA,
+    });
+    expect(afterEnrollment.error).toBeNull();
+    expect(afterEnrollment.data.pending.attendancePending).toBe(1);
+
+    const restoredEnrollmentDates = await Promise.all([
+      service.from('enrollments').update({ enrolled_at: `${year}-01-01T00:00:00Z` }).eq('id', enrollmentA),
+      service.from('enrollments').update({ enrolled_at: `${year}-01-01T00:00:00Z` }).eq('id', enrollmentB),
+    ]);
+    expect(restoredEnrollmentDates.every(({ error }) => error === null)).toBe(true);
 
     sessionA = (await insertOne(service, 'attendance_sessions', {
       institution_id: institutionA,

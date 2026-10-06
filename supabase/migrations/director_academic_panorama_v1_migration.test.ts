@@ -42,6 +42,22 @@ describe('director academic panorama aggregation migration', () => {
     expect(migration).toContain('launched_count');
   });
 
+  it('materializes pending attendance inputs before counting occurrences', () => {
+    const pendingCountStart = migration.indexOf('  pending_attendance as (');
+    const responseStart = migration.indexOf('  select jsonb_build_object(', pendingCountStart);
+    const pendingCount = migration.slice(pendingCountStart, responseStart);
+
+    expect(migration).toContain('pending_class_enrollments as materialized');
+    expect(migration).toContain('pending_class_eligibility as materialized');
+    expect(migration).toContain('pending_existing_slots as materialized');
+    expect(migration).toContain('pending_blocking_events as materialized');
+    expect(migration).toContain('pending_candidate_occurrences as materialized');
+    expect(pendingCount).toContain('from pending_candidate_occurrences as occurrence');
+    expect(pendingCount).toContain('left join pending_existing_slots as existing');
+    expect(pendingCount).not.toContain('from public.enrollments as enrollment');
+    expect(pendingCount).not.toContain('from public.students as student');
+  });
+
   it('exposes the RPC only to authenticated callers and never to anonymous callers', () => {
     expect(migration).toContain('revoke all on function public.get_director_academic_panorama_v1');
     expect(migration).toContain('from public, anon');
