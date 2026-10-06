@@ -119,7 +119,6 @@ localDescribe('Director Panorama runtime RPC', () => {
     const suffix = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
     const today = dateKey(new Date());
     toDate = today;
-    fromDate = shiftDate(today, -14);
     attendanceDateA = shiftDate(today, -1);
     while (dayOfWeek(attendanceDateA) > 6) {
       attendanceDateA = shiftDate(attendanceDateA, -1);
@@ -128,6 +127,7 @@ localDescribe('Director Panorama runtime RPC', () => {
     while (dayOfWeek(attendanceDateB) > 6) {
       attendanceDateB = shiftDate(attendanceDateB, -1);
     }
+    fromDate = attendanceDateB;
 
     const adminA = await createActor(service, 'ADMIN', 'admin-a', suffix);
     directorA = await createActor(service, 'DIRECTOR', 'director-a', suffix);
