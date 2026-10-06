@@ -130,10 +130,6 @@ function assessment(
       },
     },
     studentIds: ['student-1', 'student-2'],
-    missingStudentIds: Array.from(
-      { length: Math.max(expectedStudentCount - launchedCount, 0) },
-      (_, index) => `${classId}-${averagePercent ?? 'pending'}-missing-${index}`,
-    ),
     expectedStudentCount,
     launchedCount,
     missingCount: Math.max(expectedStudentCount - launchedCount, 0),
@@ -239,7 +235,7 @@ describe('director academic panorama helpers', () => {
       critical: 1,
       withoutAverage: 1,
       launchedActivities: 3,
-      studentsWithPendingGrades: 3,
+      pendingGrades: 3,
     });
   });
 
@@ -256,17 +252,8 @@ describe('director academic panorama helpers', () => {
     ])).toEqual({
       attendancePending: 2,
       missingGrades: 3,
-      pendingStudents: 3,
       assessmentsWithoutLaunch: 1,
     });
-  });
-
-  it('não duplica alunos com pendência em várias avaliações', () => {
-    const first = assessment('class-1', '1ª Série A', 80, 1);
-    const second = assessment('class-1', '1ª Série A', 65, 1);
-    second.missingStudentIds = first.missingStudentIds;
-
-    expect(countPendingAcademicItems([], [first, second]).pendingStudents).toBe(1);
   });
 
   it('resume a distribuição de situações sem esconder estudantes sem dados', () => {
