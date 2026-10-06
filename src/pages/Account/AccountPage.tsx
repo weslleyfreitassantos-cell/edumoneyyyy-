@@ -406,7 +406,7 @@ export default function AccountPage() {
 
   if (accountQuery.isLoading) {
     return (
-      <div className="grid min-h-screen place-items-center bg-slate-50">
+      <div className="grid min-h-[40vh] place-items-center">
         <div className="text-sm text-[#727785]">
           Carregando conta...
         </div>
@@ -416,27 +416,23 @@ export default function AccountPage() {
 
   if (accountQuery.isError) {
     return (
-      <div className="min-h-screen bg-slate-50 p-6">
-        <div className="mx-auto max-w-3xl rounded-lg border border-red-200 bg-red-50 p-5 text-sm text-red-700">
-          {getErrorMessage(accountQuery.error)}
-        </div>
+      <div className="w-full rounded-lg border border-red-200 bg-red-50 p-5 text-sm text-red-700">
+        {getErrorMessage(accountQuery.error)}
       </div>
     );
   }
 
   if (!account) {
     return (
-      <div className="min-h-screen bg-slate-50 p-6">
-        <div className="mx-auto max-w-3xl rounded-lg border border-amber-200 bg-amber-50 p-5 text-sm text-amber-700">
-          Nenhuma conta comercial foi encontrada para este usuario.
-        </div>
+      <div className="w-full rounded-lg border border-amber-200 bg-amber-50 p-5 text-sm text-amber-700">
+        Nenhuma conta comercial foi encontrada para este usuario.
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
-      <div className="mx-auto max-w-7xl space-y-6">
+    <div className="w-full">
+      <div className="w-full space-y-6">
         <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0">
@@ -453,16 +449,6 @@ export default function AccountPage() {
               fallback={<UserRound className="h-8 w-8" aria-hidden="true" />}
             />
           </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-[#181c20]">
-            {account.name}
-          </h2>
-          <p className="mt-1 text-sm text-[#727785]">
-            Conta {getAccountStatusLabel(account.status)} ·{' '}
-            {usedLicenses}/{limit} instituições usadas
-          </p>
         </section>
 
         {account.status !== 'ACTIVE' && (
