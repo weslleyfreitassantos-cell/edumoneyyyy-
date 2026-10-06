@@ -348,7 +348,7 @@ localDescribe('Director Panorama runtime RPC', () => {
     expect(beforeSession.error).toBeNull();
     expect(beforeSession.data.pending.attendancePending).toBe(1);
 
-    const calendarBlocker = await insertOne(service, 'academic_calendar_events', {
+    const calendarBlocker = await insertOne(directorA.client, 'academic_calendar_events', {
       institution_id: institutionA,
       academic_year_id: yearA,
       title: `Feriado do panorama ${Date.now()}`,
@@ -369,9 +369,9 @@ localDescribe('Director Panorama runtime RPC', () => {
     expect(blockedByCalendar.error).toBeNull();
     expect(blockedByCalendar.data.pending.attendancePending).toBe(0);
 
-    const removedCalendarBlocker = await service
+    const removedCalendarBlocker = await directorA.client
       .from('academic_calendar_events')
-      .delete()
+      .update({ active: false })
       .eq('id', calendarBlocker.id);
     expect(removedCalendarBlocker.error).toBeNull();
 
