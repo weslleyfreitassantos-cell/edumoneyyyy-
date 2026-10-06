@@ -588,7 +588,7 @@ export default function AccountPage() {
           <button
             type="submit"
             disabled={!canCreate || createInstitution.isPending}
-            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-not-allowed disabled:bg-gray-300"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-not-allowed disabled:bg-[#d8deea] disabled:text-[#414754] dark:disabled:bg-[#334155] dark:disabled:text-[#e2e8f0]"
           >
             {createInstitution.isPending ? (
               <Loader2 className="h-4 w-4 animate-spin" />
