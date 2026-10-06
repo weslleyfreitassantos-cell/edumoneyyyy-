@@ -523,7 +523,7 @@ export default function DirectorAcademicPanorama({
     ? attendanceQuery.isError && !attendanceQuery.data
     : attendanceTrendQuery.isError && !attendanceTrendQuery.data;
   const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
-  const attentionLoading = !attentionUnavailable && !attendanceQuery.data && !gradesQuery.data && (attendanceQuery.isPending || gradesQuery.isPending);
+  const attentionLoading = !attentionUnavailable && (!attendanceQuery.isFetched || !gradesQuery.isFetched);
   const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
   const pendingMetrics = [
     { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, loading: pendingAttendanceLoading, moduleId: 'class-diary' as AdminModuleId },
