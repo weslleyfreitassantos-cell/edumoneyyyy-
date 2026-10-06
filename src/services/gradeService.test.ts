@@ -437,6 +437,10 @@ describe('gradeService', () => {
     expect(assessmentQuery.select).toHaveBeenCalledWith(
       expect.not.stringContaining('grades ('),
     );
+    expect(assessmentQuery.in).toHaveBeenCalledWith(
+      'status',
+      ['PUBLISHED', 'CLOSED'],
+    );
     expect(supabase.from).toHaveBeenCalledWith('assessments');
     expect(supabase.from).toHaveBeenCalledWith('grades');
     expect(supabase.from).toHaveBeenCalledWith('enrollments');

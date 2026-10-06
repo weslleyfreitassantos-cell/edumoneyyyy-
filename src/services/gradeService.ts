@@ -1559,7 +1559,7 @@ async function getInstitutionAssessmentsForSummary(
       .from('assessments')
       .select(GRADE_SUMMARY_ASSESSMENT_FIELDS)
       .eq('institution_id', institutionId)
-      .neq('status', 'CANCELED')
+      .in('status', ['PUBLISHED', 'CLOSED'])
       .gte('assessment_date', fromDate)
       .lte('assessment_date', toDate)
       .order('assessment_date', { ascending: false })
