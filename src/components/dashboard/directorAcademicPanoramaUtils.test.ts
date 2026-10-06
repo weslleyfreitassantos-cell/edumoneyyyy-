@@ -147,8 +147,8 @@ describe('director academic panorama helpers', () => {
     expect(classifyStudentSituation(null, null)).toBe('NO_DATA');
   });
 
-  it('usa o terceiro bimestre como período inicial do panorama', () => {
-    expect(DEFAULT_PANORAMA_PERIOD).toBe('term3');
+  it('usa o bimestre atual como período inicial do panorama', () => {
+    expect(DEFAULT_PANORAMA_PERIOD).toBe('term');
   });
 
   it('mantém turmas sem lançamentos no filtro do panorama', () => {

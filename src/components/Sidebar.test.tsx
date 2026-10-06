@@ -118,7 +118,7 @@ afterEach(() => {
 });
 
 describe('Sidebar', () => {
-  it('renderiza rotas reais do ADMIN e marca visao geral como area ativa', () => {
+  it('renderiza rotas reais do ADMIN sem expor a visao geral escolar', () => {
     renderSidebar();
 
     expect(
@@ -132,10 +132,10 @@ describe('Sidebar', () => {
       }),
     ).toBeNull();
     expect(
-      screen.getByRole('link', {
+      screen.queryByRole('link', {
         name: /vis.o geral/i,
-      }).getAttribute('aria-current'),
-    ).toBe('page');
+      }),
+    ).toBeNull();
     expect(
       screen.queryByRole('link', {
         name: /plataforma/i,

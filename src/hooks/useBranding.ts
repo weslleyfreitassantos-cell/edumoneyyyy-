@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import {
+  type QueryClient,
   useMutation,
   useQuery,
   useQueryClient,
@@ -26,7 +27,7 @@ function getWindowHostname(): string {
 }
 
 const publicBrandingCachePrefix = 'tecescola:public-branding:';
-const publicBrandingCacheVersion = 1;
+const publicBrandingCacheVersion = 2;
 
 interface CachedPublicBranding {
   version: number;
@@ -134,6 +135,41 @@ export const brandingKeys = {
   domainRequests: ['account-domains', 'requests'] as const,
 };
 
+export async function invalidateResolvedPublicBranding(
+  queryClient: QueryClient,
+  hostname: string | null = getWindowHostname(),
+): Promise<void> {
+  const normalizedHostname = hostname === null
+    ? null
+    : normalizeHostnameValue(hostname || 'unknown');
+
+  if (typeof window !== 'undefined') {
+    try {
+      if (normalizedHostname) {
+        window.localStorage.removeItem(
+          getPublicBrandingCacheKey(normalizedHostname),
+        );
+      } else {
+        for (let index = window.localStorage.length - 1; index >= 0; index -= 1) {
+          const key = window.localStorage.key(index);
+          if (key?.startsWith(publicBrandingCachePrefix)) {
+            window.localStorage.removeItem(key);
+          }
+        }
+      }
+    } catch {
+      // Storage may be unavailable; the query invalidation still refreshes the active page.
+    }
+  }
+
+  await queryClient.invalidateQueries({
+    queryKey: normalizedHostname
+      ? brandingKeys.public(normalizedHostname)
+      : brandingKeys.publicRoot,
+    exact: Boolean(normalizedHostname),
+  });
+}
+
 export function useResolvedBranding(
   hostname = getWindowHostname(),
 ) {
@@ -226,9 +262,7 @@ export function useSaveGlobalBranding() {
         queryClient.invalidateQueries({
           queryKey: brandingKeys.global,
         }),
-        queryClient.invalidateQueries({
-          queryKey: brandingKeys.publicRoot,
-        }),
+        invalidateResolvedPublicBranding(queryClient, null),
         queryClient.invalidateQueries({
           queryKey: accountKeys.all,
         }),
@@ -255,9 +289,7 @@ export function useSaveAccountBranding(accountId: string) {
         queryClient.invalidateQueries({
           queryKey: brandingKeys.accountDomains(accountId),
         }),
-        queryClient.invalidateQueries({
-          queryKey: brandingKeys.publicRoot,
-        }),
+        invalidateResolvedPublicBranding(queryClient, null),
       ]);
     },
   });

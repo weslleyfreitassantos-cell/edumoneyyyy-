@@ -74,7 +74,7 @@ export interface PanoramaClassOption {
   label: string;
 }
 
-export const DEFAULT_PANORAMA_PERIOD = 'term3' as const;
+export const DEFAULT_PANORAMA_PERIOD = 'term' as const;
 
 export const PANORAMA_UNAVAILABLE_MESSAGE = 'Não foi possível carregar agora.';
 

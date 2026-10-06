@@ -542,6 +542,14 @@ export function getSidebarAdminModules({
     });
 
   return ADMIN_MODULES.filter((module) => {
+    if (
+      profile.platform_role !== 'SUPER_ADMIN' &&
+      (profile.role === 'ADMIN' || currentUserRole === 'admin') &&
+      module.id === 'overview'
+    ) {
+      return false;
+    }
+
     if (module.visibleInSidebar === false) {
       return false;
     }

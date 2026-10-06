@@ -1,5 +1,4 @@
 import {
-  Building2,
   DoorOpen,
   Loader2,
   PauseCircle,
@@ -7,6 +6,7 @@ import {
   PlayCircle,
   Plus,
   Trash2,
+  UserRound,
 } from 'lucide-react';
 import {
   useState,
@@ -22,6 +22,7 @@ import {
   type SelectInstitutionResult,
 } from '../../contexts/InstitutionContext';
 import { AdminInstitutionSubdomainSection } from '../../components/account/AdminInstitutionSubdomainSection';
+import ProfileHeroAvatar from '../../components/ProfileHeroAvatar';
 import {
   useCreateInstitution,
   useDeleteInstitution,
@@ -71,6 +72,10 @@ interface InstitutionEditState {
 
 function getErrorMessage(error: unknown): string {
   return getUserFacingErrorMessage(error, 'Operação não concluída.');
+}
+
+function getFirstName(fullName: string | null | undefined): string {
+  return fullName?.trim().split(/\s+/).at(0) || 'Administrador';
 }
 
 type SelectInstitutionFailure = Extract<
@@ -130,6 +135,8 @@ export default function AccountPage() {
     useState<Record<string, string>>({});
 
   const account = accountQuery.data;
+  const profileName = profile?.full_name?.trim() || 'Administrador';
+  const firstName = getFirstName(profileName);
   const canEditInstitutions = profile?.role === 'ADMIN';
   const usedLicenses =
     account?.institutions.length ?? 0;
@@ -399,7 +406,7 @@ export default function AccountPage() {
 
   if (accountQuery.isLoading) {
     return (
-      <div className="grid min-h-screen place-items-center bg-slate-50">
+      <div className="grid min-h-[40vh] place-items-center">
         <div className="text-sm text-[#727785]">
           Carregando conta...
         </div>
@@ -409,45 +416,40 @@ export default function AccountPage() {
 
   if (accountQuery.isError) {
     return (
-      <div className="min-h-screen bg-slate-50 p-6">
-        <div className="mx-auto max-w-3xl rounded-lg border border-red-200 bg-red-50 p-5 text-sm text-red-700">
-          {getErrorMessage(accountQuery.error)}
-        </div>
+      <div className="w-full rounded-lg border border-red-200 bg-red-50 p-5 text-sm text-red-700">
+        {getErrorMessage(accountQuery.error)}
       </div>
     );
   }
 
   if (!account) {
     return (
-      <div className="min-h-screen bg-slate-50 p-6">
-        <div className="mx-auto max-w-3xl rounded-lg border border-amber-200 bg-amber-50 p-5 text-sm text-amber-700">
-          Nenhuma conta comercial foi encontrada para este usuario.
-        </div>
+      <div className="w-full rounded-lg border border-amber-200 bg-amber-50 p-5 text-sm text-amber-700">
+        Nenhuma conta comercial foi encontrada para este usuario.
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6">
-      <div className="mx-auto max-w-7xl space-y-6">
-        <header>
-          <div>
-            <div className="flex items-center gap-2">
-              <Building2
-                className="h-6 w-6 text-[#005bbf]"
-                aria-hidden="true"
-              />
-              <h1 className="text-2xl font-bold text-[#181c20]">
-                {account.name}
+    <div className="w-full">
+      <div className="w-full space-y-6">
+        <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
+                Área administrativa
+              </p>
+              <h1 className="mt-2 text-3xl font-bold tracking-tight">
+                Olá, {firstName}!
               </h1>
             </div>
-            <p className="mt-1 text-sm text-[#727785]">
-              Conta {getAccountStatusLabel(account.status)} Â·{' '}
-              {usedLicenses}/{limit}{' '}
-              instituições usadas
-            </p>
+            <ProfileHeroAvatar
+              avatarUrl={profile?.avatar_url}
+              fullName={profileName}
+              fallback={<UserRound className="h-8 w-8" aria-hidden="true" />}
+            />
           </div>
-        </header>
+        </section>
 
         {account.status !== 'ACTIVE' && (
           <div
@@ -473,13 +475,13 @@ export default function AccountPage() {
 
         {feedback?.type === 'success' && institutionContext.currentInstitutionId && (
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800">
-            <span>Escola criada. Agora configure a estrutura acadêmica.</span>
+            <span>Escola criada. Cadastre a direção para iniciar a configuração acadêmica.</span>
             <button
               type="button"
-              onClick={() => navigate('/admin?module=overview')}
+              onClick={() => navigate('/admin?module=directors')}
               className="rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white hover:bg-[#004a9b]"
             >
-              Configurar escola
+              Cadastrar direção
             </button>
           </div>
         )}
@@ -586,7 +588,7 @@ export default function AccountPage() {
           <button
             type="submit"
             disabled={!canCreate || createInstitution.isPending}
-            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-not-allowed disabled:bg-gray-300"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-not-allowed disabled:bg-[#d8deea] disabled:text-[#414754] dark:disabled:bg-[#334155] dark:disabled:text-[#e2e8f0]"
           >
             {createInstitution.isPending ? (
               <Loader2 className="h-4 w-4 animate-spin" />

@@ -836,6 +836,13 @@ describe('AppShell', () => {
   });
 
   it('fecha o drawer mobile ao navegar', async () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
     renderShell('/dashboard');
 
     fireEvent.click(getMobileMenuButton());
@@ -892,12 +899,12 @@ describe('AppShell', () => {
     });
   });
 
-  it('mantem visao geral na navegacao lateral sem item administracao duplicado', () => {
+  it('oculta visao geral escolar para ADMIN sem duplicar a navegacao administrativa', () => {
     renderShell('/account');
 
     expect(
-      screen.getByRole('link', { name: /vis.o geral/i }),
-    ).toBeTruthy();
+      screen.queryByRole('link', { name: /vis.o geral/i }),
+    ).toBeNull();
     expect(
       screen.queryByRole('link', { name: /administra/i }),
     ).toBeNull();

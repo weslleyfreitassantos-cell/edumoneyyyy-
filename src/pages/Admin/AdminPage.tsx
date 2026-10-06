@@ -116,6 +116,11 @@ export default function AdminPage() {
     () =>
       ADMIN_MODULES.filter((module) =>
         can(module.permission) &&
+        !(
+          profile?.platform_role !== 'SUPER_ADMIN' &&
+          profile?.role === 'ADMIN' &&
+          module.id === 'overview'
+        ) &&
         isAdminModuleAvailable(
           module,
           institutionQuery.currentRole,

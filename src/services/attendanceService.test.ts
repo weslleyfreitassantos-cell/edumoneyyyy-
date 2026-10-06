@@ -35,6 +35,7 @@ interface MockQuery {
   in: ReturnType<typeof vi.fn>;
   gte: ReturnType<typeof vi.fn>;
   lte: ReturnType<typeof vi.fn>;
+  lt: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
   limit: ReturnType<typeof vi.fn>;
   range: ReturnType<typeof vi.fn>;
@@ -53,6 +54,7 @@ function createQuery(response: unknown): MockQuery {
   query.in = vi.fn(() => query);
   query.gte = vi.fn(() => query);
   query.lte = vi.fn(() => query);
+  query.lt = vi.fn(() => query);
   query.order = vi.fn(() => query);
   query.limit = vi.fn(() => query);
   query.range = vi.fn(() => query);
@@ -209,6 +211,47 @@ function setupRollCallQueries({
   };
 }
 
+function setupInstitutionPendingQueries(enrolledAt: string) {
+  const responses = new Map<string, unknown>([
+    ['subject_offerings', { data: [attendanceOfferingRow], error: null }],
+    ['timetable_entries', {
+      data: [{
+        subject_offering_id: 'offering-1',
+        day_of_week: 1,
+        start_time: '07:00:00',
+        end_time: '07:50:00',
+        active: true,
+      }],
+      error: null,
+    }],
+    ['attendance_sessions', { data: [], error: null }],
+    ['academic_calendar_events', { data: [], error: null }],
+    ['enrollments', {
+      data: [{
+        id: 'enrollment-1',
+        student_id: 'student-1',
+        class_id: 'class-1',
+        status: 'ACTIVE',
+        active: true,
+        enrolled_at: enrolledAt,
+      }],
+      error: null,
+    }],
+    ['students', {
+      data: [{
+        id: 'student-1',
+        institution_id: 'institution-1',
+        active: true,
+      }],
+      error: null,
+    }],
+  ]);
+
+  vi.mocked(supabase.from).mockImplementation(((table: string) =>
+    createQuery(responses.get(table) ?? { data: [], error: null }) as never
+  ) as never);
+}
+
 describe('attendanceService', () => {
   beforeEach(() => {
     vi.mocked(supabase.from).mockReset();
@@ -229,6 +272,28 @@ describe('attendanceService', () => {
     expect(summary.absentRecords).toBe(1);
     expect(summary.excusedRecords).toBe(1);
     expect(summary.attendanceRate).toBe(50);
+  });
+
+  it('não considera pendente slot anterior à matrícula do aluno', async () => {
+    setupInstitutionPendingQueries('2026-02-03T03:00:00.000Z');
+
+    const result = await attendanceService.getInstitutionPendingAttendanceSummary(
+      'institution-1',
+      { fromDate: '2026-02-02', toDate: '2026-02-02' },
+    );
+
+    expect(result.pendingCount).toBe(0);
+  });
+
+  it('considera pendente slot quando já havia aluno ativo matriculado', async () => {
+    setupInstitutionPendingQueries('2026-02-02T10:00:00.000Z');
+
+    const result = await attendanceService.getInstitutionPendingAttendanceSummary(
+      'institution-1',
+      { fromDate: '2026-02-02', toDate: '2026-02-02' },
+    );
+
+    expect(result.pendingCount).toBe(1);
   });
 
   it('trata divisão por zero no resumo', () => {

@@ -7,6 +7,7 @@ import {
 import { accountKeys } from './useAccounts';
 import { userInstitutionKeys } from './useUserInstitutions';
 import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
+import { invalidateResolvedPublicBranding } from './useBranding';
 import {
   brandingPublicService,
   normalizePublicSlug,
@@ -73,6 +74,7 @@ export function useSaveInstitutionLogo() {
     mutationFn: (input) =>
       brandingMutationService.saveLogo(input),
     onSuccess: async (response) => {
+      await invalidateResolvedPublicBranding(queryClient, null);
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: accountKeys.all,
@@ -103,6 +105,7 @@ export function useRemoveInstitutionLogo() {
     mutationFn: (input) =>
       brandingMutationService.removeLogo(input),
     onSuccess: async (response) => {
+      await invalidateResolvedPublicBranding(queryClient, null);
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: accountKeys.all,
@@ -133,6 +136,7 @@ export function useSaveInstitutionFavicon() {
     mutationFn: (input) =>
       brandingMutationService.saveFavicon(input),
     onSuccess: async (response) => {
+      await invalidateResolvedPublicBranding(queryClient, null);
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: accountKeys.all,
@@ -163,6 +167,7 @@ export function useRemoveInstitutionFavicon() {
     mutationFn: (input) =>
       brandingMutationService.removeFavicon(input),
     onSuccess: async (response) => {
+      await invalidateResolvedPublicBranding(queryClient, null);
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: accountKeys.all,
@@ -193,6 +198,7 @@ export function useSaveInstitutionBackground() {
     mutationFn: (input) =>
       brandingMutationService.saveBackground(input),
     onSuccess: async (response) => {
+      await invalidateResolvedPublicBranding(queryClient, null);
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: accountKeys.all,
@@ -219,6 +225,7 @@ export function useRemoveInstitutionBackground() {
     mutationFn: (input) =>
       brandingMutationService.removeBackground(input),
     onSuccess: async (response) => {
+      await invalidateResolvedPublicBranding(queryClient, null);
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: accountKeys.all,

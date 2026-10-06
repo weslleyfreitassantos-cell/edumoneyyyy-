@@ -453,12 +453,13 @@ afterEach(() => {
 });
 
 describe('AdminPage URL module resolution', () => {
-  it('usa Visao geral como fallback quando modulo esta ausente', () => {
+  it('usa o primeiro modulo autorizado como fallback para ADMIN', () => {
     renderAdminPage('/admin');
 
     expect(
-      screen.getByTestId('overview-tab'),
+      screen.getByTestId('school-users-tab'),
     ).toBeTruthy();
+    expect(screen.queryByTestId('overview-tab')).toBeNull();
     expect(
       screen.queryByText(/^m.dulos$/i),
     ).toBeNull();
@@ -540,7 +541,8 @@ describe('AdminPage URL module resolution', () => {
     expect(
       screen.queryByTestId('pedagogical-monitoring-panel'),
     ).toBeNull();
-    expect(screen.getByTestId('overview-tab')).toBeTruthy();
+    expect(screen.getByTestId('school-users-tab')).toBeTruthy();
+    expect(screen.queryByTestId('overview-tab')).toBeNull();
   });
 
   it('renderiza o e-mail para perfis administrativos autorizados', () => {
@@ -562,7 +564,8 @@ describe('AdminPage URL module resolution', () => {
     (moduleId) => {
       renderAdminPage(`/admin?module=${moduleId}`);
 
-      expect(screen.getByTestId('overview-tab')).toBeTruthy();
+      expect(screen.getByTestId('school-users-tab')).toBeTruthy();
+      expect(screen.queryByTestId('overview-tab')).toBeNull();
     },
   );
 
@@ -602,7 +605,8 @@ describe('AdminPage URL module resolution', () => {
   it('faz fallback seguro para diario invalido ou nao autorizado', () => {
     renderAdminPage('/admin?module=class-diary');
 
-    expect(screen.getByTestId('overview-tab')).toBeTruthy();
+    expect(screen.getByTestId('school-users-tab')).toBeTruthy();
+    expect(screen.queryByTestId('overview-tab')).toBeNull();
     expect(screen.queryByTestId('attendance-panel')).toBeNull();
   });
 
@@ -629,7 +633,7 @@ describe('AdminPage URL module resolution', () => {
     view.unmount();
   });
 
-  it('URL invalida volta para Visao geral', () => {
+  it('URL invalida volta para Visao geral de perfis escolares autorizados', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -697,8 +701,9 @@ describe('AdminPage permissions', () => {
     renderAdminPage('/admin?module=school-users');
 
     expect(
-      screen.getByTestId('overview-tab'),
+      screen.getByTestId('school-users-tab'),
     ).toBeTruthy();
+    expect(screen.queryByTestId('overview-tab')).toBeNull();
   });
 
   it('renderiza operacao academica completa para DIRECTOR', () => {

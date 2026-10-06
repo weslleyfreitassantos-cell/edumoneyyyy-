@@ -25,6 +25,7 @@ import {
   useTeacherBookRecommendations,
   useUpdateBookRecommendation,
 } from '../../hooks/useBookRecommendations';
+import { matchesBookRecommendationFilters } from '../../services/bookRecommendationService';
 import { validateBookRecommendationCover } from '../../services/bookRecommendationValidation';
 import type {
   BookRecommendation,
@@ -384,20 +385,25 @@ export default function LibraryPage() {
   const [notice, setNotice] = useState<string | null>(null);
 
   const teacherRecommendations = useTeacherBookRecommendations(institutionId, profile?.id ?? null, filters, isTeacher);
-  const studentRecommendations = useStudentBookRecommendations(institutionId, { search: filters.search, subjectOfferingId: filters.subjectOfferingId }, !isTeacher);
+  const studentRecommendations = useStudentBookRecommendations(institutionId, {}, !isTeacher);
   const teacherOfferings = useTeacherBookOfferings(institutionId, profile?.id ?? null, isTeacher);
   const createRecommendation = useCreateBookRecommendation();
   const updateRecommendation = useUpdateBookRecommendation();
   const setRecommendationActive = useSetBookRecommendationActive();
 
-  const recommendations = isTeacher ? teacherRecommendations.data ?? [] : studentRecommendations.data ?? [];
+  const allStudentRecommendations = studentRecommendations.data ?? [];
+  const recommendations = isTeacher
+    ? teacherRecommendations.data ?? []
+    : allStudentRecommendations.filter((recommendation) =>
+        matchesBookRecommendationFilters(recommendation, { ...filters, status: 'active' }),
+      );
   const activeOfferings = teacherOfferings.data ?? [];
   const filterOfferings = useMemo(() => {
     if (isTeacher) return activeOfferings;
     const unique = new Map<string, BookRecommendationOffering>();
-    recommendations.forEach((recommendation) => unique.set(recommendation.offering.id, recommendation.offering));
+    allStudentRecommendations.forEach((recommendation) => unique.set(recommendation.offering.id, recommendation.offering));
     return [...unique.values()].sort((left, right) => formatOffering(left).localeCompare(formatOffering(right), 'pt-BR'));
-  }, [activeOfferings, isTeacher, recommendations]);
+  }, [activeOfferings, allStudentRecommendations, isTeacher]);
   const isLoading = institution.isLoading || (isTeacher ? teacherRecommendations.isLoading || teacherOfferings.isLoading : studentRecommendations.isLoading);
   const isError = institution.isError || (isTeacher ? teacherRecommendations.isError || teacherOfferings.isError : studentRecommendations.isError);
 
