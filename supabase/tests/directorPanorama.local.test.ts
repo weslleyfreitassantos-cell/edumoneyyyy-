@@ -406,9 +406,10 @@ localDescribe('Director Panorama runtime RPC', () => {
     expect(afterEnrollment.error).toBeNull();
     expect(afterEnrollment.data.pending.attendancePending).toBe(1);
 
+    const restoredEnrollmentDate = `${attendanceDateA.slice(0, 4)}-01-01T00:00:00Z`;
     const restoredEnrollmentDates = await Promise.all([
-      service.from('enrollments').update({ enrolled_at: `${year}-01-01T00:00:00Z` }).eq('id', enrollmentA),
-      service.from('enrollments').update({ enrolled_at: `${year}-01-01T00:00:00Z` }).eq('id', enrollmentB),
+      service.from('enrollments').update({ enrolled_at: restoredEnrollmentDate }).eq('id', enrollmentA),
+      service.from('enrollments').update({ enrolled_at: restoredEnrollmentDate }).eq('id', enrollmentB),
     ]);
     expect(restoredEnrollmentDates.every(({ error }) => error === null)).toBe(true);
 
