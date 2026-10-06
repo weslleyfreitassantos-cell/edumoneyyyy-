@@ -21,6 +21,7 @@
     "enem:canonicalize": "node --experimental-strip-types tools/enem/canonicalize.ts",
     "enem:review": "node --experimental-strip-types tools/enem/review-report.ts",
     "enem:second-pass": "node --experimental-strip-types tools/enem/second-pass.ts",
+    "enem:render": "node --experimental-strip-types tools/enem/render-question-assets.ts",
     "enem:dry-run": "node --experimental-strip-types tools/enem/dry-run.ts",
     "enem:import-sql": "node --experimental-strip-types tools/enem/import.ts",
     "enem:ingest": "node --experimental-strip-types tools/enem/ingest.ts",
@@ -72,6 +73,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@napi-rs/canvas": "^1.0.10",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/vite": "^4.1.14",
     "@testing-library/react": "^16.3.2",

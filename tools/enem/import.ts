@@ -6,11 +6,13 @@ import { pathToFileURL } from 'node:url';
 import type { EnemDownloadedArtifact } from './download.ts';
 import type { CanonicalEnemQuestion } from './canonicalize.ts';
 import type { EnemParseResult } from './parse.ts';
+import type { EnemAssetRenderManifest, RenderedQuestionAssetManifest } from './render-question-assets.ts';
 
 interface ImportInputs {
   downloads: { artifacts: EnemDownloadedArtifact[] };
   parsed: EnemParseResult;
   canonical: { canonicalQuestions: CanonicalEnemQuestion[] };
+  assets?: { artifacts: EnemAssetRenderManifest[] };
   manifest: {
     manifestFingerprint: string;
     manifestVersion: string;
@@ -109,12 +111,17 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
   const manifestFingerprint = options.manifestFingerprint ?? inputs.manifest.manifestFingerprint;
   const artifactByKey = new Map(inputs.downloads.artifacts.map((artifact) => [artifactKey(artifact.day, artifact.booklet), artifact]));
   const questionByKey = buildQuestionLookup(inputs.parsed);
+  const renderByKey = new Map<string, RenderedQuestionAssetManifest>();
+  for (const manifest of inputs.assets?.artifacts ?? []) {
+    for (const question of manifest.questions) renderByKey.set(`${artifactKey(manifest.day, manifest.booklet)}:${question.questionNumber}`, question);
+  }
   const lines: string[] = [
     'begin;',
     'do $$',
     'declare',
     '  v_batch_id uuid;',
     '  v_question_id uuid;',
+    '  v_occurrence_id uuid;',
     '  v_simulation_id uuid;',
     'begin',
     `  select id into v_batch_id from public.learning_enem_import_batches where manifest_version = ${sql(manifestVersion)} and manifest_fingerprint = ${sql(manifestFingerprint)};`,
@@ -129,9 +136,15 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
     const correctOption = question.officialAnswer !== 'ANNULLED'
       ? question.options[question.officialAnswer.charCodeAt(0) - 'A'.charCodeAt(0)] ?? null
       : null;
+    const firstRender = renderByKey.get(`${artifactKey(occurrence.day, occurrence.booklet)}:${occurrence.questionNumber}`);
     const metadata = {
       canonical_id: question.canonicalId,
       source_integrity: 'VERIFIED',
+      render_mode: 'HYBRID',
+      render_ready: firstRender?.renderReady ?? false,
+      classification_state: firstRender?.classificationState ?? 'REVIEW_REQUIRED',
+      statement_assets: firstRender?.statementAssets ?? [],
+      enem_area: question.area,
       pedagogical_enrichment: 'PENDING',
       adaptive_evidence_enabled: false,
       official_answer_letter: question.officialAnswer,
@@ -144,7 +157,12 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
       const sourceArtifact = artifactByKey.get(artifactKey(item.day, item.booklet));
       const sourceQuestion = questionByKey.get(`${artifactKey(item.day, item.booklet)}:${item.questionNumber}:${item.language ?? ''}`);
       if (!sourceArtifact || !sourceQuestion) throw new Error(`ENEM_IMPORT_OCCURRENCE_PROVENANCE_MISSING:${question.canonicalId}`);
-      lines.push(`  insert into public.learning_enem_official_occurrences(batch_id, question_bank_id, canonical_fingerprint, year, exam, application, day, booklet, question_number, language, official_answer, quality_state, source_reference, exam_url, answer_key_url, artifact_sha256, answer_key_sha256, source_page, metadata) values (v_batch_id, v_question_id, ${sql(question.canonicalId)}, ${item.year}, 'ENEM', 'REGULAR', ${sql(item.day)}, ${sql(item.booklet)}, ${item.questionNumber}, ${item.language ? sql(item.language) : 'null'}, ${sql(item.officialAnswer)}, 'IMPORTED', ${sql(sourceArtifact.sourceReference)}, ${sql(sourceArtifact.examUrl)}, ${sql(sourceArtifact.answerKeyUrl)}, ${sql(sourceArtifact.examSha256)}, ${sql(sourceArtifact.answerKeySha256)}, ${sourceQuestion.page}, ${jsonSql({ source_integrity: 'VERIFIED', pedagogical_enrichment: 'PENDING', adaptive_evidence_enabled: false })}) on conflict do nothing;`);
+      lines.push(`  insert into public.learning_enem_official_occurrences(batch_id, question_bank_id, canonical_fingerprint, year, exam, application, day, booklet, question_number, language, official_answer, quality_state, source_reference, exam_url, answer_key_url, artifact_sha256, answer_key_sha256, source_page, metadata) values (v_batch_id, v_question_id, ${sql(question.canonicalId)}, ${item.year}, 'ENEM', 'REGULAR', ${sql(item.day)}, ${sql(item.booklet)}, ${item.questionNumber}, ${item.language ? sql(item.language) : 'null'}, ${sql(item.officialAnswer)}, 'IMPORTED', ${sql(sourceArtifact.sourceReference)}, ${sql(sourceArtifact.examUrl)}, ${sql(sourceArtifact.answerKeyUrl)}, ${sql(sourceArtifact.examSha256)}, ${sql(sourceArtifact.answerKeySha256)}, ${sourceQuestion.page}, ${jsonSql({ source_integrity: 'VERIFIED', render_mode: 'HYBRID', pedagogical_enrichment: 'PENDING', adaptive_evidence_enabled: false })}) on conflict do nothing;`);
+      lines.push(`  select id into v_occurrence_id from public.learning_enem_official_occurrences where year = ${item.year} and exam = 'ENEM' and application = 'REGULAR' and day = ${sql(item.day)} and booklet = ${sql(item.booklet)} and question_number = ${item.questionNumber} and coalesce(language, '') = ${sql(item.language ?? '')} limit 1;`);
+      const render = renderByKey.get(`${artifactKey(item.day, item.booklet)}:${item.questionNumber}`);
+      for (const asset of render?.statementAssets ?? []) {
+        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(asset.sha256)}, ${sql(asset.mediaType)}, ${asset.page}, ${sql(asset.storagePath)}, ${render.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: asset.assetRole, official_pdf_crop: true, render_ready: render.renderReady, sha256: asset.sha256, crop: asset.crop, excluded_option_labels: render.excludedOptionLabels })}) on conflict do nothing;`);
+      }
     }
   }
 
@@ -182,6 +200,7 @@ async function runCli() {
   const parsedPath = argument('--parsed', args) ?? '.runtime/enem-parsed-2025.json';
   const canonicalPath = argument('--canonical', args) ?? '.runtime/enem-canonical-2025.json';
   const manifestPath = argument('--manifest', args) ?? '.runtime/enem-import-dry-run-2025.json';
+  const assetsPath = argument('--assets', args);
   const outputPath = argument('--out', args) ?? '.runtime/enem-import-2025.sql';
   const rollback = args.includes('--rollback');
   const canary = args.includes('--canary');
@@ -190,6 +209,7 @@ async function runCli() {
     parsed: JSON.parse(readFileSync(resolve(parsedPath), 'utf8')),
     canonical: JSON.parse(readFileSync(resolve(canonicalPath), 'utf8')),
     manifest: JSON.parse(readFileSync(resolve(manifestPath), 'utf8')),
+    assets: assetsPath ? JSON.parse(readFileSync(resolve(assetsPath), 'utf8')) : undefined,
   };
   const questionSet = canary ? selectCanaryQuestions(inputs.canonical.canonicalQuestions) : undefined;
   const plan = buildEnemImportPlan(inputs, {
