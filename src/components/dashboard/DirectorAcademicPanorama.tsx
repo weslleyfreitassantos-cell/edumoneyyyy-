@@ -33,7 +33,7 @@ import {
   type PanoramaStudentSituation,
 } from './directorAcademicPanoramaUtils';
 
-type PanoramaPeriod = '7d' | '30d' | 'term' | 'year';
+type PanoramaPeriod = '7d' | '30d' | '90d' | 'term' | 'year';
 
 interface DirectorAcademicPanoramaProps {
   institutionId: string;
@@ -50,6 +50,7 @@ interface DateRange {
 const periodOptions: Array<{ value: PanoramaPeriod; label: string }> = [
   { value: '7d', label: 'Últimos 7 dias' },
   { value: '30d', label: 'Últimos 30 dias' },
+  { value: '90d', label: 'Últimos 3 meses' },
   { value: 'term', label: 'Bimestre atual' },
   { value: 'year', label: 'Ano letivo' },
 ];
@@ -96,6 +97,10 @@ function getDateRange(
 
   if (period === '30d') {
     return { fromDate: addLocalDays(today, -29), toDate: today, label: 'últimos 30 dias' };
+  }
+
+  if (period === '90d') {
+    return { fromDate: addLocalDays(today, -89), toDate: today, label: 'últimos 3 meses' };
   }
 
   const currentTerm = currentYear?.terms.find((term) =>
