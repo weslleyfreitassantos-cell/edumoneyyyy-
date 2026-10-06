@@ -188,6 +188,14 @@ localDescribe('Director Panorama runtime RPC', () => {
       workload: 80,
       active: true,
     })).id;
+    await insertOne(service, 'class_curriculum_items', {
+      institution_id: institutionA,
+      class_id: classA,
+      subject_id: subjectA,
+      weekly_lessons: 2,
+      lesson_duration_minutes: 50,
+      active: true,
+    });
     offeringA = (await insertOne(service, 'subject_offerings', {
       subject_id: subjectA,
       class_id: classA,
