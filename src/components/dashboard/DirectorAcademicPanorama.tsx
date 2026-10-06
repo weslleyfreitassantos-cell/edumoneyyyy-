@@ -450,7 +450,8 @@ function StudentSituation({
   }).join(', ');
 
   return (
-    <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
+    <div className="space-y-5">
+      <div className="flex w-full flex-col items-center gap-5 sm:flex-row sm:items-center">
       <div className="relative h-36 w-36 shrink-0 rounded-full" style={{ background: `conic-gradient(${segments})` }} role="img" aria-label={`Situação de ${total} estudantes`}>
         <div className="absolute inset-4 flex items-center justify-center rounded-full bg-white text-center dark:bg-slate-900">
           <span className="text-2xl font-extrabold text-[#181c20] dark:text-white">{total}</span>
@@ -463,6 +464,7 @@ function StudentSituation({
             <strong className="text-[#181c20] dark:text-white">{item.count}</strong>
           </div>
         ))}
+      </div>
       </div>
       <div className="w-full border-t border-[#e5eaf0] pt-4 dark:border-slate-700">
         <div className="mb-2 flex items-center justify-between gap-3">
