@@ -442,9 +442,30 @@ html.dark .login-card input::placeholder {
     overflow: visible !important;
   }
 
-  .report-card-printable {
-    border: 0 !important;
-    box-shadow: none !important;
+  .report-card-printable,
+  .report-card-printable * {
+    visibility: visible !important;
+    background: #fff !important;
     color: #181c20 !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+  }
+
+  .report-card-printable {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #181c20 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .report-card-printable article {
+    break-inside: avoid !important;
   }
 }
