@@ -11,9 +11,17 @@ import {
 import { useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from './AuthContext';
-import { useUserInstitutions } from '../hooks/useUserInstitutions';
+import {
+  useUserInstitutions,
+  userInstitutionKeys,
+} from '../hooks/useUserInstitutions';
 import { invalidateSchoolSetupReadiness } from '../hooks/useSchoolSetupReadiness';
+import { updateResolvedPublicBrandingCache } from '../hooks/useBranding';
 import { classifyHostname, type HostResolution } from '../lib/subdomain';
+import {
+  DEFAULT_BRAND_PRIMARY_COLOR,
+  DEFAULT_BRAND_SECONDARY_COLOR,
+} from '../services/brandingValidation';
 import { SubdomainNotFoundPage } from '../components/SubdomainNotFoundPage';
 import { SubdomainForbiddenPage } from '../components/SubdomainForbiddenPage';
 import { SubdomainErrorPage } from '../components/SubdomainErrorPage';
@@ -61,6 +69,9 @@ interface InstitutionContextType {
     institutionId: string,
   ) => Promise<SelectInstitutionResult>;
   clearCurrentInstitutionSelection: () => void;
+  patchCurrentInstitution: (
+    institution: InstitutionSummary,
+  ) => void;
   refresh: () => Promise<unknown>;
 }
 
@@ -138,6 +149,23 @@ function queryKeyContainsInstitution(
       typeof part === 'string' &&
       institutionIds.includes(part),
   );
+}
+
+function toPublicBranding(
+  institution: InstitutionSummary,
+) {
+  return {
+    scope: 'INSTITUTION' as const,
+    displayName:
+      institution.login_display_name?.trim() || institution.name,
+    logoUrl: institution.logo_url ?? null,
+    faviconUrl: institution.favicon_url ?? null,
+    loginBackgroundUrl: institution.login_background_url ?? null,
+    primaryColor:
+      institution.primary_color ?? DEFAULT_BRAND_PRIMARY_COLOR,
+    secondaryColor:
+      institution.secondary_color ?? DEFAULT_BRAND_SECONDARY_COLOR,
+  };
 }
 
 export interface InstitutionProviderProps {
@@ -552,6 +580,41 @@ export function InstitutionProvider({
     setPlatformInstitutionId(null);
   }, [profile?.id]);
 
+  const patchCurrentInstitution = useCallback(
+    (updatedInstitution: InstitutionSummary) => {
+      queryClient.setQueriesData<UserInstitution[]>(
+        { queryKey: userInstitutionKeys.all },
+        (currentInstitutions) =>
+          currentInstitutions?.map((link) =>
+            link.institution.id === updatedInstitution.id
+              ? {
+                  ...link,
+                  institution: {
+                    ...link.institution,
+                    ...updatedInstitution,
+                  },
+                }
+              : link,
+          ),
+      );
+
+      setSubdomainInstitution((current) =>
+        current?.id === updatedInstitution.id
+          ? { ...current, ...updatedInstitution }
+          : current,
+      );
+
+      if (updatedInstitution.subdomain) {
+        updateResolvedPublicBrandingCache(
+          queryClient,
+          `${updatedInstitution.subdomain}.grupotec.dev.br`,
+          toPublicBranding(updatedInstitution),
+        );
+      }
+    },
+    [queryClient],
+  );
+
   const refreshInstitution = useCallback(async () => {
     const result = await institutionsQuery.refetch();
     if (currentInstitutionId) {
@@ -590,6 +653,7 @@ export function InstitutionProvider({
       hasMultipleInstitutions: institutions.length > 1,
       setCurrentInstitutionId,
       clearCurrentInstitutionSelection,
+      patchCurrentInstitution,
       refresh: refreshInstitution,
     }),
     [
@@ -610,6 +674,7 @@ export function InstitutionProvider({
       resolutionState,
       setCurrentInstitutionId,
       subdomainError,
+      patchCurrentInstitution,
     ],
   );
 

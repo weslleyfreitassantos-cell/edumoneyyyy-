@@ -94,6 +94,7 @@ function mockInstitutionContext(
       }),
     ),
     clearCurrentInstitutionSelection: vi.fn(),
+    patchCurrentInstitution: vi.fn(),
     refresh: vi.fn(async () => undefined),
     ...overrides,
   };

@@ -10,29 +10,22 @@ import {
 } from 'lucide-react';
 
 import {
-  useInstitutionAttendanceSummary,
-  useInstitutionAttendanceTrend,
-  useInstitutionPendingAttendanceSummary,
-} from '../../hooks/useAttendance';
+  useDirectorPanorama,
+} from '../../hooks/useDirectorPanorama';
 import { useAcademicYears } from '../../hooks/useAcademicTermClosing';
-import { useInstitutionGradeSummary } from '../../hooks/useGrades';
 import { useClassOptions } from '../../hooks/useClasses';
 import { getLocalDateInputValue } from '../../lib/academicTermDates';
 import type { AdminModuleId } from '../../pages/Admin/adminNavigation';
 import type { AcademicYearOption } from '../../services/academicPolicyService';
 import {
-  buildClassPerformance,
-  buildActivityPerformanceSummary,
-  buildStudentSituationSummary,
-  buildWeeklyAttendanceTrend,
-  countPendingAcademicItems,
   DEFAULT_PANORAMA_PERIOD,
-  mergeStudentSignals,
-  mergePanoramaClassOptions,
   getPanoramaMetricDisplay,
   getPanoramaMetricProgress,
-  type PanoramaStudentSituation,
   type ActivityPerformanceSummary,
+  type ClassPerformancePoint,
+  type PanoramaStudentSituation,
+  type StudentSituationSummary,
+  type WeeklyAttendancePoint,
 } from './directorAcademicPanoramaUtils';
 
 type PanoramaPeriod = '7d' | '30d' | '90d' | 'term' | 'year';
@@ -191,7 +184,7 @@ function KpiCard({
     );
   }
 
-  return <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">{content}</article>;
+  return <article className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">{content}</article>;
 }
 
 function EmptyChart({
@@ -239,7 +232,7 @@ function AttendanceTrend({
   error,
   onRetry,
 }: {
-  sessions: ReturnType<typeof buildWeeklyAttendanceTrend>;
+  sessions: WeeklyAttendancePoint[];
   loading: boolean;
   error: boolean;
   onRetry: () => void;
@@ -291,7 +284,7 @@ function AttendanceTrend({
   const areaPath = `${linePath} L ${xForIndex(sessions.length - 1).toFixed(2)} ${plotBottom} L ${plotLeft} ${plotBottom} Z`;
 
   return (
-    <div className="space-y-3">
+    <div className="min-w-0 space-y-3">
       <div className="flex flex-wrap items-center gap-2 text-xs">
         <span className="rounded-full bg-blue-50 px-3 py-1.5 font-semibold text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">
           Última semana: {formatPercent(latest.attendanceRate)}
@@ -303,7 +296,7 @@ function AttendanceTrend({
           {latestStatus}
         </span>
       </div>
-      <div className="overflow-x-auto rounded-xl border border-[#e5eaf0] bg-slate-50/70 px-2 py-2 dark:border-slate-700 dark:bg-slate-950/30 sm:px-3">
+      <div className="min-w-0 overflow-x-auto rounded-xl border border-[#e5eaf0] bg-slate-50/70 px-2 py-2 dark:border-slate-700 dark:bg-slate-950/30 sm:px-3">
         <svg
           className="h-72 w-full"
           style={{ minWidth: `${chartMinWidth}px` }}
@@ -396,7 +389,7 @@ function ClassPerformance({
   loading,
   error,
 }: {
-  points: ReturnType<typeof buildClassPerformance>;
+  points: ClassPerformancePoint[];
   loading: boolean;
   error: boolean;
 }) {
@@ -406,12 +399,12 @@ function ClassPerformance({
     return <EmptyChart>Sem notas lançadas no período selecionado.</EmptyChart>;
   }
   return (
-    <div className="space-y-4">
+    <div className="min-w-0 space-y-4">
       {points.map((point) => (
         <div key={point.classId}>
           <div className="mb-1 flex items-center justify-between gap-3 text-sm">
-            <span className="truncate font-semibold text-[#344054] dark:text-slate-200">{point.className}</span>
-            <span className="shrink-0 text-xs text-[#667085] dark:text-slate-400">{point.total} alunos com nota{point.withoutPerformance > 0 ? ` · ${point.withoutPerformance} sem notas` : ''}</span>
+            <span className="min-w-0 truncate font-semibold text-[#344054] dark:text-slate-200">{point.className}</span>
+            <span className="shrink-0 text-right text-xs text-[#667085] dark:text-slate-400">{point.total} alunos com nota{point.withoutPerformance > 0 ? ` · ${point.withoutPerformance} sem notas` : ''}</span>
           </div>
           <div className="flex h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800" aria-label={`${point.className}: ${point.adequate} adequadas, ${point.attention} em atenção, ${point.critical} críticas`}>
             {point.adequate > 0 && <span className="bg-[#159570]" style={{ width: `${(point.adequate / point.total) * 100}%` }} />}
@@ -437,7 +430,7 @@ function StudentSituation({
   activityLoading,
   activityUnavailable,
 }: {
-  summaries: ReturnType<typeof buildStudentSituationSummary>;
+  summaries: StudentSituationSummary[];
   loading: boolean;
   error: boolean;
   activityPerformance: ActivityPerformanceSummary;
@@ -456,18 +449,18 @@ function StudentSituation({
   }).join(', ');
 
   return (
-    <div className="space-y-5">
-      <div className="flex w-full flex-col items-center gap-5 sm:flex-row sm:items-center">
+    <div className="min-w-0 space-y-5">
+      <div className="flex w-full min-w-0 flex-col items-center gap-5 md:flex-row md:items-center">
         <div className="relative h-36 w-36 shrink-0 rounded-full" style={{ background: `conic-gradient(${segments})` }} role="img" aria-label={`Situação de ${total} estudantes`}>
           <div className="absolute inset-4 flex items-center justify-center rounded-full bg-white text-center dark:bg-slate-900">
             <span className="text-2xl font-extrabold text-[#181c20] dark:text-white">{total}</span>
           </div>
         </div>
-        <div className="grid w-full grid-cols-2 gap-3 text-sm">
+        <div className="grid w-full min-w-0 grid-cols-2 gap-3 text-sm">
           {summaries.map((item) => (
             <div key={item.situation} className="flex items-center justify-between gap-2">
-              <span className="flex items-center gap-2 text-[#667085] dark:text-slate-400"><i className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: situationColors[item.situation] }} />{situationLabels[item.situation]}</span>
-              <strong className="text-[#181c20] dark:text-white">{item.count}</strong>
+              <span className="min-w-0 break-words text-[#667085] dark:text-slate-400"><i className="mr-2 inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: situationColors[item.situation] }} />{situationLabels[item.situation]}</span>
+              <strong className="shrink-0 text-[#181c20] dark:text-white">{item.count}</strong>
             </div>
           ))}
         </div>
@@ -475,12 +468,12 @@ function StudentSituation({
 
       <div className="w-full border-t border-[#e5eaf0] pt-4 dark:border-slate-700">
         <div className="mb-3 flex items-start justify-between gap-3">
-          <div>
+          <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#667085] dark:text-slate-400">Desempenho nas atividades</p>
             <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">Distribuição das avaliações do período.</p>
           </div>
           {!activityLoading && !activityUnavailable && activityPerformance.totalActivities > 0 && (
-            <strong className="text-xs text-[#344054] dark:text-slate-200">{formatCount(activityPerformance.totalActivities)} atividades</strong>
+            <strong className="shrink-0 text-right text-xs text-[#344054] dark:text-slate-200">{formatCount(activityPerformance.totalActivities)} atividades</strong>
           )}
         </div>
         {activityLoading ? (
@@ -497,7 +490,7 @@ function StudentSituation({
               <span className="bg-[#dc4b4b]" style={{ width: `${(activityPerformance.critical / activityPerformance.totalActivities) * 100}%` }} />
               <span className="bg-slate-300 dark:bg-slate-600" style={{ width: `${(activityPerformance.withoutAverage / activityPerformance.totalActivities) * 100}%` }} />
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3 text-xs sm:grid-cols-4">
+            <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3 text-xs lg:grid-cols-4">
               <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-[#159570]" />70% ou mais</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.aboveTarget)}</strong></div>
               <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-[#d97706]" />50% a 69%</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.attention)}</strong></div>
               <div><p className="flex items-center gap-1.5 text-[#667085] dark:text-slate-400"><i className="h-2 w-2 rounded-full bg-[#dc4b4b]" />Abaixo de 50%</p><strong className="text-base text-[#181c20] dark:text-white">{formatCount(activityPerformance.critical)}</strong></div>
@@ -521,6 +514,9 @@ export default function DirectorAcademicPanorama({
   const today = getLocalDateInputValue();
   const yearsQuery = useAcademicYears(institutionId);
   const currentYear = useMemo(() => getCurrentAcademicYear(yearsQuery.data ?? [], today), [today, yearsQuery.data]);
+  const currentTerm = useMemo(() => currentYear?.terms.find((term) =>
+    term.active && isDateWithinRange(today, term.startDate, term.endDate),
+  ) ?? null, [currentYear, today]);
   const dateRange = useMemo(() => getDateRange(period, today, currentYear), [currentYear, period, today]);
   const waitingForAcademicYear = ['term', 'year'].includes(period) && !currentYear && yearsQuery.isFetching;
   const queryInstitutionId = waitingForAcademicYear ? undefined : institutionId;
@@ -528,75 +524,70 @@ export default function DirectorAcademicPanorama({
     fromDate: dateRange.fromDate,
     toDate: dateRange.toDate,
     ...(classId ? { classId } : {}),
-  }), [classId, dateRange.fromDate, dateRange.toDate]);
+    ...(period === 'term' && currentTerm ? { termId: currentTerm.id } : {}),
+    ...(period === 'year' && currentYear ? { academicYearId: currentYear.id } : {}),
+  }), [classId, currentTerm, currentYear, dateRange.fromDate, dateRange.toDate, period]);
 
-  const attendanceQuery = useInstitutionAttendanceSummary(queryInstitutionId, filters);
-  const attendanceTrendQuery = useInstitutionAttendanceTrend(queryInstitutionId, filters);
-  const gradesQuery = useInstitutionGradeSummary(queryInstitutionId, filters);
-  const coreSummaryLoaded = attendanceQuery.isFetched || gradesQuery.isFetched;
-  const pendingAttendanceQuery = useInstitutionPendingAttendanceSummary(queryInstitutionId, filters, {
-    enabled: coreSummaryLoaded,
-  });
+  const panoramaQuery = useDirectorPanorama(queryInstitutionId, filters);
   const classOptionsQuery = useClassOptions(institutionId);
-  const classes = useMemo(() => mergePanoramaClassOptions(
-    classOptionsQuery.data?.map((option) => ({ id: option.id, label: option.name })) ?? [],
-    attendanceQuery.data?.filters.classes ?? [],
-    gradesQuery.data?.filters.classes ?? [],
-  ), [attendanceQuery.data?.filters.classes, classOptionsQuery.data, gradesQuery.data?.filters.classes]);
-  const attendanceTrend = useMemo(() => buildWeeklyAttendanceTrend(
-    classId ? attendanceQuery.data?.sessions ?? [] : attendanceTrendQuery.data ?? [],
-  ), [attendanceQuery.data?.sessions, attendanceTrendQuery.data, classId]);
-  const classPerformance = useMemo(() => buildClassPerformance(gradesQuery.data?.studentPerformance ?? []), [gradesQuery.data?.studentPerformance]);
-  const activityPerformance = useMemo(() => buildActivityPerformanceSummary(gradesQuery.data?.assessments ?? []), [gradesQuery.data?.assessments]);
-  const studentSummaries = useMemo(() => buildStudentSituationSummary(mergeStudentSignals(attendanceQuery.data?.sessions ?? [], gradesQuery.data?.studentPerformance ?? [])), [attendanceQuery.data?.sessions, gradesQuery.data?.studentPerformance]);
-  const pendingItems = useMemo(() => ({
-    ...countPendingAcademicItems([], gradesQuery.data?.assessments ?? []),
-    attendancePending: pendingAttendanceQuery.data?.pendingCount ?? 0,
-  }), [gradesQuery.data?.assessments, pendingAttendanceQuery.data?.pendingCount]);
+  const classes = useMemo(() => (classOptionsQuery.data ?? [])
+    .map((option) => [option.id, option.name] as [string, string])
+    .sort((first, second) => first[1].localeCompare(second[1], 'pt-BR')),
+  [classOptionsQuery.data]);
+  const attendanceTrend = panoramaQuery.data?.attendance.weekly ?? [];
+  const classPerformance = panoramaQuery.data?.classes ?? [];
+  const activityPerformance: ActivityPerformanceSummary = panoramaQuery.data?.performance.activities ?? {
+    totalActivities: 0,
+    aboveTarget: 0,
+    attention: 0,
+    critical: 0,
+    withoutAverage: 0,
+    launchedActivities: 0,
+    pendingGrades: 0,
+  };
+  const studentSummaries = panoramaQuery.data?.students.situations ?? [];
+  const pendingItems = panoramaQuery.data?.pending ?? {
+    attendancePending: 0,
+    missingGrades: 0,
+    assessmentsWithoutLaunch: 0,
+  };
   const attentionCount = (studentSummaries.find((item) => item.situation === 'ATTENTION')?.count ?? 0) + (studentSummaries.find((item) => item.situation === 'CRITICAL')?.count ?? 0);
-  const attendanceUnavailable = attendanceQuery.isError && !attendanceQuery.data;
-  const gradesUnavailable = gradesQuery.isError && !gradesQuery.data;
-  const pendingAttendanceUnavailable = pendingAttendanceQuery.isError && !pendingAttendanceQuery.data;
-  const pendingAttendanceLoading = !pendingAttendanceQuery.data && (!coreSummaryLoaded || pendingAttendanceQuery.isFetching);
-  const attentionUnavailable = attendanceUnavailable && gradesUnavailable;
-  const attendanceLoading = !attendanceQuery.data && attendanceQuery.isPending;
-  const attendanceTrendLoading = waitingForAcademicYear || (
-    classId
-      ? attendanceLoading
-      : !attendanceTrendQuery.data && attendanceTrendQuery.isPending
-  );
-  const attendanceTrendError = classId
-    ? attendanceQuery.isError && !attendanceQuery.data
-    : attendanceTrendQuery.isError && !attendanceTrendQuery.data;
-  const gradesLoading = !gradesQuery.data && gradesQuery.isPending;
-  const attentionLoading = !attentionUnavailable && (!attendanceQuery.isFetched || !gradesQuery.isFetched);
-  const hasError = attendanceQuery.isError || pendingAttendanceQuery.isError || gradesQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
+  const panoramaUnavailable = panoramaQuery.isError && !panoramaQuery.data;
+  const attendanceUnavailable = panoramaUnavailable;
+  const gradesUnavailable = panoramaUnavailable;
+  const attentionUnavailable = panoramaUnavailable;
+  const attendanceLoading = !panoramaQuery.data && panoramaQuery.isPending;
+  const attendanceTrendLoading = waitingForAcademicYear || attendanceLoading;
+  const attendanceTrendError = panoramaUnavailable;
+  const gradesLoading = attendanceLoading;
+  const attentionLoading = !panoramaUnavailable && attendanceLoading;
+  const hasError = panoramaQuery.isError || yearsQuery.isError || classOptionsQuery.isError;
   const pendingMetrics = [
-    { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: pendingAttendanceUnavailable, loading: pendingAttendanceLoading, moduleId: 'class-diary' as AdminModuleId },
-    { label: 'Notas faltantes', value: pendingItems.missingGrades, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
-    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: gradesUnavailable, loading: gradesQuery.isFetching, moduleId: 'grades' as AdminModuleId },
+    { label: 'Chamadas pendentes', value: pendingItems.attendancePending, unavailable: panoramaUnavailable, loading: attendanceLoading, moduleId: 'class-diary' as AdminModuleId },
+    { label: 'Notas pendentes', value: pendingItems.missingGrades, detail: 'Lançamentos aluno × avaliação que ainda precisam ser preenchidos.', unavailable: panoramaUnavailable, loading: gradesLoading, moduleId: 'grades' as AdminModuleId },
+    { label: 'Avaliações sem lançamento', value: pendingItems.assessmentsWithoutLaunch, unavailable: panoramaUnavailable, loading: gradesLoading, moduleId: 'grades' as AdminModuleId },
   ];
   const availablePendingValues = pendingMetrics.filter((metric) => !metric.unavailable && !metric.loading).map((metric) => metric.value);
   const pendingMax = Math.max(1, ...availablePendingValues);
 
   return (
-    <section aria-labelledby="director-academic-panorama-heading" className="space-y-5">
+    <section aria-labelledby="director-academic-panorama-heading" className="w-full min-w-0 space-y-5">
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf] dark:text-blue-400">Panorama acadêmico</p>
           <h2 id="director-academic-panorama-heading" className="mt-1 text-xl font-extrabold text-[#181c20] dark:text-white">Desempenho, frequência e pontos de atenção</h2>
           <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">Acompanhe o que exige atenção na escola com dados já lançados.</p>
         </div>
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <label className="text-xs font-semibold text-[#667085] dark:text-slate-400">
+        <div className="flex w-full min-w-0 flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap">
+          <label className="min-w-0 text-xs font-semibold text-[#667085] dark:text-slate-400">
             Período
-            <select value={period} onChange={(event) => setPeriod(event.target.value as PanoramaPeriod)} className="mt-1 block min-w-44 rounded-lg border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-semibold text-[#344054] focus:border-[#005bbf] focus:outline-none focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            <select value={period} onChange={(event) => setPeriod(event.target.value as PanoramaPeriod)} className="mt-1 block w-full min-w-0 rounded-lg border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-semibold text-[#344054] focus:border-[#005bbf] focus:outline-none focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 sm:w-auto sm:min-w-44">
               {periodOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
             </select>
           </label>
-          <label className="text-xs font-semibold text-[#667085] dark:text-slate-400">
+          <label className="min-w-0 text-xs font-semibold text-[#667085] dark:text-slate-400">
             Turma
-            <select value={classId} onChange={(event) => setClassId(event.target.value)} className="mt-1 block min-w-44 rounded-lg border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-semibold text-[#344054] focus:border-[#005bbf] focus:outline-none focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            <select value={classId} onChange={(event) => setClassId(event.target.value)} className="mt-1 block w-full min-w-0 rounded-lg border border-[#d0d5dd] bg-white px-3 py-2 text-sm font-semibold text-[#344054] focus:border-[#005bbf] focus:outline-none focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 sm:w-auto sm:min-w-44">
               <option value="">Todas as turmas</option>
               {classes.map(([id, label]) => <option key={id} value={id}>{label}</option>)}
             </select>
@@ -608,48 +599,49 @@ export default function DirectorAcademicPanorama({
 
       {hasError && <p role="status" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">Alguns indicadores não puderam ser carregados agora. Os dados disponíveis continuam visíveis.</p>}
 
-      <div className="grid gap-3 md:grid-cols-3">
-        <KpiCard label="Frequência média" value={attendanceUnavailable ? 'Não foi possível carregar agora.' : formatPercent(attendanceQuery.data?.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attendanceLoading} updating={Boolean(attendanceQuery.data && attendanceQuery.isFetching)} />
-        <KpiCard label="Desempenho médio" value={gradesUnavailable ? 'Não foi possível carregar agora.' : formatPercent(gradesQuery.data?.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={gradesLoading} updating={Boolean(gradesQuery.data && gradesQuery.isFetching)} />
-        <KpiCard label="Estudantes em atenção" value={getPanoramaMetricDisplay(formatCount(attentionCount), attentionUnavailable)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attentionLoading} updating={Boolean((attendanceQuery.data || gradesQuery.data) && (attendanceQuery.isFetching || gradesQuery.isFetching))} />
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        <KpiCard label="Frequência média" value={attendanceUnavailable ? 'Não foi possível carregar agora.' : formatPercent(panoramaQuery.data?.attendance.summary.attendanceRate)} detail="Registros lançados no período" icon={CalendarCheck2} moduleId="attendance" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attendanceLoading} updating={Boolean(panoramaQuery.data && panoramaQuery.isFetching)} />
+        <KpiCard label="Desempenho médio" value={gradesUnavailable ? 'Não foi possível carregar agora.' : formatPercent(panoramaQuery.data?.performance.summary.averagePercent)} detail="Avaliações com nota lançada" icon={BarChart3} moduleId="grades" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={gradesLoading} updating={Boolean(panoramaQuery.data && panoramaQuery.isFetching)} />
+        <KpiCard label="Estudantes em atenção" value={getPanoramaMetricDisplay(formatCount(attentionCount), attentionUnavailable)} detail="Frequência ou desempenho abaixo do esperado" icon={AlertTriangle} moduleId="students" availableModuleIds={availableModuleIds} onNavigateToModule={onNavigateToModule} loading={attentionLoading} updating={Boolean(panoramaQuery.data && panoramaQuery.isFetching)} />
       </div>
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(19rem,0.8fr)]">
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <article className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><CalendarCheck2 className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Frequência média ao longo do tempo</h3><p className="text-xs text-[#667085] dark:text-slate-400">Acompanhamento semanal com referência de 75%.</p></div></div>
           <AttendanceTrend
             sessions={attendanceTrend}
             loading={attendanceTrendLoading}
             error={attendanceTrendError}
-            onRetry={() => void (classId ? attendanceQuery.refetch() : attendanceTrendQuery.refetch())}
+            onRetry={() => void panoramaQuery.refetch()}
           />
         </article>
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <article className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><UsersRound className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Situação dos estudantes</h3><p className="text-xs text-[#667085] dark:text-slate-400">Frequência e desempenho combinados.</p></div></div>
           <StudentSituation
             summaries={studentSummaries}
             loading={attentionLoading}
-            error={Boolean((attendanceQuery.isError && !attendanceQuery.data) && (gradesQuery.isError && !gradesQuery.data))}
+            error={panoramaUnavailable}
             activityPerformance={activityPerformance}
-            activityLoading={gradesQuery.isFetching}
+            activityLoading={gradesLoading}
             activityUnavailable={gradesUnavailable}
           />
         </article>
       </div>
 
       <div className="grid gap-4 xl:grid-cols-2">
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <article className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><GraduationCap className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Desempenho por turma</h3><p className="text-xs text-[#667085] dark:text-slate-400">Distribuição de alunos com nota lançada.</p></div></div>
-          <ClassPerformance points={classPerformance} loading={gradesLoading} error={gradesQuery.isError && !gradesQuery.data} />
+          <ClassPerformance points={classPerformance} loading={gradesLoading} error={panoramaUnavailable} />
         </article>
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <article className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
           <div className="mb-4 flex items-start gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300"><ClipboardList className="h-4 w-4" aria-hidden="true" /></span><div><h3 className="font-bold text-[#181c20] dark:text-white">Pendências acadêmicas</h3><p className="text-xs text-[#667085] dark:text-slate-400">Itens que ainda precisam de ação.</p></div></div>
           <div className="space-y-4">
             {pendingMetrics.map((metric) => {
               const navigable = !metric.unavailable && !metric.loading && availableModuleIds.includes(metric.moduleId) && Boolean(onNavigateToModule);
               return (
-                <button key={metric.label} type="button" disabled={!navigable} onClick={() => onNavigateToModule?.(metric.moduleId)} className={`w-full text-left ${navigable ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : 'cursor-default'}`}>
-                  <div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-semibold text-[#344054] dark:text-slate-200">{metric.label}</span><strong className="text-[#181c20] dark:text-white">{metric.loading ? 'Carregando...' : getPanoramaMetricDisplay(formatCount(metric.value), metric.unavailable)}</strong></div>
+                <button key={metric.label} type="button" disabled={!navigable} onClick={() => onNavigateToModule?.(metric.moduleId)} className={`min-h-11 w-full text-left ${navigable ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : 'cursor-default'}`}>
+                  <div className="mb-1 flex items-start justify-between gap-3 text-sm"><span className="min-w-0 break-words font-semibold text-[#344054] dark:text-slate-200">{metric.label}</span><strong className="shrink-0 text-right text-[#181c20] dark:text-white">{metric.loading ? 'Carregando...' : getPanoramaMetricDisplay(formatCount(metric.value), metric.unavailable)}</strong></div>
+                  {metric.detail && <p className="mb-1 break-words text-xs text-[#667085] dark:text-slate-400">{metric.detail}</p>}
                   <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"><span className="block h-full rounded-full bg-[#005bbf]" style={{ width: `${getPanoramaMetricProgress(metric.value, pendingMax, metric.unavailable || metric.loading)}%` }} /></div>
                 </button>
               );

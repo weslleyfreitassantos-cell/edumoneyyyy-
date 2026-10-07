@@ -31,7 +31,11 @@ const DEFAULT_SECONDARY = '#6ffbbe';
 
 export function DirectorLoginBrandingPage() {
   const { profile } = useAuth();
-  const { currentInstitution, refresh } = useInstitution();
+  const {
+    currentInstitution,
+    patchCurrentInstitution,
+    refresh,
+  } = useInstitution();
   const saveLogo = useSaveInstitutionLogo();
   const removeLogo = useRemoveInstitutionLogo();
   const saveFavicon = useSaveInstitutionFavicon();
@@ -95,6 +99,8 @@ export function DirectorLoginBrandingPage() {
     setFaviconPreviewUrl(currentInstitution?.favicon_url ?? null);
     setSavedBackgroundUrl(currentInstitution?.login_background_url ?? null);
     setBackgroundPreviewUrl(currentInstitution?.login_background_url ?? null);
+    setSelectedLogoFile(null);
+    setSelectedFaviconFile(null);
     setSelectedBackgroundFile(null);
   }, [
     currentInstitution?.id,
@@ -106,6 +112,23 @@ export function DirectorLoginBrandingPage() {
     currentInstitution?.favicon_url,
     currentInstitution?.login_background_url,
   ]);
+
+  const applyReturnedBranding = (branding: {
+    logoUrl: string | null;
+    faviconUrl: string | null;
+    loginBackgroundUrl: string | null;
+  }) => {
+    if (!currentInstitution) {
+      return;
+    }
+
+    patchCurrentInstitution({
+      ...currentInstitution,
+      logo_url: branding.logoUrl,
+      favicon_url: branding.faviconUrl,
+      login_background_url: branding.loginBackgroundUrl,
+    });
+  };
 
   useEffect(() => {
     return () => {
@@ -197,17 +220,18 @@ export function DirectorLoginBrandingPage() {
 
     try {
       setIsSaving(true);
-      await removeLogo.mutateAsync({
+      const updatedBranding = await removeLogo.mutateAsync({
         institutionId,
         institutionName,
         currentPublicSlug: null,
       });
 
+      applyReturnedBranding(updatedBranding);
       setSavedLogoUrl(null);
       setSelectedLogoFile(null);
       setLogoPreviewUrl(null);
       setSuccess('Logo removida com sucesso!');
-      await refresh();
+      void refresh().catch(() => undefined);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao remover a logo.');
     } finally {
@@ -222,17 +246,18 @@ export function DirectorLoginBrandingPage() {
 
     try {
       setIsSaving(true);
-      await removeFavicon.mutateAsync({
+      const updatedBranding = await removeFavicon.mutateAsync({
         institutionId,
         institutionName,
         currentPublicSlug: null,
       });
 
+      applyReturnedBranding(updatedBranding);
       setSavedFaviconUrl(null);
       setSelectedFaviconFile(null);
       setFaviconPreviewUrl(null);
       setSuccess('Favicon removido com sucesso!');
-      await refresh();
+      void refresh().catch(() => undefined);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao remover o favicon.');
     } finally {
@@ -247,17 +272,18 @@ export function DirectorLoginBrandingPage() {
 
     try {
       setIsSaving(true);
-      await removeBackground.mutateAsync({
+      const updatedBranding = await removeBackground.mutateAsync({
         institutionId,
         institutionName,
         currentPublicSlug: null,
       });
 
+      applyReturnedBranding(updatedBranding);
       setSavedBackgroundUrl(null);
       setSelectedBackgroundFile(null);
       setBackgroundPreviewUrl(null);
       setSuccess('Background removido com sucesso!');
-      await refresh();
+      void refresh().catch(() => undefined);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao remover o background.');
     } finally {
@@ -294,6 +320,7 @@ export function DirectorLoginBrandingPage() {
         });
         updatedLogoUrl = savedBranding.logoUrl;
         setSavedLogoUrl(updatedLogoUrl);
+        setLogoPreviewUrl(updatedLogoUrl);
         setSelectedLogoFile(null);
       }
 
@@ -306,6 +333,7 @@ export function DirectorLoginBrandingPage() {
         });
         updatedFaviconUrl = savedBranding.faviconUrl;
         setSavedFaviconUrl(updatedFaviconUrl);
+        setFaviconPreviewUrl(updatedFaviconUrl);
         setSelectedFaviconFile(null);
       }
 
@@ -323,7 +351,7 @@ export function DirectorLoginBrandingPage() {
         setSelectedBackgroundFile(null);
       }
 
-      await updateInstitutionBranding({
+      const updatedInstitution = await updateInstitutionBranding({
         institutionId,
         profileId: profile.id,
         login_display_name: loginDisplayName.trim() || null,
@@ -336,8 +364,22 @@ export function DirectorLoginBrandingPage() {
         secondary_color: secondaryColor,
       });
 
+      patchCurrentInstitution(updatedInstitution);
+      setLoginDisplayName(
+        updatedInstitution.login_display_name ?? updatedInstitution.name,
+      );
+      setPrimaryColor(updatedInstitution.primary_color || DEFAULT_PRIMARY);
+      setSecondaryColor(
+        updatedInstitution.secondary_color || DEFAULT_SECONDARY,
+      );
+      setSavedLogoUrl(updatedInstitution.logo_url ?? null);
+      setLogoPreviewUrl(updatedInstitution.logo_url ?? null);
+      setSavedFaviconUrl(updatedInstitution.favicon_url ?? null);
+      setFaviconPreviewUrl(updatedInstitution.favicon_url ?? null);
+      setSavedBackgroundUrl(updatedInstitution.login_background_url ?? null);
+      setBackgroundPreviewUrl(updatedInstitution.login_background_url ?? null);
       setSuccess('Identidade visual do login atualizada com sucesso!');
-      await refresh();
+      void refresh().catch(() => undefined);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao salvar a identidade visual.');
     } finally {

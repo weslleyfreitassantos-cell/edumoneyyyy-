@@ -147,6 +147,7 @@ beforeEach(() => {
     hasMultipleInstitutions: false,
     setCurrentInstitutionId,
     clearCurrentInstitutionSelection,
+    patchCurrentInstitution: vi.fn(),
     refresh: vi.fn(async () => undefined),
   });
 
@@ -548,6 +549,7 @@ describe('AccountPage', () => {
       hasMultipleInstitutions: true,
       setCurrentInstitutionId,
       clearCurrentInstitutionSelection,
+      patchCurrentInstitution: vi.fn(),
       refresh: vi.fn(async () => undefined),
     });
 

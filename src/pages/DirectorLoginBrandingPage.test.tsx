@@ -74,6 +74,7 @@ const mockedUseRemoveInstitutionFavicon = vi.mocked(useRemoveInstitutionFavicon)
 const mockedUpdateInstitutionBranding = vi.mocked(updateInstitutionBranding);
 
 const refresh = vi.fn(async () => undefined);
+const patchCurrentInstitution = vi.fn();
 const saveLogo = vi.fn();
 const removeLogo = vi.fn();
 const saveFavicon = vi.fn();
@@ -108,6 +109,7 @@ function mockDirectorContext(
     hasMultipleInstitutions: false,
     setCurrentInstitutionId: vi.fn(),
     clearCurrentInstitutionSelection: vi.fn(),
+    patchCurrentInstitution,
     refresh,
     ...overrides,
   });
@@ -228,6 +230,96 @@ describe('DirectorLoginBrandingPage', () => {
     expect(
       screen.getByText(/atualizada com sucesso/i),
     ).toBeTruthy();
+  });
+
+  it('aplica imediatamente a resposta canonica de branding sem aguardar refresh', async () => {
+    const updatedInstitution = {
+      id: 'institution-1',
+      name: 'Escola Luz',
+      subdomain: 'escola-luz',
+      login_display_name: 'Escola Luz Atualizada',
+      logo_url: 'https://cdn.example.com/logo-v2.png?v=2',
+      favicon_url: 'https://cdn.example.com/favicon-v2.png?v=2',
+      login_background_url: 'https://cdn.example.com/background-v2.png?v=2',
+      primary_color: '#223344',
+      secondary_color: '#ddeeff',
+      active: true,
+      account_id: 'account-1',
+    };
+    mockedUpdateInstitutionBranding.mockResolvedValueOnce(updatedInstitution);
+    saveLogo.mockResolvedValue({
+      id: 'institution-1',
+      name: 'Escola Luz',
+      logoUrl: updatedInstitution.logo_url,
+      faviconUrl: updatedInstitution.favicon_url,
+      loginBackgroundUrl: updatedInstitution.login_background_url,
+      publicSlug: 'escola-luz',
+      logoPath: 'institution-1/logo.png',
+    });
+    saveFavicon.mockResolvedValue({
+      id: 'institution-1',
+      name: 'Escola Luz',
+      logoUrl: updatedInstitution.logo_url,
+      faviconUrl: updatedInstitution.favicon_url,
+      loginBackgroundUrl: updatedInstitution.login_background_url,
+      publicSlug: 'escola-luz',
+      faviconPath: 'institution-1/favicon.png',
+    });
+    saveBackground.mockResolvedValue({
+      id: 'institution-1',
+      name: 'Escola Luz',
+      logoUrl: updatedInstitution.logo_url,
+      faviconUrl: updatedInstitution.favicon_url,
+      loginBackgroundUrl: updatedInstitution.login_background_url,
+      publicSlug: 'escola-luz',
+      backgroundPath: 'institution-1/background.png',
+    });
+
+    renderPage();
+    fireEvent.change(screen.getByLabelText(/Nome exibido/i), {
+      target: { value: updatedInstitution.login_display_name },
+    });
+    fireEvent.change(screen.getByLabelText(/^Cor principal$/i), {
+      target: { value: updatedInstitution.primary_color },
+    });
+    fireEvent.change(screen.getByLabelText(/^Cor secund.ria$/i), {
+      target: { value: updatedInstitution.secondary_color },
+    });
+    fireEvent.change(screen.getByLabelText('Selecionar logo'), {
+      target: {
+        files: [new File(['logo'], 'logo.png', { type: 'image/png' })],
+      },
+    });
+    fireEvent.change(screen.getByLabelText('Selecionar favicon'), {
+      target: {
+        files: [new File(['favicon'], 'favicon.png', { type: 'image/png' })],
+      },
+    });
+    fireEvent.change(screen.getByLabelText('Selecionar background'), {
+      target: {
+        files: [new File(['background'], 'background.png', { type: 'image/png' })],
+      },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /^Salvar$/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/atualizada com sucesso/i)).toBeTruthy();
+    });
+
+    expect(patchCurrentInstitution).toHaveBeenCalledWith(updatedInstitution);
+    expect(screen.getByDisplayValue(updatedInstitution.login_display_name)).toBeTruthy();
+    expect(screen.getByLabelText('Cor principal').getAttribute('value')).toBe(updatedInstitution.primary_color);
+    expect(screen.getByLabelText('Cor secundária').getAttribute('value')).toBe(updatedInstitution.secondary_color);
+    expect(
+      screen
+        .getAllByRole('img', { name: 'Logo' })
+        .some((image) => image.getAttribute('src') === updatedInstitution.logo_url),
+    ).toBe(true);
+    expect(screen.getByRole('img', { name: 'Favicon' }).getAttribute('src')).toBe(updatedInstitution.favicon_url);
+    expect(
+      screen.getByRole('img', { name: 'Preview do background atual' }).getAttribute('style'),
+    ).toContain(updatedInstitution.login_background_url);
+    expect(refresh).toHaveBeenCalled();
   });
 
   it('mostra feedback de erro quando a persistencia falha', async () => {
@@ -365,6 +457,12 @@ describe('DirectorLoginBrandingPage', () => {
         expect.objectContaining({ institutionId: 'institution-1' }),
       );
     });
+
+    expect(patchCurrentInstitution).toHaveBeenCalledWith(
+      expect.objectContaining({
+        login_background_url: null,
+      }),
+    );
   });
 });
 
