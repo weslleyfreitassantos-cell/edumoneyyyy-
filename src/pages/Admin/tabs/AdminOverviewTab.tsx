@@ -125,10 +125,7 @@ export default function AdminOverviewTab({
   );
   const overviewQuery = useAdminOverview(institutionId);
 
-  if (
-    institutionQuery.isLoading ||
-    (overviewQuery.isLoading && !overviewQuery.data)
-  ) {
+  if (institutionQuery.isLoading) {
     return (
       <section aria-label="Carregando visão geral" data-testid="admin-overview-loading" className="space-y-5">
         <div className="space-y-2">
@@ -167,30 +164,24 @@ export default function AdminOverviewTab({
     );
   }
 
-  if (
-    institutionQuery.isError ||
-    overviewQuery.isError ||
-    !overviewQuery.data
-  ) {
+  if (institutionQuery.isError) {
     return (
       <div
         role="alert"
         className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300"
       >
-        {getErrorMessage(
-          institutionQuery.error ?? overviewQuery.error,
-        )}
+        {getErrorMessage(institutionQuery.error)}
       </div>
     );
   }
 
-  const { metrics } = overviewQuery.data;
+  const metrics = overviewQuery.data?.metrics;
   const profileName = profile?.full_name?.trim() || 'Diretor';
   const firstName = getFirstName(profileName);
   const areaLabel = institutionQuery.currentRole === 'DIRECTOR'
     ? 'Área da direção'
     : 'Área administrativa';
-  const primaryMetrics: Array<Omit<MetricCardProps, 'availableModuleIds' | 'onNavigateToModule' | 'emphasis'>> = [
+  const primaryMetrics: Array<Omit<MetricCardProps, 'availableModuleIds' | 'onNavigateToModule' | 'emphasis'>> = metrics ? [
     {
       label: 'Estudantes ativos',
       value: metrics.activeStudents,
@@ -209,8 +200,8 @@ export default function AdminOverviewTab({
       icon: School,
       moduleId: 'classes',
     },
-  ];
-  const secondaryMetrics: Array<Omit<MetricCardProps, 'availableModuleIds' | 'onNavigateToModule' | 'emphasis'>> = [
+  ] : [];
+  const secondaryMetrics: Array<Omit<MetricCardProps, 'availableModuleIds' | 'onNavigateToModule' | 'emphasis'>> = metrics ? [
     {
       label: 'Responsáveis ativos',
       value: metrics.activeGuardians,
@@ -247,7 +238,7 @@ export default function AdminOverviewTab({
       icon: Users,
       moduleId: 'students',
     },
-  ];
+  ] : [];
 
   const metricCardProps = {
     availableModuleIds,
@@ -340,26 +331,43 @@ export default function AdminOverviewTab({
           hidden={!operationalOpen}
           className="space-y-4 border-t border-[#e4e8f1] p-4 dark:border-slate-700 sm:p-5"
         >
-          <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {primaryMetrics.map((metric) => (
-              <MetricCard
-                key={metric.label}
-                {...metric}
-                {...metricCardProps}
-                emphasis="primary"
-              />
-            ))}
-          </div>
-          <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {secondaryMetrics.map((metric) => (
-              <MetricCard
-                key={metric.label}
-                {...metric}
-                {...metricCardProps}
-                emphasis="secondary"
-              />
-            ))}
-          </div>
+          {metrics ? (
+            <>
+              <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {primaryMetrics.map((metric) => (
+                  <MetricCard
+                    key={metric.label}
+                    {...metric}
+                    {...metricCardProps}
+                    emphasis="primary"
+                  />
+                ))}
+              </div>
+              <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {secondaryMetrics.map((metric) => (
+                  <MetricCard
+                    key={metric.label}
+                    {...metric}
+                    {...metricCardProps}
+                    emphasis="secondary"
+                  />
+                ))}
+              </div>
+            </>
+          ) : overviewQuery.isError ? (
+            <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300">
+              <p>{getErrorMessage(overviewQuery.error)}</p>
+              <button type="button" onClick={() => void overviewQuery.refetch()} className="mt-3 min-h-10 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+                Tentar novamente
+              </button>
+            </div>
+          ) : (
+            <div role="status" aria-label="Carregando indicadores da escola" className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 6 }, (_, index) => (
+                <div key={index} className="h-20 animate-pulse rounded-lg border border-[#e4e8f1] bg-white motion-reduce:animate-none dark:border-slate-800 dark:bg-slate-900" />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

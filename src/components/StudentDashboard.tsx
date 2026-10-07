@@ -40,6 +40,7 @@ import StudentGradesPanel from './grades/StudentGradesPanel';
 import AcademicStudentContext from './academic/AcademicStudentContext';
 import StudentReportCard from './academic/StudentReportCard';
 import ProfileHeroAvatar from './ProfileHeroAvatar';
+import DashboardLoadingShell from './DashboardLoadingShell';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
@@ -203,29 +204,6 @@ function StudentAcademicResultsView({
         />
       )}
     </motion.div>
-  );
-}
-
-function LoadingState() {
-  return (
-    <div
-      role="status"
-      aria-label="Carregando dados acadêmicos"
-      className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"
-    >
-      <div className="space-y-4 motion-safe:animate-pulse motion-reduce:animate-none">
-        <div className="h-5 w-44 rounded bg-[#e8edf4] dark:bg-slate-700" />
-        <div className="h-4 w-72 max-w-full rounded bg-[#eef1f5] dark:bg-slate-800" />
-        <div className="grid gap-3 sm:grid-cols-3">
-          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
-          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
-          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
-        </div>
-        <p className="text-sm font-medium text-[#727785] dark:text-slate-400">
-          Carregando dados acadêmicos...
-        </p>
-      </div>
-    </div>
   );
 }
 
@@ -403,7 +381,17 @@ export default function StudentDashboard() {
     institutionQuery.isLoading ||
     dashboardQuery.isLoading
   ) {
-    return <LoadingState />;
+    const fullName = profile?.full_name?.trim() || 'Estudante';
+    return (
+      <DashboardLoadingShell
+        areaLabel="Área do estudante"
+        heading={`Olá, ${getFirstName(fullName)}!`}
+        fullName={fullName}
+        avatarUrl={profile?.avatar_url}
+        fallback={<GraduationCap className="h-8 w-8" aria-hidden="true" />}
+        statusLabel="Carregando dados acadêmicos"
+      />
+    );
   }
 
   if (

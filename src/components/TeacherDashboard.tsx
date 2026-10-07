@@ -31,6 +31,7 @@ import TeacherClassCouncilsPanel from './academic/TeacherClassCouncilsPanel';
 import TeacherTimetableView from './TeacherTimetableView';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 import ProfileHeroAvatar from './ProfileHeroAvatar';
+import DashboardLoadingShell from './DashboardLoadingShell';
 
 function getFirstName(
   fullName: string,
@@ -85,23 +86,6 @@ icon: ReactNode;
   );
 }
 
-function LoadingState() {
-  return (
-    <div role="status" aria-label="Carregando painel docente" className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
-      <div className="text-center">
-        <div
-          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
-          aria-hidden="true"
-        />
-
-        <p className="mt-4 text-sm font-medium text-[#727785]">
-          Carregando atribuições acadêmicas...
-        </p>
-      </div>
-    </div>
-  );
-}
-
 function TeacherWorkspacePage({
   title,
   description,
@@ -150,7 +134,17 @@ export default function TeacherDashboard() {
     institutionQuery.isLoading ||
     dashboardQuery.isLoading
   ) {
-    return <LoadingState />;
+    const fullName = profile?.full_name?.trim() || 'Docente';
+    return (
+      <DashboardLoadingShell
+        areaLabel="Área docente"
+        heading={`Olá, ${getFirstName(fullName)}!`}
+        fullName={fullName}
+        avatarUrl={profile?.avatar_url}
+        fallback={<GraduationCap className="h-8 w-8" aria-hidden="true" />}
+        statusLabel="Carregando painel docente"
+      />
+    );
   }
 
   if (

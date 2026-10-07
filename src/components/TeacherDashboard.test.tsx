@@ -158,6 +158,24 @@ afterEach(() => {
 });
 
 describe('TeacherDashboard', () => {
+  it('renders the personalized dashboard shell while teacher data loads', () => {
+    vi.mocked(useTeacherDashboard).mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <TeacherDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('heading', { name: 'Olá, Professor!' })).toBeTruthy();
+    expect(screen.getByRole('status', { name: 'Carregando painel docente' })).toBeTruthy();
+  });
+
   it('seleciona o offering do período vigente para a grade', () => {
     const selectedOffering = selectTeacherOfferingForDate(
       [

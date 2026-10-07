@@ -26,32 +26,10 @@ import GuardianReportCard from './academic/GuardianReportCard';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 import ProfileHeroAvatar from './ProfileHeroAvatar';
+import DashboardLoadingShell from './DashboardLoadingShell';
 
 function getStudentDisplayName(student: GuardianStudentDashboard['student']['student']): string {
   return student.profile?.full_name?.trim() || 'Estudante sem nome informado';
-}
-
-function LoadingState() {
-  return (
-    <div
-      role="status"
-      aria-label="Carregando vínculos familiares"
-      className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"
-    >
-      <div className="space-y-4 motion-safe:animate-pulse motion-reduce:animate-none">
-        <div className="h-5 w-44 rounded bg-[#e8edf4] dark:bg-slate-700" />
-        <div className="h-4 w-72 max-w-full rounded bg-[#eef1f5] dark:bg-slate-800" />
-        <div className="grid gap-3 sm:grid-cols-3">
-          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
-          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
-          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
-        </div>
-        <p className="text-sm font-medium text-[#727785] dark:text-slate-400">
-          Carregando vínculos familiares...
-        </p>
-      </div>
-    </div>
-  );
 }
 
 function StudentSummary({
@@ -272,7 +250,17 @@ export default function ParentDashboard() {
     institutionQuery.isLoading ||
     dashboardQuery.isLoading
   ) {
-    return <LoadingState />;
+    const fullName = profile?.full_name?.trim() || 'Responsável';
+    return (
+      <DashboardLoadingShell
+        areaLabel="Área do responsável"
+        heading={fullName}
+        fullName={fullName}
+        avatarUrl={profile?.avatar_url}
+        fallback={<UsersRound className="h-8 w-8" aria-hidden="true" />}
+        statusLabel="Carregando vínculos familiares"
+      />
+    );
   }
 
   if (

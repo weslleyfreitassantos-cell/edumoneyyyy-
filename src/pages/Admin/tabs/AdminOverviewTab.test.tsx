@@ -364,7 +364,7 @@ describe('AdminOverviewTab', () => {
     expect(navigate).not.toHaveBeenCalled();
   });
 
-  it('exibe um skeleton com a estrutura da visão geral durante o carregamento', () => {
+  it('exibe a estrutura do painel e inicia o panorama enquanto as métricas carregam', () => {
     mockedUseAdminOverview.mockReturnValue({
       data: undefined,
       isLoading: true,
@@ -378,8 +378,12 @@ describe('AdminOverviewTab', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByTestId('admin-overview-loading')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Olá, Ana!' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Configuração da escola/i })).toBeTruthy();
+    expect(screen.getByTestId('director-academic-panorama')).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Resumo operacional/i })).toBeTruthy();
     expect(screen.queryByText('Carregando visão geral...')).toBeNull();
+    expect(screen.queryByText('842')).toBeNull();
   });
 
   it('exibe somente o acesso de configuração para ADMIN', () => {

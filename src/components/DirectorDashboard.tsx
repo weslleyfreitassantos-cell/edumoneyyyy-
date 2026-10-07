@@ -73,19 +73,23 @@ function MetricCard({
   );
 }
 
-function LoadingState() {
+function DashboardLoadingSkeleton() {
   return (
-    <div role="status" aria-label="Carregando painel da escola" className="grid min-h-[360px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
-      <div className="text-center">
-        <div
-          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
-          aria-hidden="true"
-        />
-        <p className="mt-4 text-sm font-medium text-[#727785]">
-          Carregando visão acadêmica...
-        </p>
+    <section
+      role="status"
+      aria-label="Carregando dados acadêmicos"
+      className="space-y-4"
+    >
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {Array.from({ length: 4 }, (_, index) => (
+          <div
+            key={index}
+            className="h-24 animate-pulse rounded-xl border border-[#dfe3e8] bg-white motion-reduce:animate-none dark:border-slate-800 dark:bg-slate-900"
+          />
+        ))}
       </div>
-    </div>
+      <div className="h-52 animate-pulse rounded-xl border border-[#dfe3e8] bg-white motion-reduce:animate-none dark:border-slate-800 dark:bg-slate-900" />
+    </section>
   );
 }
 
@@ -107,21 +111,12 @@ export default function DirectorDashboard() {
       profileRole: profile?.role,
     }) ?? undefined;
 
-  if (
-    institutionQuery.isLoading ||
-    overviewQuery.isLoading
-  ) {
-    return <LoadingState />;
-  }
+  const dashboardTitle =
+    getDirectorDashboardTitle(effectiveRole);
 
-  if (
-    !profile ||
-    institutionQuery.isError ||
-    overviewQuery.isError
-  ) {
+  if (!profile || institutionQuery.isError) {
     const error =
-      institutionQuery.error ??
-      overviewQuery.error;
+      institutionQuery.error;
 
     return (
       <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">
@@ -131,17 +126,25 @@ export default function DirectorDashboard() {
         <p className="mt-2">
           {getUserFacingErrorMessage(error, 'Não foi possível carregar os dados da escola. Tente novamente.')}
         </p>
-        <button type="button" onClick={() => void Promise.all([institutionQuery.refetch(), overviewQuery.refetch()])} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+        <button type="button" onClick={() => void institutionQuery.refetch()} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
           Tentar novamente
         </button>
       </div>
     );
   }
 
-  if (!institutionQuery.data) {
-    const dashboardTitle =
-      getDirectorDashboardTitle(effectiveRole);
+  if (institutionQuery.isLoading) {
+    return (
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold text-[#181c20] dark:text-white">
+          {dashboardTitle}
+        </h2>
+        <DashboardLoadingSkeleton />
+      </div>
+    );
+  }
 
+  if (!institutionQuery.data) {
     return (
       <div className="space-y-6">
         <div>
@@ -165,16 +168,6 @@ export default function DirectorDashboard() {
   }
 
   const overview = overviewQuery.data;
-  const dashboardTitle =
-    getDirectorDashboardTitle(effectiveRole);
-
-  if (!overview) {
-    return (
-      <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
-        Nenhum dado acadêmico encontrado para esta instituição.
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-6">
@@ -187,54 +180,42 @@ export default function DirectorDashboard() {
 
       </div>
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <MetricCard
-          title="Estudantes ativos"
-          value={overview.metrics.activeStudents}
-          subtitle={`${overview.metrics.inactiveStudents} inativos`}
-          icon={
-            <GraduationCap
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-        />
-
-        <MetricCard
-          title="Docentes ativos"
-          value={overview.metrics.activeTeachers}
-          icon={
-            <UsersRound
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-        />
-
-        <MetricCard
-          title="Turmas ativas"
-          value={overview.metrics.activeClasses}
-          subtitle={`${overview.metrics.activeEnrollments} matrículas`}
-          icon={
-            <School
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-        />
-
-        <MetricCard
-          title="Atribuições ativas"
-          value={overview.metrics.activeAssignments}
-          subtitle={`${overview.metrics.activeSubjects} disciplinas`}
-          icon={
-            <BookOpen
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-        />
-      </section>
+      {overview ? (
+        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <MetricCard
+            title="Estudantes ativos"
+            value={overview.metrics.activeStudents}
+            subtitle={`${overview.metrics.inactiveStudents} inativos`}
+            icon={<GraduationCap className="h-5 w-5" aria-hidden="true" />}
+          />
+          <MetricCard
+            title="Docentes ativos"
+            value={overview.metrics.activeTeachers}
+            icon={<UsersRound className="h-5 w-5" aria-hidden="true" />}
+          />
+          <MetricCard
+            title="Turmas ativas"
+            value={overview.metrics.activeClasses}
+            subtitle={`${overview.metrics.activeEnrollments} matrículas`}
+            icon={<School className="h-5 w-5" aria-hidden="true" />}
+          />
+          <MetricCard
+            title="Atribuições ativas"
+            value={overview.metrics.activeAssignments}
+            subtitle={`${overview.metrics.activeSubjects} disciplinas`}
+            icon={<BookOpen className="h-5 w-5" aria-hidden="true" />}
+          />
+        </section>
+      ) : overviewQuery.isError ? (
+        <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300">
+          <p>{getUserFacingErrorMessage(overviewQuery.error, 'Não foi possível carregar os indicadores da escola.')}</p>
+          <button type="button" onClick={() => void overviewQuery.refetch()} className="mt-3 min-h-10 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+            Tentar novamente
+          </button>
+        </div>
+      ) : (
+        <DashboardLoadingSkeleton />
+      )}
 
       <InstitutionAttendancePanel
         institutionId={institutionQuery.data}
@@ -244,7 +225,7 @@ export default function DirectorDashboard() {
         institutionId={institutionQuery.data}
       />
 
-      <section className="grid gap-4 lg:grid-cols-2">
+      {overview && <section className="grid gap-4 lg:grid-cols-2">
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
           <div className="flex items-center gap-3">
             <Layers3
@@ -297,9 +278,9 @@ export default function DirectorDashboard() {
             Responsáveis com vínculo ativo a alunos da instituição.
           </p>
         </article>
-      </section>
+      </section>}
 
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
+      {overview && <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
         <div className="flex items-center gap-3">
           <AlertTriangle
             className="h-5 w-5 text-amber-600"
@@ -335,7 +316,7 @@ export default function DirectorDashboard() {
             ))}
           </div>
         )}
-      </section>
+      </section>}
     </div>
   );
 }
