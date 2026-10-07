@@ -95,7 +95,6 @@ export function Login() {
       branding.faviconUrl,
       branding.primaryColor,
       branding.secondaryColor,
-      branding.faviconUrl,
     ],
   );
 

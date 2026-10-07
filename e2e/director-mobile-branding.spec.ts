@@ -28,6 +28,15 @@ async function createDirector(): Promise<{ email: string; password: string }> {
   if (error) throw new Error(`auth director: ${error.message}`);
   const user = required(data.user, 'director auth');
 
+  const ownerEmail = `e2e-admin-mobile-${suffix}@local.test`;
+  const { data: ownerData, error: ownerError } = await service.auth.admin.createUser({
+    email: ownerEmail,
+    password: 'E2E-Admin-Mobile!2026',
+    email_confirm: true,
+  });
+  if (ownerError) throw new Error(`auth account owner: ${ownerError.message}`);
+  const owner = required(ownerData.user, 'account owner auth');
+
   await insertOne(service, 'profiles', {
     id: user.id,
     full_name: 'E2E Diretor Mobile',
@@ -35,9 +44,16 @@ async function createDirector(): Promise<{ email: string; password: string }> {
     role: 'DIRECTOR',
     active: true,
   });
+  await insertOne(service, 'profiles', {
+    id: owner.id,
+    full_name: 'E2E Admin Mobile',
+    email: ownerEmail,
+    role: 'ADMIN',
+    active: true,
+  });
   const account = await insertOne(service, 'accounts', {
     name: `E2E mobile account ${suffix}`,
-    owner_profile_id: user.id,
+    owner_profile_id: owner.id,
     institution_limit: 1,
     status: 'ACTIVE',
   });
