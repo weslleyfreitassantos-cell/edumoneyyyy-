@@ -126,6 +126,8 @@ export function useResendClientAdminInvite() {
 }
 
 export function useUpdateClientAdminPassword() {
+  const queryClient = useQueryClient();
+
   return useMutation<
     UpdateClientAdminPasswordResponse,
     Error,
@@ -133,6 +135,11 @@ export function useUpdateClientAdminPassword() {
   >({
     mutationFn: (input) =>
       accountService.updateClientAdminPassword(input),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: accountKeys.all,
+      });
+    },
   });
 }
 

@@ -895,17 +895,17 @@ describe('PlatformPage', () => {
     expect(hookMock.createMutateAsync).not.toHaveBeenCalled();
   });
 
-  it('permite ao SUPER_ADMIN alterar a senha do admin dono da conta', async () => {
+  it('permite ao SUPER_ADMIN alterar login, nome e senha do admin dono da conta', async () => {
     const accountDialog = openInstitutionAccessDialog();
 
     fireEvent.click(
       within(accountDialog).getByRole('button', {
-        name: 'Alterar senha do administrador',
+        name: 'Alterar login/senha',
       }),
     );
 
     const passwordDialog = screen.getByRole('dialog', {
-      name: 'Alterar senha do administrador',
+      name: 'Alterar login/senha',
     });
 
     expect(
@@ -916,16 +916,25 @@ describe('PlatformPage', () => {
     ).toBeDefined();
 
     fireEvent.change(
-      within(passwordDialog).getByLabelText('Nova senha'),
+      within(passwordDialog).getByLabelText('Nome do administrador'),
+      { target: { value: 'Ana Administradora' } },
+    );
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('E-mail de login'),
+      { target: { value: 'ana.admin@example.com' } },
+    );
+
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Nova senha (opcional)'),
       { target: { value: 'StrongPass123!' } },
     );
     fireEvent.change(
-      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      within(passwordDialog).getByLabelText('Confirmar nova senha (opcional)'),
       { target: { value: 'DifferentPass123!' } },
     );
     fireEvent.submit(
       within(passwordDialog).getByRole('button', {
-        name: 'Alterar senha',
+        name: 'Salvar alterações',
       }).closest('form')!,
     );
 
@@ -937,12 +946,12 @@ describe('PlatformPage', () => {
     ).toMatch(/senhas informadas nao sao iguais/i);
 
     fireEvent.change(
-      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      within(passwordDialog).getByLabelText('Confirmar nova senha (opcional)'),
       { target: { value: 'StrongPass123!' } },
     );
     fireEvent.click(
       within(passwordDialog).getByRole('button', {
-        name: 'Alterar senha',
+        name: 'Salvar alterações',
       }),
     );
 
@@ -951,18 +960,80 @@ describe('PlatformPage', () => {
         hookMock.updateClientAdminPasswordMutateAsync,
       ).toHaveBeenCalledWith({
         accountId: 'account-1',
+        fullName: 'Ana Administradora',
+        email: 'ana.admin@example.com',
         password: 'StrongPass123!',
       });
       expect(
-        screen.getByText(/Senha do administrador alterada com sucesso/i),
+        screen.getByText(/Dados de acesso do administrador alterados com sucesso/i),
       ).toBeDefined();
     });
 
     expect(
       screen.queryByRole('dialog', {
-        name: 'Alterar senha do administrador',
+        name: 'Alterar login/senha',
       }),
     ).toBeNull();
+  });
+
+  it('permite alterar somente o nome do admin', async () => {
+    const accountDialog = openInstitutionAccessDialog();
+
+    fireEvent.click(
+      within(accountDialog).getByRole('button', {
+        name: 'Alterar login/senha',
+      }),
+    );
+    const accessDialog = screen.getByRole('dialog', {
+      name: 'Alterar login/senha',
+    });
+
+    fireEvent.change(
+      within(accessDialog).getByLabelText('Nome do administrador'),
+      { target: { value: 'Ana Nova' } },
+    );
+    fireEvent.click(
+      within(accessDialog).getByRole('button', {
+        name: 'Salvar alterações',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(hookMock.updateClientAdminPasswordMutateAsync).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        fullName: 'Ana Nova',
+      });
+    });
+  });
+
+  it('permite alterar somente o e-mail de login do admin', async () => {
+    const accountDialog = openInstitutionAccessDialog();
+
+    fireEvent.click(
+      within(accountDialog).getByRole('button', {
+        name: 'Alterar login/senha',
+      }),
+    );
+    const accessDialog = screen.getByRole('dialog', {
+      name: 'Alterar login/senha',
+    });
+
+    fireEvent.change(
+      within(accessDialog).getByLabelText('E-mail de login'),
+      { target: { value: 'ana.nova@example.com' } },
+    );
+    fireEvent.click(
+      within(accessDialog).getByRole('button', {
+        name: 'Salvar alterações',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(hookMock.updateClientAdminPasswordMutateAsync).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        email: 'ana.nova@example.com',
+      });
+    });
   });
 
   it('mostra erro de conta inválida sem mascará-lo como erro de senha', async () => {
@@ -973,24 +1044,24 @@ describe('PlatformPage', () => {
     const accountDialog = openInstitutionAccessDialog();
     fireEvent.click(
       within(accountDialog).getByRole('button', {
-        name: 'Alterar senha do administrador',
+        name: 'Alterar login/senha',
       }),
     );
 
     const passwordDialog = screen.getByRole('dialog', {
-      name: 'Alterar senha do administrador',
+      name: 'Alterar login/senha',
     });
     fireEvent.change(
-      within(passwordDialog).getByLabelText('Nova senha'),
+      within(passwordDialog).getByLabelText('Nova senha (opcional)'),
       { target: { value: 'ValidPass123!' } },
     );
     fireEvent.change(
-      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      within(passwordDialog).getByLabelText('Confirmar nova senha (opcional)'),
       { target: { value: 'ValidPass123!' } },
     );
     fireEvent.click(
       within(passwordDialog).getByRole('button', {
-        name: 'Alterar senha',
+        name: 'Salvar alterações',
       }),
     );
 

@@ -35,7 +35,7 @@ describe("update-client-admin-password", () => {
 
   it("updates Auth with the resolved owner and never sends email", () => {
     expect(source).toContain("auth.admin.updateUserById");
-    expect(source).toContain("password: input.password");
+    expect(source).toContain("authUpdate.password = input.password");
     expect(source).toContain("email_confirm: true");
     expect(source).toContain('"PASSWORD_UPDATE_FAILED"');
     expect(source).not.toContain("send-school-email");
@@ -116,5 +116,36 @@ describe("update-client-admin-password", () => {
         unexpected: true,
       }),
     ).toMatchObject({ success: false, code: "INVALID_PAYLOAD" });
+  });
+
+  it("accepts identity-only updates and normalizes the e-mail", () => {
+    expect(
+      parsePasswordUpdateRequest({
+        accountId: AURORA_ACCOUNT_ID,
+        fullName: "  Ana Administradora  ",
+        email: "ANA@EXAMPLE.COM",
+      }),
+    ).toEqual({
+      success: true,
+      data: {
+        accountId: AURORA_ACCOUNT_ID,
+        fullName: "Ana Administradora",
+        email: "ana@example.com",
+      },
+    });
+  });
+
+  it("rejects an empty update and malformed identity fields", () => {
+    expect(parsePasswordUpdateRequest({
+      accountId: AURORA_ACCOUNT_ID,
+    })).toMatchObject({ success: false, code: "INVALID_PAYLOAD" });
+    expect(parsePasswordUpdateRequest({
+      accountId: AURORA_ACCOUNT_ID,
+      email: "not-an-email",
+    })).toMatchObject({ success: false, code: "INVALID_EMAIL" });
+    expect(parsePasswordUpdateRequest({
+      accountId: AURORA_ACCOUNT_ID,
+      fullName: "A",
+    })).toMatchObject({ success: false, code: "INVALID_FULL_NAME" });
   });
 });

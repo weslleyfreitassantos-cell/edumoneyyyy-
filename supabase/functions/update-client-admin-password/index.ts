@@ -80,6 +80,7 @@ async function resolveAccountOwner(
 ): Promise<{
   accountId: string;
   ownerProfileId: string;
+  ownerEmail: string;
 }> {
   const { data: account, error: accountError } = await ctx.supabaseAdmin
     .from("accounts")
@@ -106,7 +107,7 @@ async function resolveAccountOwner(
 
   const { data: owner, error: ownerError } = await ctx.supabaseAdmin
     .from("profiles")
-    .select("id, role, platform_role, active")
+    .select("id, full_name, email, role, platform_role, active")
     .eq("id", account.owner_profile_id)
     .maybeSingle();
 
@@ -146,6 +147,7 @@ async function resolveAccountOwner(
   return {
     accountId: account.id,
     ownerProfileId: account.owner_profile_id,
+    ownerEmail: owner.email ?? "",
   };
 }
 
@@ -191,7 +193,7 @@ export default {
 
       try {
         const parsedInput = parsePasswordUpdateRequest(await request.json());
-        if (!parsedInput.success) {
+        if (parsedInput.success === false) {
           return jsonError(
             new PasswordUpdateError(
               400,
@@ -205,32 +207,97 @@ export default {
         const { requesterId } = await assertSuperAdmin(ctx);
         const target = await resolveAccountOwner(ctx, input.accountId);
 
-        const { error: updateError } =
-          await ctx.supabaseAdmin.auth.admin.updateUserById(
-            target.ownerProfileId,
-            {
-              password: input.password,
-              email_confirm: true,
-            },
-          );
+        const normalizedEmail = input.email?.trim().toLowerCase();
+        const currentEmail = target.ownerEmail.trim().toLowerCase();
+        if (normalizedEmail && normalizedEmail !== currentEmail) {
+          const { data: emailOwners, error: emailOwnerError } =
+            await ctx.supabaseAdmin
+              .from("profiles")
+              .select("id, email")
+              .eq("email", normalizedEmail)
+              .neq("id", target.ownerProfileId)
+              .limit(10);
 
-        if (updateError) {
-          console.error("Falha ao alterar senha do administrador", {
-            code: "PASSWORD_UPDATE_FAILED",
-            status: updateError.status ?? null,
-          });
-          throw new PasswordUpdateError(
-            422,
-            "PASSWORD_UPDATE_FAILED",
-            "Nao foi possivel alterar a senha do administrador.",
-          );
+          if (emailOwnerError) throw emailOwnerError;
+          if ((emailOwners ?? []).some(
+            (owner) => owner.email?.trim().toLowerCase() === normalizedEmail,
+          )) {
+            throw new PasswordUpdateError(
+              409,
+              "EMAIL_ALREADY_IN_USE",
+              "Este e-mail ja esta cadastrado.",
+            );
+          }
         }
 
-        await writeAuditEvent(ctx, {
-          requesterProfileId: requesterId,
-          accountId: target.accountId,
-          targetProfileId: target.ownerProfileId,
-        });
+        const authUpdate: {
+          email?: string;
+          password?: string;
+          email_confirm?: boolean;
+        } = {};
+        if (normalizedEmail && normalizedEmail !== currentEmail) {
+          authUpdate.email = normalizedEmail;
+          authUpdate.email_confirm = true;
+        }
+        if (input.password) {
+          authUpdate.password = input.password;
+          authUpdate.email_confirm = true;
+        }
+
+        let authEmailChanged = false;
+        if (Object.keys(authUpdate).length > 0) {
+          const { error: updateError } =
+            await ctx.supabaseAdmin.auth.admin.updateUserById(
+              target.ownerProfileId,
+              authUpdate,
+            );
+
+          if (updateError) {
+            console.error("Falha ao atualizar acesso do administrador", {
+              code: "ACCESS_UPDATE_FAILED",
+              status: updateError.status ?? null,
+            });
+            throw new PasswordUpdateError(
+              422,
+              input.password
+                ? "PASSWORD_UPDATE_FAILED"
+                : "EMAIL_UPDATE_FAILED",
+              input.password
+                ? "Nao foi possivel alterar a senha do administrador."
+                : "Nao foi possivel alterar o e-mail do administrador.",
+            );
+          }
+          authEmailChanged = Boolean(authUpdate.email);
+        }
+
+        const profileUpdate: { full_name?: string; email?: string } = {};
+        if (input.fullName) profileUpdate.full_name = input.fullName;
+        if (normalizedEmail) profileUpdate.email = normalizedEmail;
+
+        if (Object.keys(profileUpdate).length > 0) {
+          const { error: profileError } = await ctx.supabaseAdmin
+            .from("profiles")
+            .update(profileUpdate)
+            .eq("id", target.ownerProfileId);
+
+          if (profileError) {
+            if (authEmailChanged) {
+              await ctx.supabaseAdmin.auth.admin.updateUserById(
+                target.ownerProfileId,
+                { email: target.ownerEmail, email_confirm: true },
+              );
+            }
+            throw profileError;
+          }
+        }
+
+        if (input.password) {
+          await writeAuditEvent(ctx, {
+            requesterProfileId: requesterId,
+            accountId: target.accountId,
+            targetProfileId: target.ownerProfileId,
+          });
+        }
 
         const sessionRevocation: SessionRevocation = "NOT_SUPPORTED";
         return Response.json({

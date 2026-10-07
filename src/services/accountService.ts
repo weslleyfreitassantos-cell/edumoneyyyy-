@@ -90,7 +90,9 @@ export interface ResendClientAdminInviteResponse {
 
 export interface UpdateClientAdminPasswordInput {
   accountId: string;
-  password: string;
+  fullName?: string;
+  email?: string;
+  password?: string;
 }
 
 export interface UpdateClientAdminPasswordResponse {

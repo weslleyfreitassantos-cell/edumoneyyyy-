@@ -102,6 +102,8 @@ interface InstitutionAccessDialogState {
 
 interface AdminPasswordDialogState {
   account: AccountSummaryRow;
+  fullName: string;
+  email: string;
   password: string;
   confirmation: string;
   error: string | null;
@@ -154,6 +156,10 @@ function validateAdminPassword(
   password: string,
   confirmation: string,
 ): string | null {
+  if (!password && !confirmation) {
+    return null;
+  }
+
   if (password.length < ADMIN_PASSWORD_MIN_LENGTH) {
     return 'A senha deve possuir pelo menos 8 caracteres.';
   }
@@ -164,6 +170,33 @@ function validateAdminPassword(
 
   if (password !== confirmation) {
     return 'As senhas informadas nao sao iguais.';
+  }
+
+  return null;
+}
+
+function validateAdminIdentity(
+  fullName: string,
+  email: string,
+  originalFullName = '',
+  originalEmail = '',
+): string | null {
+  const normalizedName = fullName.trim();
+  const normalizedEmail = email.trim();
+
+  if (
+    (!normalizedName && originalFullName.trim() !== normalizedName) ||
+    (normalizedName &&
+      (normalizedName.length < 3 || normalizedName.length > 120))
+  ) {
+    return 'Informe um nome entre 3 e 120 caracteres.';
+  }
+
+  if (
+    (!normalizedEmail && originalEmail.trim() !== normalizedEmail) ||
+    (normalizedEmail && !/^\S+@\S+\.\S+$/.test(normalizedEmail))
+  ) {
+    return 'Informe um e-mail valido.';
   }
 
   return null;
@@ -686,14 +719,34 @@ export default function PlatformPage() {
           institution.active !== false,
       ),
   );
+  const adminIdentityValidationError = adminPasswordDialog
+    ? validateAdminIdentity(
+        adminPasswordDialog.fullName,
+        adminPasswordDialog.email,
+        adminPasswordDialog.account.owner?.full_name ?? '',
+        adminPasswordDialog.account.owner?.email ?? '',
+      )
+    : null;
   const adminPasswordValidationError = adminPasswordDialog
     ? validateAdminPassword(
         adminPasswordDialog.password,
         adminPasswordDialog.confirmation,
       )
     : null;
+  const adminAccessHasChanges = Boolean(
+    adminPasswordDialog &&
+      (
+        adminPasswordDialog.fullName.trim() !==
+          (adminPasswordDialog.account.owner?.full_name ?? '').trim() ||
+        adminPasswordDialog.email.trim().toLocaleLowerCase() !==
+          (adminPasswordDialog.account.owner?.email ?? '').trim().toLocaleLowerCase() ||
+        Boolean(adminPasswordDialog.password)
+      ),
+  );
   const canSubmitAdminPassword = Boolean(
     adminPasswordDialog &&
+      adminAccessHasChanges &&
+      !adminIdentityValidationError &&
       !adminPasswordValidationError &&
       !updateClientAdminPassword.isPending,
   );
@@ -872,6 +925,8 @@ export default function PlatformPage() {
     setShowAdminPasswordConfirmation(false);
     setAdminPasswordDialog({
       account,
+      fullName: owner.full_name,
+      email: owner.email,
       password: '',
       confirmation: '',
       error: null,
@@ -896,10 +951,17 @@ export default function PlatformPage() {
       return;
     }
 
-    const validationError = validateAdminPassword(
-      adminPasswordDialog.password,
-      adminPasswordDialog.confirmation,
-    );
+    const validationError =
+      validateAdminIdentity(
+        adminPasswordDialog.fullName,
+        adminPasswordDialog.email,
+        adminPasswordDialog.account.owner?.full_name ?? '',
+        adminPasswordDialog.account.owner?.email ?? '',
+      ) ??
+      validateAdminPassword(
+        adminPasswordDialog.password,
+        adminPasswordDialog.confirmation,
+      );
     if (validationError) {
       setAdminPasswordDialog((current) =>
         current ? { ...current, error: validationError } : current,
@@ -907,14 +969,30 @@ export default function PlatformPage() {
       return;
     }
 
+    const normalizedFullName = adminPasswordDialog.fullName.trim();
+    const normalizedEmail = adminPasswordDialog.email
+      .trim()
+      .toLocaleLowerCase();
+    const owner = adminPasswordDialog.account.owner;
+    const updateInput = {
+      accountId: adminPasswordDialog.account.id,
+      ...(normalizedFullName !== (owner?.full_name ?? '').trim()
+        ? { fullName: normalizedFullName }
+        : {}),
+      ...(normalizedEmail !==
+      (owner?.email ?? '').trim().toLocaleLowerCase()
+        ? { email: normalizedEmail }
+        : {}),
+      ...(adminPasswordDialog.password
+        ? { password: adminPasswordDialog.password }
+        : {}),
+    };
+
     try {
-      await updateClientAdminPassword.mutateAsync({
-        accountId: adminPasswordDialog.account.id,
-        password: adminPasswordDialog.password,
-      });
+      await updateClientAdminPassword.mutateAsync(updateInput);
       setFeedback({
         type: 'success',
-        message: 'Senha do administrador alterada com sucesso.',
+        message: 'Dados de acesso do administrador alterados com sucesso.',
       });
       closeAdminPasswordDialog();
     } catch (error) {
@@ -2360,7 +2438,7 @@ export default function PlatformPage() {
                       institutionAccessDialogOwner.platform_role !==
                         'SUPER_ADMIN' && (
                         <IconActionButton
-                          label="Alterar senha do administrador"
+                          label="Alterar login/senha"
                           onClick={() =>
                             openAdminPasswordDialog(
                               institutionAccessDialog.account,
@@ -2509,10 +2587,10 @@ export default function PlatformPage() {
                     id="admin-password-title"
                     className="text-xl font-semibold leading-7 text-[#191c1d] dark:text-[#f8fafc]"
                   >
-                    Alterar senha do administrador
+                    Alterar login/senha
                   </h2>
                   <p className="mt-1 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
-                    Atualize o acesso do administrador dono da conta.
+                    Atualize o nome, o e-mail de login e, se necessário, a senha do administrador.
                   </p>
                 </div>
                 <button
@@ -2520,7 +2598,7 @@ export default function PlatformPage() {
                   onClick={closeAdminPasswordDialog}
                   disabled={updateClientAdminPassword.isPending}
                   className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
-                  aria-label="Fechar alteração de senha"
+                  aria-label="Fechar alteração de login e senha"
                 >
                   <X className="h-4 w-4" aria-hidden="true" />
                 </button>
@@ -2541,10 +2619,68 @@ export default function PlatformPage() {
               >
                 <div>
                   <label
+                    htmlFor="client-admin-full-name"
+                    className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
+                  >
+                    Nome do administrador
+                  </label>
+                  <input
+                    id="client-admin-full-name"
+                    type="text"
+                    autoComplete="name"
+                    maxLength={120}
+                    value={adminPasswordDialog.fullName}
+                    onChange={(event) =>
+                      setAdminPasswordDialog((current) =>
+                        current
+                          ? {
+                              ...current,
+                              fullName: event.target.value,
+                              error: null,
+                            }
+                          : current,
+                      )
+                    }
+                    disabled={updateClientAdminPassword.isPending}
+                    className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] bg-white px-3 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:disabled:bg-[#111827]"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="client-admin-email"
+                    className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
+                  >
+                    E-mail de login
+                  </label>
+                  <input
+                    id="client-admin-email"
+                    type="email"
+                    autoComplete="email"
+                    maxLength={254}
+                    value={adminPasswordDialog.email}
+                    onChange={(event) =>
+                      setAdminPasswordDialog((current) =>
+                        current
+                          ? {
+                              ...current,
+                              email: event.target.value,
+                              error: null,
+                            }
+                          : current,
+                      )
+                    }
+                    disabled={updateClientAdminPassword.isPending}
+                    className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] bg-white px-3 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:disabled:bg-[#111827]"
+                  />
+                </div>
+
+                <div>
+                  <label
                     htmlFor="client-admin-password"
                     className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
                   >
-                    Nova senha
+                    Nova senha (opcional)
                   </label>
                   <div className="relative mt-1">
                     <input
@@ -2593,7 +2729,7 @@ export default function PlatformPage() {
                     </button>
                   </div>
                   <p className="mt-1 text-xs text-[#757682] dark:text-[#94a3b8]">
-                    Use entre 8 e 72 caracteres.
+                    Preencha apenas se também quiser trocar a senha. Use entre 8 e 72 caracteres.
                   </p>
                 </div>
 
@@ -2602,7 +2738,7 @@ export default function PlatformPage() {
                     htmlFor="client-admin-password-confirmation"
                     className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
                   >
-                    Confirmar nova senha
+                    Confirmar nova senha (opcional)
                   </label>
                   <div className="relative mt-1">
                     <input
@@ -2659,12 +2795,14 @@ export default function PlatformPage() {
                 </div>
 
                 {(adminPasswordDialog.error ||
+                  adminIdentityValidationError ||
                   adminPasswordValidationError) && (
                   <div
                     role="alert"
                     className="rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200"
                   >
                     {adminPasswordDialog.error ??
+                      adminIdentityValidationError ??
                       adminPasswordValidationError}
                   </div>
                 )}
@@ -2696,7 +2834,7 @@ export default function PlatformPage() {
                     )}
                     {updateClientAdminPassword.isPending
                       ? 'Alterando...'
-                      : 'Alterar senha'}
+                      : 'Salvar alterações'}
                   </button>
                 </div>
               </form>

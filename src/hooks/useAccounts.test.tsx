@@ -286,7 +286,7 @@ describe('account mutations', () => {
     expect(invalidateSpy).toHaveBeenCalledTimes(2);
   });
 
-  it('altera a senha do admin sem invalidar ou criar uma chave de consulta', async () => {
+  it('atualiza o acesso do admin e invalida a lista de contas', async () => {
     const queryClient = createQueryClient();
     const invalidateSpy = vi.spyOn(
       queryClient,
@@ -327,7 +327,9 @@ describe('account mutations', () => {
       accountId: 'account-1',
       password: 'StrongPass123!',
     });
-    expect(invalidateSpy).not.toHaveBeenCalled();
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: accountKeys.all,
+    });
     expect(
       queryClient.getQueryCache().getAll().map((query) => query.queryKey),
     ).not.toContainEqual(
