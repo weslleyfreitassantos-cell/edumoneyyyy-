@@ -94,6 +94,7 @@ async function expectNoDocumentOverflow(page: Page): Promise<void> {
 
 async function openBrandingFromOverview(page: Page): Promise<void> {
   await page.getByRole('button', { name: 'Abrir menu de navegação' }).click();
+  await page.getByRole('button', { name: /Administração/i }).click();
   const brandingLink = page.getByRole('link', { name: 'Personalizar login' });
   await expect(brandingLink).toBeVisible({ timeout: 30_000 });
   await brandingLink.click();
