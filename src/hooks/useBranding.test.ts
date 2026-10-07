@@ -8,6 +8,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   invalidateResolvedPublicBranding,
   brandingKeys,
+  PUBLIC_BRANDING_STALE_TIME,
   preloadPublicBrandingAssets,
   updateResolvedPublicBrandingCache,
   useResolvedBranding,
@@ -107,6 +108,43 @@ describe('updateResolvedPublicBrandingCache', () => {
 });
 
 describe('useResolvedBranding', () => {
+  it('reutiliza o branding já carregado pelo gate sem iniciar outra busca imediata', async () => {
+    const host = 'escola.example.com';
+    const readyBranding: PublicBranding = {
+      ...staleBranding,
+      displayName: 'Escola atual',
+      logoUrl: null,
+      faviconUrl: null,
+      loginBackgroundUrl: null,
+    };
+    const resolveSpy = vi
+      .spyOn(brandingService, 'resolveForHostname')
+      .mockResolvedValue(readyBranding);
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+    const wrapper = ({ children }: PropsWithChildren) =>
+      createElement(QueryClientProvider, { client: queryClient }, children);
+    const first = renderHook(
+      () => useResolvedBranding(host),
+      { wrapper },
+    );
+
+    await waitFor(() => expect(first.result.current.data).toEqual(readyBranding));
+
+    const second = renderHook(
+      () => useResolvedBranding(host),
+      { wrapper },
+    );
+
+    expect(second.result.current.data).toEqual(readyBranding);
+    expect(resolveSpy).toHaveBeenCalledTimes(1);
+
+    first.unmount();
+    second.unmount();
+    queryClient.clear();
+  });
+
   it('ignora branding persistido antigo e só publica a resposta após pre-carregar os assets', async () => {
     const host = 'escola.example.com';
     localStorage.setItem(
@@ -158,7 +196,11 @@ describe('useResolvedBranding', () => {
     const queryClient = new QueryClient({
       defaultOptions: { queries: { retry: false } },
     });
-    queryClient.setQueryData(brandingKeys.public(host), staleBranding);
+    queryClient.setQueryData(
+      brandingKeys.public(host),
+      staleBranding,
+      { updatedAt: Date.now() - PUBLIC_BRANDING_STALE_TIME - 1 },
+    );
     const wrapper = ({ children }: PropsWithChildren) =>
       createElement(QueryClientProvider, { client: queryClient }, children);
     const { result, unmount } = renderHook(

@@ -119,7 +119,7 @@ export function LoginBrandingDemoScreen({
       className="fixed inset-0 z-[80] overflow-y-auto bg-slate-100 text-slate-900"
     >
       <div className="mx-auto flex min-h-full max-w-[1440px] flex-col p-4 sm:p-6">
-        <header className="mb-4 flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+        <header className="mb-4 flex flex-col items-stretch gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <div className="flex min-w-0 items-center gap-3">
             {isMobile ? (
               <Smartphone className="h-5 w-5 shrink-0 text-[#005bbf]" aria-hidden="true" />
@@ -130,7 +130,7 @@ export function LoginBrandingDemoScreen({
               <h1 id="login-branding-demo-title" className="truncate text-base font-bold sm:text-lg">
                 Demonstração do login
               </h1>
-              <p className="text-xs text-slate-500 sm:text-sm">
+              <p className="text-xs leading-5 text-slate-500 sm:text-sm">
                 Prévia {isMobile ? 'celular' : 'desktop'} · sem salvar alterações
               </p>
             </div>
@@ -138,7 +138,7 @@ export function LoginBrandingDemoScreen({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30"
+            className="inline-flex h-10 w-full shrink-0 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 transition hover:border-[#005bbf] hover:text-[#005bbf] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 sm:w-auto"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Voltar para personalização

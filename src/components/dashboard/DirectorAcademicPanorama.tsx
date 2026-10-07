@@ -299,7 +299,7 @@ function AttendanceTrend({
       </div>
       <div className="min-w-0 overflow-x-auto rounded-xl border border-[#e5eaf0] bg-slate-50/70 px-2 py-2 dark:border-slate-700 dark:bg-slate-950/30 sm:px-3">
         <svg
-          className="h-72 w-full"
+          className="h-96 w-full sm:h-72"
           style={{ minWidth: `${chartMinWidth}px` }}
           viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
           preserveAspectRatio="none"
