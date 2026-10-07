@@ -40,6 +40,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import AppShell from './components/AppShell';
 import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import LoadingIndicator from './components/LoadingIndicator';
+import BrandingLoadingGate from './components/branding/BrandingLoadingGate';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
 
@@ -925,9 +926,11 @@ function AppRouteProviders() {
     <AuthProvider>
       <InstitutionProvider>
         <ThemeProvider>
-          <Suspense fallback={<PageLoading />}>
-            <AppRoutes />
-          </Suspense>
+          <BrandingLoadingGate>
+            <Suspense fallback={<PageLoading />}>
+              <AppRoutes />
+            </Suspense>
+          </BrandingLoadingGate>
         </ThemeProvider>
       </InstitutionProvider>
     </AuthProvider>

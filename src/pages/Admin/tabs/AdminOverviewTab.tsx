@@ -15,6 +15,7 @@ import { useState } from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useAdminOverview } from '../../../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { useSchoolSetupReadiness } from '../../../hooks/useSchoolSetupReadiness';
 import SchoolSetupProgress from '../../../components/academic/SchoolSetupProgress';
 import DirectorAcademicPanorama from '../../../components/dashboard/DirectorAcademicPanorama';
 import ProfileHeroAvatar from '../../../components/ProfileHeroAvatar';
@@ -107,6 +108,7 @@ export default function AdminOverviewTab({
   availableModuleIds = [],
   onNavigateToModule,
 }: AdminOverviewTabProps) {
+  const [setupOpenOverride, setSetupOpenOverride] = useState<boolean | null>(null);
   const [operationalOpen, setOperationalOpen] = useState(false);
   const [panoramaOpen, setPanoramaOpen] = useState(true);
   const { profile } = useAuth();
@@ -114,6 +116,9 @@ export default function AdminOverviewTab({
   const institutionQuery = useCurrentInstitution(profile?.id);
 
   const institutionId = institutionQuery.data ?? '';
+  const setupReadinessQuery = useSchoolSetupReadiness(institutionId);
+  const defaultSetupOpen = setupReadinessQuery.data?.operationalReadiness.ready !== true;
+  const setupOpen = setupOpenOverride ?? defaultSetupOpen;
   const canEditAcademic = canManageAcademicStructure(
     profile?.platform_role,
     institutionQuery.currentRole as Parameters<typeof canManageAcademicStructure>[1],
@@ -275,13 +280,37 @@ export default function AdminOverviewTab({
         </div>
       </section>
 
-      <SchoolSetupProgress
-        institutionId={institutionId}
-        canEditAcademic={canEditAcademic}
-        showFoundation={institutionQuery.currentRole !== 'DIRECTOR'}
-        showOnlyFoundation={institutionQuery.currentRole === 'ADMIN'}
-        configurationHref={availableModuleIds.includes('school-users') ? '/admin?module=school-users' : '/admin?module=overview'}
-      />
+      <section aria-labelledby="admin-overview-setup-heading" className="min-w-0">
+        <button
+          type="button"
+          className="flex w-full min-w-0 items-center justify-between gap-4 rounded-xl border border-[#dfe3e8] bg-white p-4 text-left shadow-sm transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-inset dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800/70 sm:p-5"
+          aria-expanded={setupOpen}
+          aria-controls="admin-overview-setup-content"
+          onClick={() => setSetupOpenOverride((open) => !(open ?? defaultSetupOpen))}
+        >
+          <span className="min-w-0">
+            <span id="admin-overview-setup-heading" role="heading" aria-level={2} className="block text-base font-bold text-[#344054] dark:text-slate-100">
+              Configuração da escola
+            </span>
+            <span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">
+              Prontidão, etapas e próximos passos da instituição.
+            </span>
+          </span>
+          <ChevronDown
+            className={`h-5 w-5 shrink-0 text-[#667085] transition-transform dark:text-slate-400 ${setupOpen ? 'rotate-180' : ''}`}
+            aria-hidden="true"
+          />
+        </button>
+        <div id="admin-overview-setup-content" hidden={!setupOpen} className="mt-3">
+          <SchoolSetupProgress
+            institutionId={institutionId}
+            canEditAcademic={canEditAcademic}
+            showFoundation={institutionQuery.currentRole !== 'DIRECTOR'}
+            showOnlyFoundation={institutionQuery.currentRole === 'ADMIN'}
+            configurationHref={availableModuleIds.includes('school-users') ? '/admin?module=school-users' : '/admin?module=overview'}
+          />
+        </div>
+      </section>
       <section
         aria-labelledby="admin-overview-operational-heading"
         className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"

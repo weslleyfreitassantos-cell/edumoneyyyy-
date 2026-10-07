@@ -89,11 +89,13 @@ function mockOverviewState({
   currentRole = profileRole,
   profileName = 'Ana Admin',
   avatarUrl = null,
+  setupReady = false,
 }: {
   profileRole?: DatabaseRole;
   currentRole?: DatabaseRole | null;
   profileName?: string;
   avatarUrl?: string | null;
+  setupReady?: boolean;
 } = {}) {
   mockedUseAuth.mockReturnValue({
     user: null,
@@ -168,7 +170,7 @@ function mockOverviewState({
         completedCount: 0,
         totalCount: 0,
         progress: 0,
-        ready: false,
+        ready: setupReady,
       },
       optionalSetup: { brandingConfigured: false },
     },
@@ -225,12 +227,32 @@ describe('AdminOverviewTab', () => {
     expect(screen.getByText(/docentes ativos/i)).toBeTruthy();
     expect(screen.getAllByText(/turmas ativas/i).length).toBeGreaterThan(0);
 
-    expect(screen.getByText(/^configuração da escola$/i)).toBeTruthy();
+    expect(screen.getByRole('button', { name: /configuração da escola/i })).toBeTruthy();
     expect(screen.queryByText(/^fundação$/i)).toBeNull();
     expect(screen.getAllByText(/prontidão da escola/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
+  });
+
+  it('inicia a configuração recolhida quando a escola está pronta e respeita a escolha manual', () => {
+    mockOverviewState({ setupReady: true });
+
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    const setupToggle = screen.getByRole('button', { name: /Configuração da escola/i });
+    const setupContent = document.getElementById('admin-overview-setup-content');
+
+    expect(setupToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(setupContent?.hasAttribute('hidden')).toBe(true);
+
+    fireEvent.click(setupToggle);
+    expect(setupToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(setupContent?.hasAttribute('hidden')).toBe(false);
   });
 
   it('organiza os indicadores em principais e operacionais sem perder valores', () => {

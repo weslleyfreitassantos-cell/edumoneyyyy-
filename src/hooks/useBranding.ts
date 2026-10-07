@@ -28,6 +28,7 @@ function getWindowHostname(): string {
 }
 
 const publicBrandingCachePrefix = 'tecescola:public-branding:';
+export const PUBLIC_BRANDING_STALE_TIME = 60_000;
 
 function getPublicBrandingCacheKey(hostname: string): string {
   return `${publicBrandingCachePrefix}${normalizeHostnameValue(hostname || 'unknown')}`;
@@ -211,8 +212,7 @@ export function useResolvedBranding(
       return preloadPublicBrandingAssets(branding);
     },
     retry: false,
-    staleTime: 0,
-    refetchOnMount: 'always',
+    staleTime: PUBLIC_BRANDING_STALE_TIME,
     gcTime: 1000 * 60 * 60,
   });
 
