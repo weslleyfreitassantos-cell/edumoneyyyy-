@@ -1,0 +1,51 @@
+import { describe, expect, it } from 'vitest';
+
+import { classifyCanonicalQuestion, validateSubjectClassificationRegistry } from './classification';
+
+function question(overrides: Partial<Parameters<typeof classifyCanonicalQuestion>[0]> = {}) {
+  return {
+    canonicalId: 'q-1',
+    year: 2025,
+    day: 'D2',
+    language: null,
+    area: 'CIENCIAS_NATUREZA' as const,
+    statement: 'A reação química libera energia e altera a temperatura da solução.',
+    options: ['1', '2', '3', '4', '5'],
+    officialAnswer: 'A' as const,
+    qualityState: 'PARSED' as const,
+    occurrences: [],
+    ...overrides,
+  };
+}
+
+describe('ENEM subject classification', () => {
+  it('classifies deterministic math and foreign-language occurrences', () => {
+    expect(classifyCanonicalQuestion(question({ canonicalId: 'math', area: 'MATEMATICA' })).subject).toBe('MATEMATICA');
+    expect(classifyCanonicalQuestion(question({ canonicalId: 'en', area: 'LINGUAGENS', language: 'ENGLISH' })).subject).toBe('INGLES');
+    expect(classifyCanonicalQuestion(question({ canonicalId: 'es', area: 'LINGUAGENS', language: 'SPANISH' })).subject).toBe('ESPANHOL');
+  });
+
+  it('recognizes high-confidence historical references without an explicit subject label', () => {
+    const result = classifyCanonicalQuestion(question({
+      canonicalId: 'history',
+      area: 'CIENCIAS_HUMANAS',
+      statement: 'O Muro de Berlim e a Guerra Fria marcaram o século XX.',
+    }));
+    expect(result.subject).toBe('HISTORIA');
+    expect(result.subject_verified).toBe(true);
+  });
+
+  it('fails closed when signals do not disambiguate the subject', () => {
+    const result = classifyCanonicalQuestion(question({ statement: 'Observe a situação apresentada e escolha a alternativa correta.' }));
+    expect(result.subject).toBeNull();
+    expect(result.subject_verified).toBe(false);
+    expect(result.review_state).toBe('REVIEW_REQUIRED');
+  });
+
+  it('rejects a registry fingerprint or subject mismatch', () => {
+    const original = question();
+    const record = classifyCanonicalQuestion(original);
+    expect(validateSubjectClassificationRegistry([{ ...record, source_fingerprint: 'x'.repeat(64) }], [original])).toContain(`FINGERPRINT_MISMATCH:${original.canonicalId}`);
+    expect(validateSubjectClassificationRegistry([{ ...record, subject: 'HISTORIA', subject_verified: true, review_state: 'VERIFIED' }], [original])).toContain(`NATUREZA_SUBJECT_MISMATCH:${original.canonicalId}`);
+  });
+});

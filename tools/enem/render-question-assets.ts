@@ -13,6 +13,7 @@ export interface StatementAssetManifestItem {
   assetRole: 'STATEMENT';
   mediaType: 'STATEMENT_CROP';
   questionNumber: number;
+  language: ParsedEnemQuestion['language'];
   page: number;
   storagePath: string;
   sha256: string;
@@ -21,8 +22,8 @@ export interface StatementAssetManifestItem {
 
 export interface RenderedQuestionAssetManifest {
   questionNumber: number;
+  language: ParsedEnemQuestion['language'];
   renderReady: boolean;
-  classificationState: 'VERIFIED' | 'REVIEW_REQUIRED';
   sourceIntegrity: 'VERIFIED';
   excludedOptionLabels: string[];
   planReason: string | null;
@@ -44,15 +45,24 @@ function artifactKey(artifact: Pick<ParsedEnemArtifact, 'year' | 'day' | 'bookle
   return `${artifact.year}-${artifact.day}-${artifact.booklet}`.replace(/[^A-Za-z0-9_-]+/g, '_');
 }
 
+export function renderQuestionKey(
+  artifact: Pick<ParsedEnemArtifact, 'year' | 'day' | 'booklet'>,
+  questionNumber: number,
+  language: ParsedEnemQuestion['language'],
+) {
+  return `${artifactKey(artifact)}:${questionNumber}:${language ?? 'COMMON'}`;
+}
+
 function sha256(data: Buffer) {
   return createHash('sha256').update(data).digest('hex');
 }
 
 async function renderPages(pdfPath: string, pages: PdfGeometryPage[], scale: number) {
-  const document = await pdfjsLib.getDocument({
+  const loadingTask = pdfjsLib.getDocument({
     data: new Uint8Array(readFileSync(pdfPath)),
     disableWorker: true,
-  }).promise;
+  });
+  const document = await loadingTask.promise;
   const rendered = new Map<number, ReturnType<typeof createCanvas>>();
   try {
     for (const geometryPage of pages) {
@@ -69,7 +79,7 @@ async function renderPages(pdfPath: string, pages: PdfGeometryPage[], scale: num
     }
     return rendered;
   } finally {
-    await document.destroy();
+    await loadingTask.destroy();
   }
 }
 
@@ -106,17 +116,13 @@ export async function renderStatementAssets(
   const questions = artifact.questions.map<RenderedQuestionAssetManifest>((question: ParsedEnemQuestion) => {
     const plan = plans.get(question.questionNumber)!;
     const assets: StatementAssetManifestItem[] = [];
-    const classificationState = question.qualityState === 'PARSED'
-      && question.area !== 'UNKNOWN'
-      && !question.reviewReasons?.includes('LANGUAGE_AMBIGUOUS')
-      ? 'VERIFIED' as const
-      : 'REVIEW_REQUIRED' as const;
     for (const part of plan.parts) {
       const page = geometryPages.find((candidate) => candidate.page === part.page);
       const fullPage = renderedPages.get(part.page);
       if (!page || !fullPage || plan.status !== 'READY') continue;
       const buffer = cropPart(fullPage, page, part, scale).toBuffer('image/png');
-      const relativePath = join(key, `question-${question.questionNumber}`, `statement-page-${part.page}.png`).replaceAll('\\', '/');
+      const languageKey = question.language ?? 'COMMON';
+      const relativePath = join(key, `question-${question.questionNumber}-${languageKey}`, `statement-page-${part.page}.png`).replaceAll('\\', '/');
       const destination = resolve(outputDir, relativePath);
       mkdirSync(dirname(destination), { recursive: true });
       writeFileSync(destination, buffer);
@@ -124,6 +130,7 @@ export async function renderStatementAssets(
         assetRole: 'STATEMENT',
         mediaType: 'STATEMENT_CROP',
         questionNumber: question.questionNumber,
+        language: question.language,
         page: part.page,
         storagePath: relativePath,
         sha256: sha256(buffer),
@@ -132,8 +139,8 @@ export async function renderStatementAssets(
     }
     return {
       questionNumber: question.questionNumber,
-      renderReady: plan.status === 'READY' && assets.length > 0 && classificationState === 'VERIFIED',
-      classificationState,
+      language: question.language,
+      renderReady: plan.status === 'READY' && assets.length > 0 && question.mediaStatus === 'NOT_DETECTED',
       sourceIntegrity: 'VERIFIED',
       excludedOptionLabels: plan.excludedOptionLabels,
       planReason: plan.reason,

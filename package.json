@@ -22,6 +22,7 @@
     "enem:review": "node --experimental-strip-types tools/enem/review-report.ts",
     "enem:second-pass": "node --experimental-strip-types tools/enem/second-pass.ts",
     "enem:render": "node --experimental-strip-types tools/enem/render-question-assets.ts",
+    "enem:promotion": "node --experimental-strip-types tools/enem/promotion.ts",
     "enem:dry-run": "node --experimental-strip-types tools/enem/dry-run.ts",
     "enem:import-sql": "node --experimental-strip-types tools/enem/import.ts",
     "enem:ingest": "node --experimental-strip-types tools/enem/ingest.ts",

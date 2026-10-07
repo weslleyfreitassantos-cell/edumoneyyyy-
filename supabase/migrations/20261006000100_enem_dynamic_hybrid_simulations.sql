@@ -82,10 +82,10 @@ begin
       ('SUBJECT', 'Física', 'FISICA', null, 10, 20, 'SUBJECT:FISICA'),
       ('SUBJECT', 'Inglês', 'INGLES', null, 10, 20, 'SUBJECT:INGLES'),
       ('SUBJECT', 'Espanhol', 'ESPANHOL', null, 10, 20, 'SUBJECT:ESPANHOL'),
-      ('AREA', 'Linguagens', null, 'LINGUAGENS', 45, 90, 'AREA:LINGUAGENS'),
-      ('AREA', 'Ciências Humanas', null, 'CIENCIAS_HUMANAS', 45, 90, 'AREA:CIENCIAS_HUMANAS'),
-      ('AREA', 'Ciências da Natureza', null, 'CIENCIAS_NATUREZA', 45, 90, 'AREA:CIENCIAS_NATUREZA'),
-      ('AREA', 'Matemática', null, 'MATEMATICA', 45, 90, 'AREA:MATEMATICA')
+      ('AREA', 'Linguagens, Códigos e suas Tecnologias', null, 'LINGUAGENS', 45, 90, 'AREA:LINGUAGENS'),
+      ('AREA', 'Ciências Humanas e suas Tecnologias', null, 'CIENCIAS_HUMANAS', 45, 90, 'AREA:CIENCIAS_HUMANAS'),
+      ('AREA', 'Ciências da Natureza e suas Tecnologias', null, 'CIENCIAS_NATUREZA', 45, 90, 'AREA:CIENCIAS_NATUREZA'),
+      ('AREA', 'Matemática e suas Tecnologias', null, 'MATEMATICA', 45, 90, 'AREA:MATEMATICA')
     ) as templates(simulation_type, title, subject_code, area_code, question_count, duration_minutes, template_key)
   loop
     if not exists (
@@ -151,13 +151,14 @@ as $$
     and question_bank.source_type = 'ENEM_OFFICIAL'
     and coalesce(question_bank.metadata->>'source_integrity', '') = 'VERIFIED'
     and coalesce(question_bank.metadata->>'render_ready', 'false') = 'true'
-    and coalesce(question_bank.metadata->>'classification_state', 'REVIEW_REQUIRED') = 'VERIFIED'
+    and question_bank.metadata->>'area_verified' = 'true'
+    and (p_subject is null or question_bank.metadata->>'subject_verified' = 'true')
     and jsonb_typeof(question_bank.options) = 'array'
     and jsonb_array_length(question_bank.options) = 5
     and question_bank.correct_answer is not null
     and question_bank.metadata->>'official_answer_letter' in ('A', 'B', 'C', 'D', 'E')
-    and (p_area is null or coalesce(question_bank.metadata->>'enem_area', question_bank.subject_area) = p_area)
-    and (p_subject is null or coalesce(question_bank.metadata->>'enem_subject', question_bank.subject_area) = p_subject)
+    and (p_area is null or question_bank.metadata->>'enem_area' = p_area)
+    and (p_subject is null or question_bank.metadata->>'enem_subject' = p_subject)
     and occurrence.language is not distinct from p_language
     and media_asset.quality_state = 'VALIDATED'
     and coalesce(media_asset.metadata->>'asset_role', 'STATEMENT') = 'STATEMENT'

@@ -77,4 +77,25 @@ describe('ENEM geometry helpers', () => {
     expect(plan.status).toBe('READY');
     expect(plan.parts.map((part) => part.page)).toEqual([1, 2]);
   });
+
+  it('keeps horizontal padding inside the detected PDF column', () => {
+    const page: PdfGeometryPage = {
+      page: 3,
+      width: 600,
+      height: 800,
+      items: [
+        { text: 'QUESTÃO 12', x: 60, y: 700, width: 80, height: 10, fontSize: 10 },
+        { text: 'Enunciado da questão', x: 60, y: 680, width: 120, height: 10, fontSize: 10 },
+        { text: 'QUESTÃO 13', x: 310, y: 700, width: 80, height: 10, fontSize: 10 },
+        { text: 'Outra coluna', x: 310, y: 680, width: 100, height: 10, fontSize: 10 },
+        ...(['A', 'B', 'C', 'D', 'E'] as const).flatMap((label, index) => [
+          { text: label, x: 60, y: 640 - index * 20, width: 8, height: 10, fontSize: 10 },
+          { text: `Opção ${label}`, x: 75, y: 640 - index * 20, width: 55, height: 10, fontSize: 10 },
+        ]),
+      ],
+    };
+    const plan = planStatementCrop([page], 12);
+    expect(plan.status).toBe('READY');
+    expect(plan.parts[0].bounds.left + plan.parts[0].bounds.width).toBeLessThan(300);
+  });
 });

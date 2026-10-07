@@ -108,12 +108,28 @@ export function parseOfficialYearArtifacts(
     }
 
     const fileName = pathname.split('/').pop() ?? '';
-    const fileMatch = fileName.match(/^(\d{4})_(PV|GB)_impresso_(D\d+)_([A-Za-z0-9]+)\.pdf$/i);
-    if (!fileMatch || Number(fileMatch[1]) !== year) continue;
+    const modernMatch = fileName.match(/^(\d{4})_(PV|GB)_impresso_(D\d+)_([A-Za-z0-9]+)\.pdf$/i);
+    const legacy2019AnswerMatch = fileName.match(/^gabarito_(\d+)_dia_caderno_(\d+)_.*_aplicacao_regular\.pdf$/i);
+    const legacy2017AnswerMatch = fileName.match(/^cad_(\d+)_gabarito_.*\.pdf$/i);
+    const legacy2018AnswerMatch = fileName.match(/^GAB_ENEM_2018_DIA_(\d+)_(?:P2_)?(AZUL|AMARELO|BRANCO|CINZA|ROSA|LARANJA_LEDOR|VERDE_LIBRAS)\.pdf$/i);
+    if ((!modernMatch && !legacy2019AnswerMatch && !legacy2017AnswerMatch && !legacy2018AnswerMatch) || Number(modernMatch?.[1] ?? year) !== year) continue;
 
-    const kind = fileMatch[2].toUpperCase();
-    const day = fileMatch[3].toUpperCase();
-    const booklet = fileMatch[4].toUpperCase();
+    const kind = modernMatch ? modernMatch[2].toUpperCase() : 'GB';
+    const day = modernMatch
+      ? modernMatch[3].toUpperCase()
+      : legacy2019AnswerMatch
+        ? `D${legacy2019AnswerMatch[1]}`
+        : legacy2017AnswerMatch
+          ? Number(legacy2017AnswerMatch[1]) <= 4 || [9, 10].includes(Number(legacy2017AnswerMatch[1])) ? 'D1' : 'D2'
+          : `D${legacy2018AnswerMatch![1]}`;
+    const booklet = modernMatch
+      ? modernMatch[4].toUpperCase()
+      : legacy2019AnswerMatch
+        ? `CD${legacy2019AnswerMatch[2]}`
+        : legacy2017AnswerMatch
+          ? `CD${legacy2017AnswerMatch[1]}`
+          : ({ AZUL: day === 'D1' ? 'CD1' : 'CD7', AMARELO: day === 'D1' ? 'CD2' : 'CD6', BRANCO: 'CD3', CINZA: 'CD6', ROSA: day === 'D1' ? 'CD4' : 'CD8', LARANJA_LEDOR: day === 'D1' ? 'CD9' : 'CD11', VERDE_LIBRAS: day === 'D1' ? 'CD10' : 'CD12' } as Record<string, string>)[legacy2018AnswerMatch![2].toUpperCase()];
+    if (!modernMatch && fileName.toUpperCase().includes('_P2_')) continue;
     const key = `${day}:${booklet}`;
     const current = pending.get(key) ?? { year, day, booklet };
     if (kind === 'PV') current.examUrl = officialUrl;

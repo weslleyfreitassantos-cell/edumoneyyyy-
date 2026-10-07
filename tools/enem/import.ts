@@ -6,13 +6,15 @@ import { pathToFileURL } from 'node:url';
 import type { EnemDownloadedArtifact } from './download.ts';
 import type { CanonicalEnemQuestion } from './canonicalize.ts';
 import type { EnemParseResult } from './parse.ts';
-import type { EnemAssetRenderManifest, RenderedQuestionAssetManifest } from './render-question-assets.ts';
+import { renderQuestionKey, type EnemAssetRenderManifest, type RenderedQuestionAssetManifest } from './render-question-assets.ts';
+import { ENEM_AREAS, ENEM_SUBJECTS, buildSubjectClassificationRegistry, type SubjectClassificationRecord } from './classification.ts';
 
 interface ImportInputs {
   downloads: { artifacts: EnemDownloadedArtifact[] };
   parsed: EnemParseResult;
   canonical: { canonicalQuestions: CanonicalEnemQuestion[] };
   assets?: { artifacts: EnemAssetRenderManifest[] };
+  classification?: SubjectClassificationRecord[];
   manifest: {
     manifestFingerprint: string;
     manifestVersion: string;
@@ -62,43 +64,46 @@ function jsonSql(value: unknown) {
   return `${sql(JSON.stringify(value))}::jsonb`;
 }
 
-function artifactKey(day: string, booklet: string) {
-  return `${day}:${booklet}`;
+function artifactKey(year: number, day: string, booklet: string) {
+  return `${year}:${day}:${booklet}`;
 }
 
 function buildQuestionLookup(parsed: EnemParseResult) {
   const result = new Map<string, ReturnType<EnemParseResult['artifacts'][number]['questions']['find']>>();
   for (const artifact of parsed.artifacts) {
     for (const question of artifact.questions) {
-      result.set(`${artifactKey(artifact.day, artifact.booklet)}:${question.questionNumber}:${question.language ?? ''}`, question);
+      result.set(`${artifactKey(artifact.year, artifact.day, artifact.booklet)}:${question.questionNumber}:${question.language ?? ''}`, question);
     }
   }
   return result;
 }
 
-function simulationGroups(questions: CanonicalEnemQuestion[]) {
-  const groups: Array<{ key: string; title: string; type: 'AREA' | 'MINI'; year: number; questions: CanonicalEnemQuestion[] }> = [];
-  for (const year of [...new Set(questions.map((question) => question.year))].sort()) {
-    const playable = questions.filter((question) => question.year === year && question.officialAnswer !== 'ANNULLED');
-    const areas = [...new Set(playable.map((question) => question.area))].sort();
-    for (const area of areas) {
-      groups.push({
-        key: year === 2025 ? `AREA:${area}` : `AREA:${year}:${area}`,
-        title: `ENEM ${year} · ${area.replaceAll('_', ' ')} · prática oficial`,
-        type: 'AREA',
-        year,
-        questions: playable.filter((question) => question.area === area).slice(0, 45),
-      });
-    }
-    groups.push({
-      key: year === 2025 ? 'MINI:2025:DIAGNOSTIC' : `MINI:${year}:DIAGNOSTIC`,
-      title: `ENEM ${year} · diagnóstico rápido`,
-      type: 'MINI',
-      year,
-      questions: playable.filter((_, index) => index % 4 === 0).slice(0, 10),
-    });
-  }
-  return groups;
+const subjectTitles: Record<typeof ENEM_SUBJECTS[number], string> = {
+  MATEMATICA: 'Matemática',
+  LINGUA_PORTUGUESA: 'Língua Portuguesa',
+  HISTORIA: 'História',
+  GEOGRAFIA: 'Geografia',
+  FILOSOFIA: 'Filosofia',
+  SOCIOLOGIA: 'Sociologia',
+  BIOLOGIA: 'Biologia',
+  QUIMICA: 'Química',
+  FISICA: 'Física',
+  INGLES: 'Inglês',
+  ESPANHOL: 'Espanhol',
+};
+
+const areaTitles: Record<typeof ENEM_AREAS[number], string> = {
+  LINGUAGENS: 'Linguagens, Códigos e suas Tecnologias',
+  CIENCIAS_HUMANAS: 'Ciências Humanas e suas Tecnologias',
+  CIENCIAS_NATUREZA: 'Ciências da Natureza e suas Tecnologias',
+  MATEMATICA: 'Matemática e suas Tecnologias',
+};
+
+function dynamicTemplates() {
+  return [
+    ...ENEM_SUBJECTS.map((subject) => ({ key: `SUBJECT:${subject}`, title: subjectTitles[subject], type: 'SUBJECT' as const, subject, area: null, count: 10, duration: 20 })),
+    ...ENEM_AREAS.map((area) => ({ key: `AREA:${area}`, title: areaTitles[area], type: 'AREA' as const, subject: null, area, count: 45, duration: 90 })),
+  ];
 }
 
 export function buildEnemImportPlan(inputs: ImportInputs, options: {
@@ -106,14 +111,16 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
   manifestVersion?: string;
   manifestFingerprint?: string;
 } = {}): EnemImportPlan {
-  const ready = (options.questionSet ?? inputs.canonical.canonicalQuestions).filter((question) => question.qualityState === 'PARSED');
+  const registry = inputs.classification ?? buildSubjectClassificationRegistry(inputs.canonical.canonicalQuestions);
+  const registryById = new Map(registry.map((record) => [record.canonical_id, record]));
+  const ready = (options.questionSet ?? inputs.canonical.canonicalQuestions).filter((question) => question.qualityState === 'PARSED' && /^[A-E]$/.test(question.officialAnswer) && question.options.length === 5);
   const manifestVersion = options.manifestVersion ?? inputs.manifest.manifestVersion;
   const manifestFingerprint = options.manifestFingerprint ?? inputs.manifest.manifestFingerprint;
-  const artifactByKey = new Map(inputs.downloads.artifacts.map((artifact) => [artifactKey(artifact.day, artifact.booklet), artifact]));
+  const artifactByKey = new Map(inputs.downloads.artifacts.map((artifact) => [artifactKey(artifact.year, artifact.day, artifact.booklet), artifact]));
   const questionByKey = buildQuestionLookup(inputs.parsed);
   const renderByKey = new Map<string, RenderedQuestionAssetManifest>();
   for (const manifest of inputs.assets?.artifacts ?? []) {
-    for (const question of manifest.questions) renderByKey.set(`${artifactKey(manifest.day, manifest.booklet)}:${question.questionNumber}`, question);
+    for (const question of manifest.questions) renderByKey.set(renderQuestionKey(manifest, question.questionNumber, question.language), question);
   }
   const lines: string[] = [
     'begin;',
@@ -129,52 +136,72 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
   ];
 
   for (const question of ready) {
-    const occurrence = question.occurrences[0];
-    const artifact = occurrence ? artifactByKey.get(artifactKey(occurrence.day, occurrence.booklet)) : undefined;
-    const parsedQuestion = occurrence ? questionByKey.get(`${artifactKey(occurrence.day, occurrence.booklet)}:${occurrence.questionNumber}:${occurrence.language ?? ''}`) : undefined;
-    if (!occurrence || !artifact || !parsedQuestion) throw new Error(`ENEM_IMPORT_PROVENANCE_MISSING:${question.canonicalId}`);
+    const record = registryById.get(question.canonicalId);
+    const occurrence = question.occurrences.find((item) => renderByKey.get(renderQuestionKey(item, item.questionNumber, item.language))?.renderReady) ?? question.occurrences[0];
+    const artifact = occurrence ? artifactByKey.get(artifactKey(occurrence.year, occurrence.day, occurrence.booklet)) : undefined;
+    const parsedQuestion = occurrence ? questionByKey.get(`${artifactKey(occurrence.year, occurrence.day, occurrence.booklet)}:${occurrence.questionNumber}:${occurrence.language ?? ''}`) : undefined;
+    if (!occurrence || !artifact || !parsedQuestion || !record?.area_verified) throw new Error(`ENEM_IMPORT_PROVENANCE_MISSING:${question.canonicalId}`);
     const correctOption = question.officialAnswer !== 'ANNULLED'
       ? question.options[question.officialAnswer.charCodeAt(0) - 'A'.charCodeAt(0)] ?? null
       : null;
-    const firstRender = renderByKey.get(`${artifactKey(occurrence.day, occurrence.booklet)}:${occurrence.questionNumber}`);
+    const firstRender = renderByKey.get(renderQuestionKey(occurrence, occurrence.questionNumber, occurrence.language));
     const metadata = {
       canonical_id: question.canonicalId,
       source_integrity: 'VERIFIED',
       render_mode: 'HYBRID',
       render_ready: firstRender?.renderReady ?? false,
-      classification_state: firstRender?.classificationState ?? 'REVIEW_REQUIRED',
+      enem_area_verified: record.area_verified,
+      enem_subject: record.subject,
+      enem_subject_verified: record.subject_verified,
+      classification_reason_code: record.reason_code,
+      classification_source_fingerprint: record.source_fingerprint,
       statement_assets: firstRender?.statementAssets ?? [],
-      enem_area: question.area,
+      enem_area: record.area,
       pedagogical_enrichment: 'PENDING',
       adaptive_evidence_enabled: false,
       official_answer_letter: question.officialAnswer,
       official_occurrence_count: question.occurrences.length,
       annulled: question.officialAnswer === 'ANNULLED',
+      source_provenance: {
+        year: occurrence.year,
+        exam: 'ENEM',
+        application: 'REGULAR',
+        day: occurrence.day,
+        booklet: occurrence.booklet,
+        question_number: occurrence.questionNumber,
+        language: occurrence.language,
+        source_page: parsedQuestion.page,
+        source_sha256: artifact.examSha256,
+      },
     };
     lines.push(`  select id into v_question_id from public.learning_question_bank where source_type = 'ENEM_OFFICIAL' and metadata->>'canonical_id' = ${sql(question.canonicalId)} limit 1;`);
-    lines.push(`  if v_question_id is null then insert into public.learning_question_bank(package_type, source_type, source_name, source_year, source_exam, source_application, source_day, source_number, subject_area, statement, options, correct_answer, explanation, estimated_minutes, provenance, source_reference, metadata, active) values ('ENEM', 'ENEM_OFFICIAL', 'INEP', ${question.year}, 'ENEM', 'REGULAR', ${sql(question.day)}, ${occurrence.questionNumber}, ${sql(question.area)}, ${sql(question.statement)}, ${jsonSql(question.options)}, ${correctOption === null ? 'null' : jsonSql(correctOption)}, null, 4, 'INEP_OFFICIAL', ${sql(artifact.sourceReference)}, ${jsonSql(metadata)}, ${question.officialAnswer === 'ANNULLED' ? 'false' : 'true'}) returning id into v_question_id; end if;`);
+    lines.push(`  if v_question_id is null then insert into public.learning_question_bank(package_type, source_type, source_name, source_year, source_exam, source_application, source_day, source_number, subject_area, statement, options, correct_answer, explanation, estimated_minutes, provenance, source_reference, metadata, active) values ('ENEM', 'ENEM_OFFICIAL', 'INEP', ${occurrence.year}, 'ENEM', 'REGULAR', ${sql(occurrence.day)}, ${occurrence.questionNumber}, ${sql(record.area)}, ${sql(question.statement)}, ${jsonSql(question.options)}, ${correctOption === null ? 'null' : jsonSql(correctOption)}, null, 4, 'INEP_OFFICIAL', ${sql(artifact.sourceReference)}, ${jsonSql(metadata)}, true) returning id into v_question_id; end if;`);
     for (const item of question.occurrences) {
-      const sourceArtifact = artifactByKey.get(artifactKey(item.day, item.booklet));
-      const sourceQuestion = questionByKey.get(`${artifactKey(item.day, item.booklet)}:${item.questionNumber}:${item.language ?? ''}`);
+      const sourceArtifact = artifactByKey.get(artifactKey(item.year, item.day, item.booklet));
+      const sourceQuestion = questionByKey.get(`${artifactKey(item.year, item.day, item.booklet)}:${item.questionNumber}:${item.language ?? ''}`);
       if (!sourceArtifact || !sourceQuestion) throw new Error(`ENEM_IMPORT_OCCURRENCE_PROVENANCE_MISSING:${question.canonicalId}`);
       lines.push(`  insert into public.learning_enem_official_occurrences(batch_id, question_bank_id, canonical_fingerprint, year, exam, application, day, booklet, question_number, language, official_answer, quality_state, source_reference, exam_url, answer_key_url, artifact_sha256, answer_key_sha256, source_page, metadata) values (v_batch_id, v_question_id, ${sql(question.canonicalId)}, ${item.year}, 'ENEM', 'REGULAR', ${sql(item.day)}, ${sql(item.booklet)}, ${item.questionNumber}, ${item.language ? sql(item.language) : 'null'}, ${sql(item.officialAnswer)}, 'IMPORTED', ${sql(sourceArtifact.sourceReference)}, ${sql(sourceArtifact.examUrl)}, ${sql(sourceArtifact.answerKeyUrl)}, ${sql(sourceArtifact.examSha256)}, ${sql(sourceArtifact.answerKeySha256)}, ${sourceQuestion.page}, ${jsonSql({ source_integrity: 'VERIFIED', render_mode: 'HYBRID', pedagogical_enrichment: 'PENDING', adaptive_evidence_enabled: false })}) on conflict do nothing;`);
       lines.push(`  select id into v_occurrence_id from public.learning_enem_official_occurrences where year = ${item.year} and exam = 'ENEM' and application = 'REGULAR' and day = ${sql(item.day)} and booklet = ${sql(item.booklet)} and question_number = ${item.questionNumber} and coalesce(language, '') = ${sql(item.language ?? '')} limit 1;`);
-      const render = renderByKey.get(`${artifactKey(item.day, item.booklet)}:${item.questionNumber}`);
+      const render = renderByKey.get(renderQuestionKey(item, item.questionNumber, item.language));
       for (const asset of render?.statementAssets ?? []) {
         lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(asset.sha256)}, ${sql(asset.mediaType)}, ${asset.page}, ${sql(asset.storagePath)}, ${render.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: asset.assetRole, official_pdf_crop: true, render_ready: render.renderReady, sha256: asset.sha256, crop: asset.crop, excluded_option_labels: render.excludedOptionLabels })}) on conflict do nothing;`);
       }
     }
   }
 
-  for (const group of simulationGroups(ready)) {
-    const questionCount = group.questions.length;
-    lines.push(`  select id into v_simulation_id from public.learning_simulations where institution_id is null and metadata->>'enem_import_key' = ${sql(group.key)} limit 1;`);
-    lines.push(`  if v_simulation_id is null then insert into public.learning_simulations(institution_id, title, simulation_type, area, source_year, question_count, duration_minutes, status, metadata) values (null, ${sql(group.title)}, ${sql(group.type)}, ${group.type === 'AREA' ? sql(group.questions[0]?.area ?? null) : 'null'}, ${group.year}, ${questionCount}, ${group.type === 'MINI' ? 25 : 90}, 'PUBLISHED', ${jsonSql({ enem_import_key: group.key, source_integrity: 'VERIFIED', pedagogical_enrichment: 'PENDING', adaptive_evidence_enabled: false })}) returning id into v_simulation_id; end if;`);
-    lines.push(`  update public.learning_simulations set question_count = ${questionCount}, updated_at = now() where id = v_simulation_id;`);
-    group.questions.forEach((question, index) => {
-      lines.push(`  select id into v_question_id from public.learning_question_bank where source_type = 'ENEM_OFFICIAL' and metadata->>'canonical_id' = ${sql(question.canonicalId)} limit 1;`);
-      lines.push(`  insert into public.learning_simulation_questions(simulation_id, position, question_bank_id) values (v_simulation_id, ${index + 1}, v_question_id) on conflict do nothing;`);
-    });
+  for (const template of dynamicTemplates()) {
+    const metadata = {
+      dynamic_pool: true,
+      dynamic_key: template.key,
+      enem_mode: template.type,
+      enem_subject: template.subject,
+      enem_area: template.area,
+      display_title: template.title,
+      source_integrity: 'VERIFIED',
+    };
+    lines.push(`  select id into v_simulation_id from public.learning_simulations where institution_id is null and metadata->>'dynamic_key' = ${sql(template.key)} limit 1;`);
+    lines.push(`  if v_simulation_id is null then insert into public.learning_simulations(institution_id, title, simulation_type, area, source_year, question_count, duration_minutes, status, metadata) values (null, ${sql(template.title)}, ${sql(template.type)}, ${sql(template.area)}, null, ${template.count}, ${template.duration}, 'PUBLISHED', ${jsonSql(metadata)}) returning id into v_simulation_id; end if;`);
+    lines.push(`  update public.learning_simulations set title = ${sql(template.title)}, simulation_type = ${sql(template.type)}, area = ${sql(template.area)}, source_year = null, question_count = ${template.count}, duration_minutes = ${template.duration}, status = 'PUBLISHED', metadata = ${jsonSql(metadata)}, updated_at = now() where id = v_simulation_id;`);
   }
 
   lines.push('end $$;', 'commit;');
@@ -184,7 +211,7 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
     occurrences: ready.reduce((total, question) => total + question.occurrences.length, 0),
     playableQuestions: ready.filter((question) => question.officialAnswer !== 'ANNULLED').length,
     annulledQuestions: ready.filter((question) => question.officialAnswer === 'ANNULLED').length,
-    simulations: simulationGroups(ready).length,
+    simulations: dynamicTemplates().length,
     sql: `${lines.join('\n')}\n`,
   };
 }
@@ -201,6 +228,7 @@ async function runCli() {
   const canonicalPath = argument('--canonical', args) ?? '.runtime/enem-canonical-2025.json';
   const manifestPath = argument('--manifest', args) ?? '.runtime/enem-import-dry-run-2025.json';
   const assetsPath = argument('--assets', args);
+  const classificationPath = argument('--classification', args);
   const outputPath = argument('--out', args) ?? '.runtime/enem-import-2025.sql';
   const rollback = args.includes('--rollback');
   const canary = args.includes('--canary');
@@ -210,6 +238,7 @@ async function runCli() {
     canonical: JSON.parse(readFileSync(resolve(canonicalPath), 'utf8')),
     manifest: JSON.parse(readFileSync(resolve(manifestPath), 'utf8')),
     assets: assetsPath ? JSON.parse(readFileSync(resolve(assetsPath), 'utf8')) : undefined,
+    classification: classificationPath ? JSON.parse(readFileSync(resolve(classificationPath), 'utf8')) : undefined,
   };
   const questionSet = canary ? selectCanaryQuestions(inputs.canonical.canonicalQuestions) : undefined;
   const plan = buildEnemImportPlan(inputs, {

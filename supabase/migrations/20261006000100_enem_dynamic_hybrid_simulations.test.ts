@@ -20,7 +20,10 @@ describe('ENEM dynamic hybrid simulations migration', () => {
   it('gates availability on official provenance, five options, a valid answer and a validated statement crop', () => {
     expect(migration).toContain("question_bank.source_type = 'ENEM_OFFICIAL'");
     expect(migration).toMatch(/question_bank\.metadata->>'render_ready',\s*'false'\) = 'true'/);
-    expect(migration).toMatch(/question_bank\.metadata->>'classification_state',\s*'REVIEW_REQUIRED'\) = 'VERIFIED'/);
+    expect(migration).toContain("question_bank.metadata->>'area_verified' = 'true'");
+    expect(migration).toContain("question_bank.metadata->>'subject_verified' = 'true'");
+    expect(migration).not.toContain("coalesce(question_bank.metadata->>'enem_subject', question_bank.subject_area)");
+    expect(migration).not.toContain("coalesce(question_bank.metadata->>'enem_area', question_bank.subject_area)");
     expect(migration).toContain('jsonb_array_length(question_bank.options) = 5');
     expect(migration).toContain("question_bank.metadata->>'official_answer_letter' in ('A', 'B', 'C', 'D', 'E')");
     expect(migration).toContain("question_row.official_answer_letter = answer_item->>'answer'");
