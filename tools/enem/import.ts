@@ -8,6 +8,7 @@ import type { CanonicalEnemQuestion } from './canonicalize.ts';
 import type { EnemParseResult } from './parse.ts';
 import { renderQuestionKey, type EnemAssetRenderManifest, type RenderedQuestionAssetManifest } from './render-question-assets.ts';
 import { ENEM_AREAS, ENEM_SUBJECTS, buildSubjectClassificationRegistry, type SubjectClassificationRecord } from './classification.ts';
+import { isEnemImportableQuestion } from './importability.ts';
 
 interface ImportInputs {
   downloads: { artifacts: EnemDownloadedArtifact[] };
@@ -36,7 +37,7 @@ export interface EnemImportPlan {
 }
 
 export function selectCanaryQuestions(questions: CanonicalEnemQuestion[]) {
-  const ready = questions.filter((question) => question.qualityState === 'PARSED' && question.officialAnswer !== 'ANNULLED');
+  const ready = questions.filter(isEnemImportableQuestion);
   return [...new Set(ready.map((question) => question.area))].sort().flatMap((area) => {
     const candidates = ready.filter((question) => question.area === area);
     const selected: CanonicalEnemQuestion[] = [];
@@ -113,7 +114,7 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
 } = {}): EnemImportPlan {
   const registry = inputs.classification ?? buildSubjectClassificationRegistry(inputs.canonical.canonicalQuestions);
   const registryById = new Map(registry.map((record) => [record.canonical_id, record]));
-  const ready = (options.questionSet ?? inputs.canonical.canonicalQuestions).filter((question) => question.qualityState === 'PARSED' && /^[A-E]$/.test(question.officialAnswer) && question.options.length === 5);
+  const ready = (options.questionSet ?? inputs.canonical.canonicalQuestions).filter(isEnemImportableQuestion);
   const manifestVersion = options.manifestVersion ?? inputs.manifest.manifestVersion;
   const manifestFingerprint = options.manifestFingerprint ?? inputs.manifest.manifestFingerprint;
   const artifactByKey = new Map(inputs.downloads.artifacts.map((artifact) => [artifactKey(artifact.year, artifact.day, artifact.booklet), artifact]));
