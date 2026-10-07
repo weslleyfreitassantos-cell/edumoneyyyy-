@@ -605,7 +605,7 @@ export function InstitutionProvider({
       );
 
       if (updatedInstitution.subdomain) {
-        updateResolvedPublicBrandingCache(
+        void updateResolvedPublicBrandingCache(
           queryClient,
           `${updatedInstitution.subdomain}.grupotec.dev.br`,
           toPublicBranding(updatedInstitution),
