@@ -517,7 +517,7 @@ export function BrandingEditor({
                 <AssetControl
                   id={`${title}-favicon`}
                   label="Favicon"
-                  helper="PNG, JPEG ou WebP. Limite: 512 KB."
+                  helper="PNG, JPEG ou WebP."
                   kind="favicon"
                   draft={faviconDraft}
                   persistedUrl={branding?.faviconUrl}

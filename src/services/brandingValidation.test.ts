@@ -5,7 +5,6 @@ import {
 } from 'vitest';
 
 import {
-  FAVICON_MAX_SIZE_BYTES,
   BACKGROUND_MAX_SIZE_BYTES,
   isValidBrandingAssetPath,
   LOGO_MAX_SIZE_BYTES,
@@ -167,7 +166,7 @@ describe('brandingValidation', () => {
     ).toMatch(/reservado/i);
   });
 
-  it('valida tamanho de logo e favicon', async () => {
+  it('mantem os limites de logo e background e aceita favicon acima do limite anterior', async () => {
     expect(
       await validateBrandingImageFile(pngFile(), 'logo'),
     ).toBeNull();
@@ -181,10 +180,10 @@ describe('brandingValidation', () => {
 
     expect(
       await validateBrandingImageFile(
-        pngFile(FAVICON_MAX_SIZE_BYTES + 1),
+        pngFile(2 * 1024 * 1024),
         'favicon',
       ),
-    ).toMatch(/512 KB/i);
+    ).toBeNull();
 
     expect(
       await validateBrandingImageFile(
