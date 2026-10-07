@@ -52,8 +52,8 @@ function MetricCard({
     onNavigateToModule && availableModuleIds.includes(moduleId),
   );
   const cardClassName = emphasis === 'primary'
-    ? 'rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5'
-    : 'rounded-lg border border-[#e4e8f1] bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-900';
+    ? 'min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5'
+    : 'min-w-0 rounded-lg border border-[#e4e8f1] bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-900';
   const iconClassName = emphasis === 'primary'
     ? 'bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300'
     : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300';
@@ -246,7 +246,7 @@ export default function AdminOverviewTab({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="min-w-0 space-y-6">
       <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
         <div className="flex items-center justify-between gap-4">
           <div className="min-w-0">
