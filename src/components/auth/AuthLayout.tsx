@@ -20,6 +20,7 @@ interface AuthShellProps {
   heroVariant?: 'video' | 'default';
   layoutVariant?: 'default' | 'login';
   showBrand?: boolean;
+  backgroundLoading?: boolean;
   backgroundImageUrl?: string | null;
 }
 
@@ -105,6 +106,7 @@ export function AuthShell({
   heroVariant = 'default',
   layoutVariant = 'default',
   showBrand = true,
+  backgroundLoading = false,
   backgroundImageUrl = null,
 }: AuthShellProps) {
   const { theme } = useThemePreference();
@@ -115,13 +117,15 @@ export function AuthShell({
     const lightBg = 'bg-[#eef3fc] text-[#111]';
     const shellBg = theme === 'dark' ? darkBg : lightBg;
     const loginBackgroundStyle: CSSProperties = {
-      backgroundImage: backgroundImageUrl?.trim()
-        ? `url(${JSON.stringify(backgroundImageUrl.trim())}), ${LOGIN_BACKGROUND_FALLBACK}`
-        : DEFAULT_LOGIN_BACKGROUND_IMAGE,
+      backgroundImage: backgroundLoading
+        ? 'none'
+        : backgroundImageUrl?.trim()
+          ? `url(${JSON.stringify(backgroundImageUrl.trim())}), ${LOGIN_BACKGROUND_FALLBACK}`
+          : DEFAULT_LOGIN_BACKGROUND_IMAGE,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      backgroundColor: '#eef3fc',
+      backgroundColor: theme === 'dark' ? '#060d1f' : '#eef3fc',
     };
 
     if (!showHero) {

@@ -269,7 +269,14 @@ export default function SetPassword() {
 
   if (isChecking) {
     return (
-      <AuthShell heroVariant="default" layoutVariant="login" showBrand={false} backgroundImageUrl={branding.loginBackgroundUrl} footer={footer}>
+      <AuthShell
+        heroVariant="default"
+        layoutVariant="login"
+        showBrand={false}
+        backgroundLoading={brandingQuery.isLoading}
+        backgroundImageUrl={branding.loginBackgroundUrl}
+        footer={footer}
+      >
         <div style={brandStyle}>
           <div className="login-brand-block mb-3 flex flex-col items-center">
             <div className="flex min-h-[36px] items-center justify-center">
@@ -294,7 +301,14 @@ export default function SetPassword() {
 
   if (!inviteContext && !successMessage) {
     return (
-      <AuthShell heroVariant="default" layoutVariant="login" showBrand={false} backgroundImageUrl={branding.loginBackgroundUrl} footer={footer}>
+      <AuthShell
+        heroVariant="default"
+        layoutVariant="login"
+        showBrand={false}
+        backgroundLoading={brandingQuery.isLoading}
+        backgroundImageUrl={branding.loginBackgroundUrl}
+        footer={footer}
+      >
         <div style={brandStyle}>
           {brandHeader}
 
@@ -327,7 +341,14 @@ export default function SetPassword() {
 
   if (successMessage) {
     return (
-      <AuthShell heroVariant="default" layoutVariant="login" showBrand={false} backgroundImageUrl={branding.loginBackgroundUrl} footer={footer}>
+      <AuthShell
+        heroVariant="default"
+        layoutVariant="login"
+        showBrand={false}
+        backgroundLoading={brandingQuery.isLoading}
+        backgroundImageUrl={branding.loginBackgroundUrl}
+        footer={footer}
+      >
         <div style={brandStyle}>
           {brandHeader}
 
@@ -359,7 +380,14 @@ export default function SetPassword() {
   }
 
   return (
-    <AuthShell heroVariant="default" layoutVariant="login" showBrand={false} backgroundImageUrl={branding.loginBackgroundUrl} footer={footer}>
+    <AuthShell
+      heroVariant="default"
+      layoutVariant="login"
+      showBrand={false}
+      backgroundLoading={brandingQuery.isLoading}
+      backgroundImageUrl={branding.loginBackgroundUrl}
+      footer={footer}
+    >
       <div style={brandStyle}>
         {brandHeader}
 

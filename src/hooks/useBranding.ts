@@ -14,6 +14,7 @@ import {
   type BrandingRecord,
   type PublicBranding,
   type SaveBrandingInput,
+  normalizePublicBrandingAssetUrls,
 } from '../services/brandingService';
 import { applyDocumentBranding } from '../services/documentBranding';
 import { normalizeHostnameValue } from '../services/brandingValidation';
@@ -32,11 +33,11 @@ function getPublicBrandingCacheKey(hostname: string): string {
   return `${publicBrandingCachePrefix}${normalizeHostnameValue(hostname || 'unknown')}`;
 }
 
-const brandingAssetLoadTimeoutMs = 1500;
+const brandingAssetLoadTimeoutMs = 10000;
 
-function preloadImage(url: string): Promise<void> {
+function preloadImage(url: string): Promise<boolean> {
   if (typeof Image === 'undefined') {
-    return Promise.resolve();
+    return Promise.resolve(true);
   }
 
   return new Promise((resolve) => {
@@ -44,34 +45,40 @@ function preloadImage(url: string): Promise<void> {
     let settled = false;
     let timeoutId: number | undefined;
 
-    const finish = () => {
+    const finish = (loaded: boolean) => {
       if (settled) return;
       settled = true;
       if (timeoutId !== undefined) {
         window.clearTimeout(timeoutId);
       }
-      resolve();
+      resolve(loaded);
     };
 
     const decodeAndFinish = () => {
       if (typeof image.decode !== 'function') {
-        finish();
+        finish(image.naturalWidth > 0);
         return;
       }
 
-      void image.decode().catch(() => undefined).finally(finish);
+      void image.decode().then(
+        () => finish(true),
+        () => finish(image.naturalWidth > 0),
+      );
     };
 
     image.onload = decodeAndFinish;
-    image.onerror = finish;
-    timeoutId = window.setTimeout(finish, brandingAssetLoadTimeoutMs);
+    image.onerror = () => finish(false);
+    timeoutId = window.setTimeout(
+      () => finish(false),
+      brandingAssetLoadTimeoutMs,
+    );
     image.src = url;
 
     if (image.complete) {
       if (image.naturalWidth > 0) {
         decodeAndFinish();
       } else {
-        finish();
+        finish(false);
       }
     }
   });
@@ -79,14 +86,36 @@ function preloadImage(url: string): Promise<void> {
 
 export async function preloadPublicBrandingAssets(
   branding: PublicBranding,
-): Promise<void> {
+): Promise<PublicBranding> {
+  const normalizedBranding = normalizePublicBrandingAssetUrls(branding);
   const urls = new Set(
-    [branding.logoUrl, branding.faviconUrl, branding.loginBackgroundUrl]
+    [
+      normalizedBranding.logoUrl,
+      normalizedBranding.faviconUrl,
+      normalizedBranding.loginBackgroundUrl,
+    ]
       .map((url) => url?.trim())
       .filter((url): url is string => Boolean(url)),
   );
 
-  await Promise.all([...urls].map(preloadImage));
+  const loaded = new Map<string, boolean>();
+  await Promise.all(
+    [...urls].map(async (url) => {
+      loaded.set(url, await preloadImage(url));
+    }),
+  );
+
+  const keepLoadedAsset = (url: string | null | undefined) =>
+    url && loaded.get(url.trim()) ? url : null;
+
+  return {
+    ...normalizedBranding,
+    logoUrl: keepLoadedAsset(normalizedBranding.logoUrl),
+    faviconUrl: keepLoadedAsset(normalizedBranding.faviconUrl),
+    loginBackgroundUrl: keepLoadedAsset(
+      normalizedBranding.loginBackgroundUrl,
+    ),
+  };
 }
 
 export const brandingKeys = {
@@ -156,14 +185,14 @@ export async function updateResolvedPublicBrandingCache(
 ): Promise<void> {
   const normalizedHostname = normalizeHostnameValue(hostname || 'unknown');
 
-  await preloadPublicBrandingAssets(branding).catch(() => undefined);
+  const readyBranding = await preloadPublicBrandingAssets(branding);
   queryClient.setQueryData(
     brandingKeys.public(normalizedHostname),
-    branding,
+    readyBranding,
   );
 
   if (getWindowHostname() === normalizedHostname) {
-    applyDocumentBranding(branding);
+    applyDocumentBranding(readyBranding);
   }
 }
 
@@ -179,11 +208,11 @@ export function useResolvedBranding(
       const branding = await brandingService.resolveForHostname(
         normalizedHostname,
       );
-      await preloadPublicBrandingAssets(branding).catch(() => undefined);
-      return branding;
+      return preloadPublicBrandingAssets(branding);
     },
     retry: false,
-    staleTime: 1000 * 30,
+    staleTime: 0,
+    refetchOnMount: 'always',
     gcTime: 1000 * 60 * 60,
   });
 

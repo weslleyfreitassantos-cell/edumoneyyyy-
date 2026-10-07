@@ -176,6 +176,20 @@ describe('Login', () => {
     expect(loginShell?.getAttribute('style')).toContain('background-position: center');
   });
 
+  it('mantem o fundo neutro enquanto a identidade atual ainda esta sendo carregada', () => {
+    brandingMock.isLoading = true;
+
+    const { container } = renderLogin();
+    const loginShell = container.firstElementChild;
+
+    expect(loginShell?.getAttribute('style')).toContain(
+      'background-image: none',
+    );
+    expect(loginShell?.getAttribute('style')).not.toContain(
+      '/media/ff2-optimized.webp',
+    );
+  });
+
   it('atualiza favicon, titulo e cores dinamicamente', () => {
     brandingMock.data = {
       scope: 'GLOBAL',

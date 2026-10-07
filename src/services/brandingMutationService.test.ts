@@ -31,7 +31,7 @@ describe('brandingMutationService', () => {
     vi.spyOn(Date, 'now').mockReturnValue(123456);
   });
 
-  it('salva URL versionada para atualizar a logo sem cache antigo', async () => {
+  it('salva a logo com cacheNonce para evitar resposta antiga da CDN', async () => {
     const upload = vi.fn().mockResolvedValue({ error: null });
     const getPublicUrl = vi.fn().mockReturnValue({
       data: {
@@ -50,7 +50,7 @@ describe('brandingMutationService', () => {
         id: 'institution-1',
         name: 'Escola Centro',
         logo_url:
-          'https://storage.example.com/institution-1/logo.png?v=123456',
+          'https://storage.example.com/institution-1/logo.png?cacheNonce=123456',
       },
       error: null,
     } as never);
@@ -74,16 +74,16 @@ describe('brandingMutationService', () => {
       expect.objectContaining({
         target_institution_id: 'institution-1',
         new_logo_url:
-          'https://storage.example.com/institution-1/logo.png?v=123456',
+          'https://storage.example.com/institution-1/logo.png?cacheNonce=123456',
         set_logo_url: true,
         set_favicon_url: false,
       }),
     );
     expect(supabase.from).not.toHaveBeenCalled();
-    expect(result.logoUrl).toContain('?v=123456');
+    expect(result.logoUrl).toContain('?cacheNonce=123456');
   });
 
-  it('salva background na pasta da instituicao e atualiza a RPC', async () => {
+  it('salva o background com cacheNonce e atualiza a RPC', async () => {
     const upload = vi.fn().mockResolvedValue({ error: null });
     const getPublicUrl = vi.fn().mockReturnValue({
       data: {
@@ -102,7 +102,7 @@ describe('brandingMutationService', () => {
         id: 'institution-1',
         name: 'Escola Centro',
         login_background_url:
-          'https://storage.example.com/institution-1/background.png?v=123456',
+          'https://storage.example.com/institution-1/background.png?cacheNonce=123456',
       },
       error: null,
     } as never);
@@ -125,11 +125,11 @@ describe('brandingMutationService', () => {
       'update_institution_login_branding',
       expect.objectContaining({
         new_login_background_url:
-          'https://storage.example.com/institution-1/background.png?v=123456',
+          'https://storage.example.com/institution-1/background.png?cacheNonce=123456',
         set_login_background_url: true,
       }),
     );
-    expect(result.loginBackgroundUrl).toContain('?v=123456');
+    expect(result.loginBackgroundUrl).toContain('?cacheNonce=123456');
   });
 
   it('retorna erro controlado quando o update nao retorna linha', async () => {
