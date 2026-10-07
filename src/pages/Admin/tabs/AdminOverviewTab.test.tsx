@@ -242,7 +242,7 @@ describe('AdminOverviewTab', () => {
 
     expect(screen.getByTestId('director-academic-panorama')).toBeTruthy();
     expect(screen.queryByRole('heading', { name: 'Resumo da escola' })).toBeNull();
-    expect(screen.getByRole('heading', { name: 'Resumo operacional' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /Resumo operacional/i }));
     expect(screen.getByText('842')).toBeTruthy();
     expect(screen.getByText('47')).toBeTruthy();
     expect(screen.getByText('28')).toBeTruthy();
@@ -252,6 +252,36 @@ describe('AdminOverviewTab', () => {
     expect(screen.getByText('64')).toBeTruthy();
     expect(screen.getByText('92')).toBeTruthy();
     expect(screen.getByText('21')).toBeTruthy();
+  });
+
+  it('mantém os blocos independentes, com operação fechada e panorama aberto inicialmente', () => {
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    const operationalToggle = screen.getByRole('button', { name: /Resumo operacional/i });
+    const panoramaToggle = screen.getByRole('button', { name: /Panorama acadêmico/i });
+    const operationalContent = document.getElementById('admin-overview-operational-content');
+    const panoramaContent = document.getElementById('admin-overview-panorama-content');
+
+    expect(operationalToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(panoramaToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(operationalContent?.hasAttribute('hidden')).toBe(true);
+    expect(panoramaContent?.hasAttribute('hidden')).toBe(false);
+
+    fireEvent.click(operationalToggle);
+    expect(operationalToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(operationalContent?.hasAttribute('hidden')).toBe(false);
+    expect(screen.getByText('Estudantes ativos')).toBeTruthy();
+    expect(screen.getByText('Docentes ativos')).toBeTruthy();
+    expect(screen.getByText('Turmas ativas')).toBeTruthy();
+
+    fireEvent.click(panoramaToggle);
+    expect(panoramaToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(panoramaContent?.hasAttribute('hidden')).toBe(true);
+    expect(operationalContent?.hasAttribute('hidden')).toBe(false);
   });
 
   it('transforma somente módulos disponíveis em atalhos navegáveis', () => {
@@ -270,6 +300,8 @@ describe('AdminOverviewTab', () => {
         />
       </MemoryRouter>,
     );
+
+    fireEvent.click(screen.getByRole('button', { name: /Resumo operacional/i }));
 
     fireEvent.click(
       screen.getByRole('button', { name: /Estudantes ativos: 842\. Ver módulo/i }),

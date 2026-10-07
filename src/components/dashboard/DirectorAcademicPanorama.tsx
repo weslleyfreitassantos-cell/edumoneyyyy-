@@ -34,6 +34,7 @@ interface DirectorAcademicPanoramaProps {
   institutionId: string;
   availableModuleIds: readonly AdminModuleId[];
   onNavigateToModule?: (moduleId: AdminModuleId) => void;
+  showHeader?: boolean;
 }
 
 interface DateRange {
@@ -508,6 +509,7 @@ export default function DirectorAcademicPanorama({
   institutionId,
   availableModuleIds,
   onNavigateToModule,
+  showHeader = true,
 }: DirectorAcademicPanoramaProps) {
   const [period, setPeriod] = useState<PanoramaPeriod>(DEFAULT_PANORAMA_PERIOD);
   const [classId, setClassId] = useState('');
@@ -571,13 +573,19 @@ export default function DirectorAcademicPanorama({
   const pendingMax = Math.max(1, ...availablePendingValues);
 
   return (
-    <section aria-labelledby="director-academic-panorama-heading" className="w-full min-w-0 space-y-5">
+    <section
+      aria-labelledby={showHeader ? 'director-academic-panorama-heading' : undefined}
+      aria-label={showHeader ? undefined : 'Conteúdo do panorama acadêmico'}
+      className="w-full min-w-0 space-y-5"
+    >
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf] dark:text-blue-400">Panorama acadêmico</p>
-          <h2 id="director-academic-panorama-heading" className="mt-1 text-xl font-extrabold text-[#181c20] dark:text-white">Desempenho, frequência e pontos de atenção</h2>
-          <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">Acompanhe o que exige atenção na escola com dados já lançados.</p>
-        </div>
+        {showHeader && (
+          <div className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf] dark:text-blue-400">Panorama acadêmico</p>
+            <h2 id="director-academic-panorama-heading" className="mt-1 text-xl font-extrabold text-[#181c20] dark:text-white">Desempenho, frequência e pontos de atenção</h2>
+            <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">Acompanhe o que exige atenção na escola com dados já lançados.</p>
+          </div>
+        )}
         <div className="flex w-full min-w-0 flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap">
           <label className="min-w-0 text-xs font-semibold text-[#667085] dark:text-slate-400">
             Período
