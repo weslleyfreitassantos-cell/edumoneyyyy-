@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import {
   type QueryClient,
   useMutation,
@@ -27,90 +27,66 @@ function getWindowHostname(): string {
 }
 
 const publicBrandingCachePrefix = 'tecescola:public-branding:';
-const publicBrandingCacheVersion = 2;
-
-interface CachedPublicBranding {
-  version: number;
-  cachedAt: number;
-  branding: PublicBranding;
-}
 
 function getPublicBrandingCacheKey(hostname: string): string {
   return `${publicBrandingCachePrefix}${normalizeHostnameValue(hostname || 'unknown')}`;
 }
 
-function isPublicBranding(value: unknown): value is PublicBranding {
-  if (!value || typeof value !== 'object') {
-    return false;
+const brandingAssetLoadTimeoutMs = 1500;
+
+function preloadImage(url: string): Promise<void> {
+  if (typeof Image === 'undefined') {
+    return Promise.resolve();
   }
 
-  const branding = value as Partial<PublicBranding>;
-  return (
-    (branding.scope === 'GLOBAL' ||
-      branding.scope === 'ACCOUNT' ||
-      branding.scope === 'INSTITUTION' ||
-      branding.scope === 'FALLBACK') &&
-    (branding.displayName === null || typeof branding.displayName === 'string') &&
-    (branding.logoUrl === null || typeof branding.logoUrl === 'string') &&
-    (branding.faviconUrl === null || typeof branding.faviconUrl === 'string') &&
-    (branding.loginBackgroundUrl === null ||
-      typeof branding.loginBackgroundUrl === 'string') &&
-    typeof branding.primaryColor === 'string' &&
-    typeof branding.secondaryColor === 'string'
-  );
-}
+  return new Promise((resolve) => {
+    const image = new Image();
+    let settled = false;
+    let timeoutId: number | undefined;
 
-function readCachedPublicBranding(
-  hostname: string,
-): CachedPublicBranding | null {
-  if (typeof window === 'undefined') {
-    return null;
-  }
-
-  try {
-    const raw = window.localStorage.getItem(
-      getPublicBrandingCacheKey(hostname),
-    );
-    if (!raw) {
-      return null;
-    }
-
-    const parsed = JSON.parse(raw) as Partial<CachedPublicBranding>;
-    if (
-      parsed.version !== publicBrandingCacheVersion ||
-      typeof parsed.cachedAt !== 'number' ||
-      !isPublicBranding(parsed.branding)
-    ) {
-      return null;
-    }
-
-    return parsed as CachedPublicBranding;
-  } catch {
-    return null;
-  }
-}
-
-function writeCachedPublicBranding(
-  hostname: string,
-  branding: PublicBranding,
-): void {
-  if (typeof window === 'undefined' || branding.scope === 'FALLBACK') {
-    return;
-  }
-
-  try {
-    const cached: CachedPublicBranding = {
-      version: publicBrandingCacheVersion,
-      cachedAt: Date.now(),
-      branding,
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+      }
+      resolve();
     };
-    window.localStorage.setItem(
-      getPublicBrandingCacheKey(hostname),
-      JSON.stringify(cached),
-    );
-  } catch {
-    // Storage may be unavailable or full; the network path remains authoritative.
-  }
+
+    const decodeAndFinish = () => {
+      if (typeof image.decode !== 'function') {
+        finish();
+        return;
+      }
+
+      void image.decode().catch(() => undefined).finally(finish);
+    };
+
+    image.onload = decodeAndFinish;
+    image.onerror = finish;
+    timeoutId = window.setTimeout(finish, brandingAssetLoadTimeoutMs);
+    image.src = url;
+
+    if (image.complete) {
+      if (image.naturalWidth > 0) {
+        decodeAndFinish();
+      } else {
+        finish();
+      }
+    }
+  });
+}
+
+export async function preloadPublicBrandingAssets(
+  branding: PublicBranding,
+): Promise<void> {
+  const urls = new Set(
+    [branding.logoUrl, branding.faviconUrl, branding.loginBackgroundUrl]
+      .map((url) => url?.trim())
+      .filter((url): url is string => Boolean(url)),
+  );
+
+  await Promise.all([...urls].map(preloadImage));
 }
 
 export const brandingKeys = {
@@ -171,23 +147,20 @@ export async function invalidateResolvedPublicBranding(
 }
 
 /**
- * Publishes a canonical branding response to the active query/cache layers.
- * The normal query invalidation remains useful for reconciliation, but it must
- * not replace the response that was just accepted by the backend with stale
- * localStorage data while that refetch is in flight.
+ * Publishes a canonical response only after its visual assets are ready.
  */
-export function updateResolvedPublicBrandingCache(
+export async function updateResolvedPublicBrandingCache(
   queryClient: QueryClient,
   hostname: string,
   branding: PublicBranding,
-): void {
+): Promise<void> {
   const normalizedHostname = normalizeHostnameValue(hostname || 'unknown');
 
+  await preloadPublicBrandingAssets(branding).catch(() => undefined);
   queryClient.setQueryData(
     brandingKeys.public(normalizedHostname),
     branding,
   );
-  writeCachedPublicBranding(normalizedHostname, branding);
 
   if (getWindowHostname() === normalizedHostname) {
     applyDocumentBranding(branding);
@@ -200,29 +173,27 @@ export function useResolvedBranding(
   const normalizedHostname = normalizeHostnameValue(
     hostname || 'unknown',
   );
-  const cachedBranding = useMemo(
-    () => readCachedPublicBranding(normalizedHostname),
-    [normalizedHostname],
-  );
-
   const query = useQuery<PublicBranding>({
     queryKey: brandingKeys.public(normalizedHostname),
-    queryFn: () =>
-      brandingService.resolveForHostname(normalizedHostname),
-    initialData: cachedBranding?.branding,
-    initialDataUpdatedAt: cachedBranding?.cachedAt,
+    queryFn: async () => {
+      const branding = await brandingService.resolveForHostname(
+        normalizedHostname,
+      );
+      await preloadPublicBrandingAssets(branding).catch(() => undefined);
+      return branding;
+    },
     retry: false,
-    staleTime: 1000 * 60 * 10,
+    staleTime: 1000 * 30,
     gcTime: 1000 * 60 * 60,
   });
 
-  useEffect(() => {
-    if (query.data) {
-      writeCachedPublicBranding(normalizedHostname, query.data);
-    }
-  }, [normalizedHostname, query.data]);
-
-  return query;
+  // Never paint a cached response while the current hostname is being checked.
+  // This prevents the previous tenant's logo/background flashing on navigation.
+  return {
+    ...query,
+    data: query.isFetching || query.isError ? undefined : query.data,
+    isLoading: query.isFetching || query.isLoading,
+  };
 }
 
 export function useHostBranding(
