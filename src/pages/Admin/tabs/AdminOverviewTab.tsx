@@ -1,6 +1,7 @@
 import {
   BookOpen,
   CalendarDays,
+  ChevronDown,
   ChevronRight,
   GraduationCap,
   Layers3,
@@ -9,6 +10,7 @@ import {
   Users,
   type LucideIcon,
 } from 'lucide-react';
+import { useState } from 'react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 import { useAdminOverview } from '../../../hooks/useAdminOverview';
@@ -105,6 +107,8 @@ export default function AdminOverviewTab({
   availableModuleIds = [],
   onNavigateToModule,
 }: AdminOverviewTabProps) {
+  const [operationalOpen, setOperationalOpen] = useState(false);
+  const [panoramaOpen, setPanoramaOpen] = useState(true);
   const { profile } = useAuth();
 
   const institutionQuery = useCurrentInstitution(profile?.id);
@@ -278,45 +282,98 @@ export default function AdminOverviewTab({
         showOnlyFoundation={institutionQuery.currentRole === 'ADMIN'}
         configurationHref={availableModuleIds.includes('school-users') ? '/admin?module=school-users' : '/admin?module=overview'}
       />
-      <section aria-label="Indicadores institucionais" className="space-y-4">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {primaryMetrics.map((metric) => (
-            <MetricCard
-              key={metric.label}
-              {...metric}
-              {...metricCardProps}
-              emphasis="primary"
-            />
-          ))}
+      <section
+        aria-labelledby="admin-overview-operational-heading"
+        className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"
+      >
+        <button
+          type="button"
+          className="flex w-full min-w-0 items-center justify-between gap-4 p-4 text-left transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-inset dark:hover:bg-slate-800/70 sm:p-5"
+          aria-expanded={operationalOpen}
+          aria-controls="admin-overview-operational-content"
+          onClick={() => setOperationalOpen((open) => !open)}
+        >
+          <span className="min-w-0">
+            <span id="admin-overview-operational-heading" role="heading" aria-level={2} className="block text-base font-bold text-[#344054] dark:text-slate-100">
+              Resumo operacional
+            </span>
+            <span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">
+              Estrutura acadêmica e vínculos ativos da instituição.
+            </span>
+          </span>
+          <ChevronDown
+            className={`h-5 w-5 shrink-0 text-[#667085] transition-transform dark:text-slate-400 ${operationalOpen ? 'rotate-180' : ''}`}
+            aria-hidden="true"
+          />
+        </button>
+        <div
+          id="admin-overview-operational-content"
+          hidden={!operationalOpen}
+          className="space-y-4 border-t border-[#e4e8f1] p-4 dark:border-slate-700 sm:p-5"
+        >
+          <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {primaryMetrics.map((metric) => (
+              <MetricCard
+                key={metric.label}
+                {...metric}
+                {...metricCardProps}
+                emphasis="primary"
+              />
+            ))}
+          </div>
+          <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {secondaryMetrics.map((metric) => (
+              <MetricCard
+                key={metric.label}
+                {...metric}
+                {...metricCardProps}
+                emphasis="secondary"
+              />
+            ))}
+          </div>
         </div>
       </section>
 
-      <section aria-labelledby="admin-overview-operational-heading" className="space-y-3">
-        <div>
-          <h3 id="admin-overview-operational-heading" className="text-sm font-bold text-[#344054] dark:text-slate-100">
-            Resumo operacional
-          </h3>
-          <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">
-            Estrutura acadêmica e vínculos ativos da instituição.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {secondaryMetrics.map((metric) => (
-            <MetricCard
-              key={metric.label}
-              {...metric}
-              {...metricCardProps}
-              emphasis="secondary"
-            />
-          ))}
+      <section
+        aria-labelledby="admin-overview-panorama-heading"
+        className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900"
+      >
+        <button
+          type="button"
+          className="flex w-full min-w-0 items-center justify-between gap-4 p-4 text-left transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-inset dark:hover:bg-slate-800/70 sm:p-5"
+          aria-expanded={panoramaOpen}
+          aria-controls="admin-overview-panorama-content"
+          onClick={() => setPanoramaOpen((open) => !open)}
+        >
+          <span className="min-w-0">
+            <span id="admin-overview-panorama-heading" role="heading" aria-level={2} className="block text-base font-bold text-[#344054] dark:text-slate-100">
+              Panorama acadêmico
+            </span>
+            <span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">
+              Desempenho, frequência e pontos de atenção
+            </span>
+            <span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">
+              Acompanhe o que exige atenção na escola com dados já lançados.
+            </span>
+          </span>
+          <ChevronDown
+            className={`h-5 w-5 shrink-0 text-[#667085] transition-transform dark:text-slate-400 ${panoramaOpen ? 'rotate-180' : ''}`}
+            aria-hidden="true"
+          />
+        </button>
+        <div
+          id="admin-overview-panorama-content"
+          hidden={!panoramaOpen}
+          className="border-t border-[#e4e8f1] p-4 dark:border-slate-700 sm:p-5"
+        >
+          <DirectorAcademicPanorama
+            institutionId={institutionId}
+            availableModuleIds={availableModuleIds}
+            onNavigateToModule={onNavigateToModule}
+            showHeader={false}
+          />
         </div>
       </section>
-
-      <DirectorAcademicPanorama
-        institutionId={institutionId}
-        availableModuleIds={availableModuleIds}
-        onNavigateToModule={onNavigateToModule}
-      />
     </div>
   );
 }
