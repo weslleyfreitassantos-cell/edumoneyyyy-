@@ -40,6 +40,7 @@ export function buildEnemImportDryRun(
   downloads: { artifacts: EnemDownloadedArtifact[]; issues: string[] },
   parsed: EnemParseResult,
   canonical: EnemCanonicalizationResult,
+  options: { manifestVersion?: string } = {},
 ): EnemImportDryRun {
   const parsedQuestions = canonical.canonicalQuestions.filter((question) => question.qualityState === 'PARSED');
   const importableQuestions = parsedQuestions.filter(isEnemImportableQuestion);
@@ -79,7 +80,7 @@ export function buildEnemImportDryRun(
   });
   return {
     schemaVersion: 1,
-    manifestVersion: 'ENEM_OFFICIAL_2025_CANARY_V1',
+    manifestVersion: options.manifestVersion ?? 'ENEM_OFFICIAL_2025_CANARY_V1',
     manifestFingerprint: sha256(fingerprintInput),
     status: hardFailure ? 'FAIL' : quarantined > 0 ? 'PASS_WITH_QUARANTINE' : 'PASS',
     years: [...new Set(downloads.artifacts.map((artifact) => artifact.year))].sort(),
@@ -113,10 +114,11 @@ async function runCli() {
   const parsedPath = argument('--parsed', args) ?? '.runtime/enem-parsed-2025.json';
   const canonicalPath = argument('--canonical', args) ?? '.runtime/enem-canonical-2025.json';
   const outputPath = argument('--out', args) ?? '.runtime/enem-import-dry-run-2025.json';
+  const manifestVersion = argument('--manifest-version', args);
   const downloads = JSON.parse(readFileSync(resolve(downloadsPath), 'utf8')) as { artifacts: EnemDownloadedArtifact[]; issues: string[] };
   const parsed = JSON.parse(readFileSync(resolve(parsedPath), 'utf8')) as EnemParseResult;
   const canonical = JSON.parse(readFileSync(resolve(canonicalPath), 'utf8')) as EnemCanonicalizationResult;
-  const result = buildEnemImportDryRun(downloads, parsed, canonical);
+  const result = buildEnemImportDryRun(downloads, parsed, canonical, { manifestVersion });
   const resolvedOutput = resolve(outputPath);
   mkdirSync(dirname(resolvedOutput), { recursive: true });
   writeFileSync(resolvedOutput, `${JSON.stringify(result, null, 2)}\n`, 'utf8');

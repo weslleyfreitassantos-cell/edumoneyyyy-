@@ -87,4 +87,11 @@ describe('ENEM import dry-run', () => {
     expect(result.canonicalQuestionCount).toBe(result.importableCanonicalQuestionCount);
     expect(result.occurrenceCount).toBe(result.importableOccurrenceCount);
   });
+
+  it('allows a full corpus manifest to be named explicitly', () => {
+    const result = buildEnemImportDryRun({ artifacts: [], issues: [] }, parsed, canonical, {
+      manifestVersion: 'ENEM_OFFICIAL_PRIMARY_LANGUAGE_2017_2025_V1',
+    });
+    expect(result.manifestVersion).toBe('ENEM_OFFICIAL_PRIMARY_LANGUAGE_2017_2025_V1');
+  });
 });

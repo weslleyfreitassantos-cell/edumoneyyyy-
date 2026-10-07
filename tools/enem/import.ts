@@ -151,9 +151,9 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
       source_integrity: 'VERIFIED',
       render_mode: 'HYBRID',
       render_ready: firstRender?.renderReady ?? false,
-      enem_area_verified: record.area_verified,
+      area_verified: record.area_verified,
       enem_subject: record.subject,
-      enem_subject_verified: record.subject_verified,
+      subject_verified: record.subject_verified,
       classification_reason_code: record.reason_code,
       classification_source_fingerprint: record.source_fingerprint,
       statement_assets: firstRender?.statementAssets ?? [],
@@ -177,6 +177,7 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
     };
     lines.push(`  select id into v_question_id from public.learning_question_bank where source_type = 'ENEM_OFFICIAL' and metadata->>'canonical_id' = ${sql(question.canonicalId)} limit 1;`);
     lines.push(`  if v_question_id is null then insert into public.learning_question_bank(package_type, source_type, source_name, source_year, source_exam, source_application, source_day, source_number, subject_area, statement, options, correct_answer, explanation, estimated_minutes, provenance, source_reference, metadata, active) values ('ENEM', 'ENEM_OFFICIAL', 'INEP', ${occurrence.year}, 'ENEM', 'REGULAR', ${sql(occurrence.day)}, ${occurrence.questionNumber}, ${sql(record.area)}, ${sql(question.statement)}, ${jsonSql(question.options)}, ${correctOption === null ? 'null' : jsonSql(correctOption)}, null, 4, 'INEP_OFFICIAL', ${sql(artifact.sourceReference)}, ${jsonSql(metadata)}, true) returning id into v_question_id; end if;`);
+    lines.push(`  update public.learning_question_bank set package_type = 'ENEM', source_name = 'INEP', source_year = ${occurrence.year}, source_exam = 'ENEM', source_application = 'REGULAR', source_day = ${sql(occurrence.day)}, source_number = ${occurrence.questionNumber}, subject_area = ${sql(record.area)}, statement = ${sql(question.statement)}, options = ${jsonSql(question.options)}, correct_answer = ${correctOption === null ? 'null' : jsonSql(correctOption)}, provenance = 'INEP_OFFICIAL', source_reference = ${sql(artifact.sourceReference)}, metadata = ${jsonSql(metadata)}, active = true, updated_at = now() where id = v_question_id;`);
     for (const item of question.occurrences) {
       const sourceArtifact = artifactByKey.get(artifactKey(item.year, item.day, item.booklet));
       const sourceQuestion = questionByKey.get(`${artifactKey(item.year, item.day, item.booklet)}:${item.questionNumber}:${item.language ?? ''}`);
