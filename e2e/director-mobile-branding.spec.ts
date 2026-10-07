@@ -92,6 +92,13 @@ async function expectNoDocumentOverflow(page: Page): Promise<void> {
   expect(dimensions.documentWidth).toBeLessThanOrEqual(dimensions.viewportWidth);
 }
 
+async function openBrandingFromOverview(page: Page): Promise<void> {
+  await page.getByRole('button', { name: 'Abrir menu de navegação' }).click();
+  const brandingLink = page.getByRole('link', { name: 'Personalizar login' });
+  await expect(brandingLink).toBeVisible({ timeout: 30_000 });
+  await brandingLink.click();
+}
+
 test('panorama e personalização do diretor permanecem utilizáveis em telas estreitas', async ({ page }) => {
   test.setTimeout(180_000);
   const credentials = await createDirector();
@@ -116,9 +123,18 @@ test('panorama e personalização do diretor permanecem utilizáveis em telas es
 
   for (const width of [390, 430]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 932 });
-    await page.goto('/personalizar-login', { waitUntil: 'domcontentloaded' });
+    await page.goto('/admin?module=overview', { waitUntil: 'domcontentloaded' });
+    await expect(page.getByRole('heading', { name: 'Desempenho, frequência e pontos de atenção' })).toBeVisible({ timeout: 30_000 });
+    await openBrandingFromOverview(page);
     await expect(page.getByRole('heading', { name: 'Personalizar login' })).toBeVisible({ timeout: 30_000 });
     await expect(page.getByRole('button', { name: 'Visualizar no celular' })).toBeVisible();
+
+    const displayName = `E2E Mobile ${width}`;
+    await page.getByLabel('Nome exibido').fill(displayName);
+    await page.getByRole('button', { name: 'Salvar', exact: true }).click();
+    await expect(page.getByText('Identidade visual do login atualizada com sucesso!')).toBeVisible({ timeout: 30_000 });
+    await expect(page.getByText(displayName, { exact: true })).toBeVisible();
+    await expect(page).toHaveURL(/\/personalizar-login$/);
     await expectNoDocumentOverflow(page);
   }
 });
