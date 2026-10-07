@@ -170,6 +170,30 @@ export async function invalidateResolvedPublicBranding(
   });
 }
 
+/**
+ * Publishes a canonical branding response to the active query/cache layers.
+ * The normal query invalidation remains useful for reconciliation, but it must
+ * not replace the response that was just accepted by the backend with stale
+ * localStorage data while that refetch is in flight.
+ */
+export function updateResolvedPublicBrandingCache(
+  queryClient: QueryClient,
+  hostname: string,
+  branding: PublicBranding,
+): void {
+  const normalizedHostname = normalizeHostnameValue(hostname || 'unknown');
+
+  queryClient.setQueryData(
+    brandingKeys.public(normalizedHostname),
+    branding,
+  );
+  writeCachedPublicBranding(normalizedHostname, branding);
+
+  if (getWindowHostname() === normalizedHostname) {
+    applyDocumentBranding(branding);
+  }
+}
+
 export function useResolvedBranding(
   hostname = getWindowHostname(),
 ) {

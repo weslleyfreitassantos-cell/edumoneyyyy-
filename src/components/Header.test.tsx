@@ -102,6 +102,7 @@ function mockInstitutionContext() {
     hasMultipleInstitutions: true,
     setCurrentInstitutionId,
     clearCurrentInstitutionSelection: vi.fn(),
+    patchCurrentInstitution: vi.fn(),
     refresh: vi.fn(async () => undefined),
   });
 }

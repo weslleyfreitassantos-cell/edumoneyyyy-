@@ -3,13 +3,17 @@
 import { QueryClient } from '@tanstack/react-query';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { invalidateResolvedPublicBranding } from './useBranding';
+import {
+  invalidateResolvedPublicBranding,
+  updateResolvedPublicBrandingCache,
+} from './useBranding';
+import type { PublicBranding } from '../services/brandingService';
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {},
 }));
 
-const staleBranding = {
+const staleBranding: PublicBranding = {
   scope: 'INSTITUTION',
   displayName: 'Escola antiga',
   logoUrl: 'https://cdn.example.com/old-logo.png',
@@ -60,6 +64,27 @@ describe('invalidateResolvedPublicBranding', () => {
     expect(localStorage.getItem('tecescola:public-branding:escola-a.example.com')).toBeNull();
     expect(localStorage.getItem('tecescola:public-branding:escola-b.example.com')).toBeNull();
     expect(localStorage.getItem('unrelated-key')).toBe('preservar');
+    queryClient.clear();
+  });
+});
+
+describe('updateResolvedPublicBrandingCache', () => {
+  it('publica a resposta canônica no React Query e no cache persistido', () => {
+    const queryClient = new QueryClient();
+    const branding = {
+      ...staleBranding,
+      displayName: 'Escola atualizada',
+      logoUrl: 'https://cdn.example.com/logo-v2.png',
+    };
+
+    updateResolvedPublicBrandingCache(
+      queryClient,
+      'escola.example.com',
+      branding,
+    );
+
+    expect(queryClient.getQueryData(['public-branding', 'escola.example.com'])).toEqual(branding);
+    expect(JSON.parse(localStorage.getItem('tecescola:public-branding:escola.example.com') ?? '{}').branding).toEqual(branding);
     queryClient.clear();
   });
 });
