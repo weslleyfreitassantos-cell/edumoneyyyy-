@@ -9,7 +9,7 @@ const state = vi.hoisted(() => ({
     { id: 'subject-portuguese', name: 'Língua Portuguesa' },
   ],
   activities: [] as Array<{ id: string; subject_id: string; unit_id: string | null; skill_id: string | null; title: string }>,
-  simulations: [{ id: 'simulation-1', title: 'ENEM 2025 · diagnóstico', source_year: 2025 }],
+  simulations: [{ id: 'simulation-1', title: 'Matemática', simulation_type: 'SUBJECT', area: null, subject: 'MATEMATICA', question_count: 10, duration_minutes: 20, available_count: 10, language_options: [], metadata: {} }],
   adaptiveTarget: null as null | { canonicalSkillId: string; target: { subjectArea: string } },
   guidedSession: null as null | { id: string; status: string },
   startGuidedSession: vi.fn().mockResolvedValue({ session_id: 'session-1' }),
@@ -27,7 +27,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningStudent: () => ({ data: { id: 'student-1', profile_id: 'profile-1' }, isLoading: false }),
   useStudentLearningSubjects: () => ({ data: state.subjects, isLoading: false, isError: false }),
   usePublishedLearningActivities: () => ({ data: state.activities, isLoading: false, isError: false }),
-  useLearningSimulations: () => ({ data: state.simulations, isLoading: false }),
+  useEnemSimulationTemplates: () => ({ data: state.simulations, isLoading: false }),
   useLearningUnits: () => ({ data: [{ id: 'unit-1', subject_id: 'subject-math', title: 'Números', description: 'Conteúdos essenciais', sort_order: 1 }], isLoading: false }),
   useLearningSkills: () => ({ data: [{ id: 'skill-1', unit_id: 'unit-1', title: 'Resolver problemas', description: null, sort_order: 1 }], isLoading: false }),
   useGuidedLearningSessionV2: () => ({ data: state.guidedSession, isLoading: false }),
@@ -69,12 +69,12 @@ describe('StudyCenterPage', () => {
 
     expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: /Matemática/ })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Língua Portuguesa/ })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Começar simulado' }).getAttribute('href')).toBe('/student/study/simulation');
+    expect(screen.getByRole('link', { name: /Praticar/ }).getAttribute('href')).toBe('/student/study/simulation?simulation=simulation-1');
     expect(screen.queryByText('Central de Estudos')).toBeNull();
     expect(screen.queryByText('Seu próximo passo')).toBeNull();
-    expect(screen.getByRole('heading', { name: 'Simulado ENEM' }).compareDocumentPosition(screen.getByRole('region', { name: 'Matérias' }))).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(screen.getByRole('heading', { name: 'Práticas oficiais' }).compareDocumentPosition(screen.getByRole('region', { name: 'Matérias' }))).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
   it('filtra as matérias sem misturar outros conteúdos', () => {
@@ -82,14 +82,14 @@ describe('StudyCenterPage', () => {
 
     fireEvent.change(screen.getByRole('textbox', { name: 'Pesquisar matéria' }), { target: { value: 'mat' } });
 
-    expect(screen.getByRole('link', { name: /Matemática/ })).toBeTruthy();
+    expect(screen.getAllByRole('link', { name: /Matemática/ }).some((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toBe(true);
     expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
   });
 
   it('abre a área própria da matéria ao clicar no card', () => {
     renderPage();
 
-    fireEvent.click(screen.getByRole('link', { name: /Matemática/ }));
+    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
 
     expect(screen.getByRole('region', { name: 'Estudo de Matemática' })).toBeTruthy();
     expect(screen.getByText('Números')).toBeTruthy();

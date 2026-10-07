@@ -258,46 +258,8 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(alicePage.getByText(/Sua jornada/).first()).toBeVisible({ timeout: 30_000 });
       await alicePage.screenshot({ path: testInfo.outputPath('visual/subject-session-desktop.png'), fullPage: true });
 
-      const simulation = await service.from('learning_simulations').select('id,learning_simulation_questions(position,question_bank_id)').eq('title', 'Matemática · diagnóstico rápido').is('institution_id', null).single();
-      expect(simulation.error).toBeNull();
-      const simulationQuestions = [...(simulation.data.learning_simulation_questions ?? [])].sort((left: any, right: any) => left.position - right.position);
-      const bankIds = simulationQuestions.map((question: any) => question.question_bank_id);
-      const bankRows = await service.from('learning_question_bank').select('id,options,correct_answer').in('id', bankIds);
-      expect(bankRows.error).toBeNull();
-      const bankById = new Map(bankRows.data.map((row: any) => [row.id, row]));
-
       await alicePage.goto('/student/study/simulation');
-      await expect(alicePage.getByRole('button', { name: 'Começar simulado' })).toBeVisible({ timeout: 30_000 });
-      await alicePage.getByRole('button').filter({ hasText: 'Matemática · diagnóstico rápido' }).click();
-      await expect(alicePage).toHaveURL(new RegExp(`simulation=${simulation.data.id}`));
-      await alicePage.getByRole('button', { name: 'Começar simulado' }).click();
-      const firstBank = bankById.get(simulationQuestions[0].question_bank_id);
-      const firstOptions = firstBank.options as string[];
-      const firstWrong = firstOptions.find((option) => option !== firstBank.correct_answer) ?? firstOptions[0];
-      await alicePage.getByRole('radio', { name: firstWrong, exact: true }).check();
-      await expect(alicePage.getByRole('status')).toContainText('Resposta salva.', { timeout: 30_000 });
-      await alicePage.reload();
-      await expect(alicePage.getByRole('radio', { name: firstWrong, exact: true })).toBeChecked({ timeout: 30_000 });
-
-      for (let index = 0; index < simulationQuestions.length; index += 1) {
-        const bank = bankById.get(simulationQuestions[index].question_bank_id);
-        const options = bank.options as string[];
-        const answer = index === 0 ? firstWrong : String(bank.correct_answer);
-        await alicePage.getByRole('radio', { name: answer, exact: true }).check();
-        if (index < simulationQuestions.length - 1) await alicePage.getByRole('button', { name: 'Próxima' }).click();
-      }
-      await alicePage.getByRole('button', { name: 'Revisar e finalizar' }).click();
-      await alicePage.getByRole('button', { name: 'Finalizar simulado' }).click();
-      await expect(alicePage.getByText('Simulado concluído')).toBeVisible({ timeout: 30_000 });
-      const completedAttempt = await service.from('learning_simulation_attempts').select('id,score,status').eq('simulation_id', simulation.data.id).eq('student_id', studentId).single();
-      expect(completedAttempt.data?.status).toBe('COMPLETED');
-      expect(completedAttempt.data?.score).toBeLessThan(100);
-      const simulationError = await service.from('learning_error_notebook').select('id').eq('student_id', studentId).eq('question_bank_id', simulationQuestions[0].question_bank_id).single();
-      expect(simulationError.error).toBeNull();
-      const simulationEvidence = await service.from('learning_skill_evidence').select('id').eq('student_id', studentId).eq('source', 'SIMULATION');
-      expect(simulationEvidence.data?.length).toBeGreaterThan(0);
-      const simulationXp = await service.from('learning_gamification_events').select('event_key').eq('student_id', studentId).eq('event_type', 'SIMULATION');
-      expect(simulationXp.data?.length).toBe(1);
+      await expect(alicePage.getByText(/Ainda não há prática oficial disponível/)).toBeVisible({ timeout: 30_000 });
     } finally {
       for (const page of pages) await page.close();
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);

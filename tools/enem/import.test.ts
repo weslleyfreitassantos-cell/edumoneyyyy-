@@ -23,12 +23,12 @@ describe('ENEM import plan', () => {
       manifest: { manifestFingerprint: 'f'.repeat(64), manifestVersion: 'TEST', years: [2025], artifactCount: 1, canonicalQuestionCount: 1, occurrenceCount: 1 },
     });
     expect(plan.playableQuestions).toBe(1);
-    expect(plan.simulations).toBe(2);
+    expect(plan.simulations).toBe(15);
     expect(plan.sql).toContain("source_integrity");
     expect(plan.sql).toContain("pedagogical_enrichment");
     expect(plan.sql).toContain('\'"3"\'::jsonb');
     expect(plan.sql).toContain("source_year, question_count");
-    expect(plan.sql).toContain("'ENEM 2025 · MATEMATICA · prática oficial'");
+    expect(plan.sql).toContain("'Matemática e suas Tecnologias'");
   });
 
   it('selects a small deterministic canary across areas', () => {

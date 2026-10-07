@@ -283,6 +283,51 @@ export interface LearningSimulationAttempt {
   learning_simulations?: { title: string; simulation_type: LearningSimulation['simulation_type'] } | { title: string; simulation_type: LearningSimulation['simulation_type'] }[] | null;
 }
 
+export interface EnemSimulationTemplate {
+  id: string;
+  title: string;
+  simulation_type: 'AREA' | 'SUBJECT';
+  area: string | null;
+  subject: string | null;
+  question_count: number;
+  duration_minutes: number | null;
+  available_count: number;
+  language_options: string[];
+  metadata: Record<string, unknown>;
+}
+
+export interface EnemSimulationQuestion {
+  position: number;
+  question_bank_id: string;
+  statement: string;
+  options: string[];
+  source_year: number | null;
+  question_number: number | null;
+  metadata: Record<string, unknown>;
+  statement_assets: Array<{
+    media_type: string;
+    storage_path: string | null;
+    public_url: string | null;
+    metadata: Record<string, unknown>;
+  }>;
+}
+
+export interface EnemSimulationAttempt {
+  attempt_id: string;
+  simulation_id: string;
+  status: 'IN_PROGRESS' | 'COMPLETED' | 'ABANDONED';
+  started_at: string;
+  completed_at: string | null;
+  duration_seconds: number | null;
+  total_questions: number;
+  score: number;
+  correct_count: number;
+  answers: Record<string, { answer: unknown; is_correct?: boolean | null }>;
+  navigation_state: { current_index?: number; flagged?: string[] } | null;
+  simulation: Pick<EnemSimulationTemplate, 'id' | 'title' | 'simulation_type' | 'area' | 'question_count' | 'duration_minutes' | 'metadata'> | null;
+  questions: EnemSimulationQuestion[];
+}
+
 export interface LearningSimulationAssignment {
   assignment_id: string;
   simulation_id: string;
@@ -1099,6 +1144,11 @@ export const learningCenterService = {
         .order('created_at', { ascending: false }),
     ),
 
+  enemSimulationTemplates: (institutionId: string) =>
+    read<EnemSimulationTemplate[]>(supabase.rpc('list_enem_simulation_templates_v2', {
+      p_institution_id: institutionId,
+    })),
+
   packages: (institutionId: string) =>
     read<LearningPackage[]>(
       supabase
@@ -1186,6 +1236,19 @@ export const learningCenterService = {
       p_simulation_id: input.simulationId,
     })),
 
+  startEnemSimulation: (input: { institutionId: string; studentId: string; simulationId: string; languageChoice?: 'ENGLISH' | 'SPANISH' }) =>
+    read<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null }>(supabase.rpc('start_enem_simulation_attempt_v2', {
+      p_institution_id: input.institutionId,
+      p_student_id: input.studentId,
+      p_simulation_id: input.simulationId,
+      p_language_choice: input.languageChoice ?? null,
+    })),
+
+  getEnemSimulationAttempt: (attemptId: string) =>
+    read<EnemSimulationAttempt>(supabase.rpc('get_enem_simulation_attempt_v2', {
+      p_attempt_id: attemptId,
+    })),
+
   submitSimulation: (attemptId: string, answers: Array<{ question_bank_id: string; answer: unknown }>, durationSeconds: number) =>
     read<{ attempt_id: string; score: number; correct_count: number; total_questions: number; area_breakdown?: Record<string, { correct: number; total: number }>; skill_breakdown?: Record<string, { correct: number; total: number }> }>(supabase.rpc('submit_learning_simulation_attempt', {
       p_attempt_id: attemptId,
@@ -1193,8 +1256,21 @@ export const learningCenterService = {
       p_duration_seconds: durationSeconds,
     })),
 
+  submitEnemSimulation: (attemptId: string, answers: Array<{ question_bank_id: string; answer: string }>, durationSeconds: number) =>
+    read<{ attempt_id: string; score: number; correct_count: number; total_questions: number; answers: Record<string, { answer: unknown; is_correct?: boolean | null }>; area_breakdown?: Record<string, { correct: number; total: number }>; skill_breakdown?: Record<string, { correct: number; total: number }> }>(supabase.rpc('submit_enem_simulation_attempt_v2', {
+      p_attempt_id: attemptId,
+      p_answers: answers,
+      p_duration_seconds: durationSeconds,
+    })),
+
   saveSimulationAnswers: (attemptId: string, answers: Array<{ question_bank_id: string; answer: unknown }>) =>
     read<{ attempt_id: string; answers: Record<string, { answer: unknown; is_correct?: boolean | null }> }>(supabase.rpc('save_learning_simulation_attempt_answers', {
+      p_attempt_id: attemptId,
+      p_answers: answers,
+    })),
+
+  saveEnemSimulationAnswers: (attemptId: string, answers: Array<{ question_bank_id: string; answer: string }>) =>
+    read<{ attempt_id: string; answers: Record<string, { answer: unknown }> }>(supabase.rpc('save_enem_simulation_attempt_answers_v2', {
       p_attempt_id: attemptId,
       p_answers: answers,
     })),

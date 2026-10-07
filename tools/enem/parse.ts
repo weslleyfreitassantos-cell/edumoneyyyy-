@@ -211,7 +211,11 @@ function extractOptions(raw: string) {
   return { before: lines.join(' '), options: [] };
 }
 
-export function parseQuestionSegments(segments: ReturnType<typeof extractQuestionSegments>, answers: OfficialAnswer[]) {
+export function parseQuestionSegments(
+  segments: ReturnType<typeof extractQuestionSegments>,
+  answers: OfficialAnswer[],
+  day = 'D1',
+) {
   const answerByKey = new Map(answers.map((answer) => [`${answer.questionNumber}:${answer.language ?? ''}`, answer.answer]));
   return segments.map<ParsedEnemQuestion>((segment) => {
     const extracted = extractOptions(segment.raw);
@@ -282,7 +286,7 @@ async function parseArtifact(artifact: EnemDownloadedArtifact): Promise<ParsedEn
   const answerPages = await extractPdfPages(artifact.answerKeyPath);
   const answerKey = parseOfficialAnswerKey(answerPages.map((page) => page.text).join('\n'), artifact.day);
   const segments = extractQuestionSegments(examPages, artifact.day);
-  const parsedQuestions = parseQuestionSegments(segments, answerKey);
+  const parsedQuestions = parseQuestionSegments(segments, answerKey, artifact.day);
   const identityCounts = new Map<string, number>();
   for (const question of parsedQuestions) {
     const key = `${question.questionNumber}:${question.language ?? ''}`;
