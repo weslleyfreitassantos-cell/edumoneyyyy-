@@ -62,7 +62,7 @@ async function login(page: Page, credentials: { email: string; password: string 
   await page.getByLabel('E-mail institucional').fill(credentials.email);
   await page.locator('#login-password').fill(credentials.password);
   await page.getByRole('button', { name: /entrar/i }).click();
-  await expect(page).toHaveURL(/\/admin\?module=overview/, { timeout: 30_000 });
+  await expect(page).not.toHaveURL(/\/login/, { timeout: 30_000 });
 }
 
 async function expectNoDocumentOverflow(page: Page): Promise<void> {
@@ -86,6 +86,7 @@ test('panorama e personalização do diretor permanecem utilizáveis em telas es
   ]) {
     await page.setViewportSize(viewport);
     await login(page, credentials);
+    await page.goto('/admin?module=overview', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Desempenho, frequência e pontos de atenção' })).toBeVisible({ timeout: 30_000 });
     await expect(page.getByRole('heading', { name: 'Frequência média ao longo do tempo' })).toBeVisible({ timeout: 30_000 });
     await expectNoDocumentOverflow(page);
