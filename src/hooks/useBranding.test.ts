@@ -7,6 +7,8 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {
   invalidateResolvedPublicBranding,
+  brandingKeys,
+  preloadPublicBrandingAssets,
   updateResolvedPublicBrandingCache,
   useResolvedBranding,
 } from './useBranding';
@@ -156,6 +158,7 @@ describe('useResolvedBranding', () => {
     const queryClient = new QueryClient({
       defaultOptions: { queries: { retry: false } },
     });
+    queryClient.setQueryData(brandingKeys.public(host), staleBranding);
     const wrapper = ({ children }: PropsWithChildren) =>
       createElement(QueryClientProvider, { client: queryClient }, children);
     const { result, unmount } = renderHook(
@@ -192,5 +195,30 @@ describe('useResolvedBranding', () => {
 
     unmount();
     queryClient.clear();
+  });
+
+  it('nao publica asset cujo preload falhou para evitar uma pintura atrasada', async () => {
+    class FailedImage {
+      onload: ((event: Event) => void) | null = null;
+      onerror: ((event: Event) => void) | null = null;
+      complete = false;
+      naturalWidth = 0;
+      src = '';
+
+      constructor() {
+        queueMicrotask(() => this.onerror?.(new Event('error')));
+      }
+    }
+    vi.stubGlobal('Image', FailedImage);
+
+    const result = await preloadPublicBrandingAssets({
+      ...staleBranding,
+      loginBackgroundUrl:
+        'https://cdn.example.com/current-background.png',
+    });
+
+    expect(result.logoUrl).toBeNull();
+    expect(result.faviconUrl).toBeNull();
+    expect(result.loginBackgroundUrl).toBeNull();
   });
 });

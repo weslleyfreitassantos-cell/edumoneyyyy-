@@ -533,6 +533,7 @@ export default function ResetPassword() {
         heroVariant="default"
         layoutVariant="login"
         showBrand={false}
+        backgroundLoading={brandingQuery.isLoading}
         backgroundImageUrl={branding.loginBackgroundUrl}
         footer={footer}
       >
@@ -564,6 +565,7 @@ export default function ResetPassword() {
         heroVariant="default"
         layoutVariant="login"
         showBrand={false}
+        backgroundLoading={brandingQuery.isLoading}
         backgroundImageUrl={branding.loginBackgroundUrl}
         footer={footer}
       >
@@ -603,6 +605,7 @@ export default function ResetPassword() {
         heroVariant="default"
         layoutVariant="login"
         showBrand={false}
+        backgroundLoading={brandingQuery.isLoading}
         backgroundImageUrl={branding.loginBackgroundUrl}
         footer={footer}
       >
@@ -650,6 +653,7 @@ export default function ResetPassword() {
       heroVariant="default"
       layoutVariant="login"
       showBrand={false}
+      backgroundLoading={brandingQuery.isLoading}
       backgroundImageUrl={branding.loginBackgroundUrl}
       footer={footer}
     >

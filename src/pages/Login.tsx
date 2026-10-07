@@ -129,6 +129,7 @@ export function Login() {
       heroVariant="default"
       layoutVariant="login"
       showBrand={false}
+      backgroundLoading={brandingQuery.isLoading}
       backgroundImageUrl={branding.loginBackgroundUrl}
       footer={footerContent}
     >

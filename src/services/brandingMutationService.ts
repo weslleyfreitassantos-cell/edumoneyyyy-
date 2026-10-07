@@ -160,7 +160,7 @@ function resolvePublicSlug(
 function buildVersionedPublicUrl(publicUrl: string): string {
   const separator = publicUrl.includes('?') ? '&' : '?';
 
-  return `${publicUrl}${separator}v=${Date.now()}`;
+  return `${publicUrl}${separator}cacheNonce=${Date.now()}`;
 }
 
 async function removeKnownLogoFiles(institutionId: string): Promise<void> {
@@ -384,6 +384,7 @@ export const brandingMutationService = {
     }
 
     const loginBackgroundUrl = buildVersionedPublicUrl(publicBackgroundUrl);
+
     const publicSlug = resolvePublicSlug(
       input.institutionName,
       input.currentPublicSlug,

@@ -209,6 +209,41 @@ describe('brandingService', () => {
     });
   });
 
+  it('converte URLs institucionais legadas para cacheNonce e preserva URLs externas', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [
+        {
+          id: 'institution-1',
+          name: 'Escola Luz',
+          subdomain: 'escola-luz',
+          logo_url:
+            'https://project.supabase.co/storage/v1/object/public/institution-branding/institution-1/logo.png',
+          favicon_url:
+            'https://project.supabase.co/storage/v1/object/public/institution-branding/institution-1/favicon.png?v=123',
+          login_background_url:
+            'https://cdn.example.com/escola-luz/background.jpg?v=456',
+          primary_color: '#123456',
+          secondary_color: '#abcdef',
+        },
+      ],
+      error: null,
+    } as never);
+
+    const result = await brandingService.resolveForHostname(
+      'escola-luz.grupotec.dev.br',
+    );
+
+    expect(result.logoUrl).toBe(
+      'https://project.supabase.co/storage/v1/object/public/institution-branding/institution-1/logo.png?cacheNonce=legacy',
+    );
+    expect(result.faviconUrl).toBe(
+      'https://project.supabase.co/storage/v1/object/public/institution-branding/institution-1/favicon.png?cacheNonce=123',
+    );
+    expect(result.loginBackgroundUrl).toBe(
+      'https://cdn.example.com/escola-luz/background.jpg?v=456',
+    );
+  });
+
   it('usa branding da plataforma para hosts oficiais da plataforma', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [

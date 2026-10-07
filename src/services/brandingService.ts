@@ -34,6 +34,53 @@ export interface PublicBranding {
   secondaryColor: string;
 }
 
+function normalizeInstitutionAssetUrl(value: unknown): string | null {
+  if (typeof value !== 'string' || !value.trim()) {
+    return null;
+  }
+
+  try {
+    const url = new URL(value);
+    if (
+      !url.pathname.includes(
+        `/storage/v1/object/public/${BRANDING_BUCKET}/`,
+      )
+    ) {
+      return value;
+    }
+
+    const legacyVersion = url.searchParams.get('v');
+    const legacyFixedPath = /\/(?:logo|favicon|background)\.(?:png|jpe?g|webp)$/i.test(
+      url.pathname,
+    );
+    if (!legacyVersion && !legacyFixedPath) {
+      return value;
+    }
+
+    url.searchParams.delete('v');
+    if (!url.searchParams.has('cacheNonce')) {
+      url.searchParams.set('cacheNonce', legacyVersion ?? 'legacy');
+    }
+
+    return url.toString();
+  } catch {
+    return value;
+  }
+}
+
+export function normalizePublicBrandingAssetUrls(
+  branding: PublicBranding,
+): PublicBranding {
+  return {
+    ...branding,
+    logoUrl: normalizeInstitutionAssetUrl(branding.logoUrl),
+    faviconUrl: normalizeInstitutionAssetUrl(branding.faviconUrl),
+    loginBackgroundUrl: normalizeInstitutionAssetUrl(
+      branding.loginBackgroundUrl,
+    ),
+  };
+}
+
 export interface BrandingRecord extends PublicBranding {
   id: string;
   scope: BrandingScope;
@@ -260,7 +307,7 @@ function normalizePublicBrandingRow(
 function normalizePublicInstitutionBrandingRow(
   row: PublicInstitutionBrandingRow,
 ): PublicBranding {
-  return {
+  return normalizePublicBrandingAssetUrls({
     scope: 'INSTITUTION',
     displayName:
       typeof row.login_display_name === 'string' &&
@@ -269,12 +316,8 @@ function normalizePublicInstitutionBrandingRow(
         : typeof row.name === 'string'
           ? row.name
           : null,
-    logoUrl:
-      typeof row.logo_url === 'string' ? row.logo_url : null,
-    faviconUrl:
-      typeof row.favicon_url === 'string'
-        ? row.favicon_url
-        : null,
+    logoUrl: typeof row.logo_url === 'string' ? row.logo_url : null,
+    faviconUrl: typeof row.favicon_url === 'string' ? row.favicon_url : null,
     loginBackgroundUrl:
       typeof row.login_background_url === 'string'
         ? row.login_background_url
@@ -291,7 +334,7 @@ function normalizePublicInstitutionBrandingRow(
         : null,
       DEFAULT_BRAND_SECONDARY_COLOR,
     ),
-  };
+  });
 }
 
 async function resolveInstitutionBranding(
