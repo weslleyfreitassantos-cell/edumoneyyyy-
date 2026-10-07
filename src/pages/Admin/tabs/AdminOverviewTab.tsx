@@ -346,10 +346,10 @@ export default function AdminOverviewTab({
           onClick={() => setPanoramaOpen((open) => !open)}
         >
           <span className="min-w-0">
-            <span id="admin-overview-panorama-heading" role="heading" aria-level={2} className="block text-base font-bold text-[#344054] dark:text-slate-100">
+            <span className="block text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf] dark:text-blue-400">
               Panorama acadêmico
             </span>
-            <span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">
+            <span id="admin-overview-panorama-heading" role="heading" aria-level={2} className="mt-1 block text-base font-bold text-[#344054] dark:text-slate-100">
               Desempenho, frequência e pontos de atenção
             </span>
             <span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">
