@@ -61,7 +61,10 @@ async function login(page: Page, credentials: { email: string; password: string 
   await page.goto('/login', { waitUntil: 'domcontentloaded' });
   await page.getByLabel('E-mail institucional').fill(credentials.email);
   await page.locator('#login-password').fill(credentials.password);
-  await page.getByRole('button', { name: /entrar/i }).click();
+  const submitButton = page.locator('form button[type="submit"]');
+  await expect(submitButton).toBeVisible({ timeout: 30_000 });
+  await expect(submitButton).toBeEnabled({ timeout: 30_000 });
+  await submitButton.click();
   await expect(page).not.toHaveURL(/\/login/, { timeout: 30_000 });
 }
 
@@ -76,16 +79,19 @@ async function expectNoDocumentOverflow(page: Page): Promise<void> {
 test('panorama e personalização do diretor permanecem utilizáveis em telas estreitas', async ({ page }) => {
   test.setTimeout(180_000);
   const credentials = await createDirector();
-
-  for (const viewport of [
+  const viewports = [
     { width: 360, height: 800 },
     { width: 390, height: 844 },
     { width: 430, height: 932 },
     { width: 768, height: 1024 },
     { width: 1440, height: 900 },
-  ]) {
+  ];
+
+  await page.setViewportSize(viewports[0]);
+  await login(page, credentials);
+
+  for (const viewport of viewports) {
     await page.setViewportSize(viewport);
-    await login(page, credentials);
     await page.goto('/admin?module=overview', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Desempenho, frequência e pontos de atenção' })).toBeVisible({ timeout: 30_000 });
     await expect(page.getByRole('heading', { name: 'Frequência média ao longo do tempo' })).toBeVisible({ timeout: 30_000 });
