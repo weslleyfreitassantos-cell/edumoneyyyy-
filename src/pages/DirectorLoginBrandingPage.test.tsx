@@ -467,7 +467,24 @@ describe('DirectorLoginBrandingPage', () => {
 });
 
 describe('DirectorLoginBrandingRoute', () => {
-  function renderRoute(currentRole: string | null) {
+  function renderRoute(
+    currentRole: string | null,
+    profileRole: 'DIRECTOR' | 'ADMIN' = 'DIRECTOR',
+  ) {
+    mockedUseAuth.mockReturnValue({
+      user: null,
+      profile: {
+        id: 'profile-1',
+        full_name: 'Dora Diretora',
+        email: 'diretora@example.com',
+        role: profileRole,
+        platform_role: 'USER',
+        avatar_url: null,
+      },
+      loading: false,
+      signIn: vi.fn(),
+      signOut: vi.fn(),
+    });
     mockDirectorContext({ currentRole });
 
     render(
@@ -498,8 +515,16 @@ describe('DirectorLoginBrandingRoute', () => {
     ).toBeTruthy();
   });
 
+  it('usa o papel do perfil quando o papel da instituição ainda não foi resolvido', async () => {
+    renderRoute(null, 'DIRECTOR');
+
+    expect(
+      await screen.findByRole('heading', { name: /Personalizar login/i }),
+    ).toBeTruthy();
+  });
+
   it('bloqueia papel diferente de DIRECTOR', () => {
-    renderRoute('ADMIN');
+    renderRoute('ADMIN', 'ADMIN');
 
     expect(screen.getByText('Acesso negado')).toBeTruthy();
   });

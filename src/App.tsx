@@ -475,6 +475,7 @@ function DashboardContent() {
 }
 
 export function DirectorLoginBrandingRoute() {
+  const { profile } = useAuth();
   const { currentRole, isLoading } = useInstitution();
 
   if (isLoading) {
@@ -485,7 +486,7 @@ export function DirectorLoginBrandingRoute() {
     );
   }
 
-  if (currentRole !== 'DIRECTOR') {
+  if (currentRole !== 'DIRECTOR' && profile?.role !== 'DIRECTOR') {
     return (
       <Navigate
         to="/unauthorized"
