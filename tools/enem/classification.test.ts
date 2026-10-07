@@ -32,7 +32,32 @@ describe('ENEM subject classification', () => {
       statement: 'O Muro de Berlim e a Guerra Fria marcaram o século XX.',
     }));
     expect(result.subject).toBe('HISTORIA');
-    expect(result.subject_verified).toBe(true);
+    expect(result.subject_verified).toBe(false);
+    expect(result.review_state).toBe('CANDIDATE');
+    expect(result.reason_code).toBe('CLASSIFICATION_CANDIDATE_HISTORIA');
+  });
+
+  it('does not verify a physics subject from keyword signals alone', () => {
+    const result = classifyCanonicalQuestion(question({
+      canonicalId: 'physics-candidate',
+      statement: 'A mecânica analisa como a velocidade aumenta quando a força resultante atua sobre o corpo.',
+    }));
+    expect(result.subject).toBe('FISICA');
+    expect(result.subject_verified).toBe(false);
+    expect(result.review_state).toBe('CANDIDATE');
+  });
+
+  it('accepts a manually reviewed physics registry record', () => {
+    const original = question({ canonicalId: 'physics-reviewed' });
+    const automatic = classifyCanonicalQuestion(original);
+    const reviewed = {
+      ...automatic,
+      subject: 'FISICA' as const,
+      subject_verified: true,
+      review_state: 'VERIFIED' as const,
+      reason_code: 'VERIFIED_MANUAL_REVIEW',
+    };
+    expect(validateSubjectClassificationRegistry([reviewed], [original])).toEqual([]);
   });
 
   it('fails closed when signals do not disambiguate the subject', () => {
@@ -47,5 +72,11 @@ describe('ENEM subject classification', () => {
     const record = classifyCanonicalQuestion(original);
     expect(validateSubjectClassificationRegistry([{ ...record, source_fingerprint: 'x'.repeat(64) }], [original])).toContain(`FINGERPRINT_MISMATCH:${original.canonicalId}`);
     expect(validateSubjectClassificationRegistry([{ ...record, subject: 'HISTORIA', subject_verified: true, review_state: 'VERIFIED' }], [original])).toContain(`NATUREZA_SUBJECT_MISMATCH:${original.canonicalId}`);
+  });
+
+  it('rejects full question text from the frozen registry', () => {
+    const original = question();
+    const record = classifyCanonicalQuestion(original);
+    expect(validateSubjectClassificationRegistry([{ ...record, statement: original.statement }], [original])).toContain(`INVALID_REGISTRY_FIELDS:${original.canonicalId}`);
   });
 });

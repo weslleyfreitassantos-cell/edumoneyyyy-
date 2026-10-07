@@ -25,7 +25,7 @@ export const ENEM_AREAS = [
 
 export type EnemSubject = typeof ENEM_SUBJECTS[number];
 export type EnemArea = typeof ENEM_AREAS[number];
-export type ReviewState = 'VERIFIED' | 'REVIEW_REQUIRED' | 'REJECTED';
+export type ReviewState = 'VERIFIED' | 'CANDIDATE' | 'REVIEW_REQUIRED' | 'REJECTED';
 
 export interface SubjectClassificationRecord {
   canonical_id: string;
@@ -111,11 +111,12 @@ function matchesSignalGroups(text: string, groups: string[][]) {
 function classifySubject(question: CanonicalEnemQuestion): {
   subject: EnemSubject | null;
   reasonCode: string;
+  deterministic: boolean;
 } {
-  if (question.area === 'MATEMATICA') return { subject: 'MATEMATICA', reasonCode: 'OFFICIAL_MATH_AREA_EQUIVALENT' };
-  if (question.language === 'ENGLISH') return { subject: 'INGLES', reasonCode: 'OFFICIAL_LANGUAGE_ENGLISH' };
-  if (question.language === 'SPANISH') return { subject: 'ESPANHOL', reasonCode: 'OFFICIAL_LANGUAGE_SPANISH' };
-  if (!question.area) return { subject: null, reasonCode: 'AREA_UNKNOWN' };
+  if (question.area === 'MATEMATICA') return { subject: 'MATEMATICA', reasonCode: 'OFFICIAL_MATH_AREA_EQUIVALENT', deterministic: true };
+  if (question.language === 'ENGLISH') return { subject: 'INGLES', reasonCode: 'OFFICIAL_LANGUAGE_ENGLISH', deterministic: true };
+  if (question.language === 'SPANISH') return { subject: 'ESPANHOL', reasonCode: 'OFFICIAL_LANGUAGE_SPANISH', deterministic: true };
+  if (!question.area) return { subject: null, reasonCode: 'AREA_UNKNOWN', deterministic: false };
 
   const text = normalized(`${question.statement}\n${question.options.join('\n')}`);
   const allowedSubjects = subjectsByArea[question.area as EnemArea] ?? [];
@@ -125,9 +126,9 @@ function classifySubject(question: CanonicalEnemQuestion): {
     .sort((left, right) => right.score - left.score);
   const [best, second] = candidates;
   if (best && best.score >= 2 && best.score > (second?.score ?? 0)) {
-    return { subject: best.subject, reasonCode: `MULTI_SIGNAL_${best.subject}` };
+    return { subject: best.subject, reasonCode: `CLASSIFICATION_CANDIDATE_${best.subject}`, deterministic: false };
   }
-  return { subject: null, reasonCode: best?.score ? 'AMBIGUOUS_SUBJECT_SIGNALS' : 'NO_REPRODUCIBLE_SUBJECT_SIGNAL' };
+  return { subject: null, reasonCode: best?.score ? 'AMBIGUOUS_SUBJECT_SIGNALS' : 'NO_REPRODUCIBLE_SUBJECT_SIGNAL', deterministic: false };
 }
 
 export function classifyCanonicalQuestion(question: CanonicalEnemQuestion): SubjectClassificationRecord {
@@ -135,14 +136,14 @@ export function classifyCanonicalQuestion(question: CanonicalEnemQuestion): Subj
   const areaVerified = area !== null;
   const classified = classifySubject(question);
   const subject = areaVerified && classified.subject ? classified.subject : null;
-  const subjectVerified = subject !== null;
+  const subjectVerified = subject !== null && classified.deterministic;
   return {
     canonical_id: question.canonicalId,
     area,
     subject,
     area_verified: areaVerified,
     subject_verified: subjectVerified,
-    review_state: subjectVerified ? 'VERIFIED' : 'REVIEW_REQUIRED',
+    review_state: subjectVerified ? 'VERIFIED' : subject ? 'CANDIDATE' : 'REVIEW_REQUIRED',
     reason_code: areaVerified ? classified.reasonCode : 'AREA_UNKNOWN',
     source_fingerprint: sourceFingerprint(question),
   };
@@ -156,10 +157,12 @@ export function validateSubjectClassificationRegistry(
   registry: SubjectClassificationRecord[],
   questions: CanonicalEnemQuestion[],
 ) {
+  const expectedFields = ['canonical_id', 'source_fingerprint', 'area', 'subject', 'area_verified', 'subject_verified', 'review_state', 'reason_code'];
   const questionById = new Map(questions.map((question) => [question.canonicalId, question]));
   const seen = new Set<string>();
   const errors: string[] = [];
   for (const record of registry) {
+    if (Object.keys(record).sort().join('|') !== expectedFields.slice().sort().join('|')) errors.push(`INVALID_REGISTRY_FIELDS:${record.canonical_id}`);
     if (seen.has(record.canonical_id)) errors.push(`DUPLICATE_CANONICAL_ID:${record.canonical_id}`);
     seen.add(record.canonical_id);
     const question = questionById.get(record.canonical_id);
@@ -170,8 +173,14 @@ export function validateSubjectClassificationRegistry(
     if (record.area && !ENEM_AREAS.includes(record.area)) errors.push(`INVALID_AREA:${record.canonical_id}`);
     if (record.subject && !ENEM_SUBJECTS.includes(record.subject)) errors.push(`INVALID_SUBJECT:${record.canonical_id}`);
     if (record.source_fingerprint !== sourceFingerprint(question)) errors.push(`FINGERPRINT_MISMATCH:${record.canonical_id}`);
-    if (record.subject_verified !== Boolean(record.subject) || (record.subject_verified && record.review_state !== 'VERIFIED')) {
+    if (record.subject_verified && (!record.subject || record.review_state !== 'VERIFIED')) {
       errors.push(`VERIFIED_SUBJECT_INCONSISTENT:${record.canonical_id}`);
+    }
+    if (record.subject_verified && !['OFFICIAL_MATH_AREA_EQUIVALENT', 'OFFICIAL_LANGUAGE_ENGLISH', 'OFFICIAL_LANGUAGE_SPANISH', 'VERIFIED_MANUAL_REVIEW'].includes(record.reason_code)) {
+      errors.push(`VERIFIED_SUBJECT_REASON_NOT_ALLOWED:${record.canonical_id}`);
+    }
+    if (!record.subject_verified && record.review_state === 'VERIFIED') {
+      errors.push(`UNVERIFIED_SUBJECT_MARKED_VERIFIED:${record.canonical_id}`);
     }
     if (record.subject === 'MATEMATICA' && question.area !== 'MATEMATICA') errors.push(`MATH_AREA_MISMATCH:${record.canonical_id}`);
     if (question.area === 'MATEMATICA' && record.subject !== 'MATEMATICA') errors.push(`MATH_SUBJECT_MISMATCH:${record.canonical_id}`);

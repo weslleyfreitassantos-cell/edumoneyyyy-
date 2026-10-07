@@ -137,7 +137,7 @@ export function buildPromotionSelection(
   for (const area of ENEM_AREAS) {
     const areaQuestions = eligible.filter((question) => registryById.get(question.canonicalId)?.area === area);
     if (area === 'LINGUAGENS') {
-      areaQuestions.filter((question) => question.language === null && registryById.get(question.canonicalId)?.subject === 'LINGUA_PORTUGUESA').slice(0, commonTarget).forEach((question) => add(question, 'AREA'));
+      areaQuestions.filter((question) => question.language === null).slice(0, commonTarget).forEach((question) => add(question, 'AREA'));
       areaQuestions.filter((question) => question.language === 'ENGLISH').slice(0, languageTarget).forEach((question) => add(question, 'AREA'));
       areaQuestions.filter((question) => question.language === 'SPANISH').slice(0, languageTarget).forEach((question) => add(question, 'AREA'));
     } else {
@@ -145,4 +145,96 @@ export function buildPromotionSelection(
     }
   }
   return [...picked.values()];
+}
+
+export interface EnemPromotionParity {
+  readiness: {
+    subjects: number;
+    areas: number;
+    languagesCommon: number;
+    english: number;
+    spanish: number;
+  };
+  selected: {
+    subjects: number;
+    areas: number;
+    languagesCommon: number;
+    english: number;
+    spanish: number;
+  };
+  assetPlanned: {
+    languagesCommon: number;
+    english: number;
+    spanish: number;
+  };
+  issues: string[];
+}
+
+export function buildEnemPromotionParity(
+  report: EnemReadinessReport,
+  selection: PromotionSelectionItem[],
+  assetPlan: Array<{ canonical_id: string; area: EnemArea; language: CanonicalEnemQuestion['language'] }>,
+  options: { subjectTarget?: number; areaMinimum?: number; commonMinimum?: number; languageMinimum?: number } = {},
+): EnemPromotionParity {
+  const subjectTarget = options.subjectTarget ?? 15;
+  const areaMinimum = options.areaMinimum ?? 45;
+  const commonMinimum = options.commonMinimum ?? 40;
+  const languageMinimum = options.languageMinimum ?? 5;
+  const selectedSubjectCodes = new Set(
+    selection
+      .filter((item) => item.subject && (item.purpose === 'SUBJECT' || item.purpose === 'BOTH'))
+      .map((item) => item.subject as EnemSubject),
+  );
+  const selectedAreaCodes = new Set(
+    selection
+      .filter((item) => item.purpose === 'AREA' || item.purpose === 'BOTH')
+      .map((item) => item.area),
+  );
+  const countUnique = (items: typeof assetPlan) => new Set(items.map((item) => item.canonical_id)).size;
+  const selectedCommon = selection.filter((item) => item.area === 'LINGUAGENS' && item.language === null).length;
+  const selectedEnglish = selection.filter((item) => item.area === 'LINGUAGENS' && item.language === 'ENGLISH').length;
+  const selectedSpanish = selection.filter((item) => item.area === 'LINGUAGENS' && item.language === 'SPANISH').length;
+  const commonAssets = assetPlan.filter((item) => item.area === 'LINGUAGENS' && item.language === null);
+  const englishAssets = assetPlan.filter((item) => item.area === 'LINGUAGENS' && item.language === 'ENGLISH');
+  const spanishAssets = assetPlan.filter((item) => item.area === 'LINGUAGENS' && item.language === 'SPANISH');
+  const issues: string[] = [];
+  if (selectedSubjectCodes.size !== ENEM_SUBJECTS.length) issues.push(`PROMOTION_SUBJECTS_INCOMPLETE:${selectedSubjectCodes.size}/${ENEM_SUBJECTS.length}`);
+  if (selectedAreaCodes.size !== ENEM_AREAS.length) issues.push(`PROMOTION_AREAS_INCOMPLETE:${selectedAreaCodes.size}/${ENEM_AREAS.length}`);
+  for (const subject of ENEM_SUBJECTS) {
+    const count = selection.filter((item) => item.subject === subject && (item.purpose === 'SUBJECT' || item.purpose === 'BOTH')).length;
+    if (count < subjectTarget) issues.push(`PROMOTION_SUBJECT_BELOW_TARGET:${subject}:${count}<${subjectTarget}`);
+  }
+  for (const area of ENEM_AREAS) {
+    const count = selection.filter((item) => item.area === area && (item.purpose === 'AREA' || item.purpose === 'BOTH')).length;
+    const target = area === 'LINGUAGENS' ? commonMinimum + languageMinimum * 2 : areaMinimum;
+    if (count < target) issues.push(`PROMOTION_AREA_BELOW_TARGET:${area}:${count}<${target}`);
+  }
+  if (selectedCommon < commonMinimum) issues.push(`PROMOTION_LANGUAGENS_COMMON_BELOW_TARGET:${selectedCommon}<${commonMinimum}`);
+  if (countUnique(commonAssets) < commonMinimum) issues.push(`PROMOTION_LANGUAGENS_COMMON_ASSET_BELOW_TARGET:${countUnique(commonAssets)}<${commonMinimum}`);
+  if (selectedEnglish < languageMinimum) issues.push(`PROMOTION_ENGLISH_BELOW_TARGET:${selectedEnglish}<${languageMinimum}`);
+  if (countUnique(englishAssets) < languageMinimum) issues.push(`PROMOTION_ENGLISH_ASSET_BELOW_TARGET:${countUnique(englishAssets)}<${languageMinimum}`);
+  if (selectedSpanish < languageMinimum) issues.push(`PROMOTION_SPANISH_BELOW_TARGET:${selectedSpanish}<${languageMinimum}`);
+  if (countUnique(spanishAssets) < languageMinimum) issues.push(`PROMOTION_SPANISH_ASSET_BELOW_TARGET:${countUnique(spanishAssets)}<${languageMinimum}`);
+  return {
+    readiness: {
+      subjects: Object.values(report.subjectReady).filter(Boolean).length,
+      areas: Object.values(report.areaReady).filter(Boolean).length,
+      languagesCommon: report.languageCounts.common,
+      english: report.languageCounts.english,
+      spanish: report.languageCounts.spanish,
+    },
+    selected: {
+      subjects: selectedSubjectCodes.size,
+      areas: selectedAreaCodes.size,
+      languagesCommon: selectedCommon,
+      english: selectedEnglish,
+      spanish: selectedSpanish,
+    },
+    assetPlanned: {
+      languagesCommon: countUnique(commonAssets),
+      english: countUnique(englishAssets),
+      spanish: countUnique(spanishAssets),
+    },
+    issues,
+  };
 }

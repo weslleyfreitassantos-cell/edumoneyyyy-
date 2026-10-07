@@ -3,9 +3,10 @@ import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 import type { EnemCanonicalizationResult } from './canonicalize.ts';
-import { buildSubjectClassificationRegistry, validateSubjectClassificationRegistry } from './classification.ts';
+import { validateSubjectClassificationRegistry } from './classification.ts';
 import { renderQuestionKey, type EnemAssetRenderManifest } from './render-question-assets.ts';
-import { buildEnemReadinessReport, buildPromotionSelection } from './readiness.ts';
+import { buildEnemPromotionParity, buildEnemReadinessReport, buildPromotionSelection } from './readiness.ts';
+import type { SubjectClassificationRecord } from './classification.ts';
 
 function argument(name: string, args: string[]) {
   const index = args.indexOf(name);
@@ -21,10 +22,11 @@ async function runCli() {
   const args = process.argv.slice(2);
   const canonicalPath = resolve(argument('--canonical', args) ?? '.runtime/enem-canonical-primary-language-2020-2025.json');
   const assetsPath = resolve(argument('--assets', args) ?? '.runtime/enem-assets-primary-language.json');
+  const classificationPath = resolve(argument('--classification', args) ?? 'tools/enem/data/subject-classifications-v1.json');
   const outDir = resolve(argument('--out-dir', args) ?? '.runtime/enem-promotion-v1');
   const canonical = JSON.parse(readFileSync(canonicalPath, 'utf8')) as EnemCanonicalizationResult;
   const assets = JSON.parse(readFileSync(assetsPath, 'utf8')) as { artifacts: EnemAssetRenderManifest[] };
-  const registry = buildSubjectClassificationRegistry(canonical.canonicalQuestions);
+  const registry = JSON.parse(readFileSync(classificationPath, 'utf8')) as SubjectClassificationRecord[];
   const registryErrors = validateSubjectClassificationRegistry(registry, canonical.canonicalQuestions);
   if (registryErrors.length) throw new Error(`ENEM_CLASSIFICATION_REGISTRY_INVALID:${registryErrors.join(',')}`);
   const report = buildEnemReadinessReport(canonical.canonicalQuestions, registry, assets);
@@ -59,12 +61,14 @@ async function runCli() {
       };
     });
   });
+  const parity = buildEnemPromotionParity(report, selection, assetPlan);
   writeJson(resolve(outDir, 'subject-classifications-v1.json'), registry);
   writeJson(resolve(outDir, 'readiness-v1.json'), report);
   writeJson(resolve(outDir, 'asset-plan-v1.json'), assetPlan);
   writeJson(resolve(outDir, 'selection-v1.json'), selection);
-  console.log(`ENEM_PROMOTION_REPORT subjects_ready=${report.allSubjectsReady} areas_ready=${report.allAreasReady} eligible=${report.eligible.length} selected=${selection.length} issues=${report.issues.length} output=${outDir}`);
-  if (!report.allSubjectsReady || !report.allAreasReady) process.exitCode = 2;
+  writeJson(resolve(outDir, 'promotion-parity-v1.json'), parity);
+  console.log(`ENEM_PROMOTION_REPORT subjects_ready=${report.allSubjectsReady} areas_ready=${report.allAreasReady} selected_subjects=${parity.selected.subjects}/${Object.keys(report.subjectReady).length} selected_areas=${parity.selected.areas}/${Object.keys(report.areaReady).length} common=${parity.selected.languagesCommon}/${parity.assetPlanned.languagesCommon} english=${parity.selected.english}/${parity.assetPlanned.english} spanish=${parity.selected.spanish}/${parity.assetPlanned.spanish} eligible=${report.eligible.length} selected=${selection.length} issues=${report.issues.length + parity.issues.length} output=${outDir}`);
+  if (!report.allSubjectsReady || !report.allAreasReady || parity.issues.length) process.exitCode = 2;
 }
 
 const invokedPath = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : null;
