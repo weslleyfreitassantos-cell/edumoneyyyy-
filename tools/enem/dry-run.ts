@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url';
 import type { EnemDownloadedArtifact } from './download.ts';
 import type { EnemCanonicalizationResult } from './canonicalize.ts';
 import type { EnemParseResult } from './parse.ts';
+import { isEnemImportableQuestion } from './importability.ts';
 
 export interface EnemImportDryRun {
   schemaVersion: 1;
@@ -14,6 +15,10 @@ export interface EnemImportDryRun {
   status: 'PASS' | 'PASS_WITH_QUARANTINE' | 'FAIL';
   years: number[];
   artifactCount: number;
+  parsedCanonicalQuestionCount: number;
+  importableCanonicalQuestionCount: number;
+  parsedOccurrenceCount: number;
+  importableOccurrenceCount: number;
   canonicalQuestionCount: number;
   occurrenceCount: number;
   reviewRequired: number;
@@ -36,11 +41,13 @@ export function buildEnemImportDryRun(
   parsed: EnemParseResult,
   canonical: EnemCanonicalizationResult,
 ): EnemImportDryRun {
-  const ready = canonical.canonicalQuestions.filter((question) => question.qualityState === 'PARSED');
-  const readyIds = ready.map((question) => question.canonicalId);
-  const duplicateCanonicalIds = readyIds.length - new Set(readyIds).size;
-  const readyOccurrences = ready.flatMap((question) => question.occurrences);
-  const occurrenceKeys = readyOccurrences.map((occurrence) => [
+  const parsedQuestions = canonical.canonicalQuestions.filter((question) => question.qualityState === 'PARSED');
+  const importableQuestions = parsedQuestions.filter(isEnemImportableQuestion);
+  const importableIds = importableQuestions.map((question) => question.canonicalId);
+  const duplicateCanonicalIds = importableIds.length - new Set(importableIds).size;
+  const parsedOccurrences = parsedQuestions.flatMap((question) => question.occurrences);
+  const importableOccurrences = importableQuestions.flatMap((question) => question.occurrences);
+  const occurrenceKeys = importableOccurrences.map((occurrence) => [
     occurrence.year,
     occurrence.day,
     occurrence.booklet,
@@ -68,7 +75,7 @@ export function buildEnemImportDryRun(
       examSha256: artifact.examSha256,
       answerKeySha256: artifact.answerKeySha256,
     })),
-    canonicalIds: readyIds,
+    canonicalIds: importableIds,
   });
   return {
     schemaVersion: 1,
@@ -77,8 +84,12 @@ export function buildEnemImportDryRun(
     status: hardFailure ? 'FAIL' : quarantined > 0 ? 'PASS_WITH_QUARANTINE' : 'PASS',
     years: [...new Set(downloads.artifacts.map((artifact) => artifact.year))].sort(),
     artifactCount: downloads.artifacts.length,
-    canonicalQuestionCount: ready.length,
-    occurrenceCount: readyOccurrences.length,
+    parsedCanonicalQuestionCount: parsedQuestions.length,
+    importableCanonicalQuestionCount: importableQuestions.length,
+    parsedOccurrenceCount: parsedOccurrences.length,
+    importableOccurrenceCount: importableOccurrences.length,
+    canonicalQuestionCount: importableQuestions.length,
+    occurrenceCount: importableOccurrences.length,
     reviewRequired: canonical.reviewRequired,
     quarantined,
     duplicateCanonicalIds,
@@ -109,7 +120,7 @@ async function runCli() {
   const resolvedOutput = resolve(outputPath);
   mkdirSync(dirname(resolvedOutput), { recursive: true });
   writeFileSync(resolvedOutput, `${JSON.stringify(result, null, 2)}\n`, 'utf8');
-  console.log(`ENEM_IMPORT_DRY_RUN status=${result.status} canonical=${result.canonicalQuestionCount} occurrences=${result.occurrenceCount} quarantined=${result.quarantined} output=${resolvedOutput}`);
+  console.log(`ENEM_IMPORT_DRY_RUN status=${result.status} parsedCanonical=${result.parsedCanonicalQuestionCount} importableCanonical=${result.importableCanonicalQuestionCount} parsedOccurrences=${result.parsedOccurrenceCount} importableOccurrences=${result.importableOccurrenceCount} quarantined=${result.quarantined} output=${resolvedOutput}`);
 }
 
 const invokedPath = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : null;

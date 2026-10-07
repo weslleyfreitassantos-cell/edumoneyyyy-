@@ -52,5 +52,39 @@ describe('ENEM import dry-run', () => {
     expect(result.productionTouched).toBe(false);
     expect(result.duplicateOccurrences).toBe(0);
     expect(result.sourceHashesVerified).toBe(true);
+    expect(result.parsedCanonicalQuestionCount).toBe(1);
+    expect(result.importableCanonicalQuestionCount).toBe(1);
+    expect(result.parsedOccurrenceCount).toBe(1);
+    expect(result.importableOccurrenceCount).toBe(1);
+  });
+
+  it('separates parsed questions from the importable corpus without hiding exclusions', () => {
+    const makeQuestion = (canonicalId: string, officialAnswer: 'A' | 'B' | 'C' | 'D' | 'E' | 'ANNULLED' | 'UNKNOWN', options: string[]) => ({
+      canonicalId,
+      year: 2025,
+      day: 'D2' as const,
+      language: null,
+      area: 'MATEMATICA' as const,
+      statement: canonicalId,
+      options,
+      officialAnswer,
+      qualityState: 'PARSED' as const,
+      occurrences: [{ year: 2025, day: 'D2' as const, booklet: 'CD5', questionNumber: 136, language: null, officialAnswer }],
+    });
+    const result = buildEnemImportDryRun({ artifacts: [], issues: [] }, parsed, {
+      ...canonical,
+      canonicalQuestions: [
+        makeQuestion('valid', 'A', ['1', '2', '3', '4', '5']),
+        makeQuestion('annulled', 'ANNULLED', ['1', '2', '3', '4', '5']),
+        makeQuestion('unknown', 'UNKNOWN', ['1', '2', '3', '4', '5']),
+        makeQuestion('short', 'B', ['1', '2', '3', '4']),
+      ],
+    });
+    expect(result.parsedCanonicalQuestionCount).toBe(4);
+    expect(result.importableCanonicalQuestionCount).toBe(1);
+    expect(result.parsedOccurrenceCount).toBe(4);
+    expect(result.importableOccurrenceCount).toBe(1);
+    expect(result.canonicalQuestionCount).toBe(result.importableCanonicalQuestionCount);
+    expect(result.occurrenceCount).toBe(result.importableOccurrenceCount);
   });
 });

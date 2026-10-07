@@ -1,6 +1,7 @@
 import type { CanonicalEnemQuestion } from './canonicalize.ts';
 import { ENEM_AREAS, ENEM_SUBJECTS, type SubjectClassificationRecord, type EnemArea, type EnemSubject } from './classification.ts';
 import { renderQuestionKey, type EnemAssetRenderManifest } from './render-question-assets.ts';
+import { isEnemImportableQuestion } from './importability.ts';
 
 export interface EnemReadinessReport {
   schemaVersion: 1;
@@ -40,8 +41,7 @@ export function buildEnemReadinessReport(
   for (const question of questions) {
     const record = registryById.get(question.canonicalId);
     const renderReady = question.occurrences.some((occurrence) => readyAssets.has(renderQuestionKey(occurrence, occurrence.questionNumber, occurrence.language)));
-    const validAnswer = /^[A-E]$/.test(question.officialAnswer) && question.options.length === 5;
-    if (!record?.area_verified || !renderReady || !validAnswer || question.officialAnswer === 'ANNULLED') continue;
+    if (!record?.area_verified || !renderReady || !isEnemImportableQuestion(question)) continue;
     areaCounts[record.area!] += 1;
     if (record.subject_verified && record.subject) subjectCounts[record.subject] += 1;
     eligible.push(question.canonicalId);
