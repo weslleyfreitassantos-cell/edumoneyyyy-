@@ -2,7 +2,6 @@ export const PLATFORM_PRIMARY_HOSTNAME =
   'edumoneyyyy.weslleyfreitassantos.workers.dev';
 
 export const LOGO_MAX_SIZE_BYTES = 2 * 1024 * 1024;
-export const BACKGROUND_MAX_SIZE_BYTES = 5 * 1024 * 1024;
 export const DEFAULT_BRAND_PRIMARY_COLOR = '#005bbf';
 export const DEFAULT_BRAND_SECONDARY_COLOR = '#6ffbbe';
 
@@ -17,7 +16,6 @@ export const ALLOWED_LOGO_MIME_TYPES =
 
 export const BRANDING_IMAGE_LIMITS = {
   logo: LOGO_MAX_SIZE_BYTES,
-  background: BACKGROUND_MAX_SIZE_BYTES,
 } as const;
 
 export type BrandingImageKind = 'logo' | 'favicon' | 'background';
@@ -282,15 +280,8 @@ export async function validateBrandingImageFile(
     return 'O arquivo esta vazio.';
   }
 
-  const maxSize =
-    kind === 'favicon' ? null : BRANDING_IMAGE_LIMITS[kind];
-
-  if (maxSize !== null && file.size > maxSize) {
-    if (kind === 'logo') {
-      return 'A logo deve ter no maximo 2 MB.';
-    }
-
-    return 'O background deve ter no maximo 5 MB.';
+  if (kind === 'logo' && file.size > BRANDING_IMAGE_LIMITS.logo) {
+    return 'A logo deve ter no maximo 2 MB.';
   }
 
   if (!isAllowedMimeType(file.type)) {

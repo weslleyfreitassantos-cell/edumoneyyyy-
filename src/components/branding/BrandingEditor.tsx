@@ -527,7 +527,7 @@ export function BrandingEditor({
                   <AssetControl
                     id={`${title}-background`}
                     label="Imagem de fundo do login"
-                    helper="PNG, JPEG ou WebP. Limite: 5 MB."
+                    helper="PNG, JPEG ou WebP."
                     kind="background"
                     draft={backgroundDraft}
                     persistedUrl={branding?.loginBackgroundUrl}
