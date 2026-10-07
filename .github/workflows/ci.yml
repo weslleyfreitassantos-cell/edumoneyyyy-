@@ -189,7 +189,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Testes dinâmicos de segurança e RPCs adaptativos
-        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts
+        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts supabase/tests/directorPanorama.local.test.ts
 
       - name: Instalar Chromium para os fluxos adaptativos
         run: npx playwright install --with-deps chromium
