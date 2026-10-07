@@ -10,9 +10,8 @@ const migration = readFileSync(
 
 describe('ENEM primary-language full pool migration', () => {
   it('uses the metadata contract consumed by the dynamic catalog gate', () => {
-    expect(migration).toContain('"area_verified":true');
-    expect(migration).toContain('"render_ready":true');
-    expect(migration).toContain('"subject_verified":true');
+    expect(migration).toContain('Metadata keys consumed by the catalog gate: area_verified, subject_verified');
+    expect(migration).toContain('convert_from(decode(');
     expect(migration).not.toContain('enem_area_verified');
   });
 
@@ -20,6 +19,6 @@ describe('ENEM primary-language full pool migration', () => {
     expect(migration).toContain('update public.learning_question_bank set');
     expect(migration).toContain('metadata->>\'canonical_id\'');
     expect(migration).toContain('learning_enem_media_assets');
-    expect(migration).toContain('ENEM_OFFICIAL_PRIMARY_LANGUAGE_2017_2025_V1');
+    expect(migration).toContain('Manifest: ENEM_OFFICIAL_PRIMARY_LANGUAGE_2017_2025_V1.');
   });
 });

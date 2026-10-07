@@ -58,7 +58,8 @@ function sql(value: string | number | boolean | null) {
   if (value === null) return 'null';
   if (typeof value === 'boolean') return value ? 'true' : 'false';
   if (typeof value === 'number') return String(value);
-  return `'${value.replaceAll("'", "''")}'`;
+  const utf8Hex = Buffer.from(value, 'utf8').toString('hex');
+  return `convert_from(decode('${utf8Hex}', 'hex'), 'UTF8')`;
 }
 
 function jsonSql(value: unknown) {

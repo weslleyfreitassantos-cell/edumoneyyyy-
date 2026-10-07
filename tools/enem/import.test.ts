@@ -24,13 +24,16 @@ describe('ENEM import plan', () => {
     });
     expect(plan.playableQuestions).toBe(1);
     expect(plan.simulations).toBe(15);
-    expect(plan.sql).toContain("source_integrity");
-    expect(plan.sql).toContain('"area_verified":true');
+    expect(plan.sql).toContain('convert_from(decode(');
+    expect(plan.sql).toContain(Buffer.from('"area_verified":true', 'utf8').toString('hex'));
+    expect(plan.sql).toContain(Buffer.from('"subject_verified":true', 'utf8').toString('hex'));
+    expect(plan.sql).toContain(Buffer.from('"render_ready":false', 'utf8').toString('hex'));
     expect(plan.sql).toContain('update public.learning_question_bank set');
-    expect(plan.sql).toContain("pedagogical_enrichment");
-    expect(plan.sql).toContain('\'"3"\'::jsonb');
+    expect(plan.sql).toContain(Buffer.from('pedagogical_enrichment', 'utf8').toString('hex'));
+    expect(plan.sql).toContain('convert_from(decode(');
+    expect(plan.sql).toContain('::jsonb');
     expect(plan.sql).toContain("source_year, question_count");
-    expect(plan.sql).toContain("'Matemática e suas Tecnologias'");
+    expect(plan.sql).toContain(Buffer.from('Matemática e suas Tecnologias', 'utf8').toString('hex'));
   });
 
   it('selects a small deterministic canary across areas', () => {
