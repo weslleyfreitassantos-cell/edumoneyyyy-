@@ -39,13 +39,7 @@ import {
 import { getAccountStatusLabel } from '../../lib/statusLabels';
 import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 import {
-  clearInstitutionSsoSelectionCookie,
-  getInstitutionEntryUrl,
-  setInstitutionSsoSelectionCookie,
-} from '../../lib/subdomain';
-import {
   AccountServiceError,
-  createInstitutionSsoHandoff,
   type AccountInstitutionSummary,
 } from '../../services/accountService';
 
@@ -210,7 +204,6 @@ export default function AccountPage() {
 
   async function handleSelectInstitution(
     institution: AccountInstitutionSummary,
-    shouldNavigate = false,
   ): Promise<void> {
     try {
       const selectionResult =
@@ -219,29 +212,6 @@ export default function AccountPage() {
         );
 
       if (selectionResult.success === true) {
-        if (shouldNavigate) {
-          const entryUrl = getInstitutionEntryUrl(
-            window.location.hostname,
-            institution.subdomain,
-          );
-
-          if (entryUrl) {
-            setInstitutionSsoSelectionCookie(institution.id);
-            const actionLink =
-              await createInstitutionSsoHandoff(institution.id).catch(
-                (error) => {
-                  clearInstitutionSsoSelectionCookie();
-                  throw error;
-                },
-              );
-            window.location.assign(actionLink);
-            return;
-          }
-
-          navigate('/admin');
-          return;
-        }
-
         setFeedback({
           type: 'success',
           message: 'Instituicao selecionada.',
@@ -657,7 +627,6 @@ export default function AccountPage() {
                         onClick={() =>
                           void handleSelectInstitution(
                             institution,
-                            true,
                           )
                         }
                         aria-label={

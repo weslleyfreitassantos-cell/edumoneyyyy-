@@ -481,7 +481,7 @@ describe('AccountPage', () => {
     });
   });
 
-  it('entrar seleciona a instituicao e navega para o admin', async () => {
+  it('entrar apenas seleciona a instituicao sem navegar para a direcao', async () => {
     mockedUseOwnedAccount.mockReturnValueOnce({
       data: {
         id: 'account-1',
@@ -525,9 +525,10 @@ describe('AccountPage', () => {
       expect(setCurrentInstitutionId).toHaveBeenCalledWith(
         'institution-1',
       );
-      expect(routerMock.navigate).toHaveBeenCalledWith(
-        '/admin',
-      );
+      expect(routerMock.navigate).not.toHaveBeenCalled();
+      expect(
+        screen.getByText(/Instituicao selecionada/i),
+      ).toBeTruthy();
     });
   });
 

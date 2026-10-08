@@ -478,16 +478,26 @@ describe('PlatformPage', () => {
         level: 1,
       }),
     ).toBeDefined();
-    expect(
-      screen.getAllByText('Conta Alfa').length,
-    ).toBeGreaterThan(0);
     expect(screen.getByText('Ana Admin')).toBeDefined();
+    expect(
+      within(getAccountsTable()).queryByText('Conta Alfa'),
+    ).toBeNull();
     expect(screen.getAllByText('Ativa').length).toBeGreaterThan(0);
     expect(
       screen.queryByRole('columnheader', {
         name: /^Instituições$/i,
       }),
     ).toBeNull();
+    expect(
+      screen.getByRole('columnheader', {
+        name: /^Admin$/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.getByRole('columnheader', {
+        name: /^Email$/i,
+      }),
+    ).toBeDefined();
     expect(
       screen.getByRole('columnheader', {
         name: /^Ações$/i,
@@ -1469,7 +1479,7 @@ describe('PlatformPage', () => {
     });
 
     expect(
-      screen.getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
     expect(
       screen.getAllByText('Excluída').length,
@@ -1678,7 +1688,7 @@ describe('PlatformPage', () => {
         name: /Excluir conta/i,
       }),
     ).toBeDefined();
-    expect(screen.getAllByText('Conta Gama').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('Conta Gama').length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText('Caio Admin').length).toBeGreaterThan(1);
     expect(screen.getAllByText('caio@example.com').length).toBeGreaterThan(1);
 
@@ -1726,9 +1736,9 @@ describe('PlatformPage', () => {
     );
 
     expect(
-      screen.getAllByText('Conta Alfa').length,
+      within(getAccountsTable()).getAllByText('Ana Admin').length,
     ).toBeGreaterThan(0);
-    expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(within(getAccountsTable()).queryByText('Bia Admin')).toBeNull();
     expect(
       screen.queryByText('Conta Cancelada'),
     ).toBeNull();
@@ -1743,7 +1753,7 @@ describe('PlatformPage', () => {
       target: { value: 'SUSPENDED' },
     });
 
-    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(within(getAccountsTable()).getByText('Bia Admin')).toBeDefined();
     expect(
       screen.queryByRole('button', {
         name: /Salvar limite de Conta Alfa/i,
@@ -1766,11 +1776,11 @@ describe('PlatformPage', () => {
     renderPage();
 
     expect(
-      screen.getAllByText('Conta Alfa').length,
+      within(getAccountsTable()).getAllByText('Ana Admin').length,
     ).toBeGreaterThanOrEqual(1);
-    expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(within(getAccountsTable()).queryByText('Bia Admin')).toBeNull();
     expect(
-      screen.queryByText('Conta Encerrada'),
+      within(getAccountsTable()).queryByText('Dora Admin'),
     ).toBeNull();
   });
 
@@ -1782,10 +1792,10 @@ describe('PlatformPage', () => {
     });
 
     expect(
-      screen.getAllByText('Conta Alfa').length,
+      within(getAccountsTable()).getAllByText('Ana Admin').length,
     ).toBeGreaterThanOrEqual(1);
-    expect(screen.getByText('Conta Beta')).toBeDefined();
-    expect(screen.getByText('Conta Encerrada')).toBeDefined();
+    expect(within(getAccountsTable()).getByText('Bia Admin')).toBeDefined();
+    expect(within(getAccountsTable()).getByText('Dora Admin')).toBeDefined();
   });
 
   it('filtro Excluidos exibe somente excluidas', () => {
@@ -1796,9 +1806,9 @@ describe('PlatformPage', () => {
     });
 
     expect(
-      screen.getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
-    expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(within(getAccountsTable()).queryByText('Bia Admin')).toBeNull();
   });
 
   it('busca em Todos encontra conta excluida', () => {
@@ -1815,7 +1825,7 @@ describe('PlatformPage', () => {
     );
 
     expect(
-      screen.getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
   });
 
@@ -1833,7 +1843,7 @@ describe('PlatformPage', () => {
     );
 
     expect(
-      screen.getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
   });
 
@@ -1852,13 +1862,13 @@ describe('PlatformPage', () => {
       target: { value: 'dora@example.com' },
     });
 
-    expect(screen.getByText('Conta Encerrada')).toBeDefined();
+    expect(within(getAccountsTable()).getByText('Dora Admin')).toBeDefined();
 
     fireEvent.change(search, { target: { value: '' } });
 
     expect(statusFilter.value).toBe('DELETED');
     expect(
-      within(getAccountsTable()).getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
     expect(
       within(getAccountsTable()).queryByText('Conta Alfa'),
@@ -1950,20 +1960,20 @@ describe('PlatformPage', () => {
     });
 
     expect(
-      screen.getAllByText('Conta Alfa').length,
+      within(getAccountsTable()).getAllByText('Ana Admin').length,
     ).toBeGreaterThanOrEqual(1);
-    expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(within(getAccountsTable()).queryByText('Bia Admin')).toBeNull();
     expect(
-      screen.queryByText('Conta Encerrada'),
+      within(getAccountsTable()).queryByText('Dora Admin'),
     ).toBeNull();
 
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'SUSPENDED' },
     });
 
-    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(within(getAccountsTable()).getByText('Bia Admin')).toBeDefined();
     expect(
-      screen.queryByText('Conta Encerrada'),
+      within(getAccountsTable()).queryByText('Dora Admin'),
     ).toBeNull();
   });
 
@@ -1983,13 +1993,13 @@ describe('PlatformPage', () => {
       getAccountsTable().querySelectorAll('tbody tr'),
     ).toHaveLength(3);
     expect(
-      within(getAccountsTable()).getByText('Conta Alfa'),
+      within(getAccountsTable()).getByText('Ana Admin'),
     ).toBeDefined();
     expect(
-      within(getAccountsTable()).getByText('Conta Beta'),
+      within(getAccountsTable()).getByText('Bia Admin'),
     ).toBeDefined();
     expect(
-      within(getAccountsTable()).getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
   });
 
@@ -2035,21 +2045,21 @@ describe('PlatformPage', () => {
     rerender(<PlatformPage />);
 
     expect(
-      within(getAccountsTable()).queryByText('Conta Alfa'),
+      within(getAccountsTable()).queryByText('Ana Admin'),
     ).toBeNull();
 
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'DELETED' },
     });
     expect(
-      within(getAccountsTable()).getByText('Conta Alfa'),
+      within(getAccountsTable()).getByText('Ana Admin'),
     ).toBeDefined();
 
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'ALL' },
     });
     expect(
-      within(getAccountsTable()).getByText('Conta Alfa'),
+      within(getAccountsTable()).getByText('Ana Admin'),
     ).toBeDefined();
   });
 
@@ -2091,18 +2101,20 @@ describe('PlatformPage', () => {
     };
     rerender(<PlatformPage />);
 
-    expect(screen.queryByText('Conta Encerrada')).toBeNull();
+    expect(
+      screen.queryByText('Dora Admin'),
+    ).toBeNull();
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'ACTIVE' },
     });
     expect(
-      within(getAccountsTable()).getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'ALL' },
     });
     expect(
-      within(getAccountsTable()).getByText('Conta Encerrada'),
+      within(getAccountsTable()).getByText('Dora Admin'),
     ).toBeDefined();
   });
 
@@ -2159,7 +2171,7 @@ describe('PlatformPage', () => {
       fireEvent.change(screen.getByLabelText('Status'), {
         target: { value: status },
       });
-      expect(screen.queryByText('Conta Encerrada')).toBeNull();
+      expect(screen.queryByText('Dora Admin')).toBeNull();
     }
   });
 

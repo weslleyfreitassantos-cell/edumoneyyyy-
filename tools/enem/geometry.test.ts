@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { groupGeometryLines, normalizeGeometryMarker, planStatementCrop, type PdfGeometryPage } from './geometry';
+import { buildQuestionRegions, groupGeometryLines, normalizeGeometryMarker, planStatementCrop, type PdfGeometryPage } from './geometry';
 
 describe('ENEM geometry helpers', () => {
   it('groups fragments on the same baseline without losing horizontal order', () => {
@@ -97,5 +97,117 @@ describe('ENEM geometry helpers', () => {
     const plan = planStatementCrop([page], 12);
     expect(plan.status).toBe('READY');
     expect(plan.parts[0].bounds.left + plan.parts[0].bounds.width).toBeLessThan(300);
+  });
+
+  it('keeps a two-column question away from the neighboring question and options', () => {
+    const page: PdfGeometryPage = {
+      page: 13,
+      width: 600,
+      height: 800,
+      items: [
+        { text: 'QUESTÃO 122', x: 40, y: 700, width: 80, height: 10, fontSize: 10 },
+        { text: 'Enunciado da coluna esquerda com conteúdo suficiente.', x: 40, y: 680, width: 190, height: 10, fontSize: 10 },
+        { text: 'QUESTÃO 123', x: 320, y: 700, width: 80, height: 10, fontSize: 10 },
+        { text: 'Texto de outra questão que não pode entrar.', x: 320, y: 680, width: 190, height: 10, fontSize: 10 },
+        ...(['A', 'B', 'C', 'D', 'E'] as const).flatMap((label, index) => [
+          { text: label, x: 40, y: 620 - index * 20, width: 8, height: 10, fontSize: 10 },
+          { text: `Alternativa ${label}`, x: 55, y: 620 - index * 20, width: 90, height: 10, fontSize: 10 },
+        ]),
+      ],
+    };
+    const region = buildQuestionRegions([page]).find((item) => item.questionNumber === 122)!;
+    expect(region.column).toBe('LEFT');
+    expect(region.optionStart?.labels).toEqual(['A', 'B', 'C', 'D', 'E']);
+    expect(Object.values(region.optionRegions).map((option) => option?.label)).toEqual(['A', 'B', 'C', 'D', 'E']);
+    expect(Object.values(region.optionRegions).every((option) => option?.status === 'VERIFIED')).toBe(true);
+    const optionParts = Object.values(region.optionRegions).flatMap((option) => option?.parts ?? []);
+    expect(optionParts).toHaveLength(5);
+    expect(optionParts.slice(0, -1).every((part, index) => {
+      const next = optionParts[index + 1];
+      return part.bounds.bottom >= next.bounds.bottom + next.bounds.height;
+    })).toBe(true);
+    expect(region.lines.flatMap((line) => line.items).map((item) => item.text).join(' ')).not.toContain('123');
+    expect(planStatementCrop([page], 122).status).toBe('READY');
+  });
+
+  it('keeps visual alternative regions independent from the statement', () => {
+    const page: PdfGeometryPage = {
+      page: 16,
+      width: 600,
+      height: 800,
+      items: [
+        { text: 'QUESTÃO 126', x: 40, y: 700, width: 80, height: 10, fontSize: 10 },
+        { text: 'Observe a representação visual e escolha a alternativa correta.', x: 40, y: 680, width: 250, height: 10, fontSize: 10 },
+        ...(['A', 'B', 'C', 'D', 'E'] as const).flatMap((label, index) => [
+          { text: label, x: 40, y: 620 - index * 25, width: 8, height: 10, fontSize: 10 },
+          { text: '', x: 55, y: 620 - index * 25, width: 160, height: 10, fontSize: 10 },
+        ]),
+      ],
+    };
+    const region = buildQuestionRegions([page]).find((item) => item.questionNumber === 126)!;
+    expect(planStatementCrop([page], 126).status).toBe('READY');
+    expect(Object.values(region.optionRegions).map((option) => option?.label)).toEqual(['A', 'B', 'C', 'D', 'E']);
+    expect(Object.values(region.optionRegions).every((option) => option?.parts.length === 1)).toBe(true);
+  });
+
+  it('shares a non-overlapping boundary between the statement and option A', () => {
+    const page: PdfGeometryPage = {
+      page: 17,
+      width: 600,
+      height: 800,
+      items: [
+        { text: 'QUESTÃO 127', x: 40, y: 700, width: 80, height: 10, fontSize: 10 },
+        { text: 'Enunciado próximo das alternativas com conteúdo suficiente.', x: 40, y: 640, width: 260, height: 10, fontSize: 10 },
+        ...(['A', 'B', 'C', 'D', 'E'] as const).flatMap((label, index) => [
+          { text: label, x: 40, y: 625 - index * 20, width: 8, height: 10, fontSize: 10 },
+          { text: `Alternativa ${label}`, x: 55, y: 625 - index * 20, width: 90, height: 10, fontSize: 10 },
+        ]),
+      ],
+    };
+    const region = buildQuestionRegions([page]).find((item) => item.questionNumber === 127)!;
+    const plan = planStatementCrop([page], 127);
+    const statement = plan.parts[0].bounds;
+    const optionA = region.optionRegions.A!.parts[0].bounds;
+    expect(plan.status).toBe('READY');
+    expect(statement.bottom + statement.height).toBeGreaterThanOrEqual(optionA.bottom + optionA.height);
+    expect(statement.bottom).toBeGreaterThanOrEqual(optionA.bottom + optionA.height);
+  });
+
+  it('does not borrow an A-E block from another column or treat body numbers as options', () => {
+    const page: PdfGeometryPage = {
+      page: 14,
+      width: 600,
+      height: 800,
+      items: [
+        { text: 'QUESTÃO 124', x: 40, y: 700, width: 80, height: 10, fontSize: 10 },
+        { text: 'O enunciado lista etapas 1 2 3 4 5 e termina sem alternativas.', x: 40, y: 680, width: 210, height: 10, fontSize: 10 },
+        { text: 'QUESTÃO 999', x: 330, y: 700, width: 80, height: 10, fontSize: 10 },
+        ...(['A', 'B', 'C', 'D', 'E'] as const).flatMap((label, index) => [
+          { text: label, x: 330, y: 620 - index * 20, width: 8, height: 10, fontSize: 10 },
+          { text: `Alternativa externa ${label}`, x: 345, y: 620 - index * 20, width: 110, height: 10, fontSize: 10 },
+        ]),
+      ],
+    };
+    const region = buildQuestionRegions([page]).find((item) => item.questionNumber === 124)!;
+    expect(region.optionStart).toBeNull();
+    expect(planStatementCrop([page], 124).status).toBe('REVIEW_REQUIRED');
+  });
+
+  it('rejects a header-only or truncated statement crop', () => {
+    const page: PdfGeometryPage = {
+      page: 15,
+      width: 600,
+      height: 800,
+      items: [
+        { text: 'QUESTÃO 125', x: 40, y: 700, width: 80, height: 10, fontSize: 10 },
+        ...(['A', 'B', 'C', 'D', 'E'] as const).flatMap((label, index) => [
+          { text: label, x: 40, y: 620 - index * 20, width: 8, height: 10, fontSize: 10 },
+          { text: `Opção ${label}`, x: 55, y: 620 - index * 20, width: 70, height: 10, fontSize: 10 },
+        ]),
+      ],
+    };
+    const plan = planStatementCrop([page], 125);
+    expect(plan.status).toBe('REVIEW_REQUIRED');
+    expect(plan.reason).toBe('STATEMENT_TOO_SHORT');
   });
 });

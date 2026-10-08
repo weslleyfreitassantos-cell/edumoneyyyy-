@@ -14,10 +14,12 @@ describe('ENEM import plan', () => {
         year: 2025, day: 'D2', booklet: 'CD5', examPath: '', answerKeyPath: '', answerKey: [], qualityState: 'PARSED', issues: [], questions: [{
           questionNumber: 136, language: null, page: 2, area: 'MATEMATICA', statement: 'Qual é o resultado?', supportText: null,
           options: ['1', '2', '3', '4', '5'], officialAnswer: 'C', mediaStatus: 'NOT_DETECTED', qualityState: 'PARSED', reviewReasons: [],
+          sourceIntegrity: 'VERIFIED', statementIntegrity: 'VERIFIED', optionsIntegrity: 'VERIFIED', controlCharCount: 0,
         }],
       }] },
       canonical: { canonicalQuestions: [{
         canonicalId: 'canonical-1', year: 2025, day: 'D2', language: null, area: 'MATEMATICA', statement: 'Qual é o resultado?', options: ['1', '2', '3', '4', '5'], officialAnswer: 'C', qualityState: 'PARSED',
+        sourceIntegrity: 'VERIFIED', statementIntegrity: 'VERIFIED', optionsIntegrity: 'VERIFIED', controlCharCount: 0,
         occurrences: [{ year: 2025, day: 'D2', booklet: 'CD5', questionNumber: 136, language: null, officialAnswer: 'C' }],
       }] },
       manifest: { manifestFingerprint: 'f'.repeat(64), manifestVersion: 'TEST', years: [2025], artifactCount: 1, canonicalQuestionCount: 1, occurrenceCount: 1 },
@@ -38,7 +40,7 @@ describe('ENEM import plan', () => {
 
   it('selects a small deterministic canary across areas', () => {
     const questions = Array.from({ length: 20 }, (_, index) => ({
-      canonicalId: `q-${index}`, year: 2025, day: 'D2', language: null, area: index < 5 ? 'MATEMATICA' : index < 10 ? 'LINGUAGENS' : index < 15 ? 'CIENCIAS_NATUREZA' : 'CIENCIAS_HUMANAS', statement: `Questão ${index} válida`, options: ['1', '2', '3', '4', '5'], officialAnswer: 'A' as const, qualityState: 'PARSED' as const,
+      canonicalId: `q-${index}`, year: 2025, day: 'D2', language: null, area: index < 5 ? 'MATEMATICA' : index < 10 ? 'LINGUAGENS' : index < 15 ? 'CIENCIAS_NATUREZA' : 'CIENCIAS_HUMANAS', statement: `Questão ${index} válida`, options: ['1', '2', '3', '4', '5'], officialAnswer: 'A' as const, qualityState: 'PARSED' as const, sourceIntegrity: 'VERIFIED', statementIntegrity: 'VERIFIED', optionsIntegrity: 'VERIFIED', controlCharCount: 0,
       occurrences: [],
     }));
     expect(selectCanaryQuestions(questions)).toHaveLength(12);

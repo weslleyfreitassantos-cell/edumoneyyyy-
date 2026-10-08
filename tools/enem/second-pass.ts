@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 import type { EnemReviewReason, EnemParseResult, ParsedEnemArtifact, ParsedEnemQuestion } from './parse.ts';
-import { extractPdfGeometryPages, groupGeometryLines, normalizeGeometryMarker, type PdfGeometryLine, type PdfGeometryPage } from './geometry.ts';
+import { buildQuestionRegions, extractPdfGeometryPages, type PdfGeometryLine, type PdfGeometryPage, type QuestionRegion } from './geometry.ts';
 
 export interface GeometryRecoveryAttempt {
   questionNumber: number;
@@ -39,12 +39,6 @@ interface OptionCandidate {
   y: number;
 }
 
-function markerQuestionNumber(line: PdfGeometryLine): number | null {
-  const value = normalizeGeometryMarker(line.items.map((item) => item.text).join(' '));
-  const match = value.match(/QUEST(?:AO|AO)(\d{1,3})/);
-  return match ? Number(match[1]) : null;
-}
-
 function optionFromItem(text: string): { label: string; inlineText: string } | null {
   const match = text.trim().match(/^([A-E])(?:[.)\-:]?)(?:\s+(.*))?$/i);
   if (!match) return null;
@@ -75,19 +69,16 @@ function candidatesForLines(lines: PdfGeometryLine[]): OptionCandidate[] {
   return candidates;
 }
 
-function questionLines(pages: PdfGeometryPage[], questionNumber: number): PdfGeometryLine[] {
-  const allLines = pages.flatMap((page) => groupGeometryLines(page));
-  const markers = allLines
-    .map((line, index) => ({ line, index, questionNumber: markerQuestionNumber(line) }))
-    .filter((item): item is { line: PdfGeometryLine; index: number; questionNumber: number } => item.questionNumber !== null);
-  const current = markers.find((item) => item.questionNumber === questionNumber);
-  if (!current) return [];
-  const next = markers.find((item) => item.index > current.index && item.questionNumber !== questionNumber);
-  return allLines.slice(current.index + 1, next?.index ?? allLines.length);
-}
-
-export function recoverOptionsFromGeometry(pages: PdfGeometryPage[], questionNumber: number): { status: GeometryRecoveryAttempt['status']; options: string[]; reason: string } {
-  const candidates = candidatesForLines(questionLines(pages, questionNumber))
+export function recoverOptionsFromGeometry(
+  pages: PdfGeometryPage[],
+  questionNumber: number,
+  regions = buildQuestionRegions(pages),
+): { status: GeometryRecoveryAttempt['status']; options: string[]; reason: string } {
+  const region = regions.find((item) => item.questionNumber === questionNumber);
+  if (!region || !region.optionStart || region.optionStart.labels.join('') !== 'ABCDE') {
+    return { status: 'NOT_RECOVERED', options: [], reason: 'NO_VALIDATED_QUESTION_REGION' };
+  }
+  const candidates = candidatesForLines(region.bodyLines.slice(region.optionStart.index))
     .filter((candidate) => candidate.text.length > 0);
   const byLabel = new Map<string, OptionCandidate>();
   for (const candidate of candidates) {
@@ -110,12 +101,15 @@ export function recoverOptionsFromGeometry(pages: PdfGeometryPage[], questionNum
 }
 
 function applyRecovery(question: ParsedEnemQuestion, options: string[]): ParsedEnemQuestion {
-  const reviewReasons = [...new Set((question.reviewReasons ?? []).filter((reason) => reason !== 'MISSING_OPTIONS'))] as EnemReviewReason[];
+  const reviewReasons = [...new Set((question.reviewReasons ?? []).filter((reason) => reason !== 'MISSING_OPTIONS' && reason !== 'OPTION_INTEGRITY'))] as EnemReviewReason[];
   return {
     ...question,
     options,
+    optionsIntegrity: 'VERIFIED',
     reviewReasons,
-    qualityState: reviewReasons.length === 0 ? 'PARSED' : 'REVIEW_REQUIRED',
+    qualityState: reviewReasons.length === 0 && question.sourceIntegrity !== 'REVIEW_REQUIRED' && question.statementIntegrity !== 'REVIEW_REQUIRED'
+      ? 'PARSED'
+      : 'REVIEW_REQUIRED',
   };
 }
 
@@ -140,10 +134,11 @@ export async function runSecondPass(parsed: EnemParseResult): Promise<SecondPass
     }
 
     const pages = await extractPdfGeometryPages(artifact.examPath);
+    const regions = buildQuestionRegions(pages);
     const attempts: GeometryRecoveryAttempt[] = [];
     const questions = artifact.questions.map((question) => {
       if (!question.reviewReasons?.includes('MISSING_OPTIONS')) return question;
-      const geometry = recoverOptionsFromGeometry(pages, question.questionNumber);
+      const geometry = recoverOptionsFromGeometry(pages, question.questionNumber, regions);
       const attempt: GeometryRecoveryAttempt = {
         questionNumber: question.questionNumber,
         language: question.language,

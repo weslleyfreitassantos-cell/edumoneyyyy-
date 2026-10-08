@@ -5,6 +5,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
 } from '@testing-library/react';
 import {
   afterEach,
@@ -304,6 +305,54 @@ describe('AdminOverviewTab', () => {
     expect(panoramaToggle.getAttribute('aria-expanded')).toBe('false');
     expect(panoramaContent?.hasAttribute('hidden')).toBe(true);
     expect(operationalContent?.hasAttribute('hidden')).toBe(false);
+  });
+
+  it('inicia os três módulos recolhidos para o diretor no mobile', async () => {
+    const originalMatchMedia = window.matchMedia;
+    Object.defineProperty(window, 'matchMedia', {
+      configurable: true,
+      value: (query: string) => ({
+        matches: query === '(max-width: 767px)',
+        media: query,
+        onchange: null,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      }),
+    });
+
+    try {
+      render(
+        <MemoryRouter>
+          <AdminOverviewTab />
+        </MemoryRouter>,
+      );
+
+      await waitFor(() => {
+        expect(
+          screen
+            .getByRole('button', { name: /Configuração da escola/i })
+            .getAttribute('aria-expanded'),
+        ).toBe('false');
+        expect(
+          screen
+            .getByRole('button', { name: /Resumo operacional/i })
+            .getAttribute('aria-expanded'),
+        ).toBe('false');
+        expect(
+          screen
+            .getByRole('button', { name: /Panorama acadêmico/i })
+            .getAttribute('aria-expanded'),
+        ).toBe('false');
+      });
+    } finally {
+      Object.defineProperty(window, 'matchMedia', {
+        configurable: true,
+        value: originalMatchMedia,
+      });
+    }
   });
 
   it('transforma somente módulos disponíveis em atalhos navegáveis', () => {

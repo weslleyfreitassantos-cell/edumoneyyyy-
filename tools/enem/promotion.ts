@@ -44,7 +44,11 @@ async function runCli() {
   }
   const assetPlan = selection.flatMap((item) => {
     const rendered = renderByKey.get(renderQuestionKey(item.primary_occurrence, item.primary_occurrence.questionNumber, item.language));
-    return (rendered?.question.statementAssets ?? []).map((asset) => {
+    const assets = [
+      ...(rendered?.question.statementAssets ?? []),
+      ...Object.values(rendered?.question.optionAssets ?? {}).flat(),
+    ];
+    return assets.map((asset) => {
       const absolutePath = resolve(argument('--asset-dir', args) ?? '.runtime/enem-question-assets-primary-language', asset.storagePath);
       const bytes = statSync(absolutePath).size;
       return {
@@ -55,6 +59,8 @@ async function runCli() {
         language: item.language,
         storage_path: asset.storagePath,
         media_type: asset.mediaType,
+        asset_role: asset.assetRole,
+        option_label: 'optionLabel' in asset ? asset.optionLabel : null,
         bytes,
         sha256: asset.sha256,
         source_page: asset.page,

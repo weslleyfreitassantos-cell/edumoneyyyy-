@@ -24,6 +24,10 @@ export interface CanonicalEnemQuestion {
   options: string[];
   officialAnswer: EnemAnswer;
   qualityState: EnemQualityState;
+  sourceIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  statementIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  optionsIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  controlCharCount?: number;
   occurrences: EnemQuestionOccurrence[];
 }
 
@@ -144,6 +148,10 @@ export function canonicalizeEnemArtifacts(
       qualityState: mismatchGroups.has(statementKey(artifact.year, artifact.day, question))
         ? 'REVIEW_REQUIRED'
         : 'PARSED',
+      sourceIntegrity: question.sourceIntegrity,
+      statementIntegrity: question.statementIntegrity,
+      optionsIntegrity: question.optionsIntegrity,
+      controlCharCount: question.controlCharCount,
       occurrences: [occurrence],
     });
   }

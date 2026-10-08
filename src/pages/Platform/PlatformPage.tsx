@@ -352,15 +352,6 @@ function getCloseAccountErrorMessage(
   return getPlatformErrorMessage(error);
 }
 
-function getInitials(name: string): string {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase() ?? '')
-    .join('');
-}
-
 function normalizeInstitutionSearch(value: string): string {
   return value
     .trim()
@@ -1883,10 +1874,10 @@ export default function PlatformPage() {
                 <thead className="bg-[#f3f4f5] text-[11px] uppercase leading-4 text-[#444651]">
                   <tr>
                     <th className="px-3 py-3 font-semibold">
-                      Conta
+                      Admin
                     </th>
                     <th className="px-3 py-3 font-semibold">
-                      ADMIN
+                      Email
                     </th>
                     <th className="px-3 py-3 text-center font-semibold">
                       Status
@@ -1929,27 +1920,17 @@ export default function PlatformPage() {
                         className="transition hover:bg-[#f8f9fa] dark:hover:bg-[#1e293b]"
                       >
                         <td className="px-3 py-4">
-                          <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#dce1ff] text-xs font-bold text-[#00236f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]">
-                              {getInitials(account.name)}
-                            </div>
-                            <div className="min-w-0">
-                              <p className="truncate font-semibold text-[#191c1d] dark:text-[#f8fafc]">
-                                {account.name}
-                              </p>
-                              <p className="truncate text-xs text-[#444651] dark:text-[#cbd5e1]">
-                                {account.institutions.length} instituições
-                              </p>
-                            </div>
+                          <div className="min-w-0">
+                            <p className="truncate font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                              {account.owner?.full_name ?? 'Sem owner'}
+                            </p>
+                            <p className="truncate text-xs text-[#444651] dark:text-[#cbd5e1]">
+                              {account.institutions.length} instituições
+                            </p>
                           </div>
                         </td>
                         <td className="min-w-0 px-3 py-4 text-[#444651] dark:text-[#cbd5e1]">
                           <p className="font-medium text-[#191c1d] dark:text-[#f8fafc]">
-                            {account.owner
-                              ? account.owner.full_name
-                              : 'Sem owner'}
-                          </p>
-                          <p className="text-xs">
                             {account.owner?.email ?? ''}
                           </p>
                           {account.invitation && (

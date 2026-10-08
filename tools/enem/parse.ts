@@ -2,9 +2,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
-
 import type { EnemDownloadedArtifact } from './download.ts';
+import { buildQuestionRegions, extractPdfGeometryPages, groupGeometryLines, type PdfGeometryPage } from './geometry.ts';
 
 export type EnemLanguage = 'ENGLISH' | 'SPANISH' | null;
 export type EnemAnswer = 'A' | 'B' | 'C' | 'D' | 'E' | 'ANNULLED' | 'UNKNOWN';
@@ -21,11 +20,28 @@ export type EnemReviewReason =
   | 'STATEMENT_TOO_SHORT'
   | 'HEADER_CONTAMINATION'
   | 'PAGE_BOUNDARY_ERROR'
+  | 'CONTROL_CHARACTERS'
+  | 'CROSS_COLUMN_CONTAMINATION'
+  | 'HEADER_ONLY_CROP'
+  | 'OPTION_INTEGRITY'
+  | 'STATEMENT_INTEGRITY'
   | 'OTHER';
 
 export interface PdfTextPage {
   page: number;
   text: string;
+  geometry?: PdfGeometryPage;
+}
+
+export interface EnemQuestionSegment {
+  questionNumber: number;
+  language: EnemLanguage;
+  page: number;
+  area: ParsedEnemQuestion['area'];
+  raw: string;
+  controlCharCount?: number;
+  geometryValidated?: boolean;
+  geometryOptionLabels?: string[];
 }
 
 export interface OfficialAnswer {
@@ -45,6 +61,10 @@ export interface ParsedEnemQuestion {
   officialAnswer: EnemAnswer;
   mediaStatus: 'NOT_DETECTED' | 'REVIEW_REQUIRED';
   qualityState: EnemQualityState;
+  sourceIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  statementIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  optionsIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  controlCharCount?: number;
   reviewReasons?: EnemReviewReason[];
 }
 
@@ -67,8 +87,16 @@ export interface EnemParseResult {
   issues: string[];
 }
 
+export function sanitizePdfText(text: string) {
+  const invalidControls = text.match(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/gu) ?? [];
+  return {
+    text: text.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/gu, ''),
+    controlCharCount: invalidControls.length,
+  };
+}
+
 function normalizePdfText(text: string) {
-  return text
+  return sanitizePdfText(text).text
     .replace(/\u00a0/g, ' ')
     .replace(/Q\s+UEST\s+[Ãã]\s+O/gu, 'QUESTÃO')
     .replace(/Q\s+UEST/gu, 'QUEST')
@@ -143,7 +171,33 @@ function languageFor(textBefore: string, day: string, questionNumber: number): E
   return null;
 }
 
-export function extractQuestionSegments(pages: PdfTextPage[], day: string) {
+export function extractQuestionSegments(pages: PdfTextPage[], day: string): EnemQuestionSegment[] {
+  const geometryPages = pages
+    .map((page) => page.geometry)
+    .filter((page): page is PdfGeometryPage => Boolean(page));
+  if (geometryPages.length === pages.length && geometryPages.length > 0) {
+    const regions = buildQuestionRegions(geometryPages);
+    const sourceBeforePage = new Map(
+      pages.map((page, index) => [page.page, pages.slice(0, index + 1).map((item) => item.text).join('\n')]),
+    );
+    return regions.map((region) => {
+      const rawSource = region.bodyLines
+        .map((line) => line.items.map((item) => item.text).join(' '))
+        .join('\n');
+      const localRaw = normalizePdfText(rawSource);
+      const language = languageFor(sourceBeforePage.get(region.page) ?? '', day, region.questionNumber);
+      return {
+        questionNumber: region.questionNumber,
+        language,
+        page: region.page,
+        area: areaFor(day, region.questionNumber),
+        raw: localRaw,
+        controlCharCount: sanitizePdfText(rawSource).controlCharCount,
+        geometryValidated: true,
+        geometryOptionLabels: region.optionStart?.labels ?? [],
+      };
+    });
+  }
   const source = pages
     .map((page) => `[PAGE:${page.page}]\n${normalizePdfText(page.text)}`)
     .join('\n');
@@ -175,7 +229,7 @@ export function extractQuestionSegments(pages: PdfTextPage[], day: string) {
   });
 }
 
-function extractOptions(raw: string) {
+export function extractOptions(raw: string) {
   const lines = raw.split(/\n+/).map((line) => line.trim()).filter(Boolean);
   for (const line of lines) {
     const inline = line.match(/(?:^|[?؟])\s*(A\s+.+?\s+B\s+.+?\s+C\s+.+?\s+D\s+.+?\s+E\s+.+)$/i);
@@ -212,27 +266,44 @@ function extractOptions(raw: string) {
 }
 
 export function parseQuestionSegments(
-  segments: ReturnType<typeof extractQuestionSegments>,
+  segments: EnemQuestionSegment[],
   answers: OfficialAnswer[],
   day = 'D1',
 ) {
   const answerByKey = new Map(answers.map((answer) => [`${answer.questionNumber}:${answer.language ?? ''}`, answer.answer]));
   return segments.map<ParsedEnemQuestion>((segment) => {
-    const extracted = extractOptions(segment.raw);
-    const statement = extracted.before.replace(/\s+/g, ' ').trim();
+    const rawText = String(segment.raw ?? '');
+    const controlCharCount = segment.controlCharCount ?? sanitizePdfText(rawText).controlCharCount;
+    const extracted = extractOptions(normalizePdfText(rawText));
+    const statement = sanitizePdfText(extracted.before).text.replace(/\s+/g, ' ').trim();
     const officialAnswer = answerByKey.get(`${segment.questionNumber}:${segment.language ?? ''}`) ?? 'UNKNOWN';
     const mediaStatus = /\b(figura|gráfico|tabela|mapa|foto|imagem|charge|tirinha)\b/i.test(segment.raw)
       ? 'REVIEW_REQUIRED'
       : 'NOT_DETECTED';
-    const textStatus = statement.length >= 20 && !/QUESTÕES|OPÇÃO INGLÊS|OPÇÃO ESPANHOL|CADERNO|GABARITO/i.test(statement)
+    const headerContamination = /QUESTÕES|OPÇÃO INGLÊS|OPÇÃO ESPANHOL|CADERNO|GABARITO/i.test(statement);
+    const crossColumnContamination = /QUEST(?:ÕES|AO)\s*\d{1,3}/i.test(statement);
+    const optionsIntegrity = extracted.options.length === 5
+      && (segment.geometryOptionLabels?.length ? segment.geometryOptionLabels.join('') === 'ABCDE' : true);
+    const statementIntegrity = statement.length >= 20
+      && !headerContamination
+      && !crossColumnContamination
+      && controlCharCount === 0;
+    const sourceIntegrity = controlCharCount === 0 && segment.geometryValidated !== false
+      ? 'VERIFIED'
+      : 'REVIEW_REQUIRED';
+    const textStatus = statementIntegrity
       ? 'VALID'
       : 'REVIEW_REQUIRED';
     const reviewReasons: EnemReviewReason[] = [];
     if (extracted.options.length !== 5) reviewReasons.push('MISSING_OPTIONS');
+    if (!optionsIntegrity && extracted.options.length === 5) reviewReasons.push('OPTION_INTEGRITY');
     if (mediaStatus === 'REVIEW_REQUIRED') reviewReasons.push('MEDIA_REQUIRED');
     if (officialAnswer === 'UNKNOWN') reviewReasons.push('UNKNOWN_OFFICIAL_ANSWER');
     if (statement.length < 20) reviewReasons.push('STATEMENT_TOO_SHORT');
-    if (/QUESTÕES|OPÇÃO INGLÊS|OPÇÃO ESPANHOL|CADERNO|GABARITO/i.test(statement)) reviewReasons.push('HEADER_CONTAMINATION');
+    if (headerContamination) reviewReasons.push('HEADER_CONTAMINATION');
+    if (crossColumnContamination) reviewReasons.push('CROSS_COLUMN_CONTAMINATION');
+    if (controlCharCount > 0) reviewReasons.push('CONTROL_CHARACTERS');
+    if (!statementIntegrity && statement.length >= 20 && !headerContamination && !crossColumnContamination && controlCharCount === 0) reviewReasons.push('STATEMENT_INTEGRITY');
     if (/\b(fórmula|equação|raiz quadrada|integral|logaritmo)\b|[√∑∫]/i.test(statement)) reviewReasons.push('FORMULA_REVIEW');
     if (Number(segment.language === null && segment.questionNumber <= 5 && Number(day.replace(/\D/g, '')) % 2 === 1)) {
       reviewReasons.push('LANGUAGE_AMBIGUOUS');
@@ -251,34 +322,22 @@ export function parseQuestionSegments(
       officialAnswer,
       mediaStatus,
       qualityState,
+      sourceIntegrity,
+      statementIntegrity: statementIntegrity ? 'VERIFIED' : 'REVIEW_REQUIRED',
+      optionsIntegrity: optionsIntegrity ? 'VERIFIED' : 'REVIEW_REQUIRED',
+      controlCharCount,
       reviewReasons,
     };
   });
 }
 
 async function extractPdfPages(path: string): Promise<PdfTextPage[]> {
-  const document = await pdfjsLib.getDocument({
-    data: new Uint8Array(readFileSync(path)),
-    disableWorker: true,
-  }).promise;
-  const pages: PdfTextPage[] = [];
-  for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
-    const page = await document.getPage(pageNumber);
-    const content = await page.getTextContent();
-    const lines: { y: number; x: number; text: string }[] = [];
-    for (const item of content.items) {
-      if (!('str' in item) || !item.str.trim()) continue;
-      const transform = 'transform' in item ? item.transform : [1, 0, 0, 1, 0, 0];
-      const x = Number(transform[4]);
-      const y = Number(transform[5]);
-      const line = lines.find((candidate) => Math.abs(candidate.y - y) <= 2);
-      if (line) line.text += ` ${item.str.trim()}`;
-      else lines.push({ y, x, text: item.str.trim() });
-    }
-    lines.sort((left, right) => right.y - left.y || left.x - right.x);
-    pages.push({ page: pageNumber, text: lines.map((line) => line.text).join('\n') });
-  }
-  return pages;
+  const geometry = await extractPdfGeometryPages(path);
+  return geometry.map((page) => ({
+    page: page.page,
+    text: groupGeometryLines(page).map((line) => line.items.map((item) => item.text).join(' ')).join('\n'),
+    geometry: page,
+  }));
 }
 
 async function parseArtifact(artifact: EnemDownloadedArtifact): Promise<ParsedEnemArtifact> {

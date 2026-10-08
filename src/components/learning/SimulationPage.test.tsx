@@ -12,6 +12,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 const state = vi.hoisted(() => ({
   attempts: [] as Array<Record<string, unknown>>,
   attemptDetail: null as Record<string, unknown> | null,
+  saveAnswers: vi.fn().mockResolvedValue({}),
   saveNavigation: vi.fn().mockResolvedValue({}),
   submit: vi.fn().mockResolvedValue({
     score: 50,
@@ -98,7 +99,7 @@ vi.mock("../../hooks/useLearningCenter", () => ({
     isPending: false,
   }),
   useSaveEnemSimulationAnswers: () => ({
-    mutateAsync: vi.fn().mockResolvedValue({}),
+    mutateAsync: state.saveAnswers,
   }),
   useSaveLearningSimulationNavigation: () => ({
     mutateAsync: state.saveNavigation,
@@ -118,13 +119,14 @@ afterEach(() => {
   cleanup();
   state.attempts = [];
   state.attemptDetail = null;
+  state.saveAnswers.mockClear();
   state.saveNavigation.mockClear();
   state.submit.mockClear();
 });
 
-function renderPage() {
+function renderPage(initialEntry = "/student/study/simulation?simulation=simulation-1") {
   return render(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={[initialEntry]}>
       <SimulationPage />
     </MemoryRouter>,
   );
@@ -275,5 +277,71 @@ describe("SimulationPage", () => {
         "Resposta indisponível enquanto o enunciado não carregar.",
       ),
     ).toBeTruthy();
+  });
+
+  it("renders visual A-E alternatives and persists the answer letter", async () => {
+    state.attempts = [
+      {
+        id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        started_at: new Date().toISOString(),
+      },
+    ];
+    const optionAssets = (label: string) => [
+      {
+        media_type: "OPTION_CROP",
+        storage_path: null,
+        public_url: `https://example.test/option-${label}.png`,
+        metadata: { asset_role: `OPTION_${label}`, option_label: label },
+      },
+    ];
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      started_at: new Date().toISOString(),
+      navigation_state: null,
+      answers: {},
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "question-1",
+          options: (["A", "B", "C", "D", "E"] as const).map((label) => ({
+            label,
+            text: null,
+            assets: optionAssets(label),
+          })),
+          statement_assets: [
+            {
+              storage_path: null,
+              public_url: "https://example.test/statement.png",
+            },
+          ],
+        },
+      ],
+    };
+    renderPage();
+
+    expect(
+      await screen.findByAltText("Alternativa oficial A da questão 1"),
+    ).toBeTruthy();
+    expect(screen.getAllByRole("radio")).toHaveLength(5);
+    fireEvent.click(screen.getByRole("radio", { name: /A\./ }));
+    await waitFor(() =>
+      expect(state.saveAnswers).toHaveBeenCalledWith({
+        attemptId: "attempt-1",
+        answers: [{ question_bank_id: "question-1", answer: "A" }],
+      }),
+    );
+  });
+
+  it("does not silently replace an invalid simulation with the first template", async () => {
+    renderPage("/student/study/simulation?simulation=missing-simulation");
+    expect(
+      await screen.findByRole("heading", { name: "Prática não disponível" }),
+    ).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Começar prática" })).toBeNull();
+    expect(screen.queryByText("Escolha uma prática")).toBeNull();
   });
 });

@@ -14,6 +14,10 @@ const baseQuestion = (id: string, language: CanonicalEnemQuestion['language'] = 
   options: ['A', 'B', 'C', 'D', 'E'],
   officialAnswer: 'A',
   qualityState: 'PARSED',
+  sourceIntegrity: 'VERIFIED',
+  statementIntegrity: 'VERIFIED',
+  optionsIntegrity: 'VERIFIED',
+  controlCharCount: 0,
   occurrences: [{ year: 2025, day: 'D2', booklet: 'CD5', questionNumber: Number(id.replace(/\D/g, '') || 1), language, officialAnswer: 'A' }],
 });
 

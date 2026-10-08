@@ -296,11 +296,24 @@ export interface EnemSimulationTemplate {
   metadata: Record<string, unknown>;
 }
 
+export interface EnemSimulationOptionAsset {
+  media_type: string;
+  storage_path: string | null;
+  public_url: string | null;
+  metadata: Record<string, unknown>;
+}
+
+export interface EnemSimulationOption {
+  label: 'A' | 'B' | 'C' | 'D' | 'E';
+  text: string | null;
+  assets: EnemSimulationOptionAsset[];
+}
+
 export interface EnemSimulationQuestion {
   position: number;
   question_bank_id: string;
   statement: string;
-  options: string[];
+  options: Array<EnemSimulationOption | string>;
   source_year: number | null;
   question_number: number | null;
   metadata: Record<string, unknown>;
@@ -310,6 +323,31 @@ export interface EnemSimulationQuestion {
     public_url: string | null;
     metadata: Record<string, unknown>;
   }>;
+}
+
+function normalizeEnemSimulationOption(
+  option: EnemSimulationOption | string,
+  index: number,
+): EnemSimulationOption {
+  const fallbackLabel = String.fromCharCode('A'.charCodeAt(0) + index) as EnemSimulationOption['label'];
+  if (typeof option === 'string') {
+    return { label: fallbackLabel, text: option, assets: [] };
+  }
+  return {
+    label: /^[A-E]$/.test(option.label) ? option.label : fallbackLabel,
+    text: option.text ?? null,
+    assets: Array.isArray(option.assets) ? option.assets : [],
+  };
+}
+
+function normalizeEnemSimulationAttempt(attempt: EnemSimulationAttempt): EnemSimulationAttempt {
+  return {
+    ...attempt,
+    questions: (attempt.questions ?? []).map((question) => ({
+      ...question,
+      options: (question.options ?? []).map(normalizeEnemSimulationOption),
+    })),
+  };
 }
 
 export interface EnemSimulationAttempt {
@@ -1247,7 +1285,7 @@ export const learningCenterService = {
   getEnemSimulationAttempt: (attemptId: string) =>
     read<EnemSimulationAttempt>(supabase.rpc('get_enem_simulation_attempt_v2', {
       p_attempt_id: attemptId,
-    })),
+    })).then(normalizeEnemSimulationAttempt),
 
   submitSimulation: (attemptId: string, answers: Array<{ question_bank_id: string; answer: unknown }>, durationSeconds: number) =>
     read<{ attempt_id: string; score: number; correct_count: number; total_questions: number; area_breakdown?: Record<string, { correct: number; total: number }>; skill_breakdown?: Record<string, { correct: number; total: number }> }>(supabase.rpc('submit_learning_simulation_attempt', {

@@ -13,6 +13,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
+import type { EnemSimulationOption } from "../../services/learningCenterService";
 import {
   useEnemSimulationAttempt,
   useEnemSimulationTemplates,
@@ -49,6 +50,21 @@ function assetUrl(path: string | null, publicUrl: string | null) {
   if (/^https?:\/\//i.test(source)) return source;
   return supabase.storage.from("enem-question-assets").getPublicUrl(source).data
     .publicUrl;
+}
+
+function normalizeOption(
+  option: EnemSimulationOption | string,
+  index: number,
+): EnemSimulationOption {
+  const fallbackLabel = String.fromCharCode("A".charCodeAt(0) + index) as EnemSimulationOption["label"];
+  if (typeof option === "string") {
+    return { label: fallbackLabel, text: option, assets: [] };
+  }
+  return {
+    label: option.label ?? fallbackLabel,
+    text: option.text ?? null,
+    assets: option.assets ?? [],
+  };
 }
 
 type SimulationResult = {
@@ -99,16 +115,15 @@ export default function SimulationPage() {
   const [failedStatementAssets, setFailedStatementAssets] = useState<
     Record<string, boolean>
   >({});
+  const [failedOptionAssets, setFailedOptionAssets] = useState<
+    Record<string, boolean>
+  >({});
   const saveQueueRef = useRef(Promise.resolve());
   const saveVersionRef = useRef(0);
 
   const simulation = useMemo(() => {
     const available = templates.data ?? [];
-    return (
-      available.find((item) => item.id === selectedSimulationId) ??
-      available[0] ??
-      null
-    );
+    return available.find((item) => item.id === selectedSimulationId) ?? null;
   }, [selectedSimulationId, templates.data]);
   const openAttempt = useMemo(
     () =>
@@ -158,6 +173,7 @@ export default function SimulationPage() {
   const remainingSeconds = Math.max(0, durationLimitSeconds - elapsedSeconds);
   const currentQuestion = questions[currentIndex] ?? questions[0];
   const currentStatementAssets = currentQuestion?.statement_assets ?? [];
+  const currentOptions = currentQuestion?.options.map(normalizeOption) ?? [];
   const missingStatementAsset =
     Boolean(currentQuestion) &&
     (currentStatementAssets.length === 0 ||
@@ -168,22 +184,26 @@ export default function SimulationPage() {
           failedStatementAssets[`${currentQuestion.question_bank_id}:${index}`]
         );
       }));
+  const missingOptionAsset = Boolean(currentQuestion) && currentOptions.some((option) => {
+    if (option.text?.trim()) return false;
+    return option.assets.length === 0 || option.assets.every((asset, index) => {
+      const url = assetUrl(asset.storage_path, asset.public_url);
+      return !url || failedOptionAssets[`${currentQuestion!.question_bank_id}:${option.label}:${index}`];
+    });
+  });
 
   useEffect(() => {
     const available = templates.data ?? [];
     if (!available.length) return;
     const requestedId = searchParams.get("simulation");
-    const requestedIsAvailable = requestedId
-      ? available.some((item) => item.id === requestedId)
-      : false;
-    const nextId = requestedIsAvailable ? requestedId : available[0].id;
-    if (selectedSimulationId !== nextId) setSelectedSimulationId(nextId);
-    if (searchParams.get("simulation") !== nextId) {
-      const nextParams = new URLSearchParams(searchParams);
-      nextParams.set("simulation", nextId);
-      setSearchParams(nextParams, { replace: true });
+    if (requestedId && available.some((item) => item.id === requestedId)) {
+      if (selectedSimulationId !== requestedId) setSelectedSimulationId(requestedId);
+      return;
     }
-  }, [searchParams, selectedSimulationId, setSearchParams, templates.data]);
+    if (selectedSimulationId && !available.some((item) => item.id === selectedSimulationId)) {
+      setSelectedSimulationId("");
+    }
+  }, [searchParams, selectedSimulationId, templates.data]);
 
   useEffect(() => {
     if (!attemptId && openAttempt?.id) setAttemptId(openAttempt.id);
@@ -272,9 +292,18 @@ export default function SimulationPage() {
     );
   if (!simulation)
     return (
-      <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-800">
-        Ainda não há prática oficial disponível. O banco precisa concluir a
-        validação dos enunciados e das imagens antes de liberar uma prática.
+      <section className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-800">
+        <h1 className="text-lg font-bold">Prática não disponível</h1>
+        <p className="mt-2">
+          Este simulado não está disponível ou ainda não passou pela validação
+          dos enunciados e das imagens.
+        </p>
+        <Link
+          to="/student/study"
+          className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white"
+        >
+          Voltar para a Central de Estudos
+        </Link>
       </section>
     );
   if (attemptId && attempt.isLoading)
@@ -309,7 +338,7 @@ export default function SimulationPage() {
   };
 
   const answerQuestion = (value: string) => {
-    if (!currentQuestion || missingStatementAsset) return;
+    if (!currentQuestion || missingStatementAsset || missingOptionAsset) return;
     const nextAnswers = {
       ...answers,
       [currentQuestion.question_bank_id]: value,
@@ -482,29 +511,12 @@ export default function SimulationPage() {
             Preparação para o ENEM
           </p>
           <h1 className="mt-1 text-2xl font-bold dark:text-white">
-            Escolha uma prática
+            Confirme sua prática
           </h1>
           <p className="mt-2 text-sm text-slate-500">
-            Cada tentativa recebe uma seleção nova e permanece igual ao
-            retornar.
+            Você está prestes a iniciar apenas a prática selecionada.
           </p>
         </header>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {(templates.data ?? []).map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => resetForSimulation(item.id)}
-              className={`rounded-lg border p-4 text-left ${item.id === simulation.id ? "border-[#005bbf] bg-blue-50 dark:bg-blue-950/30" : "dark:border-slate-700"}`}
-            >
-              <p className="font-semibold dark:text-white">{item.title}</p>
-              <p className="mt-1 text-xs text-slate-500">
-                {item.question_count} questões · {item.duration_minutes ?? 20}{" "}
-                min
-              </p>
-            </button>
-          ))}
-        </div>
         <div className="rounded-xl border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
           <h2 className="text-xl font-bold dark:text-white">
             {simulation.title}
@@ -552,7 +564,11 @@ export default function SimulationPage() {
             disabled={start.isPending || !student.data}
             className="mt-6 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
           >
-            {start.isPending ? "Preparando..." : "Começar prática"}
+            {start.isPending
+              ? "Preparando..."
+              : simulation.area
+                ? "Começar simulado"
+                : "Começar prática"}
           </button>
         </div>
         {completedAttempts.length > 0 ? (
@@ -745,29 +761,34 @@ export default function SimulationPage() {
                     />
                   ) : null;
                 })}
-                {missingStatementAsset ? (
+                {missingStatementAsset || missingOptionAsset ? (
                   <div
                     role="alert"
                     className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800"
                   >
-                    <p className="font-bold">
-                      Não foi possível carregar o enunciado oficial.
-                    </p>
+                    <p className="font-bold">Não foi possível carregar o enunciado oficial e todo o conteúdo visual.</p>
                     <p className="mt-1">
-                      As alternativas ficam bloqueadas até que a imagem esteja
-                      disponível.
+                      As alternativas ficam bloqueadas até que o enunciado e as
+                      imagens oficiais disponíveis estejam carregados.
                     </p>
                     <button
                       type="button"
-                      onClick={() =>
+                      onClick={() => {
                         setFailedStatementAssets((current) => {
                           const next = { ...current };
                           currentStatementAssets.forEach((_, index) => {
                             delete next[`${currentQuestion.question_bank_id}:${index}`];
                           });
                           return next;
-                        })
-                      }
+                        });
+                        setFailedOptionAssets((current) => {
+                          const next = { ...current };
+                          currentOptions.forEach((option) => option.assets.forEach((_, index) => {
+                            delete next[`${currentQuestion.question_bank_id}:${option.label}:${index}`];
+                          }));
+                          return next;
+                        });
+                      }}
                       className="mt-3 rounded-lg border border-rose-300 bg-white px-3 py-2 font-bold text-rose-800"
                     >
                       Tentar novamente
@@ -803,35 +824,55 @@ export default function SimulationPage() {
                 />
               </button>
             </div>
-            {missingStatementAsset ? (
+            {missingStatementAsset || missingOptionAsset ? (
               <p className="mt-5 text-sm font-semibold text-rose-700" role="status">
-                Resposta indisponível enquanto o enunciado não carregar.
+                {missingStatementAsset
+                  ? "Resposta indisponível enquanto o enunciado não carregar."
+                  : "Resposta indisponível enquanto as alternativas oficiais não carregarem."}
               </p>
             ) : (
             <fieldset className="mt-5 space-y-2">
               <legend className="sr-only">
                 Alternativas da questão {currentIndex + 1}
               </legend>
-              {currentQuestion.options.map((option, index) => {
-                const label = String.fromCharCode("A".charCodeAt(0) + index);
+              {currentOptions.map((option, index) => {
+                const label = option.label;
+                const visibleAssets = option.assets.map((asset, assetIndex) => ({
+                  asset,
+                  assetIndex,
+                  url: assetUrl(asset.storage_path, asset.public_url),
+                })).filter(({ assetIndex, url }) => url && !failedOptionAssets[`${currentQuestion.question_bank_id}:${label}:${assetIndex}`]);
+                const showText = Boolean(option.text?.trim()) && visibleAssets.length === 0;
                 return (
                   <label
-                    key={`${label}-${option}`}
-                    className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm transition dark:border-slate-700 dark:text-slate-200 ${answers[currentQuestion.question_bank_id] === option ? "border-[#005bbf] bg-blue-50 dark:bg-blue-950/30" : ""}`}
+                    key={`${label}-${option.text ?? index}`}
+                    className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm transition dark:border-slate-700 dark:text-slate-200 ${answers[currentQuestion.question_bank_id] === label ? "border-[#005bbf] bg-blue-50 dark:bg-blue-950/30" : ""}`}
                   >
                     <input
                       className="mt-0.5"
                       type="radio"
                       name={currentQuestion.question_bank_id}
-                      value={option}
+                      value={label}
                       checked={
-                        answers[currentQuestion.question_bank_id] === option
+                        answers[currentQuestion.question_bank_id] === label
                       }
-                      onChange={() => answerQuestion(option)}
+                      onChange={() => answerQuestion(label)}
                     />
-                    <span>
+                    <span className="min-w-0 flex-1">
                       <strong className="mr-2">{label}.</strong>
-                      {option}
+                      {showText ? option.text : null}
+                      {visibleAssets.map(({ asset, assetIndex, url }) => (
+                        <img
+                          key={`${asset.storage_path ?? asset.public_url}-${assetIndex}`}
+                          src={url ?? undefined}
+                          onError={() => setFailedOptionAssets((current) => ({
+                            ...current,
+                            [`${currentQuestion.question_bank_id}:${label}:${assetIndex}`]: true,
+                          }))}
+                          alt={`Alternativa oficial ${label} da questão ${currentIndex + 1}`}
+                          className="mt-2 h-auto max-h-[45vh] max-w-full rounded-md border border-slate-200 object-contain dark:border-slate-700"
+                        />
+                      ))}
                     </span>
                   </label>
                 );

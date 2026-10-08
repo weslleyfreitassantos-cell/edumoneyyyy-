@@ -7,7 +7,10 @@ import { createCanvas } from '@napi-rs/canvas';
 import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
 
 import type { ParsedEnemArtifact, ParsedEnemQuestion } from './parse.ts';
-import { extractPdfGeometryPages, planStatementCrop, type PdfGeometryPage, type StatementCropPlan } from './geometry.ts';
+import { buildQuestionRegions, extractPdfGeometryPages, planStatementCrop, type PdfGeometryPage, type QuestionOptionLabel, type StatementCropPlan } from './geometry.ts';
+
+export type EnemAssetRole = 'STATEMENT' | `OPTION_${QuestionOptionLabel}`;
+export type EnemAssetMediaType = 'STATEMENT_CROP' | 'OPTION_CROP';
 
 export interface StatementAssetManifestItem {
   assetRole: 'STATEMENT';
@@ -20,18 +23,37 @@ export interface StatementAssetManifestItem {
   crop: { left: number; bottom: number; width: number; height: number };
 }
 
+export interface OptionAssetManifestItem {
+  assetRole: `OPTION_${QuestionOptionLabel}`;
+  mediaType: 'OPTION_CROP';
+  optionLabel: QuestionOptionLabel;
+  questionNumber: number;
+  language: ParsedEnemQuestion['language'];
+  page: number;
+  storagePath: string;
+  sha256: string;
+  crop: { left: number; bottom: number; width: number; height: number };
+}
+
 export interface RenderedQuestionAssetManifest {
   questionNumber: number;
   language: ParsedEnemQuestion['language'];
   renderReady: boolean;
-  sourceIntegrity: 'VERIFIED';
+  sourceIntegrity: 'VERIFIED' | 'REVIEW_REQUIRED';
+  statementIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  optionsIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  validation?: 'VERIFIED' | 'REVIEW_REQUIRED';
   excludedOptionLabels: string[];
   planReason: string | null;
   statementAssets: StatementAssetManifestItem[];
+  optionAssets?: Record<QuestionOptionLabel, OptionAssetManifestItem[]>;
+  renderMode?: 'VISUAL_OPTIONS' | 'TEXT_OPTIONS';
+  statementContainsOptions?: boolean;
+  sourceColumn?: 'LEFT' | 'RIGHT' | 'FULL';
 }
 
 export interface EnemAssetRenderManifest {
-  schemaVersion: 1;
+  schemaVersion: 1 | 2;
   generatedAt: string;
   year: number;
   day: string;
@@ -43,6 +65,10 @@ export interface EnemAssetRenderManifest {
 
 function artifactKey(artifact: Pick<ParsedEnemArtifact, 'year' | 'day' | 'booklet'>) {
   return `${artifact.year}-${artifact.day}-${artifact.booklet}`.replace(/[^A-Za-z0-9_-]+/g, '_');
+}
+
+function questionAssetKey(question: Pick<ParsedEnemQuestion, 'questionNumber' | 'language' | 'page'>) {
+  return `${question.questionNumber}:${question.language ?? 'COMMON'}:${question.page}`;
 }
 
 export function renderQuestionKey(
@@ -61,6 +87,8 @@ async function renderPages(pdfPath: string, pages: PdfGeometryPage[], scale: num
   const loadingTask = pdfjsLib.getDocument({
     data: new Uint8Array(readFileSync(pdfPath)),
     disableWorker: true,
+    standardFontDataUrl: `${pathToFileURL(resolve('node_modules/pdfjs-dist/standard_fonts')).href}/`,
+    wasmUrl: `${pathToFileURL(resolve('node_modules/pdfjs-dist/wasm')).href}/`,
   });
   const document = await loadingTask.promise;
   const rendered = new Map<number, ReturnType<typeof createCanvas>>();
@@ -86,7 +114,7 @@ async function renderPages(pdfPath: string, pages: PdfGeometryPage[], scale: num
 function cropPart(
   fullPage: ReturnType<typeof createCanvas>,
   page: PdfGeometryPage,
-  plan: StatementCropPlan['parts'][number],
+  plan: { bounds: StatementCropPlan['parts'][number]['bounds'] },
   scale: number,
 ) {
   const width = Math.max(1, Math.ceil(plan.bounds.width * scale));
@@ -106,23 +134,33 @@ export async function renderStatementAssets(
 ): Promise<EnemAssetRenderManifest> {
   const scale = options.scale ?? 1.5;
   const geometryPages = await extractPdfGeometryPages(artifact.examPath);
-  const plans = new Map<number, StatementCropPlan>(artifact.questions.map((question) => [
-    question.questionNumber,
-    planStatementCrop(geometryPages, question.questionNumber),
+  const regions = buildQuestionRegions(geometryPages);
+  const plans = new Map<string, StatementCropPlan>(artifact.questions.map((question) => [
+    questionAssetKey(question),
+    planStatementCrop(geometryPages, question.questionNumber, { page: question.page }),
   ]));
-  const pagesToRender = geometryPages.filter((page) => [...plans.values()].some((plan) => plan.parts.some((part) => part.page === page.page)));
+  const pagesToRender = geometryPages.filter((page) => artifact.questions.some((question) => {
+    const plan = plans.get(questionAssetKey(question));
+    const region = regions.find((candidate) => candidate.questionNumber === question.questionNumber && candidate.page === question.page);
+    return plan?.parts.some((part) => part.page === page.page)
+      || Object.values(region?.optionRegions ?? {}).some((option) => option?.parts.some((part) => part.page === page.page));
+  }));
   const renderedPages = await renderPages(artifact.examPath, pagesToRender, scale);
   const key = artifactKey(artifact);
   const questions = artifact.questions.map<RenderedQuestionAssetManifest>((question: ParsedEnemQuestion) => {
-    const plan = plans.get(question.questionNumber)!;
+    const plan = plans.get(questionAssetKey(question))!;
+    const region = regions.find((candidate) => candidate.questionNumber === question.questionNumber && candidate.page === question.page);
+    const languageKey = question.language ?? 'COMMON';
     const assets: StatementAssetManifestItem[] = [];
+    const optionAssets = Object.fromEntries(
+      (['A', 'B', 'C', 'D', 'E'] as const).map((label) => [label, [] as OptionAssetManifestItem[]]),
+    ) as Record<QuestionOptionLabel, OptionAssetManifestItem[]>;
     for (const part of plan.parts) {
       const page = geometryPages.find((candidate) => candidate.page === part.page);
       const fullPage = renderedPages.get(part.page);
       if (!page || !fullPage || plan.status !== 'READY') continue;
       const buffer = cropPart(fullPage, page, part, scale).toBuffer('image/png');
-      const languageKey = question.language ?? 'COMMON';
-      const relativePath = join(key, `question-${question.questionNumber}-${languageKey}`, `statement-page-${part.page}.png`).replaceAll('\\', '/');
+      const relativePath = join('v2', key, `question-${question.questionNumber}-${languageKey}`, `statement-page-${part.page}.png`).replaceAll('\\', '/');
       const destination = resolve(outputDir, relativePath);
       mkdirSync(dirname(destination), { recursive: true });
       writeFileSync(destination, buffer);
@@ -137,18 +175,65 @@ export async function renderStatementAssets(
         crop: part.bounds,
       });
     }
+    if (plan.status === 'READY' && region) {
+      for (const label of ['A', 'B', 'C', 'D', 'E'] as const) {
+        const option = region.optionRegions[label];
+        if (!option || option.status !== 'VERIFIED') continue;
+        for (const part of option.parts) {
+          const page = geometryPages.find((candidate) => candidate.page === part.page);
+          const fullPage = renderedPages.get(part.page);
+          if (!page || !fullPage) continue;
+          const buffer = cropPart(fullPage, page, part, scale).toBuffer('image/png');
+          const relativePath = join('v2', key, `question-${question.questionNumber}-${languageKey}`, `option-${label}-page-${part.page}.png`).replaceAll('\\', '/');
+          const destination = resolve(outputDir, relativePath);
+          mkdirSync(dirname(destination), { recursive: true });
+          writeFileSync(destination, buffer);
+          optionAssets[label].push({
+            assetRole: `OPTION_${label}`,
+            mediaType: 'OPTION_CROP',
+            optionLabel: label,
+            questionNumber: question.questionNumber,
+            language: question.language,
+            page: part.page,
+            storagePath: relativePath,
+            sha256: sha256(buffer),
+            crop: part.bounds,
+          });
+        }
+      }
+    }
+    const hasAllOptionAssets = (['A', 'B', 'C', 'D', 'E'] as const).every((label) => optionAssets[label].length > 0);
+    const integrityReady = question.mediaStatus === 'NOT_DETECTED'
+      && question.qualityState === 'PARSED'
+      && question.sourceIntegrity === 'VERIFIED'
+      && question.statementIntegrity === 'VERIFIED'
+      && question.optionsIntegrity === 'VERIFIED'
+      && (question.controlCharCount ?? 0) === 0;
     return {
       questionNumber: question.questionNumber,
       language: question.language,
-      renderReady: plan.status === 'READY' && assets.length > 0 && question.mediaStatus === 'NOT_DETECTED',
-      sourceIntegrity: 'VERIFIED',
+      renderReady: plan.status === 'READY' && assets.length > 0 && hasAllOptionAssets && integrityReady,
+      sourceIntegrity: question.sourceIntegrity ?? 'REVIEW_REQUIRED',
+      statementIntegrity: question.statementIntegrity ?? 'REVIEW_REQUIRED',
+      optionsIntegrity: question.optionsIntegrity ?? 'REVIEW_REQUIRED',
+      validation: plan.status === 'READY'
+        && question.qualityState === 'PARSED'
+        && question.sourceIntegrity === 'VERIFIED'
+        && question.statementIntegrity === 'VERIFIED'
+        && question.optionsIntegrity === 'VERIFIED'
+        ? 'VERIFIED'
+        : 'REVIEW_REQUIRED',
       excludedOptionLabels: plan.excludedOptionLabels,
       planReason: plan.reason,
       statementAssets: assets,
+      optionAssets,
+      renderMode: hasAllOptionAssets ? 'VISUAL_OPTIONS' : 'TEXT_OPTIONS',
+      statementContainsOptions: false,
+      sourceColumn: region?.column,
     };
   });
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
     year: artifact.year,
     day: artifact.day,
@@ -178,7 +263,7 @@ async function runCli() {
   for (const artifact of parsed.artifacts) manifests.push(await renderStatementAssets(artifact, outputDir));
   const output = resolve(manifestPath);
   mkdirSync(dirname(output), { recursive: true });
-  writeFileSync(output, `${JSON.stringify({ schemaVersion: 1, generatedAt: new Date().toISOString(), artifacts: manifests }, null, 2)}\n`, 'utf8');
+  writeFileSync(output, `${JSON.stringify({ schemaVersion: 2, generatedAt: new Date().toISOString(), artifacts: manifests }, null, 2)}\n`, 'utf8');
   const ready = manifests.flatMap((manifest) => manifest.questions).filter((question) => question.renderReady).length;
   console.log(`ENEM_ASSETS_RENDERED artifacts=${manifests.length} render_ready=${ready} output=${output}`);
 }

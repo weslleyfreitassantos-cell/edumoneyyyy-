@@ -10,7 +10,12 @@ import {
   Users,
   type LucideIcon,
 } from 'lucide-react';
-import { useState } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 import { useAdminOverview } from '../../../hooks/useAdminOverview';
@@ -29,6 +34,12 @@ function getErrorMessage(error: unknown): string {
 
 function getFirstName(fullName: string | null | undefined): string {
   return fullName?.trim().split(/\s+/).at(0) || 'Diretor';
+}
+
+function getIsMobileViewport(): boolean {
+  return typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(max-width: 767px)').matches;
 }
 
 interface MetricCardProps {
@@ -108,12 +119,72 @@ export default function AdminOverviewTab({
   availableModuleIds = [],
   onNavigateToModule,
 }: AdminOverviewTabProps) {
-  const [setupOpenOverride, setSetupOpenOverride] = useState<boolean | null>(null);
-  const [operationalOpen, setOperationalOpen] = useState(false);
-  const [panoramaOpen, setPanoramaOpen] = useState(true);
   const { profile } = useAuth();
 
   const institutionQuery = useCurrentInstitution(profile?.id);
+
+  const [isMobileViewport, setIsMobileViewport] = useState(
+    getIsMobileViewport,
+  );
+  const collapseDirectorSections =
+    isMobileViewport && institutionQuery.currentRole === 'DIRECTOR';
+  const [setupOpenOverride, setSetupOpenOverride] = useState<boolean | null>(
+    () => (collapseDirectorSections ? false : null),
+  );
+  const [operationalOpen, setOperationalOpen] = useState(false);
+  const [panoramaOpen, setPanoramaOpen] = useState(
+    () => !collapseDirectorSections,
+  );
+  const responsiveDefaultsApplied = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const handleViewportChange = () => {
+      setIsMobileViewport(mediaQuery.matches);
+    };
+
+    handleViewportChange();
+    mediaQuery.addEventListener('change', handleViewportChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleViewportChange);
+    };
+  }, []);
+
+  const responsiveDefaultsKey = [
+    institutionQuery.data ?? '',
+    institutionQuery.currentRole ?? '',
+    isMobileViewport ? 'mobile' : 'desktop',
+  ].join(':');
+
+  useLayoutEffect(() => {
+    if (
+      institutionQuery.isLoading ||
+      !institutionQuery.data ||
+      !institutionQuery.currentRole ||
+      responsiveDefaultsApplied.current === responsiveDefaultsKey
+    ) {
+      return;
+    }
+
+    if (isMobileViewport && institutionQuery.currentRole === 'DIRECTOR') {
+      setSetupOpenOverride(false);
+      setOperationalOpen(false);
+      setPanoramaOpen(false);
+    }
+
+    responsiveDefaultsApplied.current = responsiveDefaultsKey;
+  }, [
+    institutionQuery.data,
+    institutionQuery.currentRole,
+    institutionQuery.isLoading,
+    isMobileViewport,
+    responsiveDefaultsKey,
+  ]);
 
   const institutionId = institutionQuery.data ?? '';
   const setupReadinessQuery = useSchoolSetupReadiness(institutionId);

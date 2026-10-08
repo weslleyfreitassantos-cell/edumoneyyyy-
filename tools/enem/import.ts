@@ -115,7 +115,7 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
 } = {}): EnemImportPlan {
   const registry = inputs.classification ?? buildSubjectClassificationRegistry(inputs.canonical.canonicalQuestions);
   const registryById = new Map(registry.map((record) => [record.canonical_id, record]));
-  const ready = (options.questionSet ?? inputs.canonical.canonicalQuestions).filter(isEnemImportableQuestion);
+  const sourceReady = (options.questionSet ?? inputs.canonical.canonicalQuestions).filter(isEnemImportableQuestion);
   const manifestVersion = options.manifestVersion ?? inputs.manifest.manifestVersion;
   const manifestFingerprint = options.manifestFingerprint ?? inputs.manifest.manifestFingerprint;
   const artifactByKey = new Map(inputs.downloads.artifacts.map((artifact) => [artifactKey(artifact.year, artifact.day, artifact.booklet), artifact]));
@@ -124,6 +124,9 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
   for (const manifest of inputs.assets?.artifacts ?? []) {
     for (const question of manifest.questions) renderByKey.set(renderQuestionKey(manifest, question.questionNumber, question.language), question);
   }
+  const ready = inputs.assets
+    ? sourceReady.filter((question) => question.occurrences.some((occurrence) => renderByKey.get(renderQuestionKey(occurrence, occurrence.questionNumber, occurrence.language))?.renderReady))
+    : sourceReady;
   const lines: string[] = [
     'begin;',
     'do $$',
@@ -150,7 +153,10 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
     const metadata = {
       canonical_id: question.canonicalId,
       source_integrity: 'VERIFIED',
-      render_mode: 'HYBRID',
+      statement_integrity: question.statementIntegrity ?? 'REVIEW_REQUIRED',
+      options_integrity: question.optionsIntegrity ?? 'REVIEW_REQUIRED',
+      control_char_count: question.controlCharCount ?? 0,
+      render_mode: firstRender?.renderMode ?? 'TEXT_OPTIONS',
       render_ready: firstRender?.renderReady ?? false,
       area_verified: record.area_verified,
       enem_subject: record.subject,
@@ -158,6 +164,7 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
       classification_reason_code: record.reason_code,
       classification_source_fingerprint: record.source_fingerprint,
       statement_assets: firstRender?.statementAssets ?? [],
+      option_assets: firstRender?.optionAssets ?? {},
       enem_area: record.area,
       pedagogical_enrichment: 'PENDING',
       adaptive_evidence_enabled: false,
@@ -187,7 +194,10 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
       lines.push(`  select id into v_occurrence_id from public.learning_enem_official_occurrences where year = ${item.year} and exam = 'ENEM' and application = 'REGULAR' and day = ${sql(item.day)} and booklet = ${sql(item.booklet)} and question_number = ${item.questionNumber} and coalesce(language, '') = ${sql(item.language ?? '')} limit 1;`);
       const render = renderByKey.get(renderQuestionKey(item, item.questionNumber, item.language));
       for (const asset of render?.statementAssets ?? []) {
-        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(asset.sha256)}, ${sql(asset.mediaType)}, ${asset.page}, ${sql(asset.storagePath)}, ${render.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: asset.assetRole, official_pdf_crop: true, render_ready: render.renderReady, sha256: asset.sha256, crop: asset.crop, excluded_option_labels: render.excludedOptionLabels })}) on conflict do nothing;`);
+        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(asset.sha256)}, ${sql(asset.mediaType)}, ${asset.page}, ${sql(asset.storagePath)}, ${render.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: asset.assetRole, official_pdf_crop: true, render_ready: render.renderReady, sha256: asset.sha256, crop: asset.crop, source_page: asset.page, excluded_option_labels: render.excludedOptionLabels })}) on conflict do nothing;`);
+      }
+      for (const option of Object.values(render?.optionAssets ?? {}).flat()) {
+        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(option.sha256)}, ${sql(option.mediaType)}, ${option.page}, ${sql(option.storagePath)}, ${render?.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: option.assetRole, option_label: option.optionLabel, official_pdf_crop: true, render_ready: render?.renderReady ?? false, sha256: option.sha256, crop: option.crop, source_page: option.page })}) on conflict do nothing;`);
       }
     }
   }

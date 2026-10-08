@@ -21,6 +21,10 @@ const canonical = {
     options: ['1', '2', '3', '4', '5'],
     officialAnswer: 'C',
     qualityState: 'PARSED',
+    sourceIntegrity: 'VERIFIED',
+    statementIntegrity: 'VERIFIED',
+    optionsIntegrity: 'VERIFIED',
+    controlCharCount: 0,
     occurrences: [{ year: 2025, day: 'D2', booklet: 'CD5', questionNumber: 136, language: null, officialAnswer: 'C' }],
   }],
 } as EnemCanonicalizationResult;
@@ -69,6 +73,10 @@ describe('ENEM import dry-run', () => {
       options,
       officialAnswer,
       qualityState: 'PARSED' as const,
+      sourceIntegrity: 'VERIFIED' as const,
+      statementIntegrity: 'VERIFIED' as const,
+      optionsIntegrity: 'VERIFIED' as const,
+      controlCharCount: 0,
       occurrences: [{ year: 2025, day: 'D2' as const, booklet: 'CD5', questionNumber: 136, language: null, officialAnswer }],
     });
     const result = buildEnemImportDryRun({ artifacts: [], issues: [] }, parsed, {
