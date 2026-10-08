@@ -176,7 +176,7 @@ describe("SimulationPage", () => {
     ).toContain("não respondidas");
   });
 
-  it("restores answers and flags from an open attempt", async () => {
+  it("does not auto-resume an old content revision", async () => {
     state.attempts = [
       {
         id: "attempt-1",
@@ -222,6 +222,36 @@ describe("SimulationPage", () => {
     };
     renderPage();
 
+    expect(await screen.findByRole("heading", { name: "Confirme sua prática" })).toBeTruthy();
+    expect(screen.queryByText("Questão 2 de 2")).toBeNull();
+  });
+
+  it("auto-resumes only the current content revision", async () => {
+    state.attempts = [
+      {
+        id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        content_revision: "structured-text-only-v3",
+        started_at: new Date(Date.now() - 60_000).toISOString(),
+        navigation_state: { current_index: 1, flagged: ["question-2"] },
+        answers: { "question-1": { answer: "A" } },
+      },
+    ];
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      content_revision: "structured-text-only-v3",
+      started_at: new Date(Date.now() - 60_000).toISOString(),
+      navigation_state: { current_index: 1, flagged: ["question-2"] },
+      answers: { "question-1": { answer: "A" } },
+      questions: [
+        { position: 1, question_bank_id: "question-1", options: ["Uma", "Duas"], statement_assets: [] },
+        { position: 2, question_bank_id: "question-2", options: ["Três", "Quatro"], statement_assets: [] },
+      ],
+    };
+    renderPage();
     expect(
       await screen.findByText(
         (_, element) =>
@@ -229,27 +259,15 @@ describe("SimulationPage", () => {
           element.textContent?.includes("Questão 2 de 2") === true,
       ),
     ).toBeTruthy();
-    expect(
-      screen
-        .getByRole("button", { name: "Remover marcação da questão" })
-        .getAttribute("aria-pressed"),
-    ).toBe("true");
-    expect(
-      screen.getByText(
-        (_, element) =>
-          element?.tagName === "P" &&
-          element.textContent?.includes("1 respondida(s)") === true,
-      ),
-    ).toBeTruthy();
   });
 
-  it("blocks answering when the official statement asset is missing", async () => {
+  it("blocks answering when current text-only content is missing", async () => {
     state.attempts = [
       {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-v1",
+        content_revision: "structured-text-only-v3",
         started_at: new Date().toISOString(),
       },
     ];
@@ -257,6 +275,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
       status: "IN_PROGRESS",
+      content_revision: "structured-text-only-v3",
       started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},
@@ -272,23 +291,23 @@ describe("SimulationPage", () => {
     renderPage();
 
     expect((await screen.findByRole("alert")).textContent).toContain(
-      "enunciado oficial",
+      "Questão indisponível nesta tentativa.",
     );
     expect(screen.queryByRole("radio")).toBeNull();
     expect(
-      screen.getByText(
+      screen.queryByText(
         "Resposta indisponível enquanto o enunciado não carregar.",
       ),
-    ).toBeTruthy();
+    ).toBeNull();
   });
 
-  it("renders visual A-E alternatives and persists the answer letter", async () => {
+  it("does not render visual alternatives for the current text-only revision", async () => {
     state.attempts = [
       {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-v1",
+        content_revision: "structured-text-only-v3",
         started_at: new Date().toISOString(),
       },
     ];
@@ -304,7 +323,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-v1",
+        content_revision: "structured-text-only-v3",
         started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},
@@ -328,17 +347,10 @@ describe("SimulationPage", () => {
     };
     renderPage();
 
-    expect(
-      await screen.findByAltText("Alternativa oficial A da questão 1"),
-    ).toBeTruthy();
-    expect(screen.getAllByRole("radio")).toHaveLength(5);
-    fireEvent.click(screen.getByRole("radio", { name: /A\./ }));
-    await waitFor(() =>
-      expect(state.saveAnswers).toHaveBeenCalledWith({
-        attemptId: "attempt-1",
-        answers: [{ question_bank_id: "question-1", answer: "A" }],
-      }),
+    expect((await screen.findByRole("alert")).textContent).toContain(
+      "Questão indisponível nesta tentativa.",
     );
+    expect(screen.queryByRole("radio")).toBeNull();
   });
 
   it("renders verified structured content as selectable text without statement media", async () => {
@@ -347,7 +359,7 @@ describe("SimulationPage", () => {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-v1",
+        content_revision: "structured-text-only-v3",
         started_at: new Date().toISOString(),
       },
     ];
@@ -355,7 +367,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
       status: "IN_PROGRESS",
-      content_revision: "structured-text-v1",
+      content_revision: "structured-text-only-v3",
       started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},

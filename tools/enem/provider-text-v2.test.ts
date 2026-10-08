@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   buildProviderTextImportSql,
   buildProviderTextReport,
+  normalizeProviderLanguage,
   PROVIDER_TEXT_REVISION,
   type ProviderTextReport,
 } from './provider-text-v2';
@@ -33,6 +34,14 @@ function question(overrides: Partial<EnemProviderQuestion> = {}): EnemProviderQu
 }
 
 describe('ENEM provider text v2', () => {
+  it('normalizes accented and English provider language labels', () => {
+    expect(normalizeProviderLanguage('Inglês')).toBe('ENGLISH');
+    expect(normalizeProviderLanguage('english')).toBe('ENGLISH');
+    expect(normalizeProviderLanguage('español')).toBe('SPANISH');
+    expect(normalizeProviderLanguage('spanish')).toBe('SPANISH');
+    expect(normalizeProviderLanguage(null)).toBeNull();
+  });
+
   it('accepts complete text without requiring official PDF reconciliation', () => {
     const report = buildProviderTextReport([question()]);
     expect(report.contentRevision).toBe(PROVIDER_TEXT_REVISION);

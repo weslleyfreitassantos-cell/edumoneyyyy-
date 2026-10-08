@@ -13,7 +13,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
 import {
-  SUPPORTED_ENEM_CONTENT_REVISIONS,
+  CURRENT_ENEM_CONTENT_REVISION,
   type EnemStructuredContent,
   type EnemSimulationOption,
 } from "../../services/learningCenterService";
@@ -158,13 +158,21 @@ export default function SimulationPage() {
     const available = templates.data ?? [];
     return available.find((item) => item.id === selectedSimulationId) ?? null;
   }, [selectedSimulationId, templates.data]);
+  const languageOptions = useMemo(
+    () =>
+      (simulation?.language_options ?? []).filter(
+        (value): value is "ENGLISH" | "SPANISH" =>
+          value === "ENGLISH" || value === "SPANISH",
+      ),
+    [simulation?.language_options],
+  );
   const openAttempt = useMemo(
     () =>
       (attempts.data ?? []).find(
         (item) =>
           item.simulation_id === simulation?.id &&
           item.status === "IN_PROGRESS" &&
-          SUPPORTED_ENEM_CONTENT_REVISIONS.has(item.content_revision),
+          item.content_revision === CURRENT_ENEM_CONTENT_REVISION,
       ),
     [attempts.data, simulation?.id],
   );
@@ -202,10 +210,15 @@ export default function SimulationPage() {
     .map((question) => question.question_bank_id);
   const currentQuestion = questions[currentIndex] ?? questions[0];
   const structuredContent = currentQuestion?.structured_content ?? null;
+  const isCurrentTextOnlyAttempt =
+    attempt.data?.content_revision === CURRENT_ENEM_CONTENT_REVISION;
+  const questionUnavailable =
+    Boolean(currentQuestion) && isCurrentTextOnlyAttempt && !structuredContent;
   const currentStatementAssets = currentQuestion?.statement_assets ?? [];
   const currentOptions = currentQuestion?.options.map(normalizeOption) ?? [];
   const missingStatementAsset =
-    Boolean(currentQuestion) &&
+    questionUnavailable ||
+    (Boolean(currentQuestion) &&
     !structuredContent &&
     (currentStatementAssets.length === 0 ||
       currentStatementAssets.some((asset, index) => {
@@ -214,8 +227,9 @@ export default function SimulationPage() {
           !url ||
           failedStatementAssets[`${currentQuestion.question_bank_id}:${index}`]
         );
-      }));
+      })));
   const missingOptionAsset = Boolean(currentQuestion) && currentOptions.some((option) => {
+    if (questionUnavailable) return true;
     if (structuredContent) return !option.text?.trim();
     if (option.text?.trim()) return false;
     return option.assets.length === 0 || option.assets.every((asset, index) => {
@@ -223,6 +237,20 @@ export default function SimulationPage() {
       return !url || failedOptionAssets[`${currentQuestion!.question_bank_id}:${option.label}:${index}`];
     });
   });
+
+  useEffect(() => {
+    if (!questionUnavailable || !currentQuestion) return;
+    console.error("[ENEM] Questão text-only sem conteúdo estruturado", {
+      attemptId,
+      questionBankId: currentQuestion.question_bank_id,
+      contentRevision: attempt.data?.content_revision,
+    });
+  }, [
+    attempt.data?.content_revision,
+    attemptId,
+    currentQuestion?.question_bank_id,
+    questionUnavailable,
+  ]);
 
   useEffect(() => {
     const available = templates.data ?? [];
@@ -236,6 +264,13 @@ export default function SimulationPage() {
       setSelectedSimulationId("");
     }
   }, [searchParams, selectedSimulationId, templates.data]);
+
+  useEffect(() => {
+    if (simulation?.area !== "LINGUAGENS" || languageOptions.length === 0) return;
+    if (!languageOptions.includes(languageChoice)) {
+      setLanguageChoice(languageOptions[0]);
+    }
+  }, [languageChoice, languageOptions, simulation?.area]);
 
   useEffect(() => {
     if (!attemptId && openAttempt?.id) setAttemptId(openAttempt.id);
@@ -363,7 +398,7 @@ export default function SimulationPage() {
   };
 
   const answerQuestion = (value: string) => {
-    if (!currentQuestion || missingStatementAsset || missingOptionAsset) return;
+    if (!currentQuestion || questionUnavailable || missingStatementAsset || missingOptionAsset) return;
     const nextAnswers = {
       ...answers,
       [currentQuestion.question_bank_id]: value,
@@ -559,7 +594,7 @@ export default function SimulationPage() {
                 Escolha o idioma das 5 questões de língua estrangeira
               </legend>
               <div className="mt-2 flex flex-wrap gap-2">
-                <label
+                {languageOptions.includes("ENGLISH") ? <label
                   className={`cursor-pointer rounded-lg border px-3 py-2 text-sm ${languageChoice === "ENGLISH" ? "border-[#005bbf] bg-blue-50 text-[#005bbf]" : "dark:border-slate-700 dark:text-white"}`}
                 >
                   <input
@@ -571,7 +606,8 @@ export default function SimulationPage() {
                   />
                   Inglês
                 </label>
-                <label
+                  : null}
+                {languageOptions.includes("SPANISH") ? <label
                   className={`cursor-pointer rounded-lg border px-3 py-2 text-sm ${languageChoice === "SPANISH" ? "border-[#005bbf] bg-blue-50 text-[#005bbf]" : "dark:border-slate-700 dark:text-white"}`}
                 >
                   <input
@@ -583,6 +619,7 @@ export default function SimulationPage() {
                   />
                   Espanhol
                 </label>
+                  : null}
               </div>
             </fieldset>
           ) : null}
@@ -762,7 +799,17 @@ export default function SimulationPage() {
           <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1 space-y-3">
-                {structuredContent ? (
+                {questionUnavailable ? (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800"
+                  >
+                    <p className="font-bold">Questão indisponível nesta tentativa.</p>
+                    <p className="mt-1">
+                      O conteúdo textual desta questão não está disponível para a revisão atual.
+                    </p>
+                  </div>
+                ) : structuredContent ? (
                   <StructuredText content={structuredContent} />
                 ) : currentStatementAssets.map((asset, index) => {
                   const url = assetUrl(asset.storage_path, asset.public_url);
@@ -782,7 +829,7 @@ export default function SimulationPage() {
                     />
                   ) : null;
                 })}
-                {missingStatementAsset || missingOptionAsset ? (
+                {!questionUnavailable && (missingStatementAsset || missingOptionAsset) ? (
                   <div
                     role="alert"
                     className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800"
@@ -847,7 +894,7 @@ export default function SimulationPage() {
                 />
               </button>
             </div>
-            {missingStatementAsset || missingOptionAsset ? (
+            {questionUnavailable ? null : missingStatementAsset || missingOptionAsset ? (
               <p className="mt-5 text-sm font-semibold text-rose-700" role="status">
                 {missingStatementAsset
                   ? "Resposta indisponível enquanto o enunciado não carregar."

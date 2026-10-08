@@ -38,6 +38,7 @@ export interface ProviderTextRecord {
   statementComplete: boolean;
   fiveAlternativesComplete: boolean;
   noControlChars: boolean;
+  languageMappingFailed: boolean;
   legacyReplacementCandidate: {
     year: number;
     day: string;
@@ -64,6 +65,7 @@ export interface ProviderTextReport {
   invalidAnswer: number;
   unsafeText: number;
   visualCue: number;
+  languageMappingFailed: number;
   records: ProviderTextRecord[];
 }
 
@@ -92,11 +94,19 @@ function hash(value: unknown) {
   return createHash('sha256').update(stableJson(value)).digest('hex');
 }
 
-function language(value: string | null) {
-  const normalized = value?.trim().toLocaleLowerCase('pt-BR');
-  if (normalized === 'ingles') return 'ENGLISH' as const;
-  if (normalized === 'espanhol') return 'SPANISH' as const;
+export function normalizeProviderLanguage(value: string | null) {
+  const normalized = value
+    ?.normalize('NFKD')
+    .replace(/[\u0300-\u036f]/gu, '')
+    .trim()
+    .toLocaleLowerCase('pt-BR');
+  if (normalized === 'ingles' || normalized === 'english' || normalized === 'en') return 'ENGLISH' as const;
+  if (normalized === 'espanhol' || normalized === 'espanol' || normalized === 'spanish' || normalized === 'es') return 'SPANISH' as const;
   return null;
+}
+
+function language(value: string | null) {
+  return normalizeProviderLanguage(value);
 }
 
 function subjectArea(discipline: string) {
@@ -179,6 +189,9 @@ function evaluateQuestion(question: EnemProviderQuestion): ProviderTextRecord {
     ? question.correctAlternative as AlternativeLetter
     : null;
   const visualCue = hasVisualCue(allText);
+  const languageMappingFailed = subjectArea(question.discipline) === 'LINGUAGENS'
+    && question.language !== null
+    && language(question.language) === null;
   const rejectionReasons = [
     ...(!statementComplete ? ['INCOMPLETE_STATEMENT'] : []),
     ...(!fiveAlternativesComplete ? ['INCOMPLETE_ALTERNATIVES'] : []),
@@ -186,6 +199,7 @@ function evaluateQuestion(question: EnemProviderQuestion): ProviderTextRecord {
     ...(mediaDependent ? ['MEDIA_DEPENDENT'] : []),
     ...(unsafeText ? ['UNSAFE_TEXT'] : []),
     ...(visualCue ? ['VISUAL_CUE'] : []),
+    ...(languageMappingFailed ? ['LANGUAGE_MAPPING_FAILED'] : []),
   ];
   const normalizedContentHash = hash({
     statement: normalizeStructuredText(statementText),
@@ -228,6 +242,7 @@ function evaluateQuestion(question: EnemProviderQuestion): ProviderTextRecord {
     statementComplete,
     fiveAlternativesComplete,
     noControlChars: !unsafeText,
+    languageMappingFailed,
     legacyReplacementCandidate: null,
   };
 }
@@ -252,6 +267,7 @@ export function buildProviderTextReport(providerQuestions: EnemProviderQuestion[
     invalidAnswer: countReason('INVALID_ANSWER'),
     unsafeText: countReason('UNSAFE_TEXT'),
     visualCue: countReason('VISUAL_CUE'),
+    languageMappingFailed: countReason('LANGUAGE_MAPPING_FAILED'),
     records,
   };
 }
@@ -364,7 +380,7 @@ async function runCli() {
     mkdirSync(dirname(sqlPath), { recursive: true });
     writeFileSync(sqlPath, buildProviderTextImportSql(report), 'utf8');
   }
-  console.log(`ENEM_PROVIDER_TEXT_V2_OK raw=${report.providerQuestionsRaw} duplicates=${report.duplicateProviderQuestions} unique=${report.providerQuestions} accepted=${report.accepted} rejected=${report.rejected} media=${report.mediaDependent} incomplete_statement=${report.incompleteStatement} incomplete_alternatives=${report.incompleteAlternatives} invalid_answer=${report.invalidAnswer} unsafe=${report.unsafeText} visual_cue=${report.visualCue} output=${outputPath}`);
+  console.log(`ENEM_PROVIDER_TEXT_V2_OK raw=${report.providerQuestionsRaw} duplicates=${report.duplicateProviderQuestions} unique=${report.providerQuestions} accepted=${report.accepted} rejected=${report.rejected} media=${report.mediaDependent} incomplete_statement=${report.incompleteStatement} incomplete_alternatives=${report.incompleteAlternatives} invalid_answer=${report.invalidAnswer} unsafe=${report.unsafeText} visual_cue=${report.visualCue} language_mapping_failed=${report.languageMappingFailed} output=${outputPath}`);
 }
 
 const invokedPath = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : null;
