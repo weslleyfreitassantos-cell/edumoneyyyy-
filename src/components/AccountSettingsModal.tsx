@@ -143,15 +143,28 @@ function fieldLabel(text: string): string {
   return `block text-xs font-bold text-[#414754] dark:text-[#cbd5e1]`;
 }
 
+function RequiredMark() {
+  return (
+    <span
+      className="required-field-mark ml-1 text-red-600"
+      aria-hidden="true"
+    />
+  );
+}
+
 function StudentRegistrationFields({
   data,
   disabled,
+  showRequiredMarkers,
   onChange,
 }: {
   data: StudentSelfRegistration['student'];
   disabled: boolean;
+  showRequiredMarkers: boolean;
   onChange: (next: StudentSelfRegistration['student']) => void;
 }) {
+  const requiredMark = showRequiredMarkers ? <RequiredMark /> : null;
+
   function updateStudent<K extends keyof StudentSelfRegistration['student']>(
     key: K,
     value: StudentSelfRegistration['student'][K],
@@ -188,32 +201,32 @@ function StudentRegistrationFields({
         </h3>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div>
-            <label className={fieldLabel('Data de nascimento')} htmlFor="self-birth-date">Data de nascimento</label>
-            <input id="self-birth-date" type="date" value={data.birthDate} onChange={(event) => updateStudent('birthDate', event.target.value)} disabled={disabled} className={inputClass} />
+            <label className={fieldLabel('Data de nascimento')} htmlFor="self-birth-date">Data de nascimento{requiredMark}</label>
+            <input id="self-birth-date" type="date" value={data.birthDate} onChange={(event) => updateStudent('birthDate', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} className={inputClass} />
           </div>
           <div>
-            <label className={fieldLabel('CPF')} htmlFor="self-cpf">CPF</label>
-            <input id="self-cpf" value={data.cpf} onChange={(event) => updateStudent('cpf', event.target.value)} disabled={disabled} maxLength={14} className={inputClass} />
+            <label className={fieldLabel('CPF')} htmlFor="self-cpf">CPF{requiredMark}</label>
+            <input id="self-cpf" value={data.cpf} onChange={(event) => updateStudent('cpf', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} maxLength={14} className={inputClass} />
           </div>
           <div>
             <label className={fieldLabel('Nome social')} htmlFor="self-social-name">Nome social</label>
             <input id="self-social-name" value={data.socialName} onChange={(event) => updateStudent('socialName', event.target.value)} disabled={disabled} maxLength={120} className={inputClass} />
           </div>
           <div>
-            <label className={fieldLabel('Sexo')} htmlFor="self-sex">Sexo</label>
-            <input id="self-sex" value={data.sex} onChange={(event) => updateStudent('sex', event.target.value)} disabled={disabled} maxLength={40} className={inputClass} />
+            <label className={fieldLabel('Sexo')} htmlFor="self-sex">Sexo{requiredMark}</label>
+            <input id="self-sex" value={data.sex} onChange={(event) => updateStudent('sex', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} maxLength={40} className={inputClass} />
           </div>
           <div>
-            <label className={fieldLabel('Nacionalidade')} htmlFor="self-nationality">Nacionalidade</label>
-            <input id="self-nationality" value={data.nationality} onChange={(event) => updateStudent('nationality', event.target.value)} disabled={disabled} maxLength={80} className={inputClass} />
+            <label className={fieldLabel('Nacionalidade')} htmlFor="self-nationality">Nacionalidade{requiredMark}</label>
+            <input id="self-nationality" value={data.nationality} onChange={(event) => updateStudent('nationality', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} maxLength={80} className={inputClass} />
           </div>
           <div>
-            <label className={fieldLabel('Naturalidade')} htmlFor="self-birthplace">Naturalidade</label>
-            <input id="self-birthplace" value={data.birthplace} onChange={(event) => updateStudent('birthplace', event.target.value)} disabled={disabled} maxLength={120} className={inputClass} />
+            <label className={fieldLabel('Naturalidade')} htmlFor="self-birthplace">Naturalidade{requiredMark}</label>
+            <input id="self-birthplace" value={data.birthplace} onChange={(event) => updateStudent('birthplace', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} maxLength={120} className={inputClass} />
           </div>
           <div>
-            <label className={fieldLabel('UF de nascimento')} htmlFor="self-birth-state">UF de nascimento</label>
-            <input id="self-birth-state" value={data.birthState} onChange={(event) => updateStudent('birthState', event.target.value.toUpperCase())} disabled={disabled} maxLength={2} className={inputClass} />
+            <label className={fieldLabel('UF de nascimento')} htmlFor="self-birth-state">UF de nascimento{requiredMark}</label>
+            <input id="self-birth-state" value={data.birthState} onChange={(event) => updateStudent('birthState', event.target.value.toUpperCase())} disabled={disabled} aria-required={showRequiredMarkers} maxLength={2} className={inputClass} />
           </div>
         </div>
       </section>
@@ -231,13 +244,13 @@ function StudentRegistrationFields({
       <section className="rounded-lg border border-[#d8deea] p-4">
         <h3 className="text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">Endereço</h3>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div><label className={fieldLabel('CEP')} htmlFor="self-postal-code">CEP</label><input id="self-postal-code" value={data.address.postalCode} onChange={(event) => updateAddress('postalCode', event.target.value)} disabled={disabled} className={inputClass} /></div>
-          <div><label className={fieldLabel('Logradouro')} htmlFor="self-street">Logradouro</label><input id="self-street" value={data.address.street} onChange={(event) => updateAddress('street', event.target.value)} disabled={disabled} className={inputClass} /></div>
-          <div><label className={fieldLabel('Número')} htmlFor="self-address-number">Número</label><input id="self-address-number" value={data.address.number} onChange={(event) => updateAddress('number', event.target.value)} disabled={disabled} className={inputClass} /></div>
+          <div><label className={fieldLabel('CEP')} htmlFor="self-postal-code">CEP{requiredMark}</label><input id="self-postal-code" value={data.address.postalCode} onChange={(event) => updateAddress('postalCode', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} className={inputClass} /></div>
+          <div><label className={fieldLabel('Logradouro')} htmlFor="self-street">Logradouro{requiredMark}</label><input id="self-street" value={data.address.street} onChange={(event) => updateAddress('street', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} className={inputClass} /></div>
+          <div><label className={fieldLabel('Número')} htmlFor="self-address-number">Número{requiredMark}</label><input id="self-address-number" value={data.address.number} onChange={(event) => updateAddress('number', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} className={inputClass} /></div>
           <div><label className={fieldLabel('Complemento')} htmlFor="self-complement">Complemento</label><input id="self-complement" value={data.address.complement} onChange={(event) => updateAddress('complement', event.target.value)} disabled={disabled} className={inputClass} /></div>
-          <div><label className={fieldLabel('Bairro')} htmlFor="self-neighborhood">Bairro</label><input id="self-neighborhood" value={data.address.neighborhood} onChange={(event) => updateAddress('neighborhood', event.target.value)} disabled={disabled} className={inputClass} /></div>
-          <div><label className={fieldLabel('Cidade')} htmlFor="self-city">Cidade</label><input id="self-city" value={data.address.city} onChange={(event) => updateAddress('city', event.target.value)} disabled={disabled} className={inputClass} /></div>
-          <div><label className={fieldLabel('UF')} htmlFor="self-state">UF</label><input id="self-state" value={data.address.state} onChange={(event) => updateAddress('state', event.target.value.toUpperCase())} disabled={disabled} maxLength={2} className={inputClass} /></div>
+          <div><label className={fieldLabel('Bairro')} htmlFor="self-neighborhood">Bairro{requiredMark}</label><input id="self-neighborhood" value={data.address.neighborhood} onChange={(event) => updateAddress('neighborhood', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} className={inputClass} /></div>
+          <div><label className={fieldLabel('Cidade')} htmlFor="self-city">Cidade{requiredMark}</label><input id="self-city" value={data.address.city} onChange={(event) => updateAddress('city', event.target.value)} disabled={disabled} aria-required={showRequiredMarkers} className={inputClass} /></div>
+          <div><label className={fieldLabel('UF')} htmlFor="self-state">UF{requiredMark}</label><input id="self-state" value={data.address.state} onChange={(event) => updateAddress('state', event.target.value.toUpperCase())} disabled={disabled} aria-required={showRequiredMarkers} maxLength={2} className={inputClass} /></div>
         </div>
         <label className="mt-4 flex items-center gap-2 text-sm text-[#414754] dark:text-[#cbd5e1]"><input type="checkbox" checked={data.address.ruralZone} onChange={(event) => updateAddress('ruralZone', event.target.checked)} disabled={disabled} /> Zona rural</label>
       </section>
@@ -925,7 +938,7 @@ export default function AccountSettingsModal({
               htmlFor={`${titleId}-name`}
               className="block text-xs font-bold text-[#414754] dark:text-[#cbd5e1]"
             >
-              Nome
+              Nome<RequiredMark />
             </label>
             <input
               ref={nameInputRef}
@@ -953,7 +966,7 @@ export default function AccountSettingsModal({
                   htmlFor={`${titleId}-phone`}
                   className="block text-xs font-bold text-[#414754] dark:text-[#cbd5e1]"
                 >
-                  Telefone
+                  Telefone{selfRegistration?.role === 'STUDENT' && !selfRegistration.selfRegistrationConfirmed && <RequiredMark />}
                 </label>
                 <input
                   id={`${titleId}-phone`}
@@ -961,6 +974,7 @@ export default function AccountSettingsModal({
                   value={phone}
                   onChange={(event) => setPhone(event.target.value)}
                   disabled={isSaving || isLoadingRegistration}
+                  aria-required={selfRegistration?.role === 'STUDENT' && !selfRegistration.selfRegistrationConfirmed}
                   autoComplete="tel"
                   maxLength={40}
                   className={inputClass}
@@ -976,6 +990,7 @@ export default function AccountSettingsModal({
                 <StudentRegistrationFields
                   data={selfRegistration.student}
                   disabled={isSaving || avatarStatus === 'uploading' || selfRegistration.selfRegistrationConfirmed}
+                  showRequiredMarkers={!selfRegistration.selfRegistrationConfirmed}
                   onChange={(student) =>
                     setSelfRegistration({ ...selfRegistration, student })
                   }
