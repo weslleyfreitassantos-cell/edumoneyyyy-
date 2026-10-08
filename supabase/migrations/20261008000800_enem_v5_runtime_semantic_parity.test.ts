@@ -9,8 +9,8 @@ const migration = readFileSync(
 describe('ENEM v5 runtime semantic parity migration', () => {
   it('is forward-only and keeps the active v5 revision', () => {
     expect(migration).toContain("content_revision = 'structured-text-only-v5'");
-    expect(migration).toContain("'20261008000800'");
     expect(migration).toContain("'structured-text-only-v5'");
+    expect(migration).toContain('commit;');
     expect(migration).not.toMatch(/\b(drop table|delete from|truncate)\b/iu);
   });
 
