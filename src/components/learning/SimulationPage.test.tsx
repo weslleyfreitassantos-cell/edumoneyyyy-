@@ -182,7 +182,7 @@ describe("SimulationPage", () => {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "source-faithful-v3",
+        content_revision: "structured-text-v1",
         started_at: new Date(Date.now() - 60_000).toISOString(),
         navigation_state: { current_index: 1, flagged: ["question-2"] },
         answers: { "question-1": { answer: "A" } },
@@ -249,7 +249,7 @@ describe("SimulationPage", () => {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "source-faithful-v3",
+        content_revision: "structured-text-v1",
         started_at: new Date().toISOString(),
       },
     ];
@@ -288,7 +288,7 @@ describe("SimulationPage", () => {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "source-faithful-v3",
+        content_revision: "structured-text-v1",
         started_at: new Date().toISOString(),
       },
     ];
@@ -304,7 +304,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "source-faithful-v3",
+        content_revision: "structured-text-v1",
         started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},
@@ -339,6 +339,52 @@ describe("SimulationPage", () => {
         answers: [{ question_bank_id: "question-1", answer: "A" }],
       }),
     );
+  });
+
+  it("renders verified structured content as selectable text without statement media", async () => {
+    state.attempts = [
+      {
+        id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        content_revision: "structured-text-v1",
+        started_at: new Date().toISOString(),
+      },
+    ];
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      content_revision: "structured-text-v1",
+      started_at: new Date().toISOString(),
+      navigation_state: null,
+      answers: {},
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "question-1",
+          structured_content: {
+            context: "Contexto estruturado da questão.",
+            prompt: "Qual alternativa está correta?",
+            alternatives: [],
+            render_mode: "STRUCTURED_TEXT",
+            essential_media: [],
+          },
+          options: ["Uma resposta", "Outra resposta", "Terceira resposta", "Quarta resposta", "Quinta resposta"],
+          statement_assets: [
+            {
+              storage_path: null,
+              public_url: "https://example.test/legacy-statement.png",
+            },
+          ],
+        },
+      ],
+    };
+    renderPage();
+    expect(await screen.findByText("Contexto estruturado da questão.")).toBeTruthy();
+    expect(screen.getByText("Qual alternativa está correta?")).toBeTruthy();
+    expect(screen.queryByAltText("Enunciado oficial da questão 1, parte 1")).toBeNull();
+    expect(screen.getAllByRole("radio")).toHaveLength(5);
   });
 
   it("does not silently replace an invalid simulation with the first template", async () => {

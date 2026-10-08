@@ -1,6 +1,6 @@
 import { supabase } from '../lib/supabaseClient';
 
-export const CURRENT_ENEM_CONTENT_REVISION = 'source-faithful-v3' as const;
+export const CURRENT_ENEM_CONTENT_REVISION = 'structured-text-v1' as const;
 
 export interface LearningSubject {
   id: string;
@@ -312,6 +312,20 @@ export interface EnemSimulationOption {
   assets: EnemSimulationOptionAsset[];
 }
 
+export interface EnemStructuredContent {
+  context: string;
+  prompt: string;
+  alternatives: Array<{
+    letter: 'A' | 'B' | 'C' | 'D' | 'E';
+    text: string;
+    file?: string | null;
+    isCorrect?: boolean;
+    assets?: EnemSimulationOptionAsset[];
+  }>;
+  render_mode: 'STRUCTURED_TEXT' | 'STRUCTURED_TEXT_WITH_MEDIA' | 'STRUCTURED_TEXT_VISUAL_OPTIONS';
+  essential_media: Array<EnemSimulationOptionAsset | string>;
+}
+
 export interface EnemSimulationQuestion {
   position: number;
   question_bank_id: string;
@@ -320,6 +334,7 @@ export interface EnemSimulationQuestion {
   source_year: number | null;
   question_number: number | null;
   metadata: Record<string, unknown>;
+  structured_content?: EnemStructuredContent | null;
   statement_assets: Array<{
     media_type: string;
     storage_path: string | null;

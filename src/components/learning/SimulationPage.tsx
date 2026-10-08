@@ -14,6 +14,7 @@ import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
 import {
   CURRENT_ENEM_CONTENT_REVISION,
+  type EnemStructuredContent,
   type EnemSimulationOption,
 } from "../../services/learningCenterService";
 import {
@@ -67,6 +68,37 @@ function normalizeOption(
     text: option.text ?? null,
     assets: option.assets ?? [],
   };
+}
+
+function StructuredText({ content }: { content: EnemStructuredContent }) {
+  const paragraphs = [content.context, content.prompt]
+    .flatMap((value) => value.split(/\r?\n\s*\r?\n/gu))
+    .map((value) => value.replace(/!\[[^\]]*\]\([^)]*\)/gu, "").replace(/[\*_`~]/gu, "").trim())
+    .filter(Boolean);
+  return (
+    <article
+      aria-label="Enunciado estruturado da questão"
+      className="max-w-4xl space-y-4 text-base leading-7 text-slate-800 dark:text-slate-100"
+    >
+      {paragraphs.map((paragraph, index) => (
+        <p key={`${index}-${paragraph.slice(0, 24)}`} className="whitespace-pre-line">
+          {paragraph}
+        </p>
+      ))}
+      {content.essential_media.map((media, index) => {
+        const url = typeof media === "string" ? media : assetUrl(media.storage_path, media.public_url);
+        if (!url) return null;
+        return (
+          <img
+            key={`${url}-${index}`}
+            src={url}
+            alt="Mídia essencial da questão"
+            className="h-auto max-h-[70vh] max-w-full rounded-lg border border-slate-200 object-contain dark:border-slate-700"
+          />
+        );
+      })}
+    </article>
+  );
 }
 
 type SimulationResult = {
@@ -169,10 +201,12 @@ export default function SimulationPage() {
     .filter((question) => flagged[question.question_bank_id])
     .map((question) => question.question_bank_id);
   const currentQuestion = questions[currentIndex] ?? questions[0];
+  const structuredContent = currentQuestion?.structured_content ?? null;
   const currentStatementAssets = currentQuestion?.statement_assets ?? [];
   const currentOptions = currentQuestion?.options.map(normalizeOption) ?? [];
   const missingStatementAsset =
     Boolean(currentQuestion) &&
+    !structuredContent &&
     (currentStatementAssets.length === 0 ||
       currentStatementAssets.some((asset, index) => {
         const url = assetUrl(asset.storage_path, asset.public_url);
@@ -182,6 +216,7 @@ export default function SimulationPage() {
         );
       }));
   const missingOptionAsset = Boolean(currentQuestion) && currentOptions.some((option) => {
+    if (structuredContent) return !option.text?.trim();
     if (option.text?.trim()) return false;
     return option.assets.length === 0 || option.assets.every((asset, index) => {
       const url = assetUrl(asset.storage_path, asset.public_url);
@@ -727,7 +762,9 @@ export default function SimulationPage() {
           <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1 space-y-3">
-                {currentStatementAssets.map((asset, index) => {
+                {structuredContent ? (
+                  <StructuredText content={structuredContent} />
+                ) : currentStatementAssets.map((asset, index) => {
                   const url = assetUrl(asset.storage_path, asset.public_url);
                   const assetKey = `${currentQuestion.question_bank_id}:${index}`;
                   return url && !failedStatementAssets[assetKey] ? (
@@ -781,7 +818,9 @@ export default function SimulationPage() {
                 ) : (
                   <p className="text-xs text-slate-500">
                     As alternativas abaixo são controles interativos; o
-                    enunciado é exibido diretamente do PDF oficial.
+                    {structuredContent
+                      ? " conteúdo estruturado foi verificado contra a fonte oficial."
+                      : " enunciado é exibido diretamente do PDF oficial."}
                   </p>
                 )}
               </div>

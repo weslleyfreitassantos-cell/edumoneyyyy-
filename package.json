@@ -26,6 +26,7 @@
     "enem:promotion": "node --experimental-strip-types tools/enem/promotion.ts",
     "enem:dry-run": "node --experimental-strip-types tools/enem/dry-run.ts",
     "enem:import-sql": "node --experimental-strip-types tools/enem/import.ts",
+    "enem:structured": "node --experimental-strip-types tools/enem/structured-text.ts",
     "enem:ingest": "node --experimental-strip-types tools/enem/ingest.ts",
     "routing:guard": "node scripts/validate-domain-routing.mjs",
     "production:config:guard": "node scripts/validate-production-config.mjs",
