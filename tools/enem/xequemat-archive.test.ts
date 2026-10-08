@@ -58,4 +58,21 @@ describe('Xequemat archive parser', () => {
     expect(record.rejectionReasons).toContain('INVALID_SOURCE_IDENTITY');
     expect(record.ready).toBe(false);
   });
+
+  it('maps the archive taxonomy for Ciências da Natureza', () => {
+    const record = parseXequematQuestionHtml(
+      `<html><head><title>Questão 104 - ENEM PPL 2022</title></head><body>
+        <div data-elementor-type="wp-post" class="elementor elementor-page area-do-conhecimento-ciencias-da-natureza-e-suas-tecnologias assunto-circuitos-eletricos">
+          <div class="elementor-widget-theme-post-content">
+            <p>Texto completo sobre circuitos elétricos com contexto suficiente.</p>
+            <p>Qual alternativa está correta?</p>
+            <p>A) Um.</p><p>B) Dois.</p><p>C) Três.</p><p>D) Quatro.</p><p>E) Cinco.</p>
+            <p>Gabarito: A</p>
+          </div>
+        </div>
+      </body></html>`,
+      { sourceFile: 'blog/questao-104-enem-ppl-2022/index.html', rightsStatus: 'VERIFIED' },
+    );
+    expect(record.area).toBe('CIENCIAS_NATUREZA');
+  });
 });

@@ -183,7 +183,7 @@ function inferMetadata(root: any, sourceFile: string, title: string, pageClass =
   const className = `${String(root?.closest?.('[data-elementor-type]')?.className ?? '')} ${pageClass}`.toLocaleLowerCase('pt-BR');
   const area: XequematArea = className.includes('matematica')
     ? 'MATEMATICA'
-    : className.includes('ciencias-natureza')
+    : className.includes('ciencias-natureza') || className.includes('ciencias-da-natureza')
       ? 'CIENCIAS_NATUREZA'
       : className.includes('ciencias-humanas')
         ? 'CIENCIAS_HUMANAS'
