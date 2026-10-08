@@ -132,7 +132,54 @@ function renderPage(initialEntry = "/student/study/simulation?simulation=simulat
   );
 }
 
+function makeQuestions(count: number) {
+  return Array.from({ length: count }, (_, index) => ({
+    position: index + 1,
+    question_bank_id: `question-${index + 1}`,
+    options: ["Uma", "Duas"],
+    statement_assets: [
+      {
+        storage_path: null,
+        public_url: `https://example.test/question-${index + 1}.png`,
+      },
+    ],
+  }));
+}
+
 describe("SimulationPage", () => {
+  it.each([10, 45])(
+    "keeps the question navigator in one horizontal row with %i questions",
+    async (questionCount) => {
+      state.attemptDetail = {
+        attempt_id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        started_at: new Date().toISOString(),
+        questions: makeQuestions(questionCount),
+        answers: {},
+        navigation_state: null,
+      };
+      renderPage();
+      fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
+
+      const navigation = await screen.findByRole("navigation", {
+        name: "Navegador da prática",
+      });
+      const questionRail = navigation.querySelector(
+        '[aria-label="Navegação das questões"]',
+      );
+
+      expect(questionRail).toBeTruthy();
+      expect(questionRail?.className).toContain("flex-nowrap");
+      expect(questionRail?.className).toContain("overflow-x-auto");
+      expect(
+        Array.from(navigation.querySelectorAll("button")).filter((button) =>
+          button.getAttribute("aria-label")?.startsWith("Questão "),
+        ),
+      ).toHaveLength(questionCount);
+    },
+  );
+
   it("offers navigator, persistent flagging and final review", async () => {
     renderPage();
     fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));

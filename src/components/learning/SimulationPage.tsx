@@ -153,6 +153,7 @@ export default function SimulationPage() {
   >({});
   const saveQueueRef = useRef(Promise.resolve());
   const saveVersionRef = useRef(0);
+  const questionNavigatorRef = useRef<HTMLDivElement>(null);
 
   const simulation = useMemo(() => {
     const available = templates.data ?? [];
@@ -314,6 +315,18 @@ export default function SimulationPage() {
     setReviewing(false);
     persistNavigation(index, flagged);
   };
+
+  useEffect(() => {
+    const activeQuestion = questionNavigatorRef.current?.querySelector<HTMLButtonElement>(
+      '[aria-current="step"]',
+    );
+    if (typeof activeQuestion?.scrollIntoView !== "function") return;
+    activeQuestion.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [currentIndex, questions.length]);
 
   const toggleFlag = (questionId: string) => {
     const nextFlagged = { ...flagged, [questionId]: !flagged[questionId] };
@@ -706,7 +719,11 @@ export default function SimulationPage() {
             {flaggedIds.length} marcada(s) para revisar
           </p>
         </div>
-        <div className="mt-3 grid grid-cols-5 gap-2 sm:grid-cols-10">
+        <div
+          ref={questionNavigatorRef}
+          aria-label="Navegação das questões"
+          className="mt-3 -mx-1 flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden px-1 pb-2 snap-x snap-mandatory"
+        >
           {questions.map((question, index) => {
             const isAnswered = Boolean(
               answers[question.question_bank_id]?.trim(),
@@ -719,7 +736,7 @@ export default function SimulationPage() {
                 onClick={() => moveToQuestion(index)}
                 aria-label={`Questão ${index + 1}${isAnswered ? ", respondida" : ", não respondida"}${isFlagged ? ", marcada" : ""}`}
                 aria-current={index === currentIndex ? "step" : undefined}
-                className={`relative min-h-10 rounded-lg border text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] ${index === currentIndex ? "border-[#005bbf] bg-blue-50 text-[#005bbf]" : isAnswered ? "border-emerald-200 bg-emerald-50 text-emerald-700" : "border-slate-200 text-slate-500 dark:border-slate-700 dark:text-slate-300"}`}
+                className={`relative min-h-10 min-w-10 shrink-0 snap-center rounded-lg border px-3 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] ${index === currentIndex ? "border-[#005bbf] bg-blue-50 text-[#005bbf]" : isAnswered ? "border-emerald-200 bg-emerald-50 text-emerald-700" : "border-slate-200 text-slate-500 dark:border-slate-700 dark:text-slate-300"}`}
               >
                 {index + 1}
                 {isFlagged && (
