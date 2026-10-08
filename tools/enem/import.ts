@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import type { EnemDownloadedArtifact } from './download.ts';
 import type { CanonicalEnemQuestion } from './canonicalize.ts';
 import type { EnemParseResult } from './parse.ts';
-import { renderQuestionKey, type EnemAssetRenderManifest, type RenderedQuestionAssetManifest } from './render-question-assets.ts';
+import { ENEM_ASSET_REVISION, renderQuestionKey, type EnemAssetRenderManifest, type RenderedQuestionAssetManifest } from './render-question-assets.ts';
 import { ENEM_AREAS, ENEM_SUBJECTS, buildSubjectClassificationRegistry, type SubjectClassificationRecord } from './classification.ts';
 import { isEnemImportableQuestion } from './importability.ts';
 
@@ -66,6 +66,10 @@ function jsonSql(value: unknown) {
   return `${sql(JSON.stringify(value))}::jsonb`;
 }
 
+function versionedMediaFingerprint(sha256: string, identity: string) {
+  return createHash('sha256').update(`${ENEM_ASSET_REVISION}:${identity}:${sha256}`).digest('hex');
+}
+
 function artifactKey(year: number, day: string, booklet: string) {
   return `${year}:${day}:${booklet}`;
 }
@@ -118,6 +122,7 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
   const sourceReady = (options.questionSet ?? inputs.canonical.canonicalQuestions).filter(isEnemImportableQuestion);
   const manifestVersion = options.manifestVersion ?? inputs.manifest.manifestVersion;
   const manifestFingerprint = options.manifestFingerprint ?? inputs.manifest.manifestFingerprint;
+  const contentRevision = ENEM_ASSET_REVISION;
   const artifactByKey = new Map(inputs.downloads.artifacts.map((artifact) => [artifactKey(artifact.year, artifact.day, artifact.booklet), artifact]));
   const questionByKey = buildQuestionLookup(inputs.parsed);
   const renderByKey = new Map<string, RenderedQuestionAssetManifest>();
@@ -155,6 +160,9 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
       source_integrity: 'VERIFIED',
       statement_integrity: question.statementIntegrity ?? 'REVIEW_REQUIRED',
       options_integrity: question.optionsIntegrity ?? 'REVIEW_REQUIRED',
+      text_options_integrity: firstRender?.textOptionsIntegrity ?? 'REVIEW_REQUIRED',
+      content_revision: contentRevision,
+      integrity_version: contentRevision,
       control_char_count: question.controlCharCount ?? 0,
       render_mode: firstRender?.renderMode ?? 'TEXT_OPTIONS',
       render_ready: firstRender?.renderReady ?? false,
@@ -190,14 +198,22 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
       const sourceArtifact = artifactByKey.get(artifactKey(item.year, item.day, item.booklet));
       const sourceQuestion = questionByKey.get(`${artifactKey(item.year, item.day, item.booklet)}:${item.questionNumber}:${item.language ?? ''}`);
       if (!sourceArtifact || !sourceQuestion) throw new Error(`ENEM_IMPORT_OCCURRENCE_PROVENANCE_MISSING:${question.canonicalId}`);
-      lines.push(`  insert into public.learning_enem_official_occurrences(batch_id, question_bank_id, canonical_fingerprint, year, exam, application, day, booklet, question_number, language, official_answer, quality_state, source_reference, exam_url, answer_key_url, artifact_sha256, answer_key_sha256, source_page, metadata) values (v_batch_id, v_question_id, ${sql(question.canonicalId)}, ${item.year}, 'ENEM', 'REGULAR', ${sql(item.day)}, ${sql(item.booklet)}, ${item.questionNumber}, ${item.language ? sql(item.language) : 'null'}, ${sql(item.officialAnswer)}, 'IMPORTED', ${sql(sourceArtifact.sourceReference)}, ${sql(sourceArtifact.examUrl)}, ${sql(sourceArtifact.answerKeyUrl)}, ${sql(sourceArtifact.examSha256)}, ${sql(sourceArtifact.answerKeySha256)}, ${sourceQuestion.page}, ${jsonSql({ source_integrity: 'VERIFIED', render_mode: 'HYBRID', pedagogical_enrichment: 'PENDING', adaptive_evidence_enabled: false })}) on conflict do nothing;`);
-      lines.push(`  select id into v_occurrence_id from public.learning_enem_official_occurrences where year = ${item.year} and exam = 'ENEM' and application = 'REGULAR' and day = ${sql(item.day)} and booklet = ${sql(item.booklet)} and question_number = ${item.questionNumber} and coalesce(language, '') = ${sql(item.language ?? '')} limit 1;`);
       const render = renderByKey.get(renderQuestionKey(item, item.questionNumber, item.language));
+      const occurrenceMetadata = jsonSql({
+        source_integrity: 'VERIFIED',
+        render_mode: render?.renderMode ?? 'TEXT_OPTIONS',
+        content_revision: contentRevision,
+        integrity_version: contentRevision,
+        pedagogical_enrichment: 'PENDING',
+        adaptive_evidence_enabled: false,
+      });
+      lines.push(`  select id into v_occurrence_id from public.learning_enem_official_occurrences where year = ${item.year} and exam = 'ENEM' and application = 'REGULAR' and day = ${sql(item.day)} and booklet = ${sql(item.booklet)} and question_number = ${item.questionNumber} and coalesce(language, '') = ${sql(item.language ?? '')} limit 1;`);
+      lines.push(`  if v_occurrence_id is null then insert into public.learning_enem_official_occurrences(batch_id, question_bank_id, canonical_fingerprint, year, exam, application, day, booklet, question_number, language, official_answer, quality_state, source_reference, exam_url, answer_key_url, artifact_sha256, answer_key_sha256, source_page, metadata) values (v_batch_id, v_question_id, ${sql(question.canonicalId)}, ${item.year}, 'ENEM', 'REGULAR', ${sql(item.day)}, ${sql(item.booklet)}, ${item.questionNumber}, ${item.language ? sql(item.language) : 'null'}, ${sql(item.officialAnswer)}, 'IMPORTED', ${sql(sourceArtifact.sourceReference)}, ${sql(sourceArtifact.examUrl)}, ${sql(sourceArtifact.answerKeyUrl)}, ${sql(sourceArtifact.examSha256)}, ${sql(sourceArtifact.answerKeySha256)}, ${sourceQuestion.page}, ${occurrenceMetadata}) returning id into v_occurrence_id; else update public.learning_enem_official_occurrences set batch_id = v_batch_id, question_bank_id = v_question_id, canonical_fingerprint = ${sql(question.canonicalId)}, official_answer = ${sql(item.officialAnswer)}, quality_state = 'IMPORTED', source_reference = ${sql(sourceArtifact.sourceReference)}, exam_url = ${sql(sourceArtifact.examUrl)}, answer_key_url = ${sql(sourceArtifact.answerKeyUrl)}, artifact_sha256 = ${sql(sourceArtifact.examSha256)}, answer_key_sha256 = ${sql(sourceArtifact.answerKeySha256)}, source_page = ${sourceQuestion.page}, metadata = ${occurrenceMetadata}, updated_at = now() where id = v_occurrence_id; end if;`);
       for (const asset of render?.statementAssets ?? []) {
-        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(asset.sha256)}, ${sql(asset.mediaType)}, ${asset.page}, ${sql(asset.storagePath)}, ${render.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: asset.assetRole, official_pdf_crop: true, render_ready: render.renderReady, sha256: asset.sha256, crop: asset.crop, source_page: asset.page, excluded_option_labels: render.excludedOptionLabels })}) on conflict do nothing;`);
+        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(versionedMediaFingerprint(asset.sha256, asset.storagePath))}, ${sql(asset.mediaType)}, ${asset.page}, ${sql(asset.storagePath)}, ${render.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: asset.assetRole, official_pdf_crop: true, render_ready: render.renderReady, sha256: asset.sha256, revision: contentRevision, crop: asset.crop, source_page: asset.page, excluded_option_labels: render.excludedOptionLabels })}) on conflict do nothing;`);
       }
       for (const option of Object.values(render?.optionAssets ?? {}).flat()) {
-        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(option.sha256)}, ${sql(option.mediaType)}, ${option.page}, ${sql(option.storagePath)}, ${render?.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: option.assetRole, option_label: option.optionLabel, official_pdf_crop: true, render_ready: render?.renderReady ?? false, sha256: option.sha256, crop: option.crop, source_page: option.page })}) on conflict do nothing;`);
+        lines.push(`  insert into public.learning_enem_media_assets(occurrence_id, media_fingerprint, media_type, source_page, storage_path, quality_state, metadata) values (v_occurrence_id, ${sql(versionedMediaFingerprint(option.sha256, option.storagePath))}, ${sql(option.mediaType)}, ${option.page}, ${sql(option.storagePath)}, ${render?.renderReady ? "'VALIDATED'" : "'REVIEW_REQUIRED'"}, ${jsonSql({ asset_role: option.assetRole, option_label: option.optionLabel, official_pdf_crop: true, render_ready: render?.renderReady ?? false, sha256: option.sha256, revision: contentRevision, crop: option.crop, source_page: option.page })}) on conflict do nothing;`);
       }
     }
   }
@@ -211,6 +227,8 @@ export function buildEnemImportPlan(inputs: ImportInputs, options: {
       enem_area: template.area,
       display_title: template.title,
       source_integrity: 'VERIFIED',
+      content_revision: contentRevision,
+      integrity_version: contentRevision,
     };
     lines.push(`  select id into v_simulation_id from public.learning_simulations where institution_id is null and metadata->>'dynamic_key' = ${sql(template.key)} limit 1;`);
     lines.push(`  if v_simulation_id is null then insert into public.learning_simulations(institution_id, title, simulation_type, area, source_year, question_count, duration_minutes, status, metadata) values (null, ${sql(template.title)}, ${sql(template.type)}, ${sql(template.area)}, null, ${template.count}, ${template.duration}, 'PUBLISHED', ${jsonSql(metadata)}) returning id into v_simulation_id; end if;`);

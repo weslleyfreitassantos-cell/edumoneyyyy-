@@ -258,8 +258,8 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(alicePage.getByText(/Sua jornada/).first()).toBeVisible({ timeout: 30_000 });
       await alicePage.screenshot({ path: testInfo.outputPath('visual/subject-session-desktop.png'), fullPage: true });
 
-      await alicePage.goto('/student/study/simulation');
-      await expect(alicePage.getByText(/Ainda não há prática oficial disponível/)).toBeVisible({ timeout: 30_000 });
+      await alicePage.goto('/student/study');
+      await expect(alicePage.getByRole('heading', { name: 'Práticas oficiais' })).toBeVisible({ timeout: 30_000 });
     } finally {
       for (const page of pages) await page.close();
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);

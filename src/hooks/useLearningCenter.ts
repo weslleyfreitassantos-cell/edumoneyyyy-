@@ -41,7 +41,19 @@ export function useLearningPackages(institutionId?: string) { return useQuery({ 
 export function useStudentLearningPackages(institutionId?: string, studentId?: string, enabled = true) { return useQuery({ queryKey: learningCenterKeys.packages(institutionId ?? '', `student:${studentId ?? ''}`), queryFn: async () => { try { return await learningCenterService.studentPackages(institutionId!, studentId!); } catch { return []; } }, enabled: Boolean(institutionId && studentId && enabled), staleTime: 30000, retry: false }); }
 export function useAssignLearningPackage(institutionId?: string) { const client = useQueryClient(); return useMutation({ mutationFn: (input: { packageId: string; classId?: string; studentId?: string; dueAt?: string }) => learningCenterService.assignPackage({ institutionId: institutionId!, ...input }), onSuccess: () => { if (institutionId) void client.invalidateQueries({ queryKey: learningCenterKeys.packages(institutionId) }); } }); }
 export function useStartLearningSimulation(institutionId?: string, studentId?: string) { return useMutation({ mutationFn: (simulationId: string) => learningCenterService.startSimulation({ institutionId: institutionId!, studentId: studentId!, simulationId }) }); }
-export function useStartEnemSimulation(institutionId?: string, studentId?: string) { return useMutation({ mutationFn: (input: { simulationId: string; languageChoice?: 'ENGLISH' | 'SPANISH' }) => learningCenterService.startEnemSimulation({ institutionId: institutionId!, studentId: studentId!, ...input }) }); }
+export function useStartEnemSimulation(institutionId?: string, studentId?: string) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { simulationId: string; languageChoice?: 'ENGLISH' | 'SPANISH' }) =>
+      learningCenterService.startEnemSimulation({ institutionId: institutionId!, studentId: studentId!, ...input }),
+    onSuccess: () => {
+      if (institutionId && studentId) {
+        void client.invalidateQueries({ queryKey: learningCenterKeys.simulationAttempts(institutionId, studentId) });
+        void client.invalidateQueries({ queryKey: learningCenterKeys.enemSimulationTemplates(institutionId) });
+      }
+    },
+  });
+}
 export function useSaveEnemSimulationAnswers() { return useMutation({ mutationFn: ({ attemptId, answers }: { attemptId: string; answers: Array<{ question_bank_id: string; answer: string }> }) => learningCenterService.saveEnemSimulationAnswers(attemptId, answers) }); }
 export function useSubmitEnemSimulation(institutionId?: string, studentId?: string) { const client = useQueryClient(); return useMutation({ mutationFn: ({ attemptId, answers, durationSeconds }: { attemptId: string; answers: Array<{ question_bank_id: string; answer: string }>; durationSeconds: number }) => learningCenterService.submitEnemSimulation(attemptId, answers, durationSeconds), onSuccess: () => { if (institutionId && studentId) { void client.invalidateQueries({ queryKey: learningCenterKeys.progress(institutionId, studentId) }); void client.invalidateQueries({ queryKey: learningCenterKeys.gamification(institutionId, studentId) }); void client.invalidateQueries({ queryKey: learningCenterKeys.simulationAttempts(institutionId, studentId) }); } } }); }
 export function useSaveLearningSimulationAnswers() { return useMutation({ mutationFn: ({ attemptId, answers }: { attemptId: string; answers: Array<{ question_bank_id: string; answer: unknown }> }) => learningCenterService.saveSimulationAnswers(attemptId, answers) }); }

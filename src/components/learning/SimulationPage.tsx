@@ -2,7 +2,6 @@ import {
   CheckCircle2,
   ChevronLeft,
   Circle,
-  Clock3,
   Flag,
   ListChecks,
   Send,
@@ -13,7 +12,11 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
-import type { EnemSimulationOption } from "../../services/learningCenterService";
+import {
+  SUPPORTED_ENEM_CONTENT_REVISIONS,
+  type EnemStructuredContent,
+  type EnemSimulationOption,
+} from "../../services/learningCenterService";
 import {
   useEnemSimulationAttempt,
   useEnemSimulationTemplates,
@@ -25,7 +28,7 @@ import {
   useSubmitEnemSimulation,
 } from "../../hooks/useLearningCenter";
 
-function formatDuration(seconds: number): string {
+function formatElapsedDuration(seconds: number): string {
   const minutes = Math.floor(seconds / 60)
     .toString()
     .padStart(2, "0");
@@ -65,6 +68,37 @@ function normalizeOption(
     text: option.text ?? null,
     assets: option.assets ?? [],
   };
+}
+
+function StructuredText({ content }: { content: EnemStructuredContent }) {
+  const paragraphs = [content.context, content.prompt]
+    .flatMap((value) => value.split(/\r?\n\s*\r?\n/gu))
+    .map((value) => value.replace(/!\[[^\]]*\]\([^)]*\)/gu, "").replace(/[\*_`~]/gu, "").trim())
+    .filter(Boolean);
+  return (
+    <article
+      aria-label="Enunciado estruturado da questão"
+      className="max-w-4xl space-y-4 text-base leading-7 text-slate-800 dark:text-slate-100"
+    >
+      {paragraphs.map((paragraph, index) => (
+        <p key={`${index}-${paragraph.slice(0, 24)}`} className="whitespace-pre-line">
+          {paragraph}
+        </p>
+      ))}
+      {content.essential_media.map((media, index) => {
+        const url = typeof media === "string" ? media : assetUrl(media.storage_path, media.public_url);
+        if (!url) return null;
+        return (
+          <img
+            key={`${url}-${index}`}
+            src={url}
+            alt="Mídia essencial da questão"
+            className="h-auto max-h-[70vh] max-w-full rounded-lg border border-slate-200 object-contain dark:border-slate-700"
+          />
+        );
+      })}
+    </article>
+  );
 }
 
 type SimulationResult = {
@@ -109,7 +143,6 @@ export default function SimulationPage() {
   const [languageChoice, setLanguageChoice] = useState<"ENGLISH" | "SPANISH">(
     "ENGLISH",
   );
-  const [now, setNow] = useState(() => Date.now());
   const [currentIndex, setCurrentIndex] = useState(0);
   const [result, setResult] = useState<SimulationResult | null>(null);
   const [failedStatementAssets, setFailedStatementAssets] = useState<
@@ -130,7 +163,8 @@ export default function SimulationPage() {
       (attempts.data ?? []).find(
         (item) =>
           item.simulation_id === simulation?.id &&
-          item.status === "IN_PROGRESS",
+          item.status === "IN_PROGRESS" &&
+          SUPPORTED_ENEM_CONTENT_REVISIONS.has(item.content_revision),
       ),
     [attempts.data, simulation?.id],
   );
@@ -166,16 +200,13 @@ export default function SimulationPage() {
   const flaggedIds = questions
     .filter((question) => flagged[question.question_bank_id])
     .map((question) => question.question_bank_id);
-  const elapsedSeconds = startedAt
-    ? Math.max(0, Math.floor((now - startedAt) / 1000))
-    : 0;
-  const durationLimitSeconds = (simulation?.duration_minutes ?? 20) * 60;
-  const remainingSeconds = Math.max(0, durationLimitSeconds - elapsedSeconds);
   const currentQuestion = questions[currentIndex] ?? questions[0];
+  const structuredContent = currentQuestion?.structured_content ?? null;
   const currentStatementAssets = currentQuestion?.statement_assets ?? [];
   const currentOptions = currentQuestion?.options.map(normalizeOption) ?? [];
   const missingStatementAsset =
     Boolean(currentQuestion) &&
+    !structuredContent &&
     (currentStatementAssets.length === 0 ||
       currentStatementAssets.some((asset, index) => {
         const url = assetUrl(asset.storage_path, asset.public_url);
@@ -185,6 +216,7 @@ export default function SimulationPage() {
         );
       }));
   const missingOptionAsset = Boolean(currentQuestion) && currentOptions.some((option) => {
+    if (structuredContent) return !option.text?.trim();
     if (option.text?.trim()) return false;
     return option.assets.length === 0 || option.assets.every((asset, index) => {
       const url = assetUrl(asset.storage_path, asset.public_url);
@@ -223,12 +255,6 @@ export default function SimulationPage() {
       ),
     );
   }, [attempt.data?.attempt_id, attemptId]);
-
-  useEffect(() => {
-    if (!attemptId || result) return;
-    const timer = window.setInterval(() => setNow(Date.now()), 1000);
-    return () => window.clearInterval(timer);
-  }, [attemptId, result]);
 
   const persistNavigation = (
     index: number,
@@ -330,7 +356,6 @@ export default function SimulationPage() {
       .then((started) => {
         setAttemptId(started.attempt_id);
         setStartedAt(Date.now());
-        setNow(Date.now());
         setSaveStatus("idle");
         setNavigationStatus("idle");
         setFailedStatementAssets({});
@@ -373,6 +398,9 @@ export default function SimulationPage() {
         question_bank_id,
         answer: currentAnswer,
       }));
+    const elapsedSeconds = startedAt
+      ? Math.max(0, Math.floor((Date.now() - startedAt) / 1000))
+      : 0;
     void submit
       .mutateAsync({
         attemptId,
@@ -433,7 +461,7 @@ export default function SimulationPage() {
           </div>
           <div className="rounded-lg border bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
             <p className="text-xl font-bold text-slate-800 dark:text-white">
-              {formatDuration(result.duration_seconds)}
+            {formatElapsedDuration(result.duration_seconds)}
             </p>
             <p className="text-xs text-slate-500">Duração</p>
           </div>
@@ -624,15 +652,6 @@ export default function SimulationPage() {
               {simulation.title}
             </h1>
           </div>
-          <div
-            className={`shrink-0 rounded-lg border px-3 py-2 text-right text-sm font-bold ${remainingSeconds < 60 ? "border-rose-200 bg-rose-50 text-rose-700" : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"}`}
-          >
-            <Clock3 className="mb-1 ml-auto h-4 w-4" />
-            {formatDuration(remainingSeconds)}
-            <span className="block text-[10px] font-normal">
-              tempo restante
-            </span>
-          </div>
         </div>
         <p className="mt-2 flex items-center gap-2 text-sm text-slate-500">
           <ListChecks className="h-4 w-4" />
@@ -743,7 +762,9 @@ export default function SimulationPage() {
           <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1 space-y-3">
-                {currentStatementAssets.map((asset, index) => {
+                {structuredContent ? (
+                  <StructuredText content={structuredContent} />
+                ) : currentStatementAssets.map((asset, index) => {
                   const url = assetUrl(asset.storage_path, asset.public_url);
                   const assetKey = `${currentQuestion.question_bank_id}:${index}`;
                   return url && !failedStatementAssets[assetKey] ? (
@@ -797,7 +818,9 @@ export default function SimulationPage() {
                 ) : (
                   <p className="text-xs text-slate-500">
                     As alternativas abaixo são controles interativos; o
-                    enunciado é exibido diretamente do PDF oficial.
+                    {structuredContent
+                      ? " conteúdo estruturado foi verificado contra a fonte oficial."
+                      : " enunciado é exibido diretamente do PDF oficial."}
                   </p>
                 )}
               </div>
