@@ -1,6 +1,6 @@
 import { supabase } from '../lib/supabaseClient';
 
-export const CURRENT_ENEM_CONTENT_REVISION = 'structured-text-only-v3' as const;
+export const CURRENT_ENEM_CONTENT_REVISION = 'structured-text-only-v4' as const;
 export const SUPPORTED_ENEM_CONTENT_REVISIONS = new Set([
   CURRENT_ENEM_CONTENT_REVISION,
   'structured-text-v1',

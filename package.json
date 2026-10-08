@@ -25,6 +25,7 @@
     "enem:visual-report": "node --experimental-strip-types tools/enem/visual-integrity-report.ts",
     "enem:promotion": "node --experimental-strip-types tools/enem/promotion.ts",
     "enem:provider-text-v2": "node --experimental-strip-types tools/enem/provider-text-v2.ts",
+    "enem:provider-text-v4": "node --experimental-strip-types tools/enem/provider-text-v4.ts",
     "enem:dry-run": "node --experimental-strip-types tools/enem/dry-run.ts",
     "enem:import-sql": "node --experimental-strip-types tools/enem/import.ts",
     "enem:structured": "node --experimental-strip-types tools/enem/structured-text.ts",

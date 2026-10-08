@@ -116,6 +116,131 @@ export function normalizeStructuredText(value: string) {
   return normalizeForMatch(value);
 }
 
+const METADATA_ONLY_PROVIDER_TITLE = /^(?:quest[aã]o\s+\d+\s*[-–—:]\s*ENEM\s+\d{4}|ENEM\s+\d{4}\s*[-–—:]\s*quest[aã]o\s+\d+)$/iu;
+const ANAPHORIC_PROVIDER_FRAGMENT = /\b(?:dessa forma|dessa maneira|nessa forma|nessa maneira|nessas condi[cç][oõ]es|nessa situa[cç][aã]o|nessas informa[cç][oõ]es|de acordo com (?:essas|as) informa[cç][oõ]es|com base (?:nessas|nas) informa[cç][oõ]es|considerando (?:essa|a) situa[cç][aã]o|a partir disso|nesse caso|como (?:descrito|apresentado|mencionado)|efetuando o pagamento dessa forma)\b/iu;
+const TRAILING_PROVIDER_FRAGMENT = /(?:\b(?:[eé]\s+de|[eé]\s+da|[eé]\s+do|[eé]\s+em|a partir de|de acordo com|com base em|considerando)\s*[.!?]?|\b(?:de|da|do|das|dos|em|no|na|nas|nos|para|por|com|que|e|ou)\s*[.!?]?)$/iu;
+
+export interface ProviderStatementCompleteness {
+  statement: string;
+  complete: boolean;
+  reasons: string[];
+  titleUsed: boolean;
+  titleMetadataOnly: boolean;
+  contextPresent: boolean;
+  promptPresent: boolean;
+}
+
+function cleanProviderStatementSegment(value: unknown) {
+  return typeof value === 'string'
+    ? value.normalize('NFKC').replace(/\r\n?/gu, '\n').replace(/[ \t]+/gu, ' ').trim()
+    : '';
+}
+
+export function isMetadataOnlyProviderTitle(title: string | null | undefined) {
+  const value = cleanProviderStatementSegment(title);
+  return Boolean(value) && METADATA_ONLY_PROVIDER_TITLE.test(value);
+}
+
+function normalizedWords(value: string) {
+  return normalizeForMatch(value).split(/\s+/u).filter(Boolean);
+}
+
+function mergePartialProviderOverlap(left: string, right: string) {
+  const leftWords = normalizedWords(left);
+  const rightWords = normalizedWords(right);
+  const maximum = Math.min(leftWords.length, rightWords.length);
+  for (let overlap = maximum; overlap >= 3; overlap -= 1) {
+    const suffix = leftWords.slice(-overlap).join(' ');
+    const prefix = rightWords.slice(0, overlap).join(' ');
+    if (suffix === prefix) {
+      return `${left.trim()} ${rightWords.slice(overlap).join(' ')}`.trim();
+    }
+  }
+  return null;
+}
+
+function mergeProviderStatementSegments(segments: string[]) {
+  const merged: string[] = [];
+  for (const rawSegment of segments) {
+    const segment = cleanProviderStatementSegment(rawSegment);
+    if (!segment) continue;
+    const normalizedSegment = normalizeForMatch(segment);
+    const existingIndex = merged.findIndex((candidate) => {
+      const normalizedCandidate = normalizeForMatch(candidate);
+      return normalizedCandidate === normalizedSegment
+        || (normalizedSegment.length >= 24 && normalizedCandidate.includes(normalizedSegment))
+        || (normalizedCandidate.length >= 24 && normalizedSegment.includes(normalizedCandidate));
+    });
+    if (existingIndex >= 0) {
+      const existing = merged[existingIndex];
+      if (normalizeForMatch(segment).length > normalizeForMatch(existing).length) {
+        merged[existingIndex] = segment;
+      }
+      continue;
+    }
+    const previous = merged.at(-1);
+    const overlap = previous ? mergePartialProviderOverlap(previous, segment) : null;
+    if (overlap) {
+      merged[merged.length - 1] = overlap;
+    } else {
+      merged.push(segment);
+    }
+  }
+  return merged.join('\n\n').trim();
+}
+
+export function buildCompleteProviderStatement(question: Pick<EnemProviderQuestion, 'title' | 'context' | 'alternativesIntroduction'>) {
+  const title = cleanProviderStatementSegment(question.title);
+  const titleIsSemantic = Boolean(title) && !isMetadataOnlyProviderTitle(title);
+  return mergeProviderStatementSegments([
+    ...(titleIsSemantic ? [title] : []),
+    cleanProviderStatementSegment(question.context),
+    cleanProviderStatementSegment(question.alternativesIntroduction),
+  ]);
+}
+
+export function assessProviderStatementCompleteness(
+  question: Pick<EnemProviderQuestion, 'title' | 'context' | 'alternativesIntroduction'>,
+): ProviderStatementCompleteness {
+  const title = cleanProviderStatementSegment(question.title);
+  const context = cleanProviderStatementSegment(question.context);
+  const prompt = cleanProviderStatementSegment(question.alternativesIntroduction);
+  const titleMetadataOnly = isMetadataOnlyProviderTitle(title);
+  const titleUsed = Boolean(title) && !titleMetadataOnly;
+  const statement = buildCompleteProviderStatement(question);
+  const contextPresent = Boolean(context) || titleUsed;
+  const promptPresent = Boolean(prompt);
+  const reasons: string[] = [];
+  const anaphoricMatch = prompt.match(ANAPHORIC_PROVIDER_FRAGMENT);
+  const anaphoricPrefix = prompt.slice(0, anaphoricMatch?.index ?? 0).trim();
+  const anaphoricHasAntecedent = Boolean(
+    anaphoricMatch
+    && anaphoricPrefix.length >= 40
+    && (/[.!?]\s*$/u.test(anaphoricPrefix) || anaphoricPrefix.split(/\s+/u).length >= 8),
+  );
+
+  if (!statement) reasons.push('INCOMPLETE_STATEMENT');
+  if (promptPresent && !contextPresent && anaphoricMatch && !anaphoricHasAntecedent) {
+    reasons.push('INCOMPLETE_STRUCTURED_TEXT');
+    reasons.push('QUESTION_ONLY_FRAGMENT');
+  }
+  if (promptPresent && !contextPresent && !/[?!]\s*$/u.test(prompt)) {
+    const shortPrompt = normalizeForMatch(prompt).length < 60;
+    if (TRAILING_PROVIDER_FRAGMENT.test(prompt) && shortPrompt) {
+      reasons.push('QUESTION_ONLY_FRAGMENT');
+    }
+  }
+  return {
+    statement,
+    complete: reasons.length === 0,
+    reasons: [...new Set(reasons)],
+    titleUsed,
+    titleMetadataOnly,
+    contextPresent,
+    promptPresent,
+  };
+}
+
 function tokenCounts(value: string) {
   const counts = new Map<string, number>();
   for (const token of normalizeForMatch(value).split(/\s+/u).filter(Boolean)) {
@@ -162,7 +287,7 @@ function providerLanguage(value: string | null): EnemLanguage {
 }
 
 function fullProviderStatement(question: EnemProviderQuestion) {
-  return [question.context, question.alternativesIntroduction].filter((value) => value.trim()).join('\n\n');
+  return buildCompleteProviderStatement(question);
 }
 
 function normalizeProviderQuestion(question: EnemProviderQuestion): EnemProviderQuestion {
@@ -294,7 +419,8 @@ export function reconcileStructuredQuestions(
     const margin = best ? best.comparison.score - (second?.comparison.score ?? 0) : 0;
     const exact = Boolean(best && best.comparison.statementScore >= 0.99 && best.comparison.optionsScore >= 0.99 && best.comparison.answerMatches);
     const highConfidence = Boolean(best && best.comparison.score >= 0.86 && best.comparison.statementScore >= 0.78 && best.comparison.optionsScore >= 0.72 && best.comparison.answerMatches && margin >= 0.04);
-    const statementComplete = provider.context.trim().length > 0 || provider.alternativesIntroduction.trim().length > 0;
+    const statementCompleteness = assessProviderStatementCompleteness(provider);
+    const statementComplete = statementCompleteness.complete;
     const fiveAlternativesComplete = provider.alternatives.length === 5 && provider.alternatives.every((item, index) => item.letter === String.fromCharCode(65 + index) && item.text.trim().length > 0);
     const complete = statementComplete && fiveAlternativesComplete;
     const noControlChars = !/[\u0000-\u001f\u007f-\u009f\ufffd]/u.test(JSON.stringify(provider));
