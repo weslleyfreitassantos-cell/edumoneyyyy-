@@ -879,14 +879,7 @@ export default function SimulationPage() {
                       Tentar novamente
                     </button>
                   </div>
-                ) : (
-                  <p className="text-xs text-slate-500">
-                    As alternativas abaixo são controles interativos; o
-                    {structuredContent
-                      ? " conteúdo estruturado foi verificado contra a fonte oficial."
-                      : " enunciado é exibido diretamente do PDF oficial."}
-                  </p>
-                )}
+                ) : null}
               </div>
               <button
                 type="button"
