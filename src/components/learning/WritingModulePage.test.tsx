@@ -11,7 +11,7 @@ afterEach(() => {
 });
 
 describe('WritingModulePage', () => {
-  it('oferece editor, contagem de palavras e checklist', () => {
+  it('oferece editor e contagem de palavras', () => {
     render(
       <MemoryRouter>
         <WritingModulePage />
@@ -20,7 +20,7 @@ describe('WritingModulePage', () => {
 
     expect(screen.getByRole('heading', { name: 'Planeje, escreva e revise' })).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Editor de redação' })).toBeTruthy();
-    expect(screen.getByRole('complementary', { name: 'Checklist de revisão' })).toBeTruthy();
+    expect(screen.queryByRole('complementary', { name: 'Checklist de revisão' })).toBeNull();
     expect(screen.getByText('0 palavras')).toBeTruthy();
 
     fireEvent.change(screen.getByRole('textbox', { name: 'Texto da redação' }), {
