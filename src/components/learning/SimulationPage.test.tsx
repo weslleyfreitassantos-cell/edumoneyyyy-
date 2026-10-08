@@ -223,6 +223,54 @@ describe("SimulationPage", () => {
     ).toContain("não respondidas");
   });
 
+  it("shows the original ENEM source reference instead of the practice position", async () => {
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      started_at: new Date().toISOString(),
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "question-1",
+          source_kind: "STRUCTURED_PROVIDER",
+          source_year: 2018,
+          question_number: 117,
+          source_reference: {
+            source_year: 2018,
+            source_exam: "ENEM",
+            source_application: "PPL",
+            source_question_number: 117,
+            source_provider: "xequemat",
+          },
+          statement: "Enunciado da questão de origem.",
+          options: ["A", "B", "C", "D", "E"],
+          structured_content: {
+            context: "Texto de apoio.",
+            prompt: "Enunciado da questão de origem.",
+            alternatives: [
+              { letter: "A", text: "A" },
+              { letter: "B", text: "B" },
+              { letter: "C", text: "C" },
+              { letter: "D", text: "D" },
+              { letter: "E", text: "E" },
+            ],
+            render_mode: "STRUCTURED_TEXT",
+            essential_media: [],
+          },
+          statement_assets: [],
+        },
+      ],
+      answers: {},
+      navigation_state: null,
+    };
+
+    renderPage();
+    fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
+
+    expect(await screen.findByText("ENEM 2018 · PPL · Questão 117")).toBeTruthy();
+  });
+
   it("uses human area labels and does not show the duration timer in the result", async () => {
     state.attemptDetail = {
       attempt_id: "attempt-1",

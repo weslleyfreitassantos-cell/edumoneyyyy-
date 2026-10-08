@@ -15,10 +15,11 @@ import {
 describe('learningCenterService ENEM visual options', () => {
   beforeEach(() => rpc.mockReset());
 
-  it('keeps the frontend revision aligned with the published v6 pool while preserving history', () => {
-    expect(CURRENT_ENEM_CONTENT_REVISION).toBe('structured-text-only-v6');
+  it('keeps the frontend revision aligned with the published archive pool while preserving history', () => {
+    expect(CURRENT_ENEM_CONTENT_REVISION).toBe('xequemat-archive-v1');
     expect(SUPPORTED_ENEM_CONTENT_REVISIONS).toEqual(
       new Set([
+        'xequemat-archive-v1',
         'structured-text-only-v6',
         'structured-text-only-v5',
         'structured-text-only-v4',

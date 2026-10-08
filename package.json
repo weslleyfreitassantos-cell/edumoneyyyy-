@@ -29,6 +29,8 @@
     "enem:provider-text-v4": "node --experimental-strip-types tools/enem/provider-text-v4.ts",
     "enem:provider-text-v5": "node --experimental-strip-types tools/enem/provider-text-v5.ts",
     "enem:provider-text-v6": "node --experimental-strip-types tools/enem/provider-text-v6.ts",
+    "enem:xequemat-report": "node --experimental-strip-types tools/enem/xequemat-archive.ts",
+    "enem:xequemat-import": "node --experimental-strip-types tools/enem/import-xequemat.ts",
     "enem:dry-run": "node --experimental-strip-types tools/enem/dry-run.ts",
     "enem:import-sql": "node --experimental-strip-types tools/enem/import.ts",
     "enem:structured": "node --experimental-strip-types tools/enem/structured-text.ts",

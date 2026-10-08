@@ -14,6 +14,9 @@ import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
 import {
   CURRENT_ENEM_CONTENT_REVISION,
+  SUPPORTED_ENEM_CONTENT_REVISIONS,
+  type EnemContentBlock,
+  type EnemSimulationQuestion,
   type EnemStructuredContent,
   type EnemSimulationOption,
 } from "../../services/learningCenterService";
@@ -63,23 +66,11 @@ function normalizeOption(
   };
 }
 
-function StructuredText({ content }: { content: EnemStructuredContent }) {
-  const paragraphs = [content.context, content.prompt]
-    .flatMap((value) => value.split(/\r?\n\s*\r?\n/gu))
-    .map((value) => value.replace(/!\[[^\]]*\]\([^)]*\)/gu, "").replace(/[\*_`~]/gu, "").trim())
-    .filter(Boolean);
+function StructuredMedia({ media }: { media: EnemStructuredContent["essential_media"] }) {
   return (
-    <article
-      aria-label="Enunciado estruturado da questão"
-      className="max-w-4xl space-y-4 text-base leading-7 text-slate-800 dark:text-slate-100"
-    >
-      {paragraphs.map((paragraph, index) => (
-        <p key={`${index}-${paragraph.slice(0, 24)}`} className="whitespace-pre-line">
-          {paragraph}
-        </p>
-      ))}
-      {content.essential_media.map((media, index) => {
-        const url = typeof media === "string" ? media : assetUrl(media.storage_path, media.public_url);
+    <>
+      {media.map((item, index) => {
+        const url = typeof item === "string" ? item : assetUrl(item.storage_path, item.public_url);
         if (!url) return null;
         return (
           <img
@@ -90,8 +81,85 @@ function StructuredText({ content }: { content: EnemStructuredContent }) {
           />
         );
       })}
+    </>
+  );
+}
+
+function BlockMedia({ block }: { block: EnemContentBlock }) {
+  return <StructuredMedia media={block.media ?? []} />;
+}
+
+function renderContentBlock(block: EnemContentBlock, index: number) {
+  const key = `${block.kind}-${index}-${block.text?.slice(0, 24) ?? ""}`;
+  if (block.kind === "IMAGE") return <div key={key}><BlockMedia block={block} /></div>;
+  if (block.kind === "LIST") {
+    const Tag = block.ordered ? "ol" : "ul";
+    return (
+      <Tag key={key} className="list-inside list-disc space-y-1 pl-2">
+        {(block.items ?? []).map((item, itemIndex) => <li key={`${key}-${itemIndex}`}>{item}</li>)}
+      </Tag>
+    );
+  }
+  if (block.kind === "QUOTE") {
+    return <blockquote key={key} className="border-l-4 border-slate-300 pl-4 italic">{block.text}</blockquote>;
+  }
+  return (
+    <p key={key} className="whitespace-pre-line">
+      {block.text}
+    </p>
+  );
+}
+
+function StructuredText({ content }: { content: EnemStructuredContent }) {
+  const contentBlocks = content.content_blocks ?? [];
+  const paragraphs = [content.context, content.prompt]
+    .flatMap((value) => value.split(/\r?\n\s*\r?\n/gu))
+    .map((value) => value.replace(/!\[[^\]]*\]\([^)]*\)/gu, "").replace(/[\*_`~]/gu, "").trim())
+    .filter(Boolean);
+  return (
+    <article
+      aria-label="Enunciado estruturado da questão"
+      className="max-w-4xl space-y-4 text-base leading-7 text-slate-800 dark:text-slate-100"
+    >
+      {contentBlocks.length
+        ? contentBlocks.map(renderContentBlock)
+        : paragraphs.map((paragraph, index) => (
+          <p key={`${index}-${paragraph.slice(0, 24)}`} className="whitespace-pre-line">
+            {paragraph}
+          </p>
+        ))}
+      {contentBlocks.length ? null : <StructuredMedia media={content.essential_media} />}
     </article>
   );
+}
+
+function sourceReferenceForQuestion(question: EnemSimulationQuestion) {
+  const metadata = question.metadata ?? {};
+  const nested = metadata.source_provenance && typeof metadata.source_provenance === "object"
+    ? metadata.source_provenance as Record<string, unknown>
+    : {};
+  const source = (question.source_reference ?? (metadata.source_reference && typeof metadata.source_reference === "object"
+    ? metadata.source_reference as Record<string, unknown>
+    : nested)) as Record<string, unknown>;
+  const year = typeof source.source_year === "number"
+    ? source.source_year
+    : typeof source.year === "number" ? source.year : question.source_year;
+  const application = source.source_application === "REGULAR" || source.source_application === "PPL"
+    ? source.source_application
+    : source.application === "REGULAR" || source.application === "PPL" ? source.application : null;
+  const number = typeof source.source_question_number === "number"
+    ? source.source_question_number
+    : typeof source.question_number === "number" ? source.question_number : question.question_number;
+  const exam = typeof source.source_exam === "string"
+    ? source.source_exam
+    : typeof source.exam === "string" ? source.exam : question.source_kind === "OFFICIAL_OCCURRENCE" ? "ENEM" : null;
+  if (!exam || !year || !application || !number) return null;
+  return {
+    label: `${exam} ${year} · ${application === "PPL" ? "PPL" : "Regular"} · Questão ${number}`,
+    url: typeof source.source_url === "string"
+      ? source.source_url
+      : typeof source.url === "string" ? source.url : null,
+  };
 }
 
 type SimulationResult = {
@@ -147,6 +215,7 @@ export default function SimulationPage() {
   const saveQueueRef = useRef(Promise.resolve());
   const saveVersionRef = useRef(0);
   const questionNavigatorRef = useRef<HTMLDivElement>(null);
+  const hydratedAttemptRef = useRef<string | null>(null);
 
   const simulation = useMemo(() => {
     const available = templates.data ?? [];
@@ -166,7 +235,7 @@ export default function SimulationPage() {
         (item) =>
           item.simulation_id === simulation?.id &&
           item.status === "IN_PROGRESS" &&
-          item.content_revision === CURRENT_ENEM_CONTENT_REVISION,
+          SUPPORTED_ENEM_CONTENT_REVISIONS.has(item.content_revision),
       ),
     [attempts.data, simulation?.id],
   );
@@ -203,9 +272,12 @@ export default function SimulationPage() {
     .filter((question) => flagged[question.question_bank_id])
     .map((question) => question.question_bank_id);
   const currentQuestion = questions[currentIndex] ?? questions[0];
+  const currentSourceReference = currentQuestion
+    ? sourceReferenceForQuestion(currentQuestion)
+    : null;
   const structuredContent = currentQuestion?.structured_content ?? null;
   const isCurrentTextOnlyAttempt =
-    attempt.data?.content_revision === CURRENT_ENEM_CONTENT_REVISION;
+    attempt.data?.content_revision?.startsWith("structured-text-only-") ?? false;
   const questionUnavailable =
     Boolean(currentQuestion) && isCurrentTextOnlyAttempt && !structuredContent;
   const currentStatementAssets = currentQuestion?.statement_assets ?? [];
@@ -273,6 +345,8 @@ export default function SimulationPage() {
   useEffect(() => {
     const detail = attempt.data;
     if (!detail || detail.status !== "IN_PROGRESS" || !attemptId) return;
+    if (hydratedAttemptRef.current === detail.attempt_id) return;
+    hydratedAttemptRef.current = detail.attempt_id;
     setStartedAt(new Date(detail.started_at).getTime());
     setAnswers(answerMapFromAttempt(detail.answers));
     const restoredFlags = detail.navigation_state?.flagged ?? [];
@@ -333,6 +407,7 @@ export default function SimulationPage() {
     nextParams.set("simulation", simulationId);
     setSearchParams(nextParams, { replace: true });
     setAttemptId(null);
+    hydratedAttemptRef.current = null;
     setStartedAt(null);
     setAnswers({});
     setFlagged({});
@@ -803,6 +878,20 @@ export default function SimulationPage() {
           <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1 space-y-3">
+                {currentSourceReference ? (
+                  <div className="text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400">
+                    {currentSourceReference.url ? (
+                      <a
+                        href={currentSourceReference.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:underline"
+                      >
+                        {currentSourceReference.label}
+                      </a>
+                    ) : currentSourceReference.label}
+                  </div>
+                ) : null}
                 {questionUnavailable ? (
                   <div
                     role="alert"
