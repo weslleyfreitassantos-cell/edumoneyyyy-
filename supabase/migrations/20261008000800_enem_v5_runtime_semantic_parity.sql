@@ -107,7 +107,4 @@ set match_level = 'REJECTED',
 from rejected
 where structured.id = rejected.id;
 
-insert into supabase_migrations.schema_migrations(version, statements, name)
-values ('20261008000800', '{}'::text[], 'enem_v5_runtime_semantic_parity');
-
 commit;
