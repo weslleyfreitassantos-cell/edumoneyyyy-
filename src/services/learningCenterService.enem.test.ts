@@ -6,10 +6,27 @@ vi.mock('../lib/supabaseClient', () => ({
   supabase: { rpc },
 }));
 
-import { learningCenterService } from './learningCenterService';
+import {
+  CURRENT_ENEM_CONTENT_REVISION,
+  learningCenterService,
+  SUPPORTED_ENEM_CONTENT_REVISIONS,
+} from './learningCenterService';
 
 describe('learningCenterService ENEM visual options', () => {
   beforeEach(() => rpc.mockReset());
+
+  it('keeps the frontend revision aligned with the published v6 pool while preserving history', () => {
+    expect(CURRENT_ENEM_CONTENT_REVISION).toBe('structured-text-only-v6');
+    expect(SUPPORTED_ENEM_CONTENT_REVISIONS).toEqual(
+      new Set([
+        'structured-text-only-v6',
+        'structured-text-only-v5',
+        'structured-text-only-v4',
+        'structured-text-v1',
+        'source-faithful-v3',
+      ]),
+    );
+  });
 
   it('recovers visual options from metadata when the legacy RPC returns strings', async () => {
     rpc.mockResolvedValue({

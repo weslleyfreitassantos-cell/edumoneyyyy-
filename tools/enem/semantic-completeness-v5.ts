@@ -11,7 +11,8 @@ export type SemanticRejectionReason =
   | 'UNRESOLVED_REFERENCE'
   | 'DUPLICATE_CONTENT'
   | 'UNKNOWN_COMPLETENESS'
-  | 'SOURCE_CONFLICT';
+  | 'SOURCE_CONFLICT'
+  | 'MISSING_REQUIRED_CONDITION';
 
 export interface SemanticCompletenessAssessment {
   state: SemanticCompletenessState;
@@ -44,6 +45,7 @@ const TRUNCATED_END = /(?:\.{3}|\b(?:e|ou|que|de|da|do|das|dos|em|no|na|nas|nos|
 const QUESTION_END = /[?!]\s*$/u;
 const SENTENCE_END = /[.!?]\s*$/u;
 const CONTEXT_DEPENDENCY = /\b(?:essa|esse|essas|esses|esta|este|estas|estes|tal|tais|referid[oa]s?|mencionad[oa]s?|descrita|descrito|apresentad[oa]s?|demonstrad[oa]s?|considerando (?:esse|essa|isso)|ap[oó]s a an[aá]lise|no caso apresentado|comparando-se|ap[oó]s as|nessa|nessas|neste|nesta|dessa|dessas|o professor|o arquiteto|o carpinteiro|o pedido|o aluno que|respectivamente)\b/iu;
+const PADARIA_EQUATION = /q\s*=\s*400\s*[−–-]\s*100[_\s]*p/iu;
 
 function clean(value: unknown) {
   return typeof value === 'string'
@@ -96,6 +98,12 @@ function hasMissingNumericData(statement: string, context: string, prompt: strin
   return !QUESTION_END.test(prompt) || /\b(?:ser[aá]|ser[aã]o|[eé] de|corresponde a|resulta em)\b/iu.test(prompt);
 }
 
+function hasMissingRequiredCondition(statement: string, discipline: string) {
+  if (normalized(discipline) !== 'matematica') return false;
+  if (!/p[aã]es especiais/iu.test(statement) || !PADARIA_EQUATION.test(statement)) return false;
+  return !/arrecada(?:[çc][aã]o|cao)/iu.test(statement) || !/(^|[^0-9])300(?:[,.]00)?([^0-9]|$)/u.test(statement);
+}
+
 function hasTruncatedStatement(statement: string, context: string, prompt: string) {
   if (!statement) return true;
   // A stem may intentionally end with a preposition because the alternatives
@@ -115,6 +123,7 @@ export function assessSemanticCompleteness(question: Pick<EnemProviderQuestion, 
   const hasVisualDependency = VISUAL_REFERENCE.test(statement);
   const missingAntecedent = hasMissingAntecedent(statement, context, prompt);
   const missingNumeric = hasMissingNumericData(statement, context, prompt, question.discipline);
+  const missingRequiredCondition = hasMissingRequiredCondition(statement, question.discipline);
   const truncated = hasTruncatedStatement(statement, context, prompt);
 
   if (!statement) reasons.add('MISSING_CONTEXT');
@@ -123,6 +132,10 @@ export function assessSemanticCompleteness(question: Pick<EnemProviderQuestion, 
     if (missingAntecedent || missingNumeric) reasons.add('MISSING_CONTEXT');
   }
   if (missingAntecedent) reasons.add('UNRESOLVED_REFERENCE');
+  if (missingRequiredCondition) {
+    reasons.add('MISSING_REQUIRED_CONDITION');
+    reasons.add('MISSING_CONTEXT');
+  }
   if (hasVisualDependency && (!Array.isArray(question.files) || question.files.length === 0)) {
     reasons.add('MISSING_VISUAL_INFORMATION');
   }
