@@ -230,7 +230,7 @@ describe('AdminOverviewTab', () => {
 
     expect(screen.getByRole('button', { name: /configuração da escola/i })).toBeTruthy();
     expect(screen.queryByText(/^fundação$/i)).toBeNull();
-    expect(screen.getAllByText(/prontidão da escola/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/prontidão, etapas e próximos passos da instituição/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
