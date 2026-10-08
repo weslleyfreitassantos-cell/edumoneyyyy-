@@ -140,6 +140,7 @@ describe("SimulationPage", () => {
     expect(
       await screen.findByRole("navigation", { name: "Navegador da prática" }),
     ).toBeTruthy();
+    expect(screen.queryByText("tempo restante")).toBeNull();
     const flag = screen.getByRole("button", {
       name: "Marcar questão para revisar",
     });
@@ -181,6 +182,7 @@ describe("SimulationPage", () => {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
+        content_revision: "source-faithful-v3",
         started_at: new Date(Date.now() - 60_000).toISOString(),
         navigation_state: { current_index: 1, flagged: ["question-2"] },
         answers: { "question-1": { answer: "A" } },
@@ -247,6 +249,7 @@ describe("SimulationPage", () => {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
+        content_revision: "source-faithful-v3",
         started_at: new Date().toISOString(),
       },
     ];
@@ -285,6 +288,7 @@ describe("SimulationPage", () => {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
+        content_revision: "source-faithful-v3",
         started_at: new Date().toISOString(),
       },
     ];
@@ -299,8 +303,9 @@ describe("SimulationPage", () => {
     state.attemptDetail = {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
-      status: "IN_PROGRESS",
-      started_at: new Date().toISOString(),
+        status: "IN_PROGRESS",
+        content_revision: "source-faithful-v3",
+        started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},
       questions: [

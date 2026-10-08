@@ -2,7 +2,6 @@ import {
   CheckCircle2,
   ChevronLeft,
   Circle,
-  Clock3,
   Flag,
   ListChecks,
   Send,
@@ -13,7 +12,10 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
-import type { EnemSimulationOption } from "../../services/learningCenterService";
+import {
+  CURRENT_ENEM_CONTENT_REVISION,
+  type EnemSimulationOption,
+} from "../../services/learningCenterService";
 import {
   useEnemSimulationAttempt,
   useEnemSimulationTemplates,
@@ -25,7 +27,7 @@ import {
   useSubmitEnemSimulation,
 } from "../../hooks/useLearningCenter";
 
-function formatDuration(seconds: number): string {
+function formatElapsedDuration(seconds: number): string {
   const minutes = Math.floor(seconds / 60)
     .toString()
     .padStart(2, "0");
@@ -109,7 +111,6 @@ export default function SimulationPage() {
   const [languageChoice, setLanguageChoice] = useState<"ENGLISH" | "SPANISH">(
     "ENGLISH",
   );
-  const [now, setNow] = useState(() => Date.now());
   const [currentIndex, setCurrentIndex] = useState(0);
   const [result, setResult] = useState<SimulationResult | null>(null);
   const [failedStatementAssets, setFailedStatementAssets] = useState<
@@ -130,7 +131,8 @@ export default function SimulationPage() {
       (attempts.data ?? []).find(
         (item) =>
           item.simulation_id === simulation?.id &&
-          item.status === "IN_PROGRESS",
+          item.status === "IN_PROGRESS" &&
+          item.content_revision === CURRENT_ENEM_CONTENT_REVISION,
       ),
     [attempts.data, simulation?.id],
   );
@@ -166,11 +168,6 @@ export default function SimulationPage() {
   const flaggedIds = questions
     .filter((question) => flagged[question.question_bank_id])
     .map((question) => question.question_bank_id);
-  const elapsedSeconds = startedAt
-    ? Math.max(0, Math.floor((now - startedAt) / 1000))
-    : 0;
-  const durationLimitSeconds = (simulation?.duration_minutes ?? 20) * 60;
-  const remainingSeconds = Math.max(0, durationLimitSeconds - elapsedSeconds);
   const currentQuestion = questions[currentIndex] ?? questions[0];
   const currentStatementAssets = currentQuestion?.statement_assets ?? [];
   const currentOptions = currentQuestion?.options.map(normalizeOption) ?? [];
@@ -223,12 +220,6 @@ export default function SimulationPage() {
       ),
     );
   }, [attempt.data?.attempt_id, attemptId]);
-
-  useEffect(() => {
-    if (!attemptId || result) return;
-    const timer = window.setInterval(() => setNow(Date.now()), 1000);
-    return () => window.clearInterval(timer);
-  }, [attemptId, result]);
 
   const persistNavigation = (
     index: number,
@@ -330,7 +321,6 @@ export default function SimulationPage() {
       .then((started) => {
         setAttemptId(started.attempt_id);
         setStartedAt(Date.now());
-        setNow(Date.now());
         setSaveStatus("idle");
         setNavigationStatus("idle");
         setFailedStatementAssets({});
@@ -373,6 +363,9 @@ export default function SimulationPage() {
         question_bank_id,
         answer: currentAnswer,
       }));
+    const elapsedSeconds = startedAt
+      ? Math.max(0, Math.floor((Date.now() - startedAt) / 1000))
+      : 0;
     void submit
       .mutateAsync({
         attemptId,
@@ -433,7 +426,7 @@ export default function SimulationPage() {
           </div>
           <div className="rounded-lg border bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
             <p className="text-xl font-bold text-slate-800 dark:text-white">
-              {formatDuration(result.duration_seconds)}
+            {formatElapsedDuration(result.duration_seconds)}
             </p>
             <p className="text-xs text-slate-500">Duração</p>
           </div>
@@ -623,15 +616,6 @@ export default function SimulationPage() {
             <h1 className="mt-1 text-2xl font-bold dark:text-white">
               {simulation.title}
             </h1>
-          </div>
-          <div
-            className={`shrink-0 rounded-lg border px-3 py-2 text-right text-sm font-bold ${remainingSeconds < 60 ? "border-rose-200 bg-rose-50 text-rose-700" : "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"}`}
-          >
-            <Clock3 className="mb-1 ml-auto h-4 w-4" />
-            {formatDuration(remainingSeconds)}
-            <span className="block text-[10px] font-normal">
-              tempo restante
-            </span>
           </div>
         </div>
         <p className="mt-2 flex items-center gap-2 text-sm text-slate-500">

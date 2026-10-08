@@ -11,6 +11,7 @@ import { buildQuestionRegions, extractPdfGeometryPages, planStatementCrop, type 
 
 export type EnemAssetRole = 'STATEMENT' | `OPTION_${QuestionOptionLabel}`;
 export type EnemAssetMediaType = 'STATEMENT_CROP' | 'OPTION_CROP';
+export const ENEM_ASSET_REVISION = 'source-faithful-v3' as const;
 
 export interface StatementAssetManifestItem {
   assetRole: 'STATEMENT';
@@ -42,6 +43,7 @@ export interface RenderedQuestionAssetManifest {
   sourceIntegrity: 'VERIFIED' | 'REVIEW_REQUIRED';
   statementIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
   optionsIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
+  textOptionsIntegrity?: 'VERIFIED' | 'REVIEW_REQUIRED';
   validation?: 'VERIFIED' | 'REVIEW_REQUIRED';
   excludedOptionLabels: string[];
   planReason: string | null;
@@ -50,6 +52,7 @@ export interface RenderedQuestionAssetManifest {
   renderMode?: 'VISUAL_OPTIONS' | 'TEXT_OPTIONS';
   statementContainsOptions?: boolean;
   sourceColumn?: 'LEFT' | 'RIGHT' | 'FULL';
+  revision?: typeof ENEM_ASSET_REVISION;
 }
 
 export interface EnemAssetRenderManifest {
@@ -81,6 +84,11 @@ export function renderQuestionKey(
 
 function sha256(data: Buffer) {
   return createHash('sha256').update(data).digest('hex');
+}
+
+function hasSafeTextOptions(question: ParsedEnemQuestion) {
+  return question.options.length === 5
+    && question.options.every((option) => option.trim().length > 0 && !/[\u0000-\u001f\u007f-\u009f\ufffd\ue000-\uf8ff]/u.test(option));
 }
 
 async function renderPages(pdfPath: string, pages: PdfGeometryPage[], scale: number) {
@@ -160,7 +168,7 @@ export async function renderStatementAssets(
       const fullPage = renderedPages.get(part.page);
       if (!page || !fullPage || plan.status !== 'READY') continue;
       const buffer = cropPart(fullPage, page, part, scale).toBuffer('image/png');
-      const relativePath = join('v2', key, `question-${question.questionNumber}-${languageKey}`, `statement-page-${part.page}.png`).replaceAll('\\', '/');
+      const relativePath = join('v3', ENEM_ASSET_REVISION, key, `question-${question.questionNumber}-${languageKey}`, `statement-page-${part.page}.png`).replaceAll('\\', '/');
       const destination = resolve(outputDir, relativePath);
       mkdirSync(dirname(destination), { recursive: true });
       writeFileSync(destination, buffer);
@@ -184,7 +192,7 @@ export async function renderStatementAssets(
           const fullPage = renderedPages.get(part.page);
           if (!page || !fullPage) continue;
           const buffer = cropPart(fullPage, page, part, scale).toBuffer('image/png');
-          const relativePath = join('v2', key, `question-${question.questionNumber}-${languageKey}`, `option-${label}-page-${part.page}.png`).replaceAll('\\', '/');
+          const relativePath = join('v3', ENEM_ASSET_REVISION, key, `question-${question.questionNumber}-${languageKey}`, `option-${label}-page-${part.page}.png`).replaceAll('\\', '/');
           const destination = resolve(outputDir, relativePath);
           mkdirSync(dirname(destination), { recursive: true });
           writeFileSync(destination, buffer);
@@ -203,19 +211,27 @@ export async function renderStatementAssets(
       }
     }
     const hasAllOptionAssets = (['A', 'B', 'C', 'D', 'E'] as const).every((label) => optionAssets[label].length > 0);
+    const textOptionsIntegrity = hasSafeTextOptions(question) && question.optionsIntegrity === 'VERIFIED'
+      ? 'VERIFIED'
+      : 'REVIEW_REQUIRED';
     const integrityReady = question.mediaStatus === 'NOT_DETECTED'
       && question.qualityState === 'PARSED'
       && question.sourceIntegrity === 'VERIFIED'
       && question.statementIntegrity === 'VERIFIED'
       && question.optionsIntegrity === 'VERIFIED'
       && (question.controlCharCount ?? 0) === 0;
+    const renderMode = hasAllOptionAssets ? 'VISUAL_OPTIONS' : textOptionsIntegrity === 'VERIFIED' ? 'HYBRID' : 'TEXT_OPTIONS';
     return {
       questionNumber: question.questionNumber,
       language: question.language,
-      renderReady: plan.status === 'READY' && assets.length > 0 && hasAllOptionAssets && integrityReady,
+      renderReady: plan.status === 'READY'
+        && assets.length > 0
+        && integrityReady
+        && (hasAllOptionAssets || textOptionsIntegrity === 'VERIFIED'),
       sourceIntegrity: question.sourceIntegrity ?? 'REVIEW_REQUIRED',
       statementIntegrity: question.statementIntegrity ?? 'REVIEW_REQUIRED',
       optionsIntegrity: question.optionsIntegrity ?? 'REVIEW_REQUIRED',
+      textOptionsIntegrity,
       validation: plan.status === 'READY'
         && question.qualityState === 'PARSED'
         && question.sourceIntegrity === 'VERIFIED'
@@ -227,9 +243,10 @@ export async function renderStatementAssets(
       planReason: plan.reason,
       statementAssets: assets,
       optionAssets,
-      renderMode: hasAllOptionAssets ? 'VISUAL_OPTIONS' : 'TEXT_OPTIONS',
+      renderMode,
       statementContainsOptions: false,
       sourceColumn: region?.column,
+      revision: ENEM_ASSET_REVISION,
     };
   });
   return {

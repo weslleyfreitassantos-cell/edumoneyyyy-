@@ -1,5 +1,7 @@
 import { supabase } from '../lib/supabaseClient';
 
+export const CURRENT_ENEM_CONTENT_REVISION = 'source-faithful-v3' as const;
+
 export interface LearningSubject {
   id: string;
   name: string;
@@ -270,6 +272,7 @@ export interface LearningSimulationAttempt {
   id: string;
   simulation_id: string;
   status: 'IN_PROGRESS' | 'COMPLETED' | 'ABANDONED';
+  content_revision: string;
   started_at: string;
   completed_at: string | null;
   duration_seconds: number | null;
@@ -406,6 +409,7 @@ export interface EnemSimulationAttempt {
   attempt_id: string;
   simulation_id: string;
   status: 'IN_PROGRESS' | 'COMPLETED' | 'ABANDONED';
+  content_revision: string;
   started_at: string;
   completed_at: string | null;
   duration_seconds: number | null;
@@ -1327,7 +1331,7 @@ export const learningCenterService = {
     })),
 
   startEnemSimulation: (input: { institutionId: string; studentId: string; simulationId: string; languageChoice?: 'ENGLISH' | 'SPANISH' }) =>
-    read<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null }>(supabase.rpc('start_enem_simulation_attempt_v2', {
+    read<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null; content_revision?: string }>(supabase.rpc('start_enem_simulation_attempt_v2', {
       p_institution_id: input.institutionId,
       p_student_id: input.studentId,
       p_simulation_id: input.simulationId,
@@ -1375,7 +1379,7 @@ export const learningCenterService = {
     read<LearningSimulationAttempt[]>(
       supabase
         .from('learning_simulation_attempts')
-        .select('id,simulation_id,status,started_at,completed_at,duration_seconds,score,correct_count,total_questions,area_breakdown,skill_breakdown,answers,navigation_state,learning_simulations(title,simulation_type)')
+        .select('id,simulation_id,status,content_revision,started_at,completed_at,duration_seconds,score,correct_count,total_questions,area_breakdown,skill_breakdown,answers,navigation_state,learning_simulations(title,simulation_type)')
         .eq('institution_id', institutionId)
         .eq('student_id', studentId)
         .order('started_at', { ascending: false })
