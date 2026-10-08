@@ -5,6 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { useSchoolSetupReadiness } from '../../hooks/useSchoolSetupReadiness';
+import { buildSchoolSetupFlow } from '../../lib/schoolSetupFlow';
 import type { SchoolSetupReadiness } from '../../services/schoolSetupService';
 
 import SchoolSetupProgress from './SchoolSetupProgress';
@@ -120,8 +121,9 @@ describe('SchoolSetupProgress', () => {
   });
 
   it('separa branding opcional da configuração acadêmica e exige grade publicada', () => {
+    const readiness = readinessFixture();
     mockedUseSchoolSetupReadiness.mockReturnValue({
-      data: readinessFixture(),
+      data: readiness,
       isLoading: false,
       isError: false,
       error: null,
@@ -137,8 +139,9 @@ describe('SchoolSetupProgress', () => {
     expect(screen.getAllByText('Grade horária').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Identidade visual').length).toBeGreaterThan(0);
     expect(screen.getByText(/identidade visual é opcional/i)).toBeTruthy();
-    expect(screen.getAllByText(/prontidão da escola/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/progresso da configuração/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Gere, revise e publique a grade/i)).toBeTruthy();
+    expect(screen.getByText(`${buildSchoolSetupFlow(readiness).progress}%`)).toBeTruthy();
   });
 
   it('não expõe erro técnico cru e orienta ADMIN para a configuração responsável', () => {

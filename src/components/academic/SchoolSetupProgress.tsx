@@ -299,6 +299,8 @@ export default function SchoolSetupProgress({
 
   const recommendedStep = flow.recommendedNextStep;
   const showDetails = !flow.operationalReady || showCompletedDetails;
+  const setupProgressComplete = flow.progress === 100;
+  const remainingSetupSteps = Math.max(flow.totalCount - flow.completedCount, 0);
 
   if (!showDetails) {
     return (
@@ -384,21 +386,21 @@ export default function SchoolSetupProgress({
       </div>
 
       <div className={`rounded-xl border p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 ${
-        readiness.operationalReadiness.ready
+        setupProgressComplete
           ? 'border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30'
           : 'border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/30'
       }`}>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <p className="text-sm font-bold text-[#344054] dark:text-slate-100">Prontidão da escola</p>
+            <p className="text-sm font-bold text-[#344054] dark:text-slate-100">Progresso da configuração</p>
             <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">
-              {readiness.operationalReadiness.ready
-                ? 'Escola pronta para operar.'
-                : `Faltam ${readiness.operationalReadiness.totalCount - readiness.operationalReadiness.completedCount} requisito(s) para operar.`}
+              {setupProgressComplete
+                ? 'Todas as etapas necessárias foram concluídas.'
+                : `Faltam ${remainingSetupSteps} etapa(s) para concluir a configuração.`}
             </p>
           </div>
           <span className="text-lg font-extrabold text-[#005bbf] dark:text-blue-300">
-            {readiness.operationalReadiness.progress}%
+            {flow.progress}%
           </span>
         </div>
       </div>
