@@ -27,14 +27,7 @@ import {
   useStartEnemSimulation,
   useSubmitEnemSimulation,
 } from "../../hooks/useLearningCenter";
-
-function formatElapsedDuration(seconds: number): string {
-  const minutes = Math.floor(seconds / 60)
-    .toString()
-    .padStart(2, "0");
-  const remainder = (seconds % 60).toString().padStart(2, "0");
-  return `${minutes}:${remainder}`;
-}
+import { humanizeSubjectArea } from "../../lib/learningPresentation";
 
 function answerMapFromAttempt(
   answers: Record<string, { answer: unknown }> | undefined,
@@ -491,7 +484,7 @@ export default function SimulationPage() {
         </div>
         <section
           aria-label="Resumo do resultado"
-          className="grid gap-2 sm:grid-cols-4"
+          className="grid gap-2 sm:grid-cols-3"
         >
           <div className="rounded-lg border bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
             <p className="text-xl font-bold text-emerald-600">
@@ -506,12 +499,6 @@ export default function SimulationPage() {
           <div className="rounded-lg border bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
             <p className="text-xl font-bold text-amber-600">{unanswered}</p>
             <p className="text-xs text-slate-500">Não respondidas</p>
-          </div>
-          <div className="rounded-lg border bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
-            <p className="text-xl font-bold text-slate-800 dark:text-white">
-            {formatElapsedDuration(result.duration_seconds)}
-            </p>
-            <p className="text-xs text-slate-500">Duração</p>
           </div>
         </section>
         {result.area_breakdown &&
@@ -528,7 +515,7 @@ export default function SimulationPage() {
                   key={area}
                   className="rounded-lg border p-3 text-sm dark:border-slate-700"
                 >
-                  <p className="font-semibold dark:text-white">{area}</p>
+                  <p className="font-semibold dark:text-white">{humanizeSubjectArea(area)}</p>
                   <p className="mt-1 text-slate-500">
                     {value.correct}/{value.total} acertos
                   </p>
@@ -684,7 +671,7 @@ export default function SimulationPage() {
     );
 
   return (
-    <div className="mx-auto max-w-3xl space-y-5">
+    <div className="w-full max-w-5xl space-y-4">
       <Link
         to="/student/study"
         className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"

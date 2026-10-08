@@ -1,7 +1,7 @@
 import { CalendarDays, Clock3 } from 'lucide-react';
 
 import { useUpcomingAcademicCalendarEvents } from '../hooks/useAcademicCalendar';
-import { formatCalendarEventDate } from '../lib/academicCalendarDates';
+import { formatCalendarEventDate, isCalendarEventInCurrentMonth } from '../lib/academicCalendarDates';
 
 export default function UpcomingAcademicEvents({
   institutionId,
@@ -11,7 +11,10 @@ export default function UpcomingAcademicEvents({
   role: 'student' | 'guardian' | 'teacher';
 }) {
   const eventsQuery = useUpcomingAcademicCalendarEvents(institutionId, 'ALL');
-  const events = eventsQuery.data ?? [];
+  const events = (eventsQuery.data ?? []).filter((event) => isCalendarEventInCurrentMonth({
+    startsAt: event.starts_at,
+    allDay: event.all_day,
+  }));
 
   return (
     <section aria-labelledby="upcoming-academic-events-title" className="min-w-0 space-y-4">

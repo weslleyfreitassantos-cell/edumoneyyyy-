@@ -5,16 +5,22 @@ import {
   type TeacherDashboardData,
 } from '../services/teacherDashboardService';
 
+export const TEACHER_DASHBOARD_STALE_TIME = 1000 * 60 * 5;
+
+export const teacherDashboardKeys = {
+  detail: (profileId: string, institutionId: string) =>
+    ['teacher-dashboard', profileId, institutionId] as const,
+};
+
 export function useTeacherDashboard(
   profileId: string | undefined,
   institutionId: string | undefined,
 ) {
   return useQuery<TeacherDashboardData>({
-    queryKey: [
-      'teacher-dashboard',
-      profileId,
-      institutionId,
-    ],
+    queryKey: teacherDashboardKeys.detail(
+      profileId ?? '',
+      institutionId ?? '',
+    ),
 
     queryFn: () => {
       if (!profileId) {
@@ -41,6 +47,6 @@ export function useTeacherDashboard(
         institutionId,
     ),
 
-    staleTime: 1000 * 60 * 5,
+    staleTime: TEACHER_DASHBOARD_STALE_TIME,
   });
 }

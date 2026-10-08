@@ -5,23 +5,48 @@ import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
 import { hasEffectivePermission } from '../lib/permissions';
 import {
-  adminOverviewKeys,
-  ADMIN_OVERVIEW_STALE_TIME,
-} from '../hooks/useAdminOverview';
-import {
-  announcementKeys,
-  ANNOUNCEMENT_STALE_TIME,
-} from '../hooks/useAnnouncements';
-import {
   directorCameraKeys,
   directorGatewayKeys,
 } from '../hooks/useDirectorCameras';
-import { adminOverviewService } from '../services/adminOverviewService';
-import { announcementService } from '../services/announcementService';
 import { cameraService } from '../services/cameraService';
-import { schoolEmailService } from '../services/schoolEmailService';
 
 const CAMERA_STALE_TIME = 1000 * 30;
+const ADMIN_OVERVIEW_STALE_TIME = 5 * 60 * 1000;
+const ANNOUNCEMENT_STALE_TIME = 1000 * 60;
+const DASHBOARD_STALE_TIME = 1000 * 60 * 5;
+const REGISTRATION_COMPLETION_STALE_TIME = 1000 * 60 * 5;
+const ACADEMIC_CALENDAR_STALE_TIME = 1000 * 60;
+
+const adminOverviewQueryKey = (institutionId: string) =>
+  ['admin-overview', institutionId] as const;
+
+const announcementQueryKey = {
+  list: (institutionId: string | undefined) =>
+    ['institution-announcements', institutionId ?? 'none'] as const,
+  audience: (institutionId: string | undefined, audience: string) =>
+    [
+      'institution-announcements',
+      institutionId ?? 'none',
+      audience,
+    ] as const,
+};
+
+const dashboardQueryKey = (
+  role: 'student' | 'teacher' | 'guardian',
+  profileId: string,
+  institutionId: string,
+) => [`${role}-dashboard`, profileId, institutionId] as const;
+
+const upcomingCalendarQueryKey = (institutionId: string) =>
+  ['academic-calendar', 'upcoming', institutionId, 'ALL'] as const;
+
+const studentRegistrationQueryKey = (
+  studentId: string,
+  institutionId: string,
+) => ['student-registration-completion', studentId, institutionId] as const;
+
+const guardianRegistrationQueryKey = (profileId: string) =>
+  ['guardian-registration-completion', profileId] as const;
 
 function scheduleIdle(task: () => void): () => void {
   const idleWindow = window as Window & {
@@ -74,13 +99,26 @@ export default function AuthenticatedDataPreloader() {
     if (!profile || isLoading || !currentInstitutionId) return;
 
     const institutionId = currentInstitutionId;
+    const profileId = profile.id;
+    const effectiveDatabaseRole = currentRole ?? profile.role;
+    const isStudentAcademicRoute =
+      effectiveDatabaseRole === 'STUDENT' &&
+      ['/student/attendance', '/student/grades', '/student/report-card'].includes(
+        window.location.pathname,
+      );
     const requests: Promise<unknown>[] = [];
+    let studentDashboardRequest: Promise<{
+      student: { id: string };
+    }> | null = null;
 
     if (canViewOverview) {
       requests.push(
         queryClient.prefetchQuery({
-          queryKey: adminOverviewKeys.detail(institutionId),
-          queryFn: () => adminOverviewService.getOverview(institutionId),
+          queryKey: adminOverviewQueryKey(institutionId),
+          queryFn: async () => {
+            const { adminOverviewService } = await import('../services/adminOverviewService');
+            return adminOverviewService.getOverview(institutionId);
+          },
           staleTime: ADMIN_OVERVIEW_STALE_TIME,
         }),
       );
@@ -89,15 +127,26 @@ export default function AuthenticatedDataPreloader() {
     if (canManageAnnouncements) {
       requests.push(
         queryClient.prefetchQuery({
-          queryKey: announcementKeys.list(institutionId),
-          queryFn: () => announcementService.listForStaff(institutionId),
+          queryKey: announcementQueryKey.list(institutionId),
+          queryFn: async () => {
+            const { announcementService } = await import('../services/announcementService');
+            return announcementService.listForStaff(institutionId);
+          },
           staleTime: ANNOUNCEMENT_STALE_TIME,
         }),
       );
     }
 
-    if (canSendSchoolEmail && !schoolEmailService.getCachedRecipients(institutionId)) {
-      requests.push(schoolEmailService.listRecipients(institutionId));
+    if (canSendSchoolEmail) {
+      requests.push(
+        import('../services/schoolEmailService').then(({ schoolEmailService }) => {
+          if (schoolEmailService.getCachedRecipients(institutionId)) {
+            return undefined;
+          }
+
+          return schoolEmailService.listRecipients(institutionId);
+        }),
+      );
     }
 
     if (canViewDirectorCameras) {
@@ -115,22 +164,146 @@ export default function AuthenticatedDataPreloader() {
       );
     }
 
+    if (effectiveDatabaseRole === 'STUDENT' && !isStudentAcademicRoute) {
+      studentDashboardRequest = queryClient.fetchQuery({
+        queryKey: dashboardQueryKey('student', profileId, institutionId),
+        queryFn: async () => {
+          const { studentDashboardService } = await import('../services/studentDashboardService');
+          return studentDashboardService.getDashboard(profileId, institutionId);
+        },
+        staleTime: DASHBOARD_STALE_TIME,
+      });
+
+      requests.push(studentDashboardRequest);
+    }
+
+    if (effectiveDatabaseRole === 'TEACHER') {
+      requests.push(
+        queryClient.fetchQuery({
+          queryKey: dashboardQueryKey('teacher', profileId, institutionId),
+          queryFn: async () => {
+            const { teacherDashboardService } = await import('../services/teacherDashboardService');
+            return teacherDashboardService.getDashboard(profileId, institutionId);
+          },
+          staleTime: DASHBOARD_STALE_TIME,
+        }),
+        queryClient.prefetchQuery({
+          queryKey: upcomingCalendarQueryKey(institutionId),
+          queryFn: async () => {
+            const { academicCalendarService } = await import('../services/academicCalendarService');
+            return academicCalendarService.listUpcomingForAudience(institutionId);
+          },
+          staleTime: ACADEMIC_CALENDAR_STALE_TIME,
+        }),
+      );
+    }
+
+    if (effectiveDatabaseRole === 'GUARDIAN') {
+      requests.push(
+        queryClient.fetchQuery({
+          queryKey: dashboardQueryKey('guardian', profileId, institutionId),
+          queryFn: async () => {
+            const { guardianDashboardService } = await import('../services/guardianDashboardService');
+            return guardianDashboardService.getDashboard(profileId, institutionId);
+          },
+          staleTime: DASHBOARD_STALE_TIME,
+        }),
+        queryClient.prefetchQuery({
+          queryKey: upcomingCalendarQueryKey(institutionId),
+          queryFn: async () => {
+            const { academicCalendarService } = await import('../services/academicCalendarService');
+            return academicCalendarService.listUpcomingForAudience(institutionId);
+          },
+          staleTime: ACADEMIC_CALENDAR_STALE_TIME,
+        }),
+        queryClient.prefetchQuery({
+          queryKey: announcementQueryKey.audience(institutionId, 'GUARDIANS'),
+          queryFn: async () => {
+            const { announcementService } = await import('../services/announcementService');
+            return announcementService.listForAudience(institutionId, 'GUARDIANS');
+          },
+          staleTime: ANNOUNCEMENT_STALE_TIME,
+        }),
+        queryClient.prefetchQuery({
+          queryKey: guardianRegistrationQueryKey(profileId),
+          queryFn: async () => {
+            const { registrationCompletionService } = await import('../services/registrationCompletionService');
+            return registrationCompletionService.getGuardianCompletion(profileId);
+          },
+          staleTime: REGISTRATION_COMPLETION_STALE_TIME,
+        }),
+      );
+    }
+
     void Promise.allSettled(requests);
 
     return scheduleIdle(() => {
-      const modulePreloads: Promise<unknown>[] = [];
+      const idleRequests: Promise<unknown>[] = [];
 
       if (canViewOverview) {
-        modulePreloads.push(import('../pages/Admin/AdminPage'));
+        idleRequests.push(import('../pages/Admin/AdminPage'));
       }
       if (canSendSchoolEmail) {
-        modulePreloads.push(import('../pages/Admin/tabs/EmailTab'));
+        idleRequests.push(import('../pages/Admin/tabs/EmailTab'));
       }
       if (canViewDirectorCameras) {
-        modulePreloads.push(import('../pages/Cameras/CamerasPage'));
+        idleRequests.push(import('../pages/Cameras/CamerasPage'));
       }
 
-      void Promise.allSettled(modulePreloads);
+      if (effectiveDatabaseRole === 'STUDENT') {
+        if (!isStudentAcademicRoute) {
+          idleRequests.push(import('./StudentDashboard'));
+          idleRequests.push(
+            queryClient.prefetchQuery({
+              queryKey: upcomingCalendarQueryKey(institutionId),
+              queryFn: async () => {
+                const { academicCalendarService } = await import('../services/academicCalendarService');
+                return academicCalendarService.listUpcomingForAudience(institutionId);
+              },
+              staleTime: ACADEMIC_CALENDAR_STALE_TIME,
+            }),
+            queryClient.prefetchQuery({
+              queryKey: announcementQueryKey.audience(institutionId, 'STUDENTS'),
+              queryFn: async () => {
+                const { announcementService } = await import('../services/announcementService');
+                return announcementService.listForAudience(institutionId, 'STUDENTS');
+              },
+              staleTime: ANNOUNCEMENT_STALE_TIME,
+            }),
+          );
+
+          if (studentDashboardRequest) {
+            idleRequests.push(
+              studentDashboardRequest.then((dashboard) =>
+                queryClient.prefetchQuery({
+                  queryKey: studentRegistrationQueryKey(
+                    dashboard.student.id,
+                    institutionId,
+                  ),
+                  queryFn: async () => {
+                    const { registrationCompletionService } = await import('../services/registrationCompletionService');
+                    return registrationCompletionService.getStudentCompletion(
+                      dashboard.student.id,
+                      institutionId,
+                    );
+                  },
+                  staleTime: REGISTRATION_COMPLETION_STALE_TIME,
+                }),
+              ),
+            );
+          }
+        }
+      }
+
+      if (effectiveDatabaseRole === 'TEACHER') {
+        idleRequests.push(import('./TeacherDashboard'));
+      }
+
+      if (effectiveDatabaseRole === 'GUARDIAN') {
+        idleRequests.push(import('./ParentDashboard'));
+      }
+
+      void Promise.allSettled(idleRequests);
     });
   }, [
     canManageAnnouncements,
@@ -138,6 +311,7 @@ export default function AuthenticatedDataPreloader() {
     canSendSchoolEmail,
     canViewOverview,
     currentInstitutionId,
+    currentRole,
     isLoading,
     profile,
     queryClient,

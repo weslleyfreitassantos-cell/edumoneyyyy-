@@ -5,16 +5,22 @@ import {
   type StudentDashboardData,
 } from '../services/studentDashboardService';
 
+export const STUDENT_DASHBOARD_STALE_TIME = 1000 * 60 * 5;
+
+export const studentDashboardKeys = {
+  detail: (profileId: string, institutionId: string) =>
+    ['student-dashboard', profileId, institutionId] as const,
+};
+
 export function useStudentDashboard(
   profileId: string | undefined,
   institutionId: string | undefined,
 ) {
   return useQuery<StudentDashboardData>({
-    queryKey: [
-      'student-dashboard',
-      profileId,
-      institutionId,
-    ],
+    queryKey: studentDashboardKeys.detail(
+      profileId ?? '',
+      institutionId ?? '',
+    ),
 
     queryFn: () => {
       if (!profileId) {
@@ -40,6 +46,6 @@ export function useStudentDashboard(
       profileId && institutionId,
     ),
 
-    staleTime: 1000 * 60 * 5,
+    staleTime: STUDENT_DASHBOARD_STALE_TIME,
   });
 }

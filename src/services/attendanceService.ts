@@ -1674,8 +1674,14 @@ function assertStudentsCanBeSaved(
 
 function normalizeStudentAttendanceRecord(
   row: AttendanceRecordQueryRow,
-  session: AttendanceSession,
-  offering: AttendanceOffering,
+  session: Pick<
+    AttendanceSession,
+    'subjectOfferingId' | 'sessionDate'
+  >,
+  offering: Pick<
+    AttendanceOffering,
+    'subjectName' | 'subjectCode' | 'className' | 'teacherName'
+  >,
 ): StudentAttendanceRecord {
   const student = normalizeRelation(row.students);
   const profile = normalizeRelation(student?.profiles);
@@ -1696,6 +1702,37 @@ function normalizeStudentAttendanceRecord(
     subjectCode: offering.subjectCode,
     className: offering.className,
     teacherName: offering.teacherName,
+  };
+}
+
+function normalizeStudentAttendanceOffering(
+  row: OfferingQueryRow,
+  institutionId: string,
+): Pick<
+  AttendanceOffering,
+  'subjectName' | 'subjectCode' | 'className' | 'teacherName'
+> | null {
+  const classRecord = normalizeRelation(row.classes);
+  const subject = normalizeRelation(row.subjects);
+  const teacher = normalizeRelation(row.profiles);
+
+  if (
+    !classRecord ||
+    !subject ||
+    classRecord.institution_id !== institutionId ||
+    subject.institution_id !== institutionId ||
+    !isActive(row.active) ||
+    !isActive(classRecord.active) ||
+    !isActive(subject.active)
+  ) {
+    return null;
+  }
+
+  return {
+    className: classRecord.name,
+    subjectName: subject.name,
+    subjectCode: subject.code,
+    teacherName: teacher?.full_name ?? 'Professor',
   };
 }
 
@@ -2550,20 +2587,7 @@ export const attendanceService = {
       return await withAcademicReadTimeout(async (signal) => {
         let recordsQuery = supabase
           .from('attendance_records')
-          .select(
-            `
-            id,
-            institution_id,
-            attendance_session_id,
-            student_id,
-            status,
-            notes,
-            recorded_by,
-            recorded_at,
-            created_at,
-            updated_at
-          `,
-          )
+          .select('id, attendance_session_id, student_id, status, notes, recorded_at')
           .eq('institution_id', institutionId)
           .eq('student_id', studentId)
           .order('recorded_at', { ascending: false })
@@ -2598,25 +2622,7 @@ export const attendanceService = {
         ];
         let sessionsQuery = supabase
           .from('attendance_sessions')
-          .select(
-            `
-            id,
-            institution_id,
-            subject_offering_id,
-            session_date,
-            starts_at,
-            ends_at,
-            topic,
-            class_activity,
-            homework,
-            notes,
-            status,
-            created_by,
-            closed_at,
-            created_at,
-            updated_at
-          `,
-          )
+          .select('id, subject_offering_id, session_date')
           .eq('institution_id', institutionId)
           .eq('status', 'CLOSED')
           .in('id', sessionIds);
@@ -2633,9 +2639,20 @@ export const attendanceService = {
           );
         }
 
-        const sessionRows = (sessionData ?? []) as unknown as AttendanceSessionQueryRow[];
+        const sessionRows = (sessionData ?? []) as Array<
+          Pick<
+            AttendanceSessionQueryRow,
+            'id' | 'subject_offering_id' | 'session_date'
+          >
+        >;
         const sessionsById = new Map(
-          sessionRows.map((session) => [session.id, session]),
+          sessionRows.map((session) => [
+            session.id,
+            {
+              subjectOfferingId: session.subject_offering_id,
+              sessionDate: session.session_date,
+            },
+          ]),
         );
         const closedRecordRows = recordRows.filter((record) =>
           sessionsById.has(record.attendance_session_id),
@@ -2654,7 +2671,7 @@ export const attendanceService = {
             closedRecordRows
               .map((record) =>
                 sessionsById.get(record.attendance_session_id)
-                  ?.subject_offering_id,
+                  ?.subjectOfferingId,
               )
               .filter((id): id is string => Boolean(id)),
           ),
@@ -2667,16 +2684,11 @@ export const attendanceService = {
             class_id,
             subject_id,
             teacher_profile_id,
-            term_id,
             active,
-            created_at,
             classes:class_id (
               id,
               institution_id,
               name,
-              grade_level,
-              shift,
-              capacity,
               active
             ),
             subjects:subject_id (
@@ -2684,20 +2696,10 @@ export const attendanceService = {
               institution_id,
               name,
               code,
-              workload,
               active
             ),
             profiles:teacher_profile_id (
-              full_name,
-              email,
-              active
-            ),
-            terms:term_id (
-              id,
-              academic_year_id,
-              name,
-              active,
-              academic_years:academic_year_id (id, name)
+              full_name
             )
           `,
           )
@@ -2727,14 +2729,14 @@ export const attendanceService = {
               row.attendance_session_id,
             );
             const offeringRow = sessionRow
-              ? offeringsById.get(sessionRow.subject_offering_id)
+              ? offeringsById.get(sessionRow.subjectOfferingId)
               : undefined;
 
             if (!sessionRow || !offeringRow) {
               return null;
             }
 
-            const offering = normalizeOffering(
+            const offering = normalizeStudentAttendanceOffering(
               offeringRow,
               institutionId,
             );
@@ -2742,7 +2744,7 @@ export const attendanceService = {
             return offering
               ? normalizeStudentAttendanceRecord(
                   row,
-                  normalizeSession(sessionRow),
+                  sessionRow,
                   offering,
                 )
               : null;

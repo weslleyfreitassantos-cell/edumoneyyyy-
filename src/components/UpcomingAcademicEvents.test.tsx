@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { cleanup, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useUpcomingAcademicCalendarEvents } from '../hooks/useAcademicCalendar';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
@@ -10,7 +10,15 @@ vi.mock('../hooks/useAcademicCalendar', () => ({
   useUpcomingAcademicCalendarEvents: vi.fn(),
 }));
 
-afterEach(() => cleanup());
+beforeEach(() => {
+  vi.useFakeTimers();
+  vi.setSystemTime(new Date('2026-09-10T12:00:00.000Z'));
+});
+
+afterEach(() => {
+  cleanup();
+  vi.useRealTimers();
+});
 
 describe('UpcomingAcademicEvents', () => {
   it('mostra os próximos eventos compatíveis com o perfil', () => {
@@ -69,6 +77,24 @@ describe('UpcomingAcademicEvents', () => {
     expect(strip.querySelectorAll('article')).toHaveLength(2);
     expect(screen.getByText('Reunião de responsáveis')).toBeTruthy();
     expect(strip.querySelectorAll('article')[1]?.className).toContain('snap-start');
+  });
+
+  it('mostra somente eventos do mês vigente', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-10-08T12:00:00.000Z'));
+    vi.mocked(useUpcomingAcademicCalendarEvents).mockReturnValue({
+      data: [
+        { id: 'event-current-month', title: 'Mostra de projetos', description: null, starts_at: '2026-10-09T11:00:00.000Z', ends_at: null, all_day: false },
+        { id: 'event-next-month', title: 'MÊS seguinte', description: null, starts_at: '2026-11-20T14:15:00.000Z', ends_at: null, all_day: false },
+      ],
+      isLoading: false,
+      isError: false,
+    } as never);
+
+    render(<UpcomingAcademicEvents institutionId="institution-1" role="student" />);
+
+    expect(screen.getByText('Mostra de projetos')).toBeTruthy();
+    expect(screen.queryByText('MÊS seguinte')).toBeNull();
   });
 
   it('mostra estado vazio', () => {

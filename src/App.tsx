@@ -20,10 +20,7 @@ import {
   useRouteError,
 } from 'react-router-dom';
 
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 import {
   AuthProvider,
@@ -49,6 +46,7 @@ import {
   mapPlatformRole,
 } from './lib/roles';
 import { hasEffectivePermission } from './lib/permissions';
+import { queryClient } from './lib/queryClient';
 
 import type { UserRole } from './types';
 
@@ -102,11 +100,20 @@ const StudentDashboard = lazy(
     ),
 );
 
+const StudentAcademicResultsPage = lazy(
+  () => import('./components/StudentAcademicResultsPage'),
+);
+
+const StudentCalendarPage = lazy(
+  () => import('./components/StudentCalendarPage'),
+);
+
 const LearningContentPage = lazy(
   () => import('./components/learning/LearningContentPage'),
 );
 const StudyCenterPage = lazy(() => import('./components/learning/StudyCenterPage'));
 const StudentSubjectPage = lazy(() => import('./components/learning/StudentSubjectPage'));
+const WritingModulePage = lazy(() => import('./components/learning/WritingModulePage'));
 const GuidedJourneyPage = lazy(() => import('./components/learning/GuidedJourneyPage'));
 const PedagogicalCenterPage = lazy(() => import('./components/learning/PedagogicalCenterPage'));
 const PedagogicalCenterOverviewPage = lazy(() => import('./components/learning/PedagogicalCenterOverviewPage'));
@@ -161,34 +168,6 @@ const TerminalsPage = lazy(
   () => import('./pages/Terminals/TerminalsPage'),
 );
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // Keep already visited screens warm while the user changes browser tabs.
-      staleTime: 1000 * 60 * 10,
-      gcTime: 1000 * 60 * 60,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: true,
-      retry: 1,
-    },
-    mutations: {
-      retry: 0,
-    },
-  },
-});
-
-function preloadApplicationScreens(): void {
-  void Promise.all([
-    import('./pages/Login'),
-    import('./pages/Admin/AdminPage'),
-    import('./pages/Platform/PlatformPage'),
-    import('./pages/Account/AccountPage'),
-    import('./components/TeacherDashboard'),
-    import('./components/StudentDashboard'),
-    import('./components/DirectorDashboard'),
-    import('./components/ParentDashboard'),
-  ]);
-}
 const resolvedTerminalsAccessProfiles = new Set<string>();
 
 class AppErrorBoundary extends Component<
@@ -691,7 +670,7 @@ function AppRoutes() {
           element={
             <ProtectedRoute allowedRoles={['STUDENT']}>
               <AuthenticatedRouteContent>
-                <StudentDashboard />
+                <StudentAcademicResultsPage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
@@ -701,7 +680,7 @@ function AppRoutes() {
           element={
             <ProtectedRoute allowedRoles={['STUDENT']}>
               <AuthenticatedRouteContent>
-                <StudentDashboard />
+                <StudentAcademicResultsPage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
@@ -711,7 +690,17 @@ function AppRoutes() {
           element={
             <ProtectedRoute allowedRoles={['STUDENT']}>
               <AuthenticatedRouteContent>
-                <StudentDashboard />
+                <StudentAcademicResultsPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/calendar"
+          element={
+            <ProtectedRoute allowedRoles={['STUDENT']}>
+              <AuthenticatedRouteContent>
+                <StudentCalendarPage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
@@ -798,6 +787,7 @@ function AppRoutes() {
         />
         <Route path="/student/study" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudyCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/subject/:subjectId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentSubjectPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/writing" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><WritingModulePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedJourneyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/activity/:activityId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><PracticePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/lesson/:lessonId/:stepId?" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><LessonPage /></AuthenticatedRouteContent></ProtectedRoute>} />
@@ -946,29 +936,6 @@ const appRouter = createBrowserRouter([
 ]);
 
 function App() {
-  useEffect(() => {
-    const idleWindow = window as Window & {
-      requestIdleCallback?: (callback: () => void) => number;
-    };
-
-    if (idleWindow.requestIdleCallback) {
-      const idleId = idleWindow.requestIdleCallback(
-        preloadApplicationScreens,
-      );
-
-      return () => {
-        window.clearTimeout(idleId);
-      };
-    }
-
-    const timeoutId = window.setTimeout(
-      preloadApplicationScreens,
-      800,
-    );
-
-    return () => window.clearTimeout(timeoutId);
-  }, []);
-
   return (
     <AppErrorBoundary>
       <QueryClientProvider

@@ -22,6 +22,7 @@
     "enem:review": "node --experimental-strip-types tools/enem/review-report.ts",
     "enem:second-pass": "node --experimental-strip-types tools/enem/second-pass.ts",
     "enem:render": "node --experimental-strip-types tools/enem/render-question-assets.ts",
+    "enem:covers": "node --experimental-strip-types tools/enem/generate-cover-thumbnails.ts",
     "enem:visual-report": "node --experimental-strip-types tools/enem/visual-integrity-report.ts",
     "enem:promotion": "node --experimental-strip-types tools/enem/promotion.ts",
     "enem:provider-text-v2": "node --experimental-strip-types tools/enem/provider-text-v2.ts",

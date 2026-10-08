@@ -115,6 +115,46 @@ function setupReadinessFixture(): SchoolSetupReadiness {
 }
 
 describe('AssistantTec', () => {
+  it('permite arrastar a bolinha sem abrir o assistente', () => {
+    render(
+      <MemoryRouter>
+        <AssistantTec role="student" institutionId={null} />
+      </MemoryRouter>,
+    );
+
+    const button = screen.getByRole('button', {
+      name: 'Abrir Assistente TEC',
+    });
+
+    fireEvent.pointerDown(button, {
+      pointerId: 1,
+      pointerType: 'mouse',
+      button: 0,
+      clientX: 10,
+      clientY: 10,
+    });
+    fireEvent.pointerMove(button, {
+      pointerId: 1,
+      pointerType: 'mouse',
+      clientX: 210,
+      clientY: 160,
+    });
+    fireEvent.pointerUp(button, {
+      pointerId: 1,
+      pointerType: 'mouse',
+      clientX: 210,
+      clientY: 160,
+    });
+
+    expect(screen.queryByRole('dialog', { name: 'Assistente TEC' })).toBeNull();
+    expect(button.style.left).toBe('200px');
+    expect(button.style.top).toBe('150px');
+
+    fireEvent.click(button);
+    fireEvent.click(button);
+    expect(screen.getByRole('dialog', { name: 'Assistente TEC' })).toBeTruthy();
+  });
+
   it('encontra grade, materiais e avisos disponíveis para o aluno', () => {
     renderAssistant('student');
     const input = screen.getByRole('textbox', {

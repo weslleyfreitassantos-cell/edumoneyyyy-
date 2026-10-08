@@ -664,6 +664,7 @@ describe('sidebar navigation helpers', () => {
     expect(studentItems.map((item) => item.id)).toEqual(
       expect.arrayContaining([
         'student-study',
+        'student-calendar',
         'library',
         'student-attendance',
         'student-grades',

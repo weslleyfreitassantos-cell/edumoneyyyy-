@@ -35,7 +35,10 @@ const CONTENT_SECURITY_POLICY = [
   "manifest-src 'self'",
 ].join('; ');
 
-function withSecurityHeaders(response: Response): Response {
+function withSecurityHeaders(
+  response: Response,
+  request?: Request,
+): Response {
   const headers = new Headers(response.headers);
   headers.set('Content-Security-Policy', CONTENT_SECURITY_POLICY);
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -46,6 +49,12 @@ function withSecurityHeaders(response: Response): Response {
     headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
     headers.set('Pragma', 'no-cache');
     headers.set('Expires', '0');
+  } else if (
+    request &&
+    response.ok &&
+    new URL(request.url).pathname.startsWith('/assets/')
+  ) {
+    headers.set('Cache-Control', 'public, max-age=31536000, immutable');
   }
 
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
@@ -501,6 +510,6 @@ export default {
       ? missingStaticAssetResponse()
       : assetResponse;
 
-    return withSecurityHeaders(response);
+    return withSecurityHeaders(response, request);
   },
 };

@@ -109,6 +109,18 @@ describe('academicCalendarService', () => {
     expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
   });
 
+  it('lista todos os eventos ativos visíveis para o aluno', async () => {
+    const query = queryBuilder();
+    vi.mocked(supabase.from).mockReturnValue(query as never);
+
+    await academicCalendarService.listForStudent('institution-1');
+
+    expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
+    expect(query.eq).toHaveBeenCalledWith('active', true);
+    expect(query.order).toHaveBeenCalledWith('starts_at', { ascending: true });
+    expect(query.limit).not.toHaveBeenCalled();
+  });
+
   it('carrega bloqueios de toda a janela em uma única consulta', async () => {
     const query = queryBuilder();
     vi.mocked(supabase.from).mockReturnValue(query as never);

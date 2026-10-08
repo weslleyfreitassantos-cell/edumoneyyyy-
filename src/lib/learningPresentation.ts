@@ -3,6 +3,8 @@ const SUBJECT_LABELS: Record<string, string> = {
   BIOLOGY: 'Biologia',
   BIOLOGIA: 'Biologia',
   COMPUTING: 'Computação',
+  'CIENCIAS HUMANAS': 'Ciências Humanas',
+  'CIENCIAS NATUREZA': 'Ciências Naturais',
   'EDUCACAO FISICA': 'Educação Física',
   ENGLISH: 'Língua Inglesa',
   FILOSOFIA: 'Filosofia',
@@ -11,6 +13,7 @@ const SUBJECT_LABELS: Record<string, string> = {
   GEOGRAFIA: 'Geografia',
   HISTORY: 'História',
   HISTORIA: 'História',
+  LINGUAGENS: 'Linguagens',
   MATEMATICA: 'Matemática',
   MATHEMATICS: 'Matemática',
   PORTUGUESE: 'Língua Portuguesa',
@@ -18,6 +21,8 @@ const SUBJECT_LABELS: Record<string, string> = {
   'LINGUA PORTUGUESA': 'Língua Portuguesa',
   QUIMICA: 'Química',
   SOCIOLOGIA: 'Sociologia',
+  INGLES: 'Inglês',
+  ESPANHOL: 'Espanhol',
 };
 
 const SKILL_LABELS: Record<string, string> = {

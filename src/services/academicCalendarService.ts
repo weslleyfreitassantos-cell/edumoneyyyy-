@@ -366,6 +366,27 @@ export const academicCalendarService = {
     return ((data ?? []) as unknown as AcademicCalendarQueryRow[]).map(normalizeRow);
   },
 
+  async listForStudent(
+    institutionId: string,
+  ): Promise<AcademicCalendarEvent[]> {
+    if (!institutionId.trim()) {
+      throw new Error('A instituição é obrigatória para consultar o calendário.');
+    }
+
+    // A política RLS do banco limita o resultado a ALL, STUDENTS e eventos
+    // da turma do aluno. O cliente só precisa pedir a janela completa.
+    const { data, error } = await supabase
+      .from('academic_calendar_events')
+      .select(EVENT_SELECT)
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .order('starts_at', { ascending: true });
+
+    if (error) throw error;
+
+    return ((data ?? []) as unknown as AcademicCalendarQueryRow[]).map(normalizeRow);
+  },
+
   async listUpcomingForAudience(
     institutionId: string,
     limit = 5,

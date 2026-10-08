@@ -223,6 +223,49 @@ describe("SimulationPage", () => {
     ).toContain("não respondidas");
   });
 
+  it("uses human area labels and does not show the duration timer in the result", async () => {
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      started_at: new Date().toISOString(),
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "question-1",
+          options: ["Uma", "Duas"],
+          statement_assets: [{ storage_path: null, public_url: "https://example.test/question-1.png" }],
+        },
+        {
+          position: 2,
+          question_bank_id: "question-2",
+          options: ["Três", "Quatro"],
+          statement_assets: [{ storage_path: null, public_url: "https://example.test/question-2.png" }],
+        },
+      ],
+      answers: {},
+      navigation_state: null,
+    };
+    state.submit.mockResolvedValueOnce({
+      score: 50,
+      correct_count: 1,
+      total_questions: 2,
+      area_breakdown: { CIENCIAS_NATUREZA: { correct: 1, total: 2 } },
+    });
+
+    renderPage();
+    fireEvent.click(screen.getByRole("button", { name: "Começar prática" }));
+    fireEvent.click((await screen.findAllByRole("radio"))[0]);
+    fireEvent.click(screen.getByRole("button", { name: "Próxima" }));
+    fireEvent.click(screen.getByRole("button", { name: "Revisar e finalizar" }));
+    fireEvent.click(screen.getByRole("button", { name: "Finalizar prática" }));
+
+    expect(await screen.findByRole("heading", { name: "Prática concluída" })).toBeTruthy();
+    expect(screen.getByText("Ciências Naturais")).toBeTruthy();
+    expect(screen.queryByText("CIENCIAS_NATUREZA")).toBeNull();
+    expect(screen.queryByText("Duração")).toBeNull();
+  });
+
   it("does not auto-resume an old content revision", async () => {
     state.attempts = [
       {
