@@ -1,6 +1,11 @@
 import { supabase } from '../lib/supabaseClient';
 
-export const CURRENT_ENEM_CONTENT_REVISION = 'structured-text-v1' as const;
+export const CURRENT_ENEM_CONTENT_REVISION = 'structured-sources-v2' as const;
+export const SUPPORTED_ENEM_CONTENT_REVISIONS = new Set([
+  CURRENT_ENEM_CONTENT_REVISION,
+  'structured-text-v1',
+  'source-faithful-v3',
+]);
 
 export interface LearningSubject {
   id: string;
@@ -329,6 +334,9 @@ export interface EnemStructuredContent {
 export interface EnemSimulationQuestion {
   position: number;
   question_bank_id: string;
+  occurrence_id?: string | null;
+  structured_content_id?: string | null;
+  source_kind?: 'OFFICIAL_OCCURRENCE' | 'STRUCTURED_PROVIDER' | string | null;
   statement: string;
   options: Array<EnemSimulationOption | string>;
   source_year: number | null;

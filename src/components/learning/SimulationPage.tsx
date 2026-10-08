@@ -13,7 +13,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
 import {
-  CURRENT_ENEM_CONTENT_REVISION,
+  SUPPORTED_ENEM_CONTENT_REVISIONS,
   type EnemStructuredContent,
   type EnemSimulationOption,
 } from "../../services/learningCenterService";
@@ -164,7 +164,7 @@ export default function SimulationPage() {
         (item) =>
           item.simulation_id === simulation?.id &&
           item.status === "IN_PROGRESS" &&
-          item.content_revision === CURRENT_ENEM_CONTENT_REVISION,
+          SUPPORTED_ENEM_CONTENT_REVISIONS.has(item.content_revision),
       ),
     [attempts.data, simulation?.id],
   );
