@@ -62,6 +62,18 @@ describe('ENEM semantic completeness v5', () => {
     expect(result.reasons).toContain('MISSING_NUMERIC_DATA');
   });
 
+  it.each([
+    'No caso de carga máxima, as cargas recebidas pelos três pontos de sustentação serão, respectivamente,',
+    'O aluno que responder corretamente ao questionamento do professor dirá que o derretimento ocorrerá',
+  ])('rejects context-dependent stems without their source context: %s', (alternativesIntroduction) => {
+    const result = assessSemanticCompleteness(question({
+      context: null as unknown as string,
+      alternativesIntroduction,
+    }));
+    expect(result.state).toBe('INCOMPLETE');
+    expect(result.reasons).toEqual(expect.arrayContaining(['MISSING_CONTEXT', 'UNRESOLVED_REFERENCE']));
+  });
+
   it('keeps a short self-contained calculation complete', () => {
     const result = assessSemanticCompleteness(question({
       context: null as unknown as string,
