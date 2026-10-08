@@ -25,6 +25,17 @@ describe('ENEM Xequemat archive v1 migration', () => {
     expect(migration).toContain('(not structured.required_media_present or structured.required_media_validated)');
   });
 
+  it('backfills historical source snapshots without an invalid target-table join', () => {
+    const backfill = migration.slice(
+      migration.indexOf('with snapshot_rows as materialized'),
+      migration.indexOf('-- Return the source identity as part of every question payload.'),
+    );
+    expect(migration).toContain('with snapshot_rows as materialized');
+    expect(migration).toContain('from snapshot_rows');
+    expect(migration).toContain('where snapshot_rows.attempt_question_id = attempt_question.id');
+    expect(backfill).not.toMatch(/update[\s\S]*left join\s+public\.learning_enem_structured_content\s+structured\s+on\s+structured\.id\s*=\s*attempt_question\.structured_content_id/iu);
+  });
+
   it('advances the active revision without deleting previous rows', () => {
     expect(migration).toContain("select 'xequemat-archive-v1'::text");
     expect(migration).not.toMatch(/delete\s+from\s+public\.learning_enem_structured_content/iu);

@@ -193,28 +193,36 @@ create trigger snapshot_enem_question_source_reference
 before insert on public.learning_simulation_attempt_questions
 for each row execute function private.snapshot_enem_question_source_reference();
 
-update public.learning_simulation_attempt_questions attempt_question
-set source_reference_snapshot = jsonb_build_object(
-  'source_year', coalesce(structured.provider_year, question_bank.source_year),
-  'source_exam', coalesce(structured.source_exam, question_bank.source_exam),
-  'source_application', coalesce(structured.source_application, question_bank.source_application),
-  'source_question_number', coalesce(structured.source_question_number, question_bank.source_question_number, question_bank.source_number),
-  'source_day', coalesce(structured.source_day, question_bank.source_day),
-  'source_booklet', structured.source_booklet,
-  'source_booklet_color', structured.source_booklet_color,
-  'source_url', coalesce(structured.source_url, question_bank.source_url, question_bank.source_reference),
-  'source_provider', coalesce(structured.source_provider, question_bank.source_provider, question_bank.source_name)
+with snapshot_rows as materialized (
+  select
+    attempt_question.id as attempt_question_id,
+    jsonb_build_object(
+      'source_year', coalesce(structured.provider_year, question_bank.source_year),
+      'source_exam', coalesce(structured.source_exam, question_bank.source_exam),
+      'source_application', coalesce(structured.source_application, question_bank.source_application),
+      'source_question_number', coalesce(structured.source_question_number, question_bank.source_question_number, question_bank.source_number),
+      'source_day', coalesce(structured.source_day, question_bank.source_day),
+      'source_booklet', structured.source_booklet,
+      'source_booklet_color', structured.source_booklet_color,
+      'source_url', coalesce(structured.source_url, question_bank.source_url, question_bank.source_reference),
+      'source_provider', coalesce(structured.source_provider, question_bank.source_provider, question_bank.source_name)
+    ) as source_reference_snapshot
+  from public.learning_simulation_attempt_questions attempt_question
+  join public.learning_question_bank question_bank
+    on question_bank.id = attempt_question.question_bank_id
+  left join public.learning_enem_structured_content structured
+    on structured.id = attempt_question.structured_content_id
+  where attempt_question.source_reference_snapshot = '{}'::jsonb
+    and (
+      question_bank.source_year is not null
+      or question_bank.source_number is not null
+      or structured.source_question_number is not null
+    )
 )
-from public.learning_question_bank question_bank
-left join public.learning_enem_structured_content structured
-  on structured.id = attempt_question.structured_content_id
-where attempt_question.question_bank_id = question_bank.id
-  and attempt_question.source_reference_snapshot = '{}'::jsonb
-  and (
-    question_bank.source_year is not null
-    or question_bank.source_number is not null
-    or structured.source_question_number is not null
-  );
+update public.learning_simulation_attempt_questions attempt_question
+set source_reference_snapshot = snapshot_rows.source_reference_snapshot
+from snapshot_rows
+where snapshot_rows.attempt_question_id = attempt_question.id;
 
 -- Return the source identity as part of every question payload.  Structured
 -- content blocks are also returned here so the reference and its rendering
