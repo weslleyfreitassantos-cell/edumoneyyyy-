@@ -43,7 +43,7 @@ const NUMERIC_DATA = /(?:\d|\b(?:um|uma|dois|duas|tr[eê]s|quatro|cinco|seis|set
 const TRUNCATED_END = /(?:\.{3}|\b(?:e|ou|que|de|da|do|das|dos|em|no|na|nas|nos|para|por|com|considerando|de acordo com|a partir de|ser[aã]o?|ser[aá]|[eé] de|[eé] da|[eé] do|corresponde a|resulta em)\s*[.!?]?)$/iu;
 const QUESTION_END = /[?!]\s*$/u;
 const SENTENCE_END = /[.!?]\s*$/u;
-const CONTEXT_DEPENDENCY = /\b(?:essa|esse|essas|esses|esta|este|estas|estes|tal|tais|referid[oa]s?|mencionad[oa]s?|descrita|descrito|apresentad[oa]s?|demonstrad[oa]s?|considerando (?:esse|essa|isso)|ap[oó]s a an[aá]lise|no caso apresentado|comparando-se|ap[oó]s as|nessa|nessas|neste|nesta|dessa|dessas|o professor|o arquiteto|o carpinteiro|o pedido)\b/iu;
+const CONTEXT_DEPENDENCY = /\b(?:essa|esse|essas|esses|esta|este|estas|estes|tal|tais|referid[oa]s?|mencionad[oa]s?|descrita|descrito|apresentad[oa]s?|demonstrad[oa]s?|considerando (?:esse|essa|isso)|ap[oó]s a an[aá]lise|no caso apresentado|comparando-se|ap[oó]s as|nessa|nessas|neste|nesta|dessa|dessas|o professor|o arquiteto|o carpinteiro|o pedido|o aluno que|respectivamente)\b/iu;
 
 function clean(value: unknown) {
   return typeof value === 'string'
