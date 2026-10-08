@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { reconcileStructuredQuestions, STRUCTURED_CONTENT_REVISION, type EnemProviderQuestion } from './structured-text';
+import { deduplicateProviderQuestions, reconcileStructuredQuestions, STRUCTURED_CONTENT_REVISION, type EnemProviderQuestion } from './structured-text';
 import type { EnemParseResult } from './parse';
 
 const provider: EnemProviderQuestion = {
@@ -55,6 +55,12 @@ const parsed = {
 } as unknown as EnemParseResult;
 
 describe('structured ENEM reconciliation', () => {
+  it('deduplicates repeated provider pages without changing the provider identity', () => {
+    const result = deduplicateProviderQuestions([provider, provider]);
+    expect(result.questions).toHaveLength(1);
+    expect(result.duplicateProviderQuestions).toBe(1);
+  });
+
   it('matches by content and official answer rather than provider question number', () => {
     const result = reconcileStructuredQuestions([provider], parsed);
     expect(result.contentRevision).toBe(STRUCTURED_CONTENT_REVISION);

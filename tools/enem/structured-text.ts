@@ -82,6 +82,8 @@ export interface StructuredReconciliationReport {
   schemaVersion: 1;
   contentRevision: typeof STRUCTURED_CONTENT_REVISION;
   provider: typeof STRUCTURED_PROVIDER;
+  providerQuestionsRaw: number;
+  duplicateProviderQuestions: number;
   providerQuestions: number;
   exact: number;
   highConfidence: number;
@@ -177,6 +179,28 @@ function normalizeProviderQuestion(question: EnemProviderQuestion): EnemProvider
         file: typeof alternative.file === 'string' ? alternative.file : null,
       }))
       : [],
+  };
+}
+
+function providerQuestionIdentity(question: EnemProviderQuestion) {
+  return `${question.year}:${question.index}:${question.discipline}:${question.language ?? 'COMMON'}`;
+}
+
+export function deduplicateProviderQuestions(providerQuestions: EnemProviderQuestion[]) {
+  const unique = new Map<string, EnemProviderQuestion>();
+  let duplicateProviderQuestions = 0;
+  for (const rawQuestion of providerQuestions) {
+    const question = normalizeProviderQuestion(rawQuestion);
+    const identity = providerQuestionIdentity(question);
+    if (unique.has(identity)) {
+      duplicateProviderQuestions += 1;
+      continue;
+    }
+    unique.set(identity, question);
+  }
+  return {
+    questions: [...unique.values()],
+    duplicateProviderQuestions,
   };
 }
 
@@ -335,6 +359,8 @@ export function reconcileStructuredQuestions(
     schemaVersion: 1,
     contentRevision: STRUCTURED_CONTENT_REVISION,
     provider: STRUCTURED_PROVIDER,
+    providerQuestionsRaw: records.length,
+    duplicateProviderQuestions: 0,
     providerQuestions: records.length,
     exact: count('EXACT'),
     highConfidence: count('HIGH_CONFIDENCE'),
@@ -386,16 +412,21 @@ async function runCli() {
   const parsedPath = resolve(argument('--parsed', args) ?? '.runtime/enem-parsed-primary-language-2017-2025-integrity-second-pass.json');
   const outputPath = resolve(argument('--out', args) ?? '.runtime/enem-structured-text-v1/reconciliation.json');
   const sqlPath = argument('--sql', args) ? resolve(argument('--sql', args)!) : null;
-  const providerQuestions = (await Promise.all(years.map((year) => fetchYear(year, cacheDir)))).flat();
+  const fetchedProviderQuestions = (await Promise.all(years.map((year) => fetchYear(year, cacheDir)))).flat();
+  const deduplicated = deduplicateProviderQuestions(fetchedProviderQuestions);
   const parsed = JSON.parse(readFileSync(parsedPath, 'utf8')) as EnemParseResult;
-  const report = reconcileStructuredQuestions(providerQuestions, parsed);
+  const report = {
+    ...reconcileStructuredQuestions(deduplicated.questions, parsed),
+    providerQuestionsRaw: fetchedProviderQuestions.length,
+    duplicateProviderQuestions: deduplicated.duplicateProviderQuestions,
+  };
   mkdirSync(dirname(outputPath), { recursive: true });
   writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
   if (sqlPath) {
     mkdirSync(dirname(sqlPath), { recursive: true });
     writeFileSync(sqlPath, buildStructuredImportSql(report), 'utf8');
   }
-  console.log(`ENEM_STRUCTURED_TEXT_OK provider=${report.providerQuestions} exact=${report.exact} high=${report.highConfidence} review=${report.reviewRequired} rejected=${report.rejected} ready=${report.ready} output=${outputPath}`);
+  console.log(`ENEM_STRUCTURED_TEXT_OK provider=${report.providerQuestions} raw=${report.providerQuestionsRaw} duplicates=${report.duplicateProviderQuestions} exact=${report.exact} high=${report.highConfidence} review=${report.reviewRequired} rejected=${report.rejected} ready=${report.ready} output=${outputPath}`);
 }
 
 const invokedPath = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : null;
