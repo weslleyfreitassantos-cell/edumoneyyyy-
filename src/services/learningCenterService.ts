@@ -325,28 +325,80 @@ export interface EnemSimulationQuestion {
   }>;
 }
 
+function normalizeEnemSimulationAsset(value: unknown): EnemSimulationOptionAsset | null {
+  if (!value || typeof value !== 'object') return null;
+  const item = value as Record<string, unknown>;
+  const storagePath = item.storage_path ?? item.storagePath;
+  const publicUrl = item.public_url ?? item.publicUrl;
+  if (typeof storagePath !== 'string' && typeof publicUrl !== 'string') return null;
+  return {
+    media_type: typeof item.media_type === 'string'
+      ? item.media_type
+      : typeof item.mediaType === 'string' ? item.mediaType : 'OPTION_CROP',
+    storage_path: typeof storagePath === 'string' ? storagePath : null,
+    public_url: typeof publicUrl === 'string' ? publicUrl : null,
+    metadata: item.metadata && typeof item.metadata === 'object'
+      ? item.metadata as Record<string, unknown>
+      : item,
+  };
+}
+
+function metadataAssetsForOption(metadata: Record<string, unknown>, label: EnemSimulationOption['label']) {
+  const optionAssets = metadata.option_assets ?? metadata.optionAssets;
+  if (!optionAssets || typeof optionAssets !== 'object') return [];
+  const rawAssets = (optionAssets as Record<string, unknown>)[label];
+  if (!Array.isArray(rawAssets)) return [];
+  return rawAssets
+    .map(normalizeEnemSimulationAsset)
+    .filter((asset): asset is EnemSimulationOptionAsset => Boolean(asset));
+}
+
+function hasUnsafeOfficialText(value: string) {
+  return /[\u0000-\u001f\u007f-\u009f\ufffd\ue000-\uf8ff]/u.test(value);
+}
+
 function normalizeEnemSimulationOption(
   option: EnemSimulationOption | string,
   index: number,
+  metadata: Record<string, unknown> = {},
 ): EnemSimulationOption {
   const fallbackLabel = String.fromCharCode('A'.charCodeAt(0) + index) as EnemSimulationOption['label'];
   if (typeof option === 'string') {
-    return { label: fallbackLabel, text: option, assets: [] };
+    const assets = metadataAssetsForOption(metadata, fallbackLabel);
+    return {
+      label: fallbackLabel,
+      text: assets.length || hasUnsafeOfficialText(option) ? null : option,
+      assets,
+    };
   }
+  const assets = option.assets?.length
+    ? option.assets
+    : metadataAssetsForOption(metadata, /^[A-E]$/.test(option.label) ? option.label : fallbackLabel);
+  const text = option.text ?? null;
   return {
     label: /^[A-E]$/.test(option.label) ? option.label : fallbackLabel,
-    text: option.text ?? null,
-    assets: Array.isArray(option.assets) ? option.assets : [],
+    text: assets.length || (text !== null && hasUnsafeOfficialText(text)) ? null : text,
+    assets,
   };
 }
 
 function normalizeEnemSimulationAttempt(attempt: EnemSimulationAttempt): EnemSimulationAttempt {
   return {
     ...attempt,
-    questions: (attempt.questions ?? []).map((question) => ({
-      ...question,
-      options: (question.options ?? []).map(normalizeEnemSimulationOption),
-    })),
+    questions: (attempt.questions ?? []).map((question) => {
+      const metadata = question.metadata ?? {};
+      const statementAssets = question.statement_assets?.length
+        ? question.statement_assets
+        : Array.isArray(metadata.statement_assets)
+          ? metadata.statement_assets.map(normalizeEnemSimulationAsset).filter((asset): asset is EnemSimulationOptionAsset => Boolean(asset))
+          : [];
+      return {
+        ...question,
+        statement_assets: statementAssets,
+        options: (question.options ?? []).map((option, index) =>
+          normalizeEnemSimulationOption(option, index, metadata)),
+      };
+    }),
   };
 }
 
