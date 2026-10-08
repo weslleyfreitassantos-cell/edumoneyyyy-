@@ -131,8 +131,8 @@ adaptiveDescribe('official ENEM learning journey', () => {
 
       page = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await login(page, student);
-      await page.goto('/student/study/simulation');
-      await expect(page.getByText(/Ainda não há prática oficial disponível/)).toBeVisible({ timeout: 30_000 });
+      await page.goto('/student/study');
+      await expect(page.getByRole('heading', { name: 'Práticas oficiais' })).toBeVisible({ timeout: 30_000 });
     } finally {
       await page?.close();
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);

@@ -118,6 +118,11 @@ test('panorama e personalização do diretor permanecem utilizáveis em telas es
     await page.setViewportSize(viewport);
     await page.goto('/admin?module=overview', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('heading', { name: 'Desempenho, frequência e pontos de atenção' })).toBeVisible({ timeout: 30_000 });
+    const panoramaToggle = page.getByRole('button', { name: /Panorama acadêmico/i });
+    if (viewport.width < 768) {
+      await expect(panoramaToggle).toHaveAttribute('aria-expanded', 'false');
+      await panoramaToggle.click();
+    }
     await expect(page.getByRole('heading', { name: 'Frequência média ao longo do tempo' })).toBeVisible({ timeout: 30_000 });
     await expectNoDocumentOverflow(page);
   }
