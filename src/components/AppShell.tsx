@@ -172,6 +172,10 @@ export function getRouteVisualContext(
     return { section: 'Acadêmico', title: 'Central de Estudos' };
   }
 
+  if (role === 'student' && normalizedPath === '/student/calendar') {
+    return { section: 'Acadêmico', title: 'Calendário escolar' };
+  }
+
   if (role === 'student') {
     if (normalizedPath === '/student/attendance') {
       return { section: 'Acadêmico', title: 'Frequência' };
@@ -675,6 +679,9 @@ export default function AppShell({
         currentUser={currentUser}
         profile={profile}
         branding={branding}
+        currentInstitutionId={
+          institutionContext.currentInstitutionId
+        }
         currentInstitutionRole={
           institutionContext.currentRole
         }

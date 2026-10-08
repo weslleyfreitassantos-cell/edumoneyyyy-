@@ -71,7 +71,14 @@ describe('StudyCenterPage', () => {
     expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Língua Portuguesa/ })).toBeTruthy();
+    expect(screen.getByRole('region', { name: 'Módulo de redação' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Abrir módulo' }).getAttribute('href')).toBe('/student/study/writing');
     expect(screen.getByRole('link', { name: /Praticar/ }).getAttribute('href')).toBe('/student/study/simulation?simulation=simulation-1');
+    expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
+    expect(screen.getAllByRole('link', { name: 'Baixar prova' }).find((link) => link.getAttribute('href')?.includes('2025_PV_impresso_D1_CD1.pdf'))).toBeTruthy();
+    expect(screen.getAllByRole('link', { name: 'Baixar gabarito' }).find((link) => link.getAttribute('href')?.includes('2025_GB_impresso_D1_CD1.pdf'))).toBeTruthy();
+    expect(screen.getByRole('img', { name: 'Capa 1º dia · Caderno azul do ENEM 2025' }).getAttribute('src')).toBe('/assets/enem-covers/2025-d1-cd1.png');
+    expect(screen.getAllByRole('img')).toHaveLength(4);
     expect(screen.queryByText('Central de Estudos')).toBeNull();
     expect(screen.queryByText('Seu próximo passo')).toBeNull();
     expect(screen.getByRole('heading', { name: 'Práticas oficiais' }).compareDocumentPosition(screen.getByRole('region', { name: 'Matérias' }))).toBe(Node.DOCUMENT_POSITION_FOLLOWING);

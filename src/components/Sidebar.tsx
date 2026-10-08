@@ -70,6 +70,8 @@ import {
 } from '../lib/permissions';
 import { mapDatabaseRole } from '../lib/roles';
 import type { User } from '../types';
+import { queryClient } from '../lib/queryClient';
+import { prefetchUserRoute } from '../lib/routePrefetch';
 
 type NavigationSection =
   | 'global'
@@ -95,6 +97,7 @@ interface SidebarProps {
   profile: Profile;
   branding: PublicBranding;
   currentInstitutionRole: string | null;
+  currentInstitutionId?: string | null;
   currentInstitutionPlan?: InstitutionPlan | null;
   isDesktopHidden: boolean;
   isMobileOpen: boolean;
@@ -236,6 +239,16 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     icon: CalendarClock,
     roles: ['student', 'teacher'],
     activePaths: ['/dashboard/timetable'],
+    exactActivePath: true,
+  },
+  {
+    id: 'student-calendar',
+    label: 'Calendário escolar',
+    path: '/student/calendar',
+    section: 'personal',
+    icon: CalendarDays,
+    roles: ['student'],
+    activePaths: ['/student/calendar'],
     exactActivePath: true,
   },
   {
@@ -583,6 +596,7 @@ export default function Sidebar({
   profile,
   branding,
   currentInstitutionRole,
+  currentInstitutionId = null,
   currentInstitutionPlan,
   isDesktopHidden,
   isMobileOpen,
@@ -692,6 +706,21 @@ export default function Sidebar({
     );
   }
 
+  function preloadNavigationItem(item: SidebarNavigationItem): void {
+    if (item.id === 'email') {
+      preloadEmailPage();
+      return;
+    }
+
+    prefetchUserRoute({
+      path: item.path,
+      role: currentUser.role,
+      institutionId: currentInstitutionId,
+      profileId: profile.id,
+      queryClient,
+    });
+  }
+
   function renderNavigationLink(
     item: SidebarNavigationItem,
   ) {
@@ -706,16 +735,9 @@ export default function Sidebar({
         key={item.id}
         to={item.path}
         onClick={onCloseMobile}
-        onMouseEnter={
-          item.id === 'email'
-            ? preloadEmailPage
-            : undefined
-        }
-        onFocus={
-          item.id === 'email'
-            ? preloadEmailPage
-            : undefined
-        }
+        onPointerDown={() => preloadNavigationItem(item)}
+        onMouseEnter={() => preloadNavigationItem(item)}
+        onFocus={() => preloadNavigationItem(item)}
         aria-current={
           isActive ? 'page' : undefined
         }

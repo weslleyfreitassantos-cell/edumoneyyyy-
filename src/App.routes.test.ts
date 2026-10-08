@@ -7,6 +7,7 @@ const appSource = readFileSync(resolve(process.cwd(), 'src/App.tsx'), 'utf8');
 describe('learning center and library routes', () => {
   it('keeps the student routes and their role boundaries', () => {
     expect(appSource).toContain('path="/student/study"');
+    expect(appSource).toContain('path="/student/calendar"');
     expect(appSource).toContain("allowedRoles={['STUDENT']}");
     expect(appSource).toContain('path="/student/study/activity/:activityId"');
     expect(appSource).toContain('path="/dashboard/library"');

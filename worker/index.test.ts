@@ -159,6 +159,26 @@ describe('Worker script', () => {
     expect(await response.text()).toBe('Static asset not found.');
   });
 
+  it('mantém assets versionados no cache imutável', async () => {
+    const assets = {
+      fetch: vi.fn().mockResolvedValue(
+        new Response('console.log(1)', {
+          status: 200,
+          headers: { 'content-type': 'application/javascript' },
+        }),
+      ),
+    };
+
+    const response = await worker.fetch(
+      new Request('https://admin.grupotec.dev.br/assets/index-abc123.js'),
+      { ASSETS: assets },
+    );
+
+    expect(response.headers.get('cache-control')).toBe(
+      'public, max-age=31536000, immutable',
+    );
+  });
+
   it('proxyfica NeoNews no caminho same-origin de qualquer tenant', () => {
     expect(
       shouldProxyNeoNewsRequest(

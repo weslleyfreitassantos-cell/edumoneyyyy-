@@ -5,16 +5,22 @@ import {
   type GuardianDashboardData,
 } from '../services/guardianDashboardService';
 
+export const GUARDIAN_DASHBOARD_STALE_TIME = 1000 * 60 * 5;
+
+export const guardianDashboardKeys = {
+  detail: (profileId: string, institutionId: string) =>
+    ['guardian-dashboard', profileId, institutionId] as const,
+};
+
 export function useGuardianDashboard(
   profileId: string | undefined,
   institutionId: string | undefined,
 ) {
   return useQuery<GuardianDashboardData>({
-    queryKey: [
-      'guardian-dashboard',
-      profileId,
-      institutionId,
-    ],
+    queryKey: guardianDashboardKeys.detail(
+      profileId ?? '',
+      institutionId ?? '',
+    ),
 
     queryFn: () => {
       if (!profileId) {
@@ -40,6 +46,6 @@ export function useGuardianDashboard(
       profileId && institutionId,
     ),
 
-    staleTime: 1000 * 60 * 5,
+    staleTime: GUARDIAN_DASHBOARD_STALE_TIME,
   });
 }

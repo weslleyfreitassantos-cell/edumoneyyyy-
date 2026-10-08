@@ -1105,16 +1105,9 @@ export const reportCardService = {
   ): Promise<StudentReportCard> {
     try {
       return await withAcademicReadTimeout(async (signal) => {
-        const enrollmentContexts =
-          await loadEnrollmentContexts([studentId], signal);
-        const eligibleOfferingIds =
-          await loadEligibleOfferingIdsForEnrollments(
-            institutionId,
-            enrollmentContexts,
-            signal,
-          );
-        const [resultRows, recoveryRows, assessmentRows] =
+        const [enrollmentContexts, resultRows, recoveryRows] =
           await Promise.all([
+            loadEnrollmentContexts([studentId], signal),
             loadResultRowsForStudents(
               institutionId,
               [studentId],
@@ -1125,12 +1118,18 @@ export const reportCardService = {
               [studentId],
               signal,
             ),
-            loadAssessmentRowsForStudents(
-              institutionId,
-              eligibleOfferingIds,
-              signal,
-            ),
           ]);
+        const eligibleOfferingIds =
+          await loadEligibleOfferingIdsForEnrollments(
+            institutionId,
+            enrollmentContexts,
+            signal,
+          );
+        const assessmentRows = await loadAssessmentRowsForStudents(
+          institutionId,
+          eligibleOfferingIds,
+          signal,
+        );
         const gradeRows = await loadGradeRowsForStudents(
           institutionId,
           [studentId],
@@ -1162,18 +1161,9 @@ export const reportCardService = {
 
     try {
       return await withAcademicReadTimeout(async (signal) => {
-        const enrollmentContexts = await loadEnrollmentContexts(
-          studentIds,
-          signal,
-        );
-        const eligibleOfferingIds =
-          await loadEligibleOfferingIdsForEnrollments(
-            institutionId,
-            enrollmentContexts,
-            signal,
-          );
-        const [resultRows, recoveryRows, assessmentRows] =
+        const [enrollmentContexts, resultRows, recoveryRows] =
           await Promise.all([
+            loadEnrollmentContexts(studentIds, signal),
             loadResultRowsForStudents(
               institutionId,
               studentIds,
@@ -1184,12 +1174,18 @@ export const reportCardService = {
               studentIds,
               signal,
             ),
-            loadAssessmentRowsForStudents(
-              institutionId,
-              eligibleOfferingIds,
-              signal,
-            ),
           ]);
+        const eligibleOfferingIds =
+          await loadEligibleOfferingIdsForEnrollments(
+            institutionId,
+            enrollmentContexts,
+            signal,
+          );
+        const assessmentRows = await loadAssessmentRowsForStudents(
+          institutionId,
+          eligibleOfferingIds,
+          signal,
+        );
         const gradeRows = await loadGradeRowsForStudents(
           institutionId,
           studentIds,

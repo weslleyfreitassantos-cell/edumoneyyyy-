@@ -158,3 +158,13 @@ export function isCalendarEventUpcoming(
 
   return startsAt >= now || (endsAt !== null && endsAt >= now);
 }
+
+export function isCalendarEventInCurrentMonth(
+  event: Pick<CalendarEventDateInput, 'startsAt' | 'allDay'>,
+  now = Date.now(),
+): boolean {
+  const currentMonth = calendarDateKey(new Date(now).toISOString()).slice(0, 7);
+  const eventMonth = calendarDateKey(event.startsAt, event.allDay).slice(0, 7);
+
+  return eventMonth === currentMonth;
+}

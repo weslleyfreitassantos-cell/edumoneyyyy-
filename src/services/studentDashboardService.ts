@@ -153,6 +153,11 @@ export interface StudentDashboardData {
   academicYearTerms: StudentDashboardTerm[];
 }
 
+export interface StudentAcademicContext {
+  student: StudentDashboardRecord;
+  activeEnrollment: StudentDashboardEnrollment | null;
+}
+
 function normalizeRelation<T>(
   relation: T | T[] | null,
 ): T | null {
@@ -597,6 +602,18 @@ async function getDashboardForStudent(
   };
 }
 
+async function getAcademicContextForStudent(
+  student: StudentDashboardRecord,
+): Promise<StudentAcademicContext> {
+  return {
+    student,
+    activeEnrollment: await getActiveEnrollment(
+      student.id,
+      student.institution_id,
+    ),
+  };
+}
+
 export const studentDashboardService = {
   async getDashboard(
     profileId: string,
@@ -608,6 +625,18 @@ export const studentDashboardService = {
     );
 
     return getDashboardForStudent(student);
+  },
+
+  async getAcademicContext(
+    profileId: string,
+    institutionId: string,
+  ): Promise<StudentAcademicContext> {
+    const student = await getStudentByProfile(
+      profileId,
+      institutionId,
+    );
+
+    return getAcademicContextForStudent(student);
   },
 
   async getDashboardByStudentId(

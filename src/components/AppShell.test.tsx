@@ -270,6 +270,12 @@ describe('getRouteVisualContext', () => {
       title: 'Central de Estudos',
     });
     expect(
+      getRouteVisualContext('/student/calendar', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Calendário escolar',
+    });
+    expect(
       getRouteVisualContext('/student/study/activity/activity-1', 'student'),
     ).toEqual({
       section: 'Acadêmico',

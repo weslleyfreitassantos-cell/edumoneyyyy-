@@ -5,6 +5,9 @@ import { humanizeDifficulty, humanizePackageSource, humanizePackageTitle, humani
 describe('learning presentation labels', () => {
   it('translates internal subject and skill identifiers for school users', () => {
     expect(humanizeSubjectArea('MATHEMATICS')).toBe('Matemática');
+    expect(humanizeSubjectArea('CIENCIAS_NATUREZA')).toBe('Ciências Naturais');
+    expect(humanizeSubjectArea('CIENCIAS_HUMANAS')).toBe('Ciências Humanas');
+    expect(humanizeSubjectArea('LINGUAGENS')).toBe('Linguagens');
     expect(humanizeSkill('ART_CONTEXT')).toBe('Contextualização artística');
     expect(humanizeSkill('MATH_PERCENT_OF_QUANTITY')).not.toContain('MATH_');
   });

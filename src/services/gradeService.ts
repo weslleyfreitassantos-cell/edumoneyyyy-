@@ -1159,25 +1159,12 @@ async function getActiveStudentOfferingIds(
       .from('enrollments')
       .select(
         `
-        id,
-        student_id,
         class_id,
-        academic_year_id,
         status,
         active,
-        enrolled_at,
-        created_at,
         students:student_id (
-          id,
-          profile_id,
           institution_id,
-          registration_number,
-          active,
-          profiles:profile_id (
-            full_name,
-            email,
-            avatar_url
-          )
+          active
         )
       `,
       )
@@ -1333,75 +1320,7 @@ async function getStudentGrades(
 ): Promise<GradeQueryRow[]> {
   const { data, error } = await supabase
     .from('grades')
-    .select(
-      `
-      id,
-      institution_id,
-      assessment_id,
-      student_id,
-      score,
-      status,
-      feedback,
-      recorded_by,
-      recorded_at,
-      created_at,
-      updated_at,
-      assessments:assessment_id (
-        id,
-        institution_id,
-        subject_offering_id,
-        term_id,
-        title,
-        description,
-        assessment_type,
-        assessment_date,
-        max_score,
-        weight,
-        status,
-        created_by,
-        published_at,
-        created_at,
-        updated_at,
-        subject_offerings:subject_offering_id (
-          id,
-          class_id,
-          subject_id,
-          teacher_profile_id,
-          term_id,
-          active,
-          created_at,
-          classes:class_id (
-            id,
-            institution_id,
-            academic_year_id,
-            name,
-            grade_level,
-            shift,
-            active
-          ),
-          subjects:subject_id (
-            id,
-            institution_id,
-            name,
-            code,
-            workload,
-            active
-          ),
-          profiles:teacher_profile_id (
-            full_name,
-            email,
-            active
-          ),
-          terms:term_id (
-            id,
-            academic_year_id,
-            name,
-            active
-          )
-        )
-      )
-    `,
-    )
+    .select('id, assessment_id, student_id, score, status, feedback, recorded_at')
     .eq('institution_id', institutionId)
     .eq('student_id', studentId)
     .order('recorded_at', {
@@ -1713,7 +1632,6 @@ async function getStudentsByIds(
 function buildStudentGradeRecords(
   assessments: readonly AssessmentRecord[],
   grades: readonly GradeQueryRow[],
-  institutionId: string,
   studentId: string,
 ): StudentGradeRecord[] {
   const assessmentsById = new Map(
@@ -1729,30 +1647,6 @@ function buildStudentGradeRecords(
       grade,
     ]),
   );
-
-  for (const grade of grades) {
-    const assessmentRow = normalizeRelation(
-      grade.assessments,
-    );
-
-    if (!assessmentRow) {
-      continue;
-    }
-
-    const assessment = normalizeAssessment(
-      assessmentRow,
-      institutionId,
-    );
-
-    if (
-      assessment &&
-      assessment.offering &&
-      assessment.status !== 'DRAFT' &&
-      assessment.status !== 'CANCELED'
-    ) {
-      assessmentsById.set(assessment.id, assessment);
-    }
-  }
 
   return Array.from(assessmentsById.values())
     .map((assessment) =>
@@ -2431,7 +2325,6 @@ export const gradeService = {
     const records = buildStudentGradeRecords(
       assessments,
       grades,
-      institutionId,
       studentId,
     );
 

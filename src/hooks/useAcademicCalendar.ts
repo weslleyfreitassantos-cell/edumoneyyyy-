@@ -12,6 +12,8 @@ export const academicCalendarKeys = {
   all: ['academic-calendar'] as const,
   list: (institutionId: string, filters: AcademicCalendarEventFilters = {}) =>
     [...academicCalendarKeys.all, 'list', institutionId, filters] as const,
+  student: (institutionId: string) =>
+    [...academicCalendarKeys.all, 'student', institutionId] as const,
   upcoming: (institutionId: string, audience: AcademicCalendarAudience) =>
     [...academicCalendarKeys.all, 'upcoming', institutionId, audience] as const,
 };
@@ -33,6 +35,17 @@ export function useAcademicCalendarEvents(
     queryKey: academicCalendarKeys.list(institutionId, filters),
     queryFn: () => academicCalendarService.listForStaff(institutionId, filters),
     enabled: Boolean(institutionId),
+  });
+}
+
+export function useStudentAcademicCalendar(
+  institutionId: string | null,
+) {
+  return useQuery<AcademicCalendarEvent[]>({
+    queryKey: academicCalendarKeys.student(institutionId ?? ''),
+    queryFn: () => academicCalendarService.listForStudent(institutionId as string),
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 60,
   });
 }
 

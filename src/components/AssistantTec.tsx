@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+} from 'react';
 import {
   AlertTriangle,
   ArrowRight,
@@ -40,6 +47,51 @@ const normalize = (value: string) =>
     .toLowerCase();
 
 type OpenAssistantRoute = (label: string, route: string) => void;
+
+type AssistantButtonPosition = {
+  left: number;
+  top: number;
+};
+
+const ASSISTANT_BUTTON_SIZE = 48;
+const ASSISTANT_DRAG_THRESHOLD = 4;
+const ASSISTANT_POSITION_STORAGE_KEY = 'tec-assistant-button-position';
+
+function clampAssistantButtonPosition(
+  left: number,
+  top: number,
+): AssistantButtonPosition {
+  if (typeof window === 'undefined') {
+    return { left, top };
+  }
+
+  return {
+    left: Math.max(0, Math.min(left, window.innerWidth - ASSISTANT_BUTTON_SIZE)),
+    top: Math.max(0, Math.min(top, window.innerHeight - ASSISTANT_BUTTON_SIZE)),
+  };
+}
+
+function readAssistantButtonPosition(): AssistantButtonPosition | null {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(ASSISTANT_POSITION_STORAGE_KEY);
+    if (!stored) {
+      return null;
+    }
+
+    const parsed = JSON.parse(stored) as Partial<AssistantButtonPosition>;
+    if (typeof parsed.left !== 'number' || typeof parsed.top !== 'number') {
+      return null;
+    }
+
+    return clampAssistantButtonPosition(parsed.left, parsed.top);
+  } catch {
+    return null;
+  }
+}
 
 function AssistantContextAction({
   icon,
@@ -401,6 +453,19 @@ export default function AssistantTec({
     useState<AssistantFeature | null>(null);
   const [voiceEnabled, setVoiceEnabled] =
     useState(false);
+  const [assistantButtonPosition, setAssistantButtonPosition] = useState<AssistantButtonPosition | null>(
+    readAssistantButtonPosition,
+  );
+  const [isDraggingAssistant, setIsDraggingAssistant] = useState(false);
+  const assistantButtonDragRef = useRef<{
+    pointerId: number;
+    offsetX: number;
+    offsetY: number;
+    startClientX: number;
+    startClientY: number;
+    moved: boolean;
+  } | null>(null);
+  const suppressAssistantClickRef = useRef(false);
   const features = getAssistantFeatures(role, {
     platformRole,
     membershipRole,
@@ -445,6 +510,109 @@ export default function AssistantTec({
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, []);
+
+  useEffect(() => {
+    if (!assistantButtonPosition) {
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(
+        ASSISTANT_POSITION_STORAGE_KEY,
+        JSON.stringify(assistantButtonPosition),
+      );
+    } catch {
+      // A posição continua funcionando durante a sessão mesmo sem persistência local.
+    }
+  }, [assistantButtonPosition]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setAssistantButtonPosition((current) =>
+        current
+          ? clampAssistantButtonPosition(current.left, current.top)
+          : current,
+      );
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  function handleAssistantPointerDown(
+    event: ReactPointerEvent<HTMLButtonElement>,
+  ): void {
+    if (event.pointerType === 'mouse' && event.button !== 0) {
+      return;
+    }
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    assistantButtonDragRef.current = {
+      pointerId: event.pointerId,
+      offsetX: event.clientX - bounds.left,
+      offsetY: event.clientY - bounds.top,
+      startClientX: event.clientX,
+      startClientY: event.clientY,
+      moved: false,
+    };
+    setIsDraggingAssistant(true);
+
+    if (typeof event.currentTarget.setPointerCapture === 'function') {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    }
+  }
+
+  function handleAssistantPointerMove(
+    event: ReactPointerEvent<HTMLButtonElement>,
+  ): void {
+    const drag = assistantButtonDragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) {
+      return;
+    }
+
+    if (
+      !drag.moved &&
+      Math.hypot(
+        event.clientX - drag.startClientX,
+        event.clientY - drag.startClientY,
+      ) >= ASSISTANT_DRAG_THRESHOLD
+    ) {
+      drag.moved = true;
+    }
+
+    if (!drag.moved) {
+      return;
+    }
+
+    event.preventDefault();
+    setAssistantButtonPosition(
+      clampAssistantButtonPosition(
+        event.clientX - drag.offsetX,
+        event.clientY - drag.offsetY,
+      ),
+    );
+  }
+
+  function finishAssistantPointerDrag(
+    event: ReactPointerEvent<HTMLButtonElement>,
+  ): void {
+    const drag = assistantButtonDragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) {
+      return;
+    }
+
+    suppressAssistantClickRef.current = drag.moved;
+    assistantButtonDragRef.current = null;
+    setIsDraggingAssistant(false);
+
+    if (
+      typeof event.currentTarget.hasPointerCapture === 'function' &&
+      event.currentTarget.hasPointerCapture(event.pointerId) &&
+      typeof event.currentTarget.releasePointerCapture === 'function'
+    ) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  }
 
   function speak(text: string): void {
     if (
@@ -502,11 +670,32 @@ export default function AssistantTec({
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          if (suppressAssistantClickRef.current) {
+            suppressAssistantClickRef.current = false;
+            return;
+          }
+
+          setOpen(true);
+        }}
+        onPointerDown={handleAssistantPointerDown}
+        onPointerMove={handleAssistantPointerMove}
+        onPointerUp={finishAssistantPointerDrag}
+        onPointerCancel={finishAssistantPointerDrag}
         aria-label="Abrir Assistente TEC"
         data-print-hide
-        className="fixed bottom-4 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#005bbf] text-white shadow-lg transition hover:bg-[#004a9c] sm:bottom-5 sm:right-5"
-        title="Assistente TEC"
+        className={`fixed z-40 inline-flex h-12 w-12 touch-none select-none items-center justify-center rounded-full bg-[#005bbf] text-white shadow-lg transition-colors hover:bg-[#004a9c] ${
+          assistantButtonPosition ? '' : 'bottom-4 right-4 sm:bottom-5 sm:right-5'
+        } ${isDraggingAssistant ? 'cursor-grabbing' : 'cursor-grab'}`}
+        style={
+          assistantButtonPosition
+            ? {
+                left: assistantButtonPosition.left,
+                top: assistantButtonPosition.top,
+              }
+            : undefined
+        }
+        title="Arraste para mover ou clique para abrir o Assistente TEC"
       >
         <Bot className="h-5 w-5" aria-hidden="true" />
       </button>
