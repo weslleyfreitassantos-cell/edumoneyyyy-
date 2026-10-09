@@ -314,13 +314,13 @@ describe("SimulationPage", () => {
     expect(screen.queryByText("Duração")).toBeNull();
   });
 
-  it("does not auto-resume an old content revision", async () => {
+  it("does not auto-resume a noncanonical content revision", async () => {
     state.attempts = [
       {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-only-v3",
+        content_revision: "structured-text-only-v6",
         started_at: new Date(Date.now() - 60_000).toISOString(),
         navigation_state: { current_index: 1, flagged: ["question-2"] },
         answers: { "question-1": { answer: "A" } },
@@ -364,13 +364,13 @@ describe("SimulationPage", () => {
     expect(screen.queryByText("Questão 2 de 2")).toBeNull();
   });
 
-  it("auto-resumes only the current content revision", async () => {
+  it("auto-resumes the canonical archive content revision", async () => {
     state.attempts = [
       {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-only-v6",
+        content_revision: "xequemat-archive-v1",
         started_at: new Date(Date.now() - 60_000).toISOString(),
         navigation_state: { current_index: 1, flagged: ["question-2"] },
         answers: { "question-1": { answer: "A" } },
@@ -380,7 +380,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
       status: "IN_PROGRESS",
-      content_revision: "structured-text-only-v6",
+      content_revision: "xequemat-archive-v1",
       started_at: new Date(Date.now() - 60_000).toISOString(),
       navigation_state: { current_index: 1, flagged: ["question-2"] },
       answers: { "question-1": { answer: "A" } },
@@ -399,13 +399,13 @@ describe("SimulationPage", () => {
     ).toBeTruthy();
   });
 
-  it("blocks answering when current text-only content is missing", async () => {
+  it("blocks answering when current archive content is missing", async () => {
     state.attempts = [
       {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-only-v6",
+        content_revision: "xequemat-archive-v1",
         started_at: new Date().toISOString(),
       },
     ];
@@ -413,7 +413,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
       status: "IN_PROGRESS",
-      content_revision: "structured-text-only-v6",
+      content_revision: "xequemat-archive-v1",
       started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},
@@ -429,23 +429,21 @@ describe("SimulationPage", () => {
     renderPage();
 
     expect((await screen.findByRole("alert")).textContent).toContain(
-      "Questão indisponível nesta tentativa.",
+      "Não foi possível carregar o enunciado oficial",
     );
     expect(screen.queryByRole("radio")).toBeNull();
     expect(
-      screen.queryByText(
-        "Resposta indisponível enquanto o enunciado não carregar.",
-      ),
-    ).toBeNull();
+      screen.getByText("Resposta indisponível enquanto o enunciado não carregar."),
+    ).toBeTruthy();
   });
 
-  it("does not render visual alternatives for the current text-only revision", async () => {
+  it("renders canonical media alternatives from the archive", async () => {
     state.attempts = [
       {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-only-v6",
+        content_revision: "xequemat-archive-v1",
         started_at: new Date().toISOString(),
       },
     ];
@@ -461,7 +459,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-only-v6",
+        content_revision: "xequemat-archive-v1",
         started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},
@@ -485,19 +483,18 @@ describe("SimulationPage", () => {
     };
     renderPage();
 
-    expect((await screen.findByRole("alert")).textContent).toContain(
-      "Questão indisponível nesta tentativa.",
-    );
-    expect(screen.queryByRole("radio")).toBeNull();
+    expect(await screen.findByAltText("Enunciado oficial da questão 1, parte 1")).toBeTruthy();
+    expect(screen.getAllByRole("img")).toHaveLength(6);
+    expect(screen.getAllByRole("radio")).toHaveLength(5);
   });
 
-  it("renders verified structured content as selectable text without statement media", async () => {
+  it("renders verified archive content as selectable text without statement media", async () => {
     state.attempts = [
       {
         id: "attempt-1",
         simulation_id: "simulation-1",
         status: "IN_PROGRESS",
-        content_revision: "structured-text-only-v6",
+        content_revision: "xequemat-archive-v1",
         started_at: new Date().toISOString(),
       },
     ];
@@ -505,7 +502,7 @@ describe("SimulationPage", () => {
       attempt_id: "attempt-1",
       simulation_id: "simulation-1",
       status: "IN_PROGRESS",
-      content_revision: "structured-text-only-v6",
+      content_revision: "xequemat-archive-v1",
       started_at: new Date().toISOString(),
       navigation_state: null,
       answers: {},

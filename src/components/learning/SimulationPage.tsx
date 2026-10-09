@@ -14,7 +14,6 @@ import { useInstitution } from "../../contexts/InstitutionContext";
 import { supabase } from "../../lib/supabaseClient";
 import {
   CURRENT_ENEM_CONTENT_REVISION,
-  SUPPORTED_ENEM_CONTENT_REVISIONS,
   type EnemContentBlock,
   type EnemSimulationQuestion,
   type EnemStructuredContent,
@@ -235,7 +234,7 @@ export default function SimulationPage() {
         (item) =>
           item.simulation_id === simulation?.id &&
           item.status === "IN_PROGRESS" &&
-          SUPPORTED_ENEM_CONTENT_REVISIONS.has(item.content_revision),
+          item.content_revision === CURRENT_ENEM_CONTENT_REVISION,
       ),
     [attempts.data, simulation?.id],
   );
@@ -746,7 +745,7 @@ export default function SimulationPage() {
     );
 
   return (
-    <div className="w-full max-w-5xl space-y-4">
+    <div className="mx-auto w-full max-w-5xl space-y-4">
       <Link
         to="/student/study"
         className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"

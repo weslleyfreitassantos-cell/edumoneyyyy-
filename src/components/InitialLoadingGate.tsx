@@ -6,6 +6,10 @@ import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
 import { hasEffectivePermission } from '../lib/permissions';
 import type { DatabaseRole } from '../lib/roles';
+import {
+  hydrateStudentAcademicCache,
+  subscribeToStudentAcademicCache,
+} from '../lib/studentAcademicCache';
 import LoadingIndicator from './LoadingIndicator';
 
 const ACADEMIC_WARMUP_STALE_TIME = 1000 * 60;
@@ -57,6 +61,25 @@ const upcomingCalendarQueryKey = (institutionId: string) =>
 const guardianRegistrationQueryKey = (profileId: string) =>
   ['guardian-registration-completion', profileId] as const;
 
+function fetchCachedOrFresh<TData>(
+  queryClient: ReturnType<typeof useQueryClient>,
+  options: {
+    queryKey: readonly unknown[];
+    queryFn: () => Promise<TData>;
+    staleTime: number;
+  },
+): Promise<TData> {
+  const cached = queryClient.getQueryData<TData>(options.queryKey);
+  const request = queryClient.fetchQuery(options);
+
+  if (cached !== undefined) {
+    void request.catch(() => undefined);
+    return Promise.resolve(cached);
+  }
+
+  return request;
+}
+
 async function warmStudentAcademicData(
   queryClient: ReturnType<typeof useQueryClient>,
   profileId: string,
@@ -66,7 +89,7 @@ async function warmStudentAcademicData(
   let studentId: string | null = null;
 
   if (isAcademicRoute) {
-    const context = await queryClient.fetchQuery({
+    const context = await fetchCachedOrFresh(queryClient, {
       queryKey: studentAcademicContextQueryKey(profileId, institutionId),
       queryFn: async () => {
         const { studentDashboardService } = await import('../services/studentDashboardService');
@@ -76,7 +99,7 @@ async function warmStudentAcademicData(
     });
     studentId = context.student.id;
   } else {
-    const dashboard = await queryClient.fetchQuery({
+    const dashboard = await fetchCachedOrFresh(queryClient, {
       queryKey: studentDashboardQueryKey(profileId, institutionId),
       queryFn: async () => {
         const { studentDashboardService } = await import('../services/studentDashboardService');
@@ -96,7 +119,7 @@ async function warmStudentAcademicData(
 
   if (!studentId) return;
 
-  await Promise.allSettled([
+  void Promise.allSettled([
     queryClient.fetchQuery({
       queryKey: attendanceQueryKey(institutionId, studentId),
       queryFn: async () => {
@@ -231,7 +254,11 @@ async function warmInitialData(
     );
   }
 
-  await Promise.allSettled(requests);
+  if (requests.length === 0) return;
+
+  // Release the shell after the first essential request. The remaining warmups
+  // keep filling the query cache without blocking the first usable render.
+  await Promise.allSettled([requests[0]]);
 }
 
 export default function InitialLoadingGate({
@@ -288,6 +315,17 @@ export default function InitialLoadingGate({
     let active = true;
     setReadyKey(null);
 
+    hydrateStudentAcademicCache(
+      queryClient,
+      profile.id,
+      currentInstitutionId,
+    );
+    const unsubscribeAcademicCache = subscribeToStudentAcademicCache(
+      queryClient,
+      profile.id,
+      currentInstitutionId,
+    );
+
     void warmInitialData(
       queryClient,
       profile.id,
@@ -298,12 +336,13 @@ export default function InitialLoadingGate({
         canViewOverview,
         canManageAnnouncements,
       },
-    ).finally(() => {
+    ).catch(() => undefined).finally(() => {
       if (active) setReadyKey(warmupKey);
     });
 
     return () => {
       active = false;
+      unsubscribeAcademicCache();
     };
   }, [
     canManageAnnouncements,
@@ -326,12 +365,7 @@ export default function InitialLoadingGate({
     return (
       <main className="grid min-h-screen place-items-center bg-slate-50 p-6 dark:bg-slate-950">
         <section className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <LoadingIndicator label="Preparando seus dados..." />
-          <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-            {effectiveRole === 'STUDENT'
-              ? 'Carregando frequência, notas e boletim.'
-              : 'Carregando as informações iniciais.'}
-          </p>
+          <LoadingIndicator label={null} />
         </section>
       </main>
     );
