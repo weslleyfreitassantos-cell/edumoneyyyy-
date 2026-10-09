@@ -111,6 +111,24 @@ describe('StudyCenterPage', () => {
     expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
   });
 
+  it('permite recolher e reabrir a seção de matérias', () => {
+    renderPage();
+
+    const toggle = screen.getByRole('button', { name: /Matérias/ });
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
+
+    fireEvent.click(toggle);
+
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeNull();
+
+    fireEvent.click(toggle);
+
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
+  });
+
   it('abre a área própria da matéria ao clicar no card', () => {
     renderPage();
 
