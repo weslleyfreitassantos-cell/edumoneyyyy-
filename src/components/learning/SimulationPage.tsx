@@ -1154,7 +1154,7 @@ export default function SimulationPage() {
                       }
                       onChange={() => answerQuestion(label)}
                     />
-                    <span className="min-w-0 flex-1">
+                    <span className="min-w-0 flex-1 whitespace-pre-line">
                       <strong className="mr-2">{label}.</strong>
                       {showText ? option.text : null}
                       {visibleAssets.map(({ asset, assetIndex, url }) => (

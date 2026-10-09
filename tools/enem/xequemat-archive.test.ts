@@ -98,6 +98,30 @@ describe('Xequemat archive parser', () => {
     expect(record.contextText).toContain('Essa gente hoje em dia que tem mania de exibição\nNão entende que o samba não tem tradução no idioma francês');
   });
 
+  it('preserves boundaries between nested source paragraphs', () => {
+    const record = parseXequematQuestionHtml(
+      `<html><head><title>Questão 100 - ENEM PPL 2017</title></head><body>
+        <div data-elementor-type="wp-post" class="area-do-conhecimento-ciencias-da-natureza">
+          <div class="elementor-widget-theme-post-content">
+            <p>O contexto completo explica a redução do minério em um alto-forno.</p>
+            <div class="wp-block-group">
+              <p><strong>Entre 700 °C e 1 200 °C:</strong></p>
+              <p>C + CO<sub>2</sub> → 2 CO</p>
+              <p>FeO + CO → Fe + CO<sub>2</sub></p>
+            </div>
+            <p>No processo de redução desse metal, o agente redutor é o</p>
+            <p>A) C.</p><p>B) CO.</p><p>C) CO<sub>2</sub>.</p><p>D) CaO.</p><p>E) CaCO<sub>3</sub>.</p>
+            <p>Gabarito: B</p>
+          </div>
+        </div>
+      </body></html>`,
+      { sourceFile: 'blog/questao-100-enem-ppl-2017/index.html', rightsStatus: 'VERIFIED' },
+    );
+    expect(record.ready).toBe(true);
+    expect(record.contextText).toContain('Entre 700 °C e 1 200 °C:\nC + CO2 → 2 CO\nFeO + CO → Fe + CO2');
+    expect(record.contextText).not.toContain('°C:C');
+  });
+
   it('removes adjacent duplicate source paragraphs without removing repeated text elsewhere', () => {
     const record = parseXequematQuestionHtml(
       `<html><head><title>Questão 170 - ENEM 2017</title></head><body>

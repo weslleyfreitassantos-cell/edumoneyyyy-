@@ -114,7 +114,13 @@ const OPTION_RE = /^\s*([A-E])\s*[\)\.:\-]\s*/iu;
 const ANAPHORIC_RE = /\b(?:essa|esse|isso|dessa|desse|nisso|nesse|a partir disso|com base nisso|de acordo com isso)\b/iu;
 
 function normalizeText(value: string) {
-  return value.normalize('NFKC').replace(/\u00a0/gu, ' ').replace(/[ \t]+/gu, ' ').replace(/\s*\n\s*/gu, '\n').trim();
+  return value
+    .normalize('NFKC')
+    .replace(/\u00a0/gu, ' ')
+    .replace(/[ \t]+/gu, ' ')
+    .replace(/\s*\n\s*/gu, '\n')
+    .replace(/\n{3,}/gu, '\n\n')
+    .trim();
 }
 
 function normalizeHash(value: string) {
@@ -140,6 +146,11 @@ function textWithoutImages(element: any) {
   const clone = element.cloneNode(true);
   clone.querySelectorAll?.('img, picture, svg').forEach((node: any) => node.remove());
   clone.querySelectorAll?.('br').forEach((node: any) => node.replaceWith('\n'));
+  clone.querySelectorAll?.('address, article, aside, blockquote, div, dl, dt, dd, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hr, li, main, nav, ol, p, pre, section, table, tbody, thead, tfoot, tr, ul')
+    .forEach((node: any) => {
+      node.before('\n');
+      node.after('\n');
+    });
   return normalizeText(clone.textContent ?? '');
 }
 
