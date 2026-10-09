@@ -22,11 +22,22 @@ const state = vi.hoisted(() => ({
   }),
 }));
 
+const storageState = vi.hoisted(() => ({
+  createSignedUrls: vi.fn().mockResolvedValue({ data: [], error: null }),
+}));
+
 vi.mock("../../contexts/AuthContext", () => ({
   useAuth: () => ({ profile: { id: "profile-1" } }),
 }));
 vi.mock("../../contexts/InstitutionContext", () => ({
   useInstitution: () => ({ currentInstitutionId: "institution-1" }),
+}));
+vi.mock("../../lib/supabaseClient", () => ({
+  supabase: {
+    storage: {
+      from: vi.fn(() => storageState),
+    },
+  },
 }));
 vi.mock("../../hooks/useLearningCenter", () => ({
   useLearningStudent: () => ({ data: { id: "student-1" }, isLoading: false }),
@@ -122,6 +133,8 @@ afterEach(() => {
   state.saveAnswers.mockClear();
   state.saveNavigation.mockClear();
   state.submit.mockClear();
+  storageState.createSignedUrls.mockReset();
+  storageState.createSignedUrls.mockResolvedValue({ data: [], error: null });
 });
 
 function renderPage(initialEntry = "/student/study/simulation?simulation=simulation-1") {
@@ -486,6 +499,51 @@ describe("SimulationPage", () => {
     expect(await screen.findByAltText("Enunciado oficial da questão 1, parte 1")).toBeTruthy();
     expect(screen.getAllByRole("img")).toHaveLength(6);
     expect(screen.getAllByRole("radio")).toHaveLength(5);
+  });
+
+  it("resolves private canonical media with signed URLs", async () => {
+    const storagePath = "enem/xequemat-archive-v1/question-175.webp";
+    const signedUrl = "https://signed.example/question-175.webp";
+    storageState.createSignedUrls.mockResolvedValue({
+      data: [{ path: storagePath, signedUrl }],
+      error: null,
+    });
+    state.attempts = [
+      {
+        id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        content_revision: "xequemat-archive-v1",
+        started_at: new Date().toISOString(),
+      },
+    ];
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      content_revision: "xequemat-archive-v1",
+      started_at: new Date().toISOString(),
+      navigation_state: null,
+      answers: {},
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "question-1",
+          options: ["Uma", "Duas", "Três", "Quatro", "Cinco"],
+          statement_assets: [
+            {
+              storage_path: storagePath,
+              public_url: null,
+            },
+          ],
+        },
+      ],
+    };
+    renderPage();
+
+    const image = await screen.findByAltText("Enunciado oficial da questão 1, parte 1");
+    expect(image.getAttribute("src")).toBe(signedUrl);
+    expect(storageState.createSignedUrls).toHaveBeenCalledWith([storagePath], 3600);
   });
 
   it("renders verified archive content as selectable text without statement media", async () => {

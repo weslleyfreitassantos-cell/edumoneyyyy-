@@ -42,12 +42,30 @@ function answerMapFromAttempt(
   );
 }
 
-function assetUrl(path: string | null, publicUrl: string | null) {
-  const source = path ?? publicUrl;
-  if (!source) return null;
-  if (/^https?:\/\//i.test(source)) return source;
-  return supabase.storage.from("enem-question-assets").getPublicUrl(source).data
-    .publicUrl;
+const ENEM_QUESTION_ASSETS_BUCKET = "enem-question-assets";
+const ENEM_MEDIA_URL_TTL_SECONDS = 3600;
+
+type MediaAssetReference = {
+  storage_path: string | null;
+  public_url: string | null;
+};
+
+type MediaUrlMap = ReadonlyMap<string, string>;
+
+function directMediaUrl(
+  asset: MediaAssetReference | string,
+  signedUrls: MediaUrlMap,
+) {
+  if (typeof asset === "string") {
+    return /^https?:\/\//i.test(asset) ? asset : null;
+  }
+  if (asset.storage_path) {
+    if (/^https?:\/\//i.test(asset.storage_path)) return asset.storage_path;
+    return signedUrls.get(asset.storage_path) ?? null;
+  }
+  return asset.public_url && /^https?:\/\//i.test(asset.public_url)
+    ? asset.public_url
+    : null;
 }
 
 function normalizeOption(
@@ -65,11 +83,75 @@ function normalizeOption(
   };
 }
 
-function StructuredMedia({ media }: { media: EnemStructuredContent["essential_media"] }) {
+function useSignedMediaUrls(assets: MediaAssetReference[]) {
+  const paths = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          assets
+            .map((asset) => asset.storage_path)
+            .filter(
+              (path): path is string => Boolean(path) && !/^https?:\/\//i.test(path),
+            ),
+        ),
+      ),
+    [assets],
+  );
+  const pathsKey = paths.join("\u0000");
+  const [state, setState] = useState<{
+    key: string;
+    urls: Map<string, string>;
+    loading: boolean;
+  }>({ key: "", urls: new Map(), loading: false });
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!paths.length) {
+      setState({ key: pathsKey, urls: new Map(), loading: false });
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    setState((current) => ({ ...current, key: pathsKey, loading: true }));
+    void supabase.storage
+      .from(ENEM_QUESTION_ASSETS_BUCKET)
+      .createSignedUrls(paths, ENEM_MEDIA_URL_TTL_SECONDS)
+      .then(({ data, error }) => {
+        if (cancelled) return;
+        const urls = new Map(
+          (error ? [] : data ?? [])
+            .filter((item) => Boolean(item.path && item.signedUrl))
+            .map((item) => [item.path, item.signedUrl] as [string, string]),
+        );
+        setState({ key: pathsKey, urls, loading: false });
+      })
+      .catch(() => {
+        if (!cancelled) setState({ key: pathsKey, urls: new Map(), loading: false });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [pathsKey]);
+
+  return {
+    urls: state.key === pathsKey ? state.urls : new Map<string, string>(),
+    loading: state.key !== pathsKey || state.loading,
+  };
+}
+
+function StructuredMedia({
+  media,
+  signedUrls,
+}: {
+  media: EnemStructuredContent["essential_media"];
+  signedUrls: MediaUrlMap;
+}) {
   return (
     <>
       {media.map((item, index) => {
-        const url = typeof item === "string" ? item : assetUrl(item.storage_path, item.public_url);
+        const url = directMediaUrl(item, signedUrls);
         if (!url) return null;
         return (
           <img
@@ -84,13 +166,13 @@ function StructuredMedia({ media }: { media: EnemStructuredContent["essential_me
   );
 }
 
-function BlockMedia({ block }: { block: EnemContentBlock }) {
-  return <StructuredMedia media={block.media ?? []} />;
+function BlockMedia({ block, signedUrls }: { block: EnemContentBlock; signedUrls: MediaUrlMap }) {
+  return <StructuredMedia media={block.media ?? []} signedUrls={signedUrls} />;
 }
 
-function renderContentBlock(block: EnemContentBlock, index: number) {
+function renderContentBlock(block: EnemContentBlock, index: number, signedUrls: MediaUrlMap) {
   const key = `${block.kind}-${index}-${block.text?.slice(0, 24) ?? ""}`;
-  if (block.kind === "IMAGE") return <div key={key}><BlockMedia block={block} /></div>;
+  if (block.kind === "IMAGE") return <div key={key}><BlockMedia block={block} signedUrls={signedUrls} /></div>;
   if (block.kind === "LIST") {
     const Tag = block.ordered ? "ol" : "ul";
     return (
@@ -109,7 +191,13 @@ function renderContentBlock(block: EnemContentBlock, index: number) {
   );
 }
 
-function StructuredText({ content }: { content: EnemStructuredContent }) {
+function StructuredText({
+  content,
+  signedUrls,
+}: {
+  content: EnemStructuredContent;
+  signedUrls: MediaUrlMap;
+}) {
   const contentBlocks = content.content_blocks ?? [];
   const paragraphs = [content.context, content.prompt]
     .flatMap((value) => value.split(/\r?\n\s*\r?\n/gu))
@@ -121,13 +209,13 @@ function StructuredText({ content }: { content: EnemStructuredContent }) {
       className="max-w-4xl space-y-4 text-base leading-7 text-slate-800 dark:text-slate-100"
     >
       {contentBlocks.length
-        ? contentBlocks.map(renderContentBlock)
+        ? contentBlocks.map((block, index) => renderContentBlock(block, index, signedUrls))
         : paragraphs.map((paragraph, index) => (
           <p key={`${index}-${paragraph.slice(0, 24)}`} className="whitespace-pre-line">
             {paragraph}
           </p>
         ))}
-      {contentBlocks.length ? null : <StructuredMedia media={content.essential_media} />}
+      {contentBlocks.length ? null : <StructuredMedia media={content.essential_media} signedUrls={signedUrls} />}
     </article>
   );
 }
@@ -279,15 +367,36 @@ export default function SimulationPage() {
     attempt.data?.content_revision?.startsWith("structured-text-only-") ?? false;
   const questionUnavailable =
     Boolean(currentQuestion) && isCurrentTextOnlyAttempt && !structuredContent;
-  const currentStatementAssets = currentQuestion?.statement_assets ?? [];
-  const currentOptions = currentQuestion?.options.map(normalizeOption) ?? [];
+  const currentStatementAssets = useMemo(
+    () => currentQuestion?.statement_assets ?? [],
+    [currentQuestion?.statement_assets],
+  );
+  const currentOptions = useMemo(
+    () => currentQuestion?.options.map(normalizeOption) ?? [],
+    [currentQuestion?.options],
+  );
+  const currentMediaAssets = useMemo<MediaAssetReference[]>(() => {
+    if (!currentQuestion) return [];
+    return [
+      ...currentStatementAssets,
+      ...(structuredContent?.essential_media ?? []).filter(
+        (asset): asset is MediaAssetReference => typeof asset !== "string",
+      ),
+      ...(structuredContent?.content_blocks ?? []).flatMap(
+        (block) => block.media ?? [],
+      ),
+      ...currentOptions.flatMap((option) => option.assets),
+    ];
+  }, [currentOptions, currentQuestion, currentStatementAssets, structuredContent]);
+  const signedMedia = useSignedMediaUrls(currentMediaAssets);
   const missingStatementAsset =
     questionUnavailable ||
     (Boolean(currentQuestion) &&
     !structuredContent &&
+    !signedMedia.loading &&
     (currentStatementAssets.length === 0 ||
       currentStatementAssets.some((asset, index) => {
-        const url = assetUrl(asset.storage_path, asset.public_url);
+        const url = directMediaUrl(asset, signedMedia.urls);
         return (
           !url ||
           failedStatementAssets[`${currentQuestion.question_bank_id}:${index}`]
@@ -297,8 +406,9 @@ export default function SimulationPage() {
     if (questionUnavailable) return true;
     if (structuredContent) return !option.text?.trim();
     if (option.text?.trim()) return false;
+    if (signedMedia.loading) return false;
     return option.assets.length === 0 || option.assets.every((asset, index) => {
-      const url = assetUrl(asset.storage_path, asset.public_url);
+      const url = directMediaUrl(asset, signedMedia.urls);
       return !url || failedOptionAssets[`${currentQuestion!.question_bank_id}:${option.label}:${index}`];
     });
   });
@@ -902,9 +1012,9 @@ export default function SimulationPage() {
                     </p>
                   </div>
                 ) : structuredContent ? (
-                  <StructuredText content={structuredContent} />
+                  <StructuredText content={structuredContent} signedUrls={signedMedia.urls} />
                 ) : currentStatementAssets.map((asset, index) => {
-                  const url = assetUrl(asset.storage_path, asset.public_url);
+                  const url = directMediaUrl(asset, signedMedia.urls);
                   const assetKey = `${currentQuestion.question_bank_id}:${index}`;
                   return url && !failedStatementAssets[assetKey] ? (
                     <img
@@ -995,7 +1105,7 @@ export default function SimulationPage() {
                 const visibleAssets = option.assets.map((asset, assetIndex) => ({
                   asset,
                   assetIndex,
-                  url: assetUrl(asset.storage_path, asset.public_url),
+                  url: directMediaUrl(asset, signedMedia.urls),
                 })).filter(({ assetIndex, url }) => url && !failedOptionAssets[`${currentQuestion.question_bank_id}:${label}:${assetIndex}`]);
                 const showText = Boolean(option.text?.trim()) && visibleAssets.length === 0;
                 return (
