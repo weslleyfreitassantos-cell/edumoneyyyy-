@@ -47,6 +47,7 @@ export type XequematRejectionReason =
   | 'MISSING_ESSENTIAL_MEDIA'
   | 'QUESTION_CONTENT_NOT_FOUND'
   | 'INVALID_SOURCE_IDENTITY'
+  | 'UNKNOWN_AREA'
   | 'AMBIGUOUS_DUPLICATE'
   | 'RIGHTS_UNRESOLVED';
 
@@ -244,6 +245,20 @@ function mediaSourceIdentity(media: XequematMediaReference) {
     .replace(/\.webp$/iu, '');
 }
 
+function deduplicateAdjacentBlocks(blocks: XequematContentBlock[]) {
+  const deduplicated: XequematContentBlock[] = [];
+  for (const block of blocks) {
+    const previous = deduplicated.at(-1);
+    const sameText = Boolean(previous?.text && block.text && normalizeHash(previous.text) === normalizeHash(block.text));
+    if (sameText && previous?.kind === block.kind) {
+      previous.media = [...(previous.media ?? []), ...(block.media ?? [])];
+      continue;
+    }
+    deduplicated.push(block);
+  }
+  return deduplicated;
+}
+
 function uniqueReasons(reasons: XequematRejectionReason[]) {
   return [...new Set(reasons)];
 }
@@ -274,6 +289,7 @@ export function parseXequematQuestionHtml(
   if (metadata.year < 2009 || metadata.year > 2025 || metadata.questionNumber < 1) {
     rejectionReasons.push('INVALID_SOURCE_IDENTITY');
   }
+  if (metadata.area === 'UNKNOWN') rejectionReasons.push('UNKNOWN_AREA');
 
   const children = content ? [...content.children] : [];
   const blocks: XequematContentBlock[] = [];
@@ -307,13 +323,14 @@ export function parseXequematQuestionHtml(
     if (!alternativeStarted) blocks.push(...blockFromElement(child, resolveMedia, baseUrl));
   }
   explanationText = solutionParts.length ? normalizeText(solutionParts.join('\n\n')) : null;
+  const normalizedBlocks = deduplicateAdjacentBlocks(blocks);
 
-  const paragraphBlocks = blocks.filter((block) => block.kind === 'PARAGRAPH' && block.text);
+  const paragraphBlocks = normalizedBlocks.filter((block) => block.kind === 'PARAGRAPH' && block.text);
   const promptBlock = paragraphBlocks.at(-1);
-  const contextBlocks = promptBlock ? blocks.slice(0, blocks.lastIndexOf(promptBlock)) : blocks;
+  const contextBlocks = promptBlock ? normalizedBlocks.slice(0, normalizedBlocks.lastIndexOf(promptBlock)) : normalizedBlocks;
   const contextText = contextBlocks.map((block) => block.text ?? '').filter(Boolean).join('\n\n').trim();
   const promptText = promptBlock?.text ?? '';
-  const allMedia = mediaFromBlocks([...blocks, ...alternatives.flatMap((item) => item.blocks)]);
+  const allMedia = mediaFromBlocks([...normalizedBlocks, ...alternatives.flatMap((item) => item.blocks)]);
   const correctMatch = explanationText?.match(ANSWER_RE) ?? directAnswer(content);
   const correctAlternative = correctMatch?.[1]?.toUpperCase() as XequematArchiveQuestion['correctAlternative'] ?? null;
   const completeAlternatives = alternatives.length === 5
@@ -345,7 +362,7 @@ export function parseXequematQuestionHtml(
     subject: metadata.subject,
     language: metadata.language,
     day: null,
-    blocks,
+    blocks: normalizedBlocks,
     contextText,
     promptText,
     alternatives,

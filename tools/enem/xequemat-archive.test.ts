@@ -7,7 +7,8 @@ describe('Xequemat archive parser', () => {
     const html = `
       <html><head><title>Questão 171 - ENEM 2015</title></head><body>
         <h1>Questão 171 - ENEM 2015</h1>
-        <div class="elementor-widget-theme-post-content">
+        <div data-elementor-type="wp-post" class="area-do-conhecimento-matematica">
+          <div class="elementor-widget-theme-post-content">
           <p>O contexto completo da questão aparece antes da pergunta.</p>
           <figure><img src="/uploads/diagram.png" alt="Diagrama"></figure>
           <p>Considerando o contexto apresentado, qual alternativa está correta?</p>
@@ -16,6 +17,7 @@ describe('Xequemat archive parser', () => {
           <p>E) Quinta alternativa.</p>
           <p><strong>Resolução</strong></p><p>A alternativa correta é D.</p>
           <h3>Pratique mais questões semelhantes</h3><p>Não deve entrar.</p>
+          </div>
         </div>
       </body></html>`;
     const record = parseXequematQuestionHtml(html, {
@@ -74,5 +76,42 @@ describe('Xequemat archive parser', () => {
       { sourceFile: 'blog/questao-104-enem-ppl-2022/index.html', rightsStatus: 'VERIFIED' },
     );
     expect(record.area).toBe('CIENCIAS_NATUREZA');
+  });
+
+  it('removes adjacent duplicate source paragraphs without removing repeated text elsewhere', () => {
+    const record = parseXequematQuestionHtml(
+      `<html><head><title>Questão 170 - ENEM 2017</title></head><body>
+        <div data-elementor-type="wp-post" class="area-do-conhecimento-matematica">
+          <div class="elementor-widget-theme-post-content">
+            <p>Questão 170 – Lógica</p>
+            <p>O enunciado original aparece uma vez.</p>
+            <p>O enunciado original aparece uma vez.</p>
+            <p>Qual é a resposta?</p>
+            <p>A) Um.</p><p>B) Dois.</p><p>C) Três.</p><p>D) Quatro.</p><p>E) Cinco.</p>
+            <p>Gabarito: A</p>
+          </div>
+        </div>
+      </body></html>`,
+      { sourceFile: 'blog/questao-170-enem-2017/index.html', rightsStatus: 'VERIFIED' },
+    );
+    expect(record.ready).toBe(true);
+    expect(record.blocks.filter((block) => block.text === 'O enunciado original aparece uma vez.')).toHaveLength(1);
+  });
+
+  it('keeps questions without a reproducible area in review', () => {
+    const record = parseXequematQuestionHtml(
+      `<html><head><title>Questão 10 - ENEM 2024</title></head><body>
+        <div class="elementor-widget-theme-post-content">
+          <p>Contexto completo da questão sem taxonomia identificável.</p>
+          <p>Qual alternativa está correta?</p>
+          <p>A) Um.</p><p>B) Dois.</p><p>C) Três.</p><p>D) Quatro.</p><p>E) Cinco.</p>
+          <p>Gabarito: A</p>
+        </div>
+      </body></html>`,
+      { sourceFile: 'blog/questao-10-enem-2024/index.html', rightsStatus: 'VERIFIED' },
+    );
+    expect(record.area).toBe('UNKNOWN');
+    expect(record.ready).toBe(false);
+    expect(record.rejectionReasons).toContain('UNKNOWN_AREA');
   });
 });

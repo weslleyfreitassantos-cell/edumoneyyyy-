@@ -145,6 +145,8 @@ as $$
     and structured.source_question_number is not null
     and structured.source_provider = 'xequemat'
     and structured.rights_status = 'VERIFIED'
+    and question_bank.subject_area is not null
+    and question_bank.subject_area <> 'UNKNOWN'
     and jsonb_array_length(structured.content_blocks_json) > 0
     and (not structured.required_media_present or structured.required_media_validated)
     and (p_area is null or question_bank.metadata->>'enem_area' = p_area)

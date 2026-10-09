@@ -21,6 +21,7 @@ describe('ENEM Xequemat archive v1 migration', () => {
     expect(migration).toContain('structured.statement_complete');
     expect(migration).toContain('structured.five_alternatives_complete');
     expect(migration).toContain('structured.rights_status = \'VERIFIED\'');
+    expect(migration).toContain("question_bank.subject_area <> 'UNKNOWN'");
     expect(migration).toContain('jsonb_array_length(structured.content_blocks_json) > 0');
     expect(migration).toContain('(not structured.required_media_present or structured.required_media_validated)');
   });
