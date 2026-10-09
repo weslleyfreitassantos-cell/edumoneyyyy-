@@ -4,6 +4,7 @@ interface ArchiveRecord {
   provider: string;
   contentRevision: string;
   providerQuestionKey: string;
+  sourceUrl: string;
   application: string;
   year: number;
   questionNumber: number;
@@ -20,7 +21,7 @@ interface ArchiveReport {
 }
 
 function identity(record: ArchiveRecord) {
-  return `${record.application}:${record.year}:${record.questionNumber}:${record.language ?? 'COMMON'}`;
+  return `${record.application}:${record.year}:${record.questionNumber}:${record.language ?? 'COMMON'}:${record.sourceUrl}`;
 }
 
 function sql(value: string | number | null) {

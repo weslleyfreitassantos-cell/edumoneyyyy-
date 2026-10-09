@@ -36,6 +36,7 @@ describe('Xequemat import SQL', () => {
     expect(sql).toContain('rights_status');
     expect(sql).toContain('v_existing_provider_question_key');
     expect(sql).toContain('structured.language is not distinct from');
+    expect(sql).toContain('question_bank.source_url');
     expect(sql).toContain(Buffer.from('enem_area').toString('hex'));
     expect(sql).toContain(Buffer.from('enem_subject').toString('hex'));
     expect(sql).toContain('554e5245534f4c564544');
