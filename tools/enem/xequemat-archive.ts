@@ -139,6 +139,7 @@ function imageSources(element: any): string[] {
 function textWithoutImages(element: any) {
   const clone = element.cloneNode(true);
   clone.querySelectorAll?.('img, picture, svg').forEach((node: any) => node.remove());
+  clone.querySelectorAll?.('br').forEach((node: any) => node.replaceWith('\n'));
   return normalizeText(clone.textContent ?? '');
 }
 

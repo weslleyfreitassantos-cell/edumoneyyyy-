@@ -78,6 +78,26 @@ describe('Xequemat archive parser', () => {
     expect(record.area).toBe('CIENCIAS_NATUREZA');
   });
 
+  it('preserves source line breaks from HTML br elements', () => {
+    const record = parseXequematQuestionHtml(
+      `<html><head><title>Questão 104 - ENEM 2011</title></head><body>
+        <div data-elementor-type="wp-post" class="area-do-conhecimento-linguagens">
+          <div class="elementor-widget-theme-post-content">
+            <p><strong>Não tem tradução</strong></p>
+            <p>[…]<br>Lá no morro, se eu fizer uma falseta<br>A Risoleta desiste logo do francês e do inglês<br>A gíria que o nosso morro criou<br>Bem cedo a cidade aceitou e usou<br>[…]<br>Essa gente hoje em dia que tem mania de exibição<br>Não entende que o samba não tem tradução no idioma francês</p>
+            <p>Só pode ser conversa de telefone</p>
+            <p>Qual recurso é empregado no texto?</p>
+            <p>A) Um.</p><p>B) Dois.</p><p>C) Três.</p><p>D) Quatro.</p><p>E) Cinco.</p>
+            <p>Gabarito: C</p>
+          </div>
+        </div>
+      </body></html>`,
+      { sourceFile: 'blog/questao-104-enem-2011/index.html', rightsStatus: 'VERIFIED' },
+    );
+    expect(record.blocks[1]?.text).toContain('Lá no morro, se eu fizer uma falseta\nA Risoleta desiste logo do francês e do inglês');
+    expect(record.contextText).toContain('Essa gente hoje em dia que tem mania de exibição\nNão entende que o samba não tem tradução no idioma francês');
+  });
+
   it('removes adjacent duplicate source paragraphs without removing repeated text elsewhere', () => {
     const record = parseXequematQuestionHtml(
       `<html><head><title>Questão 170 - ENEM 2017</title></head><body>
