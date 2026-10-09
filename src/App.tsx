@@ -37,7 +37,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import AppShell from './components/AppShell';
 import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import LoadingIndicator from './components/LoadingIndicator';
-import StudentInitialLoadingGate from './components/StudentInitialLoadingGate';
+import InitialLoadingGate from './components/InitialLoadingGate';
 import BrandingLoadingGate from './components/branding/BrandingLoadingGate';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
@@ -596,12 +596,12 @@ function AuthenticatedShellLayout() {
   return (
     <ProtectedRoute>
       <AuthenticatedDataPreloader />
-      <StudentInitialLoadingGate>
+      <InitialLoadingGate>
         <AppShell>
           <PersistentTerminalsView />
           <Outlet />
         </AppShell>
-      </StudentInitialLoadingGate>
+      </InitialLoadingGate>
     </ProtectedRoute>
   );
 }
