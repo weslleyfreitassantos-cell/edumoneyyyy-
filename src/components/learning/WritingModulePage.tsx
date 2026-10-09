@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronLeft, FileText, PencilLine, Save, Trash2 } from 'lucide-react';
+import { ChevronLeft, FileText, PencilLine, Save, Trash2 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,14 +8,6 @@ const writingThemes = [
   'Tecnologia e aprendizagem na escola',
   'Participação dos jovens na comunidade',
   'A importância da leitura na formação cidadã',
-];
-
-const reviewItems = [
-  'Apresentei o tema e uma tese clara na introdução.',
-  'Desenvolvi argumentos com exemplos ou informações relevantes.',
-  'Usei conectivos para ligar as ideias e os parágrafos.',
-  'Revisei ortografia, pontuação e concordância.',
-  'Minha conclusão retoma a tese e propõe um encaminhamento.',
 ];
 
 interface StoredDraft {
@@ -82,7 +74,7 @@ export default function WritingModulePage() {
         </div>
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.42fr)]">
+      <div className="grid gap-6">
         <section aria-label="Editor de redação" className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
           <div className="flex items-start gap-3">
             <FileText className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]" aria-hidden="true" />
@@ -134,18 +126,6 @@ export default function WritingModulePage() {
           {saveMessage ? <p role="status" className="mt-3 text-sm font-semibold text-emerald-700 dark:text-emerald-300">{saveMessage}</p> : null}
         </section>
 
-        <aside aria-label="Checklist de revisão" className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Checklist de revisão</h2>
-          <p className="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">Antes de terminar, confira os pontos essenciais do seu texto.</p>
-          <ul className="mt-5 space-y-4">
-            {reviewItems.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-sm leading-5 text-slate-700 dark:text-slate-200">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" aria-hidden="true" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </aside>
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import { supabase } from '../lib/supabaseClient';
 
-export const CURRENT_ENEM_CONTENT_REVISION = 'structured-text-only-v6' as const;
+export const CURRENT_ENEM_CONTENT_REVISION = 'xequemat-archive-v1' as const;
 export const SUPPORTED_ENEM_CONTENT_REVISIONS = new Set([
   CURRENT_ENEM_CONTENT_REVISION,
+  'structured-text-only-v6',
   'structured-text-only-v5',
   'structured-text-only-v4',
   'structured-text-v1',
@@ -331,6 +332,27 @@ export interface EnemStructuredContent {
   }>;
   render_mode: 'STRUCTURED_TEXT' | 'STRUCTURED_TEXT_WITH_MEDIA' | 'STRUCTURED_TEXT_VISUAL_OPTIONS';
   essential_media: Array<EnemSimulationOptionAsset | string>;
+  content_blocks?: EnemContentBlock[];
+  source_reference?: EnemSourceReference | null;
+}
+
+export interface EnemContentBlock {
+  kind: 'PARAGRAPH' | 'IMAGE' | 'TABLE' | 'FORMULA' | 'LIST' | 'QUOTE';
+  text?: string;
+  html?: string;
+  ordered?: boolean;
+  items?: string[];
+  media?: EnemSimulationOptionAsset[];
+}
+
+export interface EnemSourceReference {
+  source_year: number | null;
+  source_exam: string | null;
+  source_application: 'REGULAR' | 'PPL' | null;
+  source_question_number: number | null;
+  source_day?: string | null;
+  source_url?: string | null;
+  source_provider?: string | null;
 }
 
 export interface EnemSimulationQuestion {
@@ -343,6 +365,7 @@ export interface EnemSimulationQuestion {
   options: Array<EnemSimulationOption | string>;
   source_year: number | null;
   question_number: number | null;
+  source_reference?: EnemSourceReference | null;
   metadata: Record<string, unknown>;
   structured_content?: EnemStructuredContent | null;
   statement_assets: Array<{
@@ -368,6 +391,23 @@ function normalizeEnemSimulationAsset(value: unknown): EnemSimulationOptionAsset
     metadata: item.metadata && typeof item.metadata === 'object'
       ? item.metadata as Record<string, unknown>
       : item,
+  };
+}
+
+function normalizeEnemSourceReference(value: unknown): EnemSourceReference | null {
+  if (!value || typeof value !== 'object') return null;
+  const item = value as Record<string, unknown>;
+  const application = item.source_application === 'REGULAR' || item.source_application === 'PPL'
+    ? item.source_application
+    : null;
+  return {
+    source_year: typeof item.source_year === 'number' ? item.source_year : null,
+    source_exam: typeof item.source_exam === 'string' ? item.source_exam : null,
+    source_application: application,
+    source_question_number: typeof item.source_question_number === 'number' ? item.source_question_number : null,
+    source_day: typeof item.source_day === 'string' ? item.source_day : null,
+    source_url: typeof item.source_url === 'string' ? item.source_url : null,
+    source_provider: typeof item.source_provider === 'string' ? item.source_provider : null,
   };
 }
 
@@ -415,6 +455,18 @@ function normalizeEnemSimulationAttempt(attempt: EnemSimulationAttempt): EnemSim
     ...attempt,
     questions: (attempt.questions ?? []).map((question) => {
       const metadata = question.metadata ?? {};
+      const sourceReference = question.source_reference
+        ?? normalizeEnemSourceReference(metadata.source_reference)
+        ?? normalizeEnemSourceReference(metadata.source_provenance)
+        ?? normalizeEnemSourceReference({
+          source_year: metadata.source_year ?? question.source_year,
+          source_exam: metadata.source_exam ?? (question.source_kind === 'OFFICIAL_OCCURRENCE' ? 'ENEM' : null),
+          source_application: metadata.source_application,
+          source_question_number: metadata.source_question_number ?? question.question_number,
+          source_day: metadata.source_day,
+          source_url: metadata.source_url,
+          source_provider: metadata.source_provider,
+        });
       const statementAssets = question.statement_assets?.length
         ? question.statement_assets
         : Array.isArray(metadata.statement_assets)
@@ -422,6 +474,17 @@ function normalizeEnemSimulationAttempt(attempt: EnemSimulationAttempt): EnemSim
           : [];
       return {
         ...question,
+        question_number: question.question_number ?? (typeof metadata.source_question_number === 'number' ? metadata.source_question_number : null),
+        structured_content: question.structured_content
+          ? {
+            ...question.structured_content,
+            content_blocks: question.structured_content.content_blocks
+              ?? (Array.isArray(metadata.content_blocks) ? metadata.content_blocks as EnemContentBlock[] : undefined),
+            source_reference: question.structured_content.source_reference
+              ?? sourceReference,
+          }
+          : question.structured_content,
+        source_reference: sourceReference,
         statement_assets: statementAssets,
         options: (question.options ?? []).map((option, index) =>
           normalizeEnemSimulationOption(option, index, metadata)),
