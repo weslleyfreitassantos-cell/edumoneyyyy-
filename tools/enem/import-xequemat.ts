@@ -131,24 +131,31 @@ function buildQuestionSql(
 
 export function buildXequematImportSql(
   report: XequematArchiveReport,
-  options: { mediaManifest?: XequematMediaManifest | null } = {},
+  options: { mediaManifest?: XequematMediaManifest | null; batchSize?: number } = {},
 ) {
   const mediaManifest = options.mediaManifest ?? null;
+  const batchSize = options.batchSize ?? 100;
+  if (!Number.isInteger(batchSize) || batchSize < 1 || batchSize > 500) {
+    throw new Error('batchSize must be an integer between 1 and 500');
+  }
   const importableRecords = report.records.filter((record) =>
     record.year >= 2009 && record.year <= 2025 && record.questionNumber > 0,
   );
-  const lines = [
-    'begin;',
-    'do $$',
-    'declare',
-    '  v_question_id uuid;',
-    'begin',
-  ];
-  for (const record of importableRecords) {
-    lines.push('  v_question_id := null;');
-    lines.push(...buildQuestionSql(record, mediaManifest));
+  const lines: string[] = [];
+  for (let offset = 0; offset < importableRecords.length; offset += batchSize) {
+    lines.push(
+      'begin;',
+      'do $$',
+      'declare',
+      '  v_question_id uuid;',
+      'begin',
+    );
+    for (const record of importableRecords.slice(offset, offset + batchSize)) {
+      lines.push('  v_question_id := null;');
+      lines.push(...buildQuestionSql(record, mediaManifest));
+    }
+    lines.push('end $$;', 'notify pgrst, \'reload schema\';', 'commit;', '');
   }
-  lines.push('end $$;', 'notify pgrst, \'reload schema\';', 'commit;', '');
   return lines.join('\n');
 }
 
@@ -158,11 +165,13 @@ function main() {
   const outputPath = resolve(argument('--out', args) ?? '.runtime/enem-xequemat-archive-v1/import.sql');
   const report = JSON.parse(readFileSync(reportPath, 'utf8')) as XequematArchiveReport;
   const mediaManifestPath = argument('--media-manifest', args);
+  const batchSizeArgument = argument('--batch-size', args);
+  const batchSize = batchSizeArgument ? Number(batchSizeArgument) : 100;
   const mediaManifest = mediaManifestPath
     ? JSON.parse(readFileSync(resolve(mediaManifestPath), 'utf8')) as XequematMediaManifest
     : null;
   mkdirSync(dirname(outputPath), { recursive: true });
-  writeFileSync(outputPath, buildXequematImportSql(report, { mediaManifest }));
+  writeFileSync(outputPath, buildXequematImportSql(report, { mediaManifest, batchSize }));
   const importableRecords = report.records.filter((record) => record.year >= 2009 && record.year <= 2025 && record.questionNumber > 0);
   const active = importableRecords.filter((record) => {
     if (!record.ready || record.rightsStatus !== 'VERIFIED') return false;
@@ -174,7 +183,7 @@ function main() {
       return !media.missing && Boolean(asset && asset.status === 'UPLOADED');
     });
   }).length;
-  console.log(JSON.stringify({ outputPath, records: importableRecords.length, skippedInvalidSource: report.records.length - importableRecords.length, active, staging: importableRecords.length - active, rightsStatus: report.rightsStatus }, null, 2));
+  console.log(JSON.stringify({ outputPath, records: importableRecords.length, skippedInvalidSource: report.records.length - importableRecords.length, active, staging: importableRecords.length - active, batchSize, batches: Math.ceil(importableRecords.length / batchSize), rightsStatus: report.rightsStatus }, null, 2));
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === resolve(new URL(import.meta.url).pathname.replace(/^\//u, ''))) main();

@@ -37,4 +37,36 @@ describe('Xequemat import SQL', () => {
     expect(sql).toContain('554e5245534f4c564544');
     expect(sql).toContain(', false) returning id into v_question_id;');
   });
+
+  it('splits large imports into bounded idempotent transactions', () => {
+    const report = {
+      schemaVersion: 1,
+      provider: 'xequemat',
+      contentRevision: 'xequemat-archive-v1',
+      source: { input: 'snapshot.zip', extractedRoot: null },
+      rightsStatus: 'VERIFIED',
+      scannedFiles: 2,
+      parsedQuestions: 2,
+      uniqueQuestions: 2,
+      duplicateQuestions: 0,
+      readyQuestions: 2,
+      rejectedQuestions: 0,
+      missingMediaReferences: 0,
+      missingMediaQuestions: 0,
+      byApplication: { REGULAR: 2 },
+      byYear: { '2018': 2 },
+      rejectionReasons: {},
+      records: Array.from({ length: 2 }, (_, index) => ({
+        provider: 'xequemat', contentRevision: 'xequemat-archive-v1', providerQuestionKey: `REGULAR:2018:${index + 42}:COMMON:hash-${index}`,
+        sourceFile: `blog/questao-${index + 42}-enem-2018/index.html`, sourceUrl: `https://xequematenem.com.br/blog/questao-${index + 42}-enem-2018/`,
+        title: `Questão ${index + 42} - ENEM 2018`, year: 2018, questionNumber: index + 42, application: 'REGULAR', area: 'LINGUAGENS', subject: 'argumentacao', language: null, day: null,
+        blocks: [{ kind: 'PARAGRAPH', text: 'Contexto' }, { kind: 'PARAGRAPH', text: 'Qual é a resposta?' }], contextText: 'Contexto', promptText: 'Qual é a resposta?',
+        alternatives: ['A', 'B', 'C', 'D', 'E'].map((letter) => ({ letter, text: `Alternativa ${letter}`, blocks: [], media: [] })), correctAlternative: 'D', explanationText: null, media: [], normalizedContentHash: `content-${index}`, sourceHash: `raw-${index}`, completeStatement: true, completeAlternatives: true, answerPresent: true,
+        requiredMediaPresent: false, rightsStatus: 'VERIFIED', ready: true, rejectionReasons: [],
+      })),
+    } as XequematArchiveReport;
+    const sql = buildXequematImportSql(report, { batchSize: 1 });
+    expect((sql.match(/\bbegin;/gu) ?? []).length).toBe(2);
+    expect((sql.match(/\bcommit;/gu) ?? []).length).toBe(2);
+  });
 });
