@@ -55,6 +55,22 @@ function runtimeBlocks(record: XequematArchiveQuestion) {
   }));
 }
 
+function catalogClassification(record: XequematArchiveQuestion) {
+  const subject = record.area === 'MATEMATICA'
+    ? 'MATEMATICA'
+    : record.area === 'LINGUAGENS'
+      ? record.language === 'ENGLISH'
+        ? 'INGLES'
+        : record.language === 'SPANISH'
+          ? 'ESPANHOL'
+          : 'LINGUA_PORTUGUESA'
+      : null;
+  return {
+    enem_area: record.area,
+    ...(subject ? { enem_subject: subject } : {}),
+  };
+}
+
 function metadata(record: XequematArchiveQuestion, active: boolean) {
   return {
     provider: record.provider,
@@ -68,6 +84,7 @@ function metadata(record: XequematArchiveQuestion, active: boolean) {
     source_provider: record.provider,
     source_area: record.area,
     source_subject: record.subject,
+    ...catalogClassification(record),
     rights_status: record.rightsStatus,
     rejection_reasons: record.rejectionReasons,
     render_mode: record.media.length > 0 ? 'STRUCTURED_TEXT_WITH_MEDIA' : 'STRUCTURED_TEXT',

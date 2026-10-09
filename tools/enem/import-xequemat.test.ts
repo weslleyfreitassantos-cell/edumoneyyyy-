@@ -34,6 +34,8 @@ describe('Xequemat import SQL', () => {
     expect(sql).toContain('source_application');
     expect(sql).toContain('content_blocks_json');
     expect(sql).toContain('rights_status');
+    expect(sql).toContain(Buffer.from('enem_area').toString('hex'));
+    expect(sql).toContain(Buffer.from('enem_subject').toString('hex'));
     expect(sql).toContain('554e5245534f4c564544');
     expect(sql).toContain(', false) returning id into v_question_id;');
   });
