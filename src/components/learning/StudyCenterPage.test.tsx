@@ -93,6 +93,24 @@ describe('StudyCenterPage', () => {
     expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
   });
 
+  it('permite recolher e reabrir a preparação para o ENEM', () => {
+    renderPage();
+
+    const toggle = screen.getByRole('button', { name: /Práticas oficiais/ });
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
+
+    fireEvent.click(toggle);
+
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeNull();
+
+    fireEvent.click(toggle);
+
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
+  });
+
   it('abre a área própria da matéria ao clicar no card', () => {
     renderPage();
 

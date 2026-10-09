@@ -32,12 +32,12 @@ export default function UpcomingAcademicEvents({
       ) : (
         <div
           role="region"
-          aria-label="Próximos eventos. No celular, deslize horizontalmente para consultar outros eventos."
+          aria-label="Lista de próximos eventos"
           tabIndex={0}
-          className="flex min-w-0 snap-x snap-mandatory items-stretch gap-3 overflow-x-auto overscroll-x-contain pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] sm:grid sm:grid-cols-2 sm:overflow-visible sm:snap-none"
+          className="grid min-w-0 gap-3 pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] sm:grid-cols-2"
         >
           {events.map((event) => (
-            <article key={event.id} className="w-[min(80vw,24rem)] min-w-0 flex-none snap-start rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:w-auto sm:min-w-0">
+            <article key={event.id} className="w-full min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <div className="flex items-start gap-3">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
                   <Clock3 className="h-4 w-4" aria-hidden="true" />

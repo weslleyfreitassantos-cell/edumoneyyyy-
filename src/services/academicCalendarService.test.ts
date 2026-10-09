@@ -1,8 +1,9 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { supabase } from '../lib/supabaseClient';
 import {
   academicCalendarService,
+  fetchBrazilianNationalHolidays,
   type AcademicCalendarEventInput,
   validateAcademicCalendarInput,
 } from './academicCalendarService';
@@ -52,6 +53,10 @@ const validInput: AcademicCalendarEventInput = {
 
 beforeEach(() => {
   vi.clearAllMocks();
+});
+
+afterEach(() => {
+  vi.unstubAllGlobals();
 });
 
 describe('academicCalendarService', () => {
@@ -107,6 +112,97 @@ describe('academicCalendarService', () => {
 
     expect(supabase.from).toHaveBeenCalledWith('academic_calendar_events');
     expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
+  });
+
+  it('consulta os feriados nacionais da BrasilAPI', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: vi.fn().mockResolvedValue([
+        { date: '2026-01-01', name: 'Confraternização mundial', type: 'national' },
+      ]),
+    });
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(fetchBrazilianNationalHolidays(2026)).resolves.toEqual([
+      { date: '2026-01-01', name: 'Confraternização mundial', type: 'national', weekday: undefined },
+    ]);
+    expect(fetchMock).toHaveBeenCalledWith(
+      'https://brasilapi.com.br/api/feriados/v1/2026',
+      expect.objectContaining({
+        headers: { Accept: 'application/json' },
+        signal: expect.any(AbortSignal),
+      }),
+    );
+  });
+
+  it('importa feriados em lote e ignora datas já cadastradas', async () => {
+    const existingQuery = queryBuilder([{
+      id: 'holiday-1',
+      institution_id: 'institution-1',
+      academic_year_id: 'year-1',
+      title: 'Confraternização mundial',
+      description: null,
+      event_type: 'HOLIDAY',
+      starts_at: '2026-01-01T00:00:00.000Z',
+      ends_at: null,
+      all_day: true,
+      audience: 'ALL',
+      class_id: null,
+      subject_id: null,
+      active: true,
+      created_by: 'profile-1',
+      created_at: '2026-01-01T00:00:00.000Z',
+      updated_at: '2026-01-01T00:00:00.000Z',
+      classes: null,
+      subjects: null,
+    }]);
+    const insertQuery = queryBuilder([{
+      id: 'holiday-2',
+      institution_id: 'institution-1',
+      academic_year_id: 'year-1',
+      title: 'Carnaval',
+      description: 'Feriado nacional importado automaticamente para 2026.',
+      event_type: 'HOLIDAY',
+      starts_at: '2026-02-16T00:00:00.000Z',
+      ends_at: null,
+      all_day: true,
+      audience: 'ALL',
+      class_id: null,
+      subject_id: null,
+      active: true,
+      created_by: 'profile-1',
+      created_at: '2026-01-01T00:00:00.000Z',
+      updated_at: '2026-01-01T00:00:00.000Z',
+      classes: null,
+      subjects: null,
+    }]);
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(existingQuery as never)
+      .mockReturnValueOnce(insertQuery as never);
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: vi.fn().mockResolvedValue([
+        { date: '2026-01-01', name: 'Confraternização mundial', type: 'national' },
+        { date: '2026-02-16', name: 'Carnaval', type: 'national' },
+      ]),
+    }));
+
+    const result = await academicCalendarService.importBrazilianNationalHolidays({
+      institutionId: 'institution-1',
+      academicYearId: 'year-1',
+      createdBy: 'profile-1',
+      year: 2026,
+    });
+
+    expect(result).toEqual({ year: 2026, total: 2, imported: 1, skipped: 1 });
+    expect(insertQuery.insert).toHaveBeenCalledWith([
+      expect.objectContaining({
+        title: 'Carnaval',
+        starts_at: '2026-02-16T00:00:00.000Z',
+        all_day: true,
+        event_type: 'HOLIDAY',
+      }),
+    ]);
   });
 
   it('lista todos os eventos ativos visíveis para o aluno', async () => {

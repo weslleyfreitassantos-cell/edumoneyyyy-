@@ -81,6 +81,27 @@ export interface AcademicCalendarEventFilters {
   date?: string;
 }
 
+export interface BrazilianNationalHoliday {
+  date: string;
+  name: string;
+  type: string;
+  weekday?: string;
+}
+
+export interface ImportBrazilianNationalHolidaysInput {
+  institutionId: string;
+  academicYearId: string | null;
+  createdBy: string;
+  year: number;
+}
+
+export interface ImportBrazilianNationalHolidaysResult {
+  year: number;
+  total: number;
+  imported: number;
+  skipped: number;
+}
+
 export type AcademicCalendarBlockingEvent = Pick<
   AcademicCalendarEvent,
   | 'id'
@@ -143,6 +164,76 @@ const EVENT_SELECT = `
   classes:class_id (id, name),
   subjects:subject_id (id, name)
 `;
+
+const BRAZILIAN_HOLIDAYS_API_URL =
+  'https://brasilapi.com.br/api/feriados/v1';
+
+function isValidHolidayYear(year: number): boolean {
+  return Number.isInteger(year) && year >= 1900 && year <= 2199;
+}
+
+function normalizeBrazilianHoliday(value: unknown): BrazilianNationalHoliday | null {
+  if (!value || typeof value !== 'object') return null;
+
+  const candidate = value as Record<string, unknown>;
+  const date = typeof candidate.date === 'string' ? candidate.date : '';
+  const name = typeof candidate.name === 'string' ? candidate.name.trim() : '';
+  const type = typeof candidate.type === 'string' ? candidate.type : 'national';
+  const weekday = typeof candidate.weekday === 'string' ? candidate.weekday : undefined;
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !name) return null;
+
+  try {
+    calendarDateToUtcStart(date);
+  } catch {
+    return null;
+  }
+
+  return { date, name, type, weekday };
+}
+
+export async function fetchBrazilianNationalHolidays(
+  year: number,
+): Promise<BrazilianNationalHoliday[]> {
+  if (!isValidHolidayYear(year)) {
+    throw new Error('Informe um ano válido para consultar os feriados.');
+  }
+
+  const controller = new AbortController();
+  const timeoutId = globalThis.setTimeout(() => controller.abort(), 10000);
+
+  try {
+    const response = await fetch(
+      `${BRAZILIAN_HOLIDAYS_API_URL}/${year}`,
+      {
+        headers: { Accept: 'application/json' },
+        signal: controller.signal,
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error('A API de feriados não respondeu corretamente.');
+    }
+
+    const payload: unknown = await response.json();
+    if (!Array.isArray(payload)) {
+      throw new Error('A API de feriados retornou um formato inválido.');
+    }
+
+    return payload.flatMap((item) => {
+      const holiday = normalizeBrazilianHoliday(item);
+      return holiday ? [holiday] : [];
+    });
+  } catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error('A consulta de feriados excedeu o tempo limite.');
+    }
+
+    throw error;
+  } finally {
+    globalThis.clearTimeout(timeoutId);
+  }
+}
 
 function normalizeRelation(
   relation: AcademicCalendarRelation | AcademicCalendarRelation[] | null,
@@ -421,6 +512,76 @@ export const academicCalendarService = {
     }
 
     return normalizeRow(data as unknown as AcademicCalendarQueryRow);
+  },
+
+  async createMany(
+    inputs: AcademicCalendarEventInput[],
+  ): Promise<AcademicCalendarEvent[]> {
+    if (inputs.length === 0) return [];
+
+    const { data, error } = await supabase
+      .from('academic_calendar_events')
+      .insert(inputs.map(buildPayload))
+      .select(EVENT_SELECT);
+
+    if (error || !data) {
+      throw error ?? new Error('Não foi possível criar os eventos.');
+    }
+
+    return ((data ?? []) as unknown as AcademicCalendarQueryRow[]).map(normalizeRow);
+  },
+
+  async importBrazilianNationalHolidays(
+    input: ImportBrazilianNationalHolidaysInput,
+  ): Promise<ImportBrazilianNationalHolidaysResult> {
+    if (!input.institutionId.trim() || !input.createdBy.trim()) {
+      throw new Error('Instituição e autor são obrigatórios.');
+    }
+
+    const holidays = await fetchBrazilianNationalHolidays(input.year);
+    const existingHolidays = await academicCalendarService.listForStaff(
+      input.institutionId,
+      { eventType: 'HOLIDAY' },
+    );
+    const occupiedDates = new Set(
+      existingHolidays
+        .filter((event) => event.all_day)
+        .map((event) => calendarDateKey(event.starts_at, true)),
+    );
+    const seenDates = new Set<string>();
+    const newHolidays = holidays.filter((holiday) => {
+      if (occupiedDates.has(holiday.date) || seenDates.has(holiday.date)) {
+        return false;
+      }
+
+      seenDates.add(holiday.date);
+      return true;
+    });
+
+    const created = await academicCalendarService.createMany(
+      newHolidays.map((holiday) => ({
+        institution_id: input.institutionId,
+        academic_year_id: input.academicYearId,
+        title: holiday.name,
+        description: `Feriado nacional importado automaticamente para ${input.year}.`,
+        event_type: 'HOLIDAY',
+        starts_at: holiday.date,
+        ends_at: null,
+        all_day: true,
+        audience: 'ALL',
+        class_id: null,
+        subject_id: null,
+        active: true,
+        created_by: input.createdBy,
+      })),
+    );
+
+    return {
+      year: input.year,
+      total: holidays.length,
+      imported: created.length,
+      skipped: holidays.length - newHolidays.length,
+    };
   },
 
   async update(

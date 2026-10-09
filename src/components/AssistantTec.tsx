@@ -706,7 +706,7 @@ export default function AssistantTec({
           aria-modal="false"
           aria-label="Assistente TEC"
           data-print-hide
-          className="fixed inset-x-3 bottom-20 z-50 flex max-h-[calc(100dvh-7rem)] w-auto flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:inset-x-auto sm:right-5 sm:max-h-[min(680px,calc(100dvh-7rem))] sm:w-[min(420px,calc(100vw-2.5rem))]"
+          className="fixed inset-x-3 bottom-20 z-50 flex min-w-0 max-h-[calc(100dvh-7rem)] w-[calc(100vw-1.5rem)] max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:inset-x-auto sm:right-5 sm:max-h-[min(680px,calc(100dvh-7rem))] sm:w-[min(420px,calc(100vw-2.5rem))] sm:max-w-none"
         >
           <header className="flex shrink-0 items-start justify-between gap-3 bg-[#005bbf] px-4 py-3 text-white">
             <div className="min-w-0">
@@ -775,7 +775,7 @@ export default function AssistantTec({
                 }
                 placeholder="Digite o que você quer fazer..."
                 aria-label="Pergunte ao Assistente TEC"
-                className="min-w-0 flex-1 bg-transparent text-sm text-slate-800 outline-none placeholder:text-slate-400 dark:text-slate-100"
+                className="min-w-0 flex-1 bg-transparent text-base text-slate-800 outline-none placeholder:text-slate-400 dark:text-slate-100 sm:text-sm"
               />
               <button
                 type="submit"

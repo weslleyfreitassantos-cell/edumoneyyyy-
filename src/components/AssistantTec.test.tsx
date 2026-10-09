@@ -161,6 +161,12 @@ describe('AssistantTec', () => {
       name: 'Pergunte ao Assistente TEC',
     });
 
+    expect(input.className).toContain('text-base');
+    expect(input.className).toContain('sm:text-sm');
+    expect(screen.getByRole('dialog', { name: 'Assistente TEC' }).className).toContain(
+      'max-w-[calc(100vw-1.5rem)]',
+    );
+
     fireEvent.change(input, { target: { value: 'grade de horário' } });
     expect(
       screen.getByRole('button', { name: /Grade de horário/i }),

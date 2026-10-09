@@ -38,7 +38,7 @@ describe('DashboardAnnouncements', () => {
     expect(dispatchEvent.mock.calls[0]?.[0].type).toBe('open-self-registration');
   });
 
-  it('mantém avisos em faixa horizontal no celular e não exibe sucesso permanente', () => {
+  it('mantém avisos na mesma coluna no celular e não exibe sucesso permanente', () => {
     render(
       <DashboardAnnouncements
         announcements={[
@@ -50,10 +50,11 @@ describe('DashboardAnnouncements', () => {
       />,
     );
 
-    const strip = screen.getByRole('region', { name: /Avisos publicados/ });
-    expect(strip.className).toContain('overflow-x-auto');
-    expect(strip.className).toContain('snap-x');
+    const strip = screen.getByRole('region', { name: 'Avisos publicados' });
+    expect(strip.className).toContain('grid');
+    expect(strip.className).not.toContain('overflow-x-auto');
     expect(strip.getAttribute('tabindex')).toBe('0');
+    expect(strip.querySelectorAll('article')[0]?.className).toContain('w-full');
     expect(screen.getByText('Reunião')).toBeTruthy();
     expect(screen.getByText('Material')).toBeTruthy();
     expect(screen.queryByText('Seu cadastro está sem pendências obrigatórias.')).toBeNull();

@@ -6,6 +6,7 @@ import {
   type AcademicCalendarEvent,
   type AcademicCalendarEventFilters,
   type AcademicCalendarEventInput,
+  type ImportBrazilianNationalHolidaysInput,
 } from '../services/academicCalendarService';
 
 export const academicCalendarKeys = {
@@ -68,6 +69,19 @@ export function useCreateAcademicCalendarEvent() {
     mutationFn: (input: AcademicCalendarEventInput) => academicCalendarService.create(input),
     onSuccess: async (_result, variables) => {
       await invalidateAcademicCalendar(queryClient, variables.institution_id);
+      await queryClient.invalidateQueries({ queryKey: academicCalendarKeys.all });
+    },
+  });
+}
+
+export function useImportBrazilianNationalHolidays() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (input: ImportBrazilianNationalHolidaysInput) =>
+      academicCalendarService.importBrazilianNationalHolidays(input),
+    onSuccess: async (_result, variables) => {
+      await invalidateAcademicCalendar(queryClient, variables.institutionId);
       await queryClient.invalidateQueries({ queryKey: academicCalendarKeys.all });
     },
   });

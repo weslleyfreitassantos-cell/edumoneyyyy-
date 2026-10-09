@@ -2,6 +2,7 @@ import {
   Atom,
   BookOpen,
   Calculator,
+  ChevronDown,
   ChevronRight,
   Dna,
   Download,
@@ -95,6 +96,7 @@ export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
   const [search, setSearch] = useState('');
+  const [isEnemExpanded, setIsEnemExpanded] = useState(true);
 
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
@@ -134,7 +136,24 @@ export default function StudyCenterPage() {
       </header>
 
       <section aria-label="Preparação para o ENEM" className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
-        <div className="flex items-start gap-2 text-indigo-700 dark:text-indigo-300"><Landmark className="mt-0.5 h-5 w-5" aria-hidden="true" /><div><p className="text-xs font-bold uppercase tracking-[0.16em]">Preparação para o ENEM</p><h2 className="mt-2 text-2xl font-bold text-indigo-950 dark:text-indigo-100">Práticas oficiais</h2><p className="mt-1 text-sm text-indigo-900 dark:text-indigo-200">Escolha uma área ou pratique uma matéria com questões oficiais disponíveis. Exercícios do Enem de 2009 até 2025.</p></div></div>
+        <button
+          type="button"
+          aria-expanded={isEnemExpanded}
+          aria-controls="student-enem-content"
+          onClick={() => setIsEnemExpanded((expanded) => !expanded)}
+          className="flex w-full items-start justify-between gap-4 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-50 dark:focus-visible:ring-indigo-300 dark:focus-visible:ring-offset-indigo-950"
+        >
+          <span className="flex min-w-0 items-start gap-2 text-indigo-700 dark:text-indigo-300">
+            <Landmark className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+            <span className="min-w-0">
+              <span className="block text-xs font-bold uppercase tracking-[0.16em]">Preparação para o ENEM</span>
+              <h2 className="mt-2 block text-2xl font-bold text-indigo-950 dark:text-indigo-100">Práticas oficiais</h2>
+              <span className="mt-1 block text-sm text-indigo-900 dark:text-indigo-200">Escolha uma área ou pratique uma matéria com questões oficiais disponíveis. Exercícios do Enem de 2009 até 2025.</span>
+            </span>
+          </span>
+          <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-indigo-700 transition-transform dark:text-indigo-300 ${isEnemExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
+        </button>
+        {isEnemExpanded ? <div id="student-enem-content" className="mt-5">
         {enemTemplates.isLoading ? <p className="mt-5 text-sm text-indigo-800 dark:text-indigo-200">Verificando práticas disponíveis...</p> : null}
         {enemTemplates.isError ? <p role="alert" className="mt-5 rounded-xl border border-rose-200 bg-white/70 p-4 text-sm text-rose-800 dark:border-rose-900/60 dark:bg-slate-900/40 dark:text-rose-200">Não foi possível verificar as práticas oficiais agora.</p> : null}
         {!enemTemplates.isLoading && enemTemplates.data?.length ? <div className="mt-5 space-y-5">
@@ -165,6 +184,7 @@ export default function StudyCenterPage() {
             ))}
           </div>
         </section>
+        </div> : null}
       </section>
 
       <section aria-label="Módulo de redação" className="rounded-2xl border border-blue-200 bg-blue-50 p-5 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/30 sm:p-6">

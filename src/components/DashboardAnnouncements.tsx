@@ -92,12 +92,12 @@ export default function DashboardAnnouncements({
       ) : (
         <div
           role="region"
-          aria-label="Avisos publicados. Deslize horizontalmente para consultar outros avisos."
+          aria-label="Avisos publicados"
           tabIndex={0}
-          className="flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] sm:grid sm:grid-cols-2 sm:overflow-visible sm:snap-none lg:grid-cols-2"
+          className="grid gap-3 pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] sm:grid-cols-2"
         >
           {announcements.map((announcement) => (
-            <article key={announcement.id} className="w-[min(80vw,24rem)] flex-none snap-start rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm sm:w-auto sm:min-w-0">
+            <article key={announcement.id} className="w-full min-w-0 rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
                   <Megaphone className="h-5 w-5" aria-hidden="true" />

@@ -16,6 +16,7 @@ const ANNOUNCEMENT_STALE_TIME = 1000 * 60;
 const DASHBOARD_STALE_TIME = 1000 * 60 * 5;
 const REGISTRATION_COMPLETION_STALE_TIME = 1000 * 60 * 5;
 const ACADEMIC_CALENDAR_STALE_TIME = 1000 * 60;
+const LEARNING_CENTER_STALE_TIME = 1000 * 60 * 5;
 
 const adminOverviewQueryKey = (institutionId: string) =>
   ['admin-overview', institutionId] as const;
@@ -39,6 +40,17 @@ const dashboardQueryKey = (
 
 const upcomingCalendarQueryKey = (institutionId: string) =>
   ['academic-calendar', 'upcoming', institutionId, 'ALL'] as const;
+
+const learningCenterQueryKey = {
+  student: (institutionId: string, profileId: string) =>
+    ['learning-center', 'student', institutionId, profileId] as const,
+  subjects: (institutionId: string) =>
+    ['learning-center', 'subjects', 'student', institutionId] as const,
+  guidedSessionV2: (institutionId: string, studentId: string) =>
+    ['learning-center', 'guided-session-v2', institutionId, studentId] as const,
+  enemSimulationTemplates: (institutionId: string) =>
+    ['learning-center', 'enem-simulation-templates', institutionId] as const,
+};
 
 const studentRegistrationQueryKey = (
   studentId: string,
@@ -175,6 +187,53 @@ export default function AuthenticatedDataPreloader() {
       });
 
       requests.push(studentDashboardRequest);
+    }
+
+    if (effectiveDatabaseRole === 'STUDENT') {
+      const learningStudentRequest = queryClient.fetchQuery({
+        queryKey: learningCenterQueryKey.student(institutionId, profileId),
+        queryFn: async () => {
+          const { learningCenterService } = await import('../services/learningCenterService');
+          return learningCenterService.studentForProfile(institutionId, profileId);
+        },
+        staleTime: LEARNING_CENTER_STALE_TIME,
+      });
+
+      requests.push(
+        learningStudentRequest,
+        queryClient.prefetchQuery({
+          queryKey: learningCenterQueryKey.subjects(institutionId),
+          queryFn: async () => {
+            const { learningCenterService } = await import('../services/learningCenterService');
+            return learningCenterService.studentSubjects(institutionId, profileId);
+          },
+          staleTime: LEARNING_CENTER_STALE_TIME,
+        }),
+        queryClient.prefetchQuery({
+          queryKey: learningCenterQueryKey.enemSimulationTemplates(institutionId),
+          queryFn: async () => {
+            const { learningCenterService } = await import('../services/learningCenterService');
+            return learningCenterService.enemSimulationTemplates(institutionId);
+          },
+          staleTime: LEARNING_CENTER_STALE_TIME,
+        }),
+        import('./learning/StudyCenterPage'),
+        learningStudentRequest.then((learningStudent) =>
+          queryClient.prefetchQuery({
+            queryKey: learningCenterQueryKey.guidedSessionV2(institutionId, learningStudent.id),
+            queryFn: async () => {
+              const { learningCenterService } = await import('../services/learningCenterService');
+              try {
+                return await learningCenterService.guidedSessionV2(institutionId, learningStudent.id);
+              } catch {
+                return null;
+              }
+            },
+            staleTime: 15000,
+            retry: false,
+          }),
+        ),
+      );
     }
 
     if (effectiveDatabaseRole === 'TEACHER') {

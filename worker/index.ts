@@ -25,7 +25,7 @@ const CONTENT_SECURITY_POLICY = [
   "base-uri 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "connect-src 'self' https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://static.cloudflareinsights.com",
+  "connect-src 'self' https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://brasilapi.com.br https://static.cloudflareinsights.com",
   "media-src 'self' blob: https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com",

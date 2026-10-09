@@ -4,6 +4,7 @@ import {
   ChevronLeft,
   ChevronRight,
   CircleAlert,
+  Download,
   Edit3,
   Eye,
   EyeOff,
@@ -20,6 +21,7 @@ import { useSubjects } from '../../../hooks/useSubjects';
 import {
   useAcademicCalendarEvents,
   useCreateAcademicCalendarEvent,
+  useImportBrazilianNationalHolidays,
   useSetAcademicCalendarEventActive,
   useUpdateAcademicCalendarEvent,
 } from '../../../hooks/useAcademicCalendar';
@@ -152,6 +154,16 @@ function getErrorMessage(error: unknown): string {
   return 'Não foi possível concluir a operação.';
 }
 
+function getAcademicCalendarYear(
+  year: { name: string; start_date: string } | undefined,
+): number {
+  const yearFromName = year?.name.match(/\b\d{4}\b/)?.[0];
+  const value = yearFromName ? Number(yearFromName) : Number(year?.start_date.slice(0, 4));
+  return Number.isInteger(value) && value >= 1900 && value <= 2199
+    ? value
+    : new Date().getFullYear();
+}
+
 export default function AcademicCalendarTab() {
   const { profile } = useAuth();
   const institutionQuery = useCurrentInstitution(profile?.id);
@@ -174,6 +186,7 @@ export default function AcademicCalendarTab() {
 
   const eventsQuery = useAcademicCalendarEvents(institutionId, filters);
   const createMutation = useCreateAcademicCalendarEvent();
+  const importHolidaysMutation = useImportBrazilianNationalHolidays();
   const updateMutation = useUpdateAcademicCalendarEvent();
   const activeMutation = useSetAcademicCalendarEventActive();
   const events = eventsQuery.data ?? [];
@@ -207,6 +220,8 @@ export default function AcademicCalendarTab() {
   }, [events]);
 
   const isSaving = createMutation.isPending || updateMutation.isPending;
+  const preferredAcademicYear = getPreferredAcademicYear(years);
+  const holidaysYear = getAcademicCalendarYear(preferredAcademicYear);
 
   function openNewEvent(): void {
     setEditingEvent(null);
@@ -313,6 +328,32 @@ export default function AcademicCalendarTab() {
     }
   }
 
+  async function handleImportBrazilianHolidays(): Promise<void> {
+    setPageError(null);
+    setFeedback(null);
+
+    if (!profile || !institutionId) {
+      setPageError('A instituição atual não foi encontrada.');
+      return;
+    }
+
+    try {
+      const result = await importHolidaysMutation.mutateAsync({
+        institutionId,
+        academicYearId: preferredAcademicYear?.id ?? null,
+        createdBy: profile.id,
+        year: holidaysYear,
+      });
+      setFeedback(
+        result.imported > 0
+          ? `${result.imported} feriado(s) nacional(is) adicionado(s) para ${result.year}. ${result.skipped} já existia(m) e foi(ram) ignorado(s).`
+          : `Os feriados nacionais de ${result.year} já estavam no calendário.`,
+      );
+    } catch (error) {
+      setPageError(getErrorMessage(error));
+    }
+  }
+
   if (institutionQuery.isLoading || eventsQuery.isLoading || yearsQuery.isLoading || classesQuery.isLoading || subjectsQuery.isLoading) {
     return <div className="rounded-xl border border-[#dfe3e8] bg-white p-8 text-sm text-[#667085] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">Carregando calendário escolar...</div>;
   }
@@ -329,9 +370,14 @@ export default function AcademicCalendarTab() {
           <h1 className="mt-2 text-2xl font-extrabold text-[#181c20] dark:text-white">Calendário escolar</h1>
           <p className="mt-2 max-w-2xl text-sm text-[#667085] dark:text-slate-400">Registre feriados, recessos e eventos acadêmicos da instituição em um único calendário.</p>
         </div>
-        <button type="button" onClick={openNewEvent} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#004a9b]">
-          <Plus className="h-4 w-4" aria-hidden="true" /> Novo evento
-        </button>
+        <div className="flex flex-wrap items-center gap-2">
+          <button type="button" onClick={() => void handleImportBrazilianHolidays()} disabled={importHolidaysMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-[#005bbf] bg-white px-4 py-2.5 text-sm font-bold text-[#005bbf] hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+            <Download className="h-4 w-4" aria-hidden="true" /> {importHolidaysMutation.isPending ? 'Importando...' : `Importar feriados nacionais (${holidaysYear})`}
+          </button>
+          <button type="button" onClick={openNewEvent} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#004a9b]">
+            <Plus className="h-4 w-4" aria-hidden="true" /> Novo evento
+          </button>
+        </div>
       </header>
 
       {pageError && <div role="alert" className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"><CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{pageError}</div>}

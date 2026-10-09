@@ -219,7 +219,9 @@ describe("SimulationPage", () => {
       }),
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "Próxima" }));
+    const nextButton = screen.getByRole("button", { name: "Próxima" });
+    expect(nextButton.parentElement?.parentElement?.className).toContain("mt-4");
+    fireEvent.click(nextButton);
     expect(
       screen.getByText(
         (_, element) =>

@@ -12,6 +12,7 @@ import { useSubjects } from '../../../hooks/useSubjects';
 import {
   useAcademicCalendarEvents,
   useCreateAcademicCalendarEvent,
+  useImportBrazilianNationalHolidays,
   useSetAcademicCalendarEventActive,
   useUpdateAcademicCalendarEvent,
 } from '../../../hooks/useAcademicCalendar';
@@ -25,6 +26,7 @@ vi.mock('../../../hooks/useSubjects', () => ({ useSubjects: vi.fn() }));
 vi.mock('../../../hooks/useAcademicCalendar', () => ({
   useAcademicCalendarEvents: vi.fn(),
   useCreateAcademicCalendarEvent: vi.fn(),
+  useImportBrazilianNationalHolidays: vi.fn(),
   useSetAcademicCalendarEventActive: vi.fn(),
   useUpdateAcademicCalendarEvent: vi.fn(),
 }));
@@ -51,6 +53,12 @@ const event = {
 };
 
 const createEvent = vi.fn().mockResolvedValue(event);
+const importHolidays = vi.fn().mockResolvedValue({
+  year: 2026,
+  total: 10,
+  imported: 10,
+  skipped: 0,
+});
 
 beforeEach(() => {
   vi.useFakeTimers({ toFake: ['Date'] });
@@ -72,6 +80,7 @@ beforeEach(() => {
   vi.mocked(useSubjects).mockReturnValue({ data: [], isLoading: false, isError: false, error: null } as never);
   vi.mocked(useAcademicCalendarEvents).mockReturnValue({ data: [event], isLoading: false, isError: false, error: null } as never);
   vi.mocked(useCreateAcademicCalendarEvent).mockReturnValue({ mutateAsync: createEvent, isPending: false } as never);
+  vi.mocked(useImportBrazilianNationalHolidays).mockReturnValue({ mutateAsync: importHolidays, isPending: false } as never);
   vi.mocked(useSetAcademicCalendarEventActive).mockReturnValue({ mutateAsync: vi.fn(), isPending: false } as never);
   vi.mocked(useUpdateAcademicCalendarEvent).mockReturnValue({ mutateAsync: vi.fn(), isPending: false } as never);
 });
@@ -118,5 +127,17 @@ describe('AcademicCalendarTab', () => {
       institution_id: 'institution-1',
       audience: 'ALL',
     })));
+  });
+
+  it('importa os feriados nacionais do ano letivo preferencial', async () => {
+    renderCalendar();
+    fireEvent.click(screen.getByRole('button', { name: /importar feriados nacionais/i }));
+
+    await waitFor(() => expect(importHolidays).toHaveBeenCalledWith({
+      institutionId: 'institution-1',
+      academicYearId: 'year-1',
+      createdBy: 'profile-1',
+      year: 2026,
+    }));
   });
 });

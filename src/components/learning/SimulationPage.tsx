@@ -1176,7 +1176,7 @@ export default function SimulationPage() {
             </fieldset>
             )}
           </section>
-          <div className="flex items-center justify-between gap-3">
+          <div className="mt-4 flex items-center justify-between gap-3">
             <div
               className="min-h-5 text-xs text-slate-500"
               role="status"
