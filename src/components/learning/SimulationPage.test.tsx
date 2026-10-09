@@ -546,6 +546,61 @@ describe("SimulationPage", () => {
     expect(storageState.createSignedUrls).toHaveBeenCalledWith([storagePath], 3600);
   });
 
+  it("deduplicates duplicate media and hides a failed media reference", async () => {
+    state.attempts = [
+      {
+        id: "attempt-1",
+        simulation_id: "simulation-1",
+        status: "IN_PROGRESS",
+        content_revision: "xequemat-archive-v1",
+        started_at: new Date().toISOString(),
+      },
+    ];
+    state.attemptDetail = {
+      attempt_id: "attempt-1",
+      simulation_id: "simulation-1",
+      status: "IN_PROGRESS",
+      content_revision: "xequemat-archive-v1",
+      started_at: new Date().toISOString(),
+      navigation_state: null,
+      answers: {},
+      questions: [
+        {
+          position: 1,
+          question_bank_id: "question-1",
+          structured_content: {
+            context: "Contexto com mídia.",
+            prompt: "Qual alternativa está correta?",
+            alternatives: [],
+            render_mode: "STRUCTURED_TEXT_WITH_MEDIA",
+            essential_media: [
+              {
+                storage_path: null,
+                public_url: "https://example.test/valid.png",
+                metadata: { archive_path: "archive/figure.png" },
+              },
+              {
+                storage_path: null,
+                public_url: "https://example.test/duplicate.png",
+                metadata: { archive_path: "archive/figure.png" },
+              },
+            ],
+          },
+          options: ["Uma", "Duas", "Três", "Quatro", "Cinco"],
+          statement_assets: [],
+        },
+      ],
+    };
+    renderPage();
+
+    const image = await screen.findByAltText("Mídia essencial da questão");
+    expect(screen.getAllByAltText("Mídia essencial da questão")).toHaveLength(1);
+    fireEvent.error(image);
+    await waitFor(() => {
+      expect(screen.queryByAltText("Mídia essencial da questão")).toBeNull();
+    });
+  });
+
   it("renders verified archive content as selectable text without statement media", async () => {
     state.attempts = [
       {

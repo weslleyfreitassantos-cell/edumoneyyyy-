@@ -48,6 +48,7 @@ const ENEM_MEDIA_URL_TTL_SECONDS = 3600;
 type MediaAssetReference = {
   storage_path: string | null;
   public_url: string | null;
+  metadata?: Record<string, unknown>;
 };
 
 type MediaUrlMap = ReadonlyMap<string, string>;
@@ -66,6 +67,13 @@ function directMediaUrl(
   return asset.public_url && /^https?:\/\//i.test(asset.public_url)
     ? asset.public_url
     : null;
+}
+
+function mediaReferenceKey(asset: MediaAssetReference | string) {
+  if (typeof asset === "string") return `url:${asset}`;
+  const archivePath = asset.metadata?.archive_path;
+  if (typeof archivePath === "string" && archivePath) return `archive:${archivePath}`;
+  return `path:${asset.storage_path ?? asset.public_url ?? ""}`;
 }
 
 function normalizeOption(
@@ -148,16 +156,39 @@ function StructuredMedia({
   media: EnemStructuredContent["essential_media"];
   signedUrls: MediaUrlMap;
 }) {
+  const visibleMedia = useMemo(() => {
+    const seen = new Set<string>();
+    return media.filter((item) => {
+      const key = mediaReferenceKey(item);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }, [media]);
+  const [failedMedia, setFailedMedia] = useState<Record<string, boolean>>({});
+  const mediaKey = visibleMedia.map(mediaReferenceKey).join("\u0000");
+
+  useEffect(() => {
+    setFailedMedia({});
+  }, [mediaKey]);
+
   return (
     <>
-      {media.map((item, index) => {
+      {visibleMedia.map((item, index) => {
+        const referenceKey = mediaReferenceKey(item);
         const url = directMediaUrl(item, signedUrls);
-        if (!url) return null;
+        if (!url || failedMedia[referenceKey]) return null;
         return (
           <img
-            key={`${url}-${index}`}
+            key={`${referenceKey}-${index}`}
             src={url}
             alt="Mídia essencial da questão"
+            onError={() =>
+              setFailedMedia((current) => ({
+                ...current,
+                [referenceKey]: true,
+              }))
+            }
             className="h-auto max-h-[70vh] max-w-full rounded-lg border border-slate-200 object-contain dark:border-slate-700"
           />
         );
