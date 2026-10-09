@@ -209,6 +209,17 @@ export default function StudyCenterPage() {
 
       <section id="study-subjects" aria-label="Matérias" className="space-y-4 scroll-mt-24">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <label className="relative block sm:w-64">
+            <span className="sr-only">Pesquisar matéria</span>
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+            <input
+              aria-label="Pesquisar matéria"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Pesquisar matéria"
+              className="min-h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            />
+          </label>
           <button
             type="button"
             aria-expanded={isSubjectsExpanded}
@@ -222,17 +233,6 @@ export default function StudyCenterPage() {
             </span>
             <ChevronDown className={`mt-1 h-5 w-5 shrink-0 text-slate-500 transition-transform dark:text-slate-400 ${isSubjectsExpanded ? 'rotate-180' : ''}`} aria-hidden="true" />
           </button>
-          <label className="relative block sm:w-64">
-            <span className="sr-only">Pesquisar matéria</span>
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-            <input
-              aria-label="Pesquisar matéria"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Pesquisar matéria"
-              className="min-h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-            />
-          </label>
         </div>
 
         {isSubjectsExpanded ? <div id="student-subjects-content">

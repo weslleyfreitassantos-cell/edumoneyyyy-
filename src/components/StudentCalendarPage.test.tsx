@@ -77,8 +77,21 @@ describe('StudentCalendarPage', () => {
     expect(screen.getByRole('heading', { name: 'Calendário escolar' })).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Todos os eventos' })).toBeTruthy();
     expect(screen.getAllByText('Mostra de projetos').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Recesso escolar').length).toBeGreaterThan(0);
-    expect(screen.getByText('2 eventos')).toBeTruthy();
+    expect(screen.queryByText('Recesso escolar')).toBeNull();
+    expect(screen.getByText('1 evento neste mês')).toBeTruthy();
+  });
+
+  it('inclui o próximo mês no carrossel durante a última semana', () => {
+    vi.setSystemTime(new Date('2026-10-25T12:00:00.000Z'));
+    render(<StudentCalendarPage />);
+
+    expect(screen.getByText('Eventos restantes deste mês e do próximo.')).toBeTruthy();
+    expect(screen.getByText('1 de 2')).toBeTruthy();
+    expect(screen.queryByText('Recesso escolar')).toBeNull();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Próximo evento' }));
+
+    expect(screen.getByText('Recesso escolar')).toBeTruthy();
   });
 
   it('permite navegar para outro mês', () => {

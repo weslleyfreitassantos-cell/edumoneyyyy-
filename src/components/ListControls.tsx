@@ -66,19 +66,19 @@ export function ListPagination({
   const lastItem = Math.min(pageStart + pageSize, totalItems);
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-gray-600">
-      <span>
+    <div className="flex flex-col items-stretch gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-3 text-sm text-gray-600 sm:flex-row sm:items-center sm:justify-between">
+      <span className="text-center sm:text-left">
         Mostrando {firstItem}–{lastItem} de {totalItems}
       </span>
 
-      <div className="flex items-center gap-2">
+      <div className="flex w-full min-w-0 items-center justify-between gap-2 sm:w-auto sm:justify-end">
         <button
           type="button"
           aria-label="Página anterior"
           title="Página anterior"
           disabled={page === 1}
           onClick={() => onPageChange(Math.max(1, page - 1))}
-          className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex h-9 shrink-0 items-center gap-1 whitespace-nowrap rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <ChevronLeft
             className="h-4 w-4"
@@ -87,7 +87,7 @@ export function ListPagination({
           Anterior
         </button>
 
-        <span className="whitespace-nowrap font-medium text-gray-700">
+        <span className="min-w-0 flex-1 whitespace-nowrap text-center font-medium text-gray-700 sm:flex-none">
           Página {page} de {totalPages}
         </span>
 
@@ -97,7 +97,7 @@ export function ListPagination({
           title="Próxima página"
           disabled={page === totalPages}
           onClick={() => onPageChange(Math.min(totalPages, page + 1))}
-          className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex h-9 shrink-0 items-center gap-1 whitespace-nowrap rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
         >
           Próxima
           <ChevronRight

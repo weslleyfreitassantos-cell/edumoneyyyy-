@@ -3,8 +3,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock3,
+  X,
 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { useInstitution } from '../contexts/InstitutionContext';
 import { useStudentAcademicCalendar } from '../hooks/useAcademicCalendar';
@@ -102,6 +103,22 @@ function sortEvents(events: AcademicCalendarEvent[]): AcademicCalendarEvent[] {
   return [...events].sort((left, right) => left.starts_at.localeCompare(right.starts_at));
 }
 
+function nextMonthKey(date: Date): string {
+  return monthKey(new Date(date.getFullYear(), date.getMonth() + 1, 1));
+}
+
+function isEventUpcomingInMonths(
+  event: AcademicCalendarEvent,
+  todayKey: string,
+  visibleMonthKeys: Set<string>,
+): boolean {
+  return calendarEventDateKeys({
+    startsAt: event.starts_at,
+    endsAt: event.ends_at,
+    allDay: event.all_day,
+  }).some((key) => key >= todayKey && visibleMonthKeys.has(key.slice(0, 7)));
+}
+
 function EventDetails({ event }: { event: AcademicCalendarEvent }) {
   return (
     <article className={`rounded-xl border p-4 ${eventTypeStyles[event.event_type]}`}>
@@ -132,9 +149,39 @@ export default function StudentCalendarPage() {
   const todayKey = dateKey(today);
   const [month, setMonth] = useState(() => new Date(today.getFullYear(), today.getMonth(), 1));
   const [selectedDate, setSelectedDate] = useState(todayKey);
+  const [isDayDetailsOpen, setIsDayDetailsOpen] = useState(false);
+  const [upcomingEventIndex, setUpcomingEventIndex] = useState(0);
+
+  useEffect(() => {
+    if (!isDayDetailsOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsDayDetailsOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isDayDetailsOpen]);
 
   const events = useMemo(() => sortEvents(eventsQuery.data ?? []), [eventsQuery.data]);
   const cells = useMemo(() => monthCells(month), [month]);
+  const currentMonthKey = monthKey(today);
+  const lastDayOfCurrentMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+  const isNearMonthEnd = today.getDate() > lastDayOfCurrentMonth - 7;
+  const visibleUpcomingMonthKeys = useMemo(
+    () => new Set([currentMonthKey, ...(isNearMonthEnd ? [nextMonthKey(today)] : [])]),
+    [currentMonthKey, isNearMonthEnd, today.getFullYear(), today.getMonth()],
+  );
+  const upcomingEvents = useMemo(
+    () => events.filter((event) => isEventUpcomingInMonths(event, todayKey, visibleUpcomingMonthKeys)),
+    [events, todayKey, visibleUpcomingMonthKeys],
+  );
   const eventsByDate = useMemo(() => {
     const result = new Map<string, AcademicCalendarEvent[]>();
 
@@ -163,10 +210,15 @@ export default function StudentCalendarPage() {
     return ids.size;
   }, [eventsByDate, month]);
 
+  useEffect(() => {
+    setUpcomingEventIndex((current) => Math.min(current, Math.max(0, upcomingEvents.length - 1)));
+  }, [upcomingEvents.length]);
+
   function changeMonth(offset: number): void {
     setMonth((current) => {
       const next = new Date(current.getFullYear(), current.getMonth() + offset, 1);
       setSelectedDate(dateKey(next));
+      setIsDayDetailsOpen(false);
       return next;
     });
   }
@@ -174,6 +226,7 @@ export default function StudentCalendarPage() {
   function goToToday(): void {
     setMonth(new Date(today.getFullYear(), today.getMonth(), 1));
     setSelectedDate(todayKey);
+    setIsDayDetailsOpen(false);
   }
 
   return (
@@ -196,23 +249,23 @@ export default function StudentCalendarPage() {
       ) : (
         <>
           <div className="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(20rem,0.75fr)]">
-            <section aria-labelledby="student-calendar-month-title" className="min-w-0 rounded-2xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <h2 id="student-calendar-month-title" className="capitalize font-extrabold text-[#181c20] dark:text-white">{monthLabel(month)}</h2>
+            <section aria-labelledby="student-calendar-month-title" className="min-w-0 rounded-2xl border border-[#dfe3e8] bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                  <h2 id="student-calendar-month-title" className="truncate text-lg capitalize font-extrabold text-[#181c20] dark:text-white sm:text-xl">{monthLabel(month)}</h2>
                   <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">{currentMonthEvents} {currentMonthEvents === 1 ? 'evento neste mês' : 'eventos neste mês'}</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button type="button" onClick={() => changeMonth(-1)} aria-label="Mês anterior" className="rounded-lg border border-[#cfd6e2] p-2 text-[#414754] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><ChevronLeft className="h-5 w-5" aria-hidden="true" /></button>
-                  <button type="button" onClick={goToToday} className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-bold text-[#005bbf] transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:hover:bg-blue-950/40">Hoje</button>
-                  <button type="button" onClick={() => changeMonth(1)} aria-label="Próximo mês" className="rounded-lg border border-[#cfd6e2] p-2 text-[#414754] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><ChevronRight className="h-5 w-5" aria-hidden="true" /></button>
+                <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center">
+                  <button type="button" onClick={() => changeMonth(-1)} aria-label="Mês anterior" className="inline-flex min-h-11 min-w-0 items-center justify-center rounded-lg border border-[#cfd6e2] p-2 text-[#414754] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><ChevronLeft className="h-5 w-5" aria-hidden="true" /></button>
+                  <button type="button" onClick={goToToday} className="inline-flex min-h-11 min-w-0 items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-bold text-[#005bbf] transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:hover:bg-blue-950/40 sm:w-auto">Hoje</button>
+                  <button type="button" onClick={() => changeMonth(1)} aria-label="Próximo mês" className="inline-flex min-h-11 min-w-0 items-center justify-center rounded-lg border border-[#cfd6e2] p-2 text-[#414754] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><ChevronRight className="h-5 w-5" aria-hidden="true" /></button>
                 </div>
               </div>
 
-              <div className="mt-5 grid grid-cols-7 overflow-hidden rounded-xl border border-[#dfe3e8] dark:border-slate-700" role="grid" aria-label={`Calendário de ${monthLabel(month)}`}>
-                {weekdays.map((weekday) => <div key={weekday} role="columnheader" className="border-b border-[#dfe3e8] bg-slate-50 p-2 text-center text-[11px] font-bold uppercase text-[#667085] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">{weekday}</div>)}
+              <div className="mt-4 grid grid-cols-7 overflow-hidden rounded-xl border border-[#dfe3e8] dark:border-slate-700 sm:mt-5" role="grid" aria-label={`Calendário de ${monthLabel(month)}`}>
+                {weekdays.map((weekday) => <div key={weekday} role="columnheader" className="border-b border-[#dfe3e8] bg-slate-50 p-1.5 text-center text-[10px] font-bold uppercase text-[#667085] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400 sm:p-2 sm:text-[11px]">{weekday}</div>)}
                 {cells.map((date, index) => {
-                  if (!date) return <div key={`empty-${index}`} className="min-h-24 border-b border-r border-[#dfe3e8] bg-slate-50/40 dark:border-slate-700 dark:bg-slate-950/20 sm:min-h-28" aria-hidden="true" />;
+                  if (!date) return <div key={`empty-${index}`} className="min-h-20 border-b border-r border-[#dfe3e8] bg-slate-50/40 dark:border-slate-700 dark:bg-slate-950/20 sm:min-h-28" aria-hidden="true" />;
 
                   const key = dateKey(date);
                   const dayEvents = eventsByDate.get(key) ?? [];
@@ -226,13 +279,16 @@ export default function StudentCalendarPage() {
                       role="gridcell"
                       aria-label={`${date.getDate()} de ${monthLabel(date)}${dayEvents.length ? `, ${dayEvents.length} evento(s)` : ''}`}
                       aria-pressed={isSelected}
-                      onClick={() => setSelectedDate(key)}
-                      className={`min-h-24 min-w-0 border-b border-r border-[#dfe3e8] p-1.5 text-left align-top transition hover:bg-blue-50/60 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] dark:border-slate-700 dark:hover:bg-blue-950/30 sm:min-h-28 sm:p-2 ${isSelected ? 'bg-blue-50/70 dark:bg-blue-950/30' : 'bg-white dark:bg-slate-900'}`}
+                      onClick={() => {
+                        setSelectedDate(key);
+                        setIsDayDetailsOpen(true);
+                      }}
+                      className={`min-h-20 min-w-0 border-b border-r border-[#dfe3e8] p-1 text-left align-top transition hover:bg-blue-50/60 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] dark:border-slate-700 dark:hover:bg-blue-950/30 sm:min-h-28 sm:p-2 ${isSelected ? 'bg-blue-50/70 dark:bg-blue-950/30' : 'bg-white dark:bg-slate-900'}`}
                     >
                       <span className={`inline-grid h-6 w-6 place-items-center rounded-full text-xs font-bold ${isToday ? 'bg-[#005bbf] text-white' : 'text-[#667085] dark:text-slate-400'}`}>{date.getDate()}</span>
                       <span className="mt-1 block space-y-1">
-                        {dayEvents.slice(0, 2).map((event) => <span key={event.id} className={`block truncate rounded border px-1 py-1 text-[10px] font-semibold leading-tight ${eventTypeStyles[event.event_type]}`}>{event.title}</span>)}
-                        {dayEvents.length > 2 ? <span className="block px-1 text-[10px] font-semibold text-[#667085] dark:text-slate-400">+{dayEvents.length - 2} evento(s)</span> : null}
+                        {dayEvents.slice(0, 2).map((event) => <span key={event.id} className={`block truncate rounded border px-1 py-1 text-[9px] font-semibold leading-tight sm:text-[10px] ${eventTypeStyles[event.event_type]}`}>{event.title}</span>)}
+                        {dayEvents.length > 2 ? <span className="block px-1 text-[9px] font-semibold text-[#667085] dark:text-slate-400 sm:text-[10px]">+{dayEvents.length - 2} evento(s)</span> : null}
                       </span>
                     </button>
                   );
@@ -255,12 +311,37 @@ export default function StudentCalendarPage() {
             <div className="flex flex-wrap items-end justify-between gap-3 border-b border-[#dfe3e8] p-5 dark:border-slate-700">
               <div>
                 <h2 id="student-calendar-all-events-title" className="font-extrabold text-[#181c20] dark:text-white">Todos os eventos</h2>
-                <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">Eventos publicados para você, sem limitar ao mês atual.</p>
+                <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">{isNearMonthEnd ? 'Eventos restantes deste mês e do próximo.' : 'Eventos que ainda acontecerão neste mês.'}</p>
               </div>
-              <span className="text-sm font-bold text-[#005bbf] dark:text-blue-300">{events.length} {events.length === 1 ? 'evento' : 'eventos'}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-[#005bbf] dark:text-blue-300">{upcomingEvents.length ? `${upcomingEventIndex + 1} de ${upcomingEvents.length}` : '0 eventos'}</span>
+                {upcomingEvents.length > 1 ? (
+                  <div className="flex items-center gap-1">
+                    <button type="button" aria-label="Evento anterior" title="Evento anterior" onClick={() => setUpcomingEventIndex((current) => (current - 1 + upcomingEvents.length) % upcomingEvents.length)} className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#cfd6e2] text-[#414754] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><ChevronLeft className="h-5 w-5" aria-hidden="true" /></button>
+                    <button type="button" aria-label="Próximo evento" title="Próximo evento" onClick={() => setUpcomingEventIndex((current) => (current + 1) % upcomingEvents.length)} className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#cfd6e2] text-[#414754] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"><ChevronRight className="h-5 w-5" aria-hidden="true" /></button>
+                  </div>
+                ) : null}
+              </div>
             </div>
-            {events.length ? <div className="grid gap-3 p-5 md:grid-cols-2">{events.map((event) => <div key={event.id}><EventDetails event={event} /></div>)}</div> : <p className="p-8 text-center text-sm text-[#667085] dark:text-slate-400">Nenhum evento escolar publicado para você.</p>}
+            {upcomingEvents.length ? <div className="p-5" aria-live="polite"><EventDetails event={upcomingEvents[upcomingEventIndex]} /></div> : <p className="p-8 text-center text-sm text-[#667085] dark:text-slate-400">Nenhum evento próximo neste período.</p>}
           </section>
+
+          {isDayDetailsOpen ? (
+            <div className="fixed inset-0 z-[70] flex items-end justify-center bg-slate-950/45 p-3 sm:items-center sm:p-6">
+              <section role="dialog" aria-modal="true" aria-labelledby="student-calendar-day-dialog-title" className="max-h-[min(82dvh,42rem)] w-full max-w-lg overflow-y-auto rounded-2xl border border-[#dfe3e8] bg-white p-5 shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf] dark:text-blue-300">Detalhes do dia</p>
+                    <h2 id="student-calendar-day-dialog-title" className="mt-2 capitalize text-lg font-extrabold text-[#181c20] dark:text-white">{fullDateLabel(selectedDate)}</h2>
+                  </div>
+                  <button type="button" autoFocus onClick={() => setIsDayDetailsOpen(false)} aria-label="Fechar detalhes do dia" className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-slate-300 dark:hover:bg-slate-800"><X className="h-5 w-5" aria-hidden="true" /></button>
+                </div>
+                <div className="mt-5 space-y-3">
+                  {selectedEvents.length ? selectedEvents.map((event) => <EventDetails key={event.id} event={event} />) : <div className="rounded-xl border border-dashed border-[#cfd6e2] p-6 text-center text-sm text-[#667085] dark:border-slate-600 dark:text-slate-400">Nenhum evento escolar neste dia.</div>}
+                </div>
+              </section>
+            </div>
+          ) : null}
         </>
       )}
     </div>

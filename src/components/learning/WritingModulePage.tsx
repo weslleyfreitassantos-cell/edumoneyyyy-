@@ -9,8 +9,11 @@ import {
   Trash2,
   X,
 } from 'lucide-react';
-import { type FormEvent, useMemo, useState } from 'react';
+import { type FormEvent, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/AuthContext';
+import { supabase } from '../../lib/supabaseClient';
 
 const draftsStorageKey = 'student-writing-module-drafts';
 const legacyDraftStorageKey = 'student-writing-module-draft';
@@ -32,10 +35,21 @@ const writingThemeTitles = writingThemes.map(({ title }) => title);
 
 interface StoredDraft {
   id: string;
+  clientId: string;
   name: string;
   theme: string;
   text: string;
   savedAt: number;
+}
+
+interface RemoteDraftRow {
+  id: string;
+  client_id: string | null;
+  name: string;
+  theme: string;
+  text: string;
+  created_at: string;
+  updated_at: string;
 }
 
 function isKnownTheme(theme: unknown): theme is string {
@@ -49,20 +63,45 @@ function normalizeDraft(value: unknown, index: number): StoredDraft | null {
   const savedAt = typeof draft.savedAt === 'number' && Number.isFinite(draft.savedAt) ? draft.savedAt : 0;
   const id = typeof draft.id === 'string' && draft.id ? draft.id : 'draft-' + savedAt + '-' + index;
   const name = typeof draft.name === 'string' && draft.name.trim() ? draft.name.trim() : 'Rascunho sem nome';
-  return { id, name, theme: draft.theme, text: draft.text, savedAt };
+  const clientId = typeof draft.clientId === 'string' && draft.clientId ? draft.clientId : id;
+  return { id, clientId, name, theme: draft.theme, text: draft.text, savedAt };
 }
 
-function loadDrafts(): StoredDraft[] {
+function getDraftsStorageKey(profileId?: string) {
+  return profileId ? draftsStorageKey + ':' + profileId : draftsStorageKey;
+}
+
+function sortDrafts(drafts: StoredDraft[]) {
+  return [...drafts].sort((first, second) => second.savedAt - first.savedAt);
+}
+
+function loadDrafts(profileId?: string): StoredDraft[] {
   if (typeof window === 'undefined') return [];
   try {
-    const storedDrafts = window.localStorage.getItem(draftsStorageKey);
+    const storedDrafts = window.localStorage.getItem(getDraftsStorageKey(profileId));
     if (storedDrafts) {
       const parsed = JSON.parse(storedDrafts);
       if (Array.isArray(parsed)) {
-        return parsed
+        const drafts = parsed
           .map((draft, index) => normalizeDraft(draft, index))
-          .filter((draft): draft is StoredDraft => Boolean(draft))
-          .sort((first, second) => second.savedAt - first.savedAt);
+          .filter((draft): draft is StoredDraft => Boolean(draft));
+        if (drafts.length || profileId === undefined) return sortDrafts(drafts);
+      }
+    }
+
+    // The original implementation used one global browser key. Keep it as a
+    // one-time migration source, then persist the cache under the student id.
+    if (profileId) {
+      const legacyStoredDrafts = window.localStorage.getItem(draftsStorageKey);
+      if (legacyStoredDrafts) {
+        const parsed = JSON.parse(legacyStoredDrafts);
+        if (Array.isArray(parsed)) {
+          return sortDrafts(
+            parsed
+              .map((draft, index) => normalizeDraft(draft, index))
+              .filter((draft): draft is StoredDraft => Boolean(draft)),
+          );
+        }
       }
     }
 
@@ -70,14 +109,35 @@ function loadDrafts(): StoredDraft[] {
     if (!legacyDraft) return [];
     const parsed = JSON.parse(legacyDraft) as { theme?: unknown; text?: unknown };
     if (!isKnownTheme(parsed.theme) || typeof parsed.text !== 'string') return [];
-    return [{ id: 'legacy-draft', name: 'Rascunho anterior', theme: parsed.theme, text: parsed.text, savedAt: Date.now() }];
+    return [{ id: 'legacy-draft', clientId: 'legacy-draft', name: 'Rascunho anterior', theme: parsed.theme, text: parsed.text, savedAt: Date.now() }];
   } catch {
     return [];
   }
 }
 
-function persistDrafts(drafts: StoredDraft[]) {
-  window.localStorage.setItem(draftsStorageKey, JSON.stringify(drafts));
+function persistDrafts(drafts: StoredDraft[], profileId?: string) {
+  try {
+    window.localStorage.setItem(getDraftsStorageKey(profileId), JSON.stringify(drafts));
+  } catch {
+    // The server copy is authoritative; local storage is only a best-effort fallback.
+  }
+}
+
+function normalizeRemoteDraft(row: RemoteDraftRow): StoredDraft | null {
+  if (!row || !isKnownTheme(row.theme) || typeof row.text !== 'string' || typeof row.name !== 'string') return null;
+  const parsedTimestamp = Date.parse(row.updated_at || row.created_at);
+  return {
+    id: row.id,
+    clientId: row.client_id || row.id,
+    name: row.name.trim() || 'Rascunho sem nome',
+    theme: row.theme,
+    text: row.text,
+    savedAt: Number.isFinite(parsedTimestamp) ? parsedTimestamp : Date.now(),
+  };
+}
+
+function createClientId() {
+  return 'draft-' + Date.now() + '-' + Math.random().toString(36).slice(2);
 }
 
 function formatSavedAt(timestamp: number) {
@@ -85,7 +145,9 @@ function formatSavedAt(timestamp: number) {
 }
 
 export default function WritingModulePage() {
-  const initialDrafts = useMemo(loadDrafts, []);
+  const { profile } = useAuth();
+  const profileId = profile?.id;
+  const initialDrafts = useMemo(() => loadDrafts(profileId), [profileId]);
   const initialDraft = initialDrafts[0];
   const [drafts, setDrafts] = useState(initialDrafts);
   const [selectedDraftId, setSelectedDraftId] = useState<string | null>(initialDraft?.id ?? null);
@@ -95,10 +157,91 @@ export default function WritingModulePage() {
   const [isNamingDraft, setIsNamingDraft] = useState(false);
   const [draftName, setDraftName] = useState('');
   const [draftNameError, setDraftNameError] = useState('');
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const wordCount = useMemo(() => {
     const trimmed = text.trim();
     return trimmed ? trimmed.split(/\s+/).length : 0;
   }, [text]);
+
+  useEffect(() => {
+    if (!profileId) return;
+
+    let cancelled = false;
+    setIsSyncing(true);
+
+    const synchronizeDrafts = async () => {
+      const localDrafts = loadDrafts(profileId);
+      const { data, error } = await supabase
+        .from('student_writing_drafts')
+        .select('id, client_id, name, theme, text, created_at, updated_at')
+        .eq('profile_id', profileId)
+        .order('updated_at', { ascending: false });
+
+      if (error) throw error;
+
+      const remoteDrafts = ((data ?? []) as RemoteDraftRow[])
+        .map(normalizeRemoteDraft)
+        .filter((draft): draft is StoredDraft => Boolean(draft));
+      const remoteClientIds = new Set(remoteDrafts.map((draft) => draft.clientId));
+      const localOnlyDrafts = localDrafts.filter((draft) => !remoteClientIds.has(draft.clientId));
+      let synchronizedDrafts = remoteDrafts;
+
+      if (localOnlyDrafts.length) {
+        const { data: migratedData, error: migrationError } = await supabase
+          .from('student_writing_drafts')
+          .upsert(
+            localOnlyDrafts.map((draft) => ({
+              client_id: draft.clientId,
+              name: draft.name,
+              theme: draft.theme,
+              text: draft.text,
+            })),
+            { onConflict: 'profile_id,client_id' },
+          )
+          .select('id, client_id, name, theme, text, created_at, updated_at');
+
+        if (migrationError) throw migrationError;
+
+        const migratedDrafts = ((migratedData ?? []) as RemoteDraftRow[])
+          .map(normalizeRemoteDraft)
+          .filter((draft): draft is StoredDraft => Boolean(draft));
+        synchronizedDrafts = [...remoteDrafts, ...migratedDrafts];
+      }
+
+      synchronizedDrafts = sortDrafts(synchronizedDrafts);
+      if (cancelled) return;
+
+      setDrafts(synchronizedDrafts);
+      persistDrafts(synchronizedDrafts, profileId);
+      try {
+        window.localStorage.removeItem(draftsStorageKey);
+        window.localStorage.removeItem(legacyDraftStorageKey);
+      } catch {
+        // A blocked browser storage must not turn a successful server sync into an error.
+      }
+      const latestDraft = synchronizedDrafts[0];
+      if (latestDraft) {
+        setSelectedDraftId(latestDraft.id);
+        setTheme(latestDraft.theme);
+        setText(latestDraft.text);
+      } else {
+        setSelectedDraftId(null);
+      }
+    };
+
+    void synchronizeDrafts()
+      .catch(() => {
+        if (!cancelled) setSaveMessage('Não foi possível sincronizar seus rascunhos agora. Eles continuam disponíveis neste dispositivo.');
+      })
+      .finally(() => {
+        if (!cancelled) setIsSyncing(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [profileId]);
 
   const openSaveDialog = () => {
     setDraftName('');
@@ -106,7 +249,7 @@ export default function WritingModulePage() {
     setIsNamingDraft(true);
   };
 
-  const saveDraft = (event: FormEvent<HTMLFormElement>) => {
+  const saveDraft = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const name = draftName.trim();
     if (!name) {
@@ -114,19 +257,53 @@ export default function WritingModulePage() {
       return;
     }
 
-    const savedDraft: StoredDraft = {
-      id: Date.now() + '-' + Math.random().toString(36).slice(2),
+    const clientId = createClientId();
+    const localDraft: StoredDraft = {
+      id: clientId,
+      clientId,
       name: name.slice(0, 80),
       theme,
       text,
       savedAt: Date.now(),
     };
-    const nextDrafts = [savedDraft, ...drafts];
-    setDrafts(nextDrafts);
-    setSelectedDraftId(savedDraft.id);
-    persistDrafts(nextDrafts);
-    setIsNamingDraft(false);
-    setSaveMessage('Rascunho "' + savedDraft.name + '" salvo neste dispositivo.');
+
+    setIsSaving(true);
+    try {
+      if (!profileId) throw new Error('Perfil do aluno indisponível.');
+
+      const { data, error } = await supabase
+        .from('student_writing_drafts')
+        .upsert(
+          {
+            client_id: clientId,
+            name: localDraft.name,
+            theme: localDraft.theme,
+            text: localDraft.text,
+          },
+          { onConflict: 'profile_id,client_id' },
+        )
+        .select('id, client_id, name, theme, text, created_at, updated_at');
+
+      if (error) throw error;
+      const savedDraft = ((data ?? []) as RemoteDraftRow[])
+        .map(normalizeRemoteDraft)
+        .find((draft) => draft?.clientId === clientId) ?? localDraft;
+      const nextDrafts = sortDrafts([savedDraft, ...drafts]);
+      setDrafts(nextDrafts);
+      setSelectedDraftId(savedDraft.id);
+      persistDrafts(nextDrafts, profileId);
+      setIsNamingDraft(false);
+      setSaveMessage('Rascunho "' + savedDraft.name + '" salvo na sua conta e disponível em qualquer dispositivo.');
+    } catch {
+      const nextDrafts = sortDrafts([localDraft, ...drafts]);
+      setDrafts(nextDrafts);
+      setSelectedDraftId(localDraft.id);
+      persistDrafts(nextDrafts, profileId);
+      setIsNamingDraft(false);
+      setSaveMessage('Rascunho salvo neste dispositivo. Não foi possível sincronizar com a sua conta agora.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const clearDraft = () => {
@@ -212,12 +389,13 @@ export default function WritingModulePage() {
                   <Trash2 className="h-4 w-4" aria-hidden="true" />
                   Limpar
                 </button>
-                <button type="button" onClick={openSaveDialog} className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white transition hover:bg-[#004d9f]">
+                <button type="button" onClick={openSaveDialog} disabled={isSaving} className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white transition hover:bg-[#004d9f] disabled:cursor-wait disabled:opacity-60">
                   <Save className="h-4 w-4" aria-hidden="true" />
-                  Salvar rascunho
+                  {isSaving ? 'Salvando...' : 'Salvar rascunho'}
                 </button>
               </div>
             </div>
+            {isSyncing ? <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">Sincronizando seus rascunhos...</p> : null}
             {saveMessage ? <p role="status" className="mt-3 text-sm font-semibold text-emerald-700 dark:text-emerald-300">{saveMessage}</p> : null}
           </section>
         </div>

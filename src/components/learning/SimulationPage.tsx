@@ -776,7 +776,7 @@ export default function SimulationPage() {
 
   if (!attemptId)
     return (
-      <section className="mx-auto max-w-3xl space-y-5">
+      <section className="mx-auto w-full max-w-4xl space-y-6">
         <Link
           to="/student/study"
           className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"
@@ -795,11 +795,11 @@ export default function SimulationPage() {
             Você está prestes a iniciar apenas a prática selecionada.
           </p>
         </header>
-        <div className="rounded-xl border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-          <h2 className="text-xl font-bold dark:text-white">
+        <div className="flex min-h-[13rem] flex-col rounded-xl border bg-white p-7 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:min-h-[14rem]">
+          <h2 className="text-2xl font-bold dark:text-white">
             {simulation.title}
           </h2>
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-3 text-base text-slate-500">
             {simulation.question_count} questões oficiais ·{" "}
             {simulation.duration_minutes ?? 20} min
           </p>
@@ -842,7 +842,7 @@ export default function SimulationPage() {
             type="button"
             onClick={begin}
             disabled={start.isPending || !student.data}
-            className="mt-6 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
+            className="mt-auto inline-flex min-h-11 self-start rounded-lg bg-[#005bbf] px-5 py-2.5 text-base font-bold text-white disabled:opacity-50"
           >
             {start.isPending
               ? "Preparando..."
@@ -852,7 +852,7 @@ export default function SimulationPage() {
           </button>
         </div>
         {completedAttempts.length > 0 ? (
-          <section className="rounded-xl border bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+          <section className="min-h-[11rem] rounded-xl border bg-white p-6 dark:border-slate-700 dark:bg-slate-900 sm:min-h-[12rem]">
             <h2 className="font-bold dark:text-white">
               Histórico desta prática
             </h2>
@@ -860,7 +860,7 @@ export default function SimulationPage() {
               {completedAttempts.slice(0, 5).map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between gap-3 py-3 text-sm"
+                  className="flex items-center justify-between gap-3 py-4 text-base"
                 >
                   <span className="text-slate-500">
                     {new Date(
