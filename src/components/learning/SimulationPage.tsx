@@ -886,15 +886,15 @@ export default function SimulationPage() {
     );
 
   return (
-    <div className="mx-auto w-full max-w-5xl space-y-4">
+    <div className="mx-auto w-full max-w-5xl">
       <Link
         to="/student/study"
-        className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"
+        className="inline-flex min-h-9 items-center gap-2 self-start rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-[#005bbf] transition hover:border-blue-300 hover:bg-blue-50 dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300 dark:hover:border-blue-500 dark:hover:bg-slate-800"
       >
         <ChevronLeft className="h-4 w-4" />
         Central de Estudos
       </Link>
-      <header>
+      <header className="mt-2">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">
@@ -913,7 +913,7 @@ export default function SimulationPage() {
       </header>
       <nav
         aria-label="Navegador da prática"
-        className="rounded-xl border bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+        className="mt-3 rounded-xl border bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
       >
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="text-sm font-bold dark:text-white">Navegação</p>
