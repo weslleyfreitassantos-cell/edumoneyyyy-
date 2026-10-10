@@ -5,7 +5,7 @@ import {
   Clock3,
   X,
 } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 
 import { useInstitution } from '../contexts/InstitutionContext';
 import { useStudentAcademicCalendar } from '../hooks/useAcademicCalendar';
@@ -337,7 +337,7 @@ export default function StudentCalendarPage() {
                   <button type="button" autoFocus onClick={() => setIsDayDetailsOpen(false)} aria-label="Fechar detalhes do dia" className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-slate-300 dark:hover:bg-slate-800"><X className="h-5 w-5" aria-hidden="true" /></button>
                 </div>
                 <div className="mt-5 space-y-3">
-                  {selectedEvents.length ? selectedEvents.map((event) => <EventDetails key={event.id} event={event} />) : <div className="rounded-xl border border-dashed border-[#cfd6e2] p-6 text-center text-sm text-[#667085] dark:border-slate-600 dark:text-slate-400">Nenhum evento escolar neste dia.</div>}
+                  {selectedEvents.length ? selectedEvents.map((event) => <Fragment key={event.id}><EventDetails event={event} /></Fragment>) : <div className="rounded-xl border border-dashed border-[#cfd6e2] p-6 text-center text-sm text-[#667085] dark:border-slate-600 dark:text-slate-400">Nenhum evento escolar neste dia.</div>}
                 </div>
               </section>
             </div>

@@ -18,12 +18,14 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import {
   useGuidedLearningSessionV2,
+  useStartGuidedLearningSessionV2,
+  useStudentGuidedLearningTargets,
   useLearningStudent,
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
@@ -95,6 +97,7 @@ function subjectIcon(subject: string): LucideIcon {
 export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [isEnemExpanded, setIsEnemExpanded] = useState(true);
   const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
@@ -103,6 +106,14 @@ export default function StudyCenterPage() {
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
   const guidedSession = useGuidedLearningSessionV2(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const guidedTargets = useStudentGuidedLearningTargets(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const startGuided = useStartGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
@@ -115,6 +126,11 @@ export default function StudyCenterPage() {
   const enemAreas = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'AREA');
   const enemSubjects = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'SUBJECT');
   const subjectCount = subjects.data?.length ?? 0;
+
+  async function startGuidedTarget(targetCanonicalSkillId: string) {
+    await startGuided.mutateAsync(targetCanonicalSkillId);
+    navigate('/student/study/guided');
+  }
 
   return (
     <div className="w-full space-y-8 overflow-x-hidden">
@@ -135,6 +151,28 @@ export default function StudyCenterPage() {
           <span>Aprenda no seu ritmo</span>
         </div>
       </header>
+
+      <section aria-label="Estudo guiado pela BNCC" className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm dark:border-emerald-900/60 dark:bg-emerald-950/20 sm:p-6">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-300">Aprendizagem com currículo oficial</p>
+          <h2 className="mt-2 text-2xl font-bold text-emerald-950 dark:text-emerald-100">Estudo guiado pela BNCC</h2>
+          <p className="mt-1 text-sm text-emerald-900 dark:text-emerald-200">Conteúdos aparecem somente quando há vínculo BNCC, série compatível, lição publicada e exercícios disponíveis.</p>
+        </div>
+        {guidedTargets.isLoading ? <p className="mt-5 text-sm text-emerald-800 dark:text-emerald-200">Verificando conteúdos elegíveis...</p> : null}
+        {guidedTargets.isError ? <p role="alert" className="mt-5 rounded-xl border border-rose-200 bg-white/70 p-4 text-sm text-rose-800 dark:border-rose-900/60 dark:bg-slate-900/40 dark:text-rose-200">Não foi possível verificar o estudo guiado agora.</p> : null}
+        {!guidedTargets.isLoading && !guidedTargets.isError && !guidedTargets.data?.length ? <p className="mt-5 rounded-xl border border-dashed border-emerald-300 bg-white/60 p-4 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-slate-900/30 dark:text-emerald-200">Nenhum conteúdo BNCC está elegível para sua matrícula neste momento. Matérias personalizadas continuam disponíveis em “Matérias”.</p> : null}
+        {guidedTargets.data?.length ? <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{guidedTargets.data.map((target) => {
+          const active = Boolean(target.active_session_id);
+          const ready = target.availability_status === 'READY' || target.availability_status === 'NO_ACTIVE_SESSION';
+          return <article key={target.target_canonical_skill_id} className="rounded-xl border border-emerald-200 bg-white p-4 dark:border-emerald-800 dark:bg-slate-900">
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-300">{target.official_code} · {target.stage.replaceAll('_', ' ')}</p>
+            <h3 className="mt-2 font-bold text-slate-900 dark:text-white">{target.title}</h3>
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{target.grade_level}º ano · {target.subject_area}</p>
+            <p className="mt-3 text-xs text-slate-600 dark:text-slate-300">{target.question_count} exercício(s) · Progresso {Math.round(target.progress)}%</p>
+            {active ? <Link to="/student/study/guided" className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800"><PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar</Link> : ready ? <button type="button" disabled={startGuided.isPending} onClick={() => void startGuidedTarget(target.target_canonical_skill_id)} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800 disabled:cursor-wait disabled:opacity-60"><PlayCircle className="h-4 w-4" aria-hidden="true" />{startGuided.isPending ? 'Iniciando...' : 'Começar estudo'}</button> : <p className="mt-4 text-xs font-semibold text-amber-700 dark:text-amber-300">{target.reason}</p>}
+          </article>;
+        })}</div> : null}
+      </section>
 
       <section aria-label="Preparação para o ENEM" className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
         <button
@@ -158,8 +196,18 @@ export default function StudyCenterPage() {
         {enemTemplates.isLoading ? <p className="mt-5 text-sm text-indigo-800 dark:text-indigo-200">Verificando práticas disponíveis...</p> : null}
         {enemTemplates.isError ? <p role="alert" className="mt-5 rounded-xl border border-rose-200 bg-white/70 p-4 text-sm text-rose-800 dark:border-rose-900/60 dark:bg-slate-900/40 dark:text-rose-200">Não foi possível verificar as práticas oficiais agora.</p> : null}
         {!enemTemplates.isLoading && enemTemplates.data?.length ? <div className="mt-5 space-y-5">
-          {enemAreas.length ? <div><h3 className="text-sm font-bold text-indigo-950 dark:text-indigo-100">Simulados por área</h3><div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{enemAreas.map((template) => <Link key={template.id} to={`/student/study/simulation?simulation=${template.id}`} className="rounded-xl border border-indigo-200 bg-white p-4 transition hover:border-indigo-500 hover:shadow-sm dark:border-indigo-800 dark:bg-slate-900"><p className="font-bold text-slate-900 dark:text-white">{template.title}</p><p className="mt-1 text-xs text-slate-500">{template.question_count} questões · {template.duration_minutes ?? 90} min</p><span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-indigo-700 dark:text-indigo-300"><PlayCircle className="h-4 w-4" />Começar</span></Link>)}</div></div> : null}
-          {enemSubjects.length ? <div><h3 className="text-sm font-bold text-indigo-950 dark:text-indigo-100">Práticas rápidas por matéria</h3><div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{enemSubjects.map((template) => <Link key={template.id} to={`/student/study/simulation?simulation=${template.id}`} className="rounded-xl border border-indigo-200 bg-white p-4 transition hover:border-indigo-500 hover:shadow-sm dark:border-indigo-800 dark:bg-slate-900"><p className="font-bold text-slate-900 dark:text-white">{template.title}</p><p className="mt-1 text-xs text-slate-500">{template.question_count} questões · {template.duration_minutes ?? 20} min</p><span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-indigo-700 dark:text-indigo-300"><PlayCircle className="h-4 w-4" />Praticar</span></Link>)}</div></div> : null}
+          {enemAreas.length ? <div><h3 className="text-sm font-bold text-indigo-950 dark:text-indigo-100">Simulados por área</h3><div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{enemAreas.map((template) => {
+            const available = template.availability_status ? template.availability_status === 'AVAILABLE' : (template.ready_count ?? template.available_count ?? 0) >= template.question_count;
+            const readyCount = template.ready_count ?? template.available_count ?? 0;
+            const cardClassName = 'rounded-xl border border-indigo-200 bg-white p-4 dark:border-indigo-800 dark:bg-slate-900';
+            return available ? <Link key={template.id} to={`/student/study/simulation?simulation=${template.id}`} className={`${cardClassName} transition hover:border-indigo-500 hover:shadow-sm`}><p className="font-bold text-slate-900 dark:text-white">{template.title}</p><p className="mt-1 text-xs text-slate-500">{template.question_count} questões · {template.duration_minutes ?? 90} min</p><span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-indigo-700 dark:text-indigo-300"><PlayCircle className="h-4 w-4" />Começar</span></Link> : <article key={template.id} className={`${cardClassName} opacity-80`}><p className="font-bold text-slate-900 dark:text-white">{template.title}</p><p className="mt-1 text-xs text-slate-500">{readyCount} de {template.question_count} questões prontas</p><span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-amber-700 dark:text-amber-300">Em preparação</span></article>;
+          })}</div></div> : null}
+          {enemSubjects.length ? <div><h3 className="text-sm font-bold text-indigo-950 dark:text-indigo-100">Práticas rápidas por matéria</h3><div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{enemSubjects.map((template) => {
+            const available = template.availability_status ? template.availability_status === 'AVAILABLE' : (template.ready_count ?? template.available_count ?? 0) >= template.question_count;
+            const readyCount = template.ready_count ?? template.available_count ?? 0;
+            const cardClassName = 'rounded-xl border border-indigo-200 bg-white p-4 dark:border-indigo-800 dark:bg-slate-900';
+            return available ? <Link key={template.id} to={`/student/study/simulation?simulation=${template.id}`} className={`${cardClassName} transition hover:border-indigo-500 hover:shadow-sm`}><p className="font-bold text-slate-900 dark:text-white">{template.title}</p><p className="mt-1 text-xs text-slate-500">{template.question_count} questões · {template.duration_minutes ?? 20} min</p><span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-indigo-700 dark:text-indigo-300"><PlayCircle className="h-4 w-4" />Praticar</span></Link> : <article key={template.id} className={`${cardClassName} opacity-80`}><p className="font-bold text-slate-900 dark:text-white">{template.title}</p><p className="mt-1 text-xs text-slate-500">{readyCount} de {template.question_count} questões prontas</p><span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-amber-700 dark:text-amber-300">Em preparação</span></article>;
+          })}</div></div> : null}
         </div> : null}
         {!enemTemplates.isLoading && !enemTemplates.data?.length ? <p className="mt-5 rounded-xl border border-dashed border-indigo-300 bg-white/60 p-4 text-sm text-indigo-800 dark:border-indigo-800 dark:bg-slate-900/40 dark:text-indigo-200">As práticas aparecem aqui assim que o banco oficial passar pela validação de conteúdo e imagens.</p> : null}
         <section aria-labelledby="official-enem-downloads-title" className="mt-6 border-t border-indigo-200 pt-5 dark:border-indigo-800">

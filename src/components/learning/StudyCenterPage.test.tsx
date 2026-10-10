@@ -9,9 +9,10 @@ const state = vi.hoisted(() => ({
     { id: 'subject-portuguese', name: 'Língua Portuguesa' },
   ],
   activities: [] as Array<{ id: string; subject_id: string; unit_id: string | null; skill_id: string | null; title: string }>,
-  simulations: [{ id: 'simulation-1', title: 'Matemática', simulation_type: 'SUBJECT', area: null, subject: 'MATEMATICA', question_count: 10, duration_minutes: 20, available_count: 10, language_options: [], metadata: {} }],
+  simulations: [{ id: 'simulation-1', title: 'Matemática', simulation_type: 'SUBJECT', area: null, subject: 'MATEMATICA', subject_code: 'MATEMATICA', question_count: 10, duration_minutes: 20, available_count: 10, ready_count: 10, availability_status: 'AVAILABLE', language_options: [], metadata: {} }],
   adaptiveTarget: null as null | { canonicalSkillId: string; target: { subjectArea: string } },
   guidedSession: null as null | { id: string; status: string },
+  guidedTargets: [] as Array<{ target_canonical_skill_id: string; subject_id: string; catalog_id: string; catalog_code: string; official_code: string; title: string; subject_area: string; stage: string; grade_level: number; availability_status: string; progress: number; has_lesson: boolean; question_count: number; active_session_id: string | null; active_session_status: string | null; reason: string }>,
   startGuidedSession: vi.fn().mockResolvedValue({ session_id: 'session-1' }),
 }));
 
@@ -31,6 +32,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningUnits: () => ({ data: [{ id: 'unit-1', subject_id: 'subject-math', title: 'Números', description: 'Conteúdos essenciais', sort_order: 1 }], isLoading: false }),
   useLearningSkills: () => ({ data: [{ id: 'skill-1', unit_id: 'unit-1', title: 'Resolver problemas', description: null, sort_order: 1 }], isLoading: false }),
   useGuidedLearningSessionV2: () => ({ data: state.guidedSession, isLoading: false }),
+  useStudentGuidedLearningTargets: () => ({ data: state.guidedTargets, isLoading: false, isError: false }),
   useStartGuidedLearningSessionV2: () => ({ mutateAsync: state.startGuidedSession, isPending: false }),
 }));
 
@@ -46,6 +48,7 @@ afterEach(() => {
   state.activities = [];
   state.adaptiveTarget = null;
   state.guidedSession = null;
+  state.guidedTargets = [];
   state.startGuidedSession.mockReset().mockResolvedValue({ session_id: 'session-1' });
 });
 
