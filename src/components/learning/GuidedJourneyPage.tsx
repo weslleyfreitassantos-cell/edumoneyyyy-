@@ -71,6 +71,7 @@ export default function GuidedJourneyPage() {
     () => [...(step.data?.questions ?? [])].sort((left, right) => left.position - right.position),
     [step.data?.questions],
   );
+  const demoPreview = session.data?.metadata?.demo_preview === true;
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
   const stepHeading = step.data?.step_type === 'LESSON'
     ? step.data.lesson?.title ?? 'Aprender'
@@ -146,6 +147,7 @@ export default function GuidedJourneyPage() {
           <span className="shrink-0 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold text-blue-100">Etapa {step.data.position + 1}</span>
         </div>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-blue-100">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
+        {demoPreview ? <p className="mt-4 rounded-lg border border-amber-200/40 bg-amber-100/15 px-3 py-2 text-xs font-bold text-amber-100">Prévia demonstrativa · revisão pedagógica pendente</p> : null}
         {step.data?.curriculum?.official_code ? (
           <div className="mt-5 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-blue-50">
             <p className="font-bold">BNCC · {step.data.curriculum.official_code}</p>
