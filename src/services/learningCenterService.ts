@@ -180,7 +180,8 @@ export interface GuidedSessionV2 {
 
 export interface GuidedLearningTarget {
   target_canonical_skill_id: string;
-  subject_id: string;
+  /** Null for global BNCC discovery; populated only for an institutional subject link. */
+  subject_id: string | null;
   catalog_id: string;
   catalog_code: string;
   official_code: string;

@@ -2,6 +2,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 
 import type { XequematArchiveQuestion, XequematArchiveReport } from './xequemat-archive.ts';
+import { classifyXequematTopic } from './classification.ts';
 
 export interface XequematMediaManifestAsset {
   canonicalPath: string;
@@ -56,18 +57,17 @@ function runtimeBlocks(record: XequematArchiveQuestion) {
 }
 
 function catalogClassification(record: XequematArchiveQuestion) {
-  const subject = record.area === 'MATEMATICA'
-    ? 'MATEMATICA'
-    : record.area === 'LINGUAGENS'
-      ? record.language === 'ENGLISH'
-        ? 'INGLES'
-        : record.language === 'SPANISH'
-          ? 'ESPANHOL'
-          : 'LINGUA_PORTUGUESA'
-      : null;
+  const classification = classifyXequematTopic(record.area, record.language, record.subject);
   return {
     enem_area: record.area,
-    ...(subject ? { enem_subject: subject } : {}),
+    ...(classification ? {
+      enem_subject: classification.subject,
+      classification_method: classification.method,
+      classification_confidence: classification.confidence,
+      classification_evidence: classification.evidence,
+      classification_version: 'v2',
+      classification_review_state: classification.reviewState,
+    } : {}),
   };
 }
 

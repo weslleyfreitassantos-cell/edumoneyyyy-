@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -12,7 +12,7 @@ const state = vi.hoisted(() => ({
   simulations: [{ id: 'simulation-1', title: 'Matemática', simulation_type: 'SUBJECT', area: null, subject: 'MATEMATICA', subject_code: 'MATEMATICA', question_count: 10, duration_minutes: 20, available_count: 10, ready_count: 10, availability_status: 'AVAILABLE', language_options: [], metadata: {} }],
   adaptiveTarget: null as null | { canonicalSkillId: string; target: { subjectArea: string } },
   guidedSession: null as null | { id: string; status: string },
-  guidedTargets: [] as Array<{ target_canonical_skill_id: string; subject_id: string; catalog_id: string; catalog_code: string; official_code: string; title: string; subject_area: string; stage: string; grade_level: number; availability_status: string; progress: number; has_lesson: boolean; question_count: number; active_session_id: string | null; active_session_status: string | null; reason: string }>,
+  guidedTargets: [] as Array<{ target_canonical_skill_id: string; subject_id: string | null; catalog_id: string; catalog_code: string; official_code: string; title: string; subject_area: string; stage: string; grade_level: number; availability_status: string; progress: number; has_lesson: boolean; question_count: number; active_session_id: string | null; active_session_status: string | null; reason: string }>,
   startGuidedSession: vi.fn().mockResolvedValue({ session_id: 'session-1' }),
 }));
 
@@ -140,5 +140,32 @@ describe('StudyCenterPage', () => {
     expect(screen.getByRole('region', { name: 'Estudo de Matemática' })).toBeTruthy();
     expect(screen.getByText('Números')).toBeTruthy();
     expect(screen.queryByText('O que você quer estudar?')).toBeNull();
+  });
+
+  it('permite iniciar uma jornada BNCC global sem vínculo com matéria institucional', async () => {
+    state.guidedTargets = [{
+      target_canonical_skill_id: 'skill-history',
+      subject_id: null,
+      catalog_id: 'catalog-bncc',
+      catalog_code: 'BNCC_2018',
+      official_code: 'EF06HI01',
+      title: 'Povos e culturas na Antiguidade',
+      subject_area: 'História',
+      stage: 'ENSINO_FUNDAMENTAL',
+      grade_level: 6,
+      availability_status: 'NO_ACTIVE_SESSION',
+      progress: 0,
+      has_lesson: true,
+      question_count: 5,
+      active_session_id: null,
+      active_session_status: null,
+      reason: 'Conteúdo disponível',
+    }];
+
+    renderPage();
+
+    expect(screen.getByText(/EF06HI01/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Começar estudo' }));
+    await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('skill-history'));
   });
 });

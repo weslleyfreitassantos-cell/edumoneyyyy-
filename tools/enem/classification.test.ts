@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { classifyCanonicalQuestion, validateSubjectClassificationRegistry } from './classification';
+import { classifyCanonicalQuestion, classifyXequematTopic, validateSubjectClassificationRegistry } from './classification';
 
 function question(overrides: Partial<Parameters<typeof classifyCanonicalQuestion>[0]> = {}) {
   return {
@@ -19,6 +19,21 @@ function question(overrides: Partial<Parameters<typeof classifyCanonicalQuestion
 }
 
 describe('ENEM subject classification', () => {
+  it('uses explicit Xequemat taxonomy topics for high-confidence subject promotion', () => {
+    expect(classifyXequematTopic('CIENCIAS_HUMANAS', null, 'geografia-agraria')?.subject).toBe('GEOGRAFIA');
+    expect(classifyXequematTopic('CIENCIAS_HUMANAS', null, 'filosofia-politica')?.subject).toBe('FILOSOFIA');
+    expect(classifyXequematTopic('CIENCIAS_NATUREZA', null, 'estequiometria')?.subject).toBe('QUIMICA');
+    expect(classifyXequematTopic('CIENCIAS_NATUREZA', null, 'ecologia-cadeias-e-teias-alimentares')?.subject).toBe('BIOLOGIA');
+    expect(classifyXequematTopic('LINGUAGENS', null, 'interpretacao-de-texto')?.subject).toBe('LINGUA_PORTUGUESA');
+    expect(classifyXequematTopic('CIENCIAS_HUMANAS', null, 'sociedade-colonial')?.subject).toBe('HISTORIA');
+  });
+
+  it('fails closed for unknown or ambiguous Xequemat topics', () => {
+    expect(classifyXequematTopic('CIENCIAS_HUMANAS', null, 'humanidades')).toBeNull();
+    expect(classifyXequematTopic('CIENCIAS_NATUREZA', null, '')).toBeNull();
+    expect(classifyXequematTopic('LINGUAGENS', 'ENGLISH', 'interpretacao-de-texto')?.subject).toBe('INGLES');
+  });
+
   it('classifies deterministic math and foreign-language occurrences', () => {
     expect(classifyCanonicalQuestion(question({ canonicalId: 'math', area: 'MATEMATICA' })).subject).toBe('MATEMATICA');
     expect(classifyCanonicalQuestion(question({ canonicalId: 'en', area: 'LINGUAGENS', language: 'ENGLISH' })).subject).toBe('INGLES');
