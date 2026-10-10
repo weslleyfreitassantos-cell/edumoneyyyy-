@@ -340,7 +340,6 @@ declare
   enrollment_class_id uuid;
   target_institution_skill_id uuid;
 begin
-  perform private.assert_bncc_guided_session_scope(p_institution_id, p_student_id, p_target_canonical_skill_id);
   select skill.* into target_skill
     from public.learning_curriculum_skills skill
    where skill.id = p_target_canonical_skill_id
