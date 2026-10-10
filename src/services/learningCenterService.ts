@@ -804,6 +804,11 @@ function isLegacyGuidedV4Miss(error: { message?: string | null } | null | undefi
   return /LEARNING_GUIDED_STEP_NOT_FOUND/i.test(error?.message ?? '');
 }
 
+async function isLegacyGuidedStep(stepId: string): Promise<boolean> {
+  const legacy = await supabase.rpc('get_guided_learning_step_v2', { p_step_id: stepId });
+  return !legacy.error;
+}
+
 async function uniqueIds(
   query: PromiseLike<{
     data: Array<{
@@ -1261,7 +1266,12 @@ export const learningCenterService = {
     (async () => {
       const v4 = await supabase.rpc('advance_guided_learning_session_v4', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey });
       if (!v4.error && v4.data) return v4.data as { session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string };
-      if (!isMissingRpcError(v4.error)) throw new Error(v4.error?.message ?? 'Não foi possível avançar a jornada BNCC.');
+      if (!isMissingRpcError(v4.error)) {
+        if (await isLegacyGuidedStep(input.stepId)) {
+          return read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(supabase.rpc('advance_guided_learning_session_v2', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey }));
+        }
+        throw new Error(v4.error?.message ?? 'Não foi possível avançar a jornada BNCC.');
+      }
       return read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(supabase.rpc('advance_guided_learning_session_v2', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey }));
     })(),
 
@@ -1269,7 +1279,12 @@ export const learningCenterService = {
     (async () => {
       const v4 = await supabase.rpc('submit_guided_learning_step_v4', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey });
       if (!v4.error && v4.data) return v4.data as GuidedStepAttemptResultV2;
-      if (!isMissingRpcError(v4.error)) throw new Error(v4.error?.message ?? 'Não foi possível corrigir a etapa BNCC.');
+      if (!isMissingRpcError(v4.error)) {
+        if (await isLegacyGuidedStep(input.stepId)) {
+          return read<GuidedStepAttemptResultV2>(supabase.rpc('submit_guided_learning_step_v2', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey }));
+        }
+        throw new Error(v4.error?.message ?? 'Não foi possível corrigir a etapa BNCC.');
+      }
       return read<GuidedStepAttemptResultV2>(supabase.rpc('submit_guided_learning_step_v2', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey }));
     })(),
 
