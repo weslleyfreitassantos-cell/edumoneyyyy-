@@ -38,6 +38,14 @@ export interface SubjectClassificationRecord {
   source_fingerprint: string;
 }
 
+export interface XequematTopicClassification {
+  subject: EnemSubject;
+  method: 'XEQUEMAT_TOPIC_TAXONOMY_V2';
+  confidence: 'HIGH';
+  evidence: string;
+  reviewState: 'VERIFIED';
+}
+
 const signals: Record<Exclude<EnemSubject, 'MATEMATICA' | 'INGLES' | 'ESPANHOL'>, string[][]> = {
   LINGUA_PORTUGUESA: [
     ['poema', 'poesia', 'romance', 'conto', 'crônica', 'cronica', 'literári', 'literari', 'eu lírico', 'eu lirico', 'canção', 'cancao', 'letra'],
@@ -93,6 +101,110 @@ function normalized(value: string) {
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLocaleLowerCase('pt-BR');
+}
+
+const topicPrefixesByArea: Record<Exclude<EnemArea, 'MATEMATICA'>, Partial<Record<EnemSubject, string[]>>> = {
+  LINGUAGENS: {
+    LINGUA_PORTUGUESA: [
+      'argumentacao', 'artes-cenicas', 'artes-visuais', 'coesao', 'cronica', 'diversidade-linguistica',
+      'figuras-de-linguagem', 'funcoes-da-linguagem', 'genero', 'generos-textuais', 'gramatica',
+      'humor', 'interpretacao', 'intertextualidade', 'jornalismo', 'leitura', 'linguagem',
+      'literatura', 'morfologia', 'multimodalidade', 'musica', 'neologismo', 'oralidade',
+      'parnasianismo', 'poesia', 'pontuacao', 'pressupostos', 'publicidade', 'realismo',
+      'regionalismo', 'romantismo', 'semantica', 'sintaxe', 'tipologia', 'vanguardas',
+      'variacao-linguistica', 'vocabulario',
+    ],
+  },
+  CIENCIAS_HUMANAS: {
+    GEOGRAFIA: [
+      'agricultura', 'biomas-e-vegetacao', 'cartografia', 'climatologia', 'conflitos-territoriais',
+      'demografia', 'desertificacao', 'escala', 'fontes-de-energia', 'formacao-do-territorio',
+      'fusos-horarios', 'geografia', 'geopolitica', 'globalizacao', 'hidrografia', 'industrializacao',
+      'matriz-energetica', 'migracoes', 'mobilidade-urbana', 'mudancas-climaticas', 'pedologia',
+      'questoes-ambientais', 'regionalizacao', 'relevo', 'segregacao-urbana', 'solo', 'territorio',
+      'urbanizacao',
+    ],
+    FILOSOFIA: [
+      'ceticismo', 'contratualismo', 'critic', 'epistem', 'existencialismo', 'filosofia', 'filosofico',
+      'iluminismo', 'kant', 'marxismo', 'metafisica', 'nietzsche', 'platao', 'racionalismo',
+      'razao', 'socrates', 'etica', 'moral', 'virtude',
+    ],
+    SOCIOLOGIA: [
+      'antropologia', 'cidadania', 'classe-social', 'cultura', 'democracia', 'desigualdade',
+      'diversidade-sexual', 'educacao-fisica', 'escola-de-frankfurt', 'estratificacao', 'genero-e-sociedade',
+      'identidade', 'industria-cultural', 'meios-de-comunicacao', 'movimentos-sociais', 'patrimonio-cultural',
+      'poder-', 'racismo', 'social', 'sociabilidade', 'sociologia', 'sociedade', 'trabalho-e-sociedade',
+    ],
+    HISTORIA: [
+      'absolutismo', 'africa', 'apartheid', 'antiguidade', 'brasil-', 'catolicismo', 'civilizacoes',
+      'colonizacao', 'comuna', 'cruzadas', 'desenvolvimentismo', 'ditadura', 'egito-antigo', 'era-',
+      'escravidao', 'expansao', 'formacao-historica', 'guerra', 'historia', 'imperialismo', 'independencia',
+      'idade-media', 'iluminismo', 'imperio', 'inquisicao', 'invasoes', 'mercantilismo', 'modernizacao',
+      'nazismo', 'operacao-condor', 'periodo-', 'povos-indigenas', 'reforma-protestante', 'regionalismo',
+      'renascimento', 'republica', 'revolucao', 'segunda-guerra', 'sociedade-colonial', 'voto-feminino',
+    ],
+  },
+  CIENCIAS_NATUREZA: {
+    BIOLOGIA: [
+      'biologia', 'biodiversidade', 'bioquimica', 'biotecnologia', 'botanica', 'cadeia-alimentar',
+      'citologia', 'ecologia', 'evolucao', 'fisiologia', 'genetica', 'microbiologia', 'taxonomia',
+      'zoologia',
+    ],
+    QUIMICA: [
+      'acidos', 'atomo', 'bases', 'calculo-de-massa', 'carboidratos', 'combustao', 'cinetica-quimica',
+      'densidade-e-propriedades', 'eletroquimica', 'eletrolise', 'equilibrio', 'estequiometria',
+      'forcas-intermoleculares', 'identificacao-e-simbologia', 'ligacoes', 'leis-dos-gases', 'metalurgia',
+      'modelos-atomicos', 'molecula', 'oxirreducao', 'ph-e-', 'polaridade', 'polimeros', 'propriedades-coligativas',
+      'radioatividade', 'reacoes', 'separacao-de-misturas', 'solubilidade', 'solucoes', 'substancias',
+      'tabela-periodica', 'termoquimica',
+    ],
+    FISICA: [
+      'acustica', 'aceleracao', 'circuitos', 'cinematica', 'cosmologia', 'dilatacao', 'dinamica',
+      'efeito-doppler', 'efeito-fotoeletrico', 'efeito-joule', 'eletrostatica', 'eletromagnetismo',
+      'estatica', 'fisica', 'forca', 'gravitacao', 'hidrostatica', 'impulso', 'leis-de-newton',
+      'lentes-e-espelhos', 'maquinas-termicas', 'mecanica', 'movimento', 'ondas', 'optica', 'potencia',
+      'pressao', 'termologia', 'termodinamica', 'trabalho-e-energia', 'velocidade',
+    ],
+  },
+};
+
+function topicMatchesPrefix(topic: string, prefix: string) {
+  return topic === prefix || topic.startsWith(`${prefix}-`);
+}
+
+/**
+ * Xequemat's `assunto-*` taxonomy is an explicit source signal. It is kept
+ * separate from free-text keyword inference so only named, reproducible topics
+ * can promote a subject into a production pool.
+ */
+export function classifyXequematTopic(
+  area: string | null | undefined,
+  language: string | null | undefined,
+  topic: string | null | undefined,
+): XequematTopicClassification | null {
+  const normalizedArea = area as EnemArea | undefined;
+  const normalizedLanguage = String(language ?? '').toUpperCase();
+  const normalizedTopic = normalized(String(topic ?? ''));
+  if (normalizedLanguage === 'ENGLISH') return { subject: 'INGLES', method: 'XEQUEMAT_TOPIC_TAXONOMY_V2', confidence: 'HIGH', evidence: 'language:ENGLISH', reviewState: 'VERIFIED' };
+  if (normalizedLanguage === 'SPANISH') return { subject: 'ESPANHOL', method: 'XEQUEMAT_TOPIC_TAXONOMY_V2', confidence: 'HIGH', evidence: 'language:SPANISH', reviewState: 'VERIFIED' };
+  if (normalizedArea === 'MATEMATICA') return { subject: 'MATEMATICA', method: 'XEQUEMAT_TOPIC_TAXONOMY_V2', confidence: 'HIGH', evidence: 'area:MATEMATICA', reviewState: 'VERIFIED' };
+  if (!normalizedTopic || !(normalizedArea && normalizedArea in topicPrefixesByArea)) return null;
+  if (normalizedArea === 'CIENCIAS_HUMANAS' && topicMatchesPrefix(normalizedTopic, 'sociedade-colonial')) {
+    return { subject: 'HISTORIA', method: 'XEQUEMAT_TOPIC_TAXONOMY_V2', confidence: 'HIGH', evidence: `assunto:${normalizedTopic}`, reviewState: 'VERIFIED' };
+  }
+
+  const groups = topicPrefixesByArea[normalizedArea as Exclude<EnemArea, 'MATEMATICA'>];
+  const matches = Object.entries(groups)
+    .filter(([, prefixes]) => prefixes?.some((prefix) => topicMatchesPrefix(normalizedTopic, prefix)))
+    .map(([subject]) => subject as EnemSubject);
+  if (matches.length !== 1) return null;
+  return {
+    subject: matches[0],
+    method: 'XEQUEMAT_TOPIC_TAXONOMY_V2',
+    confidence: 'HIGH',
+    evidence: `assunto:${normalizedTopic}`,
+    reviewState: 'VERIFIED',
+  };
 }
 
 export function sourceFingerprint(question: Pick<CanonicalEnemQuestion, 'statement' | 'options'>) {
