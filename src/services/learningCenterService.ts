@@ -800,6 +800,10 @@ function isMissingRpcError(error: { message?: string | null; code?: string | nul
     || /could not find the function|function .* does not exist/i.test(message);
 }
 
+function isLegacyGuidedV4Miss(error: { message?: string | null } | null | undefined): boolean {
+  return /LEARNING_GUIDED_STEP_NOT_FOUND/i.test(error?.message ?? '');
+}
+
 async function uniqueIds(
   query: PromiseLike<{
     data: Array<{
@@ -1179,7 +1183,10 @@ export const learningCenterService = {
   guidedSessionV2: (institutionId: string, studentId: string) =>
     (async () => {
       const v4 = await supabase.rpc('get_guided_learning_session_v4', { p_institution_id: institutionId, p_student_id: studentId });
-      if (!v4.error) return v4.data as GuidedSessionV2 | null;
+      if (!v4.error && v4.data) return v4.data as GuidedSessionV2;
+      if (!v4.error && v4.data === null) {
+        return read<GuidedSessionV2 | null>(supabase.rpc('get_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId }));
+      }
       if (!isMissingRpcError(v4.error)) throw new Error(v4.error.message);
       return read<GuidedSessionV2 | null>(supabase.rpc('get_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId }));
     })(),
@@ -1188,7 +1195,7 @@ export const learningCenterService = {
     (async () => {
       const v4 = await supabase.rpc('get_guided_learning_step_v4', { p_step_id: stepId });
       if (!v4.error) return v4.data as GuidedStepV2;
-      if (!isMissingRpcError(v4.error)) throw new Error(v4.error.message);
+      if (!isMissingRpcError(v4.error) && !isLegacyGuidedV4Miss(v4.error)) throw new Error(v4.error.message);
       return read<GuidedStepV2>(supabase.rpc('get_guided_learning_step_v2', { p_step_id: stepId }));
     })(),
 
