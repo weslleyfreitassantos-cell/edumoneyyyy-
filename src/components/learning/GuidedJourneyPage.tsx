@@ -1,5 +1,5 @@
 import { BookOpenCheck, CheckCircle2, ChevronLeft, CircleAlert, Send } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
@@ -16,6 +16,10 @@ function idempotencyKey(stepId: string): string {
   return `guided-v2:${stepId}`;
 }
 
+function draftKey(stepId: string): string {
+  return `tec-escola:guided-draft:${stepId}`;
+}
+
 export default function GuidedJourneyPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
@@ -28,6 +32,30 @@ export default function GuidedJourneyPage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [lessonDone, setLessonDone] = useState(false);
+  const hydratedStepId = useRef<string | null>(null);
+
+  useEffect(() => {
+    const stepId = step.data?.id;
+    if (!stepId) return;
+    hydratedStepId.current = stepId;
+    try {
+      const stored = window.sessionStorage.getItem(draftKey(stepId));
+      setAnswers(stored ? JSON.parse(stored) as Record<string, string> : {});
+    } catch {
+      setAnswers({});
+    }
+  }, [step.data?.id]);
+
+  useEffect(() => {
+    const stepId = step.data?.id;
+    if (!stepId || hydratedStepId.current !== stepId || submitted) return;
+    try {
+      if (Object.keys(answers).length === 0) window.sessionStorage.removeItem(draftKey(stepId));
+      else window.sessionStorage.setItem(draftKey(stepId), JSON.stringify(answers));
+    } catch {
+      // Draft persistence is a convenience; server progress remains authoritative.
+    }
+  }, [answers, step.data?.id, submitted]);
 
   const questions = useMemo(
     () => [...(step.data?.questions ?? [])].sort((left, right) => left.position - right.position),
@@ -53,13 +81,16 @@ export default function GuidedJourneyPage() {
         <ul className="mt-3 space-y-2 text-sm">
           {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}</li>)}
         </ul>
-        <button type="button" onClick={() => { setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>
+        <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>
       </div>
     </div>;
   }
 
   if (session.isLoading || step.isLoading) {
     return <div className="grid min-h-56 place-items-center text-sm text-slate-500">Carregando sua jornada...</div>;
+  }
+  if (session.isError || step.isError) {
+    return <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-lg font-bold">Não foi possível carregar a jornada</h1><p className="mt-2">Tente novamente. Seu progresso salvo no servidor permanece protegido.</p><button type="button" onClick={() => { void session.refetch(); if (step.isError) void step.refetch(); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button></section>;
   }
   if (!session.data) {
     return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Nenhuma jornada guiada está ativa. Volte à Central de Estudos para começar.</section>;
@@ -86,7 +117,10 @@ export default function GuidedJourneyPage() {
       stepId: step.data.id,
       answers: questions.map((question) => ({ question_bank_id: question.id, answer: answers[question.id] })),
       idempotencyKey: idempotencyKey(step.data.id),
-    }).then(() => setSubmitted(true)).catch(() => undefined);
+    }).then(() => {
+      window.sessionStorage.removeItem(draftKey(step.data!.id));
+      setSubmitted(true);
+    }).catch(() => undefined);
   };
 
   return (
@@ -109,9 +143,10 @@ export default function GuidedJourneyPage() {
           <p className="whitespace-pre-wrap text-[15px] leading-7 text-slate-700 dark:text-slate-200">{step.data.lesson?.content_markdown ?? step.data.lesson?.summary}</p>
           {step.data.lesson?.worked_example && <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-100"><strong>Exemplo guiado</strong><br />{step.data.lesson.worked_example}</div>}
           <button type="button" onClick={finishLesson} disabled={advance.isPending || lessonDone} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><CheckCircle2 className="h-4 w-4" />{advance.isPending ? 'Salvando...' : lessonDone ? 'Etapa registrada' : 'Continuar para a prática'}</button>
+          {advance.isError && <p role="alert" className="text-sm text-red-600">{advance.error.message}</p>}
         </article>
       ) : step.data.step_type === 'RETURN_TO_TARGET' ? (
-        <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm dark:border-emerald-900/60 dark:bg-emerald-950/20"><CheckCircle2 className="h-8 w-8 text-emerald-600" /><h2 className="mt-3 text-xl font-bold text-emerald-950 dark:text-emerald-100">Você fortaleceu a base</h2><p className="mt-2 text-sm text-emerald-900 dark:text-emerald-200">Agora vamos voltar ao objetivo original e conferir o que ficou consolidado.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button></article>
+        <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm dark:border-emerald-900/60 dark:bg-emerald-950/20"><CheckCircle2 className="h-8 w-8 text-emerald-600" /><h2 className="mt-3 text-xl font-bold text-emerald-950 dark:text-emerald-100">Você fortaleceu a base</h2><p className="mt-2 text-sm text-emerald-900 dark:text-emerald-200">Agora vamos voltar ao objetivo original e conferir o que ficou consolidado.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button>{advance.isError && <p role="alert" className="mt-3 text-sm text-red-600">{advance.error.message}</p>}</article>
       ) : (
         <section className="space-y-5">
           {questions.map((question, index) => (
