@@ -1211,7 +1211,7 @@ export const learningCenterService = {
     targetCanonicalSkillId: string;
   }) =>
     (async () => {
-      const v4 = await supabase.rpc('start_guided_learning_session_v4', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId });
+      const v4 = await supabase.rpc('start_bncc_guided_learning_session_v4', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId });
       if (!v4.error && v4.data) return v4.data as { session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V4' };
       // V4 deliberately refuses to cancel an active/paused V2 or V3 session.
       // V2's compatibility start is idempotent for V2, but its legacy branch

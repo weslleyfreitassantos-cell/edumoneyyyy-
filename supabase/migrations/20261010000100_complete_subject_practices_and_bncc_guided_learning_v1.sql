@@ -412,12 +412,16 @@ $$;
 revoke all on function public.list_student_guided_learning_targets(uuid, uuid) from public, anon;
 grant execute on function public.list_student_guided_learning_targets(uuid, uuid) to authenticated;
 
--- V4 sessions must be started from an explicitly promoted BNCC target and the
--- student's current enrollment must carry the matching institutional subject
--- link. This prevents a custom subject or an arbitrary canonical id from
--- reaching the adaptive engine through a direct RPC call.
-create or replace function private.validate_bncc_guided_session_scope()
-returns trigger
+-- BNCC sessions use a guarded entry point while historical V4 adaptive
+-- sessions keep their existing compatibility contract. This prevents a
+-- custom subject from reaching the BNCC discovery path without breaking
+-- already-supported V4 journeys such as the adaptive physics proof.
+create or replace function private.assert_bncc_guided_session_scope(
+  p_institution_id uuid,
+  p_student_id uuid,
+  p_target_canonical_skill_id uuid
+)
+returns void
 language plpgsql
 security definer
 set search_path = ''
@@ -427,10 +431,6 @@ declare
   target_stage text;
   target_grade smallint;
 begin
-  if new.planner_version <> 'V4' then
-    return new;
-  end if;
-
   select skill.subject_area, grade.stage, grade.grade_level
     into target_subject_area, target_stage, target_grade
     from public.learning_curriculum_skills skill
@@ -442,7 +442,7 @@ begin
       on grade.canonical_skill_id = skill.id
      and grade.catalog_id = skill.catalog_id
      and grade.active
-   where skill.id = new.target_canonical_skill_id
+   where skill.id = p_target_canonical_skill_id
      and skill.active
      and skill.node_kind = 'LEAF'
      and skill.content_readiness = 'ADAPTIVE_READY'
@@ -459,15 +459,15 @@ begin
     select 1
     from public.enrollments enrollment
     join public.classes class on class.id = enrollment.class_id
-      and class.institution_id = new.institution_id
+       and class.institution_id = p_institution_id
       and class.active
     join public.subject_offerings offering on offering.class_id = class.id and offering.active
     join public.learning_curriculum_subject_links subject_link
-      on subject_link.institution_id = new.institution_id
+     on subject_link.institution_id = p_institution_id
      and subject_link.subject_id = offering.subject_id
      and subject_link.subject_area = target_subject_area
      and subject_link.active
-    where enrollment.student_id = new.student_id
+     where enrollment.student_id = p_student_id
       and enrollment.active
       and enrollment.status = 'active'
       and case
@@ -483,15 +483,28 @@ begin
     raise exception 'LEARNING_V4_TARGET_NOT_ELIGIBLE';
   end if;
 
-  return new;
 end;
 $$;
 
-drop trigger if exists validate_bncc_guided_session_scope on public.learning_guided_sessions;
-create trigger validate_bncc_guided_session_scope
-before insert or update of institution_id, student_id, target_canonical_skill_id, planner_version
-on public.learning_guided_sessions
-for each row execute function private.validate_bncc_guided_session_scope();
+create or replace function public.start_bncc_guided_learning_session_v4(
+  p_institution_id uuid,
+  p_student_id uuid,
+  p_target_canonical_skill_id uuid
+)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  perform private.assert_bncc_guided_session_scope(p_institution_id, p_student_id, p_target_canonical_skill_id);
+  return public.start_guided_learning_session_v4(p_institution_id, p_student_id, p_target_canonical_skill_id);
+end;
+$$;
+
+revoke all on function private.assert_bncc_guided_session_scope(uuid, uuid, uuid) from public, anon, authenticated;
+revoke all on function public.start_bncc_guided_learning_session_v4(uuid, uuid, uuid) from public, anon;
+grant execute on function public.start_bncc_guided_learning_session_v4(uuid, uuid, uuid) to authenticated;
 
 notify pgrst, 'reload schema';
 commit;

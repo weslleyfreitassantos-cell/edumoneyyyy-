@@ -26,12 +26,12 @@ describe('complete subject practices and BNCC guided learning v1 migration', () 
   });
 
   it('enforces institutional, grade and canonical-skill scope in the database', () => {
-    expect(migration).toContain('validate_bncc_guided_session_scope');
+    expect(migration).toContain('assert_bncc_guided_session_scope');
+    expect(migration).toContain('start_bncc_guided_learning_session_v4');
     expect(migration).toContain('LEARNING_V4_BNCC_MAPPING_REQUIRED');
     expect(migration).toContain('LEARNING_V4_TARGET_NOT_ELIGIBLE');
     expect(migration).toContain('learning_curriculum_subject_links');
     expect(migration).toContain('enrollment_context');
-    expect(migration).toContain("new.planner_version <> 'V4'");
     expect(migration).not.toMatch(/drop table/i);
     expect(migration).not.toMatch(/truncate\s/i);
   });
