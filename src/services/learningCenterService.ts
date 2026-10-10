@@ -178,6 +178,25 @@ export interface GuidedSessionV2 {
   current_step: Pick<GuidedStepV2, 'id' | 'canonical_skill_id' | 'step_type' | 'purpose' | 'status' | 'position' | 'lesson_id'> | null;
 }
 
+export interface GuidedLearningTarget {
+  target_canonical_skill_id: string;
+  subject_id: string;
+  catalog_id: string;
+  catalog_code: string;
+  official_code: string;
+  title: string;
+  subject_area: string;
+  stage: string;
+  grade_level: number;
+  availability_status: 'READY' | 'NO_ACTIVE_SESSION' | 'NO_LESSON' | 'NO_QUESTIONS' | string;
+  progress: number;
+  has_lesson: boolean;
+  question_count: number;
+  active_session_id: string | null;
+  active_session_status: GuidedSessionV2['status'] | null;
+  reason: string;
+}
+
 export interface GuidedStepAttemptResultV2 {
   attempt_id: string;
   idempotent: boolean;
@@ -300,9 +319,12 @@ export interface EnemSimulationTemplate {
   simulation_type: 'AREA' | 'SUBJECT';
   area: string | null;
   subject: string | null;
+  subject_code: string | null;
   question_count: number;
   duration_minutes: number | null;
   available_count: number;
+  ready_count: number;
+  availability_status: 'AVAILABLE' | 'INSUFFICIENT' | string;
   language_options: string[];
   metadata: Record<string, unknown>;
 }
@@ -771,6 +793,22 @@ async function read<T>(
   return (result.data ?? []) as T;
 }
 
+function isMissingRpcError(error: { message?: string | null; code?: string | null } | null | undefined): boolean {
+  const message = error?.message ?? '';
+  return error?.code === 'PGRST202'
+    || error?.code === '42883'
+    || /could not find the function|function .* does not exist/i.test(message);
+}
+
+function isLegacyGuidedV4Miss(error: { message?: string | null } | null | undefined): boolean {
+  return /LEARNING_GUIDED_STEP_NOT_FOUND/i.test(error?.message ?? '');
+}
+
+async function isLegacyGuidedStep(stepId: string): Promise<boolean> {
+  const legacy = await supabase.rpc('get_guided_learning_step_v2', { p_step_id: stepId });
+  return !legacy.error;
+}
+
 async function uniqueIds(
   query: PromiseLike<{
     data: Array<{
@@ -1151,13 +1189,18 @@ export const learningCenterService = {
     (async () => {
       const v4 = await supabase.rpc('get_guided_learning_session_v4', { p_institution_id: institutionId, p_student_id: studentId });
       if (!v4.error && v4.data) return v4.data as GuidedSessionV2;
+      if (!v4.error && v4.data === null) {
+        return read<GuidedSessionV2 | null>(supabase.rpc('get_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId }));
+      }
+      if (!isMissingRpcError(v4.error)) throw new Error(v4.error.message);
       return read<GuidedSessionV2 | null>(supabase.rpc('get_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId }));
     })(),
 
   guidedStepV2: (stepId: string) =>
     (async () => {
       const v4 = await supabase.rpc('get_guided_learning_step_v4', { p_step_id: stepId });
-      if (!v4.error && v4.data) return v4.data as GuidedStepV2;
+      if (!v4.error) return v4.data as GuidedStepV2;
+      if (!isMissingRpcError(v4.error) && !isLegacyGuidedV4Miss(v4.error)) throw new Error(v4.error.message);
       return read<GuidedStepV2>(supabase.rpc('get_guided_learning_step_v2', { p_step_id: stepId }));
     })(),
 
@@ -1180,7 +1223,7 @@ export const learningCenterService = {
     targetCanonicalSkillId: string;
   }) =>
     (async () => {
-      const v4 = await supabase.rpc('start_guided_learning_session_v4', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId });
+      const v4 = await supabase.rpc('start_bncc_guided_learning_session_v4', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId });
       if (!v4.error && v4.data) return v4.data as { session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V4' };
       // V4 deliberately refuses to cancel an active/paused V2 or V3 session.
       // V2's compatibility start is idempotent for V2, but its legacy branch
@@ -1206,8 +1249,7 @@ export const learningCenterService = {
           } as { session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V3' | 'V4' };
         }
       }
-      // For V2, the V2 RPC returns the existing session without creating a
-      // duplicate. Other V4 errors retain the established compatibility path.
+      if (!isMissingRpcError(v4.error)) throw new Error(v4.error?.message ?? 'Não foi possível iniciar a jornada BNCC.');
       return read<{ session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V2' }>(supabase.rpc('start_guided_learning_session_v2', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId }));
     })(),
 
@@ -1224,6 +1266,12 @@ export const learningCenterService = {
     (async () => {
       const v4 = await supabase.rpc('advance_guided_learning_session_v4', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey });
       if (!v4.error && v4.data) return v4.data as { session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string };
+      if (!isMissingRpcError(v4.error)) {
+        if (await isLegacyGuidedStep(input.stepId)) {
+          return read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(supabase.rpc('advance_guided_learning_session_v2', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey }));
+        }
+        throw new Error(v4.error?.message ?? 'Não foi possível avançar a jornada BNCC.');
+      }
       return read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(supabase.rpc('advance_guided_learning_session_v2', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey }));
     })(),
 
@@ -1231,8 +1279,20 @@ export const learningCenterService = {
     (async () => {
       const v4 = await supabase.rpc('submit_guided_learning_step_v4', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey });
       if (!v4.error && v4.data) return v4.data as GuidedStepAttemptResultV2;
+      if (!isMissingRpcError(v4.error)) {
+        if (await isLegacyGuidedStep(input.stepId)) {
+          return read<GuidedStepAttemptResultV2>(supabase.rpc('submit_guided_learning_step_v2', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey }));
+        }
+        throw new Error(v4.error?.message ?? 'Não foi possível corrigir a etapa BNCC.');
+      }
       return read<GuidedStepAttemptResultV2>(supabase.rpc('submit_guided_learning_step_v2', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey }));
     })(),
+
+  guidedLearningTargets: (institutionId: string, studentId: string) =>
+    read<GuidedLearningTarget[]>(supabase.rpc('list_student_guided_learning_targets', {
+      p_institution_id: institutionId,
+      p_student_id: studentId,
+    })),
 
   dailyPlan: async (institutionId: string, studentId: string, planDate = new Date().toISOString().slice(0, 10)) => {
     const planId = await read<string>(
