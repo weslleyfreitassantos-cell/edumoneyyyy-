@@ -150,6 +150,19 @@ export interface GuidedLessonV2 {
   estimated_minutes: number;
 }
 
+export interface GuidedCurriculumReferenceV4 {
+  official_code: string | null;
+  title: string | null;
+  description: string | null;
+  subject_area: string | null;
+  stage: string | null;
+  official_grade_range: string | null;
+  recommended_grade: string | null;
+  recommended_grade_source: string | null;
+  official_source_url: string | null;
+  official_source_page: string | null;
+}
+
 export interface GuidedStepV2 {
   id: string;
   session_id: string;
@@ -159,6 +172,7 @@ export interface GuidedStepV2 {
   status: 'PENDING' | 'ACTIVE' | 'COMPLETED' | 'SKIPPED';
   position: number;
   lesson_id: string | null;
+  curriculum?: GuidedCurriculumReferenceV4 | null;
   lesson: GuidedLessonV2 | null;
   questions: GuidedQuestionV2[];
 }

@@ -20,6 +20,16 @@ function draftKey(stepId: string): string {
   return `tec-escola:guided-draft:${stepId}`;
 }
 
+function curriculumAreaLabel(value: string | null | undefined): string {
+  const labels: Record<string, string> = {
+    MATEMATICA: 'Matemática',
+    LINGUAGENS: 'Linguagens',
+    CIENCIAS_DA_NATUREZA: 'Ciências da Natureza',
+    CIENCIAS_HUMANAS: 'Ciências Humanas',
+  };
+  return labels[value ?? ''] ?? value?.replaceAll('_', ' ') ?? 'Currículo oficial';
+}
+
 export default function GuidedJourneyPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
@@ -136,6 +146,14 @@ export default function GuidedJourneyPage() {
           <span className="shrink-0 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold text-blue-100">Etapa {step.data.position + 1}</span>
         </div>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-blue-100">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
+        {step.data?.curriculum?.official_code ? (
+          <div className="mt-5 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-blue-50">
+            <p className="font-bold">BNCC · {step.data.curriculum.official_code}</p>
+            <p className="mt-1 text-blue-100">{curriculumAreaLabel(step.data.curriculum.subject_area)} · Ensino Médio</p>
+            {step.data.curriculum.recommended_grade ? <p className="mt-1 text-xs text-blue-200">Sequência TecEscola: {step.data.curriculum.recommended_grade}º ano · a habilidade oficial abrange {step.data.curriculum.official_grade_range ?? '1º ao 3º ano'}.</p> : null}
+            {step.data.curriculum.official_source_page ? <p className="mt-2 text-xs font-semibold text-blue-200">Fonte oficial da BNCC · p. {step.data.curriculum.official_source_page}</p> : null}
+          </div>
+        ) : null}
       </header>
 
       {step.data.step_type === 'LESSON' ? (
