@@ -15,6 +15,7 @@ describe('BNCC high-school V5 publication gate', () => {
     expect(preV4).toContain("publication_status in ('STAGING', 'QA_ONLY', 'PUBLISHED')");
     expect(preV4).toContain('enforce_bncc_high_school_v4_publication_gate');
     expect(preV4).toContain('guided_session_v4_publication_gate');
+    expect(preV4).toContain("skill.metadata->>'content_pack' = 'TECESCOLA_BNCC_HIGH_SCHOOL_FIRST_YEAR_V4'");
     expect(preV4).toContain("new.bncc_alignment_status := 'CANDIDATE'");
     expect(preV4).toContain("new.content_readiness := 'CONTENT_READY'");
     expect(preV4).toContain('new.mastery_targetable := false');

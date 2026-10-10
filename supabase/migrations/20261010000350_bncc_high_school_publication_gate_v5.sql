@@ -88,6 +88,12 @@ set search_path = ''
 as $$
 begin
   if new.planner_version = 'V4'
+     and exists (
+       select 1
+         from public.learning_curriculum_skills skill
+        where skill.id = new.target_canonical_skill_id
+          and skill.metadata->>'content_pack' = 'TECESCOLA_BNCC_HIGH_SCHOOL_FIRST_YEAR_V4'
+     )
      and not exists (
        select 1
          from public.learning_curriculum_skills skill
