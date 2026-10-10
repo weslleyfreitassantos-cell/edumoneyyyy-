@@ -42,7 +42,7 @@ begin
          and class.active
         cross join lateral private.normalize_learning_grade_context(class.grade_level) normalized(value)
        where lower(trim(profile.full_name)) = lower('Laura Cristina Moreira')
-         and upper(coalesce(profile.role, '')) = 'STUDENT'
+         and upper(coalesce(profile.role::text, '')) = 'STUDENT'
          and profile.active
          and normalized.value->>'stage' = 'ENSINO_MEDIO'
          and nullif(normalized.value->>'grade_level', '')::smallint = 1
