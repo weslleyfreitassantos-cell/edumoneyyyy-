@@ -1,4 +1,5 @@
 begin;
+reset role;
 -- Generated from the validated V4 source package; only four missing discipline skills are imported.
 -- V4_CONTENT_HASH=e8d5df5ef948e699da9cef352a159e1a15a0dbfc890893c2c4945652fcca5556
 
@@ -578,4 +579,5 @@ Erro comum: Julgar uma pessoa pelo resultado final sem observar tecnica, context
   select id into v_set_id from public.learning_question_sets where scope='GLOBAL' and canonical_skill_id=v_skill_id and purpose='REVIEW' and version=4;
   insert into public.learning_question_set_items(question_set_id,question_bank_id,position) values (v_set_id,v_question_id,(select coalesce(max(position),-1)+1 from public.learning_question_set_items where question_set_id=v_set_id)) on conflict do nothing;
 end $v9_content$;
+set role postgres;
 commit;

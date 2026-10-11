@@ -175,6 +175,7 @@ export function buildV9DisciplineContentMigration(): string {
 
   const lines = [
     'begin;',
+    'reset role;',
     '-- Generated from the validated V4 source package; only four missing discipline skills are imported.',
     `-- V4_CONTENT_HASH=${validation.canonicalHash}`,
     DEMO_SCOPE_SQL.trimEnd(),
@@ -255,7 +256,7 @@ export function buildV9DisciplineContentMigration(): string {
     }
   }
 
-  lines.push('end $v9_content$;', 'commit;');
+  lines.push('end $v9_content$;', 'set role postgres;', 'commit;');
   return `${lines.join('\n')}\n`;
 }
 
