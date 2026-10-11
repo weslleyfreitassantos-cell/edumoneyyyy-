@@ -17,10 +17,12 @@ describe('BNCC review fresh-question guard migration', () => {
   });
 
   it('preserves history and routes exhausted pools to teacher support', () => {
+    expect(migration).toContain('join public.learning_guided_steps active_step');
+    expect(migration).not.toContain('join public.learning_guided_steps current_step');
     expect(migration).toContain("'REMEDIATION_QUESTION_POOL_EXHAUSTED'");
     expect(migration).toContain("status = 'NEEDS_TEACHER_SUPPORT'");
     expect(migration).toContain("status = 'SKIPPED'");
-    expect(migration).toContain('current_attempt.step_id = current_step.id');
+    expect(migration).toContain('current_attempt.step_id = active_step.id');
     expect(migration.toLowerCase()).not.toContain('delete from public.learning_guided_step_attempts');
     expect(migration.toLowerCase()).not.toContain('truncate ');
   });

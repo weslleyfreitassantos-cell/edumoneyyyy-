@@ -195,22 +195,22 @@ begin
   for session_row in
     select session.*
       from public.learning_guided_sessions session
-      join public.learning_guided_steps current_step
-        on current_step.id = session.current_step_id
+      join public.learning_guided_steps active_step
+        on active_step.id = session.current_step_id
      where session.planner_version = 'V4'
        and session.status = 'ACTIVE'
-       and current_step.step_type = 'PRACTICE'
-       and current_step.status = 'ACTIVE'
+       and active_step.step_type = 'PRACTICE'
+       and active_step.status = 'ACTIVE'
        and not exists (
          select 1
            from public.learning_guided_step_attempts current_attempt
-          where current_attempt.step_id = current_step.id
+          where current_attempt.step_id = active_step.id
        )
        and exists (
          select 1
            from public.learning_guided_steps remediation_lesson
           where remediation_lesson.session_id = session.id
-            and remediation_lesson.position = current_step.position - 1
+            and remediation_lesson.position = active_step.position - 1
             and remediation_lesson.step_type = 'LESSON'
             and remediation_lesson.status = 'COMPLETED'
             and remediation_lesson.metadata->>'review_remediation' = 'true'
