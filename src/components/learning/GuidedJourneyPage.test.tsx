@@ -21,6 +21,7 @@ const state = vi.hoisted(() => ({
     },
     isLoading: false,
   },
+  journeys: { data: [] as Array<Record<string, unknown>>, isLoading: false, isError: false },
   step: {
     data: {
       id: 'step-1',
@@ -48,7 +49,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningStudent: () => ({ data: { id: 'student-1', profile_id: 'profile-1' } }),
   useGuidedLearningSessionV2: () => state.session,
   useGuidedLearningStepV2: () => state.step,
-  useGuidedDisciplineJourneysV9: () => ({ data: [], isLoading: false, isError: false }),
+  useGuidedDisciplineJourneysV9: () => state.journeys,
   useStartGuidedLearningSessionV2: () => state.startGuided,
   useStartGuidedDisciplineJourneyV9: () => state.startJourney,
   useAdvanceGuidedLearningSessionV2: () => state.advance,
@@ -62,8 +63,8 @@ afterEach(() => {
   vi.clearAllMocks();
 });
 
-function renderPage() {
-  return render(<MemoryRouter><GuidedJourneyPage /></MemoryRouter>);
+function renderPage(initialEntry = '/') {
+  return render(<MemoryRouter initialEntries={[initialEntry]}><GuidedJourneyPage /></MemoryRouter>);
 }
 
 describe('GuidedJourneyPage', () => {
@@ -143,11 +144,31 @@ describe('GuidedJourneyPage', () => {
   });
 
   it('keeps a recoverable teacher-support state instead of inventing another step', () => {
-    state.session.data = { ...state.session.data, status: 'NEEDS_TEACHER_SUPPORT' };
+    state.session.data = { ...state.session.data, status: 'NEEDS_TEACHER_SUPPORT', current_step_id: null };
+    state.step.data = null;
     renderPage();
 
     expect(screen.getByRole('heading', { name: 'Vamos pedir apoio ao professor' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Voltar à Central' })).toBeTruthy();
     expect(screen.queryByText('Qual é o resultado?')).toBeNull();
+  });
+
+  it('explains a paused V9 journey when the bridge limit leaves no active step', () => {
+    state.session.data = { ...state.session.data, status: 'PAUSED', current_step_id: null, decision_reason: 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED' };
+    state.step.data = null;
+    state.journeys.data = [{
+      journey_id: 'journey-1',
+      subject_id: 'subject-1',
+      subject_name: 'Matemática',
+      execution_skill_id: 'skill-1',
+    }];
+
+    renderPage('/?journey=journey-1&skill=skill-1');
+
+    expect(screen.getByRole('heading', { name: 'Jornada pausada' })).toBeTruthy();
+    expect(screen.getByText(/sequência automática de reforço chegou ao limite/i)).toBeTruthy();
+    expect(screen.getByText(/Seu progresso está salvo/i)).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Voltar à matéria' })).toHaveProperty('href', expect.stringContaining('/student/study/subject/subject-1'));
+    expect(screen.queryByText('Retomando sua jornada...')).toBeNull();
   });
 });
