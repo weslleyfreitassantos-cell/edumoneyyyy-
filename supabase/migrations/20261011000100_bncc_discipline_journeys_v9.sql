@@ -125,6 +125,12 @@ update public.learning_curriculum_skills execution_skill
    and catalog.code = 'TECESCOLA_CORE'
    and catalog.version = '1.0'
    and execution_skill.canonical_subject_id is null
+   and execution_skill.code in (
+     'ART_COMPARE_COMPOSITIONS', 'BIOLOGY_CELL_FUNCTION', 'CHEMISTRY_STOICHIOMETRY',
+     'PE_ANALYZE_MOVEMENT', 'PHILOSOPHY_EVALUATE_ARGUMENT', 'PHYSICS_AVERAGE_SPEED',
+     'GEOGRAPHY_INTERPRET_TERRITORY', 'HISTORY_INTERPRET_EVIDENCE', 'ENGLISH_INFER_FROM_TEXT',
+     'PORTUGUESE_ARGUMENT_EVIDENCE', 'MATH_PERCENT_OF_QUANTITY', 'SOCIOLOGY_EXPLAIN_INSTITUTIONS'
+   )
    and canonical_subject.code = execution_skill.subject_area
    and canonical_subject.active;
 

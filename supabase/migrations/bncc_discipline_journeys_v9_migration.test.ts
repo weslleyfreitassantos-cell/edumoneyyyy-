@@ -29,6 +29,11 @@ describe('BNCC discipline journeys V9 migration', () => {
     expect(migration).toContain("and journey.mapping_status = 'MAPPING_PENDING'");
   });
 
+  it('limits canonical subject backfill to the twelve journey skills', () => {
+    expect(migration).toContain("and execution_skill.code in (\n     'ART_COMPARE_COMPOSITIONS', 'BIOLOGY_CELL_FUNCTION', 'CHEMISTRY_STOICHIOMETRY'");
+    expect(migration).not.toMatch(/execution_skill\.canonical_subject_id is null\s+and canonical_subject\.code = execution_skill\.subject_area\s+and canonical_subject\.active/);
+  });
+
   it('preserves legacy V4 step payloads and persists a bounded selection for V9 scoring', () => {
     expect(migration).toContain('get_guided_learning_step_v4_legacy_v9');
     expect(migration).toContain('return public.get_guided_learning_step_v4_legacy_v9(p_step_id)');
