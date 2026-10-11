@@ -223,6 +223,8 @@ export interface GuidedStepAttemptResultV2 {
     is_correct: boolean;
     correct_answer: unknown;
     explanation: string | null;
+    error_focus?: string | null;
+    remediation_hint?: string | null;
   }>;
   current_step_id: string | null;
   session_status: string;
