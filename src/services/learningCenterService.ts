@@ -212,6 +212,32 @@ export interface GuidedLearningTarget {
   reason: string;
 }
 
+export interface GuidedDisciplineJourneyV9 {
+  journey_id: string;
+  journey_code: string;
+  subject_id: string;
+  subject_code: string;
+  subject_name: string;
+  canonical_subject_code: string;
+  unit_code: string;
+  unit_title: string;
+  title: string;
+  execution_skill_id: string;
+  official_codes: string[];
+  official_areas: string[];
+  mapping_status: string;
+  mapping_reason: string;
+  learning_role: string;
+  availability_status: string;
+  question_count: number;
+  missing_purposes: string[];
+  progress: number;
+  active_session_id: string | null;
+  active_session_status: GuidedSessionV2['status'] | null;
+  pedagogical_review_status: string;
+  reason: string;
+}
+
 export interface GuidedStepAttemptResultV2 {
   attempt_id: string;
   idempotent: boolean;
@@ -1202,20 +1228,19 @@ export const learningCenterService = {
         .maybeSingle(),
     ),
 
-  guidedSessionV2: (institutionId: string, studentId: string, targetSkillId?: string) =>
+  guidedSessionV2: (institutionId: string, studentId: string, targetSkillId?: string, journeyId?: string) =>
     (async () => {
       if (targetSkillId) {
-        const result = await supabase
+        let query = supabase
             .from('learning_guided_sessions')
             .select('id,student_id,target_canonical_skill_id,original_target_canonical_skill_id,current_canonical_skill_id,current_step_id,status,planner_version,decision_reason,replan_count,metadata')
             .eq('institution_id', institutionId)
             .eq('student_id', studentId)
             .eq('target_canonical_skill_id', targetSkillId)
             .in('status', ['ACTIVE', 'PAUSED', 'NEEDS_TEACHER_SUPPORT'])
-            .eq('planner_version', 'V4')
-            .order('updated_at', { ascending: false })
-            .limit(1)
-            .maybeSingle();
+            .eq('planner_version', 'V4');
+        if (journeyId) query = query.eq('discipline_journey_id', journeyId);
+        const result = await query.order('updated_at', { ascending: false }).limit(1).maybeSingle();
         if (result.error) throw new Error(result.error.message);
         return result.data as GuidedSessionV2 | null;
       }
@@ -1227,6 +1252,21 @@ export const learningCenterService = {
       if (!isMissingRpcError(v4.error)) throw new Error(v4.error.message);
       return read<GuidedSessionV2 | null>(supabase.rpc('get_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId }));
     })(),
+
+  guidedDisciplineJourneysV9: (institutionId: string, studentId: string) =>
+    read<GuidedDisciplineJourneyV9[]>(supabase.rpc('list_student_guided_discipline_journeys_v9', {
+      p_institution_id: institutionId,
+      p_student_id: studentId,
+    })),
+
+  startGuidedDisciplineJourneyV9: (input: { institutionId: string; studentId: string; journeyId: string }) =>
+    read<{ session_id: string; created: boolean; current_step_id: string | null; target_canonical_skill_id: string; engine_version: 'V4' }>(
+      supabase.rpc('start_guided_discipline_journey_v9', {
+        p_institution_id: input.institutionId,
+        p_student_id: input.studentId,
+        p_journey_id: input.journeyId,
+      }),
+    ),
 
   guidedStepV2: (stepId: string) =>
     (async () => {

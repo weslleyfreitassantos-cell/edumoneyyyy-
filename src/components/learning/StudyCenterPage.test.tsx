@@ -13,7 +13,9 @@ const state = vi.hoisted(() => ({
   adaptiveTarget: null as null | { canonicalSkillId: string; target: { subjectArea: string } },
   guidedSession: null as null | { id: string; status: string },
   guidedTargets: [] as Array<{ target_canonical_skill_id: string; subject_id: string | null; catalog_id: string; catalog_code: string; official_code: string; title: string; subject_area: string; stage: string; grade_level: number; availability_status: string; progress: number; has_lesson: boolean; question_count: number; active_session_id: string | null; active_session_status: string | null; reason: string }>,
+  guidedJourneys: [] as Array<Record<string, unknown> & { journey_id: string; subject_id: string; subject_name: string }>,
   startGuidedSession: vi.fn().mockResolvedValue({ session_id: 'session-1' }),
+  startGuidedJourney: vi.fn().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-math' }),
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -32,8 +34,10 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningUnits: () => ({ data: [{ id: 'unit-1', subject_id: 'subject-math', title: 'Números', description: 'Conteúdos essenciais', sort_order: 1 }], isLoading: false }),
   useLearningSkills: () => ({ data: [{ id: 'skill-1', unit_id: 'unit-1', title: 'Resolver problemas', description: null, sort_order: 1 }], isLoading: false }),
   useGuidedLearningSessionV2: () => ({ data: state.guidedSession, isLoading: false }),
+  useGuidedDisciplineJourneysV9: () => ({ data: state.guidedJourneys, isLoading: false, isError: false }),
   useStudentGuidedLearningTargets: () => ({ data: state.guidedTargets, isLoading: false, isError: false }),
   useStartGuidedLearningSessionV2: () => ({ mutateAsync: state.startGuidedSession, isPending: false }),
+  useStartGuidedDisciplineJourneyV9: () => ({ mutateAsync: state.startGuidedJourney, isPending: false, isError: false, error: null }),
 }));
 
 vi.mock('../../hooks/useAdaptiveLearning', () => ({
@@ -49,7 +53,9 @@ afterEach(() => {
   state.adaptiveTarget = null;
   state.guidedSession = null;
   state.guidedTargets = [];
+  state.guidedJourneys = [];
   state.startGuidedSession.mockReset().mockResolvedValue({ session_id: 'session-1' });
+  state.startGuidedJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-math' });
 });
 
 function renderPage() {
@@ -142,55 +148,59 @@ describe('StudyCenterPage', () => {
     expect(screen.queryByText('O que você quer estudar?')).toBeNull();
   });
 
-  it('permite iniciar uma jornada BNCC global sem vínculo com matéria institucional', async () => {
-    state.guidedTargets = [{
-      target_canonical_skill_id: 'skill-history',
-      subject_id: null,
-      catalog_id: 'catalog-bncc',
-      catalog_code: 'BNCC_2018',
-      official_code: 'EF06HI01',
-      title: 'Povos e culturas na Antiguidade',
-      subject_area: 'História',
-      stage: 'ENSINO_FUNDAMENTAL',
-      grade_level: 6,
-      availability_status: 'NO_ACTIVE_SESSION',
-      progress: 0,
-      has_lesson: true,
-      question_count: 5,
-      active_session_id: null,
-      active_session_status: null,
-      reason: 'Conteúdo disponível',
-    }];
+  it('integra jornadas às matérias existentes e descobre a matéria global sem duplicar cards', () => {
+    state.guidedJourneys = [
+      makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math', 'session-math'),
+      makeJourney('journey-physics', 'subject-physics', 'Física', 'skill-physics'),
+    ];
 
     renderPage();
 
-    expect(screen.getByText(/EF06HI01/)).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Começar estudo' }));
-    await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('skill-history'));
+    expect(screen.queryByRole('region', { name: 'Estudo guiado pela BNCC' })).toBeNull();
+    expect(screen.getAllByRole('link', { name: /Matemática/ }).filter((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toHaveLength(1);
+    expect(screen.getByRole('link', { name: /Física.*1 jornada guiada.*prévia/ }).getAttribute('href')).toBe('/student/study/subject/subject-physics');
+
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    expect(screen.getByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Continuar' }).getAttribute('href')).toContain('journey=journey-math');
+    expect(screen.getByRole('link', { name: 'Continuar' }).getAttribute('href')).toContain('skill=skill-math');
   });
 
-  it('mantém o alvo da jornada ao retomar um card ativo', () => {
-    state.guidedTargets = [{
-      target_canonical_skill_id: 'skill-nature',
-      subject_id: null,
-      catalog_id: 'catalog-bncc',
-      catalog_code: 'BNCC_2018',
-      official_code: 'EM13CNT101',
-      title: 'Transformações e conservações',
-      subject_area: 'CIENCIAS_DA_NATUREZA',
-      stage: 'ENSINO_MEDIO',
-      grade_level: 1,
-      availability_status: 'DEMO_PREVIEW',
-      progress: 20,
-      has_lesson: true,
-      question_count: 5,
-      active_session_id: 'session-nature',
-      active_session_status: 'ACTIVE',
-      reason: 'Prévia demonstrativa',
-    }];
+  it('inicia a jornada específica da matéria, não a habilidade global sem contexto', async () => {
+    state.guidedJourneys = [makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math')];
 
     renderPage();
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+    fireEvent.click(screen.getByRole('button', { name: 'Começar estudo' }));
 
-    expect(screen.getByRole('link', { name: 'Continuar' }).getAttribute('href')).toBe('/student/study/guided?skill=skill-nature');
+    await waitFor(() => expect(state.startGuidedJourney).toHaveBeenCalledWith('journey-math'));
   });
 });
+
+function makeJourney(journeyId: string, subjectId: string, subjectName: string, skillId: string, activeSessionId: string | null = null) {
+  return {
+    journey_id: journeyId,
+    journey_code: `CODE_${journeyId}`,
+    subject_id: subjectId,
+    subject_code: subjectId,
+    subject_name: subjectName,
+    canonical_subject_code: subjectId,
+    unit_code: 'UNIT_1',
+    unit_title: 'Unidade inicial',
+    title: 'Interpretar conceitos',
+    execution_skill_id: skillId,
+    official_codes: ['EM13MAT303'],
+    official_areas: ['MATEMATICA'],
+    mapping_status: 'MAPPING_PENDING',
+    mapping_reason: 'Vínculo candidato, ainda não validado.',
+    learning_role: 'INTRODUCTORY_CONTENT',
+    availability_status: 'DEMO_PREVIEW',
+    question_count: 8,
+    missing_purposes: [],
+    progress: activeSessionId ? 20 : 0,
+    active_session_id: activeSessionId,
+    active_session_status: activeSessionId ? 'ACTIVE' : null,
+    pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    reason: 'Prévia demonstrativa.',
+  };
+}
