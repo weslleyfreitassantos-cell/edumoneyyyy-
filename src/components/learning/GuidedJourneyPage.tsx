@@ -88,26 +88,46 @@ export default function GuidedJourneyPage() {
   );
   const demoPreview = session.data?.metadata?.demo_preview === true;
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
+  const stepPurpose = step.data?.purpose;
   const stepHeading = step.data?.step_type === 'LESSON'
     ? step.data.lesson?.title ?? 'Aprender'
     : step.data?.step_type === 'PROBE'
       ? 'Vamos descobrir seu ponto de partida'
       : step.data?.step_type === 'RETURN_TO_TARGET'
         ? 'Voltar ao objetivo'
+        : stepPurpose === 'TRANSFER'
+          ? 'Vamos praticar esta habilidade: aplicar em um novo contexto'
+          : stepPurpose === 'LOCK_IN'
+            ? 'Vamos praticar esta habilidade: verificar o que ficou consolidado'
+            : stepPurpose === 'REVIEW'
+              ? 'Vamos praticar esta habilidade: revisar e reter'
         : 'Vamos praticar esta habilidade';
-  const stepTypeLabel = step.data?.step_type === 'LESSON' ? 'Leitura guiada' : step.data?.step_type === 'PROBE' ? 'Primeiro passo' : 'Prática';
+  const stepTypeLabel = step.data?.step_type === 'LESSON'
+    ? 'Leitura guiada'
+    : step.data?.step_type === 'PROBE'
+      ? 'Diagnóstico inicial'
+      : stepPurpose === 'PRACTICE'
+        ? 'Prática orientada'
+        : stepPurpose === 'TRANSFER'
+          ? 'Aplicação em novo contexto'
+          : stepPurpose === 'LOCK_IN'
+            ? 'Verificação de domínio'
+            : stepPurpose === 'REVIEW'
+              ? 'Revisão e retenção'
+              : 'Prática';
 
   if (submitted && submit.data) {
+    const sessionCompleted = submit.data.session_status === 'COMPLETED' && session.data?.metadata?.adaptive_policy_version === 'V8';
     return <div className="mx-auto max-w-2xl space-y-5">
       <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950">
         <CheckCircle2 className="h-6 w-6" />
-        <h2 className="mt-2 font-bold">Evidência registrada</h2>
-        <p className="mt-1 text-sm">O servidor corrigiu suas respostas e atualizou o próximo passo.</p>
+        <h2 className="mt-2 font-bold">{sessionCompleted ? 'Jornada concluída' : 'Evidência registrada'}</h2>
+        <p className="mt-1 text-sm">{sessionCompleted ? 'O servidor corrigiu suas respostas e registrou esta jornada.' : 'O servidor corrigiu suas respostas e atualizou o próximo passo.'}</p>
         <p className="mt-4 text-sm font-bold">Resultado: {submit.data.score}% ({submit.data.correct_count}/{submit.data.total_questions})</p>
         <ul className="mt-3 space-y-2 text-sm">
-          {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}</li>)}
+          {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}{!item.is_correct && item.remediation_hint && <p className="mt-2 font-semibold text-amber-900">Orientação: {item.remediation_hint}</p>}</li>)}
         </ul>
-        <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>
+        {sessionCompleted ? <Link to="/student/study" className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Voltar à Central</Link> : <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>}
       </div>
     </div>;
   }
