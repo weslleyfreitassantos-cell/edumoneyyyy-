@@ -3513,7 +3513,7 @@ begin
   select session.* into session_row from public.learning_guided_sessions session where session.institution_id=p_institution_id and session.student_id=p_student_id and session.discipline_journey_id=p_journey_id order by session.updated_at desc limit 1 for update;
   if not found then raise exception 'LEARNING_V9_SESSION_NOT_FOUND'; end if;
   if session_row.status='ACTIVE' and session_row.current_step_id is not null then return jsonb_build_object('session_id',session_row.id,'current_step_id',session_row.current_step_id,'resumed',false,'status',session_row.status); end if;
-  if session_row.status <> 'NEEDS_TEACHER_SUPPORT' or session_row.decision_reason not in ('CONTENT_EXHAUSTED','REMEDIATION_QUESTION_POOL_EXHAUSTED') then raise exception 'LEARNING_V9_SESSION_NOT_CONTENT_EXHAUSTED'; end if;
+  if session_row.status <> 'NEEDS_TEACHER_SUPPORT' or session_row.decision_reason is null or session_row.decision_reason not in ('CONTENT_EXHAUSTED','REMEDIATION_QUESTION_POOL_EXHAUSTED') then raise exception 'LEARNING_V9_SESSION_NOT_CONTENT_EXHAUSTED'; end if;
   if exists(select 1 from public.learning_guided_sessions other_session where other_session.institution_id=p_institution_id and other_session.student_id=p_student_id and other_session.discipline_journey_id=p_journey_id and other_session.status in ('ACTIVE','PAUSED') and other_session.id<>session_row.id) then raise exception 'LEARNING_V9_ACTIVE_JOURNEY_EXISTS'; end if;
   question_set_id := private.pick_guided_v4_fresh_question_set(session_row,journey_row.execution_skill_id,'PRACTICE');
   if question_set_id is null then raise exception 'LEARNING_V9_CONTENT_STILL_EXHAUSTED'; end if;

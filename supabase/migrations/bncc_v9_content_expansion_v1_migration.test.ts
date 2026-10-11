@@ -35,7 +35,7 @@ describe('BNCC V9 authored content expansion migration', () => {
 
   it('keeps content-resumption authorization server-side and relies on the existing V8 server grader feedback', () => {
     expect(migration).toContain('private.assert_bncc_discipline_journey_v9(p_institution_id,p_student_id,p_journey_id)');
-    expect(migration).toContain("session_row.decision_reason not in ('CONTENT_EXHAUSTED','REMEDIATION_QUESTION_POOL_EXHAUSTED')");
+    expect(migration).toContain("session_row.decision_reason is null or session_row.decision_reason not in ('CONTENT_EXHAUSTED','REMEDIATION_QUESTION_POOL_EXHAUSTED')");
     expect(migration).not.toContain('patch_v9_error_feedback');
     expect(gradingMigration).toContain("'error_focus',error_focus,'remediation_hint',remediation_hint");
     expect(migration).toContain('V9_START_JOURNEY_LESSON_PATCH_MISMATCH');
