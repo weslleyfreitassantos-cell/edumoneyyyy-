@@ -98,8 +98,8 @@ export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
   const [search, setSearch] = useState('');
-  const [isEnemExpanded, setIsEnemExpanded] = useState(false);
-  const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(false);
+  const [isEnemExpanded, setIsEnemExpanded] = useState(true);
+  const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
 
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
