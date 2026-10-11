@@ -40,6 +40,7 @@ const state = vi.hoisted(() => ({
   submit: { data: undefined as { score: number; correct_count: number; total_questions: number; feedback: Array<{ question_bank_id: string; is_correct: boolean; correct_answer: unknown; explanation: string | null }> } | undefined, mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
   startGuided: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' }), isPending: false, isError: false },
   startJourney: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
+  resumeContent: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' }), isPending: false, isError: false, error: null },
   advance: { mutateAsync: vi.fn(), isPending: false },
 }));
 
@@ -52,6 +53,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useGuidedDisciplineJourneysV9: () => state.journeys,
   useStartGuidedLearningSessionV2: () => state.startGuided,
   useStartGuidedDisciplineJourneyV9: () => state.startJourney,
+  useResumeContentExhaustedGuidedJourneyV9: () => state.resumeContent,
   useAdvanceGuidedLearningSessionV2: () => state.advance,
   useSubmitGuidedStepV2: () => state.submit,
 }));
@@ -163,8 +165,26 @@ describe('GuidedJourneyPage', () => {
     state.step.data = null;
     renderPage();
 
-    expect(screen.getByText(/Já usamos as questões disponíveis para praticar este conteúdo/i)).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Conteúdo indisponível no momento' })).toBeTruthy();
+    expect(screen.getByText(/isso não indica uma dificuldade sua/i)).toBeTruthy();
     expect(screen.getByText(/Seu progresso está salvo/i)).toBeTruthy();
+  });
+
+  it('offers a scoped retry for content exhaustion and resumes through the server', async () => {
+    state.session.data = {
+      ...state.session.data,
+      current_step_id: null,
+      status: 'NEEDS_TEACHER_SUPPORT',
+      planner_version: 'V4',
+      decision_reason: 'CONTENT_EXHAUSTED',
+    };
+    state.step.data = null;
+    state.journeys.data = [{ journey_id: 'journey-1', subject_id: 'subject-1', subject_name: 'Matemática', execution_skill_id: 'skill-1' }];
+
+    renderPage('/?journey=journey-1&skill=skill-1');
+    fireEvent.click(screen.getByRole('button', { name: 'Verificar novas atividades' }));
+
+    await waitFor(() => expect(state.resumeContent.mutateAsync).toHaveBeenCalledWith('journey-1'));
   });
 
   it('explains a paused V9 journey when the bridge limit leaves no active step', () => {

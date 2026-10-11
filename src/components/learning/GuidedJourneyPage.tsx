@@ -13,6 +13,7 @@ import {
   useLearningStudent,
   useSubmitGuidedStepV2,
   useStartGuidedDisciplineJourneyV9,
+  useResumeContentExhaustedGuidedJourneyV9,
   useStartGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
 
@@ -54,6 +55,7 @@ export default function GuidedJourneyPage() {
   const step = useGuidedLearningStepV2(session.data?.current_step_id ?? undefined);
   const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const startJourney = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const resumeContent = useResumeContentExhaustedGuidedJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -169,8 +171,12 @@ export default function GuidedJourneyPage() {
     return <section role={startJourney.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900"><p>{startJourney.isError ? 'Não foi possível iniciar ou retomar esta jornada.' : 'Nenhuma jornada guiada está ativa.'}</p>{journey ? <button type="button" disabled={startJourney.isPending} onClick={() => void startJourney.mutateAsync(journey.journey_id).then(() => { v9StartRef.current = journey.journey_id; }).catch(() => undefined)} className="mt-3 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white disabled:opacity-60">{startJourney.isPending ? 'Iniciando...' : 'Tentar novamente'}</button> : <Link to="/student/study" className="mt-3 inline-block font-bold underline">Voltar à Central de Estudos</Link>}</section>;
   }
   if (session.data.status === 'NEEDS_TEACHER_SUPPORT') {
-    const questionPoolExhausted = session.data.decision_reason === 'REMEDIATION_QUESTION_POOL_EXHAUSTED';
-    return <section className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Vamos pedir apoio ao professor</h1><p className="mt-2 text-sm">{questionPoolExhausted ? 'Já usamos as questões disponíveis para praticar este conteúdo. Seu progresso está salvo; peça ao professor novas questões para continuar sem repetir exercícios.' : 'A evidência ainda não confirmou esta habilidade depois das tentativas de reforço. Seu progresso está salvo; o professor pode ajudar a revisar os pré-requisitos.'}</p><Link to={returnHref} className="mt-5 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">{journey ? 'Voltar à matéria' : 'Voltar à Central'}</Link></section>;
+    const questionPoolExhausted = ['CONTENT_EXHAUSTED', 'REMEDIATION_QUESTION_POOL_EXHAUSTED'].includes(session.data.decision_reason ?? '');
+    if (questionPoolExhausted) {
+      const stillExhausted = resumeContent.error instanceof Error && resumeContent.error.message.includes('LEARNING_V9_CONTENT_STILL_EXHAUSTED');
+      return <section role="status" className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Conteúdo indisponível no momento</h1><p className="mt-2 text-sm">Seu progresso está salvo. Não há questões novas suficientes para continuar sem repetir atividades; isso não indica uma dificuldade sua.</p>{resumeContent.isError ? <p role="alert" className="mt-3 text-sm">{stillExhausted ? 'Ainda não há novas questões suficientes. Tente novamente quando o conteúdo for ampliado.' : 'Não foi possível verificar a continuação agora. Seu progresso permanece salvo.'}</p> : null}<div className="mt-5 flex flex-wrap gap-3">{journey ? <button type="button" disabled={resumeContent.isPending} onClick={() => void resumeContent.mutateAsync(journey.journey_id).catch(() => undefined)} className="inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-60">{resumeContent.isPending ? 'Verificando...' : 'Verificar novas atividades'}</button> : null}<Link to={returnHref} className="inline-flex rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-800">{journey ? 'Voltar à matéria' : 'Voltar à Central'}</Link></div></section>;
+    }
+    return <section className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Vamos pedir apoio ao professor</h1><p className="mt-2 text-sm">A evidência ainda não confirmou esta habilidade depois das tentativas de reforço. Seu progresso está salvo; o professor pode ajudar a revisar os pré-requisitos.</p><Link to={returnHref} className="mt-5 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">{journey ? 'Voltar à matéria' : 'Voltar à Central'}</Link></section>;
   }
   if (session.data.status === 'PAUSED' && !session.data.current_step_id) {
     const bridgeLimitReached = session.data.decision_reason === 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED';

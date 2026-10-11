@@ -1,0 +1,98 @@
+{
+  "contentVersion": "tec-escola-core-v9-lesson-expansion-v1",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "lessons": [
+    {
+      "skill": "MATH_PERCENT_OF_QUANTITY",
+      "title": "Porcentagem: identificar o todo antes de calcular",
+      "objective": "Interpretar uma porcentagem como uma relação entre parte e todo, calcular essa parte e distinguir o valor encontrado do restante ou do valor final.",
+      "priorKnowledge": ["Multiplicação e divisão por números decimais simples", "Leitura de unidades e quantidades em um enunciado"],
+      "keyConcepts": ["O todo é a quantidade de referência.", "A taxa percentual expressa uma razão por cem.", "A parte percentual é taxa decimal multiplicada pelo todo.", "Restante e valor final são resultados diferentes da parte calculada."],
+      "progressiveExplanation": [
+        "Antes de operar, pergunte: porcentagem de qual quantidade? Essa quantidade é o todo e funciona como base do cálculo. Em 18% de R$ 250, o todo é R$ 250; 18 não é uma quantidade de reais.",
+        "Por cento significa por cem. Assim, 18% = 18/100 = 0,18. Multiplicar 0,18 pelo todo encontra a parte: 0,18 × 250 = 45. A unidade acompanha o todo, então o resultado é R$ 45.",
+        "O cálculo da parte não responde automaticamente perguntas sobre o restante ou o novo valor. Se R$ 45 representam um desconto sobre R$ 250, o preço após o desconto é 250 − 45 = R$ 205. Se representam um acréscimo, o valor final é 250 + 45 = R$ 295.",
+        "Quando a pergunta pede a taxa de uma parte observada, inverta a relação: parte ÷ todo × 100. Por exemplo, 45 de 250 correspondem a 18%, pois 45 ÷ 250 = 0,18. A base precisa ser explicitada antes de comparar taxas."
+      ],
+      "workedExample": "Situação: uma conta de R$ 320 terá desconto de 12,5%.\n1. Identifique o todo: R$ 320, valor antes do desconto.\n2. Converta 12,5% em decimal: 12,5 ÷ 100 = 0,125.\n3. Calcule a parte: 0,125 × 320 = R$ 40.\n4. Confira a pergunta: se pede o desconto, a resposta é R$ 40; se pede o valor após o desconto, calcule 320 − 40 = R$ 280.\n5. Verifique a ordem de grandeza: 12,5% é menor que 100%, então a parte deve ser menor que R$ 320.",
+      "everydayApplication": "A mesma leitura aparece ao comparar a participação de uma turma em uma pesquisa, estimar redução de consumo, interpretar descontos ou avaliar a parcela de um orçamento. Em cada caso, é necessário saber qual total está servindo de referência.",
+      "commonErrors": ["Responder com o restante quando foi pedida apenas a parte percentual.", "Somar o número percentual à quantidade, como se 12% fossem 12 unidades.", "Trocar a base ao comparar taxas de grupos com tamanhos diferentes."],
+      "summary": "Transforme a taxa em decimal e multiplique pelo todo para obter a parte. Só depois decida se a pergunta exige restante, total atualizado ou taxa de uma parte observada.",
+      "practiceGuidance": "Em cada exercício, escreva ao lado: todo, taxa, parte pedida e unidade. Antes de enviar, compare a resposta com o todo e confira se você respondeu à pergunta exata.",
+      "estimatedMinutes": 14,
+      "remediations": [
+        {"id":"PERCENT_BASE_MIXUP","difficulty":"Troca entre taxa, parte e valor de referência","explanation":"A base é a quantidade inteira sobre a qual a taxa incide. A parte é o resultado da multiplicação pela taxa decimal. A taxa, isoladamente, não tem a mesma unidade monetária ou física do todo.","workedExample":"Em 7% de 500 pessoas, a base é 500 pessoas; a taxa é 0,07; a parte é 0,07 × 500 = 35 pessoas.","selfCheck":"Se a taxa fosse 100%, o resultado seria igual ao todo? Se fosse 1%, seria muito menor?"},
+        {"id":"PERCENT_PART_OR_REMAINDER","difficulty":"Confusão entre parte percentual e complemento","explanation":"O resultado de taxa × todo é apenas a parte correspondente. Para obter o que sobra, subtraia a parte do todo; para obter um total com aumento, some a parte.","workedExample":"20% de 150 = 30. Restante após retirar 20%: 150 − 30 = 120. Total após acrescentar 20%: 150 + 30 = 180.","selfCheck":"Circule o verbo da pergunta: calcular, reduzir, aumentar ou encontrar o restante."}
+      ]
+    },
+    {
+      "skill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "title": "Tese e evidência: distinguir posição de sustentação",
+      "objective": "Localizar a posição defendida em um texto argumentativo, separar razões de evidências e avaliar se o apoio apresentado sustenta a conclusão sem extrapolar os dados.",
+      "priorKnowledge": ["Identificação de tema e assunto", "Distinção entre enunciados declarativos e recomendações"],
+      "keyConcepts": ["Tema é o assunto geral; tese é a posição defendida sobre ele.", "Razão explica por que a tese é defendida.", "Evidência oferece dado, exemplo, fonte ou observação que sustenta uma razão.", "A força de uma evidência depende de pertinência, qualidade e limites do método."],
+      "progressiveExplanation": [
+        "Comece pelo tema e pergunte qual resposta ou posição o autor assume. A tese costuma ser uma afirmação discutível, proposta ou avaliação. Uma frase que apenas nomeia o assunto não é necessariamente a tese.",
+        "Em seguida, procure por que essa posição é defendida. Razões conectam a tese a um princípio ou consequência. Evidências tornam algumas razões verificáveis: podem ser dados, observações, documentos, exemplos ou relatos identificados.",
+        "Nem todo número é uma evidência suficiente. Um percentual sem indicar grupo, período ou método pode ser pouco interpretável. Uma enquete voluntária pequena descreve seus participantes, mas não autoriza automaticamente uma conclusão sobre toda a comunidade.",
+        "Avaliar argumento não é procurar concordância pessoal. Verifique se o apoio é pertinente à tese, se a fonte pode ser conferida e se a conclusão não afirma mais do que os dados permitem. Uma evidência relevante pode apoiar uma proposta sem provar que ela é a única solução."
+      ],
+      "workedExample": "Texto: “A escola deve ampliar o horário da biblioteca. No último mês, 120 estudantes registraram empréstimos depois das 17h; os registros não incluem quem tentou entrar e encontrou o espaço fechado.”\n1. Tema: horário de funcionamento da biblioteca.\n2. Tese: a escola deve ampliar o horário.\n3. Evidência: 120 empréstimos registrados depois das 17h.\n4. Limite: o registro mede empréstimos realizados, mas não conta tentativas frustradas.\n5. Conclusão cuidadosa: o dado indica uso no período e justifica investigar demanda; sozinho, não mede toda a necessidade de ampliação.",
+      "everydayApplication": "A leitura de tese e evidência ajuda a analisar campanhas, notícias, debates escolares, relatórios de pesquisa e propostas públicas sem confundir opinião, dado e conclusão.",
+      "commonErrors": ["Tratar a primeira frase como tese sem verificar a posição do texto.", "Tomar qualquer dado numérico como prova representativa.", "Confundir uma evidência pertinente com prova definitiva ou causalidade."],
+      "summary": "Identifique a posição, encontre o apoio e verifique o alcance permitido pela evidência. Uma leitura crítica separa o que o texto defende, o que observa e o que pode concluir.",
+      "practiceGuidance": "Marque a tese com uma frase curta e sublinhe separadamente o dado ou exemplo de apoio. Depois escreva uma limitação que o texto não permite ignorar.",
+      "estimatedMinutes": 15,
+      "remediations": [
+        {"id":"THESIS_VS_EVIDENCE","difficulty":"Inversão entre a conclusão defendida e o dado que a apoia","explanation":"A tese responde “o que o autor defende?”. A evidência responde “que informação foi apresentada para sustentar essa defesa?”. Elas podem aparecer lado a lado, mas exercem funções diferentes.","workedExample":"“Devemos instalar uma rampa. A vistoria identificou um desnível sem acesso alternativo.” A proposta é a tese; o achado da vistoria é evidência.","selfCheck":"Qual frase poderia ser contestada como posição? Qual frase descreve algo observado ou registrado?"},
+        {"id":"EVIDENCE_SCOPE","difficulty":"Generalização além do grupo observado","explanation":"A conclusão não deve ultrapassar a população, o período e as condições medidos. Uma consulta voluntária informa as respostas recebidas, não necessariamente a opinião de todas as pessoas afetadas.","workedExample":"Se 16 de 18 respondentes de uma enquete preferem uma opção, é correto dizer “a maioria dos respondentes”; não é suficiente para dizer “a maioria da cidade”.", "selfCheck":"Quem participou? Como foi escolhido? A conclusão nomeia exatamente esse grupo?"}
+      ]
+    },
+    {
+      "skill": "ENGLISH_INFER_FROM_TEXT",
+      "title": "Reading between the lines: evidence-based inference",
+      "objective": "Infer a meaning, purpose or likely consequence that is not stated word for word by combining textual clues with a limited, relevant background assumption.",
+      "priorKnowledge": ["Recognizing common time and condition markers", "Finding repeated words and reference words in a short text"],
+      "keyConcepts": ["An inference connects clues to a conclusion.", "A detail can be true but irrelevant to the question.", "Context helps interpret unfamiliar vocabulary without requiring word-for-word translation.", "A sound inference stays within the evidence and avoids unsupported certainty."],
+      "progressiveExplanation": [
+        "Read the question first to know what kind of information to look for: a reason, a purpose, an instruction or an attitude. Then identify the sentence that contains the relevant clues.",
+        "An inference is not a guess and does not need to repeat a sentence exactly. Combine two or more clues. If a notice says an outdoor event moves indoors when rain is expected and the forecast predicts rain, the likely location follows from applying the condition.",
+        "For an unfamiliar word, examine nearby examples, contrast markers such as “but”, cause markers such as “because”, and the action that follows. The context may reveal whether a word signals a benefit, a warning or a limitation.",
+        "Check each answer against the text. Reject options that add a new cause, exaggerate a limited claim, confuse a detail with the main purpose or ignore a condition. A responsible inference uses the narrowest conclusion supported by the clues."
+      ],
+      "workedExample": "Text: “The workshop filled in two days. The organizers opened a waiting list and promised to contact participants if a seat becomes available.”\nQuestion: What can a student infer after joining the waiting list?\n1. Clue: the workshop is full, so a seat is not guaranteed.\n2. Clue: the organizers will contact students if a place opens.\n3. Supported inference: the student may attend later if a seat becomes available.\n4. Unsupported claim: every student on the list will get a place.",
+      "everydayApplication": "Inference is useful when reading public notices, instructions, messages, advertisements and short news texts where the reader must connect details rather than translate every word.",
+      "commonErrors": ["Choosing an option that repeats a word but does not answer the question.", "Adding a plausible real-world assumption that the text does not support.", "Ignoring contrast, time or conditional markers."],
+      "summary": "Find the clues, connect them to the question and choose the least expansive conclusion that follows. Context supports meaning, but it does not license invented details.",
+      "practiceGuidance": "Before selecting an answer, name the clue that supports it and identify one tempting option that goes beyond the text.",
+      "estimatedMinutes": 15,
+      "remediations": [
+        {"id":"INFERENCE_WITHOUT_EVIDENCE","difficulty":"Guessing from background knowledge instead of the passage","explanation":"A possible explanation is not a supported inference unless the text gives a clue for it. Use information in the passage first and keep outside assumptions small.","workedExample":"If a person says “I left my umbrella by the door” and then checks the weather app, rain is possible but not certain; the passage alone does not prove it is raining.","selfCheck":"Which exact words in the passage make this answer more likely than the alternatives?"},
+        {"id":"CONDITION_AND_SCOPE","difficulty":"Missing a condition or turning a limited statement into a universal rule","explanation":"Words such as “if”, “unless”, “only” and time phrases limit a claim. Apply the condition before choosing an outcome, and preserve restrictions in the conclusion.","workedExample":"“Discount applies only before noon.” A purchase at 2 p.m. does not qualify, even if it is on the same day.","selfCheck":"What condition must be true, and who or what is included in the statement?"}
+      ]
+    },
+    {
+      "skill": "PHYSICS_AVERAGE_SPEED",
+      "title": "Velocidade média: relacionar distância, tempo e unidade",
+      "objective": "Calcular e interpretar a velocidade média a partir da distância total e do intervalo total, converter unidades de tempo e distinguir a média do percurso da velocidade em cada trecho.",
+      "priorKnowledge": ["Divisão com números inteiros e decimais", "Conversões básicas entre minutos e horas", "Leitura de grandezas e unidades"],
+      "keyConcepts": ["Velocidade média é distância total dividida pelo intervalo de tempo total.", "A unidade resulta das unidades escolhidas, como km/h ou m/s.", "O tempo total da viagem inclui paradas quando o intervalo é medido do início ao fim.", "A média de velocidades por trecho não substitui a razão entre distância total e tempo total."],
+      "progressiveExplanation": [
+        "Velocidade média descreve a distância percorrida por unidade de tempo no intervalo escolhido. O cálculo é v_m = Δs/Δt. Para uma viagem completa, some as distâncias e os tempos dos trechos antes de dividir.",
+        "As unidades precisam ser compatíveis. Se a distância está em quilômetros e a resposta deve ser km/h, transforme minutos em horas: 30 min = 0,5 h; 45 min = 0,75 h; 20 min = 1/3 h.",
+        "Uma parada não acrescenta distância, mas acrescenta tempo decorrido à viagem. Por isso, a velocidade média porta a porta pode ser menor que a velocidade enquanto o veículo estava em movimento. Informe qual intervalo está sendo usado.",
+        "Em trechos com velocidades diferentes, não calcule automaticamente a média aritmética das velocidades. Quando as durações são diferentes, use distância total ÷ tempo total. A média simples só coincide em condições específicas que precisam ser justificadas."
+      ],
+      "workedExample": "Uma ciclista percorre 12 km em 30 min e depois 18 km em 1 h.\n1. Distância total: 12 + 18 = 30 km.\n2. Tempo total: 0,5 h + 1 h = 1,5 h.\n3. Velocidade média: 30 ÷ 1,5 = 20 km/h.\n4. Comparação: as velocidades de trecho são 24 km/h e 18 km/h; sua média aritmética é 21 km/h, que não representa a viagem porque os trechos duraram tempos diferentes.\n5. Confira a unidade: quilômetros divididos por horas resultam em km/h.",
+      "everydayApplication": "Esse raciocínio ajuda a estimar deslocamentos, comparar rotas, interpretar aplicativos de transporte e ler dados de movimento sem confundir rapidez instantânea com desempenho médio no trajeto.",
+      "commonErrors": ["Usar minutos como se fossem horas decimais, por exemplo 20 min = 0,20 h.", "Fazer a média simples de velocidades de trechos com durações diferentes.", "Excluir paradas do intervalo sem dizer que se está calculando apenas o tempo em movimento."],
+      "summary": "Defina o intervalo, some distância e duração correspondentes, converta unidades e então divida. A resposta só faz sentido junto de sua unidade e do intervalo descrito.",
+      "practiceGuidance": "Escreva Δs e Δt antes da conta. Em trajetos por trechos, some os totais; depois verifique se o tempo inclui paradas e se a unidade final corresponde ao pedido.",
+      "estimatedMinutes": 16,
+      "remediations": [
+        {"id":"TIME_UNIT_CONVERSION","difficulty":"Conversão incorreta de minutos para horas","explanation":"Uma hora tem 60 minutos. Converta minutos dividindo por 60; 20 min = 20/60 h = 1/3 h, não 0,20 h.","workedExample":"15 km em 30 min: 30/60 = 0,5 h; 15/0,5 = 30 km/h.","selfCheck":"O número de horas convertido, multiplicado por 60, volta ao número de minutos original?"},
+        {"id":"AVERAGE_BY_TOTALS","difficulty":"Média simples de velocidades em trechos desiguais","explanation":"A velocidade média da viagem é a distância total dividida pelo tempo total. Uma média simples de velocidades dá peso igual a cada trecho, mesmo que tenham durações distintas.","workedExample":"Percorrer 10 km em 0,5 h e 10 km em 1 h: total 20 km em 1,5 h, então 13,33 km/h; média simples de 20 e 10 seria 15 km/h e não descreve o trajeto.","selfCheck":"A duração de cada trecho é igual? Se não, calcule com os totais."}
+      ]
+    }
+  ]
+}
