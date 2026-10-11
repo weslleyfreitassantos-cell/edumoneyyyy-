@@ -153,6 +153,20 @@ describe('GuidedJourneyPage', () => {
     expect(screen.queryByText('Qual é o resultado?')).toBeNull();
   });
 
+  it('explains when a remediation pool is exhausted without losing saved progress', () => {
+    state.session.data = {
+      ...state.session.data,
+      status: 'NEEDS_TEACHER_SUPPORT',
+      current_step_id: null,
+      decision_reason: 'REMEDIATION_QUESTION_POOL_EXHAUSTED',
+    };
+    state.step.data = null;
+    renderPage();
+
+    expect(screen.getByText(/Já usamos as questões disponíveis para praticar este conteúdo/i)).toBeTruthy();
+    expect(screen.getByText(/Seu progresso está salvo/i)).toBeTruthy();
+  });
+
   it('explains a paused V9 journey when the bridge limit leaves no active step', () => {
     state.session.data = { ...state.session.data, status: 'PAUSED', current_step_id: null, decision_reason: 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED' };
     state.step.data = null;
