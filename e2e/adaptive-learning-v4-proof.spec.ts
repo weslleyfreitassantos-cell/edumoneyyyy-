@@ -246,6 +246,7 @@ adaptiveDescribe('adaptive learning V4 real proof slices', () => {
 
       const failedReview = await completeCurrentStep(service, reviewStudent, reviewSessionId, `${suffix}:review-error`, 'wrong');
       expect(failedReview.step.step_type).toBe('REVIEW');
+      const failedReviewAttemptId = required(failedReview.result?.attempt_id, 'failed review attempt');
       const remediatingSession = await readServiceSession(service, reviewSessionId);
       expect(remediatingSession.status).toBe('ACTIVE');
       expect(remediatingSession.decision_reason).toBe('REVIEW_REMEDIATION_REQUIRED');
@@ -262,20 +263,78 @@ adaptiveDescribe('adaptive learning V4 real proof slices', () => {
       expect(remediationLesson.error).toBeNull();
       expect(remediationLesson.data?.lesson?.content_markdown).toBeTruthy();
 
-      await runUntilStepType(service, reviewStudent, reviewSessionId, 'REVIEW', `${suffix}:review-after-remediation`);
-      const passedReview = await completeCurrentStep(service, reviewStudent, reviewSessionId, `${suffix}:review-pass`);
-      expect(passedReview.step.step_type).toBe('REVIEW');
-      const completedReviewSession = await readServiceSession(service, reviewSessionId);
-      expect(completedReviewSession.status).toBe('COMPLETED');
+      const targetSteps = await service.from('learning_guided_steps')
+        .select('id')
+        .eq('session_id', reviewSessionId)
+        .eq('canonical_skill_id', skillByCode.get('MATH_PERCENT_OF_QUANTITY'));
+      expect(targetSteps.error).toBeNull();
+      const targetStepIds = (targetSteps.data ?? []).map((item: any) => item.id);
+      const previousTargetAttempts = await service.from('learning_guided_step_attempts')
+        .select('step_id,answers')
+        .eq('session_id', reviewSessionId)
+        .in('step_id', targetStepIds);
+      expect(previousTargetAttempts.error).toBeNull();
+      const previouslyAnsweredQuestionIds = new Set(
+        (previousTargetAttempts.data ?? []).flatMap((attempt: any) =>
+          Array.isArray(attempt.answers)
+            ? attempt.answers.map((answer: any) => answer.question_bank_id).filter(Boolean)
+            : [],
+        ),
+      );
+
+      const remediationAdvance = await completeCurrentStep(service, reviewStudent, reviewSessionId, `${suffix}:remediation-lesson`);
+      expect(remediationAdvance.step.step_type).toBe('LESSON');
+      const afterRemediation = await readServiceSession(service, reviewSessionId);
+      const failedAttemptStillPresent = await service.from('learning_guided_step_attempts')
+        .select('id,score')
+        .eq('id', failedReviewAttemptId)
+        .single();
+      expect(failedAttemptStillPresent.error).toBeNull();
+      expect(failedAttemptStillPresent.data?.score).toBeLessThan(80);
+      expect(afterRemediation.metadata?.mastery_unproven).toBe(true);
+
+      if (afterRemediation.status === 'NEEDS_TEACHER_SUPPORT') {
+        expect(afterRemediation.current_step_id).toBeNull();
+        expect(afterRemediation.decision_reason).toBe('REMEDIATION_QUESTION_POOL_EXHAUSTED');
+        const sessionSteps = await service.from('learning_guided_steps')
+          .select('id,status,metadata')
+          .eq('session_id', reviewSessionId);
+        expect(sessionSteps.error).toBeNull();
+        expect(sessionSteps.data?.some((item: any) =>
+          item.status === 'SKIPPED' && item.metadata?.runtime_reason === 'REMEDIATION_QUESTION_POOL_EXHAUSTED'
+        )).toBe(true);
+        const supportEvent = await service.from('learning_guided_session_events')
+          .select('id')
+          .eq('session_id', reviewSessionId)
+          .eq('event_type', 'TEACHER_SUPPORT_REQUIRED');
+        expect(supportEvent.error).toBeNull();
+        expect(supportEvent.data?.length).toBeGreaterThan(0);
+      } else {
+        expect(afterRemediation.status).toBe('ACTIVE');
+        const freshPractice = await service.from('learning_guided_steps')
+          .select('id,step_type,question_set_id,metadata')
+          .eq('id', afterRemediation.current_step_id)
+          .single();
+        expect(freshPractice.error).toBeNull();
+        expect(freshPractice.data?.step_type).toBe('PRACTICE');
+        expect(freshPractice.data?.metadata?.fresh_questions_only).toBe(true);
+        const renderedFreshPractice = await reviewStudent.client.rpc('get_guided_learning_step_v4', { p_step_id: freshPractice.data?.id });
+        expect(renderedFreshPractice.error).toBeNull();
+        const freshQuestionIds = (renderedFreshPractice.data?.questions ?? []).map((question: any) => question.id);
+        expect(freshQuestionIds).toHaveLength(2);
+        expect(freshQuestionIds.every((questionId: string) => !previouslyAnsweredQuestionIds.has(questionId))).toBe(true);
+        const freshPracticeAttempt = await completeCurrentStep(service, reviewStudent, reviewSessionId, `${suffix}:fresh-remediation-practice`);
+        expect(freshPracticeAttempt.step.id).toBe(freshPractice.data?.id);
+        expect(freshPracticeAttempt.result?.score).toBe(100);
+      }
+
       const reviewAttempts = await service.from('learning_guided_step_attempts')
         .select('score,correct_count,total_questions')
         .eq('session_id', reviewSessionId)
         .eq('purpose', 'REVIEW')
         .order('submitted_at');
       expect(reviewAttempts.error).toBeNull();
-      expect(reviewAttempts.data).toHaveLength(2);
-      expect(reviewAttempts.data?.[0].score).toBeLessThan(100);
-      expect(reviewAttempts.data?.[1].score).toBe(100);
+      expect(reviewAttempts.data?.some((attempt: any) => attempt.score < 80)).toBe(true);
     } finally {
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
       if (accountId) await service.from('accounts').delete().eq('id', accountId);
