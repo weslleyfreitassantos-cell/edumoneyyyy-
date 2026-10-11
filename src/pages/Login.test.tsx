@@ -423,15 +423,15 @@ describe('Login', () => {
     });
   });
 
-  it('mantem o aviso de subdominio na tela de login sem redirecionar a conta atual', () => {
+  it('mostra erro generico de credenciais sem revelar o subdominio', () => {
     authMock.profile = { id: 'profile-1' };
 
     renderLogin('/login?subdomainMismatch=1');
 
     expect(screen.getByRole('alert').textContent).toContain(
-      'Este não é o subdomínio da sua escola.',
+      'E-mail ou senha incorretos.',
     );
-    expect(screen.getByText('Confira o endereço da sua escola e tente novamente.')).toBeTruthy();
+    expect(screen.queryByText(/subdomínio|escola/i)).toBeNull();
     expect(screen.getByRole('button', { name: 'Trocar de usuário' })).toBeTruthy();
     expect(authMock.navigate).not.toHaveBeenCalledWith('/dashboard');
   });

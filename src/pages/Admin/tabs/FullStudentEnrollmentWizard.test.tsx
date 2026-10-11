@@ -17,6 +17,7 @@ import {
 } from 'vitest';
 
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
+import { FullStudentEnrollmentError } from '../../../services/fullStudentEnrollmentService';
 
 const mocks = vi.hoisted(() => ({
   create: vi.fn(),
@@ -116,6 +117,42 @@ function renderWizard() {
   );
 }
 
+async function advanceToReview() {
+  fireEvent.change(screen.getByLabelText('Nome completo *'), {
+    target: { value: 'Aluno Novo' },
+  });
+  fireEvent.change(screen.getByLabelText('E-mail *'), {
+    target: { value: 'novo@example.com' },
+  });
+  fireEvent.change(screen.getByLabelText('Data de nascimento *'), {
+    target: { value: '2016-01-01' },
+  });
+
+  for (let index = 0; index < 2; index += 1) {
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+  }
+
+  fireEvent.change(screen.getByLabelText('Origem'), {
+    target: { value: 'new' },
+  });
+  await waitFor(() => expect(screen.getByLabelText('Nome completo *')).toBeTruthy());
+  fireEvent.change(screen.getByLabelText('Nome completo *'), {
+    target: { value: 'Responsável Novo' },
+  });
+  fireEvent.change(screen.getByLabelText('E-mail *'), {
+    target: { value: 'responsavel@example.com' },
+  });
+  fireEvent.change(screen.getByLabelText('Parentesco *'), {
+    target: { value: 'Mae' },
+  });
+
+  for (let index = 2; index < 7; index += 1) {
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
+  }
+}
+
 describe('FullStudentEnrollmentWizard', () => {
   afterEach(() => {
     cleanup();
@@ -200,6 +237,54 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
     await waitFor(() => expect(mocks.create).toHaveBeenCalledTimes(1));
     expect(mocks.create.mock.calls[0][0].institutionId).toBe('institution-1');
+  });
+
+  it('mostra a causa da falha e reutiliza os registros preservados ao tentar novamente', async () => {
+    mocks.findDuplicates.mockResolvedValue([]);
+    mocks.create
+      .mockRejectedValueOnce(new FullStudentEnrollmentError(
+        'A turma selecionada atingiu a capacidade.',
+        {
+          studentId: 'student-created',
+          guardianProfileIds: { 0: 'guardian-created' },
+        },
+      ))
+      .mockResolvedValueOnce({
+        student_id: 'student-created',
+        enrollment_id: 'enrollment-created',
+        guardian_profile_ids: ['guardian-created'],
+        documents_pending: 10,
+        email_pending: false,
+      });
+
+    renderWizard();
+    await advanceToReview();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
+    expect(await screen.findByText(/A turma selecionada atingiu a capacidade\./)).toBeTruthy();
+    expect(screen.getByText(/registros já criados foram preservados/)).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
+    await waitFor(() => expect(mocks.create).toHaveBeenCalledTimes(2));
+    expect(mocks.create.mock.calls[1][0]).toMatchObject({
+      existingStudentId: 'student-created',
+      draft: { guardians: [{ profile_id: 'guardian-created' }] },
+    });
+  });
+
+  it('nao afirma que houve cadastro parcial quando nenhum registro foi preservado', async () => {
+    mocks.findDuplicates.mockResolvedValue([]);
+    mocks.create.mockRejectedValue(new FullStudentEnrollmentError(
+      'Ja existe um usuario cadastrado com este e-mail.',
+    ));
+
+    renderWizard();
+    await advanceToReview();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
+
+    expect(await screen.findByText('Ja existe um usuario cadastrado com este e-mail.')).toBeTruthy();
+    expect(screen.queryByText(/registros já criados foram preservados/)).toBeNull();
   });
 
   it('carrega e salva todos os dados no modo de edicao', async () => {
