@@ -499,6 +499,60 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     expect(multiChemistry.data.skills.every((row: { subject: string }) => row.subject === 'CHEMISTRY')).toBe(true);
     expect(multiChemistry.data.skills.some((row: { skill: string }) => row.skill === `CHEMISTRY_RUNTIME_${suffix}`)).toBe(true);
 
+    const previewSkill = await service.from('learning_curriculum_skills')
+      .select('id')
+      .eq('code', 'CHEMISTRY_STOICHIOMETRY')
+      .maybeSingle();
+    expect(previewSkill.error).toBeNull();
+    expect(previewSkill.data).not.toBeNull();
+
+    const hiddenPreviewSkill = await studentClient.from('learning_curriculum_skills')
+      .select('id')
+      .eq('id', previewSkill.data!.id)
+      .maybeSingle();
+    expect(hiddenPreviewSkill.error).toBeNull();
+    expect(hiddenPreviewSkill.data).toBeNull();
+
+    const previewLesson = await studentClient.from('learning_skill_lessons')
+      .select('id')
+      .eq('canonical_skill_id', previewSkill.data!.id);
+    expect(previewLesson.error).toBeNull();
+    expect(previewLesson.data).toEqual([]);
+
+    const previewQuestionSets = await studentClient.from('learning_question_sets')
+      .select('id')
+      .eq('canonical_skill_id', previewSkill.data!.id);
+    expect(previewQuestionSets.error).toBeNull();
+    expect(previewQuestionSets.data).toEqual([]);
+
+    const previewQuestions = await studentClient.from('learning_question_bank')
+      .select('id')
+      .eq('source_type', 'TECESCOLA_CORE_V4')
+      .contains('metadata', { primary_skill: 'CHEMISTRY_STOICHIOMETRY' });
+    expect(previewQuestions.error).toBeNull();
+    expect(previewQuestions.data).toEqual([]);
+
+    const studentGraph = await studentClient.rpc('get_student_knowledge_graph_v3', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+    });
+    expect(studentGraph.error).toBeNull();
+    expect(studentGraph.data.skills.some((row: { skill: string }) => row.skill === 'CHEMISTRY_STOICHIOMETRY')).toBe(false);
+
+    const previewPlan = await studentClient.rpc('get_adaptive_v3_plan', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_target_canonical_skill_id: previewSkill.data!.id,
+    });
+    expect(previewPlan.error?.message).toContain('LEARNING_TARGET_NOT_FOUND');
+
+    const previewStart = await studentClient.rpc('start_guided_learning_session_v4', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_target_canonical_skill_id: previewSkill.data!.id,
+    });
+    expect(previewStart.error).not.toBeNull();
+
     const multiUnassignedMath = await teacherMulti.client.rpc('get_teacher_student_knowledge_graph_v3', {
       p_institution_id: institutionA,
       p_student_id: studentUnassigned,

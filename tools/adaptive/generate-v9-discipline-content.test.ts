@@ -34,6 +34,15 @@ describe('V9 discipline content migration generator', () => {
     expect(generated.match(/'PEDAGOGICAL_REVIEW_PENDING'/g)?.length).toBeGreaterThan(0);
     expect(generated).toContain("'PEDAGOGICAL_REVIEW_PENDING','CANDIDATE',canonical_subject.id");
     expect(generated).toContain("'content_pack','tec-escola-core-v4'");
+    expect(generated).toContain("metadata->>'demo_preview_only' is distinct from 'true'");
+    expect(generated).toContain('LEARNING_V9_DEMO_JOURNEY_REQUIRED');
+    expect(generated).toContain("private.bncc_demo_preview_allowed(p_institution_id, p_student_id)");
+    expect(generated).toContain("'demo_preview_only',true");
+    expect(generated.indexOf('Install the preview boundary before any demo-only content is inserted.'))
+      .toBeLessThan(generated.indexOf('do $v9_content$'));
+    expect(generated).toContain('V9_STUDENT_GRAPH_PATCH_TARGET_MISMATCH');
+    expect(generated).toContain('V9_HEATMAP_PATCH_TARGET_MISMATCH');
+    expect(generated).toContain('V9_ADAPTIVE_PLAN_PATCH_TARGET_MISMATCH');
     expect(generated).not.toContain('PEDAGOGICAL_REVIEWED');
     expect(generated).not.toContain("'bncc_alignment_status','MAPPED'");
   });
