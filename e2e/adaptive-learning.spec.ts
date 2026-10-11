@@ -86,6 +86,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await studentPage.goto('/student/study');
       await expect(studentPage.getByRole('heading', { name: 'O que você quer estudar?' })).toBeVisible({ timeout: 30_000 });
       expect(await studentPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      await studentPage.getByRole('button', { name: /Matérias/ }).click();
       await studentPage.getByRole('link', { name: new RegExp(`Matemática Adaptive ${suffix}`) }).click();
       await expect(studentPage).toHaveURL(/\/student\/study\/subject\/[^/]+$/);
       await expect(studentPage.getByRole('region', { name: new RegExp(`Estudo de Matemática Adaptive ${suffix}`) })).toBeVisible({ timeout: 30_000 });
