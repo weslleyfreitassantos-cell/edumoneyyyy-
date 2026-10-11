@@ -255,15 +255,34 @@ $$;
 create or replace function public.start_guided_learning_session_v4(p_institution_id uuid, p_student_id uuid, p_target_canonical_skill_id uuid)
 returns jsonb language plpgsql security definer set search_path = ''
 as $$
-declare existing public.learning_guided_sessions%rowtype; created public.learning_guided_sessions%rowtype; first_step uuid; question_set uuid; target_subject_id uuid; enrollment_class_id uuid; target_institution_skill_id uuid;
+declare target_skill public.learning_curriculum_skills%rowtype; existing public.learning_guided_sessions%rowtype; created public.learning_guided_sessions%rowtype; first_lesson uuid; first_step uuid; question_set uuid; target_subject_id uuid; enrollment_class_id uuid; target_institution_skill_id uuid; v8_demo boolean;
 begin
   if not private.learning_v2_scope_student(p_institution_id,p_student_id) then raise exception 'LEARNING_STUDENT_SCOPE_DENIED'; end if;
-  if not exists (select 1 from public.learning_curriculum_skills skill where skill.id=p_target_canonical_skill_id and skill.active and skill.node_kind='LEAF' and skill.content_readiness='ADAPTIVE_READY' and skill.mastery_targetable) then raise exception 'LEARNING_V4_TARGET_NOT_READY'; end if;
+  select skill.* into target_skill from public.learning_curriculum_skills skill where skill.id=p_target_canonical_skill_id and skill.active and skill.node_kind='LEAF' and skill.content_readiness='ADAPTIVE_READY' and skill.mastery_targetable;
+  if not found then raise exception 'LEARNING_V4_TARGET_NOT_READY'; end if;
+  v8_demo := target_skill.code in ('EM13MAT101','EM13LGG303','EM13CNT101','EM13CHS103');
   select session.* into existing from public.learning_guided_sessions session where session.institution_id=p_institution_id and session.student_id=p_student_id and session.target_canonical_skill_id=p_target_canonical_skill_id and session.status in ('ACTIVE','PAUSED') order by session.updated_at desc limit 1;
   if found and existing.planner_version='V4' then return jsonb_build_object('session_id',existing.id,'created',false,'current_step_id',existing.current_step_id,'engine_version','V4'); end if;
   if found then raise exception 'LEARNING_V4_EXISTING_SESSION_OTHER_ENGINE' using detail='An active or paused V2/V3 session owns this target; continue it with the V2-compatible service fallback.'; end if;
   select link.learning_skill_id, unit.subject_id into target_institution_skill_id, target_subject_id from public.learning_skill_canonical_links link join public.learning_skills skill on skill.id=link.learning_skill_id and skill.active join public.learning_units unit on unit.id=skill.unit_id and unit.active where link.institution_id=p_institution_id and link.canonical_skill_id=p_target_canonical_skill_id and link.active order by link.created_at limit 1;
   select enrollment.class_id into enrollment_class_id from public.enrollments enrollment where enrollment.student_id=p_student_id and enrollment.active and enrollment.status='active' order by enrollment.created_at desc limit 1;
+
+  if not v8_demo then
+    select lesson.id into first_lesson from public.learning_skill_lessons lesson where lesson.canonical_skill_id=p_target_canonical_skill_id and lesson.version=4 and lesson.active order by lesson.id limit 1;
+    if first_lesson is null then
+      select set_row.id into question_set from public.learning_question_sets set_row where set_row.scope='GLOBAL' and set_row.institution_id is null and set_row.teacher_profile_id is null and set_row.canonical_skill_id=p_target_canonical_skill_id and set_row.purpose='PROBE' and set_row.version=4 and set_row.active and exists (select 1 from public.learning_question_set_items item join public.learning_question_bank bank on bank.id=item.question_bank_id and bank.active where item.question_set_id=set_row.id) limit 1;
+      if question_set is null then raise exception 'LEARNING_V4_QUESTION_SET_EMPTY'; end if;
+    end if;
+    insert into public.learning_guided_sessions(institution_id,student_id,target_canonical_skill_id,original_target_canonical_skill_id,current_canonical_skill_id,target_institution_skill_id,subject_id,class_id,planner_version,decision_reason,metadata)
+    values (p_institution_id,p_student_id,p_target_canonical_skill_id,p_target_canonical_skill_id,p_target_canonical_skill_id,target_institution_skill_id,target_subject_id,enrollment_class_id,'V4','V4_TARGET_READY',jsonb_build_object('engine_version','V4','decision_reason','V4_TARGET_READY','replan_count',0)) returning * into created;
+    insert into public.learning_guided_steps(institution_id,session_id,canonical_skill_id,step_type,purpose,position,status,lesson_id,question_set_id,started_at)
+    values (p_institution_id,created.id,p_target_canonical_skill_id,case when first_lesson is null then 'PROBE' else 'LESSON' end,case when first_lesson is null then 'PROBE' else null end,0,'ACTIVE',first_lesson,question_set,now()) returning id into first_step;
+    update public.learning_guided_sessions set current_step_id=first_step where id=created.id;
+    insert into public.learning_guided_session_events(institution_id,session_id,student_id,event_type,step_id,idempotency_key,payload) values (p_institution_id,created.id,p_student_id,'SESSION_STARTED',first_step,'v4-session-start:'||created.id::text,jsonb_build_object('engine_version','V4','decision_reason','V4_TARGET_READY'));
+    insert into public.learning_guided_session_events(institution_id,session_id,student_id,event_type,step_id,idempotency_key,payload) values (p_institution_id,created.id,p_student_id,'STEP_STARTED',first_step,'v4-step-start:'||first_step::text,jsonb_build_object('step_type',case when first_lesson is null then 'PROBE' else 'LESSON' end));
+    return jsonb_build_object('session_id',created.id,'created',true,'current_step_id',first_step,'engine_version','V4');
+  end if;
+
   select set_row.id into question_set from public.learning_question_sets set_row where set_row.scope='GLOBAL' and set_row.institution_id is null and set_row.teacher_profile_id is null and set_row.canonical_skill_id=p_target_canonical_skill_id and set_row.purpose='PROBE' and set_row.active and exists (select 1 from public.learning_question_set_items item join public.learning_question_bank bank on bank.id=item.question_bank_id and bank.active where item.question_set_id=set_row.id) order by set_row.version desc, set_row.id limit 1;
   if question_set is null then raise exception 'LEARNING_V4_QUESTION_SET_EMPTY'; end if;
   insert into public.learning_guided_sessions(institution_id,student_id,target_canonical_skill_id,original_target_canonical_skill_id,current_canonical_skill_id,target_institution_skill_id,subject_id,class_id,planner_version,decision_reason,metadata)
@@ -288,6 +307,14 @@ begin
   if not found then raise exception 'LEARNING_GUIDED_STEP_NOT_FOUND'; end if;
   select session.* into session_row from public.learning_guided_sessions session where session.id=step_row.session_id;
   if not private.learning_v2_scope_student(session_row.institution_id,session_row.student_id) then raise exception 'LEARNING_STEP_SCOPE_DENIED'; end if;
+  if coalesce(session_row.metadata->>'adaptive_policy_version','') <> 'V8' then
+    select jsonb_build_object(
+      'id',step_row.id,'session_id',step_row.session_id,'canonical_skill_id',step_row.canonical_skill_id,'step_type',step_row.step_type,'purpose',step_row.purpose,'status',step_row.status,'position',step_row.position,'lesson_id',step_row.lesson_id,
+      'lesson',(select jsonb_build_object('id',lesson.id,'title',lesson.title,'summary',lesson.summary,'content_markdown',lesson.content_markdown,'worked_example',lesson.worked_example,'tips',lesson.tips,'estimated_minutes',lesson.estimated_minutes) from public.learning_skill_lessons lesson where lesson.id=step_row.lesson_id),
+      'questions',coalesce((select jsonb_agg(jsonb_build_object('id',question.id,'statement',question.statement,'options',question.options,'difficulty',question.difficulty,'position',item.position) order by item.position) from public.learning_question_set_items item join public.learning_question_bank question on question.id=item.question_bank_id and question.active where item.question_set_id=step_row.question_set_id and not exists (select 1 from public.learning_guided_step_attempts previous_attempt where previous_attempt.step_id=step_row.id and exists (select 1 from jsonb_array_elements(previous_attempt.answers) answer where answer->>'question_bank_id'=question.id::text))), '[]'::jsonb)
+    ) into result;
+    return result;
+  end if;
   select jsonb_build_object(
     'id',step_row.id,'session_id',step_row.session_id,'canonical_skill_id',step_row.canonical_skill_id,'step_type',step_row.step_type,'purpose',step_row.purpose,'status',step_row.status,'position',step_row.position,'lesson_id',step_row.lesson_id,
     'curriculum',(select jsonb_build_object('official_code',skill.metadata->>'official_code','title',skill.title,'description',skill.description,'subject_area',skill.subject_area,'stage',skill.stage,'official_grade_range',skill.metadata->>'official_grade_range','recommended_grade',skill.metadata->>'recommended_grade','recommended_grade_source',skill.metadata->>'recommended_grade_source','official_source_url',skill.metadata->>'official_source_url','official_source_page',skill.metadata->>'official_source_page') from public.learning_curriculum_skills skill where skill.id=step_row.canonical_skill_id),
