@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { useCompleteGuidedLearningStep } from '../../hooks/useLearningCenter';
 import { learningCenterService } from '../../services/learningCenterService';
+import LessonMarkdown from './LessonMarkdown';
 
 export default function LessonPage() {
   const { lessonId, stepId } = useParams();
@@ -37,7 +38,7 @@ export default function LessonPage() {
         </div>
       </header>
       <section className="space-y-5 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
-        <div className="whitespace-pre-wrap text-[15px] leading-7 text-slate-700 dark:text-slate-200">{lesson.data.content_markdown}</div>
+        <LessonMarkdown content={lesson.data.content_markdown} />
         {lesson.data.worked_example && <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-100"><strong>Exemplo guiado</strong><br />{lesson.data.worked_example}</div>}
         {lesson.data.tips.length > 0 && <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">{lesson.data.tips.map((tip) => <li key={tip} className="flex gap-2"><span className="text-[#005bbf]">•</span>{tip}</li>)}</ul>}
         <button type="button" onClick={() => void finish()} disabled={complete.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">

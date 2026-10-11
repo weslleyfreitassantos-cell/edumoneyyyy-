@@ -37,6 +37,7 @@ const state = vi.hoisted(() => ({
     isLoading: false,
   },
   submit: { data: undefined as { score: number; correct_count: number; total_questions: number; feedback: Array<{ question_bank_id: string; is_correct: boolean; correct_answer: unknown; explanation: string | null }> } | undefined, mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
+  startGuided: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' }), isPending: false, isError: false },
   advance: { mutateAsync: vi.fn(), isPending: false },
 }));
 
@@ -46,6 +47,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningStudent: () => ({ data: { id: 'student-1', profile_id: 'profile-1' } }),
   useGuidedLearningSessionV2: () => state.session,
   useGuidedLearningStepV2: () => state.step,
+  useStartGuidedLearningSessionV2: () => state.startGuided,
   useAdvanceGuidedLearningSessionV2: () => state.advance,
   useSubmitGuidedStepV2: () => state.submit,
 }));
@@ -100,6 +102,41 @@ describe('GuidedJourneyPage', () => {
 
     state.submit.mutateAsync = originalMutateAsync;
     state.submit.data = undefined;
+  });
+
+  it('asks the server to recover a paused session without a current step', async () => {
+    state.session.data = {
+      id: 'session-1',
+      student_id: 'student-1',
+      target_canonical_skill_id: 'skill-1',
+      original_target_canonical_skill_id: 'skill-1',
+      current_canonical_skill_id: 'skill-1',
+      current_step_id: null,
+      status: 'PAUSED',
+      planner_version: 'V4',
+      decision_reason: 'CONTENT_NOT_READY',
+      replan_count: 0,
+      metadata: { runtime_reason: 'CONTENT_NOT_READY', demo_preview: true },
+      current_step: null,
+    };
+    state.step.data = null;
+
+    renderPage();
+
+    await waitFor(() => expect(state.startGuided.mutateAsync).toHaveBeenCalledWith('skill-1'));
+    state.session.data = { ...state.session.data, current_step_id: 'step-1' };
+    state.step.data = {
+      id: 'step-1',
+      session_id: 'session-1',
+      canonical_skill_id: 'skill-1',
+      step_type: 'PROBE',
+      purpose: 'PROBE',
+      status: 'ACTIVE',
+      position: 0,
+      lesson_id: null,
+      lesson: null,
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+    };
   });
 
   it('keeps a recoverable teacher-support state instead of inventing another step', () => {
