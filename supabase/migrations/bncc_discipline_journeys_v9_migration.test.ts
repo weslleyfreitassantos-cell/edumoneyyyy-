@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 const migration = readFileSync(
   new URL('./20261011000100_bncc_discipline_journeys_v9.sql', import.meta.url),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 
 describe('BNCC discipline journeys V9 migration', () => {
   it('binds only the twelve exact demo institution subjects and keeps journeys pending review', () => {
