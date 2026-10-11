@@ -1268,6 +1268,15 @@ export const learningCenterService = {
       }),
     ),
 
+  resumeContentExhaustedGuidedJourneyV9: (input: { institutionId: string; studentId: string; journeyId: string }) =>
+    read<{ session_id: string; current_step_id: string; resumed: boolean; status: 'ACTIVE' }>(
+      supabase.rpc('resume_content_exhausted_guided_journey_v9', {
+        p_institution_id: input.institutionId,
+        p_student_id: input.studentId,
+        p_journey_id: input.journeyId,
+      }),
+    ),
+
   guidedStepV2: (stepId: string) =>
     (async () => {
       const v4 = await supabase.rpc('get_guided_learning_step_v4', { p_step_id: stepId });
