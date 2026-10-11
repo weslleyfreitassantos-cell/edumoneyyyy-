@@ -117,7 +117,7 @@ export default function GuidedJourneyPage() {
               : 'Prática';
 
   if (submitted && submit.data) {
-    const sessionCompleted = submit.data.session_status === 'COMPLETED';
+    const sessionCompleted = submit.data.session_status === 'COMPLETED' && session.data?.metadata?.adaptive_policy_version === 'V8';
     return <div className="mx-auto max-w-2xl space-y-5">
       <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950">
         <CheckCircle2 className="h-6 w-6" />
