@@ -553,6 +553,28 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     });
     expect(previewStart.error).not.toBeNull();
 
+    const legacyPreviewStart = await studentClient.rpc('start_guided_learning_session', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_target_canonical_skill_id: previewSkill.data!.id,
+    });
+    expect(legacyPreviewStart.error).not.toBeNull();
+
+    const v2PreviewStart = await studentClient.rpc('start_guided_learning_session_v2', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_target_canonical_skill_id: previewSkill.data!.id,
+    });
+    expect(v2PreviewStart.error).not.toBeNull();
+
+    const unauthorizedPreviewSessions = await service.from('learning_guided_sessions')
+      .select('id')
+      .eq('institution_id', institutionA)
+      .eq('student_id', studentA)
+      .eq('target_canonical_skill_id', previewSkill.data!.id);
+    expect(unauthorizedPreviewSessions.error).toBeNull();
+    expect(unauthorizedPreviewSessions.data).toEqual([]);
+
     const multiUnassignedMath = await teacherMulti.client.rpc('get_teacher_student_knowledge_graph_v3', {
       p_institution_id: institutionA,
       p_student_id: studentUnassigned,

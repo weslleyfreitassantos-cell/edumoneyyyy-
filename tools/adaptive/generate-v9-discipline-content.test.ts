@@ -36,6 +36,7 @@ describe('V9 discipline content migration generator', () => {
     expect(generated).toContain("'content_pack','tec-escola-core-v4'");
     expect(generated).toContain("metadata->>'demo_preview_only' is distinct from 'true'");
     expect(generated).toContain('LEARNING_V9_DEMO_JOURNEY_REQUIRED');
+    expect(generated).not.toContain("if new.planner_version = 'V4'");
     expect(generated).toContain("private.bncc_demo_preview_allowed(p_institution_id, p_student_id)");
     expect(generated).toContain("'demo_preview_only',true");
     expect(generated.indexOf('Install the preview boundary before any demo-only content is inserted.'))

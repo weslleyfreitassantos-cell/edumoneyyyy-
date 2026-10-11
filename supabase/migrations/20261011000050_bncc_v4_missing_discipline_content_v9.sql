@@ -118,8 +118,7 @@ security definer
 set search_path = ''
 as $$
 begin
-  if new.planner_version = 'V4'
-     and exists (
+  if exists (
        select 1 from public.learning_curriculum_skills skill
         where skill.id = new.target_canonical_skill_id
           and skill.metadata->>'demo_preview_only' = 'true'
