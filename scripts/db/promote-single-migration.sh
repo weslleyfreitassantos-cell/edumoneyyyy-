@@ -85,13 +85,16 @@ if [[ -n "${DRY_RUN_OUTPUT_FILE:-}" ]]; then
   [[ -f "${DRY_RUN_OUTPUT_FILE}" ]] || abort "dry-run fixture is missing"
   dry_run_output="$(cat "${DRY_RUN_OUTPUT_FILE}")"
 else
-  dry_run_output="$(npx supabase --workdir "${temp_root}" db push --db-url "${production_db_url}" --dry-run 2>&1)" \
+  dry_run_output="$(npx supabase --workdir "${temp_root}" db push --db-url "${production_db_url}" --dry-run --debug 2>&1)" \
     || abort "supabase dry-run failed"
 fi
 
 pending_versions=()
 while IFS= read -r version; do
   [[ -z "${version}" ]] && continue
+  if printf '%s\n' "${remote_versions[@]}" | grep -Fxq "${version}"; then
+    continue
+  fi
   pending_versions+=("${version}")
 done < <(printf '%s\n' "${dry_run_output}" | grep -Eo '[0-9]{14}' | sort -u || true)
 
@@ -114,7 +117,7 @@ fi
 [[ "${CONFIRM_PRODUCTION_WRITE:-}" == 'I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION' ]] || \
   abort "production write confirmation is missing"
 
-npx supabase --workdir "${temp_root}" db push --db-url "${production_db_url}" --yes >/dev/null \
+apply_output="$(npx supabase --workdir "${temp_root}" db push --db-url "${production_db_url}" --yes --debug 2>&1)" \
   || abort "selective migration push failed"
 
 after_output="$(psql "${production_db_url}" -X -A -t -v ON_ERROR_STOP=1 -c \

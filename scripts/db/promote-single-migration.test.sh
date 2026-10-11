@@ -41,6 +41,11 @@ expect_failure() {
   fi
 }
 
+printf 'Already applied %s\nWould push migration %s\n' "$expected_last" "$target_version" > "$dry_run"
+success="$(run_guard)"
+grep -q '^DRY_RUN_PENDING_COUNT=1$' <<< "$success"
+grep -q "^DRY_RUN_PENDING_VERSION=$target_version$" <<< "$success"
+
 printf '%s\n' "$target_version" 20261004000100 > "$dry_run"
 expect_failure
 printf 'Would push migration %s\n' "$target_version" > "$dry_run"
