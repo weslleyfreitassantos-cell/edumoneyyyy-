@@ -41,7 +41,6 @@ describe('V9 discipline content migration generator', () => {
     expect(generated.indexOf('Install the preview boundary before any demo-only content is inserted.'))
       .toBeLessThan(generated.indexOf('do $v9_content$'));
     expect(generated).toContain('V9_STUDENT_GRAPH_PATCH_TARGET_MISMATCH');
-    expect(generated).toContain('V9_HEATMAP_PATCH_TARGET_MISMATCH');
     expect(generated).toContain('V9_ADAPTIVE_PLAN_PATCH_TARGET_MISMATCH');
     expect(generated).not.toContain('PEDAGOGICAL_REVIEWED');
     expect(generated).not.toContain("'bncc_alignment_status','MAPPED'");

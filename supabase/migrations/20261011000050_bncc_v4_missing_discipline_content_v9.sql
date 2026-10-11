@@ -99,21 +99,6 @@ $scope_patch$;
 do $scope_patch$
 declare
   function_definition text;
-  old_clause text := '    and skill.active' || chr(10) || '  group by subject.code, skill.code';
-  new_clause text := '    and skill.active' || chr(10) || '    and (skill.metadata->>''demo_preview_only'' is distinct from ''true'' or exists (select 1 from private.bncc_demo_preview_institutions preview where preview.institution_id = p_institution_id and preview.active))' || chr(10) || '  group by subject.code, skill.code';
-begin
-  select pg_get_functiondef('public.get_teacher_class_knowledge_heatmap_v3(uuid,uuid)'::regprocedure)
-    into function_definition;
-  if function_definition is null then raise exception 'V9_HEATMAP_RPC_MISSING'; end if;
-  if position(new_clause in function_definition) > 0 then return; end if;
-  if position(old_clause in function_definition) = 0 then raise exception 'V9_HEATMAP_PATCH_TARGET_MISMATCH'; end if;
-  execute replace(function_definition, old_clause, new_clause);
-end;
-$scope_patch$;
-
-do $scope_patch$
-declare
-  function_definition text;
   old_clause text := 'where id = p_target_canonical_skill_id and active;';
   new_clause text := 'where id = p_target_canonical_skill_id and active and (metadata->>''demo_preview_only'' is distinct from ''true'' or private.bncc_demo_preview_allowed(p_institution_id, p_student_id));';
 begin
