@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { buildV9ContentExpansionMigration } from '../../tools/adaptive/generate-v9-content-expansion';
 
 const migration = readFileSync(new URL('./20261011000500_bncc_v9_content_expansion_v1.sql', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
+const gradingMigration = readFileSync(new URL('./20261010001100_bncc_deep_learning_v8.sql', import.meta.url), 'utf8').replace(/\r\n/g, '\n');
 
 describe('BNCC V9 authored content expansion migration', () => {
   it('adds demo-only questions with pending human review and protects idempotency', () => {
@@ -32,11 +33,11 @@ describe('BNCC V9 authored content expansion migration', () => {
     expect(migration).toContain('mastery_unproven');
   });
 
-  it('keeps content-resumption authorization server-side and returns remediation guidance only after grading', () => {
+  it('keeps content-resumption authorization server-side and relies on the existing V8 server grader feedback', () => {
     expect(migration).toContain('private.assert_bncc_discipline_journey_v9(p_institution_id,p_student_id,p_journey_id)');
     expect(migration).toContain("session_row.decision_reason not in ('CONTENT_EXHAUSTED','REMEDIATION_QUESTION_POOL_EXHAUSTED')");
-    expect(migration).toContain("'error_focus', case when not correct then item.metadata->>'error_focus' else null end");
-    expect(migration).toContain("'remediation_hint', case when not correct then item.metadata->>'remediation_hint' else null end");
+    expect(migration).not.toContain('patch_v9_error_feedback');
+    expect(gradingMigration).toContain("'error_focus',error_focus,'remediation_hint',remediation_hint");
     expect(migration).toContain('V9_START_JOURNEY_LESSON_PATCH_MISMATCH');
     expect(migration).toContain('select max(latest.version) from public.learning_skill_lessons latest');
     expect(migration).toContain('grant execute on function public.resume_content_exhausted_guided_journey_v9(uuid,uuid,uuid) to authenticated');

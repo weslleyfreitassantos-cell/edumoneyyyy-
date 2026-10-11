@@ -3491,18 +3491,6 @@ begin
   execute function_definition;
 end;
 $classify_v9_pool_exhaustion$;
-do $patch_v9_error_feedback$
-declare function_definition text; old_clause text; new_clause text;
-begin
-  select pg_get_functiondef('public.submit_guided_learning_step_v4(uuid,jsonb,text)'::regprocedure) into function_definition;
-  if function_definition is null then raise exception 'V9_SUBMIT_GUIDED_STEP_FUNCTION_MISSING'; end if;
-  old_clause := $old$'misconception_code', case when not correct then item.metadata->>'misconception_code' else null end$old$;
-  new_clause := $new$'misconception_code', case when not correct then item.metadata->>'misconception_code' else null end, 'error_focus', case when not correct then item.metadata->>'error_focus' else null end, 'remediation_hint', case when not correct then item.metadata->>'remediation_hint' else null end$new$;
-  if position(new_clause in function_definition) > 0 then return; end if;
-  if position(old_clause in function_definition) = 0 then raise exception 'V9_SUBMIT_FEEDBACK_PATCH_MISMATCH'; end if;
-  execute replace(function_definition, old_clause, new_clause);
-end;
-$patch_v9_error_feedback$;
 do $patch_v9_latest_lesson$
 declare function_definition text; old_clause text; new_clause text; old_count integer;
 begin
