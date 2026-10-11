@@ -4,12 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import LessonMarkdown from './LessonMarkdown';
 import {
   useAdvanceGuidedLearningSessionV2,
   useGuidedLearningSessionV2,
   useGuidedLearningStepV2,
   useLearningStudent,
   useSubmitGuidedStepV2,
+  useStartGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
 
 function idempotencyKey(stepId: string): string {
@@ -37,12 +39,23 @@ export default function GuidedJourneyPage() {
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const session = useGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const step = useGuidedLearningStepV2(session.data?.current_step_id ?? undefined);
+  const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [lessonDone, setLessonDone] = useState(false);
   const hydratedStepId = useRef<string | null>(null);
+  const recoveryTargetRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const targetId = session.data?.current_step_id ? null : session.data?.target_canonical_skill_id ?? null;
+    if (!targetId || session.isLoading || startGuided.isPending || recoveryTargetRef.current === targetId) return;
+    recoveryTargetRef.current = targetId;
+    void startGuided.mutateAsync(targetId).catch(() => {
+      recoveryTargetRef.current = null;
+    });
+  }, [session.data?.current_step_id, session.data?.target_canonical_skill_id, session.isLoading, startGuided.isPending]);
 
   useEffect(() => {
     const stepId = step.data?.id;
@@ -106,6 +119,9 @@ export default function GuidedJourneyPage() {
   if (!session.data) {
     return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Nenhuma jornada guiada está ativa. Volte à Central de Estudos para começar.</section>;
   }
+  if (!session.data.current_step_id) {
+    return <section role={startGuided.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-950"><h1 className="text-lg font-bold">{startGuided.isError ? 'Não foi possível retomar a jornada' : 'Retomando sua jornada...'}</h1><p className="mt-2">{startGuided.isError ? 'Tente novamente para abrir a etapa salva.' : 'Estamos recuperando a próxima etapa sem perder seu progresso.'}</p>{startGuided.isError ? <button type="button" onClick={() => { recoveryTargetRef.current = null; void startGuided.mutateAsync(session.data!.target_canonical_skill_id); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button> : null}</section>;
+  }
   if (session.data.status === 'NEEDS_TEACHER_SUPPORT') {
     return <section className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Vamos pedir apoio ao professor</h1><p className="mt-2 text-sm">A evidência ainda não confirmou esta habilidade depois de duas tentativas de replanejamento. O professor verá o contexto sem que você precise repetir a mesma etapa.</p><Link to="/student/study" className="mt-5 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Voltar à Central</Link></section>;
   }
@@ -160,7 +176,7 @@ export default function GuidedJourneyPage() {
 
       {step.data.step_type === 'LESSON' ? (
         <article className="space-y-5 rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
-          <p className="whitespace-pre-wrap text-[15px] leading-7 text-slate-700 dark:text-slate-200">{step.data.lesson?.content_markdown ?? step.data.lesson?.summary}</p>
+          <LessonMarkdown content={step.data.lesson?.content_markdown} fallback={step.data.lesson?.summary} />
           {step.data.lesson?.worked_example && <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-100"><strong>Exemplo guiado</strong><br />{step.data.lesson.worked_example}</div>}
           <button type="button" onClick={finishLesson} disabled={advance.isPending || lessonDone} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><CheckCircle2 className="h-4 w-4" />{advance.isPending ? 'Salvando...' : lessonDone ? 'Etapa registrada' : 'Continuar para a prática'}</button>
           {advance.isError && <p role="alert" className="text-sm text-red-600">{advance.error.message}</p>}
