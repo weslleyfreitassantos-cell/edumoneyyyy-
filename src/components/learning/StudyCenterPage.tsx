@@ -163,11 +163,13 @@ export default function StudyCenterPage() {
         {!guidedTargets.isLoading && !guidedTargets.isError && !guidedTargets.data?.length ? <p className="mt-5 rounded-xl border border-dashed border-emerald-300 bg-white/60 p-4 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-slate-900/30 dark:text-emerald-200">Nenhum conteúdo BNCC está elegível para sua matrícula neste momento. Matérias personalizadas continuam disponíveis em “Matérias”.</p> : null}
         {guidedTargets.data?.length ? <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{guidedTargets.data.map((target) => {
           const active = Boolean(target.active_session_id);
-          const ready = target.availability_status === 'READY' || target.availability_status === 'NO_ACTIVE_SESSION';
+          const demoPreview = target.availability_status === 'DEMO_PREVIEW';
+          const ready = demoPreview || target.availability_status === 'READY' || target.availability_status === 'NO_ACTIVE_SESSION';
           return <article key={target.target_canonical_skill_id} className="rounded-xl border border-emerald-200 bg-white p-4 dark:border-emerald-800 dark:bg-slate-900">
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-300">{target.official_code} · {target.stage.replaceAll('_', ' ')}</p>
             <h3 className="mt-2 font-bold text-slate-900 dark:text-white">{target.title}</h3>
             <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{target.grade_level}º ano · {target.subject_area}</p>
+            {demoPreview ? <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">Prévia demonstrativa · revisão pedagógica pendente</p> : null}
             <p className="mt-3 text-xs text-slate-600 dark:text-slate-300">{target.question_count} exercício(s) · Progresso {Math.round(target.progress)}%</p>
             {active ? <Link to="/student/study/guided" className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800"><PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar</Link> : ready ? <button type="button" disabled={startGuided.isPending} onClick={() => void startGuidedTarget(target.target_canonical_skill_id)} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800 disabled:cursor-wait disabled:opacity-60"><PlayCircle className="h-4 w-4" aria-hidden="true" />{startGuided.isPending ? 'Iniciando...' : 'Começar estudo'}</button> : <p className="mt-4 text-xs font-semibold text-amber-700 dark:text-amber-300">{target.reason}</p>}
           </article>;
