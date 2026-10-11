@@ -214,13 +214,10 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
           {showSubdomainMismatch && (
             <div
               role="alert"
-              className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-200"
+              className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-300"
             >
               <p className="font-semibold">
-                Este não é o subdomínio da sua escola.
-              </p>
-              <p className="mt-1">
-                Confira o endereço da sua escola e tente novamente.
+                E-mail ou senha incorretos.
               </p>
               {profile && (
                 <button

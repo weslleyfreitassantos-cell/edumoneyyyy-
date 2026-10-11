@@ -457,7 +457,18 @@ export default function FullStudentEnrollmentWizard({
             profile_id: guardian.profile_id || submitError.guardianProfileIds[index] || '',
           })),
         }));
-        setError('Parte do cadastro foi criada, mas a matrícula não foi concluída. Corrija o problema e tente novamente; o sistema vai reutilizar os registros já criados.');
+        const failureReason = getUserFacingErrorMessage(
+          submitError,
+          'Não foi possível concluir a matrícula. Revise os dados e tente novamente.',
+        );
+        const hasRecoverableRecords = Boolean(
+          submitError.studentId || Object.keys(submitError.guardianProfileIds).length,
+        );
+        setError(
+          hasRecoverableRecords
+            ? `${failureReason} Os registros já criados foram preservados e serão reutilizados na nova tentativa.`
+            : failureReason,
+        );
       } else {
         setError(getUserFacingErrorMessage(submitError, 'Não foi possível concluir a matrícula.'));
       }
