@@ -171,4 +171,32 @@ describe('GuidedJourneyPage', () => {
     expect(screen.getByRole('link', { name: 'Voltar à matéria' })).toHaveProperty('href', expect.stringContaining('/student/study/subject/subject-1'));
     expect(screen.queryByText('Retomando sua jornada...')).toBeNull();
   });
+
+  it('does not claim prerequisite mastery when the bridge limit returns to the original target', () => {
+    state.session.data = {
+      ...state.session.data,
+      status: 'ACTIVE',
+      current_step_id: 'step-return',
+      metadata: { runtime_reason: 'MAX_ACTIVE_BRIDGE_DEPTH_RETURNED_TO_TARGET', mastery_unproven: true },
+    };
+    state.step.data = {
+      id: 'step-return',
+      session_id: 'session-1',
+      canonical_skill_id: 'skill-1',
+      step_type: 'RETURN_TO_TARGET',
+      purpose: null,
+      status: 'ACTIVE',
+      position: 7,
+      lesson_id: null,
+      lesson: null,
+      questions: [],
+    };
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { name: 'Retomar o objetivo original' })).toBeTruthy();
+    expect(screen.getByText(/sem marcar essas habilidades como dominadas/i)).toBeTruthy();
+    expect(screen.queryByText('Você fortaleceu a base')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Voltar ao objetivo' })).toBeTruthy();
+  });
 });

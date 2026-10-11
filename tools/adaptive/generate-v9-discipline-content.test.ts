@@ -7,7 +7,7 @@ import { buildV9DisciplineContentMigration } from './generate-v9-discipline-cont
 const migration = readFileSync(
   new URL('../../supabase/migrations/20261011000050_bncc_v4_missing_discipline_content_v9.sql', import.meta.url),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 
 describe('V9 discipline content migration generator', () => {
   it('imports only the four missing V4 discipline skills with complete purpose coverage', () => {
@@ -30,7 +30,7 @@ describe('V9 discipline content migration generator', () => {
 
   it('keeps the checked-in SQL reproducible and leaves both curriculum and pedagogy pending', () => {
     const generated = buildV9DisciplineContentMigration();
-    expect(generated).toBe(migration);
+    expect(generated.replace(/\r\n/g, '\n')).toBe(migration);
     expect(generated.match(/'PEDAGOGICAL_REVIEW_PENDING'/g)?.length).toBeGreaterThan(0);
     expect(generated).toContain("'PEDAGOGICAL_REVIEW_PENDING','CANDIDATE',canonical_subject.id");
     expect(generated).toContain("'content_pack','tec-escola-core-v4'");
