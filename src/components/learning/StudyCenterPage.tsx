@@ -129,7 +129,7 @@ export default function StudyCenterPage() {
 
   async function startGuidedTarget(targetCanonicalSkillId: string) {
     await startGuided.mutateAsync(targetCanonicalSkillId);
-    navigate('/student/study/guided');
+    navigate(`/student/study/guided?skill=${encodeURIComponent(targetCanonicalSkillId)}`);
   }
 
   return (
@@ -171,7 +171,7 @@ export default function StudyCenterPage() {
             <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{target.grade_level}º ano · {target.subject_area}</p>
             {demoPreview ? <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">Prévia demonstrativa · revisão pedagógica pendente</p> : null}
             <p className="mt-3 text-xs text-slate-600 dark:text-slate-300">{target.question_count} exercício(s) · Progresso {Math.round(target.progress)}%</p>
-            {active ? <Link to="/student/study/guided" className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800"><PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar</Link> : ready ? <button type="button" disabled={startGuided.isPending} onClick={() => void startGuidedTarget(target.target_canonical_skill_id)} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800 disabled:cursor-wait disabled:opacity-60"><PlayCircle className="h-4 w-4" aria-hidden="true" />{startGuided.isPending ? 'Iniciando...' : 'Começar estudo'}</button> : <p className="mt-4 text-xs font-semibold text-amber-700 dark:text-amber-300">{target.reason}</p>}
+            {active ? <Link to={`/student/study/guided?skill=${encodeURIComponent(target.target_canonical_skill_id)}`} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800"><PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar</Link> : ready ? <button type="button" disabled={startGuided.isPending} onClick={() => void startGuidedTarget(target.target_canonical_skill_id)} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800 disabled:cursor-wait disabled:opacity-60"><PlayCircle className="h-4 w-4" aria-hidden="true" />{startGuided.isPending ? 'Iniciando...' : 'Começar estudo'}</button> : <p className="mt-4 text-xs font-semibold text-amber-700 dark:text-amber-300">{target.reason}</p>}
           </article>;
         })}</div> : null}
       </section>

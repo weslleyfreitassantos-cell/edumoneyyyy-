@@ -1,6 +1,6 @@
 import { BookOpenCheck, CheckCircle2, ChevronLeft, CircleAlert, Send } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
@@ -36,8 +36,10 @@ export default function GuidedJourneyPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const targetSkillId = searchParams.get('skill') ?? undefined;
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
-  const session = useGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
+  const session = useGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id, targetSkillId);
   const step = useGuidedLearningStepV2(session.data?.current_step_id ?? undefined);
   const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);

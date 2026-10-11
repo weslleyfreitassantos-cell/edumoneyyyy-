@@ -168,4 +168,29 @@ describe('StudyCenterPage', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Começar estudo' }));
     await waitFor(() => expect(state.startGuidedSession).toHaveBeenCalledWith('skill-history'));
   });
+
+  it('mantém o alvo da jornada ao retomar um card ativo', () => {
+    state.guidedTargets = [{
+      target_canonical_skill_id: 'skill-nature',
+      subject_id: null,
+      catalog_id: 'catalog-bncc',
+      catalog_code: 'BNCC_2018',
+      official_code: 'EM13CNT101',
+      title: 'Transformações e conservações',
+      subject_area: 'CIENCIAS_DA_NATUREZA',
+      stage: 'ENSINO_MEDIO',
+      grade_level: 1,
+      availability_status: 'DEMO_PREVIEW',
+      progress: 20,
+      has_lesson: true,
+      question_count: 5,
+      active_session_id: 'session-nature',
+      active_session_status: 'ACTIVE',
+      reason: 'Prévia demonstrativa',
+    }];
+
+    renderPage();
+
+    expect(screen.getByRole('link', { name: 'Continuar' }).getAttribute('href')).toBe('/student/study/guided?skill=skill-nature');
+  });
 });

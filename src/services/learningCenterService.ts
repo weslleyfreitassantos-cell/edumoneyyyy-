@@ -1200,8 +1200,23 @@ export const learningCenterService = {
         .maybeSingle(),
     ),
 
-  guidedSessionV2: (institutionId: string, studentId: string) =>
+  guidedSessionV2: (institutionId: string, studentId: string, targetSkillId?: string) =>
     (async () => {
+      if (targetSkillId) {
+        return read<GuidedSessionV2 | null>(
+          supabase
+            .from('learning_guided_sessions')
+            .select('id,student_id,target_canonical_skill_id,original_target_canonical_skill_id,current_canonical_skill_id,current_step_id,status,planner_version,decision_reason,replan_count,metadata')
+            .eq('institution_id', institutionId)
+            .eq('student_id', studentId)
+            .eq('target_canonical_skill_id', targetSkillId)
+            .in('status', ['ACTIVE', 'PAUSED', 'NEEDS_TEACHER_SUPPORT'])
+            .eq('planner_version', 'V4')
+            .order('updated_at', { ascending: false })
+            .limit(1)
+            .maybeSingle(),
+        );
+      }
       const v4 = await supabase.rpc('get_guided_learning_session_v4', { p_institution_id: institutionId, p_student_id: studentId });
       if (!v4.error && v4.data) return v4.data as GuidedSessionV2;
       if (!v4.error && v4.data === null) {
