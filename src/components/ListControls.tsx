@@ -48,6 +48,7 @@ interface ListPaginationProps {
   pageSize: number;
   totalItems: number;
   onPageChange: (page: number) => void;
+  compact?: boolean;
 }
 
 export function ListPagination({
@@ -55,6 +56,7 @@ export function ListPagination({
   pageSize,
   totalItems,
   onPageChange,
+  compact = false,
 }: ListPaginationProps) {
   if (totalItems <= pageSize) {
     return null;
@@ -66,12 +68,12 @@ export function ListPagination({
   const lastItem = Math.min(pageStart + pageSize, totalItems);
 
   return (
-    <div className="flex flex-col items-stretch gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-3 text-sm text-gray-600 sm:flex-row sm:items-center sm:justify-between">
-      <span className="text-center sm:text-left">
+    <div className={`${compact ? 'flex flex-row items-center justify-between' : 'flex flex-col items-stretch sm:flex-row sm:items-center sm:justify-between'} gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-3 text-sm text-gray-600`}>
+      <span className={`${compact ? 'sr-only' : 'text-center sm:text-left'}`}>
         Mostrando {firstItem}–{lastItem} de {totalItems}
       </span>
 
-      <div className="flex w-full min-w-0 items-center justify-between gap-2 sm:w-auto sm:justify-end">
+      <div className={`${compact ? 'grid w-full min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2' : 'flex w-full min-w-0 items-center justify-between gap-2 sm:w-auto sm:justify-end'}`}>
         <button
           type="button"
           aria-label="Página anterior"
@@ -87,8 +89,8 @@ export function ListPagination({
           Anterior
         </button>
 
-        <span className="min-w-0 flex-1 whitespace-nowrap text-center font-medium text-gray-700 sm:flex-none">
-          Página {page} de {totalPages}
+        <span className={`${compact ? 'min-w-0 whitespace-nowrap text-center font-medium text-gray-700' : 'min-w-0 flex-1 whitespace-nowrap text-center font-medium text-gray-700 sm:flex-none'}`}>
+          {compact ? <><span aria-hidden="true">{page} de {totalPages}</span><span className="sr-only">Página {page} de {totalPages}</span></> : `Página ${page} de ${totalPages}`}
         </span>
 
         <button

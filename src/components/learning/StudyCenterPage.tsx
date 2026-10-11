@@ -17,7 +17,7 @@ import {
   Search,
   type LucideIcon,
 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
@@ -100,6 +100,17 @@ export default function StudyCenterPage() {
   const [search, setSearch] = useState('');
   const [isEnemExpanded, setIsEnemExpanded] = useState(true);
   const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
+
+  useEffect(() => {
+    const reopenSectionsOnRestore = (event: PageTransitionEvent) => {
+      if (!event.persisted) return;
+      setIsEnemExpanded(true);
+      setIsSubjectsExpanded(true);
+    };
+
+    window.addEventListener('pageshow', reopenSectionsOnRestore);
+    return () => window.removeEventListener('pageshow', reopenSectionsOnRestore);
+  }, []);
 
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);

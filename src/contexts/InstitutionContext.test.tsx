@@ -58,6 +58,12 @@ vi.mock('../services/accountService', () => ({
   },
 }));
 
+vi.mock('../components/SubdomainForbiddenPage', () => ({
+  SubdomainForbiddenPage: () => (
+    <div>Este não é o subdomínio da sua escola.</div>
+  ),
+}));
+
 vi.mock(
   '../components/account/InstitutionBrandingSection',
   () => ({
@@ -573,7 +579,7 @@ describe('InstitutionContext', () => {
       renderWithProvider(<ContextStatus />, 'escolatv.grupotec.dev.br');
 
       await waitFor(() => {
-        expect(screen.getByText('Acesso não autorizado a esta instituição.')).toBeTruthy();
+        expect(screen.getByText('Este não é o subdomínio da sua escola.')).toBeTruthy();
       });
       expect(screen.queryByTestId('account-current-id')).toBeNull();
     });
@@ -604,7 +610,7 @@ describe('InstitutionContext', () => {
       renderWithProvider(<ContextStatus />, 'escolatv.grupotec.dev.br');
 
       await waitFor(() => {
-        expect(screen.getByText('Acesso não autorizado a esta instituição.')).toBeTruthy();
+        expect(screen.getByText('Este não é o subdomínio da sua escola.')).toBeTruthy();
       });
       expect(screen.queryByTestId('account-current-id')).toBeNull();
     });
