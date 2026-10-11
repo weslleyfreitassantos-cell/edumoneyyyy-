@@ -45,7 +45,13 @@ async function readServiceSession(service: Db, sessionId: string): Promise<Recor
   return result.data;
 }
 
-async function completeCurrentStep(service: Db, student: Actor, sessionId: string, suffix: string): Promise<Record<string, any>> {
+async function completeCurrentStep(
+  service: Db,
+  student: Actor,
+  sessionId: string,
+  suffix: string,
+  correctness: 'correct' | 'wrong' = 'correct',
+): Promise<Record<string, any>> {
   const session = await readServiceSession(service, sessionId);
   const stepId = required(session.current_step_id, 'V4 current step');
   const step = await service.from('learning_guided_steps').select('id,canonical_skill_id,step_type,purpose,question_set_id').eq('id', stepId).single();
@@ -65,11 +71,19 @@ async function completeCurrentStep(service: Db, student: Actor, sessionId: strin
   const items = await service.from('learning_question_set_items').select('question_bank_id').eq('question_set_id', step.data.question_set_id).order('position');
   if (items.error) throw new Error(`V4 question items: ${items.error.message}`);
   const questionIds = items.data.map((item: any) => item.question_bank_id);
-  const banks = await service.from('learning_question_bank').select('id,correct_answer').in('id', questionIds);
+  const banks = await service.from('learning_question_bank').select('id,correct_answer,options').in('id', questionIds);
   if (banks.error) throw new Error(`V4 question bank: ${banks.error.message}`);
   const answers = questionIds.map((questionId: string) => {
     const bank = banks.data.find((row: any) => row.id === questionId);
-    return { question_bank_id: questionId, answer: String(required(bank?.correct_answer, `correct answer ${questionId}`)) };
+    const correctAnswer = String(required(bank?.correct_answer, `correct answer ${questionId}`));
+    const wrongAnswer = Array.isArray(bank?.options)
+      ? bank.options.find((option: unknown) => String(option) !== correctAnswer)
+      : undefined;
+    if (correctness === 'wrong') expect(wrongAnswer, `wrong option ${questionId}`).toBeDefined();
+    return {
+      question_bank_id: questionId,
+      answer: correctness === 'wrong' ? String(wrongAnswer) : correctAnswer,
+    };
   });
   const submitted = await student.client.rpc('submit_guided_learning_step_v4', {
     p_step_id: stepId,
@@ -77,8 +91,29 @@ async function completeCurrentStep(service: Db, student: Actor, sessionId: strin
     p_idempotency_key: `v4-e2e:${suffix}:${stepId}`,
   });
   expect(submitted.error, `${step.data.step_type} submit`).toBeNull();
-  expect(submitted.data?.score).toBe(100);
+  if (correctness === 'correct') expect(submitted.data?.score).toBe(100);
+  else expect(submitted.data?.score).toBeLessThan(100);
   return { step: step.data, result: submitted.data };
+}
+
+async function runUntilStepType(
+  service: Db,
+  student: Actor,
+  sessionId: string,
+  targetStepType: string,
+  suffix: string,
+): Promise<Record<string, any>> {
+  for (let index = 0; index < 20; index += 1) {
+    const session = await readServiceSession(service, sessionId);
+    if (session.status !== 'ACTIVE' || !session.current_step_id) {
+      throw new Error(`V4 journey stopped before ${targetStepType}: ${session.status}/${session.decision_reason}`);
+    }
+    const currentStep = await service.from('learning_guided_steps').select('step_type').eq('id', session.current_step_id).single();
+    if (currentStep.error || !currentStep.data) throw new Error(`V4 step lookup: ${currentStep.error?.message ?? 'missing'}`);
+    if (currentStep.data.step_type === targetStepType) return session;
+    await completeCurrentStep(service, student, sessionId, `${suffix}:${index}`);
+  }
+  throw new Error(`V4 journey did not reach ${targetStepType} within 20 steps`);
 }
 
 async function runUntilSkill(service: Db, student: Actor, sessionId: string, targetSkillId: string, suffix: string): Promise<{ steps: Record<string, any>[]; final: Record<string, any> }> {
@@ -182,6 +217,65 @@ adaptiveDescribe('adaptive learning V4 real proof slices', () => {
         expect(evidence.error).toBeNull();
         expect(evidence.data?.some((item: any) => item.metadata?.engine_version === 'V4')).toBe(true);
       }
+
+      const reviewStudent = await createActor(service, 'STUDENT', 'Review Failure Student', suffix);
+      userIds.push(reviewStudent.id);
+      await insertOne(service, 'memberships', { profile_id: reviewStudent.id, institution_id: institutionId, role: 'STUDENT', active: true });
+      const reviewStudentRow = await insertOne(service, 'students', {
+        institution_id: institutionId,
+        profile_id: reviewStudent.id,
+        registration_number: `V4-REVIEW-${suffix}`,
+        active: true,
+      });
+      await insertOne(service, 'enrollments', {
+        student_id: reviewStudentRow.id,
+        class_id: schoolClass.id,
+        academic_year_id: year.id,
+        status: 'active',
+        active: true,
+      });
+
+      const reviewStarted = await reviewStudent.client.rpc('start_guided_learning_session_v4', {
+        p_institution_id: institutionId,
+        p_student_id: reviewStudentRow.id,
+        p_target_canonical_skill_id: skillByCode.get('MATH_PERCENT_OF_QUANTITY'),
+      });
+      expect(reviewStarted.error, 'review remediation V4 start').toBeNull();
+      const reviewSessionId = required(reviewStarted.data?.session_id, 'review remediation session');
+      await runUntilStepType(service, reviewStudent, reviewSessionId, 'REVIEW', `${suffix}:review-before-error`);
+
+      const failedReview = await completeCurrentStep(service, reviewStudent, reviewSessionId, `${suffix}:review-error`, 'wrong');
+      expect(failedReview.step.step_type).toBe('REVIEW');
+      const remediatingSession = await readServiceSession(service, reviewSessionId);
+      expect(remediatingSession.status).toBe('ACTIVE');
+      expect(remediatingSession.decision_reason).toBe('REVIEW_REMEDIATION_REQUIRED');
+      expect(remediatingSession.metadata?.mastery_unproven).toBe(true);
+      const remediationStep = await service.from('learning_guided_steps')
+        .select('id,canonical_skill_id,step_type,metadata')
+        .eq('id', remediatingSession.current_step_id)
+        .single();
+      expect(remediationStep.error).toBeNull();
+      expect(remediationStep.data?.step_type).toBe('LESSON');
+      expect(remediationStep.data?.canonical_skill_id).toBe(skillByCode.get('MATH_PERCENT_OF_QUANTITY'));
+      expect(remediationStep.data?.metadata?.mastery_unproven).toBe(true);
+      const remediationLesson = await reviewStudent.client.rpc('get_guided_learning_step_v4', { p_step_id: remediationStep.data?.id });
+      expect(remediationLesson.error).toBeNull();
+      expect(remediationLesson.data?.lesson?.content_markdown).toBeTruthy();
+
+      await runUntilStepType(service, reviewStudent, reviewSessionId, 'REVIEW', `${suffix}:review-after-remediation`);
+      const passedReview = await completeCurrentStep(service, reviewStudent, reviewSessionId, `${suffix}:review-pass`);
+      expect(passedReview.step.step_type).toBe('REVIEW');
+      const completedReviewSession = await readServiceSession(service, reviewSessionId);
+      expect(completedReviewSession.status).toBe('COMPLETED');
+      const reviewAttempts = await service.from('learning_guided_step_attempts')
+        .select('score,correct_count,total_questions')
+        .eq('session_id', reviewSessionId)
+        .eq('purpose', 'REVIEW')
+        .order('submitted_at');
+      expect(reviewAttempts.error).toBeNull();
+      expect(reviewAttempts.data).toHaveLength(2);
+      expect(reviewAttempts.data?.[0].score).toBeLessThan(100);
+      expect(reviewAttempts.data?.[1].score).toBe(100);
     } finally {
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
       if (accountId) await service.from('accounts').delete().eq('id', accountId);
