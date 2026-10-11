@@ -18,14 +18,14 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { mergeStudentSubjectsWithGuidedJourneys } from '../../lib/learningCenterSubjectDiscovery';
 import {
   useGuidedLearningSessionV2,
-  useStartGuidedLearningSessionV2,
-  useStudentGuidedLearningTargets,
+  useGuidedDisciplineJourneysV9,
   useLearningStudent,
   useStudentLearningSubjects,
   useEnemSimulationTemplates,
@@ -97,7 +97,6 @@ function subjectIcon(subject: string): LucideIcon {
 export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
-  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [isEnemExpanded, setIsEnemExpanded] = useState(true);
   const [isSubjectsExpanded, setIsSubjectsExpanded] = useState(true);
@@ -105,32 +104,24 @@ export default function StudyCenterPage() {
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
   const subjects = useStudentLearningSubjects(currentInstitutionId ?? undefined, profile?.id);
   const enemTemplates = useEnemSimulationTemplates(currentInstitutionId ?? undefined);
+  const guidedJourneys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
   const guidedSession = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
-  const guidedTargets = useStudentGuidedLearningTargets(
-    currentInstitutionId ?? undefined,
-    student.data?.id,
-  );
-  const startGuided = useStartGuidedLearningSessionV2(
-    currentInstitutionId ?? undefined,
-    student.data?.id,
+  const displaySubjects = useMemo(
+    () => mergeStudentSubjectsWithGuidedJourneys(subjects.data ?? [], guidedJourneys.data ?? []),
+    [guidedJourneys.data, subjects.data],
   );
   const filteredSubjects = useMemo(() => {
     const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
-    if (!normalizedSearch) return subjects.data ?? [];
-    return (subjects.data ?? []).filter((subject) => subject.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch));
-  }, [search, subjects.data]);
+    if (!normalizedSearch) return displaySubjects;
+    return displaySubjects.filter((subject) => subject.name.toLocaleLowerCase('pt-BR').includes(normalizedSearch));
+  }, [displaySubjects, search]);
   const hasActiveGuidedSession = ['ACTIVE', 'PAUSED'].includes(guidedSession.data?.status ?? '');
   const enemAreas = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'AREA');
   const enemSubjects = (enemTemplates.data ?? []).filter((template) => template.simulation_type === 'SUBJECT');
-  const subjectCount = subjects.data?.length ?? 0;
-
-  async function startGuidedTarget(targetCanonicalSkillId: string) {
-    await startGuided.mutateAsync(targetCanonicalSkillId);
-    navigate(`/student/study/guided?skill=${encodeURIComponent(targetCanonicalSkillId)}`);
-  }
+  const subjectCount = displaySubjects.length;
 
   return (
     <div className="w-full space-y-8 overflow-x-hidden">
@@ -151,30 +142,6 @@ export default function StudyCenterPage() {
           <span>Aprenda no seu ritmo</span>
         </div>
       </header>
-
-      <section aria-label="Estudo guiado pela BNCC" className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm dark:border-emerald-900/60 dark:bg-emerald-950/20 sm:p-6">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-300">Aprendizagem com currículo oficial</p>
-          <h2 className="mt-2 text-2xl font-bold text-emerald-950 dark:text-emerald-100">Estudo guiado pela BNCC</h2>
-          <p className="mt-1 text-sm text-emerald-900 dark:text-emerald-200">Conteúdos aparecem somente quando há vínculo BNCC, série compatível, lição publicada e exercícios disponíveis.</p>
-        </div>
-        {guidedTargets.isLoading ? <p className="mt-5 text-sm text-emerald-800 dark:text-emerald-200">Verificando conteúdos elegíveis...</p> : null}
-        {guidedTargets.isError ? <p role="alert" className="mt-5 rounded-xl border border-rose-200 bg-white/70 p-4 text-sm text-rose-800 dark:border-rose-900/60 dark:bg-slate-900/40 dark:text-rose-200">Não foi possível verificar o estudo guiado agora.</p> : null}
-        {!guidedTargets.isLoading && !guidedTargets.isError && !guidedTargets.data?.length ? <p className="mt-5 rounded-xl border border-dashed border-emerald-300 bg-white/60 p-4 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-slate-900/30 dark:text-emerald-200">Nenhum conteúdo BNCC está elegível para sua matrícula neste momento. Matérias personalizadas continuam disponíveis em “Matérias”.</p> : null}
-        {guidedTargets.data?.length ? <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{guidedTargets.data.map((target) => {
-          const active = Boolean(target.active_session_id);
-          const demoPreview = target.availability_status === 'DEMO_PREVIEW';
-          const ready = demoPreview || target.availability_status === 'READY' || target.availability_status === 'NO_ACTIVE_SESSION';
-          return <article key={target.target_canonical_skill_id} className="rounded-xl border border-emerald-200 bg-white p-4 dark:border-emerald-800 dark:bg-slate-900">
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-300">{target.official_code} · {target.stage.replaceAll('_', ' ')}</p>
-            <h3 className="mt-2 font-bold text-slate-900 dark:text-white">{target.title}</h3>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{target.grade_level}º ano · {target.subject_area}</p>
-            {demoPreview ? <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">Prévia demonstrativa · revisão pedagógica pendente</p> : null}
-            <p className="mt-3 text-xs text-slate-600 dark:text-slate-300">{target.question_count} exercício(s) · Progresso {Math.round(target.progress)}%</p>
-            {active ? <Link to={`/student/study/guided?skill=${encodeURIComponent(target.target_canonical_skill_id)}`} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800"><PlayCircle className="h-4 w-4" aria-hidden="true" />Continuar</Link> : ready ? <button type="button" disabled={startGuided.isPending} onClick={() => void startGuidedTarget(target.target_canonical_skill_id)} className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-emerald-700 px-3 py-2 text-sm font-bold text-white hover:bg-emerald-800 disabled:cursor-wait disabled:opacity-60"><PlayCircle className="h-4 w-4" aria-hidden="true" />{startGuided.isPending ? 'Iniciando...' : 'Começar estudo'}</button> : <p className="mt-4 text-xs font-semibold text-amber-700 dark:text-amber-300">{target.reason}</p>}
-          </article>;
-        })}</div> : null}
-      </section>
 
       <section aria-label="Preparação para o ENEM" className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5 shadow-sm dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
         <button
@@ -286,12 +253,14 @@ export default function StudyCenterPage() {
         </div>
 
         {isSubjectsExpanded ? <div id="student-subjects-content">
-        {subjects.isLoading ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
+        {subjects.isLoading && !guidedJourneys.data?.length ? <p className="text-sm text-slate-500">Carregando matérias...</p> : null}
         {subjects.isError ? <p role="alert" className="text-sm text-red-700">Não foi possível carregar suas matérias.</p> : null}
+        {guidedJourneys.isError ? <p role="status" className="text-sm text-amber-700 dark:text-amber-300">O estudo guiado não pôde ser verificado; suas matérias e atividades da escola continuam disponíveis.</p> : null}
         {!subjects.isLoading && !subjects.isError && filteredSubjects.length === 0 ? <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">Nenhuma matéria encontrada.</p> : null}
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filteredSubjects.map((subject) => {
             const Icon = subjectIcon(subject.name);
+            const journeyCount = (guidedJourneys.data ?? []).filter((journey) => journey.subject_id === subject.id).length;
             return (
               <Link
                 key={subject.id}
@@ -299,7 +268,7 @@ export default function StudyCenterPage() {
                 className="group flex min-h-32 items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-[#005bbf] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:bg-slate-900 dark:border-slate-700"
               >
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200"><Icon className="h-5 w-5" aria-hidden="true" /></span>
-                <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">Abrir matéria</span></span>
+                <span className="min-w-0 flex-1"><span className="block font-bold text-slate-900 dark:text-white">{subject.name}</span><span className="mt-2 block text-xs font-semibold text-slate-500 dark:text-slate-400">{journeyCount ? `${journeyCount} ${journeyCount === 1 ? 'jornada guiada' : 'jornadas guiadas'} · prévia` : 'Abrir matéria'}</span></span>
                 <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-400 transition group-hover:text-[#005bbf]" aria-hidden="true" />
               </Link>
             );

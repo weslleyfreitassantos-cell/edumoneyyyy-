@@ -38,6 +38,7 @@ const state = vi.hoisted(() => ({
   },
   submit: { data: undefined as { score: number; correct_count: number; total_questions: number; feedback: Array<{ question_bank_id: string; is_correct: boolean; correct_answer: unknown; explanation: string | null }> } | undefined, mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
   startGuided: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', engine_version: 'V4' }), isPending: false, isError: false },
+  startJourney: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
   advance: { mutateAsync: vi.fn(), isPending: false },
 }));
 
@@ -47,7 +48,9 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningStudent: () => ({ data: { id: 'student-1', profile_id: 'profile-1' } }),
   useGuidedLearningSessionV2: () => state.session,
   useGuidedLearningStepV2: () => state.step,
+  useGuidedDisciplineJourneysV9: () => ({ data: [], isLoading: false, isError: false }),
   useStartGuidedLearningSessionV2: () => state.startGuided,
+  useStartGuidedDisciplineJourneyV9: () => state.startJourney,
   useAdvanceGuidedLearningSessionV2: () => state.advance,
   useSubmitGuidedStepV2: () => state.submit,
 }));

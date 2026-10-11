@@ -9,8 +9,10 @@ import {
   useAdvanceGuidedLearningSessionV2,
   useGuidedLearningSessionV2,
   useGuidedLearningStepV2,
+  useGuidedDisciplineJourneysV9,
   useLearningStudent,
   useSubmitGuidedStepV2,
+  useStartGuidedDisciplineJourneyV9,
   useStartGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
 
@@ -37,11 +39,21 @@ export default function GuidedJourneyPage() {
   const { currentInstitutionId } = useInstitution();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const targetSkillId = searchParams.get('skill') ?? undefined;
+  const journeyId = searchParams.get('journey') ?? undefined;
   const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
-  const session = useGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id, targetSkillId);
+  const journeys = useGuidedDisciplineJourneysV9(currentInstitutionId ?? undefined, student.data?.id);
+  const journey = journeys.data?.find((item) => item.journey_id === journeyId);
+  const targetSkillId = searchParams.get('skill') ?? journey?.execution_skill_id;
+  const session = useGuidedLearningSessionV2(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+    targetSkillId,
+    journeyId,
+    !journeyId || Boolean(journey),
+  );
   const step = useGuidedLearningStepV2(session.data?.current_step_id ?? undefined);
   const startGuided = useStartGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
+  const startJourney = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
   const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
   const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -49,15 +61,23 @@ export default function GuidedJourneyPage() {
   const [lessonDone, setLessonDone] = useState(false);
   const hydratedStepId = useRef<string | null>(null);
   const recoveryTargetRef = useRef<string | null>(null);
+  const v9StartRef = useRef<string | null>(null);
 
   useEffect(() => {
+    if (!journeyId || !journey || !targetSkillId || session.isLoading || session.isError || session.data || startJourney.isPending || v9StartRef.current === journeyId) return;
+    v9StartRef.current = journeyId;
+    void startJourney.mutateAsync(journeyId).catch(() => undefined);
+  }, [journey, journeyId, session.data, session.isError, session.isLoading, startJourney.isPending, targetSkillId]);
+
+  useEffect(() => {
+    if (journeyId) return;
     const targetId = session.data?.current_step_id ? null : session.data?.target_canonical_skill_id ?? null;
     if (!targetId || session.isLoading || startGuided.isPending || recoveryTargetRef.current === targetId) return;
     recoveryTargetRef.current = targetId;
     void startGuided.mutateAsync(targetId).catch(() => {
       recoveryTargetRef.current = null;
     });
-  }, [session.data?.current_step_id, session.data?.target_canonical_skill_id, session.isLoading, startGuided.isPending]);
+  }, [journeyId, session.data?.current_step_id, session.data?.target_canonical_skill_id, session.isLoading, startGuided.isPending]);
 
   useEffect(() => {
     const stepId = step.data?.id;
@@ -86,7 +106,8 @@ export default function GuidedJourneyPage() {
     () => [...(step.data?.questions ?? [])].sort((left, right) => left.position - right.position),
     [step.data?.questions],
   );
-  const demoPreview = session.data?.metadata?.demo_preview === true;
+  const demoPreview = session.data?.metadata?.demo_preview === true || session.data?.metadata?.demonstration_only === true;
+  const returnHref = journey?.subject_id ? `/student/study/subject/${journey.subject_id}` : '/student/study';
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
   const stepPurpose = step.data?.purpose;
   const stepHeading = step.data?.step_type === 'LESSON'
@@ -127,19 +148,25 @@ export default function GuidedJourneyPage() {
         <ul className="mt-3 space-y-2 text-sm">
           {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}{!item.is_correct && item.remediation_hint && <p className="mt-2 font-semibold text-amber-900">Orientação: {item.remediation_hint}</p>}</li>)}
         </ul>
-        {sessionCompleted ? <Link to="/student/study" className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Voltar à Central</Link> : <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>}
+        {sessionCompleted ? <Link to={returnHref} className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Voltar à matéria</Link> : <button type="button" onClick={() => { window.sessionStorage.removeItem(draftKey(step.data?.id ?? '')); setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>}
       </div>
     </div>;
   }
 
-  if (session.isLoading || step.isLoading) {
+  if (journeyId && journeys.isError) {
+    return <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><h1 className="font-bold">Não foi possível carregar esta matéria</h1><p className="mt-2">A jornada não foi alterada. Volte à matéria e tente novamente.</p></section>;
+  }
+  if (session.isLoading || step.isLoading || (journeyId && journeys.isLoading)) {
     return <div className="grid min-h-56 place-items-center text-sm text-slate-500">Carregando sua jornada...</div>;
+  }
+  if (journeyId && !journey) {
+    return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Este conteúdo não está disponível para sua matrícula. <Link className="font-bold underline" to="/student/study">Voltar à Central</Link></section>;
   }
   if (session.isError || step.isError) {
     return <section role="alert" className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-lg font-bold">Não foi possível carregar a jornada</h1><p className="mt-2">Tente novamente. Seu progresso salvo no servidor permanece protegido.</p><button type="button" onClick={() => { void session.refetch(); if (step.isError) void step.refetch(); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button></section>;
   }
   if (!session.data) {
-    return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Nenhuma jornada guiada está ativa. Volte à Central de Estudos para começar.</section>;
+    return <section role={startJourney.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900"><p>{startJourney.isError ? 'Não foi possível iniciar ou retomar esta jornada.' : 'Nenhuma jornada guiada está ativa.'}</p>{journey ? <button type="button" disabled={startJourney.isPending} onClick={() => void startJourney.mutateAsync(journey.journey_id).then(() => { v9StartRef.current = journey.journey_id; }).catch(() => undefined)} className="mt-3 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white disabled:opacity-60">{startJourney.isPending ? 'Iniciando...' : 'Tentar novamente'}</button> : <Link to="/student/study" className="mt-3 inline-block font-bold underline">Voltar à Central de Estudos</Link>}</section>;
   }
   if (!session.data.current_step_id) {
     return <section role={startGuided.isError ? 'alert' : undefined} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-950"><h1 className="text-lg font-bold">{startGuided.isError ? 'Não foi possível retomar a jornada' : 'Retomando sua jornada...'}</h1><p className="mt-2">{startGuided.isError ? 'Tente novamente para abrir a etapa salva.' : 'Estamos recuperando a próxima etapa sem perder seu progresso.'}</p>{startGuided.isError ? <button type="button" onClick={() => { recoveryTargetRef.current = null; void startGuided.mutateAsync(session.data!.target_canonical_skill_id); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white">Tentar novamente</button> : null}</section>;
@@ -174,18 +201,20 @@ export default function GuidedJourneyPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <Link to="/student/study" className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"><ChevronLeft className="h-4 w-4" />Central de Estudos</Link>
+      <Link to={returnHref} className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"><ChevronLeft className="h-4 w-4" />{journey?.subject_name ?? 'Central de Estudos'}</Link>
       <header className="rounded-2xl border border-blue-900/20 bg-[#073b78] p-5 text-white shadow-sm sm:p-7">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-200">Sua jornada</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-200">{journey ? `${journey.subject_name} · ${journey.unit_title}` : 'Sua jornada'}</p>
             <div className="mt-3 flex items-center gap-2 text-sm font-semibold text-blue-100"><BookOpenCheck className="h-4 w-4" aria-hidden="true" />{stepTypeLabel}</div>
             <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{stepHeading}</h1>
+            {journey ? <p className="mt-2 text-sm font-semibold text-blue-100">{journey.title}</p> : null}
           </div>
           <span className="shrink-0 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold text-blue-100">Etapa {step.data.position + 1}</span>
         </div>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-blue-100">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
         {demoPreview ? <p className="mt-4 rounded-lg border border-amber-200/40 bg-amber-100/15 px-3 py-2 text-xs font-bold text-amber-100">Prévia demonstrativa · revisão pedagógica pendente</p> : null}
+        {journey ? <div className="mt-4 rounded-xl border border-amber-200/40 bg-amber-100/10 p-3 text-sm text-blue-50"><p className="font-bold">Vínculo curricular candidato · não validado</p><p className="mt-1 text-xs leading-5 text-blue-100">{journey.official_codes.length ? `Referência proposta: ${journey.official_codes.join(', ')}. ` : ''}{journey.mapping_reason}</p>{journey.learning_role === 'FOUNDATION_REVIEW' ? <p className="mt-2 text-xs font-semibold text-blue-100">Este percurso revisa fundamentos; não é apresentado como conteúdo exclusivo do 1º ano.</p> : null}</div> : null}
         {step.data?.curriculum?.official_code ? (
           <div className="mt-5 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-blue-50">
             <p className="font-bold">BNCC · {step.data.curriculum.official_code}</p>
@@ -224,7 +253,7 @@ export default function GuidedJourneyPage() {
         </section>
       )}
       <p className="text-center text-xs text-slate-500">Sua resposta fica protegida até o envio. O gabarito aparece somente depois da correção.</p>
-      <button type="button" onClick={() => navigate('/student/study')} className="text-sm font-bold text-[#005bbf]">Voltar sem perder o progresso</button>
+      <button type="button" onClick={() => navigate(returnHref)} className="text-sm font-bold text-[#005bbf]">Voltar sem perder o progresso</button>
     </div>
   );
 }
