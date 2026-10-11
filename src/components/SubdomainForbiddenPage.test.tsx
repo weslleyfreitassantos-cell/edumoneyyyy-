@@ -1,18 +1,21 @@
 // @vitest-environment jsdom
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
-import { PLATFORM_ORIGIN } from '../lib/subdomain';
 import { SubdomainForbiddenPage } from './SubdomainForbiddenPage';
 
+vi.mock('../pages/Login', () => ({
+  Login: ({ subdomainMismatch }: { subdomainMismatch?: boolean }) => (
+    <div data-testid="login-page" data-subdomain-mismatch={String(subdomainMismatch)} />
+  ),
+}));
+
 describe('SubdomainForbiddenPage', () => {
-  it('sends the user to the current administrative login', () => {
+  it('renders the login page with the school-subdomain warning enabled', () => {
     render(<SubdomainForbiddenPage />);
 
     expect(
-      screen
-        .getByRole('link', { name: 'Ir para a plataforma' })
-        .getAttribute('href'),
-    ).toBe(`${PLATFORM_ORIGIN}/login`);
+      screen.getByTestId('login-page').getAttribute('data-subdomain-mismatch'),
+    ).toBe('true');
   });
 });

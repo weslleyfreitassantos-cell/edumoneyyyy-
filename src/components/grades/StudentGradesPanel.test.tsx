@@ -85,6 +85,8 @@ describe('StudentGradesPanel', () => {
     expect(screen.queryByText('Avaliação I')).toBeNull();
     expect(screen.getByText('Mostrando 1–6 de 8')).toBeTruthy();
     expect(screen.getByText('Página 1 de 2')).toBeTruthy();
+    expect(screen.getByText('Mostrando 1–6 de 8').className).toContain('sr-only');
+    expect(screen.getByText('1 de 2')).toBeTruthy();
     expect(screen.getAllByText('Nota')).toHaveLength(6);
     expect(screen.getAllByText('Situação')).toHaveLength(6);
     expect(screen.getAllByText('Lançada')).toHaveLength(6);
@@ -99,6 +101,7 @@ describe('StudentGradesPanel', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Próxima página' }));
     expect(screen.getByText('Avaliação I')).toBeTruthy();
     expect(screen.getByText('Mostrando 7–8 de 8')).toBeTruthy();
+    expect(screen.getByText('2 de 2')).toBeTruthy();
 
     fireEvent.change(screen.getByRole('searchbox', { name: 'Buscar avaliação' }), {
       target: { value: 'avaliacao i' },

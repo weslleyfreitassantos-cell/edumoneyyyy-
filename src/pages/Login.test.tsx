@@ -20,6 +20,7 @@ import { ThemeProvider } from '../contexts/ThemeContext';
 
 const authMock = vi.hoisted(() => ({
   signIn: vi.fn(),
+  signOut: vi.fn(),
   navigate: vi.fn(),
   profile: null as unknown,
 }));
@@ -40,6 +41,7 @@ const brandingMock = vi.hoisted(() => ({
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: () => ({
     signIn: authMock.signIn,
+    signOut: authMock.signOut,
     profile: authMock.profile,
   }),
 }));
@@ -83,6 +85,7 @@ describe('Login', () => {
     vi.clearAllMocks();
     authMock.profile = null;
     authMock.signIn.mockResolvedValue(undefined);
+    authMock.signOut.mockResolvedValue(undefined);
     brandingMock.data = null;
     brandingMock.isLoading = false;
   });
@@ -417,6 +420,34 @@ describe('Login', () => {
 
     await waitFor(() => {
       expect(authMock.navigate).toHaveBeenCalledWith('/dashboard');
+    });
+  });
+
+  it('mantem o aviso de subdominio na tela de login sem redirecionar a conta atual', () => {
+    authMock.profile = { id: 'profile-1' };
+
+    renderLogin('/login?subdomainMismatch=1');
+
+    expect(screen.getByRole('alert').textContent).toContain(
+      'Este não é o subdomínio da sua escola.',
+    );
+    expect(screen.getByText('Confira o endereço da sua escola e tente novamente.')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Trocar de usuário' })).toBeTruthy();
+    expect(authMock.navigate).not.toHaveBeenCalledWith('/dashboard');
+  });
+
+  it('permite trocar de usuario no aviso de subdominio', async () => {
+    authMock.profile = { id: 'profile-1' };
+
+    renderLogin('/login?subdomainMismatch=1');
+    fireEvent.click(screen.getByRole('button', { name: 'Trocar de usuário' }));
+
+    await waitFor(() => {
+      expect(authMock.signOut).toHaveBeenCalledOnce();
+      expect(authMock.navigate).toHaveBeenCalledWith(
+        '/login?subdomainMismatch=1',
+        { replace: true },
+      );
     });
   });
 });

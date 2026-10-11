@@ -13,7 +13,7 @@ import {
   type CSSProperties,
   type FormEvent,
 } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthShell } from '../components/auth/AuthLayout';
 import { useResolvedBranding } from '../hooks/useBranding';
@@ -70,23 +70,30 @@ function getLoginErrorMessage(error: unknown): string {
   return 'Nao foi possivel entrar. Tente novamente.';
 }
 
-export function Login() {
+interface LoginProps {
+  subdomainMismatch?: boolean;
+}
+
+export function Login({ subdomainMismatch = false }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const { signIn, profile } = useAuth();
+  const { signIn, signOut, profile } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const showSubdomainMismatch =
+    subdomainMismatch || searchParams.get('subdomainMismatch') === '1';
   const brandingQuery = useResolvedBranding();
   const branding =
     brandingQuery.data ?? FALLBACK_BRANDING;
 
   useEffect(() => {
-    if (profile) {
+    if (profile && !showSubdomainMismatch) {
       navigate('/dashboard');
     }
-  }, [profile, navigate]);
+  }, [profile, navigate, showSubdomainMismatch]);
 
   useEffect(
     () => applyDocumentBranding(branding),
@@ -108,6 +115,19 @@ export function Login() {
       await signIn(email, password);
     } catch (err: unknown) {
       setError(getLoginErrorMessage(err));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSwitchAccount = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      await signOut();
+      navigate('/login?subdomainMismatch=1', { replace: true });
+    } catch {
+      setError('Não foi possível encerrar esta sessão. Tente novamente.');
     } finally {
       setLoading(false);
     }
@@ -191,6 +211,30 @@ export function Login() {
           onSubmit={handleSubmit}
           className="space-y-3"
         >
+          {showSubdomainMismatch && (
+            <div
+              role="alert"
+              className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-200"
+            >
+              <p className="font-semibold">
+                Este não é o subdomínio da sua escola.
+              </p>
+              <p className="mt-1">
+                Confira o endereço da sua escola e tente novamente.
+              </p>
+              {profile && (
+                <button
+                  type="button"
+                  onClick={() => void handleSwitchAccount()}
+                  disabled={loading}
+                  className="mt-2 font-semibold underline underline-offset-2 disabled:opacity-60"
+                >
+                  {loading ? 'Saindo...' : 'Trocar de usuário'}
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="space-y-1">
             <label
               htmlFor="login-email"

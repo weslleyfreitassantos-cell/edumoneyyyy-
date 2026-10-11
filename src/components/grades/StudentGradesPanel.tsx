@@ -198,6 +198,7 @@ export default function StudentGradesPanel({
                     pageSize={PAGE_SIZE}
                     totalItems={filteredRecords.length}
                     onPageChange={setCurrentPage}
+                    compact
                   />
                 </div>
               ) : null}

@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -136,6 +136,24 @@ describe('StudyCenterPage', () => {
 
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
+  });
+
+  it('reabre ENEM e Matérias ao restaurar a página do cache do navegador', () => {
+    renderPage();
+
+    const enemToggle = screen.getByRole('button', { name: /Práticas oficiais/ });
+    const subjectsToggle = screen.getByRole('button', { name: /Matérias/ });
+    fireEvent.click(enemToggle);
+    fireEvent.click(subjectsToggle);
+    expect(enemToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('false');
+
+    const restoreEvent = new Event('pageshow') as PageTransitionEvent;
+    Object.defineProperty(restoreEvent, 'persisted', { value: true });
+    act(() => window.dispatchEvent(restoreEvent));
+
+    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
   });
 
   it('abre a área própria da matéria ao clicar no card', () => {
