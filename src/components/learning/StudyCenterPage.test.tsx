@@ -73,16 +73,14 @@ function renderPage() {
 }
 
 describe('StudyCenterPage', () => {
-  it('mantém a home enxuta, com ENEM antes das matérias', () => {
+  it('inicia ENEM e Matérias expandidas, com ENEM antes das matérias', () => {
     renderPage();
 
     expect(screen.getByRole('heading', { name: 'O que você quer estudar?' })).toBeTruthy();
     const enemToggle = screen.getByRole('button', { name: /Práticas oficiais/ });
     const subjectsToggle = screen.getByRole('button', { name: /Matérias/ });
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('false');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('false');
-    fireEvent.click(enemToggle);
-    fireEvent.click(subjectsToggle);
+    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
 
     expect(screen.getByRole('region', { name: 'Matérias' })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
@@ -102,7 +100,6 @@ describe('StudyCenterPage', () => {
 
   it('filtra as matérias sem misturar outros conteúdos', () => {
     renderPage();
-    fireEvent.click(screen.getByRole('button', { name: /Matérias/ }));
 
     fireEvent.change(screen.getByRole('textbox', { name: 'Pesquisar matéria' }), { target: { value: 'mat' } });
 
@@ -110,15 +107,10 @@ describe('StudyCenterPage', () => {
     expect(screen.queryByRole('link', { name: /Língua Portuguesa/ })).toBeNull();
   });
 
-  it('inicia a preparação para o ENEM recolhida e permite expandir e recolher', () => {
+  it('inicia a preparação para o ENEM expandida e permite recolher e reabrir', () => {
     renderPage();
 
     const toggle = screen.getByRole('button', { name: /Práticas oficiais/ });
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    expect(screen.queryByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeNull();
-
-    fireEvent.click(toggle);
-
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
 
@@ -126,17 +118,17 @@ describe('StudyCenterPage', () => {
 
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
     expect(screen.queryByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeNull();
-  });
-
-  it('inicia Matérias recolhida e permite expandir e recolher', () => {
-    renderPage();
-
-    const toggle = screen.getByRole('button', { name: /Matérias/ });
-    expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    expect(screen.queryByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeNull();
 
     fireEvent.click(toggle);
 
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
+  });
+
+  it('inicia Matérias expandida e permite recolher e reabrir', () => {
+    renderPage();
+
+    const toggle = screen.getByRole('button', { name: /Matérias/ });
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
 
@@ -144,6 +136,11 @@ describe('StudyCenterPage', () => {
 
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
     expect(screen.queryByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeNull();
+
+    fireEvent.click(toggle);
+
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('link', { name: /Matemática.*Abrir matéria/ })).toBeTruthy();
   });
 
   it('preserva o estado escolhido ao restaurar a página do cache do navegador', () => {
@@ -151,29 +148,28 @@ describe('StudyCenterPage', () => {
 
     const enemToggle = screen.getByRole('button', { name: /Práticas oficiais/ });
     const subjectsToggle = screen.getByRole('button', { name: /Matérias/ });
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('false');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
 
     const restoreEvent = new Event('pageshow') as PageTransitionEvent;
     Object.defineProperty(restoreEvent, 'persisted', { value: true });
     act(() => window.dispatchEvent(restoreEvent));
 
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('false');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
 
     fireEvent.click(enemToggle);
     fireEvent.click(subjectsToggle);
-    const expandedRestoreEvent = new Event('pageshow') as PageTransitionEvent;
-    Object.defineProperty(expandedRestoreEvent, 'persisted', { value: true });
-    act(() => window.dispatchEvent(expandedRestoreEvent));
+    const collapsedRestoreEvent = new Event('pageshow') as PageTransitionEvent;
+    Object.defineProperty(collapsedRestoreEvent, 'persisted', { value: true });
+    act(() => window.dispatchEvent(collapsedRestoreEvent));
 
-    expect(enemToggle.getAttribute('aria-expanded')).toBe('true');
-    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('true');
+    expect(enemToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(subjectsToggle.getAttribute('aria-expanded')).toBe('false');
   });
 
   it('abre a área própria da matéria ao clicar no card', () => {
     renderPage();
-    fireEvent.click(screen.getByRole('button', { name: /Matérias/ }));
 
     fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
 
@@ -191,7 +187,6 @@ describe('StudyCenterPage', () => {
     renderPage();
 
     expect(screen.queryByRole('region', { name: 'Estudo guiado pela BNCC' })).toBeNull();
-    fireEvent.click(screen.getByRole('button', { name: /Matérias/ }));
     expect(screen.getAllByRole('link', { name: /Matemática/ }).filter((link) => link.getAttribute('href') === '/student/study/subject/subject-math')).toHaveLength(1);
     expect(screen.getByRole('link', { name: /Física.*1 jornada guiada.*prévia/ }).getAttribute('href')).toBe('/student/study/subject/subject-physics');
 
@@ -205,7 +200,6 @@ describe('StudyCenterPage', () => {
     state.guidedJourneys = [makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math')];
 
     renderPage();
-    fireEvent.click(screen.getByRole('button', { name: /Matérias/ }));
     fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
     fireEvent.click(screen.getByRole('button', { name: 'Começar estudo' }));
 
