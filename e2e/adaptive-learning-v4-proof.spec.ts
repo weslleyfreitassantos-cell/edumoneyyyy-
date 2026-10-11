@@ -295,18 +295,18 @@ adaptiveDescribe('adaptive learning V4 real proof slices', () => {
 
       if (afterRemediation.status === 'NEEDS_TEACHER_SUPPORT') {
         expect(afterRemediation.current_step_id).toBeNull();
-        expect(afterRemediation.decision_reason).toBe('REMEDIATION_QUESTION_POOL_EXHAUSTED');
+        expect(afterRemediation.decision_reason).toBe('CONTENT_EXHAUSTED');
         const sessionSteps = await service.from('learning_guided_steps')
           .select('id,status,metadata')
           .eq('session_id', reviewSessionId);
         expect(sessionSteps.error).toBeNull();
         expect(sessionSteps.data?.some((item: any) =>
-          item.status === 'SKIPPED' && item.metadata?.runtime_reason === 'REMEDIATION_QUESTION_POOL_EXHAUSTED'
+          item.status === 'SKIPPED' && item.metadata?.runtime_reason === 'CONTENT_EXHAUSTED'
         )).toBe(true);
         const supportEvent = await service.from('learning_guided_session_events')
           .select('id')
           .eq('session_id', reviewSessionId)
-          .eq('event_type', 'TEACHER_SUPPORT_REQUIRED');
+          .eq('event_type', 'CONTENT_EXHAUSTED');
         expect(supportEvent.error).toBeNull();
         expect(supportEvent.data?.length).toBeGreaterThan(0);
       } else {
