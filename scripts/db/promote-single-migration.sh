@@ -18,6 +18,8 @@ safe_cli_failure_class() {
     *"no route to host"*|*"network is unreachable"*|*"no such host"*) printf 'database_route_failure' ;;
     *"tls"*|*"ssl"*|*"certificate"*) printf 'database_tls' ;;
     *"dial error"*|*"dial tcp"*|*"connectex"*|*"failed to connect to postgres"*) printf 'database_connectivity' ;;
+    *"v9_expansion_"*|*"v9_start_journey_"*|*"v9_fresh_question_set_"*|*"v9_pool_exhaustion_"*) printf 'database_migration_invariant' ;;
+    *"sqlstate"*|*"error:"*|*"failed to apply migration"*) printf 'database_migration_error' ;;
     *"unknown flag"*|*"unknown command"*|*"unknown option"*) printf 'cli_invocation' ;;
     *) printf 'unclassified' ;;
   esac
@@ -273,7 +275,7 @@ fi
   abort "production write confirmation is missing"
 
 apply_output="$(run_supabase_cli --workdir "${cli_workdir_arg}" db push --db-url "${database_url}" --yes --log-level error 2>&1)" \
-  || abort "selective migration push failed"
+  || abort "selective migration push failed: $(safe_cli_failure_class "${apply_output}")"
 
 after_output="$(PGUSER="${database_user}" PGPASSFILE="${pgpass_file}" psql "${database_url}" -X -A -t -v ON_ERROR_STOP=1 -c \
   "select count(*) || '|' || max(version) from supabase_migrations.schema_migrations;")" \
