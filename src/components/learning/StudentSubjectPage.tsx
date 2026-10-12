@@ -11,7 +11,8 @@ import {
   useLearningUnits,
   usePublishedLearningActivities,
   useGuidedDisciplineJourneysV9,
-  useStartGuidedDisciplineJourneyV9,
+  useRecommendedGuidedStudyV10,
+  useStartRecommendedGuidedStudyV10,
   useStudentLearningSubjects,
 } from '../../hooks/useLearningCenter';
 
@@ -31,22 +32,39 @@ export default function StudentSubjectPage() {
     [guidedJourneys.data, subjects.data],
   );
   const selectedSubject = displaySubjects.find((item) => item.id === subjectId);
-  const startGuided = useStartGuidedDisciplineJourneyV9(currentInstitutionId ?? undefined, student.data?.id);
+  const guidedRecommendation = useRecommendedGuidedStudyV10(currentInstitutionId ?? undefined, selectedSubject?.id, profile?.id);
+  const startRecommendedStudy = useStartRecommendedGuidedStudyV10(currentInstitutionId ?? undefined, student.data?.id, profile?.id);
   const units = useLearningUnits(currentInstitutionId ?? undefined, selectedSubject?.id);
   const skills = useLearningSkills(currentInstitutionId ?? undefined, selectedUnitId);
   const subjectActivities = useMemo(
     () => (activities.data ?? []).filter((activity) => activity.subject_id === selectedSubject?.id),
     [activities.data, selectedSubject?.id],
   );
-  const subjectJourneys = useMemo(
-    () => (guidedJourneys.data ?? []).filter((journey) => journey.subject_id === selectedSubject?.id),
-    [guidedJourneys.data, selectedSubject?.id],
-  );
-
-  async function startGuidedJourney(journeyId: string, skillId: string) {
-    await startGuided.mutateAsync(journeyId);
-    navigate(`/student/study/guided?journey=${encodeURIComponent(journeyId)}&skill=${encodeURIComponent(skillId)}`);
+  async function startRecommendedJourney() {
+    if (!selectedSubject) return;
+    const result = await startRecommendedStudy.mutateAsync(selectedSubject.id).catch(() => null);
+    if (result?.journey_id && result.execution_skill_id) {
+      navigate(`/student/study/guided?journey=${encodeURIComponent(result.journey_id)}&skill=${encodeURIComponent(result.execution_skill_id)}`);
+    }
   }
+
+  const recommendation = guidedRecommendation.data;
+  const gradeLabel = recommendation?.stage && recommendation.grade_level
+    ? recommendation.stage === 'ENSINO_MEDIO'
+      ? `${recommendation.grade_level}º ano do Ensino Médio`
+      : recommendation.stage === 'ENSINO_FUNDAMENTAL'
+        ? `${recommendation.grade_level}º ano do Ensino Fundamental`
+        : `${recommendation.grade_level}º ano`
+    : null;
+  const recommendationUnavailableMessage: Record<string, string> = {
+    NO_ACTIVE_ENROLLMENT: 'Não encontramos uma matrícula ativa para definir seu próximo estudo.',
+    AMBIGUOUS_ENROLLMENT: 'Há mais de uma matrícula ativa. Peça à escola para confirmar sua turma atual.',
+    GRADE_NOT_SUPPORTED: 'Ainda não há conteúdo demonstrativo disponível para sua série nesta matéria.',
+    NO_BNCC_MAPPING: 'Esta matéria ainda não possui vínculo curricular autorizado para o estudo guiado.',
+    NO_ELIGIBLE_CONTENT: 'Ainda não há uma etapa completa disponível para esta matéria.',
+    CONTENT_EXHAUSTED: 'Você concluiu as etapas disponíveis nesta prévia demonstrativa.',
+    NEEDS_TEACHER_SUPPORT: 'Esta etapa precisa de acompanhamento do professor antes de continuar.',
+  };
 
   if (subjects.isLoading) return <div className="grid min-h-48 place-items-center text-sm text-slate-500">Carregando matéria...</div>;
   if (subjects.isError || !selectedSubject) {
@@ -67,31 +85,26 @@ export default function StudentSubjectPage() {
         <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">Continue de onde parou ou escolha um conteúdo.</p>
 
         <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 dark:border-emerald-900/60 dark:bg-emerald-950/20">
-          <p className="text-sm font-bold text-emerald-950 dark:text-emerald-100">Estudo guiado</p>
-          <p className="mt-1 text-xs text-emerald-800 dark:text-emerald-200">Conteúdo curricular global e atividades da escola ficam em trilhas separadas.</p>
-          {guidedJourneys.isLoading ? <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">Verificando conteúdos desta matéria...</p> : null}
-          {guidedJourneys.isError ? <p role="status" className="mt-3 text-sm text-amber-800 dark:text-amber-200">Não foi possível verificar o estudo guiado agora. As atividades da escola continuam disponíveis.</p> : null}
-          {!guidedJourneys.isLoading && !guidedJourneys.isError && subjectJourneys.length === 0 ? <p className="mt-3 rounded-lg border border-dashed border-emerald-300 bg-white/60 p-3 text-sm text-slate-600 dark:border-emerald-800 dark:bg-slate-900/40 dark:text-slate-300">Ainda não há uma jornada guiada disponível para esta matéria.</p> : null}
-          {subjectJourneys.length ? <div className="mt-3 space-y-3">{subjectJourneys.map((journey) => {
-            const active = Boolean(journey.active_session_id);
-            const canStart = journey.question_count >= 2 && journey.missing_purposes.length === 0;
-            const codeLabel = journey.official_codes.length ? journey.official_codes.join(', ') : 'Sem código relacionado';
-            return <article key={journey.journey_id} className="rounded-lg border border-emerald-200 bg-white p-3 dark:border-emerald-800 dark:bg-slate-900">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div className="min-w-0">
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">{journey.unit_title}</p>
-                  <h2 className="mt-1 font-semibold text-slate-900 dark:text-white">{journey.title}</h2>
-                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{journey.question_count} questões no conjunto · {Math.round(journey.progress)}% de progresso</p>
-                </div>
-                {active ? <Link to={`/student/study/guided?journey=${encodeURIComponent(journey.journey_id)}&skill=${encodeURIComponent(journey.execution_skill_id)}`} className="inline-flex min-h-9 shrink-0 items-center justify-center rounded-lg bg-emerald-700 px-3 py-2 text-xs font-bold text-white hover:bg-emerald-800">Continuar</Link> : canStart ? <button type="button" disabled={startGuided.isPending} onClick={() => void startGuidedJourney(journey.journey_id, journey.execution_skill_id)} className="inline-flex min-h-9 shrink-0 items-center justify-center rounded-lg bg-emerald-700 px-3 py-2 text-xs font-bold text-white hover:bg-emerald-800 disabled:opacity-60">{startGuided.isPending ? 'Iniciando...' : 'Começar estudo'}</button> : <span className="text-xs font-semibold text-amber-700 dark:text-amber-300">Percurso incompleto</span>}
+          <p className="text-sm font-bold text-emerald-950 dark:text-emerald-100">Seu estudo guiado</p>
+          <p className="mt-1 text-sm text-emerald-800 dark:text-emerald-200">Organizamos seu aprendizado com base na sua série e no que você já estudou.</p>
+          {guidedRecommendation.isLoading ? <p role="status" className="mt-3 text-sm text-slate-600 dark:text-slate-300">Preparando sua próxima etapa...</p> : null}
+          {guidedRecommendation.isError ? <p role="alert" className="mt-3 text-sm text-amber-800 dark:text-amber-200">Não foi possível consultar seu estudo guiado agora. As atividades da escola continuam disponíveis.</p> : null}
+          {!guidedRecommendation.isLoading && !guidedRecommendation.isError && recommendation ? <div className="mt-4 rounded-lg border border-emerald-200 bg-white p-4 dark:border-emerald-800 dark:bg-slate-900">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
+                {gradeLabel ? <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">{gradeLabel}</p> : null}
+                {recommendation.unit_title ? <p className="mt-1 text-xs font-semibold text-slate-500 dark:text-slate-400">{recommendation.unit_title}</p> : null}
+                {recommendation.title ? <h2 className="mt-1 font-semibold text-slate-900 dark:text-white">{recommendation.title}</h2> : null}
+                {typeof recommendation.progress === 'number' && recommendation.progress > 0 ? <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Progresso nesta etapa: {Math.round(recommendation.progress)}%</p> : null}
+                {recommendation.state === 'ACTIVE' && recommendation.session_status === 'PAUSED' ? <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Você continuará do ponto em que parou.</p> : null}
               </div>
-              <p className="mt-3 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200">Prévia demonstrativa · revisão pedagógica pendente</p>
-              <p className="mt-2 text-xs text-slate-600 dark:text-slate-300">Relação curricular candidata, não validada: {codeLabel}. {journey.learning_role === 'FOUNDATION_REVIEW' ? 'Conteúdo de reforço de fundamentos, não uma sequência exclusiva do 1º ano.' : 'Sequência introdutória recomendada pelo TecEscola; a habilidade EM13 não é exclusiva de uma série.'}</p>
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{journey.mapping_reason}</p>
-              {!canStart && journey.missing_purposes.length ? <p className="mt-2 text-xs text-amber-700 dark:text-amber-300">Etapas ainda sem questões: {journey.missing_purposes.join(', ')}.</p> : null}
-              {startGuided.isError ? <p role="alert" className="mt-2 text-xs text-rose-700 dark:text-rose-300">{startGuided.error.message}</p> : null}
-            </article>;
-          })}</div> : null}
+              {recommendation.state === 'ACTIVE' && recommendation.execution_skill_id ? <Link to={`/student/study/guided?${recommendation.journey_id ? `journey=${encodeURIComponent(recommendation.journey_id)}&` : ''}skill=${encodeURIComponent(recommendation.execution_skill_id)}`} className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg bg-emerald-700 px-4 py-2 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">Continuar estudo</Link> : null}
+              {(recommendation.state === 'READY' || recommendation.state === 'REVIEW') ? <button type="button" disabled={startRecommendedStudy.isPending} onClick={() => void startRecommendedJourney()} className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg bg-emerald-700 px-4 py-2 text-sm font-bold text-white hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-60">{startRecommendedStudy.isPending ? 'Preparando...' : recommendation.state === 'REVIEW' ? 'Retomar revisão' : 'Iniciar estudo'}</button> : null}
+            </div>
+            {recommendation.demonstration_only || recommendation.pedagogical_review_status === 'PEDAGOGICAL_REVIEW_PENDING' ? <p className="mt-3 text-xs text-amber-800 dark:text-amber-300">Prévia demonstrativa · revisão pedagógica pendente</p> : null}
+            {recommendationUnavailableMessage[recommendation.state] ? <p role="status" className="mt-1 text-sm text-slate-600 dark:text-slate-300">{recommendationUnavailableMessage[recommendation.state]}</p> : null}
+          </div> : null}
+          {startRecommendedStudy.isError ? <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">Não foi possível iniciar sua próxima etapa. Tente novamente em instantes.</p> : null}
         </div>
 
         {units.isLoading ? <p className="mt-5 text-sm text-slate-500">Carregando conteúdos...</p> : null}

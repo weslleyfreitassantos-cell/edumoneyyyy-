@@ -9,13 +9,18 @@ const state = vi.hoisted(() => ({
     { id: 'subject-portuguese', name: 'Língua Portuguesa' },
   ],
   activities: [] as Array<{ id: string; subject_id: string; unit_id: string | null; skill_id: string | null; title: string }>,
-  simulations: [{ id: 'simulation-1', title: 'Matemática', simulation_type: 'SUBJECT', area: null, subject: 'MATEMATICA', subject_code: 'MATEMATICA', question_count: 10, duration_minutes: 20, available_count: 10, ready_count: 10, availability_status: 'AVAILABLE', language_options: [], metadata: {} }],
+  simulations: [
+    { id: 'simulation-1', title: 'Matemática', simulation_type: 'SUBJECT', area: null, subject: 'MATEMATICA', subject_code: 'MATEMATICA', question_count: 10, duration_minutes: 20, available_count: 10, ready_count: 10, availability_status: 'AVAILABLE', language_options: [], metadata: {} },
+    { id: 'simulation-english', title: 'Inglês', simulation_type: 'SUBJECT', area: null, subject: 'INGLES', subject_code: 'INGLES', question_count: 3, duration_minutes: 20, available_count: 3, ready_count: 3, language_options: [], metadata: { planned_question_count: 10, reduced_practice: true } },
+  ],
   adaptiveTarget: null as null | { canonicalSkillId: string; target: { subjectArea: string } },
   guidedSession: null as null | { id: string; status: string },
   guidedTargets: [] as Array<{ target_canonical_skill_id: string; subject_id: string | null; catalog_id: string; catalog_code: string; official_code: string; title: string; subject_area: string; stage: string; grade_level: number; availability_status: string; progress: number; has_lesson: boolean; question_count: number; active_session_id: string | null; active_session_status: string | null; reason: string }>,
   guidedJourneys: [] as Array<Record<string, unknown> & { journey_id: string; subject_id: string; subject_name: string }>,
+  guidedRecommendation: null as null | Record<string, unknown> & { state: string },
   startGuidedSession: vi.fn().mockResolvedValue({ session_id: 'session-1' }),
   startGuidedJourney: vi.fn().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-math' }),
+  startRecommendedStudy: vi.fn().mockResolvedValue({ state: 'ACTIVE', journey_id: 'journey-math', execution_skill_id: 'skill-math' }),
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -35,9 +40,11 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningSkills: () => ({ data: [{ id: 'skill-1', unit_id: 'unit-1', title: 'Resolver problemas', description: null, sort_order: 1 }], isLoading: false }),
   useGuidedLearningSessionV2: () => ({ data: state.guidedSession, isLoading: false }),
   useGuidedDisciplineJourneysV9: () => ({ data: state.guidedJourneys, isLoading: false, isError: false }),
+  useRecommendedGuidedStudyV10: () => ({ data: state.guidedRecommendation, isLoading: false, isError: false }),
   useStudentGuidedLearningTargets: () => ({ data: state.guidedTargets, isLoading: false, isError: false }),
   useStartGuidedLearningSessionV2: () => ({ mutateAsync: state.startGuidedSession, isPending: false }),
   useStartGuidedDisciplineJourneyV9: () => ({ mutateAsync: state.startGuidedJourney, isPending: false, isError: false, error: null }),
+  useStartRecommendedGuidedStudyV10: () => ({ mutateAsync: state.startRecommendedStudy, isPending: false, isError: false, error: null }),
 }));
 
 vi.mock('../../hooks/useAdaptiveLearning', () => ({
@@ -54,8 +61,10 @@ afterEach(() => {
   state.guidedSession = null;
   state.guidedTargets = [];
   state.guidedJourneys = [];
+  state.guidedRecommendation = null;
   state.startGuidedSession.mockReset().mockResolvedValue({ session_id: 'session-1' });
   state.startGuidedJourney.mockReset().mockResolvedValue({ session_id: 'session-1', target_canonical_skill_id: 'skill-math' });
+  state.startRecommendedStudy.mockReset().mockResolvedValue({ state: 'ACTIVE', journey_id: 'journey-math', execution_skill_id: 'skill-math' });
 });
 
 function renderPage() {
@@ -87,7 +96,8 @@ describe('StudyCenterPage', () => {
     expect(screen.getByRole('link', { name: /Língua Portuguesa/ })).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Módulo de redação' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Abrir módulo' }).getAttribute('href')).toBe('/student/study/writing');
-    expect(screen.getByRole('link', { name: /Praticar/ }).getAttribute('href')).toBe('/student/study/simulation?simulation=simulation-1');
+    expect(screen.getByRole('link', { name: /Matemática.*Praticar/ }).getAttribute('href')).toBe('/student/study/simulation?simulation=simulation-1');
+    expect(screen.getByRole('link', { name: /Inglês.*3 questões oficiais disponíveis \(10 previstas\) · prática reduzida/ }).getAttribute('href')).toBe('/student/study/simulation?simulation=simulation-english');
     expect(screen.getByRole('heading', { name: 'Provas e gabaritos oficiais' })).toBeTruthy();
     expect(screen.getAllByRole('link', { name: 'Baixar prova' }).find((link) => link.getAttribute('href')?.includes('2025_PV_impresso_D1_CD1.pdf'))).toBeTruthy();
     expect(screen.getAllByRole('link', { name: 'Baixar gabarito' }).find((link) => link.getAttribute('href')?.includes('2025_GB_impresso_D1_CD1.pdf'))).toBeTruthy();
@@ -178,7 +188,7 @@ describe('StudyCenterPage', () => {
     expect(screen.queryByText('O que você quer estudar?')).toBeNull();
   });
 
-  it('integra jornadas às matérias existentes e descobre a matéria global sem duplicar cards', () => {
+  it('integra a descoberta da matéria sem expor a lista de jornadas ao aluno', () => {
     state.guidedJourneys = [
       makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math', 'session-math'),
       makeJourney('journey-physics', 'subject-physics', 'Física', 'skill-physics'),
@@ -191,19 +201,85 @@ describe('StudyCenterPage', () => {
     expect(screen.getByRole('link', { name: /Física.*1 jornada guiada.*prévia/ }).getAttribute('href')).toBe('/student/study/subject/subject-physics');
 
     fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
-    expect(screen.getByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Continuar' }).getAttribute('href')).toContain('journey=journey-math');
-    expect(screen.getByRole('link', { name: 'Continuar' }).getAttribute('href')).toContain('skill=skill-math');
+    expect(screen.queryByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeNull();
+    expect(screen.queryByText('Relação curricular candidata, não validada:')).toBeNull();
+    expect(screen.queryByText('EM13MAT303')).toBeNull();
+    expect(screen.queryByRole('button', { name: /Começar estudo/ })).toBeNull();
   });
 
-  it('inicia a jornada específica da matéria, não a habilidade global sem contexto', async () => {
+  it('mostra uma recomendação única e inicia pelo identificador da matéria, não por jornada do cliente', async () => {
     state.guidedJourneys = [makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math')];
+    state.guidedRecommendation = {
+      state: 'READY',
+      stage: 'ENSINO_MEDIO',
+      grade_level: 1,
+      title: 'Equações e modelagem',
+      unit_title: 'Unidade inicial',
+      journey_id: 'journey-math',
+      execution_skill_id: 'skill-math',
+      demonstration_only: true,
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    };
 
     renderPage();
     fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
-    fireEvent.click(screen.getByRole('button', { name: 'Começar estudo' }));
+    expect(screen.getByText('1º ano do Ensino Médio')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Equações e modelagem' })).toBeTruthy();
+    expect(screen.getByText('Prévia demonstrativa · revisão pedagógica pendente')).toBeTruthy();
+    expect(screen.getAllByRole('button', { name: 'Iniciar estudo' })).toHaveLength(1);
+    expect(screen.queryByText('CODE_journey-math')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Iniciar estudo' }));
 
-    await waitFor(() => expect(state.startGuidedJourney).toHaveBeenCalledWith('journey-math'));
+    await waitFor(() => expect(state.startRecommendedStudy).toHaveBeenCalledWith('subject-math'));
+    expect(await screen.findByText('Jornada guiada aberta')).toBeTruthy();
+  });
+
+  it('retoma sessão ativa sem criar outra e mantém um único botão', () => {
+    state.guidedJourneys = [makeJourney('journey-math', 'subject-math', 'Matemática', 'skill-math', 'session-math')];
+    state.guidedRecommendation = {
+      state: 'ACTIVE',
+      session_status: 'PAUSED',
+      journey_id: 'journey-math',
+      execution_skill_id: 'skill-math',
+      progress: 24,
+      demonstration_only: true,
+      pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    };
+
+    renderPage();
+    fireEvent.click(screen.getByRole('link', { name: /Matemática.*jornada guiada/ }));
+
+    expect(screen.getAllByRole('link', { name: 'Continuar estudo' })).toHaveLength(1);
+    expect(screen.getByRole('link', { name: 'Continuar estudo' }).getAttribute('href')).toContain('journey=journey-math');
+    expect(state.startRecommendedStudy).not.toHaveBeenCalled();
+  });
+
+  it('retoma uma sessão histórica sem jornada V9 usando apenas a habilidade persistida', () => {
+    state.guidedRecommendation = {
+      state: 'ACTIVE',
+      session_status: 'PAUSED',
+      execution_skill_id: 'skill-math',
+      progress: 18,
+    };
+
+    renderPage();
+    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
+
+    expect(screen.getByRole('link', { name: 'Continuar estudo' }).getAttribute('href')).toBe('/student/study/guided?skill=skill-math');
+  });
+
+  it('explica quando a série não tem conteúdo e não oferece início falso', () => {
+    state.guidedRecommendation = {
+      state: 'GRADE_NOT_SUPPORTED',
+      stage: 'ENSINO_MEDIO',
+      grade_level: 2,
+    };
+
+    renderPage();
+    fireEvent.click(screen.getAllByRole('link', { name: /Matemática/ }).find((link) => link.getAttribute('href') === '/student/study/subject/subject-math')!);
+
+    expect(screen.getByRole('status').textContent).toContain('Ainda não há conteúdo demonstrativo disponível para sua série');
+    expect(screen.queryByRole('button', { name: /Iniciar estudo|Retomar revisão/ })).toBeNull();
   });
 });
 

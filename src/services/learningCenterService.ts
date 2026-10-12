@@ -238,6 +238,27 @@ export interface GuidedDisciplineJourneyV9 {
   reason: string;
 }
 
+export interface RecommendedGuidedStudyV10 {
+  state: 'READY' | 'REVIEW' | 'ACTIVE' | 'NEEDS_TEACHER_SUPPORT' | 'CONTENT_EXHAUSTED' | 'NO_ACTIVE_ENROLLMENT' | 'AMBIGUOUS_ENROLLMENT' | 'GRADE_NOT_SUPPORTED' | 'NO_BNCC_MAPPING' | 'NO_ELIGIBLE_CONTENT' | string;
+  action?: 'START' | 'RESUME' | 'REVIEW' | null;
+  stage?: string | null;
+  grade_level?: number | null;
+  title?: string | null;
+  unit_title?: string | null;
+  progress?: number | null;
+  session_id?: string | null;
+  journey_id?: string | null;
+  execution_skill_id?: string | null;
+  current_step_id?: string | null;
+  session_status?: GuidedSessionV2['status'] | null;
+  demonstration_only?: boolean;
+  pedagogical_review_status?: string | null;
+}
+
+export interface StartRecommendedGuidedStudyV10 extends RecommendedGuidedStudyV10 {
+  created?: boolean;
+}
+
 export interface GuidedStepAttemptResultV2 {
   attempt_id: string;
   idempotent: boolean;
@@ -366,8 +387,8 @@ export interface EnemSimulationTemplate {
   question_count: number;
   duration_minutes: number | null;
   available_count: number;
-  ready_count: number;
-  availability_status: 'AVAILABLE' | 'INSUFFICIENT' | string;
+  ready_count?: number;
+  availability_status?: 'AVAILABLE' | 'INSUFFICIENT' | string;
   language_options: string[];
   metadata: Record<string, unknown>;
 }
@@ -1259,6 +1280,18 @@ export const learningCenterService = {
       p_student_id: studentId,
     })),
 
+  recommendedGuidedStudyV10: (institutionId: string, subjectId: string) =>
+    read<RecommendedGuidedStudyV10>(supabase.rpc('get_recommended_guided_study_v10', {
+      p_institution_id: institutionId,
+      p_subject_id: subjectId,
+    })),
+
+  startRecommendedGuidedStudyV10: (institutionId: string, subjectId: string) =>
+    read<StartRecommendedGuidedStudyV10>(supabase.rpc('start_recommended_guided_study_v10', {
+      p_institution_id: institutionId,
+      p_subject_id: subjectId,
+    })),
+
   startGuidedDisciplineJourneyV9: (input: { institutionId: string; studentId: string; journeyId: string }) =>
     read<{ session_id: string; created: boolean; current_step_id: string | null; target_canonical_skill_id: string; engine_version: 'V4' }>(
       supabase.rpc('start_guided_discipline_journey_v9', {
@@ -1560,7 +1593,7 @@ export const learningCenterService = {
     })),
 
   startEnemSimulation: (input: { institutionId: string; studentId: string; simulationId: string; languageChoice?: 'ENGLISH' | 'SPANISH' }) =>
-    read<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null; content_revision?: string }>(supabase.rpc('start_enem_simulation_attempt_v2', {
+    read<{ attempt_id: string; created: boolean; question_count: number; language_choice: string | null; content_revision?: string }>(supabase.rpc('start_enem_simulation_attempt_v3', {
       p_institution_id: input.institutionId,
       p_student_id: input.studentId,
       p_simulation_id: input.simulationId,
