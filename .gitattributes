@@ -1,1 +1,2 @@
 ops/**/*.sh text eol=lf
+scripts/db/*.sh text eol=lf
