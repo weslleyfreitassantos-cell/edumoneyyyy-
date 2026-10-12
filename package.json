@@ -74,8 +74,10 @@
     "bncc:validate-content-packages": "node tools/bncc/validate-content-packages.mjs",
     "bncc:knowledge-factory": "node tools/bncc/knowledge-factory.mjs",
     "bncc:validate-knowledge-factory": "node tools/bncc/knowledge-factory.mjs --check",
+    "bncc:knowledge-factory:v2": "node tools/bncc/knowledge-factory-v2.mjs",
+    "bncc:validate-knowledge-factory:v2": "node tools/bncc/knowledge-factory-v2.mjs --check",
     "bncc:reconcile-progress": "node tools/bncc/reconcile-progress.mjs",
-    "check": "npm run routing:guard && npm run bncc:validate-knowledge-factory && npm run typecheck && npm run test && npm run build"
+    "check": "npm run routing:guard && npm run bncc:validate-knowledge-factory && npm run bncc:validate-knowledge-factory:v2 && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",

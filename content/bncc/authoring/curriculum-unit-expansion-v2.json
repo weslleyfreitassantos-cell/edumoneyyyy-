@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "tec-escola.bncc.curriculum-unit-expansion.v2",
+  "baseUnitsHash": "3f33da738665c8449d77986f7b9a7533640392a2fc857b1933938b12ff2a761c",
+  "packVersion": "tec-escola-knowledge-expansion-v2",
+  "newUnits": [
+    {
+      "unitId": "V6_SCIENCE_MATERIAL_CHOICES_FI",
+      "title": "Materiais no cotidiano",
+      "description": "Observação e comparação de materiais em objetos familiares, com justificativas para usos e possibilidades de reúso.",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "domain": "MATERIAIS",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 1,
+      "gradeTo": 1,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SCIENCE_COMPARE_MATERIAL_CHOICES_FI"
+      ],
+      "learningGoals": [
+        "Observar propriedades de materiais",
+        "Comparar objetos por evidências",
+        "Justificar escolhas de uso e reúso"
+      ],
+      "prerequisiteUnitIds": [],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V6_HISTORY_LOCAL_SOURCES_FI",
+      "title": "Memórias e acontecimentos do lugar",
+      "description": "Organização de acontecimentos locais por meio da comparação cuidadosa de relatos, imagens e registros datados.",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "domain": "FONTES_E_MEMORIA",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 3,
+      "gradeTo": 3,
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HISTORY_REGISTER_LOCAL_CHANGE_FI"
+      ],
+      "learningGoals": [
+        "Reconhecer quem produziu uma fonte",
+        "Comparar o que diferentes fontes mostram",
+        "Registrar acontecimentos em ordem temporal"
+      ],
+      "prerequisiteUnitIds": [],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    }
+  ],
+  "existingUnitExtensions": [
+    {
+      "unitId": "V5_BIOLOGY_ECOLOGIA",
+      "title": "Biologia - Ecologia",
+      "subjectCode": "BIOLOGY",
+      "stage": "ENSINO_MEDIO",
+      "domain": "ECOLOGIA",
+      "reuseRationale": "A unidade V5 existente organiza habilidades de Ecologia para o Ensino Médio; a conservação da biodiversidade é um aprofundamento compatível dessa unidade e não exige uma unidade duplicada.",
+      "addCanonicalSkills": [
+        "BIOLOGY_EVALUATE_BIODIVERSITY_CONSERVATION_HS"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS"
+    }
+  ],
+  "summary": {
+    "newUnits": 2,
+    "reusedExistingUnits": 1,
+    "newSkillMemberships": 3,
+    "studentAvailableUnits": 0
+  },
+  "expansionHash": "af4ee96324f9e7ee870727d4cc309132d103b54346e0e139fe0cd5ead5eb2975"
+}
