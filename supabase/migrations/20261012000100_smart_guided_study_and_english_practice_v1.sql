@@ -661,9 +661,12 @@ returns table(
   simulation_type text,
   area text,
   subject text,
+  subject_code text,
   question_count integer,
   duration_minutes integer,
   available_count integer,
+  ready_count integer,
+  availability_status text,
   language_options jsonb,
   metadata jsonb
 )
@@ -711,6 +714,7 @@ as $$
          counts.simulation_type,
          counts.area,
          counts.metadata->>'enem_subject',
+         counts.metadata->>'enem_subject',
          case
            when counts.metadata->>'enem_mode' = 'SUBJECT'
             and counts.metadata->>'enem_subject' = 'INGLES'
@@ -720,6 +724,14 @@ as $$
          end::integer,
          counts.duration_minutes,
          counts.pool_count,
+         counts.pool_count,
+         case
+           when counts.metadata->>'enem_mode' = 'SUBJECT'
+            and counts.metadata->>'enem_subject' = 'INGLES'
+            and counts.pool_count > 0 then 'AVAILABLE'
+           when counts.pool_count >= counts.question_count then 'AVAILABLE'
+           else 'INSUFFICIENT'
+         end,
          counts.available_languages,
          case
            when counts.metadata->>'enem_mode' = 'SUBJECT'
