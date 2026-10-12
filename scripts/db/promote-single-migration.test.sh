@@ -16,6 +16,8 @@ eval "$(sed -n '/^safe_cli_failure_class()/,/^}/p' "$script")"
 [[ "$(safe_cli_failure_class 'dial tcp 127.0.0.1:1234: connectex: actively refused')" == 'database_connection_refused' ]]
 [[ "$(safe_cli_failure_class 'context deadline exceeded while dialing')" == 'database_connection_timeout' ]]
 [[ "$(safe_cli_failure_class 'no pg_hba.conf entry: no encryption')" == 'database_access_policy' ]]
+[[ "$(safe_cli_failure_class 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:ART')" == 'database_migration_invariant' ]]
+[[ "$(safe_cli_failure_class 'ERROR: duplicate key SQLSTATE 23505')" == 'database_migration_error' ]]
 
 ledger="$tmp/ledger"
 dry_run="$tmp/dry-run"
@@ -92,6 +94,10 @@ if [[ "${MOCK_CLI_FAILURE:-0}" == '1' ]]; then
   printf 'no password supplied\n' >&2
   exit 47
 fi
+if [[ "${MOCK_APPLY_FAILURE:-0}" == '1' && "$*" != *'--dry-run'* ]]; then
+  printf 'ERROR: V9_EXPANSION_SKILL_UNAVAILABLE:PRIVATE_DETAIL_MUST_NOT_LEAK\n' >&2
+  exit 48
+fi
 if [[ "${EXPECT_WSLENV_FORWARDING:-0}" == '1' ]]; then
   [[ ":${WSLENV:-}:" == *':PGUSER/w:'* && ":${WSLENV:-}:" == *':PGPASSWORD/w:'* && ":${WSLENV:-}:" == *':PGSSLMODE/w:'* ]] || exit 40
 fi
@@ -152,6 +158,21 @@ applied="$(PATH="$tmp/bin:$PATH" \
 grep -q '^PROMOTION=APPLIED$' <<< "$applied"
 if [[ "$applied" == *dummy* || "$applied" == *fixture_user* ]]; then
   echo "connection credentials leaked into apply output" >&2
+  exit 1
+fi
+
+if apply_failure="$(PATH="$tmp/bin:$PATH" \
+  APPLY=1 \
+  BACKUP_GATE=PASS \
+  CONFIRM_PRODUCTION_WRITE=I_CONFIRM_SELECTIVE_PRODUCTION_MIGRATION \
+  MOCK_APPLY_FAILURE=1 \
+  run_guard 2>&1)"; then
+  echo "mock CLI apply failure unexpectedly passed" >&2
+  exit 1
+fi
+grep -q '^PROMOTION_ABORTED=selective migration push failed: database_migration_invariant$' <<< "$apply_failure"
+if [[ "$apply_failure" == *PRIVATE_DETAIL_MUST_NOT_LEAK* || "$apply_failure" == *dummy* || "$apply_failure" == *fixture_user* ]]; then
+  echo "connection credentials or migration details leaked from CLI apply failure" >&2
   exit 1
 fi
 [[ -z "$(find "$tmp/guard-tmp" -mindepth 1 -print -quit)" ]] || {
