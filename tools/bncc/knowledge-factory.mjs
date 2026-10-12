@@ -33,6 +33,11 @@ function hash(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
 }
 
+export function hashSourceContent(value) {
+  const text = Buffer.isBuffer(value) ? value.toString('utf8') : String(value);
+  return hash(text.replace(/\r\n/g, '\n'));
+}
+
 function normalizedText(value) {
   return String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9]+/g, ' ').trim();
 }
@@ -121,7 +126,7 @@ export function loadKnowledgeFactoryInputs(root = ROOT) {
   }
 
   const paths = collectSourcePaths(root);
-  const sourceHashes = Object.fromEntries(paths.map((relativePath) => [relativePath, hash(fs.readFileSync(path.join(root, relativePath)))]));
+  const sourceHashes = Object.fromEntries(paths.map((relativePath) => [relativePath, hashSourceContent(fs.readFileSync(path.join(root, relativePath)))]));
   return {
     catalog,
     coverage,
