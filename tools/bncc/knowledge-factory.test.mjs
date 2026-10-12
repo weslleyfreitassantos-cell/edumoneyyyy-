@@ -1,9 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { buildKnowledgeFactory, loadKnowledgeFactoryInputs, validateKnowledgeBatch } from './knowledge-factory.mjs';
+import { buildKnowledgeFactory, hashSourceContent, loadKnowledgeFactoryInputs, validateKnowledgeBatch } from './knowledge-factory.mjs';
 
 const inputs = loadKnowledgeFactoryInputs();
 
 describe('BNCC knowledge factory', () => {
+  it('hashes text sources identically across Windows and Unix line endings', () => {
+    expect(hashSourceContent('first\r\nsecond\r\n')).toBe(hashSourceContent('first\nsecond\n'));
+  });
+
   it('reconciles every official node without promoting candidate proposals', () => {
     const report = buildKnowledgeFactory(inputs);
 
