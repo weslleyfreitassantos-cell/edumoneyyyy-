@@ -44,9 +44,12 @@ as $$
       and structured.content_revision = private.current_enem_content_revision()
       and structured.source_exam = 'ENEM'
       and structured.source_application in ('REGULAR', 'PPL')
+      and structured.provider_year between 2009 and 2025
       and structured.source_question_number is not null
+      and nullif(btrim(structured.source_url), '') is not null
       and structured.source_provider = 'xequemat'
       and structured.rights_status = 'VERIFIED'
+      and structured.provider_correct_alternative in ('A', 'B', 'C', 'D', 'E')
       and not structured.required_media_present
       and not exists (
         select 1

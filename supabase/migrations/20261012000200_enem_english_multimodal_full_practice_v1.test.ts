@@ -11,6 +11,9 @@ describe('English multimodal full practice migration', () => {
     expect(migration).toContain('private.enem_ready_questions(null, \'INGLES\', \'ENGLISH\')');
     expect(migration).toContain("ready.source_kind = 'STRUCTURED_PROVIDER'");
     expect(migration).toContain('structured.rights_status = \'VERIFIED\'');
+    expect(migration).toContain('structured.provider_year between 2009 and 2025');
+    expect(migration).toContain("nullif(btrim(structured.source_url), '') is not null");
+    expect(migration).toContain("structured.provider_correct_alternative in ('A', 'B', 'C', 'D', 'E')");
     expect(migration).toContain('question_bank.metadata->>\'official_answer_letter\' = occurrence.official_answer');
     expect(migration).toContain('occurrence.canonical_fingerprint');
     expect(migration).toContain('structured.normalized_content_hash');
