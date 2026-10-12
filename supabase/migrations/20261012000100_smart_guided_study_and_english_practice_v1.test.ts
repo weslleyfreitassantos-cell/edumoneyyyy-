@@ -50,6 +50,8 @@ describe('smart guided study and reduced English practice migration', () => {
     expect(migration).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
     expect(migration).toContain("'demonstration_only', true");
     expect(migration).toContain('session_row.class_id is distinct from');
+    expect(migration).toContain('v_student_id uuid');
+    expect(migration).not.toContain('session.student_id = student_id');
   });
 
   it('keeps English eligibility tied to the current official provider-text pool and offers the real reduced count', () => {
@@ -57,6 +59,7 @@ describe('smart guided study and reduced English practice migration', () => {
     expect(migration).toContain('ready_count integer');
     expect(migration).toContain('availability_status text');
     expect(migration).toContain("and counts.pool_count > 0 then 'AVAILABLE'");
+    expect(migration).toContain('v_invoice_ids uuid[] := array[]::uuid[]');
     expect(migration).toContain('private.enem_ready_provider_text_questions(null, \'INGLES\', \'ENGLISH\')');
     expect(migration).toContain('least(counts.question_count, counts.pool_count)');
     expect(migration).toContain("'planned_question_count', counts.question_count");

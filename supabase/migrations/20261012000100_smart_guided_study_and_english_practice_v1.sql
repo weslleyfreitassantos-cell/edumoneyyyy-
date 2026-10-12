@@ -535,7 +535,7 @@ set search_path = ''
 as $$
 declare
   student_ids uuid[];
-  student_id uuid;
+  v_student_id uuid;
 begin
   select coalesce(array_agg(student.id), '{}'::uuid[]) into student_ids
     from public.students student
@@ -545,8 +545,8 @@ begin
   if cardinality(student_ids) <> 1 then
     raise exception 'LEARNING_STUDENT_SCOPE_DENIED';
   end if;
-  student_id := student_ids[1];
-  return private.recommend_guided_discipline_study_v10(p_institution_id, student_id, p_subject_id);
+  v_student_id := student_ids[1];
+  return private.recommend_guided_discipline_study_v10(p_institution_id, v_student_id, p_subject_id);
 end;
 $$;
 
@@ -561,7 +561,7 @@ set search_path = ''
 as $$
 declare
   student_ids uuid[];
-  student_id uuid;
+  v_student_id uuid;
   recommendation jsonb;
   started jsonb;
   session_row public.learning_guided_sessions%rowtype;
@@ -574,15 +574,15 @@ begin
   if cardinality(student_ids) <> 1 then
     raise exception 'LEARNING_STUDENT_SCOPE_DENIED';
   end if;
-  student_id := student_ids[1];
+  v_student_id := student_ids[1];
 
   perform pg_advisory_xact_lock(hashtextextended(
-    student_id::text || ':' || p_institution_id::text || ':' || p_subject_id::text,
+    v_student_id::text || ':' || p_institution_id::text || ':' || p_subject_id::text,
     0
   ));
 
   recommendation := private.recommend_guided_discipline_study_v10(
-    p_institution_id, student_id, p_subject_id
+    p_institution_id, v_student_id, p_subject_id
   );
   if recommendation->>'state' = 'ACTIVE' then
     return recommendation || jsonb_build_object('created', false);
@@ -593,14 +593,14 @@ begin
 
   started := public.start_guided_discipline_journey_v9(
     p_institution_id,
-    student_id,
+    v_student_id,
     (recommendation->>'journey_id')::uuid
   );
   select session.* into session_row
     from public.learning_guided_sessions session
    where session.id = (started->>'session_id')::uuid
      and session.institution_id = p_institution_id
-     and session.student_id = student_id;
+     and session.student_id = v_student_id;
   if not found then
     raise exception 'LEARNING_V10_SESSION_NOT_FOUND';
   end if;
@@ -617,7 +617,7 @@ begin
         on academic_year.id = enrollment.academic_year_id
        and academic_year.institution_id = p_institution_id
        and academic_year.active
-     where enrollment.student_id = student_id
+     where enrollment.student_id = v_student_id
        and enrollment.active
        and upper(enrollment.status::text) = 'ACTIVE'
      order by academic_year.end_date desc, enrollment.updated_at desc, enrollment.id
@@ -907,6 +907,103 @@ revoke all on function public.start_enem_simulation_attempt_v3(uuid, uuid, uuid,
   from public, anon;
 grant execute on function public.start_enem_simulation_attempt_v3(uuid, uuid, uuid, text)
   to authenticated;
+
+-- Keep the legacy financial routine's behavior while making its empty UUID array explicit for db lint.
+create or replace function public.create_financial_contract_with_invoices(
+  p_institution_id uuid,
+  p_student_id uuid,
+  p_enrollment_id uuid,
+  p_academic_year_id uuid,
+  p_financial_responsible_profile_id uuid,
+  p_base_amount bigint,
+  p_enrollment_fee_amount bigint,
+  p_installment_count integer,
+  p_first_due_date date,
+  p_default_due_day integer,
+  p_notes text default null
+)
+returns jsonb
+language plpgsql
+security invoker
+set search_path = ''
+as $$
+declare
+  v_contract_id uuid;
+  v_invoice_ids uuid[] := array[]::uuid[];
+  v_due date;
+  v_invoice_id uuid;
+  v_amount bigint;
+  v_index integer;
+begin
+  if auth.uid() is null then
+    raise exception using errcode = '42501', message = 'Autenticacao necessaria';
+  end if;
+  if not exists (
+    select 1 from public.memberships membership
+     where membership.profile_id = auth.uid()
+       and membership.institution_id = p_institution_id
+       and membership.active
+       and membership.role in ('ADMIN', 'DIRECTOR', 'SECRETARY')
+  ) then
+    raise exception using errcode = '42501', message = 'Sem permissao financeira';
+  end if;
+  if not exists (
+    select 1 from public.students student
+     where student.id = p_student_id
+       and student.institution_id = p_institution_id
+  ) then
+    raise exception using errcode = '23503', message = 'Aluno nao pertence a instituicao';
+  end if;
+  if not exists (
+    select 1 from public.memberships membership
+     where membership.profile_id = p_financial_responsible_profile_id
+       and membership.institution_id = p_institution_id
+       and membership.active
+  ) then
+    raise exception using errcode = '23503', message = 'Responsavel financeiro invalido';
+  end if;
+
+  insert into public.financial_contracts(
+    institution_id, student_id, enrollment_id, academic_year_id,
+    financial_responsible_profile_id, status, base_amount, enrollment_fee_amount,
+    installment_count, first_due_date, default_due_day, notes
+  ) values (
+    p_institution_id, p_student_id, p_enrollment_id, p_academic_year_id,
+    p_financial_responsible_profile_id, 'ACTIVE', p_base_amount,
+    p_enrollment_fee_amount, p_installment_count, p_first_due_date,
+    p_default_due_day, p_notes
+  ) returning id into v_contract_id;
+
+  for v_index in 1..p_installment_count loop
+    v_due := (
+      date_trunc('month', p_first_due_date)
+      + make_interval(months => v_index - 1)
+      + (
+        least(
+          p_default_due_day,
+          extract(day from (
+            date_trunc('month', p_first_due_date)
+            + make_interval(months => v_index)
+            - interval '1 day'
+          ))::integer
+        ) - 1
+      ) * interval '1 day'
+    )::date;
+    v_amount := p_base_amount / p_installment_count
+      + case when v_index <= (p_base_amount % p_installment_count) then 1 else 0 end;
+    insert into public.invoices(
+      institution_id, contract_id, student_id, financial_responsible_profile_id,
+      reference, due_date, base_amount, sequence_number
+    ) values (
+      p_institution_id, v_contract_id, p_student_id, p_financial_responsible_profile_id,
+      'Parcela ' || v_index, v_due, v_amount, v_index
+    ) returning id into v_invoice_id;
+    v_invoice_ids := array_append(v_invoice_ids, v_invoice_id);
+  end loop;
+
+  return jsonb_build_object('contract_id', v_contract_id, 'invoice_ids', v_invoice_ids);
+end;
+$$;
 
 notify pgrst, 'reload schema';
 commit;
