@@ -45,6 +45,8 @@
     "adaptive:v4:compile": "node --experimental-strip-types tools/adaptive/compile-v4.ts compile",
     "adaptive:v9:validate": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts validate",
     "adaptive:v9:compile": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts",
+    "adaptive:v94:validate": "node --experimental-strip-types tools/adaptive/generate-v9-fourth-journeys.ts validate",
+    "adaptive:v94:compile": "node --experimental-strip-types tools/adaptive/generate-v9-fourth-journeys.ts compile",
     "bncc:validate": "node tools/bncc/validate-catalog.mjs && node tools/bncc/validate-coverage.mjs && node tools/bncc/validate-mapping-resolutions-v8.mjs",
     "bncc:coverage": "node tools/bncc/generate-coverage.mjs",
     "bncc:mapping-candidates": "node tools/bncc/map-candidates.mjs",
