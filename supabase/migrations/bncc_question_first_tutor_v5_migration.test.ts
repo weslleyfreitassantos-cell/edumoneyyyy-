@@ -20,7 +20,8 @@ describe('question-first adaptive tutor V5 migration', () => {
     expect(migration).toContain("public.get_guided_learning_step_v4(uuid)'::regprocedure");
     expect(migration).toContain("private.enforce_guided_question_selection_v9()'::regprocedure");
     expect(migration).toContain("'hint'',question.metadata->>''remediation_hint'");
-    expect(migration).toContain("'limit 2) selected', 'limit 1) selected'");
+    expect(migration).toContain("limit_pattern text := $re$(?i)limit[[:space:]]+2\\)[[:space:]]*selected$re$");
+    expect(migration).toContain("regexp_replace(function_definition, limit_pattern, 'limit 1) selected', 'g')");
     expect(migration).toContain("'limit 2', 'limit 1'");
     expect(migration).toContain("'if coalesce(cardinality(selected_ids), 0) < 2 then', 'if coalesce(cardinality(selected_ids), 0) < 1 then'");
     expect(migration).toContain("safe_hint_clause text := '''hint'', question.metadata->>''remediation_hint''");
@@ -42,7 +43,7 @@ describe('question-first adaptive tutor V5 migration', () => {
   it('fails closed on mismatched function bodies and is safe to rerun after success', () => {
     expect(migration).toContain('V5_GUIDED_STEP_PATCH_MISMATCH');
     expect(migration).toContain("position(safe_hint_clause in function_definition) > 0");
-    expect(migration).toContain("position('limit 2) selected' in function_definition) = 0");
+    expect(migration).toContain('function_definition !~ limit_pattern');
     expect(migration).toContain("position('cardinality(selected_ids) <> 2' in function_definition) = 0");
     expect(migration).toContain('V5_SELECTION_GUARD_PATCH_MISMATCH');
   });

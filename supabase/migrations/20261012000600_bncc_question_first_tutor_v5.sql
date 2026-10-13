@@ -6,7 +6,8 @@ do $patch_legacy_guided_step_v5$
 declare
   function_definition text;
   original_definition text;
-  hint_clause text := '''difficulty'',question.difficulty,''position'',item.position';
+  hint_pattern text := $re$(?i)'difficulty',[[:space:]]*question\.difficulty,[[:space:]]*'position',[[:space:]]*item\.position$re$;
+  limit_pattern text := $re$(?i)limit[[:space:]]+2\)[[:space:]]*selected$re$;
   safe_hint_clause text := '''difficulty'',question.difficulty,''hint'',question.metadata->>''remediation_hint'',''position'',item.position';
   old_hint_count integer;
   old_limit_count integer;
@@ -16,21 +17,21 @@ begin
   if function_definition is null then raise exception 'V5_LEGACY_GUIDED_STEP_FUNCTION_MISSING'; end if;
 
   if position(safe_hint_clause in function_definition) > 0
-     and position('limit 2) selected' in function_definition) = 0 then
+     and function_definition !~ limit_pattern then
     return;
   end if;
 
   original_definition := function_definition;
-  select (length(function_definition)-length(replace(function_definition, hint_clause, '')))/length(hint_clause)
+  select count(*)::integer from regexp_matches(function_definition, hint_pattern, 'g')
     into old_hint_count;
-  select (length(function_definition)-length(replace(function_definition, 'limit 2) selected', '')))/length('limit 2) selected')
+  select count(*)::integer from regexp_matches(function_definition, limit_pattern, 'g')
     into old_limit_count;
   if old_hint_count <> 1 or old_limit_count <> 1 then
     raise exception 'V5_LEGACY_GUIDED_STEP_PATCH_MISMATCH';
   end if;
 
-  function_definition := replace(function_definition, hint_clause, safe_hint_clause);
-  function_definition := replace(function_definition, 'limit 2) selected', 'limit 1) selected');
+  function_definition := regexp_replace(function_definition, hint_pattern, safe_hint_clause, 'g');
+  function_definition := regexp_replace(function_definition, limit_pattern, 'limit 1) selected', 'g');
   if function_definition = original_definition then raise exception 'V5_LEGACY_GUIDED_STEP_PATCH_NOOP'; end if;
   execute function_definition;
 end;
