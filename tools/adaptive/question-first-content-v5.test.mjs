@@ -42,6 +42,19 @@ const portugueseSignsPack = JSON.parse(readFileSync(new URL('../../content/adapt
 const portugueseSignsMigration = readFileSync(new URL('../../supabase/migrations/20261013001000_bncc_portuguese_letters_signs_question_first_v5.sql', import.meta.url), 'utf8');
 const religiousInclusionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/religious-self-other-inclusion.json', import.meta.url), 'utf8'));
 const religiousInclusionMigration = readFileSync(new URL('../../supabase/migrations/20261013001100_bncc_religious_self_other_inclusion_question_first_v5.sql', import.meta.url), 'utf8');
+const internalCandidateMigrations = [
+  portugueseVariationMigration,
+  computingSearchMigration,
+  computingCommunitiesMigration,
+  humanitiesProductionMigration,
+  languagesSemioticMigration,
+  languagesCollaborationMigration,
+  mathRiskMigration,
+  artCharacterMigration,
+  mathPositionMigration,
+  portugueseSignsMigration,
+  religiousInclusionMigration,
+];
 
 describe('question-first V5 staging content', () => {
   it('contains an authored lesson and two distinct questions for each adaptive purpose', () => {
@@ -508,5 +521,16 @@ describe('question-first V5 staging content', () => {
     expect(sql).toContain('V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT');
     expect(sql).toContain("'CANDIDATE'");
     expect(sql).toContain("'NOT_CLAIMED'");
+  });
+
+  it('writes the real publication column as STAGING for every internal V3 candidate', () => {
+    for (const candidateMigration of internalCandidateMigrations) {
+      const skillInsert = candidateMigration.slice(candidateMigration.lastIndexOf('insert into public.learning_curriculum_skills as existing('));
+      expect(skillInsert).toContain('publication_status, bncc_alignment_status, metadata');
+      expect(skillInsert).toContain("'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE'");
+      expect(skillInsert).toContain("set publication_status = 'STAGING'");
+      expect(skillInsert).toContain("and publication_status = 'STAGING'");
+      expect(skillInsert).toContain("metadata->>'publication_status' = 'STAGING'");
+    }
   });
 });

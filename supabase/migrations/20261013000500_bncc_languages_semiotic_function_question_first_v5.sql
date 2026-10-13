@@ -23,15 +23,33 @@ begin
      where catalog_id = v_catalog_id and code = 'LANGUAGES_AREA'
        and metadata->>'content_pack' not in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_CODE_COLLISION:LANGUAGES_AREA'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status,
-    bncc_alignment_status, metadata
+    publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'LANGUAGES_AREA', 'ENSINO_MEDIO', 1, 'LANGUAGES', 'V3_INTERNAL_ANCHOR',
     'Linguagens e producao de sentidos', 'Agrupador interno de área; não cria equivalência oficial nem componente institucional.', false, 'ANCHOR', 'GRAPH_ONLY', false,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_LANGUAGES_MULTIMODAL_HS","internal_grouping_only":true,"official_code":null,"bncc_alignment":"NOT_CLAIMED","official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_LANGUAGES_MULTIMODAL_HS","internal_grouping_only":true,"official_code":null,"bncc_alignment":"NOT_CLAIMED","official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'ENSINO_MEDIO'
+      and existing.grade_level = 1
+      and existing.subject_area = 'LANGUAGES'
+      and existing.domain = 'V3_INTERNAL_ANCHOR'
+      and existing.active = false
+      and existing.node_kind = 'ANCHOR'
+      and existing.content_readiness = 'GRAPH_ONLY'
+      and existing.mastery_targetable = false
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'internal_grouping_only' = 'true'
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'LANGUAGES_AREA'
@@ -40,6 +58,7 @@ begin
        and active = false and node_kind = 'ANCHOR' and content_readiness = 'GRAPH_ONLY'
        and mastery_targetable = false and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
        and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
        and metadata->>'internal_grouping_only' = 'true'
        and metadata->>'bncc_alignment' = 'NOT_CLAIMED'
        and metadata->>'official_code' is null
@@ -55,7 +74,8 @@ begin
       'bncc_alignment_status', bncc_alignment_status, 'content_pack', metadata->>'content_pack',
       'internal_grouping_only', metadata->>'internal_grouping_only', 'bncc_alignment', metadata->>'bncc_alignment',
       'official_code', metadata->>'official_code', 'official_mapping_status', metadata->>'official_mapping_status',
-      'mapping_status', metadata->>'mapping_status', 'publication_status', metadata->>'publication_status'
+      'mapping_status', metadata->>'mapping_status', 'publication_status_column', publication_status,
+      'publication_status_metadata', metadata->>'publication_status'
     ) into v_internal_parent_snapshot
       from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'LANGUAGES_AREA';
@@ -63,15 +83,40 @@ begin
   end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'LANGUAGES_AREA';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:LANGUAGES_AREA'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS', 'ENSINO_MEDIO', 1, 'LANGUAGES', 'LINGUAGENS_MULTISSEMIOTICAS',
     'Analisar recursos de linguagem na construcao de sentidos', 'Analisa como escolhas verbais, visuais, sonoras ou corporais funcionam em textos multissemióticos e sustentam interpretações críticas.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-languages-semiotic-function","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE","source_unit_id":"V3_LANGUAGES_MULTIMODAL_HS","internal_skill_code":"LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS","grade_from":1,"grade_to":3,"official_source_reference":{"officialCode":"EM13LGG103","sourceId":"BNCC_EM_2018","documentVersion":"BNCC Ensino Médio, versão homologada 2018","url":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","page":null,"section":"Linguagens e suas Tecnologias > Competência Específica 1 > Habilidades","officialDescription":"Analisar o funcionamento das linguagens, para interpretar e produzir criticamente discursos em textos de diversas semioses (visuais, verbais, sonoras, gestuais).","localCatalogExcerpt":", por exemplo, refere-se à terceira habilidade proposta na área de Linguagens e suas Tecnologias relacionada à competência específica 1, que pode ser desenvolvida em qualquer série do Ensino Médio, conforme definições curriculares. Também é preciso enfatizar que a organização das habilidades do Ensino Médio na BNCC (com a explicitação da vinculação entre competências específicas de área e habilidades) tem como objetivo definir claramente às aprendizagens essenciais a ser garantidas aos estudantes nessa etapa. 461 EDUCAÇÃO INFANTIL O Ensino Médio no contexto da Educação Básica O Ensino Médio é a etapa final da Educação Básica, direito público subjetivo de todo cidadão brasileiro. Todavia, a realidade educacional do País tem mostrado que essa etapa representa um gargalo na garan- tia do direito à educação. Entre os fatores que explicam esse cenário, destacam-se o desempenho insuficiente do","localCatalogSourceId":"BNCC_EM_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","localCatalogPage":36,"sourceCorrection":"The local extracted excerpt is polluted by surrounding page text; this dossier uses the official statement verified in the source PDF.","sourceStage":"ENSINO_MEDIO","officialComponentCode":"LGG","officialSubjectArea":"LANGUAGES","candidateSubject":"LINGUAGENS","gradeRange":{"from":1,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE","proposalCanonicalCode":"LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS","internalGradeRange":{"from":1,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EM13LGG103; it is not a promoted BNCC mapping.","observableCapability":"O estudante cita recurso e trecho/elemento correspondente, explica seu efeito possível e distingue interpretação apoiada de afirmação não demonstrada.","authoringLimitations":"Sem imagem ou áudio, exemplos são descrições textuais autorais; demonstrar leitura multimodal completa requer material visual/sonoro revisado."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-languages-semiotic-function","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE","source_unit_id":"V3_LANGUAGES_MULTIMODAL_HS","internal_skill_code":"LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS","grade_from":1,"grade_to":3,"official_source_reference":{"officialCode":"EM13LGG103","sourceId":"BNCC_EM_2018","documentVersion":"BNCC Ensino Médio, versão homologada 2018","url":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","page":null,"section":"Linguagens e suas Tecnologias > Competência Específica 1 > Habilidades","officialDescription":"Analisar o funcionamento das linguagens, para interpretar e produzir criticamente discursos em textos de diversas semioses (visuais, verbais, sonoras, gestuais).","localCatalogExcerpt":", por exemplo, refere-se à terceira habilidade proposta na área de Linguagens e suas Tecnologias relacionada à competência específica 1, que pode ser desenvolvida em qualquer série do Ensino Médio, conforme definições curriculares. Também é preciso enfatizar que a organização das habilidades do Ensino Médio na BNCC (com a explicitação da vinculação entre competências específicas de área e habilidades) tem como objetivo definir claramente às aprendizagens essenciais a ser garantidas aos estudantes nessa etapa. 461 EDUCAÇÃO INFANTIL O Ensino Médio no contexto da Educação Básica O Ensino Médio é a etapa final da Educação Básica, direito público subjetivo de todo cidadão brasileiro. Todavia, a realidade educacional do País tem mostrado que essa etapa representa um gargalo na garan- tia do direito à educação. Entre os fatores que explicam esse cenário, destacam-se o desempenho insuficiente do","localCatalogSourceId":"BNCC_EM_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","localCatalogPage":36,"sourceCorrection":"The local extracted excerpt is polluted by surrounding page text; this dossier uses the official statement verified in the source PDF.","sourceStage":"ENSINO_MEDIO","officialComponentCode":"LGG","officialSubjectArea":"LANGUAGES","candidateSubject":"LINGUAGENS","gradeRange":{"from":1,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE","proposalCanonicalCode":"LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS","internalGradeRange":{"from":1,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EM13LGG103; it is not a promoted BNCC mapping.","observableCapability":"O estudante cita recurso e trecho/elemento correspondente, explica seu efeito possível e distingue interpretação apoiada de afirmação não demonstrada.","authoringLimitations":"Sem imagem ou áudio, exemplos são descrições textuais autorais; demonstrar leitura multimodal completa requer material visual/sonoro revisado."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'ENSINO_MEDIO'
+      and existing.grade_level = 1
+      and existing.subject_area = 'LANGUAGES'
+      and existing.domain = 'LINGUAGENS_MULTISSEMIOTICAS'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-languages-semiotic-function'
+          and existing.metadata->>'internal_skill_code' = 'LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS'
@@ -79,6 +124,8 @@ begin
        and subject_area = 'LANGUAGES' and domain = 'LINGUAGENS_MULTISSEMIOTICAS'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS'; end if;
 

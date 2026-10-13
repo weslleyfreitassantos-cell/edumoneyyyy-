@@ -19,15 +19,40 @@ begin
   if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'ART_INTERPRETATION';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:ART_INTERPRETATION'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'ART_CREATE_CHARACTER_EXPERIMENT_FI', 'FUNDAMENTAL_I', 1, 'ART', 'CRIACAO_TEATRAL',
     'Experimentar movimento e voz na criacao de personagens', 'Explora escolhas de movimento e voz para criar personagem teatral e conversa sobre estereótipos sem fixar identidades em papéis rígidos.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-art-character-experiment","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"ARTE_POSSIBILIDADES_CRIATIVAS","source_unit_id":"V3_ART_CREATION_FI","internal_skill_code":"ART_CREATE_CHARACTER_EXPERIMENT_FI","grade_from":1,"grade_to":5,"official_source_reference":{"officialCode":"EF15AR22","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":205,"section":"AR > Habilidades","officialDescription":"Experimentar possibilidades criativas de movimento e de voz na criação de um personagem teatral, discutindo estereótipos.","localCatalogExcerpt":") Experimentar possibilidades criativas de movimento e de voz na criação de um personagem teatral, discutindo estereótipos. (EF15AR23) Reconhecer e experimentar, em projetos temáticos, as relações processuais entre diversas linguagens artísticas. (EF15AR24) Caracterizar e experimentar brinquedos, brincadeiras, jogos, danças, canções e histórias de diferentes matrizes estéticas e culturais. (EF15AR25) Conhecer e valorizar o patrimônio cultural, material e imaterial, de culturas diversas, em especial a brasileira, incluindo-se suas matrizes indígenas, africanas e europeias, de diferentes épocas, favorecendo a construção de vocabulário e repertório relativos às diferentes linguagens artísticas. (EF15AR26) Explorar diferentes tecnologias e recursos digitais (multimeios, animações, jogos eletrônicos, gravações em áudio e vídeo, fotografia, softwares etc.) nos processos de criação artística. 2","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":205,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"AR","officialSubjectArea":"ART","candidateSubject":"ARTE","gradeRange":{"from":1,"to":5},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS","proposalCanonicalCode":"ARTE_POSSIBILIDADES_CRIATIVAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"ART_CREATE_CHARACTER_EXPERIMENT_FI","internalGradeRange":{"from":1,"to":5},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF15AR22; it is not a promoted BNCC mapping.","observableCapability":"Em atividade acompanhada, a criança testa ao menos duas combinações de gesto e voz, descreve o efeito percebido e revisa uma escolha após conversa sobre estereótipo.","authoringLimitations":"Questões objetivas são apenas reflexão; domínio requer experimentação teatral acompanhada e observação docente."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-art-character-experiment","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"ARTE_POSSIBILIDADES_CRIATIVAS","source_unit_id":"V3_ART_CREATION_FI","internal_skill_code":"ART_CREATE_CHARACTER_EXPERIMENT_FI","grade_from":1,"grade_to":5,"official_source_reference":{"officialCode":"EF15AR22","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":205,"section":"AR > Habilidades","officialDescription":"Experimentar possibilidades criativas de movimento e de voz na criação de um personagem teatral, discutindo estereótipos.","localCatalogExcerpt":") Experimentar possibilidades criativas de movimento e de voz na criação de um personagem teatral, discutindo estereótipos. (EF15AR23) Reconhecer e experimentar, em projetos temáticos, as relações processuais entre diversas linguagens artísticas. (EF15AR24) Caracterizar e experimentar brinquedos, brincadeiras, jogos, danças, canções e histórias de diferentes matrizes estéticas e culturais. (EF15AR25) Conhecer e valorizar o patrimônio cultural, material e imaterial, de culturas diversas, em especial a brasileira, incluindo-se suas matrizes indígenas, africanas e europeias, de diferentes épocas, favorecendo a construção de vocabulário e repertório relativos às diferentes linguagens artísticas. (EF15AR26) Explorar diferentes tecnologias e recursos digitais (multimeios, animações, jogos eletrônicos, gravações em áudio e vídeo, fotografia, softwares etc.) nos processos de criação artística. 2","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":205,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"AR","officialSubjectArea":"ART","candidateSubject":"ARTE","gradeRange":{"from":1,"to":5},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS","proposalCanonicalCode":"ARTE_POSSIBILIDADES_CRIATIVAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"ART_CREATE_CHARACTER_EXPERIMENT_FI","internalGradeRange":{"from":1,"to":5},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF15AR22; it is not a promoted BNCC mapping.","observableCapability":"Em atividade acompanhada, a criança testa ao menos duas combinações de gesto e voz, descreve o efeito percebido e revisa uma escolha após conversa sobre estereótipo.","authoringLimitations":"Questões objetivas são apenas reflexão; domínio requer experimentação teatral acompanhada e observação docente."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'FUNDAMENTAL_I'
+      and existing.grade_level = 1
+      and existing.subject_area = 'ART'
+      and existing.domain = 'CRIACAO_TEATRAL'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-art-character-experiment'
+          and existing.metadata->>'internal_skill_code' = 'ART_CREATE_CHARACTER_EXPERIMENT_FI')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'ART_CREATE_CHARACTER_EXPERIMENT_FI'
@@ -35,6 +60,8 @@ begin
        and subject_area = 'ART' and domain = 'CRIACAO_TEATRAL'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:ART_CREATE_CHARACTER_EXPERIMENT_FI'; end if;
 

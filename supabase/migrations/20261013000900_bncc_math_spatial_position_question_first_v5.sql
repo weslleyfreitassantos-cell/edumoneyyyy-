@@ -23,15 +23,33 @@ begin
      where catalog_id = v_catalog_id and code = 'MATHEMATICS_SPATIAL'
        and metadata->>'content_pack' not in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_CODE_COLLISION:MATHEMATICS_SPATIAL'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status,
-    bncc_alignment_status, metadata
+    publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'MATHEMATICS_SPATIAL', 'FUNDAMENTAL_I', 1, 'MATHEMATICS', 'V3_INTERNAL_ANCHOR',
     'Orientacao espacial', 'Agrupador interno de conhecimentos de localização e representação espacial; não é código BNCC.', false, 'ANCHOR', 'GRAPH_ONLY', false,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_MATHEMATICS_SPATIAL_FI","internal_grouping_only":true,"official_code":null,"bncc_alignment":"NOT_CLAIMED","official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_MATHEMATICS_SPATIAL_FI","internal_grouping_only":true,"official_code":null,"bncc_alignment":"NOT_CLAIMED","official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'FUNDAMENTAL_I'
+      and existing.grade_level = 1
+      and existing.subject_area = 'MATHEMATICS'
+      and existing.domain = 'V3_INTERNAL_ANCHOR'
+      and existing.active = false
+      and existing.node_kind = 'ANCHOR'
+      and existing.content_readiness = 'GRAPH_ONLY'
+      and existing.mastery_targetable = false
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'internal_grouping_only' = 'true'
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'MATHEMATICS_SPATIAL'
@@ -40,6 +58,7 @@ begin
        and active = false and node_kind = 'ANCHOR' and content_readiness = 'GRAPH_ONLY'
        and mastery_targetable = false and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
        and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
        and metadata->>'internal_grouping_only' = 'true'
        and metadata->>'bncc_alignment' = 'NOT_CLAIMED'
        and metadata->>'official_code' is null
@@ -55,7 +74,8 @@ begin
       'bncc_alignment_status', bncc_alignment_status, 'content_pack', metadata->>'content_pack',
       'internal_grouping_only', metadata->>'internal_grouping_only', 'bncc_alignment', metadata->>'bncc_alignment',
       'official_code', metadata->>'official_code', 'official_mapping_status', metadata->>'official_mapping_status',
-      'mapping_status', metadata->>'mapping_status', 'publication_status', metadata->>'publication_status'
+      'mapping_status', metadata->>'mapping_status', 'publication_status_column', publication_status,
+      'publication_status_metadata', metadata->>'publication_status'
     ) into v_internal_parent_snapshot
       from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'MATHEMATICS_SPATIAL';
@@ -63,15 +83,40 @@ begin
   end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'MATHEMATICS_SPATIAL';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:MATHEMATICS_SPATIAL'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'MATH_DESCRIBE_SPATIAL_POSITION_FI', 'FUNDAMENTAL_I', 1, 'MATHEMATICS', 'GEOMETRIA',
     'Descrever posicoes a partir do proprio referencial', 'Descreve posições de pessoas e objetos em relação ao próprio corpo usando direita, esquerda, em frente e atrás.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-math-spatial-position","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"MATEMATICA_LOCALIZACAO_PESSOAS","source_unit_id":"V3_MATHEMATICS_SPATIAL_FI","internal_skill_code":"MATH_DESCRIBE_SPATIAL_POSITION_FI","grade_from":1,"grade_to":1,"official_source_reference":{"officialCode":"EF01MA11","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":281,"section":"MA > Habilidades","officialDescription":"Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.","localCatalogExcerpt":") Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás. (EF01MA12) Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial. (EF01MA13) Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico. (EF01MA14) Identificar e nomear figuras planas (círculo, quadrado, retângulo e triângulo) em desenhos apresentados em diferentes disposições ou em contornos de faces de sólidos geométricos. 280 MINSTÉIRO ÉIDTT R AEATREUUOREDIU UNIDADES TEMÁTICAS OBJETOS DE CONHECIMENTO Grandezas e medidas Medidas de comprimento, massa e capacidade: comp","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":281,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"MA","officialSubjectArea":"MATHEMATICS","candidateSubject":"MATEMATICA","gradeRange":{"from":1,"to":1},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS","proposalCanonicalCode":"MATEMATICA_LOCALIZACAO_PESSOAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"MATH_DESCRIBE_SPATIAL_POSITION_FI","internalGradeRange":{"from":1,"to":1},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF01MA11; it is not a promoted BNCC mapping.","observableCapability":"Diante de uma disposição simples, a criança descreve a posição relativa de dois objetos com pelo menos dois termos e confere a orientação a partir do próprio ponto de vista.","authoringLimitations":"A interpretação de direita/esquerda exige diagramas com referencial explícito ou atividade corporal; imagens sem orientação são ambíguas."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-math-spatial-position","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"MATEMATICA_LOCALIZACAO_PESSOAS","source_unit_id":"V3_MATHEMATICS_SPATIAL_FI","internal_skill_code":"MATH_DESCRIBE_SPATIAL_POSITION_FI","grade_from":1,"grade_to":1,"official_source_reference":{"officialCode":"EF01MA11","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":281,"section":"MA > Habilidades","officialDescription":"Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.","localCatalogExcerpt":") Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás. (EF01MA12) Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial. (EF01MA13) Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico. (EF01MA14) Identificar e nomear figuras planas (círculo, quadrado, retângulo e triângulo) em desenhos apresentados em diferentes disposições ou em contornos de faces de sólidos geométricos. 280 MINSTÉIRO ÉIDTT R AEATREUUOREDIU UNIDADES TEMÁTICAS OBJETOS DE CONHECIMENTO Grandezas e medidas Medidas de comprimento, massa e capacidade: comp","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":281,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"MA","officialSubjectArea":"MATHEMATICS","candidateSubject":"MATEMATICA","gradeRange":{"from":1,"to":1},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS","proposalCanonicalCode":"MATEMATICA_LOCALIZACAO_PESSOAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"MATH_DESCRIBE_SPATIAL_POSITION_FI","internalGradeRange":{"from":1,"to":1},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF01MA11; it is not a promoted BNCC mapping.","observableCapability":"Diante de uma disposição simples, a criança descreve a posição relativa de dois objetos com pelo menos dois termos e confere a orientação a partir do próprio ponto de vista.","authoringLimitations":"A interpretação de direita/esquerda exige diagramas com referencial explícito ou atividade corporal; imagens sem orientação são ambíguas."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'FUNDAMENTAL_I'
+      and existing.grade_level = 1
+      and existing.subject_area = 'MATHEMATICS'
+      and existing.domain = 'GEOMETRIA'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-math-spatial-position'
+          and existing.metadata->>'internal_skill_code' = 'MATH_DESCRIBE_SPATIAL_POSITION_FI')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'MATH_DESCRIBE_SPATIAL_POSITION_FI'
@@ -79,6 +124,8 @@ begin
        and subject_area = 'MATHEMATICS' and domain = 'GEOMETRIA'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:MATH_DESCRIBE_SPATIAL_POSITION_FI'; end if;
 

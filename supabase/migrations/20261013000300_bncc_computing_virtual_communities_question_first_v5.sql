@@ -19,15 +19,40 @@ begin
   if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'COMPUTING_SAFETY';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:COMPUTING_SAFETY'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS', 'ENSINO_MEDIO', 1, 'COMPUTING', 'COMUNIDADES_VIRTUAIS',
     'Analisar interacoes e experiencias em comunidades virtuais', 'Analisa criticamente interações em comunidades virtuais, relacionando regras, desenho da plataforma, perspectivas dos participantes e possíveis impactos sociais.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-computing-virtual-communities","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"COMPUTACAO_CRITICAMENTE_EXPERIENCIAS","source_unit_id":"V3_COMPUTING_COMMUNITIES_HS","internal_skill_code":"COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS","grade_from":1,"grade_to":3,"official_source_reference":{"officialCode":"EM13CO23","sourceId":"BNCC_COMPUTACAO_2022","documentVersion":"Computação na Educação Básica - Complemento à BNCC, 2022","url":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","page":74,"section":"CO > Habilidades","officialDescription":"Analisar criticamente as experiências em comunidades virtuais e as relações advindas da interação e comunicação com outras pessoas, bem como seus impactos na sociedade.","localCatalogExcerpt":") Analisar criticamente as experiências em comunidades virtuais e as relações advindas da interação e comunicação com outras pessoas, bem como seus impactos na sociedade. (EM13CO24) Identificar e reconhecer como as redes sociais e artefatos computacionais em geral interferem na saúde física e mental de seus usuários. (EM13CO25) Dialogar em ambientes virtuais com segurança e respeito às diferenças culturais e pessoais, reconhecendo e denunciando atitudes abusivas. (EM13CO26) Aplicar os conceitos e pressupostos do direito digital em sua conduta e experiências com o cotidiano da cultura digital, bem como na produção e uso de artefatos computacionais. EXPLICAÇÃO DA HABILIDADE EXEMPLOS Esta habilidade visa a criar oportunidades de reflexão com os estudantes sobre as oportunidades de diálogo e alcance da mensagem que se configuram na formação de comunidades virtuais, tanto relacionado a aspect","localCatalogSourceId":"BNCC_COMPUTACAO_2022","localCatalogUrl":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","localCatalogPage":74,"sourceCorrection":null,"sourceStage":"ENSINO_MEDIO","officialComponentCode":"CO","officialSubjectArea":"COMPUTING","candidateSubject":"COMPUTACAO","gradeRange":{"from":1,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS","proposalCanonicalCode":"COMPUTACAO_CRITICAMENTE_EXPERIENCIAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS","internalGradeRange":{"from":1,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EM13CO23; it is not a promoted BNCC mapping.","observableCapability":"O estudante cita evidências do caso, identifica ao menos dois fatores de contexto e evita generalizar uma experiência para todas as pessoas ou comunidades.","authoringLimitations":"Casos devem ser fictícios ou anonimizados; não coletar conversas privadas de estudantes como amostras."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-computing-virtual-communities","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"COMPUTACAO_CRITICAMENTE_EXPERIENCIAS","source_unit_id":"V3_COMPUTING_COMMUNITIES_HS","internal_skill_code":"COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS","grade_from":1,"grade_to":3,"official_source_reference":{"officialCode":"EM13CO23","sourceId":"BNCC_COMPUTACAO_2022","documentVersion":"Computação na Educação Básica - Complemento à BNCC, 2022","url":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","page":74,"section":"CO > Habilidades","officialDescription":"Analisar criticamente as experiências em comunidades virtuais e as relações advindas da interação e comunicação com outras pessoas, bem como seus impactos na sociedade.","localCatalogExcerpt":") Analisar criticamente as experiências em comunidades virtuais e as relações advindas da interação e comunicação com outras pessoas, bem como seus impactos na sociedade. (EM13CO24) Identificar e reconhecer como as redes sociais e artefatos computacionais em geral interferem na saúde física e mental de seus usuários. (EM13CO25) Dialogar em ambientes virtuais com segurança e respeito às diferenças culturais e pessoais, reconhecendo e denunciando atitudes abusivas. (EM13CO26) Aplicar os conceitos e pressupostos do direito digital em sua conduta e experiências com o cotidiano da cultura digital, bem como na produção e uso de artefatos computacionais. EXPLICAÇÃO DA HABILIDADE EXEMPLOS Esta habilidade visa a criar oportunidades de reflexão com os estudantes sobre as oportunidades de diálogo e alcance da mensagem que se configuram na formação de comunidades virtuais, tanto relacionado a aspect","localCatalogSourceId":"BNCC_COMPUTACAO_2022","localCatalogUrl":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","localCatalogPage":74,"sourceCorrection":null,"sourceStage":"ENSINO_MEDIO","officialComponentCode":"CO","officialSubjectArea":"COMPUTING","candidateSubject":"COMPUTACAO","gradeRange":{"from":1,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS","proposalCanonicalCode":"COMPUTACAO_CRITICAMENTE_EXPERIENCIAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS","internalGradeRange":{"from":1,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EM13CO23; it is not a promoted BNCC mapping.","observableCapability":"O estudante cita evidências do caso, identifica ao menos dois fatores de contexto e evita generalizar uma experiência para todas as pessoas ou comunidades.","authoringLimitations":"Casos devem ser fictícios ou anonimizados; não coletar conversas privadas de estudantes como amostras."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'ENSINO_MEDIO'
+      and existing.grade_level = 1
+      and existing.subject_area = 'COMPUTING'
+      and existing.domain = 'COMUNIDADES_VIRTUAIS'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-computing-virtual-communities'
+          and existing.metadata->>'internal_skill_code' = 'COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS'
@@ -35,6 +60,8 @@ begin
        and subject_area = 'COMPUTING' and domain = 'COMUNIDADES_VIRTUAIS'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS'; end if;
 

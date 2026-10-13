@@ -23,15 +23,33 @@ begin
      where catalog_id = v_catalog_id and code = 'HUMANITIES_AREA'
        and metadata->>'content_pack' not in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_CODE_COLLISION:HUMANITIES_AREA'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status,
-    bncc_alignment_status, metadata
+    publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'HUMANITIES_AREA', 'ENSINO_MEDIO', 1, 'HUMANITIES', 'V3_INTERNAL_ANCHOR',
     'Analise interdisciplinar de Ciencias Humanas', 'Agrupador interno de área para análise integrada; não equivale a componente nem mapeamento oficial.', false, 'ANCHOR', 'GRAPH_ONLY', false,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_HUMANITIES_IMPACTS_HS","internal_grouping_only":true,"official_code":null,"bncc_alignment":"NOT_CLAIMED","official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_HUMANITIES_IMPACTS_HS","internal_grouping_only":true,"official_code":null,"bncc_alignment":"NOT_CLAIMED","official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'ENSINO_MEDIO'
+      and existing.grade_level = 1
+      and existing.subject_area = 'HUMANITIES'
+      and existing.domain = 'V3_INTERNAL_ANCHOR'
+      and existing.active = false
+      and existing.node_kind = 'ANCHOR'
+      and existing.content_readiness = 'GRAPH_ONLY'
+      and existing.mastery_targetable = false
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'internal_grouping_only' = 'true'
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'HUMANITIES_AREA'
@@ -40,6 +58,7 @@ begin
        and active = false and node_kind = 'ANCHOR' and content_readiness = 'GRAPH_ONLY'
        and mastery_targetable = false and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
        and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
        and metadata->>'internal_grouping_only' = 'true'
        and metadata->>'bncc_alignment' = 'NOT_CLAIMED'
        and metadata->>'official_code' is null
@@ -55,7 +74,8 @@ begin
       'bncc_alignment_status', bncc_alignment_status, 'content_pack', metadata->>'content_pack',
       'internal_grouping_only', metadata->>'internal_grouping_only', 'bncc_alignment', metadata->>'bncc_alignment',
       'official_code', metadata->>'official_code', 'official_mapping_status', metadata->>'official_mapping_status',
-      'mapping_status', metadata->>'mapping_status', 'publication_status', metadata->>'publication_status'
+      'mapping_status', metadata->>'mapping_status', 'publication_status_column', publication_status,
+      'publication_status_metadata', metadata->>'publication_status'
     ) into v_internal_parent_snapshot
       from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'HUMANITIES_AREA';
@@ -63,15 +83,40 @@ begin
   end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'HUMANITIES_AREA';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:HUMANITIES_AREA'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS', 'ENSINO_MEDIO', 1, 'HUMANITIES', 'IMPACTOS_SOCIOAMBIENTAIS',
     'Avaliar impactos de cadeias produtivas em diferentes escalas', 'Analisa cadeias ligadas a recursos naturais e agropecuária, compara impactos econômicos e socioambientais entre grupos e escalas e avalia alternativas com evidências.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-humanities-production-impacts","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"CIENCIAS_HUMANAS_AVALIAR_IMPACTOS","source_unit_id":"V3_HUMANITIES_IMPACTS_HS","internal_skill_code":"HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS","grade_from":1,"grade_to":3,"official_source_reference":{"officialCode":"EM13CHS302","sourceId":"BNCC_EM_2018","documentVersion":"BNCC Ensino Médio, versão homologada 2018","url":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","page":138,"section":"CHS > Habilidades","officialDescription":"Analisar e avaliar os impactos econômicos e socioambientais de cadeias produtivas ligadas à exploração de recursos naturais e às atividades agropecuárias em diferentes ambientes e escalas de análise, considerando o modo de vida das populações locais e o compromisso com a sustentabilidade.","localCatalogExcerpt":") Analisar e avaliar os impactos econômicos e socioambientais de cadeias produtivas ligadas à exploração de recursos naturais e às atividades agropecuárias em diferentes ambientes e escalas de análise, considerando o modo de vida das populações locais e o compromisso com a sustentabilidade. (EM13CHS303) Debater e avaliar o papel da indústria cultural e das culturas de massa no estímulo ao consumismo, seus impactos econômicos e socioambientais, com vistas a uma percepção crítica das necessidades criadas pelo consumo. (EM13CHS304) Analisar os impactos socioambientais decorrentes de práticas de instituições governamentais, de empresas e de indivíduos, discutindo as origens dessas práticas, e selecionar aquelas que respeitem e promovam a consciência e a ética socioambiental e o consumo responsável. (EM13CHS305) Analisar e discutir o papel dos organismos nacionais de regulação, controle e fis","localCatalogSourceId":"BNCC_EM_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","localCatalogPage":138,"sourceCorrection":null,"sourceStage":"ENSINO_MEDIO","officialComponentCode":"CHS","officialSubjectArea":"HUMANITIES","candidateSubject":"CIENCIAS_HUMANAS","gradeRange":{"from":1,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS","proposalCanonicalCode":"CIENCIAS_HUMANAS_AVALIAR_IMPACTOS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS","internalGradeRange":{"from":1,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EM13CHS302; it is not a promoted BNCC mapping.","observableCapability":"O estudante identifica etapas e agentes, compara ao menos dois indicadores em escalas diferentes e formula uma avaliação apoiada em dados, distinguindo benefícios, custos e incerteza.","authoringLimitations":"Evitar transformar casos locais hipotéticos em afirmações sobre comunidades reais; atividades com fontes situadas exigem mediação interdisciplinar."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-humanities-production-impacts","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"CIENCIAS_HUMANAS_AVALIAR_IMPACTOS","source_unit_id":"V3_HUMANITIES_IMPACTS_HS","internal_skill_code":"HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS","grade_from":1,"grade_to":3,"official_source_reference":{"officialCode":"EM13CHS302","sourceId":"BNCC_EM_2018","documentVersion":"BNCC Ensino Médio, versão homologada 2018","url":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","page":138,"section":"CHS > Habilidades","officialDescription":"Analisar e avaliar os impactos econômicos e socioambientais de cadeias produtivas ligadas à exploração de recursos naturais e às atividades agropecuárias em diferentes ambientes e escalas de análise, considerando o modo de vida das populações locais e o compromisso com a sustentabilidade.","localCatalogExcerpt":") Analisar e avaliar os impactos econômicos e socioambientais de cadeias produtivas ligadas à exploração de recursos naturais e às atividades agropecuárias em diferentes ambientes e escalas de análise, considerando o modo de vida das populações locais e o compromisso com a sustentabilidade. (EM13CHS303) Debater e avaliar o papel da indústria cultural e das culturas de massa no estímulo ao consumismo, seus impactos econômicos e socioambientais, com vistas a uma percepção crítica das necessidades criadas pelo consumo. (EM13CHS304) Analisar os impactos socioambientais decorrentes de práticas de instituições governamentais, de empresas e de indivíduos, discutindo as origens dessas práticas, e selecionar aquelas que respeitem e promovam a consciência e a ética socioambiental e o consumo responsável. (EM13CHS305) Analisar e discutir o papel dos organismos nacionais de regulação, controle e fis","localCatalogSourceId":"BNCC_EM_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf","localCatalogPage":138,"sourceCorrection":null,"sourceStage":"ENSINO_MEDIO","officialComponentCode":"CHS","officialSubjectArea":"HUMANITIES","candidateSubject":"CIENCIAS_HUMANAS","gradeRange":{"from":1,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS","proposalCanonicalCode":"CIENCIAS_HUMANAS_AVALIAR_IMPACTOS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS","internalGradeRange":{"from":1,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EM13CHS302; it is not a promoted BNCC mapping.","observableCapability":"O estudante identifica etapas e agentes, compara ao menos dois indicadores em escalas diferentes e formula uma avaliação apoiada em dados, distinguindo benefícios, custos e incerteza.","authoringLimitations":"Evitar transformar casos locais hipotéticos em afirmações sobre comunidades reais; atividades com fontes situadas exigem mediação interdisciplinar."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'ENSINO_MEDIO'
+      and existing.grade_level = 1
+      and existing.subject_area = 'HUMANITIES'
+      and existing.domain = 'IMPACTOS_SOCIOAMBIENTAIS'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-humanities-production-impacts'
+          and existing.metadata->>'internal_skill_code' = 'HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS'
@@ -79,6 +124,8 @@ begin
        and subject_area = 'HUMANITIES' and domain = 'IMPACTOS_SOCIOAMBIENTAIS'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS'; end if;
 

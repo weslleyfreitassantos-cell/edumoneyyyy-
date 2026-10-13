@@ -19,15 +19,40 @@ begin
   if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'PORTUGUESE_READING';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:PORTUGUESE_READING'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI', 'FUNDAMENTAL_I', 1, 'PORTUGUESE', 'SISTEMA_DE_ESCRITA',
     'Distinguir letras de outros sinais graficos', 'Reconhece letras em diferentes suportes e as distingue de algarismos, sinais de pontuação e ícones, considerando a função visual no contexto.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-portuguese-letters-signs","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"LINGUA_PORTUGUESA_LETRAS_ALFABETO","source_unit_id":"V3_PORTUGUESE_ALFABETIZACAO_FI","internal_skill_code":"PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI","grade_from":1,"grade_to":1,"official_source_reference":{"officialCode":"EF01LP04","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":101,"section":"LP > Habilidades","officialDescription":"Distinguir as letras do alfabeto de outros sinais gráficos.","localCatalogExcerpt":") Distinguir as letras do alfabeto de outros sinais gráficos. (EF01LP05) Reconhecer o sistema de escrita alfabética como representação dos sons da fala. (EF01LP06) Segmentar oralmente palavras em sílabas. (EF02LP02) Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras. (EF01LP07) Identificar fonemas e sua representação por letras. (EF02LP03) Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra). BASE NACIONAL COMUM CURRICULAR 100 PRÁTICAS DE LINGUAGEM OBJETOS DE CONHECIMENTO TODOS OS CAMPOS DE ATUAÇÃO Análise linguística/semiótica (Alfabetização) Construção do sistema alfabético e da ortografia Conhecimento do alfabeto do português do Brasil Conhecimento das diversas grafias do alfabe","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":101,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"LP","officialSubjectArea":"PORTUGUESE","candidateSubject":"LINGUA_PORTUGUESA","gradeRange":{"from":1,"to":1},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO","proposalCanonicalCode":"LINGUA_PORTUGUESA_LETRAS_ALFABETO","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI","internalGradeRange":{"from":1,"to":1},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF01LP04; it is not a promoted BNCC mapping.","observableCapability":"A criança localiza letras em uma palavra e classifica, com apoio visual, algarismos, pontuação e ícones como sinais de outra natureza.","authoringLimitations":"O suporte deve incluir letras conhecidas, recursos visuais e leitura mediada; erros de decodificação não devem ser confundidos com a distinção entre sinais."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-portuguese-letters-signs","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"LINGUA_PORTUGUESA_LETRAS_ALFABETO","source_unit_id":"V3_PORTUGUESE_ALFABETIZACAO_FI","internal_skill_code":"PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI","grade_from":1,"grade_to":1,"official_source_reference":{"officialCode":"EF01LP04","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":101,"section":"LP > Habilidades","officialDescription":"Distinguir as letras do alfabeto de outros sinais gráficos.","localCatalogExcerpt":") Distinguir as letras do alfabeto de outros sinais gráficos. (EF01LP05) Reconhecer o sistema de escrita alfabética como representação dos sons da fala. (EF01LP06) Segmentar oralmente palavras em sílabas. (EF02LP02) Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras. (EF01LP07) Identificar fonemas e sua representação por letras. (EF02LP03) Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra). BASE NACIONAL COMUM CURRICULAR 100 PRÁTICAS DE LINGUAGEM OBJETOS DE CONHECIMENTO TODOS OS CAMPOS DE ATUAÇÃO Análise linguística/semiótica (Alfabetização) Construção do sistema alfabético e da ortografia Conhecimento do alfabeto do português do Brasil Conhecimento das diversas grafias do alfabe","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":101,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"LP","officialSubjectArea":"PORTUGUESE","candidateSubject":"LINGUA_PORTUGUESA","gradeRange":{"from":1,"to":1},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO","proposalCanonicalCode":"LINGUA_PORTUGUESA_LETRAS_ALFABETO","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI","internalGradeRange":{"from":1,"to":1},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF01LP04; it is not a promoted BNCC mapping.","observableCapability":"A criança localiza letras em uma palavra e classifica, com apoio visual, algarismos, pontuação e ícones como sinais de outra natureza.","authoringLimitations":"O suporte deve incluir letras conhecidas, recursos visuais e leitura mediada; erros de decodificação não devem ser confundidos com a distinção entre sinais."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'FUNDAMENTAL_I'
+      and existing.grade_level = 1
+      and existing.subject_area = 'PORTUGUESE'
+      and existing.domain = 'SISTEMA_DE_ESCRITA'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-portuguese-letters-signs'
+          and existing.metadata->>'internal_skill_code' = 'PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI'
@@ -35,6 +60,8 @@ begin
        and subject_area = 'PORTUGUESE' and domain = 'SISTEMA_DE_ESCRITA'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI'; end if;
 

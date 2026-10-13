@@ -19,15 +19,40 @@ begin
   if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'COMPUTING_DATA';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:COMPUTING_DATA'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'COMPUTING_SEARCH_AND_BROWSE_FI', 'FUNDAMENTAL_I', 3, 'COMPUTING', 'PESQUISA_DIGITAL',
     'Usar navegador e busca para localizar informacao', 'Usa, com orientação adequada à idade, navegadores e ferramentas de busca para pesquisar e acessar informação pertinente.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-computing-search-safe-browse","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES","source_unit_id":"V3_COMPUTING_SEARCH_FI","internal_skill_code":"COMPUTING_SEARCH_AND_BROWSE_FI","grade_from":3,"grade_to":3,"official_source_reference":{"officialCode":"EF03CO07","sourceId":"BNCC_COMPUTACAO_2022","documentVersion":"Computação na Educação Básica - Complemento à BNCC, 2022","url":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","page":26,"section":"CO > Habilidades","officialDescription":"Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações.","localCatalogExcerpt":") Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações. (EF03CO08) Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais. Segurança e responsabilidade no uso da tecnologia (EF03CO09) Reconhecer o potencial impacto do compartilhamento de informações pessoais ou de seus pares em meio digital. COMPUTAÇÃO - 3º ANO (CONTINUAÇÃO) EXPLICAÇÃO DA HABILIDADE EXEMPLOS Nesta habilidade temos a perspectiva que o aluno possa explorar diferentes navegadores e buscadores, conhecendo aspectos gerais das ferramentas de busca como associação de palavras, as abas em cada um deles, filtros, dentre outros. Além disso, por meio das pesquisas apresentar os cuidados na busca das informações desejadas. O professor pode solicitar uma pesquisa simples em algum site de escolha do docente, sobre temas como um personagem de desen","localCatalogSourceId":"BNCC_COMPUTACAO_2022","localCatalogUrl":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","localCatalogPage":26,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"CO","officialSubjectArea":"COMPUTING","candidateSubject":"COMPUTACAO","gradeRange":{"from":3,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES","proposalCanonicalCode":"COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"COMPUTING_SEARCH_AND_BROWSE_FI","internalGradeRange":{"from":3,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF03CO07; it is not a promoted BNCC mapping.","observableCapability":"A criança formula uma busca ligada à pergunta, compara dois resultados pelo título/fonte e explica qual informação pretende acessar, com acompanhamento do educador.","authoringLimitations":"A atividade digital deve ocorrer em ambiente supervisionado, com resultados previamente selecionados e sem inserção de dados pessoais."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-computing-search-safe-browse","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES","source_unit_id":"V3_COMPUTING_SEARCH_FI","internal_skill_code":"COMPUTING_SEARCH_AND_BROWSE_FI","grade_from":3,"grade_to":3,"official_source_reference":{"officialCode":"EF03CO07","sourceId":"BNCC_COMPUTACAO_2022","documentVersion":"Computação na Educação Básica - Complemento à BNCC, 2022","url":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","page":26,"section":"CO > Habilidades","officialDescription":"Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações.","localCatalogExcerpt":") Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações. (EF03CO08) Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais. Segurança e responsabilidade no uso da tecnologia (EF03CO09) Reconhecer o potencial impacto do compartilhamento de informações pessoais ou de seus pares em meio digital. COMPUTAÇÃO - 3º ANO (CONTINUAÇÃO) EXPLICAÇÃO DA HABILIDADE EXEMPLOS Nesta habilidade temos a perspectiva que o aluno possa explorar diferentes navegadores e buscadores, conhecendo aspectos gerais das ferramentas de busca como associação de palavras, as abas em cada um deles, filtros, dentre outros. Além disso, por meio das pesquisas apresentar os cuidados na busca das informações desejadas. O professor pode solicitar uma pesquisa simples em algum site de escolha do docente, sobre temas como um personagem de desen","localCatalogSourceId":"BNCC_COMPUTACAO_2022","localCatalogUrl":"https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf","localCatalogPage":26,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"CO","officialSubjectArea":"COMPUTING","candidateSubject":"COMPUTACAO","gradeRange":{"from":3,"to":3},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES","proposalCanonicalCode":"COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"COMPUTING_SEARCH_AND_BROWSE_FI","internalGradeRange":{"from":3,"to":3},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF03CO07; it is not a promoted BNCC mapping.","observableCapability":"A criança formula uma busca ligada à pergunta, compara dois resultados pelo título/fonte e explica qual informação pretende acessar, com acompanhamento do educador.","authoringLimitations":"A atividade digital deve ocorrer em ambiente supervisionado, com resultados previamente selecionados e sem inserção de dados pessoais."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'FUNDAMENTAL_I'
+      and existing.grade_level = 3
+      and existing.subject_area = 'COMPUTING'
+      and existing.domain = 'PESQUISA_DIGITAL'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-computing-search-safe-browse'
+          and existing.metadata->>'internal_skill_code' = 'COMPUTING_SEARCH_AND_BROWSE_FI')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'COMPUTING_SEARCH_AND_BROWSE_FI'
@@ -35,6 +60,8 @@ begin
        and subject_area = 'COMPUTING' and domain = 'PESQUISA_DIGITAL'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:COMPUTING_SEARCH_AND_BROWSE_FI'; end if;
 

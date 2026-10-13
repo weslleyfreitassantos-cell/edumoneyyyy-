@@ -19,15 +19,40 @@ begin
   if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'RELIGIOUS_DIVERSITY';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:RELIGIOUS_DIVERSITY'; end if;
-  insert into public.learning_curriculum_skills(
+  insert into public.learning_curriculum_skills as existing(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
     active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
-    pedagogical_review_status, bncc_alignment_status, metadata
+    pedagogical_review_status, publication_status, bncc_alignment_status, metadata
   ) values (
     v_catalog_id, 'RELIGIOUS_COMPARE_SELF_OTHER_FI', 'FUNDAMENTAL_I', 1, 'RELIGIOUS_EDUCATION', 'CONVIVENCIA',
     'Reconhecer semelhanças e diferenças com acolhimento', 'Identifica semelhanças e diferenças entre si e outras pessoas e pratica acolhimento sem classificar convicções ou exigir revelação pessoal.', false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-religious-self-other-inclusion","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS","source_unit_id":"V3_RELIGIOUS_DIVERSITY_FI","internal_skill_code":"RELIGIOUS_COMPARE_SELF_OTHER_FI","grade_from":1,"grade_to":1,"official_source_reference":{"officialCode":"EF01ER01","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":445,"section":"ER > Habilidades","officialDescription":"Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós.","localCatalogExcerpt":") Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós. (EF01ER02) Reconhecer que o seu nome e o das demais pessoas os identificam e os diferenciam. (EF01ER03) Reconhecer e respeitar as características físicas e subjetivas de cada um. (EF01ER04) Valorizar a diversidade de formas de vida. (EF01ER05) Identificar e acolher sentimentos, lembranças, memórias e saberes de cada um. (EF01ER06) Identificar as diferentes formas pelas quais as pessoas manifestam sentimentos, ideias, memórias, gostos e crenças em diferentes espaços. BASE NACIONAL COMUM CURRICULAR 444 ENSINO RELIGIOSO – 2º ANO UNIDADES TEMÁTICAS OBJETOS DE CONHECIMENTO Identidades e alteridades O eu, a família e o ambiente de convivência Memórias e símbolos Símbolos religiosos Manifestações religiosas Alimentos sagrados ENSINO RELIGIOSO ENSINO FUNDAMENTAL 445 HABILIDADES (EF02ER01) Reconhecer os diferentes es","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":445,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"ER","officialSubjectArea":"RELIGIOUS_EDUCATION","candidateSubject":"ENSINO_RELIGIOSO","gradeRange":{"from":1,"to":1},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS","proposalCanonicalCode":"ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"RELIGIOUS_COMPARE_SELF_OTHER_FI","internalGradeRange":{"from":1,"to":1},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF01ER01; it is not a promoted BNCC mapping.","observableCapability":"A criança descreve uma semelhança e uma diferença em personagens ou situações e propõe uma ação inclusiva sem ranquear pessoas.","authoringLimitations":"Não solicitar que crianças declarem religião, origem familiar ou outra informação privada; atividades devem usar exemplos voluntários e mediação docente."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
-  ) on conflict (catalog_id, code) do nothing;
+    'PEDAGOGICAL_REVIEW_PENDING', 'STAGING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","content_id":"v5-religious-self-other-inclusion","source_pack":"tec-escola-knowledge-expansion-v3","source_candidate":"ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS","source_unit_id":"V3_RELIGIOUS_DIVERSITY_FI","internal_skill_code":"RELIGIOUS_COMPARE_SELF_OTHER_FI","grade_from":1,"grade_to":1,"official_source_reference":{"officialCode":"EF01ER01","sourceId":"BNCC_EI_EF_2018","documentVersion":"BNCC Educação Infantil e Ensino Fundamental, versão final 2018","url":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","page":445,"section":"ER > Habilidades","officialDescription":"Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós.","localCatalogExcerpt":") Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós. (EF01ER02) Reconhecer que o seu nome e o das demais pessoas os identificam e os diferenciam. (EF01ER03) Reconhecer e respeitar as características físicas e subjetivas de cada um. (EF01ER04) Valorizar a diversidade de formas de vida. (EF01ER05) Identificar e acolher sentimentos, lembranças, memórias e saberes de cada um. (EF01ER06) Identificar as diferentes formas pelas quais as pessoas manifestam sentimentos, ideias, memórias, gostos e crenças em diferentes espaços. BASE NACIONAL COMUM CURRICULAR 444 ENSINO RELIGIOSO – 2º ANO UNIDADES TEMÁTICAS OBJETOS DE CONHECIMENTO Identidades e alteridades O eu, a família e o ambiente de convivência Memórias e símbolos Símbolos religiosos Manifestações religiosas Alimentos sagrados ENSINO RELIGIOSO ENSINO FUNDAMENTAL 445 HABILIDADES (EF02ER01) Reconhecer os diferentes es","localCatalogSourceId":"BNCC_EI_EF_2018","localCatalogUrl":"https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf","localCatalogPage":445,"sourceCorrection":null,"sourceStage":"ENSINO_FUNDAMENTAL","officialComponentCode":"ER","officialSubjectArea":"RELIGIOUS_EDUCATION","candidateSubject":"ENSINO_RELIGIOSO","gradeRange":{"from":1,"to":1},"gradeCompatible":true,"proposalId":"V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS","proposalCanonicalCode":"ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS","proposalStatus":"NEW_SKILL_PENDING_REVIEW","gapClusterId":"V8_GAP_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS","referenceStatus":"OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED","candidateStatus":"TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING","mappingClaim":"NONE","mappingStatus":"MAPPING_PENDING","pedagogicalReviewStatus":"PEDAGOGICAL_REVIEW_PENDING","internalSkillCode":"RELIGIOUS_COMPARE_SELF_OTHER_FI","internalGradeRange":{"from":1,"to":1},"evidenceSummary":"The authored capability is a bounded internal interpretation of EF01ER01; it is not a promoted BNCC mapping.","observableCapability":"A criança descreve uma semelhança e uma diferença em personagens ou situações e propõe uma ação inclusiva sem ranquear pessoas.","authoringLimitations":"Não solicitar que crianças declarem religião, origem familiar ou outra informação privada; atividades devem usar exemplos voluntários e mediação docente."},"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING"}'::jsonb
+  ) on conflict (catalog_id, code) do update
+    set publication_status = 'STAGING'
+    where existing.stage = 'FUNDAMENTAL_I'
+      and existing.grade_level = 1
+      and existing.subject_area = 'RELIGIOUS_EDUCATION'
+      and existing.domain = 'CONVIVENCIA'
+      and existing.active = false
+      and existing.node_kind = 'LEAF'
+      and existing.content_readiness = 'ADAPTIVE_READY'
+      and existing.mastery_targetable = false
+      and existing.parent_canonical_skill_id = v_parent_skill_id
+      and existing.pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+      and existing.bncc_alignment_status = 'CANDIDATE'
+      and existing.metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+      and existing.metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+      and existing.metadata->>'official_code' is null
+      and (existing.metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+        or existing.metadata->>'mapping_status' = 'MAPPING_PENDING')
+      and (
+        (existing.metadata->>'content_pack' = 'tec-escola-knowledge-expansion-v3'
+          and existing.metadata->>'staging_only' = 'true')
+        or (existing.metadata->>'content_pack' = 'TECESCOLA_CORE_V5_QUESTION_FIRST'
+          and existing.metadata->>'content_id' = 'v5-religious-self-other-inclusion'
+          and existing.metadata->>'internal_skill_code' = 'RELIGIOUS_COMPARE_SELF_OTHER_FI')
+      )
+      and existing.publication_status in ('PUBLISHED', 'STAGING');
   if not exists (
     select 1 from public.learning_curriculum_skills
      where catalog_id = v_catalog_id and code = 'RELIGIOUS_COMPARE_SELF_OTHER_FI'
@@ -35,6 +60,8 @@ begin
        and subject_area = 'RELIGIOUS_EDUCATION' and domain = 'CONVIVENCIA'
        and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
        and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and publication_status = 'STAGING'
+       and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:RELIGIOUS_COMPARE_SELF_OTHER_FI'; end if;
 
