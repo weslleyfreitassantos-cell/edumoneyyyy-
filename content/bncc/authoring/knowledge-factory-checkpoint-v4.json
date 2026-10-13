@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "3328ea3f51122309ec4b020707d0c189a96c5f1996f24144892af2154305ca94",
-  "outputHash": "878a91a58487687b93cdb6c46291900d483d501812b3e3d00a63acc5cfbe61f1",
+  "inputHash": "28d0d7f16c9d3066cb1a50aed8c446f28ebdb2e23d308511a27fef2fe29ea7ee",
+  "outputHash": "a66124a5e28e57f84d026de9394f470d7d59fa18847542bdc08a3dfc64e3838d",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,35 +13,42 @@
   "currentWave": 1,
   "nextQueueItem": {
     "wave": 1,
-    "id": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
-    "stage": "ENSINO_MEDIO",
-    "subject": "BIOLOGY",
+    "id": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
+    "stage": "FUNDAMENTAL_I",
+    "subject": "SCIENCE",
     "status": "DEPTH_GAP",
-    "reason": "One or more purpose-specific pools are below the V4 deep-assessment minimum.",
+    "reason": "One or more content-depth dimensions remain below the evidence gates.",
     "missingMinimums": {
       "PROBE": {
-        "current": 2,
+        "current": 1,
         "target": 4
       },
       "PRACTICE": {
-        "current": 4,
+        "current": 1,
         "target": 12
       },
       "TRANSFER": {
-        "current": 2,
+        "current": 1,
         "target": 8
       },
       "LOCK_IN": {
-        "current": 2,
+        "current": 1,
         "target": 6
       },
       "REVIEW": {
-        "current": 2,
+        "current": 1,
         "target": 10
       }
-    }
+    },
+    "missingDepthDimensions": [
+      "QUESTION_POOL_DEPTH_READY",
+      "CONTEXT_DIVERSITY_READY",
+      "TRANSFER_READY",
+      "REVIEW_CONTENT_READY",
+      "AUTHENTIC_EVIDENCE_READY"
+    ]
   },
-  "pendingItems": 1799,
+  "pendingItems": 1783,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -50,5 +57,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "99dc9432898bc9169d155f1b40d6e18e3a1a6cc6efbff9cf68a0c05e9a27de43"
+  "checkpointHash": "7bef727e3ae9127e4fc05e53eebfba7b94321e3843d30f35bbd42870e3e0c578"
 }

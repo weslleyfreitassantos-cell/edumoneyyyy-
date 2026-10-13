@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildKnowledgeFactoryV3, loadKnowledgeFactoryV3Inputs } from '../bncc/knowledge-factory-v3.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const PACK_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v5', 'math-successive-percent-change.json');
@@ -13,6 +14,7 @@ const EXISTING_V3_STAGING_PATH = join(ROOT, 'content', 'bncc', 'authoring', 'kno
 const DEFAULT_MIGRATION_PATH = join(ROOT, 'supabase', 'migrations', '20261012000700_bncc_question_first_content_staging_v5.sql');
 const PACK_ID = 'TECESCOLA_CORE_V5_QUESTION_FIRST';
 const PURPOSES = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'];
+let cachedV3FactoryResult;
 
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
 const sql = (value) => `'${String(value).replaceAll("'", "''")}'`;
@@ -116,6 +118,73 @@ export function validateQuestionFirstPack(pack = readJson(PACK_PATH), existingQu
   return { valid: errors.length === 0, errors, questionCount: pack.questions?.length ?? 0, contextCount: contexts.size, counts: Object.fromEntries(counts), answerPositionCounts: actualAnswerPositionCounts };
 }
 
+function resolveSkillForStaging(pack, canonicalSkillCodes) {
+  if (canonicalSkillCodes.has(pack.canonicalSkillCode)) return { kind: 'REGISTERED_CANONICAL', definition: null };
+  cachedV3FactoryResult ??= buildKnowledgeFactoryV3(loadKnowledgeFactoryV3Inputs(ROOT));
+  if (cachedV3FactoryResult.errors?.length) throw new Error(`V5_INTERNAL_SKILL_GRAPH_INVALID:${cachedV3FactoryResult.errors.join(',')}`);
+  const definition = cachedV3FactoryResult.compiledBatch.newSkills.find((skill) => skill.skillCode === pack.canonicalSkillCode);
+  if (!definition || !/^[A-Z][A-Z0-9_]{2,95}$/.test(definition.skillCode)) {
+    throw new Error(`V5_CANONICAL_SKILL_NOT_REGISTERED:${pack.canonicalSkillCode}`);
+  }
+  const unitDeclared = [...(cachedV3FactoryResult.units.newUnits ?? []), ...(cachedV3FactoryResult.units.existingUnitExtensions ?? [])]
+    .some((unit) => unit.unitId === definition.unitId
+      && (unit.canonicalSkills ?? unit.addCanonicalSkills ?? []).includes(definition.skillCode));
+  const group = cachedV3FactoryResult.groups.find((item) => item.skillCode === definition.skillCode);
+  const candidate = cachedV3FactoryResult.compiledBatch.candidateTargets.find((item) => item.targetId === definition.sourceCandidate);
+  const gradeValid = Number.isInteger(definition.gradeFrom) && Number.isInteger(definition.gradeTo)
+    && definition.gradeFrom >= 1 && definition.gradeTo >= definition.gradeFrom && definition.gradeTo <= 12;
+  const sourceValid = Boolean(definition.sourceEvidence?.sourceId && definition.sourceEvidence?.url && definition.sourceEvidence?.officialDescription);
+  const semanticallyComplete = Boolean(definition.title?.trim() && definition.description?.trim()
+    && definition.learningObjective?.trim() && definition.observableCapability?.trim());
+  if (!candidate || !unitDeclared || !group || !gradeValid || !sourceValid || !semanticallyComplete
+    || definition.subjectCode !== pack.subject || definition.domain !== pack.domain
+    || !['ENSINO_MEDIO', 'FUNDAMENTAL_I', 'FUNDAMENTAL_II'].includes(definition.stage)
+    || !definition.parentSkillCode) {
+    throw new Error(`V5_INTERNAL_SKILL_DECLARATION_INVALID:${pack.canonicalSkillCode}`);
+  }
+  if (pack.officialMappingStatus !== 'NOT_CLAIMED') throw new Error(`V5_INTERNAL_SKILL_MAPPING_MUST_NOT_BE_CLAIMED:${pack.canonicalSkillCode}`);
+  return { kind: 'V3_INTERNAL_CANDIDATE', definition };
+}
+
+function buildInternalSkillStagingSql(pack, definition) {
+  if (!definition) return '';
+  const metadata = {
+    content_pack: 'TECESCOLA_CORE_V5_QUESTION_FIRST',
+    content_id: pack.contentId,
+    source_pack: 'tec-escola-knowledge-expansion-v3',
+    source_candidate: definition.sourceCandidate,
+    source_unit_id: definition.unitId,
+    internal_skill_code: definition.skillCode,
+    grade_from: definition.gradeFrom,
+    grade_to: definition.gradeTo,
+    official_source_reference: definition.sourceEvidence,
+    official_mapping_status: 'NOT_CLAIMED',
+    pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    publication_status: 'STAGING',
+  };
+  return `  select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = ${sql(definition.parentSkillCode)};
+  if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:${definition.parentSkillCode}'; end if;
+  insert into public.learning_curriculum_skills(
+    catalog_id, code, stage, grade_level, subject_area, domain, title, description,
+    active, node_kind, content_readiness, mastery_targetable, parent_canonical_skill_id,
+    pedagogical_review_status, bncc_alignment_status, metadata
+  ) values (
+    v_catalog_id, ${sql(definition.skillCode)}, ${sql(definition.stage)}, ${definition.gradeFrom}, ${sql(definition.subjectCode)}, ${sql(definition.domain)},
+    ${sql(definition.title)}, ${sql(definition.description)}, false, 'LEAF', 'ADAPTIVE_READY', false, v_parent_skill_id,
+    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', ${jsonSql(metadata)}
+  ) on conflict (catalog_id, code) do nothing;
+  if not exists (
+    select 1 from public.learning_curriculum_skills
+     where catalog_id = v_catalog_id and code = ${sql(definition.skillCode)}
+       and stage = ${sql(definition.stage)} and grade_level = ${definition.gradeFrom}
+       and subject_area = ${sql(definition.subjectCode)} and domain = ${sql(definition.domain)}
+       and parent_canonical_skill_id = v_parent_skill_id and active = false and mastery_targetable = false
+       and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING' and bncc_alignment_status = 'CANDIDATE'
+       and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+  ) then raise exception 'V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT:${definition.skillCode}'; end if;
+`;
+}
+
 export function buildMigration(pack = readJson(PACK_PATH)) {
   const validation = validateQuestionFirstPack(pack);
   if (!validation.valid) throw new Error(`V5_CONTENT_INVALID:${validation.errors.join(',')}`);
@@ -124,9 +193,10 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
     ...(subject.anchors ?? []),
     ...(subject.leaves ?? []).map((skill) => skill.code),
   ]));
-  if (!canonicalSkillCodes.has(pack.canonicalSkillCode)) {
-    throw new Error(`V5_CANONICAL_SKILL_NOT_REGISTERED:${pack.canonicalSkillCode}`);
-  }
+  const skillResolution = resolveSkillForStaging(pack, canonicalSkillCodes);
+  const internalSkillSql = buildInternalSkillStagingSql(pack, skillResolution.definition);
+  const internalSkillDeclaration = skillResolution.definition ? '  v_parent_skill_id uuid;' : '';
+  const internalSkillBlock = internalSkillSql ? `\n${internalSkillSql}` : '';
   const purposePositions = new Map(PURPOSES.map((purpose) => [purpose, 0]));
   const questionRows = pack.questions.map((question) => {
     const position = purposePositions.get(question.purpose) + 1;
@@ -171,7 +241,7 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
 do $seed_question_first_content_v5$
 declare
   v_catalog_id uuid;
-  v_skill_id uuid;
+  v_skill_id uuid;${internalSkillDeclaration ? `\n${internalSkillDeclaration}` : ''}
   v_lesson_id uuid;
   v_set_id uuid;
   v_question_id uuid;
@@ -181,7 +251,7 @@ begin
     from public.learning_curriculum_catalogs
    where code = 'TECESCOLA_CORE' and version = '1.0'
    limit 1;
-  if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;
+  if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;${internalSkillBlock}
   select id into v_skill_id
     from public.learning_curriculum_skills
    where catalog_id = v_catalog_id and code = ${sql(pack.canonicalSkillCode)};

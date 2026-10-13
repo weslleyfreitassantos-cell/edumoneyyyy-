@@ -1,0 +1,1233 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "v5-math-spatial-position",
+  "canonicalSkillCode": "MATH_DESCRIBE_SPATIAL_POSITION_FI",
+  "subject": "MATHEMATICS",
+  "domain": "GEOMETRIA",
+  "topic": "localizacao em relacao ao proprio referencial",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 3,
+    "PRACTICE": 11,
+    "TRANSFER": 7,
+    "LOCK_IN": 5,
+    "REVIEW": 9
+  },
+  "expectedQuestionCount": 35,
+  "expectedContextCount": 35,
+  "expectedAnswerPositionCounts": {
+    "A": 9,
+    "B": 9,
+    "C": 9,
+    "D": 8
+  },
+  "lesson": {
+    "title": "Descreva posições usando o próprio corpo como referência",
+    "objective": "Identificar direita, esquerda, frente e atrás em relação à própria posição; explicar como a descrição muda quando o observador muda de orientação; reconhecer quando faltam informações para responder.",
+    "summary": "Para dizer onde algo está à direita ou à esquerda, indique de quem é esse lado. O corpo da pessoa observadora é o referencial; ao virar, ela precisa conferir novamente a relação.",
+    "explanation": "## Comece por quem observa\nUm referencial é o ponto de vista usado para descrever uma posição. Nesta atividade, use o próprio corpo: fique ou imagine-se voltado para uma direção e identifique sua direita, esquerda, frente e atrás. Dizer “a bola está à minha esquerda” informa quem está observando.\n\n## Confira a orientação\nDireita e esquerda não são etiquetas fixas dos objetos nem da página. Se você se vira, a relação do mesmo objeto com seu corpo pode mudar. O objeto pode ficar parado enquanto sua orientação muda. Por isso, antes de repetir uma descrição depois de um giro, localize seu corpo e observe de novo.\n\n## Faça uma frase que outra pessoa possa verificar\nNomeie o observador e, quando necessário, para onde ele está olhando: “Para a criança voltada para a porta, o livro está à direita do corpo”. Em um desenho, procure seta, posição do personagem ou outra pista explícita. Se ela não existir, não adivinhe: peça a informação que falta.\n\n## Exemplo resolvido\nLia está olhando para a lousa. A mochila fica ao lado direito do corpo dela. Lia pode dizer: “A mochila está à minha direita”. Depois ela vira para ficar de frente para a turma. A mochila não se moveu, mas Lia deve olhar novamente e descrever o lado em relação ao corpo já virado. Não basta copiar a palavra “direita” da frase anterior.\n\n## Confira em três passos\n1. Quem é a pessoa observadora? 2. Para onde o corpo dela está voltado agora? 3. Onde o objeto aparece em relação a esse corpo? Se faltar uma dessas pistas, diga o que ainda precisa ser informado.",
+    "workedExample": "Luna olha para uma porta. A mochila está à esquerda do corpo dela. A frase “a mochila está à minha esquerda” é verificável porque identifica Luna como observadora. Quando Luna vira para a janela, a mochila continua parada, mas a relação com o corpo pode mudar; Luna confere novamente antes de falar.",
+    "commonMistake": "Usar a esquerda da página, de quem lê ou de outra pessoa sem verificar se esse é o referencial indicado; manter a descrição anterior após virar; inventar uma orientação que não aparece no enunciado.",
+    "tips": [
+      "Aponte para seu lado antes de escolher direita ou esquerda.",
+      "Diga de quem é o lado: “à minha direita” ou “à direita da criança”.",
+      "Depois de virar, observe novamente; não suponha que o objeto se moveu.",
+      "Se o desenho não informa a orientação, peça uma seta ou descrição."
+    ],
+    "priorKnowledge": [
+      "Reconhecer direita e esquerda do próprio corpo com apoio.",
+      "Observar posições de objetos próximos.",
+      "Compreender as palavras frente e atrás em situações cotidianas."
+    ],
+    "keyConcepts": [
+      "Referencial é a posição de quem observa.",
+      "Direita e esquerda em relação ao corpo dependem da orientação do observador.",
+      "A posição do objeto pode permanecer enquanto sua relação com o corpo muda.",
+      "Uma descrição incompleta deve ser esclarecida, não adivinhada."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Nomear o observador e identificar posições simples no próprio corpo.",
+        "questionIds": [
+          "v5-math-position-probe-01",
+          "v5-math-position-probe-02",
+          "v5-math-position-probe-03",
+          "v5-math-position-practice-01",
+          "v5-math-position-practice-02",
+          "v5-math-position-practice-03"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Descrever posições e seguir instruções com referencial explícito.",
+        "questionIds": [
+          "v5-math-position-practice-04",
+          "v5-math-position-practice-05",
+          "v5-math-position-practice-06",
+          "v5-math-position-practice-07",
+          "v5-math-position-practice-08"
+        ]
+      },
+      {
+        "stage": "INTERMEDIATE",
+        "focus": "Atualizar a descrição quando a pessoa vira ou compara orientações.",
+        "questionIds": [
+          "v5-math-position-practice-09",
+          "v5-math-position-practice-10",
+          "v5-math-position-practice-11",
+          "v5-math-position-transfer-01",
+          "v5-math-position-transfer-02"
+        ]
+      },
+      {
+        "stage": "ADVANCED_TRANSFER",
+        "focus": "Resolver instruções ambíguas em mapas, trajetos e comunicação entre pessoas.",
+        "questionIds": [
+          "v5-math-position-transfer-03",
+          "v5-math-position-transfer-04",
+          "v5-math-position-transfer-05",
+          "v5-math-position-transfer-06",
+          "v5-math-position-transfer-07",
+          "v5-math-position-lock-01",
+          "v5-math-position-lock-02",
+          "v5-math-position-lock-03",
+          "v5-math-position-lock-04",
+          "v5-math-position-lock-05"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar o referencial em contextos variados e formas de participação acessíveis.",
+        "questionIds": [
+          "v5-math-position-review-01",
+          "v5-math-position-review-02",
+          "v5-math-position-review-03",
+          "v5-math-position-review-04",
+          "v5-math-position-review-05",
+          "v5-math-position-review-06",
+          "v5-math-position-review-07",
+          "v5-math-position-review-08",
+          "v5-math-position-review-09"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "OBJECT_AS_FIXED_SIDE",
+        "text": "O lado não pertence para sempre ao objeto. Diga quem observa e confira para onde essa pessoa está voltada."
+      },
+      {
+        "trigger": "PAGE_AS_BODY",
+        "text": "A esquerda da folha só representa a esquerda do corpo se a orientação estiver indicada. Procure uma seta ou peça essa informação."
+      },
+      {
+        "trigger": "OLD_ORIENTATION",
+        "text": "Depois de virar, use a orientação atual do corpo. O objeto pode ter ficado parado."
+      },
+      {
+        "trigger": "OBSERVER_MISSING",
+        "text": "Antes de responder, pergunte: de quem é a direita ou a esquerda? Sem essa referência, a pista pode ser ambígua."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "OBJECT_AS_FIXED_SIDE",
+        "prompt": "Coloque um objeto de cada lado do corpo. Aponte para a direita, vire-se devagar e observe novamente. Diga uma frase antes e outra depois do giro."
+      },
+      {
+        "misconception": "PAGE_AS_BODY",
+        "prompt": "Cubra a resposta e procure no desenho uma seta ou direção do olhar. Se não houver, escreva a pergunta que falta: “para onde a pessoa está voltada?”"
+      },
+      {
+        "misconception": "OLD_ORIENTATION",
+        "prompt": "Represente o primeiro ponto de vista com uma seta, faça um quarto de volta e desenhe a nova seta. Só então localize o objeto em relação ao corpo atual."
+      },
+      {
+        "misconception": "OBSERVER_MISSING",
+        "prompt": "Reescreva a instrução incluindo quem observa e para onde olha; convide outra pessoa a conferir usando exatamente esse referencial."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 20,
+    "authenticActivities": [
+      {
+        "id": "math-spatial-position-classroom-guide",
+        "title": "Guia de posições da sala",
+        "objective": "Descrever posições de objetos a partir do próprio referencial e verificar como uma mudança de orientação altera a descrição.",
+        "context": "A criança cria e testa instruções simples para localizar objetos em uma sala conhecida, usando seu próprio corpo como ponto de referência.",
+        "materials": [
+          "Dois ou três objetos leves e familiares",
+          "Cartões com setas ou folha para desenho",
+          "Espaço livre escolhido pelo professor"
+        ],
+        "instructions": "Com mediação, escolha objetos que não precisem ser deslocados durante cada observação. Registre onde o observador está e para onde olha; descreva um objeto à direita, à esquerda, à frente ou atrás. Mude a orientação do observador, confira novamente e compare as frases. A criança pode fazer toda a atividade sentada, movendo um marcador que represente sua orientação. Não é necessário tocar em colegas nem vendar os olhos.",
+        "evidence": "Duas descrições coerentes com orientações registradas e uma explicação ou demonstração de que a referência mudou, não necessariamente o objeto.",
+        "safety": "Use objetos leves, mantenha passagens livres, permita participação sentada e interrompa qualquer movimento desconfortável. Não use vendas, corrida, escadas ou contato físico.",
+        "ageRange": "1º ano do Ensino Fundamental; ajustar quantidade de objetos e apoio verbal conforme a necessidade.",
+        "mediation": "O adulto registra as pistas oferecidas, pergunta quem observa e verifica se a criança atualiza o referencial. Não atribuir erro quando o desenho ou a orientação estiver ambíguo.",
+        "privacyGuard": "Não registrar imagens, vídeos ou dados pessoais das crianças; a evidência pode ser anotada sem identificação nominal.",
+        "rubric": [
+          {
+            "criterion": "Identificação do referencial",
+            "emerging": "Ainda não indica quem observa, mesmo com apoio.",
+            "developing": "Indica o observador após uma pergunta de apoio.",
+            "proficient": "Nomeia ou demonstra o próprio corpo como referência antes de descrever."
+          },
+          {
+            "criterion": "Descrição espacial",
+            "emerging": "Confunde lados ou não relaciona objeto e corpo.",
+            "developing": "Descreve uma posição com apoio e orientação explícita.",
+            "proficient": "Produz descrições coerentes com a posição e a orientação observadas."
+          },
+          {
+            "criterion": "Revisão após mudança",
+            "emerging": "Mantém a frase sem conferir depois de mudar a orientação.",
+            "developing": "Confere novamente com lembrete.",
+            "proficient": "Atualiza ou justifica a descrição a partir da nova orientação, reconhecendo quando o objeto não se moveu."
+          }
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "title": "Base Nacional Comum Curricular: Matemática do Ensino Fundamental",
+        "publisher": "Ministério da Educação",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "A fonte apresenta a habilidade EF01MA11 sobre descrever localizações em relação à própria posição."
+        ],
+        "use": "Dossiê de referência para escopo. O conteúdo é uma proposta interna; o código oficial não foi promovido a mapeamento aprovado e a revisão pedagógica humana continua pendente."
+      }
+    ],
+    "copyrightNote": "Enunciados, opções, explicações e atividade foram escritos para este pacote. A referência oficial é usada como fonte de escopo, sem copiar itens e sem reivindicar mapeamento oficial aprovado."
+  },
+  "questions": [
+    {
+      "id": "v5-math-position-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "DESK_LAYOUT",
+      "statement": "Bia está sentada olhando para o quadro. O estojo fica junto ao lado direito do corpo dela. Como Bia pode descrevê-lo?",
+      "options": [
+        "O estojo está à minha direita.",
+        "O estojo está sempre à direita de qualquer pessoa.",
+        "O estojo está atrás do quadro.",
+        "O estojo está à esquerda de Bia."
+      ],
+      "correctAnswer": "O estojo está à minha direita.",
+      "explanation": "A expressão “minha direita” deixa claro que Bia é a observadora.",
+      "hint": "Complete a frase como se você fosse Bia.",
+      "errorFocus": "Omitir o próprio referencial",
+      "misconceptions": {
+        "O estojo está sempre à direita de qualquer pessoa.": [
+          "OBJECT_AS_FIXED_SIDE"
+        ],
+        "O estojo está atrás do quadro.": [
+          "WRONG_BODY_SIDE"
+        ],
+        "O estojo está à esquerda de Bia.": [
+          "UNRELATED_OBJECT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BOARD_ORIENTATION",
+      "statement": "Rui olha para a lousa. A janela está à esquerda do corpo dele. Qual informação permite compreender a palavra esquerda?",
+      "options": [
+        "A janela tem duas partes iguais.",
+        "Rui está olhando para a lousa e usa o próprio corpo como referência.",
+        "A sala tem uma porta.",
+        "O quadro está na parede."
+      ],
+      "correctAnswer": "Rui está olhando para a lousa e usa o próprio corpo como referência.",
+      "explanation": "A direção do corpo de Rui orienta a descrição; sem observador, esquerda pode ser ambígua.",
+      "hint": "Quem está olhando e para onde?",
+      "errorFocus": "Ignorar a direção do observador",
+      "misconceptions": {
+        "A janela tem duas partes iguais.": [
+          "WINDOW_COUNT"
+        ],
+        "A sala tem uma porta.": [
+          "ROOM_OBJECT_AS_REFERENCE"
+        ],
+        "O quadro está na parede.": [
+          "BOARD_WITHOUT_OBSERVER"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "UNORIENTED_DRAWING",
+      "statement": "Um desenho mostra uma criança e uma árvore, mas não informa para onde a criança olha. Dá para afirmar que a árvore está à direita dela?",
+      "options": [
+        "Sim; a direita da página sempre vale para a criança.",
+        "Sim; a árvore está desenhada perto da margem.",
+        "Não; falta saber a orientação da criança.",
+        "Não; árvores não podem ser localizadas."
+      ],
+      "correctAnswer": "Não; falta saber a orientação da criança.",
+      "explanation": "Direita e esquerda em relação ao corpo dependem da orientação do observador.",
+      "hint": "Procure uma seta ou outra pista sobre para onde a pessoa está voltada.",
+      "errorFocus": "Usar a direita da página como se fosse a direita do corpo",
+      "misconceptions": {
+        "Sim; a direita da página sempre vale para a criança.": [
+          "PAGE_AS_BODY"
+        ],
+        "Sim; a árvore está desenhada perto da margem.": [
+          "MARGIN_AS_ORIENTATION"
+        ],
+        "Não; árvores não podem ser localizadas.": [
+          "OBJECT_UNLOCATABLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "CLASSROOM_SHELF",
+      "statement": "Luna está de frente para a estante. Um livro azul está à esquerda do corpo dela. Qual frase combina com essa posição?",
+      "options": [
+        "O livro azul está sempre à esquerda de todos.",
+        "O livro azul está atrás de Luna.",
+        "Luna está à esquerda do livro azul.",
+        "O livro azul está à minha esquerda."
+      ],
+      "correctAnswer": "O livro azul está à minha esquerda.",
+      "explanation": "A frase toma Luna como observadora e conserva a posição indicada.",
+      "hint": "Diga a posição do livro usando “minha”.",
+      "errorFocus": "Trocar a posição de pessoa e objeto",
+      "misconceptions": {
+        "O livro azul está sempre à esquerda de todos.": [
+          "GLOBAL_SIDE"
+        ],
+        "O livro azul está atrás de Luna.": [
+          "FRONT_BACK_SWAP"
+        ],
+        "Luna está à esquerda do livro azul.": [
+          "RELATION_REVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "PLAYGROUND_LINE",
+      "statement": "Caio está em pé olhando para o escorregador. A bola está atrás do corpo dele. Como descrever a bola?",
+      "options": [
+        "A bola está atrás de mim.",
+        "A bola está em frente ao escorregador, sem outra informação.",
+        "A bola está sempre atrás de qualquer criança.",
+        "O escorregador está atrás de Caio."
+      ],
+      "correctAnswer": "A bola está atrás de mim.",
+      "explanation": "“Atrás de mim” indica a relação da bola com o corpo de Caio.",
+      "hint": "Use o corpo de Caio como referência.",
+      "errorFocus": "Atribuir a posição da bola a outro objeto",
+      "misconceptions": {
+        "A bola está em frente ao escorregador, sem outra informação.": [
+          "UNRELATED_REFERENCE"
+        ],
+        "A bola está sempre atrás de qualquer criança.": [
+          "GLOBAL_RELATION"
+        ],
+        "O escorregador está atrás de Caio.": [
+          "SWAPPED_OBJECT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ART_TABLE",
+      "statement": "Nina olha para a mesa. O pincel está à direita do corpo dela; a folha está à esquerda. Qual descrição está correta?",
+      "options": [
+        "A folha está à minha direita e o pincel à minha esquerda.",
+        "O pincel está à minha direita e a folha à minha esquerda.",
+        "Os dois objetos estão atrás de Nina.",
+        "Não é possível descrever nenhum objeto, embora Nina esteja orientada."
+      ],
+      "correctAnswer": "O pincel está à minha direita e a folha à minha esquerda.",
+      "explanation": "A descrição preserva os dois lados relativos ao corpo de Nina.",
+      "hint": "Aponte primeiro para cada lado de Nina.",
+      "errorFocus": "Inverter direita e esquerda",
+      "misconceptions": {
+        "A folha está à minha direita e o pincel à minha esquerda.": [
+          "SIDE_REVERSAL"
+        ],
+        "Os dois objetos estão atrás de Nina.": [
+          "IGNORE_ORIENTATION"
+        ],
+        "Não é possível descrever nenhum objeto, embora Nina esteja orientada.": [
+          "UNNECESSARY_UNCERTAINTY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "FOLLOW",
+      "contextFamily": "ROBOT_INSTRUCTION",
+      "statement": "Uma criança está olhando para a porta. A professora diz: “ponha o cartão à sua direita”. Onde a criança deve colocar o cartão?",
+      "options": [
+        "No lado direito de quem lê a frase.",
+        "Sempre perto da janela.",
+        "No lado direito do próprio corpo da criança.",
+        "Atrás da criança, qualquer que seja sua posição."
+      ],
+      "correctAnswer": "No lado direito do próprio corpo da criança.",
+      "explanation": "“Sua” se refere à criança que recebe a instrução, não a quem lê.",
+      "hint": "Identifique a pessoa indicada por “sua”.",
+      "errorFocus": "Tomar o leitor como referência",
+      "misconceptions": {
+        "No lado direito de quem lê a frase.": [
+          "READER_AS_OBSERVER"
+        ],
+        "Sempre perto da janela.": [
+          "WINDOW_AS_SIDE"
+        ],
+        "Atrás da criança, qualquer que seja sua posição.": [
+          "FIXED_BACK"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SEATED_OBJECTS",
+      "statement": "Uma criança sentada tem um copo à sua esquerda e um prato à sua frente. Qual frase descreve apenas o copo?",
+      "options": [
+        "O copo está em frente ao meu corpo.",
+        "O prato está à esquerda do meu corpo.",
+        "O copo está atrás do prato, informação que não foi dada.",
+        "O copo está à esquerda do meu corpo."
+      ],
+      "correctAnswer": "O copo está à esquerda do meu corpo.",
+      "explanation": "O enunciado relaciona o copo ao lado esquerdo da criança.",
+      "hint": "Separe a posição do copo da posição do prato.",
+      "errorFocus": "Confundir objetos e relações",
+      "misconceptions": {
+        "O copo está em frente ao meu corpo.": [
+          "FRONT_LEFT_CONFUSION"
+        ],
+        "O prato está à esquerda do meu corpo.": [
+          "DISH_AS_SUBJECT"
+        ],
+        "O copo está atrás do prato, informação que não foi dada.": [
+          "INVENTED_RELATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "OBSERVER_TURN",
+      "statement": "Ivo olha para a porta e diz que a mochila está à sua direita. Ele vira para olhar a janela; a mochila não se move. O que deve fazer para descrevê-la agora?",
+      "options": [
+        "Conferir o novo lado em relação ao corpo já virado.",
+        "Manter “à direita” porque o objeto não se moveu.",
+        "Dizer que a mochila mudou de lugar.",
+        "Usar a direita da folha sem conferir a direção do corpo."
+      ],
+      "correctAnswer": "Conferir o novo lado em relação ao corpo já virado.",
+      "explanation": "Ao virar, muda a orientação do referencial corporal, mesmo que a mochila permaneça no mesmo lugar.",
+      "hint": "O corpo virou; para qual lado a mochila aparece em relação a ele?",
+      "errorFocus": "Tratar direita como propriedade fixa do objeto",
+      "misconceptions": {
+        "Manter “à direita” porque o objeto não se moveu.": [
+          "SIDE_FIXED_TO_OBJECT"
+        ],
+        "Dizer que a mochila mudou de lugar.": [
+          "OBJECT_MOVED"
+        ],
+        "Usar a direita da folha sem conferir a direção do corpo.": [
+          "PAGE_SIDE_ONLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "TWO_STEP_ROUTE",
+      "statement": "Uma criança está de frente para a porta. Ela dá um passo para a frente e depois aponta para a própria esquerda. Que informação a instrução final precisa para outra pessoa entendê-la?",
+      "options": [
+        "Somente a cor do piso.",
+        "Quem é a criança e para onde ela está voltada ao apontar.",
+        "Quantos passos outra criança deu ontem.",
+        "O nome do brinquedo que está na sala."
+      ],
+      "correctAnswer": "Quem é a criança e para onde ela está voltada ao apontar.",
+      "explanation": "A direção de quem aponta permite interpretar esquerda; a ação e o observador precisam estar claros.",
+      "hint": "Quem executa a instrução e qual é sua orientação?",
+      "errorFocus": "Dar instrução sem referencial",
+      "misconceptions": {
+        "Somente a cor do piso.": [
+          "FLOOR_COLOR"
+        ],
+        "Quantos passos outra criança deu ontem.": [
+          "IRRELEVANT_HISTORY"
+        ],
+        "O nome do brinquedo que está na sala.": [
+          "UNRELATED_TOY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PEER_DESCRIPTION",
+      "statement": "Davi diz: “a caixa está à minha esquerda”, enquanto olha para o armário. O que um colega precisa saber para conferir a frase no espaço?",
+      "options": [
+        "A marca da caixa.",
+        "A cor do armário.",
+        "Onde Davi está e para que lado seu corpo está voltado.",
+        "A altura de Davi, sem saber para onde olha."
+      ],
+      "correctAnswer": "Onde Davi está e para que lado seu corpo está voltado.",
+      "explanation": "A descrição pode ser conferida quando se conhece a posição e a orientação do observador.",
+      "hint": "Imagine o corpo de Davi no lugar descrito.",
+      "errorFocus": "Aceitar relação sem orientação suficiente",
+      "misconceptions": {
+        "A marca da caixa.": [
+          "OBJECT_LABEL_ONLY"
+        ],
+        "A cor do armário.": [
+          "COLOR_AS_DIRECTION"
+        ],
+        "A altura de Davi, sem saber para onde olha.": [
+          "HEIGHT_AS_ORIENTATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "GYM_LINE",
+      "statement": "Uma aluna está voltada para a cesta. Um cone fica à frente dela e uma bola fica atrás. Qual descrição está completa?",
+      "options": [
+        "A bola está à minha frente e o cone atrás de mim.",
+        "O cone e a bola estão à direita.",
+        "A cesta está atrás da aluna, apesar de ela olhar para ela.",
+        "O cone está à minha frente e a bola está atrás de mim."
+      ],
+      "correctAnswer": "O cone está à minha frente e a bola está atrás de mim.",
+      "explanation": "As duas relações usam o corpo da aluna como referência e mantêm frente e atrás.",
+      "hint": "Confira qual objeto está em cada lado do corpo.",
+      "errorFocus": "Inverter frente e atrás",
+      "misconceptions": {
+        "A bola está à minha frente e o cone atrás de mim.": [
+          "FRONT_BACK_REVERSAL"
+        ],
+        "O cone e a bola estão à direita.": [
+          "UNSUPPORTED_SIDE"
+        ],
+        "A cesta está atrás da aluna, apesar de ela olhar para ela.": [
+          "CONTRADICTS_GAZE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "AMBIGUOUS_NOTE",
+      "statement": "Uma anotação diz “deixe o caderno à esquerda”, mas várias pessoas vão seguir a instrução. Como torná-la mais clara?",
+      "options": [
+        "Indicar de quem é a esquerda e como essa pessoa está voltada.",
+        "Escrever a frase em letras maiores, sem acrescentar orientação.",
+        "Trocar esquerda por “perto”, sem apontar um referencial.",
+        "Manter a frase porque todo mundo vê a sala do mesmo lugar."
+      ],
+      "correctAnswer": "Indicar de quem é a esquerda e como essa pessoa está voltada.",
+      "explanation": "Tamanho da letra não resolve a ambiguidade do ponto de vista.",
+      "hint": "Acrescente quem observa e para onde olha.",
+      "errorFocus": "Achar que todos compartilham o mesmo ponto de vista",
+      "misconceptions": {
+        "Escrever a frase em letras maiores, sem acrescentar orientação.": [
+          "FONT_SIZE_AS_CLARITY"
+        ],
+        "Trocar esquerda por “perto”, sem apontar um referencial.": [
+          "VAGUE_NEARNESS"
+        ],
+        "Manter a frase porque todo mundo vê a sala do mesmo lugar.": [
+          "SHARED_VIEW_ASSUMPTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-practice-11",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FACING_PEOPLE",
+      "statement": "Duas crianças ficam frente a frente. Um cubo está entre elas, mais perto de Ana. As duas usam o próprio corpo como referência. O que pode acontecer com os lados descritos?",
+      "options": [
+        "O cubo precisa estar à direita das duas.",
+        "O cubo pode estar à direita de uma e à esquerda da outra, conforme a orientação delas.",
+        "A posição de Ana determina a direita de todos.",
+        "O cubo troca de lugar quando elas olham uma para a outra."
+      ],
+      "correctAnswer": "O cubo pode estar à direita de uma e à esquerda da outra, conforme a orientação delas.",
+      "explanation": "Pessoas voltadas em direções opostas podem descrever lados diferentes do mesmo espaço.",
+      "hint": "Compare para onde cada criança olha.",
+      "errorFocus": "Supor que lados corporais coincidem",
+      "misconceptions": {
+        "O cubo precisa estar à direita das duas.": [
+          "SAME_SIDE_FOR_BOTH"
+        ],
+        "A posição de Ana determina a direita de todos.": [
+          "ONE_OBSERVER_CONTROLS_ALL"
+        ],
+        "O cubo troca de lugar quando elas olham uma para a outra.": [
+          "LOOKING_MOVES_OBJECT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LIBRARY_SEARCH",
+      "statement": "Uma criança está olhando para a porta da biblioteca. A caixa de devolução fica à esquerda do corpo dela e a estante de histórias à frente. Qual instrução ajuda um colega que também está olhando para a porta?",
+      "options": [
+        "Procure a caixa à direita, porque a esquerda muda para todos.",
+        "Vá para trás sem olhar para a porta.",
+        "Procure a caixa à esquerda do seu corpo; a estante fica à sua frente.",
+        "A caixa fica sempre à esquerda de qualquer visitante."
+      ],
+      "correctAnswer": "Procure a caixa à esquerda do seu corpo; a estante fica à sua frente.",
+      "explanation": "Como ambos olham para a mesma direção, a instrução mantém um referencial comum e explícito.",
+      "hint": "Confira se os colegas compartilham a orientação descrita.",
+      "errorFocus": "Generalizar lado para toda pessoa",
+      "misconceptions": {
+        "Procure a caixa à direita, porque a esquerda muda para todos.": [
+          "SIDE_REVERSAL"
+        ],
+        "Vá para trás sem olhar para a porta.": [
+          "WRONG_AXIS"
+        ],
+        "A caixa fica sempre à esquerda de qualquer visitante.": [
+          "GLOBAL_SIDE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "GARDEN_PLANTING",
+      "statement": "Uma criança está voltada para o portão. O regador está à sua direita e o canteiro à sua frente. Ela gira para ficar de frente para o canteiro. O que deve fazer antes de repetir “o regador está à minha direita”?",
+      "options": [
+        "Repetir a frase sem conferir, pois o regador não se moveu.",
+        "Mover o regador para a direita do canteiro.",
+        "Usar a direita do portão como se fosse seu corpo.",
+        "Olhar para o regador e conferir seu lado no novo referencial."
+      ],
+      "correctAnswer": "Olhar para o regador e conferir seu lado no novo referencial.",
+      "explanation": "A criança mudou de orientação; a relação com o próprio corpo precisa ser observada novamente.",
+      "hint": "O objeto ficou parado, mas a pessoa mudou de direção.",
+      "errorFocus": "Não atualizar referencial após girar",
+      "misconceptions": {
+        "Repetir a frase sem conferir, pois o regador não se moveu.": [
+          "NO_RECHECK"
+        ],
+        "Mover o regador para a direita do canteiro.": [
+          "MOVE_OBJECT_WITHOUT_REASON"
+        ],
+        "Usar a direita do portão como se fosse seu corpo.": [
+          "LANDMARK_AS_BODY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TREASURE_HUNT",
+      "statement": "Uma pista diz “o envelope está à sua esquerda”. A criança está olhando para o portão, mas o mapa não mostra onde ela começa. Qual informação adicional resolve a dúvida?",
+      "options": [
+        "Marcar onde a criança está e confirmar que ela olha para o portão.",
+        "Desenhar mais árvores sem mostrar a criança.",
+        "Colorir o envelope de vermelho.",
+        "Informar quantas pessoas fizeram a caça ao tesouro."
+      ],
+      "correctAnswer": "Marcar onde a criança está e confirmar que ela olha para o portão.",
+      "explanation": "A posição inicial e a orientação da criança definem como interpretar esquerda.",
+      "hint": "O mapa precisa mostrar o observador e sua direção.",
+      "errorFocus": "Usar objetos do mapa sem posição do observador",
+      "misconceptions": {
+        "Desenhar mais árvores sem mostrar a criança.": [
+          "MORE_LANDMARKS_ONLY"
+        ],
+        "Colorir o envelope de vermelho.": [
+          "COLOR_AS_POSITION"
+        ],
+        "Informar quantas pessoas fizeram a caça ao tesouro.": [
+          "PEOPLE_COUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLASSROOM_SEATING",
+      "statement": "Uma colega escreve “a mochila está à direita da carteira”. Não diz se está falando de quem senta nela ou de quem olha para a carteira. Qual revisão é mais precisa?",
+      "options": [
+        "“A mochila está perto da carteira”, pois proximidade e direita significam o mesmo.",
+        "“Para quem está sentado na carteira e olhando para o quadro, a mochila fica à direita do corpo.”",
+        "“A mochila está à direita”, sem indicar observador.",
+        "“A carteira fica à direita da mochila”, invertendo a frase sem nova observação."
+      ],
+      "correctAnswer": "“Para quem está sentado na carteira e olhando para o quadro, a mochila fica à direita do corpo.”",
+      "explanation": "A revisão nomeia observador e orientação, mantendo a relação corporal pretendida.",
+      "hint": "Inclua quem observa e para onde olha.",
+      "errorFocus": "Confundir proximidade com direção ou inverter a relação",
+      "misconceptions": {
+        "“A mochila está perto da carteira”, pois proximidade e direita significam o mesmo.": [
+          "NEAR_EQUALS_RIGHT"
+        ],
+        "“A mochila está à direita”, sem indicar observador.": [
+          "OMIT_OBSERVER"
+        ],
+        "“A carteira fica à direita da mochila”, invertendo a frase sem nova observação.": [
+          "REVERSE_WITHOUT_CHECK"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TWO_VIEWPOINTS",
+      "statement": "João está de frente para a lousa e vê o armário à sua esquerda. Uma amiga fica de frente para João, no lado oposto da sala. Por que as descrições de lado podem não coincidir?",
+      "options": [
+        "Porque um deles necessariamente está vendo o armário errado.",
+        "Porque o armário muda de lugar para cada pessoa.",
+        "Porque os corpos estão voltados para direções diferentes.",
+        "Porque esquerda só pode ser usada em mapas."
+      ],
+      "correctAnswer": "Porque os corpos estão voltados para direções diferentes.",
+      "explanation": "O objeto permanece no espaço, mas cada observador usa sua própria orientação corporal.",
+      "hint": "Compare a direção para a qual cada pessoa olha.",
+      "errorFocus": "Supor erro quando os referenciais diferem",
+      "misconceptions": {
+        "Porque um deles necessariamente está vendo o armário errado.": [
+          "AUTOMATIC_ERROR"
+        ],
+        "Porque o armário muda de lugar para cada pessoa.": [
+          "OBJECT_DUPLICATION"
+        ],
+        "Porque esquerda só pode ser usada em mapas.": [
+          "MAP_ONLY_TERM"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INCOMPLETE_AUDIO_GUIDE",
+      "statement": "Um áudio orienta: “ande até a mesa e coloque o cartão à esquerda”. O que falta para evitar interpretações diferentes?",
+      "options": [
+        "Repetir “esquerda” mais alto.",
+        "Informar que a mesa tem quatro pernas.",
+        "Dizer que o cartão é pequeno.",
+        "Dizer quem usa a esquerda e qual direção seu corpo mantém ao chegar à mesa."
+      ],
+      "correctAnswer": "Dizer quem usa a esquerda e qual direção seu corpo mantém ao chegar à mesa.",
+      "explanation": "Uma instrução oral também precisa tornar explícito o ponto de vista para comunicar posição.",
+      "hint": "Pense de quem é o lado e quando a orientação será observada.",
+      "errorFocus": "Achar que repetição resolve ambiguidade",
+      "misconceptions": {
+        "Repetir “esquerda” mais alto.": [
+          "VOLUME_AS_REFERENCE"
+        ],
+        "Informar que a mesa tem quatro pernas.": [
+          "TABLE_DETAIL"
+        ],
+        "Dizer que o cartão é pequeno.": [
+          "SIZE_AS_DIRECTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "ROUTE_FOR_NEWCOMER",
+      "statement": "Você precisa explicar a uma criança visitante onde está uma caixa, usando direita ou esquerda do corpo. Que cuidado deve aparecer na instrução?",
+      "options": [
+        "Indicar a posição da criança, para onde ela deve olhar e o lado da caixa em relação a ela.",
+        "Usar apenas “vá para a direita”, sem dizer de quem.",
+        "Descrever a caixa pela cor e esperar que isso indique direção.",
+        "Dar o lado de quem escreveu, mesmo que a visitante esteja virada para outro lado."
+      ],
+      "correctAnswer": "Indicar a posição da criança, para onde ela deve olhar e o lado da caixa em relação a ela.",
+      "explanation": "Uma instrução transferível explicita quem observa e orienta seu corpo antes de nomear o lado.",
+      "hint": "Escreva uma instrução que a visitante consiga repetir e conferir.",
+      "errorFocus": "Usar o lado de quem instrui",
+      "misconceptions": {
+        "Usar apenas “vá para a direita”, sem dizer de quem.": [
+          "UNNAMED_OBSERVER"
+        ],
+        "Descrever a caixa pela cor e esperar que isso indique direção.": [
+          "COLOR_AS_DIRECTION"
+        ],
+        "Dar o lado de quem escreveu, mesmo que a visitante esteja virada para outro lado.": [
+          "INSTRUCTOR_AS_OBSERVER"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "MUSIC_CIRCLE",
+      "statement": "Em uma roda, Eva está voltada para o centro. O tambor fica à sua frente e a cadeira atrás dela. Qual frase respeita essa posição?",
+      "options": [
+        "A cadeira está à minha frente e o tambor atrás de mim.",
+        "O tambor está à minha frente e a cadeira atrás de mim.",
+        "O tambor fica à direita de todas as crianças.",
+        "A cadeira está à frente do centro, informação diferente da posição dada."
+      ],
+      "correctAnswer": "O tambor está à minha frente e a cadeira atrás de mim.",
+      "explanation": "A frase corresponde às duas posições em relação ao corpo de Eva.",
+      "hint": "Mantenha Eva como referência nas duas partes.",
+      "errorFocus": "Trocar as posições na frase composta",
+      "misconceptions": {
+        "A cadeira está à minha frente e o tambor atrás de mim.": [
+          "FRONT_BACK_SWAP"
+        ],
+        "O tambor fica à direita de todas as crianças.": [
+          "GLOBAL_RIGHT"
+        ],
+        "A cadeira está à frente do centro, informação diferente da posição dada.": [
+          "CENTER_AS_BODY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DIAGNOSE",
+      "contextFamily": "MAP_ARROW",
+      "statement": "No mapa, uma seta mostra que a criança está olhando para cima da página. O brinquedo aparece à direita do corpo dela. O que a seta ajuda a identificar?",
+      "options": [
+        "Que todo leitor precisa olhar para cima.",
+        "Que o brinquedo está atrás da página.",
+        "Qual lado da página corresponde à direita dessa criança na orientação mostrada.",
+        "Que a criança está olhando para baixo."
+      ],
+      "correctAnswer": "Qual lado da página corresponde à direita dessa criança na orientação mostrada.",
+      "explanation": "A seta registra a orientação do observador e permite relacionar corpo e desenho.",
+      "hint": "Use a seta como direção do olhar da criança, não como regra para o leitor.",
+      "errorFocus": "Confundir a orientação representada com a do leitor",
+      "misconceptions": {
+        "Que todo leitor precisa olhar para cima.": [
+          "READER_MUST_ALIGN"
+        ],
+        "Que o brinquedo está atrás da página.": [
+          "PAGE_DEPTH"
+        ],
+        "Que a criança está olhando para baixo.": [
+          "OPPOSITE_ARROW"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PEER_CORRECTION",
+      "statement": "Marta olha para a porta e diz “a janela está à minha direita”. Um colega, que está de costas para a porta, discorda. O que devem conferir primeiro?",
+      "options": [
+        "Quem tem a voz mais alta.",
+        "Se a janela é maior que a porta.",
+        "Se Marta precisa trocar a palavra direita por frente sem olhar.",
+        "Se estão usando o mesmo observador e a mesma orientação para avaliar a frase."
+      ],
+      "correctAnswer": "Se estão usando o mesmo observador e a mesma orientação para avaliar a frase.",
+      "explanation": "Eles podem estar usando referenciais diferentes; primeiro alinham o ponto de vista.",
+      "hint": "Antes de corrigir, combine quem está sendo observado.",
+      "errorFocus": "Tratar referenciais distintos como contradição automática",
+      "misconceptions": {
+        "Quem tem a voz mais alta.": [
+          "AUTHORITY_AS_PROOF"
+        ],
+        "Se a janela é maior que a porta.": [
+          "SIZE_AS_SIDE"
+        ],
+        "Se Marta precisa trocar a palavra direita por frente sem olhar.": [
+          "WORD_SWAP_WITHOUT_EVIDENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "MOVE_AND_REPORT",
+      "statement": "Uma criança olha para o armário, dá meia-volta e então aponta para a própria esquerda. Qual procedimento permite descrever corretamente o objeto apontado?",
+      "options": [
+        "Verificar a orientação do corpo depois da meia-volta e localizar o objeto em relação a ela.",
+        "Usar o lado esquerdo de antes do giro sem conferir.",
+        "Dizer que qualquer objeto apontado fica à esquerda.",
+        "Mudar o objeto de lugar para combinar com a frase."
+      ],
+      "correctAnswer": "Verificar a orientação do corpo depois da meia-volta e localizar o objeto em relação a ela.",
+      "explanation": "A orientação que vale é a do corpo no momento da descrição.",
+      "hint": "Atualize o ponto de vista depois de virar.",
+      "errorFocus": "Manter referencial antigo após mudança",
+      "misconceptions": {
+        "Usar o lado esquerdo de antes do giro sem conferir.": [
+          "OLD_ORIENTATION"
+        ],
+        "Dizer que qualquer objeto apontado fica à esquerda.": [
+          "POINTING_AS_LEFT"
+        ],
+        "Mudar o objeto de lugar para combinar com a frase.": [
+          "MOVE_TO_MATCH"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-lock-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIRECTIONAL_CLARITY",
+      "statement": "Qual instrução é mais fácil de conferir: “deixe a bola à esquerda” ou “deixe a bola à esquerda de quem está de frente para o quadro”?",
+      "options": [
+        "A primeira, pois frases mais curtas nunca são ambíguas.",
+        "A segunda, porque identifica o observador e sua orientação.",
+        "As duas são sempre iguais para qualquer pessoa.",
+        "Nenhuma; posição não pode ser descrita com palavras."
+      ],
+      "correctAnswer": "A segunda, porque identifica o observador e sua orientação.",
+      "explanation": "A segunda fornece um referencial verificável; brevidade sozinha não garante clareza.",
+      "hint": "Procure qual frase diz de quem é a esquerda.",
+      "errorFocus": "Preferir concisão mesmo quando falta referência",
+      "misconceptions": {
+        "A primeira, pois frases mais curtas nunca são ambíguas.": [
+          "SHORT_ALWAYS_CLEAR"
+        ],
+        "As duas são sempre iguais para qualquer pessoa.": [
+          "SAME_FOR_ALL"
+        ],
+        "Nenhuma; posição não pode ser descrita com palavras.": [
+          "POSITION_UNSAYABLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DESCRIBE",
+      "contextFamily": "HOME_TOY_SHELF",
+      "statement": "Léo está olhando para a estante. O carrinho fica à sua direita. Como ele descreve o carrinho?",
+      "options": [
+        "O carrinho está sempre à direita de todos.",
+        "A estante está à direita do carrinho, sem observar.",
+        "O carrinho está à minha direita.",
+        "O carrinho está atrás de Léo."
+      ],
+      "correctAnswer": "O carrinho está à minha direita.",
+      "explanation": "A expressão minha direita relaciona o carrinho ao corpo de Léo.",
+      "hint": "Use Léo como observador.",
+      "errorFocus": "Usar um lado universal",
+      "misconceptions": {
+        "O carrinho está sempre à direita de todos.": [
+          "GLOBAL_RIGHT"
+        ],
+        "A estante está à direita do carrinho, sem observar.": [
+          "REVERSE_RELATION"
+        ],
+        "O carrinho está atrás de Léo.": [
+          "FRONT_BACK_SWAP"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LUNCH_TABLE",
+      "statement": "Uma criança olha para o prato. A colher está à esquerda do corpo e o copo à frente. Qual objeto está à frente?",
+      "options": [
+        "A colher.",
+        "A criança.",
+        "Não há informação sobre a orientação.",
+        "O copo."
+      ],
+      "correctAnswer": "O copo.",
+      "explanation": "O enunciado indica explicitamente o copo à frente do corpo da criança.",
+      "hint": "Separe cada objeto e sua posição.",
+      "errorFocus": "Trocar relações entre objetos",
+      "misconceptions": {
+        "A colher.": [
+          "LEFT_AS_FRONT"
+        ],
+        "A criança.": [
+          "OBSERVER_AS_OBJECT"
+        ],
+        "Não há informação sobre a orientação.": [
+          "IGNORE_GIVEN_ORIENTATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "HALLWAY_SIGN",
+      "statement": "Uma placa diz “vire à direita” para pessoas que chegam de lados diferentes do corredor. O que pode tornar a instrução mais clara?",
+      "options": [
+        "Indicar de qual ponto e orientação a pessoa deve iniciar o caminho.",
+        "Aumentar o tamanho da placa sem mudar a instrução.",
+        "Dizer que direita é sempre o mesmo lado da parede.",
+        "Retirar qualquer indicação de direção."
+      ],
+      "correctAnswer": "Indicar de qual ponto e orientação a pessoa deve iniciar o caminho.",
+      "explanation": "Pessoas que chegam com orientações diferentes podem interpretar direita de formas distintas.",
+      "hint": "Pense na posição inicial de quem chega.",
+      "errorFocus": "Supor um ponto de partida comum",
+      "misconceptions": {
+        "Aumentar o tamanho da placa sem mudar a instrução.": [
+          "SIZE_ONLY"
+        ],
+        "Dizer que direita é sempre o mesmo lado da parede.": [
+          "WALL_SIDE_AS_BODY"
+        ],
+        "Retirar qualquer indicação de direção.": [
+          "REMOVE_DIRECTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "STORY_CHARACTER",
+      "statement": "Em uma história, a personagem vira para olhar a janela. A caixa continua no mesmo lugar, mas passa a ficar à esquerda do corpo dela. Qual ideia isso mostra?",
+      "options": [
+        "A caixa mudou de lugar sozinha.",
+        "A descrição relativa ao corpo muda quando a orientação da personagem muda.",
+        "A palavra esquerda descreve a caixa para sempre.",
+        "A janela virou a referência sem que a personagem se movesse."
+      ],
+      "correctAnswer": "A descrição relativa ao corpo muda quando a orientação da personagem muda.",
+      "explanation": "A personagem mudou de orientação; o objeto ficou parado.",
+      "hint": "Diferencie movimento da pessoa e movimento do objeto.",
+      "errorFocus": "Confundir mudança de relação com movimento do objeto",
+      "misconceptions": {
+        "A caixa mudou de lugar sozinha.": [
+          "OBJECT_MOVEMENT"
+        ],
+        "A palavra esquerda descreve a caixa para sempre.": [
+          "PERMANENT_SIDE"
+        ],
+        "A janela virou a referência sem que a personagem se movesse.": [
+          "UNSUPPORTED_REFERENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PLAY_MAP_NOTE",
+      "statement": "Um mapa mostra uma criança, mas não tem seta, legenda nem direção do olhar. Uma resposta depende de saber o que fica à esquerda dela. O que fazer?",
+      "options": [
+        "Escolher a esquerda do papel como se fosse a do corpo.",
+        "Adivinhar usando a cor do objeto.",
+        "Pedir ou acrescentar informação sobre para onde ela está voltada.",
+        "Dizer que o lado pode ser escolhido livremente."
+      ],
+      "correctAnswer": "Pedir ou acrescentar informação sobre para onde ela está voltada.",
+      "explanation": "Sem orientação corporal, a relação esquerda/direita não pode ser determinada com segurança.",
+      "hint": "Falta uma pista sobre o referencial.",
+      "errorFocus": "Adivinhar direção sem dados",
+      "misconceptions": {
+        "Escolher a esquerda do papel como se fosse a do corpo.": [
+          "PAGE_AS_BODY"
+        ],
+        "Adivinhar usando a cor do objeto.": [
+          "COLOR_AS_DIRECTION"
+        ],
+        "Dizer que o lado pode ser escolhido livremente.": [
+          "ARBITRARY_SIDE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "DANCE_MIRROR",
+      "statement": "Uma criança imita os movimentos de outra que está de frente para ela. Como as duas podem evitar confundir os lados durante a explicação?",
+      "options": [
+        "Dizer apenas “use o mesmo lado”, sem mostrar quem é o modelo.",
+        "Trocar os nomes de direita e esquerda para todos.",
+        "Afirmar que pessoas frente a frente sempre apontam para o mesmo lado corporal.",
+        "Nomear quem executa cada movimento e conferir a orientação de cada corpo."
+      ],
+      "correctAnswer": "Nomear quem executa cada movimento e conferir a orientação de cada corpo.",
+      "explanation": "Quando as pessoas se encaram, seus referenciais podem ficar opostos; identificar cada corpo ajuda.",
+      "hint": "Quem é o modelo e quem está imitando?",
+      "errorFocus": "Supor lados corporais iguais frente a frente",
+      "misconceptions": {
+        "Dizer apenas “use o mesmo lado”, sem mostrar quem é o modelo.": [
+          "SAME_BODY_SIDE"
+        ],
+        "Trocar os nomes de direita e esquerda para todos.": [
+          "RENAME_DIRECTIONS"
+        ],
+        "Afirmar que pessoas frente a frente sempre apontam para o mesmo lado corporal.": [
+          "SAME_SIDE_FACING"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DIAGNOSE",
+      "contextFamily": "DIRECTIONS_CARD",
+      "statement": "Um cartão de instruções diz “o lápis está atrás” sem dizer atrás de quem. Qual pergunta ajuda a corrigir a mensagem?",
+      "options": [
+        "“Atrás de qual pessoa, olhando para que direção?”",
+        "“Qual é a marca do lápis?”",
+        "“Quantas letras há na palavra atrás?”",
+        "“A sala está iluminada?”"
+      ],
+      "correctAnswer": "“Atrás de qual pessoa, olhando para que direção?”",
+      "explanation": "A pergunta recupera o observador e a orientação, necessários para interpretar atrás.",
+      "hint": "Pergunte por um corpo de referência e sua posição.",
+      "errorFocus": "Procurar detalhe que não define referencial",
+      "misconceptions": {
+        "“Qual é a marca do lápis?”": [
+          "BRAND_AS_REFERENCE"
+        ],
+        "“Quantas letras há na palavra atrás?”": [
+          "WORD_LENGTH"
+        ],
+        "“A sala está iluminada?”": [
+          "LIGHT_AS_POSITION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SEATED_ACCESSIBLE_TASK",
+      "statement": "Uma estudante prefere realizar a atividade sentada, movendo peças sobre uma mesa em vez de caminhar. Ela ainda pode demonstrar o referencial corporal?",
+      "options": [
+        "Não; só caminhar demonstra posição espacial.",
+        "Sim; pode marcar sua orientação sentada e descrever as peças em relação ao corpo.",
+        "Sim, mas apenas se outra pessoa responder por ela.",
+        "Não; direita e esquerda não se aplicam quando a pessoa está sentada."
+      ],
+      "correctAnswer": "Sim; pode marcar sua orientação sentada e descrever as peças em relação ao corpo.",
+      "explanation": "A evidência é usar um referencial explicitado; o movimento pode ser adaptado à pessoa.",
+      "hint": "A atividade mede a descrição espacial, não a capacidade de caminhar.",
+      "errorFocus": "Confundir objetivo matemático com forma única de movimento",
+      "misconceptions": {
+        "Não; só caminhar demonstra posição espacial.": [
+          "WALKING_REQUIRED"
+        ],
+        "Sim, mas apenas se outra pessoa responder por ela.": [
+          "OTHER_PERSON_ANSWERS"
+        ],
+        "Não; direita e esquerda não se aplicam quando a pessoa está sentada.": [
+          "SITTING_REMOVES_REFERENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-position-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "FINAL_CLUE",
+      "statement": "Você recebe a pista “o brinquedo está à esquerda da criança”, mas não sabe para onde ela olha. Qual conclusão é mais cuidadosa?",
+      "options": [
+        "O brinquedo está à esquerda de quem lê.",
+        "O brinquedo fica à esquerda da página, com certeza.",
+        "Ainda não dá para determinar o lado no espaço; é preciso conhecer a orientação da criança.",
+        "A criança está de frente para o brinquedo."
+      ],
+      "correctAnswer": "Ainda não dá para determinar o lado no espaço; é preciso conhecer a orientação da criança.",
+      "explanation": "A informação verbal sobre esquerda é insuficiente sem o referencial corporal.",
+      "hint": "Não complete com uma orientação que a pista não fornece.",
+      "errorFocus": "Inventar informação ausente",
+      "misconceptions": {
+        "O brinquedo está à esquerda de quem lê.": [
+          "READER_AS_REFERENCE"
+        ],
+        "O brinquedo fica à esquerda da página, com certeza.": [
+          "PAGE_AS_CERTAINTY"
+        ],
+        "A criança está de frente para o brinquedo.": [
+          "ASSUMED_GAZE"
+        ]
+      }
+    }
+  ]
+}
