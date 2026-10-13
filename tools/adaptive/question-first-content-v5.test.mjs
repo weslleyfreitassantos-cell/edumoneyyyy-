@@ -14,6 +14,12 @@ const sciencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-
 const scienceMigration = readFileSync(new URL('../../supabase/migrations/20261012001100_bncc_science_investigation_question_first_v5.sql', import.meta.url), 'utf8');
 const historyPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/history-chronology.json', import.meta.url), 'utf8'));
 const historyMigration = readFileSync(new URL('../../supabase/migrations/20261012001200_bncc_history_chronology_question_first_v5.sql', import.meta.url), 'utf8');
+const physicsPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-force-motion.json', import.meta.url), 'utf8'));
+const physicsMigration = readFileSync(new URL('../../supabase/migrations/20261012001300_bncc_physics_force_motion_question_first_v5.sql', import.meta.url), 'utf8');
+const portugueseVariationPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/portuguese-language-variation.json', import.meta.url), 'utf8'));
+const artCharacterPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-character-experiment.json', import.meta.url), 'utf8'));
+const computingSearchPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-search-safe-browse.json', import.meta.url), 'utf8'));
+const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 
 describe('question-first V5 staging content', () => {
   it('contains an authored lesson and two distinct questions for each adaptive purpose', () => {
@@ -158,6 +164,114 @@ describe('question-first V5 staging content', () => {
     expect(historyMigration).toContain("'NOT_CLAIMED'");
     expect(historyMigration).not.toMatch(/active\s*=\s*true|,\s*true\s*\)/i);
     expect(historyMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers/i);
+  });
+
+  it('expands Physics force and motion to the audited purpose minimums', () => {
+    const result = validateQuestionFirstPack(physicsPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const priorSequence = v3Sequences.find((sequence) => sequence.skillCode === physicsPack.canonicalSkillCode);
+    for (const [purpose, minimum] of Object.entries({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 })) {
+      expect((priorSequence.purposeCounts[purpose] ?? 0) + result.counts[purpose]).toBe(minimum);
+    }
+    expect(result.errors.filter((error) => error.startsWith('DUPLICATE_STEM:'))).toEqual([]);
+    expect(physicsPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(physicsPack.lesson.sourceDossier.map((source) => source.publisher)).toContain('OpenStax');
+    expect(physicsPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(physicsPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(physicsPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles Physics as inactive STAGING content without creating student progress', () => {
+    expect(physicsMigration).toBe(buildMigration(physicsPack));
+    expect(physicsMigration).toContain("'PHYSICS', 'INTERACOES', 'forca resultante e mudanca de movimento'");
+    expect(physicsMigration).toContain('"authentic_activities"');
+    expect(physicsMigration).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(physicsMigration).toContain("'STAGING'");
+    expect(physicsMigration).toContain("'NOT_CLAIMED'");
+    expect(physicsMigration).not.toMatch(/active\s*=\s*true|,\s*true\s*\)/i);
+    expect(physicsMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers/i);
+  });
+
+  it('authors Portuguese variation content without inventing its missing canonical mapping', () => {
+    const result = validateQuestionFirstPack(portugueseVariationPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const priorSequence = v3Sequences.find((sequence) => sequence.skillCode === portugueseVariationPack.canonicalSkillCode);
+    for (const [purpose, minimum] of Object.entries({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 })) {
+      expect((priorSequence.purposeCounts[purpose] ?? 0) + result.counts[purpose]).toBe(minimum);
+    }
+    expect(result.errors.filter((error) => error.startsWith('DUPLICATE_STEM:'))).toEqual([]);
+    expect(portugueseVariationPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(portugueseVariationPack.lesson.sourceDossier.some((source) => source.publisher === 'Ministério da Educação')).toBe(true);
+    expect(portugueseVariationPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(portugueseVariationPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(portugueseVariationPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('blocks Portuguese variation from database compilation until its skill is canonical', () => {
+    expect(() => buildMigration(portugueseVariationPack)).toThrow('V5_CANONICAL_SKILL_NOT_REGISTERED:PORTUGUESE_ANALYZE_VARIATION_HS');
+  });
+
+  it('uses authentic performance evidence instead of objective questions for the Art target', () => {
+    const result = validateQuestionFirstPack(artCharacterPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(0);
+    expect(artCharacterPack.lesson.authenticActivities[0].rubric).toHaveLength(4);
+    expect(artCharacterPack.lesson.authenticActivities[0].evidence).toContain('duas versões');
+    expect(artCharacterPack.lesson.authenticActivities[0].privacyGuard).toContain('Compartilhamento é opcional');
+    expect(artCharacterPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(artCharacterPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(artCharacterPack.publicationStatus).toBe('STAGING');
+    expect(() => buildMigration(artCharacterPack)).toThrow('V5_CANONICAL_SKILL_NOT_REGISTERED:ART_CREATE_CHARACTER_EXPERIMENT_FI');
+  });
+
+  it('expands safe Computing search while keeping the unregistered target file-only', () => {
+    const result = validateQuestionFirstPack(computingSearchPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const priorSequence = v3Sequences.find((sequence) => sequence.skillCode === computingSearchPack.canonicalSkillCode);
+    for (const [purpose, minimum] of Object.entries({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 })) {
+      expect((priorSequence.purposeCounts[purpose] ?? 0) + result.counts[purpose]).toBe(minimum);
+    }
+    expect(result.errors.filter((error) => error.startsWith('DUPLICATE_STEM:'))).toEqual([]);
+    expect(computingSearchPack.lesson.authenticActivities[0].privacyGuard).toContain('Não abrir links');
+    expect(computingSearchPack.lesson.sourceDossier.some((source) => source.publisher === 'SaferNet Brasil / rede Insafe')).toBe(true);
+    expect(computingSearchPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(computingSearchPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(computingSearchPack.publicationStatus).toBe('STAGING');
+    expect(() => buildMigration(computingSearchPack)).toThrow('V5_CANONICAL_SKILL_NOT_REGISTERED:COMPUTING_SEARCH_AND_BROWSE_FI');
+  });
+
+  it('expands Humanities production-chain analysis without claiming an official mapping', () => {
+    const result = validateQuestionFirstPack(humanitiesProductionPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const priorSequence = v3Sequences.find((sequence) => sequence.skillCode === humanitiesProductionPack.canonicalSkillCode);
+    for (const [purpose, minimum] of Object.entries({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 })) {
+      expect((priorSequence.purposeCounts[purpose] ?? 0) + result.counts[purpose]).toBe(minimum);
+    }
+    expect(result.errors.filter((error) => error.startsWith('DUPLICATE_STEM:'))).toEqual([]);
+    expect(humanitiesProductionPack.lesson.authenticActivities[0].rubric).toHaveLength(4);
+    expect(humanitiesProductionPack.lesson.sourceDossier.some((source) => source.publisher === 'Instituto Brasileiro de Geografia e Estatística (IBGE)')).toBe(true);
+    expect(humanitiesProductionPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(humanitiesProductionPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(humanitiesProductionPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('blocks Humanities candidate content from database compilation until canonical registration', () => {
+    expect(() => buildMigration(humanitiesProductionPack)).toThrow('V5_CANONICAL_SKILL_NOT_REGISTERED:HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS');
   });
 
   it('adds Computing question items and an authentic, privacy-safe performance rubric', () => {

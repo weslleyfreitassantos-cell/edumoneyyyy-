@@ -4,39 +4,45 @@
   "WAVE_ID": "WAVE_1_CANONICAL_SCIENCE_HISTORY_AND_COMPUTING_CANDIDATE_BATCH",
   "STARTING_SHA": "edf53f75dc9693ff0467925cbef4613c0b432910",
   "MAIN_SHA": "9b837ff9c1639ddf23536bba9a02def0025ea586",
-  "INPUT_HASH": "sha256:ff930bb6372bda2001d59b2484ee78534446b6db28e83d2eb0b17e176e16ffe5",
+  "INPUT_HASH": "sha256:b4db73409ca158f1341f7bca2976dfc410f8876f1640b8aa41dd5d844012fa98",
   "INPUT_HASH_ALGORITHM": "SHA256 of lexicographically sorted filename:source_sha256 lines, each terminated by LF.",
-  "TARGET_COUNT": 5,
-  "TARGETS_PROCESSED": 5,
-  "TARGET_DEFINITION": "Five distinct Wave 1 sequence targets received V5 content increments. Four are registered canonical skills compiled to inactive database staging; the Computing proposal remains validated file-only because its skill is not in the canonical registry. The preserved Mathematics successive-percent-change increment belongs to Wave 2 and is counted separately. No increment marks a sequence deep-ready.",
+  "TARGET_COUNT": 10,
+  "TARGETS_PROCESSED": 10,
+  "TARGET_DEFINITION": "Ten distinct Wave 1 sequence targets received V5 content increments. Five registered canonical skills are compiled to inactive database staging; five candidate skills remain validated file-only because they are not in the canonical registry. The preserved Mathematics successive-percent-change increment belongs to Wave 2 and is counted separately. No increment marks a sequence deep-ready.",
   "WAVE_1_TARGETS_TOTAL": 26,
-  "WAVE_1_TARGETS_PROCESSED": 5,
+  "WAVE_1_TARGETS_PROCESSED": 10,
   "WAVE_1_TARGET_CODES_PROCESSED": [
     "BIOLOGY_ECOSYSTEM_INTERACTIONS",
     "CHEMISTRY_ACID_BASE",
     "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS",
     "SCIENCE_PLAN_INVESTIGATION",
-    "HISTORY_ORDER_EVENTS"
+    "HISTORY_ORDER_EVENTS",
+    "PHYSICS_MODEL_FORCE",
+    "PORTUGUESE_ANALYZE_VARIATION_HS",
+    "ART_CREATE_CHARACTER_EXPERIMENT_FI",
+    "COMPUTING_SEARCH_AND_BROWSE_FI",
+    "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS"
   ],
-  "WAVE_1_CANONICAL_TARGETS_STAGED": 4,
-  "WAVE_1_CANDIDATE_TARGETS_FILE_ONLY": 1,
+  "WAVE_1_CANONICAL_TARGETS_STAGED": 5,
+  "WAVE_1_CANDIDATE_TARGETS_FILE_ONLY": 5,
   "WAVE_2_TARGETS_WITH_INCREMENT": 1,
   "WAVE_2_TARGET_CODE_WITH_INCREMENT": "MATH_SUCCESSIVE_PERCENT_CHANGE",
   "SKILLS_CREATED": 0,
-  "SKILLS_REUSED": 5,
-  "CANDIDATE_SKILLS_NOT_REGISTERED": 1,
-  "LESSONS_CREATED": 6,
-  "LESSONS_COMPILED_TO_DATABASE_STAGING": 5,
-  "QUESTIONS_CREATED": 163,
-  "QUESTIONS_COMPILED_TO_DATABASE_STAGING": 128,
-  "CANDIDATE_QUESTIONS_FILE_ONLY": 35,
+  "SKILLS_REUSED": 10,
+  "CANDIDATE_SKILLS_NOT_REGISTERED": 5,
+  "LESSONS_CREATED": 11,
+  "LESSONS_COMPILED_TO_DATABASE_STAGING": 6,
+  "CANDIDATE_LESSONS_FILE_ONLY": 5,
+  "QUESTIONS_CREATED": 303,
+  "QUESTIONS_COMPILED_TO_DATABASE_STAGING": 163,
+  "CANDIDATE_QUESTIONS_FILE_ONLY": 140,
   "QUESTIONS_REUSED": 22,
-  "PRACTICAL_ACTIVITIES": 1,
-  "MICROEXPLANATIONS_NEW": 20,
-  "REMEDIATIONS_NEW": 22,
+  "PRACTICAL_ACTIVITIES": 6,
+  "MICROEXPLANATIONS_NEW": 39,
+  "REMEDIATIONS_NEW": 45,
   "DEPTH_READY_COUNT": 0,
-  "CONTENT_REVIEW_PENDING": 170,
-  "V4_PURPOSE_MINIMUMS_MET_FOR_INCREMENTED_WAVE_1_TARGETS": {
+  "CONTENT_REVIEW_PENDING": 320,
+  "CUMULATIVE_V3_PLUS_V5_PURPOSE_COUNTS_TARGETED_FOR_INCREMENTED_WAVE_1_TARGETS": {
     "BIOLOGY_ECOSYSTEM_INTERACTIONS": {
       "PROBE": 4,
       "PRACTICE": 12,
@@ -71,18 +77,47 @@
       "TRANSFER": 8,
       "LOCK_IN": 6,
       "REVIEW": 10
+    },
+    "PHYSICS_MODEL_FORCE": {
+      "PROBE": 4,
+      "PRACTICE": 12,
+      "TRANSFER": 8,
+      "LOCK_IN": 6,
+      "REVIEW": 10
+    },
+    "PORTUGUESE_ANALYZE_VARIATION_HS": {
+      "PROBE": 4,
+      "PRACTICE": 12,
+      "TRANSFER": 8,
+      "LOCK_IN": 6,
+      "REVIEW": 10
+    },
+    "COMPUTING_SEARCH_AND_BROWSE_FI": {
+      "PROBE": 4,
+      "PRACTICE": 12,
+      "TRANSFER": 8,
+      "LOCK_IN": 6,
+      "REVIEW": 10
+    },
+    "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS": {
+      "PROBE": 4,
+      "PRACTICE": 12,
+      "TRANSFER": 8,
+      "LOCK_IN": 6,
+      "REVIEW": 10
     }
   },
-  "CONTENT_VALIDATION": "PASS_LOCAL_FOCUSED_TESTS_13_OF_13",
-  "ANSWER_KEY_VALIDATION": "PASS_FOUR_OPTIONS_AND_BALANCED_POSITION_DISTRIBUTIONS; SCIENCE_7_PER_POSITION; HISTORY_7_7_7_6",
-  "STAGING_COMPILATION": "PASS_DETERMINISTIC_SQL_FOR_5_REGISTERED_CANONICAL_PACKS; COMPUTING_CANDIDATE_VALIDATED_FILE_ONLY; NO_DATABASE_APPLY",
+  "PURPOSE_COUNTS_BASIS": "Physics, Portuguese variation, Computing search, and Humanities production-impact V5 packs each add 3/11/7/5/9 across PROBE/PRACTICE/TRANSFER/LOCK_IN/REVIEW. The V4 inventory reports one pre-existing item per purpose for these gaps; for unregistered candidate skills, cumulative counts are content-inventory projections only, not proof of a canonical or database-eligible pool. Such candidates remain file-only.",
+  "CONTENT_VALIDATION": "PASS_LOCAL_FOCUSED_TESTS_21_OF_21; PHYSICS_AND_FOUR_CANDIDATE_PACK_VALIDATORS_PASS",
+  "ANSWER_KEY_VALIDATION": "PASS_FOUR_OPTIONS_NO_DUPLICATE_STEMS; NEW_PHYSICS_PORTUGUESE_COMPUTING_SEARCH_HUMANITIES_KEYS_ARE_9_9_9_8; EXISTING_SCIENCE_7_PER_POSITION_AND_HISTORY_7_7_7_6",
+  "STAGING_COMPILATION": "PASS_DETERMINISTIC_SQL_FOR_6_REGISTERED_CANONICAL_PACKS; FIVE_UNREGISTERED_CANDIDATES_VALIDATED_FILE_ONLY_AND_COMPILER_BLOCKED; NO_DATABASE_APPLY",
   "IDEMPOTENCE": "PASS_STATIC_CONFLICT_GATES; DATABASE_RERUN_NOT_EXECUTED",
-  "DATABASE_VALIDATION": "PENDING_REVISED_PR_CI; PRIOR_CI_CAUGHT_UNREGISTERED_COMPUTING_CANDIDATE_AND_WAS_FIXED_WITHOUT_MAPPING_BYPASS; NO_PRODUCTION_WRITE",
-  "CI_STATUS": "PENDING_NEW_CONTENT_AND_MIGRATION_CI",
+  "DATABASE_VALIDATION": "PRIOR_HEAD_CI_PASS_RUNS_38382202426_AND_38382212679; CURRENT_PHYSICS_MIGRATION_REQUIRES_NEW_PR_CI; NO_DATABASE_APPLY",
+  "CI_STATUS": "PENDING_NEW_CONTENT_AND_PHYSICS_MIGRATION_CI",
   "PREVIOUS_REVISED_CI_RUNS": {
-    "RUN_IDS": ["38380040807", "38380047072"],
+    "RUN_IDS": ["38382202426", "38382212679"],
     "VALIDATE": "PASS_BOTH_RUNS",
-    "DATABASE": "FAILED_BEFORE_RESET_COMPLETION: V5_CONTENT_SKILL_MISSING for unregistered computing candidate; candidate migration removed and compiler guard added"
+    "DATABASE": "PASS_BOTH_RUNS_ON_PREVIOUS_HEAD_5c187b45edaaa04f7dbd559af0ca781d6b67df95; CURRENT_UNCOMMITTED_PHYSICS_MIGRATION_NOT_YET_CHECKED"
   },
   "PRIOR_CI_EVIDENCE": {
     "RUN_ID": "38339340545",
@@ -93,7 +128,7 @@
     "PLAYWRIGHT": "PASS"
   },
   "PULL_REQUEST": "https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/360",
-  "PRIOR_VALIDATED_CODE_SHA": "06c8acb38c471372b57d2296ebc646e76190958c",
+  "PRIOR_VALIDATED_CODE_SHA": "5c187b45edaaa04f7dbd559af0ca781d6b67df95",
   "SOURCE_HASHES": {
     "math-successive-percent-change.json": "sha256:8b44b1633ba4f2b1a7fdc060d5da9994bf317c7dbec20a01b5551a15e4fa62da",
     "biology-ecosystem-interactions.json": "sha256:1e5fb065408996d1aaa6c2923526e2112daa40460571f98eca27b5bc484980de",
@@ -105,10 +140,16 @@
     "20261012000800_bncc_biology_ecosystem_question_first_v5.sql": "sha256:06c7d8c401e2d40f0e74859d2dacdd657322c45b408295dcd2d36cb567a0e47d",
     "20261012000900_bncc_chemistry_acid_base_question_first_v5.sql": "sha256:055380d7dfa3bf391702484086d617a9db904fcabb45e2a3af277d7796525e52",
     "20261012001100_bncc_science_investigation_question_first_v5.sql": "sha256:2643cda290732ee4deaf885dc0514875f8763863f8fa978a6b77d37e2c08f738",
-    "20261012001200_bncc_history_chronology_question_first_v5.sql": "sha256:ad5aaf14aafe94504f89c53392be8ba64efc021712dd7cdb095dd163c7ecbb57"
+    "20261012001200_bncc_history_chronology_question_first_v5.sql": "sha256:ad5aaf14aafe94504f89c53392be8ba64efc021712dd7cdb095dd163c7ecbb57",
+    "20261012001300_bncc_physics_force_motion_question_first_v5.sql": "sha256:3552c660c3d500793043ab652ebe6dac54b550e99b42e16c0c951850b3f0a886",
+    "physics-force-motion.json": "sha256:caba32b0f82088e753db881a09cd1cce6cd4bc0d7b0a6513febfe1f1515b6d63",
+    "portuguese-language-variation.json": "sha256:2b59c235ac144dac18788546e513b5438da0a213c1d47dd3e0927b48a21841e4",
+    "art-character-experiment.json": "sha256:356357bc51b776bde6607a4acfb90a2e191dba8aae1d6fbb14c3287599cbf61d",
+    "computing-search-safe-browse.json": "sha256:0ddc8320489d3259bdbaaab7af35f0f17f2c34e00ab2a6124dc9d43ea5041e5c",
+    "humanities-production-impacts.json": "sha256:0634267c3a9b12ce9ce9e17050035354ae7b7c63ee5c4dfc37ca40fdb10fcf13"
   },
-  "LAST_COMPLETED_OPERATION": "Produced Science investigation and History chronology increments following the V4 sequence queue; preserved Biology, Chemistry, Mathematics and the Computing candidate content. Added canonical-registry enforcement to SQL compilation, kept Computing file-only with mapping pending, balanced answer keys, and compiled five inactive canonical migrations.",
-  "NEXT_OPERATION": "Continue WAVE_1 target PHYSICS_MODEL_FORCE, then follow the V4 inventory order. Reuse valid V3/V4 items, author original evidence-rich content, keep canonical content inactive in STAGING with pedagogical review pending, and keep unregistered candidate content file-only until a valid catalog gate exists. Do not mark any sequence deep-ready without the full depth and authentic-evidence gates.",
+  "LAST_COMPLETED_OPERATION": "Produced the Physics force-motion increment and migration for the registered canonical skill; authored Portuguese language-variation, Computing search/browse, and Humanities production-chain candidates without registering unsupported canonical mappings; added an authentic Art character-experiment performance task with rubric and intentionally no multiple-choice pool. Updated validators/tests and checkpoint hashes. All content remains STAGING with pedagogical review pending; no database apply.",
+  "NEXT_OPERATION": "Resume at the first unprocessed WAVE_1 target in V4 inventory order: LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS. Previously processed later entries remain recorded and must not be duplicated. Reuse valid V3/V4 items, author original evidence-rich content, keep canonical content inactive in STAGING with pedagogical review pending, and keep unregistered candidate content file-only until a valid catalog gate exists. Do not mark any sequence deep-ready without the full depth and authentic-evidence gates.",
   "FOUNDATION_PRS": [
     356,
     357,
@@ -127,9 +168,9 @@
   "BLOCKERS": [
     "All V5-authored lessons and questions remain inactive in STAGING with pedagogical review pending; official BNCC alignment and human approval are not claimed.",
     "The four foundation PRs remain open; PR #360 is stacked on their V4 branch and is not yet part of main.",
-    "Revised migrations and content require PR CI after correction of the unregistered Computing candidate failure; no database was modified in this operation.",
-    "Computing candidate content is file-only with mapping pending; it must not be inserted into the canonical skill table without an approved gate.",
-    "Wave 1 remains incomplete: 5 of 26 targets received an increment, four canonical targets are staged, and 0 sequences are deep-ready."
+    "The new Physics migration and content require CI on the updated PR head; no database was modified in this operation.",
+    "Five candidate targets (Computing virtual communities, Portuguese variation, Art character experiment, Computing search/browse, Humanities production impacts) remain file-only because their internal codes are not in the canonical registry; do not insert them without an approved gate.",
+    "Wave 1 remains incomplete: 10 of 26 targets received increments, five registered canonical targets were staged, and 0 sequences are deep-ready."
   ],
   "PRODUCTION_WRITES": "NONE",
   "PRODUCTION_DEPLOY": "NONE",

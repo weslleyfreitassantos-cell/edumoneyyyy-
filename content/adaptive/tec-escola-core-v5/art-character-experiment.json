@@ -1,0 +1,80 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "v5-art-character-experiment",
+  "canonicalSkillCode": "ART_CREATE_CHARACTER_EXPERIMENT_FI",
+  "subject": "ART",
+  "domain": "CRIACAO_ARTISTICA",
+  "topic": "criacao e experimentacao de personagem",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": { "PROBE": 0, "PRACTICE": 0, "TRANSFER": 0, "LOCK_IN": 0, "REVIEW": 0 },
+  "expectedQuestionCount": 0,
+  "expectedContextCount": 0,
+  "expectedAnswerPositionCounts": { "A": 0, "B": 0, "C": 0, "D": 0 },
+  "lesson": {
+    "title": "Inventar, experimentar e transformar um personagem",
+    "objective": "Criar um personagem fictício, testar escolhas expressivas em mais de uma versão e explicar como forma, gesto, cor, movimento ou som ajudam a comunicar uma ideia.",
+    "summary": "Na criação artística, experimentar versões faz parte do aprendizado. O percurso, as escolhas e a reflexão importam junto com o resultado final.",
+    "explanation": "## Uma ideia pode ganhar várias formas\nComece com uma pergunta imaginativa, como “quem poderia ajudar uma planta esquecida a pedir água?”. Um personagem não precisa parecer real. Pode ser uma figura, uma sombra, um objeto animado ou uma presença feita com gesto e som. Escolha uma intenção simples: convidar, proteger, surpreender ou pedir ajuda.\n\n## Experimente escolhas\nUma linha curva pode sugerir leveza; uma forma grande pode chamar atenção; uma repetição pode criar ritmo. Esses efeitos não são regras universais: observe o que acontece no seu trabalho e explique sua escolha. Faça duas versões mudando uma coisa por vez, por exemplo forma do corpo, combinação de cores, postura ou som. Compare qual comunica melhor a intenção que você escolheu e para quem.\n\n## Criação é processo\nRascunhar, testar, combinar, mudar de ideia e conversar sobre o resultado fazem parte do fazer artístico. Um desenho detalhado não vale mais automaticamente que uma solução simples. Não existe um único modelo de corpo, família, cultura ou beleza que todos os personagens devam seguir. Observe se suas escolhas repetem um estereótipo e pense em alternativas.\n\n## Compartilhe e reflita\nMostre o trabalho apenas se quiser e descreva uma escolha que testou e uma que alterou. Quem observa pode falar do efeito percebido, sem declarar uma interpretação como a única correta. Se não quiser desenhar, use formas recortadas previamente, objetos seguros, descrição oral, gesto ou recurso digital acessível. O objetivo é investigar como uma escolha expressiva comunica, não medir habilidade manual.",
+    "workedExample": "A ideia inicial é criar um personagem que ajude a encontrar um livro perdido. Na versão 1, uma pequena lanterna tem olhos circulares e fica parada; na versão 2, a lanterna inclina o corpo e projeta um caminho de linhas. A autora percebe que a postura e as linhas deixam a ação de procurar mais clara. Ela mantém as duas versões no caderno, explica a mudança e nota que outra pessoa pode imaginar uma história diferente. O trabalho não precisa de acabamento realista para mostrar experimentação.",
+    "commonMistake": "Avaliar a criação apenas pelo acabamento ou pela semelhança com um modelo, ignorando experimentação, intenção e justificativa das escolhas.",
+    "tips": [
+      "Escolha uma intenção que possa ser comunicada por forma, gesto, cor, movimento ou som.",
+      "Faça duas versões e mude uma escolha expressiva de cada vez para comparar efeitos.",
+      "Guarde rascunhos: mudanças e tentativas são evidências do processo.",
+      "Comente o efeito percebido sem tratar uma interpretação como a única possível."
+    ],
+    "priorKnowledge": ["Observar formas, gestos, cores ou sons em imagens e brincadeiras.", "Expressar uma ideia por desenho, movimento, fala ou seleção de objetos."],
+    "keyConcepts": [
+      "Criação artística envolve intenção, exploração, decisão, revisão e comunicação.",
+      "Elementos expressivos podem produzir efeitos diferentes conforme obra e público.",
+      "Uma rubrica observa escolhas e processo, não talento natural ou destreza como valor pessoal.",
+      "Várias linguagens e formas de participação podem demonstrar experimentação.",
+      "Representações podem ser revistas para evitar estereótipos e ampliar possibilidades."
+    ],
+    "progression": [
+      { "stage": "FOUNDATION", "focus": "Escolher uma intenção e explorar materiais ou gestos seguros.", "questionIds": [] },
+      { "stage": "APPLICATION", "focus": "Criar versões e notar como uma escolha expressiva afeta o sentido.", "questionIds": [] },
+      { "stage": "TRANSFER", "focus": "Adaptar o personagem ou a linguagem a outro público ou situação.", "questionIds": [] },
+      { "stage": "INTEGRATION", "focus": "Explicar decisões, reconhecer leituras diferentes e revisar estereótipos.", "questionIds": [] },
+      { "stage": "SPACED_REVIEW_CANDIDATE", "focus": "Retomar o processo criativo em outro projeto; não há agendamento automatizado.", "questionIds": [] }
+    ],
+    "microExplanations": [
+      { "trigger": "PRODUCT_OVER_PROCESS", "text": "Compare rascunho e versão final: qual decisão mudou e que efeito você estava investigando?" },
+      { "trigger": "ONE_INTERPRETATION_ONLY", "text": "Uma obra pode sugerir sentidos diferentes. Use detalhes do trabalho para explicar sua leitura, sem apagar as demais." },
+      { "trigger": "DRAWING_SKILL_AS_MASTERY", "text": "O objetivo é experimentar escolhas e explicar efeitos; realismo e destreza manual não são o único caminho." }
+    ],
+    "remediations": [
+      { "misconception": "FINISHING_EQUALS_LEARNING", "prompt": "Mostre duas versões e aponte uma mudança intencional. Se há apenas uma, faça uma pequena variação antes de concluir." },
+      { "misconception": "REALISM_REQUIRED", "prompt": "Represente a mesma ideia com formas simples, colagem, gesto ou som e compare qual escolha comunica melhor a intenção." },
+      { "misconception": "ART_HAS_ONE_CORRECT_MEANING", "prompt": "Escolha um detalhe como evidência da sua leitura e convide outra pessoa a descrever uma possibilidade diferente." }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-art-character-two-versions",
+        "title": "Um personagem, duas possibilidades",
+        "instructions": "A partir de uma ideia fictícia escolhida pelo estudante, crie um personagem usando desenho, colagem de formas previamente preparadas, objetos seguros, gesto, descrição oral ou ferramenta digital. Faça duas versões mudando ao menos uma escolha expressiva (por exemplo, postura, tamanho, contraste, ritmo ou som). Registre o que mudou e que efeito pretendia. Por fim, escolha uma versão ou combine elementos e explique uma decisão. Não existe modelo obrigatório de personagem nem exigência de exposição pública.",
+        "evidence": "Rascunhos ou registros equivalentes das duas versões, uma escolha expressiva identificada, explicação oral/escrita/visual da intenção e uma nota sobre revisão ou interpretação alternativa.",
+        "privacyGuard": "Usar personagem inteiramente fictício; não incluir nome, imagem, voz ou história privada de colegas ou familiares. Compartilhamento é opcional. Oferecer materiais não tóxicos, sem pontas, peças pequenas ou alergênicos, com supervisão; alternativa sem tela e alternativa digital acessível devem estar disponíveis.",
+        "rubric": [
+          { "criterion": "Exploração e experimentação", "emerging": "Produz uma versão sem testar ou apontar escolhas.", "developing": "Testa uma mudança, mas ainda não compara seus efeitos.", "proficient": "Cria ou representa duas possibilidades e compara uma escolha expressiva de forma observável." },
+          { "criterion": "Intenção e evidência", "emerging": "Não relaciona escolha a uma intenção ou efeito.", "developing": "Nomeia uma intenção, com ligação pouco clara ao trabalho.", "proficient": "Usa detalhe do próprio trabalho para explicar como uma escolha comunica a intenção pretendida." },
+          { "criterion": "Revisão e abertura interpretativa", "emerging": "Trata acabamento ou uma leitura como único critério.", "developing": "Reconhece uma alternativa, mas não explica sua decisão de revisão.", "proficient": "Registra uma decisão de revisar ou manter e reconhece que outra leitura pode ser sustentada por detalhes." },
+          { "criterion": "Participação acessível e segura", "emerging": "A forma de participação impede demonstrar a ideia ou inclui risco evitável.", "developing": "Usa uma forma segura, mas precisa de apoio para comunicar o processo.", "proficient": "Escolhe um meio acessível e seguro e apresenta evidências sem expor dados pessoais." }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [1, 3, 7],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 25,
+    "sourceDossier": [
+      { "title": "Base Nacional Comum Curricular: Arte no Ensino Fundamental, Anos Iniciais", "publisher": "Ministério da Educação", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_20dez_site.pdf", "accessedOn": "2026-10-13", "supports": ["artistic experience centered on children's interests and cultures", "creation and production across artistic languages", "process and experimentation as learning"], "use": "Consulted as broad curricular context for process-centered design only; no official mapping is claimed for this internal V3 skill code." }
+    ],
+    "copyrightNote": "The character prompts, example, activity and rubric are original. The official curriculum document is used only as broad context; no text or activity was copied. No official code mapping or human pedagogical approval is claimed."
+  },
+  "questions": []
+}
