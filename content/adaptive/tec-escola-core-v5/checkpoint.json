@@ -112,12 +112,12 @@
   "ANSWER_KEY_VALIDATION": "PASS_FOUR_OPTIONS_NO_DUPLICATE_STEMS; NEW_PHYSICS_PORTUGUESE_COMPUTING_SEARCH_HUMANITIES_KEYS_ARE_9_9_9_8; EXISTING_SCIENCE_7_PER_POSITION_AND_HISTORY_7_7_7_6",
   "STAGING_COMPILATION": "PASS_DETERMINISTIC_SQL_FOR_6_REGISTERED_CANONICAL_PACKS; FIVE_UNREGISTERED_CANDIDATES_VALIDATED_FILE_ONLY_AND_COMPILER_BLOCKED; NO_DATABASE_APPLY",
   "IDEMPOTENCE": "PASS_STATIC_CONFLICT_GATES; DATABASE_RERUN_NOT_EXECUTED",
-  "DATABASE_VALIDATION": "PRIOR_HEAD_CI_PASS_RUNS_38382202426_AND_38382212679; CURRENT_PHYSICS_MIGRATION_REQUIRES_NEW_PR_CI; NO_DATABASE_APPLY",
-  "CI_STATUS": "PENDING_NEW_CONTENT_AND_PHYSICS_MIGRATION_CI",
+  "DATABASE_VALIDATION": "PASS_PR_CI_RUNS_38385917504_AND_38385922422; PHYSICS_MIGRATION_APPLIED_IN_DISPOSABLE_CI_DATABASE_ONLY; NO_PRODUCTION_DATABASE_APPLY",
+  "CI_STATUS": "PASS_FOR_CONTENT_AND_PHYSICS_MIGRATION_AT_457192b; CHECKPOINT_CI_METADATA_UPDATED_AFTER_PASS",
   "PREVIOUS_REVISED_CI_RUNS": {
-    "RUN_IDS": ["38382202426", "38382212679"],
+    "RUN_IDS": ["38385917504", "38385922422"],
     "VALIDATE": "PASS_BOTH_RUNS",
-    "DATABASE": "PASS_BOTH_RUNS_ON_PREVIOUS_HEAD_5c187b45edaaa04f7dbd559af0ca781d6b67df95; CURRENT_UNCOMMITTED_PHYSICS_MIGRATION_NOT_YET_CHECKED"
+    "DATABASE": "PASS_BOTH_RUNS_ON_CONTENT_COMMIT_457192b; MIGRATIONS_APPLIED_IN_DISPOSABLE_CI_DATABASE_ONLY"
   },
   "PRIOR_CI_EVIDENCE": {
     "RUN_ID": "38339340545",
@@ -128,7 +128,7 @@
     "PLAYWRIGHT": "PASS"
   },
   "PULL_REQUEST": "https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/360",
-  "PRIOR_VALIDATED_CODE_SHA": "5c187b45edaaa04f7dbd559af0ca781d6b67df95",
+  "PRIOR_VALIDATED_CODE_SHA": "457192b",
   "SOURCE_HASHES": {
     "math-successive-percent-change.json": "sha256:8b44b1633ba4f2b1a7fdc060d5da9994bf317c7dbec20a01b5551a15e4fa62da",
     "biology-ecosystem-interactions.json": "sha256:1e5fb065408996d1aaa6c2923526e2112daa40460571f98eca27b5bc484980de",
@@ -168,7 +168,7 @@
   "BLOCKERS": [
     "All V5-authored lessons and questions remain inactive in STAGING with pedagogical review pending; official BNCC alignment and human approval are not claimed.",
     "The four foundation PRs remain open; PR #360 is stacked on their V4 branch and is not yet part of main.",
-    "The new Physics migration and content require CI on the updated PR head; no database was modified in this operation.",
+    "No production database was modified; the Physics migration passed only in the disposable CI database.",
     "Five candidate targets (Computing virtual communities, Portuguese variation, Art character experiment, Computing search/browse, Humanities production impacts) remain file-only because their internal codes are not in the canonical registry; do not insert them without an approved gate.",
     "Wave 1 remains incomplete: 10 of 26 targets received increments, five registered canonical targets were staged, and 0 sequences are deep-ready."
   ],
