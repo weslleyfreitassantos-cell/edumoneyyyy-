@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "35054893667c6fe1ab686e033c02f16ff91639ca3b20f6034082ec450b2459f3",
+    "v5QuestionFirstPacks": "9d40589a5a5cc4ec7b82f885529ad4f3ac4ac3deaf307eb9bb99e08c2196bbf1",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 39,
+    "auditedSequences": 40,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 13,
-    "waveTwoCandidateTargetsDeepReady": 13,
-    "deepContentReady": 39,
-    "technicalDeepReady": 39,
-    "pedagogicalReviewPending": 39,
+    "waveTwoCandidateTargetsAudited": 14,
+    "waveTwoCandidateTargetsDeepReady": 14,
+    "deepContentReady": 40,
+    "technicalDeepReady": 40,
+    "pedagogicalReviewPending": 40,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 39
+      "STRUCTURAL_READY": 40
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 39,
-      "QUESTION_POOL_DEPTH_READY": 36,
-      "DIFFICULTY_PROGRESSION_READY": 36,
-      "CONTEXT_DIVERSITY_READY": 36,
-      "TRANSFER_READY": 36,
-      "MISCONCEPTION_RECOVERY_READY": 39,
-      "REVIEW_CONTENT_READY": 36,
-      "AUTHENTIC_EVIDENCE_READY": 39
+      "LESSON_DEPTH_READY": 40,
+      "QUESTION_POOL_DEPTH_READY": 37,
+      "DIFFICULTY_PROGRESSION_READY": 37,
+      "CONTEXT_DIVERSITY_READY": 37,
+      "TRANSFER_READY": 37,
+      "MISCONCEPTION_RECOVERY_READY": 40,
+      "REVIEW_CONTENT_READY": 37,
+      "AUTHENTIC_EVIDENCE_READY": 40
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,12 +110,12 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 1062,
-    "consolidatedQuestionTotal": 1528,
+    "v5QuestionTotal": 1102,
+    "consolidatedQuestionTotal": 1590,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 39,
+    "reviewPending": 40,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -1950,6 +1950,70 @@
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
+        "targetId": "PHYSICS_UNIT_CONVERSION",
+        "unitId": null,
+        "subject": "PHYSICS",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Converter unidades e comparar movimentos",
+        "originalQuestionCount": 22,
+        "v5QuestionCount": 40,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 62,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 20,
+          "TRANSFER": 13,
+          "LOCK_IN": 9,
+          "REVIEW": 13
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 62,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 22,
+          "actualQuestionCount": 22,
+          "status": "EXACT",
+          "questionFeedbackCount": 14
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
         "targetId": "PORTUGUESE_ANALYZE_VARIATION_HS",
         "unitId": "V3_PORTUGUESE_VARIATION_HS",
         "subject": "PORTUGUESE",
@@ -2502,25 +2566,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1760,
+    "totalItems": 1759,
     "byWave": {
-      "WAVE_2": 39,
+      "WAVE_2": 38,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 39,
+      "CONTENT_GAP": 38,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "PHYSICS_UNIT_CONVERSION",
-        "stage": "ENSINO_MEDIO",
-        "subject": "PHYSICS",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
@@ -16604,5 +16660,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "9be60b05f7953e273e4ab379fdf1493d1f7d1c49d6720f775c8fe78aaae71fbb"
+  "inventoryHash": "df2264265efc8b61fceba4c09075cde53a29a45ed73e58d9dcde49069721297f"
 }

@@ -24,6 +24,7 @@ import { buildMathSuccessivePercentChangePack } from './build-math-successive-pe
 import { buildPhysicsAverageSpeedPack } from './build-physics-average-speed-v5.mjs';
 import { buildPhysicsMotionGraphPack } from './build-physics-motion-graph-v5.mjs';
 import { buildEnglishInferencePack } from './build-english-inference-v5.mjs';
+import { buildPhysicsUnitConversionPack } from './build-physics-unit-conversion-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -93,6 +94,8 @@ const physicsAverageSpeedPack = JSON.parse(readFileSync(new URL('../../content/a
 const physicsAverageSpeedMigration = readFileSync(new URL('../../supabase/migrations/20261013003000_bncc_physics_average_speed_question_first_v5.sql', import.meta.url), 'utf8');
 const physicsMotionGraphPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-motion-graph.json', import.meta.url), 'utf8'));
 const physicsMotionGraphMigration = readFileSync(new URL('../../supabase/migrations/20261013003100_bncc_physics_motion_graph_question_first_v5.sql', import.meta.url), 'utf8');
+const physicsUnitConversionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-unit-conversion.json', import.meta.url), 'utf8'));
+const physicsUnitConversionMigration = readFileSync(new URL('../../supabase/migrations/20261013003600_bncc_physics_unit_conversion_question_first_v5.sql', import.meta.url), 'utf8');
 const englishInferencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/english-infer-from-text.json', import.meta.url), 'utf8'));
 const englishInferenceMigration = readFileSync(new URL('../../supabase/migrations/20261013003200_bncc_english_infer_text_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
@@ -1186,6 +1189,47 @@ describe('question-first V5 staging content', () => {
     expect(physicsMotionGraphMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(physicsMotionGraphMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(physicsMotionGraphMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens unit conversion with distinct conversion targets and source reconciliation', () => {
+    const result = validateQuestionFirstPack(physicsUnitConversionPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(40);
+    expect(result.contextCount).toBe(40);
+    expect(result.counts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(result.answerPositionCounts).toEqual({ A: 10, B: 10, C: 10, D: 10 });
+    expect(physicsUnitConversionPack.sourceQuestionFeedback).toHaveLength(14);
+    expect(physicsUnitConversionPack.sourceReconciliation.v9ItemsNotReusedBecauseTheyAssessSpeedOrAccelerationRatherThanUnitConversion).toHaveLength(7);
+    expect(physicsUnitConversionPack.lesson.microExplanations).toHaveLength(6);
+    expect(physicsUnitConversionPack.lesson.remediations).toHaveLength(5);
+    const expectedAnswers = {
+      'v5-physics-units-transfer-06': '15 m/s',
+      'v5-physics-units-lock-03': '12 m/s é maior; 40 km/h ≈ 11,1 m/s.',
+      'v5-physics-units-review-01': '5.400 m',
+      'v5-physics-units-review-08': '25 m/s',
+    };
+    for (const [questionId, answer] of Object.entries(expectedAnswers)) {
+      expect(physicsUnitConversionPack.questions.find(({ id }) => id === questionId)?.correctAnswer).toBe(answer);
+    }
+    expect(physicsUnitConversionPack.lesson.explanation).toContain('18 m/s');
+    expect(physicsUnitConversionPack.lesson.explanation).toContain('64,8 km/h');
+    expect(physicsUnitConversionPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(physicsUnitConversionPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(physicsUnitConversionPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles unit-conversion content as inactive staging without changing student history', () => {
+    expect(physicsUnitConversionPack).toEqual(buildPhysicsUnitConversionPack());
+    expect(physicsUnitConversionPack.contentVersion).toBe(5);
+    expect(physicsUnitConversionPack.lessonVersion).toBe(6);
+    expect(physicsUnitConversionMigration).toBe(buildMigration(physicsUnitConversionPack));
+    expect(physicsUnitConversionMigration).toContain("'PHYSICS_UNIT_CONVERSION'");
+    expect(physicsUnitConversionMigration).toContain("'v5-physics-unit-conversion-wave3'");
+    expect(physicsUnitConversionMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
+    expect(physicsUnitConversionMigration).toContain("'publication_status', 'STAGING'");
+    expect(physicsUnitConversionMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(physicsUnitConversionMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(physicsUnitConversionMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('deepens English inference using an exact V4 and V9 source set', () => {

@@ -145,6 +145,74 @@ jobs:
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
 
+      - name: Reaplicar migration de conversão de unidades e provar idempotência
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const { spawnSync } = require('node:child_process');
+          const migration = 'supabase/migrations/20261013003600_bncc_physics_unit_conversion_question_first_v5.sql';
+          const status = spawnSync('npx', ['supabase', 'status', '-o', 'env'], { encoding: 'utf8' });
+          if (status.status !== 0) throw new Error('LOCAL_SUPABASE_STATUS_FAILED');
+          const match = status.stdout.match(/^DB_URL=["']?(.*?)["']?$/m);
+          if (!match?.[1]) throw new Error('LOCAL_SUPABASE_DB_URL_MISSING');
+          const database = new URL(match[1]);
+          const env = {
+            ...process.env,
+            PGHOST: decodeURIComponent(database.hostname),
+            PGPORT: database.port || '5432',
+            PGUSER: decodeURIComponent(database.username),
+            PGPASSWORD: decodeURIComponent(database.password),
+            PGDATABASE: decodeURIComponent(database.pathname.slice(1)),
+            PGSSLMODE: 'disable',
+          };
+          const query = `
+            select
+              (select count(*) from public.learning_skill_lessons l join public.learning_curriculum_skills s on s.id = l.canonical_skill_id
+               where s.code = 'PHYSICS_UNIT_CONVERSION' and l.version = 6 and l.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3'),
+              (select md5(coalesce(string_agg(l.id::text, ',' order by l.id::text), '')) from public.learning_skill_lessons l join public.learning_curriculum_skills s on s.id = l.canonical_skill_id
+               where s.code = 'PHYSICS_UNIT_CONVERSION' and l.version = 6 and l.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3'),
+              (select count(*) from public.learning_question_sets where metadata->>'content_id' = 'v5-physics-unit-conversion-wave3'),
+              (select md5(coalesce(string_agg(id::text, ',' order by id::text), '')) from public.learning_question_sets where metadata->>'content_id' = 'v5-physics-unit-conversion-wave3'),
+              (select count(*) from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V5_QUESTION_FIRST_STAGING' and metadata->>'content_id' like 'v5-physics-units-%'),
+              (select md5(coalesce(string_agg(id::text, ',' order by id::text), '')) from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V5_QUESTION_FIRST_STAGING' and metadata->>'content_id' like 'v5-physics-units-%'),
+              (select count(*) from public.learning_question_set_items i join public.learning_question_sets s on s.id = i.question_set_id where s.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3'),
+              (select md5(coalesce(string_agg(i.question_set_id::text || ':' || i.question_bank_id::text || ':' || i.position::text, ',' order by i.question_set_id::text, i.question_bank_id::text), '')) from public.learning_question_set_items i join public.learning_question_sets s on s.id = i.question_set_id where s.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3'),
+              (select count(*) from public.learning_skill_lessons l join public.learning_curriculum_skills s on s.id = l.canonical_skill_id where s.code = 'PHYSICS_UNIT_CONVERSION' and l.version = 6 and l.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and l.active),
+              (select count(*) from public.learning_question_sets where metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and active),
+              (select count(*) from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V5_QUESTION_FIRST_STAGING' and metadata->>'content_id' like 'v5-physics-units-%' and active),
+              (select count(*) from public.learning_skill_lessons l join public.learning_curriculum_skills s on s.id = l.canonical_skill_id where s.code = 'PHYSICS_UNIT_CONVERSION' and l.version = 6 and l.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and l.metadata->>'pedagogical_review_status' = 'PEDAGOGICAL_REVIEW_PENDING'),
+              (select count(*) from public.learning_question_sets where metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and metadata->>'pedagogical_review_status' = 'PEDAGOGICAL_REVIEW_PENDING'),
+              (select count(*) from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V5_QUESTION_FIRST_STAGING' and metadata->>'content_id' like 'v5-physics-units-%' and metadata->>'pedagogical_review_status' = 'PEDAGOGICAL_REVIEW_PENDING'),
+              (select count(*) from public.learning_skill_lessons l join public.learning_curriculum_skills s on s.id = l.canonical_skill_id where s.code = 'PHYSICS_UNIT_CONVERSION' and l.version = 6 and l.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and l.metadata->>'bncc_alignment_status' = 'NOT_CLAIMED'),
+              (select count(*) from public.learning_question_sets where metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and metadata->>'bncc_alignment_status' = 'NOT_CLAIMED'),
+              (select count(*) from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V5_QUESTION_FIRST_STAGING' and metadata->>'content_id' like 'v5-physics-units-%' and metadata->>'bncc_alignment_status' = 'NOT_CLAIMED'),
+              (select count(*) from public.learning_skill_lessons l join public.learning_curriculum_skills s on s.id = l.canonical_skill_id where s.code = 'PHYSICS_UNIT_CONVERSION' and l.version = 6 and l.metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and l.metadata->>'publication_status' = 'STAGING'),
+              (select count(*) from public.learning_question_sets where metadata->>'content_id' = 'v5-physics-unit-conversion-wave3' and metadata->>'publication_status' = 'STAGING'),
+              (select count(*) from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V5_QUESTION_FIRST_STAGING' and metadata->>'content_id' like 'v5-physics-units-%' and metadata->>'publication_status' = 'STAGING');
+          `;
+          const psql = (args) => spawnSync('psql', ['--no-psqlrc', '-X', '--set', 'ON_ERROR_STOP=1', '--no-password', ...args], { env, encoding: 'utf8' });
+          const snapshot = () => {
+            const result = psql(['--tuples-only', '--no-align', '--command', query]);
+            if (result.status !== 0) throw new Error('PHYSICS_UNIT_CONVERSION_SNAPSHOT_FAILED');
+            return result.stdout.trim();
+          };
+          const before = snapshot();
+          const expectedCounts = ['1', '5', '40', '40', '0', '0', '0', '1', '5', '40', '1', '5', '40', '1', '5', '40'];
+          const baseline = before.split('|');
+          if (baseline.length !== 20 || expectedCounts.some((count, index) => baseline[[0, 2, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19][index]] !== count)) {
+            throw new Error(`UNEXPECTED_PHYSICS_UNIT_CONVERSION_BASELINE:${before}`);
+          }
+          const replay = psql(['--file', migration]);
+          if (replay.status !== 0) {
+            process.stderr.write(replay.stderr);
+            throw new Error('PHYSICS_UNIT_CONVERSION_MIGRATION_REPLAY_FAILED');
+          }
+          const after = snapshot();
+          if (after !== before) throw new Error(`PHYSICS_UNIT_CONVERSION_REPLAY_CHANGED_COUNTS:${before}->${after}`);
+          console.log(`Idempotency PASS: staging snapshot remains ${after}; no student records touched.`);
+          NODE
+
       - name: Lint das migrations
         run: npx supabase db lint --local --fail-on error
 
