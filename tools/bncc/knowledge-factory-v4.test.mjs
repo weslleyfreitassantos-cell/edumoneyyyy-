@@ -1,11 +1,15 @@
 import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { compileKnowledgeFactoryV4 } from './knowledge-factory-v4.mjs';
+import { compileKnowledgeFactoryV4, hashNormalizedText } from './knowledge-factory-v4.mjs';
 
 const root = new URL('../../', import.meta.url);
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(new URL(relativePath, root), 'utf8'));
 
 describe('BNCC total knowledge factory V4', () => {
+  it('hashes source text consistently across Windows and Linux line endings', () => {
+    expect(hashNormalizedText('source\ntext\n')).toBe(hashNormalizedText('source\r\ntext\r\n'));
+  });
+
   it('accounts for the frozen official catalog without inventing mappings or source approvals', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
 

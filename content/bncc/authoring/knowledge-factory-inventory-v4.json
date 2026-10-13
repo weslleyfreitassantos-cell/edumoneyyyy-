@@ -3,13 +3,13 @@
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
   "generatedBy": "tools/bncc/knowledge-factory-v4.mjs",
   "sourceHashes": {
-    "official": "c8a88463fc0a9c98d01cf8339d1b14fdecce9fb4015e672fe024fd744d6a322c",
-    "officialManifest": "f40ebfda5e0f877114c6a2f6554cf1ef566a380b62205c34125fde843a7d3fb7",
+    "official": "997ed5fb8817c57a8ff3fd0fc862993867539b9e0736a5d0ad43a1379a20cef6",
+    "officialManifest": "8aff9758fbe893b5076895e377dfe1d145ae3d3a4f9270c5ccd56272baf303ea",
     "regulatoryContext": "8baebdedaf4f38b4a7a54f0f18ef6b120432690aaf6a6ee435e314e46b707f31",
     "v1": "3e271391198784e76cba40e34c8805aa8f3e299bb05293f786b95dd9b8cffb8d",
     "v3": "255f9109a7e61b41840599edda426fb6482207be3beacd54a2b5f47038a5c212",
     "v3Units": "54eac626ee9513acbe3564d8c1d90635ec963f93dfac533ca69b2833aaf74da1",
-    "units": "2727bba58827bb3018affd0b431530a095bfad7021abba04290efe7f1297ea84",
+    "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
     "v3Graph": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583"
   },
@@ -15039,5 +15039,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "ff2372896322c99a2cfc2cd73ee830c5ed50aad059a067606cf8ecfd6380dc66"
+  "inventoryHash": "878a91a58487687b93cdb6c46291900d483d501812b3e3d00a63acc5cfbe61f1"
 }
