@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "tec-escola.bncc.regulatory-context.v4",
+  "verifiedOn": "2026-10-12",
+  "purpose": "Contextual normative references; this file does not alter official BNCC skill codes or claim code-level equivalence.",
+  "references": [
+    {
+      "id": "LEI_14945_2024",
+      "title": "Lei nº 14.945, de 31 de julho de 2024",
+      "scope": "Updates the LDB and establishes current Ensino Médio structure and implementation from the 2025 school year.",
+      "source": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14945.htm",
+      "use": "Context for stage, areas, general basic education, and curriculum planning. Does not replace the frozen 2018 BNCC code catalog."
+    },
+    {
+      "id": "DCNEM_CNE_CEB_2_2024",
+      "title": "Resolução CNE/CEB nº 2, de 13 de novembro de 2024 — Diretrizes Curriculares Nacionais para o Ensino Médio",
+      "scope": "National curriculum guidelines for Ensino Médio.",
+      "source": "https://www.gov.br/mec/pt-br/cne/pdf/normas-classificadas-por-assunto/base-nacional-comum-curricular-ensino-medio-bncc-em/rceb002_24.pdf/view",
+      "use": "Normative context for high-school pathway and curricular design; code-level changes require a separately verified official source."
+    },
+    {
+      "id": "COMPUTACAO_CNE_CEB_1_2022",
+      "title": "Resolução CNE/CEB nº 1, de 4 de outubro de 2022 — Computação como complemento à BNCC",
+      "scope": "Computing learning processes in Basic Education, considering the BNCC and its appended skills.",
+      "source": "https://portal.mec.gov.br/docman/outubro-2022-pdf/241671-rceb001-22/file",
+      "use": "Existing official complementary source; source text and code extraction remain subject to human verification."
+    }
+  ],
+  "approvalStatus": "SOURCE_REFERENCES_IDENTIFIED_PEDAGOGICAL_AND_CODE_REVIEW_PENDING"
+}
