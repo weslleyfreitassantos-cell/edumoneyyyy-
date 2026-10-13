@@ -14,11 +14,20 @@
   "PRACTICAL_ACTIVITIES": 0,
   "DEPTH_READY_COUNT": 0,
   "CONTENT_REVIEW_PENDING": 11,
-  "DATABASE_VALIDATION": "NOT_RUN_LOCAL_POSTGRESQL_UNAVAILABLE",
-  "CI_STATUS": "PENDING",
-  "PULL_REQUEST": null,
-  "LAST_COMPLETED_OPERATION": "Authored and validated a staged lesson/question increment; added server-recorded hint exposure and independent-evidence grading code; focused tests passed.",
-  "NEXT_OPERATION": "Open a dependent PR against codex/bncc-knowledge-factory-v4, run CI database validation, then continue the next incomplete WAVE_1 target without marking this sequence deep-ready.",
+  "DATABASE_VALIDATION": "PASS_CI_DISPOSABLE_POSTGRES",
+  "CI_STATUS": "PASS",
+  "CI_EVIDENCE": {
+    "RUN_ID": "38339340545",
+    "DATABASE_JOB": "115107680517",
+    "VALIDATE_JOB": "115107681882",
+    "MIGRATIONS": "PASS",
+    "DYNAMIC_SECURITY_AND_RPC_TESTS": "PASS_AFTER_TRANSIENT_AUTH_502_RETRY",
+    "PLAYWRIGHT": "PASS"
+  },
+  "PULL_REQUEST": "https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/360",
+  "VALIDATED_CODE_SHA": "06c8acb38c471372b57d2296ebc646e76190958c",
+  "LAST_COMPLETED_OPERATION": "Authored and validated one staged Mathematics lesson/question increment; implemented server-recorded hint exposure and independent-evidence grading; CI applied migrations, passed dynamic security/RPC tests and Playwright after one transient disposable-Auth HTTP 502 retry.",
+  "NEXT_OPERATION": "Continue the next incomplete WAVE_1 target with original, validated content; keep authored content inactive in STAGING, pedagogical review pending, and do not mark a V3 sequence deep-ready without satisfying all depth and evidence gates.",
   "FOUNDATION_PRS": [356, 357, 358, 359],
   "FOUNDATION_STATUS": "OPEN_STACKED_CHAIN",
   "CAMPAIGN_BASELINE": {
@@ -30,9 +39,9 @@
     "APPROXIMATE_ADDITIONAL_ITEMS_FOR_WAVE_1": 777
   },
   "BLOCKERS": [
-    "PostgreSQL migration execution and database smoke validation were not available locally.",
-    "The lesson and ten questions remain inactive in STAGING with pedagogical review pending and no official BNCC mapping claimed.",
-    "The four foundation PRs remain open; this increment must stay stacked on their V4 branch until that chain is integrated."
+    "The lesson and ten questions remain inactive in STAGING with pedagogical review pending; no official BNCC alignment or approval is claimed.",
+    "The four foundation PRs remain open; PR #360 is stacked on their V4 branch and is not yet part of main.",
+    "The first-wave coverage remains incomplete: 1 of 26 sequence targets processed as an increment, with 0 sequences marked deep-ready."
   ],
   "PRODUCTION_WRITES": "NONE",
   "PRODUCTION_DEPLOY": "NONE",
