@@ -20,6 +20,7 @@ import { buildChemistryStoichiometryPack } from './build-chemistry-stoichiometry
 import { buildPhilosophyEthicalPrinciplePack } from './build-philosophy-ethical-principle-v5.mjs';
 import { buildPhilosophyEvaluateArgumentPack } from './build-philosophy-evaluate-argument-v5.mjs';
 import { buildPhysicsAverageSpeedPack } from './build-physics-average-speed-v5.mjs';
+import { buildPhysicsMotionGraphPack } from './build-physics-motion-graph-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -82,6 +83,8 @@ const philosophyArgumentPack = JSON.parse(readFileSync(new URL('../../content/ad
 const philosophyArgumentMigration = readFileSync(new URL('../../supabase/migrations/20261013002900_bncc_philosophy_evaluate_argument_question_first_v5.sql', import.meta.url), 'utf8');
 const physicsAverageSpeedPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-average-speed.json', import.meta.url), 'utf8'));
 const physicsAverageSpeedMigration = readFileSync(new URL('../../supabase/migrations/20261013003000_bncc_physics_average_speed_question_first_v5.sql', import.meta.url), 'utf8');
+const physicsMotionGraphPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-motion-graph.json', import.meta.url), 'utf8'));
+const physicsMotionGraphMigration = readFileSync(new URL('../../supabase/migrations/20261013003100_bncc_physics_motion_graph_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -1073,6 +1076,37 @@ describe('question-first V5 staging content', () => {
     expect(physicsAverageSpeedMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(physicsAverageSpeedMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(physicsAverageSpeedMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens motion-graph practice from the exact V4 and V9 source set', () => {
+    const result = validateQuestionFirstPack(physicsMotionGraphPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(24);
+    expect(result.contextCount).toBe(24);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 7, TRANSFER: 4, LOCK_IN: 3, REVIEW: 7 });
+    expect(result.answerPositionCounts).toEqual({ A: 6, B: 6, C: 6, D: 6 });
+    expect(physicsMotionGraphPack.sourceQuestionFeedback).toHaveLength(22);
+    expect(physicsMotionGraphPack.lesson.microExplanations).toHaveLength(5);
+    expect(physicsMotionGraphPack.lesson.remediations).toHaveLength(5);
+    expect(physicsMotionGraphPack.lesson.sourceDossier).toHaveLength(1);
+    expect(physicsMotionGraphPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(physicsMotionGraphPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(physicsMotionGraphPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles motion-graph content as inactive staging without student records', () => {
+    expect(physicsMotionGraphPack).toEqual(buildPhysicsMotionGraphPack());
+    expect(physicsMotionGraphPack.contentVersion).toBe(5);
+    expect(physicsMotionGraphPack.lessonVersion).toBe(6);
+    expect(physicsMotionGraphMigration).toBe(buildMigration(physicsMotionGraphPack));
+    expect(physicsMotionGraphMigration).toContain("'PHYSICS_INTERPRET_MOTION_GRAPH'");
+    expect(physicsMotionGraphMigration).toContain('v_skill_id, 6,');
+    expect(physicsMotionGraphMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
+    expect(physicsMotionGraphMigration).toContain('"source_question_feedback"');
+    expect(physicsMotionGraphMigration).toContain("'publication_status', 'STAGING'");
+    expect(physicsMotionGraphMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(physicsMotionGraphMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(physicsMotionGraphMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {

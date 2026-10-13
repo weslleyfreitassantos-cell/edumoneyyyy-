@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "c4f583ad250696706eba93d19b2fe15ebad222cf38c7816d45b4e9245e80f9b2",
+    "v5QuestionFirstPacks": "a01f547abfa918ec58d20ce5c18567ebb97e45782568bf87160bdb909d5ab657",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 36,
+    "auditedSequences": 37,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 10,
-    "waveTwoCandidateTargetsDeepReady": 9,
-    "deepContentReady": 35,
-    "technicalDeepReady": 35,
-    "pedagogicalReviewPending": 36,
+    "waveTwoCandidateTargetsAudited": 11,
+    "waveTwoCandidateTargetsDeepReady": 10,
+    "deepContentReady": 36,
+    "technicalDeepReady": 36,
+    "pedagogicalReviewPending": 37,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 36
+      "STRUCTURAL_READY": 37
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 36,
-      "QUESTION_POOL_DEPTH_READY": 32,
-      "DIFFICULTY_PROGRESSION_READY": 33,
-      "CONTEXT_DIVERSITY_READY": 32,
-      "TRANSFER_READY": 32,
-      "MISCONCEPTION_RECOVERY_READY": 35,
-      "REVIEW_CONTENT_READY": 32,
-      "AUTHENTIC_EVIDENCE_READY": 35
+      "LESSON_DEPTH_READY": 37,
+      "QUESTION_POOL_DEPTH_READY": 33,
+      "DIFFICULTY_PROGRESSION_READY": 34,
+      "CONTEXT_DIVERSITY_READY": 33,
+      "TRANSFER_READY": 33,
+      "MISCONCEPTION_RECOVERY_READY": 36,
+      "REVIEW_CONTENT_READY": 33,
+      "AUTHENTIC_EVIDENCE_READY": 36
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,12 +110,12 @@
     },
     "questionsBelowAnyMinimum": 1,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 970,
-    "consolidatedQuestionTotal": 1372,
+    "v5QuestionTotal": 994,
+    "consolidatedQuestionTotal": 1418,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 36,
+    "reviewPending": 37,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -1707,6 +1707,70 @@
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
+        "targetId": "PHYSICS_INTERPRET_MOTION_GRAPH",
+        "unitId": null,
+        "subject": "PHYSICS",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Ler gráficos de movimento: posição, velocidade e área",
+        "originalQuestionCount": 22,
+        "v5QuestionCount": 24,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 46,
+        "purposeCounts": {
+          "PROBE": 5,
+          "PRACTICE": 16,
+          "TRANSFER": 8,
+          "LOCK_IN": 7,
+          "REVIEW": 10
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 46,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 9,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 22,
+          "actualQuestionCount": 22,
+          "status": "EXACT",
+          "questionFeedbackCount": 22
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
         "targetId": "PHYSICS_MODEL_FORCE",
         "unitId": "V5_PHYSICS_INTERACOES",
         "subject": "PHYSICS",
@@ -2318,13 +2382,13 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1764,
+    "totalItems": 1763,
     "byWave": {
-      "WAVE_2": 43,
+      "WAVE_2": 42,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 43,
+      "CONTENT_GAP": 42,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
@@ -2334,14 +2398,6 @@
         "id": "PHILOSOPHY_DISTINGUISH_CONCEPT",
         "stage": "ENSINO_MEDIO",
         "subject": "PHILOSOPHY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
-      {
-        "wave": 2,
-        "id": "PHYSICS_INTERPRET_MOTION_GRAPH",
-        "stage": "ENSINO_MEDIO",
-        "subject": "PHYSICS",
         "status": "CONTENT_GAP",
         "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
       },
@@ -16466,5 +16522,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "42f8285a531ac41f50bf38564041f5e6ee499168e482c092b6b89f6e21cccfe8"
+  "inventoryHash": "469d0873514ef5ad085b3153e043955b2ae43aadd3f140813e00d3cf76956286"
 }
