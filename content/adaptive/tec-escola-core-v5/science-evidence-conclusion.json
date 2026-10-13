@@ -1,0 +1,1269 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "science-evidence-conclusion",
+  "canonicalSkillCode": "SCIENCE_EVIDENCE_CONCLUSION",
+  "subject": "SCIENCE",
+  "domain": "EVIDENCIA",
+  "topic": "dados, evidências, inferências e conclusões",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 3,
+    "PRACTICE": 11,
+    "TRANSFER": 7,
+    "LOCK_IN": 5,
+    "REVIEW": 9
+  },
+  "expectedQuestionCount": 35,
+  "expectedContextCount": 35,
+  "expectedAnswerPositionCounts": {
+    "A": 9,
+    "B": 9,
+    "C": 9,
+    "D": 8
+  },
+  "lesson": {
+    "title": "O que os dados permitem concluir?",
+    "objective": "Relacionar conclusões a evidências observadas, distinguir observação de inferência e explicitar limites e explicações alternativas.",
+    "summary": "Descreva primeiro o que foi medido e como. Depois interprete o padrão, compare possíveis explicações e delimite a conclusão à amostra, ao local e ao período. Uma associação ou uma medida isolada não prova uma causa universal.",
+    "explanation": "## Comece pela pergunta e pela medida\nAntes de interpretar uma tabela, pergunte o que foi observado, com qual instrumento, em que local e durante quanto tempo. Um gráfico de temperatura não responde diretamente a uma pergunta sobre quantidade de organismos. Confirme também o que cada eixo e unidade representa.\n\n## Separe observação e inferência\n“Duas bandejas perderam volumes diferentes de água” pode descrever uma medida. “A luz causou a diferença” é uma explicação possível que precisa ser testada. Marque as frases como dado, interpretação ou hipótese; não apresente a hipótese como se tivesse sido observada diretamente.\n\n## Compare de modo justo\nPara avaliar uma variável, mantenha outras condições relevantes semelhantes ou registre como variaram. Repita medidas quando possível, use instrumentos e procedimentos consistentes e informe variação. Se temperatura, vento e recipiente mudaram juntos, não dá para isolar um único fator.\n\n## Construa a conclusão com limites\nUma conclusão boa conecta afirmação, evidência e raciocínio: cite o dado, explique por que ele apoia a ideia e declare o alcance. “Nos locais e período medidos…” é mais preciso do que “sempre”. Associação pode indicar uma relação a investigar, mas não demonstra sozinha causalidade.\n\n## Considere alternativas e incerteza\nUm valor fora do padrão pode ser erro de registro ou uma observação real. Verifique método e instrumento antes de remover ou aceitar. Considere fatores que variaram junto e procure dados adicionais que diferenciariam hipóteses. Uma limitação não torna os dados inúteis; mostra o que eles ainda não resolvem.\n\n## Exemplo resolvido\nDuas bandejas receberam o mesmo volume inicial. Depois de três dias, a que ficou perto da janela tinha menos água. Observação: os volumes finais diferiram. Hipótese: maior calor pode ter aumentado a evaporação. Limite: ventilação, temperatura e posição também podem ter influído. Próximo passo: repetir com bandejas iguais, registrar temperatura e vento e fazer várias medições. O primeiro resultado não prova uma regra universal.",
+    "workedExample": "A pergunta é se um material absorve mais água que outro. Afirmação: no teste realizado, o material A reteve mais água. Evidência: a leitura final foi 18 mL para A e 12 mL para B, após o mesmo volume e tempo de contato. Raciocínio: condições iguais tornam a comparação mais informativa. Limite: um teste não descreve todas as marcas; repetições e amostras diferentes podem alterar o padrão.",
+    "commonMistake": "Chamar uma explicação de dado observado, generalizar uma amostra pequena, inferir causa de uma associação, ignorar variáveis que mudaram juntas, ou apagar um valor extremo sem verificar o método.",
+    "tips": [
+      "Registre variável, unidade, local e período.",
+      "Descreva o padrão antes de explicar sua causa.",
+      "Compare grupos com procedimentos equivalentes e repita quando possível.",
+      "Use a evidência exata para justificar a afirmação.",
+      "Indique o que permanece desconhecido e que medida ajudaria."
+    ],
+    "priorKnowledge": [
+      "Ler uma tabela simples e reconhecer unidade de medida.",
+      "Distinguir uma pergunta de uma resposta.",
+      "Comparar valores e identificar variação."
+    ],
+    "keyConcepts": [
+      "observação",
+      "medida",
+      "variável",
+      "evidência",
+      "inferência",
+      "hipótese",
+      "amostra",
+      "repetição",
+      "explicação alternativa",
+      "limite da conclusão"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Distinguir medidas observadas de hipóteses e reconhecer o alcance dos dados.",
+        "questionIds": [
+          "v5-sci-evidence-probe-01",
+          "v5-sci-evidence-probe-02",
+          "v5-sci-evidence-probe-03",
+          "v5-sci-evidence-practice-01",
+          "v5-sci-evidence-practice-02",
+          "v5-sci-evidence-practice-03",
+          "v5-sci-evidence-practice-04"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Ler medidas e planejar comparações com variáveis relevantes.",
+        "questionIds": [
+          "v5-sci-evidence-practice-05",
+          "v5-sci-evidence-practice-06",
+          "v5-sci-evidence-practice-07",
+          "v5-sci-evidence-practice-08",
+          "v5-sci-evidence-practice-09",
+          "v5-sci-evidence-practice-10",
+          "v5-sci-evidence-practice-11"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar raciocínio de evidência a fenômenos, gráficos e relatos diversos.",
+        "questionIds": [
+          "v5-sci-evidence-transfer-01",
+          "v5-sci-evidence-transfer-02",
+          "v5-sci-evidence-transfer-03",
+          "v5-sci-evidence-transfer-04",
+          "v5-sci-evidence-transfer-05",
+          "v5-sci-evidence-transfer-06",
+          "v5-sci-evidence-transfer-07"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Construir argumentos proporcionais e identificar limites e alternativas.",
+        "questionIds": [
+          "v5-sci-evidence-lock-01",
+          "v5-sci-evidence-lock-02",
+          "v5-sci-evidence-lock-03",
+          "v5-sci-evidence-lock-04",
+          "v5-sci-evidence-lock-05"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar leitura crítica de dados e incerteza em novos contextos.",
+        "questionIds": [
+          "v5-sci-evidence-review-01",
+          "v5-sci-evidence-review-02",
+          "v5-sci-evidence-review-03",
+          "v5-sci-evidence-review-04",
+          "v5-sci-evidence-review-05",
+          "v5-sci-evidence-review-06",
+          "v5-sci-evidence-review-07",
+          "v5-sci-evidence-review-08",
+          "v5-sci-evidence-review-09"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "OBSERVATION_OR_EXPLANATION",
+        "text": "Diga primeiro o que foi medido. A frase que explica por que ocorreu é uma hipótese, não a medida."
+      },
+      {
+        "trigger": "ASSOCIATION_NOT_CAUSATION",
+        "text": "Duas mudanças juntas indicam associação; para sustentar causa, examine mecanismo, comparação e alternativas."
+      },
+      {
+        "trigger": "SAMPLE_SCOPE",
+        "text": "Delimite conclusão a quem, onde e quando foi observado."
+      },
+      {
+        "trigger": "CONTROL_VARIABLES",
+        "text": "Se dois fatores mudaram juntos, não atribua o resultado a apenas um sem teste adicional."
+      },
+      {
+        "trigger": "OUTLIER_CHECK",
+        "text": "Verifique instrumento e registro antes de apagar um valor diferente."
+      },
+      {
+        "trigger": "CLAIM_EVIDENCE_REASONING",
+        "text": "Ligue afirmação a um dado específico e explique por que ele a apoia."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "DATA_VS_INFERENCE",
+        "misconception": "DATA_VS_INFERENCE",
+        "prompt": "Reescreva em duas frases: “medimos…” e “uma explicação possível é…”. Não misture as categorias."
+      },
+      {
+        "id": "LIMIT_GENERALIZATION",
+        "misconception": "LIMIT_GENERALIZATION",
+        "prompt": "Acrescente à conclusão o local, período e grupo observados. Remova palavras absolutas que a amostra não sustenta."
+      },
+      {
+        "id": "ALTERNATIVE_VARIABLE",
+        "misconception": "ALTERNATIVE_VARIABLE",
+        "prompt": "Liste o que mudou além da variável principal. Escolha uma condição para controlar ou medir numa nova repetição."
+      },
+      {
+        "id": "CHECK_EXTREME_VALUE",
+        "misconception": "CHECK_EXTREME_VALUE",
+        "prompt": "Confira anotação, instrumento e procedimento. Registre o valor original e explique qualquer decisão sem apagá-lo silenciosamente."
+      },
+      {
+        "id": "EVIDENCE_LINK",
+        "misconception": "EVIDENCE_LINK",
+        "prompt": "Cite o número ou padrão que apoia a afirmação e complete: “isso apoia porque…”. Depois diga o que ainda não prova."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-science-compare-absorbency-safely",
+        "title": "Comparação de absorção com procedimento controlado",
+        "objective": "Planejar uma comparação simples, registrar medidas repetidas e escrever uma conclusão limitada à evidência.",
+        "context": "Grupos comparam dois materiais absorventes comuns usando pequenas quantidades de água em bandejas, sem ingerir materiais ou avaliar produtos para uso médico.",
+        "materials": [
+          "Dois tipos de papel absorvente comum",
+          "Bandejas impermeáveis",
+          "Conta-gotas ou seringa sem agulha para medir o mesmo volume",
+          "Cronômetro simples",
+          "Folha para registrar volume, tempo e repetições"
+        ],
+        "instructions": "Com mediação docente, definam a pergunta e a variável medida. Cortem amostras de tamanho semelhante, adicionem o mesmo volume de água e mantenham o mesmo tempo de contato. Façam pelo menos três repetições por material e registrem cada resultado, sem apagar diferenças. Calculem um resumo simples, comparem os valores e anotem limitações como tamanho da amostra ou precisão do instrumento. Não provem nem usem os materiais na pele.",
+        "evidence": "Tabela com procedimento e repetições, comparação entre medidas, afirmação apoiada por pelo menos um valor e uma limitação que indique o que o teste não permite concluir.",
+        "safety": "Usar pouca água, manter área de trabalho seca, evitar ingestão e contato com olhos, limpar derramamentos e seguir orientação do professor. Não usar produtos químicos nem amostras desconhecidas.",
+        "privacyGuard": "Não coletar dados de saúde ou desempenho corporal; registrar apenas materiais, procedimento e medidas do grupo.",
+        "ageRange": "6º ao 9º ano do Ensino Fundamental, com suporte à leitura de unidades e medidas.",
+        "mediation": "O professor ajuda a controlar volume, tamanho e tempo, pergunta o que foi medido antes de aceitar explicações e avalia método e justificativa. Se o instrumento não permitir precisão, registrar a incerteza em vez de inventar casas decimais.",
+        "rubric": [
+          {
+            "criterion": "Procedimento comparável",
+            "emerging": "Muda várias condições sem registrá-las.",
+            "developing": "Mantém algumas condições iguais com orientação.",
+            "proficient": "Mantém e registra volume, tamanho e tempo, reconhecendo a precisão do método."
+          },
+          {
+            "criterion": "Uso de dados",
+            "emerging": "Apresenta conclusão sem medidas registradas.",
+            "developing": "Cita um resultado, mas não compara repetições.",
+            "proficient": "Usa valores observados e considera variação entre repetições."
+          },
+          {
+            "criterion": "Conclusão e limite",
+            "emerging": "Afirma uma regra universal ou causa não testada.",
+            "developing": "Limita a frase ao teste após orientação.",
+            "proficient": "Relaciona evidência e afirmação e declara um limite relevante."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 25,
+    "sourceDossier": [
+      {
+        "title": "Base Nacional Comum Curricular: Educação Infantil e Ensino Fundamental, Ciências da Natureza",
+        "publisher": "Ministério da Educação",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "A área descreve coleta, análise e representação de dados, construção de argumentos com evidências e organização de conclusões."
+        ],
+        "use": "Referência curricular de escopo; não representa aprovação do mapeamento da habilidade interna SCIENCE_EVIDENCE_CONCLUSION."
+      },
+      {
+        "title": "A Framework for K-12 Science Education: Report Brief",
+        "publisher": "National Academies Press",
+        "url": "https://nap.nationalacademies.org/resource/13165/reportbrief.html",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Apresenta analisar e interpretar dados e argumentar com base em evidências como práticas de Ciências."
+        ],
+        "use": "Referência pedagógica complementar. Não substitui BNCC nem revisão pedagógica local."
+      }
+    ],
+    "copyrightNote": "Questões, exemplos, dados e atividade são autorais e fictícios. As fontes orientam as práticas de análise e evidência; mapeamento oficial e revisão pedagógica humana permanecem pendentes."
+  },
+  "questions": [
+    {
+      "id": "v5-sci-evidence-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SEEDLING_TABLE",
+      "statement": "Uma tabela registra que as mudas do grupo A cresceram 2 cm e as do grupo B, 4 cm. Qual frase é observação direta?",
+      "options": [
+        "As mudas do grupo B cresceram 4 cm no período medido.",
+        "O grupo B recebeu a melhor luz.",
+        "A luz sempre dobra o crescimento.",
+        "O grupo A não tinha nutrientes."
+      ],
+      "correctAnswer": "As mudas do grupo B cresceram 4 cm no período medido.",
+      "explanation": "A tabela mede crescimento. As outras opções propõem causas que não aparecem nos dados.",
+      "hint": "Repita apenas o valor registrado, sem explicar o motivo.",
+      "errorFocus": "Chamar uma explicação de observação",
+      "misconceptions": {
+        "O grupo B recebeu a melhor luz.": [
+          "LIGHT_AS_MEASURED"
+        ],
+        "A luz sempre dobra o crescimento.": [
+          "UNIVERSAL_LIGHT_EFFECT"
+        ],
+        "O grupo A não tinha nutrientes.": [
+          "NUTRIENT_CAUSE_UNMEASURED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LIMIT",
+      "contextFamily": "WATER_FILTER",
+      "statement": "Em um teste, a água ficou visualmente menos turva depois de passar por um filtro. Qual conclusão é adequada?",
+      "options": [
+        "O filtro removeu todos os microrganismos.",
+        "Nesse teste, a água pareceu menos turva após a filtragem.",
+        "A água ficou própria para beber.",
+        "O filtro remove qualquer contaminante."
+      ],
+      "correctAnswer": "Nesse teste, a água pareceu menos turva após a filtragem.",
+      "explanation": "A medida visual permite falar de turbidez, não de microrganismos ou segurança para consumo.",
+      "hint": "Compare a conclusão com a variável que foi observada.",
+      "errorFocus": "Extrapolar para propriedade não medida",
+      "misconceptions": {
+        "O filtro removeu todos os microrganismos.": [
+          "MICROBE_REMOVAL_UNMEASURED"
+        ],
+        "A água ficou própria para beber.": [
+          "POTABILITY_UNTESTED"
+        ],
+        "O filtro remove qualquer contaminante.": [
+          "ALL_CONTAMINANTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PATIO_TEMPERATURE",
+      "statement": "A turma mediu a temperatura do pátio em um único dia e concluiu que árvores sempre reduzem a temperatura em toda escola. Qual limitação é central?",
+      "options": [
+        "Temperatura não pode ser medida.",
+        "Uma medição prova uma regra universal.",
+        "Foi observado um local e um dia, sem comparação suficiente para uma regra geral.",
+        "Árvores não produzem sombra."
+      ],
+      "correctAnswer": "Foi observado um local e um dia, sem comparação suficiente para uma regra geral.",
+      "explanation": "Uma observação pontual não sustenta uma afirmação sobre todos os dias e escolas.",
+      "hint": "Delimite local e período e pergunte o que faltaria comparar.",
+      "errorFocus": "Generalizar uma amostra estreita",
+      "misconceptions": {
+        "Temperatura não pode ser medida.": [
+          "MEASUREMENT_IMPOSSIBLE"
+        ],
+        "Uma medição prova uma regra universal.": [
+          "ONE_MEASURE_UNIVERSAL"
+        ],
+        "Árvores não produzem sombra.": [
+          "SHADE_DENIAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY_VARIABLE",
+      "contextFamily": "PAPER_TOWEL_TEST",
+      "statement": "Dois papéis absorveram volumes diferentes, mas foram testados com quantidades iniciais de água diferentes. O que dificulta a comparação?",
+      "options": [
+        "A cor dos rótulos não combinou.",
+        "Os testes foram feitos em dias diferentes, necessariamente.",
+        "A turma usou uma tabela.",
+        "A quantidade inicial não foi mantida igual."
+      ],
+      "correctAnswer": "A quantidade inicial não foi mantida igual.",
+      "explanation": "Se a quantidade inicial muda, ela pode explicar parte da diferença observada; é preciso controlar ou registrar esse fator.",
+      "hint": "Procure algo que afete a mesma medida comparada.",
+      "errorFocus": "Ignorar variável que varia junto",
+      "misconceptions": {
+        "A cor dos rótulos não combinou.": [
+          "LABEL_COLOR_AS_CAUSE"
+        ],
+        "Os testes foram feitos em dias diferentes, necessariamente.": [
+          "DAY_MUST_DIFFER"
+        ],
+        "A turma usou uma tabela.": [
+          "TABLE_AS_CONFOUND"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LEAF_COLOR",
+      "statement": "Uma folha ficou amarela. Qual frase é uma hipótese, não uma observação direta?",
+      "options": [
+        "A planta pode estar recebendo pouca água.",
+        "A folha observada está amarela.",
+        "A folha tem uma mancha amarela.",
+        "Foram observadas duas folhas."
+      ],
+      "correctAnswer": "A planta pode estar recebendo pouca água.",
+      "explanation": "Cor e contagem podem ser registradas diretamente; falta de água é uma explicação possível a testar.",
+      "hint": "Pergunte se outra pessoa poderia registrar isso sem inferir a causa.",
+      "errorFocus": "Hipótese tratada como dado",
+      "misconceptions": {
+        "A folha observada está amarela.": [
+          "COLOR_AS_HYPOTHESIS"
+        ],
+        "A folha tem uma mancha amarela.": [
+          "SPOT_AS_HYPOTHESIS"
+        ],
+        "Foram observadas duas folhas.": [
+          "COUNT_AS_HYPOTHESIS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ_DATA",
+      "contextFamily": "CLASSROOM_LIGHT",
+      "statement": "Uma tabela mostra 180 lux perto da janela e 90 lux no fundo da sala no mesmo horário. O que ela sustenta?",
+      "options": [
+        "A luz da janela causa notas melhores.",
+        "Na medição indicada, o valor perto da janela foi maior.",
+        "O fundo da sala é sempre escuro.",
+        "Todos os horários têm a mesma diferença."
+      ],
+      "correctAnswer": "Na medição indicada, o valor perto da janela foi maior.",
+      "explanation": "A comparação informa valores naquele horário e local; aprendizagem e padrão de outros horários não foram medidos.",
+      "hint": "Inclua horário e locais na frase.",
+      "errorFocus": "Extrapolar uma medida pontual",
+      "misconceptions": {
+        "A luz da janela causa notas melhores.": [
+          "LIGHT_CAUSES_GRADES"
+        ],
+        "O fundo da sala é sempre escuro.": [
+          "ALWAYS_DARK"
+        ],
+        "Todos os horários têm a mesma diferença.": [
+          "ALL_TIMES_SAME"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN_REPLICATION",
+      "contextFamily": "PLANT_HEIGHT",
+      "statement": "Um grupo quer saber se duas condições afetam a altura de mudas. Que procedimento melhora a confiança no padrão?",
+      "options": [
+        "Medir uma muda de cada condição uma vez.",
+        "Escolher só a muda mais alta.",
+        "Usar várias mudas por condição e repetir medidas pelo mesmo método.",
+        "Mudar água e luz ao mesmo tempo sem registrar."
+      ],
+      "correctAnswer": "Usar várias mudas por condição e repetir medidas pelo mesmo método.",
+      "explanation": "Mais de uma observação e um método consistente ajudam a avaliar variação; ainda é necessário planejar controles.",
+      "hint": "Pense em variação entre mudas e consistência da medida.",
+      "errorFocus": "Concluir por um caso extremo",
+      "misconceptions": {
+        "Medir uma muda de cada condição uma vez.": [
+          "ONE_PLANT_ONLY"
+        ],
+        "Escolher só a muda mais alta.": [
+          "SELECT_TALLEST"
+        ],
+        "Mudar água e luz ao mesmo tempo sem registrar.": [
+          "CHANGE_TWO_FACTORS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INSECT_AND_TEMPERATURE",
+      "statement": "Um gráfico mostra aumento de insetos e aumento de temperatura no mesmo mês. O gráfico sozinho prova causa?",
+      "options": [
+        "Sim; duas linhas que sobem provam que temperatura causou o aumento.",
+        "Sim; o gráfico elimina outras explicações.",
+        "Não; gráficos nunca servem como evidência.",
+        "Não; mostra uma associação temporal, mas outras variáveis e evidências causais precisam ser examinadas."
+      ],
+      "correctAnswer": "Não; mostra uma associação temporal, mas outras variáveis e evidências causais precisam ser examinadas.",
+      "explanation": "Coocorrência é um padrão observado, mas não isola causa; gráficos são evidências para perguntas compatíveis com seus dados.",
+      "hint": "Separe associação, causalidade e utilidade do gráfico.",
+      "errorFocus": "Associação confundida com causa",
+      "misconceptions": {
+        "Sim; duas linhas que sobem provam que temperatura causou o aumento.": [
+          "CORRELATION_PROVES_CAUSE"
+        ],
+        "Sim; o gráfico elimina outras explicações.": [
+          "NO_ALTERNATIVES"
+        ],
+        "Não; gráficos nunca servem como evidência.": [
+          "GRAPHS_NEVER_EVIDENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHOOSE_MEASURE",
+      "contextFamily": "SOUND_PANEL",
+      "statement": "A turma compara o ruído antes e depois de instalar um painel. Qual registro ajuda mais a comparação?",
+      "options": [
+        "Medir o nível sonoro no mesmo ponto, em horários semelhantes, por vários dias.",
+        "Perguntar a uma pessoa se gostou do painel.",
+        "Medir em pontos e horários diferentes sem anotar.",
+        "Registrar apenas o dia com menor ruído."
+      ],
+      "correctAnswer": "Medir o nível sonoro no mesmo ponto, em horários semelhantes, por vários dias.",
+      "explanation": "Ponto, horário e repetição comparáveis ajudam a interpretar a mudança e a variação cotidiana.",
+      "hint": "Mantenha condições comparáveis e registre repetições.",
+      "errorFocus": "Escolher medida sem comparação justa",
+      "misconceptions": {
+        "Perguntar a uma pessoa se gostou do painel.": [
+          "PREFERENCE_AS_SOUND_MEASURE"
+        ],
+        "Medir em pontos e horários diferentes sem anotar.": [
+          "UNRECORDED_CONDITIONS"
+        ],
+        "Registrar apenas o dia com menor ruído.": [
+          "SELECT_LOWEST_DAY"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET_VARIATION",
+      "contextFamily": "RAIN_GAUGE",
+      "statement": "Um pluviômetro registrou 8 mm num dia e 12 mm no seguinte. Que afirmação é mais precisa?",
+      "options": [
+        "A região sempre recebe mais chuva no segundo dia da semana.",
+        "O segundo registro foi 4 mm maior que o primeiro.",
+        "A mudança foi causada por uma única nuvem.",
+        "O clima está mudando em todo o país."
+      ],
+      "correctAnswer": "O segundo registro foi 4 mm maior que o primeiro.",
+      "explanation": "A diferença aritmética entre dois registros pode ser calculada; tendência e causa exigem mais dados.",
+      "hint": "Faça a comparação direta e limite a afirmação aos dois registros.",
+      "errorFocus": "Tratar dois dias como tendência climática",
+      "misconceptions": {
+        "A região sempre recebe mais chuva no segundo dia da semana.": [
+          "WEEKDAY_PATTERN"
+        ],
+        "A mudança foi causada por uma única nuvem.": [
+          "SINGLE_CLOUD_CAUSE"
+        ],
+        "O clima está mudando em todo o país.": [
+          "COUNTRYWIDE_TREND"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ASSESS_SAMPLE",
+      "contextFamily": "SCHOOL_SURVEY",
+      "statement": "Uma pesquisa ouviu 12 pessoas de uma turma sobre transporte. Qual conclusão é mais cuidadosa?",
+      "options": [
+        "Toda a escola usa o mesmo transporte.",
+        "A pesquisa representa quem não respondeu.",
+        "Entre as 12 pessoas ouvidas, esse foi o padrão observado.",
+        "A resposta explica por que cada pessoa escolheu o transporte."
+      ],
+      "correctAnswer": "Entre as 12 pessoas ouvidas, esse foi o padrão observado.",
+      "explanation": "A conclusão delimita a amostra e não inventa motivos ou representatividade não demonstrada.",
+      "hint": "Diga quem foi ouvido e o que foi perguntado.",
+      "errorFocus": "Generalizar amostra localizada",
+      "misconceptions": {
+        "Toda a escola usa o mesmo transporte.": [
+          "SCHOOLWIDE_GENERALIZATION"
+        ],
+        "A pesquisa representa quem não respondeu.": [
+          "NONRESPONDERS_INCLUDED"
+        ],
+        "A resposta explica por que cada pessoa escolheu o transporte.": [
+          "MOTIVE_INFERRED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_OUTLIER",
+      "contextFamily": "PLANT_GROWTH_SET",
+      "statement": "Cinco medidas de crescimento foram 3, 3, 4, 4 e 15 cm. O que o grupo deve fazer com o valor 15?",
+      "options": [
+        "Apagar o valor por ser diferente.",
+        "Assumir que todas as mudas cresceram 15 cm.",
+        "Mudar os demais valores para aproximá-los.",
+        "Conferir o registro e o procedimento; manter o valor se estiver correto e explicar seu efeito na análise."
+      ],
+      "correctAnswer": "Conferir o registro e o procedimento; manter o valor se estiver correto e explicar seu efeito na análise.",
+      "explanation": "Um valor extremo pode ser real ou resultar de erro; a decisão precisa de verificação e transparência, não exclusão automática.",
+      "hint": "Não descarte nem aceite sem conferir como foi medido.",
+      "errorFocus": "Remover dado sem justificativa",
+      "misconceptions": {
+        "Apagar o valor por ser diferente.": [
+          "DELETE_OUTLIER"
+        ],
+        "Assumir que todas as mudas cresceram 15 cm.": [
+          "ONE_VALUE_ALL"
+        ],
+        "Mudar os demais valores para aproximá-los.": [
+          "ALTER_DATA"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "BUILD_ARGUMENT",
+      "contextFamily": "RECYCLING_BIN",
+      "statement": "O grupo registrou mais material reciclável após colocar uma lixeira identificada. Qual argumento é melhor?",
+      "options": [
+        "“Nos dias observados, o volume aumentou; a lixeira pode ter contribuído, mas outros fatores também podem influir.”",
+        "“A lixeira resolveu todo o lixo da escola.”",
+        "“Uma única mudança prova a causa exclusiva.”",
+        "“O aumento prova que todos separaram corretamente.”"
+      ],
+      "correctAnswer": "“Nos dias observados, o volume aumentou; a lixeira pode ter contribuído, mas outros fatores também podem influir.”",
+      "explanation": "A afirmação aponta a evidência e limita a causa; ainda podem existir mudanças em participação ou rotina.",
+      "hint": "Junte dado, conclusão e limite sem exagerar certeza.",
+      "errorFocus": "Atribuir efeito único e universal",
+      "misconceptions": {
+        "“A lixeira resolveu todo o lixo da escola.”": [
+          "SOLVED_ALL_WASTE"
+        ],
+        "“Uma única mudança prova a causa exclusiva.”": [
+          "SOLE_CAUSE_CERTAIN"
+        ],
+        "“O aumento prova que todos separaram corretamente.”": [
+          "EVERYONE_COMPLIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-practice-11",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ASSESS_INSTRUMENT",
+      "contextFamily": "THERMOMETER_READING",
+      "statement": "Dois termômetros mostram valores diferentes no mesmo local. Qual ação é mais útil antes de concluir que a temperatura mudou?",
+      "options": [
+        "Escolher o valor maior porque parece plausível.",
+        "Verificar os instrumentos e repetir a medição sob condições comparáveis.",
+        "Descartar todos os registros.",
+        "Afirmar que o local tem duas temperaturas exatas ao mesmo tempo."
+      ],
+      "correctAnswer": "Verificar os instrumentos e repetir a medição sob condições comparáveis.",
+      "explanation": "Diferença entre instrumentos pode resultar de calibração, posição ou procedimento; repetir e verificar melhora a comparação.",
+      "hint": "Confira o instrumento e como a medida foi feita.",
+      "errorFocus": "Ignorar qualidade do instrumento",
+      "misconceptions": {
+        "Escolher o valor maior porque parece plausível.": [
+          "CHOOSE_HIGHER"
+        ],
+        "Descartar todos os registros.": [
+          "DISCARD_ALL"
+        ],
+        "Afirmar que o local tem duas temperaturas exatas ao mesmo tempo.": [
+          "TWO_EXACT_VALUES"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "LIMIT",
+      "contextFamily": "LOCAL_BIRD_COUNT",
+      "statement": "Em três manhãs, estudantes observaram mais aves perto de árvores do que perto do estacionamento. Qual conclusão é mais apoiada?",
+      "options": [
+        "Árvores sempre aumentam aves em qualquer cidade.",
+        "As aves preferem toda área arborizada.",
+        "Naqueles locais e manhãs, as contagens perto das árvores foram maiores.",
+        "O estacionamento causa a ausência de aves."
+      ],
+      "correctAnswer": "Naqueles locais e manhãs, as contagens perto das árvores foram maiores.",
+      "explanation": "A observação compara locais em três manhãs; preferência e causalidade exigiriam amostragem e controle adicionais.",
+      "hint": "Mantenha a conclusão no alcance dos locais e horários observados.",
+      "errorFocus": "Converter contagem local em regra universal",
+      "misconceptions": {
+        "Árvores sempre aumentam aves em qualquer cidade.": [
+          "UNIVERSAL_TREE_EFFECT"
+        ],
+        "As aves preferem toda área arborizada.": [
+          "PREFERENCE_UNMEASURED"
+        ],
+        "O estacionamento causa a ausência de aves.": [
+          "PARKING_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE_DESIGN",
+      "contextFamily": "SHADED_WATER",
+      "statement": "Duas bandejas iguais receberam o mesmo volume de água; uma ficou ao sol e outra à sombra. Após três dias, a bandeja ao sol tinha menos água. O que se pode dizer?",
+      "options": [
+        "O sol foi a única causa possível.",
+        "Todas as bandejas perdem água no mesmo ritmo.",
+        "O teste prova uma regra para qualquer recipiente.",
+        "Foi observada menor quantidade na bandeja ao sol; calor pode ser uma explicação, mas outras condições devem ser verificadas."
+      ],
+      "correctAnswer": "Foi observada menor quantidade na bandeja ao sol; calor pode ser uma explicação, mas outras condições devem ser verificadas.",
+      "explanation": "O contraste sugere uma hipótese, mas temperatura, vento e montagem podem influir; repetições ajudam a avaliar.",
+      "hint": "Separe resultado medido de explicação proposta.",
+      "errorFocus": "Dizer causa exclusiva sem controles",
+      "misconceptions": {
+        "O sol foi a única causa possível.": [
+          "SOLE_SUN_CAUSE"
+        ],
+        "Todas as bandejas perdem água no mesmo ritmo.": [
+          "UNIVERSAL_RATE"
+        ],
+        "O teste prova uma regra para qualquer recipiente.": [
+          "ANY_CONTAINER_RULE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ_GRAPH",
+      "contextFamily": "AIR_QUALITY_GRAPH",
+      "statement": "Um gráfico de qualidade do ar mostra valores em dois horários, com queda às 15h. Qual dado adicional ajuda a interpretar a queda?",
+      "options": [
+        "Local da medição e condições do período, como vento e atividade ao redor.",
+        "A cor favorita de quem desenhou o gráfico.",
+        "O nome da pessoa que leu o eixo.",
+        "Uma previsão para o mês seguinte."
+      ],
+      "correctAnswer": "Local da medição e condições do período, como vento e atividade ao redor.",
+      "explanation": "Contexto de local e condições pode ajudar a explicar a mudança; os outros dados não esclarecem a medida registrada.",
+      "hint": "Pense no que poderia afetar o ar naquele ponto e horário.",
+      "errorFocus": "Buscar contexto irrelevante",
+      "misconceptions": {
+        "A cor favorita de quem desenhou o gráfico.": [
+          "COLOR_IRRELEVANT"
+        ],
+        "O nome da pessoa que leu o eixo.": [
+          "READER_NAME_IRRELEVANT"
+        ],
+        "Uma previsão para o mês seguinte.": [
+          "FUTURE_FORECAST"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_ALTERNATIVES",
+      "contextFamily": "CLASSROOM_PLANTS",
+      "statement": "Plantas perto da janela cresceram mais; também receberam água com maior frequência. O que não é possível concluir ainda?",
+      "options": [
+        "Que as plantas tiveram alturas diferentes.",
+        "Que a luz, sozinha, causou a diferença de crescimento.",
+        "Que frequência de rega pode importar.",
+        "Que há duas condições que precisam ser consideradas."
+      ],
+      "correctAnswer": "Que a luz, sozinha, causou a diferença de crescimento.",
+      "explanation": "Luz e rega variaram juntas, então o efeito de cada fator não foi isolado.",
+      "hint": "Procure fatores que mudaram ao mesmo tempo.",
+      "errorFocus": "Confundir fatores simultâneos",
+      "misconceptions": {
+        "Que as plantas tiveram alturas diferentes.": [
+          "HEIGHT_DIFFERENCE_DENIED"
+        ],
+        "Que frequência de rega pode importar.": [
+          "WATER_IRRELEVANT"
+        ],
+        "Que há duas condições que precisam ser consideradas.": [
+          "MULTIPLE_FACTORS_DENIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "FORMULATE_NEXT_TEST",
+      "contextFamily": "MELTING_CUBES",
+      "statement": "Cubos de gelo derreteram em tempos diferentes sobre metal e papelão, mas um cubo era maior. Que melhoria ajuda a testar o material?",
+      "options": [
+        "Aumentar a diferença de tamanho.",
+        "Mudar também a temperatura e não registrar.",
+        "Usar cubos de tamanho semelhante e repetir cada condição pelo mesmo tempo e método.",
+        "Escolher o teste que terminou primeiro."
+      ],
+      "correctAnswer": "Usar cubos de tamanho semelhante e repetir cada condição pelo mesmo tempo e método.",
+      "explanation": "Tamanho pode afetar o derretimento; controlá-lo e repetir permite comparar melhor os materiais.",
+      "hint": "Mantenha semelhantes as condições que não são a variável testada.",
+      "errorFocus": "Não controlar variável relevante",
+      "misconceptions": {
+        "Aumentar a diferença de tamanho.": [
+          "AMPLIFY_SIZE_DIFFERENCE"
+        ],
+        "Mudar também a temperatura e não registrar.": [
+          "CHANGE_UNRECORDED_VARIABLE"
+        ],
+        "Escolher o teste que terminou primeiro.": [
+          "SELECT_FASTEST"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "WEIGH_CONFLICTING_DATA",
+      "contextFamily": "TWO_WATER_SAMPLES",
+      "statement": "Dois grupos mediram a mesma amostra de água e registraram valores diferentes. Qual procedimento é mais científico?",
+      "options": [
+        "Escolher o grupo com mais integrantes.",
+        "Apagar o resultado menor.",
+        "Afirmar que uma equipe agiu de má-fé.",
+        "Comparar instrumentos e protocolos, repetir medidas e registrar a variação antes de explicar a diferença."
+      ],
+      "correctAnswer": "Comparar instrumentos e protocolos, repetir medidas e registrar a variação antes de explicar a diferença.",
+      "explanation": "Diferenças podem vir de instrumento ou procedimento; verificação e repetição produzem evidência melhor que acusações.",
+      "hint": "Procure uma diferença verificável no método.",
+      "errorFocus": "Atribuir erro moral sem evidência",
+      "misconceptions": {
+        "Escolher o grupo com mais integrantes.": [
+          "GROUP_SIZE_AS_TRUTH"
+        ],
+        "Apagar o resultado menor.": [
+          "DELETE_LOW_VALUE"
+        ],
+        "Afirmar que uma equipe agiu de má-fé.": [
+          "BAD_FAITH_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY_LIMIT",
+      "contextFamily": "SCHOOL_TRANSPORT",
+      "statement": "Um registro mostra que faltas diminuíram numa turma no mês em que um novo horário de ônibus começou. Qual afirmação é proporcional?",
+      "options": [
+        "As faltas diminuíram no período observado; o horário pode estar relacionado, mas outros fatores devem ser comparados.",
+        "O novo horário foi a única causa.",
+        "As faltas sempre diminuirão no futuro.",
+        "Toda turma foi beneficiada igualmente."
+      ],
+      "correctAnswer": "As faltas diminuíram no período observado; o horário pode estar relacionado, mas outros fatores devem ser comparados.",
+      "explanation": "A coincidência temporal é relevante, mas sem comparação ou controle não identifica uma causa única nem efeito futuro.",
+      "hint": "Use uma conclusão que reconheça relação possível e outras explicações.",
+      "errorFocus": "Atribuir causalidade única a mudança temporal",
+      "misconceptions": {
+        "O novo horário foi a única causa.": [
+          "SOLE_CAUSE_BUS"
+        ],
+        "As faltas sempre diminuirão no futuro.": [
+          "FUTURE_GUARANTEE"
+        ],
+        "Toda turma foi beneficiada igualmente.": [
+          "ALL_CLASSES_EQUAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN_COMPARISON",
+      "contextFamily": "ABSORBENCY_ACTIVITY",
+      "statement": "Uma turma compara dois tipos de papel quanto à água absorvida. Qual plano é mais justo?",
+      "options": [
+        "Molhar cada papel com quantidade diferente.",
+        "Usar volumes iniciais, tempo de contato e método de leitura iguais, repetindo cada tipo.",
+        "Escolher a amostra de melhor resultado.",
+        "Testar um papel por um segundo e o outro por um minuto."
+      ],
+      "correctAnswer": "Usar volumes iniciais, tempo de contato e método de leitura iguais, repetindo cada tipo.",
+      "explanation": "Variáveis comparáveis permitem atribuir a diferença observada com mais confiança ao tipo de papel, embora ainda se reconheça a variação.",
+      "hint": "Mantenha o restante do procedimento igual e repita.",
+      "errorFocus": "Comparação com procedimentos diferentes",
+      "misconceptions": {
+        "Molhar cada papel com quantidade diferente.": [
+          "VARY_VOLUME"
+        ],
+        "Escolher a amostra de melhor resultado.": [
+          "SELECT_BEST_ONLY"
+        ],
+        "Testar um papel por um segundo e o outro por um minuto.": [
+          "UNEQUAL_CONTACT_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET_REPLICATION",
+      "contextFamily": "CLASS_SEEDLINGS",
+      "statement": "Três repetições deram 5, 6 e 5 cm. Qual resumo é mais fiel?",
+      "options": [
+        "Todas as mudas medem exatamente 5 cm.",
+        "Uma repetição prova uma regra geral.",
+        "As medidas ficaram entre 5 e 6 cm, com pequena variação entre repetições.",
+        "A média mostra a causa do crescimento."
+      ],
+      "correctAnswer": "As medidas ficaram entre 5 e 6 cm, com pequena variação entre repetições.",
+      "explanation": "O intervalo descreve as medidas observadas; não generaliza para outras plantas nem identifica causa.",
+      "hint": "Resuma o conjunto, sem apagar a variação.",
+      "errorFocus": "Esconder variação entre repetições",
+      "misconceptions": {
+        "Todas as mudas medem exatamente 5 cm.": [
+          "ALL_EXACTLY_5"
+        ],
+        "Uma repetição prova uma regra geral.": [
+          "ONE_TRIAL_UNIVERSAL"
+        ],
+        "A média mostra a causa do crescimento.": [
+          "AVERAGE_AS_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ARGUE_FROM_EVIDENCE",
+      "contextFamily": "SCHOOL_WASTE_CLAIM",
+      "statement": "A afirmação é “o cartaz aumentou a separação de resíduos”. Qual evidência mais diretamente ajudaria?",
+      "options": [
+        "Contar quantas pessoas gostaram das cores.",
+        "Usar uma foto do cartaz.",
+        "Perguntar apenas a quem criou o cartaz.",
+        "Comparar quantidades separadas em períodos semelhantes antes e depois, registrando outros ajustes."
+      ],
+      "correctAnswer": "Comparar quantidades separadas em períodos semelhantes antes e depois, registrando outros ajustes.",
+      "explanation": "Uma comparação de quantidades acompanha a variável alegada; outros fatores também devem ser registrados.",
+      "hint": "Meça a separação de resíduos, não apenas opinião sobre o cartaz.",
+      "errorFocus": "Usar preferência como medida de efeito",
+      "misconceptions": {
+        "Contar quantas pessoas gostaram das cores.": [
+          "COLOR_LIKING_AS_EFFECT"
+        ],
+        "Usar uma foto do cartaz.": [
+          "PHOTO_AS_QUANTITY"
+        ],
+        "Perguntar apenas a quem criou o cartaz.": [
+          "AUTHOR_AS_SAMPLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_CAUSALITY",
+      "contextFamily": "MUSIC_AND_FOCUS",
+      "statement": "Em uma enquete, estudantes que ouviram música também relataram maior concentração. Qual conclusão é mais cuidadosa?",
+      "options": [
+        "Há uma associação nos relatos; a enquete não determina se a música causou concentração.",
+        "Música melhora a concentração de todos.",
+        "A concentração causou a escolha de música com certeza.",
+        "Relatos não podem fornecer nenhuma informação."
+      ],
+      "correctAnswer": "Há uma associação nos relatos; a enquete não determina se a música causou concentração.",
+      "explanation": "A enquete registra associação autorrelatada, mas não controla diferenças nem estabelece direção causal.",
+      "hint": "Identifique o tipo de dado e o que o desenho não controlou.",
+      "errorFocus": "Tratar associação autorrelatada como causa",
+      "misconceptions": {
+        "Música melhora a concentração de todos.": [
+          "UNIVERSAL_MUSIC_EFFECT"
+        ],
+        "A concentração causou a escolha de música com certeza.": [
+          "REVERSE_CAUSE_CERTAIN"
+        ],
+        "Relatos não podem fornecer nenhuma informação.": [
+          "REPORTS_WORTHLESS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-lock-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALIBRATE_CONCLUSION",
+      "contextFamily": "CLASSROOM_WATER",
+      "statement": "Uma turma mediu uso de água em dois dias: 80 L e 74 L. Qual conclusão não excede os dados?",
+      "options": [
+        "A escola reduziu o consumo para sempre.",
+        "O segundo dia registrou 6 L a menos; é preciso mais observação para falar de tendência.",
+        "Uma campanha causou toda a diferença.",
+        "O mês inteiro teve redução de 6 L por dia."
+      ],
+      "correctAnswer": "O segundo dia registrou 6 L a menos; é preciso mais observação para falar de tendência.",
+      "explanation": "A diferença dos dois registros é calculável; tendência e causa exigem mais dias e contexto.",
+      "hint": "Faça a conta e limite a conclusão aos dois dias.",
+      "errorFocus": "Projetar uma diferença diária para período longo",
+      "misconceptions": {
+        "A escola reduziu o consumo para sempre.": [
+          "PERMANENT_REDUCTION"
+        ],
+        "Uma campanha causou toda a diferença.": [
+          "CAMPAIGN_SOLE_CAUSE"
+        ],
+        "O mês inteiro teve redução de 6 L por dia.": [
+          "MONTHLY_PATTERN_FROM_TWO_DAYS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "WEATHER_NOTE",
+      "statement": "“O termômetro marcou 18 °C às 7h.” Qual frase é interpretação, não registro direto?",
+      "options": [
+        "A leitura foi 18 °C.",
+        "A medida foi feita às 7h.",
+        "O dia provavelmente será frio para todos.",
+        "O instrumento usado foi um termômetro."
+      ],
+      "correctAnswer": "O dia provavelmente será frio para todos.",
+      "explanation": "A previsão sobre o dia e todas as pessoas vai além do valor, horário e instrumento registrados.",
+      "hint": "Separe o número da avaliação sobre o dia.",
+      "errorFocus": "Tratar avaliação como leitura",
+      "misconceptions": {
+        "A leitura foi 18 °C.": [
+          "TEMPERATURE_AS_UNIVERSAL_FEELING"
+        ],
+        "A medida foi feita às 7h.": [
+          "VALUE_AS_INTERPRETATION"
+        ],
+        "O instrumento usado foi um termômetro.": [
+          "INSTRUMENT_AS_INTERPRETATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LIMIT",
+      "contextFamily": "SEED_PACKETS",
+      "statement": "Em um lote, 7 de 10 sementes germinaram. O que o dado permite afirmar?",
+      "options": [
+        "Toda semente germinará nessa proporção.",
+        "O pacote estava vencido.",
+        "A temperatura foi ideal.",
+        "Sete das dez sementes observadas germinaram naquele teste."
+      ],
+      "correctAnswer": "Sete das dez sementes observadas germinaram naquele teste.",
+      "explanation": "A contagem descreve o lote observado; não informa validade nem condição ideal de temperatura.",
+      "hint": "Mantenha lote e teste no enunciado da conclusão.",
+      "errorFocus": "Generalizar ou inventar causa",
+      "misconceptions": {
+        "Toda semente germinará nessa proporção.": [
+          "UNIVERSAL_GERMINATION"
+        ],
+        "O pacote estava vencido.": [
+          "EXPIRY_UNMEASURED"
+        ],
+        "A temperatura foi ideal.": [
+          "IDEAL_TEMP_UNMEASURED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TWO_CLASSROOMS",
+      "statement": "Duas salas receberam cartazes; ambas tiveram mais livros emprestados naquela semana. Qual conclusão evita exagero?",
+      "options": [
+        "Os empréstimos aumentaram nas salas observadas; outras turmas e períodos precisam ser comparados.",
+        "Cartazes sempre aumentam a leitura em toda escola.",
+        "Os cartazes foram a única causa.",
+        "Todos os empréstimos foram feitos por causa do cartaz."
+      ],
+      "correctAnswer": "Os empréstimos aumentaram nas salas observadas; outras turmas e períodos precisam ser comparados.",
+      "explanation": "A frase relata o padrão local e identifica necessidade de comparar; não afirma causa isolada.",
+      "hint": "Delimite as salas e o período.",
+      "errorFocus": "Conclusão universal e causal",
+      "misconceptions": {
+        "Cartazes sempre aumentam a leitura em toda escola.": [
+          "UNIVERSAL_POSTER_EFFECT"
+        ],
+        "Os cartazes foram a única causa.": [
+          "SOLE_CAUSE"
+        ],
+        "Todos os empréstimos foram feitos por causa do cartaz.": [
+          "ALL_BORROWING_CAUSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "BATTERY_TEST",
+      "statement": "Um aparelho funcionou por mais tempo com uma bateria nova. O que ainda seria necessário para comparar marcas?",
+      "options": [
+        "Usar aparelhos diferentes sem registrar.",
+        "Testar baterias em condições iguais e repetir cada marca.",
+        "Escolher a bateria mais cara.",
+        "Medir apenas o tempo máximo de uma unidade."
+      ],
+      "correctAnswer": "Testar baterias em condições iguais e repetir cada marca.",
+      "explanation": "Aparelho e uso podem afetar duração; condições iguais e repetições ajudam a comparação.",
+      "hint": "Mantenha o aparelho e uso comparáveis.",
+      "errorFocus": "Comparação com variáveis misturadas",
+      "misconceptions": {
+        "Usar aparelhos diferentes sem registrar.": [
+          "DIFFERENT_DEVICE"
+        ],
+        "Escolher a bateria mais cara.": [
+          "PRICE_AS_PERFORMANCE"
+        ],
+        "Medir apenas o tempo máximo de uma unidade.": [
+          "ONE_MAXIMUM_TRIAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ_DATA",
+      "contextFamily": "CLASS_RECYCLING_CHART",
+      "statement": "Um gráfico mostra 20 kg de papel numa semana e 25 kg na seguinte. Qual afirmação é diretamente sustentada?",
+      "options": [
+        "A campanha causou aumento.",
+        "O papel veio de todos os estudantes.",
+        "O registro da segunda semana foi 5 kg maior.",
+        "A quantidade continuará aumentando."
+      ],
+      "correctAnswer": "O registro da segunda semana foi 5 kg maior.",
+      "explanation": "A diferença dos valores pode ser calculada; origem, causa e continuidade não aparecem no gráfico.",
+      "hint": "Fique no que os eixos e valores mostram.",
+      "errorFocus": "Inferir origem e futuro",
+      "misconceptions": {
+        "A campanha causou aumento.": [
+          "CAMPAIGN_CAUSE_UNTESTED"
+        ],
+        "O papel veio de todos os estudantes.": [
+          "ALL_STUDENTS_SOURCE"
+        ],
+        "A quantidade continuará aumentando.": [
+          "FUTURE_TREND"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_ALTERNATIVE",
+      "contextFamily": "BIRD_FEEDER",
+      "statement": "Após instalar um comedouro, foram vistas mais aves; no mesmo período, outra árvore floresceu. Qual próximo passo ajudaria a entender o padrão?",
+      "options": [
+        "Atribuir tudo ao comedouro.",
+        "Ignorar a árvore porque surgiu depois.",
+        "Contar apenas o maior grupo de aves.",
+        "Registrar contagens repetidas em locais comparáveis e anotar mudanças no ambiente."
+      ],
+      "correctAnswer": "Registrar contagens repetidas em locais comparáveis e anotar mudanças no ambiente.",
+      "explanation": "Comedouro e floração são explicações possíveis; observações comparáveis e repetidas ajudam a avaliar fatores.",
+      "hint": "Considere fatores que mudaram no mesmo período.",
+      "errorFocus": "Ignorar alternativa explicativa",
+      "misconceptions": {
+        "Atribuir tudo ao comedouro.": [
+          "FEEDER_SOLE_CAUSE"
+        ],
+        "Ignorar a árvore porque surgiu depois.": [
+          "LATER_FACTOR_IGNORED"
+        ],
+        "Contar apenas o maior grupo de aves.": [
+          "MAX_GROUP_SELECTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_SAMPLE",
+      "contextFamily": "AIR_SENSOR",
+      "statement": "Um sensor registrou valor alto uma vez e voltou a valores menores. Qual ação é adequada antes de anunciar uma tendência?",
+      "options": [
+        "Verificar o sensor, repetir medidas e comparar com outros horários ou pontos.",
+        "Anunciar que a poluição aumentará todos os dias.",
+        "Apagar o valor alto sem verificar.",
+        "Afirmar que o sensor nunca funciona."
+      ],
+      "correctAnswer": "Verificar o sensor, repetir medidas e comparar com outros horários ou pontos.",
+      "explanation": "Uma leitura isolada pode ser sinal real ou erro; verificação e novas medidas ajudam a interpretar.",
+      "hint": "Não anuncie uma tendência com um ponto sem checagem.",
+      "errorFocus": "Reagir de modo absoluto a uma leitura",
+      "misconceptions": {
+        "Anunciar que a poluição aumentará todos os dias.": [
+          "DAILY_INCREASE_UNSUPPORTED"
+        ],
+        "Apagar o valor alto sem verificar.": [
+          "DELETE_WITHOUT_CHECK"
+        ],
+        "Afirmar que o sensor nunca funciona.": [
+          "SENSOR_ALWAYS_FAILS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "FORMULATE_CLAIM",
+      "contextFamily": "SCHOOL_NOISE",
+      "statement": "Medidas indicaram menos ruído em três manhãs após uma mudança na rotina. Qual formulação representa melhor a evidência?",
+      "options": [
+        "A mudança eliminou o ruído para sempre.",
+        "Nas três manhãs observadas, o ruído medido foi menor após a mudança; outras semanas ainda devem ser acompanhadas.",
+        "A escola será silenciosa em todos os horários.",
+        "A rotina foi a única causa possível."
+      ],
+      "correctAnswer": "Nas três manhãs observadas, o ruído medido foi menor após a mudança; outras semanas ainda devem ser acompanhadas.",
+      "explanation": "A formulação delimita amostra e período e não trata a observação como efeito permanente ou causalidade exclusiva.",
+      "hint": "Inclua período medido e o que ainda precisa ser acompanhado.",
+      "errorFocus": "Generalizar duração e causa",
+      "misconceptions": {
+        "A mudança eliminou o ruído para sempre.": [
+          "PERMANENT_EFFECT"
+        ],
+        "A escola será silenciosa em todos os horários.": [
+          "ALL_HOURS"
+        ],
+        "A rotina foi a única causa possível.": [
+          "SOLE_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-evidence-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SCIENCE_POSTER",
+      "statement": "Um painel afirma “a sombra reduz a temperatura” e mostra uma leitura em cada local. Qual informação fortalece a avaliação?",
+      "options": [
+        "A cor do título.",
+        "O nome de quem colou o painel.",
+        "Horário, instrumentos, repetições e condições comparáveis nos locais medidos.",
+        "A quantidade de pessoas que gostou do desenho."
+      ],
+      "correctAnswer": "Horário, instrumentos, repetições e condições comparáveis nos locais medidos.",
+      "explanation": "Essas informações ajudam a avaliar comparabilidade, variabilidade e método das medidas.",
+      "hint": "Pergunte como, quando e quantas vezes foi medido.",
+      "errorFocus": "Usar detalhe irrelevante em vez do método",
+      "misconceptions": {
+        "A cor do título.": [
+          "TITLE_COLOR"
+        ],
+        "O nome de quem colou o painel.": [
+          "POSTER_AUTHOR_AS_METHOD"
+        ],
+        "A quantidade de pessoas que gostou do desenho.": [
+          "LIKES_AS_TEMPERATURE_EVIDENCE"
+        ]
+      }
+    }
+  ]
+}

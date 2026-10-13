@@ -145,10 +145,10 @@ describe('BNCC total knowledge factory V4', () => {
   it('distinguishes a five-phase structural path from deep assessment coverage', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
 
-    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 26, v3QuestionTotal: 160, v5QuestionTotal: 551, consolidatedQuestionTotal: 701, technicalDeepReady: 17, reviewPending: 26 });
+    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 26, v3QuestionTotal: 160, v5QuestionTotal: 802, consolidatedQuestionTotal: 952, technicalDeepReady: 26, reviewPending: 26 });
     expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 26 });
     expect(report.existingContent.technicalDeepReady).toBe(report.existingContent.depthAudit.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length);
-    expect(report.queue.byWave.WAVE_1).toBe(report.existingContent.auditedSequences - report.existingContent.technicalDeepReady);
+    expect(report.queue.byWave.WAVE_1 ?? 0).toBe(report.existingContent.auditedSequences - report.existingContent.technicalDeepReady);
   });
 
   it('reconciles the V5 force-motion increment into the V3 sequence without double counting', () => {
@@ -179,6 +179,91 @@ describe('BNCC total knowledge factory V4', () => {
     expect(phishing.missingDepthDimensions).toEqual([]);
   });
 
+  it('reconciles human-diversity observation with privacy-safe staging gates', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const diversity = report.existingContent.depthAudit.find((item) => item.targetId === 'SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI');
+
+    expect(diversity).toMatchObject({
+      originalQuestionCount: 5,
+      v5QuestionCount: 35,
+      currentQuestionCount: 40,
+      technicalDeepReady: true,
+      readinessClaim: 'DEEP_CONTENT_READY',
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      officialMappingStatus: 'NOT_CLAIMED',
+      studentPublicationStatus: 'STAGING_INACTIVE',
+    });
+    expect(diversity.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(diversity.missingDepthDimensions).toEqual([]);
+  });
+
+  it('reconciles history and unit-rate question-first depth without claiming approval', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const history = report.existingContent.depthAudit.find((item) => item.targetId === 'HISTORY_COMPARE_CAUSES');
+    const ratio = report.existingContent.depthAudit.find((item) => item.targetId === 'MATH_RATIO_UNIT_RATE');
+
+    expect(history).toMatchObject({ originalQuestionCount: 6, v5QuestionCount: 34, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(history.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(history.missingDepthDimensions).toEqual([]);
+    expect(ratio).toMatchObject({ originalQuestionCount: 10, v5QuestionCount: 30, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(ratio.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(ratio.missingDepthDimensions).toEqual([]);
+  });
+
+  it('requires authentic evidence for both physical-education targets', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const distinguish = report.existingContent.depthAudit.find((item) => item.targetId === 'PE_DISTINGUISH_ACTIVITY_EXERCISE_FII');
+    const safePlan = report.existingContent.depthAudit.find((item) => item.targetId === 'PE_PLAN_SAFE_ACTIVITY');
+
+    expect(distinguish).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 6, currentQuestionCount: 11, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(distinguish.dimensions.AUTHENTIC_EVIDENCE_READY).toBe(true);
+    expect(safePlan).toMatchObject({ originalQuestionCount: 7, v5QuestionCount: 6, currentQuestionCount: 13, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(safePlan.dimensions.AUTHENTIC_EVIDENCE_READY).toBe(true);
+    expect(safePlan.dimensions.MISCONCEPTION_RECOVERY_READY).toBe(true);
+    expect(distinguish.missingDepthDimensions).toEqual([]);
+    expect(safePlan.missingDepthDimensions).toEqual([]);
+  });
+
+  it('reconciles Portuguese cohesion content and advances the real queue', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const cohesion = report.existingContent.depthAudit.find((item) => item.targetId === 'PORTUGUESE_CONNECT_IDEAS');
+
+    expect(cohesion).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 35, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(cohesion.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(cohesion.missingDepthDimensions).toEqual([]);
+    expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
+  });
+
+  it('reconciles Portuguese inference while keeping its interpretation and publication gates explicit', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const inference = report.existingContent.depthAudit.find((item) => item.targetId === 'PORTUGUESE_INFER_FROM_CLUES');
+
+    expect(inference).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 35, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(inference.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(inference.missingDepthDimensions).toEqual([]);
+  });
+
+  it('reconciles safe dialogue mediation and advances to the final wave-one target', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const dialogue = report.existingContent.depthAudit.find((item) => item.targetId === 'RELIGIOUS_MEDIATE_DIALOGUE');
+
+    expect(dialogue).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 35, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(dialogue.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(dialogue.missingDepthDimensions).toEqual([]);
+    expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
+  });
+
+  it('closes all technical depth gaps in Wave 1 while preserving review and student gates', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const evidence = report.existingContent.depthAudit.find((item) => item.targetId === 'SCIENCE_EVIDENCE_CONCLUSION');
+
+    expect(evidence).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 35, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(evidence.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(evidence.missingDepthDimensions).toEqual([]);
+    expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
+    expect(report.existingContent.technicalDeepReady).toBe(26);
+  });
+
   it('prepares navigable unit persistence without student availability or fabricated BNCC links', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
     const sql = fs.readFileSync(new URL('../../content/bncc/authoring/curriculum-units-v4-staging.sql', import.meta.url), 'utf8');
@@ -201,7 +286,7 @@ describe('BNCC total knowledge factory V4', () => {
     expect(checkpoint.outputHash).toBe(first.inventoryHash);
     expect(checkpoint.completedWork).toContain('OFFICIAL_NODE_MATRIX_BUILT');
     expect(checkpoint.pendingItems).toBe(first.queue.totalItems);
-    expect(checkpoint.currentWave).toBe(1);
+    expect(checkpoint.currentWave).toBe(2);
   });
 
   it('keeps the historical V1/V2/V3 inputs and production outside the staging writer', () => {

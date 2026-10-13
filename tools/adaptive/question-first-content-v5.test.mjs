@@ -3,6 +3,14 @@ import { describe, expect, it } from 'vitest';
 
 import { buildMigration, validateQuestionFirstPack } from './compile-question-first-content-v5.mjs';
 import { buildComputingPhishingPack } from './build-computing-phishing-v5.mjs';
+import { buildScienceHumanDiversityPack } from './build-science-human-diversity-v5.mjs';
+import { buildHistoryCompareCausesPack } from './build-history-causes-v5.mjs';
+import { buildMathRatioUnitRatePack } from './build-math-ratio-rate-v5.mjs';
+import { buildPhysicalEducationAuthenticPacks } from './build-physical-education-authentic-v5.mjs';
+import { buildPortugueseConnectIdeasPack } from './build-portuguese-connect-ideas-v5.mjs';
+import { buildPortugueseInferFromCluesPack } from './build-portuguese-infer-clues-v5.mjs';
+import { buildReligiousMediateDialoguePack } from './build-religious-mediate-dialogue-v5.mjs';
+import { buildScienceEvidenceConclusionPack } from './build-science-evidence-conclusion-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -28,6 +36,25 @@ const artCharacterMigration = readFileSync(new URL('../../supabase/migrations/20
 const computingSearchPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-search-safe-browse.json', import.meta.url), 'utf8'));
 const computingPhishingPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-recognize-phishing.json', import.meta.url), 'utf8'));
 const computingPhishingMigration = readFileSync(new URL('../../supabase/migrations/20261013001200_bncc_computing_phishing_question_first_v5.sql', import.meta.url), 'utf8');
+const scienceHumanDiversityPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/science-human-diversity.json', import.meta.url), 'utf8'));
+const scienceHumanDiversityMigration = readFileSync(new URL('../../supabase/migrations/20261013001300_bncc_science_human_diversity_question_first_v5.sql', import.meta.url), 'utf8');
+const historyCausesPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/history-compare-causes.json', import.meta.url), 'utf8'));
+const historyCausesMigration = readFileSync(new URL('../../supabase/migrations/20261013001400_bncc_history_compare_causes_question_first_v5.sql', import.meta.url), 'utf8');
+const mathRatioRatePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/math-ratio-unit-rate.json', import.meta.url), 'utf8'));
+const mathRatioRateMigration = readFileSync(new URL('../../supabase/migrations/20261013001500_bncc_math_ratio_unit_rate_question_first_v5.sql', import.meta.url), 'utf8');
+const physicalEducationPacks = buildPhysicalEducationAuthenticPacks();
+const peDistinguishPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physical-activity-exercise.json', import.meta.url), 'utf8'));
+const peDistinguishMigration = readFileSync(new URL('../../supabase/migrations/20261013001600_bncc_pe_activity_exercise_authentic_v5.sql', import.meta.url), 'utf8');
+const peSafePlanPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physical-safe-activity.json', import.meta.url), 'utf8'));
+const peSafePlanMigration = readFileSync(new URL('../../supabase/migrations/20261013001700_bncc_pe_safe_activity_authentic_v5.sql', import.meta.url), 'utf8');
+const portugueseConnectIdeasPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/portuguese-connect-ideas.json', import.meta.url), 'utf8'));
+const portugueseConnectIdeasMigration = readFileSync(new URL('../../supabase/migrations/20261013001800_bncc_portuguese_connect_ideas_question_first_v5.sql', import.meta.url), 'utf8');
+const portugueseInferPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/portuguese-infer-from-clues.json', import.meta.url), 'utf8'));
+const portugueseInferMigration = readFileSync(new URL('../../supabase/migrations/20261013001900_bncc_portuguese_infer_from_clues_question_first_v5.sql', import.meta.url), 'utf8');
+const religiousDialoguePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/religious-mediate-dialogue.json', import.meta.url), 'utf8'));
+const religiousDialogueMigration = readFileSync(new URL('../../supabase/migrations/20261013002000_bncc_religious_mediate_dialogue_question_first_v5.sql', import.meta.url), 'utf8');
+const scienceEvidencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/science-evidence-conclusion.json', import.meta.url), 'utf8'));
+const scienceEvidenceMigration = readFileSync(new URL('../../supabase/migrations/20261013002100_bncc_science_evidence_conclusion_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -565,5 +592,239 @@ describe('question-first V5 staging content', () => {
     expect(computingPhishingMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(computingPhishingMigration).toContain('active, metadata)');
     expect(computingPhishingMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens human-diversity observation without exposing real students', () => {
+    const result = validateQuestionFirstPack(scienceHumanDiversityPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === scienceHumanDiversityPack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    expect(scienceHumanDiversityPack.lesson.authenticActivities[0].privacyGuard).toContain('Não coletar ou registrar');
+    expect(scienceHumanDiversityPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(scienceHumanDiversityPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(scienceHumanDiversityPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles the human-diversity increment as inactive staging without student records', () => {
+    expect(scienceHumanDiversityPack).toEqual(buildScienceHumanDiversityPack());
+    expect(scienceHumanDiversityMigration).toBe(buildMigration(scienceHumanDiversityPack));
+    expect(scienceHumanDiversityMigration).toContain("'SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI'");
+    expect(scienceHumanDiversityMigration).toContain("'publication_status', 'STAGING'");
+    expect(scienceHumanDiversityMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(scienceHumanDiversityMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens historical causality with varied evidence and preserves the staged review gates', () => {
+    const result = validateQuestionFirstPack(historyCausesPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(34);
+    expect(result.contextCount).toBe(34);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 10, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 8, D: 8 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === historyCausesPack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    expect(historyCausesPack.lesson.authenticActivities).toHaveLength(1);
+    expect(historyCausesPack.lesson.sourceDossier).toHaveLength(4);
+    expect(historyCausesPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(historyCausesPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(historyCausesPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles historical causality as inactive staging without student records', () => {
+    expect(historyCausesPack).toEqual(buildHistoryCompareCausesPack());
+    expect(historyCausesMigration).toBe(buildMigration(historyCausesPack));
+    expect(historyCausesMigration).toContain("'HISTORY_COMPARE_CAUSES'");
+    expect(historyCausesMigration).toContain("'publication_status', 'STAGING'");
+    expect(historyCausesMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(historyCausesMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens unit-rate reasoning across conversions, comparisons, and non-proportional cases', () => {
+    const result = validateQuestionFirstPack(mathRatioRatePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(30);
+    expect(result.contextCount).toBe(30);
+    expect(result.counts).toEqual({ PROBE: 2, PRACTICE: 8, TRANSFER: 7, LOCK_IN: 5, REVIEW: 8 });
+    expect(result.answerPositionCounts).toEqual({ A: 8, B: 8, C: 7, D: 7 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === mathRatioRatePack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    expect(mathRatioRatePack.lesson.remediations).toHaveLength(5);
+    expect(mathRatioRatePack.lesson.authenticActivities).toHaveLength(1);
+    expect(mathRatioRatePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(mathRatioRatePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(mathRatioRatePack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles unit-rate content as inactive staging without student records', () => {
+    expect(mathRatioRatePack).toEqual(buildMathRatioUnitRatePack());
+    expect(mathRatioRateMigration).toBe(buildMigration(mathRatioRatePack));
+    expect(mathRatioRateMigration).toContain("'MATH_RATIO_UNIT_RATE'");
+    expect(mathRatioRateMigration).toContain("'publication_status', 'STAGING'");
+    expect(mathRatioRateMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(mathRatioRateMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens Portuguese connectors with distinct functions, contexts and evidence-calibrated reasoning', () => {
+    const result = validateQuestionFirstPack(portugueseConnectIdeasPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === portugueseConnectIdeasPack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    expect(portugueseConnectIdeasPack.questions.some((question) => question.explanation.includes('não prova'))).toBe(true);
+    expect(portugueseConnectIdeasPack.lesson.progression.flatMap((stage) => stage.questionIds)).toHaveLength(35);
+    expect(portugueseConnectIdeasPack.lesson.microExplanations).toHaveLength(6);
+    expect(portugueseConnectIdeasPack.lesson.remediations).toHaveLength(5);
+    expect(portugueseConnectIdeasPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(portugueseConnectIdeasPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(portugueseConnectIdeasPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(portugueseConnectIdeasPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles Portuguese connector practice as inactive staging without student records', () => {
+    expect(portugueseConnectIdeasPack).toEqual(buildPortugueseConnectIdeasPack());
+    expect(portugueseConnectIdeasMigration).toBe(buildMigration(portugueseConnectIdeasPack));
+    expect(portugueseConnectIdeasMigration).toContain("'PORTUGUESE_CONNECT_IDEAS'");
+    expect(portugueseConnectIdeasMigration).toContain("'publication_status', 'STAGING'");
+    expect(portugueseConnectIdeasMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(portugueseConnectIdeasMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(portugueseConnectIdeasMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens Portuguese inference with clue-backed conclusions and explicit limits', () => {
+    const result = validateQuestionFirstPack(portugueseInferPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === portugueseInferPack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    expect(portugueseInferPack.questions.some((question) => question.explanation.includes('não informa'))).toBe(true);
+    expect(portugueseInferPack.lesson.progression.flatMap((stage) => stage.questionIds)).toHaveLength(35);
+    expect(portugueseInferPack.lesson.microExplanations).toHaveLength(6);
+    expect(portugueseInferPack.lesson.remediations).toHaveLength(5);
+    expect(portugueseInferPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(portugueseInferPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(portugueseInferPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(portugueseInferPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles inference practice as inactive staging without student records', () => {
+    expect(portugueseInferPack).toEqual(buildPortugueseInferFromCluesPack());
+    expect(portugueseInferMigration).toBe(buildMigration(portugueseInferPack));
+    expect(portugueseInferMigration).toContain("'PORTUGUESE_INFER_FROM_CLUES'");
+    expect(portugueseInferMigration).toContain("'publication_status', 'STAGING'");
+    expect(portugueseInferMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(portugueseInferMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(portugueseInferMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens dialogue mediation with privacy, pluralism and safety boundaries', () => {
+    const result = validateQuestionFirstPack(religiousDialoguePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === religiousDialoguePack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    expect(religiousDialoguePack.questions.some((question) => question.statement.includes('ameaçad'))).toBe(true);
+    expect(religiousDialoguePack.lesson.remediations).toHaveLength(5);
+    expect(religiousDialoguePack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(religiousDialoguePack.lesson.authenticActivities[0].mediation).toContain('não substitui');
+    expect(religiousDialoguePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(religiousDialoguePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(religiousDialoguePack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles dialogue mediation as inactive staging without student records', () => {
+    expect(religiousDialoguePack).toEqual(buildReligiousMediateDialoguePack());
+    expect(religiousDialogueMigration).toBe(buildMigration(religiousDialoguePack));
+    expect(religiousDialogueMigration).toContain("'RELIGIOUS_MEDIATE_DIALOGUE'");
+    expect(religiousDialogueMigration).toContain("'publication_status', 'STAGING'");
+    expect(religiousDialogueMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(religiousDialogueMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(religiousDialogueMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens scientific conclusions through measured evidence, alternatives and scope limits', () => {
+    const result = validateQuestionFirstPack(scienceEvidencePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === scienceEvidencePack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    expect(scienceEvidencePack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(scienceEvidencePack.lesson.authenticActivities[0].safety).toContain('Não usar produtos químicos');
+    expect(scienceEvidencePack.lesson.remediations).toHaveLength(5);
+    expect(scienceEvidencePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(scienceEvidencePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(scienceEvidencePack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles science evidence practice as inactive staging without student records', () => {
+    expect(scienceEvidencePack).toEqual(buildScienceEvidenceConclusionPack());
+    expect(scienceEvidenceMigration).toBe(buildMigration(scienceEvidencePack));
+    expect(scienceEvidenceMigration).toContain("'SCIENCE_EVIDENCE_CONCLUSION'");
+    expect(scienceEvidenceMigration).toContain("'publication_status', 'STAGING'");
+    expect(scienceEvidenceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(scienceEvidenceMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(scienceEvidenceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('requires authentic, accessible evidence for physical-education targets', () => {
+    for (const [pack, migration, expectedSkill] of [
+      [peDistinguishPack, peDistinguishMigration, 'PE_DISTINGUISH_ACTIVITY_EXERCISE_FII'],
+      [peSafePlanPack, peSafePlanMigration, 'PE_PLAN_SAFE_ACTIVITY'],
+    ]) {
+      const result = validateQuestionFirstPack(pack);
+      expect(result.valid).toBe(true);
+      expect(result.questionCount).toBe(6);
+      expect(result.contextCount).toBe(6);
+      expect(result.counts).toEqual({ PROBE: 1, PRACTICE: 2, TRANSFER: 1, LOCK_IN: 1, REVIEW: 1 });
+      expect(result.answerPositionCounts).toEqual({ A: 2, B: 2, C: 1, D: 1 });
+      expect(pack.lesson.authenticActivities).toHaveLength(1);
+      expect(pack.lesson.authenticActivities[0].rubric.length).toBeGreaterThanOrEqual(3);
+      expect(pack.lesson.authenticActivities[0].privacyGuard).toContain('Não coletar');
+      expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+      expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+      expect(pack.publicationStatus).toBe('STAGING');
+      expect(migration).toBe(buildMigration(pack));
+      expect(migration).toContain(`'${expectedSkill}'`);
+      expect(migration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+      expect(migration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+    }
+    expect(peDistinguishPack).toEqual(physicalEducationPacks.distinguish);
+    expect(peSafePlanPack).toEqual(physicalEducationPacks.safePlan);
   });
 });

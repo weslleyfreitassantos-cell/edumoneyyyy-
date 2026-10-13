@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
     "v3Graph": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583",
-    "v5QuestionFirstPacks": "e5602dac3bc10bbbf0f7ec9dc76d39bf1a504afdb59c9832d3883e5649ab7ff6"
+    "v5QuestionFirstPacks": "306ec630e8191e0254fde3ff77a11f7e4df25c96132843865c8e2842a9aeba2e"
   },
   "normativeContext": {
     "officialCatalogFreeze": "2026-10-03",
@@ -81,21 +81,21 @@
   "existingContent": {
     "v3Targets": 24,
     "auditedSequences": 26,
-    "deepContentReady": 17,
-    "technicalDeepReady": 17,
+    "deepContentReady": 26,
+    "technicalDeepReady": 26,
     "pedagogicalReviewPending": 26,
     "depthStatusCounts": {
       "STRUCTURAL_READY": 26
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 25,
-      "QUESTION_POOL_DEPTH_READY": 16,
+      "LESSON_DEPTH_READY": 26,
+      "QUESTION_POOL_DEPTH_READY": 23,
       "DIFFICULTY_PROGRESSION_READY": 23,
-      "CONTEXT_DIVERSITY_READY": 16,
-      "TRANSFER_READY": 16,
-      "MISCONCEPTION_RECOVERY_READY": 24,
-      "REVIEW_CONTENT_READY": 16,
-      "AUTHENTIC_EVIDENCE_READY": 17
+      "CONTEXT_DIVERSITY_READY": 23,
+      "TRANSFER_READY": 23,
+      "MISCONCEPTION_RECOVERY_READY": 26,
+      "REVIEW_CONTENT_READY": 23,
+      "AUTHENTIC_EVIDENCE_READY": 26
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -104,10 +104,10 @@
       "LOCK_IN": 6,
       "REVIEW": 10
     },
-    "questionsBelowAnyMinimum": 7,
+    "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 551,
-    "consolidatedQuestionTotal": 701,
+    "v5QuestionTotal": 802,
+    "consolidatedQuestionTotal": 952,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
       {
@@ -116,7 +116,7 @@
         "questionCount": 10
       }
     ],
-    "lessonsNeedingDepthReview": 1,
+    "lessonsNeedingDepthReview": 0,
     "reviewPending": 26,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
@@ -472,17 +472,17 @@
         "stage": "FUNDAMENTAL_II",
         "currentDepthStatus": "STRUCTURAL_READY",
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
-        "lessonTitle": "Causas historicas se combinam e atuam em tempos diferentes",
+        "lessonTitle": "Causas históricas se combinam e atuam em tempos diferentes",
         "originalQuestionCount": 6,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 34,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 6,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 2,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -491,62 +491,35 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 2,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
           "LESSON_DEPTH_READY": true,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
           "MISCONCEPTION_RECOVERY_READY": true,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 6,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
           "HARD"
         ],
         "answerKeyValid": true,
-        "lessonExplanationStepCount": 4,
+        "lessonExplanationStepCount": 6,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -904,18 +877,18 @@
         "subject": "MATHEMATICS",
         "stage": "FUNDAMENTAL_II",
         "currentDepthStatus": "STRUCTURAL_READY",
-        "lessonStatus": "LESSON_DEPTH_REVIEW_REQUIRED",
-        "lessonTitle": "Interpretar razao e calcular taxa unitaria",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Razão, taxa unitária e comparação justa",
         "originalQuestionCount": 10,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 30,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 10,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 2,
-          "PRACTICE": 4,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 2
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -924,65 +897,35 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 2,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 4,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 2,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
-          "LESSON_DEPTH_READY": false,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
-          "MISCONCEPTION_RECOVERY_READY": false,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "LESSON_DEPTH_READY",
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "MISCONCEPTION_RECOVERY_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY",
-          "PREREQUISITE_CONTEXT_READY"
-        ],
-        "contextFamilyCount": 10,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
           "HARD"
         ],
         "answerKeyValid": true,
-        "lessonExplanationStepCount": 1,
-        "misconceptionRecoveryStatus": "REMEDIATION_GAP",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "lessonExplanationStepCount": 7,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -995,15 +938,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Atividade fisica e exercicio: relacionados, mas nao iguais",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 6,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 5,
+        "currentQuestionCount": 11,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 1,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 2,
+          "PRACTICE": 3,
+          "TRANSFER": 2,
+          "LOCK_IN": 2,
+          "REVIEW": 2
         },
         "minimumTargets": "AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED",
         "missingMinimums": {},
@@ -1018,12 +961,10 @@
           "TRANSFER_READY": null,
           "MISCONCEPTION_RECOVERY_READY": true,
           "REVIEW_CONTENT_READY": null,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 5,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 11,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -1033,12 +974,12 @@
         "lessonExplanationStepCount": 4,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
         "spacedReviewStatus": "NOT_APPLICABLE_FOR_PRACTICAL_EVIDENCE",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
-        "nextAction": "AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE"
+        "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
       },
       {
         "targetId": "PE_PLAN_SAFE_ACTIVITY",
@@ -1049,15 +990,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Atividade fisica, exercicio e escolhas seguras",
         "originalQuestionCount": 7,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 6,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 7,
+        "currentQuestionCount": 13,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 2,
-          "TRANSFER": 1,
-          "LOCK_IN": 2,
-          "REVIEW": 1
+          "PROBE": 2,
+          "PRACTICE": 4,
+          "TRANSFER": 2,
+          "LOCK_IN": 3,
+          "REVIEW": 2
         },
         "minimumTargets": "AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED",
         "missingMinimums": {},
@@ -1070,15 +1011,12 @@
           "DIFFICULTY_PROGRESSION_READY": null,
           "CONTEXT_DIVERSITY_READY": null,
           "TRANSFER_READY": null,
-          "MISCONCEPTION_RECOVERY_READY": false,
+          "MISCONCEPTION_RECOVERY_READY": true,
           "REVIEW_CONTENT_READY": null,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "MISCONCEPTION_RECOVERY_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 7,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 13,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -1086,14 +1024,14 @@
         ],
         "answerKeyValid": true,
         "lessonExplanationStepCount": 4,
-        "misconceptionRecoveryStatus": "REMEDIATION_GAP",
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
         "spacedReviewStatus": "NOT_APPLICABLE_FOR_PRACTICAL_EVIDENCE",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
-        "nextAction": "AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE"
+        "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
       },
       {
         "targetId": "PHYSICS_MODEL_FORCE",
@@ -1220,15 +1158,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Conectores mostram como as ideias se relacionam",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 35,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 5,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 1,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1237,62 +1175,35 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
           "LESSON_DEPTH_READY": true,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
           "MISCONCEPTION_RECOVERY_READY": true,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 5,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
           "HARD"
         ],
         "answerKeyValid": true,
-        "lessonExplanationStepCount": 4,
+        "lessonExplanationStepCount": 5,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -1363,15 +1274,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Inferir sem abandonar as pistas do texto",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 35,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 5,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 1,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1380,62 +1291,35 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
           "LESSON_DEPTH_READY": true,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
           "MISCONCEPTION_RECOVERY_READY": true,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 5,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
           "HARD"
         ],
         "answerKeyValid": true,
-        "lessonExplanationStepCount": 4,
+        "lessonExplanationStepCount": 5,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -1504,17 +1388,17 @@
         "stage": "FUNDAMENTAL_II",
         "currentDepthStatus": "STRUCTURAL_READY",
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
-        "lessonTitle": "Mediar divergencias sem exigir concordancia",
+        "lessonTitle": "Mediar divergências sem exigir concordância",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 35,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 5,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 1,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1523,62 +1407,35 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
           "LESSON_DEPTH_READY": true,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
           "MISCONCEPTION_RECOVERY_READY": true,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 5,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 39,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
           "HARD"
         ],
         "answerKeyValid": true,
-        "lessonExplanationStepCount": 4,
+        "lessonExplanationStepCount": 6,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -1589,17 +1446,17 @@
         "stage": "FUNDAMENTAL_I",
         "currentDepthStatus": "STRUCTURAL_READY",
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
-        "lessonTitle": "Observar diferencas sem comparar valor",
+        "lessonTitle": "Observar diferenças sem comparar valor",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 35,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 5,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 1,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1608,62 +1465,35 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
           "LESSON_DEPTH_READY": true,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
           "MISCONCEPTION_RECOVERY_READY": true,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 5,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
           "HARD"
         ],
         "answerKeyValid": true,
-        "lessonExplanationStepCount": 4,
+        "lessonExplanationStepCount": 5,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -1676,15 +1506,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "O que os dados permitem concluir?",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 35,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 5,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 1,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1693,62 +1523,35 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
           "LESSON_DEPTH_READY": true,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
           "MISCONCEPTION_RECOVERY_READY": true,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 5,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 39,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
           "HARD"
         ],
         "answerKeyValid": true,
-        "lessonExplanationStepCount": 4,
+        "lessonExplanationStepCount": 6,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -1832,298 +1635,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1782,
+    "totalItems": 1773,
     "byWave": {
-      "WAVE_1": 9,
       "WAVE_2": 52,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "AUTHENTIC_EVIDENCE_GAP": 2,
       "CONTENT_GAP": 52,
-      "DEPTH_GAP": 7,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 1,
-        "id": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
-        "stage": "FUNDAMENTAL_I",
-        "subject": "SCIENCE",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ]
-      },
-      {
-        "wave": 1,
-        "id": "HISTORY_COMPARE_CAUSES",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "HISTORY",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 2,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ]
-      },
-      {
-        "wave": 1,
-        "id": "MATH_RATIO_UNIT_RATE",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "MATHEMATICS",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 2,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 4,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 2,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "LESSON_DEPTH_READY",
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "MISCONCEPTION_RECOVERY_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY",
-          "PREREQUISITE_CONTEXT_READY"
-        ]
-      },
-      {
-        "wave": 1,
-        "id": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "PHYSICAL_EDUCATION",
-        "status": "AUTHENTIC_EVIDENCE_GAP",
-        "reason": "Objective questions alone cannot substantiate performance or observation evidence."
-      },
-      {
-        "wave": 1,
-        "id": "PE_PLAN_SAFE_ACTIVITY",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "PHYSICAL_EDUCATION",
-        "status": "AUTHENTIC_EVIDENCE_GAP",
-        "reason": "Objective questions alone cannot substantiate performance or observation evidence."
-      },
-      {
-        "wave": 1,
-        "id": "PORTUGUESE_CONNECT_IDEAS",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "PORTUGUESE",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ]
-      },
-      {
-        "wave": 1,
-        "id": "PORTUGUESE_INFER_FROM_CLUES",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "PORTUGUESE",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ]
-      },
-      {
-        "wave": 1,
-        "id": "RELIGIOUS_MEDIATE_DIALOGUE",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "RELIGIOUS_EDUCATION",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ]
-      },
-      {
-        "wave": 1,
-        "id": "SCIENCE_EVIDENCE_CONCLUSION",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "SCIENCE",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ]
-      },
       {
         "wave": 2,
         "id": "BIOLOGY_CELL_FUNCTION",
@@ -16319,5 +15841,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "bc5555f29727ff8cf4192d8620a995b0e3b60e579f6f376b27cfd2f163da05ee"
+  "inventoryHash": "3c128fe4f8cd8043682b6db124de0fc217e2263762e7bb5ce2554f84112acef7"
 }

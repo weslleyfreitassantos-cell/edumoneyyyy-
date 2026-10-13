@@ -1,0 +1,1257 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "history-compare-causes",
+  "canonicalSkillCode": "HISTORY_COMPARE_CAUSES",
+  "subject": "HISTORY",
+  "domain": "CAUSALIDADE",
+  "topic": "causas, processos e consequências históricas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 3,
+    "PRACTICE": 10,
+    "TRANSFER": 7,
+    "LOCK_IN": 5,
+    "REVIEW": 9
+  },
+  "expectedQuestionCount": 34,
+  "expectedContextCount": 34,
+  "expectedAnswerPositionCounts": {
+    "A": 9,
+    "B": 9,
+    "C": 8,
+    "D": 8
+  },
+  "lesson": {
+    "title": "Causas históricas se combinam e atuam em tempos diferentes",
+    "objective": "Construir e revisar explicações históricas que relacionem fatores, agentes, escalas de tempo e evidências sem reduzir um processo a uma causa única.",
+    "summary": "Uma mudança histórica pode envolver condições de longa duração, decisões e acontecimentos próximos, além de ações de muitos grupos. Uma sequência de datas não prova sozinha uma causa. Compare fontes, procure mecanismos e indique os limites da explicação.",
+    "explanation": "## Separe processo e acontecimento\nUm processo pode se desenvolver por anos ou décadas; uma lei, protesto ou votação é um acontecimento situado no tempo. O acontecimento pode integrar um processo, mas não explica automaticamente tudo o que veio antes ou depois.\n\n## Procure relações, não apenas uma lista\nPergunte como um fator pode ter influenciado outro e que evidências mostram essa ligação. Causas podem atuar em escalas diferentes: condições mais duradouras, mobilizações, decisões, conflitos e acontecimentos próximos. Mais de uma relação pode ser relevante; ainda assim, cada uma precisa ser investigada.\n\n## Considere agentes e perspectivas\nNão conte a história apenas pela ação de autoridades. Investigue quem agiu, resistiu, organizou, debateu ou foi afetado. Diferentes grupos podem ter objetivos e experiências distintos. Não invente vozes ausentes: registre lacunas e procure outros tipos de fonte.\n\n## Leia fontes com cuidado\nObserve autoria, data, propósito e contexto. Uma lei mostra uma decisão formal; registros de processos, jornais, cartas e outros documentos podem mostrar debates e experiências diferentes. Uma fonte ajuda a responder algumas perguntas, não todas.\n\n## Exemplo resolvido: processo de abolição no Brasil\nO Arquivo Nacional descreve um processo longo com medidas legais anteriores, crescimento de movimentos abolicionistas, pressão social, resistência de pessoas escravizadas e debates políticos. A Lei Áurea, de 13 de maio de 1888, encerrou juridicamente a escravidão no Brasil. Para explicar o processo, relacionamos esses elementos com evidências; não tratamos a assinatura como causa única nem as pessoas escravizadas como passivas. Os documentos disponíveis têm recortes, então novas fontes podem ampliar ou corrigir a análise.\n\n## Revise sua conclusão\nUma boa explicação responde “como sabemos?”, “que outras condições podem ter atuado?” e “o que esta fonte não mostra?”. Use termos proporcionais à evidência, como “contribuiu”, “ajuda a explicar” ou “as fontes consultadas sugerem”, em vez de afirmar inevitabilidade sem base.",
+    "workedExample": "Pergunta: “Por que a Lei Áurea foi aprovada em 1888?” Passo 1: delimite o acontecimento e o processo mais longo. Passo 2: reúna fontes sobre leis anteriores, mobilização, resistência e debates políticos. Passo 3: explique uma ligação que as fontes sustentem. Passo 4: registre o que ainda não sabemos. Conclusão cuidadosa: diferentes ações e condições contribuíram para o processo; uma única data não resume sua história.",
+    "commonMistake": "Confundir “aconteceu depois” com “foi causado por”; tratar uma lei ou uma autoridade como explicação completa; listar fatores sem relacioná-los; apagar a ação de grupos sociais; ou afirmar mais do que as fontes permitem.",
+    "tips": [
+      "Defina qual processo e qual acontecimento você está explicando.",
+      "Monte uma linha do tempo, mas não trate a ordem como prova causal.",
+      "Para cada ligação, pergunte que mecanismo e evidência a sustentam.",
+      "Compare fontes e identifique quem produziu cada uma.",
+      "Registre agentes ausentes e limites do acervo, sem inventar evidências."
+    ],
+    "priorKnowledge": [
+      "Ler uma linha do tempo simples.",
+      "Distinguir acontecimento e período.",
+      "Localizar autoria e data básicas em uma fonte."
+    ],
+    "keyConcepts": [
+      "processo histórico",
+      "acontecimento",
+      "causa",
+      "consequência",
+      "agência",
+      "escala temporal",
+      "evidência",
+      "perspectiva",
+      "lacuna documental"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Distinguir cronologia de causalidade e identificar mais de um fator.",
+        "questionIds": [
+          "v5-history-causes-probe-01",
+          "v5-history-causes-probe-02",
+          "v5-history-causes-probe-03",
+          "v5-history-causes-practice-01",
+          "v5-history-causes-practice-02",
+          "v5-history-causes-practice-03"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Relacionar processos e acontecimentos com evidências e agentes.",
+        "questionIds": [
+          "v5-history-causes-practice-04",
+          "v5-history-causes-practice-05",
+          "v5-history-causes-practice-06",
+          "v5-history-causes-practice-07",
+          "v5-history-causes-practice-08",
+          "v5-history-causes-practice-09",
+          "v5-history-causes-practice-10"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Usar comparação de fontes, escalas e consequências em outros processos.",
+        "questionIds": [
+          "v5-history-causes-transfer-01",
+          "v5-history-causes-transfer-02",
+          "v5-history-causes-transfer-03",
+          "v5-history-causes-transfer-04",
+          "v5-history-causes-transfer-05",
+          "v5-history-causes-transfer-06",
+          "v5-history-causes-transfer-07"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Revisar explicações monocausais e reconhecer limites documentais.",
+        "questionIds": [
+          "v5-history-causes-lock-01",
+          "v5-history-causes-lock-02",
+          "v5-history-causes-lock-03",
+          "v5-history-causes-lock-04",
+          "v5-history-causes-lock-05"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar causalidade, agência e proporcionalidade da evidência.",
+        "questionIds": [
+          "v5-history-causes-review-01",
+          "v5-history-causes-review-02",
+          "v5-history-causes-review-03",
+          "v5-history-causes-review-04",
+          "v5-history-causes-review-05",
+          "v5-history-causes-review-06",
+          "v5-history-causes-review-07",
+          "v5-history-causes-review-08",
+          "v5-history-causes-review-09"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "AFTER_IS_NOT_CAUSE",
+        "text": "“Depois” informa a ordem. Procure evidências do mecanismo que poderia ligar os fatos."
+      },
+      {
+        "trigger": "SINGLE_CAUSE",
+        "text": "Antes de escolher uma causa total, compare outros fatores, agentes e escalas de tempo."
+      },
+      {
+        "trigger": "PROCESS_VS_EVENT",
+        "text": "Uma lei ou votação tem uma data; o processo que a envolve pode ser bem mais longo."
+      },
+      {
+        "trigger": "SOURCE_PERSPECTIVE",
+        "text": "Observe quem produziu a fonte, para quem e com qual propósito; compare com outras evidências."
+      },
+      {
+        "trigger": "HISTORICAL_AGENCY",
+        "text": "Investigue as ações dos grupos envolvidos. Não descreva pessoas como se apenas recebessem decisões."
+      },
+      {
+        "trigger": "EVIDENCE_LIMIT",
+        "text": "Se uma fonte não responde, registre a lacuna e procure outra; não invente a informação ausente."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "AFTER_MEANS_CAUSED",
+        "prompt": "Desenhe a ordem dos acontecimentos. Depois acrescente uma seta causal somente se conseguir escrever a evidência que a sustenta."
+      },
+      {
+        "misconception": "SINGLE_CAUSE",
+        "prompt": "Liste condições, ações e decisões de momentos diferentes. Escolha duas e explique como poderiam se relacionar."
+      },
+      {
+        "misconception": "PASSIVE_ENSLAVED_PEOPLE",
+        "prompt": "Procure no dossiê registros de resistência e busca por liberdade. Reescreva a explicação citando a ação documentada sem generalizar todas as experiências."
+      },
+      {
+        "misconception": "LAW_EQUALS_EXPERIENCE",
+        "prompt": "Separe o que o texto legal determina do que outras fontes mostram sobre aplicação e experiências."
+      },
+      {
+        "misconception": "SOURCE_SPEAKS_FOR_ALL",
+        "prompt": "Identifique autoria, data, propósito e uma pergunta que essa fonte não consegue responder sozinha."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-history-source-causality-map",
+        "title": "Mapa de causas com evidências",
+        "objective": "Construir uma explicação causal provisória e revisável a partir de documentos históricos com autoria e contexto identificados.",
+        "context": "Investigação mediada sobre um processo histórico selecionado pelo professor, com possibilidade de usar o processo de abolição no Brasil e documentos públicos do Arquivo Nacional.",
+        "materials": [
+          "Duas ou mais fontes contextualizadas e selecionadas pelo professor",
+          "Linha do tempo",
+          "Quadro “afirmação, evidência, limite da fonte”"
+        ],
+        "instructions": "Em pequenos grupos, delimite o processo e a pergunta. Registre acontecimentos e escalas de tempo; identifique agentes e perspectivas presentes em cada fonte; proponha ligações causais apenas quando houver evidência; marque dúvidas e vozes ausentes. Compare as explicações e revise uma delas. Não faça encenação de escravização, violência ou papéis de pessoas oprimidas; a mediação deve contextualizar o tema e permitir uma alternativa equivalente de participação.",
+        "evidence": "Linha do tempo, mapa com ao menos duas ligações justificadas por evidências, identificação de autoria/contexto e nota explícita sobre uma limitação ou questão ainda aberta.",
+        "safety": "Selecionar fontes adequadas à faixa etária; contextualizar a escravidão sem simulação ou exposição traumática; interromper falas desumanizantes; não exigir relato de identidade, ancestralidade ou experiência familiar.",
+        "privacyGuard": "Não coletar ancestralidade, raça, opinião familiar, história pessoal ou identificação de estudantes. A avaliação recai sobre o uso de evidências históricas, não sobre identidade ou posição familiar.",
+        "ageRange": "6º ao 9º ano do Ensino Fundamental, com fontes e mediação ajustadas pelo professor.",
+        "mediation": "O professor distingue análise de justificativa moral da escravidão, considera a agência de pessoas escravizadas e movimentos sociais, questiona explicações que apagam grupos e permite que estudantes sinalizem desconforto ou realizem uma tarefa alternativa equivalente.",
+        "rubric": [
+          {
+            "criterion": "Relação causal e escala temporal",
+            "emerging": "Confunde sequência com causa ou usa um fator único sem evidência.",
+            "developing": "Propõe uma ligação causal com apoio, mas ainda não indica seu mecanismo ou escala.",
+            "proficient": "Relaciona fatores de momentos diferentes e explica cada ligação com evidência e linguagem proporcional."
+          },
+          {
+            "criterion": "Uso de fontes",
+            "emerging": "Trata uma fonte como relato completo e neutro.",
+            "developing": "Identifica autoria ou data com orientação.",
+            "proficient": "Compara autoria, contexto e limites de mais de uma fonte."
+          },
+          {
+            "criterion": "Agentes e perspectivas",
+            "emerging": "Apaga grupos envolvidos ou generaliza suas experiências.",
+            "developing": "Nomeia mais de um agente após orientação.",
+            "proficient": "Reconhece agência e perspectivas diversas sem afirmar que uma fonte representa todos."
+          },
+          {
+            "criterion": "Revisão da explicação",
+            "emerging": "Mantém uma afirmação mesmo sem evidência.",
+            "developing": "Marca uma dúvida após intervenção.",
+            "proficient": "Indica lacuna, busca evidência adicional e ajusta a conclusão sem inventar dados."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 25,
+    "sourceDossier": [
+      {
+        "title": "Legislação abolicionista no Império",
+        "publisher": "Arquivo Nacional",
+        "url": "https://www.gov.br/arquivonacional/pt-br/sites_eventos/sites-tematicos-1/brasil-oitocentista/temas-oitocentistas/legislacao-abolicionista-no-imperio",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Processo longo com etapas legais, mobilização, resistência, pressões e debates políticos; variação regional."
+        ],
+        "use": "Fonte de contexto histórico para o exemplo resolvido. O pacote não copia o texto nem afirma que a lista de fatores seja completa."
+      },
+      {
+        "title": "Escravizados e a conquista da liberdade na Justiça do Império",
+        "publisher": "Arquivo Nacional",
+        "url": "https://www.gov.br/arquivonacional/pt-br/sites_eventos/sites-tematicos-1/brasil-oitocentista/temas-oitocentistas/escravizados-e-a-conquista-da-liberdade-na-justica-do-imperio",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Registros de pessoas escravizadas que recorreram à Justiça para buscar liberdade e agência histórica."
+        ],
+        "use": "Referência para não retratar pessoas escravizadas como passivas; não extrapolar um registro para todas as experiências."
+      },
+      {
+        "title": "Lei Áurea faz parte do acervo do Arquivo Nacional",
+        "publisher": "Arquivo Nacional",
+        "url": "https://www.gov.br/arquivonacional/pt-br/canais_atendimento/imprensa/noticias/lei-aurea-faz-parte-do-acervo-do-arquivo-nacional",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Data da Lei Áurea e contexto de leis abolicionistas anteriores e movimento abolicionista."
+        ],
+        "use": "Fonte institucional para checar fatos cronológicos; a explicação continua aberta à análise de outras evidências."
+      },
+      {
+        "title": "Apesar de silenciado, povo também conduziu a história",
+        "publisher": "Senado Federal",
+        "url": "https://www12.senado.leg.br/noticias/infomaterias/2022/09/apesar-silenciado-povo-tambem-conduziu-a-historia",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Participação popular e movimento abolicionista na história do Brasil."
+        ],
+        "use": "Perspectiva complementar de agência social; cruzar com documentos e outros estudos."
+      }
+    ],
+    "copyrightNote": "Questões, alternativas, exemplos e atividade são autorais. As fontes oficiais fundamentam datas e contexto, não substituem pesquisa historiográfica ampla nem revisão pedagógica. Mapeamento oficial e revisão humana permanecem pendentes."
+  },
+  "questions": [
+    {
+      "id": "v5-history-causes-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SEQUENCE_OR_CAUSE",
+      "statement": "Um registro diz que uma ponte foi inaugurada e, depois, a feira da cidade cresceu. O que essa ordem permite concluir?",
+      "options": [
+        "A feira cresceu depois; ainda precisamos investigar se e como a ponte contribuiu.",
+        "A ponte é a única causa do crescimento.",
+        "A feira causou a construção da ponte.",
+        "A ordem prova que não houve outros fatores."
+      ],
+      "correctAnswer": "A feira cresceu depois; ainda precisamos investigar se e como a ponte contribuiu.",
+      "explanation": "A sequência temporal é uma pista, não demonstra sozinha uma relação causal.",
+      "hint": "Pergunte que evidências ligam os acontecimentos.",
+      "errorFocus": "Tratar “depois” como prova de causa",
+      "misconceptions": {
+        "A ponte é a única causa do crescimento.": [
+          "AFTER_MEANS_CAUSED"
+        ],
+        "A feira causou a construção da ponte.": [
+          "SINGLE_CAUSE"
+        ],
+        "A ordem prova que não houve outros fatores.": [
+          "NO_OTHER_FACTORS"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ABOLITION_OVERVIEW",
+      "statement": "Um texto sobre a abolição no Brasil menciona leis, mobilizações e resistência de pessoas escravizadas. Qual explicação é mais cuidadosa?",
+      "options": [
+        "A assinatura de 1888 explica sozinha todo o processo.",
+        "Investigar como diferentes ações e condições se relacionaram ao longo do processo.",
+        "As pessoas escravizadas apenas esperaram uma decisão política.",
+        "Uma lista de leis prova que todos concordavam."
+      ],
+      "correctAnswer": "Investigar como diferentes ações e condições se relacionaram ao longo do processo.",
+      "explanation": "O processo teve duração e agentes diversos; a pergunta precisa considerar relações e evidências.",
+      "hint": "Procure mais de um fator e pergunte quem agiu.",
+      "errorFocus": "Explicação monocausal e apagamento de agência",
+      "misconceptions": {
+        "A assinatura de 1888 explica sozinha todo o processo.": [
+          "SIGNATURE_ONLY"
+        ],
+        "As pessoas escravizadas apenas esperaram uma decisão política.": [
+          "PASSIVE_ENSLAVED_PEOPLE"
+        ],
+        "Uma lista de leis prova que todos concordavam.": [
+          "CONSENSUS_FROM_LAWS"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TWO_SOURCE_PERSPECTIVES",
+      "statement": "Duas fontes explicam uma mudança histórica de maneiras diferentes. O que fazer primeiro?",
+      "options": [
+        "Escolher a fonte mais curta como verdadeira.",
+        "Somar as afirmações como se fossem números.",
+        "Comparar autoria, data, objetivo e evidências antes de relacionar as explicações.",
+        "Concluir que uma fonte mente sem examiná-la."
+      ],
+      "correctAnswer": "Comparar autoria, data, objetivo e evidências antes de relacionar as explicações.",
+      "explanation": "Diferenças podem refletir perguntas e posições distintas; é preciso avaliar o que cada fonte sustenta.",
+      "hint": "Descubra quem produziu cada fonte e em que contexto.",
+      "errorFocus": "Julgar fontes sem analisar procedência",
+      "misconceptions": {
+        "Escolher a fonte mais curta como verdadeira.": [
+          "SHORT_EQUALS_TRUE"
+        ],
+        "Somar as afirmações como se fossem números.": [
+          "ADD_CLAIMS"
+        ],
+        "Concluir que uma fonte mente sem examiná-la.": [
+          "DISAGREEMENT_EQUALS_LIE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAUSES_AND_CONSEQUENCES",
+      "statement": "Em um estudo, o aumento de uma rota comercial aconteceu antes de novas construções na região. Qual pergunta ajuda a investigar causalidade?",
+      "options": [
+        "Afirmar que a rota causou todas as construções.",
+        "Ignorar o que aconteceu antes.",
+        "Supor que a ordem dos eventos prova o motivo.",
+        "Que outras mudanças ocorreram e por quais mecanismos a rota poderia afetar as construções?"
+      ],
+      "correctAnswer": "Que outras mudanças ocorreram e por quais mecanismos a rota poderia afetar as construções?",
+      "explanation": "Uma explicação precisa identificar evidências e mecanismos, não apenas listar eventos em ordem.",
+      "hint": "Pergunte “como?” e “que outras condições?”.",
+      "errorFocus": "Omitir mecanismos e causas concorrentes",
+      "misconceptions": {
+        "Afirmar que a rota causou todas as construções.": [
+          "ROUTE_SINGLE_CAUSE"
+        ],
+        "Ignorar o que aconteceu antes.": [
+          "IGNORE_PRIOR"
+        ],
+        "Supor que a ordem dos eventos prova o motivo.": [
+          "CHRONOLOGY_AS_MECHANISM"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CHRONOLOGY",
+      "contextFamily": "ABOLITION_LAWS_SEQUENCE",
+      "statement": "O Arquivo Nacional registra leis abolicionistas em 1850, 1871 e 1885, antes da Lei Áurea de 1888. O que a sequência mostra?",
+      "options": [
+        "Houve medidas em momentos diferentes; é preciso estudar seus limites e o que levou ao passo seguinte.",
+        "A primeira lei terminou toda a escravidão no Brasil.",
+        "As leis provam que todas as pessoas apoiavam a abolição.",
+        "A sequência mostra que nenhum movimento social foi necessário."
+      ],
+      "correctAnswer": "Houve medidas em momentos diferentes; é preciso estudar seus limites e o que levou ao passo seguinte.",
+      "explanation": "A cronologia identifica etapas, mas não prova sozinha que uma lei tenha causado as seguintes ou que tenha sido suficiente.",
+      "hint": "A sequência ajuda a perguntar sobre mudança e permanência.",
+      "errorFocus": "Ler uma lista de leis como explicação completa",
+      "misconceptions": {
+        "A primeira lei terminou toda a escravidão no Brasil.": [
+          "FIRST_LAW_COMPLETE_END"
+        ],
+        "As leis provam que todas as pessoas apoiavam a abolição.": [
+          "UNANIMOUS_SUPPORT"
+        ],
+        "A sequência mostra que nenhum movimento social foi necessário.": [
+          "LAW_WITHOUT_AGENCY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY_AGENCY",
+      "contextFamily": "RESISTANCE_RECORDS",
+      "statement": "Um acervo reúne processos de liberdade, fugas e outros registros de resistência de pessoas escravizadas. O que esse tipo de fonte permite investigar?",
+      "options": [
+        "Que as pessoas escravizadas não agiram na história.",
+        "Ações e estratégias das próprias pessoas, além das decisões do governo.",
+        "Que todos os registros mostram a mesma experiência.",
+        "Que uma fonte permite conhecer cada detalhe da vida de todos."
+      ],
+      "correctAnswer": "Ações e estratégias das próprias pessoas, além das decisões do governo.",
+      "explanation": "Registros de resistência revelam agência, mas cada documento é limitado e não representa toda experiência.",
+      "hint": "Observe quem aparece como agente e quem ainda falta nas fontes.",
+      "errorFocus": "Apagar agência ou generalizar um documento",
+      "misconceptions": {
+        "Que as pessoas escravizadas não agiram na história.": [
+          "NO_AGENCY"
+        ],
+        "Que todos os registros mostram a mesma experiência.": [
+          "ONE_SOURCE_ALL_EXPERIENCE"
+        ],
+        "Que uma fonte permite conhecer cada detalhe da vida de todos.": [
+          "SOURCE_COMPLETE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LONG_TERM_AND_IMMEDIATE",
+      "statement": "Uma explicação cita ideias abolicionistas que circularam por décadas e uma votação ocorrida em maio de 1888. Como relacioná-las?",
+      "options": [
+        "A votação torna desnecessário estudar o período anterior.",
+        "As ideias, por serem antigas, não podem ter relação com a votação.",
+        "A circulação de ideias pode ser um processo de mais longa duração; a votação é um acontecimento próximo que deve ser explicado no contexto.",
+        "Os dois elementos são causas idênticas e simultâneas."
+      ],
+      "correctAnswer": "A circulação de ideias pode ser um processo de mais longa duração; a votação é um acontecimento próximo que deve ser explicado no contexto.",
+      "explanation": "Processos duradouros e acontecimentos próximos podem atuar em escalas diferentes; a relação exige evidência.",
+      "hint": "Separe duração e proximidade sem desconectá-las automaticamente.",
+      "errorFocus": "Confundir escalas temporais",
+      "misconceptions": {
+        "A votação torna desnecessário estudar o período anterior.": [
+          "EVENT_ERASES_LONG_TERM"
+        ],
+        "As ideias, por serem antigas, não podem ter relação com a votação.": [
+          "OLD_MEANS_IRRELEVANT"
+        ],
+        "Os dois elementos são causas idênticas e simultâneas.": [
+          "SCALES_IDENTICAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "LAW_AND_SOCIAL_ACTION",
+      "statement": "Um texto do Arquivo Nacional descreve pressão abolicionista, resistência e debates políticos antes de 1888. Qual uso da fonte é adequado?",
+      "options": [
+        "Tratá-la como prova de que só houve uma causa.",
+        "Supor que o texto fala por todas as pessoas daquele período.",
+        "Ignorar a fonte porque foi produzida por uma instituição.",
+        "Usá-la como evidência para investigar como diferentes ações se relacionaram, lembrando que o texto também tem recorte e autoria."
+      ],
+      "correctAnswer": "Usá-la como evidência para investigar como diferentes ações se relacionaram, lembrando que o texto também tem recorte e autoria.",
+      "explanation": "A fonte é útil, mas sua autoria, seleção e limites continuam importantes para a análise.",
+      "hint": "Use a evidência sem transformar uma fonte em explicação total.",
+      "errorFocus": "Aceitar ou rejeitar uma fonte sem crítica",
+      "misconceptions": {
+        "Tratá-la como prova de que só houve uma causa.": [
+          "ONE_CAUSE_FROM_SOURCE"
+        ],
+        "Supor que o texto fala por todas as pessoas daquele período.": [
+          "SOURCE_SPEAKS_FOR_ALL"
+        ],
+        "Ignorar a fonte porque foi produzida por uma instituição.": [
+          "INSTITUTIONAL_SOURCE_ALWAYS_FALSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CAUSE_OR_CONSEQUENCE",
+      "statement": "Depois da aprovação de uma lei, alguns grupos organizaram novas ações para exigir que ela fosse cumprida. As ações posteriores são necessariamente causa da lei?",
+      "options": [
+        "Não; podem ser consequências ou parte de um processo contínuo, conforme a cronologia e as evidências.",
+        "Sim, todo acontecimento posterior causa o anterior.",
+        "Não, porque causas e consequências nunca se relacionam.",
+        "Sim, se a lei e as ações tratam do mesmo assunto."
+      ],
+      "correctAnswer": "Não; podem ser consequências ou parte de um processo contínuo, conforme a cronologia e as evidências.",
+      "explanation": "A posição temporal e o tema comum não bastam; é preciso analisar a relação específica.",
+      "hint": "Verifique a direção temporal e o mecanismo proposto.",
+      "errorFocus": "Inverter causalidade por tema ou sequência",
+      "misconceptions": {
+        "Sim, todo acontecimento posterior causa o anterior.": [
+          "FUTURE_CAUSES_PAST"
+        ],
+        "Não, porque causas e consequências nunca se relacionam.": [
+          "CAUSES_NEVER_INTERACT"
+        ],
+        "Sim, se a lei e as ações tratam do mesmo assunto.": [
+          "SAME_TOPIC_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INEVITABILITY",
+      "statement": "Um livro diz que uma mudança política era “inevitável”. Que pergunta ajuda a avaliar essa afirmação?",
+      "options": [
+        "Afirmar que os acontecimentos não poderiam ter sido diferentes.",
+        "Que alternativas existiam, quem tomou decisões e quais evidências sustentam a ideia de inevitabilidade?",
+        "Aceitar a frase por estar em um livro.",
+        "Descartar todas as escolhas das pessoas envolvidas."
+      ],
+      "correctAnswer": "Que alternativas existiam, quem tomou decisões e quais evidências sustentam a ideia de inevitabilidade?",
+      "explanation": "Historiadores investigam condições, decisões e alternativas, em vez de tratar o resultado como automático.",
+      "hint": "Procure escolhas, conflitos e caminhos que não prevaleceram.",
+      "errorFocus": "Transformar resultado conhecido em destino inevitável",
+      "misconceptions": {
+        "Afirmar que os acontecimentos não poderiam ter sido diferentes.": [
+          "INEVITABLE_OUTCOME"
+        ],
+        "Aceitar a frase por estar em um livro.": [
+          "TEXTBOOK_UNQUESTIONED"
+        ],
+        "Descartar todas as escolhas das pessoas envolvidas.": [
+          "AGENCY_ERASED"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "ABOLITION_MULTIPLE_FACTORS",
+      "statement": "Uma pesquisa sobre 1888 reúne registros de resistência, mobilização abolicionista, mudanças legais anteriores e debates no Parlamento. Qual síntese é melhor?",
+      "options": [
+        "Um fator precisa apagar os demais para explicar a mudança.",
+        "A lista, sem relação entre os itens, já prova a causa.",
+        "Esses fatores podem ter se relacionado; a pesquisa deve explicar seus papéis e limites com evidências.",
+        "A assinatura torna irrelevante a ação de pessoas escravizadas."
+      ],
+      "correctAnswer": "Esses fatores podem ter se relacionado; a pesquisa deve explicar seus papéis e limites com evidências.",
+      "explanation": "Uma síntese histórica relaciona fatores e agentes sem reduzir o processo a uma lista ou a um único ato.",
+      "hint": "Explique como ao menos dois elementos se conectam.",
+      "errorFocus": "Lista sem mecanismo ou causa única",
+      "misconceptions": {
+        "Um fator precisa apagar os demais para explicar a mudança.": [
+          "FACTORS_COMPETE_ONLY"
+        ],
+        "A lista, sem relação entre os itens, já prova a causa.": [
+          "LIST_EQUALS_EXPLANATION"
+        ],
+        "A assinatura torna irrelevante a ação de pessoas escravizadas.": [
+          "SIGNATURE_ERASES_AGENCY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGIONAL_VARIATION",
+      "statement": "Uma pesquisa compara registros de mobilização em duas províncias e encontra tempos e ações diferentes. Qual explicação inicial é mais responsável?",
+      "options": [
+        "Concluir que uma província representa todas as outras.",
+        "Afirmar que uma diferença regional invalida o processo nacional.",
+        "Escolher apenas o caso que confirma a primeira hipótese.",
+        "Investigar condições locais e redes de ação antes de generalizar para o país inteiro."
+      ],
+      "correctAnswer": "Investigar condições locais e redes de ação antes de generalizar para o país inteiro.",
+      "explanation": "Variação regional é evidência a explicar; não deve ser apagada nem tomada como representação de todo o país.",
+      "hint": "Compare condições e fontes de cada lugar.",
+      "errorFocus": "Generalizar um caso ou descartar variação",
+      "misconceptions": {
+        "Concluir que uma província representa todas as outras.": [
+          "ONE_REGION_ALL"
+        ],
+        "Afirmar que uma diferença regional invalida o processo nacional.": [
+          "DIFFERENCE_INVALIDATES"
+        ],
+        "Escolher apenas o caso que confirma a primeira hipótese.": [
+          "CONFIRMATION_ONLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ASSESS_EVIDENCE",
+      "contextFamily": "SOURCE_ABSENCE",
+      "statement": "Uma coleção de documentos oficiais fala bastante de parlamentares, mas pouco das pessoas que resistiam à escravidão. Qual próximo passo melhora a investigação?",
+      "options": [
+        "Buscar outros tipos de registros e reconhecer o limite do acervo consultado.",
+        "Concluir que as pessoas ausentes não agiram.",
+        "Preencher a lacuna com uma história inventada.",
+        "Tratar o silêncio do arquivo como prova de concordância."
+      ],
+      "correctAnswer": "Buscar outros tipos de registros e reconhecer o limite do acervo consultado.",
+      "explanation": "A ausência em uma coleção não prova ausência de ação; outras fontes e limites devem ser considerados.",
+      "hint": "Pergunte quem produziu o acervo e quem não aparece nele.",
+      "errorFocus": "Confundir silêncio documental com ausência histórica",
+      "misconceptions": {
+        "Concluir que as pessoas ausentes não agiram.": [
+          "ABSENCE_EQUALS_INACTION"
+        ],
+        "Preencher a lacuna com uma história inventada.": [
+          "INVENT_EVIDENCE"
+        ],
+        "Tratar o silêncio do arquivo como prova de concordância.": [
+          "ARCHIVE_SILENCE_EQUALS_CONSENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LOCAL_ABOLITION_ACTIONS",
+      "statement": "O Arquivo Nacional registra mobilização e resistência ligadas à abolição em diferentes lugares e momentos. O que uma comparação entre esses registros pode revelar?",
+      "options": [
+        "Que todos os lugares agiram da mesma maneira.",
+        "Que o processo teve ritmos e formas de ação variados, que precisam ser contextualizados.",
+        "Que a diferença de ritmo prova que um registro é falso.",
+        "Que uma ação local explica sozinha a lei de 1888."
+      ],
+      "correctAnswer": "Que o processo teve ritmos e formas de ação variados, que precisam ser contextualizados.",
+      "explanation": "Comparar casos ajuda a identificar variações e conexões sem transformar um deles em causa total.",
+      "hint": "Mantenha cada caso em seu contexto e procure relações possíveis.",
+      "errorFocus": "Uniformizar ou superdimensionar um caso",
+      "misconceptions": {
+        "Que todos os lugares agiram da mesma maneira.": [
+          "ALL_PLACES_IDENTICAL"
+        ],
+        "Que a diferença de ritmo prova que um registro é falso.": [
+          "VARIATION_EQUALS_FALSE"
+        ],
+        "Que uma ação local explica sozinha a lei de 1888.": [
+          "LOCAL_CAUSE_ONLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "LAW_DOCUMENT_CONTEXT",
+      "statement": "Uma lei histórica determina uma mudança jurídica. O que o texto legal pode mostrar melhor, e o que pode exigir outras fontes?",
+      "options": [
+        "O texto mostra tudo o que cada pessoa viveu depois.",
+        "A lei prova que a mudança ocorreu de modo igual em todo lugar.",
+        "O texto mostra a decisão formal; para estudar debates, implementação e experiências, é preciso consultar outras evidências.",
+        "Outras fontes são desnecessárias depois da aprovação."
+      ],
+      "correctAnswer": "O texto mostra a decisão formal; para estudar debates, implementação e experiências, é preciso consultar outras evidências.",
+      "explanation": "Um documento legal evidencia uma decisão, mas não resume sozinho a implementação e as experiências sociais.",
+      "hint": "Separe o que o documento determina do que aconteceu na prática.",
+      "errorFocus": "Confundir norma com experiência completa",
+      "misconceptions": {
+        "O texto mostra tudo o que cada pessoa viveu depois.": [
+          "LAW_EQUALS_EXPERIENCE"
+        ],
+        "A lei prova que a mudança ocorreu de modo igual em todo lugar.": [
+          "UNIFORM_IMPLEMENTATION"
+        ],
+        "Outras fontes são desnecessárias depois da aprovação.": [
+          "ONE_DOCUMENT_ENOUGH"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "SHORT_TRIGGER_LONG_PROCESS",
+      "statement": "Um protesto acontece após anos de debates sobre uma regra. Como um historiador pode testar se o protesto influenciou a mudança posterior?",
+      "options": [
+        "Afirmar que a proximidade temporal basta.",
+        "Supor que anos de debate tornam o protesto irrelevante.",
+        "Escolher uma causa sem procurar documentos.",
+        "Examinar registros de decisões, demandas, respostas e conexões entre os eventos."
+      ],
+      "correctAnswer": "Examinar registros de decisões, demandas, respostas e conexões entre os eventos.",
+      "explanation": "Uma relação causal precisa de evidências do mecanismo que liga os acontecimentos.",
+      "hint": "Procure rastros de comunicação, decisão ou resposta.",
+      "errorFocus": "Proximidade temporal como prova",
+      "misconceptions": {
+        "Afirmar que a proximidade temporal basta.": [
+          "TEMPORAL_PROXIMITY"
+        ],
+        "Supor que anos de debate tornam o protesto irrelevante.": [
+          "LONG_DEBATE_IRRELEVANT"
+        ],
+        "Escolher uma causa sem procurar documentos.": [
+          "NO_SOURCE_SEARCH"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MULTIPLE_CONSEQUENCES",
+      "statement": "Uma mudança política ampliou um direito formal, mas grupos diferentes viveram seus efeitos de formas distintas. Qual investigação é mais completa?",
+      "options": [
+        "Comparar a norma, sua aplicação e relatos de grupos diversos em períodos diferentes.",
+        "Usar somente a fala de quem governava.",
+        "Supor que o direito formal resolveu todos os problemas.",
+        "Escolher uma experiência e atribuí-la a toda a população."
+      ],
+      "correctAnswer": "Comparar a norma, sua aplicação e relatos de grupos diversos em períodos diferentes.",
+      "explanation": "Norma, implementação e experiências podem divergir; fontes variadas ajudam a analisar consequências desiguais.",
+      "hint": "Inclua mais de uma posição e mais de um momento.",
+      "errorFocus": "Confundir mudança legal com efeito uniforme",
+      "misconceptions": {
+        "Usar somente a fala de quem governava.": [
+          "RULER_ONLY"
+        ],
+        "Supor que o direito formal resolveu todos os problemas.": [
+          "LAW_SOLVES_ALL"
+        ],
+        "Escolher uma experiência e atribuí-la a toda a população.": [
+          "ONE_EXPERIENCE_ALL"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SOURCE_PERSPECTIVE",
+      "statement": "Um jornal de época critica uma mobilização e uma carta de participante a apoia. O que fazer com a diferença?",
+      "options": [
+        "Considerar a carta verdadeira e o jornal falso sem análise.",
+        "Investigar autoria, público, propósito e evidências de cada fonte antes de compará-las.",
+        "Ignorar a diferença e copiar uma frase.",
+        "Tratar o tom da fonte como prova suficiente de causalidade."
+      ],
+      "correctAnswer": "Investigar autoria, público, propósito e evidências de cada fonte antes de compará-las.",
+      "explanation": "Fontes têm posições e propósitos; a diferença é um objeto de análise, não uma resposta pronta.",
+      "hint": "Compare quem escreveu, para quem e com quais evidências.",
+      "errorFocus": "Aceitar uma perspectiva sem crítica",
+      "misconceptions": {
+        "Considerar a carta verdadeira e o jornal falso sem análise.": [
+          "PERSPECTIVE_EQUALS_TRUTH"
+        ],
+        "Ignorar a diferença e copiar uma frase.": [
+          "IGNORE_CONTRAST"
+        ],
+        "Tratar o tom da fonte como prova suficiente de causalidade.": [
+          "TONE_PROVES_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "MISSING_VOICES",
+      "statement": "Um trabalho escolar tem apenas documentos de autoridades sobre um processo histórico. Que melhoria é importante?",
+      "options": [
+        "Afirmar que as autoridades são as únicas agentes.",
+        "Inventar falas para preencher a lacuna.",
+        "Procurar fontes que registrem outros agentes e explicitar quem ainda está ausente.",
+        "Retirar a pergunta sobre participação social."
+      ],
+      "correctAnswer": "Procurar fontes que registrem outros agentes e explicitar quem ainda está ausente.",
+      "explanation": "Uma seleção mais diversa amplia a análise, sem autorizar a fabricação de evidências.",
+      "hint": "Diversifique as fontes e mantenha clara a lacuna que persistir.",
+      "errorFocus": "Apagar ou inventar agentes históricos",
+      "misconceptions": {
+        "Afirmar que as autoridades são as únicas agentes.": [
+          "AUTHORITY_ONLY_AGENCY"
+        ],
+        "Inventar falas para preencher a lacuna.": [
+          "FABRICATED_VOICES"
+        ],
+        "Retirar a pergunta sobre participação social.": [
+          "REMOVE_SOCIAL_ACTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "NEW_HISTORICAL_PROCESS",
+      "statement": "Em um processo histórico diferente, uma inovação, decisões públicas e migração ocorreram em décadas próximas. Qual plano evita uma causa única?",
+      "options": [
+        "Escolher a inovação como causa sem investigar.",
+        "Tratar a migração como consequência automática.",
+        "Somar os três fatores sem explicar relações.",
+        "Montar uma linha do tempo, comparar fontes e testar como cada fator poderia se relacionar ao processo."
+      ],
+      "correctAnswer": "Montar uma linha do tempo, comparar fontes e testar como cada fator poderia se relacionar ao processo.",
+      "explanation": "O método pode ser transferido: estabelecer cronologia, contexto, mecanismo e evidência para cada relação.",
+      "hint": "Diga que fonte poderia confirmar cada ligação.",
+      "errorFocus": "Transferir uma explicação pronta ou só listar fatores",
+      "misconceptions": {
+        "Escolher a inovação como causa sem investigar.": [
+          "INNOVATION_ONLY"
+        ],
+        "Tratar a migração como consequência automática.": [
+          "MIGRATION_AUTOMATIC"
+        ],
+        "Somar os três fatores sem explicar relações.": [
+          "LIST_WITHOUT_LINKS"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "ONE_CAUSE_MISCONCEPTION",
+      "statement": "Você explicou a abolição dizendo que “uma assinatura resolveu tudo”. Como revisar a frase?",
+      "options": [
+        "A assinatura formalizou o fim legal em 1888, dentro de um processo com ações e condições anteriores.",
+        "Manter a frase porque a lei tem uma data.",
+        "Dizer que nenhuma pessoa participou da mudança.",
+        "Trocar por outra causa única, como uma pressão externa."
+      ],
+      "correctAnswer": "A assinatura formalizou o fim legal em 1888, dentro de um processo com ações e condições anteriores.",
+      "explanation": "Uma data importante não elimina o processo e as ações que a antecederam.",
+      "hint": "Inclua processo, agentes e evidência, sem escolher uma causa total.",
+      "errorFocus": "Causa única e apagamento de agentes",
+      "misconceptions": {
+        "Manter a frase porque a lei tem uma data.": [
+          "SIGNATURE_SOLVES_ALL"
+        ],
+        "Dizer que nenhuma pessoa participou da mudança.": [
+          "NO_AGENCY"
+        ],
+        "Trocar por outra causa única, como uma pressão externa.": [
+          "REPLACE_SINGLE_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "CHRONOLOGY_MISCONCEPTION",
+      "statement": "Um colega diz: “Aconteceu depois, então foi causado por isso”. Qual pergunta ajuda a corrigir o raciocínio?",
+      "options": [
+        "Qual evento apareceu primeiro na lista?",
+        "Que evidências mostram o mecanismo que ligou o primeiro evento ao segundo?",
+        "Como provar que nunca houve outros fatores?",
+        "Qual das duas datas é mais importante?"
+      ],
+      "correctAnswer": "Que evidências mostram o mecanismo que ligou o primeiro evento ao segundo?",
+      "explanation": "Ordem temporal é necessária para algumas causas, mas não é evidência suficiente de mecanismo.",
+      "hint": "Procure a ligação, não só a ordem.",
+      "errorFocus": "Sequência confundida com causa",
+      "misconceptions": {
+        "Qual evento apareceu primeiro na lista?": [
+          "ORDER_ONLY"
+        ],
+        "Como provar que nunca houve outros fatores?": [
+          "NO_OTHER_FACTOR_PROOF"
+        ],
+        "Qual das duas datas é mais importante?": [
+          "DATE_RANKING"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "PASSIVE_HISTORY_MISCONCEPTION",
+      "statement": "Uma explicação diz que pessoas escravizadas apenas esperaram a Lei Áurea. Que revisão melhora essa narrativa?",
+      "options": [
+        "Manter a frase porque há mais documentos oficiais.",
+        "Inventar uma ação específica sem fonte.",
+        "Incluir evidências de resistência e busca por liberdade, sem reduzir o processo às decisões de autoridades.",
+        "Afirmar que todas as pessoas agiram da mesma forma."
+      ],
+      "correctAnswer": "Incluir evidências de resistência e busca por liberdade, sem reduzir o processo às decisões de autoridades.",
+      "explanation": "Fontes do Arquivo Nacional registram diferentes formas de ação e resistência; a análise deve mostrar evidências e seus limites.",
+      "hint": "Pergunte quais registros documentam a ação dos próprios sujeitos.",
+      "errorFocus": "Apagar agência ou inventar experiência",
+      "misconceptions": {
+        "Manter a frase porque há mais documentos oficiais.": [
+          "OFFICIAL_SOURCE_ONLY"
+        ],
+        "Inventar uma ação específica sem fonte.": [
+          "INVENTED_ACTION"
+        ],
+        "Afirmar que todas as pessoas agiram da mesma forma.": [
+          "UNIFORM_AGENCY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "LAW_EQUALS_EQUAL_OUTCOME",
+      "statement": "Um estudante conclui que a aprovação de uma lei prova que todos viveram seus efeitos igualmente. Como testar essa conclusão?",
+      "options": [
+        "Aceitar a conclusão porque a lei vale no papel.",
+        "Supor que qualquer diferença invalida a lei.",
+        "Procurar apenas outra lei com a mesma data.",
+        "Comparar o texto legal com evidências de aplicação e experiências de grupos e lugares diferentes."
+      ],
+      "correctAnswer": "Comparar o texto legal com evidências de aplicação e experiências de grupos e lugares diferentes.",
+      "explanation": "Uma regra formal e suas consequências são perguntas distintas; precisam de fontes adequadas.",
+      "hint": "Compare norma, prática e experiência.",
+      "errorFocus": "Confundir decisão jurídica com efeito uniforme",
+      "misconceptions": {
+        "Aceitar a conclusão porque a lei vale no papel.": [
+          "FORMAL_EQUALS_UNIFORM"
+        ],
+        "Supor que qualquer diferença invalida a lei.": [
+          "DIFFERENCE_INVALIDATES_LAW"
+        ],
+        "Procurar apenas outra lei com a mesma data.": [
+          "SAME_DATE_ONLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-lock-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "SOURCE_BIAS_MISCONCEPTION",
+      "statement": "Uma fonte apresenta uma perspectiva forte. Isso basta para descartá-la?",
+      "options": [
+        "Não; investigue autoria, propósito, contexto e evidências, e compare com outras fontes.",
+        "Sim; toda fonte parcial é inútil.",
+        "Não; toda fonte antiga é neutra.",
+        "Sim; basta discordar do autor."
+      ],
+      "correctAnswer": "Não; investigue autoria, propósito, contexto e evidências, e compare com outras fontes.",
+      "explanation": "Perspectiva é parte da análise; ela não torna uma fonte automaticamente inútil nem neutra.",
+      "hint": "Avalie o que a fonte permite saber e o que não permite.",
+      "errorFocus": "Tratar fonte como neutra ou inútil por regra",
+      "misconceptions": {
+        "Sim; toda fonte parcial é inútil.": [
+          "PARTIAL_SOURCE_USELESS"
+        ],
+        "Não; toda fonte antiga é neutra.": [
+          "OLD_SOURCE_NEUTRAL"
+        ],
+        "Sim; basta discordar do autor.": [
+          "DISAGREEMENT_DISMISSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "NEW_REVIEW_TIMELINE",
+      "statement": "Uma linha do tempo mostra uma lei e, depois, uma mobilização. Qual é a conclusão mais segura?",
+      "options": [
+        "A lei causou a mobilização com certeza.",
+        "A mobilização veio depois; para saber se houve relação causal, são necessárias outras evidências.",
+        "A mobilização causou a lei anterior.",
+        "Não há nenhuma relação possível."
+      ],
+      "correctAnswer": "A mobilização veio depois; para saber se houve relação causal, são necessárias outras evidências.",
+      "explanation": "A linha do tempo dá ordem, não decide sozinha a relação.",
+      "hint": "Diferencie o que a linha mostra do que ainda precisa investigar.",
+      "errorFocus": "Exagerar ou negar causalidade pela ordem",
+      "misconceptions": {
+        "A lei causou a mobilização com certeza.": [
+          "CERTAIN_CAUSE_FROM_ORDER"
+        ],
+        "A mobilização causou a lei anterior.": [
+          "FUTURE_CAUSE"
+        ],
+        "Não há nenhuma relação possível.": [
+          "NO_POSSIBLE_LINK"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_REVIEW_FACTOR",
+      "statement": "Uma explicação aponta uma mudança econômica e outra destaca mobilização social. O que a comparação pode fazer?",
+      "options": [
+        "Escolher uma explicação sem comparar fontes.",
+        "Tratar fatores diferentes como impossíveis de coexistir.",
+        "Investigar como os fatores se relacionaram e que evidência sustenta cada um.",
+        "Somar os fatores sem explicar como atuaram."
+      ],
+      "correctAnswer": "Investigar como os fatores se relacionaram e que evidência sustenta cada um.",
+      "explanation": "Causas podem se combinar; a explicação precisa mostrar relações, não só nomes.",
+      "hint": "Procure evidência para cada parte da explicação.",
+      "errorFocus": "Fatores vistos como mutuamente exclusivos ou lista simples",
+      "misconceptions": {
+        "Escolher uma explicação sem comparar fontes.": [
+          "PICK_WITHOUT_EVIDENCE"
+        ],
+        "Tratar fatores diferentes como impossíveis de coexistir.": [
+          "EXCLUSIVE_CAUSES"
+        ],
+        "Somar os fatores sem explicar como atuaram.": [
+          "LIST_ONLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NEW_REVIEW_DURATION",
+      "statement": "Uma mudança é discutida por muito tempo e uma decisão ocorre em um dia. Qual análise usa melhor as duas escalas?",
+      "options": [
+        "Ignorar o processo porque a decisão tem data.",
+        "Ignorar a decisão porque o processo demorou.",
+        "Dizer que ambos são o mesmo tipo de acontecimento.",
+        "Relacionar o processo longo ao contexto da decisão, sem presumir que um elemento explique tudo."
+      ],
+      "correctAnswer": "Relacionar o processo longo ao contexto da decisão, sem presumir que um elemento explique tudo.",
+      "explanation": "Processos e eventos próximos têm escalas diferentes e podem se relacionar.",
+      "hint": "Mantenha duração e acontecimento visíveis na explicação.",
+      "errorFocus": "Apagar uma escala temporal",
+      "misconceptions": {
+        "Ignorar o processo porque a decisão tem data.": [
+          "EVENT_ONLY"
+        ],
+        "Ignorar a decisão porque o processo demorou.": [
+          "PROCESS_ONLY"
+        ],
+        "Dizer que ambos são o mesmo tipo de acontecimento.": [
+          "SAME_SCALE"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ASSESS_EVIDENCE",
+      "contextFamily": "NEW_REVIEW_ARCHIVE",
+      "statement": "Um arquivo não conserva documentos de todos os grupos envolvidos. O que o pesquisador deve fazer?",
+      "options": [
+        "Registrar a lacuna, procurar outras fontes e evitar afirmar o que não está documentado.",
+        "Concluir que os grupos sem documentos não agiram.",
+        "Inventar a fonte que falta.",
+        "Tratar o arquivo como espelho completo do passado."
+      ],
+      "correctAnswer": "Registrar a lacuna, procurar outras fontes e evitar afirmar o que não está documentado.",
+      "explanation": "A documentação disponível tem limites; lacuna não equivale a ausência de ação.",
+      "hint": "Escreva o que sabe, o que falta e como poderia procurar.",
+      "errorFocus": "Silêncio do acervo tratado como ausência histórica",
+      "misconceptions": {
+        "Concluir que os grupos sem documentos não agiram.": [
+          "ARCHIVE_EQUALS_PAST"
+        ],
+        "Inventar a fonte que falta.": [
+          "ABSENCE_OF_RECORD_EQUALS_ACTIONLESS"
+        ],
+        "Tratar o arquivo como espelho completo do passado.": [
+          "INVENT_RECORD"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "NEW_REVIEW_LAW_AND_LIFE",
+      "statement": "Uma lei muda a regra formal, mas uma pesquisa encontra efeitos diferentes entre regiões. Qual pergunta é melhor?",
+      "options": [
+        "Qual região prova que a lei não existiu.",
+        "Que condições de implementação e contexto ajudam a explicar a diferença?",
+        "Como a lei causou todos os resultados do mesmo modo.",
+        "Por que uma região deve representar as demais."
+      ],
+      "correctAnswer": "Que condições de implementação e contexto ajudam a explicar a diferença?",
+      "explanation": "A variação pede investigação de condições locais e implementação.",
+      "hint": "Procure mecanismos que liguem a norma aos resultados observados.",
+      "errorFocus": "Homogeneizar ou invalidar variações",
+      "misconceptions": {
+        "Qual região prova que a lei não existiu.": [
+          "REGION_INVALIDATES_LAW"
+        ],
+        "Como a lei causou todos os resultados do mesmo modo.": [
+          "UNIFORM_EFFECT"
+        ],
+        "Por que uma região deve representar as demais.": [
+          "ONE_REGION_ALL"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_REVIEW_AGENCY",
+      "statement": "Um documento dá destaque a uma autoridade, mas outras fontes mencionam ações de grupos sociais. Como apresentar o caso?",
+      "options": [
+        "Dizer que apenas a autoridade fez história.",
+        "Afirmar que todos os grupos tinham os mesmos objetivos.",
+        "Mostrar o recorte de cada fonte e analisar os diferentes agentes com evidências.",
+        "Excluir documentos que complicam a explicação."
+      ],
+      "correctAnswer": "Mostrar o recorte de cada fonte e analisar os diferentes agentes com evidências.",
+      "explanation": "Fontes e agentes diferentes podem iluminar partes distintas do processo.",
+      "hint": "Inclua mais de uma voz sem afirmar que ela representa todas.",
+      "errorFocus": "História centrada em um agente ou generalização",
+      "misconceptions": {
+        "Dizer que apenas a autoridade fez história.": [
+          "GREAT_PERSON_ONLY"
+        ],
+        "Afirmar que todos os grupos tinham os mesmos objetivos.": [
+          "UNIFORM_GROUP_GOALS"
+        ],
+        "Excluir documentos que complicam a explicação.": [
+          "DISCARD_COMPLEXITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "NEW_REVIEW_CAUSAL_CHAIN",
+      "statement": "Uma hipótese liga pressão social, debate político e uma mudança legal. O que falta para ser uma explicação histórica?",
+      "options": [
+        "Apenas repetir a sequência em ordem.",
+        "Afirmar que a cadeia era inevitável.",
+        "Retirar os agentes para simplificar.",
+        "Evidências e uma descrição de como cada ligação ocorreu, considerando outras condições."
+      ],
+      "correctAnswer": "Evidências e uma descrição de como cada ligação ocorreu, considerando outras condições.",
+      "explanation": "Uma cadeia causal precisa demonstrar ligações e considerar alternativas, não só organizar datas.",
+      "hint": "Peça uma evidência para cada seta da explicação.",
+      "errorFocus": "Cadeia sem mecanismo nem evidência",
+      "misconceptions": {
+        "Apenas repetir a sequência em ordem.": [
+          "ORDERED_CHAIN_ONLY"
+        ],
+        "Afirmar que a cadeia era inevitável.": [
+          "INEVITABILITY"
+        ],
+        "Retirar os agentes para simplificar.": [
+          "AGENCY_REMOVAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_REVIEW_LOCAL_GLOBAL",
+      "statement": "Uma mudança aparece em registros de várias localidades, mas com ritmos diferentes. Como comparar?",
+      "options": [
+        "Examinar condições e evidências de cada local e depois investigar conexões entre eles.",
+        "Supor que todos os lugares viveram o mesmo processo.",
+        "Escolher um local e usar como modelo universal.",
+        "Tratar diferenças como erros de registro sem verificação."
+      ],
+      "correctAnswer": "Examinar condições e evidências de cada local e depois investigar conexões entre eles.",
+      "explanation": "Comparação contextualizada reconhece variação e pode investigar relações mais amplas.",
+      "hint": "Compare sem apagar as condições locais.",
+      "errorFocus": "Uniformizar ou generalizar por um caso",
+      "misconceptions": {
+        "Supor que todos os lugares viveram o mesmo processo.": [
+          "SAME_PROCESS_EVERYWHERE"
+        ],
+        "Escolher um local e usar como modelo universal.": [
+          "ONE_CASE_UNIVERSAL"
+        ],
+        "Tratar diferenças como erros de registro sem verificação.": [
+          "DIFFERENCE_AS_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-history-causes-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NEW_REVIEW_CAUSAL_CLAIM",
+      "statement": "Qual frase é uma afirmação causal mais bem sustentada?",
+      "options": [
+        "“Esse fator explica tudo porque veio primeiro.”",
+        "“As fontes consultadas sugerem uma relação entre esses fatores; ainda precisamos comparar outros registros.”",
+        "“O resultado era inevitável desde o início.”",
+        "“Uma única fonte prova a intenção de todas as pessoas.”"
+      ],
+      "correctAnswer": "“As fontes consultadas sugerem uma relação entre esses fatores; ainda precisamos comparar outros registros.”",
+      "explanation": "A afirmação indica evidência e limites, sem exagerar certeza ou representar todos por uma fonte.",
+      "hint": "Prefira uma conclusão proporcional às fontes disponíveis.",
+      "errorFocus": "Certeza maior que a evidência",
+      "misconceptions": {
+        "“Esse fator explica tudo porque veio primeiro.”": [
+          "FIRST_EQUALS_ALL"
+        ],
+        "“O resultado era inevitável desde o início.”": [
+          "INEVITABLE"
+        ],
+        "“Uma única fonte prova a intenção de todas as pessoas.”": [
+          "ONE_SOURCE_ALL_INTENT"
+        ]
+      }
+    }
+  ]
+}
