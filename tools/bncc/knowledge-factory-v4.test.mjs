@@ -145,8 +145,8 @@ describe('BNCC total knowledge factory V4', () => {
   it('distinguishes a five-phase structural path from deep assessment coverage', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
 
-    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 26, v3QuestionTotal: 160, v5QuestionTotal: 802, consolidatedQuestionTotal: 952, technicalDeepReady: 26, reviewPending: 26 });
-    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 26 });
+    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 28, v3QuestionTotal: 160, v5QuestionTotal: 846, consolidatedQuestionTotal: 1047, technicalDeepReady: 28, reviewPending: 28 });
+    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 28 });
     expect(report.existingContent.technicalDeepReady).toBe(report.existingContent.depthAudit.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(report.existingContent.auditedSequences - report.existingContent.technicalDeepReady);
   });
@@ -261,7 +261,53 @@ describe('BNCC total knowledge factory V4', () => {
     expect(evidence.purposeCounts).toEqual(PURPOSE_COUNTS);
     expect(evidence.missingDepthDimensions).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
-    expect(report.existingContent.technicalDeepReady).toBe(26);
+    expect(report.existingContent.technicalDeepReady).toBe(28);
+  });
+
+  it('reconciles Biology cell-function sources exactly before auditing the Wave 2 addition', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const biology = report.existingContent.depthAudit.find((item) => item.targetId === 'BIOLOGY_CELL_FUNCTION');
+
+    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(2);
+    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(2);
+    expect(biology).toMatchObject({
+      originalQuestionCount: 22,
+      v5QuestionCount: 23,
+      currentQuestionCount: 45,
+      technicalDeepReady: true,
+      readinessClaim: 'DEEP_CONTENT_READY',
+      sourceReconciliation: { expectedQuestionCount: 22, actualQuestionCount: 22, status: 'EXACT' },
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      officialMappingStatus: 'NOT_CLAIMED',
+      studentPublicationStatus: 'STAGING_INACTIVE',
+    });
+    expect(biology.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 14, TRANSFER: 9, LOCK_IN: 6, REVIEW: 12 });
+    expect(biology.missingDepthDimensions).toEqual([]);
+    expect(report.queue.byWave.WAVE_2).toBe(50);
+    expect(report.existingContent.v5PacksOutsideV3AuditedTargets).toMatchObject([
+      { skillCode: 'MATH_SUCCESSIVE_PERCENT_CHANGE', sourceReconciliation: 'PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION' },
+    ]);
+  });
+
+  it('reconciles the complete inheritance source set and preserves allele case in answer validation', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const inheritance = report.existingContent.depthAudit.find((item) => item.targetId === 'BIOLOGY_EXPLAIN_INHERITANCE');
+
+    expect(inheritance).toMatchObject({
+      originalQuestionCount: 29,
+      v5QuestionCount: 21,
+      currentQuestionCount: 50,
+      technicalDeepReady: true,
+      answerKeyValid: true,
+      sourceReconciliation: { expectedQuestionCount: 29, actualQuestionCount: 29, status: 'EXACT' },
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      officialMappingStatus: 'NOT_CLAIMED',
+      studentPublicationStatus: 'STAGING_INACTIVE',
+    });
+    expect(inheritance.purposeCounts).toEqual({ PROBE: 5, PRACTICE: 15, TRANSFER: 9, LOCK_IN: 8, REVIEW: 13 });
+    expect(inheritance.missingDepthDimensions).toEqual([]);
+    expect(report.queue.items.filter((item) => item.id === 'BIOLOGY_EXPLAIN_INHERITANCE')).toEqual([]);
+    expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
   });
 
   it('prepares navigable unit persistence without student availability or fabricated BNCC links', () => {

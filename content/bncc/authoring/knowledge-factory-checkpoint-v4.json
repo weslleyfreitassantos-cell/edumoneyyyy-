@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "812c52e95fc01017014112db4dfd6897a3961f969822a8efbb29bc006d8b252f",
-  "outputHash": "3c128fe4f8cd8043682b6db124de0fc217e2263762e7bb5ce2554f84112acef7",
+  "inputHash": "bdf3821284d6f5c0b9bc5f462bf87001179295009b037992e75f70aeaef86832",
+  "outputHash": "e222fa75a40ccfa70af28bc9c1a3dec435bb0116dcc45d8a70f36e58ba792836",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,13 +13,13 @@
   "currentWave": 2,
   "nextQueueItem": {
     "wave": 2,
-    "id": "BIOLOGY_CELL_FUNCTION",
+    "id": "BIOLOGY_INTERPRET_POPULATION_DATA",
     "stage": "ENSINO_MEDIO",
     "subject": "BIOLOGY",
     "status": "CONTENT_GAP",
-    "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+    "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
   },
-  "pendingItems": 1773,
+  "pendingItems": 1771,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "506cd1d26db5f4dfbe4cc30eb1972aa9c247cbfb532d9f15594fde30efc47ffd"
+  "checkpointHash": "3b1eba1c189802b921a63f3c1f06de12ab5765be4b1da020effe95e31e29a2f0"
 }

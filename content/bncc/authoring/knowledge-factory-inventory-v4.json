@@ -12,7 +12,8 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
     "v3Graph": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583",
-    "v5QuestionFirstPacks": "306ec630e8191e0254fde3ff77a11f7e4df25c96132843865c8e2842a9aeba2e"
+    "v5QuestionFirstPacks": "a27507da11ff085997b4239c9fae3464f2daa04580cdc9adc2bdb1e450ab8076",
+    "waveTwoCandidateSources": "97aa590df140c4c4016cb16b39b010aa002bfd42238e1d9d494eb353d1eae4f0"
   },
   "normativeContext": {
     "officialCatalogFreeze": "2026-10-03",
@@ -80,22 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 26,
-    "deepContentReady": 26,
-    "technicalDeepReady": 26,
-    "pedagogicalReviewPending": 26,
+    "auditedSequences": 28,
+    "waveTwoCandidateTargets": 52,
+    "waveTwoCandidateTargetsAudited": 2,
+    "waveTwoCandidateTargetsDeepReady": 2,
+    "deepContentReady": 28,
+    "technicalDeepReady": 28,
+    "pedagogicalReviewPending": 28,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 26
+      "STRUCTURAL_READY": 28
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 26,
-      "QUESTION_POOL_DEPTH_READY": 23,
-      "DIFFICULTY_PROGRESSION_READY": 23,
-      "CONTEXT_DIVERSITY_READY": 23,
-      "TRANSFER_READY": 23,
-      "MISCONCEPTION_RECOVERY_READY": 26,
-      "REVIEW_CONTENT_READY": 23,
-      "AUTHENTIC_EVIDENCE_READY": 26
+      "LESSON_DEPTH_READY": 28,
+      "QUESTION_POOL_DEPTH_READY": 25,
+      "DIFFICULTY_PROGRESSION_READY": 25,
+      "CONTEXT_DIVERSITY_READY": 25,
+      "TRANSFER_READY": 25,
+      "MISCONCEPTION_RECOVERY_READY": 28,
+      "REVIEW_CONTENT_READY": 25,
+      "AUTHENTIC_EVIDENCE_READY": 28
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -106,20 +110,24 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 802,
-    "consolidatedQuestionTotal": 952,
+    "v5QuestionTotal": 846,
+    "consolidatedQuestionTotal": 1047,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
       {
         "file": "math-successive-percent-change.json",
         "skillCode": "MATH_SUCCESSIVE_PERCENT_CHANGE",
-        "questionCount": 10
+        "questionCount": 10,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       }
     ],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 26,
+    "reviewPending": 28,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
+      "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
+      "V9_EXPANSIONS_FOR_EXACT_WAVE_2_TARGETS",
+      "V9_JOURNEY_EXPANSION_B_FOR_EXACT_WAVE_2_TARGETS",
       "V5_QUESTION_FIRST_PACKS"
     ],
     "depthAudit": [
@@ -173,7 +181,71 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
+      },
+      {
+        "targetId": "BIOLOGY_CELL_FUNCTION",
+        "unitId": null,
+        "subject": "BIOLOGY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "A celula como sistema: estrutura, transporte e funcao",
+        "originalQuestionCount": 22,
+        "v5QuestionCount": 23,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 45,
+        "purposeCounts": {
+          "PROBE": 4,
+          "PRACTICE": 14,
+          "TRANSFER": 9,
+          "LOCK_IN": 6,
+          "REVIEW": 12
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 45,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 22,
+          "actualQuestionCount": 22,
+          "status": "EXACT"
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
         "targetId": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
@@ -231,6 +303,70 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "BIOLOGY_EXPLAIN_INHERITANCE",
+        "unitId": null,
+        "subject": "BIOLOGY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Herança genética: modelos, probabilidade e limites",
+        "originalQuestionCount": 29,
+        "v5QuestionCount": 21,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 50,
+        "purposeCounts": {
+          "PROBE": 5,
+          "PRACTICE": 15,
+          "TRANSFER": 9,
+          "LOCK_IN": 8,
+          "REVIEW": 13
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 50,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 29,
+          "actualQuestionCount": 29,
+          "status": "EXACT"
+        },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -289,6 +425,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -347,6 +484,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -405,6 +543,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -463,6 +602,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -521,6 +661,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -579,6 +720,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -637,6 +779,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -695,6 +838,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -753,6 +897,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -811,6 +956,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -869,6 +1015,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -927,6 +1074,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -979,6 +1127,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
       },
       {
@@ -1031,6 +1180,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
       },
       {
@@ -1089,6 +1239,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1147,6 +1298,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1205,6 +1357,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1263,6 +1416,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1321,6 +1475,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1379,6 +1534,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1437,6 +1593,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1495,6 +1652,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1553,6 +1711,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
@@ -1611,6 +1770,7 @@
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
         "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": null,
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       }
     ]
@@ -1635,33 +1795,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1773,
+    "totalItems": 1771,
     "byWave": {
-      "WAVE_2": 52,
+      "WAVE_2": 50,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 52,
+      "CONTENT_GAP": 50,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "BIOLOGY_CELL_FUNCTION",
-        "stage": "ENSINO_MEDIO",
-        "subject": "BIOLOGY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
-      {
-        "wave": 2,
-        "id": "BIOLOGY_EXPLAIN_INHERITANCE",
-        "stage": "ENSINO_MEDIO",
-        "subject": "BIOLOGY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "BIOLOGY_INTERPRET_POPULATION_DATA",
@@ -15841,5 +15985,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "3c128fe4f8cd8043682b6db124de0fc217e2263762e7bb5ce2554f84112acef7"
+  "inventoryHash": "e222fa75a40ccfa70af28bc9c1a3dec435bb0116dcc45d8a70f36e58ba792836"
 }

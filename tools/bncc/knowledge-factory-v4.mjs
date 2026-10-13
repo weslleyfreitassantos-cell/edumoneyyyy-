@@ -121,6 +121,21 @@ function countPurposes(group) {
 }
 
 const normalizeContentText = (value) => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9]+/g, ' ').trim();
+function normalizeAnswerOption(value) {
+  const alleleTokens = [];
+  const text = String(value ?? '').replace(/\b[A-Za-z]{2,8}\b/g, (token) => {
+    if (token.length % 2 !== 0) return token;
+    const pairs = token.match(/.{2}/g);
+    const canonicalPairs = [];
+    for (const pair of pairs) {
+      if (pair[0].toLowerCase() !== pair[1].toLowerCase()) return token;
+      canonicalPairs.push(pair[0] === pair[1] ? pair : `${pair[0].toUpperCase()}${pair[0].toLowerCase()}`);
+    }
+    const index = alleleTokens.push(canonicalPairs.join('')) - 1;
+    return `alleletoken${index}`;
+  });
+  return `${normalizeContentText(text)}|${alleleTokens.join('|')}`;
+}
 const getQuestion = (item) => item.question ?? item;
 const getStatement = (question) => question.statement ?? question.prompt ?? question.stem ?? '';
 const getQuestionId = (item, question) => question.id ?? item.sourceId ?? null;
@@ -130,6 +145,78 @@ function loadQuestionFirstV5Packs(root = ROOT) {
   return fs.readdirSync(directory).filter((file) => file.endsWith('.json') && file !== 'checkpoint.json').sort()
     .map((file) => ({ file, pack: readJson(root, `content/adaptive/tec-escola-core-v5/${file}`) }))
     .filter(({ pack }) => pack.packVersion === 'tec-escola-core-v5-question-first');
+}
+
+function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
+  const v3Codes = new Set(v3Groups.map((group) => group.skillCode));
+  const candidateByCode = new Map(candidates.filter((skill) => !v3Codes.has(skill.skillCode)).map((skill) => [skill.skillCode, skill]));
+  const packCodes = new Set(packs.map(({ pack }) => pack.canonicalSkillCode).filter((code) => candidateByCode.has(code)));
+  const sourceByCode = new Map();
+  const addSource = (code, kind, item, file) => {
+    if (!packCodes.has(code)) return;
+    const source = sourceByCode.get(code) ?? { questions: [], lessons: [] };
+    if (kind === 'question') source.questions.push({ question: item, kind, sourceId: item.id, sourceFile: file });
+    else source.lessons.push(item);
+    sourceByCode.set(code, source);
+  };
+
+  const subjectsRoot = path.join(root, 'content/adaptive/tec-escola-core-v4/subjects');
+  for (const subject of fs.readdirSync(subjectsRoot).sort()) {
+    for (const [fileName, kind, codeFor] of [
+      ['questions.json', 'question', (item) => item.primarySkill],
+      ['lessons.json', 'lesson', (item) => item.skill],
+    ]) {
+      const filePath = path.join(subjectsRoot, subject, fileName);
+      if (!fs.existsSync(filePath)) continue;
+      for (const item of readJson(root, path.relative(root, filePath))) addSource(codeFor(item), kind, item, `tec-escola-core-v4/subjects/${subject}/${fileName}`);
+    }
+  }
+
+  const v9Directory = path.join(root, 'content/adaptive/tec-escola-core-v9');
+  for (const [fileName, kind, codeFor] of [
+    ['question-expansion-v1.json', 'question', (item) => item.skill],
+    ['question-expansion-v2.json', 'question', (item) => item.skill],
+    ['question-expansion-v3.json', 'question', (item) => item.skill],
+    ['lesson-expansion-v1.json', 'lesson', (item) => item.skill],
+    ['lesson-expansion-v2.json', 'lesson', (item) => item.skill],
+  ]) {
+    const filePath = path.join(v9Directory, fileName);
+    if (!fs.existsSync(filePath)) continue;
+    const items = readJson(root, path.relative(root, filePath))[kind === 'question' ? 'questions' : 'lessons'] ?? [];
+    for (const item of items) addSource(codeFor(item), kind, item, `tec-escola-core-v9/${fileName}`);
+  }
+
+  const journeyExpansionPath = path.join(v9Directory, 'journey-expansion-b-v1.json');
+  if (fs.existsSync(journeyExpansionPath)) {
+    const journeys = readJson(root, path.relative(root, journeyExpansionPath)).journeys ?? [];
+    for (const journey of journeys) {
+      for (const question of journey.questions ?? []) addSource(journey.skill, 'question', question, 'tec-escola-core-v9/journey-expansion-b-v1.json');
+      if (journey.lesson) addSource(journey.skill, 'lesson', { ...journey.lesson, skill: journey.skill }, 'tec-escola-core-v9/journey-expansion-b-v1.json');
+    }
+  }
+
+  return [...packCodes].sort().flatMap((skillCode) => {
+    const definition = candidateByCode.get(skillCode);
+    const source = sourceByCode.get(skillCode) ?? { questions: [], lessons: [] };
+    if (source.questions.length !== definition.questionCount) return [];
+    return [{
+      skillCode,
+      subjectCode: definition.subjectCode,
+      stage: definition.stage,
+      unitId: null,
+      skillDefinition: { mappingStatus: 'NOT_CLAIMED' },
+      prerequisites: definition.prerequisites ?? [],
+      lesson: null,
+      existingLessons: source.lessons,
+      questions: source.questions,
+      originalQuestionCount: source.questions.length,
+      sourceReconciliation: {
+        expectedQuestionCount: definition.questionCount,
+        actualQuestionCount: source.questions.length,
+        status: 'EXACT',
+      },
+    }];
+  });
 }
 
 function mergeQuestionFirstContent(groups, packs) {
@@ -219,7 +306,7 @@ function questionFeedbackComplete(question) {
 function answerKeyIsValid(question) {
   return Boolean(getStatement(question).trim())
     && Array.isArray(question.options) && question.options.length >= 2
-    && new Set(question.options.map(normalizeContentText)).size === question.options.length
+    && new Set(question.options.map(normalizeAnswerOption)).size === question.options.length
     && question.options.includes(question.correctAnswer);
 }
 
@@ -230,7 +317,7 @@ export function assessDepthGroup(group) {
   const missingMinimums = Object.fromEntries(PURPOSES
     .filter((purpose) => purposeCounts[purpose] < MINIMUMS[purpose])
     .map((purpose) => [purpose, { current: purposeCounts[purpose], target: MINIMUMS[purpose] }]));
-  const lessons = [...(group.lesson ? [group.lesson] : []), ...(group.v5Lessons ?? [])];
+  const lessons = [...(group.existingLessons ?? []), ...(group.lesson ? [group.lesson] : []), ...(group.v5Lessons ?? [])];
   const bestLesson = lessonDepth(lessons);
   const contexts = new Set(questions.map((question) => question.contextFamily ?? question.context_family).filter(Boolean));
   const modalities = [...new Set(questions.map((question) => question.type ?? question.responseType ?? (Array.isArray(question.options) ? 'MULTIPLE_CHOICE' : 'UNSPECIFIED')))].sort();
@@ -315,6 +402,7 @@ export function assessDepthGroup(group) {
     pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
     officialMappingStatus: group.v5OfficialMappingStatuses?.includes('NOT_CLAIMED') ? 'NOT_CLAIMED' : (group.skillDefinition?.mappingStatus ?? 'MAPPING_PENDING'),
     studentPublicationStatus: 'STAGING_INACTIVE',
+    sourceReconciliation: group.sourceReconciliation ?? null,
     nextAction: practical
       ? authenticActivityReady ? 'PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED' : 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE'
       : 'DEEPEN_DISTINCT_ASSESSMENT_POOL',
@@ -384,10 +472,13 @@ function buildKnowledgeFactoryV4(root = ROOT) {
   const v3Result = buildKnowledgeFactoryV3(loadKnowledgeFactoryV3Inputs(root));
   if (v3Result.errors?.length) throw new Error(`V3_FOUNDATION_INVALID:${v3Result.errors.join(',')}`);
   const v5Packs = loadQuestionFirstV5Packs(root);
+  const v1WaveTwoCandidates = v1.internalSkillGaps.filter((skill) => !v3Result.groups.some((group) => group.skillCode === skill.skillCode));
+  const waveTwoCandidateGroups = loadWaveTwoCandidateGroups(root, v1WaveTwoCandidates, v3Result.groups, v5Packs);
   const skillIndex = exactSkillIndex();
   for (const skill of v3Result.compiledBatch.newSkills) skillIndex.set(skill.skillCode, skill);
   const matrix = buildOfficialMatrix(official, v1, skillIndex);
-  const depth = groupDepthAudit(v3Result.groups, v5Packs);
+  const depth = groupDepthAudit([...v3Result.groups, ...waveTwoCandidateGroups], v5Packs);
+  const depthBySkill = new Map(depth.map((item) => [item.targetId, item]));
   const v3GroupsBySkill = new Map(v3Result.groups.map((group) => [group.skillCode, group]));
   const units = unitCatalog.units.map((unit) => ({ ...unit, canonicalSkills: [...unit.canonicalSkills], sequence: [...unit.sequence] }));
   const unitsById = new Map(units.map((unit) => [unit.unitId, unit]));
@@ -426,6 +517,17 @@ function buildKnowledgeFactoryV4(root = ROOT) {
     ['v3Graph', v3.hashes.graphExpansionHash],
     ['v3Units', v3.hashes.unitExpansionHash],
     ['v5QuestionFirstPacks', hash(stableJson(Object.fromEntries(v5Packs.map(({ file, pack }) => [file, hash(stableJson(pack))]))))],
+    ['waveTwoCandidateSources', hash(stableJson(Object.fromEntries([
+      ...fs.readdirSync(path.join(root, 'content/adaptive/tec-escola-core-v4/subjects')).flatMap((subject) => ['questions.json', 'lessons.json']
+        .filter((file) => fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v4/subjects', subject, file)))
+        .map((file) => [`tec-escola-core-v4/subjects/${subject}/${file}`, hashFile(root, `content/adaptive/tec-escola-core-v4/subjects/${subject}/${file}`)])),
+      ...['question-expansion-v1.json', 'question-expansion-v2.json', 'question-expansion-v3.json', 'lesson-expansion-v1.json', 'lesson-expansion-v2.json']
+        .filter((file) => fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v9', file)))
+        .map((file) => [`tec-escola-core-v9/${file}`, hashFile(root, `content/adaptive/tec-escola-core-v9/${file}`)]),
+      ...(fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v9/journey-expansion-b-v1.json'))
+        ? [['tec-escola-core-v9/journey-expansion-b-v1.json', hashFile(root, 'content/adaptive/tec-escola-core-v9/journey-expansion-b-v1.json')]]
+        : []),
+    ])))],
   ]);
   const byStage = groupBy(matrix, (node) => node.stage);
   const byComponent = groupBy(matrix, (node) => node.componentCode);
@@ -434,10 +536,24 @@ function buildKnowledgeFactoryV4(root = ROOT) {
   const neighboringCodesForReview = matrix.filter((node) => node.sourceTextStatus === 'NEIGHBORING_OFFICIAL_CODE_PRESENT_REQUIRES_SOURCE_REVIEW').length;
   const v3Targets = v3.targets.targetManifest;
   const deepCoverage = depth.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length;
+  const v3TargetCodes = new Set(v3Result.groups.map((group) => group.skillCode));
   const waveQueue = [
-    ...depth.filter((item) => item.readinessClaim !== 'DEEP_CONTENT_READY' && item.nextAction !== 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE').map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'DEPTH_GAP', reason: 'One or more content-depth dimensions remain below the evidence gates.', missingMinimums: item.missingMinimums, missingDepthDimensions: item.missingDepthDimensions })),
-    ...depth.filter((item) => item.nextAction === 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE').map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'AUTHENTIC_EVIDENCE_GAP', reason: 'Objective questions alone cannot substantiate performance or observation evidence.' })),
-    ...v1.internalSkillGaps.filter((skill) => !depth.some((item) => item.targetId === skill.skillCode)).map((skill) => ({ wave: 2, id: skill.skillCode, stage: skill.stage, subject: skill.subjectCode, status: skill.gaps?.length ? 'CONTENT_GAP' : 'DEPTH_AUDIT_REQUIRED', reason: skill.gaps?.join(', ') || 'Current source inventory lacks a V4 depth audit.' })),
+    ...depth.filter((item) => v3TargetCodes.has(item.targetId) && item.readinessClaim !== 'DEEP_CONTENT_READY' && item.nextAction !== 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE').map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'DEPTH_GAP', reason: 'One or more content-depth dimensions remain below the evidence gates.', missingMinimums: item.missingMinimums, missingDepthDimensions: item.missingDepthDimensions })),
+    ...depth.filter((item) => v3TargetCodes.has(item.targetId) && item.nextAction === 'AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE').map((item) => ({ wave: 1, id: item.targetId, stage: item.stage, subject: item.subject, status: 'AUTHENTIC_EVIDENCE_GAP', reason: 'Objective questions alone cannot substantiate performance or observation evidence.' })),
+    ...v1WaveTwoCandidates.filter((skill) => !depthBySkill.get(skill.skillCode)?.technicalDeepReady).map((skill) => {
+      const audit = depthBySkill.get(skill.skillCode);
+      return {
+        wave: 2,
+        id: skill.skillCode,
+        stage: skill.stage,
+        subject: skill.subjectCode,
+        status: audit ? 'CONTENT_GAP' : skill.gaps?.length ? 'CONTENT_GAP' : 'DEPTH_AUDIT_REQUIRED',
+        reason: audit
+          ? [...Object.keys(audit.missingMinimums ?? {}), ...(audit.missingDepthDimensions ?? [])].join(', ') || 'CONTENT_DEPTH_REVIEW_REQUIRED'
+          : skill.gaps?.join(', ') || 'Current source inventory lacks a V4 depth audit.',
+        ...(audit ? { currentQuestionCount: audit.currentQuestionCount, purposeCounts: audit.purposeCounts, sourceReconciliation: audit.sourceReconciliation } : {}),
+      };
+    }),
     ...matrix.filter((node) => node.mappingStatus !== 'MAPPED').map((node) => ({ wave: 3, id: node.officialCode, stage: node.stage, subject: node.componentCode, status: node.sourceTextStatus === 'NEIGHBORING_OFFICIAL_CODE_PRESENT_REQUIRES_SOURCE_REVIEW' ? 'SOURCE_TEXT_REVIEW_REQUIRED' : 'MAPPING_REVIEW_REQUIRED', reason: node.nextAction })),
   ].sort((a, b) => a.wave - b.wave || a.stage.localeCompare(b.stage) || a.subject.localeCompare(b.subject) || a.id.localeCompare(b.id));
   const sourceDossierByCode = new Map(v3Result.compiledBatch.sourceDossiers.filter((item) => item.officialCode).map((item) => [item.officialCode, item]));
@@ -508,6 +624,9 @@ function buildKnowledgeFactoryV4(root = ROOT) {
     existingContent: {
       v3Targets: v3Targets.length,
       auditedSequences: depth.length,
+      waveTwoCandidateTargets: v1WaveTwoCandidates.length,
+      waveTwoCandidateTargetsAudited: waveTwoCandidateGroups.length,
+      waveTwoCandidateTargetsDeepReady: waveTwoCandidateGroups.filter((group) => depthBySkill.get(group.skillCode)?.technicalDeepReady).length,
       deepContentReady: deepCoverage,
       technicalDeepReady: deepCoverage,
       pedagogicalReviewPending: depth.length,
@@ -519,10 +638,10 @@ function buildKnowledgeFactoryV4(root = ROOT) {
       v5QuestionTotal: v5Packs.reduce((sum, { pack }) => sum + (pack.questions?.length ?? 0), 0),
       consolidatedQuestionTotal: depth.reduce((sum, item) => sum + item.currentQuestionCount, 0),
       duplicateQuestionsCollapsed: depth.reduce((sum, item) => sum + item.duplicateQuestionsCollapsed, 0),
-      v5PacksOutsideV3AuditedTargets: v5Packs.filter(({ pack }) => !v3Result.groups.some((group) => group.skillCode === pack.canonicalSkillCode)).map(({ file, pack }) => ({ file, skillCode: pack.canonicalSkillCode, questionCount: pack.questions?.length ?? 0 })),
+      v5PacksOutsideV3AuditedTargets: v5Packs.filter(({ pack }) => !depthBySkill.has(pack.canonicalSkillCode)).map(({ file, pack }) => ({ file, skillCode: pack.canonicalSkillCode, questionCount: pack.questions?.length ?? 0, sourceReconciliation: 'PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION' })),
       lessonsNeedingDepthReview: depth.filter((item) => item.lessonStatus !== 'STRUCTURED_LESSON_CANDIDATE').length,
       reviewPending: depth.length,
-      contentSources: ['V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY', 'V5_QUESTION_FIRST_PACKS'],
+      contentSources: ['V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY', 'V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS', 'V9_EXPANSIONS_FOR_EXACT_WAVE_2_TARGETS', 'V9_JOURNEY_EXPANSION_B_FOR_EXACT_WAVE_2_TARGETS', 'V5_QUESTION_FIRST_PACKS'],
       depthAudit: depth,
     },
     curriculumUnits: {

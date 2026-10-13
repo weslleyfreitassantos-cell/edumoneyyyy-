@@ -11,6 +11,8 @@ import { buildPortugueseConnectIdeasPack } from './build-portuguese-connect-idea
 import { buildPortugueseInferFromCluesPack } from './build-portuguese-infer-clues-v5.mjs';
 import { buildReligiousMediateDialoguePack } from './build-religious-mediate-dialogue-v5.mjs';
 import { buildScienceEvidenceConclusionPack } from './build-science-evidence-conclusion-v5.mjs';
+import { buildBiologyCellFunctionPack } from './build-biology-cell-function-v5.mjs';
+import { buildBiologyInheritancePack } from './build-biology-inheritance-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -55,6 +57,10 @@ const religiousDialoguePack = JSON.parse(readFileSync(new URL('../../content/ada
 const religiousDialogueMigration = readFileSync(new URL('../../supabase/migrations/20261013002000_bncc_religious_mediate_dialogue_question_first_v5.sql', import.meta.url), 'utf8');
 const scienceEvidencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/science-evidence-conclusion.json', import.meta.url), 'utf8'));
 const scienceEvidenceMigration = readFileSync(new URL('../../supabase/migrations/20261013002100_bncc_science_evidence_conclusion_question_first_v5.sql', import.meta.url), 'utf8');
+const biologyCellFunctionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/biology-cell-function.json', import.meta.url), 'utf8'));
+const biologyCellFunctionMigration = readFileSync(new URL('../../supabase/migrations/20261013002200_bncc_biology_cell_function_question_first_v5.sql', import.meta.url), 'utf8');
+const biologyInheritancePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/biology-inheritance.json', import.meta.url), 'utf8'));
+const biologyInheritanceMigration = readFileSync(new URL('../../supabase/migrations/20261013002300_bncc_biology_inheritance_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -800,6 +806,55 @@ describe('question-first V5 staging content', () => {
     expect(scienceEvidenceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(scienceEvidenceMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(scienceEvidenceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('adds distinct cell-function questions with balanced answer positions and teachable feedback', () => {
+    const result = validateQuestionFirstPack(biologyCellFunctionPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(23);
+    expect(result.contextCount).toBe(23);
+    expect(result.counts).toEqual({ PROBE: 0, PRACTICE: 7, TRANSFER: 5, LOCK_IN: 3, REVIEW: 8 });
+    expect(result.answerPositionCounts).toEqual({ A: 6, B: 6, C: 6, D: 5 });
+    expect(biologyCellFunctionPack.lesson.explanation).toContain('Exemplo resolvido');
+    expect(biologyCellFunctionPack.lesson.remediations).toHaveLength(5);
+    expect(biologyCellFunctionPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(biologyCellFunctionPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(biologyCellFunctionPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles cell-function content as inactive staging without student records', () => {
+    expect(biologyCellFunctionPack).toEqual(buildBiologyCellFunctionPack());
+    expect(biologyCellFunctionMigration).toBe(buildMigration(biologyCellFunctionPack));
+    expect(biologyCellFunctionMigration).toContain("'BIOLOGY_CELL_FUNCTION'");
+    expect(biologyCellFunctionMigration).toContain("'publication_status', 'STAGING'");
+    expect(biologyCellFunctionMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(biologyCellFunctionMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(biologyCellFunctionMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('adds inheritance questions that extend rather than repeat the existing V4 and V9 bank', () => {
+    const result = validateQuestionFirstPack(biologyInheritancePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(21);
+    expect(result.contextCount).toBe(21);
+    expect(result.counts).toEqual({ PROBE: 0, PRACTICE: 4, TRANSFER: 5, LOCK_IN: 3, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 6, B: 5, C: 5, D: 5 });
+    expect(biologyInheritancePack.lesson.progression).toHaveLength(5);
+    expect(biologyInheritancePack.lesson.microExplanations).toHaveLength(6);
+    expect(biologyInheritancePack.lesson.remediations).toHaveLength(5);
+    expect(biologyInheritancePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(biologyInheritancePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(biologyInheritancePack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles inheritance content as inactive staging without student records', () => {
+    expect(biologyInheritancePack).toEqual(buildBiologyInheritancePack());
+    expect(biologyInheritanceMigration).toBe(buildMigration(biologyInheritancePack));
+    expect(biologyInheritanceMigration).toContain("'BIOLOGY_EXPLAIN_INHERITANCE'");
+    expect(biologyInheritanceMigration).toContain("'publication_status', 'STAGING'");
+    expect(biologyInheritanceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(biologyInheritanceMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(biologyInheritanceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {
