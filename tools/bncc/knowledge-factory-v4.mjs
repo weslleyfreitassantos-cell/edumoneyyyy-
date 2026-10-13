@@ -156,9 +156,16 @@ const getQuestionId = (item, question) => question.id ?? item.sourceId ?? null;
 
 function loadQuestionFirstV5Packs(root = ROOT) {
   const directory = path.join(root, 'content/adaptive/tec-escola-core-v5');
-  return fs.readdirSync(directory).filter((file) => file.endsWith('.json') && file !== 'checkpoint.json').sort()
+  const packs = fs.readdirSync(directory).filter((file) => file.endsWith('.json') && file !== 'checkpoint.json').sort()
     .map((file) => ({ file, pack: readJson(root, `content/adaptive/tec-escola-core-v5/${file}`) }))
     .filter(({ pack }) => pack.packVersion === 'tec-escola-core-v5-question-first');
+  const latestBySkill = new Map();
+  for (const item of packs) {
+    const code = item.pack.canonicalSkillCode;
+    const current = latestBySkill.get(code);
+    if (!current || (item.pack.contentVersion ?? 5) > (current.pack.contentVersion ?? 5)) latestBySkill.set(code, item);
+  }
+  return [...latestBySkill.values()].sort((a, b) => a.pack.canonicalSkillCode.localeCompare(b.pack.canonicalSkillCode));
 }
 
 function normalizeJourneyQuestions(journey) {
@@ -192,6 +199,8 @@ function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
   const candidateByCode = new Map(candidates.filter((skill) => !v3Codes.has(skill.skillCode)).map((skill) => [skill.skillCode, skill]));
   const packCodes = new Set(packs.map(({ pack }) => pack.canonicalSkillCode).filter((code) => candidateByCode.has(code)));
   const sourceByCode = new Map();
+  const semanticReassignments = readJson(root, 'content/adaptive/tec-escola-core-v5/philosophy-semantic-reconciliation.json').reassignments ?? [];
+  const reassignmentsByJourneyCode = new Map(semanticReassignments.map((item) => [item.journeyCode, item]));
   const addSource = (code, kind, item, file) => {
     if (!packCodes.has(code)) return;
     const source = sourceByCode.get(code) ?? { questions: [], lessons: [] };
@@ -231,8 +240,19 @@ function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
     if (fs.existsSync(journeyExpansionPath)) {
       const journeys = readJson(root, path.relative(root, journeyExpansionPath)).journeys ?? [];
       for (const journey of journeys) {
-        for (const question of normalizeJourneyQuestions(journey)) addSource(journey.skill, 'question', question, `tec-escola-core-v9/${fileName}`);
-        if (journey.lesson) addSource(journey.skill, 'lesson', { ...journey.lesson, skill: journey.skill }, `tec-escola-core-v9/${fileName}`);
+        const reassignment = reassignmentsByJourneyCode.get(journey.journeyCode);
+        const questions = normalizeJourneyQuestions(journey);
+        let targetSkillCode = journey.skill;
+        if (reassignment) {
+          if (reassignment.sourceFile !== fileName || reassignment.sourceSkillCode !== journey.skill
+            || questions.length !== reassignment.questionCount
+            || questions.some((question) => !question.id.startsWith(reassignment.sourceQuestionIdPrefix))) {
+            throw new Error(`V9_SEMANTIC_REASSIGNMENT_SOURCE_MISMATCH:${journey.journeyCode}`);
+          }
+          targetSkillCode = reassignment.targetSkillCode;
+        }
+        for (const question of questions) addSource(targetSkillCode, 'question', question, `tec-escola-core-v9/${fileName}`);
+        if (journey.lesson) addSource(targetSkillCode, 'lesson', { ...journey.lesson, skill: targetSkillCode }, `tec-escola-core-v9/${fileName}`);
       }
     }
   }
@@ -240,7 +260,13 @@ function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
   return [...packCodes].sort().flatMap((skillCode) => {
     const definition = candidateByCode.get(skillCode);
     const source = sourceByCode.get(skillCode) ?? { questions: [], lessons: [] };
-    if (source.questions.length !== definition.questionCount) return [];
+    const semanticReassignment = semanticReassignments.find((item) => item.sourceSkillCode === skillCode);
+    const incomingReassignments = semanticReassignments.filter((item) => item.targetSkillCode === skillCode);
+    const incomingReassignedQuestionCount = incomingReassignments.reduce((total, item) => total + item.questionCount, 0);
+    const expectedSourceQuestionCount = definition.questionCount
+      - (semanticReassignment?.questionCount ?? 0)
+      + incomingReassignedQuestionCount;
+    if (source.questions.length !== expectedSourceQuestionCount) return [];
     const pack = packs.find(({ pack: candidatePack }) => candidatePack.canonicalSkillCode === skillCode)?.pack;
     const feedbackRows = pack?.sourceQuestionFeedback ?? [];
     const feedbackById = new Map(feedbackRows.map((item) => [item.questionId, item]));
@@ -267,9 +293,19 @@ function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
       questions,
       originalQuestionCount: source.questions.length,
       sourceReconciliation: {
-        expectedQuestionCount: definition.questionCount,
+        expectedQuestionCount: semanticReassignment ? definition.questionCount : expectedSourceQuestionCount,
         actualQuestionCount: source.questions.length,
-        status: 'EXACT',
+        status: semanticReassignment?.status ?? (incomingReassignments.length ? 'EXACT_WITH_SEMANTICALLY_REASSIGNED_ITEMS' : 'EXACT'),
+        ...(semanticReassignment ? {
+          reassignedQuestionCount: semanticReassignment.questionCount,
+          reassignedToSkillCode: semanticReassignment.targetSkillCode,
+          historicalRowsPreserved: semanticReassignment.historicalRowsPreserved,
+        } : {}),
+        ...(incomingReassignments.length ? {
+          reassignedQuestionCount: incomingReassignedQuestionCount,
+          reassignedFromSkillCodes: incomingReassignments.map((item) => item.sourceSkillCode),
+          historicalRowsPreserved: incomingReassignments.every((item) => item.historicalRowsPreserved),
+        } : {}),
         questionFeedbackCount: appliedFeedbackIds.size,
       },
     }];

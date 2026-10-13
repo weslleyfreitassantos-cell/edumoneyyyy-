@@ -19,6 +19,8 @@ import { buildChemistryReactionEvidencePack } from './build-chemistry-reaction-e
 import { buildChemistryStoichiometryPack } from './build-chemistry-stoichiometry-v5.mjs';
 import { buildPhilosophyEthicalPrinciplePack } from './build-philosophy-ethical-principle-v5.mjs';
 import { buildPhilosophyEvaluateArgumentPack } from './build-philosophy-evaluate-argument-v5.mjs';
+import { buildPhilosophyDistinguishConceptPack } from './build-philosophy-distinguish-concept-v5.mjs';
+import { buildMathSuccessivePercentChangePack } from './build-math-successive-percent-change-v6.mjs';
 import { buildPhysicsAverageSpeedPack } from './build-physics-average-speed-v5.mjs';
 import { buildPhysicsMotionGraphPack } from './build-physics-motion-graph-v5.mjs';
 import { buildEnglishInferencePack } from './build-english-inference-v5.mjs';
@@ -82,6 +84,11 @@ const philosophyEthicsPack = JSON.parse(readFileSync(new URL('../../content/adap
 const philosophyEthicsMigration = readFileSync(new URL('../../supabase/migrations/20261013002800_bncc_philosophy_ethical_principle_question_first_v5.sql', import.meta.url), 'utf8');
 const philosophyArgumentPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/philosophy-evaluate-argument.json', import.meta.url), 'utf8'));
 const philosophyArgumentMigration = readFileSync(new URL('../../supabase/migrations/20261013002900_bncc_philosophy_evaluate_argument_question_first_v5.sql', import.meta.url), 'utf8');
+const philosophyConceptPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/philosophy-distinguish-concept.json', import.meta.url), 'utf8'));
+const philosophyConceptMigration = readFileSync(new URL('../../supabase/migrations/20261013003300_bncc_philosophy_distinguish_concept_question_first_v5.sql', import.meta.url), 'utf8');
+const philosophyConceptCorrectionMigration = readFileSync(new URL('../../supabase/migrations/20261013003400_bncc_philosophy_concept_semantic_reconciliation_v1.sql', import.meta.url), 'utf8');
+const mathSuccessiveV6Pack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/math-successive-percent-change-v6.json', import.meta.url), 'utf8'));
+const mathSuccessiveV6Migration = readFileSync(new URL('../../supabase/migrations/20261013003500_bncc_math_successive_percent_change_question_first_v6.sql', import.meta.url), 'utf8');
 const physicsAverageSpeedPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-average-speed.json', import.meta.url), 'utf8'));
 const physicsAverageSpeedMigration = readFileSync(new URL('../../supabase/migrations/20261013003000_bncc_physics_average_speed_question_first_v5.sql', import.meta.url), 'utf8');
 const physicsMotionGraphPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-motion-graph.json', import.meta.url), 'utf8'));
@@ -120,6 +127,36 @@ const internalCandidateMigrations = [
 ];
 
 describe('question-first V5 staging content', () => {
+  it('closes successive-percent source feedback and transfer/review coverage in a new inactive version', () => {
+    const result = validateQuestionFirstPack(mathSuccessiveV6Pack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(14);
+    expect(result.contextCount).toBe(14);
+    expect(result.counts).toEqual({ PROBE: 2, PRACTICE: 2, TRANSFER: 3, LOCK_IN: 2, REVIEW: 5 });
+    expect(result.answerPositionCounts).toEqual({ A: 4, B: 4, C: 3, D: 3 });
+    expect(mathSuccessiveV6Pack.sourceQuestionFeedback).toHaveLength(29);
+    expect(new Set(mathSuccessiveV6Pack.sourceQuestionFeedback.map((item) => item.questionId)).size).toBe(29);
+    expect(mathSuccessiveV6Pack.lesson.progressiveExplanation).toHaveLength(4);
+    expect(mathSuccessiveV6Pack.lesson.remediations).toHaveLength(3);
+    expect(mathSuccessiveV6Pack.contentVersion).toBe(6);
+    expect(mathSuccessiveV6Pack.lessonVersion).toBe(6);
+    expect(mathSuccessiveV6Pack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(mathSuccessiveV6Pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(mathSuccessiveV6Pack.publicationStatus).toBe('STAGING');
+  });
+
+  it('builds the Math V6 migration deterministically without enabling or editing learner progress', () => {
+    expect(mathSuccessiveV6Pack).toEqual(buildMathSuccessivePercentChangePack());
+    expect(mathSuccessiveV6Migration).toBe(buildMigration(mathSuccessiveV6Pack));
+    expect(mathSuccessiveV6Migration).toContain('v_skill_id, 6,');
+    expect(mathSuccessiveV6Migration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 6, false");
+    expect(mathSuccessiveV6Migration).toContain('"source_question_feedback"');
+    expect(mathSuccessiveV6Migration).toContain("'publication_status', 'STAGING'");
+    expect(mathSuccessiveV6Migration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(mathSuccessiveV6Migration).not.toMatch(/active\s*=\s*true|,\s*true\s*\)/i);
+    expect(mathSuccessiveV6Migration).not.toMatch(/learning_guided_sessions|learning_guided_steps|learning_guided_step_attempts|learning_student_skill_state/i);
+  });
+
   it('contains an authored lesson and two distinct questions for each adaptive purpose', () => {
     const result = validateQuestionFirstPack(pack);
     expect(result.valid).toBe(true);
@@ -1026,7 +1063,7 @@ describe('question-first V5 staging content', () => {
     expect(result.contextCount).toBe(20);
     expect(result.counts).toEqual({ PROBE: 2, PRACTICE: 4, TRANSFER: 4, LOCK_IN: 2, REVIEW: 8 });
     expect(result.answerPositionCounts).toEqual({ A: 5, B: 5, C: 5, D: 5 });
-    expect(philosophyArgumentPack.sourceQuestionFeedback).toHaveLength(25);
+    expect(philosophyArgumentPack.sourceQuestionFeedback).toHaveLength(45);
     expect(philosophyArgumentPack.lesson.microExplanations).toHaveLength(6);
     expect(philosophyArgumentPack.lesson.remediations).toHaveLength(4);
     expect(philosophyArgumentPack.lesson.sourceDossier).toHaveLength(3);
@@ -1048,6 +1085,45 @@ describe('question-first V5 staging content', () => {
     expect(philosophyArgumentMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(philosophyArgumentMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(philosophyArgumentMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('builds a distinct concept-versus-opinion sequence without reusing argument questions', () => {
+    const result = validateQuestionFirstPack(philosophyConceptPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(40);
+    expect(result.contextCount).toBe(40);
+    expect(result.counts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(result.answerPositionCounts).toEqual({ A: 10, B: 10, C: 10, D: 10 });
+    expect(philosophyConceptPack.questions.every((question) => question.id.startsWith('philosophy-concept-v5-'))).toBe(true);
+    expect(philosophyConceptPack.sourceQuestionFeedback).toBeUndefined();
+    expect(philosophyConceptPack.lesson.microExplanations).toHaveLength(6);
+    expect(philosophyConceptPack.lesson.remediations).toHaveLength(4);
+    expect(philosophyConceptPack.lesson.sourceDossier).toHaveLength(4);
+    expect(philosophyConceptPack.lesson.explanation).toContain('Uma opinião pode ser apoiada por evidências');
+    expect(philosophyConceptPack.lesson.explanation).toContain('nem todo conceito cotidiano ou filosófico tem uma definição clássica simples e consensual');
+    expect(philosophyConceptPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(philosophyConceptPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(philosophyConceptPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles concept content inactive and reconciles the old V9 mismatch without touching attempts', () => {
+    expect(philosophyConceptPack).toEqual(buildPhilosophyDistinguishConceptPack());
+    expect(philosophyConceptPack.contentVersion).toBe(5);
+    expect(philosophyConceptPack.lessonVersion).toBe(5);
+    expect(philosophyConceptMigration).toBe(buildMigration(philosophyConceptPack));
+    expect(philosophyConceptMigration).toContain("'PHILOSOPHY_DISTINGUISH_CONCEPT'");
+    expect(philosophyConceptMigration).toContain('v_skill_id, 5,');
+    expect(philosophyConceptMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
+    expect(philosophyConceptMigration).toContain("'publication_status', 'STAGING'");
+    expect(philosophyConceptMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(philosophyConceptMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(philosophyConceptMigration).not.toMatch(/learning_guided_sessions|learning_guided_steps|learning_guided_step_attempts|active\s*=\s*true/i);
+    expect(philosophyConceptCorrectionMigration).toContain("journey_code = 'PHILOSOPHY_DISTINGUISH_CONCEPT_V93'");
+    expect(philosophyConceptCorrectionMigration).toContain("metadata->>'content_id' like 'v93-phil-argument-%'");
+    expect(philosophyConceptCorrectionMigration).toContain("'PHILOSOPHY_EVALUATE_ARGUMENT'");
+    expect(philosophyConceptCorrectionMigration).toContain("'MISMATCH_SUPERSEDED'");
+    expect(philosophyConceptCorrectionMigration).toContain('active = false');
+    expect(philosophyConceptCorrectionMigration).not.toMatch(/(?:update|delete|insert\s+into)\s+public\.learning_guided_(?:sessions|steps|step_attempts)|(?:update|delete|insert\s+into)\s+public\.learning_student_skill_state/i);
   });
 
   it('deepens average-speed practice from the exact V4 and V9 source set', () => {

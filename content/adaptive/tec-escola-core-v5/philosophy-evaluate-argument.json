@@ -151,6 +151,106 @@
       "questionId": "v9-philosophy-argument-13",
       "hint": "Examine a forma inferencial e, em seguida, a confiabilidade da premissa contestada.",
       "errorFocus": "Supor que validade lógica torna verdadeira toda premissa."
+    },
+    {
+      "questionId": "v93-phil-argument-01",
+      "hint": "Identifique o que o trecho atribui ao horário ampliado e separe essa conclusão da informação de que a biblioteca abriu mais tarde.",
+      "errorFocus": "Repetir a premissa sobre horário em vez de localizar a afirmação sustentada."
+    },
+    {
+      "questionId": "v93-phil-argument-02",
+      "hint": "Assuma as premissas apenas para testar a forma: se forem verdadeiras, a conclusão segue para o caso das baleias?",
+      "errorFocus": "Deixar um conhecimento sobre baleias substituir a avaliação da relação lógica."
+    },
+    {
+      "questionId": "v93-phil-argument-03",
+      "hint": "Separe validade da forma e verdade das premissas; verifique qual premissa compromete a solidez.",
+      "errorFocus": "Supor que uma forma válida torna verdadeiras todas as premissas."
+    },
+    {
+      "questionId": "v93-phil-argument-04",
+      "hint": "Escolha informação diretamente ligada à circulação e à experiência de acesso, não a uma característica decorativa.",
+      "errorFocus": "Selecionar um dado verdadeiro, mas irrelevante para a barreira de acesso."
+    },
+    {
+      "questionId": "v93-phil-argument-05",
+      "hint": "Descreva primeiro os 18 respondentes; depois pergunte se a consulta voluntária representa os 900 estudantes.",
+      "errorFocus": "Converter a proporção de respondentes em estimativa da população sem amostragem adequada."
+    },
+    {
+      "questionId": "v93-phil-argument-06",
+      "hint": "As duas vendas podem variar com uma terceira condição, como calor; associação não estabelece qual evento causa o outro.",
+      "errorFocus": "Confundir variação conjunta com uma relação causal direta."
+    },
+    {
+      "questionId": "v93-phil-argument-07",
+      "hint": "Avalie a proposta pelas razões e efeitos apresentados; impaciência da pessoa não responde ao conteúdo.",
+      "errorFocus": "Usar um traço do proponente como refutação da proposta."
+    },
+    {
+      "questionId": "v93-phil-argument-08",
+      "hint": "Procure alternativas entre cancelamento total e ausência completa de prevenção.",
+      "errorFocus": "Aceitar como exaustivas duas opções formuladas pelo argumento."
+    },
+    {
+      "questionId": "v93-phil-argument-09",
+      "hint": "A conclusão amplia uma observação para casos não observados; mantenha-a provisória e compare fatores relevantes.",
+      "errorFocus": "Tratar uma generalização indutiva como necessidade dedutiva."
+    },
+    {
+      "questionId": "v93-phil-argument-10",
+      "hint": "Rastreie a origem, procure fontes independentes e verifique evidências específicas para uma afirmação tão ampla.",
+      "errorFocus": "Usar popularidade ou confiança do autor como substituto de evidência."
+    },
+    {
+      "questionId": "v93-phil-argument-11",
+      "hint": "Mude uma variável relevante e mantenha condições comparáveis, para que o efeito da luz possa ser interpretado.",
+      "errorFocus": "Alterar várias condições ao mesmo tempo e atribuir o resultado a uma delas."
+    },
+    {
+      "questionId": "v93-phil-argument-12",
+      "hint": "O relato sustenta algo sobre a experiência daquela pessoa; eficácia geral e causalidade exigem evidência adicional.",
+      "errorFocus": "Generalizar de um testemunho individual para todas as pessoas."
+    },
+    {
+      "questionId": "v93-phil-argument-13",
+      "hint": "Uma definição descreve a estrutura ou função da categoria; um episódio particular é apenas um exemplo.",
+      "errorFocus": "Confundir um caso de debate com uma explicação do que é um argumento."
+    },
+    {
+      "questionId": "v93-phil-argument-14",
+      "hint": "Um contraexemplo precisa pertencer à categoria e não satisfazer a afirmação universal.",
+      "errorFocus": "Escolher um exemplo que confirma a regra em vez de um caso que a refuta."
+    },
+    {
+      "questionId": "v93-phil-argument-15",
+      "hint": "“Necessário” quer dizer que sem a credencial não se entra; isso não garante, por si, aprovação na prova.",
+      "errorFocus": "Converter uma condição necessária em condição suficiente para outro resultado."
+    },
+    {
+      "questionId": "v93-phil-argument-16",
+      "hint": "Procure a recomendação sobre o que a cidade deve fazer; contagens e descrições não são, sozinhas, uma norma.",
+      "errorFocus": "Confundir um fato observado com uma obrigação."
+    },
+    {
+      "questionId": "v93-phil-argument-17",
+      "hint": "Pergunte qual sentido de “igualmente” está em jogo e quais critérios de distribuição ele implica.",
+      "errorFocus": "Ignorar que uma palavra-chave pode encobrir critérios distintos."
+    },
+    {
+      "questionId": "v93-phil-argument-18",
+      "hint": "O gráfico mostra uma associação; investigue variáveis concorrentes antes de afirmar uma causa.",
+      "errorFocus": "Atribuir causalidade exclusiva a uma variável observada junto com o resultado."
+    },
+    {
+      "questionId": "v93-phil-argument-19",
+      "hint": "Compare a composição da turma com as escolas, séries e contextos sobre os quais a recomendação pretende valer.",
+      "errorFocus": "Generalizar de um grupo local sem verificar representatividade."
+    },
+    {
+      "questionId": "v93-phil-argument-20",
+      "hint": "Relate convergências entre métodos e declare que o desenho não acompanhou mudanças temporais.",
+      "errorFocus": "Afirmar evolução ou causa no tempo sem observações longitudinais."
     }
   ],
   "questions": [

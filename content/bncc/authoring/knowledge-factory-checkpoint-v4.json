@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "15a5d19d96ed3fbb86311006b13f13cf1c0a6a7552cd690fd28423f515269d3f",
-  "outputHash": "9930042774078ab4ec152ee0e764d4c3635287968d21e481289f6a600cffa460",
+  "inputHash": "219f8bfab6f6925226e7b1545efd8652c2c5c8fdef89db2fcae04e1ac8fb103c",
+  "outputHash": "9be60b05f7953e273e4ab379fdf1493d1f7d1c49d6720f775c8fe78aaae71fbb",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,13 +13,13 @@
   "currentWave": 2,
   "nextQueueItem": {
     "wave": 2,
-    "id": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+    "id": "PHYSICS_UNIT_CONVERSION",
     "stage": "ENSINO_MEDIO",
-    "subject": "PHILOSOPHY",
+    "subject": "PHYSICS",
     "status": "CONTENT_GAP",
     "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
   },
-  "pendingItems": 1762,
+  "pendingItems": 1760,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "e20b6dea45e5f50e05bf476f77837abb8c9ad20ff0b9bdd9cdb1c791739ee33a"
+  "checkpointHash": "ea007a3d07eb772a0590ba4038a05e573305cf71e3c53f953501c71325d72a90"
 }

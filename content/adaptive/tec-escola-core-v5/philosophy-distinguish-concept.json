@@ -1,0 +1,1401 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-philosophy-distinguish-concept",
+  "subject": "PHILOSOPHY",
+  "domain": "CONCEITO",
+  "topic": "conceitos, definicoes de trabalho, preferencias e opinioes",
+  "canonicalSkillCode": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+  "contentVersion": 5,
+  "lessonVersion": 5,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "questions": [
+    {
+      "id": "philosophy-concept-v5-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LIBRARY_ACCESS_RULE",
+      "statement": "Em uma discussão sobre acesso à biblioteca, qual frase propõe um critério para decidir quem pode usar o espaço, em vez de apenas dizer do que alguém gosta?",
+      "options": [
+        "Neste debate, “usuário da biblioteca” é quem pode entrar e consultar o acervo segundo as regras comuns de acesso.",
+        "Prefiro bibliotecas silenciosas a bibliotecas movimentadas.",
+        "A biblioteca do centro é a mais bonita da cidade.",
+        "Acho que todos deveriam gostar de ler."
+      ],
+      "correctAnswer": "Neste debate, “usuário da biblioteca” é quem pode entrar e consultar o acervo segundo as regras comuns de acesso.",
+      "explanation": "A frase explicita como a categoria será aplicada na discussão. As outras expressam gosto, avaliação ou expectativa, não um critério de classificação.",
+      "hint": "Pergunte: a frase ajuda a classificar um caso, ou comunica uma avaliação pessoal?",
+      "errorFocus": "Confundir uma preferência sobre o espaço com uma regra de aplicação do conceito.",
+      "misconceptions": {
+        "Prefiro bibliotecas silenciosas a bibliotecas movimentadas.": [
+          "Confundir uma preferência sobre o espaço com uma regra de aplicação do conceito."
+        ],
+        "A biblioteca do centro é a mais bonita da cidade.": [
+          "Confundir uma preferência sobre o espaço com uma regra de aplicação do conceito."
+        ],
+        "Acho que todos deveriam gostar de ler.": [
+          "Confundir uma preferência sobre o espaço com uma regra de aplicação do conceito."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MUSIC_PREFERENCE",
+      "statement": "Uma estudante afirma: “Prefiro estudar com música instrumental porque me ajuda a manter a atenção”. O que a frase expressa principalmente?",
+      "options": [
+        "Uma definição universal de atenção.",
+        "Uma preferência pessoal acompanhada de uma razão sobre a experiência da estudante.",
+        "Um critério suficiente para classificar qualquer ambiente de estudo.",
+        "Uma prova de que música instrumental melhora a atenção de todas as pessoas."
+      ],
+      "correctAnswer": "Uma preferência pessoal acompanhada de uma razão sobre a experiência da estudante.",
+      "explanation": "A estudante relata uma escolha e uma razão ligada à própria experiência; isso não transforma a preferência em regra geral nem em definição.",
+      "hint": "Observe o alcance: a frase fala da experiência de uma pessoa, não de todos os estudantes.",
+      "errorFocus": "Tratar uma preferência justificada como uma definição universal.",
+      "misconceptions": {
+        "Uma definição universal de atenção.": [
+          "Tratar uma preferência justificada como uma definição universal."
+        ],
+        "Um critério suficiente para classificar qualquer ambiente de estudo.": [
+          "Tratar uma preferência justificada como uma definição universal."
+        ],
+        "Uma prova de que música instrumental melhora a atenção de todas as pessoas.": [
+          "Tratar uma preferência justificada como uma definição universal."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "OPINION_WITH_REASON",
+      "statement": "Qual afirmação é uma opinião que apresenta uma razão, sem por isso deixar de ser uma opinião?",
+      "options": [
+        "Neste formulário, “horário ampliado” significa atendimento após o fim das aulas regulares.",
+        "A biblioteca fecha às 17h, conforme o aviso publicado hoje.",
+        "A escola deveria ampliar o horário da biblioteca, pois muitos estudantes só conseguem estudar depois da aula.",
+        "“Biblioteca” é a palavra usada para nomear o espaço de leitura e consulta."
+      ],
+      "correctAnswer": "A escola deveria ampliar o horário da biblioteca, pois muitos estudantes só conseguem estudar depois da aula.",
+      "explanation": "A primeira frase defende uma proposta e oferece uma razão. Opiniões podem ser justificadas; não são sinônimo de palpite sem fundamento.",
+      "hint": "Separe o tipo de afirmação da qualidade de suas razões.",
+      "errorFocus": "Supor que uma opinião deixa de ser opinião quando apresenta razões.",
+      "misconceptions": {
+        "Neste formulário, “horário ampliado” significa atendimento após o fim das aulas regulares.": [
+          "Supor que uma opinião deixa de ser opinião quando apresenta razões."
+        ],
+        "A biblioteca fecha às 17h, conforme o aviso publicado hoje.": [
+          "Supor que uma opinião deixa de ser opinião quando apresenta razões."
+        ],
+        "“Biblioteca” é a palavra usada para nomear o espaço de leitura e consulta.": [
+          "Supor que uma opinião deixa de ser opinião quando apresenta razões."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-probe-04",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CONTEXTUAL_TERM",
+      "statement": "Uma pesquisa escolar usa a palavra “participação”. Qual escolha torna a análise mais clara sem afirmar que existe uma única definição definitiva para todo contexto?",
+      "options": [
+        "Escolher a definição mais popular sem explicar por que serve à pesquisa.",
+        "Tratar qualquer comentário como participação, mesmo que a pesquisa meça presença em reuniões.",
+        "Concluir que o termo é impossível de analisar porque pode ter mais de um uso.",
+        "Declarar qual uso de “participação” será adotado na pesquisa e explicar como ele se aplica aos casos observados."
+      ],
+      "correctAnswer": "Declarar qual uso de “participação” será adotado na pesquisa e explicar como ele se aplica aos casos observados.",
+      "explanation": "Uma definição de trabalho explicita o recorte da investigação. Ela pode ser discutida e revista; não precisa ser apresentada como essência universal do termo.",
+      "hint": "Procure uma escolha explícita de uso que combine com a pergunta e os dados da pesquisa.",
+      "errorFocus": "Confundir uma definição de trabalho contextual com uma definição incontestável.",
+      "misconceptions": {
+        "Escolher a definição mais popular sem explicar por que serve à pesquisa.": [
+          "Confundir uma definição de trabalho contextual com uma definição incontestável."
+        ],
+        "Tratar qualquer comentário como participação, mesmo que a pesquisa meça presença em reuniões.": [
+          "Confundir uma definição de trabalho contextual com uma definição incontestável."
+        ],
+        "Concluir que o termo é impossível de analisar porque pode ter mais de um uso.": [
+          "Confundir uma definição de trabalho contextual com uma definição incontestável."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "STUDY_GROUP_MEMBERSHIP",
+      "statement": "Um grupo precisa decidir se alguém integra o “grupo de estudo” para receber os materiais. Qual frase funciona como critério de pertencimento nessa situação?",
+      "options": [
+        "Para esta organização, integra o grupo quem confirmou participação e recebeu uma tarefa comum de estudo.",
+        "Gosto mais de estudar com pessoas que fazem perguntas.",
+        "Este é o grupo de estudo mais animado da escola.",
+        "Todo estudante deveria preferir estudar em grupo."
+      ],
+      "correctAnswer": "Para esta organização, integra o grupo quem confirmou participação e recebeu uma tarefa comum de estudo.",
+      "explanation": "O critério descreve condições usadas para classificar participantes neste contexto. Preferência e avaliação não determinam, por si, o pertencimento.",
+      "hint": "Identifique qual frase permite decidir casos concretos de forma consistente.",
+      "errorFocus": "Escolher uma qualidade desejável como se fosse condição de pertencimento.",
+      "misconceptions": {
+        "Gosto mais de estudar com pessoas que fazem perguntas.": [
+          "Escolher uma qualidade desejável como se fosse condição de pertencimento."
+        ],
+        "Este é o grupo de estudo mais animado da escola.": [
+          "Escolher uma qualidade desejável como se fosse condição de pertencimento."
+        ],
+        "Todo estudante deveria preferir estudar em grupo.": [
+          "Escolher uma qualidade desejável como se fosse condição de pertencimento."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TOO_BROAD_CATEGORY",
+      "statement": "Uma equipe define “transporte coletivo” como “qualquer veículo usado por mais de uma pessoa”. Que contraexemplo mostra melhor que a definição ficou ampla demais?",
+      "options": [
+        "Um ônibus que transporta passageiros em uma linha aberta ao público.",
+        "Um carro particular que leva duas pessoas da mesma família, sem serviço ou acesso coletivo.",
+        "Uma van com lugares oferecidos a diferentes passageiros mediante pagamento.",
+        "Um metrô que atende usuários de várias regiões."
+      ],
+      "correctAnswer": "Um carro particular que leva duas pessoas da mesma família, sem serviço ou acesso coletivo.",
+      "explanation": "O carro pode levar mais de uma pessoa e ainda não ser, nesse uso, um serviço coletivo. Um contraexemplo revela que a condição proposta inclui casos que a equipe queria excluir.",
+      "hint": "Procure um caso que satisfaz a frase, mas não pertence à categoria pretendida.",
+      "errorFocus": "Aceitar uma definição porque ela cobre exemplos típicos, sem testar casos fora do padrão.",
+      "misconceptions": {
+        "Um ônibus que transporta passageiros em uma linha aberta ao público.": [
+          "Aceitar uma definição porque ela cobre exemplos típicos, sem testar casos fora do padrão."
+        ],
+        "Uma van com lugares oferecidos a diferentes passageiros mediante pagamento.": [
+          "Aceitar uma definição porque ela cobre exemplos típicos, sem testar casos fora do padrão."
+        ],
+        "Um metrô que atende usuários de várias regiões.": [
+          "Aceitar uma definição porque ela cobre exemplos típicos, sem testar casos fora do padrão."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TOO_NARROW_CATEGORY",
+      "statement": "Um regulamento define “material reutilizável” como “objeto de vidro usado novamente”. Qual caso mostra que essa definição pode ter ficado estreita demais?",
+      "options": [
+        "Um copo de vidro descartado após o primeiro uso.",
+        "Um objeto de vidro quebrado e sem possibilidade de uso.",
+        "Uma caixa de plástico resistente que é limpa e usada repetidamente para guardar materiais.",
+        "Uma folha de papel usada uma vez e depois reciclada."
+      ],
+      "correctAnswer": "Uma caixa de plástico resistente que é limpa e usada repetidamente para guardar materiais.",
+      "explanation": "A caixa pode cumprir a função de reutilização sem ser de vidro. O exemplo mostra que o material do objeto não precisa ser condição para o conceito pretendido.",
+      "hint": "Teste um caso que realiza a função, mas não possui a característica escolhida.",
+      "errorFocus": "Confundir um exemplo comum com uma condição necessária.",
+      "misconceptions": {
+        "Um copo de vidro descartado após o primeiro uso.": [
+          "Confundir um exemplo comum com uma condição necessária."
+        ],
+        "Um objeto de vidro quebrado e sem possibilidade de uso.": [
+          "Confundir um exemplo comum com uma condição necessária."
+        ],
+        "Uma folha de papel usada uma vez e depois reciclada.": [
+          "Confundir um exemplo comum com uma condição necessária."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EQUALITY_EQUITY_CRITERIA",
+      "statement": "Em uma atividade, a turma compara “igualdade” e “equidade”. Qual formulação explicita um recorte de trabalho sem alegar que encerra todo debate filosófico sobre os termos?",
+      "options": [
+        "Igualdade é sempre justa e equidade é sempre injusta.",
+        "Equidade é aquilo de que cada pessoa gosta mais.",
+        "As palavras são idênticas em qualquer debate e não precisam de explicação.",
+        "Nesta atividade, “igualdade” indicará oferecer a mesma regra; “equidade” indicará ajustar apoios diante de barreiras identificadas."
+      ],
+      "correctAnswer": "Nesta atividade, “igualdade” indicará oferecer a mesma regra; “equidade” indicará ajustar apoios diante de barreiras identificadas.",
+      "explanation": "A formulação delimita como os termos serão comparados nesta atividade e explicita um critério. Ela não prova que os conceitos tenham uma única análise aceita em todas as teorias.",
+      "hint": "Repare na expressão “nesta atividade”: o recorte é declarado, não universalizado.",
+      "errorFocus": "Apresentar uma definição local como se fosse consenso filosófico universal.",
+      "misconceptions": {
+        "Igualdade é sempre justa e equidade é sempre injusta.": [
+          "Apresentar uma definição local como se fosse consenso filosófico universal."
+        ],
+        "Equidade é aquilo de que cada pessoa gosta mais.": [
+          "Apresentar uma definição local como se fosse consenso filosófico universal."
+        ],
+        "As palavras são idênticas em qualquer debate e não precisam de explicação.": [
+          "Apresentar uma definição local como se fosse consenso filosófico universal."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ARTWORK_AND_VALUE",
+      "statement": "Em uma conversa sobre uma exposição, qual fala expressa principalmente uma preferência?",
+      "options": [
+        "Eu prefiro as obras com cores fortes porque chamam minha atenção.",
+        "Para esta exposição, “obra interativa” é aquela cuja experiência depende de uma ação do visitante.",
+        "A etiqueta informa que a instalação foi montada em 2022.",
+        "A equipe classificará como “obra sonora” a peça cuja parte principal inclui sons organizados."
+      ],
+      "correctAnswer": "Eu prefiro as obras com cores fortes porque chamam minha atenção.",
+      "explanation": "A primeira fala compara obras segundo o gosto de quem fala. Uma preferência pode ser argumentada, mas continua diferente do critério de classificação usado pela equipe.",
+      "hint": "Pergunte se a fala relata gosto ou fixa uma regra de aplicação.",
+      "errorFocus": "Confundir qualquer frase sobre uma categoria com definição, sem observar sua função.",
+      "misconceptions": {
+        "Para esta exposição, “obra interativa” é aquela cuja experiência depende de uma ação do visitante.": [
+          "Confundir qualquer frase sobre uma categoria com definição, sem observar sua função."
+        ],
+        "A etiqueta informa que a instalação foi montada em 2022.": [
+          "Confundir qualquer frase sobre uma categoria com definição, sem observar sua função."
+        ],
+        "A equipe classificará como “obra sonora” a peça cuja parte principal inclui sons organizados.": [
+          "Confundir qualquer frase sobre uma categoria com definição, sem observar sua função."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SAME_CONCEPT_DIFFERENT_WORDS",
+      "statement": "Um texto usa “moradia” e outro usa “habitação”. O que é mais adequado concluir apenas com base nas palavras?",
+      "options": [
+        "As palavras são necessariamente conceitos opostos.",
+        "Ainda é preciso comparar o contexto e o uso; palavras diferentes podem expressar conceitos próximos, mas não garantem identidade de sentido.",
+        "As duas palavras sempre têm exatamente o mesmo significado em qualquer contexto.",
+        "Uma das palavras é uma opinião e a outra é uma definição."
+      ],
+      "correctAnswer": "Ainda é preciso comparar o contexto e o uso; palavras diferentes podem expressar conceitos próximos, mas não garantem identidade de sentido.",
+      "explanation": "A expressão linguística não resolve sozinha a identidade conceitual. O uso, o contexto e os critérios de aplicação precisam ser comparados.",
+      "hint": "Compare o que cada texto inclui, exclui e pretende explicar.",
+      "errorFocus": "Tratar diferença de palavras como prova suficiente de diferença conceitual, ou semelhança como identidade automática.",
+      "misconceptions": {
+        "As palavras são necessariamente conceitos opostos.": [
+          "Tratar diferença de palavras como prova suficiente de diferença conceitual, ou semelhança como identidade automática."
+        ],
+        "As duas palavras sempre têm exatamente o mesmo significado em qualquer contexto.": [
+          "Tratar diferença de palavras como prova suficiente de diferença conceitual, ou semelhança como identidade automática."
+        ],
+        "Uma das palavras é uma opinião e a outra é uma definição.": [
+          "Tratar diferença de palavras como prova suficiente de diferença conceitual, ou semelhança como identidade automática."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "AMBIGUOUS_FREE",
+      "statement": "Em um aviso, “entrada livre” pode significar ausência de cobrança ou ausência de restrições. Qual pergunta ajuda a interpretar a expressão naquele contexto?",
+      "options": [
+        "Qual sentido da palavra parece mais bonito?",
+        "Qual é a opinião de quem escreveu sobre todas as formas de liberdade?",
+        "O aviso esclarece se “livre” se refere ao preço, às condições de acesso ou a outra característica?",
+        "A palavra “livre” só pode ter um significado correto em português."
+      ],
+      "correctAnswer": "O aviso esclarece se “livre” se refere ao preço, às condições de acesso ou a outra característica?",
+      "explanation": "A palavra pode ter sentidos diferentes. O contexto e a finalidade do aviso ajudam a identificar qual critério está sendo usado.",
+      "hint": "Procure pistas no restante do aviso e na situação em que ele foi publicado.",
+      "errorFocus": "Ignorar ambiguidade contextual e escolher um sentido sem evidência.",
+      "misconceptions": {
+        "Qual sentido da palavra parece mais bonito?": [
+          "Ignorar ambiguidade contextual e escolher um sentido sem evidência."
+        ],
+        "Qual é a opinião de quem escreveu sobre todas as formas de liberdade?": [
+          "Ignorar ambiguidade contextual e escolher um sentido sem evidência."
+        ],
+        "A palavra “livre” só pode ter um significado correto em português.": [
+          "Ignorar ambiguidade contextual e escolher um sentido sem evidência."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RULE_AND_VALUE",
+      "statement": "Um conselho define “uso responsável de telas” como “uso por até duas horas”. Qual análise é mais cuidadosa antes de aplicar esse critério?",
+      "options": [
+        "Aceitar o número como definição natural e suficiente em qualquer situação.",
+        "Rejeitar o critério porque toda definição quantitativa é uma preferência.",
+        "Concluir que quem usa uma tela por menos tempo sempre age com responsabilidade.",
+        "Perguntar por que duas horas foram escolhidas, a quais situações se aplicam e se duração sozinha captura responsabilidade."
+      ],
+      "correctAnswer": "Perguntar por que duas horas foram escolhidas, a quais situações se aplicam e se duração sozinha captura responsabilidade.",
+      "explanation": "O limite pode ser uma regra operacional útil, mas sua adequação depende de contexto e justificativa. A duração, isoladamente, talvez não capture finalidade, pausas ou efeitos.",
+      "hint": "Separe a conveniência de medir do argumento que justifica o limite.",
+      "errorFocus": "Tratar uma regra mensurável como essência universal e suficiente do conceito.",
+      "misconceptions": {
+        "Aceitar o número como definição natural e suficiente em qualquer situação.": [
+          "Tratar uma regra mensurável como essência universal e suficiente do conceito."
+        ],
+        "Rejeitar o critério porque toda definição quantitativa é uma preferência.": [
+          "Tratar uma regra mensurável como essência universal e suficiente do conceito."
+        ],
+        "Concluir que quem usa uma tela por menos tempo sempre age com responsabilidade.": [
+          "Tratar uma regra mensurável como essência universal e suficiente do conceito."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COUNTEREXAMPLE_CONCEPT",
+      "statement": "Uma proposta diz: “Toda ação voluntária é livre”. Qual caso é um contraexemplo relevante para testar essa análise?",
+      "options": [
+        "Uma pessoa escolhe voluntariamente entre duas opções sob uma ameaça grave que limita suas alternativas.",
+        "Uma pessoa escolhe livremente entre várias atividades de lazer.",
+        "Uma pessoa realiza uma ação automática sem percebê-la.",
+        "Uma pessoa prefere uma opção e explica seu gosto."
+      ],
+      "correctAnswer": "Uma pessoa escolhe voluntariamente entre duas opções sob uma ameaça grave que limita suas alternativas.",
+      "explanation": "A ameaça pode tornar discutível se a ação é livre, embora tenha sido escolhida voluntariamente. O caso testa se voluntariedade, sozinha, é suficiente.",
+      "hint": "Mantenha a condição proposta e procure um caso que a satisfaça, mas gere dúvida sobre a categoria.",
+      "errorFocus": "Aceitar uma condição como suficiente sem examinar situações-limite.",
+      "misconceptions": {
+        "Uma pessoa escolhe livremente entre várias atividades de lazer.": [
+          "Aceitar uma condição como suficiente sem examinar situações-limite."
+        ],
+        "Uma pessoa realiza uma ação automática sem percebê-la.": [
+          "Aceitar uma condição como suficiente sem examinar situações-limite."
+        ],
+        "Uma pessoa prefere uma opção e explica seu gosto.": [
+          "Aceitar uma condição como suficiente sem examinar situações-limite."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CLASSROOM_DEBATE_RULE",
+      "statement": "Uma turma decide quais falas contam como “pergunta de esclarecimento” durante o debate. Qual regra ajuda a classificar as falas sem avaliar se são boas ou ruins?",
+      "options": [
+        "Contará como pergunta apenas a fala feita por alguém de quem gosto.",
+        "Contará como pergunta de esclarecimento a fala que solicita o sentido de um termo ou a informação necessária para acompanhar a proposta.",
+        "Perguntas de esclarecimento são sempre melhores que qualquer objeção.",
+        "A turma deve escolher a fala mais elegante como única definição."
+      ],
+      "correctAnswer": "Contará como pergunta de esclarecimento a fala que solicita o sentido de um termo ou a informação necessária para acompanhar a proposta.",
+      "explanation": "A regra descreve a função comunicativa que será usada para classificar. A qualidade da pergunta é outra avaliação.",
+      "hint": "Diferencie “o que conta como” da pergunta “o que é melhor”.",
+      "errorFocus": "Confundir critério de categoria com avaliação positiva da categoria.",
+      "misconceptions": {
+        "Contará como pergunta apenas a fala feita por alguém de quem gosto.": [
+          "Confundir critério de categoria com avaliação positiva da categoria."
+        ],
+        "Perguntas de esclarecimento são sempre melhores que qualquer objeção.": [
+          "Confundir critério de categoria com avaliação positiva da categoria."
+        ],
+        "A turma deve escolher a fala mais elegante como única definição.": [
+          "Confundir critério de categoria com avaliação positiva da categoria."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CONCEPT_VS_WORD",
+      "statement": "Em uma análise filosófica, qual alternativa distingue melhor palavra e conceito?",
+      "options": [
+        "A palavra é sempre um objeto físico e o conceito é sempre uma definição de dicionário.",
+        "Cada palavra corresponde necessariamente a um único conceito em todos os contextos.",
+        "A palavra é uma expressão linguística; o conceito é o conteúdo ou categoria mobilizado no pensamento e na classificação, embora a relação entre ambos possa ser discutida.",
+        "Conceito é apenas uma opinião pessoal sobre uma palavra."
+      ],
+      "correctAnswer": "A palavra é uma expressão linguística; o conceito é o conteúdo ou categoria mobilizado no pensamento e na classificação, embora a relação entre ambos possa ser discutida.",
+      "explanation": "A relação entre linguagem e conceitos é debatida, mas não se deve igualar automaticamente palavra, conceito e verbete de dicionário.",
+      "hint": "Pergunte se a discussão trata da expressão, do conteúdo pensado ou do critério de classificação.",
+      "errorFocus": "Reduzir conceitos a palavras ou definições lexicais sem considerar usos e teorias.",
+      "misconceptions": {
+        "A palavra é sempre um objeto físico e o conceito é sempre uma definição de dicionário.": [
+          "Reduzir conceitos a palavras ou definições lexicais sem considerar usos e teorias."
+        ],
+        "Cada palavra corresponde necessariamente a um único conceito em todos os contextos.": [
+          "Reduzir conceitos a palavras ou definições lexicais sem considerar usos e teorias."
+        ],
+        "Conceito é apenas uma opinião pessoal sobre uma palavra.": [
+          "Reduzir conceitos a palavras ou definições lexicais sem considerar usos e teorias."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-practice-12",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "REVISING_WORKING_DEFINITION",
+      "statement": "Uma pesquisa define “participação estudantil” como presença física em reuniões. Depois percebe que estudantes também enviam propostas por formulário e participam das decisões. Qual revisão é mais defensável?",
+      "options": [
+        "Manter a definição e declarar que toda contribuição remota não é participação.",
+        "Trocar a definição por “participação é o que cada pessoa acha que é”, sem critérios.",
+        "Concluir que o conceito não pode ser estudado porque inclui mais de uma prática.",
+        "Explicitar se a pesquisa mede presença, contribuição ou influência na decisão e ajustar a definição à pergunta investigada."
+      ],
+      "correctAnswer": "Explicitar se a pesquisa mede presença, contribuição ou influência na decisão e ajustar a definição à pergunta investigada.",
+      "explanation": "A revisão explicita qual dimensão será medida e evita excluir casos relevantes sem justificativa. Diferentes perguntas podem exigir recortes distintos.",
+      "hint": "Comece pela pergunta de pesquisa; depois escolha e declare o critério que a responde.",
+      "errorFocus": "Confundir necessidade de recorte com permissão para excluir casos sem justificativa.",
+      "misconceptions": {
+        "Manter a definição e declarar que toda contribuição remota não é participação.": [
+          "Confundir necessidade de recorte com permissão para excluir casos sem justificativa."
+        ],
+        "Trocar a definição por “participação é o que cada pessoa acha que é”, sem critérios.": [
+          "Confundir necessidade de recorte com permissão para excluir casos sem justificativa."
+        ],
+        "Concluir que o conceito não pode ser estudado porque inclui mais de uma prática.": [
+          "Confundir necessidade de recorte com permissão para excluir casos sem justificativa."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DIGITAL_PRIVACY_POLICY",
+      "statement": "Uma política chama de “proteção de privacidade” apenas não publicar dados. Um serviço coleta localização contínua, mas não a publica. Qual é a melhor análise conceitual?",
+      "options": [
+        "O caso sugere que a definição pode ser estreita: coleta e uso também podem ser relevantes para discutir privacidade, então é preciso declarar o escopo.",
+        "O caso prova que toda coleta é necessariamente uma violação, sem depender de contexto.",
+        "Como nada foi publicado, a política já cobre toda questão de privacidade.",
+        "Privacidade é uma preferência individual e não pode ter critérios públicos."
+      ],
+      "correctAnswer": "O caso sugere que a definição pode ser estreita: coleta e uso também podem ser relevantes para discutir privacidade, então é preciso declarar o escopo.",
+      "explanation": "A situação funciona como contraexemplo possível à definição estreita e mostra que publicação não é o único aspecto discutido. A conclusão deve explicitar o conceito e o contexto normativo.",
+      "hint": "Pergunte quais operações com dados a definição inclui ou deixa de fora.",
+      "errorFocus": "Tomar ausência de divulgação como condição suficiente para toda proteção de privacidade.",
+      "misconceptions": {
+        "O caso prova que toda coleta é necessariamente uma violação, sem depender de contexto.": [
+          "Tomar ausência de divulgação como condição suficiente para toda proteção de privacidade."
+        ],
+        "Como nada foi publicado, a política já cobre toda questão de privacidade.": [
+          "Tomar ausência de divulgação como condição suficiente para toda proteção de privacidade."
+        ],
+        "Privacidade é uma preferência individual e não pode ter critérios públicos.": [
+          "Tomar ausência de divulgação como condição suficiente para toda proteção de privacidade."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ACCESSIBLE_PUBLIC_SPACE",
+      "statement": "Uma cidade define “espaço acessível” como “lugar que possui rampa”. Uma pessoa usuária de cadeira de rodas encontra uma rampa bloqueada e não consegue entrar. O que o caso mostra?",
+      "options": [
+        "Que a experiência de uma pessoa não pode servir para examinar definições.",
+        "A presença da rampa pode não ser suficiente; o critério talvez precise considerar se o percurso permite acesso efetivo nas condições observadas.",
+        "Que toda rampa é inútil e deve ser excluída da definição.",
+        "Que acessibilidade é somente uma opinião estética sobre edifícios."
+      ],
+      "correctAnswer": "A presença da rampa pode não ser suficiente; o critério talvez precise considerar se o percurso permite acesso efetivo nas condições observadas.",
+      "explanation": "O caso testa suficiência: possuir rampa não garante, sozinho, acesso. A análise deve considerar a função e as condições reais, sem concluir além do que o caso mostra.",
+      "hint": "Compare o critério escrito com o resultado no caso concreto.",
+      "errorFocus": "Confundir a presença de um recurso com a realização da condição que ele deveria garantir.",
+      "misconceptions": {
+        "Que a experiência de uma pessoa não pode servir para examinar definições.": [
+          "Confundir a presença de um recurso com a realização da condição que ele deveria garantir."
+        ],
+        "Que toda rampa é inútil e deve ser excluída da definição.": [
+          "Confundir a presença de um recurso com a realização da condição que ele deveria garantir."
+        ],
+        "Que acessibilidade é somente uma opinião estética sobre edifícios.": [
+          "Confundir a presença de um recurso com a realização da condição que ele deveria garantir."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "COMMUNITY_SAFETY",
+      "statement": "Moradores discutem “segurança no bairro”. Uma pessoa propõe medir iluminação e ocorrências registradas; outra diz que prefere ruas mais movimentadas. Que distinção ajuda a avançar a conversa?",
+      "options": [
+        "Escolher a preferência mais popular como definição completa de segurança.",
+        "Tratar todos os relatos como definições e dispensar a comparação dos usos.",
+        "Separar critérios de investigação, preferências sobre o ambiente e as afirmações factuais que ainda precisam de evidência.",
+        "Concluir que a existência de opiniões impede qualquer análise comum."
+      ],
+      "correctAnswer": "Separar critérios de investigação, preferências sobre o ambiente e as afirmações factuais que ainda precisam de evidência.",
+      "explanation": "A conversa mistura maneiras de medir, gostos sobre o ambiente e possíveis alegações sobre fatos. Separá-los esclarece o desacordo sem desqualificar as pessoas.",
+      "hint": "Classifique a função de cada fala antes de decidir se elas respondem à mesma pergunta.",
+      "errorFocus": "Reduzir um debate misto a uma única categoria de afirmação.",
+      "misconceptions": {
+        "Escolher a preferência mais popular como definição completa de segurança.": [
+          "Reduzir um debate misto a uma única categoria de afirmação."
+        ],
+        "Tratar todos os relatos como definições e dispensar a comparação dos usos.": [
+          "Reduzir um debate misto a uma única categoria de afirmação."
+        ],
+        "Concluir que a existência de opiniões impede qualquer análise comum.": [
+          "Reduzir um debate misto a uma única categoria de afirmação."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PUBLIC_KNOWLEDGE",
+      "statement": "Uma exposição escolar usa “conhecimento público” para indicar informações acessíveis e verificáveis por qualquer visitante. Um aluno contesta: “Um dado pode estar disponível e ainda ser falso”. Qual resposta melhora o conceito usado pela exposição?",
+      "options": [
+        "Declarar que a contestação é só uma preferência pessoal.",
+        "Concluir que toda informação publicada é conhecimento.",
+        "Abandonar qualquer critério porque os conceitos filosóficos são debatidos.",
+        "Distinguir disponibilidade pública de justificação ou confiabilidade, e dizer qual desses sentidos a exposição pretende analisar."
+      ],
+      "correctAnswer": "Distinguir disponibilidade pública de justificação ou confiabilidade, e dizer qual desses sentidos a exposição pretende analisar.",
+      "explanation": "O contraexemplo revela que acessibilidade não basta para caracterizar conhecimento no sentido epistemológico. A exposição deve esclarecer se trata de circulação pública ou de conhecimento justificado.",
+      "hint": "Identifique quais propriedades o termo pretende reunir e teste se uma implica a outra.",
+      "errorFocus": "Confundir acesso à informação com verdade ou conhecimento.",
+      "misconceptions": {
+        "Declarar que a contestação é só uma preferência pessoal.": [
+          "Confundir acesso à informação com verdade ou conhecimento."
+        ],
+        "Concluir que toda informação publicada é conhecimento.": [
+          "Confundir acesso à informação com verdade ou conhecimento."
+        ],
+        "Abandonar qualquer critério porque os conceitos filosóficos são debatidos.": [
+          "Confundir acesso à informação com verdade ou conhecimento."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DEMOCRACY_CRITERION",
+      "statement": "Dois grupos definem “decisão democrática” de formas diferentes: um destaca votação; outro destaca participação e possibilidade de contestação. O que um terceiro grupo deve fazer antes de dizer qual definição vence?",
+      "options": [
+        "Explicitar a pergunta e o contexto institucional, comparar o que cada critério inclui e exclui e apresentar razões para o recorte escolhido.",
+        "Somar os votos dos dois grupos e tratar o resultado como verdade conceitual.",
+        "Escolher a definição mais curta, pois concisão decide o significado.",
+        "Declarar que a própria preferência pessoal encerra o debate."
+      ],
+      "correctAnswer": "Explicitar a pergunta e o contexto institucional, comparar o que cada critério inclui e exclui e apresentar razões para o recorte escolhido.",
+      "explanation": "O desacordo pode envolver dimensões diferentes do conceito. Comparar alcance, contexto e finalidade revela o ponto da divergência sem fingir que a votação resolve a análise conceitual.",
+      "hint": "Procure quais casos cada proposta inclui e qual problema pretende esclarecer.",
+      "errorFocus": "Usar popularidade ou concisão como substituto de análise e justificativa.",
+      "misconceptions": {
+        "Somar os votos dos dois grupos e tratar o resultado como verdade conceitual.": [
+          "Usar popularidade ou concisão como substituto de análise e justificativa."
+        ],
+        "Escolher a definição mais curta, pois concisão decide o significado.": [
+          "Usar popularidade ou concisão como substituto de análise e justificativa."
+        ],
+        "Declarar que a própria preferência pessoal encerra o debate.": [
+          "Usar popularidade ou concisão como substituto de análise e justificativa."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SUSTAINABLE_SCHOOL_MEAL",
+      "statement": "Uma escola chama de “refeição sustentável” qualquer refeição sem embalagem descartável. O cardápio evita embalagens, mas desperdiça grande parte dos alimentos. Qual avaliação é mais cuidadosa?",
+      "options": [
+        "O desperdício prova que nenhuma refeição pode ser sustentável.",
+        "O critério cobre uma dimensão ambiental, mas talvez seja insuficiente para o escopo anunciado; a escola deve declarar quais dimensões pretende incluir.",
+        "A ausência de embalagem basta para uma definição universal e completa.",
+        "Sustentabilidade significa apenas aquilo de que estudantes gostam."
+      ],
+      "correctAnswer": "O critério cobre uma dimensão ambiental, mas talvez seja insuficiente para o escopo anunciado; a escola deve declarar quais dimensões pretende incluir.",
+      "explanation": "O caso evidencia uma dimensão omitida, mas não determina sozinho uma teoria completa de sustentabilidade. Um recorte operacional precisa declarar alcance e limites.",
+      "hint": "Compare o nome amplo com os aspectos efetivamente incluídos no critério.",
+      "errorFocus": "Tratar um indicador parcial como definição total do conceito.",
+      "misconceptions": {
+        "O desperdício prova que nenhuma refeição pode ser sustentável.": [
+          "Tratar um indicador parcial como definição total do conceito."
+        ],
+        "A ausência de embalagem basta para uma definição universal e completa.": [
+          "Tratar um indicador parcial como definição total do conceito."
+        ],
+        "Sustentabilidade significa apenas aquilo de que estudantes gostam.": [
+          "Tratar um indicador parcial como definição total do conceito."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ONLINE_COMMUNITY_BOUNDARY",
+      "statement": "Uma plataforma quer distinguir “comunidade on-line” de uma lista de contatos. Qual critério é mais informativo para testar os casos?",
+      "options": [
+        "Contar apenas quantas pessoas têm o mesmo aplicativo instalado.",
+        "Classificar como comunidade toda lista que tenha um nome atraente.",
+        "Examinar se há interação recorrente em torno de práticas ou interesses compartilhados, sem presumir que todo grupo precise ter o mesmo formato.",
+        "Usar a opinião de um integrante como critério suficiente para todos os casos."
+      ],
+      "correctAnswer": "Examinar se há interação recorrente em torno de práticas ou interesses compartilhados, sem presumir que todo grupo precise ter o mesmo formato.",
+      "explanation": "O critério foca relações e práticas compartilhadas, em vez de uma característica superficial isolada. Ainda deve ser testado com casos limítrofes e com o propósito da análise.",
+      "hint": "Teste grupos silenciosos, temporários e com interesses diferentes para ver os limites do critério.",
+      "errorFocus": "Usar um sinal superficial como condição suficiente para uma categoria relacional.",
+      "misconceptions": {
+        "Contar apenas quantas pessoas têm o mesmo aplicativo instalado.": [
+          "Usar um sinal superficial como condição suficiente para uma categoria relacional."
+        ],
+        "Classificar como comunidade toda lista que tenha um nome atraente.": [
+          "Usar um sinal superficial como condição suficiente para uma categoria relacional."
+        ],
+        "Usar a opinião de um integrante como critério suficiente para todos os casos.": [
+          "Usar um sinal superficial como condição suficiente para uma categoria relacional."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-transfer-08",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PUBLIC_SERVICE_FAIRNESS",
+      "statement": "Uma comissão usa “distribuição justa” para avaliar bolsas. Um integrante prefere premiar notas; outra quer priorizar necessidade econômica. Qual passo transforma a divergência em investigação conceitual e normativa mais clara?",
+      "options": [
+        "Chamar a regra preferida de definição e encerrar a conversa.",
+        "Afirmar que basta encontrar uma frase de dicionário para decidir a política.",
+        "Tratar os dados sobre efeitos como irrelevantes porque há valores em disputa.",
+        "Separar o sentido de “justa”, os valores defendidos e as evidências sobre efeitos de cada regra; depois justificar o critério adotado."
+      ],
+      "correctAnswer": "Separar o sentido de “justa”, os valores defendidos e as evidências sobre efeitos de cada regra; depois justificar o critério adotado.",
+      "explanation": "O desacordo combina concepção de justiça, preferências normativas e previsões sobre efeitos. Tornar cada camada explícita permite avaliar razões sem reduzir justiça a gosto ou a dado isolado.",
+      "hint": "Separe o que a palavra significa no debate, o que se valoriza e o que as evidências mostram.",
+      "errorFocus": "Confundir definição conceitual, escolha de valor e previsão empírica.",
+      "misconceptions": {
+        "Chamar a regra preferida de definição e encerrar a conversa.": [
+          "Confundir definição conceitual, escolha de valor e previsão empírica."
+        ],
+        "Afirmar que basta encontrar uma frase de dicionário para decidir a política.": [
+          "Confundir definição conceitual, escolha de valor e previsão empírica."
+        ],
+        "Tratar os dados sobre efeitos como irrelevantes porque há valores em disputa.": [
+          "Confundir definição conceitual, escolha de valor e previsão empírica."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "VOLUNTEER_DEFINITION_TOO_BROAD",
+      "statement": "Um clube define “voluntário” como “qualquer pessoa presente na atividade”. Qual objeção testa melhor a amplitude da definição?",
+      "options": [
+        "Uma visitante pode estar presente sem ter aceitado realizar uma tarefa voluntária.",
+        "Uma pessoa voluntária pode gostar da atividade.",
+        "O clube se reúne aos sábados.",
+        "A palavra “voluntário” tem várias sílabas."
+      ],
+      "correctAnswer": "Uma visitante pode estar presente sem ter aceitado realizar uma tarefa voluntária.",
+      "explanation": "A visitante satisfaz a condição de presença, mas não necessariamente a categoria de voluntariado. Isso mostra que a condição é ampla demais para o uso pretendido.",
+      "hint": "Procure alguém que esteja presente, mas não faça o que o conceito exige.",
+      "errorFocus": "Aceitar uma definição por incluir os exemplos pretendidos, sem testar falsos positivos.",
+      "misconceptions": {
+        "Uma pessoa voluntária pode gostar da atividade.": [
+          "Aceitar uma definição por incluir os exemplos pretendidos, sem testar falsos positivos."
+        ],
+        "O clube se reúne aos sábados.": [
+          "Aceitar uma definição por incluir os exemplos pretendidos, sem testar falsos positivos."
+        ],
+        "A palavra “voluntário” tem várias sílabas.": [
+          "Aceitar uma definição por incluir os exemplos pretendidos, sem testar falsos positivos."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FRIENDSHIP_DEFINITION_TOO_NARROW",
+      "statement": "Uma turma propõe que “amizade” só existe entre pessoas que estudam na mesma sala. Qual é a crítica mais forte dentro da análise conceitual?",
+      "options": [
+        "A amizade é sempre uma preferência sem conteúdo.",
+        "A condição pode ser estreita demais: pessoas podem manter amizade mesmo estudando em lugares diferentes.",
+        "Todas as pessoas da mesma sala são amigas.",
+        "A definição é verdadeira porque é curta."
+      ],
+      "correctAnswer": "A condição pode ser estreita demais: pessoas podem manter amizade mesmo estudando em lugares diferentes.",
+      "explanation": "Um contraexemplo plausível satisfaz o conceito em uso sem cumprir a condição proposta, sugerindo que estudar na mesma sala não é necessário.",
+      "hint": "Pergunte se o conceito pode se aplicar quando essa característica está ausente.",
+      "errorFocus": "Confundir uma característica frequente com condição necessária.",
+      "misconceptions": {
+        "A amizade é sempre uma preferência sem conteúdo.": [
+          "Confundir uma característica frequente com condição necessária."
+        ],
+        "Todas as pessoas da mesma sala são amigas.": [
+          "Confundir uma característica frequente com condição necessária."
+        ],
+        "A definição é verdadeira porque é curta.": [
+          "Confundir uma característica frequente com condição necessária."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NECESSARY_VS_SUFFICIENT_ACCESS",
+      "statement": "Uma regra diz: “Para entrar na oficina, é necessário usar óculos de proteção”. O que essa frase autoriza concluir, sem informação adicional?",
+      "options": [
+        "Qualquer pessoa de óculos pode entrar, mesmo sem cumprir outras regras.",
+        "Usar óculos é uma preferência, não uma condição.",
+        "Quem não usa os óculos não cumpre uma condição necessária; isso não prova que usá-los, sozinho, seja suficiente para entrar.",
+        "A oficina é segura em qualquer situação."
+      ],
+      "correctAnswer": "Quem não usa os óculos não cumpre uma condição necessária; isso não prova que usá-los, sozinho, seja suficiente para entrar.",
+      "explanation": "Necessidade significa que a condição não pode faltar. Para concluir suficiência, seria preciso mostrar que ela basta, além de outras condições relevantes.",
+      "hint": "Traduza “necessário” como “sem isso, não”; não como “com isso, basta”.",
+      "errorFocus": "Trocar uma condição necessária por uma condição suficiente.",
+      "misconceptions": {
+        "Qualquer pessoa de óculos pode entrar, mesmo sem cumprir outras regras.": [
+          "Trocar uma condição necessária por uma condição suficiente."
+        ],
+        "Usar óculos é uma preferência, não uma condição.": [
+          "Trocar uma condição necessária por uma condição suficiente."
+        ],
+        "A oficina é segura em qualquer situação.": [
+          "Trocar uma condição necessária por uma condição suficiente."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TERM_CONTEXT_SHIFT",
+      "statement": "Em uma aula de Física, “trabalho” tem um uso técnico; no intervalo, a mesma palavra pode significar emprego ou tarefa. O que a análise deve considerar?",
+      "options": [
+        "A palavra escrita, isoladamente, determina sempre um único conceito.",
+        "Um dos usos é uma opinião e o outro é necessariamente falso.",
+        "O uso cotidiano deve ser descartado em qualquer conversa.",
+        "O contexto e as regras de uso em cada prática, sem presumir que a mesma palavra tenha o mesmo conceito em todas elas."
+      ],
+      "correctAnswer": "O contexto e as regras de uso em cada prática, sem presumir que a mesma palavra tenha o mesmo conceito em todas elas.",
+      "explanation": "Uma mesma forma linguística pode participar de usos distintos. Identificar a prática e a pergunta evita confundir mudança de sentido com contradição.",
+      "hint": "Observe a atividade e a pergunta em que o termo aparece.",
+      "errorFocus": "Inferir identidade conceitual apenas da identidade da palavra.",
+      "misconceptions": {
+        "A palavra escrita, isoladamente, determina sempre um único conceito.": [
+          "Inferir identidade conceitual apenas da identidade da palavra."
+        ],
+        "Um dos usos é uma opinião e o outro é necessariamente falso.": [
+          "Inferir identidade conceitual apenas da identidade da palavra."
+        ],
+        "O uso cotidiano deve ser descartado em qualquer conversa.": [
+          "Inferir identidade conceitual apenas da identidade da palavra."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-lock-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONCEPT_CRITERION_VALUE_CHOICE",
+      "statement": "Um conselho define “bom desempenho” usando apenas notas. Qual observação evita confundir escolha do critério com uma descoberta neutra sobre o conceito?",
+      "options": [
+        "A nota é um indicador escolhido; é preciso justificar por que ela representa o desempenho relevante e quais dimensões deixa de fora.",
+        "Notas são sempre preferências pessoais e nunca informam nada.",
+        "O indicador é neutro e representa todo desempenho por definição.",
+        "A existência de outros indicadores torna impossível qualquer avaliação."
+      ],
+      "correctAnswer": "A nota é um indicador escolhido; é preciso justificar por que ela representa o desempenho relevante e quais dimensões deixa de fora.",
+      "explanation": "Um critério pode ser útil e mensurável, mas sua escolha envolve uma finalidade e pode omitir dimensões. Torná-la explícita ajuda a discutir sua adequação.",
+      "hint": "Pergunte que objetivo o indicador serve e quais aspectos não mede.",
+      "errorFocus": "Tratar um indicador operacional como representação completa e neutra.",
+      "misconceptions": {
+        "Notas são sempre preferências pessoais e nunca informam nada.": [
+          "Tratar um indicador operacional como representação completa e neutra."
+        ],
+        "O indicador é neutro e representa todo desempenho por definição.": [
+          "Tratar um indicador operacional como representação completa e neutra."
+        ],
+        "A existência de outros indicadores torna impossível qualquer avaliação.": [
+          "Tratar um indicador operacional como representação completa e neutra."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-lock-06",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "COUNTEREXAMPLE_REVISION",
+      "statement": "Um grupo define “alimento local” como “produzido no mesmo município”. Encontra um produtor na divisa, a poucos quilômetros, do outro lado do limite municipal. Qual resposta é melhor para uma pesquisa sobre cadeias curtas?",
+      "options": [
+        "Mudar o critério silenciosamente para incluir o produtor.",
+        "Manter o critério se a fronteira administrativa importa para a pergunta, ou justificar um recorte por distância se ela for mais pertinente; declarar a escolha.",
+        "Concluir que qualquer fronteira é arbitrária e não pode ser estudada.",
+        "Dizer que a preferência de quem compra decide o significado em todos os casos."
+      ],
+      "correctAnswer": "Manter o critério se a fronteira administrativa importa para a pergunta, ou justificar um recorte por distância se ela for mais pertinente; declarar a escolha.",
+      "explanation": "O caso-limite revela que a escolha depende do propósito analítico. A solução não é esconder a revisão nem declarar que toda classificação é impossível, mas explicitar e justificar o recorte.",
+      "hint": "Retome a pergunta da pesquisa e declare qual fronteira responde melhor a ela.",
+      "errorFocus": "Alterar critérios depois de ver o caso sem registrar a razão.",
+      "misconceptions": {
+        "Mudar o critério silenciosamente para incluir o produtor.": [
+          "Alterar critérios depois de ver o caso sem registrar a razão."
+        ],
+        "Concluir que qualquer fronteira é arbitrária e não pode ser estudada.": [
+          "Alterar critérios depois de ver o caso sem registrar a razão."
+        ],
+        "Dizer que a preferência de quem compra decide o significado em todos os casos.": [
+          "Alterar critérios depois de ver o caso sem registrar a razão."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAFETERIA_PREFERENCE",
+      "statement": "Qual frase relata principalmente um gosto pessoal, e não a definição de “alimentação saudável” usada em uma pesquisa?",
+      "options": [
+        "Nesta pesquisa, “refeição equilibrada” inclui os grupos alimentares definidos no protocolo.",
+        "O cardápio informa que a sopa contém feijão e legumes.",
+        "Eu prefiro refeições com tempero suave.",
+        "A equipe classificará como “opção vegetariana” a refeição sem ingredientes de origem animal."
+      ],
+      "correctAnswer": "Eu prefiro refeições com tempero suave.",
+      "explanation": "A primeira frase registra preferência. As demais informam dado ou critério de classificação no contexto apresentado.",
+      "hint": "Observe a primeira pessoa e o verbo “prefiro”.",
+      "errorFocus": "Tomar uma escolha individual como critério geral de categoria.",
+      "misconceptions": {
+        "Nesta pesquisa, “refeição equilibrada” inclui os grupos alimentares definidos no protocolo.": [
+          "Tomar uma escolha individual como critério geral de categoria."
+        ],
+        "O cardápio informa que a sopa contém feijão e legumes.": [
+          "Tomar uma escolha individual como critério geral de categoria."
+        ],
+        "A equipe classificará como “opção vegetariana” a refeição sem ingredientes de origem animal.": [
+          "Tomar uma escolha individual como critério geral de categoria."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REASONED_OPINION_REVIEW",
+      "statement": "Uma estudante diz: “A escola deveria oferecer um espaço de descanso, porque o intervalo é curto e barulhento”. Qual leitura é mais precisa?",
+      "options": [
+        "É uma definição de “intervalo”.",
+        "É apenas preferência sem qualquer razão.",
+        "É um fato comprovado sobre todas as escolas.",
+        "É uma opinião ou recomendação apoiada por uma razão que pode ser examinada."
+      ],
+      "correctAnswer": "É uma opinião ou recomendação apoiada por uma razão que pode ser examinada.",
+      "explanation": "A frase recomenda uma ação e oferece uma razão contextual. A razão pode ser investigada; isso não muda a função avaliativa da recomendação.",
+      "hint": "Separe a proposta, a razão e a evidência que ainda pode ser verificada.",
+      "errorFocus": "Confundir opinião argumentada com fato já estabelecido ou palpite arbitrário.",
+      "misconceptions": {
+        "É uma definição de “intervalo”.": [
+          "Confundir opinião argumentada com fato já estabelecido ou palpite arbitrário."
+        ],
+        "É apenas preferência sem qualquer razão.": [
+          "Confundir opinião argumentada com fato já estabelecido ou palpite arbitrário."
+        ],
+        "É um fato comprovado sobre todas as escolas.": [
+          "Confundir opinião argumentada com fato já estabelecido ou palpite arbitrário."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "EMERGENCY_TERM_SCOPE",
+      "statement": "Um aplicativo classifica como “emergência” toda solicitação enviada com prioridade alta. Algumas solicitações são marcadas por engano. Qual teste ajuda a avaliar o critério?",
+      "options": [
+        "Verificar se prioridade alta é suficiente para a categoria e comparar casos urgentes sem essa marcação e casos marcados sem urgência.",
+        "Contar quantas pessoas gostam do botão de prioridade.",
+        "Assumir que a etiqueta criada pelo aplicativo é sempre correta.",
+        "Concluir que urgência é impossível de definir porque há erros."
+      ],
+      "correctAnswer": "Verificar se prioridade alta é suficiente para a categoria e comparar casos urgentes sem essa marcação e casos marcados sem urgência.",
+      "explanation": "O teste examina falsos positivos e negativos: a marcação pode não ser suficiente nem necessária para a categoria pretendida.",
+      "hint": "Compare a classificação do sistema com casos independentes nos dois sentidos.",
+      "errorFocus": "Confundir um sinal administrativo com o próprio conceito que deveria indicar.",
+      "misconceptions": {
+        "Contar quantas pessoas gostam do botão de prioridade.": [
+          "Confundir um sinal administrativo com o próprio conceito que deveria indicar."
+        ],
+        "Assumir que a etiqueta criada pelo aplicativo é sempre correta.": [
+          "Confundir um sinal administrativo com o próprio conceito que deveria indicar."
+        ],
+        "Concluir que urgência é impossível de definir porque há erros.": [
+          "Confundir um sinal administrativo com o próprio conceito que deveria indicar."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "EQUAL_OPPORTUNITY_REVIEW",
+      "statement": "Uma escola define “oportunidade igual” como entregar o mesmo material a todos. Uma estudante sem acesso à internet não consegue usá-lo. Qual pergunta explicita um limite possível da definição?",
+      "options": [
+        "Qual material tem a capa mais bonita?",
+        "A igualdade de entrega é o critério pretendido ou a oportunidade de uso efetivo também faz parte da análise?",
+        "A preferência da estudante prova sozinha que toda igualdade é injusta?",
+        "Como todos receberam o mesmo material, nenhuma outra pergunta é pertinente."
+      ],
+      "correctAnswer": "A igualdade de entrega é o critério pretendido ou a oportunidade de uso efetivo também faz parte da análise?",
+      "explanation": "A pergunta separa o critério escolhido (mesma entrega) do possível objetivo (oportunidade de uso). Ela não decide previamente qual concepção deve prevalecer.",
+      "hint": "Pergunte qual resultado o conceito pretende comparar: o recurso, o acesso ou a possibilidade de uso.",
+      "errorFocus": "Confundir tratamento idêntico com qualquer possível sentido de oportunidade igual.",
+      "misconceptions": {
+        "Qual material tem a capa mais bonita?": [
+          "Confundir tratamento idêntico com qualquer possível sentido de oportunidade igual."
+        ],
+        "A preferência da estudante prova sozinha que toda igualdade é injusta?": [
+          "Confundir tratamento idêntico com qualquer possível sentido de oportunidade igual."
+        ],
+        "Como todos receberam o mesmo material, nenhuma outra pergunta é pertinente.": [
+          "Confundir tratamento idêntico com qualquer possível sentido de oportunidade igual."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "EXAMPLE_COUNTEREXAMPLE_REVIEW",
+      "statement": "Uma definição de “veículo não motorizado” diz “meio de transporte movido por força humana”. Qual caso é um exemplo que ajuda a testar, mas não encerra sozinho, a definição?",
+      "options": [
+        "Uma bicicleta comum usada para ir à escola.",
+        "Um carro movido a gasolina.",
+        "Uma bicicleta elétrica usada com assistência do motor, pois levanta a questão de quanto apoio motorizado o critério permite.",
+        "Uma pessoa caminhando sem transportar objeto algum."
+      ],
+      "correctAnswer": "Uma bicicleta elétrica usada com assistência do motor, pois levanta a questão de quanto apoio motorizado o critério permite.",
+      "explanation": "O caso híbrido testa uma fronteira da definição. A resposta pode depender do propósito e do grau de assistência, que precisam ser explicitados.",
+      "hint": "Escolha um caso que combine características dos lados que a categoria quer separar.",
+      "errorFocus": "Achar que um exemplo típico basta para resolver casos limítrofes.",
+      "misconceptions": {
+        "Uma bicicleta comum usada para ir à escola.": [
+          "Achar que um exemplo típico basta para resolver casos limítrofes."
+        ],
+        "Um carro movido a gasolina.": [
+          "Achar que um exemplo típico basta para resolver casos limítrofes."
+        ],
+        "Uma pessoa caminhando sem transportar objeto algum.": [
+          "Achar que um exemplo típico basta para resolver casos limítrofes."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FACTUAL_VS_DEFINITIONAL_DISAGREEMENT",
+      "statement": "Duas equipes discordam sobre se uma sala é “silenciosa”. Uma mede decibéis; outra chama de silenciosa qualquer sala em que se consiga estudar. Qual passo identifica o desacordo?",
+      "options": [
+        "Escolher a equipe com o equipamento mais caro sem examinar o uso do termo.",
+        "Concluir que uma das equipes está expressando apenas gosto pessoal.",
+        "Tratar qualquer diferença de medida como desacordo conceitual.",
+        "Perguntar se divergem sobre o significado/critério de “silenciosa”, sobre a medição da sala ou sobre o objetivo da atividade."
+      ],
+      "correctAnswer": "Perguntar se divergem sobre o significado/critério de “silenciosa”, sobre a medição da sala ou sobre o objetivo da atividade.",
+      "explanation": "A divergência pode ser semântica, empírica ou ligada à finalidade. Separar essas questões mostra qual evidência ou esclarecimento é necessário.",
+      "hint": "Pergunte o que cada equipe quer dizer e o que está afirmando sobre a sala.",
+      "errorFocus": "Confundir desacordo sobre critério com desacordo sobre fatos medidos.",
+      "misconceptions": {
+        "Escolher a equipe com o equipamento mais caro sem examinar o uso do termo.": [
+          "Confundir desacordo sobre critério com desacordo sobre fatos medidos."
+        ],
+        "Concluir que uma das equipes está expressando apenas gosto pessoal.": [
+          "Confundir desacordo sobre critério com desacordo sobre fatos medidos."
+        ],
+        "Tratar qualquer diferença de medida como desacordo conceitual.": [
+          "Confundir desacordo sobre critério com desacordo sobre fatos medidos."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "AUTONOMY_CONTEXT",
+      "statement": "Em um projeto, “autonomia” é definida como fazer tudo sem ajuda. Uma estudante escolhe pedir orientação para concluir uma tarefa que ela própria planejou. O que o caso permite discutir?",
+      "options": [
+        "Se ausência de ajuda é necessária ao conceito ou se planejar, escolher e conduzir ações pode ser relevante mesmo com apoio.",
+        "Que pedir ajuda prova ausência de autonomia em qualquer sentido.",
+        "Que autonomia é apenas o gosto de trabalhar sozinha.",
+        "Que o exemplo comprova uma definição universal de autonomia."
+      ],
+      "correctAnswer": "Se ausência de ajuda é necessária ao conceito ou se planejar, escolher e conduzir ações pode ser relevante mesmo com apoio.",
+      "explanation": "O caso testa uma condição proposta e mostra que autonomia pode envolver agência e apoio. Ele abre a análise, mas não determina sozinho uma teoria completa.",
+      "hint": "Identifique qual aspecto o critério pretende capturar e se o caso o preserva.",
+      "errorFocus": "Tratar independência total como condição necessária sem testar práticas reais.",
+      "misconceptions": {
+        "Que pedir ajuda prova ausência de autonomia em qualquer sentido.": [
+          "Tratar independência total como condição necessária sem testar práticas reais."
+        ],
+        "Que autonomia é apenas o gosto de trabalhar sozinha.": [
+          "Tratar independência total como condição necessária sem testar práticas reais."
+        ],
+        "Que o exemplo comprova uma definição universal de autonomia.": [
+          "Tratar independência total como condição necessária sem testar práticas reais."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "HARM_CONCEPT_CASE",
+      "statement": "Uma norma define “dano” apenas como prejuízo financeiro. Uma pessoa relata perda relevante de acesso a um serviço, sem custo monetário direto. Qual avaliação é mais cuidadosa?",
+      "options": [
+        "Todo desconforto é automaticamente dano no mesmo sentido jurídico.",
+        "O caso pode revelar uma dimensão excluída; a norma deve justificar se usa “dano” em sentido financeiro restrito ou em escopo mais amplo.",
+        "Sem perda de dinheiro, não pode existir qualquer dano em nenhuma análise.",
+        "O relato é uma preferência e não merece ser considerado."
+      ],
+      "correctAnswer": "O caso pode revelar uma dimensão excluída; a norma deve justificar se usa “dano” em sentido financeiro restrito ou em escopo mais amplo.",
+      "explanation": "A análise distingue um recorte financeiro de sentidos mais amplos. O caso questiona o escopo sem decidir sozinho uma conclusão jurídica ou moral.",
+      "hint": "Declare o domínio de uso e teste quais casos importantes ficam fora dele.",
+      "errorFocus": "Generalizar uma definição operacional para todos os sentidos de um conceito.",
+      "misconceptions": {
+        "Todo desconforto é automaticamente dano no mesmo sentido jurídico.": [
+          "Generalizar uma definição operacional para todos os sentidos de um conceito."
+        ],
+        "Sem perda de dinheiro, não pode existir qualquer dano em nenhuma análise.": [
+          "Generalizar uma definição operacional para todos os sentidos de um conceito."
+        ],
+        "O relato é uma preferência e não merece ser considerado.": [
+          "Generalizar uma definição operacional para todos os sentidos de um conceito."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "DIGITAL_LITERACY_SCOPE",
+      "statement": "Uma escola define “letramento digital” como saber abrir aplicativos. Em uma atividade, um estudante abre o aplicativo, mas compartilha uma senha após uma mensagem falsa. Qual revisão melhora o critério da escola?",
+      "options": [
+        "Concluir que o estudante não sabe usar tecnologia de nenhum modo.",
+        "Manter a definição porque abrir o aplicativo é observável.",
+        "Distinguir operação básica de avaliação crítica e segurança, escolhendo quais dimensões a escola pretende ensinar e avaliar.",
+        "Substituir o critério por “gostar de tecnologia”."
+      ],
+      "correctAnswer": "Distinguir operação básica de avaliação crítica e segurança, escolhendo quais dimensões a escola pretende ensinar e avaliar.",
+      "explanation": "Abrir o aplicativo é uma habilidade operacional, mas não cobre avaliação de mensagens ou proteção de credenciais. A revisão deve declarar dimensões, sem apagar o que o critério inicial media.",
+      "hint": "Pergunte quais competências o objetivo educacional exige além da operação básica.",
+      "errorFocus": "Confundir um componente observável com a extensão total do conceito.",
+      "misconceptions": {
+        "Concluir que o estudante não sabe usar tecnologia de nenhum modo.": [
+          "Confundir um componente observável com a extensão total do conceito."
+        ],
+        "Manter a definição porque abrir o aplicativo é observável.": [
+          "Confundir um componente observável com a extensão total do conceito."
+        ],
+        "Substituir o critério por “gostar de tecnologia”.": [
+          "Confundir um componente observável com a extensão total do conceito."
+        ]
+      }
+    },
+    {
+      "id": "philosophy-concept-v5-review-10",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "CONCEPTUAL_DISAGREEMENT_SYNTHESIS",
+      "statement": "Num debate, uma pessoa diz “arte precisa expressar uma ideia”; outra cita uma obra abstrata sem mensagem identificável. Qual resposta promove melhor a investigação filosófica?",
+      "options": [
+        "Decidir pela preferência pessoal sobre a obra e encerrar o debate.",
+        "Concluir que a obra não é arte porque não corresponde à definição proposta.",
+        "Dizer que todo conceito é impossível de discutir quando há desacordo.",
+        "Tratar a frase como uma proposta de critério, examinar o contraexemplo e perguntar se expressão de ideia é necessária, suficiente ou apenas frequente."
+      ],
+      "correctAnswer": "Tratar a frase como uma proposta de critério, examinar o contraexemplo e perguntar se expressão de ideia é necessária, suficiente ou apenas frequente.",
+      "explanation": "A proposta pode ser testada com contraexemplos e com a distinção entre condições definidoras e características comuns. O desacordo é ponto de partida para análise, não prova automática de fracasso.",
+      "hint": "Teste a definição em casos que a desafiam e indique que tipo de condição está sendo proposta.",
+      "errorFocus": "Confundir uma característica frequente com uma condição necessária ou suficiente.",
+      "misconceptions": {
+        "Decidir pela preferência pessoal sobre a obra e encerrar o debate.": [
+          "Confundir uma característica frequente com uma condição necessária ou suficiente."
+        ],
+        "Concluir que a obra não é arte porque não corresponde à definição proposta.": [
+          "Confundir uma característica frequente com uma condição necessária ou suficiente."
+        ],
+        "Dizer que todo conceito é impossível de discutir quando há desacordo.": [
+          "Confundir uma característica frequente com uma condição necessária ou suficiente."
+        ]
+      }
+    }
+  ],
+  "lesson": {
+    "title": "Como distinguir conceitos, critérios e opiniões",
+    "objective": "Distinguir uma definição conceitual de trabalho de preferências e opiniões, aplicar critérios a casos, testar limites com exemplos e contraexemplos e reconhecer que o uso de conceitos pode depender da pergunta e do contexto.",
+    "summary": "Conceitos ajudam a compreender e classificar casos. Uma definição de trabalho explicita como um termo será usado numa investigação; preferência e opinião expressam avaliações ou juízos, que também podem ter razões. A distinção é sobre a função da fala, não sobre quem está certo.",
+    "explanation": "## 1. Palavra, conceito e definição não são a mesma coisa\nUma palavra é uma expressão da língua. Um conceito participa do modo como pensamos, entendemos e agrupamos casos. Uma definição ou critério explicita como um termo será usado numa conversa, numa pesquisa ou numa regra. A relação entre palavras e conceitos é debatida na Filosofia; não suponha que cada palavra tenha um único significado em todo contexto.\n\n## 2. O que uma definição de trabalho faz\nEla responde, por exemplo: “Que casos esta investigação vai contar como participação?” Uma boa definição deixa o recorte visível para que outras pessoas possam aplicá-lo e questioná-lo. Ela pode ser provisória e revisável. Não é automaticamente uma descoberta de uma essência universal, nem fica correta só porque foi escrita em um regulamento.\n\nPara testar um critério, aplique-o a exemplos claros e a casos de fronteira. Pergunte se ficou amplo demais (inclui casos que deveriam ficar de fora) ou estreito demais (exclui casos relevantes). Condições necessárias e suficientes são ferramentas úteis em algumas análises: uma condição necessária não pode faltar; uma condição suficiente, sozinha, basta. Mas nem todo conceito cotidiano ou filosófico tem uma definição clássica simples e consensual.\n\n## 3. Preferências e opiniões\n“Prefiro estudar em silêncio” expressa uma preferência. “A escola deveria oferecer uma sala silenciosa porque o ruído dificulta a concentração” expressa uma recomendação com uma razão. Uma opinião pode ser apoiada por evidências e discutida; não significa, por definição, um palpite irracional. Uma preferência pode ter razões pessoais e ainda assim não definir uma categoria para todo mundo.\n\nUma mesma conversa pode conter critérios, relatos, fatos, opiniões e argumentos. Não classifique pelo tema ou por uma palavra isolada: observe o trabalho que a frase faz. “Para esta pesquisa, chamaremos de acesso efetivo a possibilidade de entrar e usar o espaço” propõe um critério. “Acho esse espaço acolhedor” é uma avaliação. “O espaço fecha às 18h” é uma afirmação factual que pode ser verificada.\n\n## 4. Conceitos podem ser contestados\nConsidere uma definição de trabalho para “transporte coletivo”: serviço aberto a diferentes passageiros, seguindo uma rota ou regra compartilhada. Um carro particular com duas pessoas testa se a definição ficou ampla demais; uma van que atende pessoas diferentes pode testar se ficou estreita demais. Os casos não resolvem todo debate por si sós, mas mostram o que precisa ser justificado.\n\nTermos como “justiça”, “liberdade”, “participação” e “conhecimento” têm usos e análises disputados. Isso não impede a investigação. Declare a pergunta, explique o sentido adotado, teste casos e reconheça limites. Às vezes duas pessoas discordam sobre fatos; às vezes usam critérios diferentes; às vezes defendem valores diferentes. Separar essas camadas torna o diálogo mais preciso.\n\n## Exemplo resolvido\nUma escola quer avaliar “participação estudantil”. A primeira proposta conta apenas presença em reuniões. Uma estudante lembra que também enviou propostas por formulário e que algumas foram incorporadas. Antes de decidir se a definição está errada, a equipe pergunta o que quer medir: presença, contribuição ou influência em decisões? Se o objetivo for presença, o critério pode servir, com esse limite declarado. Se o objetivo for contribuição, precisa considerar outros meios. A fala “prefiro reuniões presenciais” pode entrar como preferência relevante para o desenho da atividade, mas não define, sozinha, participação.\n\n## Como analisar uma frase\n1. Identifique a pergunta em discussão.\n2. Pergunte se a frase classifica casos, relata um fato, expressa uma avaliação ou oferece uma razão.\n3. Se propõe um critério, teste exemplos, contraexemplos e casos-limite.\n4. Separe o sentido escolhido das razões para preferi-lo.\n5. Diga o que o critério esclarece e o que ainda deixa em aberto.",
+    "workedExample": "No exemplo da escola, “participação” não precisa ter um único recorte para todas as perguntas. Para medir presença, a lista de reuniões pode ser adequada. Para estudar contribuição, formulários e propostas incorporadas também importam. A preferência por encontros presenciais é uma avaliação sobre o formato; não é, por si, a definição de participação. O passo decisivo é declarar a pergunta e testar se o critério responde a ela.",
+    "commonMistake": "Tratar opinião como palpite sem razão, definição como verdade incontestável ou uma palavra como se tivesse o mesmo conceito em qualquer contexto.",
+    "commonErrors": [
+      "Confundir palavra, conceito e verbete de dicionário.",
+      "Tratar preferência como definição universal.",
+      "Supor que toda opinião é irracional ou sem evidência.",
+      "Tomar exemplo típico como condição necessária.",
+      "Testar apenas exemplos favoráveis e ignorar contraexemplos.",
+      "Apresentar um recorte local como consenso filosófico.",
+      "Confundir desacordo conceitual com desacordo factual ou moral."
+    ],
+    "tips": [
+      "Declare a pergunta antes de escolher o critério.",
+      "Diga se a frase classifica, descreve, avalia ou justifica.",
+      "Teste um exemplo típico, um caso que deveria ficar fora e um caso de fronteira.",
+      "Explique quando uma definição é apenas de trabalho e por que o recorte foi escolhido."
+    ],
+    "priorKnowledge": [
+      "Reconhecer frases declarativas e avaliações em situações cotidianas.",
+      "Comparar casos segundo uma regra explícita.",
+      "Justificar uma escolha sem tratar a preferência como prova universal."
+    ],
+    "keyConcepts": [
+      "conceito e categorização",
+      "termo e contexto de uso",
+      "definição de trabalho",
+      "preferência e opinião",
+      "exemplos e contraexemplos",
+      "condições necessárias e suficientes",
+      "desacordo conceitual, factual e normativo"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Distinguir critério de aplicação, preferência, opinião e afirmação factual em casos claros.",
+        "questionIds": [
+          "philosophy-concept-v5-probe-01",
+          "philosophy-concept-v5-probe-02",
+          "philosophy-concept-v5-probe-03",
+          "philosophy-concept-v5-probe-04"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Aplicar critérios, comparar conceitos próximos e testar definições amplas ou estreitas.",
+        "questionIds": [
+          "philosophy-concept-v5-practice-01",
+          "philosophy-concept-v5-practice-02",
+          "philosophy-concept-v5-practice-03",
+          "philosophy-concept-v5-practice-04",
+          "philosophy-concept-v5-practice-05",
+          "philosophy-concept-v5-practice-06",
+          "philosophy-concept-v5-practice-07",
+          "philosophy-concept-v5-practice-08",
+          "philosophy-concept-v5-practice-09",
+          "philosophy-concept-v5-practice-10",
+          "philosophy-concept-v5-practice-11",
+          "philosophy-concept-v5-practice-12"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Analisar conceitos em políticas, pesquisa, tecnologia e vida coletiva sem universalizar o recorte.",
+        "questionIds": [
+          "philosophy-concept-v5-transfer-01",
+          "philosophy-concept-v5-transfer-02",
+          "philosophy-concept-v5-transfer-03",
+          "philosophy-concept-v5-transfer-04",
+          "philosophy-concept-v5-transfer-05",
+          "philosophy-concept-v5-transfer-06",
+          "philosophy-concept-v5-transfer-07",
+          "philosophy-concept-v5-transfer-08"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Examinar condições, casos-limite, escolhas de valor e revisões justificadas.",
+        "questionIds": [
+          "philosophy-concept-v5-lock-01",
+          "philosophy-concept-v5-lock-02",
+          "philosophy-concept-v5-lock-03",
+          "philosophy-concept-v5-lock-04",
+          "philosophy-concept-v5-lock-05",
+          "philosophy-concept-v5-lock-06"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Recuperar as distinções em contextos novos e separar desacordos conceituais, factuais e normativos.",
+        "questionIds": [
+          "philosophy-concept-v5-review-01",
+          "philosophy-concept-v5-review-02",
+          "philosophy-concept-v5-review-03",
+          "philosophy-concept-v5-review-04",
+          "philosophy-concept-v5-review-05",
+          "philosophy-concept-v5-review-06",
+          "philosophy-concept-v5-review-07",
+          "philosophy-concept-v5-review-08",
+          "philosophy-concept-v5-review-09",
+          "philosophy-concept-v5-review-10"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "CRITERION_OR_PREFERENCE",
+        "text": "Um critério ajuda a classificar casos nesta pergunta; uma preferência diz qual opção alguém tende a escolher ou valorizar."
+      },
+      {
+        "trigger": "OPINION_WITH_REASONS",
+        "text": "Uma opinião pode apresentar razões e evidências. Classifique sua função sem decidir antes se ela é boa."
+      },
+      {
+        "trigger": "WORD_OR_CONCEPT",
+        "text": "A mesma palavra pode ter usos diferentes, e expressões diferentes podem se aproximar. Compare os casos e o contexto."
+      },
+      {
+        "trigger": "TOO_BROAD_OR_NARROW",
+        "text": "Procure um caso incluído sem pertencer à categoria ou um caso relevante excluído pelo critério."
+      },
+      {
+        "trigger": "NECESSARY_OR_SUFFICIENT",
+        "text": "Necessário: sem essa condição, não se aplica. Suficiente: essa condição basta. Uma não implica automaticamente a outra."
+      },
+      {
+        "trigger": "CONCEPTUAL_OR_FACTUAL_DISAGREEMENT",
+        "text": "Antes de escolher evidência, esclareça se as pessoas usam critérios diferentes ou discordam sobre o que ocorreu."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SORT_SPEECH_FUNCTION",
+        "misconception": "OPINION_AS_UNREASONED",
+        "prompt": "Separe três frases em “critério”, “preferência/opinião” e “afirmação verificável”. Em seguida, marque quais apresentam razões e quais permitem classificar um caso."
+      },
+      {
+        "id": "TEST_CATEGORY_BOUNDARIES",
+        "misconception": "TYPICAL_FEATURE_AS_NECESSARY",
+        "prompt": "Escreva um exemplo claro, um caso que deve ficar fora e um caso de fronteira. Qual condição sua definição inclui ou exclui em cada um?"
+      },
+      {
+        "id": "SCOPE_THE_DEFINITION",
+        "misconception": "LOCAL_DEFINITION_AS_UNIVERSAL",
+        "prompt": "Complete: “Para responder à pergunta ___, neste estudo usaremos ___ como ___”. Que caso importante fica fora desse recorte?"
+      },
+      {
+        "id": "SEPARATE_DISAGREEMENT_LAYERS",
+        "misconception": "CONCEPTUAL_FACTUAL_NORMATIVE_COLLAPSE",
+        "prompt": "Reescreva o desacordo em três perguntas: que sentido cada pessoa dá ao termo, que fato está em disputa e qual valor orienta a recomendação?"
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7,
+      14
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 32,
+    "sourceDossier": [
+      {
+        "title": "Concepts",
+        "publisher": "Internet Encyclopedia of Philosophy",
+        "url": "https://iep.utm.edu/concepts/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Relações entre conceitos, pensamento e categorização.",
+          "Análise conceitual, condições de aplicação e teorias concorrentes."
+        ],
+        "use": "Apoia a distinção entre conceito, categorização e análise; apresenta mais de uma teoria e objeções à definição clássica."
+      },
+      {
+        "title": "Concepts (Spring 2017 archive)",
+        "publisher": "Stanford Encyclopedia of Philosophy",
+        "url": "https://plato.stanford.edu/archives/spr2017/entries/concepts/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Debates sobre teorias de conceitos e análise.",
+          "Limites de reduzir conceitos a conjuntos simples de condições necessárias e suficientes."
+        ],
+        "use": "Referência acadêmica para manter pluralidade teórica e não ensinar que todo conceito tem definição clássica consensual."
+      },
+      {
+        "title": "Preferences",
+        "publisher": "Stanford Encyclopedia of Philosophy",
+        "url": "https://plato.stanford.edu/entries/preferences/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Preferências como avaliações comparativas em diferentes quadros teóricos."
+        ],
+        "use": "Ajuda a distinguir preferências de definições, sem tratar preferência como irracional ou sem razões."
+      },
+      {
+        "title": "Belief (Spring 2024 archive)",
+        "publisher": "Stanford Encyclopedia of Philosophy",
+        "url": "https://plato.stanford.edu/archives/spr2024/entries/belief/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Crenças como atitudes proposicionais e relação com juízo e evidência."
+        ],
+        "use": "Evita reduzir opinião a gosto pessoal; juízos sobre proposições podem ser avaliados por razões e evidências."
+      }
+    ],
+    "copyrightNote": "Questões, exemplos, feedback e explicações são autorais. As fontes fundamentam o tratamento conceitual; não há alegação de mapeamento oficial BNCC nem aprovação pedagógica humana."
+  }
+}

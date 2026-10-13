@@ -76,19 +76,57 @@ const sourceFeedbackById = {
   'v9-philosophy-argument-11': ['Pergunte se a diferença muda a razão da regra e se uma exceção pode ser explicada pelo mesmo princípio.', 'Aplicar uma regra sem testar se o caso difere de modo relevante.'],
   'v9-philosophy-argument-12': ['Separe a medida descritiva da avaliação normativa e explicite o critério de justiça.', 'Inferir justiça diretamente de aumento de participação.'],
   'v9-philosophy-argument-13': ['Examine a forma inferencial e, em seguida, a confiabilidade da premissa contestada.', 'Supor que validade lógica torna verdadeira toda premissa.'],
+  'v93-phil-argument-01': ['Identifique o que o trecho atribui ao horário ampliado e separe essa conclusão da informação de que a biblioteca abriu mais tarde.', 'Repetir a premissa sobre horário em vez de localizar a afirmação sustentada.'],
+  'v93-phil-argument-02': ['Assuma as premissas apenas para testar a forma: se forem verdadeiras, a conclusão segue para o caso das baleias?', 'Deixar um conhecimento sobre baleias substituir a avaliação da relação lógica.'],
+  'v93-phil-argument-03': ['Separe validade da forma e verdade das premissas; verifique qual premissa compromete a solidez.', 'Supor que uma forma válida torna verdadeiras todas as premissas.'],
+  'v93-phil-argument-04': ['Escolha informação diretamente ligada à circulação e à experiência de acesso, não a uma característica decorativa.', 'Selecionar um dado verdadeiro, mas irrelevante para a barreira de acesso.'],
+  'v93-phil-argument-05': ['Descreva primeiro os 18 respondentes; depois pergunte se a consulta voluntária representa os 900 estudantes.', 'Converter a proporção de respondentes em estimativa da população sem amostragem adequada.'],
+  'v93-phil-argument-06': ['As duas vendas podem variar com uma terceira condição, como calor; associação não estabelece qual evento causa o outro.', 'Confundir variação conjunta com uma relação causal direta.'],
+  'v93-phil-argument-07': ['Avalie a proposta pelas razões e efeitos apresentados; impaciência da pessoa não responde ao conteúdo.', 'Usar um traço do proponente como refutação da proposta.'],
+  'v93-phil-argument-08': ['Procure alternativas entre cancelamento total e ausência completa de prevenção.', 'Aceitar como exaustivas duas opções formuladas pelo argumento.'],
+  'v93-phil-argument-09': ['A conclusão amplia uma observação para casos não observados; mantenha-a provisória e compare fatores relevantes.', 'Tratar uma generalização indutiva como necessidade dedutiva.'],
+  'v93-phil-argument-10': ['Rastreie a origem, procure fontes independentes e verifique evidências específicas para uma afirmação tão ampla.', 'Usar popularidade ou confiança do autor como substituto de evidência.'],
+  'v93-phil-argument-11': ['Mude uma variável relevante e mantenha condições comparáveis, para que o efeito da luz possa ser interpretado.', 'Alterar várias condições ao mesmo tempo e atribuir o resultado a uma delas.'],
+  'v93-phil-argument-12': ['O relato sustenta algo sobre a experiência daquela pessoa; eficácia geral e causalidade exigem evidência adicional.', 'Generalizar de um testemunho individual para todas as pessoas.'],
+  'v93-phil-argument-13': ['Uma definição descreve a estrutura ou função da categoria; um episódio particular é apenas um exemplo.', 'Confundir um caso de debate com uma explicação do que é um argumento.'],
+  'v93-phil-argument-14': ['Um contraexemplo precisa pertencer à categoria e não satisfazer a afirmação universal.', 'Escolher um exemplo que confirma a regra em vez de um caso que a refuta.'],
+  'v93-phil-argument-15': ['“Necessário” quer dizer que sem a credencial não se entra; isso não garante, por si, aprovação na prova.', 'Converter uma condição necessária em condição suficiente para outro resultado.'],
+  'v93-phil-argument-16': ['Procure a recomendação sobre o que a cidade deve fazer; contagens e descrições não são, sozinhas, uma norma.', 'Confundir um fato observado com uma obrigação.'],
+  'v93-phil-argument-17': ['Pergunte qual sentido de “igualmente” está em jogo e quais critérios de distribuição ele implica.', 'Ignorar que uma palavra-chave pode encobrir critérios distintos.'],
+  'v93-phil-argument-18': ['O gráfico mostra uma associação; investigue variáveis concorrentes antes de afirmar uma causa.', 'Atribuir causalidade exclusiva a uma variável observada junto com o resultado.'],
+  'v93-phil-argument-19': ['Compare a composição da turma com as escolas, séries e contextos sobre os quais a recomendação pretende valer.', 'Generalizar de um grupo local sem verificar representatividade.'],
+  'v93-phil-argument-20': ['Relate convergências entre métodos e declare que o desenho não acompanhou mudanças temporais.', 'Afirmar evolução ou causa no tempo sem observações longitudinais.'],
 };
 
 const readJson = (relativePath) => JSON.parse(readFileSync(resolve(ROOT, relativePath), 'utf8'));
+const conceptJourney = readJson('content/adaptive/tec-escola-core-v9/journey-expansion-c-v1.json').journeys
+  .find((journey) => journey.journeyCode === 'PHILOSOPHY_DISTINGUISH_CONCEPT_V93');
+if (!conceptJourney || conceptJourney.skill !== 'PHILOSOPHY_DISTINGUISH_CONCEPT' || conceptJourney.questionRows?.length !== 20) {
+  throw new Error('PHILOSOPHY_ARGUMENT_REASSIGNED_SOURCE_MISSING');
+}
+const reassignedArgumentQuestions = conceptJourney.questionRows.map((row, index) => {
+  if (!Array.isArray(row) || row.length !== 7 || !Array.isArray(row[4]) || !Number.isInteger(row[5])) {
+    throw new Error(`PHILOSOPHY_ARGUMENT_REASSIGNED_SOURCE_INVALID:${index + 1}`);
+  }
+  return {
+    id: `${conceptJourney.questionIdPrefix}-${String(index + 1).padStart(2, '0')}`,
+    statement: row[3],
+    options: row[4],
+    correctAnswer: row[4][row[5]],
+    explanation: row[6],
+  };
+});
 const originalQuestions = [
   ...readJson('content/adaptive/tec-escola-core-v4/subjects/philosophy/questions.json').filter((question) => question.primarySkill === 'PHILOSOPHY_EVALUATE_ARGUMENT'),
   ...readJson('content/adaptive/tec-escola-core-v9/question-expansion-v3.json').questions.filter((question) => question.skill === 'PHILOSOPHY_EVALUATE_ARGUMENT'),
+  ...reassignedArgumentQuestions,
 ];
 const sourceQuestionFeedback = originalQuestions.map((question) => {
   const feedback = sourceFeedbackById[question.id];
   if (!feedback) throw new Error(`PHILOSOPHY_ARGUMENT_SOURCE_FEEDBACK_MISSING:${question.id}`);
   return { questionId: question.id, hint: feedback[0], errorFocus: feedback[1] };
 });
-if (originalQuestions.length !== 25 || sourceQuestionFeedback.length !== Object.keys(sourceFeedbackById).length) {
+if (originalQuestions.length !== 45 || sourceQuestionFeedback.length !== Object.keys(sourceFeedbackById).length) {
   throw new Error('PHILOSOPHY_ARGUMENT_SOURCE_RECONCILIATION_FAILED');
 }
 

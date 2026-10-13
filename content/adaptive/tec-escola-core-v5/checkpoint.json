@@ -4,7 +4,7 @@
   "WAVE_ID": "WAVE_2_PROGRESS",
   "STARTING_SHA": "edf53f75dc9693ff0467925cbef4613c0b432910",
   "MAIN_SHA": "9b837ff9c1639ddf23536bba9a02def0025ea586",
-  "INPUT_HASH": "sha256:d82669130e3a383aa81ada73ceac4852bcba6ad3a35278ee30faa0f88704b8fc",
+  "INPUT_HASH": "sha256:758f9b29af9873b3155c8ee78ba99191410b1f5a22e04c52e38a79c96f6429d4",
   "INPUT_HASH_ALGORITHM": "SHA256 of lexicographically sorted filename:raw_source_sha256 lines, each terminated by LF.",
   "TARGET_COUNT": 26,
   "TARGETS_PROCESSED": 26,
@@ -57,8 +57,8 @@
     "PHYSICS_INTERPRET_MOTION_GRAPH",
     "ENGLISH_INFER_FROM_TEXT"
   ],
-  "WAVE_2_TARGETS_RECONCILED": 11,
-  "WAVE_2_TARGETS_TECHNICAL_DEEP_READY": 11,
+  "WAVE_2_TARGETS_RECONCILED": 12,
+  "WAVE_2_TARGETS_TECHNICAL_DEEP_READY": 12,
   "WAVE_2_TARGET_STATUS": {
     "BIOLOGY_CELL_FUNCTION": {
       "EXISTING_QUESTIONS_RECONCILED": 22,
@@ -82,9 +82,22 @@
       "OFFICIAL_MAPPING_STATUS": "NOT_CLAIMED"
     },
     "MATH_SUCCESSIVE_PERCENT_CHANGE": {
-      "SOURCE_RECONCILIATION": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION",
-      "TECHNICAL_DEEP_READY": false,
-      "PUBLICATION_STATUS": "STAGING_INACTIVE"
+      "EXISTING_QUESTIONS_RECONCILED": 29,
+      "NEW_QUESTIONS": 14,
+      "CONSOLIDATED_QUESTIONS": 43,
+      "TECHNICAL_DEEP_READY": true,
+      "SOURCE_RECONCILIATION": "EXACT",
+      "PURPOSE_COUNTS": {
+        "PROBE": 6,
+        "PRACTICE": 13,
+        "TRANSFER": 8,
+        "LOCK_IN": 6,
+        "REVIEW": 10
+      },
+      "TARGETED_SOURCE_FEEDBACK": 29,
+      "PUBLICATION_STATUS": "STAGING_INACTIVE",
+      "PEDAGOGICAL_REVIEW_STATUS": "PEDAGOGICAL_REVIEW_PENDING",
+      "OFFICIAL_MAPPING_STATUS": "NOT_CLAIMED"
     },
     "BIOLOGY_INTERPRET_POPULATION_DATA": {
       "EXISTING_QUESTIONS_RECONCILED": 23,
@@ -575,15 +588,15 @@
     "history-chronology.json": "sha256:5e3172ba57c1443bf35f8a29abed2182964095f4ec76d5d34ac810b92fb95d85",
     "history-compare-causes.json": "sha256:49cd43c8ffe035be434820c0ea4c12aef5f2605cbe35c35bc2a3d8d165e3dc8d",
     "humanities-production-impacts.json": "sha256:0634267c3a9b12ce9ce9e17050035354ae7b7c63ee5c4dfc37ca40fdb10fcf13",
-    "knowledge-factory-v4.mjs": "sha256:cbbc499cd62b5abe90eaec455a518062c2fdbf8b78d753aa5b682132636c4696",
-    "knowledge-factory-v4.test.mjs": "sha256:9281d3c7de1bb084b1d7e2e7a30dc1f14560f8ba85d503b466129d4bc669b1b9",
+    "knowledge-factory-v4.mjs": "sha256:25b1c8c06d80dc2fe3d391402f62373379e4326d7beb141d091629ceb7f7d862",
+    "knowledge-factory-v4.test.mjs": "sha256:7fe172e6808d0547512b8125e1156ef663a288c4988b869d80b53b8d86507fda",
     "languages-collaboration.json": "sha256:fdfc4555101a7bfa64e9fa234313a43f027937eb4e6867e8cf7c586da5455acd",
     "languages-semiotic-function.json": "sha256:f9d5429cc602c5ee1586543c6bef783faac682de618941070fe9ace732337538",
     "math-probabilistic-risk.json": "sha256:04d98b2ec95d5078d0ab8a555a94eef1d7f95d9e9631b2ee2b90eb71db3aee0c",
     "math-ratio-unit-rate.json": "sha256:ac50fce64cd8b7d81a7b9138b73420e525244191b79901a36f85d6c83c9048ab",
     "math-spatial-position.json": "sha256:5e621a9ffaeca56b9c9cd8083e3722fc70fc01ede027a923e384b5d3525bab6d",
     "math-successive-percent-change.json": "sha256:8b44b1633ba4f2b1a7fdc060d5da9994bf317c7dbec20a01b5551a15e4fa62da",
-    "package.json": "sha256:e506b9a07f1267702276941378a5a111f9e47a2d98fd9a24ffbebc7d19587884",
+    "package.json": "sha256:a696d0c9c37982bbb73b5ba876cdd5e06c67e115e9c4b2a5cb5dca8a38473b23",
     "physical-activity-exercise.json": "sha256:4e116b8cdae13669a6b68409f019f24ea604c895c656b18e297cb6f01e6b2135",
     "physical-safe-activity.json": "sha256:e1b83f717cd9da699283f0430c57797caca74fc3691270eaf873a3cc5d0ba9c4",
     "physics-force-motion.json": "sha256:caba32b0f82088e753db881a09cd1cce6cd4bc0d7b0a6513febfe1f1515b6d63",
@@ -591,7 +604,7 @@
     "portuguese-infer-from-clues.json": "sha256:592b6c77f77efcf8f87919d8b4c706b7981951bf74f4b668160a4597347d88fb",
     "portuguese-language-variation.json": "sha256:2b59c235ac144dac18788546e513b5438da0a213c1d47dd3e0927b48a21841e4",
     "portuguese-letters-signs.json": "sha256:a316a09fb44d1fac08ab937cc7c223cae8ecde6fb0416364f1d86e370511e566",
-    "question-first-content-v5.test.mjs": "sha256:a598649f0d9ef306cc564e418ee1a4a2daad722f5edce4f93f672f13ae27b356",
+    "question-first-content-v5.test.mjs": "sha256:bceaaed2435ec0f0b6f6223a6389e39f1363684ffdc4f62c30b4fde54c14c4ec",
     "religious-mediate-dialogue.json": "sha256:e5cd9fef20448fabfccc3e8334e1bb5739f7805aa7566394c22955c10b15a25d",
     "religious-self-other-inclusion.json": "sha256:3ce2d19fb6a5400c8fc13ddb7c71289ef39c4b48fb1057ff33c7af5c9e3a20cd",
     "science-evidence-conclusion.json": "sha256:8190bc79a075ecc7dd5a7457ecb24d46c1dc7981f8aaf8d412e2b7b38a9c2b57",
@@ -601,12 +614,12 @@
     "build-philosophy-ethical-principle-v5.mjs": "sha256:93b55f5e11b2d45fc53556032bc0bbe24986784b5e9f4c3f05c4fdff1b9a3a74",
     "philosophy-ethical-principle.json": "sha256:ccaf5ad2cd83384726c3dd6acaac7e51a45f34b124e4dd099445f6bb8e1ab855",
     "journey-expansion-c-v1.json": "sha256:3c0cee22a53f38a5d3335cebec7894d81d9145e32072f50041f4cff27a8afc83",
-    "20261013002900_bncc_philosophy_evaluate_argument_question_first_v5.sql": "sha256:b1078cbaf54c013253d496214ab2657c7a9821847cc1d84b5e0789e10974df7d",
+    "20261013002900_bncc_philosophy_evaluate_argument_question_first_v5.sql": "sha256:00354552ca7b295ac485cbcd1fb7b796dcd076acb56fac4b5e36026f92134091",
     "20261013003000_bncc_physics_average_speed_question_first_v5.sql": "sha256:4aa44d8382b039d70ebc29742845881297be06485777abda99fc4fde0ea2269c",
     "20261013003100_bncc_physics_motion_graph_question_first_v5.sql": "sha256:50d3f5996dbcc03076f72a1bdf29e653754addd677cb0192918880bf2bbbb7b2",
     "20261013003200_bncc_english_infer_text_question_first_v5.sql": "sha256:a74980197b1aabbc1f3dce88b4c2719fd3621eaa33e7c3c7e1cc36f00d541083",
-    "build-philosophy-evaluate-argument-v5.mjs": "sha256:10245e5acd4d21005b1bcec8425327d8765f3aaef4e9c9aab9d0773acf0b666a",
-    "philosophy-evaluate-argument.json": "sha256:0b9121d8e5c6ff4fb3a911ef466e9516970bcd61b51ba3ffe48e8a35ed6e3580",
+    "build-philosophy-evaluate-argument-v5.mjs": "sha256:218120b13bd068b031c5593a41eb4ede139b48f72ce810699f3fe2d33ac255d2",
+    "philosophy-evaluate-argument.json": "sha256:eec0969089d51e4c574ac72a2686ccd64438c06c645e7b9d481a198cef03e9f7",
     "build-physics-average-speed-v5.mjs": "sha256:8fff48822fec90402a018fcff8169862bc703579fc122cf93e2324652562b2d3",
     "physics-average-speed.json": "sha256:db49d86d68b107630f3bda782df6939870b89a49081c50fec35763b7001a3913",
     "build-physics-motion-graph-v5.mjs": "sha256:0faba0f122363803fddd4e6b6651a4dbbe787f74ca1f87a29d31b217735607fe",
@@ -619,11 +632,19 @@
     "content/adaptive/tec-escola-core-v9/question-expansion-v2.json": "sha256:a340f72023ce961d07c8791b5caaa579ac252109714ece0534c1d8e88caffa16",
     "content/adaptive/tec-escola-core-v9/question-expansion-v3.json": "sha256:72f5c58c7712a91fe7cb4807068a496955b09f67d43a85379b85386cc4875230",
     "compile-v4.ts": "sha256:82f49cf145af74b362ea7edaad6bf263d6fd8f6941013ba798cc3364dde936f7",
-    "compile-v4.semantic.test.ts": "sha256:7cf661ced3ba7ee1137c2695403c90359784de6ee258fd0263b1bf0c636e682a"
+    "compile-v4.semantic.test.ts": "sha256:7cf661ced3ba7ee1137c2695403c90359784de6ee258fd0263b1bf0c636e682a",
+    "tools/adaptive/build-math-successive-percent-change-v6.mjs": "sha256:a858df47026be3bdd7c4d2aad6c27dd23e7e9fdf95c5373574f6c72519cef4fd",
+    "content/adaptive/tec-escola-core-v5/math-successive-percent-change-v6.json": "sha256:4e893d6ce00f0bc9315e86acb28d2b6388081b7af1bb9aa6b5fd2414d3e891ac",
+    "supabase/migrations/20261013003500_bncc_math_successive_percent_change_question_first_v6.sql": "sha256:0f22fc1781ece0b33bc092d1ec85c56de74cc2c0c7aeb8bb9ea826ed05615454",
+    "tools/adaptive/build-philosophy-distinguish-concept-v5.mjs": "sha256:fe1effa4a68bbb6e66091e3532ce9e2068aa5291e4bcb5aefb61c0e4fcd0beb2",
+    "content/adaptive/tec-escola-core-v5/philosophy-distinguish-concept.json": "sha256:d8129fb2b2b20e6c8ad60ca7dcf60a565bd5c6708febef705476656d9148f1e3",
+    "content/adaptive/tec-escola-core-v5/philosophy-semantic-reconciliation.json": "sha256:8a3bfe461e696061147e692adb2c57766084c569d99c8f219ba050ec14ca05c2",
+    "supabase/migrations/20261013003300_bncc_philosophy_distinguish_concept_question_first_v5.sql": "sha256:f971576d2d0d735f581c3109ec69745292765c7ce9fee86c25c927694a822a77",
+    "supabase/migrations/20261013003400_bncc_philosophy_concept_semantic_reconciliation_v1.sql": "sha256:c901b22890d642970eea216514084a89f85c639bf58509caaf5f0eb15c7bacd6"
   },
-  "LAST_COMPLETED_OPERATION": "WAVE_2_ENGLISH_INFER_FROM_TEXT; 46_QUESTIONS_CONSOLIDATED; 22_SOURCES_EXACTLY_RECONCILED_WITH_FEEDBACK; 24_NEW_ITEMS; 37_OF_38_AUDITED_SEQUENCES_TECHNICALLY_DEEP_READY; WAVE2_11_OF_12_DEEP_READY; STAGING_ONLY",
-  "NEXT_TARGET": "PHILOSOPHY_DISTINGUISH_CONCEPT",
-  "NEXT_OPERATION": "RESOLVE_SOURCE_SEMANTIC_MISMATCH_BEFORE_AUTHORING; DO_NOT_REUSE_ARGUMENT_EVALUATION_ITEMS_AS_CONCEPT_OPINION; CONTINUE_TO_NEXT_MATCHED_WAVE_2_TARGET",
+  "LAST_COMPLETED_OPERATION": "WAVE_2_CLOSEOUT; 12_OF_12_INCREMENT_TARGETS_RECONCILED_AND_TECHNICALLY_DEEP_READY; 39_OF_39_AUDITED_SEQUENCES_DEEP_READY; CONCEPT_AND_ARGUMENT_SEMANTICS_SEPARATED; MATH_SOURCE_FEEDBACK_COMPLETE; STAGING_ONLY",
+  "NEXT_TARGET": "PHYSICS_UNIT_CONVERSION",
+  "NEXT_OPERATION": "CONTINUE_WITH_NEXT_SOURCE_MATCHED_WAVE_2_CANDIDATE; KEEP_OFFICIAL_MAPPING_AND_PEDAGOGICAL_APPROVAL_PENDING",
   "FOUNDATION_PRS": [
     356,
     357,
@@ -640,8 +661,7 @@
     "APPROXIMATE_ADDITIONAL_ITEMS_FOR_WAVE_1": 777
   },
   "BLOCKERS": [
-    "Migration reapplication idempotence was not separately exercised; CI verified clean reset/application, lint, drift, security/RPC tests, and Playwright.",
-    "PHILOSOPHY_DISTINGUISH_CONCEPT source mismatch: the V9 journey expansion attached to this code teaches argument evaluation; no separate matching source items were found in the checked V4 and V9 question expansion catalogs. Keep the target queued and do not claim equivalence.",
+    "Migration reapplication idempotence was not separately exercised locally; updated migration CI is pending on the current PR head.",
     "Human pedagogical review and official mapping review remain pending; all newly authored content remains staging and student-inactive."
   ],
   "PRODUCTION_WRITES": "NO",
