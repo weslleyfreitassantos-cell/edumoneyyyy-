@@ -15,6 +15,7 @@ import { buildBiologyCellFunctionPack } from './build-biology-cell-function-v5.m
 import { buildBiologyInheritancePack } from './build-biology-inheritance-v5.mjs';
 import { buildBiologyPopulationDataPack } from './build-biology-population-data-v5.mjs';
 import { buildChemistryAtomicStructurePack } from './build-chemistry-atomic-structure-v5.mjs';
+import { buildChemistryReactionEvidencePack } from './build-chemistry-reaction-evidence-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -67,6 +68,8 @@ const biologyPopulationPack = JSON.parse(readFileSync(new URL('../../content/ada
 const biologyPopulationMigration = readFileSync(new URL('../../supabase/migrations/20261013002400_bncc_biology_population_data_question_first_v5.sql', import.meta.url), 'utf8');
 const chemistryAtomicPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/chemistry-atomic-structure.json', import.meta.url), 'utf8'));
 const chemistryAtomicMigration = readFileSync(new URL('../../supabase/migrations/20261013002500_bncc_chemistry_atomic_structure_question_first_v5.sql', import.meta.url), 'utf8');
+const chemistryReactionEvidencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/chemistry-reaction-evidence.json', import.meta.url), 'utf8'));
+const chemistryReactionEvidenceMigration = readFileSync(new URL('../../supabase/migrations/20261013002600_bncc_chemistry_reaction_evidence_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -913,6 +916,32 @@ describe('question-first V5 staging content', () => {
     expect(chemistryAtomicMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(chemistryAtomicMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(chemistryAtomicMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('teaches evidence limits with controlled comparisons and diverse review contexts', () => {
+    const result = validateQuestionFirstPack(chemistryReactionEvidencePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(16);
+    expect(result.contextCount).toBe(16);
+    expect(result.counts).toEqual({ PROBE: 2, PRACTICE: 3, TRANSFER: 3, LOCK_IN: 1, REVIEW: 7 });
+    expect(result.answerPositionCounts).toEqual({ A: 4, B: 4, C: 4, D: 4 });
+    expect(chemistryReactionEvidencePack.lesson.explanation).toContain('Uma pista não é uma prova isolada');
+    expect(chemistryReactionEvidencePack.lesson.microExplanations).toHaveLength(6);
+    expect(chemistryReactionEvidencePack.lesson.remediations).toHaveLength(5);
+    expect(chemistryReactionEvidencePack.lesson.sourceDossier).toHaveLength(4);
+    expect(chemistryReactionEvidencePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(chemistryReactionEvidencePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(chemistryReactionEvidencePack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles reaction-evidence content as inactive staging without student records', () => {
+    expect(chemistryReactionEvidencePack).toEqual(buildChemistryReactionEvidencePack());
+    expect(chemistryReactionEvidenceMigration).toBe(buildMigration(chemistryReactionEvidencePack));
+    expect(chemistryReactionEvidenceMigration).toContain("'CHEMISTRY_REACTION_EVIDENCE'");
+    expect(chemistryReactionEvidenceMigration).toContain("'publication_status', 'STAGING'");
+    expect(chemistryReactionEvidenceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(chemistryReactionEvidenceMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(chemistryReactionEvidenceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {

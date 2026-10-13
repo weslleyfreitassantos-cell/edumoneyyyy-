@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "cc636d0afc7160432f6fa710e1a60674f9689823f9625fdb1444fe2a66e59e0d",
-  "outputHash": "42ce88f6915994b3520aaf25609dea6e2da4c90fb81c4b8fbd1a46be9875dabd",
+  "inputHash": "84d2c783d3a1b40e6fc945a0e04264069e49abedb7e1130a4aa2f26d5d1cfbeb",
+  "outputHash": "4d59f2b6e41487e591eaccc7b35dbd256292a64edb907ad6925c6fec4afcd251",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,13 +13,13 @@
   "currentWave": 2,
   "nextQueueItem": {
     "wave": 2,
-    "id": "CHEMISTRY_REACTION_EVIDENCE",
+    "id": "CHEMISTRY_STOICHIOMETRY",
     "stage": "ENSINO_MEDIO",
     "subject": "CHEMISTRY",
     "status": "CONTENT_GAP",
-    "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+    "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
   },
-  "pendingItems": 1769,
+  "pendingItems": 1768,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "dd9801ed95407a7e469abfb5bc0a72542f711e0c156a52f0f62e9d3e08333212"
+  "checkpointHash": "7cc529d1e910be8f1470e1a85d149f44e3469cc0bbb228ba5372dd860c61c22f"
 }

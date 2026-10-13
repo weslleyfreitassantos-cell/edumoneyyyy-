@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
     "v3Graph": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583",
-    "v5QuestionFirstPacks": "71afeedd82fd89f20c4fdf806444f7ea2ab041c5a48c5bdff6b2c3c536d65965",
+    "v5QuestionFirstPacks": "20daba20504f3aa05c41f48cd18013466baa9ba02bdab452f45b0705d32db2ef",
     "waveTwoCandidateSources": "97aa590df140c4c4016cb16b39b010aa002bfd42238e1d9d494eb353d1eae4f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 30,
+    "auditedSequences": 31,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 4,
-    "waveTwoCandidateTargetsDeepReady": 4,
-    "deepContentReady": 30,
-    "technicalDeepReady": 30,
-    "pedagogicalReviewPending": 30,
+    "waveTwoCandidateTargetsAudited": 5,
+    "waveTwoCandidateTargetsDeepReady": 5,
+    "deepContentReady": 31,
+    "technicalDeepReady": 31,
+    "pedagogicalReviewPending": 31,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 30
+      "STRUCTURAL_READY": 31
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 30,
-      "QUESTION_POOL_DEPTH_READY": 27,
-      "DIFFICULTY_PROGRESSION_READY": 27,
-      "CONTEXT_DIVERSITY_READY": 27,
-      "TRANSFER_READY": 27,
-      "MISCONCEPTION_RECOVERY_READY": 30,
-      "REVIEW_CONTENT_READY": 27,
-      "AUTHENTIC_EVIDENCE_READY": 30
+      "LESSON_DEPTH_READY": 31,
+      "QUESTION_POOL_DEPTH_READY": 28,
+      "DIFFICULTY_PROGRESSION_READY": 28,
+      "CONTEXT_DIVERSITY_READY": 28,
+      "TRANSFER_READY": 28,
+      "MISCONCEPTION_RECOVERY_READY": 31,
+      "REVIEW_CONTENT_READY": 28,
+      "AUTHENTIC_EVIDENCE_READY": 31
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 877,
-    "consolidatedQuestionTotal": 1128,
+    "v5QuestionTotal": 893,
+    "consolidatedQuestionTotal": 1168,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
       {
@@ -122,7 +122,7 @@
       }
     ],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 30,
+    "reviewPending": 31,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -550,6 +550,69 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 27,
           "actualQuestionCount": 27,
+          "status": "EXACT"
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "CHEMISTRY_REACTION_EVIDENCE",
+        "unitId": null,
+        "subject": "CHEMISTRY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Evidências: o que os dados permitem concluir",
+        "originalQuestionCount": 24,
+        "v5QuestionCount": 16,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 40,
+        "purposeCounts": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 24,
+          "actualQuestionCount": 24,
           "status": "EXACT"
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
@@ -1921,25 +1984,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1769,
+    "totalItems": 1768,
     "byWave": {
-      "WAVE_2": 48,
+      "WAVE_2": 47,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 48,
+      "CONTENT_GAP": 47,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "CHEMISTRY_REACTION_EVIDENCE",
-        "stage": "ENSINO_MEDIO",
-        "subject": "CHEMISTRY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "CHEMISTRY_STOICHIOMETRY",
@@ -16095,5 +16150,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "42ce88f6915994b3520aaf25609dea6e2da4c90fb81c4b8fbd1a46be9875dabd"
+  "inventoryHash": "4d59f2b6e41487e591eaccc7b35dbd256292a64edb907ad6925c6fec4afcd251"
 }
