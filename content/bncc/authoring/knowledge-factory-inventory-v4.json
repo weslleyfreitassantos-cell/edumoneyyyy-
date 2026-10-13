@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
     "v3Graph": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583",
-    "v5QuestionFirstPacks": "8491e68f60692c9efc3841224fc1960d47a6f0c2aa5510013b8e027483122cf6"
+    "v5QuestionFirstPacks": "e5602dac3bc10bbbf0f7ec9dc76d39bf1a504afdb59c9832d3883e5649ab7ff6"
   },
   "normativeContext": {
     "officialCatalogFreeze": "2026-10-03",
@@ -81,21 +81,21 @@
   "existingContent": {
     "v3Targets": 24,
     "auditedSequences": 26,
-    "deepContentReady": 16,
-    "technicalDeepReady": 16,
+    "deepContentReady": 17,
+    "technicalDeepReady": 17,
     "pedagogicalReviewPending": 26,
     "depthStatusCounts": {
       "STRUCTURAL_READY": 26
     },
     "dimensionReadyCounts": {
       "LESSON_DEPTH_READY": 25,
-      "QUESTION_POOL_DEPTH_READY": 15,
+      "QUESTION_POOL_DEPTH_READY": 16,
       "DIFFICULTY_PROGRESSION_READY": 23,
-      "CONTEXT_DIVERSITY_READY": 15,
-      "TRANSFER_READY": 15,
+      "CONTEXT_DIVERSITY_READY": 16,
+      "TRANSFER_READY": 16,
       "MISCONCEPTION_RECOVERY_READY": 24,
-      "REVIEW_CONTENT_READY": 15,
-      "AUTHENTIC_EVIDENCE_READY": 16
+      "REVIEW_CONTENT_READY": 16,
+      "AUTHENTIC_EVIDENCE_READY": 17
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -104,10 +104,10 @@
       "LOCK_IN": 6,
       "REVIEW": 10
     },
-    "questionsBelowAnyMinimum": 8,
+    "questionsBelowAnyMinimum": 7,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 516,
-    "consolidatedQuestionTotal": 666,
+    "v5QuestionTotal": 551,
+    "consolidatedQuestionTotal": 701,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
       {
@@ -358,15 +358,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Verificar mensagens antes de clicar ou compartilhar dados",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 0,
+        "v5QuestionCount": 35,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 5,
+        "currentQuestionCount": 40,
         "purposeCounts": {
-          "PROBE": 1,
-          "PRACTICE": 1,
-          "TRANSFER": 1,
-          "LOCK_IN": 1,
-          "REVIEW": 1
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -375,49 +375,22 @@
           "LOCK_IN": 6,
           "REVIEW": 10
         },
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
+        "missingMinimums": {},
         "distinctQuestionModalities": [
           "MULTIPLE_CHOICE"
         ],
         "dimensions": {
           "LESSON_DEPTH_READY": true,
-          "QUESTION_POOL_DEPTH_READY": false,
+          "QUESTION_POOL_DEPTH_READY": true,
           "DIFFICULTY_PROGRESSION_READY": true,
-          "CONTEXT_DIVERSITY_READY": false,
-          "TRANSFER_READY": false,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
           "MISCONCEPTION_RECOVERY_READY": true,
-          "REVIEW_CONTENT_READY": false,
-          "AUTHENTIC_EVIDENCE_READY": false
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
         },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ],
-        "contextFamilyCount": 5,
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -426,11 +399,11 @@
         "answerKeyValid": true,
         "lessonExplanationStepCount": 4,
         "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
-        "spacedReviewStatus": "REVIEW_GAP",
-        "technicalDeepReady": false,
-        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
         "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-        "officialMappingStatus": "MAPPING_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
         "studentPublicationStatus": "STAGING_INACTIVE",
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -1859,16 +1832,16 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1783,
+    "totalItems": 1782,
     "byWave": {
-      "WAVE_1": 10,
+      "WAVE_1": 9,
       "WAVE_2": 52,
       "WAVE_3": 1721
     },
     "byStatus": {
       "AUTHENTIC_EVIDENCE_GAP": 2,
       "CONTENT_GAP": 52,
-      "DEPTH_GAP": 8,
+      "DEPTH_GAP": 7,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
@@ -1878,43 +1851,6 @@
         "id": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
         "stage": "FUNDAMENTAL_I",
         "subject": "SCIENCE",
-        "status": "DEPTH_GAP",
-        "reason": "One or more content-depth dimensions remain below the evidence gates.",
-        "missingMinimums": {
-          "PROBE": {
-            "current": 1,
-            "target": 4
-          },
-          "PRACTICE": {
-            "current": 1,
-            "target": 12
-          },
-          "TRANSFER": {
-            "current": 1,
-            "target": 8
-          },
-          "LOCK_IN": {
-            "current": 1,
-            "target": 6
-          },
-          "REVIEW": {
-            "current": 1,
-            "target": 10
-          }
-        },
-        "missingDepthDimensions": [
-          "QUESTION_POOL_DEPTH_READY",
-          "CONTEXT_DIVERSITY_READY",
-          "TRANSFER_READY",
-          "REVIEW_CONTENT_READY",
-          "AUTHENTIC_EVIDENCE_READY"
-        ]
-      },
-      {
-        "wave": 1,
-        "id": "COMPUTING_RECOGNIZE_PHISHING",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "COMPUTING",
         "status": "DEPTH_GAP",
         "reason": "One or more content-depth dimensions remain below the evidence gates.",
         "missingMinimums": {
@@ -16383,5 +16319,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "a66124a5e28e57f84d026de9394f470d7d59fa18847542bdc08a3dfc64e3838d"
+  "inventoryHash": "bc5555f29727ff8cf4192d8620a995b0e3b60e579f6f376b27cfd2f163da05ee"
 }

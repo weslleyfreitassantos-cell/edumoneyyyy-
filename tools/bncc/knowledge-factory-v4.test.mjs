@@ -145,7 +145,7 @@ describe('BNCC total knowledge factory V4', () => {
   it('distinguishes a five-phase structural path from deep assessment coverage', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
 
-    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 26, v3QuestionTotal: 160, v5QuestionTotal: 516, consolidatedQuestionTotal: 666, technicalDeepReady: 16, reviewPending: 26 });
+    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 26, v3QuestionTotal: 160, v5QuestionTotal: 551, consolidatedQuestionTotal: 701, technicalDeepReady: 17, reviewPending: 26 });
     expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 26 });
     expect(report.existingContent.technicalDeepReady).toBe(report.existingContent.depthAudit.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length);
     expect(report.queue.byWave.WAVE_1).toBe(report.existingContent.auditedSequences - report.existingContent.technicalDeepReady);
@@ -159,6 +159,24 @@ describe('BNCC total knowledge factory V4', () => {
     expect(physics.purposeCounts).toEqual(PURPOSE_COUNTS);
     expect(physics.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
     expect(physics.studentPublicationStatus).toBe('STAGING_INACTIVE');
+  });
+
+  it('reconciles phishing practice depth while leaving student publication gated', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const phishing = report.existingContent.depthAudit.find((item) => item.targetId === 'COMPUTING_RECOGNIZE_PHISHING');
+
+    expect(phishing).toMatchObject({
+      originalQuestionCount: 5,
+      v5QuestionCount: 35,
+      currentQuestionCount: 40,
+      technicalDeepReady: true,
+      readinessClaim: 'DEEP_CONTENT_READY',
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      officialMappingStatus: 'NOT_CLAIMED',
+      studentPublicationStatus: 'STAGING_INACTIVE',
+    });
+    expect(phishing.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(phishing.missingDepthDimensions).toEqual([]);
   });
 
   it('prepares navigable unit persistence without student availability or fabricated BNCC links', () => {

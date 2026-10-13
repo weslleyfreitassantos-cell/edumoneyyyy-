@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 import { buildMigration, validateQuestionFirstPack } from './compile-question-first-content-v5.mjs';
+import { buildComputingPhishingPack } from './build-computing-phishing-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -25,6 +26,8 @@ const portugueseVariationPack = JSON.parse(readFileSync(new URL('../../content/a
 const artCharacterPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-character-experiment.json', import.meta.url), 'utf8'));
 const artCharacterMigration = readFileSync(new URL('../../supabase/migrations/20261013000800_bncc_art_character_experiment_question_first_v5.sql', import.meta.url), 'utf8');
 const computingSearchPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-search-safe-browse.json', import.meta.url), 'utf8'));
+const computingPhishingPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-recognize-phishing.json', import.meta.url), 'utf8'));
+const computingPhishingMigration = readFileSync(new URL('../../supabase/migrations/20261013001200_bncc_computing_phishing_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -532,5 +535,35 @@ describe('question-first V5 staging content', () => {
       expect(skillInsert).toContain("and publication_status = 'STAGING'");
       expect(skillInsert).toContain("metadata->>'publication_status' = 'STAGING'");
     }
+  });
+
+  it('deepens phishing recognition with a privacy-safe, distinct 35-question sequence', () => {
+    const result = validateQuestionFirstPack(computingPhishingPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(35);
+    expect(result.contextCount).toBe(35);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 5, REVIEW: 9 });
+    expect(result.answerPositionCounts).toEqual({ A: 9, B: 9, C: 9, D: 8 });
+    const v3 = v3Sequences.find((sequence) => sequence.skillCode === computingPhishingPack.canonicalSkillCode);
+    expect(v3).toBeDefined();
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + (v3.purposeCounts[purpose] ?? 0)]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10,
+    });
+    const visibleContent = computingPhishingPack.questions.flatMap((question) => [question.statement, ...question.options]);
+    expect(visibleContent.join(' ')).not.toMatch(/https?:\/\/|www\./i);
+    expect(computingPhishingPack.lesson.authenticActivities[0].privacyGuard).toContain('sem links ativos');
+    expect(computingPhishingPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(computingPhishingPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(computingPhishingPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles the phishing increment as inactive, unaligned staging content', () => {
+    expect(computingPhishingPack).toEqual(buildComputingPhishingPack());
+    expect(computingPhishingMigration).toBe(buildMigration(computingPhishingPack));
+    expect(computingPhishingMigration).toContain("'COMPUTING_RECOGNIZE_PHISHING'");
+    expect(computingPhishingMigration).toContain("'publication_status', 'STAGING'");
+    expect(computingPhishingMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(computingPhishingMigration).toContain('active, metadata)');
+    expect(computingPhishingMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 });
