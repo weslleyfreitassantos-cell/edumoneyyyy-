@@ -1,0 +1,1473 @@
+{
+  "schemaVersion": "tec-escola.bncc.knowledge-factory-inventory.v3",
+  "campaign": "TECESCOLA_BNCC_KNOWLEDGE_FACTORY_V3_24_TARGETS_CONTENT_EXPANSION",
+  "factoryVersion": "V3",
+  "foundation": {
+    "graphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda",
+    "unitsHash": "3f33da738665c8449d77986f7b9a7533640392a2fc857b1933938b12ff2a761c",
+    "v1InventoryHash": "ff4d7a433cbd7881d1b2aba0411bf430123a894656c31137d707a198e0acd2a8"
+  },
+  "hashes": {
+    "contentHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
+    "graphExpansionHash": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583",
+    "unitExpansionHash": "54eac626ee9513acbe3564d8c1d90635ec963f93dfac533ca69b2833aaf74da1",
+    "stagingSqlHash": "501851e769ac2944d67d9c6549d879fed203ec232ad3411a9ecade8b03969a4d"
+  },
+  "targets": {
+    "originalTargets": 24,
+    "existingSkillTargets": 12,
+    "newCandidateTargets": 12,
+    "processed": 24,
+    "existingSkillsCompleted": 12,
+    "candidatesAnalyzed": 12,
+    "targetManifest": [
+      {
+        "targetId": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "BIOLOGY",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 13,
+        "contentAuthored": 0,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V1_REUSED",
+        "questionStatus": {
+          "total": 12,
+          "purposes": {
+            "PROBE": 2,
+            "PRACTICE": 4,
+            "TRANSFER": 2,
+            "LOCK_IN": 2,
+            "REVIEW": 2
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "PHYSICS_MODEL_FORCE",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "PHYSICS",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 5,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 1,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "PORTUGUESE_CONNECT_IDEAS",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 5,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 1,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "SCIENCE_EVIDENCE_CONCLUSION",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "SCIENCE",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 5,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 1,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "CHEMISTRY_ACID_BASE",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "CHEMISTRY",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 1,
+        "contentAuthored": 5,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 5,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 1,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "HISTORY_COMPARE_CAUSES",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "HISTORY",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 1,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 6,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 2,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "RELIGIOUS_MEDIATE_DIALOGUE",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "RELIGIOUS_EDUCATION",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 5,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 1,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "COMPUTING_RECOGNIZE_PHISHING",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "COMPUTING",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 5,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 1,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "MATH_RATIO_UNIT_RATE",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "MATHEMATICS",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 9,
+        "contentAuthored": 2,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V4_REUSED",
+        "questionStatus": {
+          "total": 10,
+          "purposes": {
+            "PROBE": 2,
+            "PRACTICE": 4,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 2
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "SCIENCE_PLAN_INVESTIGATION",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "SCIENCE",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 13,
+        "contentAuthored": 0,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V1_REUSED",
+        "questionStatus": {
+          "total": 12,
+          "purposes": {
+            "PROBE": 2,
+            "PRACTICE": 4,
+            "TRANSFER": 2,
+            "LOCK_IN": 2,
+            "REVIEW": 2
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "HISTORY_ORDER_EVENTS",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "HISTORY",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 14,
+        "contentAuthored": 0,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V1_REUSED",
+        "questionStatus": {
+          "total": 13,
+          "purposes": {
+            "PROBE": 3,
+            "PRACTICE": 4,
+            "TRANSFER": 2,
+            "LOCK_IN": 2,
+            "REVIEW": 2
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "PORTUGUESE_INFER_FROM_CLUES",
+        "sourceQueue": "EXISTING_SKILL_CONTENT_GAPS",
+        "subject": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 1,
+        "contentAuthored": 5,
+        "skillCreatedOrReused": "EXISTING_SKILL_REUSED",
+        "unitCreatedOrReused": "EXISTING_UNIT_REUSED",
+        "lessonStatus": "V3_AUTHORED",
+        "questionStatus": {
+          "total": 5,
+          "purposes": {
+            "PROBE": 1,
+            "PRACTICE": 1,
+            "TRANSFER": 1,
+            "LOCK_IN": 1,
+            "REVIEW": 1
+          }
+        },
+        "graphValidation": "PASS_NO_EXISTING_NODE_MUTATION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": "Human pedagogical review and any official mapping decision remain pending."
+      },
+      {
+        "targetId": "ARTE_POSSIBILIDADES_CRIATIVAS",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "ARTE",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "ART_CREATE_CHARACTER_EXPERIMENT_FI"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "ART_CREATE_CHARACTER_EXPERIMENT_FI:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "ART_CREATE_CHARACTER_EXPERIMENT_FI",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "EDUCACAO_FISICA_UNSPECIFIED_HEALTH_LIFESTYLE",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "EDUCACAO_FISICA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "ENSINO_RELIGIOSO",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "RELIGIOUS_COMPARE_SELF_OTHER_FI"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "RELIGIOUS_COMPARE_SELF_OTHER_FI:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "RELIGIOUS_COMPARE_SELF_OTHER_FI",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "LINGUA_PORTUGUESA_LETRAS_ALFABETO",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "LINGUA_PORTUGUESA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "MATEMATICA_LOCALIZACAO_PESSOAS",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "MATEMATICA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "MATH_DESCRIBE_SPATIAL_POSITION_FI"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "MATH_DESCRIBE_SPATIAL_POSITION_FI:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "MATH_DESCRIBE_SPATIAL_POSITION_FI",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "CIENCIAS_HUMANAS_AVALIAR_IMPACTOS",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "CIENCIAS_HUMANAS",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "COMPUTACAO_CRITICAMENTE_EXPERIENCIAS",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "COMPUTACAO",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "LINGUA_PORTUGUESA_FENOMENO_VARIACAO",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "LINGUA_PORTUGUESA",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "PORTUGUESE_ANALYZE_VARIATION_HS"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "PORTUGUESE_ANALYZE_VARIATION_HS:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "PORTUGUESE_ANALYZE_VARIATION_HS",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "LINGUAGENS",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 12,
+        "skillCreatedOrReused": [
+          "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS",
+          "LANGUAGES_CREATE_COLLABORATIVELY_HS"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS:V3_AUTHORED",
+          "LANGUAGES_CREATE_COLLABORATIVELY_HS:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          },
+          {
+            "skillCode": "LANGUAGES_CREATE_COLLABORATIVELY_HS",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "COMPUTACAO",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "COMPUTING_SEARCH_AND_BROWSE_FI"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "COMPUTING_SEARCH_AND_BROWSE_FI:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "COMPUTING_SEARCH_AND_BROWSE_FI",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "MATEMATICA_SITUACOES_VIDA",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "MATEMATICA",
+        "stage": "ENSINO_MEDIO",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      },
+      {
+        "targetId": "CIENCIAS_CARACTERISTICAS_FISICAS",
+        "sourceQueue": "V8_PROPOSALS_V8",
+        "subject": "CIENCIAS",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "currentStatus": "COMPLETED_TECHNICALLY_REVIEW_PENDING",
+        "contentReused": 0,
+        "contentAuthored": 6,
+        "skillCreatedOrReused": [
+          "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI"
+        ],
+        "unitCreatedOrReused": [
+          "NEW_UNIT"
+        ],
+        "lessonStatus": [
+          "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI:V3_AUTHORED"
+        ],
+        "questionStatus": [
+          {
+            "skillCode": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
+            "total": 5,
+            "purposes": {
+              "PROBE": 1,
+              "PRACTICE": 1,
+              "TRANSFER": 1,
+              "LOCK_IN": 1,
+              "REVIEW": 1
+            }
+          }
+        ],
+        "graphValidation": "PASS_STAGING_ONLY_NO_MAPPING_PROMOTION",
+        "databaseCompilation": "STAGING_INACTIVE",
+        "reviewStatus": "MAPPING_PENDING; PEDAGOGICAL_REVIEW_PENDING",
+        "blockingReason": null
+      }
+    ]
+  },
+  "candidates": {
+    "newInternalSkillsCreated": 13,
+    "candidatesReused": 0,
+    "proposalsSplit": 1,
+    "deferredOfficialCodes": [
+      {
+        "targetId": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE:EM13LGG104",
+        "status": "ANALYZED_DEFERRED",
+        "reason": "Usar diferentes linguagens para compreender e produzir textos em campos sociais exige objetivo próprio, não fundido ao escopo de análise crítica de EM13LGG103.",
+        "mappingStatus": "MAPPING_PENDING"
+      },
+      {
+        "targetId": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE:EM13LGG201",
+        "status": "ANALYZED_DEFERRED",
+        "reason": "Uso adequado e reconhecimento da variabilidade social, cultural e histórica requer habilidade distinta e evidência contextual específica.",
+        "mappingStatus": "MAPPING_PENDING"
+      },
+      {
+        "targetId": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE:EM13LGG704",
+        "status": "ANALYZED_DEFERRED",
+        "reason": "Pesquisa e busca de informação na cultura de rede constituem outro domínio, com riscos de privacidade e avaliação de fontes.",
+        "mappingStatus": "MAPPING_PENDING"
+      }
+    ],
+    "safeReplacementsSelected": 0,
+    "sourceDossierCount": 16
+  },
+  "officialCatalog": {
+    "officialNodes": 1723,
+    "canonicalGapsBefore": 1496,
+    "canonicalGapsAfter": 1496,
+    "canonicalGapReduction": 0,
+    "mappingProposalsPrepared": 12,
+    "officialCodeReferencesDossiered": 16,
+    "mappingsHumanReviewed": 0,
+    "mappingsPromoted": 0,
+    "mappingStatus": "MAPPING_PENDING",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+  },
+  "curriculum": {
+    "newUnits": 12,
+    "reusedUnits": 13,
+    "graphUnitReferences": 26,
+    "persistedUnitRows": 0
+  },
+  "content": {
+    "subjects": [
+      "ART",
+      "BIOLOGY",
+      "CHEMISTRY",
+      "COMPUTING",
+      "HISTORY",
+      "HUMANITIES",
+      "LANGUAGES",
+      "MATHEMATICS",
+      "PHYSICAL_EDUCATION",
+      "PHYSICS",
+      "PORTUGUESE",
+      "RELIGIOUS_EDUCATION",
+      "SCIENCE"
+    ],
+    "stages": [
+      "ENSINO_MEDIO",
+      "FUNDAMENTAL_I",
+      "FUNDAMENTAL_II"
+    ],
+    "newLessons": 22,
+    "reusedLessons": 4,
+    "newQuestions": 110,
+    "reusedV1Questions": 36,
+    "reusedV4Questions": 14,
+    "reusedQuestions": 50,
+    "versionedQuestionBankRowsInserted": 146,
+    "questionSetItems": 160,
+    "completeAdaptiveSequences": 26,
+    "skillSequenceCounts": {
+      "BIOLOGY_ECOSYSTEM_INTERACTIONS": {
+        "PROBE": 2,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "SCIENCE_PLAN_INVESTIGATION": {
+        "PROBE": 2,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "HISTORY_ORDER_EVENTS": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "PHYSICS_MODEL_FORCE": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "PORTUGUESE_CONNECT_IDEAS": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "SCIENCE_EVIDENCE_CONCLUSION": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "CHEMISTRY_ACID_BASE": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "HISTORY_COMPARE_CAUSES": {
+        "PROBE": 1,
+        "PRACTICE": 2,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "RELIGIOUS_MEDIATE_DIALOGUE": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "COMPUTING_RECOGNIZE_PHISHING": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "MATH_RATIO_UNIT_RATE": {
+        "PROBE": 2,
+        "PRACTICE": 4,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 2
+      },
+      "PORTUGUESE_INFER_FROM_CLUES": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "PE_PLAN_SAFE_ACTIVITY": {
+        "PROBE": 1,
+        "PRACTICE": 2,
+        "TRANSFER": 1,
+        "LOCK_IN": 2,
+        "REVIEW": 1
+      },
+      "ART_CREATE_CHARACTER_EXPERIMENT_FI": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "RELIGIOUS_COMPARE_SELF_OTHER_FI": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "MATH_DESCRIBE_SPATIAL_POSITION_FI": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "PORTUGUESE_ANALYZE_VARIATION_HS": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "LANGUAGES_CREATE_COLLABORATIVELY_HS": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "COMPUTING_SEARCH_AND_BROWSE_FI": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      },
+      "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII": {
+        "PROBE": 1,
+        "PRACTICE": 1,
+        "TRANSFER": 1,
+        "LOCK_IN": 1,
+        "REVIEW": 1
+      }
+    },
+    "sourceExclusions": [
+      {
+        "questionId": "v3-religious_education-religious_diversity-12",
+        "skillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+        "reason": "LANGUAGE_MISMATCH_ENGLISH",
+        "replacementQuestionId": "V3_REL_DIALOGUE_Q05"
+      },
+      {
+        "questionId": "v3-computing-computing_algorithms-8",
+        "skillCode": "COMPUTING_RECOGNIZE_PHISHING",
+        "reason": "LANGUAGE_MISMATCH_ENGLISH",
+        "replacementQuestionId": "V3_COMP_PHISH_Q04"
+      },
+      {
+        "questionId": "v3-computing-computing_algorithms-9",
+        "skillCode": "COMPUTING_RECOGNIZE_PHISHING",
+        "reason": "LANGUAGE_MISMATCH_ENGLISH",
+        "replacementQuestionId": "V3_COMP_PHISH_Q05"
+      },
+      {
+        "questionId": "v3-computing-computing_algorithms-12",
+        "skillCode": "COMPUTING_RECOGNIZE_PHISHING",
+        "reason": "LANGUAGE_MISMATCH_ENGLISH",
+        "replacementQuestionId": null
+      }
+    ],
+    "excludedExistingQuestions": 4
+  },
+  "validation": {
+    "graphValidation": "PASS",
+    "contentStructureValidation": "PASS_NOT_PEDAGOGICAL_APPROVAL",
+    "answerKeyValidation": "PASS",
+    "adaptiveSequenceValidation": "PASS",
+    "deterministicOutput": true,
+    "databaseCompilation": "GENERATED_STAGING_ONLY",
+    "studentEligibleRows": 0
+  },
+  "safety": {
+    "publicationStatus": "STAGING",
+    "mappingStatus": "MAPPING_PENDING",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "newContentPublished": false,
+    "studentAvailableContent": 0,
+    "existingSkillStatesChanged": 0,
+    "studentHistoryModified": false,
+    "productionWrites": false,
+    "otherServicesTouched": false
+  },
+  "nextCampaign": {
+    "selectionPolicy": "REMAINING_V1_GAPS_AND_V8_PROPOSALS_ROUND_ROBIN_BY_SUBJECT_STAGE",
+    "existingSkills": [
+      {
+        "skillCode": "SCIENCE_IDENTIFY_VARIABLES",
+        "subjectCode": "SCIENCE",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 80,
+        "rationale": "Remaining V1 content gaps: LESSON_GAP, QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+        "subjectCode": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "LESSON_GAP",
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 75,
+        "rationale": "Remaining V1 content gaps: LESSON_GAP, QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+        "subjectCode": "HISTORY",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+        "subjectCode": "HISTORY",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "PHYSICS_INTERPRET_ACCELERATION",
+        "subjectCode": "PHYSICS",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "PHYSICS_RELATIVE_SPEED",
+        "subjectCode": "PHYSICS",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "PHYSICS_UNIFORM_MOTION",
+        "subjectCode": "PHYSICS",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "PORTUGUESE_COMPARE_SOURCES",
+        "subjectCode": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+        "subjectCode": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+        "subjectCode": "PORTUGUESE",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "ASSESSMENT_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 50,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, ASSESSMENT_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "COMPUTING_TRACE_ALGORITHM",
+        "subjectCode": "COMPUTING",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 21,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      },
+      {
+        "skillCode": "RELIGIOUS_COMPARE_TRADITIONS",
+        "subjectCode": "RELIGIOUS_EDUCATION",
+        "stage": "FUNDAMENTAL_II",
+        "gaps": [
+          "QUESTION_GAP",
+          "PRACTICE_GAP",
+          "MAPPING_GAP",
+          "ADAPTIVE_READINESS_GAP",
+          "REVIEW_GAP",
+          "PEDAGOGICAL_VALIDATION_GAP"
+        ],
+        "priorityScore": 14,
+        "rationale": "Remaining V1 content gaps: QUESTION_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP."
+      }
+    ],
+    "canonicalCandidates": [
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_09_LI_UNSPECIFIED_EMPREGAR_MODO",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_09_LI_UNSPECIFIED_EMPREGAR_MODO",
+        "candidateCanonicalCode": "LINGUA_INGLESA_UNSPECIFIED_EMPREGAR_MODO",
+        "title": "Empregar Modo",
+        "subject": "LINGUA_INGLESA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF09LI15",
+          "EF09LI16"
+        ],
+        "priorityScore": 77,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_15_AR_RECONHECER_EXPERIMENTAR_PROJETOS",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_15_AR_RECONHECER_EXPERIMENTAR_PROJETOS",
+        "candidateCanonicalCode": "ARTE_EXPERIMENTAR_PROJETOS",
+        "title": "Experimentar Projetos",
+        "subject": "ARTE",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF15AR23"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_CI_IDENTIFICAR_NOMEAR_DIFERENTES",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_CI_IDENTIFICAR_NOMEAR_DIFERENTES",
+        "candidateCanonicalCode": "CIENCIAS_NOMEAR_DIFERENTES",
+        "title": "Nomear Diferentes",
+        "subject": "CIENCIAS",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF01CI05"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_05_CO_DISTINGUIR_ACESSAR_INFORMACOES",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_05_CO_DISTINGUIR_ACESSAR_INFORMACOES",
+        "candidateCanonicalCode": "COMPUTACAO_ACESSAR_INFORMACOES",
+        "title": "Acessar Informacoes",
+        "subject": "COMPUTACAO",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF05CO08"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_67_EF_UNSPECIFIED_PRIMEIRO_PAR",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_67_EF_UNSPECIFIED_PRIMEIRO_PAR",
+        "candidateCanonicalCode": "EDUCACAO_FISICA_UNSPECIFIED_PRIMEIRO_PAR",
+        "title": "Primeiro Par",
+        "subject": "EDUCACAO_FISICA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF67EF01"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SENTIMENTOS",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SENTIMENTOS",
+        "candidateCanonicalCode": "ENSINO_RELIGIOSO_ACOLHER_SENTIMENTOS",
+        "title": "Acolher Sentimentos",
+        "subject": "ENSINO_RELIGIOSO",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF01ER05"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_GE_COMPARAR_DESCREVER_DIFERENTES",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_GE_COMPARAR_DESCREVER_DIFERENTES",
+        "candidateCanonicalCode": "GEOGRAFIA_DESCREVER_DIFERENTES",
+        "title": "Descrever Diferentes",
+        "subject": "GEOGRAFIA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF01GE06"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_HI_DISTINGUIR_DESCREVER_PAPEIS",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_HI_DISTINGUIR_DESCREVER_PAPEIS",
+        "candidateCanonicalCode": "HISTORIA_DESCREVER_PAPEIS",
+        "title": "Descrever Papeis",
+        "subject": "HISTORIA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF01HI03"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_LP_IDENTIFICAR_FONEMAS_REPRESENTACAO",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_LP_IDENTIFICAR_FONEMAS_REPRESENTACAO",
+        "candidateCanonicalCode": "LINGUA_PORTUGUESA_FONEMAS_REPRESENTACAO",
+        "title": "Fonemas Representacao",
+        "subject": "LINGUA_PORTUGUESA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF01LP07"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_MA_RECONHECER_RELACIONAR_PERIODOS",
+        "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_MA_RECONHECER_RELACIONAR_PERIODOS",
+        "candidateCanonicalCode": "MATEMATICA_RELACIONAR_PERIODOS",
+        "title": "Relacionar Periodos",
+        "subject": "MATEMATICA",
+        "stage": "ENSINO_FUNDAMENTAL",
+        "officialCodes": [
+          "EF01MA17"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_CHS_ANALISAR_DISCUTIR_PAPEL",
+        "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_CHS_ANALISAR_DISCUTIR_PAPEL",
+        "candidateCanonicalCode": "CIENCIAS_HUMANAS_DISCUTIR_PAPEL",
+        "title": "Discutir Papel",
+        "subject": "CIENCIAS_HUMANAS",
+        "stage": "ENSINO_MEDIO",
+        "officialCodes": [
+          "EM13CHS305"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      },
+      {
+        "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_CNT_ANALISAR_FUNCIONAMENTO_EQUIPAMENTOS",
+        "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_CNT_ANALISAR_FUNCIONAMENTO_EQUIPAMENTOS",
+        "candidateCanonicalCode": "CIENCIAS_NATUREZA_FUNCIONAMENTO_EQUIPAMENTOS",
+        "title": "Funcionamento Equipamentos",
+        "subject": "CIENCIAS_NATUREZA",
+        "stage": "ENSINO_MEDIO",
+        "officialCodes": [
+          "EM13CNT308"
+        ],
+        "priorityScore": 76,
+        "status": "NEW_SKILL_PENDING_REVIEW",
+        "mappingPromoted": false
+      }
+    ],
+    "excludedCandidateCodeCollisions": 47,
+    "subjectDistribution": {
+      "SCIENCE": 1,
+      "PORTUGUESE": 4,
+      "HISTORY": 2,
+      "PHYSICS": 3,
+      "COMPUTING": 1,
+      "RELIGIOUS_EDUCATION": 1,
+      "LINGUA_INGLESA": 1,
+      "ARTE": 1,
+      "CIENCIAS": 1,
+      "COMPUTACAO": 1,
+      "EDUCACAO_FISICA": 1,
+      "ENSINO_RELIGIOSO": 1,
+      "GEOGRAFIA": 1,
+      "HISTORIA": 1,
+      "LINGUA_PORTUGUESA": 1,
+      "MATEMATICA": 1,
+      "CIENCIAS_HUMANAS": 1,
+      "CIENCIAS_NATUREZA": 1
+    },
+    "stageDistribution": {
+      "FUNDAMENTAL_II": 12,
+      "ENSINO_FUNDAMENTAL": 10,
+      "ENSINO_MEDIO": 2
+    }
+  },
+  "inventoryHash": "269b0b5036386de80b88b985a4c3b5d11eb7d295cbf8885e248ed7da6c51a5a8"
+}
