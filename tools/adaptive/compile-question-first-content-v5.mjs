@@ -136,18 +136,79 @@ function resolveSkillForStaging(pack, canonicalSkillCodes) {
   const sourceValid = Boolean(definition.sourceEvidence?.sourceId && definition.sourceEvidence?.url && definition.sourceEvidence?.officialDescription);
   const semanticallyComplete = Boolean(definition.title?.trim() && definition.description?.trim()
     && definition.learningObjective?.trim() && definition.observableCapability?.trim());
+  const parentAnchor = cachedV3FactoryResult.graph.anchors.find((anchor) => anchor.code === definition.parentSkillCode);
+  const parentAnchorUnit = parentAnchor && [...(cachedV3FactoryResult.units.newUnits ?? []), ...(cachedV3FactoryResult.units.existingUnitExtensions ?? [])]
+    .find((unit) => unit.unitId === parentAnchor.unitId
+      && (unit.canonicalSkills ?? unit.addCanonicalSkills ?? []).includes(definition.skillCode));
+  const parentAnchorValid = canonicalSkillCodes.has(definition.parentSkillCode)
+    || Boolean(parentAnchor && parentAnchorUnit && /^[A-Z][A-Z0-9_]{2,95}$/.test(parentAnchor.code)
+      && parentAnchor.nodeKind === 'ANCHOR' && parentAnchor.subjectCode === definition.subjectCode
+      && parentAnchor.stage === definition.stage && parentAnchor.gradeLevel >= definition.gradeFrom
+      && parentAnchor.gradeLevel <= definition.gradeTo && parentAnchor.active === false
+      && parentAnchor.masteryTargetable === false && parentAnchor.mappingStatus === 'MAPPING_PENDING'
+      && parentAnchor.pedagogicalReviewStatus === 'PEDAGOGICAL_REVIEW_PENDING'
+      && parentAnchor.publicationStatus === 'STAGING' && parentAnchor.bnccAlignment === 'NOT_CLAIMED'
+      && parentAnchor.officialCode === null && parentAnchor.title?.trim() && parentAnchor.description?.trim());
   if (!candidate || !unitDeclared || !group || !gradeValid || !sourceValid || !semanticallyComplete
     || definition.subjectCode !== pack.subject || definition.domain !== pack.domain
     || !['ENSINO_MEDIO', 'FUNDAMENTAL_I', 'FUNDAMENTAL_II'].includes(definition.stage)
-    || !definition.parentSkillCode) {
+    || !definition.parentSkillCode || !parentAnchorValid) {
     throw new Error(`V5_INTERNAL_SKILL_DECLARATION_INVALID:${pack.canonicalSkillCode}`);
   }
   if (pack.officialMappingStatus !== 'NOT_CLAIMED') throw new Error(`V5_INTERNAL_SKILL_MAPPING_MUST_NOT_BE_CLAIMED:${pack.canonicalSkillCode}`);
-  return { kind: 'V3_INTERNAL_CANDIDATE', definition };
+  return {
+    kind: 'V3_INTERNAL_CANDIDATE',
+    definition,
+    parentAnchor: canonicalSkillCodes.has(definition.parentSkillCode) ? null : parentAnchor,
+  };
 }
 
-function buildInternalSkillStagingSql(pack, definition) {
+function buildInternalParentAnchorStagingSql(anchor) {
+  if (!anchor) return '';
+  const metadata = {
+    content_pack: 'TECESCOLA_CORE_V5_QUESTION_FIRST',
+    source_pack: 'tec-escola-knowledge-expansion-v3',
+    source_unit_id: anchor.unitId,
+    internal_grouping_only: true,
+    official_code: null,
+    official_mapping_status: 'NOT_CLAIMED',
+    pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
+    publication_status: 'STAGING',
+    mastery_targetable: false,
+  };
+  return `  if exists (
+    select 1 from public.learning_curriculum_skills
+     where catalog_id = v_catalog_id and code = ${sql(anchor.code)}
+       and metadata->>'content_pack' not in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+  ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_CODE_COLLISION:${anchor.code}'; end if;
+  insert into public.learning_curriculum_skills(
+    catalog_id, code, stage, grade_level, subject_area, domain, title, description,
+    active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status,
+    bncc_alignment_status, metadata
+  ) values (
+    v_catalog_id, ${sql(anchor.code)}, ${sql(anchor.stage)}, ${anchor.gradeLevel}, ${sql(anchor.subjectCode)}, 'V3_INTERNAL_ANCHOR',
+    ${sql(anchor.title)}, ${sql(anchor.description)}, false, 'ANCHOR', 'GRAPH_ONLY', false,
+    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', ${jsonSql(metadata)}
+  ) on conflict (catalog_id, code) do nothing;
+  if not exists (
+    select 1 from public.learning_curriculum_skills
+     where catalog_id = v_catalog_id and code = ${sql(anchor.code)}
+       and stage = ${sql(anchor.stage)} and grade_level = ${anchor.gradeLevel}
+       and subject_area = ${sql(anchor.subjectCode)} and domain = 'V3_INTERNAL_ANCHOR'
+       and active = false and node_kind = 'ANCHOR' and content_readiness = 'GRAPH_ONLY'
+       and mastery_targetable = false and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+       and bncc_alignment_status = 'CANDIDATE'
+       and metadata->>'internal_grouping_only' = 'true'
+       and metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+       and metadata->>'publication_status' = 'STAGING'
+       and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+  ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:${anchor.code}'; end if;
+`;
+}
+
+function buildInternalSkillStagingSql(pack, definition, parentAnchor) {
   if (!definition) return '';
+  const parentAnchorSql = buildInternalParentAnchorStagingSql(parentAnchor);
   const metadata = {
     content_pack: 'TECESCOLA_CORE_V5_QUESTION_FIRST',
     content_id: pack.contentId,
@@ -162,7 +223,7 @@ function buildInternalSkillStagingSql(pack, definition) {
     pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
     publication_status: 'STAGING',
   };
-  return `  select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = ${sql(definition.parentSkillCode)};
+  return `${parentAnchorSql}  select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = ${sql(definition.parentSkillCode)};
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:${definition.parentSkillCode}'; end if;
   insert into public.learning_curriculum_skills(
     catalog_id, code, stage, grade_level, subject_area, domain, title, description,
@@ -194,7 +255,7 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
     ...(subject.leaves ?? []).map((skill) => skill.code),
   ]));
   const skillResolution = resolveSkillForStaging(pack, canonicalSkillCodes);
-  const internalSkillSql = buildInternalSkillStagingSql(pack, skillResolution.definition);
+  const internalSkillSql = buildInternalSkillStagingSql(pack, skillResolution.definition, skillResolution.parentAnchor);
   const internalSkillDeclaration = skillResolution.definition ? '  v_parent_skill_id uuid;' : '';
   const internalSkillBlock = internalSkillSql ? `\n${internalSkillSql}` : '';
   const purposePositions = new Map(PURPOSES.map((purpose) => [purpose, 0]));

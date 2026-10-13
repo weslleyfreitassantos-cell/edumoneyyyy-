@@ -326,6 +326,8 @@ describe('question-first V5 staging content', () => {
   it('compiles Languages as an inactive V3 internal candidate without claiming BNCC alignment', () => {
     const sql = buildMigration(languagesSemioticPack);
     expect(sql).toBe(languagesSemioticMigration);
+    expect(sql).toContain("'LANGUAGES_AREA', 'ENSINO_MEDIO', 1, 'LANGUAGES', 'V3_INTERNAL_ANCHOR'");
+    expect(sql).toContain('V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:LANGUAGES_AREA');
     expect(sql).toContain('V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT');
     expect(sql).toContain("'LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS'");
     expect(sql).toContain("'CANDIDATE'");
@@ -398,6 +400,8 @@ describe('question-first V5 staging content', () => {
 
   it('compiles spatial-position content as an inactive candidate and leaves student progress untouched', () => {
     expect(mathPositionMigration).toBe(buildMigration(mathPositionPack));
+    expect(mathPositionMigration).toContain('V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:MATHEMATICS_SPATIAL');
+    expect(mathPositionMigration).toContain("'MATHEMATICS_SPATIAL', 'FUNDAMENTAL_I', 1, 'MATHEMATICS', 'V3_INTERNAL_ANCHOR'");
     expect(mathPositionMigration).toContain("'MATH_DESCRIBE_SPATIAL_POSITION_FI'");
     expect(mathPositionMigration).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
     expect(mathPositionMigration).toContain("'NOT_CLAIMED'");
@@ -469,6 +473,10 @@ describe('question-first V5 staging content', () => {
   it('compiles the Humanities internal candidate without promoting its official mapping', () => {
     const sql = buildMigration(humanitiesProductionPack);
     expect(sql).toBe(humanitiesProductionMigration);
+    expect(sql).toContain("'HUMANITIES_AREA', 'ENSINO_MEDIO', 1, 'HUMANITIES', 'V3_INTERNAL_ANCHOR'");
+    expect(sql).toContain('V5_INTERNAL_PARENT_ANCHOR_CODE_COLLISION:HUMANITIES_AREA');
+    expect(sql).toContain('V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:HUMANITIES_AREA');
+    expect(sql).toContain("metadata->>'internal_grouping_only' = 'true'");
     expect(sql).toContain('V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT');
     expect(sql).toContain("'CANDIDATE'");
     expect(sql).toContain("'NOT_CLAIMED'");

@@ -17,6 +17,33 @@ begin
    where code = 'TECESCOLA_CORE' and version = '1.0'
    limit 1;
   if v_catalog_id is null then raise exception 'V5_CONTENT_CATALOG_MISSING'; end if;
+  if exists (
+    select 1 from public.learning_curriculum_skills
+     where catalog_id = v_catalog_id and code = 'MATHEMATICS_SPATIAL'
+       and metadata->>'content_pack' not in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+  ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_CODE_COLLISION:MATHEMATICS_SPATIAL'; end if;
+  insert into public.learning_curriculum_skills(
+    catalog_id, code, stage, grade_level, subject_area, domain, title, description,
+    active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status,
+    bncc_alignment_status, metadata
+  ) values (
+    v_catalog_id, 'MATHEMATICS_SPATIAL', 'FUNDAMENTAL_I', 1, 'MATHEMATICS', 'V3_INTERNAL_ANCHOR',
+    'Orientacao espacial', 'Agrupador interno de conhecimentos de localização e representação espacial; não é código BNCC.', false, 'ANCHOR', 'GRAPH_ONLY', false,
+    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_MATHEMATICS_SPATIAL_FI","internal_grouping_only":true,"official_code":null,"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
+  ) on conflict (catalog_id, code) do nothing;
+  if not exists (
+    select 1 from public.learning_curriculum_skills
+     where catalog_id = v_catalog_id and code = 'MATHEMATICS_SPATIAL'
+       and stage = 'FUNDAMENTAL_I' and grade_level = 1
+       and subject_area = 'MATHEMATICS' and domain = 'V3_INTERNAL_ANCHOR'
+       and active = false and node_kind = 'ANCHOR' and content_readiness = 'GRAPH_ONLY'
+       and mastery_targetable = false and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
+       and bncc_alignment_status = 'CANDIDATE'
+       and metadata->>'internal_grouping_only' = 'true'
+       and metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+       and metadata->>'publication_status' = 'STAGING'
+       and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
+  ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:MATHEMATICS_SPATIAL'; end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'MATHEMATICS_SPATIAL';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:MATHEMATICS_SPATIAL'; end if;
   insert into public.learning_curriculum_skills(
