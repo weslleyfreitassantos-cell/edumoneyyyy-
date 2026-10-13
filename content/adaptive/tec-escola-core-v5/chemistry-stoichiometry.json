@@ -5,7 +5,7 @@
   "domain": "REACOES",
   "topic": "proporcoes molares, reagente limitante e rendimento",
   "canonicalSkillCode": "CHEMISTRY_STOICHIOMETRY",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "expectedQuestionCount": 18,
   "expectedContextCount": 18,
   "expectedAnswerPositionCounts": {

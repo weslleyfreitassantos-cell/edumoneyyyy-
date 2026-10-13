@@ -8,12 +8,20 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const PACK_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v5', 'math-successive-percent-change.json');
 const CANONICAL_REGISTRY_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v4', 'registry.json');
 const EXISTING_SUBJECTS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v4', 'subjects');
-const EXISTING_V9_QUESTIONS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', 'journey-expansion-a-v1.json');
+const EXISTING_V9_JOURNEY_PATHS = ['journey-expansion-a-v1.json', 'journey-expansion-b-v1.json', 'journey-expansion-c-v1.json']
+  .map((file) => join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', file));
 const EXISTING_V1_QUESTIONS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', 'knowledge-gap-batch-v1.json');
 const EXISTING_V3_STAGING_PATH = join(ROOT, 'content', 'bncc', 'authoring', 'knowledge-factory-v3-staging.sql');
 const DEFAULT_MIGRATION_PATH = join(ROOT, 'supabase', 'migrations', '20261012000700_bncc_question_first_content_staging_v5.sql');
 const PACK_ID = 'TECESCOLA_CORE_V5_QUESTION_FIRST';
 const PURPOSES = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'];
+const JOURNEY_EXPANSION_PURPOSES = [
+  'PROBE', 'PROBE',
+  ...Array(8).fill('PRACTICE'),
+  ...Array(4).fill('TRANSFER'),
+  ...Array(3).fill('LOCK_IN'),
+  ...Array(3).fill('REVIEW'),
+];
 let cachedV3FactoryResult;
 
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
@@ -27,8 +35,35 @@ const readExistingQuestionSources = () => {
     .flatMap((path) => {
       try { return readJson(path); } catch { return []; }
     });
-  const v9Pack = readJson(EXISTING_V9_QUESTIONS_PATH);
-  const v9Questions = (v9Pack.journeys ?? []).flatMap((journey) => journey.questions ?? []);
+  const v9Questions = EXISTING_V9_JOURNEY_PATHS.flatMap((path) => {
+    let pack;
+    try { pack = readJson(path); } catch { return []; }
+    return (pack.journeys ?? []).flatMap((journey) => {
+      if (Array.isArray(journey.questions)) return journey.questions;
+      if (!Array.isArray(journey.questionRows)) return [];
+      if (!journey.questionIdPrefix || journey.questionRows.length !== JOURNEY_EXPANSION_PURPOSES.length) {
+        throw new Error(`INVALID_EXISTING_COMPACT_JOURNEY:${journey.skill}`);
+      }
+      return journey.questionRows.map((row, index) => {
+        if (!Array.isArray(row) || row.length !== 7) throw new Error(`INVALID_EXISTING_COMPACT_QUESTION:${journey.skill}:${index + 1}`);
+        const [contextFamily, difficulty, cognitiveProcess, statement, options, correctIndex, explanation] = row;
+        if (!Array.isArray(options) || !Number.isInteger(correctIndex) || correctIndex < 0 || correctIndex >= options.length) {
+          throw new Error(`INVALID_EXISTING_COMPACT_ANSWER:${journey.skill}:${index + 1}`);
+        }
+        return {
+          id: `${journey.questionIdPrefix}-${String(index + 1).padStart(2, '0')}`,
+          purpose: JOURNEY_EXPANSION_PURPOSES[index],
+          difficulty,
+          cognitiveProcess,
+          contextFamily,
+          statement,
+          options,
+          correctAnswer: options[correctIndex],
+          explanation,
+        };
+      });
+    });
+  });
   const v1Pack = readJson(EXISTING_V1_QUESTIONS_PATH);
   const v1Questions = (v1Pack.skills ?? []).flatMap((skill) => skill.questions ?? []);
   const v3Staging = readFileSync(EXISTING_V3_STAGING_PATH, 'utf8');
@@ -81,6 +116,15 @@ export function validateQuestionFirstPack(pack = readJson(PACK_PATH), existingQu
   }
 
   const existingStems = new Set(existingQuestions.map((question) => normalize(question.statement)));
+  const existingIds = new Set(existingQuestions.map((question) => question.id).filter(Boolean));
+  const feedbackIds = new Set();
+  if (pack.sourceQuestionFeedback !== undefined && !Array.isArray(pack.sourceQuestionFeedback)) errors.push('SOURCE_QUESTION_FEEDBACK_INVALID');
+  for (const item of pack.sourceQuestionFeedback ?? []) {
+    if (!item?.questionId || !item.hint || !item.errorFocus) errors.push('SOURCE_QUESTION_FEEDBACK_INCOMPLETE');
+    if (feedbackIds.has(item?.questionId)) errors.push(`SOURCE_QUESTION_FEEDBACK_DUPLICATE:${item.questionId}`);
+    feedbackIds.add(item?.questionId);
+    if (item?.questionId && !existingIds.has(item.questionId)) errors.push(`SOURCE_QUESTION_FEEDBACK_SOURCE_UNKNOWN:${item.questionId}`);
+  }
   const ids = new Set();
   const stems = new Set();
   const contexts = new Set();
@@ -354,6 +398,7 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
   ]) {
     if (lesson[field] !== undefined) lessonMetadata[key] = lesson[field];
   }
+  if (pack.sourceQuestionFeedback?.length) lessonMetadata.source_question_feedback = pack.sourceQuestionFeedback;
   if (lesson.sourceDossier) {
     lessonMetadata.objective = lesson.objective;
     lessonMetadata.common_mistake = lesson.commonMistake;

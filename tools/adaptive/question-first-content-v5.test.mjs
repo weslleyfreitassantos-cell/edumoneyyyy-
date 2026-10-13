@@ -17,6 +17,7 @@ import { buildBiologyPopulationDataPack } from './build-biology-population-data-
 import { buildChemistryAtomicStructurePack } from './build-chemistry-atomic-structure-v5.mjs';
 import { buildChemistryReactionEvidencePack } from './build-chemistry-reaction-evidence-v5.mjs';
 import { buildChemistryStoichiometryPack } from './build-chemistry-stoichiometry-v5.mjs';
+import { buildPhilosophyEthicalPrinciplePack } from './build-philosophy-ethical-principle-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -73,6 +74,8 @@ const chemistryReactionEvidencePack = JSON.parse(readFileSync(new URL('../../con
 const chemistryReactionEvidenceMigration = readFileSync(new URL('../../supabase/migrations/20261013002600_bncc_chemistry_reaction_evidence_question_first_v5.sql', import.meta.url), 'utf8');
 const chemistryStoichiometryPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/chemistry-stoichiometry.json', import.meta.url), 'utf8'));
 const chemistryStoichiometryMigration = readFileSync(new URL('../../supabase/migrations/20261013002700_bncc_chemistry_stoichiometry_question_first_v5.sql', import.meta.url), 'utf8');
+const philosophyEthicsPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/philosophy-ethical-principle.json', import.meta.url), 'utf8'));
+const philosophyEthicsMigration = readFileSync(new URL('../../supabase/migrations/20261013002800_bncc_philosophy_ethical_principle_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -965,12 +968,43 @@ describe('question-first V5 staging content', () => {
 
   it('compiles stoichiometry content as inactive staging without student records', () => {
     expect(chemistryStoichiometryPack).toEqual(buildChemistryStoichiometryPack());
+    expect(chemistryStoichiometryPack.contentVersion).toBe(6);
     expect(chemistryStoichiometryMigration).toBe(buildMigration(chemistryStoichiometryPack));
+    expect(chemistryStoichiometryMigration).toContain('version = 6');
     expect(chemistryStoichiometryMigration).toContain("'CHEMISTRY_STOICHIOMETRY'");
     expect(chemistryStoichiometryMigration).toContain("'publication_status', 'STAGING'");
     expect(chemistryStoichiometryMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(chemistryStoichiometryMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(chemistryStoichiometryMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('extends ethical-principle practice with a balanced pool and reconciled source feedback', () => {
+    const result = validateQuestionFirstPack(philosophyEthicsPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(19);
+    expect(result.contextCount).toBe(19);
+    expect(result.counts).toEqual({ PROBE: 2, PRACTICE: 3, TRANSFER: 4, LOCK_IN: 3, REVIEW: 7 });
+    expect(result.answerPositionCounts).toEqual({ A: 5, B: 5, C: 5, D: 4 });
+    expect(philosophyEthicsPack.sourceQuestionFeedback).toHaveLength(21);
+    expect(philosophyEthicsPack.lesson.microExplanations).toHaveLength(6);
+    expect(philosophyEthicsPack.lesson.remediations).toHaveLength(4);
+    expect(philosophyEthicsPack.lesson.sourceDossier).toHaveLength(3);
+    expect(philosophyEthicsPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(philosophyEthicsPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(philosophyEthicsPack.publicationStatus).toBe('STAGING');
+    expect(validateQuestionFirstPack({ ...philosophyEthicsPack, sourceQuestionFeedback: [...philosophyEthicsPack.sourceQuestionFeedback, { questionId: 'unknown-source', hint: 'x', errorFocus: 'y' }] }).errors)
+      .toContain('SOURCE_QUESTION_FEEDBACK_SOURCE_UNKNOWN:unknown-source');
+  });
+
+  it('compiles ethical-principle content and source annotations as inactive staging', () => {
+    expect(philosophyEthicsPack).toEqual(buildPhilosophyEthicalPrinciplePack());
+    expect(philosophyEthicsMigration).toBe(buildMigration(philosophyEthicsPack));
+    expect(philosophyEthicsMigration).toContain("'PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE'");
+    expect(philosophyEthicsMigration).toContain('"source_question_feedback"');
+    expect(philosophyEthicsMigration).toContain("'publication_status', 'STAGING'");
+    expect(philosophyEthicsMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(philosophyEthicsMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(philosophyEthicsMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {

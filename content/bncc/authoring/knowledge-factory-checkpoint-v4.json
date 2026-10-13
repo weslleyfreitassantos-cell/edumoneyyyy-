@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "923b55d869dd66c7303caa43ec00ecf97fc4ee3ef2facb5839df1a13427a5710",
-  "outputHash": "fe23f3a7b294f29fa5ec7fbfe45ba2c4e2b6ac8f91ac6119a6c791f16dd5a4f6",
+  "inputHash": "fdf1bd736f4a48b7c185a16bc1af675485e12f37444b7b4c590f7ea129577c8c",
+  "outputHash": "ce06b69f7efdb6075dd157791712a77526e31f7fd449fbb178d487543c0a198d",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,13 +13,13 @@
   "currentWave": 2,
   "nextQueueItem": {
     "wave": 2,
-    "id": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+    "id": "PHILOSOPHY_DISTINGUISH_CONCEPT",
     "stage": "ENSINO_MEDIO",
     "subject": "PHILOSOPHY",
     "status": "CONTENT_GAP",
     "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
   },
-  "pendingItems": 1767,
+  "pendingItems": 1766,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "f058fd49048d48c1ef322717281ad332723505044a08bddeaa0c3e66f376ab4e"
+  "checkpointHash": "04a637dc36cf47738400e2ab30692fa9003ff151d31a1ce70f40244d2271d47c"
 }

@@ -20,6 +20,13 @@ const PATHS = {
 };
 const PURPOSES = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'];
 const MINIMUMS = { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 };
+const JOURNEY_EXPANSION_PURPOSES = [
+  'PROBE', 'PROBE',
+  ...Array(8).fill('PRACTICE'),
+  ...Array(4).fill('TRANSFER'),
+  ...Array(3).fill('LOCK_IN'),
+  ...Array(3).fill('REVIEW'),
+];
 const OUTPUTS = ['report', 'checkpoint', 'docket', 'stagingSql'];
 
 function readJson(root, relativePath) {
@@ -154,6 +161,32 @@ function loadQuestionFirstV5Packs(root = ROOT) {
     .filter(({ pack }) => pack.packVersion === 'tec-escola-core-v5-question-first');
 }
 
+function normalizeJourneyQuestions(journey) {
+  if (Array.isArray(journey.questions)) return journey.questions;
+  if (!Array.isArray(journey.questionRows)) return [];
+  if (!journey.questionIdPrefix || journey.questionRows.length !== JOURNEY_EXPANSION_PURPOSES.length) {
+    throw new Error(`INVALID_COMPACT_JOURNEY_QUESTIONS:${journey.skill}`);
+  }
+  return journey.questionRows.map((row, index) => {
+    if (!Array.isArray(row) || row.length !== 7) throw new Error(`INVALID_COMPACT_JOURNEY_QUESTION_ROW:${journey.skill}:${index + 1}`);
+    const [contextFamily, difficulty, cognitiveProcess, statement, options, correctIndex, explanation] = row;
+    if (!Array.isArray(options) || !Number.isInteger(correctIndex) || correctIndex < 0 || correctIndex >= options.length) {
+      throw new Error(`INVALID_COMPACT_JOURNEY_ANSWER:${journey.skill}:${index + 1}`);
+    }
+    return {
+      id: `${journey.questionIdPrefix}-${String(index + 1).padStart(2, '0')}`,
+      purpose: JOURNEY_EXPANSION_PURPOSES[index],
+      difficulty,
+      cognitiveProcess,
+      contextFamily,
+      statement,
+      options,
+      correctAnswer: options[correctIndex],
+      explanation,
+    };
+  });
+}
+
 function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
   const v3Codes = new Set(v3Groups.map((group) => group.skillCode));
   const candidateByCode = new Map(candidates.filter((skill) => !v3Codes.has(skill.skillCode)).map((skill) => [skill.skillCode, skill]));
@@ -193,12 +226,14 @@ function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
     for (const item of items) addSource(codeFor(item), kind, item, `tec-escola-core-v9/${fileName}`);
   }
 
-  const journeyExpansionPath = path.join(v9Directory, 'journey-expansion-b-v1.json');
-  if (fs.existsSync(journeyExpansionPath)) {
-    const journeys = readJson(root, path.relative(root, journeyExpansionPath)).journeys ?? [];
-    for (const journey of journeys) {
-      for (const question of journey.questions ?? []) addSource(journey.skill, 'question', question, 'tec-escola-core-v9/journey-expansion-b-v1.json');
-      if (journey.lesson) addSource(journey.skill, 'lesson', { ...journey.lesson, skill: journey.skill }, 'tec-escola-core-v9/journey-expansion-b-v1.json');
+  for (const fileName of ['journey-expansion-a-v1.json', 'journey-expansion-b-v1.json', 'journey-expansion-c-v1.json']) {
+    const journeyExpansionPath = path.join(v9Directory, fileName);
+    if (fs.existsSync(journeyExpansionPath)) {
+      const journeys = readJson(root, path.relative(root, journeyExpansionPath)).journeys ?? [];
+      for (const journey of journeys) {
+        for (const question of normalizeJourneyQuestions(journey)) addSource(journey.skill, 'question', question, `tec-escola-core-v9/${fileName}`);
+        if (journey.lesson) addSource(journey.skill, 'lesson', { ...journey.lesson, skill: journey.skill }, `tec-escola-core-v9/${fileName}`);
+      }
     }
   }
 
@@ -206,6 +241,20 @@ function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
     const definition = candidateByCode.get(skillCode);
     const source = sourceByCode.get(skillCode) ?? { questions: [], lessons: [] };
     if (source.questions.length !== definition.questionCount) return [];
+    const pack = packs.find(({ pack: candidatePack }) => candidatePack.canonicalSkillCode === skillCode)?.pack;
+    const feedbackRows = pack?.sourceQuestionFeedback ?? [];
+    const feedbackById = new Map(feedbackRows.map((item) => [item.questionId, item]));
+    if (feedbackById.size !== feedbackRows.length) throw new Error(`DUPLICATE_SOURCE_QUESTION_FEEDBACK:${skillCode}`);
+    const appliedFeedbackIds = new Set();
+    const questions = source.questions.map((entry) => {
+      const question = getQuestion(entry);
+      const questionId = getQuestionId(entry, question);
+      const feedback = feedbackById.get(questionId);
+      if (!feedback) return entry;
+      appliedFeedbackIds.add(questionId);
+      return { ...entry, question: { ...question, hint: feedback.hint, errorFocus: feedback.errorFocus } };
+    });
+    if (appliedFeedbackIds.size !== feedbackById.size) throw new Error(`SOURCE_QUESTION_FEEDBACK_NOT_RECONCILED:${skillCode}`);
     return [{
       skillCode,
       subjectCode: definition.subjectCode,
@@ -215,12 +264,13 @@ function loadWaveTwoCandidateGroups(root, candidates, v3Groups, packs) {
       prerequisites: definition.prerequisites ?? [],
       lesson: null,
       existingLessons: source.lessons,
-      questions: source.questions,
+      questions,
       originalQuestionCount: source.questions.length,
       sourceReconciliation: {
         expectedQuestionCount: definition.questionCount,
         actualQuestionCount: source.questions.length,
         status: 'EXACT',
+        questionFeedbackCount: appliedFeedbackIds.size,
       },
     }];
   });
@@ -531,9 +581,9 @@ function buildKnowledgeFactoryV4(root = ROOT) {
       ...['question-expansion-v1.json', 'question-expansion-v2.json', 'question-expansion-v3.json', 'lesson-expansion-v1.json', 'lesson-expansion-v2.json']
         .filter((file) => fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v9', file)))
         .map((file) => [`tec-escola-core-v9/${file}`, hashFile(root, `content/adaptive/tec-escola-core-v9/${file}`)]),
-      ...(fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v9/journey-expansion-b-v1.json'))
-        ? [['tec-escola-core-v9/journey-expansion-b-v1.json', hashFile(root, 'content/adaptive/tec-escola-core-v9/journey-expansion-b-v1.json')]]
-        : []),
+      ...['journey-expansion-a-v1.json', 'journey-expansion-b-v1.json', 'journey-expansion-c-v1.json']
+        .filter((file) => fs.existsSync(path.join(root, 'content/adaptive/tec-escola-core-v9', file)))
+        .map((file) => [`tec-escola-core-v9/${file}`, hashFile(root, `content/adaptive/tec-escola-core-v9/${file}`)]),
     ])))],
   ]);
   const byStage = groupBy(matrix, (node) => node.stage);
@@ -648,7 +698,7 @@ function buildKnowledgeFactoryV4(root = ROOT) {
       v5PacksOutsideV3AuditedTargets: v5Packs.filter(({ pack }) => !depthBySkill.has(pack.canonicalSkillCode)).map(({ file, pack }) => ({ file, skillCode: pack.canonicalSkillCode, questionCount: pack.questions?.length ?? 0, sourceReconciliation: 'PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION' })),
       lessonsNeedingDepthReview: depth.filter((item) => item.lessonStatus !== 'STRUCTURED_LESSON_CANDIDATE').length,
       reviewPending: depth.length,
-      contentSources: ['V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY', 'V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS', 'V9_EXPANSIONS_FOR_EXACT_WAVE_2_TARGETS', 'V9_JOURNEY_EXPANSION_B_FOR_EXACT_WAVE_2_TARGETS', 'V5_QUESTION_FIRST_PACKS'],
+      contentSources: ['V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY', 'V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS', 'V9_EXPANSIONS_FOR_EXACT_WAVE_2_TARGETS', 'V9_JOURNEY_EXPANSIONS_A_B_C_FOR_EXACT_WAVE_2_TARGETS', 'V5_QUESTION_FIRST_PACKS'],
       depthAudit: depth,
     },
     curriculumUnits: {

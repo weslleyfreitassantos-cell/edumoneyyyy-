@@ -6,14 +6,14 @@
     "official": "997ed5fb8817c57a8ff3fd0fc862993867539b9e0736a5d0ad43a1379a20cef6",
     "officialManifest": "8aff9758fbe893b5076895e377dfe1d145ae3d3a4f9270c5ccd56272baf303ea",
     "regulatoryContext": "8baebdedaf4f38b4a7a54f0f18ef6b120432690aaf6a6ee435e314e46b707f31",
-    "v1": "3e271391198784e76cba40e34c8805aa8f3e299bb05293f786b95dd9b8cffb8d",
+    "v1": "ba245bec2cd902254da933f90c6991ff4a5ddad75d1eeba320a519af5f24eda3",
     "v3": "0e50c70acc7cbfc2b614c9d791e7a4706dfacc370bb7777c1ecbe61852cf3c50",
     "v3Units": "54eac626ee9513acbe3564d8c1d90635ec963f93dfac533ca69b2833aaf74da1",
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "2cb183f0056daed297226158aa1153870df1ab3e564b9d212044979d0df1fa1f",
-    "waveTwoCandidateSources": "22c26ced0a6259848792d1945c0b96bd4187421626d0b26b1a051d4e3fd06710"
+    "v5QuestionFirstPacks": "823af0256f3bb96f2538f28f22a493ffde320152a71a4bde970667b81d6be8b8",
+    "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
     "officialCatalogFreeze": "2026-10-03",
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 32,
+    "auditedSequences": 34,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 6,
-    "waveTwoCandidateTargetsDeepReady": 6,
-    "deepContentReady": 32,
-    "technicalDeepReady": 32,
-    "pedagogicalReviewPending": 32,
+    "waveTwoCandidateTargetsAudited": 8,
+    "waveTwoCandidateTargetsDeepReady": 7,
+    "deepContentReady": 33,
+    "technicalDeepReady": 33,
+    "pedagogicalReviewPending": 34,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 32
+      "STRUCTURAL_READY": 34
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 32,
-      "QUESTION_POOL_DEPTH_READY": 29,
-      "DIFFICULTY_PROGRESSION_READY": 29,
-      "CONTEXT_DIVERSITY_READY": 29,
-      "TRANSFER_READY": 29,
-      "MISCONCEPTION_RECOVERY_READY": 32,
-      "REVIEW_CONTENT_READY": 29,
-      "AUTHENTIC_EVIDENCE_READY": 32
+      "LESSON_DEPTH_READY": 34,
+      "QUESTION_POOL_DEPTH_READY": 30,
+      "DIFFICULTY_PROGRESSION_READY": 31,
+      "CONTEXT_DIVERSITY_READY": 30,
+      "TRANSFER_READY": 30,
+      "MISCONCEPTION_RECOVERY_READY": 33,
+      "REVIEW_CONTENT_READY": 30,
+      "AUTHENTIC_EVIDENCE_READY": 33
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -108,26 +108,19 @@
       "LOCK_IN": 6,
       "REVIEW": 10
     },
-    "questionsBelowAnyMinimum": 0,
+    "questionsBelowAnyMinimum": 1,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 911,
-    "consolidatedQuestionTotal": 1208,
+    "v5QuestionTotal": 930,
+    "consolidatedQuestionTotal": 1287,
     "duplicateQuestionsCollapsed": 0,
-    "v5PacksOutsideV3AuditedTargets": [
-      {
-        "file": "math-successive-percent-change.json",
-        "skillCode": "MATH_SUCCESSIVE_PERCENT_CHANGE",
-        "questionCount": 10,
-        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
-      }
-    ],
+    "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 32,
+    "reviewPending": 34,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
       "V9_EXPANSIONS_FOR_EXACT_WAVE_2_TARGETS",
-      "V9_JOURNEY_EXPANSION_B_FOR_EXACT_WAVE_2_TARGETS",
+      "V9_JOURNEY_EXPANSIONS_A_B_C_FOR_EXACT_WAVE_2_TARGETS",
       "V5_QUESTION_FIRST_PACKS"
     ],
     "depthAudit": [
@@ -243,7 +236,8 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 22,
           "actualQuestionCount": 22,
-          "status": "EXACT"
+          "status": "EXACT",
+          "questionFeedbackCount": 0
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -365,7 +359,8 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 29,
           "actualQuestionCount": 29,
-          "status": "EXACT"
+          "status": "EXACT",
+          "questionFeedbackCount": 0
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -428,7 +423,8 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 23,
           "actualQuestionCount": 23,
-          "status": "EXACT"
+          "status": "EXACT",
+          "questionFeedbackCount": 0
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -550,7 +546,8 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 27,
           "actualQuestionCount": 27,
-          "status": "EXACT"
+          "status": "EXACT",
+          "questionFeedbackCount": 0
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -613,7 +610,8 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 24,
           "actualQuestionCount": 24,
-          "status": "EXACT"
+          "status": "EXACT",
+          "questionFeedbackCount": 0
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -676,7 +674,8 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 22,
           "actualQuestionCount": 22,
-          "status": "EXACT"
+          "status": "EXACT",
+          "questionFeedbackCount": 0
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -1330,6 +1329,86 @@
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
+        "targetId": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+        "unitId": null,
+        "subject": "MATHEMATICS",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "A base muda a cada variação",
+        "originalQuestionCount": 29,
+        "v5QuestionCount": 10,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 39,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 13,
+          "TRANSFER": 7,
+          "LOCK_IN": 6,
+          "REVIEW": 7
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {
+          "TRANSFER": {
+            "current": 7,
+            "target": 8
+          },
+          "REVIEW": {
+            "current": 7,
+            "target": 10
+          }
+        },
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": false,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": false,
+          "TRANSFER_READY": false,
+          "MISCONCEPTION_RECOVERY_READY": false,
+          "REVIEW_CONTENT_READY": false,
+          "AUTHENTIC_EVIDENCE_READY": false
+        },
+        "missingDepthDimensions": [
+          "QUESTION_POOL_DEPTH_READY",
+          "CONTEXT_DIVERSITY_READY",
+          "TRANSFER_READY",
+          "MISCONCEPTION_RECOVERY_READY",
+          "REVIEW_CONTENT_READY",
+          "AUTHENTIC_EVIDENCE_READY"
+        ],
+        "contextFamilyCount": 39,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 4,
+        "misconceptionRecoveryStatus": "REMEDIATION_GAP",
+        "spacedReviewStatus": "REVIEW_GAP",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 29,
+          "actualQuestionCount": 29,
+          "status": "EXACT",
+          "questionFeedbackCount": 0
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
         "targetId": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
         "unitId": "V3_PE_ACTIVITY_EXERCISE_FII",
         "subject": "PHYSICAL_EDUCATION",
@@ -1434,6 +1513,70 @@
         "studentPublicationStatus": "STAGING_INACTIVE",
         "sourceReconciliation": null,
         "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
+      },
+      {
+        "targetId": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+        "unitId": null,
+        "subject": "PHILOSOPHY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Decidir com razões: princípios, consequências e proporcionalidade",
+        "originalQuestionCount": 21,
+        "v5QuestionCount": 19,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 40,
+        "purposeCounts": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 21,
+          "actualQuestionCount": 21,
+          "status": "EXACT",
+          "questionFeedbackCount": 21
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
         "targetId": "PHYSICS_MODEL_FORCE",
@@ -2047,25 +2190,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1767,
+    "totalItems": 1766,
     "byWave": {
-      "WAVE_2": 46,
+      "WAVE_2": 45,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 46,
+      "CONTENT_GAP": 45,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
-        "stage": "ENSINO_MEDIO",
-        "subject": "PHILOSOPHY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "PHILOSOPHY_DISTINGUISH_CONCEPT",
@@ -2296,7 +2431,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "MATHEMATICS",
         "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "TRANSFER, REVIEW, QUESTION_POOL_DEPTH_READY, CONTEXT_DIVERSITY_READY, TRANSFER_READY, MISCONCEPTION_RECOVERY_READY, REVIEW_CONTENT_READY, AUTHENTIC_EVIDENCE_READY",
+        "currentQuestionCount": 39,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 13,
+          "TRANSFER": 7,
+          "LOCK_IN": 6,
+          "REVIEW": 7
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 29,
+          "actualQuestionCount": 29,
+          "status": "EXACT",
+          "questionFeedbackCount": 0
+        }
       },
       {
         "wave": 2,
@@ -16205,5 +16354,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "fe23f3a7b294f29fa5ec7fbfe45ba2c4e2b6ac8f91ac6119a6c791f16dd5a4f6"
+  "inventoryHash": "ce06b69f7efdb6075dd157791712a77526e31f7fd449fbb178d487543c0a198d"
 }
