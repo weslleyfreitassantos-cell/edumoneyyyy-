@@ -382,6 +382,7 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
   const questionJson = jsonSql(questionRows);
   const lesson = pack.lesson;
   const contentVersion = pack.contentVersion ?? 5;
+  const lessonVersion = pack.lessonVersion ?? contentVersion;
   const databasePackId = pack.databasePackId ?? PACK_ID;
   const sourceType = `${databasePackId}_STAGING`;
   const subjectArea = pack.subject ?? 'MATHEMATICS';
@@ -438,11 +439,11 @@ begin
     canonical_skill_id, version, title, summary, content_markdown,
     worked_example, tips, estimated_minutes, active, metadata
   ) values (
-    v_skill_id, ${contentVersion}, ${sql(lesson.title)}, ${sql(lesson.summary)}, ${sql(lesson.explanation)},
+    v_skill_id, ${lessonVersion}, ${sql(lesson.title)}, ${sql(lesson.summary)}, ${sql(lesson.explanation)},
     ${sql(lesson.workedExample)}, ${`array[${lesson.tips.map(sql).join(', ')}]::text[]`}, ${lesson.estimatedMinutes}, false, ${jsonSql(lessonMetadata)}
   ) on conflict (canonical_skill_id, version) do nothing;
   select id into v_lesson_id from public.learning_skill_lessons
-   where canonical_skill_id = v_skill_id and version = ${contentVersion}
+   where canonical_skill_id = v_skill_id and version = ${lessonVersion}
      and metadata->>'content_id' = ${sql(pack.contentId)} and active = false;
   if v_lesson_id is null then raise exception 'V5_CONTENT_LESSON_CONFLICT'; end if;
 

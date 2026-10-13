@@ -101,6 +101,7 @@ const pack = {
   topic: 'avaliacao de premissas, inferencias e conclusoes',
   canonicalSkillCode: 'PHILOSOPHY_EVALUATE_ARGUMENT',
   contentVersion: 5,
+  lessonVersion: 6,
   expectedQuestionCount: questions.length,
   expectedContextCount: new Set(questions.map((question) => question.contextFamily)).size,
   expectedAnswerPositionCounts: Object.fromEntries(['A', 'B', 'C', 'D'].map((label, index) => [label, answerPositionCounts[index]])),

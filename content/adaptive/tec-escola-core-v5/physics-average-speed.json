@@ -6,6 +6,7 @@
   "topic": "rapidez_media_distancia_tempo_e_unidades",
   "canonicalSkillCode": "PHYSICS_AVERAGE_SPEED",
   "contentVersion": 5,
+  "lessonVersion": 6,
   "expectedQuestionCount": 20,
   "expectedContextCount": 20,
   "expectedAnswerPositionCounts": {

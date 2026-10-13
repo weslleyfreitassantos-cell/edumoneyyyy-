@@ -6,6 +6,7 @@
   "topic": "avaliacao de premissas, inferencias e conclusoes",
   "canonicalSkillCode": "PHILOSOPHY_EVALUATE_ARGUMENT",
   "contentVersion": 5,
+  "lessonVersion": 6,
   "expectedQuestionCount": 20,
   "expectedContextCount": 20,
   "expectedAnswerPositionCounts": {

@@ -1031,8 +1031,12 @@ describe('question-first V5 staging content', () => {
 
   it('compiles argument-evaluation content as inactive staging with its full source-feedback set', () => {
     expect(philosophyArgumentPack).toEqual(buildPhilosophyEvaluateArgumentPack());
+    expect(philosophyArgumentPack.contentVersion).toBe(5);
+    expect(philosophyArgumentPack.lessonVersion).toBe(6);
     expect(philosophyArgumentMigration).toBe(buildMigration(philosophyArgumentPack));
     expect(philosophyArgumentMigration).toContain("'PHILOSOPHY_EVALUATE_ARGUMENT'");
+    expect(philosophyArgumentMigration).toContain('v_skill_id, 6,');
+    expect(philosophyArgumentMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
     expect(philosophyArgumentMigration).toContain('"source_question_feedback"');
     expect(philosophyArgumentMigration).toContain("'publication_status', 'STAGING'");
     expect(philosophyArgumentMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
@@ -1058,8 +1062,12 @@ describe('question-first V5 staging content', () => {
 
   it('compiles average-speed content as inactive staging without student records', () => {
     expect(physicsAverageSpeedPack).toEqual(buildPhysicsAverageSpeedPack());
+    expect(physicsAverageSpeedPack.contentVersion).toBe(5);
+    expect(physicsAverageSpeedPack.lessonVersion).toBe(6);
     expect(physicsAverageSpeedMigration).toBe(buildMigration(physicsAverageSpeedPack));
     expect(physicsAverageSpeedMigration).toContain("'PHYSICS_AVERAGE_SPEED'");
+    expect(physicsAverageSpeedMigration).toContain('v_skill_id, 6,');
+    expect(physicsAverageSpeedMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
     expect(physicsAverageSpeedMigration).toContain('"source_question_feedback"');
     expect(physicsAverageSpeedMigration).toContain("'publication_status', 'STAGING'");
     expect(physicsAverageSpeedMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
