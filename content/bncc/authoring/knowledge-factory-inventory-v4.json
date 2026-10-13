@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "823af0256f3bb96f2538f28f22a493ffde320152a71a4bde970667b81d6be8b8",
+    "v5QuestionFirstPacks": "4b9629232841822262645f51ce988aabe9fe2e66c5b04bfd6683915bf4dd2dd8",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 34,
+    "auditedSequences": 36,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 8,
-    "waveTwoCandidateTargetsDeepReady": 7,
-    "deepContentReady": 33,
-    "technicalDeepReady": 33,
-    "pedagogicalReviewPending": 34,
+    "waveTwoCandidateTargetsAudited": 10,
+    "waveTwoCandidateTargetsDeepReady": 9,
+    "deepContentReady": 35,
+    "technicalDeepReady": 35,
+    "pedagogicalReviewPending": 36,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 34
+      "STRUCTURAL_READY": 36
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 34,
-      "QUESTION_POOL_DEPTH_READY": 30,
-      "DIFFICULTY_PROGRESSION_READY": 31,
-      "CONTEXT_DIVERSITY_READY": 30,
-      "TRANSFER_READY": 30,
-      "MISCONCEPTION_RECOVERY_READY": 33,
-      "REVIEW_CONTENT_READY": 30,
-      "AUTHENTIC_EVIDENCE_READY": 33
+      "LESSON_DEPTH_READY": 36,
+      "QUESTION_POOL_DEPTH_READY": 32,
+      "DIFFICULTY_PROGRESSION_READY": 33,
+      "CONTEXT_DIVERSITY_READY": 32,
+      "TRANSFER_READY": 32,
+      "MISCONCEPTION_RECOVERY_READY": 35,
+      "REVIEW_CONTENT_READY": 32,
+      "AUTHENTIC_EVIDENCE_READY": 35
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,12 +110,12 @@
     },
     "questionsBelowAnyMinimum": 1,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 930,
-    "consolidatedQuestionTotal": 1287,
+    "v5QuestionTotal": 970,
+    "consolidatedQuestionTotal": 1372,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 34,
+    "reviewPending": 36,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -1579,6 +1579,134 @@
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
+        "targetId": "PHILOSOPHY_EVALUATE_ARGUMENT",
+        "unitId": null,
+        "subject": "PHILOSOPHY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Como avaliar razões, evidências e conclusões",
+        "originalQuestionCount": 25,
+        "v5QuestionCount": 20,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 45,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 12
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 43,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 25,
+          "actualQuestionCount": 25,
+          "status": "EXACT",
+          "questionFeedbackCount": 25
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "PHYSICS_AVERAGE_SPEED",
+        "unitId": null,
+        "subject": "PHYSICS",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Rapidez média: caminho, tempo e unidades",
+        "originalQuestionCount": 20,
+        "v5QuestionCount": 20,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 40,
+        "purposeCounts": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 39,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 20,
+          "actualQuestionCount": 20,
+          "status": "EXACT",
+          "questionFeedbackCount": 20
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
         "targetId": "PHYSICS_MODEL_FORCE",
         "unitId": "V5_PHYSICS_INTERACOES",
         "subject": "PHYSICS",
@@ -2190,13 +2318,13 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1766,
+    "totalItems": 1764,
     "byWave": {
-      "WAVE_2": 45,
+      "WAVE_2": 43,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 45,
+      "CONTENT_GAP": 43,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
@@ -2208,22 +2336,6 @@
         "subject": "PHILOSOPHY",
         "status": "CONTENT_GAP",
         "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
-      {
-        "wave": 2,
-        "id": "PHILOSOPHY_EVALUATE_ARGUMENT",
-        "stage": "ENSINO_MEDIO",
-        "subject": "PHILOSOPHY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
-      {
-        "wave": 2,
-        "id": "PHYSICS_AVERAGE_SPEED",
-        "stage": "ENSINO_MEDIO",
-        "subject": "PHYSICS",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
       },
       {
         "wave": 2,
@@ -16354,5 +16466,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "ce06b69f7efdb6075dd157791712a77526e31f7fd449fbb178d487543c0a198d"
+  "inventoryHash": "b638b8e88205bb00e32dfce373c6dd7ec3875e8f81087b5e65b698dc0548cb32"
 }

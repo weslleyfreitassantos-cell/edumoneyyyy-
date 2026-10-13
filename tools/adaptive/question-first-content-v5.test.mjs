@@ -18,6 +18,8 @@ import { buildChemistryAtomicStructurePack } from './build-chemistry-atomic-stru
 import { buildChemistryReactionEvidencePack } from './build-chemistry-reaction-evidence-v5.mjs';
 import { buildChemistryStoichiometryPack } from './build-chemistry-stoichiometry-v5.mjs';
 import { buildPhilosophyEthicalPrinciplePack } from './build-philosophy-ethical-principle-v5.mjs';
+import { buildPhilosophyEvaluateArgumentPack } from './build-philosophy-evaluate-argument-v5.mjs';
+import { buildPhysicsAverageSpeedPack } from './build-physics-average-speed-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -76,6 +78,10 @@ const chemistryStoichiometryPack = JSON.parse(readFileSync(new URL('../../conten
 const chemistryStoichiometryMigration = readFileSync(new URL('../../supabase/migrations/20261013002700_bncc_chemistry_stoichiometry_question_first_v5.sql', import.meta.url), 'utf8');
 const philosophyEthicsPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/philosophy-ethical-principle.json', import.meta.url), 'utf8'));
 const philosophyEthicsMigration = readFileSync(new URL('../../supabase/migrations/20261013002800_bncc_philosophy_ethical_principle_question_first_v5.sql', import.meta.url), 'utf8');
+const philosophyArgumentPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/philosophy-evaluate-argument.json', import.meta.url), 'utf8'));
+const philosophyArgumentMigration = readFileSync(new URL('../../supabase/migrations/20261013002900_bncc_philosophy_evaluate_argument_question_first_v5.sql', import.meta.url), 'utf8');
+const physicsAverageSpeedPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-average-speed.json', import.meta.url), 'utf8'));
+const physicsAverageSpeedMigration = readFileSync(new URL('../../supabase/migrations/20261013003000_bncc_physics_average_speed_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -1005,6 +1011,60 @@ describe('question-first V5 staging content', () => {
     expect(philosophyEthicsMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(philosophyEthicsMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(philosophyEthicsMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens argument evaluation with source feedback and balanced original assessment', () => {
+    const result = validateQuestionFirstPack(philosophyArgumentPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(20);
+    expect(result.contextCount).toBe(20);
+    expect(result.counts).toEqual({ PROBE: 2, PRACTICE: 4, TRANSFER: 4, LOCK_IN: 2, REVIEW: 8 });
+    expect(result.answerPositionCounts).toEqual({ A: 5, B: 5, C: 5, D: 5 });
+    expect(philosophyArgumentPack.sourceQuestionFeedback).toHaveLength(25);
+    expect(philosophyArgumentPack.lesson.microExplanations).toHaveLength(6);
+    expect(philosophyArgumentPack.lesson.remediations).toHaveLength(4);
+    expect(philosophyArgumentPack.lesson.sourceDossier).toHaveLength(3);
+    expect(philosophyArgumentPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(philosophyArgumentPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(philosophyArgumentPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles argument-evaluation content as inactive staging with its full source-feedback set', () => {
+    expect(philosophyArgumentPack).toEqual(buildPhilosophyEvaluateArgumentPack());
+    expect(philosophyArgumentMigration).toBe(buildMigration(philosophyArgumentPack));
+    expect(philosophyArgumentMigration).toContain("'PHILOSOPHY_EVALUATE_ARGUMENT'");
+    expect(philosophyArgumentMigration).toContain('"source_question_feedback"');
+    expect(philosophyArgumentMigration).toContain("'publication_status', 'STAGING'");
+    expect(philosophyArgumentMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(philosophyArgumentMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(philosophyArgumentMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens average-speed practice from the exact V4 and V9 source set', () => {
+    const result = validateQuestionFirstPack(physicsAverageSpeedPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(20);
+    expect(result.contextCount).toBe(20);
+    expect(result.counts).toEqual({ PROBE: 0, PRACTICE: 6, TRANSFER: 5, LOCK_IN: 3, REVIEW: 6 });
+    expect(result.answerPositionCounts).toEqual({ A: 5, B: 5, C: 5, D: 5 });
+    expect(physicsAverageSpeedPack.sourceQuestionFeedback).toHaveLength(20);
+    expect(physicsAverageSpeedPack.lesson.microExplanations).toHaveLength(6);
+    expect(physicsAverageSpeedPack.lesson.remediations).toHaveLength(4);
+    expect(physicsAverageSpeedPack.lesson.sourceDossier).toHaveLength(1);
+    expect(physicsAverageSpeedPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(physicsAverageSpeedPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(physicsAverageSpeedPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles average-speed content as inactive staging without student records', () => {
+    expect(physicsAverageSpeedPack).toEqual(buildPhysicsAverageSpeedPack());
+    expect(physicsAverageSpeedMigration).toBe(buildMigration(physicsAverageSpeedPack));
+    expect(physicsAverageSpeedMigration).toContain("'PHYSICS_AVERAGE_SPEED'");
+    expect(physicsAverageSpeedMigration).toContain('"source_question_feedback"');
+    expect(physicsAverageSpeedMigration).toContain("'publication_status', 'STAGING'");
+    expect(physicsAverageSpeedMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(physicsAverageSpeedMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(physicsAverageSpeedMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {

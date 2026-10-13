@@ -10,6 +10,8 @@ const CANONICAL_REGISTRY_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-co
 const EXISTING_SUBJECTS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v4', 'subjects');
 const EXISTING_V9_JOURNEY_PATHS = ['journey-expansion-a-v1.json', 'journey-expansion-b-v1.json', 'journey-expansion-c-v1.json']
   .map((file) => join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', file));
+const EXISTING_V9_QUESTION_EXPANSION_PATHS = ['question-expansion-v1.json', 'question-expansion-v2.json', 'question-expansion-v3.json']
+  .map((file) => join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', file));
 const EXISTING_V1_QUESTIONS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', 'knowledge-gap-batch-v1.json');
 const EXISTING_V3_STAGING_PATH = join(ROOT, 'content', 'bncc', 'authoring', 'knowledge-factory-v3-staging.sql');
 const DEFAULT_MIGRATION_PATH = join(ROOT, 'supabase', 'migrations', '20261012000700_bncc_question_first_content_staging_v5.sql');
@@ -64,6 +66,9 @@ const readExistingQuestionSources = () => {
       });
     });
   });
+  const v9ExpandedQuestions = EXISTING_V9_QUESTION_EXPANSION_PATHS.flatMap((path) => {
+    try { return readJson(path).questions ?? []; } catch { return []; }
+  });
   const v1Pack = readJson(EXISTING_V1_QUESTIONS_PATH);
   const v1Questions = (v1Pack.skills ?? []).flatMap((skill) => skill.questions ?? []);
   const v3Staging = readFileSync(EXISTING_V3_STAGING_PATH, 'utf8');
@@ -72,7 +77,7 @@ const readExistingQuestionSources = () => {
     const statement = line.match(/statement = '((?:''|[^'])*)'/)?.[1];
     return statement ? [{ statement: statement.replaceAll("''", "'") }] : [];
   });
-  return [...v4Questions, ...v9Questions, ...v1Questions, ...v3AuthoredQuestions];
+  return [...v4Questions, ...v9Questions, ...v9ExpandedQuestions, ...v1Questions, ...v3AuthoredQuestions];
 };
 
 export function validateQuestionFirstPack(pack = readJson(PACK_PATH), existingQuestions = readExistingQuestionSources()) {
