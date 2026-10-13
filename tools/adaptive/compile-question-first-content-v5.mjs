@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const PACK_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v5', 'math-successive-percent-change.json');
+const CANONICAL_REGISTRY_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v4', 'registry.json');
 const EXISTING_SUBJECTS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v4', 'subjects');
 const EXISTING_V9_QUESTIONS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', 'journey-expansion-a-v1.json');
+const EXISTING_V1_QUESTIONS_PATH = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v9', 'knowledge-gap-batch-v1.json');
 const EXISTING_V3_STAGING_PATH = join(ROOT, 'content', 'bncc', 'authoring', 'knowledge-factory-v3-staging.sql');
 const DEFAULT_MIGRATION_PATH = join(ROOT, 'supabase', 'migrations', '20261012000700_bncc_question_first_content_staging_v5.sql');
 const PACK_ID = 'TECESCOLA_CORE_V5_QUESTION_FIRST';
@@ -25,13 +27,15 @@ const readExistingQuestionSources = () => {
     });
   const v9Pack = readJson(EXISTING_V9_QUESTIONS_PATH);
   const v9Questions = (v9Pack.journeys ?? []).flatMap((journey) => journey.questions ?? []);
+  const v1Pack = readJson(EXISTING_V1_QUESTIONS_PATH);
+  const v1Questions = (v1Pack.skills ?? []).flatMap((skill) => skill.questions ?? []);
   const v3Staging = readFileSync(EXISTING_V3_STAGING_PATH, 'utf8');
   const v3AuthoredQuestions = v3Staging.split(/\r?\n/).flatMap((line) => {
     if (!line.includes('"content_id":')) return [];
     const statement = line.match(/statement = '((?:''|[^'])*)'/)?.[1];
     return statement ? [{ statement: statement.replaceAll("''", "'") }] : [];
   });
-  return [...v4Questions, ...v9Questions, ...v3AuthoredQuestions];
+  return [...v4Questions, ...v9Questions, ...v1Questions, ...v3AuthoredQuestions];
 };
 
 export function validateQuestionFirstPack(pack = readJson(PACK_PATH), existingQuestions = readExistingQuestionSources()) {
@@ -115,6 +119,14 @@ export function validateQuestionFirstPack(pack = readJson(PACK_PATH), existingQu
 export function buildMigration(pack = readJson(PACK_PATH)) {
   const validation = validateQuestionFirstPack(pack);
   if (!validation.valid) throw new Error(`V5_CONTENT_INVALID:${validation.errors.join(',')}`);
+  const registry = readJson(CANONICAL_REGISTRY_PATH);
+  const canonicalSkillCodes = new Set(registry.subjects.flatMap((subject) => [
+    ...(subject.anchors ?? []),
+    ...(subject.leaves ?? []).map((skill) => skill.code),
+  ]));
+  if (!canonicalSkillCodes.has(pack.canonicalSkillCode)) {
+    throw new Error(`V5_CANONICAL_SKILL_NOT_REGISTERED:${pack.canonicalSkillCode}`);
+  }
   const purposePositions = new Map(PURPOSES.map((purpose) => [purpose, 0]));
   const questionRows = pack.questions.map((question) => {
     const position = purposePositions.get(question.purpose) + 1;

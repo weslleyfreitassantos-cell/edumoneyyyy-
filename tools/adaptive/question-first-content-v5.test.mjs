@@ -10,6 +10,10 @@ const biologyPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-
 const biologyMigration = readFileSync(new URL('../../supabase/migrations/20261012000800_bncc_biology_ecosystem_question_first_v5.sql', import.meta.url), 'utf8');
 const chemistryPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/chemistry-acid-base.json', import.meta.url), 'utf8'));
 const chemistryMigration = readFileSync(new URL('../../supabase/migrations/20261012000900_bncc_chemistry_acid_base_question_first_v5.sql', import.meta.url), 'utf8');
+const sciencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/science-plan-investigation.json', import.meta.url), 'utf8'));
+const scienceMigration = readFileSync(new URL('../../supabase/migrations/20261012001100_bncc_science_investigation_question_first_v5.sql', import.meta.url), 'utf8');
+const historyPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/history-chronology.json', import.meta.url), 'utf8'));
+const historyMigration = readFileSync(new URL('../../supabase/migrations/20261012001200_bncc_history_chronology_question_first_v5.sql', import.meta.url), 'utf8');
 
 describe('question-first V5 staging content', () => {
   it('contains an authored lesson and two distinct questions for each adaptive purpose', () => {
@@ -103,9 +107,61 @@ describe('question-first V5 staging content', () => {
     expect(chemistryMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers/i);
   });
 
+  it('expands Science investigation with unique items that meet the audited purpose deficits', () => {
+    const result = validateQuestionFirstPack(sciencePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(28);
+    expect(result.contextCount).toBe(28);
+    expect(result.counts).toEqual({ PROBE: 2, PRACTICE: 8, TRANSFER: 6, LOCK_IN: 4, REVIEW: 8 });
+    expect(result.answerPositionCounts).toEqual(sciencePack.expectedAnswerPositionCounts);
+    const priorSequence = v3Sequences.find((sequence) => sequence.skillCode === sciencePack.canonicalSkillCode);
+    for (const [purpose, minimum] of Object.entries({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 })) {
+      expect((priorSequence.purposeCounts[purpose] ?? 0) + result.counts[purpose]).toBe(minimum);
+    }
+    expect(result.errors.filter((error) => error.startsWith('DUPLICATE_STEM:'))).toEqual([]);
+    expect(sciencePack.lesson.sourceDossier[0].publisher).toBe('National Academies of Sciences, Engineering, and Medicine');
+    expect(sciencePack.lesson.remediations.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it('compiles Science as inactive STAGING content without creating student progress', () => {
+    expect(scienceMigration).toBe(buildMigration(sciencePack));
+    expect(scienceMigration).toContain("'SCIENCE', 'INVESTIGACAO_CIENTIFICA'");
+    expect(scienceMigration).toContain('"source_dossier"');
+    expect(scienceMigration).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(scienceMigration).toContain("'STAGING'");
+    expect(scienceMigration).toContain("'NOT_CLAIMED'");
+    expect(scienceMigration).not.toMatch(/active\s*=\s*true|,\s*true\s*\)/i);
+    expect(scienceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers/i);
+  });
+
+  it('expands History chronology with distinct items that meet the audited purpose deficits', () => {
+    const result = validateQuestionFirstPack(historyPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(27);
+    expect(result.contextCount).toBe(27);
+    expect(result.counts).toEqual({ PROBE: 1, PRACTICE: 8, TRANSFER: 6, LOCK_IN: 4, REVIEW: 8 });
+    expect(result.answerPositionCounts).toEqual(historyPack.expectedAnswerPositionCounts);
+    const priorSequence = v3Sequences.find((sequence) => sequence.skillCode === historyPack.canonicalSkillCode);
+    for (const [purpose, minimum] of Object.entries({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 })) {
+      expect((priorSequence.purposeCounts[purpose] ?? 0) + result.counts[purpose]).toBe(minimum);
+    }
+    expect(result.errors.filter((error) => error.startsWith('DUPLICATE_STEM:'))).toEqual([]);
+    expect(historyPack.lesson.sourceDossier).toHaveLength(2);
+  });
+
+  it('compiles History as inactive STAGING content without creating student progress', () => {
+    expect(historyMigration).toBe(buildMigration(historyPack));
+    expect(historyMigration).toContain("'HISTORY', 'CRONOLOGIA'");
+    expect(historyMigration).toContain('"source_dossier"');
+    expect(historyMigration).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(historyMigration).toContain("'STAGING'");
+    expect(historyMigration).toContain("'NOT_CLAIMED'");
+    expect(historyMigration).not.toMatch(/active\s*=\s*true|,\s*true\s*\)/i);
+    expect(historyMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers/i);
+  });
+
   it('adds Computing question items and an authentic, privacy-safe performance rubric', () => {
     const computingPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-virtual-communities.json', import.meta.url), 'utf8'));
-    const computingMigration = readFileSync(new URL('../../supabase/migrations/20261012001000_bncc_computing_virtual_communities_question_first_v5.sql', import.meta.url), 'utf8');
     const result = validateQuestionFirstPack(computingPack);
     expect(result.valid).toBe(true);
     expect(result.questionCount).toBe(35);
@@ -118,13 +174,9 @@ describe('question-first V5 staging content', () => {
     }
     expect(computingPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
     expect(computingPack.lesson.authenticActivities[0].privacyGuard).toContain('Não recolher');
-    expect(computingMigration).toBe(buildMigration(computingPack));
-    expect(computingMigration).toContain("'COMPUTING', 'COMUNIDADES_VIRTUAIS'");
-    expect(computingMigration).toContain('"authentic_activities"');
-    expect(computingMigration).toContain("'PEDAGOGICAL_REVIEW_PENDING'");
-    expect(computingMigration).toContain("'STAGING'");
-    expect(computingMigration).toContain("'NOT_CLAIMED'");
-    expect(computingMigration).not.toMatch(/active\s*=\s*true|,\s*true\s*\)/i);
-    expect(computingMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers/i);
+    expect(computingPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(computingPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(computingPack.publicationStatus).toBe('STAGING');
+    expect(() => buildMigration(computingPack)).toThrow('V5_CANONICAL_SKILL_NOT_REGISTERED:COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS');
   });
 });

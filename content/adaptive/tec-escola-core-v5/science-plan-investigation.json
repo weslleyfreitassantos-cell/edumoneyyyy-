@@ -1,0 +1,984 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "v5-science-plan-investigation",
+  "canonicalSkillCode": "SCIENCE_PLAN_INVESTIGATION",
+  "subject": "SCIENCE",
+  "domain": "INVESTIGACAO_CIENTIFICA",
+  "topic": "planejamento de investigacoes",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 2,
+    "PRACTICE": 8,
+    "TRANSFER": 6,
+    "LOCK_IN": 4,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 28,
+  "expectedContextCount": 28,
+  "expectedAnswerPositionCounts": {
+    "A": 7,
+    "B": 7,
+    "C": 7,
+    "D": 7
+  },
+  "lesson": {
+    "title": "Planejar uma investigação que responda à pergunta",
+    "objective": "Planejar uma investigação com pergunta delimitada, fator ou comparação identificável, medida operacional, condições relevantes, registro replicável e conclusão proporcional às evidências.",
+    "summary": "Uma investigação útil conecta pergunta, procedimento e dado. Definir o que muda, o que se mede e o que fica comparável reduz explicações alternativas, sem eliminar toda incerteza.",
+    "explanation": "## Da curiosidade a uma pergunta investigável\nPerguntas como “qual material é melhor?” não indicam o que será observado. Delimite contexto, comparação e resultado: por exemplo, “qual dos dois tecidos mantém a temperatura de um recipiente de água por mais tempo nas mesmas condições?”. Uma hipótese pode prever um resultado, mas não deve ser tratada como resposta antes dos dados.\n\n## Planeje a comparação\nEm um teste, identifique o fator que será alterado de propósito (variável independente) e o resultado que será medido (variável dependente). Especifique como medir: “altura da muda em centímetros, do solo até a ponta do caule, a cada três dias” é mais reproduzível que “cresceu bastante”. Mantenha comparáveis as condições que poderiam influenciar o resultado, como material, recipiente, duração, quantidade, distância ou horário. Nem todo estudo permite controlar tudo; registre o que não foi controlado.\n\n## Registre variação e limites\nDefina antes do teste os materiais, a sequência, a unidade, o momento da leitura e como serão registradas as repetições. Repetir medições ajuda a perceber variação; não transforma automaticamente uma amostra pequena em regra geral. Guarde os dados originais, inclusive resultados inesperados, e justifique qualquer exclusão segundo um critério definido antes de olhar o resultado.\n\n## Escolha o desenho adequado\nUma intervenção controlada pode apoiar inferências sobre o fator manipulado quando as condições são comparáveis. Em estudos observacionais, o pesquisador registra condições existentes e procura padrões, mas associação não prova causa: podem existir diferenças de contexto ou fatores não medidos. A conclusão deve citar o padrão observado, dizer se ele é compatível com a hipótese e apontar limitações. Segurança, consentimento, privacidade e cuidado com organismos e ambientes fazem parte do plano, não são detalhes posteriores.",
+    "workedExample": "Uma turma quer comparar dois materiais isolantes usando recipientes iguais com água morna. O fator alterado é o material que envolve cada recipiente; o resultado é a temperatura da água após 15 minutos, medida com o mesmo termômetro. Volume inicial, recipiente, distância de fontes de calor e duração permanecem iguais. A equipe registra temperatura inicial e final em três repetições por material, sem tocar a água para estimar calor. Se as quedas diferirem, descreve a diferença observada e considera o alcance limitado aos materiais, à montagem e ao intervalo usados. A turma não conclui que um material é sempre melhor para qualquer aplicação.",
+    "commonMistake": "Mudar mais de um fator e atribuir o resultado a apenas um; usar medidas vagas; apagar resultados inesperados; ou transformar uma associação em causa universal.",
+    "tips": [
+      "Complete a frase: vou comparar ___, medir ___ com ___ e manter ___ comparável.",
+      "Escreva unidade, momento e regra de medição antes de coletar os dados.",
+      "Planeje repetições e registre resultados individuais antes de resumir médias ou medianas.",
+      "Ao concluir, diferencie o que os dados mostram, o que a hipótese explica e o que ainda falta testar."
+    ],
+    "priorKnowledge": [
+      "Distinguir uma observação de uma explicação possível.",
+      "Ler medidas simples e registrar unidades."
+    ],
+    "keyConcepts": [
+      "Uma pergunta investigável delimita comparação e resultado observável.",
+      "Variáveis independentes e dependentes descrevem papéis no plano; condições de controle reduzem alternativas.",
+      "Definições operacionais tornam medidas mais reproduzíveis.",
+      "Repetições ajudam a descrever variação, mas não removem limitações de amostra ou desenho.",
+      "Estudos observacionais identificam padrões, mas não demonstram causalidade por si só.",
+      "Segurança, consentimento, privacidade e cuidado ambiental integram a investigação."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Identificar pergunta, fator alterado e resultado medido.",
+        "questionIds": [
+          "v5-sci-invest-probe-01",
+          "v5-sci-invest-probe-02"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Definir medidas, controles, repetições, amostragem e registros.",
+        "questionIds": [
+          "v5-sci-invest-practice-01",
+          "v5-sci-invest-practice-08"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Escolher desenhos para dados de campo, associações e situações com restrições éticas.",
+        "questionIds": [
+          "v5-sci-invest-transfer-01",
+          "v5-sci-invest-transfer-06"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Avaliar causalidade, integridade do registro e alcance das conclusões.",
+        "questionIds": [
+          "v5-sci-invest-lock-01",
+          "v5-sci-invest-lock-04"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar decisões de desenho em contextos novos; espaçamento ainda depende do agendador do produto.",
+        "questionIds": [
+          "v5-sci-invest-review-01",
+          "v5-sci-invest-review-08"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "VARIABLE_ROLE_CONFUSION",
+        "text": "Nomeie primeiro o que o plano altera de propósito; depois identifique a medida que pode responder à pergunta. Um fator constante não é a variável dependente."
+      },
+      {
+        "trigger": "VAGUE_MEASUREMENT",
+        "text": "Troque adjetivos como “melhor” por indicador, unidade, instrumento, momento e regra de leitura que outra equipe consiga repetir."
+      },
+      {
+        "trigger": "OBSERVATION_AS_CAUSE",
+        "text": "Se o estudo apenas observa grupos existentes, descreva associação. Procure diferenças de contexto antes de atribuir uma causa."
+      },
+      {
+        "trigger": "SELECTIVE_DATA",
+        "text": "Não descarte uma medida só porque contraria a previsão. Preserve o registro e use critérios de qualidade definidos antes da análise."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "MULTIPLE_VARIABLES",
+        "prompt": "Faça uma tabela com fator alterado, resultado medido e três condições a manter comparáveis. Circule qualquer condição que também varie."
+      },
+      {
+        "misconception": "MEASURE_NOT_DEFINED",
+        "prompt": "Reescreva o resultado incluindo indicador, unidade, instrumento, ponto de leitura e momento de registro."
+      },
+      {
+        "misconception": "REPETITION_PROVES_UNIVERSALITY",
+        "prompt": "Separe repetição dentro do mesmo arranjo de amostragem em outros contextos; indique qual conclusão cada uma sustenta."
+      },
+      {
+        "misconception": "CORRELATION_PROVES_CAUSATION",
+        "prompt": "Desenhe duas explicações compatíveis com o padrão observado e proponha uma comparação que ajude a distingui-las."
+      },
+      {
+        "misconception": "UNSAFE_OR_UNETHICAL_PLAN",
+        "prompt": "Revise riscos, consentimento, privacidade e impacto ambiental. Troque a coleta invasiva por dado público, simulação ou observação aprovada."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 14,
+    "sourceDossier": [
+      {
+        "title": "A Framework for K-12 Science Education, Chapter 7: Dimension 1—Scientific and Engineering Practices",
+        "publisher": "National Academies of Sciences, Engineering, and Medicine",
+        "url": "https://www.nationalacademies.org/read/13165/chapter/7",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "formulating investigable questions",
+          "identifying independent and dependent variables",
+          "planning procedures and controls",
+          "using data as evidence"
+        ],
+        "use": "Reference for scientific-practice fact checking only; no framework wording, question, dataset, or activity was copied. It is not cited as proof of an official BNCC mapping."
+      }
+    ],
+    "copyrightNote": "All scenarios, data, question wording and explanations in this V5 increment are original and hypothetical. No source question, figure, dataset, or passage was copied."
+  },
+  "questions": [
+    {
+      "id": "v5-sci-invest-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOMBRA_E_TEMPERATURA",
+      "statement": "Uma equipe compara dois tipos de cobertura para reduzir o aquecimento de uma caixa. Qual resultado responde diretamente à pergunta?",
+      "options": [
+        "A cor favorita dos integrantes.",
+        "O preço da caixa sem registrar a cobertura.",
+        "A temperatura interna após o mesmo intervalo, medida com o mesmo termômetro.",
+        "A opinião de quem montou a caixa."
+      ],
+      "correctAnswer": "A temperatura interna após o mesmo intervalo, medida com o mesmo termômetro.",
+      "explanation": "A temperatura interna é um indicador ligado ao aquecimento e pode ser comparado sob o mesmo tempo e procedimento.",
+      "hint": "Escolha uma medida observável relacionada ao efeito que a equipe quer comparar.",
+      "errorFocus": "MEASURE_NOT_DEFINED",
+      "misconceptions": {
+        "A cor favorita dos integrantes.": [
+          "PREFERENCE_AS_MEASUREMENT"
+        ],
+        "O preço da caixa sem registrar a cobertura.": [
+          "IRRELEVANT_MEASURE"
+        ],
+        "A opinião de quem montou a caixa.": [
+          "UNSTANDARDIZED_JUDGMENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "RAMPAS_E_DISTANCIA",
+      "statement": "Em um plano que altera a inclinação de uma rampa e mede a distância percorrida por um carrinho, qual é a variável dependente?",
+      "options": [
+        "A cor do carrinho.",
+        "A inclinação escolhida para a rampa.",
+        "A distância percorrida pelo carrinho.",
+        "O nome de quem cronometra."
+      ],
+      "correctAnswer": "A distância percorrida pelo carrinho.",
+      "explanation": "A distância é o resultado que será medido; a inclinação é o fator alterado de propósito.",
+      "hint": "Pergunte qual valor será observado como possível resposta à mudança da inclinação.",
+      "errorFocus": "VARIABLE_ROLE_CONFUSION",
+      "misconceptions": {
+        "A cor do carrinho.": [
+          "IRRELEVANT_VARIABLE"
+        ],
+        "A inclinação escolhida para a rampa.": [
+          "INDEPENDENT_AS_DEPENDENT"
+        ],
+        "O nome de quem cronometra.": [
+          "PROCEDURE_DETAIL_AS_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "ABSORCAO_DE_PANOS",
+      "statement": "Para comparar a absorção de dois panos, qual plano permite interpretar melhor a diferença?",
+      "options": [
+        "Usar amostras de mesma área, aplicar volume igual e registrar a massa antes e depois.",
+        "Usar panos de tamanhos diferentes e comparar pelo toque.",
+        "Mudar o volume de água até cada pano parecer saturado.",
+        "Escolher o pano que parece mais macio."
+      ],
+      "correctAnswer": "Usar amostras de mesma área, aplicar volume igual e registrar a massa antes e depois.",
+      "explanation": "A área e o volume precisam ser comparáveis; a diferença de massa fornece uma medida definida de água retida.",
+      "hint": "Controle dimensões e quantidade aplicada; escolha um indicador com unidade.",
+      "errorFocus": "MULTIPLE_VARIABLES",
+      "misconceptions": {
+        "Usar panos de tamanhos diferentes e comparar pelo toque.": [
+          "SIZE_CONFOUNDING",
+          "VAGUE_MEASUREMENT"
+        ],
+        "Mudar o volume de água até cada pano parecer saturado.": [
+          "UNEQUAL_INPUT",
+          "SUBJECTIVE_ENDPOINT"
+        ],
+        "Escolher o pano que parece mais macio.": [
+          "PREFERENCE_AS_MEASUREMENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OPERATIONALIZE",
+      "contextFamily": "GERMINACAO_REGRA",
+      "statement": "Dois grupos precisam decidir quando contar uma semente como germinada. Qual regra é mais reproduzível?",
+      "options": [
+        "Contar as sementes que parecem promissoras.",
+        "Contar as sementes maiores, mesmo sem broto.",
+        "Contar como germinada quando a radícula visível atingir ao menos 2 mm, conforme a régua, até o sétimo dia.",
+        "Cada observador decide pelo próprio critério."
+      ],
+      "correctAnswer": "Contar como germinada quando a radícula visível atingir ao menos 2 mm, conforme a régua, até o sétimo dia.",
+      "explanation": "A regra define sinal, limiar e prazo, reduzindo diferenças entre observadores. O exemplo é uma convenção de medição do estudo, não uma regra biológica universal.",
+      "hint": "Uma definição operacional precisa informar o que será visto e em que momento.",
+      "errorFocus": "VAGUE_MEASUREMENT",
+      "misconceptions": {
+        "Contar as sementes que parecem promissoras.": [
+          "SUBJECTIVE_ENDPOINT"
+        ],
+        "Contar as sementes maiores, mesmo sem broto.": [
+          "UNRELATED_PROXY"
+        ],
+        "Cada observador decide pelo próprio critério.": [
+          "INCONSISTENT_RULE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "RESFRIAMENTO_DE_BEBIDA",
+      "statement": "Uma turma compara a rapidez com que dois envoltórios resfriam recipientes com água morna. Qual plano reduz explicações alternativas?",
+      "options": [
+        "Usar um recipiente maior para um envoltório e medir o outro mais tarde.",
+        "Mudar envoltório e volume em conjunto para economizar tempo.",
+        "Usar recipientes iguais, mesmo volume e temperatura inicial, mesma sala e leituras no mesmo intervalo; variar apenas o envoltório.",
+        "Comparar a temperatura final sem registrar o tempo."
+      ],
+      "correctAnswer": "Usar recipientes iguais, mesmo volume e temperatura inicial, mesma sala e leituras no mesmo intervalo; variar apenas o envoltório.",
+      "explanation": "O plano mantém condições relevantes semelhantes e registra a temperatura ao longo do mesmo tempo, isolando melhor a comparação dos envoltórios.",
+      "hint": "Liste diferenças que também podem alterar a taxa de resfriamento.",
+      "errorFocus": "MULTIPLE_VARIABLES",
+      "misconceptions": {
+        "Usar um recipiente maior para um envoltório e medir o outro mais tarde.": [
+          "CONTAINER_AND_TIME_CONFOUNDING"
+        ],
+        "Mudar envoltório e volume em conjunto para economizar tempo.": [
+          "MULTIPLE_VARIABLES"
+        ],
+        "Comparar a temperatura final sem registrar o tempo.": [
+          "MISSING_TIME_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "SOM_DA_MESA",
+      "statement": "A pergunta é se diferentes bases alteram a duração do som de uma mesma régua vibrando. Qual medida operacional é mais adequada?",
+      "options": [
+        "Qual base parece mais interessante.",
+        "A largura da sala onde ocorre o teste.",
+        "O número de pessoas que preferiu cada som.",
+        "Tempo, em segundos, até a amplitude registrada por um sensor ficar abaixo do mesmo limite definido."
+      ],
+      "correctAnswer": "Tempo, em segundos, até a amplitude registrada por um sensor ficar abaixo do mesmo limite definido.",
+      "explanation": "A regra define o indicador, a unidade e o ponto final. Preferência pode ser investigada, mas responde a outra pergunta.",
+      "hint": "A medida precisa corresponder à duração da vibração, não à opinião sobre o som.",
+      "errorFocus": "MEASURE_NOT_DEFINED",
+      "misconceptions": {
+        "Qual base parece mais interessante.": [
+          "PREFERENCE_AS_MEASUREMENT"
+        ],
+        "A largura da sala onde ocorre o teste.": [
+          "IRRELEVANT_MEASURE"
+        ],
+        "O número de pessoas que preferiu cada som.": [
+          "DIFFERENT_RESEARCH_QUESTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "VOLUME_DE_SONS",
+      "statement": "Um sensor registra 41, 42 e 57 dB em três testes iguais. O plano inicial previa repetir cada condição três vezes. Qual é a próxima decisão mais cuidadosa?",
+      "options": [
+        "Manter os três registros, verificar o procedimento e, se possível, repetir segundo a regra definida sem apagar o dado original.",
+        "Descartar 57 porque destoa.",
+        "Escolher 41 por ser o menor.",
+        "Substituir a série por uma média inventada."
+      ],
+      "correctAnswer": "Manter os três registros, verificar o procedimento e, se possível, repetir segundo a regra definida sem apagar o dado original.",
+      "explanation": "Um valor diferente pode refletir variação real ou problema de procedimento. Deve ser investigado e preservado; exclusões precisam de critério justificável.",
+      "hint": "Não escolha primeiro o resultado que favorece uma expectativa.",
+      "errorFocus": "SELECTIVE_DATA",
+      "misconceptions": {
+        "Descartar 57 porque destoa.": [
+          "UNJUSTIFIED_OUTLIER_REMOVAL"
+        ],
+        "Escolher 41 por ser o menor.": [
+          "CHERRY_PICKING"
+        ],
+        "Substituir a série por uma média inventada.": [
+          "FABRICATED_DATA"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SAMPLE",
+      "contextFamily": "UMIDADE_NO_PATIO",
+      "statement": "Uma equipe compara a umidade do solo em duas áreas do pátio. Qual escolha melhora a comparabilidade sem afirmar que elimina toda variação?",
+      "options": [
+        "Medir somente o ponto mais escuro de cada área.",
+        "Usar horários diferentes e escolher locais após ver os resultados.",
+        "Definir antes vários pontos distribuídos em cada área, usar o mesmo instrumento e registrar horário e profundidade.",
+        "Medir uma área depois da chuva e outra antes."
+      ],
+      "correctAnswer": "Definir antes vários pontos distribuídos em cada área, usar o mesmo instrumento e registrar horário e profundidade.",
+      "explanation": "A regra anterior à coleta reduz seleção conveniente, e registrar instrumento, horário e profundidade permite interpretar diferenças restantes.",
+      "hint": "Amostragem e condições de leitura precisam ser definidas antes de conhecer os valores.",
+      "errorFocus": "CONVENIENCE_SAMPLING",
+      "misconceptions": {
+        "Medir somente o ponto mais escuro de cada área.": [
+          "SELECTIVE_SAMPLE"
+        ],
+        "Usar horários diferentes e escolher locais após ver os resultados.": [
+          "POST_HOC_SELECTION",
+          "TIME_CONFOUNDING"
+        ],
+        "Medir uma área depois da chuva e outra antes.": [
+          "WEATHER_CONFOUNDING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TERMOMETRO_RESOLUCAO",
+      "statement": "Um termômetro escolar marca intervalos de 1 °C. Como registrar uma leitura entre duas marcas quando o instrumento não permite distingui-la com segurança?",
+      "options": [
+        "Inventar duas casas decimais para parecer preciso.",
+        "Registrar a marca mais próxima e anotar a resolução do instrumento, sem acrescentar casas decimais não observadas.",
+        "Arredondar sempre para a hipótese prevista.",
+        "Trocar a unidade até o número parecer mais exato."
+      ],
+      "correctAnswer": "Registrar a marca mais próxima e anotar a resolução do instrumento, sem acrescentar casas decimais não observadas.",
+      "explanation": "A forma de registro não deve sugerir precisão maior que a leitura disponível. A resolução do instrumento ajuda a explicar a incerteza.",
+      "hint": "Precisão escrita deve acompanhar a capacidade real de leitura.",
+      "errorFocus": "FALSE_PRECISION",
+      "misconceptions": {
+        "Inventar duas casas decimais para parecer preciso.": [
+          "FALSE_PRECISION"
+        ],
+        "Arredondar sempre para a hipótese prevista.": [
+          "CONFIRMATION_BIAS"
+        ],
+        "Trocar a unidade até o número parecer mais exato.": [
+          "UNIT_CHANGE_AS_PRECISION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FILTRO_GRAVIDADE",
+      "statement": "Uma equipe quer comparar a vazão de dois filtros de papel em um modelo de bancada. Qual procedimento permite atribuir melhor uma diferença ao filtro?",
+      "options": [
+        "Usar volumes e inclinações diferentes porque cada filtro precisa de um ajuste.",
+        "Trocar filtro e recipiente na mesma comparação.",
+        "Escolher o teste em que a água pareceu mais limpa sem definir um critério.",
+        "Manter volume inicial, recipiente, inclinação e método de montagem iguais; cronometrar o mesmo volume coletado em repetições."
+      ],
+      "correctAnswer": "Manter volume inicial, recipiente, inclinação e método de montagem iguais; cronometrar o mesmo volume coletado em repetições.",
+      "explanation": "A vazão depende da montagem e da quantidade. Padronizar condições e definir o volume de referência torna o resultado comparável; a aparência exigiria outra medida operacional.",
+      "hint": "Varie o filtro e fixe a geometria e o volume de referência.",
+      "errorFocus": "MULTIPLE_VARIABLES",
+      "misconceptions": {
+        "Usar volumes e inclinações diferentes porque cada filtro precisa de um ajuste.": [
+          "UNEQUAL_INPUT",
+          "GEOMETRY_CONFOUNDING"
+        ],
+        "Trocar filtro e recipiente na mesma comparação.": [
+          "MULTIPLE_VARIABLES"
+        ],
+        "Escolher o teste em que a água pareceu mais limpa sem definir um critério.": [
+          "VAGUE_MEASUREMENT",
+          "OUTCOME_SWITCH"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "OBSERVACAO_SONO_TELA",
+      "statement": "Uma pesquisa anônima encontra associação entre mais horas de tela à noite e menor duração de sono. Sem intervenção ou informação sobre outros fatores, qual conclusão é defensável?",
+      "options": [
+        "A associação prova que a tela foi a única causa.",
+        "A tela não pode ter qualquer relação com sono.",
+        "O padrão observado justifica novas perguntas, mas não separa causalidade de fatores como rotina, idade ou horário escolar.",
+        "Todas as pessoas que usam tela dormirão menos."
+      ],
+      "correctAnswer": "O padrão observado justifica novas perguntas, mas não separa causalidade de fatores como rotina, idade ou horário escolar.",
+      "explanation": "Um levantamento observacional mostra associação, não demonstra sozinho qual fator causou a diferença. Dados pessoais exigem proteção e participação voluntária conforme regras institucionais.",
+      "hint": "Observe se o desenho manipulou a exposição ou apenas registrou condições existentes.",
+      "errorFocus": "CORRELATION_PROVES_CAUSATION",
+      "misconceptions": {
+        "A associação prova que a tela foi a única causa.": [
+          "OBSERVATION_AS_CAUSE",
+          "SINGLE_CAUSE_OVERCLAIM"
+        ],
+        "A tela não pode ter qualquer relação com sono.": [
+          "ASSOCIATION_DENIED"
+        ],
+        "Todas as pessoas que usam tela dormirão menos.": [
+          "UNIVERSAL_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "SOMBRA_E_BIODIVERSIDADE",
+      "statement": "Em dois trechos de um parque, uma equipe registra mais espécies no trecho sombreado. Os trechos também diferem no tamanho e na proximidade de uma trilha. O que melhora uma investigação seguinte?",
+      "options": [
+        "Afirmar que a sombra causou a diferença sem novas medidas.",
+        "Repetir a amostragem em vários pontos e horários, registrar área e distância da trilha e escolher comparações mais semelhantes.",
+        "Contar apenas os organismos maiores.",
+        "Excluir o trecho com menos espécies."
+      ],
+      "correctAnswer": "Repetir a amostragem em vários pontos e horários, registrar área e distância da trilha e escolher comparações mais semelhantes.",
+      "explanation": "Área, perturbação e esforço amostral podem explicar parte da diferença. Registrá-los e ampliar pontos melhora a interpretação, mas não garante que todos os fatores estejam controlados.",
+      "hint": "Procure variáveis de contexto que diferem junto com a sombra.",
+      "errorFocus": "CONFOUNDING_IN_FIELD_STUDY",
+      "misconceptions": {
+        "Afirmar que a sombra causou a diferença sem novas medidas.": [
+          "CAUSALITY_OVERCLAIM"
+        ],
+        "Contar apenas os organismos maiores.": [
+          "SELECTIVE_OBSERVATION"
+        ],
+        "Excluir o trecho com menos espécies.": [
+          "CHERRY_PICKING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "DRENAGEM_APOS_CHUVA",
+      "statement": "Moradores relatam que uma praça alaga mais que outra após chuva. A equipe pode observar e medir, mas não controlar o clima. Qual plano é mais informativo?",
+      "options": [
+        "Acompanhar várias chuvas, registrar precipitação, área impermeável, relevo e nível de água com horários padronizados.",
+        "Comparar relatos de um único dia sem medir chuva.",
+        "Concluir que o tipo de piso é a causa antes de observar as praças.",
+        "Medir só depois de uma chuva forte na praça escolhida."
+      ],
+      "correctAnswer": "Acompanhar várias chuvas, registrar precipitação, área impermeável, relevo e nível de água com horários padronizados.",
+      "explanation": "Um estudo observacional pode comparar padrões e contexto ao longo de eventos. Como o clima não é manipulado, a conclusão deve reconhecer fatores não controlados.",
+      "hint": "Em campo, não invente controle experimental: padronize registros e acompanhe mais de um evento.",
+      "errorFocus": "OBSERVATION_AS_CAUSE",
+      "misconceptions": {
+        "Comparar relatos de um único dia sem medir chuva.": [
+          "UNSTANDARDIZED_REPORT",
+          "MISSING_CONTEXT"
+        ],
+        "Concluir que o tipo de piso é a causa antes de observar as praças.": [
+          "HYPOTHESIS_AS_RESULT"
+        ],
+        "Medir só depois de uma chuva forte na praça escolhida.": [
+          "SELECTIVE_EVENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PESQUISA_COM_ESTUDANTES",
+      "statement": "Uma proposta quer relacionar hábitos de estudo e notas usando respostas identificáveis de uma turma. Qual revisão é necessária antes da coleta?",
+      "options": [
+        "Publicar nomes para conferir se as respostas são verdadeiras.",
+        "Coletar tudo primeiro e perguntar depois se a turma concorda.",
+        "Pedir apenas aos estudantes com notas baixas que respondam.",
+        "Submeter o plano às regras da escola, explicar finalidade, minimizar dados, proteger acesso e obter consentimento/assentimento aplicável."
+      ],
+      "correctAnswer": "Submeter o plano às regras da escola, explicar finalidade, minimizar dados, proteger acesso e obter consentimento/assentimento aplicável.",
+      "explanation": "Dados sobre pessoas exigem salvaguardas proporcionais e autorização adequada. A equipe deve considerar alternativas menos invasivas e não presumir que o exercício escolar autorize coletar ou divulgar dados identificáveis.",
+      "hint": "Uma pergunta investigável não torna automaticamente ética qualquer coleta.",
+      "errorFocus": "UNSAFE_OR_UNETHICAL_PLAN",
+      "misconceptions": {
+        "Publicar nomes para conferir se as respostas são verdadeiras.": [
+          "PRIVACY_BREACH"
+        ],
+        "Coletar tudo primeiro e perguntar depois se a turma concorda.": [
+          "CONSENT_AFTER_COLLECTION"
+        ],
+        "Pedir apenas aos estudantes com notas baixas que respondam.": [
+          "SENSITIVE_TARGETING",
+          "BIASED_SAMPLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "LUZ_E_PAINEL_SOLAR",
+      "statement": "Em uma demonstração, a potência registrada por um pequeno painel muda quando a lâmpada é aproximada. O painel também aquece e o ângulo foi ajustado entre leituras. Qual próximo plano separa melhor as hipóteses?",
+      "options": [
+        "Manter distância, ângulo e tempo de estabilização definidos, registrar temperatura e potência em leituras repetidas.",
+        "Aproximar a lâmpada até obter o valor esperado.",
+        "Alterar distância e ângulo juntos para terminar mais rápido.",
+        "Escolher apenas a leitura mais alta."
+      ],
+      "correctAnswer": "Manter distância, ângulo e tempo de estabilização definidos, registrar temperatura e potência em leituras repetidas.",
+      "explanation": "Distância, ângulo e aquecimento podem contribuir para a leitura. Registrá-los e padronizar a montagem ajuda a separar explicações; a lâmpada deve ser usada conforme orientação e supervisão.",
+      "hint": "Uma mudança simultânea de geometria e temperatura impede atribuição simples.",
+      "errorFocus": "MULTIPLE_VARIABLES",
+      "misconceptions": {
+        "Aproximar a lâmpada até obter o valor esperado.": [
+          "CONFIRMATION_BIAS",
+          "UNCONTROLLED_ADJUSTMENT"
+        ],
+        "Alterar distância e ângulo juntos para terminar mais rápido.": [
+          "MULTIPLE_VARIABLES"
+        ],
+        "Escolher apenas a leitura mais alta.": [
+          "CHERRY_PICKING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "MIGRACAO_DE_AVES",
+      "statement": "Uma turma quer saber se a passagem de aves por uma área mudou ao longo de um mês, sem capturá-las. Qual estratégia é mais adequada?",
+      "options": [
+        "Capturar aves para medir cada indivíduo sem autorização.",
+        "Fazer observações curtas em horários e pontos predefinidos, registrar esforço e condições do tempo e seguir orientações locais de proteção.",
+        "Observar somente nos dias em que há muitas aves.",
+        "Comparar uma manhã em um local com uma tarde em outro e atribuir a diferença à vegetação."
+      ],
+      "correctAnswer": "Fazer observações curtas em horários e pontos predefinidos, registrar esforço e condições do tempo e seguir orientações locais de proteção.",
+      "explanation": "Uma observação não invasiva pode padronizar horário, local e esforço, registrando o contexto. Ela descreve a passagem nas condições observadas e não estima automaticamente toda a população.",
+      "hint": "Escolha um método compatível com a pergunta e que minimize impacto sobre os organismos.",
+      "errorFocus": "UNSAFE_OR_UNETHICAL_PLAN",
+      "misconceptions": {
+        "Capturar aves para medir cada indivíduo sem autorização.": [
+          "UNAUTHORIZED_WILDLIFE_HANDLING"
+        ],
+        "Observar somente nos dias em que há muitas aves.": [
+          "SELECTIVE_OBSERVATION"
+        ],
+        "Comparar uma manhã em um local com uma tarde em outro e atribuir a diferença à vegetação.": [
+          "TIME_AND_SITE_CONFOUNDING",
+          "CAUSALITY_OVERCLAIM"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FERTILIZANTE_E_CRESCIMENTO",
+      "statement": "Um teste compara crescimento de plantas em dois fertilizantes, mas cada grupo recebeu uma quantidade diferente de água e ficou em uma janela distinta. Qual conclusão é mais responsável?",
+      "options": [
+        "O fertilizante A causou toda diferença, pois as plantas cresceram.",
+        "Os dados não isolam o efeito do fertilizante; água e luz também podem explicar a diferença.",
+        "A maior planta prova qual fertilizante é melhor.",
+        "A hipótese deve ser mantida mesmo se os registros forem contrários."
+      ],
+      "correctAnswer": "Os dados não isolam o efeito do fertilizante; água e luz também podem explicar a diferença.",
+      "explanation": "Duas condições relevantes variaram junto ao fertilizante. O resultado pode ser descrito, mas não identifica qual fator produziu a diferença.",
+      "hint": "Leia o que mudou além do fator que a equipe queria comparar.",
+      "errorFocus": "MULTIPLE_VARIABLES",
+      "misconceptions": {
+        "O fertilizante A causou toda diferença, pois as plantas cresceram.": [
+          "SINGLE_CAUSE_OVERCLAIM"
+        ],
+        "A maior planta prova qual fertilizante é melhor.": [
+          "SINGLE_OBSERVATION_AS_EVIDENCE"
+        ],
+        "A hipótese deve ser mantida mesmo se os registros forem contrários.": [
+          "CONFIRMATION_BIAS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CORTE_TRANSVERSAL_BICICLETAS",
+      "statement": "Em uma pesquisa de um dia, pessoas que usam capacete relatam mais trajetos de bicicleta do que pessoas sem capacete. Qual afirmação respeita o desenho?",
+      "options": [
+        "A amostra mostra uma associação naquele levantamento; seleção e outros fatores podem explicar parte do padrão.",
+        "Usar capacete causa mais trajetos.",
+        "O resultado prova que capacete aumenta a distância de todos.",
+        "A ausência de experimento prova que não existe relação."
+      ],
+      "correctAnswer": "A amostra mostra uma associação naquele levantamento; seleção e outros fatores podem explicar parte do padrão.",
+      "explanation": "Uma observação transversal registra coexistência de características, mas não estabelece temporalidade nem causa. A amostra também pode não representar todas as pessoas.",
+      "hint": "Separe a descrição dos dados de uma explicação causal.",
+      "errorFocus": "CORRELATION_PROVES_CAUSATION",
+      "misconceptions": {
+        "Usar capacete causa mais trajetos.": [
+          "OBSERVATION_AS_CAUSE"
+        ],
+        "O resultado prova que capacete aumenta a distância de todos.": [
+          "UNIVERSAL_GENERALIZATION"
+        ],
+        "A ausência de experimento prova que não existe relação.": [
+          "CAUSALITY_DENIAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CRITERIO_DE_EXCLUSAO",
+      "statement": "Antes de coletar dados, um protocolo prevê excluir leituras somente quando o sensor falhar e registra a falha. Uma leitura inesperada, porém, é removida sem falha técnica documentada. Como avaliar?",
+      "options": [
+        "A exclusão não segue o critério predefinido; preserve o dado e documente a análise com e sem ele se necessário.",
+        "A remoção segue o protocolo porque o valor é inesperado.",
+        "A leitura deve ser alterada para a mediana.",
+        "O resultado inesperado prova que o instrumento é inútil."
+      ],
+      "correctAnswer": "A exclusão não segue o critério predefinido; preserve o dado e documente a análise com e sem ele se necessário.",
+      "explanation": "Um critério anterior à coleta reduz decisões orientadas pelo resultado. A equipe pode investigar a leitura e apresentar análises de sensibilidade sem apagar o registro.",
+      "hint": "Compare a razão documentada para excluir com a regra que foi combinada antes.",
+      "errorFocus": "SELECTIVE_DATA",
+      "misconceptions": {
+        "A remoção segue o protocolo porque o valor é inesperado.": [
+          "POST_HOC_EXCLUSION"
+        ],
+        "A leitura deve ser alterada para a mediana.": [
+          "DATA_FABRICATION"
+        ],
+        "O resultado inesperado prova que o instrumento é inútil.": [
+          "OVERGENERALIZATION_FROM_ONE_VALUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "TEMPO_DE_DRENAGEM",
+      "statement": "Uma equipe quer comparar a drenagem de dois solos em colunas transparentes. Qual relatório torna a investigação mais repetível e a conclusão mais limitada corretamente?",
+      "options": [
+        "Informar origem e quantidade do solo, dimensões da coluna, volume e ritmo de água, repetições, medidas e condições do teste.",
+        "Registrar apenas qual solo venceu.",
+        "Escrever que qualquer solo daquele tipo drenará igual em todo lugar.",
+        "Omitir leituras que não confirmam a expectativa."
+      ],
+      "correctAnswer": "Informar origem e quantidade do solo, dimensões da coluna, volume e ritmo de água, repetições, medidas e condições do teste.",
+      "explanation": "A descrição do método permite avaliar e repetir o arranjo. A conclusão deve se limitar às amostras e condições utilizadas, pois solos variam dentro de uma mesma categoria.",
+      "hint": "Outra equipe precisa saber materiais, quantidades, procedimento e como os dados foram obtidos.",
+      "errorFocus": "REPRODUCIBILITY_MISSING",
+      "misconceptions": {
+        "Registrar apenas qual solo venceu.": [
+          "MISSING_METHOD"
+        ],
+        "Escrever que qualquer solo daquele tipo drenará igual em todo lugar.": [
+          "UNIVERSAL_GENERALIZATION"
+        ],
+        "Omitir leituras que não confirmam a expectativa.": [
+          "CHERRY_PICKING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PAPEL_E_RESISTENCIA",
+      "statement": "Um estudo altera o número de camadas de papel e mede a massa suportada antes de rasgar. Qual fator é alterado de propósito?",
+      "options": [
+        "A massa suportada antes de rasgar.",
+        "A cor da bancada.",
+        "A unidade usada na balança.",
+        "O número de camadas de papel."
+      ],
+      "correctAnswer": "O número de camadas de papel.",
+      "explanation": "O número de camadas é a variável independente; a massa suportada é o resultado observado.",
+      "hint": "Procure o fator que o plano muda intencionalmente entre condições.",
+      "errorFocus": "INDEPENDENT_AS_DEPENDENT",
+      "misconceptions": {
+        "A massa suportada antes de rasgar.": [
+          "DEPENDENT_AS_INDEPENDENT"
+        ],
+        "A cor da bancada.": [
+          "IRRELEVANT_VARIABLE"
+        ],
+        "A unidade usada na balança.": [
+          "MEASUREMENT_UNIT_AS_VARIABLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "TEMPO_DE_FILTRAGEM",
+      "statement": "Para comparar o tempo de filtragem, qual registro é mais claro?",
+      "options": [
+        "“O filtro B foi mais rápido”.",
+        "“O filtro B parecia eficiente”.",
+        "“Todos gostaram do filtro B”.",
+        "“O volume de 100 mL levou 38 s para atravessar a montagem B, a partir do início do despejo”."
+      ],
+      "correctAnswer": "“O volume de 100 mL levou 38 s para atravessar a montagem B, a partir do início do despejo”.",
+      "explanation": "O registro informa volume, unidade de tempo e evento inicial. As demais opções não permitem comparar o resultado com uma regra comum.",
+      "hint": "Inclua quantidade, unidade e referência para iniciar a contagem.",
+      "errorFocus": "MEASURE_NOT_DEFINED",
+      "misconceptions": {
+        "“O filtro B foi mais rápido”.": [
+          "MISSING_NUMERIC_RECORD"
+        ],
+        "“O filtro B parecia eficiente”.": [
+          "VAGUE_MEASUREMENT"
+        ],
+        "“Todos gostaram do filtro B”.": [
+          "PREFERENCE_AS_MEASUREMENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "AVISO_DE_TEMPORALIDADE",
+      "statement": "Após a instalação de uma cobertura, a quadra fica menos quente em algumas tardes. Sem medições anteriores comparáveis e sem registrar o clima, o que se pode afirmar?",
+      "options": [
+        "A cobertura certamente causou toda mudança.",
+        "A cobertura não pode influenciar temperatura.",
+        "A temperatura caiu em todas as tardes do ano.",
+        "A observação temporal é compatível com a hipótese, mas clima e outras diferenças impedem atribuir causa com segurança."
+      ],
+      "correctAnswer": "A observação temporal é compatível com a hipótese, mas clima e outras diferenças impedem atribuir causa com segurança.",
+      "explanation": "A sequência temporal sugere uma hipótese, mas não separa o efeito da cobertura de variações de clima ou de medição.",
+      "hint": "Uma mudança depois de uma intervenção pode ter outras explicações concorrentes.",
+      "errorFocus": "CORRELATION_PROVES_CAUSATION",
+      "misconceptions": {
+        "A cobertura certamente causou toda mudança.": [
+          "POST_HOC_CAUSALITY"
+        ],
+        "A cobertura não pode influenciar temperatura.": [
+          "POSSIBLE_EFFECT_DENIED"
+        ],
+        "A temperatura caiu em todas as tardes do ano.": [
+          "UNSUPPORTED_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "VARIACAO_DE_MEDIDAS",
+      "statement": "Duas condições têm médias próximas, mas uma apresenta resultados muito mais dispersos. Que informação deve acompanhar a comparação?",
+      "options": [
+        "Apenas a média da condição mais alta.",
+        "A cor dos recipientes.",
+        "O resultado que mais se aproxima da hipótese.",
+        "As medidas individuais ou uma descrição da dispersão, junto do número de repetições e do método."
+      ],
+      "correctAnswer": "As medidas individuais ou uma descrição da dispersão, junto do número de repetições e do método.",
+      "explanation": "Médias semelhantes podem esconder variabilidade distinta. Número de repetições e dispersão ajudam a avaliar a estabilidade observada.",
+      "hint": "Não resuma a distribuição a um único valor quando a variação importa.",
+      "errorFocus": "VARIABILITY_IGNORED",
+      "misconceptions": {
+        "Apenas a média da condição mais alta.": [
+          "SELECTIVE_SUMMARY"
+        ],
+        "A cor dos recipientes.": [
+          "IRRELEVANT_DETAIL"
+        ],
+        "O resultado que mais se aproxima da hipótese.": [
+          "CHERRY_PICKING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "ALCANCE_DA_AMOSTRA",
+      "statement": "Uma equipe mede a temperatura em um único ponto de uma lagoa numa manhã. Qual conclusão é mais proporcional?",
+      "options": [
+        "Toda a lagoa manteve essa temperatura durante o mês.",
+        "A leitura descreve aquele ponto e horário; outros pontos e momentos podem diferir.",
+        "A medida representa todas as lagoas da região.",
+        "O resultado prova a causa de qualquer mudança na fauna."
+      ],
+      "correctAnswer": "A leitura descreve aquele ponto e horário; outros pontos e momentos podem diferir.",
+      "explanation": "O alcance da conclusão depende da amostragem. Um único ponto e horário não descreve automaticamente o espaço e o tempo inteiros.",
+      "hint": "Compare a extensão da afirmação com a extensão da coleta.",
+      "errorFocus": "SAMPLE_SCOPE_OVERCLAIM",
+      "misconceptions": {
+        "Toda a lagoa manteve essa temperatura durante o mês.": [
+          "TIME_GENERALIZATION"
+        ],
+        "A medida representa todas as lagoas da região.": [
+          "POPULATION_GENERALIZATION"
+        ],
+        "O resultado prova a causa de qualquer mudança na fauna.": [
+          "CAUSALITY_OVERCLAIM"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "CADERNO_DE_CAMPO",
+      "statement": "Uma estudante anota valores medidos em unidades diferentes e sem registrar qual instrumento usou. O que torna o caderno mais útil para análise?",
+      "options": [
+        "Apagar a unidade que aparece menos.",
+        "Converter tudo usando um fator lembrado, sem anotá-lo.",
+        "Registrar cada leitura original com unidade, instrumento, horário, condição e identificação não pessoal da amostra.",
+        "Anotar somente o resultado médio."
+      ],
+      "correctAnswer": "Registrar cada leitura original com unidade, instrumento, horário, condição e identificação não pessoal da amostra.",
+      "explanation": "Metadados da medição permitem comparar valores e reconstruir o procedimento. O registro original deve ser preservado e correções documentadas.",
+      "hint": "Pergunte o que outra pessoa precisaria saber para interpretar cada valor.",
+      "errorFocus": "MISSING_DATA_PROVENANCE",
+      "misconceptions": {
+        "Apagar a unidade que aparece menos.": [
+          "LOSSY_CLEANING"
+        ],
+        "Converter tudo usando um fator lembrado, sem anotá-lo.": [
+          "UNDOCUMENTED_TRANSFORMATION"
+        ],
+        "Anotar somente o resultado médio.": [
+          "RAW_DATA_LOSS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "GRUPO_DE_COMPARACAO",
+      "statement": "Uma campanha de economia de água é adotada por voluntários; depois, eles relatam menor consumo que os demais. Qual limitação deve ser considerada?",
+      "options": [
+        "A diferença prova que a campanha nunca funciona.",
+        "Voluntários podem diferir dos demais antes da campanha; o desenho precisa considerar essa seleção e outras condições.",
+        "A comparação mostra efeito causal porque ocorreu depois.",
+        "O consumo não pode ser medido em unidades."
+      ],
+      "correctAnswer": "Voluntários podem diferir dos demais antes da campanha; o desenho precisa considerar essa seleção e outras condições.",
+      "explanation": "A adesão voluntária pode selecionar grupos com hábitos prévios diferentes. Uma comparação antes/depois ou outro desenho cuidadosamente planejado pode melhorar a evidência, sem garantir causalidade perfeita.",
+      "hint": "Considere como as pessoas chegaram a cada grupo antes da intervenção.",
+      "errorFocus": "SELECTION_BIAS",
+      "misconceptions": {
+        "A diferença prova que a campanha nunca funciona.": [
+          "EFFECT_DENIAL"
+        ],
+        "A comparação mostra efeito causal porque ocorreu depois.": [
+          "POST_HOC_CAUSALITY"
+        ],
+        "O consumo não pode ser medido em unidades.": [
+          "MEASUREMENT_DENIAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sci-invest-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRAS_DE_SEGURANCA",
+      "statement": "Um plano escolar prevê aquecer recipientes e testar materiais sem informar temperatura máxima, equipamento ou supervisão. O que deve ocorrer antes do teste?",
+      "options": [
+        "Começar com uma amostra pequena para descobrir se é seguro.",
+        "Revisar riscos e procedimentos com o responsável, definir limites e equipamento adequado ou usar simulação se o risco não puder ser controlado.",
+        "Pedir que cada grupo escolha seus próprios limites.",
+        "Substituir toda precaução por luvas comuns."
+      ],
+      "correctAnswer": "Revisar riscos e procedimentos com o responsável, definir limites e equipamento adequado ou usar simulação se o risco não puder ser controlado.",
+      "explanation": "Segurança precisa ser planejada antes da atividade. Uma simulação ou análise de dados pode responder à pergunta sem expor estudantes a riscos não avaliados.",
+      "hint": "Não use a própria coleta como primeira avaliação de segurança.",
+      "errorFocus": "UNSAFE_OR_UNETHICAL_PLAN",
+      "misconceptions": {
+        "Começar com uma amostra pequena para descobrir se é seguro.": [
+          "UNSAFE_PILOT"
+        ],
+        "Pedir que cada grupo escolha seus próprios limites.": [
+          "NO_STANDARD_SAFETY_RULE"
+        ],
+        "Substituir toda precaução por luvas comuns.": [
+          "PPE_AS_ONLY_CONTROL"
+        ]
+      }
+    }
+  ]
+}
