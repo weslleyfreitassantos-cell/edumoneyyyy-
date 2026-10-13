@@ -477,6 +477,8 @@ describe('question-first V5 staging content', () => {
     expect(sql).toContain('V5_INTERNAL_PARENT_ANCHOR_CODE_COLLISION:HUMANITIES_AREA');
     expect(sql).toContain('V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:HUMANITIES_AREA');
     expect(sql).toContain("metadata->>'internal_grouping_only' = 'true'");
+    expect(sql).toContain("metadata->>'mapping_status' = 'MAPPING_PENDING'");
+    expect(sql).toContain("metadata->>'bncc_alignment' = 'NOT_CLAIMED'");
     expect(sql).toContain('V5_INTERNAL_SKILL_STAGING_SCOPE_CONFLICT');
     expect(sql).toContain("'CANDIDATE'");
     expect(sql).toContain("'NOT_CLAIMED'");

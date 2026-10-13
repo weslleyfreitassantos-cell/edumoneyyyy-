@@ -29,7 +29,7 @@ begin
   ) values (
     v_catalog_id, 'HUMANITIES_AREA', 'ENSINO_MEDIO', 1, 'HUMANITIES', 'V3_INTERNAL_ANCHOR',
     'Analise interdisciplinar de Ciencias Humanas', 'Agrupador interno de área para análise integrada; não equivale a componente nem mapeamento oficial.', false, 'ANCHOR', 'GRAPH_ONLY', false,
-    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_HUMANITIES_IMPACTS_HS","internal_grouping_only":true,"official_code":null,"official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
+    'PEDAGOGICAL_REVIEW_PENDING', 'CANDIDATE', '{"content_pack":"TECESCOLA_CORE_V5_QUESTION_FIRST","source_pack":"tec-escola-knowledge-expansion-v3","source_unit_id":"V3_HUMANITIES_IMPACTS_HS","internal_grouping_only":true,"official_code":null,"bncc_alignment":"NOT_CLAIMED","official_mapping_status":"NOT_CLAIMED","pedagogical_review_status":"PEDAGOGICAL_REVIEW_PENDING","publication_status":"STAGING","mastery_targetable":false}'::jsonb
   ) on conflict (catalog_id, code) do nothing;
   if not exists (
     select 1 from public.learning_curriculum_skills
@@ -40,7 +40,10 @@ begin
        and mastery_targetable = false and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
        and bncc_alignment_status = 'CANDIDATE'
        and metadata->>'internal_grouping_only' = 'true'
-       and metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+       and metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+       and metadata->>'official_code' is null
+       and (metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+         or metadata->>'mapping_status' = 'MAPPING_PENDING')
        and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:HUMANITIES_AREA'; end if;

@@ -171,6 +171,7 @@ function buildInternalParentAnchorStagingSql(anchor) {
     source_unit_id: anchor.unitId,
     internal_grouping_only: true,
     official_code: null,
+    bncc_alignment: 'NOT_CLAIMED',
     official_mapping_status: 'NOT_CLAIMED',
     pedagogical_review_status: 'PEDAGOGICAL_REVIEW_PENDING',
     publication_status: 'STAGING',
@@ -199,7 +200,10 @@ function buildInternalParentAnchorStagingSql(anchor) {
        and mastery_targetable = false and pedagogical_review_status = 'PEDAGOGICAL_REVIEW_PENDING'
        and bncc_alignment_status = 'CANDIDATE'
        and metadata->>'internal_grouping_only' = 'true'
-       and metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+       and metadata->>'bncc_alignment' = 'NOT_CLAIMED'
+       and metadata->>'official_code' is null
+       and (metadata->>'official_mapping_status' = 'NOT_CLAIMED'
+         or metadata->>'mapping_status' = 'MAPPING_PENDING')
        and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
   ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:${anchor.code}'; end if;
