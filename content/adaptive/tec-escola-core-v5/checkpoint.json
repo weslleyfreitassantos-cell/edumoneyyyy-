@@ -1,0 +1,41 @@
+{
+  "CAMPAIGN_ID": "TECESCOLA_BNCC_TOTAL_AUTONOMOUS_MASTERY_LEARNING_V5",
+  "WAVE_ID": "WAVE_1_MATH_SUCCESSIVE_PERCENT_CHANGE_INCREMENT",
+  "STARTING_SHA": "edf53f75dc9693ff0467925cbef4613c0b432910",
+  "MAIN_SHA": "9b837ff9c1639ddf23536bba9a02def0025ea586",
+  "INPUT_HASH": "sha256:050d72127ee551b6b4c59b3f1113622e5bb33eeeccdd098ab577d0e10fa01032",
+  "TARGET_COUNT": 1,
+  "TARGETS_PROCESSED": 1,
+  "TARGET_DEFINITION": "One existing canonical Mathematics skill received a staging authoring increment; this does not mark its V3 sequence complete.",
+  "SKILLS_CREATED": 0,
+  "SKILLS_REUSED": 1,
+  "LESSONS_CREATED": 1,
+  "QUESTIONS_CREATED": 10,
+  "PRACTICAL_ACTIVITIES": 0,
+  "DEPTH_READY_COUNT": 0,
+  "CONTENT_REVIEW_PENDING": 11,
+  "DATABASE_VALIDATION": "NOT_RUN_LOCAL_POSTGRESQL_UNAVAILABLE",
+  "CI_STATUS": "PENDING",
+  "PULL_REQUEST": null,
+  "LAST_COMPLETED_OPERATION": "Authored and validated a staged lesson/question increment; added server-recorded hint exposure and independent-evidence grading code; focused tests passed.",
+  "NEXT_OPERATION": "Open a dependent PR against codex/bncc-knowledge-factory-v4, run CI database validation, then continue the next incomplete WAVE_1 target without marking this sequence deep-ready.",
+  "FOUNDATION_PRS": [356, 357, 358, 359],
+  "FOUNDATION_STATUS": "OPEN_STACKED_CHAIN",
+  "CAMPAIGN_BASELINE": {
+    "OFFICIAL_NODES": 1723,
+    "V3_ADAPTIVE_SEQUENCES": 26,
+    "WAVE_1_SEQUENCE_TARGETS": 26,
+    "DEEP_READY_SEQUENCES_BEFORE": 0,
+    "QUEUED_GAPS_BEFORE": 1799,
+    "APPROXIMATE_ADDITIONAL_ITEMS_FOR_WAVE_1": 777
+  },
+  "BLOCKERS": [
+    "PostgreSQL migration execution and database smoke validation were not available locally.",
+    "The lesson and ten questions remain inactive in STAGING with pedagogical review pending and no official BNCC mapping claimed.",
+    "The four foundation PRs remain open; this increment must stay stacked on their V4 branch until that chain is integrated."
+  ],
+  "PRODUCTION_WRITES": "NONE",
+  "PRODUCTION_DEPLOY": "NONE",
+  "HISTORICAL_PROGRESS_PRESERVED": true,
+  "OTHER_SERVICES_TOUCHED": false
+}

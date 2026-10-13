@@ -43,6 +43,8 @@
     "health:prod": "node scripts/production-health.mjs",
     "adaptive:v4:validate": "node --experimental-strip-types tools/adaptive/compile-v4.ts validate",
     "adaptive:v4:compile": "node --experimental-strip-types tools/adaptive/compile-v4.ts compile",
+    "adaptive:question-first:v5:validate": "node tools/adaptive/compile-question-first-content-v5.mjs validate",
+    "adaptive:question-first:v5:compile": "node tools/adaptive/compile-question-first-content-v5.mjs compile",
     "adaptive:v9:validate": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts validate",
     "adaptive:v9:compile": "node --experimental-strip-types tools/adaptive/generate-v9-content-expansion.ts",
     "adaptive:v94:validate": "node --experimental-strip-types tools/adaptive/generate-v9-fourth-journeys.ts validate",

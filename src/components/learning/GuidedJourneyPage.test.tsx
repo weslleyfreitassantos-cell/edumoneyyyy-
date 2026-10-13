@@ -33,7 +33,7 @@ const state = vi.hoisted(() => ({
       position: 0,
       lesson_id: null,
       lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }] as Array<{ id: string; statement: string; options: string[]; difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null; position: number; hint?: string | null }>,
     },
     isLoading: false,
   },
@@ -42,6 +42,7 @@ const state = vi.hoisted(() => ({
   startJourney: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', created: false, current_step_id: 'step-1', target_canonical_skill_id: 'skill-1', engine_version: 'V4' }), isPending: false, isError: false, error: null },
   resumeContent: { mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1', current_step_id: 'step-2', resumed: true, status: 'ACTIVE' }), isPending: false, isError: false, error: null },
   advance: { mutateAsync: vi.fn(), isPending: false },
+  recordHint: { mutateAsync: vi.fn().mockResolvedValue({ step_id: 'step-1', question_bank_id: 'question-1', recorded: true }), isPending: false, isError: false, error: null },
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({ useAuth: () => ({ profile: { id: 'profile-1', full_name: 'Ana Estudante' } }) }));
@@ -55,6 +56,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useStartGuidedDisciplineJourneyV9: () => state.startJourney,
   useResumeContentExhaustedGuidedJourneyV9: () => state.resumeContent,
   useAdvanceGuidedLearningSessionV2: () => state.advance,
+  useRecordGuidedHintV5: () => state.recordHint,
   useSubmitGuidedStepV2: () => state.submit,
 }));
 
@@ -87,6 +89,71 @@ describe('GuidedJourneyPage', () => {
       answers: [{ question_bank_id: 'question-1', answer: '7' }],
       idempotencyKey: 'guided-v2:step-1',
     });
+  });
+
+  it('shows one challenge at a time and submits the whole legacy step only after each answer', () => {
+    state.session.data = { ...state.session.data, status: 'ACTIVE', current_step_id: 'step-1', metadata: {} };
+    state.submit.data = undefined;
+    state.step.data = {
+      ...state.step.data,
+      questions: [
+        { id: 'question-1', statement: 'Primeiro desafio', options: ['4', '7'], difficulty: 'EASY', position: 0 },
+        { id: 'question-2', statement: 'Segundo desafio', options: ['8', '9'], difficulty: 'MEDIUM', position: 1 },
+      ],
+    };
+
+    renderPage();
+    expect(screen.getByText('Primeiro desafio')).toBeTruthy();
+    expect(screen.queryByText('Segundo desafio')).toBeNull();
+    fireEvent.click(screen.getByLabelText('4'));
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima questão' }));
+    expect(screen.getByText('Segundo desafio')).toBeTruthy();
+    expect(screen.queryByText('Primeiro desafio')).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Enviar respostas' })).toBeTruthy();
+
+    fireEvent.click(screen.getByLabelText('9'));
+    fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
+    expect(state.submit.mutateAsync).toHaveBeenCalledWith({
+      stepId: 'step-1',
+      answers: [
+        { question_bank_id: 'question-1', answer: '4' },
+        { question_bank_id: 'question-2', answer: '9' },
+      ],
+      idempotencyKey: 'guided-v2:step-1',
+    });
+
+    state.step.data = {
+      ...state.step.data,
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+    };
+  });
+
+  it('records hint exposure on the server before revealing it, without sending a client-controlled flag', async () => {
+    state.session.data = { ...state.session.data, status: 'ACTIVE', current_step_id: 'step-1', planner_version: 'V4', metadata: {} };
+    state.submit.data = undefined;
+    state.step.data = {
+      ...state.step.data,
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0, hint: 'Pense na operação inversa.' }],
+    };
+
+    renderPage();
+    fireEvent.click(screen.getByRole('button', { name: 'Precisa de uma pista?' }));
+    expect(state.recordHint.mutateAsync).toHaveBeenCalledWith({ stepId: 'step-1', questionId: 'question-1' });
+    expect(await screen.findByText('Pense na operação inversa.')).toBeTruthy();
+    expect(screen.queryByText(/resposta correta/i)).toBeNull();
+    fireEvent.click(screen.getByLabelText('7'));
+    fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
+
+    expect(state.submit.mutateAsync).toHaveBeenCalledWith({
+      stepId: 'step-1',
+      answers: [{ question_bank_id: 'question-1', answer: '7' }],
+      idempotencyKey: 'guided-v2:step-1',
+    });
+
+    state.step.data = {
+      ...state.step.data,
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+    };
   });
 
   it('keeps the correction visible when the completed session is invalidated', async () => {
