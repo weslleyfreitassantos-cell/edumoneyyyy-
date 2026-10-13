@@ -134,7 +134,14 @@ function normalizeAnswerOption(value) {
     const index = alleleTokens.push(canonicalPairs.join('')) - 1;
     return `alleletoken${index}`;
   });
-  return `${normalizeContentText(text)}|${alleleTokens.join('|')}`;
+  const operatorsPreserved = text.normalize('NFKC')
+    .replace(/[+]/g, ' plusoperator ')
+    .replace(/[−-]/g, ' minusoperator ')
+    .replace(/[×]/g, ' multiplicationoperator ')
+    .replace(/[÷]/g, ' divisionoperator ')
+    .replace(/[=]/g, ' equalityoperator ')
+    .replace(/[<>]/g, (operator) => operator === '<' ? ' lessoperator ' : ' greateroperator ');
+  return `${normalizeContentText(operatorsPreserved)}|${alleleTokens.join('|')}`;
 }
 const getQuestion = (item) => item.question ?? item;
 const getStatement = (question) => question.statement ?? question.prompt ?? question.stem ?? '';

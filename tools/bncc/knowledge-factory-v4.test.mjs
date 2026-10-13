@@ -89,6 +89,34 @@ describe('BNCC total knowledge factory V4', () => {
     expect(report.dimensions.CONTEXT_DIVERSITY_READY).toBe(false);
   });
 
+  it('preserves charge and mathematical operators when checking distinct answer choices', () => {
+    const group = deepSequence();
+    group.questions[0] = {
+      ...group.questions[0],
+      statement: 'Uma espécie tem 13 prótons e 10 elétrons. Qual é sua carga?',
+      options: ['+3', '-3', '+23', '+1'],
+      correctAnswer: '+3',
+    };
+    const report = assessDepthGroup(group);
+
+    expect(report.answerKeyValid).toBe(true);
+    expect(report.dimensions.QUESTION_POOL_DEPTH_READY).toBe(true);
+  });
+
+  it('preserves isotope subscripts and superscript charges in distinct answer choices', () => {
+    const group = deepSequence();
+    group.questions[0] = {
+      ...group.questions[0],
+      statement: 'Qual notação representa sódio-23 neutro?',
+      options: ['²³₁₁Na', '¹²₁₁Na', '²³₁₂Na', '²³₁₁Na⁺'],
+      correctAnswer: '²³₁₁Na',
+    };
+    const report = assessDepthGroup(group);
+
+    expect(report.answerKeyValid).toBe(true);
+    expect(report.dimensions.QUESTION_POOL_DEPTH_READY).toBe(true);
+  });
+
   it('uses authentic performance evidence rather than an artificial question quota for practical skills', () => {
     const group = deepSequence();
     group.skillCode = 'ART_TEST';
@@ -145,8 +173,8 @@ describe('BNCC total knowledge factory V4', () => {
   it('distinguishes a five-phase structural path from deep assessment coverage', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
 
-    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 29, v3QuestionTotal: 160, v5QuestionTotal: 863, consolidatedQuestionTotal: 1087, technicalDeepReady: 29, reviewPending: 29 });
-    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 29 });
+    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 30, v3QuestionTotal: 160, v5QuestionTotal: 877, consolidatedQuestionTotal: 1128, technicalDeepReady: 30, reviewPending: 30 });
+    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 30 });
     expect(report.existingContent.technicalDeepReady).toBe(report.existingContent.depthAudit.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(report.existingContent.auditedSequences - report.existingContent.technicalDeepReady);
   });
@@ -261,15 +289,15 @@ describe('BNCC total knowledge factory V4', () => {
     expect(evidence.purposeCounts).toEqual(PURPOSE_COUNTS);
     expect(evidence.missingDepthDimensions).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
-    expect(report.existingContent.technicalDeepReady).toBe(29);
+    expect(report.existingContent.technicalDeepReady).toBe(30);
   });
 
   it('reconciles Biology cell-function sources exactly before auditing the Wave 2 addition', () => {
     const report = compileKnowledgeFactoryV4(undefined, true);
     const biology = report.existingContent.depthAudit.find((item) => item.targetId === 'BIOLOGY_CELL_FUNCTION');
 
-    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(3);
-    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(3);
+    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(4);
+    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(4);
     expect(biology).toMatchObject({
       originalQuestionCount: 22,
       v5QuestionCount: 23,
@@ -283,7 +311,7 @@ describe('BNCC total knowledge factory V4', () => {
     });
     expect(biology.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 14, TRANSFER: 9, LOCK_IN: 6, REVIEW: 12 });
     expect(biology.missingDepthDimensions).toEqual([]);
-    expect(report.queue.byWave.WAVE_2).toBe(49);
+    expect(report.queue.byWave.WAVE_2).toBe(48);
     expect(report.existingContent.v5PacksOutsideV3AuditedTargets).toMatchObject([
       { skillCode: 'MATH_SUCCESSIVE_PERCENT_CHANGE', sourceReconciliation: 'PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION' },
     ]);
@@ -328,6 +356,26 @@ describe('BNCC total knowledge factory V4', () => {
     expect(population.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
     expect(population.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'BIOLOGY_INTERPRET_POPULATION_DATA')).toEqual([]);
+  });
+
+  it('reconciles atomic-structure sources and treats positive and negative ion charges as distinct', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const atomic = report.existingContent.depthAudit.find((item) => item.targetId === 'CHEMISTRY_ATOMIC_STRUCTURE');
+
+    expect(atomic).toMatchObject({
+      originalQuestionCount: 27,
+      v5QuestionCount: 14,
+      currentQuestionCount: 41,
+      technicalDeepReady: true,
+      answerKeyValid: true,
+      sourceReconciliation: { expectedQuestionCount: 27, actualQuestionCount: 27, status: 'EXACT' },
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      officialMappingStatus: 'NOT_CLAIMED',
+      studentPublicationStatus: 'STAGING_INACTIVE',
+    });
+    expect(atomic.purposeCounts).toEqual({ PROBE: 5, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(atomic.missingDepthDimensions).toEqual([]);
+    expect(report.queue.items.filter((item) => item.id === 'CHEMISTRY_ATOMIC_STRUCTURE')).toEqual([]);
   });
 
   it('prepares navigable unit persistence without student availability or fabricated BNCC links', () => {

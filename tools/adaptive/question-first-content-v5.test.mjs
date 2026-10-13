@@ -14,6 +14,7 @@ import { buildScienceEvidenceConclusionPack } from './build-science-evidence-con
 import { buildBiologyCellFunctionPack } from './build-biology-cell-function-v5.mjs';
 import { buildBiologyInheritancePack } from './build-biology-inheritance-v5.mjs';
 import { buildBiologyPopulationDataPack } from './build-biology-population-data-v5.mjs';
+import { buildChemistryAtomicStructurePack } from './build-chemistry-atomic-structure-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -64,6 +65,8 @@ const biologyInheritancePack = JSON.parse(readFileSync(new URL('../../content/ad
 const biologyInheritanceMigration = readFileSync(new URL('../../supabase/migrations/20261013002300_bncc_biology_inheritance_question_first_v5.sql', import.meta.url), 'utf8');
 const biologyPopulationPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/biology-population-data.json', import.meta.url), 'utf8'));
 const biologyPopulationMigration = readFileSync(new URL('../../supabase/migrations/20261013002400_bncc_biology_population_data_question_first_v5.sql', import.meta.url), 'utf8');
+const chemistryAtomicPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/chemistry-atomic-structure.json', import.meta.url), 'utf8'));
+const chemistryAtomicMigration = readFileSync(new URL('../../supabase/migrations/20261013002500_bncc_chemistry_atomic_structure_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -885,6 +888,31 @@ describe('question-first V5 staging content', () => {
     expect(biologyPopulationMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(biologyPopulationMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(biologyPopulationMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('extends atomic-structure practice with integrated isotope, ion, and abundance reasoning', () => {
+    const result = validateQuestionFirstPack(chemistryAtomicPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(14);
+    expect(result.contextCount).toBe(14);
+    expect(result.counts).toEqual({ PROBE: 0, PRACTICE: 1, TRANSFER: 4, LOCK_IN: 3, REVIEW: 6 });
+    expect(result.answerPositionCounts).toEqual({ A: 4, B: 4, C: 3, D: 3 });
+    expect(chemistryAtomicPack.lesson.explanation).toContain('q=P−E');
+    expect(chemistryAtomicPack.lesson.microExplanations).toHaveLength(6);
+    expect(chemistryAtomicPack.lesson.remediations).toHaveLength(5);
+    expect(chemistryAtomicPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(chemistryAtomicPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(chemistryAtomicPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles atomic-structure content as inactive staging without student records', () => {
+    expect(chemistryAtomicPack).toEqual(buildChemistryAtomicStructurePack());
+    expect(chemistryAtomicMigration).toBe(buildMigration(chemistryAtomicPack));
+    expect(chemistryAtomicMigration).toContain("'CHEMISTRY_ATOMIC_STRUCTURE'");
+    expect(chemistryAtomicMigration).toContain("'publication_status', 'STAGING'");
+    expect(chemistryAtomicMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(chemistryAtomicMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(chemistryAtomicMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {
