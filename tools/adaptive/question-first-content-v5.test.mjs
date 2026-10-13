@@ -25,6 +25,7 @@ import { buildPhysicsAverageSpeedPack } from './build-physics-average-speed-v5.m
 import { buildPhysicsMotionGraphPack } from './build-physics-motion-graph-v5.mjs';
 import { buildEnglishInferencePack } from './build-english-inference-v5.mjs';
 import { buildPhysicsUnitConversionPack } from './build-physics-unit-conversion-v5.mjs';
+import { buildSociologyInequalityDataPack } from './build-sociology-inequality-data-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -98,6 +99,8 @@ const physicsUnitConversionPack = JSON.parse(readFileSync(new URL('../../content
 const physicsUnitConversionMigration = readFileSync(new URL('../../supabase/migrations/20261013003600_bncc_physics_unit_conversion_question_first_v5.sql', import.meta.url), 'utf8');
 const englishInferencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/english-infer-from-text.json', import.meta.url), 'utf8'));
 const englishInferenceMigration = readFileSync(new URL('../../supabase/migrations/20261013003200_bncc_english_infer_text_question_first_v5.sql', import.meta.url), 'utf8');
+const sociologyInequalityPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/sociology-inequality-data.json', import.meta.url), 'utf8'));
+const sociologyInequalityMigration = readFileSync(new URL('../../supabase/migrations/20261013003700_bncc_sociology_inequality_data_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -1230,6 +1233,47 @@ describe('question-first V5 staging content', () => {
     expect(physicsUnitConversionMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(physicsUnitConversionMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(physicsUnitConversionMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens sociology inequality-data analysis with reconciled sources and synthetic examples', () => {
+    const result = validateQuestionFirstPack(sociologyInequalityPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(40);
+    expect(result.contextCount).toBe(40);
+    expect(result.counts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(result.answerPositionCounts).toEqual({ A: 10, B: 10, C: 10, D: 10 });
+    expect(sociologyInequalityPack.sourceQuestionFeedback).toHaveLength(22);
+    expect(sociologyInequalityPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 22, feedbackAdded: 22, newQuestions: 40, reuseCountedAsNew: false });
+    const expectedAnswers = {
+      'v5-sociology-inequality-probe-01': 'Os dois grupos tiveram participação de 30%.',
+      'v5-sociology-inequality-probe-02': 'A desigualdade medida é menor em Y; isso não informa, por si só, qual território tem maior renda média.',
+      'v5-sociology-inequality-practice-04': 'A mediana é R$ 1.100; o valor alto puxa a média, que é R$ 2.000.',
+      'v5-sociology-inequality-transfer-01': 'A primeira: 40%, contra 25% na segunda.',
+      'v5-sociology-inequality-review-07': 'O segundo: 20%, contra 10% no primeiro.',
+    };
+    for (const [questionId, answer] of Object.entries(expectedAnswers)) {
+      expect(sociologyInequalityPack.questions.find(({ id }) => id === questionId)?.correctAnswer).toBe(answer);
+    }
+    expect(sociologyInequalityPack.lesson.workedExample).toContain('inteiramente fictício');
+    expect(sociologyInequalityPack.lesson.microExplanations).toHaveLength(6);
+    expect(sociologyInequalityPack.lesson.remediations).toHaveLength(6);
+    expect(sociologyInequalityPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(sociologyInequalityPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(sociologyInequalityPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles sociology inequality-data content as inactive staging without student records', () => {
+    expect(sociologyInequalityPack).toEqual(buildSociologyInequalityDataPack());
+    expect(sociologyInequalityPack.contentVersion).toBe(5);
+    expect(sociologyInequalityPack.lessonVersion).toBe(6);
+    expect(sociologyInequalityMigration).toBe(buildMigration(sociologyInequalityPack));
+    expect(sociologyInequalityMigration).toContain("'SOCIOLOGY_ANALYZE_INEQUALITY_DATA'");
+    expect(sociologyInequalityMigration).toContain("'v5-sociology-inequality-data-wave3'");
+    expect(sociologyInequalityMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
+    expect(sociologyInequalityMigration).toContain("'publication_status', 'STAGING'");
+    expect(sociologyInequalityMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(sociologyInequalityMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(sociologyInequalityMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('deepens English inference using an exact V4 and V9 source set', () => {
