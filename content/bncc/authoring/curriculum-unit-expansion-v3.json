@@ -1,0 +1,526 @@
+{
+  "schemaVersion": "tec-escola.bncc.curriculum-unit-expansion.v3",
+  "baseUnitsHash": "3f33da738665c8449d77986f7b9a7533640392a2fc857b1933938b12ff2a761c",
+  "packVersion": "tec-escola-knowledge-expansion-v3",
+  "newUnits": [
+    {
+      "unitId": "V3_ART_CREATION_FI",
+      "subjectCode": "ART",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 1,
+      "gradeTo": 5,
+      "domain": "CRIACAO_TEATRAL",
+      "title": "Experimentacao e criacao teatral",
+      "description": "Exploracao de movimento, voz, personagem e estereotipos por meio de práticas de criação acompanhadas.",
+      "learningGoals": [
+        "Experimentar escolhas corporais e vocais",
+        "Criar personagem com intenção expressiva",
+        "Rever estereótipos por conversa e criação"
+      ],
+      "subjectName": "Arte",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "ART_CREATE_CHARACTER_EXPERIMENT_FI"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_PE_ACTIVITY_EXERCISE_FII",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "stage": "FUNDAMENTAL_II",
+      "gradeFrom": 6,
+      "gradeTo": 7,
+      "domain": "ATIVIDADE_E_EXERCICIO",
+      "title": "Atividade fisica, exercicio e alternativas",
+      "description": "Diferenciacao entre movimento corporal cotidiano e exercicio planejado, com alternativas adequadas e acessiveis de vivencia dentro e fora da escola.",
+      "learningGoals": [
+        "Distinguir atividade física de exercício físico planejado",
+        "Propor alternativas de prática coerentes com contexto e interesse",
+        "Considerar acesso, segurança, escolha e adaptações"
+      ],
+      "subjectName": "Educacao Fisica",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_RELIGIOUS_DIVERSITY_FI",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 1,
+      "gradeTo": 1,
+      "domain": "CONVIVENCIA",
+      "title": "Eu, o outro e o nos",
+      "description": "Atividades acolhedoras sobre semelhanças, diferenças e convivência sem hierarquizar crenças.",
+      "learningGoals": [
+        "Descrever semelhanças e diferenças observáveis sem rotular",
+        "Praticar escuta e acolhimento",
+        "Distinguir respeito de concordância"
+      ],
+      "subjectName": "Ensino Religioso",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "RELIGIOUS_COMPARE_SELF_OTHER_FI"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_PORTUGUESE_ALFABETIZACAO_FI",
+      "subjectCode": "PORTUGUESE",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 1,
+      "gradeTo": 1,
+      "domain": "SISTEMA_DE_ESCRITA",
+      "title": "Letras e outros sinais",
+      "description": "Reconhecimento visual de letras em contraste com algarismos, pontuação, ícones e outros sinais gráficos.",
+      "learningGoals": [
+        "Reconhecer letras em diferentes suportes",
+        "Distinguir letras de outros sinais",
+        "Explicar a função visual de um sinal em contexto"
+      ],
+      "subjectName": "Lingua Portuguesa",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_MATHEMATICS_SPATIAL_FI",
+      "subjectCode": "MATHEMATICS",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 1,
+      "gradeTo": 1,
+      "domain": "GEOMETRIA",
+      "title": "Localizacao e orientacao espacial",
+      "description": "Descrição de posições em relação ao próprio corpo, com atenção à mudança de referencial.",
+      "learningGoals": [
+        "Usar direita e esquerda a partir do próprio referencial",
+        "Descrever posições relativas",
+        "Conferir a orientação com um desenho ou movimento"
+      ],
+      "subjectName": "Matematica",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "MATH_DESCRIBE_SPATIAL_POSITION_FI"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_HUMANITIES_IMPACTS_HS",
+      "subjectCode": "HUMANITIES",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "domain": "IMPACTOS_SOCIOAMBIENTAIS",
+      "title": "Cadeias produtivas e impactos",
+      "description": "Análise interdisciplinar de evidências sobre produção, território, trabalho, ambiente e modos de vida.",
+      "learningGoals": [
+        "Mapear etapas e agentes de uma cadeia",
+        "Comparar impactos em escalas e grupos diferentes",
+        "Avaliar alternativas com critérios e limites"
+      ],
+      "subjectName": "HUMANITIES",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_COMPUTING_COMMUNITIES_HS",
+      "subjectCode": "COMPUTING",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "domain": "COMUNIDADES_VIRTUAIS",
+      "title": "Interacoes em comunidades virtuais",
+      "description": "Análise de interações digitais, perspectivas, desenho de plataformas e efeitos sociais.",
+      "learningGoals": [
+        "Distinguir experiência individual de evidência coletiva",
+        "Analisar regras e affordances de comunidade",
+        "Propor participação responsável e inclusiva"
+      ],
+      "subjectName": "Computacao e Educacao Digital",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_PORTUGUESE_VARIATION_HS",
+      "subjectCode": "PORTUGUESE",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "domain": "VARIACAO_LINGUISTICA",
+      "title": "Variacao linguistica e usos",
+      "description": "Análise descritiva de variações linguísticas em níveis, dimensões e situações de uso, combatendo preconceito.",
+      "learningGoals": [
+        "Identificar fenômenos de variação sem juízo de valor",
+        "Relacionar escolhas a contexto e propósito",
+        "Revisar generalizações preconceituosas"
+      ],
+      "subjectName": "Lingua Portuguesa",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "PORTUGUESE_ANALYZE_VARIATION_HS"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_LANGUAGES_MULTIMODAL_HS",
+      "subjectCode": "LANGUAGES",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "domain": "LINGUAGENS_MULTISSEMIOTICAS",
+      "title": "Leitura e producao multissemiótica",
+      "description": "Interpretação crítica de recursos de linguagem e produção colaborativa de sentidos em contextos sociais.",
+      "learningGoals": [
+        "Relacionar recursos semióticos a sentidos",
+        "Planejar produção para público e contexto",
+        "Justificar escolhas de linguagem"
+      ],
+      "subjectName": "LANGUAGES",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS",
+        "LANGUAGES_CREATE_COLLABORATIVELY_HS"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_COMPUTING_SEARCH_FI",
+      "subjectCode": "COMPUTING",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 3,
+      "gradeTo": 3,
+      "domain": "PESQUISA_DIGITAL",
+      "title": "Busca e navegacao responsaveis",
+      "description": "Uso orientado de navegadores e ferramentas de busca para localizar e acessar informação adequada.",
+      "learningGoals": [
+        "Identificar ferramenta de navegação e busca",
+        "Escolher palavras-chave simples",
+        "Verificar autoria e adequação com ajuda"
+      ],
+      "subjectName": "Computacao e Educacao Digital",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "COMPUTING_SEARCH_AND_BROWSE_FI"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_MATHEMATICS_RISK_HS",
+      "subjectCode": "MATHEMATICS",
+      "stage": "ENSINO_MEDIO",
+      "gradeFrom": 1,
+      "gradeTo": 3,
+      "domain": "RISCO_PROBABILISTICO",
+      "title": "Probabilidade e escolhas cotidianas",
+      "description": "Reconhecimento de escolhas que envolvem incerteza, chance e consequências, sem transformar probabilidade em certeza.",
+      "learningGoals": [
+        "Identificar riscos probabilísticos em situações reais",
+        "Comparar informações e suas limitações",
+        "Distinguir risco de certeza e buscar orientação especializada quando cabível"
+      ],
+      "subjectName": "Matematica",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    },
+    {
+      "unitId": "V3_SCIENCE_OBSERVATION_FI",
+      "subjectCode": "SCIENCE",
+      "stage": "FUNDAMENTAL_I",
+      "gradeFrom": 1,
+      "gradeTo": 1,
+      "domain": "OBSERVACAO_E_DIVERSIDADE",
+      "title": "Observacao, diversidade e respeito",
+      "description": "Comparações científicas não invasivas que reconhecem diversidade e afirmam dignidade e respeito.",
+      "learningGoals": [
+        "Descrever diferenças sem ranking",
+        "Identificar limites de uma observação",
+        "Praticar acolhimento sem exigir exposição pessoal"
+      ],
+      "subjectName": "Ciencias",
+      "officialCodes": [],
+      "canonicalSkills": [
+        "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI"
+      ],
+      "prerequisiteUnitIds": [],
+      "progressionOrder": 1,
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "bnccAlignment": "NOT_CLAIMED"
+    }
+  ],
+  "existingUnitExtensions": [
+    {
+      "unitId": "V5_BIOLOGY_ECOLOGIA",
+      "title": "Biologia - Ecologia",
+      "subjectCode": "BIOLOGY",
+      "stage": "ENSINO_MEDIO",
+      "domain": "ECOLOGIA",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "BIOLOGY_ECOSYSTEM_INTERACTIONS"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_SCIENCE_INVESTIGACAO",
+      "title": "Ciencias - Investigacao",
+      "subjectCode": "SCIENCE",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "INVESTIGACAO",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "SCIENCE_PLAN_INVESTIGATION"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_HISTORY_CRONOLOGIA",
+      "title": "Historia - Cronologia",
+      "subjectCode": "HISTORY",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "CRONOLOGIA",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "HISTORY_ORDER_EVENTS"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_PHYSICS_INTERACOES",
+      "title": "Fisica - Interacoes",
+      "subjectCode": "PHYSICS",
+      "stage": "ENSINO_MEDIO",
+      "domain": "INTERACOES",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "PHYSICS_MODEL_FORCE"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_PORTUGUESE_COESAO",
+      "title": "Lingua Portuguesa - Coesao",
+      "subjectCode": "PORTUGUESE",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "COESAO",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "PORTUGUESE_CONNECT_IDEAS"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_SCIENCE_EVIDENCIA",
+      "title": "Ciencias - Evidencia",
+      "subjectCode": "SCIENCE",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "EVIDENCIA",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "SCIENCE_EVIDENCE_CONCLUSION"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_CHEMISTRY_SOLUCOES",
+      "title": "Quimica - Solucoes",
+      "subjectCode": "CHEMISTRY",
+      "stage": "ENSINO_MEDIO",
+      "domain": "SOLUCOES",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "CHEMISTRY_ACID_BASE"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_HISTORY_CAUSALIDADE",
+      "title": "Historia - Causalidade",
+      "subjectCode": "HISTORY",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "CAUSALIDADE",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "HISTORY_COMPARE_CAUSES"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_RELIGIOUS_EDUCATION_DIALOGO",
+      "title": "Ensino Religioso - Dialogo",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "DIALOGO",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "RELIGIOUS_MEDIATE_DIALOGUE"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_COMPUTING_SEGURANCA",
+      "title": "Computacao e Educacao Digital - Seguranca",
+      "subjectCode": "COMPUTING",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "SEGURANCA",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "COMPUTING_RECOGNIZE_PHISHING"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_MATHEMATICS_RAZAO",
+      "title": "Matematica - Razao",
+      "subjectCode": "MATHEMATICS",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "RAZAO",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_PORTUGUESE_LEITURA",
+      "title": "Lingua Portuguesa - Leitura",
+      "subjectCode": "PORTUGUESE",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "LEITURA",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "PORTUGUESE_INFER_FROM_CLUES"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    },
+    {
+      "unitId": "V5_PHYSICAL_EDUCATION_SAUDE",
+      "title": "Educacao Fisica - Saude",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "stage": "FUNDAMENTAL_II",
+      "domain": "SAUDE",
+      "reuseRationale": "Reuse the existing V4 unit record without changing its curriculum state; the V3 package remains inactive.",
+      "addCanonicalSkills": [
+        "PE_PLAN_SAFE_ACTIVITY"
+      ],
+      "reviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "publicationStatus": "STAGING",
+      "availability": "NOT_AVAILABLE_TO_STUDENTS",
+      "databaseUnitRowChanged": false
+    }
+  ],
+  "summary": {
+    "newUnits": 12,
+    "reusedExistingUnits": 13,
+    "newSkillMemberships": 13,
+    "existingSkillReferences": 13,
+    "studentAvailableUnits": 0,
+    "unitRowsPersistedBySql": 0
+  },
+  "expansionHash": "54eac626ee9513acbe3564d8c1d90635ec963f93dfac533ca69b2833aaf74da1"
+}
