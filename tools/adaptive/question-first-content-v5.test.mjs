@@ -21,6 +21,7 @@ import { buildPhilosophyEthicalPrinciplePack } from './build-philosophy-ethical-
 import { buildPhilosophyEvaluateArgumentPack } from './build-philosophy-evaluate-argument-v5.mjs';
 import { buildPhysicsAverageSpeedPack } from './build-physics-average-speed-v5.mjs';
 import { buildPhysicsMotionGraphPack } from './build-physics-motion-graph-v5.mjs';
+import { buildEnglishInferencePack } from './build-english-inference-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -85,6 +86,8 @@ const physicsAverageSpeedPack = JSON.parse(readFileSync(new URL('../../content/a
 const physicsAverageSpeedMigration = readFileSync(new URL('../../supabase/migrations/20261013003000_bncc_physics_average_speed_question_first_v5.sql', import.meta.url), 'utf8');
 const physicsMotionGraphPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/physics-motion-graph.json', import.meta.url), 'utf8'));
 const physicsMotionGraphMigration = readFileSync(new URL('../../supabase/migrations/20261013003100_bncc_physics_motion_graph_question_first_v5.sql', import.meta.url), 'utf8');
+const englishInferencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/english-infer-from-text.json', import.meta.url), 'utf8'));
+const englishInferenceMigration = readFileSync(new URL('../../supabase/migrations/20261013003200_bncc_english_infer_text_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -1107,6 +1110,37 @@ describe('question-first V5 staging content', () => {
     expect(physicsMotionGraphMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(physicsMotionGraphMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(physicsMotionGraphMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens English inference using an exact V4 and V9 source set', () => {
+    const result = validateQuestionFirstPack(englishInferencePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(24);
+    expect(result.contextCount).toBe(24);
+    expect(result.counts).toEqual({ PROBE: 3, PRACTICE: 7, TRANSFER: 4, LOCK_IN: 3, REVIEW: 7 });
+    expect(result.answerPositionCounts).toEqual({ A: 6, B: 6, C: 6, D: 6 });
+    expect(englishInferencePack.sourceQuestionFeedback).toHaveLength(22);
+    expect(englishInferencePack.lesson.microExplanations).toHaveLength(5);
+    expect(englishInferencePack.lesson.remediations).toHaveLength(6);
+    expect(englishInferencePack.lesson.sourceDossier[0].publisher).toBe('Ministério da Educação, Brasil');
+    expect(englishInferencePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(englishInferencePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(englishInferencePack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles English inference as inactive staging without student records', () => {
+    expect(englishInferencePack).toEqual(buildEnglishInferencePack());
+    expect(englishInferencePack.contentVersion).toBe(5);
+    expect(englishInferencePack.lessonVersion).toBe(6);
+    expect(englishInferenceMigration).toBe(buildMigration(englishInferencePack));
+    expect(englishInferenceMigration).toContain("'ENGLISH_INFER_FROM_TEXT'");
+    expect(englishInferenceMigration).toContain('v_skill_id, 6,');
+    expect(englishInferenceMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
+    expect(englishInferenceMigration).toContain('"source_question_feedback"');
+    expect(englishInferenceMigration).toContain("'publication_status', 'STAGING'");
+    expect(englishInferenceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(englishInferenceMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(englishInferenceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {
