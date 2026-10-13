@@ -206,7 +206,20 @@ function buildInternalParentAnchorStagingSql(anchor) {
          or metadata->>'mapping_status' = 'MAPPING_PENDING')
        and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
-  ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:${anchor.code}'; end if;
+  ) then
+    select jsonb_build_object(
+      'stage', stage, 'grade_level', grade_level, 'subject_area', subject_area, 'domain', domain,
+      'active', active, 'node_kind', node_kind, 'content_readiness', content_readiness,
+      'mastery_targetable', mastery_targetable, 'pedagogical_review_status', pedagogical_review_status,
+      'bncc_alignment_status', bncc_alignment_status, 'content_pack', metadata->>'content_pack',
+      'internal_grouping_only', metadata->>'internal_grouping_only', 'bncc_alignment', metadata->>'bncc_alignment',
+      'official_code', metadata->>'official_code', 'official_mapping_status', metadata->>'official_mapping_status',
+      'mapping_status', metadata->>'mapping_status', 'publication_status', metadata->>'publication_status'
+    ) into v_internal_parent_snapshot
+      from public.learning_curriculum_skills
+     where catalog_id = v_catalog_id and code = ${sql(anchor.code)};
+    raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:${anchor.code}:%', coalesce(v_internal_parent_snapshot::text, 'MISSING');
+  end if;
 `;
 }
 
@@ -260,7 +273,9 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
   ]));
   const skillResolution = resolveSkillForStaging(pack, canonicalSkillCodes);
   const internalSkillSql = buildInternalSkillStagingSql(pack, skillResolution.definition, skillResolution.parentAnchor);
-  const internalSkillDeclaration = skillResolution.definition ? '  v_parent_skill_id uuid;' : '';
+  const internalSkillDeclaration = skillResolution.definition
+    ? `  v_parent_skill_id uuid;${skillResolution.parentAnchor ? '\n  v_internal_parent_snapshot jsonb;' : ''}`
+    : '';
   const internalSkillBlock = internalSkillSql ? `\n${internalSkillSql}` : '';
   const purposePositions = new Map(PURPOSES.map((purpose) => [purpose, 0]));
   const questionRows = pack.questions.map((question) => {

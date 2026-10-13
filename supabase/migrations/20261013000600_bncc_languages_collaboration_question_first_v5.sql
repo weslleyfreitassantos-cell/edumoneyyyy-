@@ -7,6 +7,7 @@ declare
   v_catalog_id uuid;
   v_skill_id uuid;
   v_parent_skill_id uuid;
+  v_internal_parent_snapshot jsonb;
   v_lesson_id uuid;
   v_set_id uuid;
   v_question_id uuid;
@@ -46,7 +47,20 @@ begin
          or metadata->>'mapping_status' = 'MAPPING_PENDING')
        and metadata->>'publication_status' = 'STAGING'
        and metadata->>'content_pack' in ('tec-escola-knowledge-expansion-v3', 'TECESCOLA_CORE_V5_QUESTION_FIRST')
-  ) then raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:LANGUAGES_AREA'; end if;
+  ) then
+    select jsonb_build_object(
+      'stage', stage, 'grade_level', grade_level, 'subject_area', subject_area, 'domain', domain,
+      'active', active, 'node_kind', node_kind, 'content_readiness', content_readiness,
+      'mastery_targetable', mastery_targetable, 'pedagogical_review_status', pedagogical_review_status,
+      'bncc_alignment_status', bncc_alignment_status, 'content_pack', metadata->>'content_pack',
+      'internal_grouping_only', metadata->>'internal_grouping_only', 'bncc_alignment', metadata->>'bncc_alignment',
+      'official_code', metadata->>'official_code', 'official_mapping_status', metadata->>'official_mapping_status',
+      'mapping_status', metadata->>'mapping_status', 'publication_status', metadata->>'publication_status'
+    ) into v_internal_parent_snapshot
+      from public.learning_curriculum_skills
+     where catalog_id = v_catalog_id and code = 'LANGUAGES_AREA';
+    raise exception 'V5_INTERNAL_PARENT_ANCHOR_SCOPE_CONFLICT:LANGUAGES_AREA:%', coalesce(v_internal_parent_snapshot::text, 'MISSING');
+  end if;
   select id into v_parent_skill_id from public.learning_curriculum_skills where catalog_id = v_catalog_id and code = 'LANGUAGES_AREA';
   if v_parent_skill_id is null then raise exception 'V5_INTERNAL_SKILL_PARENT_MISSING:LANGUAGES_AREA'; end if;
   insert into public.learning_curriculum_skills(
