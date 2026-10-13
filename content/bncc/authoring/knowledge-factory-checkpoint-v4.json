@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
+  "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
+  "inputHash": "29821014a34d0e912f768dd54e0c2944ff23b9917e6b038dcce4033efbb785be",
+  "outputHash": "ff2372896322c99a2cfc2cd73ee830c5ed50aad059a067606cf8ecfd6380dc66",
+  "completedWork": [
+    "FOUNDATION_RECONCILED",
+    "OFFICIAL_NODE_MATRIX_BUILT",
+    "V3_DEPTH_AUDIT_BUILT",
+    "UNIT_STAGING_PACKAGE_BUILT",
+    "HUMAN_REVIEW_DRAFTS_BUILT"
+  ],
+  "currentWave": 1,
+  "nextQueueItem": {
+    "wave": 1,
+    "id": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+    "stage": "ENSINO_MEDIO",
+    "subject": "BIOLOGY",
+    "status": "DEPTH_GAP",
+    "reason": "One or more purpose-specific pools are below the V4 deep-assessment minimum.",
+    "missingMinimums": {
+      "PROBE": {
+        "current": 2,
+        "target": 4
+      },
+      "PRACTICE": {
+        "current": 4,
+        "target": 12
+      },
+      "TRANSFER": {
+        "current": 2,
+        "target": 8
+      },
+      "LOCK_IN": {
+        "current": 2,
+        "target": 6
+      },
+      "REVIEW": {
+        "current": 2,
+        "target": 10
+      }
+    }
+  },
+  "pendingItems": 1799,
+  "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
+  "nextSteps": [
+    "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
+    "AUTHOR_EXPERIENTIAL_EVIDENCE",
+    "RECONCILE_ALL_65_INTERNAL_SKILLS",
+    "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
+    "HUMAN_PEDAGOGICAL_REVIEW"
+  ],
+  "checkpointHash": "da14f44746ae1f07feddd074c59e802337461fd4a7ad54d9c4cc4f8f1d551d01"
+}

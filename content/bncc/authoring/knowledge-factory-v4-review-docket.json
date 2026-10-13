@@ -1,0 +1,2008 @@
+{
+  "schemaVersion": "tec-escola.bncc.review-docket.v4",
+  "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
+  "status": "DRAFT_FOR_HUMAN_REVIEW",
+  "items": [
+    {
+      "targetId": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+      "stage": "ENSINO_MEDIO",
+      "subject": "BIOLOGY",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "title": "Como organismos e ambiente se influenciam",
+          "objective": "Explicar relações entre organismos e fatores abióticos em ecossistemas, usando evidências para descrever efeitos sem presumir que uma mudança tenha uma única causa.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Fatores bióticos incluem organismos e suas interações",
+        "Fatores abióticos incluem condições como água, luz e temperatura",
+        "Energia flui pelas relações alimentares enquanto a matéria circula entre organismos e ambiente"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "kgf-bio-eco-01",
+          "purpose": "PROBE",
+          "prompt": "Em um lago, a temperatura da água aumenta durante um período seco. Qual elemento citado é um fator abiótico?",
+          "answerKey": "A temperatura da água.",
+          "explanation": "Temperatura é uma condição física do ambiente; peixes, algas e microrganismos são organismos."
+        },
+        {
+          "id": "kgf-bio-eco-02",
+          "purpose": "PROBE",
+          "prompt": "Em uma teia, insetos consomem folhas e aves consomem alguns insetos. O que a seta que vai do inseto para a ave deve representar nesse modelo?",
+          "answerKey": "Que matéria e energia alimentar passam do organismo consumido para o consumidor.",
+          "explanation": "Na representação usual de relações alimentares, a seta aponta do recurso alimentar para o consumidor; ela não fixa o tamanho das populações."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "PHYSICS_MODEL_FORCE",
+      "stage": "ENSINO_MEDIO",
+      "subject": "PHYSICS",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "PHYSICS_MODEL_FORCE",
+          "title": "Forcas mudam movimentos, nao aparecem do nada",
+          "objective": "Representar forças que atuam em um corpo, determinar a resultante e relacionar sua aceleração à massa e à interação, sem confundir resultante nula com ausência de forças.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Força é interação representada por vetor",
+        "A resultante é a soma vetorial das forças sobre o corpo",
+        "A segunda lei relaciona resultante, massa e aceleração: Fresultante = m·a"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_PHYS_FORCE_Q01",
+          "purpose": "PROBE",
+          "prompt": "Um livro está parado sobre uma mesa. Qual afirmação descreve corretamente as forças verticais sobre o livro?",
+          "answerKey": "A força normal da mesa e o peso atuam em sentidos opostos e podem se equilibrar.",
+          "explanation": "O repouso indica aceleração vertical nula, não ausência de forças. A normal para cima pode equilibrar o peso para baixo."
+        },
+        {
+          "id": "V3_PHYS_FORCE_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Duas equipes puxam uma corda: 240 N para leste e 190 N para oeste. Qual é a resultante horizontal?",
+          "answerKey": "50 N para leste.",
+          "explanation": "Os sentidos são opostos; subtraímos os módulos e mantemos o sentido da força maior: 240 − 190 = 50 N para leste."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "PORTUGUESE_CONNECT_IDEAS",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "PORTUGUESE",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "PORTUGUESE_CONNECT_IDEAS",
+          "title": "Conectores mostram como as ideias se relacionam",
+          "objective": "Interpretar e escolher conectores considerando a relação lógica e o efeito produzido no texto, em vez de apenas memorizar listas.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Coesão liga partes do texto por recursos linguísticos",
+        "Conectores sinalizam relações como causa, contraste, conclusão e adição",
+        "A relação precisa ser confirmada pelo contexto, não apenas pela palavra"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_PT_CONNECT_Q01",
+          "purpose": "PROBE",
+          "prompt": "“A biblioteca ampliou o horário; ___, mais estudantes conseguiram estudar depois da aula.” Qual conector indica a consequência descrita?",
+          "answerKey": "por isso",
+          "explanation": "A segunda oração apresenta um resultado associado à ampliação do horário; “por isso” marca consequência."
+        },
+        {
+          "id": "V3_PT_CONNECT_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "“O relatório tem dados úteis, ___ sua amostra inclui apenas uma turma.” Qual conector preserva a relação de ressalva?",
+          "answerKey": "mas",
+          "explanation": "A segunda informação limita a força da primeira, criando contraste/ressalva."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "SCIENCE_EVIDENCE_CONCLUSION",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "SCIENCE",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "SCIENCE_EVIDENCE_CONCLUSION",
+          "title": "O que os dados permitem concluir?",
+          "objective": "Relacionar conclusões a evidências observadas, distinguir observação de inferência e explicitar limites e explicações alternativas.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Observação é registro feito por método definido",
+        "Inferência interpreta observações usando uma explicação",
+        "Uma conclusão deve ser proporcional à qualidade, ao alcance e às limitações dos dados"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_SCI_EVIDENCE_Q01",
+          "purpose": "PROBE",
+          "prompt": "Uma tabela mostra que as mudas do grupo A cresceram 2 cm e as do grupo B, 4 cm. Qual frase é observação direta?",
+          "answerKey": "O grupo B cresceu 4 cm no período medido.",
+          "explanation": "A tabela registra crescimento. As causas citadas não foram medidas nesse dado."
+        },
+        {
+          "id": "V3_SCI_EVIDENCE_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Um filtro deixou a água visualmente menos turva em um teste. Qual conclusão é mais cuidadosa?",
+          "answerKey": "Nesse teste, a água pareceu menos turva após passar pelo filtro.",
+          "explanation": "A aparência sustenta uma observação sobre turbidez, mas não comprova remoção de microrganismos ou segurança para consumo."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "CHEMISTRY_ACID_BASE",
+      "stage": "ENSINO_MEDIO",
+      "subject": "CHEMISTRY",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "CHEMISTRY_ACID_BASE",
+          "title": "Acidez, basicidade e leitura de pH",
+          "objective": "Interpretar pH e indicadores como evidências sobre soluções, relacionando medidas e neutralização sem inferir perigo ou segurança apenas pelo rótulo ácido/base.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "pH é uma escala para caracterizar acidez/basicidade em solução aquosa",
+        "Indicadores mudam de cor em faixas; não identificam todos os componentes",
+        "Neutralização depende das quantidades e condições e não significa que qualquer mistura ficou segura"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_CHEM_PH_Q01",
+          "purpose": "PROBE",
+          "prompt": "Duas soluções foram medidas pelo mesmo indicador: A ficou na faixa de pH 3–4 e B na faixa 6–7. Qual comparação é sustentada?",
+          "answerKey": "A solução A é mais ácida que B nessa medição.",
+          "explanation": "A escala permite comparar acidez, mas não identifica composição nem perigo por si só."
+        },
+        {
+          "id": "V3_CHEM_PH_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma equipe mistura volumes iguais de uma solução ácida e outra básica, mas desconhece suas concentrações. O que pode afirmar sobre o pH final?",
+          "answerKey": "Não pode prever o valor apenas pelos volumes; as concentrações e a reação também importam.",
+          "explanation": "Volumes iguais não garantem quantidades químicas equivalentes; concentração e composição importam."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "HISTORY_COMPARE_CAUSES",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "HISTORY",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "HISTORY_COMPARE_CAUSES",
+          "title": "Causas historicas se combinam e atuam em tempos diferentes",
+          "objective": "Explicar processos históricos relacionando múltiplos fatores, agentes e escalas temporais e apoiando interpretações em fontes.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Causa histórica é um fator que contribui para um processo, não uma explicação isolada",
+        "Multicausalidade relaciona fatores econômicos, políticos, sociais e culturais",
+        "Consequências variam entre grupos e podem aparecer em tempos diferentes"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_HIS_CAUSE_Q01",
+          "purpose": "PROBE",
+          "prompt": "Uma cidade cresceu após a abertura de uma ferrovia. Qual informação ajuda a investigar causalidade sem presumir uma causa única?",
+          "answerKey": "Comparar registros de transporte, emprego, migração e decisões públicas antes e depois da ferrovia.",
+          "explanation": "Fontes variadas ajudam a identificar fatores e limites da explicação."
+        },
+        {
+          "id": "V3_HIS_CAUSE_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma lei foi aprovada pouco antes de uma mobilização social. Qual conclusão é mais cuidadosa?",
+          "answerKey": "A proximidade temporal é uma pista, mas é necessário investigar como a lei e outros fatores se relacionaram à mobilização.",
+          "explanation": "A ordem dos eventos não estabelece sozinha direção ou suficiência causal."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "RELIGIOUS_MEDIATE_DIALOGUE",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "RELIGIOUS_EDUCATION",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "title": "Mediar divergencias sem exigir concordancia",
+          "objective": "Aplicar escuta, descrição respeitosa e regras de diálogo para mediar divergências religiosas e não religiosas sem privilegiar convicções.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Liberdade de consciência protege convicções e também a possibilidade de não aderir a religião",
+        "Mediação organiza a conversa e não decide qual crença é verdadeira",
+        "Respeito exige evitar coerção, ridicularização e discriminação"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_REL_DIALOGUE_Q01",
+          "purpose": "PROBE",
+          "prompt": "Durante um debate, uma pessoa ridiculariza a convicção de um colega. Qual ação inicial respeita a segurança e o diálogo?",
+          "answerKey": "Interromper a ridicularização, reafirmar as regras e buscar apoio adulto se persistir.",
+          "explanation": "O primeiro cuidado é impedir humilhação e garantir regras iguais; situações persistentes pedem intervenção responsável."
+        },
+        {
+          "id": "V3_REL_DIALOGUE_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma turma planeja um mural sobre celebrações. Qual proposta favorece pluralidade sem obrigar ninguém a se identificar?",
+          "answerKey": "Apresentar exemplos religiosos e não religiosos com fontes e participação voluntária.",
+          "explanation": "A proposta permite conhecer diversidade sem impor identidade ou adesão."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "COMPUTING_RECOGNIZE_PHISHING",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "COMPUTING",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "COMPUTING_RECOGNIZE_PHISHING",
+          "title": "Verificar mensagens antes de clicar ou compartilhar dados",
+          "objective": "Reconhecer sinais de engenharia social e adotar uma resposta segura sem abrir links suspeitos nem expor credenciais.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Phishing tenta induzir uma ação por mensagem enganosa",
+        "Urgência, pedido de senha e endereço inesperado são sinais, não prova isolada",
+        "Verificação deve ocorrer por canal oficial independente da mensagem"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_COMP_PHISH_Q01",
+          "purpose": "PROBE",
+          "prompt": "Uma mensagem inesperada pede senha e afirma que a conta será bloqueada em cinco minutos. Qual é a resposta mais segura?",
+          "answerKey": "Não clicar nem responder e confirmar pelo canal oficial conhecido.",
+          "explanation": "Urgência e pedido de credenciais são sinais; a confirmação deve ocorrer fora da mensagem."
+        },
+        {
+          "id": "V3_COMP_PHISH_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Um perfil com logotipo da escola pede o código de autenticação por mensagem privada. O que o estudante deve concluir?",
+          "answerKey": "O logotipo não autentica o perfil; códigos não devem ser enviados e o pedido deve ser verificado por canal oficial.",
+          "explanation": "A aparência pode ser copiada; códigos de autenticação são segredos e o canal deve ser confirmado."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "MATH_RATIO_UNIT_RATE",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "MATHEMATICS",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "MATH_RATIO_UNIT_RATE",
+          "title": "Interpretar razao e calcular taxa unitaria",
+          "objective": "Interpretar uma razao e calcular quanto corresponde a uma unidade.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [],
+      "assessmentSamples": [
+        {
+          "id": "v4-authored-mathematics-ratio-probe-01",
+          "purpose": "PROBE",
+          "prompt": "Uma padaria usa 4 kg de farinha para assar 20 paes. Quantos paes sao produzidos por quilograma?",
+          "answerKey": "5 paes",
+          "explanation": "A taxa unitaria e 20 dividido por 4, ou seja, 5 paes por quilograma."
+        },
+        {
+          "id": "v4-authored-mathematics-ratio-probe-02",
+          "purpose": "PROBE",
+          "prompt": "Uma torneira libera 18 litros em 3 minutos. Qual e a taxa de litros por minuto?",
+          "answerKey": "6 litros por minuto",
+          "explanation": "Dividindo 18 litros por 3 minutos, obtemos 6 litros por minuto."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "MISCONCEPTION_REMEDIATION_REQUIRES_REVIEW",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "SCIENCE_PLAN_INVESTIGATION",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "SCIENCE",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "SCIENCE_PLAN_INVESTIGATION",
+          "title": "Como planejar uma investigação justa e observável",
+          "objective": "Transformar uma pergunta investigável em um procedimento que mude um fator por vez, registre uma medida pertinente e permita comparar resultados com cuidado.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "A variável independente é o fator que o plano altera de propósito",
+        "A variável dependente é o resultado que será observado ou medido",
+        "Condições controladas reduzem explicações alternativas, mas não tornam todo estudo perfeito"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "kgf-sci-plan-01",
+          "purpose": "PROBE",
+          "prompt": "Uma turma compara quanto tempo o açúcar leva para se dissolver em água fria e morna. Qual condição deve ser mantida igual para que a comparação seja mais informativa?",
+          "answerKey": "Usar o mesmo volume de água nos dois copos.",
+          "explanation": "Mantendo o volume igual e mudando a temperatura de propósito, a comparação fica menos confundida por outra diferença relevante."
+        },
+        {
+          "id": "kgf-sci-plan-02",
+          "purpose": "PROBE",
+          "prompt": "No plano “variar as horas de luz e medir a altura das mudas após duas semanas”, qual é o resultado medido?",
+          "answerKey": "A altura das mudas após duas semanas.",
+          "explanation": "A altura é a variável dependente: o resultado observado em resposta às condições de luz comparadas."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "HISTORY_ORDER_EVENTS",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "HISTORY",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "HISTORY_ORDER_EVENTS",
+          "title": "Cronologia: ordem, duração e simultaneidade",
+          "objective": "Ordenar acontecimentos com base em datas e pistas temporais, distinguir anterioridade de duração e reconhecer quando eventos ocorrem ao mesmo tempo.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Anterioridade indica que um evento ocorreu antes de outro",
+        "Duração mede quanto tempo um processo se estende",
+        "Simultaneidade indica que eventos se sobrepõem no tempo, mesmo em lugares diferentes"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "kgf-his-order-01",
+          "purpose": "PROBE",
+          "prompt": "Um registro informa que a biblioteca abriu em 2008 e a reforma do prédio começou em 2015. Qual acontecimento ocorreu primeiro?",
+          "answerKey": "A abertura da biblioteca.",
+          "explanation": "2008 antecede 2015 na sequência dos anos, então a abertura foi anterior ao início da reforma."
+        },
+        {
+          "id": "kgf-his-order-02",
+          "purpose": "PROBE",
+          "prompt": "Uma notícia publicada em 2022 descreve um acontecimento ocorrido em 2020. O que a data de publicação informa diretamente?",
+          "answerKey": "Quando a notícia foi publicada, não necessariamente quando o fato ocorreu.",
+          "explanation": "A data de uma fonte indica quando ela foi produzida ou divulgada; o texto pode se referir a um evento anterior."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "PORTUGUESE_INFER_FROM_CLUES",
+      "stage": "FUNDAMENTAL_II",
+      "subject": "PORTUGUESE",
+      "officialReferences": [],
+      "lessonSummaries": [
+        {
+          "skillCode": "PORTUGUESE_INFER_FROM_CLUES",
+          "title": "Inferir sem abandonar as pistas do texto",
+          "objective": "Construir inferências justificáveis conectando pistas textuais e conhecimento pertinente, distinguindo o que o texto diz do que o leitor conclui.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Informação explícita aparece diretamente no texto",
+        "Inferência combina pistas com uma conclusão que não está escrita literalmente",
+        "Uma boa inferência pode ser justificada por trechos específicos"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_PT_INFER_Q01",
+          "purpose": "PROBE",
+          "prompt": "“Rui fechou a janela e afastou os livros do parapeito. Do lado de fora, gotas batiam no vidro.” O que as pistas sugerem?",
+          "answerKey": "Começou a chover ou a chuva se intensificou.",
+          "explanation": "As gotas no vidro e a ação de fechar a janela sustentam a inferência de chuva."
+        },
+        {
+          "id": "v3-portuguese-reading_argument-6",
+          "purpose": "PRACTICE",
+          "prompt": "No conto, o personagem guarda o guarda-chuva mesmo com o ceu aberto e olha varias vezes para a janela. Que inferencia e sustentada?",
+          "answerKey": "Ele espera uma mudanca no tempo ou alguem chegar.",
+          "explanation": "A inferencia combina os sinais do comportamento sem afirmar uma causa que o texto nao apresenta."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "NO_OFFICIAL_MAPPING_CLAIMED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "ARTE_POSSIBILIDADES_CRIATIVAS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "subject": "ARTE",
+      "officialReferences": [
+        {
+          "code": "EF15AR22",
+          "sourceEvidence": {
+            "officialCode": "EF15AR22",
+            "sourceId": "BNCC_EI_EF_2018",
+            "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "page": 205,
+            "section": "AR > Habilidades",
+            "officialDescription": "Experimentar possibilidades criativas de movimento e de voz na criação de um personagem teatral, discutindo estereótipos.",
+            "localCatalogExcerpt": ") Experimentar possibilidades criativas de movimento e de voz na criação de um personagem teatral, discutindo estereótipos. (EF15AR23) Reconhecer e experimentar, em projetos temáticos, as relações processuais entre diversas linguagens artísticas. (EF15AR24) Caracterizar e experimentar brinquedos, brincadeiras, jogos, danças, canções e histórias de diferentes matrizes estéticas e culturais. (EF15AR25) Conhecer e valorizar o patrimônio cultural, material e imaterial, de culturas diversas, em especial a brasileira, incluindo-se suas matrizes indígenas, africanas e europeias, de diferentes épocas, favorecendo a construção de vocabulário e repertório relativos às diferentes linguagens artísticas. (EF15AR26) Explorar diferentes tecnologias e recursos digitais (multimeios, animações, jogos eletrônicos, gravações em áudio e vídeo, fotografia, softwares etc.) nos processos de criação artística. 2",
+            "localCatalogSourceId": "BNCC_EI_EF_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "localCatalogPage": 205,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_FUNDAMENTAL",
+            "officialComponentCode": "AR",
+            "officialSubjectArea": "ART",
+            "candidateSubject": "ARTE",
+            "gradeRange": {
+              "from": 1,
+              "to": 5
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS",
+            "proposalCanonicalCode": "ARTE_POSSIBILIDADES_CRIATIVAS",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_15_AR_EXPERIMENTAR_POSSIBILIDADES_CRIATIVAS",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "ART_CREATE_CHARACTER_EXPERIMENT_FI",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 5
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "ART_CREATE_CHARACTER_EXPERIMENT_FI",
+          "title": "Criar personagem e experimentar possibilidades",
+          "objective": "Usar movimento e voz para criar personagem, observando efeitos expressivos e discutindo estereótipos com respeito.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Movimento e voz são escolhas expressivas que podem comunicar intenções",
+        "Um personagem é uma criação, não uma representação verdadeira de um grupo",
+        "Estereótipo reduz pessoas diversas a uma característica fixa"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_ART_CHAR_Q01",
+          "purpose": "PROBE",
+          "prompt": "Uma criança quer mostrar que sua personagem está procurando algo com cuidado. Qual escolha pode comunicar essa intenção?",
+          "answerKey": "Movimentos lentos e olhar atento para diferentes lugares.",
+          "explanation": "Movimento e foco do olhar podem ajudar a comunicar busca cuidadosa; a escolha ainda pode ser experimentada e revista."
+        },
+        {
+          "id": "V3_ART_CHAR_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "A mesma frase é dita em ritmo lento e depois rapidamente. O que a turma deve comparar?",
+          "answerKey": "Como a mudança de ritmo altera a impressão e a compreensão da fala.",
+          "explanation": "A observação artística compara efeitos da escolha, não o valor da voz ou da pessoa."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "EDUCACAO_FISICA_UNSPECIFIED_HEALTH_LIFESTYLE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "subject": "EDUCACAO_FISICA",
+      "officialReferences": [
+        {
+          "code": "EF67EF10",
+          "sourceEvidence": {
+            "officialCode": "EF67EF10",
+            "sourceId": "BNCC_EI_EF_2018",
+            "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "page": 235,
+            "section": "EF > Habilidades",
+            "officialDescription": "Diferenciar exercício físico de atividade física e propor alternativas para a prática de exercícios físicos dentro e fora do ambiente escolar.",
+            "localCatalogExcerpt": ") Diferenciar exercício físico de atividade física e propor alternativas para a prática de exercícios físicos dentro e fora do ambiente escolar. (EF67EF11) Experimentar, fruir e recriar danças urbanas, identificando seus elementos constitutivos (ritmo, espaço, gestos). (EF67EF12) Planejar e utilizar estratégias para aprender elementos constitutivos das danças urbanas. (EF67EF13) Diferenciar as danças urbanas das demais manifestações da dança, valorizando e respeitando os sentidos e significados atribuídos a eles por diferentes grupos sociais. 234 MINSTÉIRO ÉIDTT R AEATREUUOREDIU UNIDADES TEMÁTICAS OBJETOS DE CONHECIMENTO Lutas Lutas do Brasil Práticas corporais de aventura Práticas corporais de aventura urbanas EDUCAÇÃO FÍSICA – 6º E 7º ANOS (Continuação) 235 MINSTÉSRNO D RATEÉUCÇ ÃoOIEÉ ENSINO FUNDAMENTAL HABILIDADES (EF67EF14) Experimentar, fruir e recriar diferentes lutas do Brasil, v",
+            "localCatalogSourceId": "BNCC_EI_EF_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "localCatalogPage": 235,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_FUNDAMENTAL",
+            "officialComponentCode": "EF",
+            "officialSubjectArea": "PHYSICAL_EDUCATION",
+            "candidateSubject": "EDUCACAO_FISICA",
+            "gradeRange": {
+              "from": 6,
+              "to": 7
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_67_EF_UNSPECIFIED_HEALTH_LIFESTYLE",
+            "proposalCanonicalCode": "EDUCACAO_FISICA_UNSPECIFIED_HEALTH_LIFESTYLE",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_67_EF_UNSPECIFIED_HEALTH_LIFESTYLE",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
+            "internalGradeRange": {
+              "from": 6,
+              "to": 7
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
+          "title": "Atividade fisica e exercicio: relacionados, mas nao iguais",
+          "objective": "Diferenciar atividade física, que inclui movimentos corporais do cotidiano, de exercício físico, que é planejado e organizado, e pensar alternativas adequadas de prática.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Atividade física envolve movimento corporal e gasto de energia",
+        "Exercício físico é uma forma de atividade física planejada, estruturada e repetitiva, com objetivo definido",
+        "Uma proposta precisa considerar local, acesso, segurança, interesse e possibilidade de adaptação"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_PE_ACTIVITY_Q01",
+          "purpose": "PROBE",
+          "prompt": "Qual exemplo descreve mais claramente um exercício físico, e não apenas um movimento cotidiano?",
+          "answerKey": "Uma caminhada planejada, organizada e repetida em encontros regulares, com objetivo combinado com o educador.",
+          "explanation": "O exemplo escolhido foi planejado, estruturado e repetido; os outros descrevem movimentos do cotidiano sem indicar um exercício organizado."
+        },
+        {
+          "id": "V3_PE_ACTIVITY_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma estudante vai a pé até a escola, sem seguir um plano de exercício. Como classificar o deslocamento?",
+          "answerKey": "É atividade física; não há informação suficiente para chamá-lo de exercício planejado.",
+          "explanation": "O deslocamento envolve movimento corporal, mas frequência ou equipamento, sozinhos, não demonstram planejamento de exercício."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "subject": "ENSINO_RELIGIOSO",
+      "officialReferences": [
+        {
+          "code": "EF01ER01",
+          "sourceEvidence": {
+            "officialCode": "EF01ER01",
+            "sourceId": "BNCC_EI_EF_2018",
+            "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "page": 445,
+            "section": "ER > Habilidades",
+            "officialDescription": "Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós.",
+            "localCatalogExcerpt": ") Identificar e acolher as semelhanças e diferenças entre o eu, o outro e o nós. (EF01ER02) Reconhecer que o seu nome e o das demais pessoas os identificam e os diferenciam. (EF01ER03) Reconhecer e respeitar as características físicas e subjetivas de cada um. (EF01ER04) Valorizar a diversidade de formas de vida. (EF01ER05) Identificar e acolher sentimentos, lembranças, memórias e saberes de cada um. (EF01ER06) Identificar as diferentes formas pelas quais as pessoas manifestam sentimentos, ideias, memórias, gostos e crenças em diferentes espaços. BASE NACIONAL COMUM CURRICULAR 444 ENSINO RELIGIOSO – 2º ANO UNIDADES TEMÁTICAS OBJETOS DE CONHECIMENTO Identidades e alteridades O eu, a família e o ambiente de convivência Memórias e símbolos Símbolos religiosos Manifestações religiosas Alimentos sagrados ENSINO RELIGIOSO ENSINO FUNDAMENTAL 445 HABILIDADES (EF02ER01) Reconhecer os diferentes es",
+            "localCatalogSourceId": "BNCC_EI_EF_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "localCatalogPage": 445,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_FUNDAMENTAL",
+            "officialComponentCode": "ER",
+            "officialSubjectArea": "RELIGIOUS_EDUCATION",
+            "candidateSubject": "ENSINO_RELIGIOSO",
+            "gradeRange": {
+              "from": 1,
+              "to": 1
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS",
+            "proposalCanonicalCode": "ENSINO_RELIGIOSO_ACOLHER_SEMELHANCAS",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_ER_IDENTIFICAR_ACOLHER_SEMELHANCAS",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "RELIGIOUS_COMPARE_SELF_OTHER_FI",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 1
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "RELIGIOUS_COMPARE_SELF_OTHER_FI",
+          "title": "Semelhancas, diferencas e acolhimento",
+          "objective": "Reconhecer que pessoas podem compartilhar algumas características e diferir em outras, praticando convivência sem hierarquizar.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Uma pessoa tem muitas características e não pode ser resumida a uma só",
+        "Semelhança não torna pessoas iguais em tudo",
+        "Acolher é tratar com dignidade e permitir participação"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_REL_FI_Q01",
+          "purpose": "PROBE",
+          "prompt": "Na história, Bia gosta de desenhar e Leo gosta de montar blocos. Os dois gostam de ouvir histórias. Qual semelhança aparece?",
+          "answerKey": "Ambos gostam de ouvir histórias.",
+          "explanation": "O texto informa uma preferência comum e outras diferentes; não diz que são iguais em tudo."
+        },
+        {
+          "id": "V3_REL_FI_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma brincadeira escolhida por parte da turma não agrada a todos. O que pode ajudar a incluir diferentes preferências?",
+          "answerKey": "Alternar escolhas e permitir formas diferentes de participar.",
+          "explanation": "Rodízio e alternativas ampliam participação sem declarar uma preferência superior."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "LINGUA_PORTUGUESA_LETRAS_ALFABETO",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "subject": "LINGUA_PORTUGUESA",
+      "officialReferences": [
+        {
+          "code": "EF01LP04",
+          "sourceEvidence": {
+            "officialCode": "EF01LP04",
+            "sourceId": "BNCC_EI_EF_2018",
+            "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "page": 101,
+            "section": "LP > Habilidades",
+            "officialDescription": "Distinguir as letras do alfabeto de outros sinais gráficos.",
+            "localCatalogExcerpt": ") Distinguir as letras do alfabeto de outros sinais gráficos. (EF01LP05) Reconhecer o sistema de escrita alfabética como representação dos sons da fala. (EF01LP06) Segmentar oralmente palavras em sílabas. (EF02LP02) Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras. (EF01LP07) Identificar fonemas e sua representação por letras. (EF02LP03) Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra). BASE NACIONAL COMUM CURRICULAR 100 PRÁTICAS DE LINGUAGEM OBJETOS DE CONHECIMENTO TODOS OS CAMPOS DE ATUAÇÃO Análise linguística/semiótica (Alfabetização) Construção do sistema alfabético e da ortografia Conhecimento do alfabeto do português do Brasil Conhecimento das diversas grafias do alfabe",
+            "localCatalogSourceId": "BNCC_EI_EF_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "localCatalogPage": 101,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_FUNDAMENTAL",
+            "officialComponentCode": "LP",
+            "officialSubjectArea": "PORTUGUESE",
+            "candidateSubject": "LINGUA_PORTUGUESA",
+            "gradeRange": {
+              "from": 1,
+              "to": 1
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO",
+            "proposalCanonicalCode": "LINGUA_PORTUGUESA_LETRAS_ALFABETO",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_LP_DISTINGUIR_LETRAS_ALFABETO",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 1
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "PORTUGUESE_DISTINGUISH_LETTERS_SIGNS_FI",
+          "title": "Letras aparecem junto de outros sinais",
+          "objective": "Reconhecer letras do alfabeto em palavras e diferenciá-las de números, pontuação e imagens que também aparecem em cartazes e telas.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Letras representam unidades do sistema de escrita alfabética",
+        "Algarismos registram números e quantidades",
+        "Pontuação e ícones também comunicam, mas não são letras"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_PT_LETTER_Q01",
+          "purpose": "PROBE",
+          "prompt": "No convite “DIA 7!”, qual item é um algarismo?",
+          "answerKey": "7",
+          "explanation": "O 7 representa número; D e A são letras, e ! é pontuação."
+        },
+        {
+          "id": "V3_PT_LETTER_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Qual conjunto contém somente letras?",
+          "answerKey": "M, A, S",
+          "explanation": "M, A e S são letras; os demais conjuntos incluem algarismo, pontuação ou imagem."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "MATEMATICA_LOCALIZACAO_PESSOAS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "subject": "MATEMATICA",
+      "officialReferences": [
+        {
+          "code": "EF01MA11",
+          "sourceEvidence": {
+            "officialCode": "EF01MA11",
+            "sourceId": "BNCC_EI_EF_2018",
+            "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "page": 281,
+            "section": "MA > Habilidades",
+            "officialDescription": "Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.",
+            "localCatalogExcerpt": ") Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás. (EF01MA12) Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial. (EF01MA13) Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico. (EF01MA14) Identificar e nomear figuras planas (círculo, quadrado, retângulo e triângulo) em desenhos apresentados em diferentes disposições ou em contornos de faces de sólidos geométricos. 280 MINSTÉIRO ÉIDTT R AEATREUUOREDIU UNIDADES TEMÁTICAS OBJETOS DE CONHECIMENTO Grandezas e medidas Medidas de comprimento, massa e capacidade: comp",
+            "localCatalogSourceId": "BNCC_EI_EF_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "localCatalogPage": 281,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_FUNDAMENTAL",
+            "officialComponentCode": "MA",
+            "officialSubjectArea": "MATHEMATICS",
+            "candidateSubject": "MATEMATICA",
+            "gradeRange": {
+              "from": 1,
+              "to": 1
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS",
+            "proposalCanonicalCode": "MATEMATICA_LOCALIZACAO_PESSOAS",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_MA_DESCREVER_LOCALIZACAO_PESSOAS",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "MATH_DESCRIBE_SPATIAL_POSITION_FI",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 1
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "MATH_DESCRIBE_SPATIAL_POSITION_FI",
+          "title": "Direita e esquerda dependem de onde voce esta",
+          "objective": "Descrever localização em relação à própria posição, usando vocabulário espacial e conferindo o referencial.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Referencial é a posição de quem observa",
+        "À direita e à esquerda são relações que podem mudar quando o observador vira",
+        "Em frente e atrás também precisam de um ponto de referência claro"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_MATH_SPACE_Q01",
+          "purpose": "PROBE",
+          "prompt": "Lia está olhando para a lousa. A garrafa está ao lado direito do corpo dela. Como Lia pode descrevê-la?",
+          "answerKey": "A garrafa está à minha direita.",
+          "explanation": "A descrição usa o referencial de Lia, que está olhando para a lousa."
+        },
+        {
+          "id": "V3_MATH_SPACE_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma criança vira de frente para a turma. Um brinquedo não se move, mas agora aparece à esquerda do corpo dela. O que mudou?",
+          "answerKey": "O referencial da criança mudou.",
+          "explanation": "A criança mudou de orientação; a posição descrita relativa ao próprio corpo pode mudar."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "CIENCIAS_HUMANAS_AVALIAR_IMPACTOS",
+      "stage": "ENSINO_MEDIO",
+      "subject": "CIENCIAS_HUMANAS",
+      "officialReferences": [
+        {
+          "code": "EM13CHS302",
+          "sourceEvidence": {
+            "officialCode": "EM13CHS302",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": 138,
+            "section": "CHS > Habilidades",
+            "officialDescription": "Analisar e avaliar os impactos econômicos e socioambientais de cadeias produtivas ligadas à exploração de recursos naturais e às atividades agropecuárias em diferentes ambientes e escalas de análise, considerando o modo de vida das populações locais e o compromisso com a sustentabilidade.",
+            "localCatalogExcerpt": ") Analisar e avaliar os impactos econômicos e socioambientais de cadeias produtivas ligadas à exploração de recursos naturais e às atividades agropecuárias em diferentes ambientes e escalas de análise, considerando o modo de vida das populações locais e o compromisso com a sustentabilidade. (EM13CHS303) Debater e avaliar o papel da indústria cultural e das culturas de massa no estímulo ao consumismo, seus impactos econômicos e socioambientais, com vistas a uma percepção crítica das necessidades criadas pelo consumo. (EM13CHS304) Analisar os impactos socioambientais decorrentes de práticas de instituições governamentais, de empresas e de indivíduos, discutindo as origens dessas práticas, e selecionar aquelas que respeitem e promovam a consciência e a ética socioambiental e o consumo responsável. (EM13CHS305) Analisar e discutir o papel dos organismos nacionais de regulação, controle e fis",
+            "localCatalogSourceId": "BNCC_EM_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "localCatalogPage": 138,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "CHS",
+            "officialSubjectArea": "HUMANITIES",
+            "candidateSubject": "CIENCIAS_HUMANAS",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS",
+            "proposalCanonicalCode": "CIENCIAS_HUMANAS_AVALIAR_IMPACTOS",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_CHS_ANALISAR_AVALIAR_IMPACTOS",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 3
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "HUMANITIES_EVALUATE_PRODUCTION_IMPACTS_HS",
+          "title": "Uma cadeia produtiva tem etapas, agentes e impactos diferentes",
+          "objective": "Avaliar impactos econômicos e socioambientais de cadeias ligadas à exploração de recursos e à agropecuária, considerando grupos e escalas.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Cadeia produtiva conecta extração/produção, processamento, transporte, venda e consumo",
+        "Impactos econômicos e socioambientais podem distribuir custos e benefícios de forma desigual",
+        "Escala local, regional e global mostra dimensões diferentes e não substitui a voz das populações afetadas"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_HUM_IMPACT_Q01",
+          "purpose": "PROBE",
+          "prompt": "Qual ordem representa uma cadeia produtiva de alimento de forma mais completa?",
+          "answerKey": "Produção, processamento, transporte, venda e consumo.",
+          "explanation": "A cadeia inclui etapas e agentes antes e depois do cultivo."
+        },
+        {
+          "id": "V3_HUM_IMPACT_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma tabela informa volume de água por hectare para duas safras, mas uma safra mediu área maior. Qual cuidado é necessário?",
+          "answerKey": "Comparar a mesma unidade e também considerar a área total para responder perguntas diferentes.",
+          "explanation": "Indicador por hectare e volume total respondem perguntas diferentes; escala deve ser explicitada."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "COMPUTACAO_CRITICAMENTE_EXPERIENCIAS",
+      "stage": "ENSINO_MEDIO",
+      "subject": "COMPUTACAO",
+      "officialReferences": [
+        {
+          "code": "EM13CO23",
+          "sourceEvidence": {
+            "officialCode": "EM13CO23",
+            "sourceId": "BNCC_COMPUTACAO_2022",
+            "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+            "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+            "page": 74,
+            "section": "CO > Habilidades",
+            "officialDescription": "Analisar criticamente as experiências em comunidades virtuais e as relações advindas da interação e comunicação com outras pessoas, bem como seus impactos na sociedade.",
+            "localCatalogExcerpt": ") Analisar criticamente as experiências em comunidades virtuais e as relações advindas da interação e comunicação com outras pessoas, bem como seus impactos na sociedade. (EM13CO24) Identificar e reconhecer como as redes sociais e artefatos computacionais em geral interferem na saúde física e mental de seus usuários. (EM13CO25) Dialogar em ambientes virtuais com segurança e respeito às diferenças culturais e pessoais, reconhecendo e denunciando atitudes abusivas. (EM13CO26) Aplicar os conceitos e pressupostos do direito digital em sua conduta e experiências com o cotidiano da cultura digital, bem como na produção e uso de artefatos computacionais. EXPLICAÇÃO DA HABILIDADE EXEMPLOS Esta habilidade visa a criar oportunidades de reflexão com os estudantes sobre as oportunidades de diálogo e alcance da mensagem que se configuram na formação de comunidades virtuais, tanto relacionado a aspect",
+            "localCatalogSourceId": "BNCC_COMPUTACAO_2022",
+            "localCatalogUrl": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+            "localCatalogPage": 74,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "CO",
+            "officialSubjectArea": "COMPUTING",
+            "candidateSubject": "COMPUTACAO",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS",
+            "proposalCanonicalCode": "COMPUTACAO_CRITICAMENTE_EXPERIENCIAS",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_CO_ANALISAR_CRITICAMENTE_EXPERIENCIAS",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 3
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "COMPUTING_ANALYZE_VIRTUAL_COMMUNITIES_HS",
+          "title": "Comunidades virtuais tambem têm regras e efeitos",
+          "objective": "Analisar experiências digitais e impactos de interações sem generalizar a partir de um relato isolado.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Comunidade virtual reúne pessoas que interagem por uma plataforma",
+        "Regras, moderação, recursos de design e contexto influenciam interações",
+        "Um relato individual é evidência de uma experiência, não retrato completo de toda a comunidade"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_COMP_COMM_Q01",
+          "purpose": "PROBE",
+          "prompt": "Uma pessoa relata que não recebeu resposta em um fórum. O que esse relato sustenta diretamente?",
+          "answerKey": "Que essa pessoa não recebeu resposta naquele contexto descrito.",
+          "explanation": "O relato é evidência de uma experiência individual, não de um padrão universal."
+        },
+        {
+          "id": "V3_COMP_COMM_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma comunidade permite denúncia e tem moderadores ativos. Como esses elementos entram na análise?",
+          "answerKey": "Como regras e recursos que podem influenciar a interação e a resposta a danos.",
+          "explanation": "Regras e mecanismos influenciam experiências, mas não garantem resultado perfeito."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "LINGUA_PORTUGUESA_FENOMENO_VARIACAO",
+      "stage": "ENSINO_MEDIO",
+      "subject": "LINGUA_PORTUGUESA",
+      "officialReferences": [
+        {
+          "code": "EM13LP17",
+          "sourceEvidence": {
+            "officialCode": "EM13LP17",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": 76,
+            "section": "Linguagens e suas Tecnologias > Língua Portuguesa > Todos os campos de atuação social",
+            "officialDescription": "Analisar o fenômeno da variação linguística, em seus diferentes níveis (variação fonético-fonológica, lexical, sintática, semântica e estilístico-pragmática) e em suas diferentes dimensões (regional, histórica, social, situacional, ocupacional, etária etc.), de forma a ampliar a compreensão sobre a natureza viva e dinâmica da língua e sobre o fenômeno da constituição de variedades linguísticas de prestígio e estigmatizadas, e a fundamentar o respeito às variedades linguísticas e o combate a preconceitos linguísticos.",
+            "localCatalogExcerpt": ") Analisar o fenômeno da variação linguística, em seus diferentes níveis (variação fonético-fonológica, lexical, sintática, semântica e estilístico-pragmática) e em suas diferentes dimensões (regional, histórica, social, situacional, ocupacional, etária etc.), de forma a ampliar a compreensão sobre a natureza viva e dinâmica da língua e sobre o fenômeno da constituição de variedades linguísticas de prestígio e estigmatizadas, e a fundamentar o respeito às variedades linguísticas e o combate a preconceitos linguísticos. 4 501 MINSTÉSRNO R OTÉO DRANEMESIÉO U MCNSTÉ ÇEÃDTSTROÉ ENSINO MÉDIO CAMPO DA VIDA PESSOAL Para além das habilidades indicadas a seguir, outras devem ser consideradas também em relação a este campo. São elas as relativas: a ações mencionadas no escopo desse campo na apresentação da área e à realização de debates e discus- sões de temas de interesse dos jovens; à elaboração",
+            "localCatalogSourceId": "BNCC_EM_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "localCatalogPage": 76,
+            "sourceCorrection": "The local extracted excerpt contains following-page text; this dossier isolates the verified official statement.",
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "LP",
+            "officialSubjectArea": "PORTUGUESE",
+            "candidateSubject": "LINGUA_PORTUGUESA",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LP_ANALISAR_FENOMENO_VARIACAO",
+            "proposalCanonicalCode": "LINGUA_PORTUGUESA_FENOMENO_VARIACAO",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LP_ANALISAR_FENOMENO_VARIACAO",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "PORTUGUESE_ANALYZE_VARIATION_HS",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 3
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "PORTUGUESE_ANALYZE_VARIATION_HS",
+          "title": "Variar nao significa falar errado",
+          "objective": "Descrever fenômenos de variação linguística e escolhas de registro com atenção ao contexto, sem hierarquizar falantes.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Variação pode ocorrer em pronúncia, vocabulário, sintaxe, sentido e estilo",
+        "Dimensões regionais, históricas, sociais e situacionais se cruzam",
+        "Adequação a uma situação não transforma uma variedade em inferior"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_PT_VAR_Q01",
+          "purpose": "PROBE",
+          "prompt": "Em uma conversa, alguém usa “a gente combinou”; num relatório, aparece “nós combinamos”. O que varia mais diretamente?",
+          "answerKey": "A escolha de construção e registro conforme contexto.",
+          "explanation": "As formas podem variar com gênero e interlocutores; isso não mede inteligência."
+        },
+        {
+          "id": "V3_PT_VAR_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Dois textos usam palavras diferentes para o mesmo objeto em regiões distintas. Qual análise é adequada?",
+          "answerKey": "Descrever a variação lexical e situar os usos, sem tratar uma palavra como inferior.",
+          "explanation": "Vocabulário pode variar regionalmente; descrição não é hierarquia social."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+      "stage": "ENSINO_MEDIO",
+      "subject": "LINGUAGENS",
+      "officialReferences": [
+        {
+          "code": "EM13LGG103",
+          "sourceEvidence": {
+            "officialCode": "EM13LGG103",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": null,
+            "section": "Linguagens e suas Tecnologias > Competência Específica 1 > Habilidades",
+            "officialDescription": "Analisar o funcionamento das linguagens, para interpretar e produzir criticamente discursos em textos de diversas semioses (visuais, verbais, sonoras, gestuais).",
+            "localCatalogExcerpt": ", por exemplo, refere-se à terceira habilidade proposta na área de Linguagens e suas Tecnologias relacionada à competência específica 1, que pode ser desenvolvida em qualquer série do Ensino Médio, conforme definições curriculares. Também é preciso enfatizar que a organização das habilidades do Ensino Médio na BNCC (com a explicitação da vinculação entre competências específicas de área e habilidades) tem como objetivo definir claramente às aprendizagens essenciais a ser garantidas aos estudantes nessa etapa. 461 EDUCAÇÃO INFANTIL O Ensino Médio no contexto da Educação Básica O Ensino Médio é a etapa final da Educação Básica, direito público subjetivo de todo cidadão brasileiro. Todavia, a realidade educacional do País tem mostrado que essa etapa representa um gargalo na garan- tia do direito à educação. Entre os fatores que explicam esse cenário, destacam-se o desempenho insuficiente do",
+            "localCatalogSourceId": "BNCC_EM_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "localCatalogPage": 36,
+            "sourceCorrection": "The local extracted excerpt is polluted by surrounding page text; this dossier uses the official statement verified in the source PDF.",
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "LGG",
+            "officialSubjectArea": "LANGUAGES",
+            "candidateSubject": "LINGUAGENS",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalCanonicalCode": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 3
+            }
+          }
+        },
+        {
+          "code": "EM13LGG104",
+          "sourceEvidence": {
+            "officialCode": "EM13LGG104",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": 59,
+            "section": "LGG > Habilidades",
+            "officialDescription": "Utilizar as diferentes linguagens, levando em conta seus funcionamentos, para a compreensão e produção de textos e discursos em diversos campos de atuação social.",
+            "localCatalogExcerpt": ") Utilizar as diferentes linguagens, levando em conta seus funcionamentos, para a compreensão e produção de textos e discursos em diversos campos de atuação social. (EM13LGG105) Analisar e experimentar diversos processos de remidiação de produções multissemióticas, multimídia e transmídia, como forma de fomentar diferentes modos de participação e intervenção social. 484 MINSTÉIRO ÉIDTT R AEATREUUOREDIU COMPETÊNCIA ESPECÍFICA 2 Compreender os processos identitários, conflitos e relações de poder que per- meiam as práticas sociais de linguagem, respeitar as diversidades, a pluralidade de ideias e posições e atuar socialmente com base em princípios e valores assentados na democracia, na igualdade e nos Direitos Humanos, exercitando a empatia, o diálogo, a resolução de conflitos e a cooperação, e combatendo preconceitos de qualquer natureza. Essa competência específica diz respeito à compree",
+            "localCatalogSourceId": "BNCC_EM_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "localCatalogPage": 59,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "LGG",
+            "officialSubjectArea": "LANGUAGES",
+            "candidateSubject": "LINGUAGENS",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalCanonicalCode": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+          }
+        },
+        {
+          "code": "EM13LGG201",
+          "sourceEvidence": {
+            "officialCode": "EM13LGG201",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": 60,
+            "section": "LGG > Habilidades",
+            "officialDescription": "Utilizar adequadamente as diversas linguagens (artísticas, corporais e verbais) em diferentes contextos, valorizando-as como fenômeno social, cultural, histórico, variável, heterogêneo e sensível aos contextos de uso.",
+            "localCatalogExcerpt": ") Utilizar adequadamente as diversas linguagens (artísticas, corporais e verbais) em diferentes contextos, valorizando-as como fenômeno social, cultural, histórico, variável, heterogêneo e sensível aos contextos de uso. (EM13LGG202) Analisar interesses, relações de poder e perspectivas de mundo nos discursos das diversas práticas de linguagem (artísticas, corporais e verbais), para compreender o modo como circulam, constituem-se e (re)produzem significação e ideologias. (EM13LGG203) Analisar os diálogos e conflitos entre diversidades e os processos de disputa por legitimidade nas práticas de linguagem e suas produções (artísticas, corporais e verbais), presentes na cultura local e em outras culturas. (EM13LGG204) Negociar sentidos e produzir entendimento mútuo, nas diversas linguagens (artísticas, corporais e verbais), com vistas ao interesse comum pautado em princípios e valores de equi",
+            "localCatalogSourceId": "BNCC_EM_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "localCatalogPage": 60,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "LGG",
+            "officialSubjectArea": "LANGUAGES",
+            "candidateSubject": "LINGUAGENS",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalCanonicalCode": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+          }
+        },
+        {
+          "code": "EM13LGG301",
+          "sourceEvidence": {
+            "officialCode": "EM13LGG301",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": 61,
+            "section": "LGG > Habilidades",
+            "officialDescription": "Participar de processos de produção individual e colaborativa em diferentes linguagens (artísticas, corporais e verbais), levando em conta seus funcionamentos, para produzir sentidos em diferentes contextos.",
+            "localCatalogExcerpt": ") Participar de processos de produção individual e colaborativa em diferentes linguagens (artísticas, corporais e verbais), levando em conta seus funcionamentos, para produzir sentidos em diferentes contextos. (EM13LGG302) Compreender e posicionar-se criticamente diante de diversas visões de mundo presentes nos discursos em diferentes linguagens, levando em conta seus contextos de produção e de circulação. (EM13LGG303) Debater questões polêmicas de relevância social, analisando diferentes argumentos e opiniões manifestados, para negociar e sustentar posições, formular propostas, e intervir e tomar decisões democraticamente sustentadas, que levem em conta o bem comum e os Direitos Humanos, a consciência socioambiental e o consumo responsável em âmbito local, regional e global. (EM13LGG304) Mapear e criar, por meio de práticas de linguagem, possibilidades de atuação social, política, artís",
+            "localCatalogSourceId": "BNCC_EM_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "localCatalogPage": 61,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "LGG",
+            "officialSubjectArea": "LANGUAGES",
+            "candidateSubject": "LINGUAGENS",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalCanonicalCode": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "LANGUAGES_CREATE_COLLABORATIVELY_HS",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 3
+            }
+          }
+        },
+        {
+          "code": "EM13LGG704",
+          "sourceEvidence": {
+            "officialCode": "EM13LGG704",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": 65,
+            "section": "LGG > Habilidades",
+            "officialDescription": "Apropriar-se criticamente de processos de pesquisa e busca de informação, por meio de ferramentas e dos novos formatos de produção e distribuição do conhecimento na cultura de rede. 490 MINSTÉIRO ÉIDTT R AEATREUUOREDIU 5.1.2. LÍNGUA PORTUGUESA Ao chegar ao Ensino Médio, os estudantes já têm condições de parti- cipar de forma significativa de diversas práticas sociais que envolvem a linguagem, pois, além de dominarem certos gêneros textuais/ discursivos que circulam nos diferentes campos de atuação social considerados no Ensino Fundamental, eles desenvolveram várias habilidades relativas aos usos das linguagens. Cabe ao Ensino Médio aprofundar a análise sobre as linguagens e seus funcionamentos, intensificando a perspectiva analítica e crítica da leitura, escuta e pro- dução de textos verbais e multissemióticos, e alargar as referências estéticas, éticas e políticas que cercam a produçã",
+            "localCatalogExcerpt": ") Apropriar-se criticamente de processos de pesquisa e busca de informação, por meio de ferramentas e dos novos formatos de produção e distribuição do conhecimento na cultura de rede. 490 MINSTÉIRO ÉIDTT R AEATREUUOREDIU 5.1.2. LÍNGUA PORTUGUESA Ao chegar ao Ensino Médio, os estudantes já têm condições de parti- cipar de forma significativa de diversas práticas sociais que envolvem a linguagem, pois, além de dominarem certos gêneros textuais/ discursivos que circulam nos diferentes campos de atuação social considerados no Ensino Fundamental, eles desenvolveram várias habilidades relativas aos usos das linguagens. Cabe ao Ensino Médio aprofundar a análise sobre as linguagens e seus funcionamentos, intensificando a perspectiva analítica e crítica da leitura, escuta e pro- dução de textos verbais e multissemióticos, e alargar as referências estéticas, éticas e políticas que cercam a produçã",
+            "localCatalogSourceId": "BNCC_EM_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "localCatalogPage": 65,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "LGG",
+            "officialSubjectArea": "LANGUAGES",
+            "candidateSubject": "LINGUAGENS",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalCanonicalCode": "LINGUAGENS_UNSPECIFIED_TEXT_LANGUAGE",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_LGG_UNSPECIFIED_TEXT_LANGUAGE",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "LANGUAGES_ANALYZE_SEMIOTIC_FUNCTION_HS",
+          "title": "Textos combinam linguagens para orientar a leitura",
+          "objective": "Interpretar criticamente como diferentes recursos de linguagem participam da produção de sentido em um texto multissemiótico.",
+          "workedExamplePresent": true
+        },
+        {
+          "skillCode": "LANGUAGES_CREATE_COLLABORATIVELY_HS",
+          "title": "Criar junto exige objetivo, escuta e revisao",
+          "objective": "Planejar e participar de criação colaborativa em linguagens diferentes, relacionando escolha de recursos ao público e ao propósito.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Linguagens verbal, visual, sonora e corporal têm recursos próprios",
+        "Composição e relação entre recursos podem reforçar, limitar ou tensionar sentidos",
+        "Uma interpretação precisa apontar evidências e reconhecer leituras possíveis",
+        "Produção colaborativa distribui decisões e responsabilidades",
+        "Escolha de linguagem depende de propósito, público e contexto",
+        "Revisão usa evidências e feedback para melhorar o sentido, não para apagar diferenças"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_LGG103_Q01",
+          "purpose": "PROBE",
+          "prompt": "Um cartaz autoral traz “economize água” e destaca uma torneira fechada em imagem. Que relação entre modos é plausível?",
+          "answerKey": "A imagem pode reforçar visualmente a recomendação verbal.",
+          "explanation": "A composição pode reforçar a mensagem, mas não comprova efeito real sobre consumo."
+        },
+        {
+          "id": "V3_LGG103_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Um infográfico apresenta título sobre transporte, um gráfico de barras e uma legenda. O que a legenda acrescenta?",
+          "answerKey": "Ajuda a identificar o que barras, cores ou categorias representam.",
+          "explanation": "Legenda orienta leitura dos elementos, mas não valida método ou consenso."
+        },
+        {
+          "id": "V3_LGG301_Q01",
+          "purpose": "PROBE",
+          "prompt": "Um grupo vai criar um aviso para estudantes novos. Qual decisão deve orientar primeiro a escolha de linguagem?",
+          "answerKey": "O que o público precisa saber e fazer.",
+          "explanation": "Público e propósito ajudam a escolher formato e recursos."
+        },
+        {
+          "id": "V3_LGG301_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Quatro integrantes dividem roteiro, imagem, revisão e apresentação. O que ainda favorece uma produção integrada?",
+          "answerKey": "Combinar prazos e revisar juntos como as partes se conectam.",
+          "explanation": "Tarefas separadas precisam de integração e critérios compartilhados."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "subject": "COMPUTACAO",
+      "officialReferences": [
+        {
+          "code": "EF03CO07",
+          "sourceEvidence": {
+            "officialCode": "EF03CO07",
+            "sourceId": "BNCC_COMPUTACAO_2022",
+            "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+            "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+            "page": 26,
+            "section": "CO > Habilidades",
+            "officialDescription": "Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações.",
+            "localCatalogExcerpt": ") Utilizar diferentes navegadores e ferramentas de busca para pesquisar e acessar informações. (EF03CO08) Usar ferramentas computacionais em situações didáticas para se expressar em diferentes formatos digitais. Segurança e responsabilidade no uso da tecnologia (EF03CO09) Reconhecer o potencial impacto do compartilhamento de informações pessoais ou de seus pares em meio digital. COMPUTAÇÃO - 3º ANO (CONTINUAÇÃO) EXPLICAÇÃO DA HABILIDADE EXEMPLOS Nesta habilidade temos a perspectiva que o aluno possa explorar diferentes navegadores e buscadores, conhecendo aspectos gerais das ferramentas de busca como associação de palavras, as abas em cada um deles, filtros, dentre outros. Além disso, por meio das pesquisas apresentar os cuidados na busca das informações desejadas. O professor pode solicitar uma pesquisa simples em algum site de escolha do docente, sobre temas como um personagem de desen",
+            "localCatalogSourceId": "BNCC_COMPUTACAO_2022",
+            "localCatalogUrl": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+            "localCatalogPage": 26,
+            "sourceCorrection": null,
+            "sourceStage": "ENSINO_FUNDAMENTAL",
+            "officialComponentCode": "CO",
+            "officialSubjectArea": "COMPUTING",
+            "candidateSubject": "COMPUTACAO",
+            "gradeRange": {
+              "from": 3,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+            "proposalCanonicalCode": "COMPUTACAO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_03_CO_UNSPECIFIED_UTILIZAR_DIFERENTES",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "COMPUTING_SEARCH_AND_BROWSE_FI",
+            "internalGradeRange": {
+              "from": 3,
+              "to": 3
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "COMPUTING_SEARCH_AND_BROWSE_FI",
+          "title": "Buscar informacao com ajuda e cuidado",
+          "objective": "Usar navegador e ferramenta de busca para localizar informação relacionada a uma pergunta e acessar fontes adequadas com supervisão.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Navegador é programa para acessar páginas; busca encontra resultados por termos",
+        "Palavras-chave ajudam a localizar material, mas resultados precisam ser comparados",
+        "Autoria, finalidade e adequação importam; criança não deve fornecer dados pessoais"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_COMP_SEARCH_Q01",
+          "purpose": "PROBE",
+          "prompt": "A turma quer encontrar imagens de fases da Lua para uma atividade. Qual busca é mais focada?",
+          "answerKey": "fases da Lua atividade escolar",
+          "explanation": "A expressão identifica o tema sem incluir dados pessoais ou ser ampla demais."
+        },
+        {
+          "id": "V3_COMP_SEARCH_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Dois resultados aparecem: um tem título relacionado à pergunta e é de um museu; outro é um anúncio sem fonte clara. O que ajuda a escolher?",
+          "answerKey": "Comparar título, autoria/fonte e relação com a pergunta, com orientação do educador.",
+          "explanation": "Relevância e fonte ajudam na seleção; supervisão protege a criança."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "MATEMATICA_SITUACOES_VIDA",
+      "stage": "ENSINO_MEDIO",
+      "subject": "MATEMATICA",
+      "officialReferences": [
+        {
+          "code": "EM13MAT106",
+          "sourceEvidence": {
+            "officialCode": "EM13MAT106",
+            "sourceId": "BNCC_EM_2018",
+            "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+            "page": null,
+            "section": "Matemática e suas Tecnologias > Habilidades",
+            "officialDescription": "Identificar situações da vida cotidiana nas quais seja necessário fazer escolhas levando-se em conta os riscos probabilísticos (usar este ou aquele método contraceptivo, optar por um tratamento médico em detrimento de outro etc.).",
+            "localCatalogExcerpt": ") Identificar situações da vida cotidiana nas quais seja necessário fazer escolhas levando-se em conta os riscos probabilísticos (usar este ou aquele método contraceptivo, optar por um tratamento médico em detrimento de outro etc.). 534 534Esa3 coa3mss opeps ettc em3t COMPETÊNCIA ESPECÍFICA 2 Propor ou participar de ações para investigar desafios do mundo contemporâneo e tomar decisões éticas e socialmente responsáveis, com base na análise de problemas sociais, como os voltados a situações de saúde, sustentabilidade, das implicações da tecnologia no mundo do trabalho, entre outros, mobilizando e articulando concei- tos, procedimentos e linguagens próprios da Matemática. Essa competência específica amplia a anterior por colocar os estudantes em situa- ções nas quais precisam investigar questões de impacto social que os mobilizem a propor ou participar de ações individuais ou coletivas que",
+            "localCatalogSourceId": "BNCC_EI_EF_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "localCatalogPage": 535,
+            "sourceCorrection": "The local catalog points to the Ensino Fundamental PDF for this Ensino Médio code; source citation corrected in this dossier only.",
+            "sourceStage": "ENSINO_MEDIO",
+            "officialComponentCode": "MAT",
+            "officialSubjectArea": "MATHEMATICS",
+            "candidateSubject": "MATEMATICA",
+            "gradeRange": {
+              "from": 1,
+              "to": 3
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_MEDIO_1_3_MAT_IDENTIFICAR_SITUACOES_VIDA",
+            "proposalCanonicalCode": "MATEMATICA_SITUACOES_VIDA",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_MEDIO_1_3_MAT_IDENTIFICAR_SITUACOES_VIDA",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 3
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "MATH_IDENTIFY_PROBABILISTIC_RISK_CHOICES_HS",
+          "title": "Probabilidade ajuda a pensar escolhas sob incerteza",
+          "objective": "Identificar quando uma escolha cotidiana envolve riscos probabilísticos, reconhecer dados relevantes e evitar tratar chance como certeza.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Risco probabilístico envolve a chance de um evento incerto e suas consequências",
+        "Probabilidade descreve chance em condições definidas, não prevê com certeza um caso individual",
+        "A decisão depende também de consequências, contexto, valores e qualidade da informação"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_MATH_RISK_Q01",
+          "purpose": "PROBE",
+          "prompt": "A previsão indica 30% de chance de chuva durante uma atividade ao ar livre. Por que essa é uma escolha sob risco probabilístico?",
+          "answerKey": "Porque chuva é um resultado incerto e a decisão depende de chance e consequências possíveis.",
+          "explanation": "A chance informa, mas não garante um resultado individual; a escola considera consequências e alternativas."
+        },
+        {
+          "id": "V3_MATH_RISK_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Um relatório registra 2 falhas em 100 aparelhos testados durante um mês. Qual afirmação é mais cuidadosa?",
+          "answerKey": "Nesse teste, 2% dos aparelhos falharam no período observado; outros contextos podem diferir.",
+          "explanation": "A proporção descreve a amostra e o período do teste, sem assegurar o resultado futuro."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    },
+    {
+      "targetId": "CIENCIAS_CARACTERISTICAS_FISICAS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "subject": "CIENCIAS",
+      "officialReferences": [
+        {
+          "code": "EF01CI04",
+          "sourceEvidence": {
+            "officialCode": "EF01CI04",
+            "sourceId": "BNCC_EI_EF_2018",
+            "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+            "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "page": 31,
+            "section": "Ciências > 1º ano > Vida e evolução",
+            "officialDescription": "Comparar características físicas entre os colegas, reconhecendo a diversidade e a importância da valorização, do acolhimento e do respeito às diferenças.",
+            "localCatalogExcerpt": ") Comparar características físicas entre os colegas, reconhecendo a diversidade e a importância da valorização, do acolhimento e do respeito às diferenças. Diferenciar escravidão, servidão e trabalho livre no mundo antigo. Verbo(s) que explicita(m) o(s) processo(s) cognitivo(s) envolvido(s) na habilidade. Complemento do(s) verbo(s), que explicita o(s) objeto(s) de conhecimento mobilizado(s) na habilidade. Modificadores do(s) verbo(s) ou do complemento do(s) verbo(s), que explicitam o contexto e/ou uma maior especificação da aprendizagem esperada. BASE NACIONAL COMUM CURRICULAR 30 Os modificadores devem ser entendidos como a explicitação da situação ou condição em que a habilidade deve ser desenvolvida, considerando a faixa etária dos alunos. Ainda assim, as habilidades não descrevem ações ou condutas esperadas do professor, nem induzem à opção por abordagens ou metodologias . Essas escol",
+            "localCatalogSourceId": "BNCC_EI_EF_2018",
+            "localCatalogUrl": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+            "localCatalogPage": 31,
+            "sourceCorrection": "The extracted local excerpt includes the following History skill text; the official skill statement is isolated here without modifying the official catalog.",
+            "sourceStage": "ENSINO_FUNDAMENTAL",
+            "officialComponentCode": "CI",
+            "officialSubjectArea": "SCIENCE",
+            "candidateSubject": "CIENCIAS",
+            "gradeRange": {
+              "from": 1,
+              "to": 1
+            },
+            "gradeCompatible": true,
+            "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_01_CI_COMPARAR_CARACTERISTICAS_FISICAS",
+            "proposalCanonicalCode": "CIENCIAS_CARACTERISTICAS_FISICAS",
+            "proposalStatus": "NEW_SKILL_PENDING_REVIEW",
+            "gapClusterId": "V8_GAP_ENSINO_FUNDAMENTAL_01_CI_COMPARAR_CARACTERISTICAS_FISICAS",
+            "referenceStatus": "OFFICIAL_SOURCE_IDENTIFIED_AND_EXCERPT_CHECKED",
+            "candidateStatus": "TECHNICAL_CANDIDATE_NOT_APPROVED_MAPPING",
+            "mappingClaim": "NONE",
+            "mappingStatus": "MAPPING_PENDING",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "internalSkillCode": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
+            "internalGradeRange": {
+              "from": 1,
+              "to": 1
+            }
+          }
+        }
+      ],
+      "lessonSummaries": [
+        {
+          "skillCode": "SCIENCE_COMPARE_HUMAN_DIVERSITY_RESPECTFULLY_FI",
+          "title": "Observar diferencas sem comparar valor",
+          "objective": "Reconhecer diversidade de características físicas com linguagem respeitosa e sem transformar diferenças em ranking ou conclusão sobre a pessoa.",
+          "workedExamplePresent": true
+        }
+      ],
+      "concepts": [
+        "Características observáveis variam entre pessoas",
+        "Diferença não significa superioridade, inferioridade ou capacidade",
+        "Observação tem limites e não permite deduzir saúde, personalidade ou história familiar"
+      ],
+      "assessmentSamples": [
+        {
+          "id": "V3_SCI_DIVERSITY_Q01",
+          "purpose": "PROBE",
+          "prompt": "Em um livro, duas personagens têm cabelos diferentes e gostam de desenhar. Qual comparação é respeitosa?",
+          "answerKey": "Elas diferem no cabelo observado e compartilham o gosto por desenhar.",
+          "explanation": "A resposta descreve uma diferença e uma semelhança sem inferir valor ou capacidade."
+        },
+        {
+          "id": "V3_SCI_DIVERSITY_Q02",
+          "purpose": "PRACTICE",
+          "prompt": "Uma ilustração mostra uma criança usando óculos. O que não se pode concluir apenas pela imagem?",
+          "answerKey": "Como é sua personalidade ou quanto consegue aprender.",
+          "explanation": "A imagem permite descrever elementos visíveis, não inferir personalidade ou capacidade."
+        }
+      ],
+      "prerequisiteReferences": [],
+      "reviewRubric": [
+        "Official source text and page checked against the cited document.",
+        "Learning objective and prerequisite scope are age-appropriate.",
+        "Explanation, worked example, and transfer task teach distinct reasoning.",
+        "Answer key and distractors diagnose plausible misconceptions.",
+        "Feedback/remediation and progress criteria are pedagogically justified."
+      ],
+      "qualityRisks": [
+        "POOL_BELOW_V4_DEPTH_TARGET",
+        "OFFICIAL_MAPPING_NOT_APPROVED"
+      ],
+      "humanReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "approvalEvidence": null,
+      "revisionHistory": [
+        {
+          "version": "V3_BASELINE",
+          "status": "TECHNICAL_STAGING_ONLY",
+          "sourceHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77"
+        }
+      ]
+    }
+  ]
+}
