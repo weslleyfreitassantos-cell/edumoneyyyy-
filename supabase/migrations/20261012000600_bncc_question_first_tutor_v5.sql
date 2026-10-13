@@ -1,44 +1,8 @@
 begin;
 
--- New learning interactions show one safe challenge at a time. Previously
--- selected two-question steps remain valid and keep their stored selection.
-do $patch_legacy_guided_step_v5$
-declare
-  function_definition text;
-  original_definition text;
-  hint_pattern text := $re$(?i)'difficulty',[[:space:]]*question\.difficulty,[[:space:]]*'position',[[:space:]]*item\.position$re$;
-  limit_pattern text := $re$(?i)limit[[:space:]]+2\)[[:space:]]*selected$re$;
-  safe_hint_clause text := '''difficulty'',question.difficulty,''hint'',question.metadata->>''remediation_hint'',''position'',item.position';
-  old_hint_count integer;
-  old_limit_count integer;
-begin
-  select pg_get_functiondef('public.get_guided_learning_step_v4_legacy_v9(uuid)'::regprocedure)
-    into function_definition;
-  if function_definition is null then raise exception 'V5_LEGACY_GUIDED_STEP_FUNCTION_MISSING'; end if;
-
-  if position(safe_hint_clause in function_definition) > 0
-     and function_definition !~ limit_pattern then
-    return;
-  end if;
-
-  original_definition := function_definition;
-  select count(*)::integer from regexp_matches(function_definition, hint_pattern, 'g')
-    into old_hint_count;
-  select count(*)::integer from regexp_matches(function_definition, limit_pattern, 'g')
-    into old_limit_count;
-  if old_hint_count <> 1 or old_limit_count <> 1 then
-    raise exception 'V5_LEGACY_GUIDED_STEP_PATCH_MISMATCH';
-  end if;
-
-  function_definition := regexp_replace(function_definition, hint_pattern, safe_hint_clause, 'g');
-  function_definition := regexp_replace(function_definition, limit_pattern, 'limit 1) selected', 'g');
-  if function_definition = original_definition then raise exception 'V5_LEGACY_GUIDED_STEP_PATCH_NOOP'; end if;
-  execute function_definition;
-end;
-$patch_legacy_guided_step_v5$;
-
 -- V9 stores the question selection on the step. New selections contain one
--- item; historical selections of two still pass the existing response guard.
+-- question. The learner UI presents one question at a time; the server keeps
+-- validating each persisted selection, including historical multi-question steps.
 do $patch_v9_guided_step_v5$
 declare
   function_definition text;
