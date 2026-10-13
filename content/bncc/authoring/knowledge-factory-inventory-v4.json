@@ -7,13 +7,13 @@
     "officialManifest": "8aff9758fbe893b5076895e377dfe1d145ae3d3a4f9270c5ccd56272baf303ea",
     "regulatoryContext": "8baebdedaf4f38b4a7a54f0f18ef6b120432690aaf6a6ee435e314e46b707f31",
     "v1": "3e271391198784e76cba40e34c8805aa8f3e299bb05293f786b95dd9b8cffb8d",
-    "v3": "255f9109a7e61b41840599edda426fb6482207be3beacd54a2b5f47038a5c212",
+    "v3": "0e50c70acc7cbfc2b614c9d791e7a4706dfacc370bb7777c1ecbe61852cf3c50",
     "v3Units": "54eac626ee9513acbe3564d8c1d90635ec963f93dfac533ca69b2833aaf74da1",
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
-    "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
-    "v3Graph": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583",
-    "v5QuestionFirstPacks": "20daba20504f3aa05c41f48cd18013466baa9ba02bdab452f45b0705d32db2ef",
-    "waveTwoCandidateSources": "97aa590df140c4c4016cb16b39b010aa002bfd42238e1d9d494eb353d1eae4f0"
+    "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
+    "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
+    "v5QuestionFirstPacks": "2cb183f0056daed297226158aa1153870df1ab3e564b9d212044979d0df1fa1f",
+    "waveTwoCandidateSources": "22c26ced0a6259848792d1945c0b96bd4187421626d0b26b1a051d4e3fd06710"
   },
   "normativeContext": {
     "officialCatalogFreeze": "2026-10-03",
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 31,
+    "auditedSequences": 32,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 5,
-    "waveTwoCandidateTargetsDeepReady": 5,
-    "deepContentReady": 31,
-    "technicalDeepReady": 31,
-    "pedagogicalReviewPending": 31,
+    "waveTwoCandidateTargetsAudited": 6,
+    "waveTwoCandidateTargetsDeepReady": 6,
+    "deepContentReady": 32,
+    "technicalDeepReady": 32,
+    "pedagogicalReviewPending": 32,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 31
+      "STRUCTURAL_READY": 32
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 31,
-      "QUESTION_POOL_DEPTH_READY": 28,
-      "DIFFICULTY_PROGRESSION_READY": 28,
-      "CONTEXT_DIVERSITY_READY": 28,
-      "TRANSFER_READY": 28,
-      "MISCONCEPTION_RECOVERY_READY": 31,
-      "REVIEW_CONTENT_READY": 28,
-      "AUTHENTIC_EVIDENCE_READY": 31
+      "LESSON_DEPTH_READY": 32,
+      "QUESTION_POOL_DEPTH_READY": 29,
+      "DIFFICULTY_PROGRESSION_READY": 29,
+      "CONTEXT_DIVERSITY_READY": 29,
+      "TRANSFER_READY": 29,
+      "MISCONCEPTION_RECOVERY_READY": 32,
+      "REVIEW_CONTENT_READY": 29,
+      "AUTHENTIC_EVIDENCE_READY": 32
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 893,
-    "consolidatedQuestionTotal": 1168,
+    "v5QuestionTotal": 911,
+    "consolidatedQuestionTotal": 1208,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
       {
@@ -122,7 +122,7 @@
       }
     ],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 31,
+    "reviewPending": 32,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -613,6 +613,69 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 24,
           "actualQuestionCount": 24,
+          "status": "EXACT"
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "CHEMISTRY_STOICHIOMETRY",
+        "unitId": null,
+        "subject": "CHEMISTRY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Da equação à quantidade de produto",
+        "originalQuestionCount": 22,
+        "v5QuestionCount": 18,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 40,
+        "purposeCounts": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 39,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 22,
+          "actualQuestionCount": 22,
           "status": "EXACT"
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
@@ -1984,25 +2047,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1768,
+    "totalItems": 1767,
     "byWave": {
-      "WAVE_2": 47,
+      "WAVE_2": 46,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 47,
+      "CONTENT_GAP": 46,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "CHEMISTRY_STOICHIOMETRY",
-        "stage": "ENSINO_MEDIO",
-        "subject": "CHEMISTRY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
@@ -16150,5 +16205,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "4d59f2b6e41487e591eaccc7b35dbd256292a64edb907ad6925c6fec4afcd251"
+  "inventoryHash": "fe23f3a7b294f29fa5ec7fbfe45ba2c4e2b6ac8f91ac6119a6c791f16dd5a4f6"
 }

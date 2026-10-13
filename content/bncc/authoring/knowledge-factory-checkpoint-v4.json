@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "84d2c783d3a1b40e6fc945a0e04264069e49abedb7e1130a4aa2f26d5d1cfbeb",
-  "outputHash": "4d59f2b6e41487e591eaccc7b35dbd256292a64edb907ad6925c6fec4afcd251",
+  "inputHash": "923b55d869dd66c7303caa43ec00ecf97fc4ee3ef2facb5839df1a13427a5710",
+  "outputHash": "fe23f3a7b294f29fa5ec7fbfe45ba2c4e2b6ac8f91ac6119a6c791f16dd5a4f6",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,13 +13,13 @@
   "currentWave": 2,
   "nextQueueItem": {
     "wave": 2,
-    "id": "CHEMISTRY_STOICHIOMETRY",
+    "id": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
     "stage": "ENSINO_MEDIO",
-    "subject": "CHEMISTRY",
+    "subject": "PHILOSOPHY",
     "status": "CONTENT_GAP",
-    "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+    "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
   },
-  "pendingItems": 1768,
+  "pendingItems": 1767,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "7cc529d1e910be8f1470e1a85d149f44e3469cc0bbb228ba5372dd860c61c22f"
+  "checkpointHash": "f058fd49048d48c1ef322717281ad332723505044a08bddeaa0c3e66f376ab4e"
 }

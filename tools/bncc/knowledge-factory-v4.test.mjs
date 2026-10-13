@@ -173,8 +173,8 @@ describe('BNCC total knowledge factory V4', () => {
   it('distinguishes a five-phase structural path from deep assessment coverage', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
 
-    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 31, v3QuestionTotal: 160, v5QuestionTotal: 893, consolidatedQuestionTotal: 1168, technicalDeepReady: 31, reviewPending: 31 });
-    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 31 });
+    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 32, v3QuestionTotal: 160, v5QuestionTotal: 911, consolidatedQuestionTotal: 1208, technicalDeepReady: 32, reviewPending: 32 });
+    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 32 });
     expect(report.existingContent.technicalDeepReady).toBe(report.existingContent.depthAudit.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(report.existingContent.auditedSequences - report.existingContent.technicalDeepReady);
   });
@@ -289,15 +289,15 @@ describe('BNCC total knowledge factory V4', () => {
     expect(evidence.purposeCounts).toEqual(PURPOSE_COUNTS);
     expect(evidence.missingDepthDimensions).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
-    expect(report.existingContent.technicalDeepReady).toBe(31);
+    expect(report.existingContent.technicalDeepReady).toBe(32);
   });
 
   it('reconciles Biology cell-function sources exactly before auditing the Wave 2 addition', () => {
     const report = compileKnowledgeFactoryV4(undefined, true);
     const biology = report.existingContent.depthAudit.find((item) => item.targetId === 'BIOLOGY_CELL_FUNCTION');
 
-    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(5);
-    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(5);
+    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(6);
+    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(6);
     expect(biology).toMatchObject({
       originalQuestionCount: 22,
       v5QuestionCount: 23,
@@ -311,7 +311,7 @@ describe('BNCC total knowledge factory V4', () => {
     });
     expect(biology.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 14, TRANSFER: 9, LOCK_IN: 6, REVIEW: 12 });
     expect(biology.missingDepthDimensions).toEqual([]);
-    expect(report.queue.byWave.WAVE_2).toBe(47);
+    expect(report.queue.byWave.WAVE_2).toBe(46);
     expect(report.existingContent.v5PacksOutsideV3AuditedTargets).toMatchObject([
       { skillCode: 'MATH_SUCCESSIVE_PERCENT_CHANGE', sourceReconciliation: 'PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION' },
     ]);
@@ -382,8 +382,8 @@ describe('BNCC total knowledge factory V4', () => {
     const report = compileKnowledgeFactoryV4(undefined, true);
     const reactions = report.existingContent.depthAudit.find((item) => item.targetId === 'CHEMISTRY_REACTION_EVIDENCE');
 
-    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(5);
-    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(5);
+    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(6);
+    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(6);
     expect(reactions).toMatchObject({
       originalQuestionCount: 24,
       v5QuestionCount: 16,
@@ -398,7 +398,30 @@ describe('BNCC total knowledge factory V4', () => {
     expect(reactions.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
     expect(reactions.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'CHEMISTRY_REACTION_EVIDENCE')).toEqual([]);
-    expect(report.queue.byWave.WAVE_2).toBe(47);
+    expect(report.queue.byWave.WAVE_2).toBe(46);
+  });
+
+  it('reconciles chemistry stoichiometry sources exactly before auditing the next Wave 2 pack', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const stoichiometry = report.existingContent.depthAudit.find((item) => item.targetId === 'CHEMISTRY_STOICHIOMETRY');
+
+    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(6);
+    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(6);
+    expect(stoichiometry).toMatchObject({
+      originalQuestionCount: 22,
+      v5QuestionCount: 18,
+      currentQuestionCount: 40,
+      technicalDeepReady: true,
+      answerKeyValid: true,
+      sourceReconciliation: { expectedQuestionCount: 22, actualQuestionCount: 22, status: 'EXACT' },
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      officialMappingStatus: 'NOT_CLAIMED',
+      studentPublicationStatus: 'STAGING_INACTIVE',
+    });
+    expect(stoichiometry.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(stoichiometry.missingDepthDimensions).toEqual([]);
+    expect(report.queue.items.filter((item) => item.id === 'CHEMISTRY_STOICHIOMETRY')).toEqual([]);
+    expect(report.queue.byWave.WAVE_2).toBe(46);
   });
 
   it('prepares navigable unit persistence without student availability or fabricated BNCC links', () => {

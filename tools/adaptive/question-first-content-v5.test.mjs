@@ -16,6 +16,7 @@ import { buildBiologyInheritancePack } from './build-biology-inheritance-v5.mjs'
 import { buildBiologyPopulationDataPack } from './build-biology-population-data-v5.mjs';
 import { buildChemistryAtomicStructurePack } from './build-chemistry-atomic-structure-v5.mjs';
 import { buildChemistryReactionEvidencePack } from './build-chemistry-reaction-evidence-v5.mjs';
+import { buildChemistryStoichiometryPack } from './build-chemistry-stoichiometry-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -70,6 +71,8 @@ const chemistryAtomicPack = JSON.parse(readFileSync(new URL('../../content/adapt
 const chemistryAtomicMigration = readFileSync(new URL('../../supabase/migrations/20261013002500_bncc_chemistry_atomic_structure_question_first_v5.sql', import.meta.url), 'utf8');
 const chemistryReactionEvidencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/chemistry-reaction-evidence.json', import.meta.url), 'utf8'));
 const chemistryReactionEvidenceMigration = readFileSync(new URL('../../supabase/migrations/20261013002600_bncc_chemistry_reaction_evidence_question_first_v5.sql', import.meta.url), 'utf8');
+const chemistryStoichiometryPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/chemistry-stoichiometry.json', import.meta.url), 'utf8'));
+const chemistryStoichiometryMigration = readFileSync(new URL('../../supabase/migrations/20261013002700_bncc_chemistry_stoichiometry_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -942,6 +945,32 @@ describe('question-first V5 staging content', () => {
     expect(chemistryReactionEvidenceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(chemistryReactionEvidenceMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(chemistryReactionEvidenceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('teaches stoichiometry from balanced ratios through limiting reactants and yield', () => {
+    const result = validateQuestionFirstPack(chemistryStoichiometryPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(18);
+    expect(result.contextCount).toBe(18);
+    expect(result.counts).toEqual({ PROBE: 0, PRACTICE: 5, TRANSFER: 5, LOCK_IN: 3, REVIEW: 5 });
+    expect(result.answerPositionCounts).toEqual({ A: 5, B: 5, C: 4, D: 4 });
+    expect(chemistryStoichiometryPack.lesson.explanation).toContain('Encontre o reagente limitante');
+    expect(chemistryStoichiometryPack.lesson.microExplanations).toHaveLength(6);
+    expect(chemistryStoichiometryPack.lesson.remediations).toHaveLength(4);
+    expect(chemistryStoichiometryPack.lesson.sourceDossier).toHaveLength(3);
+    expect(chemistryStoichiometryPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(chemistryStoichiometryPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(chemistryStoichiometryPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles stoichiometry content as inactive staging without student records', () => {
+    expect(chemistryStoichiometryPack).toEqual(buildChemistryStoichiometryPack());
+    expect(chemistryStoichiometryMigration).toBe(buildMigration(chemistryStoichiometryPack));
+    expect(chemistryStoichiometryMigration).toContain("'CHEMISTRY_STOICHIOMETRY'");
+    expect(chemistryStoichiometryMigration).toContain("'publication_status', 'STAGING'");
+    expect(chemistryStoichiometryMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(chemistryStoichiometryMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(chemistryStoichiometryMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('requires authentic, accessible evidence for physical-education targets', () => {
