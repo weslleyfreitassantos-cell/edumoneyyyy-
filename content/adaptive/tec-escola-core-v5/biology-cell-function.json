@@ -5,7 +5,7 @@
   "domain": "CELULA",
   "topic": "estrutura, transporte e funcao celular",
   "canonicalSkillCode": "BIOLOGY_CELL_FUNCTION",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "expectedQuestionCount": 23,
   "expectedContextCount": 23,
   "expectedAnswerPositionCounts": {

@@ -62,7 +62,7 @@ const pack = {
   domain: 'CELULA',
   topic: 'estrutura, transporte e funcao celular',
   canonicalSkillCode: 'BIOLOGY_CELL_FUNCTION',
-  contentVersion: 5,
+  contentVersion: 6,
   expectedQuestionCount: questions.length,
   expectedContextCount: new Set(questions.map((question) => question.contextFamily)).size,
   expectedAnswerPositionCounts: Object.fromEntries(['A', 'B', 'C', 'D'].map((label, index) => [label, positionCounts[index]])),

@@ -145,8 +145,8 @@ describe('BNCC total knowledge factory V4', () => {
   it('distinguishes a five-phase structural path from deep assessment coverage', () => {
     const report = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
 
-    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 28, v3QuestionTotal: 160, v5QuestionTotal: 846, consolidatedQuestionTotal: 1047, technicalDeepReady: 28, reviewPending: 28 });
-    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 28 });
+    expect(report.existingContent).toMatchObject({ v3Targets: 24, auditedSequences: 29, v3QuestionTotal: 160, v5QuestionTotal: 863, consolidatedQuestionTotal: 1087, technicalDeepReady: 29, reviewPending: 29 });
+    expect(report.existingContent.depthStatusCounts).toEqual({ STRUCTURAL_READY: 29 });
     expect(report.existingContent.technicalDeepReady).toBe(report.existingContent.depthAudit.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(report.existingContent.auditedSequences - report.existingContent.technicalDeepReady);
   });
@@ -261,15 +261,15 @@ describe('BNCC total knowledge factory V4', () => {
     expect(evidence.purposeCounts).toEqual(PURPOSE_COUNTS);
     expect(evidence.missingDepthDimensions).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
-    expect(report.existingContent.technicalDeepReady).toBe(28);
+    expect(report.existingContent.technicalDeepReady).toBe(29);
   });
 
   it('reconciles Biology cell-function sources exactly before auditing the Wave 2 addition', () => {
     const report = compileKnowledgeFactoryV4(undefined, true);
     const biology = report.existingContent.depthAudit.find((item) => item.targetId === 'BIOLOGY_CELL_FUNCTION');
 
-    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(2);
-    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(2);
+    expect(report.existingContent.waveTwoCandidateTargetsAudited).toBe(3);
+    expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBe(3);
     expect(biology).toMatchObject({
       originalQuestionCount: 22,
       v5QuestionCount: 23,
@@ -283,7 +283,7 @@ describe('BNCC total knowledge factory V4', () => {
     });
     expect(biology.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 14, TRANSFER: 9, LOCK_IN: 6, REVIEW: 12 });
     expect(biology.missingDepthDimensions).toEqual([]);
-    expect(report.queue.byWave.WAVE_2).toBe(50);
+    expect(report.queue.byWave.WAVE_2).toBe(49);
     expect(report.existingContent.v5PacksOutsideV3AuditedTargets).toMatchObject([
       { skillCode: 'MATH_SUCCESSIVE_PERCENT_CHANGE', sourceReconciliation: 'PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION' },
     ]);
@@ -308,6 +308,26 @@ describe('BNCC total knowledge factory V4', () => {
     expect(inheritance.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'BIOLOGY_EXPLAIN_INHERITANCE')).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
+  });
+
+  it('reconciles population-data questions without claiming an unverified curriculum mapping', () => {
+    const report = compileKnowledgeFactoryV4(undefined, true);
+    const population = report.existingContent.depthAudit.find((item) => item.targetId === 'BIOLOGY_INTERPRET_POPULATION_DATA');
+
+    expect(population).toMatchObject({
+      originalQuestionCount: 23,
+      v5QuestionCount: 17,
+      currentQuestionCount: 40,
+      technicalDeepReady: true,
+      readinessClaim: 'DEEP_CONTENT_READY',
+      sourceReconciliation: { expectedQuestionCount: 23, actualQuestionCount: 23, status: 'EXACT' },
+      pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      officialMappingStatus: 'NOT_CLAIMED',
+      studentPublicationStatus: 'STAGING_INACTIVE',
+    });
+    expect(population.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(population.missingDepthDimensions).toEqual([]);
+    expect(report.queue.items.filter((item) => item.id === 'BIOLOGY_INTERPRET_POPULATION_DATA')).toEqual([]);
   });
 
   it('prepares navigable unit persistence without student availability or fabricated BNCC links', () => {

@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
     "v3Graph": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583",
-    "v5QuestionFirstPacks": "a27507da11ff085997b4239c9fae3464f2daa04580cdc9adc2bdb1e450ab8076",
+    "v5QuestionFirstPacks": "fa492e38a2d618fa4a1844cd9c65d3053dd5751382c8e7fea831a48bbe265df9",
     "waveTwoCandidateSources": "97aa590df140c4c4016cb16b39b010aa002bfd42238e1d9d494eb353d1eae4f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 28,
+    "auditedSequences": 29,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 2,
-    "waveTwoCandidateTargetsDeepReady": 2,
-    "deepContentReady": 28,
-    "technicalDeepReady": 28,
-    "pedagogicalReviewPending": 28,
+    "waveTwoCandidateTargetsAudited": 3,
+    "waveTwoCandidateTargetsDeepReady": 3,
+    "deepContentReady": 29,
+    "technicalDeepReady": 29,
+    "pedagogicalReviewPending": 29,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 28
+      "STRUCTURAL_READY": 29
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 28,
-      "QUESTION_POOL_DEPTH_READY": 25,
-      "DIFFICULTY_PROGRESSION_READY": 25,
-      "CONTEXT_DIVERSITY_READY": 25,
-      "TRANSFER_READY": 25,
-      "MISCONCEPTION_RECOVERY_READY": 28,
-      "REVIEW_CONTENT_READY": 25,
-      "AUTHENTIC_EVIDENCE_READY": 28
+      "LESSON_DEPTH_READY": 29,
+      "QUESTION_POOL_DEPTH_READY": 26,
+      "DIFFICULTY_PROGRESSION_READY": 26,
+      "CONTEXT_DIVERSITY_READY": 26,
+      "TRANSFER_READY": 26,
+      "MISCONCEPTION_RECOVERY_READY": 29,
+      "REVIEW_CONTENT_READY": 26,
+      "AUTHENTIC_EVIDENCE_READY": 29
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 846,
-    "consolidatedQuestionTotal": 1047,
+    "v5QuestionTotal": 863,
+    "consolidatedQuestionTotal": 1087,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
       {
@@ -122,7 +122,7 @@
       }
     ],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 28,
+    "reviewPending": 29,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -365,6 +365,69 @@
         "sourceReconciliation": {
           "expectedQuestionCount": 29,
           "actualQuestionCount": 29,
+          "status": "EXACT"
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "BIOLOGY_INTERPRET_POPULATION_DATA",
+        "unitId": null,
+        "subject": "BIOLOGY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Populações: medir, comparar e explicar tendências",
+        "originalQuestionCount": 23,
+        "v5QuestionCount": 17,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 40,
+        "purposeCounts": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 40,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 23,
+          "actualQuestionCount": 23,
           "status": "EXACT"
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
@@ -1795,25 +1858,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1771,
+    "totalItems": 1770,
     "byWave": {
-      "WAVE_2": 50,
+      "WAVE_2": 49,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 50,
+      "CONTENT_GAP": 49,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "BIOLOGY_INTERPRET_POPULATION_DATA",
-        "stage": "ENSINO_MEDIO",
-        "subject": "BIOLOGY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "CHEMISTRY_ATOMIC_STRUCTURE",
@@ -15985,5 +16040,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "e222fa75a40ccfa70af28bc9c1a3dec435bb0116dcc45d8a70f36e58ba792836"
+  "inventoryHash": "ceee6af937976826aa7445bd6bbc1599118549c1c692abfe8aae0542eb33a852"
 }
