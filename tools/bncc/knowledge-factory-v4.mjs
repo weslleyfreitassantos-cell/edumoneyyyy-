@@ -38,6 +38,14 @@ function hash(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
 }
 
+export function hashNormalizedText(value) {
+  return hash(String(value).replace(/\r\n/g, '\n'));
+}
+
+function hashFile(root, relativePath) {
+  return hashNormalizedText(fs.readFileSync(path.join(root, relativePath), 'utf8'));
+}
+
 function sql(value) {
   return `'${String(value ?? '').replace(/'/g, "''")}'`;
 }
@@ -252,7 +260,7 @@ function buildKnowledgeFactoryV4(root = ROOT) {
   }
   const unknownUnitSkills = [...new Set(units.flatMap((unit) => unit.canonicalSkills))].filter((code) => !skillIndex.has(code));
   const sourceHashes = Object.fromEntries([
-    ...Object.entries(PATHS).filter(([key]) => ['official', 'officialManifest', 'regulatoryContext', 'v1', 'v3', 'v3Units', 'units'].includes(key)).map(([key, relativePath]) => [key, hash(fs.readFileSync(path.join(root, relativePath)))]),
+    ...Object.entries(PATHS).filter(([key]) => ['official', 'officialManifest', 'regulatoryContext', 'v1', 'v3', 'v3Units', 'units'].includes(key)).map(([key, relativePath]) => [key, hashFile(root, relativePath)]),
     ['v3Content', v3.hashes.contentHash],
     ['v3Graph', v3.hashes.graphExpansionHash],
     ['v3Units', v3.hashes.unitExpansionHash],
