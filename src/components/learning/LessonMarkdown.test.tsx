@@ -44,6 +44,18 @@ Uma observação descreve algo verificável na composição.`}
     expect(container.querySelector('.katex')).toBeTruthy();
   });
 
+  it('keeps tables semantic inside a horizontally scrollable wrapper', () => {
+    const { container } = render(
+      <LessonMarkdown content={'| Etapa | Resultado |\n| --- | --- |\n| 1 | Observação |'} />,
+    );
+
+    const table = container.querySelector('table');
+    expect(table?.parentElement?.tagName).toBe('DIV');
+    expect(table?.parentElement?.className).toContain('overflow-x-auto');
+    expect(table?.querySelectorAll('th')).toHaveLength(2);
+    expect(table?.querySelectorAll('td')).toHaveLength(2);
+  });
+
   it('does not execute or render raw HTML from lesson content', () => {
     const { container } = render(
       <LessonMarkdown content={'<script>window.lessonPwned = true</script>\n\nTexto seguro.'} />,
@@ -52,6 +64,20 @@ Uma observação descreve algo verificável na composição.`}
     expect(container.querySelector('script')).toBeNull();
     expect(screen.getByText('Texto seguro.')).toBeTruthy();
     expect((window as Window & { lessonPwned?: boolean }).lessonPwned).toBeUndefined();
+  });
+
+  it('removes unsafe URL protocols while preserving secure links', () => {
+    const { container } = render(
+      <LessonMarkdown
+        content={'[Link inseguro](javascript:alert(1)) e [link seguro](https://example.com/conteudo)'}
+      />,
+    );
+
+    const links = container.querySelectorAll('a');
+    expect(links[0]?.textContent).toBe('Link inseguro');
+    expect(links[0]?.getAttribute('href')).toBeNull();
+    expect(links[1]?.textContent).toBe('link seguro');
+    expect(links[1]?.getAttribute('href')).toBe('https://example.com/conteudo');
   });
 
   it('uses the fallback when the stored lesson content is empty', () => {
