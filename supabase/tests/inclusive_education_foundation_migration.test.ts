@@ -20,6 +20,8 @@ describe('inclusive education foundation migration', () => {
     expect(migration).toContain('alter table public.inclusive_pei_plans enable row level security');
     expect(migration).toContain('private.inclusive_student_belongs');
     expect(migration).toContain('private.inclusive_teacher_can_student');
+    expect(migration).toContain('join public.classes class on class.id = offering.class_id');
+    expect(migration).toContain('class.institution_id = target_institution_id');
     expect(migration).toContain('private.inclusive_aee_can_student');
     expect(migration).toContain('private.inclusive_is_manager');
     expect(migration).toContain('private.inclusive_member_belongs');

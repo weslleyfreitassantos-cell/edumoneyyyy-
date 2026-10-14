@@ -133,10 +133,11 @@ returns boolean language sql stable security definer set search_path = '' as $$
     select 1
     from public.enrollments enrollment
     join public.subject_offerings offering on offering.class_id = enrollment.class_id
+    join public.classes class on class.id = offering.class_id
     where enrollment.student_id = target_student_id
       and enrollment.academic_year_id is not null
       and offering.teacher_profile_id = (select auth.uid())
-      and offering.institution_id = target_institution_id
+      and class.institution_id = target_institution_id
   );
 $$;
 
