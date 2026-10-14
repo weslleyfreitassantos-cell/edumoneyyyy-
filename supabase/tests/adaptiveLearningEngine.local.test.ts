@@ -113,6 +113,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
   const userIds: string[] = [];
   const institutionSkills: string[] = [];
   const stateIds: string[] = [];
+  const guidedSessionIds: string[] = [];
 
   beforeAll(async () => {
     service = createClient(localUrl!, serviceRoleKey!, {
@@ -439,6 +440,74 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     expect(mathDetail.error).toBeNull();
     expect(mathDetail.data.progress.map((row: { skill_title: string }) => row.skill_title)).toEqual(['Função afim']);
 
+    const guidedSession = await insertOne(service, 'learning_guided_sessions', {
+      institution_id: institutionA,
+      student_id: studentA,
+      target_canonical_skill_id: mathCanonicalId,
+      original_target_canonical_skill_id: mathCanonicalId,
+      current_canonical_skill_id: mathCanonicalId,
+      subject_id: mathSubject,
+      class_id: classA,
+      status: 'COMPLETED',
+      planner_version: 'V4',
+    });
+    guidedSessionIds.push(guidedSession.id);
+    const guidedStep = await insertOne(service, 'learning_guided_steps', {
+      institution_id: institutionA,
+      session_id: guidedSession.id,
+      canonical_skill_id: mathCanonicalId,
+      step_type: 'PRACTICE',
+      purpose: 'PRACTICE',
+      position: 0,
+      status: 'COMPLETED',
+      attempts: 1,
+    });
+    await insertOne(service, 'learning_guided_step_attempts', {
+      institution_id: institutionA,
+      session_id: guidedSession.id,
+      step_id: guidedStep.id,
+      student_id: studentA,
+      purpose: 'PRACTICE',
+      answers: [],
+      feedback: [],
+      score: 50,
+      correct_count: 1,
+      total_questions: 2,
+      idempotency_key: `teacher-detail-${suffix}`,
+    });
+    const guidedAttempts = await teacherA.client.rpc('get_teacher_guided_learning_attempts', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: mathSubject,
+    });
+    expect(guidedAttempts.error).toBeNull();
+    expect(guidedAttempts.data).toEqual([expect.objectContaining({
+      source: 'GUIDED',
+      activity_title: 'Função afim · Prática',
+      score: 1,
+      total_points: 2,
+    })]);
+
+    const scopedGuidedDetail = await teacherA.client.rpc('get_teacher_learning_student_detail', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: mathSubject,
+    });
+    expect(scopedGuidedDetail.error).toBeNull();
+    expect(scopedGuidedDetail.data.guided_sessions).toEqual([
+      expect.objectContaining({ id: guidedSession.id }),
+    ]);
+
+    const wrongClassGuidedAttempts = await teacherA.client.rpc('get_teacher_guided_learning_attempts', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classUnassigned,
+      p_subject_id: mathSubject,
+    });
+    expect(wrongClassGuidedAttempts.error?.message).toContain('LEARNING_TEACHER_SUBJECT_SCOPE_DENIED');
+
     await authenticateActor(teacherB);
     const portugueseGraph = await teacherB.client.rpc('get_teacher_student_knowledge_graph_v3', {
       p_institution_id: institutionA,
@@ -449,6 +518,15 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     expect(portugueseGraph.error).toBeNull();
     expect(portugueseGraph.data.skills).toHaveLength(1);
     expect(portugueseGraph.data.skills[0].skill).toBe(`PORT_RUNTIME_${suffix}`);
+
+    const crossSubjectGuidedAttempts = await teacherB.client.rpc('get_teacher_guided_learning_attempts', {
+      p_institution_id: institutionA,
+      p_student_id: studentA,
+      p_class_id: classA,
+      p_subject_id: portugueseSubject,
+    });
+    expect(crossSubjectGuidedAttempts.error).toBeNull();
+    expect(crossSubjectGuidedAttempts.data).toEqual([]);
 
     const deniedDetail = await teacherA.client.rpc('get_teacher_learning_student_detail', {
       p_institution_id: institutionA,
@@ -664,6 +742,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
 
   afterAll(async () => {
     if (!service) return;
+    if (guidedSessionIds.length) await service.from('learning_guided_sessions').delete().in('id', guidedSessionIds);
     if (activityId) {
       const runs = await service.from('learning_attempt_runs').select('id').eq('activity_id', activityId);
       const runIds = runs.data?.map((row: { id: string }) => row.id) ?? [];
