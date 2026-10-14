@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#075bbf" />
+    <title>Sem conexão | TecEscola</title>
+    <style>
+      :root { color-scheme: light dark; font-family: Inter, system-ui, sans-serif; }
+      * { box-sizing: border-box; }
+      body { display: grid; min-height: 100vh; margin: 0; place-items: center; background: #f4f7fb; color: #18212f; }
+      main { width: min(90vw, 28rem); padding: 2rem; text-align: center; }
+      h1 { margin: 0 0 .75rem; font-size: 1.5rem; }
+      p { color: #526176; line-height: 1.6; }
+      button { margin-top: 1rem; border: 0; border-radius: .5rem; padding: .75rem 1rem; background: #075bbf; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+      @media (prefers-color-scheme: dark) { body { background: #101923; color: #f4f7fb; } p { color: #b9c6d6; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Sem conexão com a internet</h1>
+      <p>Conecte-se à internet para acessar sua conta e as informações acadêmicas.</p>
+      <button type="button" onclick="location.reload()">Tentar novamente</button>
+    </main>
+  </body>
+</html>
