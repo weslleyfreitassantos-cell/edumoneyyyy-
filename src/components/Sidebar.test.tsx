@@ -56,6 +56,7 @@ function renderSidebar({
   profile = baseProfile,
   currentUser = baseUser,
   currentInstitutionRole = 'ADMIN',
+  currentInstitutionId = 'institution-1',
   currentInstitutionPlan,
   isDesktopHidden = false,
   isMobileOpen = false,
@@ -64,6 +65,7 @@ function renderSidebar({
   profile?: Profile;
   currentUser?: User;
   currentInstitutionRole?: string | null;
+  currentInstitutionId?: string | null;
   currentInstitutionPlan?: 'BASIC' | 'PROFESSIONAL' | null;
   isDesktopHidden?: boolean;
   isMobileOpen?: boolean;
@@ -80,6 +82,7 @@ function renderSidebar({
         currentInstitutionRole={
           currentInstitutionRole
         }
+        currentInstitutionId={currentInstitutionId}
         currentInstitutionPlan={
           currentInstitutionPlan
         }
@@ -118,6 +121,41 @@ afterEach(() => {
 });
 
 describe('Sidebar', () => {
+  it('mostra o painel inclusivo somente com instituição e papel institucional autorizado', () => {
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    expect(
+      screen.getByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('link', { name: 'Painel Inclusivo' }).getAttribute('href'),
+    ).toBe('/inclusive-education');
+
+    cleanup();
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentInstitutionId: null,
+    });
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+
+    cleanup();
+    renderSidebar({
+      currentUser: { ...baseUser, role: 'student' },
+      currentInstitutionRole: 'STUDENT',
+    });
+    expect(
+      screen.queryByRole('region', { name: 'Educação Inclusiva' }),
+    ).toBeNull();
+  });
+
   it('renderiza rotas reais do ADMIN sem expor a visao geral escolar', () => {
     renderSidebar();
 

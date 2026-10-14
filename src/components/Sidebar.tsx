@@ -129,7 +129,7 @@ const hiddenSectionLabels: readonly NavigationSection[] = [
 ];
 
 const inclusiveEducationNavigation = [
-  ['Visão Geral', '/inclusive-education'],
+  ['Painel Inclusivo', '/inclusive-education'],
   ['PEI dos Alunos', '/inclusive-education/pei'],
   ['AEE / PAEE', '/inclusive-education/aee-paee'],
   ['Biblioteca de Atividades', '/inclusive-education/activities'],
@@ -898,7 +898,10 @@ export default function Sidebar({
   }
 
   function renderInclusiveEducationNavigation() {
-    if (!['admin', 'director', 'secretary', 'teacher'].includes(currentUser.role)) return null;
+    if (
+      !currentInstitutionId ||
+      !['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
+    ) return null;
     return (
       <section className="mb-4" aria-label="Educação Inclusiva">
         <p className="mb-1 px-3 text-xs font-bold uppercase tracking-[0.16em] text-[#667085]">Educação Inclusiva</p>
