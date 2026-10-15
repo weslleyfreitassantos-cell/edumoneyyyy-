@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "886973494c8b32a809833fadfc5f5fdec7adb5f009dc00e4dd7ab97e698efa78",
-  "outputHash": "082275c29371ca8300d66cab68f51f51880187474108dda3d8160378e91981f9",
+  "inputHash": "6cca604950cbefb21217ebe17a158f3cdbe0b1890fc32a6bb588a688e075d40c",
+  "outputHash": "05a4419e7cd4b0017f8d596fa3fa065d7f74fd7d6f0b6f1c6ef96a11fcc92f64",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,13 +13,13 @@
   "currentWave": 2,
   "nextQueueItem": {
     "wave": 2,
-    "id": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+    "id": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
     "stage": "ENSINO_MEDIO",
     "subject": "SOCIOLOGY",
     "status": "CONTENT_GAP",
-    "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+    "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
   },
-  "pendingItems": 1758,
+  "pendingItems": 1757,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "ad523c6d24965dc82b93f070e2cf09915d95a73a3b7e9edfc2aa6964082595b9"
+  "checkpointHash": "3e21f9f27ea147c6b680ce8d60ae3f017e2381c517def6e5667b574e78efd47b"
 }
