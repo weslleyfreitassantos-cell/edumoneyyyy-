@@ -3,6 +3,7 @@ import type {
 } from 'lucide-react';
 import {
   Building2,
+  Accessibility,
   BookOpen,
   BookMarked,
   BadgeCheck,
@@ -126,6 +127,16 @@ const hiddenSectionLabels: readonly NavigationSection[] = [
   'school',
   'personal',
 ];
+
+const inclusiveEducationNavigation = [
+  ['Painel Inclusivo', '/inclusive-education'],
+  ['PEI dos Alunos', '/inclusive-education/pei'],
+  ['AEE / PAEE', '/inclusive-education/aee-paee'],
+  ['Biblioteca de Atividades', '/inclusive-education/activities'],
+  ['Exercícios Interativos', '/inclusive-education/exercises'],
+  ['Materiais para Download', '/inclusive-education/materials'],
+  ['Evolução Pedagógica', '/inclusive-education/progress'],
+] as const;
 
 const adminModuleIcons: Record<
   AdminModuleId,
@@ -886,6 +897,24 @@ export default function Sidebar({
     );
   }
 
+  function renderInclusiveEducationNavigation() {
+    if (
+      !currentInstitutionId ||
+      !['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
+    ) return null;
+    return (
+      <section className="mb-4" aria-label="Educação Inclusiva">
+        <p className="mb-1 px-3 text-xs font-bold uppercase tracking-[0.16em] text-[#667085]">Educação Inclusiva</p>
+        <div className="space-y-1.5">
+          {inclusiveEducationNavigation.map(([label, path]) => {
+            const active = location.pathname === path;
+            return <Link key={path} to={path} onClick={onCloseMobile} aria-current={active ? 'page' : undefined} className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#414754] hover:bg-white'}`}><Accessibility className={`h-5 w-5 shrink-0 ${active ? 'text-[#005bbf]' : 'text-[#667085]'}`} aria-hidden="true" /><span className="truncate">{label}</span></Link>;
+          })}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <>
       {isMobileOpen && (
@@ -1017,6 +1046,7 @@ export default function Sidebar({
           ) : null}
 
           {renderAdminModules()}
+          {renderInclusiveEducationNavigation()}
         </nav>
 
         <div className="border-t border-[#d8deea] p-3">
