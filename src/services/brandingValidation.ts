@@ -18,6 +18,8 @@ export const BRANDING_IMAGE_LIMITS = {
   logo: LOGO_MAX_SIZE_BYTES,
 } as const;
 
+const brandingImageDimensionTimeoutMs = 5000;
+
 export type BrandingImageKind = 'logo' | 'favicon' | 'background';
 
 export type AllowedLogoMimeType =
@@ -302,11 +304,66 @@ export async function validateBrandingImageFile(
     if (!hasValidSignature(bytes, file.type)) {
       return 'A imagem selecionada e invalida.';
     }
+
+    if (kind === 'favicon') {
+      const faviconDimensionError = await validateFaviconDimensions(file);
+
+      if (faviconDimensionError) {
+        return faviconDimensionError;
+      }
+    }
   } catch {
     return 'Nao foi possivel validar a imagem.';
   }
 
   return null;
+}
+
+async function validateFaviconDimensions(
+  file: File,
+): Promise<string | null> {
+  if (
+    typeof Image === 'undefined' ||
+    typeof URL === 'undefined' ||
+    typeof URL.createObjectURL !== 'function'
+  ) {
+    return null;
+  }
+
+  const objectUrl = URL.createObjectURL(file);
+
+  try {
+    const dimensions = await new Promise<{
+      width: number;
+      height: number;
+    } | null>((resolve) => {
+      const image = new Image();
+      let settled = false;
+      const timeoutId = window.setTimeout(() => finish(null), brandingImageDimensionTimeoutMs);
+
+      const finish = (value: { width: number; height: number } | null) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeoutId);
+        resolve(value);
+      };
+
+      image.onload = () =>
+        finish({ width: image.naturalWidth, height: image.naturalHeight });
+      image.onerror = () => finish(null);
+      image.src = objectUrl;
+    });
+
+    if (!dimensions) {
+      return 'Nao foi possivel validar as dimensoes do favicon.';
+    }
+
+    return dimensions.width === dimensions.height
+      ? null
+      : 'O favicon deve ser uma imagem quadrada (mesma largura e altura).';
+  } finally {
+    URL.revokeObjectURL(objectUrl);
+  }
 }
 
 export async function validateInstitutionLogoFile(
