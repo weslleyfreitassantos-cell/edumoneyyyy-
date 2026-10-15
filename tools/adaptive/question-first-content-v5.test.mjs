@@ -27,6 +27,7 @@ import { buildEnglishInferencePack } from './build-english-inference-v5.mjs';
 import { buildPhysicsUnitConversionPack } from './build-physics-unit-conversion-v5.mjs';
 import { buildSociologyInequalityDataPack } from './build-sociology-inequality-data-v5.mjs';
 import { buildSociologyNormValuePack } from './build-sociology-norm-value-v5.mjs';
+import { buildSociologyInstitutionsPack } from './build-sociology-institutions-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -104,6 +105,8 @@ const sociologyInequalityPack = JSON.parse(readFileSync(new URL('../../content/a
 const sociologyInequalityMigration = readFileSync(new URL('../../supabase/migrations/20261013003700_bncc_sociology_inequality_data_question_first_v5.sql', import.meta.url), 'utf8');
 const sociologyNormValuePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/sociology-norm-value.json', import.meta.url), 'utf8'));
 const sociologyNormValueMigration = readFileSync(new URL('../../supabase/migrations/20261013003800_bncc_sociology_norm_value_question_first_v5.sql', import.meta.url), 'utf8');
+const sociologyInstitutionsPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/sociology-institutions.json', import.meta.url), 'utf8'));
+const sociologyInstitutionsMigration = readFileSync(new URL('../../supabase/migrations/20261014000100_bncc_sociology_institutions_question_first_v5.sql', import.meta.url), 'utf8');
 const artEditorialAudit = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-editorial-audit-v1.json', import.meta.url), 'utf8'));
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
@@ -1319,6 +1322,51 @@ describe('question-first V5 staging content', () => {
     expect(sociologyNormValueMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(sociologyNormValueMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(sociologyNormValueMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('deepens sociology institutions with a progressive, distinct question set and exact source reconciliation', () => {
+    const result = validateQuestionFirstPack(sociologyInstitutionsPack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(40);
+    expect(result.contextCount).toBe(40);
+    expect(result.counts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(result.answerPositionCounts).toEqual({ A: 10, B: 10, C: 10, D: 10 });
+    expect(sociologyInstitutionsPack.questions.slice(0, 8).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(sociologyInstitutionsPack.sourceQuestionFeedback).toHaveLength(24);
+    expect(sociologyInstitutionsPack.sourceReconciliation).toMatchObject({
+      sourceQuestionCount: 24,
+      feedbackAdded: 24,
+      existingQuestionsRetainedUnchanged: true,
+      sourceReconciliationStatus: 'EXACT',
+      newQuestions: 40,
+      reusedQuestionsCountedAsNew: false,
+    });
+    expect(sociologyInstitutionsPack.sourceReconciliation.v4QuestionIds).toHaveLength(11);
+    expect(sociologyInstitutionsPack.sourceReconciliation.v9QuestionIds).toHaveLength(13);
+    expect(sociologyInstitutionsPack.sourceReconciliation.existingItemsWithAdjacentOrBroadScopeFlaggedForEditorialReview).toHaveLength(7);
+    expect(sociologyInstitutionsPack.questions[0].correctAnswer).toBe('Uma instituição social.');
+    expect(sociologyInstitutionsPack.questions.find(({ id }) => id.endsWith('lockin-03'))?.correctAnswer)
+      .toBe('A escola específica é uma organização; a educação pode ser analisada como instituição social mais ampla.');
+    expect(sociologyInstitutionsPack.lesson.progression).toHaveLength(4);
+    expect(sociologyInstitutionsPack.lesson.microExplanations).toHaveLength(6);
+    expect(sociologyInstitutionsPack.lesson.remediations).toHaveLength(6);
+    expect(sociologyInstitutionsPack.lesson.sourceDossier[0].license).toContain('CC BY 4.0');
+    expect(sociologyInstitutionsPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(sociologyInstitutionsPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(sociologyInstitutionsPack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles sociology institutions into inactive staging without changing student history', () => {
+    expect(sociologyInstitutionsPack).toEqual(buildSociologyInstitutionsPack());
+    expect(sociologyInstitutionsPack.contentVersion).toBe(5);
+    expect(sociologyInstitutionsPack.lessonVersion).toBe(5);
+    expect(sociologyInstitutionsMigration).toBe(buildMigration(sociologyInstitutionsPack));
+    expect(sociologyInstitutionsMigration).toContain("'SOCIOLOGY_EXPLAIN_INSTITUTIONS'");
+    expect(sociologyInstitutionsMigration).toContain("'v5-sociology-explain-institutions-wave3'");
+    expect(sociologyInstitutionsMigration).toContain("'publication_status', 'STAGING'");
+    expect(sociologyInstitutionsMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(sociologyInstitutionsMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(sociologyInstitutionsMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('records the Art visual-evidence audit without rewriting historical questions', () => {

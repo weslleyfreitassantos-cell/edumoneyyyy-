@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "c049be078f620ae5b51a10ca76d8745a064aafa1cfa84ff6f8d802d196d917b3",
+    "v5QuestionFirstPacks": "ebff572fbbce409bbcee012c531732bb0ba25a3e03c34c53af58786af2effa7b",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 42,
+    "auditedSequences": 43,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 16,
-    "waveTwoCandidateTargetsDeepReady": 16,
-    "deepContentReady": 42,
-    "technicalDeepReady": 42,
-    "pedagogicalReviewPending": 42,
+    "waveTwoCandidateTargetsAudited": 17,
+    "waveTwoCandidateTargetsDeepReady": 17,
+    "deepContentReady": 43,
+    "technicalDeepReady": 43,
+    "pedagogicalReviewPending": 43,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 42
+      "STRUCTURAL_READY": 43
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 42,
-      "QUESTION_POOL_DEPTH_READY": 39,
-      "DIFFICULTY_PROGRESSION_READY": 39,
-      "CONTEXT_DIVERSITY_READY": 39,
-      "TRANSFER_READY": 39,
-      "MISCONCEPTION_RECOVERY_READY": 42,
-      "REVIEW_CONTENT_READY": 39,
-      "AUTHENTIC_EVIDENCE_READY": 42
+      "LESSON_DEPTH_READY": 43,
+      "QUESTION_POOL_DEPTH_READY": 40,
+      "DIFFICULTY_PROGRESSION_READY": 40,
+      "CONTEXT_DIVERSITY_READY": 40,
+      "TRANSFER_READY": 40,
+      "MISCONCEPTION_RECOVERY_READY": 43,
+      "REVIEW_CONTENT_READY": 40,
+      "AUTHENTIC_EVIDENCE_READY": 43
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,12 +110,12 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 1182,
-    "consolidatedQuestionTotal": 1712,
+    "v5QuestionTotal": 1222,
+    "consolidatedQuestionTotal": 1776,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 42,
+    "reviewPending": 43,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -2671,6 +2671,70 @@
           "questionFeedbackCount": 20
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+        "unitId": null,
+        "subject": "SOCIOLOGY",
+        "stage": "ENSINO_MEDIO",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Instituições sociais: regras, papéis e mudanças",
+        "originalQuestionCount": 24,
+        "v5QuestionCount": 40,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 64,
+        "purposeCounts": {
+          "PROBE": 9,
+          "PRACTICE": 20,
+          "TRANSFER": 12,
+          "LOCK_IN": 9,
+          "REVIEW": 14
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": true,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": true,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 63,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 9,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_POOL_DIVERSE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 24,
+          "actualQuestionCount": 24,
+          "status": "EXACT",
+          "questionFeedbackCount": 24
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       }
     ]
   },
@@ -2694,25 +2758,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1757,
+    "totalItems": 1756,
     "byWave": {
-      "WAVE_2": 36,
+      "WAVE_2": 35,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 36,
+      "CONTENT_GAP": 35,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
-        "stage": "ENSINO_MEDIO",
-        "subject": "SOCIOLOGY",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "ART_COMPARE_COMPOSITIONS",
@@ -16772,5 +16828,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "05a4419e7cd4b0017f8d596fa3fa065d7f74fd7d6f0b6f1c6ef96a11fcc92f64"
+  "inventoryHash": "793169520d57ea989da867e90274d2cd26310891e498bf299d599b04912fcf16"
 }

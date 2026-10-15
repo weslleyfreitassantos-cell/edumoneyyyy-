@@ -1,0 +1,1550 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-sociology-explain-institutions-wave3",
+  "subject": "SOCIOLOGY",
+  "domain": "INSTITUICOES",
+  "topic": "instituicoes_papeis_regras_mudanca",
+  "canonicalSkillCode": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+  "contentVersion": 5,
+  "lessonVersion": 5,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v9-sociology-institutions-01",
+      "hint": "A situação identifica escola, papéis e procedimentos; use esses elementos em vez de reduzir instituição a prédio ou exigir consenso absoluto. Quais relações e práticas organizam a escola?",
+      "errorFocus": "INSTITUTION_EVIDENCE"
+    },
+    {
+      "questionId": "v9-sociology-institutions-02",
+      "hint": "Compare recursos, normas e relações de cada comunidade sem classificar automaticamente um arranjo como natural ou inferior. O que muda entre os contextos e quais evidências sustentam a comparação?",
+      "errorFocus": "CARE_CONTEXT"
+    },
+    {
+      "questionId": "v9-sociology-institutions-03",
+      "hint": "A regra formal e a prática informal podem coexistir; examine quem consegue influenciar a pauta. Quem decide de fato e como isso se relaciona ao estatuto?",
+      "errorFocus": "FORMAL_AND_INFORMAL_POWER"
+    },
+    {
+      "questionId": "v9-sociology-institutions-04",
+      "hint": "A mudança aparece nos empréstimos, nas regras e nos papéis de suporte; diferencie adaptação de resultado comprovado. O que foi alterado e que evidência mostraria o efeito?",
+      "errorFocus": "INSTITUTIONAL_ADAPTATION"
+    },
+    {
+      "questionId": "v9-sociology-institutions-05",
+      "hint": "Observe interações e rotinas que comunicam regras; conhecer uma regra não prova que todos a interpretem do mesmo modo. Quais práticas ensinam e reforçam essas expectativas?",
+      "errorFocus": "RULE_LEARNING"
+    },
+    {
+      "questionId": "v9-sociology-institutions-06",
+      "hint": "A divisão de tarefas técnicas pode afetar participação; investigue a organização do conhecimento e da decisão. Quem tem acesso ao conhecimento e como isso afeta as decisões?",
+      "errorFocus": "KNOWLEDGE_AND_POWER"
+    },
+    {
+      "questionId": "v9-sociology-institutions-07",
+      "hint": "A mesma regra formal pode interagir com recursos distintos; compare as condições reais de cumprimento. Que recurso está disponível em cada escola e para quem?",
+      "errorFocus": "RULE_AND_RESOURCE_GAP"
+    },
+    {
+      "questionId": "v9-sociology-institutions-08",
+      "hint": "A campanha depende de coordenação entre organizações e grupos; não atribua participação a uma causa isolada. Como acesso, confiança e comunicação se conectam?",
+      "errorFocus": "PUBLIC_HEALTH_INTERDEPENDENCE"
+    },
+    {
+      "questionId": "v9-sociology-institutions-09",
+      "hint": "Considere ganhos de rotina e barreiras de acesso simultaneamente, verificando quem é afetado e quais alternativas existem. Quem economiza tempo, quem encontra barreiras e que canal alternativo permanece?",
+      "errorFocus": "DIGITALIZATION_AND_ACCESS"
+    },
+    {
+      "questionId": "v9-sociology-institutions-10",
+      "hint": "Os papéis podem trazer expectativas simultâneas e conflitantes; não os trate como características naturais ou mutuamente excludentes. Quais expectativas e horários entram em tensão?",
+      "errorFocus": "ROLE_CONFLICT"
+    },
+    {
+      "questionId": "v9-sociology-institutions-11",
+      "hint": "Compare anúncio, implementação e resultados ao longo do tempo, ouvindo grupos afetados e evitando inferir causalidade sem base. Que evidência mostra mudança na participação, além da nova regra?",
+      "errorFocus": "FORMAL_CHANGE_AND_EFFECT"
+    },
+    {
+      "questionId": "v9-sociology-institutions-12",
+      "hint": "Separe sede e estrutura física das regras, dos papéis e das decisões coletivas que organizam a associação. Quais relações continuariam se a associação mudasse de endereço?",
+      "errorFocus": "SPACE_AND_SOCIAL_PATTERN"
+    },
+    {
+      "questionId": "v9-sociology-institutions-13",
+      "hint": "Críticas e perda de convites podem funcionar como sanções informais; identifique a expectativa compartilhada e seu contexto. Que expectativa é reforçada e qual consequência social aparece?",
+      "errorFocus": "INFORMAL_NORM_AND_SANCTION"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-1",
+      "hint": "A resposta identifica o conceito, mas compare a definição geral com evidências de papéis, regras e práticas no enunciado. Quais elementos do caso mostram organização coletiva?",
+      "errorFocus": "INSTITUTION_EVIDENCE"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-2",
+      "hint": "Socialização é um processo; instituições podem ser contextos em que expectativas são aprendidas. Não confunda processo com estrutura social. O item pergunta por um processo de aprendizagem ou por um padrão que organiza relações?",
+      "errorFocus": "SOCIALIZATION_VS_INSTITUTION"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-3",
+      "hint": "Expectativas coletivas são relevantes, mas a afirmação ficaria mais precisa se distinguisse regra institucional de qualquer expectativa social. Quem sustenta a expectativa e em qual instituição ou grupo ela se aplica?",
+      "errorFocus": "INSTITUTIONAL_SCOPE"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-5",
+      "hint": "Cultura aprendida e dinâmica é um conceito relacionado, mas não substitui a análise específica de instituições. Que papéis, regras ou práticas institucionais aparecem no caso?",
+      "errorFocus": "CULTURE_VS_INSTITUTION"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-6",
+      "hint": "Automação e trabalho exigem contexto e evidência; evite concluir efeitos sobre ocupações sem identificar quais mudanças são descritas. Qual dado sustenta o efeito alegado e quais grupos foram observados?",
+      "errorFocus": "WORK_CHANGE_EVIDENCE"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-7",
+      "hint": "Movimentos sociais podem interagir com instituições, mas disputa por direitos não deve ser tomada como definição de todo movimento. Qual demanda, ator institucional e processo de decisão estão descritos?",
+      "errorFocus": "MOVEMENT_AND_INSTITUTION"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-8",
+      "hint": "Identidades são plurais; para relacionar o tema a instituições, identifique os contextos e relações concretos do enunciado. Que instituição ou prática aparece além da afirmação sobre identidade?",
+      "errorFocus": "IDENTITY_AND_INSTITUTION"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-9",
+      "hint": "Poder também pode envolver agenda e participação, mas o conceito precisa de atores e situação identificados. Quem define a agenda e quem pode participar, segundo as evidências do caso?",
+      "errorFocus": "POWER_AND_INSTITUTION"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-11",
+      "hint": "Instituições podem reproduzir e transformar normas; identifique qual prática mudou e por meio de qual evidência. O que mostra continuidade, contestação ou mudança no contexto?",
+      "errorFocus": "INSTITUTIONAL_CHANGE"
+    },
+    {
+      "questionId": "v3-sociology-sociology_institutions-12",
+      "hint": "Tecnologia medeia comunicação; não explique um resultado social por tecnologia isoladamente. Localize regras, atores e participação. Que relações sociais e procedimentos também participam do resultado?",
+      "errorFocus": "TECHNOLOGY_DETERMINISM"
+    },
+    {
+      "questionId": "v4-authored-sociology-review-01",
+      "hint": "A definição é ampla. Diferencie instituições de grupos e organizações concretas, observando padrões duradouros de papéis, regras e práticas. O caso descreve uma organização específica ou um padrão social mais amplo?",
+      "errorFocus": "INSTITUTION_VS_ORGANIZATION"
+    }
+  ],
+  "sourceReconciliation": {
+    "v4QuestionIds": [
+      "v3-sociology-sociology_institutions-1",
+      "v3-sociology-sociology_institutions-2",
+      "v3-sociology-sociology_institutions-3",
+      "v3-sociology-sociology_institutions-5",
+      "v3-sociology-sociology_institutions-6",
+      "v3-sociology-sociology_institutions-7",
+      "v3-sociology-sociology_institutions-8",
+      "v3-sociology-sociology_institutions-9",
+      "v3-sociology-sociology_institutions-11",
+      "v3-sociology-sociology_institutions-12",
+      "v4-authored-sociology-review-01"
+    ],
+    "v9QuestionIds": [
+      "v9-sociology-institutions-01",
+      "v9-sociology-institutions-02",
+      "v9-sociology-institutions-03",
+      "v9-sociology-institutions-04",
+      "v9-sociology-institutions-05",
+      "v9-sociology-institutions-06",
+      "v9-sociology-institutions-07",
+      "v9-sociology-institutions-08",
+      "v9-sociology-institutions-09",
+      "v9-sociology-institutions-10",
+      "v9-sociology-institutions-11",
+      "v9-sociology-institutions-12",
+      "v9-sociology-institutions-13"
+    ],
+    "sourceQuestionCount": 24,
+    "feedbackAdded": 24,
+    "existingQuestionsRetainedUnchanged": true,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false,
+    "existingItemsWithAdjacentOrBroadScopeFlaggedForEditorialReview": [
+      "v3-sociology-sociology_institutions-2",
+      "v3-sociology-sociology_institutions-5",
+      "v3-sociology-sociology_institutions-6",
+      "v3-sociology-sociology_institutions-7",
+      "v3-sociology-sociology_institutions-8",
+      "v3-sociology-sociology_institutions-9",
+      "v3-sociology-sociology_institutions-12"
+    ]
+  },
+  "questions": [
+    {
+      "id": "v5-sociology-institutions-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SCHOOL_AS_INSTITUTION",
+      "statement": "Uma escola reúne estudantes e profissionais, define papéis e organiza atividades de aprendizagem por meio de regras e rotinas. O que melhor descreve esse conjunto?",
+      "options": [
+        "Uma instituição social.",
+        "Apenas o prédio onde as atividades ocorrem.",
+        "Um encontro ocasional sem expectativas compartilhadas.",
+        "Uma característica natural das pessoas."
+      ],
+      "correctAnswer": "Uma instituição social.",
+      "explanation": "A escola, como instituição, envolve práticas, papéis e expectativas que organizam a educação; não se reduz ao prédio.",
+      "hint": "Procure as regras, os papéis e as práticas que continuam mesmo quando as pessoas e o local mudam.",
+      "errorFocus": "INSTITUTION_AS_BUILDING",
+      "misconceptions": {
+        "Apenas o prédio onde as atividades ocorrem.": [
+          "INSTITUTION_CONFUSED_WITH_BUILDING"
+        ],
+        "Um encontro ocasional sem expectativas compartilhadas.": [
+          "INSTITUTION_CONFUSED_WITH_BUILDING"
+        ],
+        "Uma característica natural das pessoas.": [
+          "INSTITUTION_CONFUSED_WITH_BUILDING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ONE_TIME_STUDY_GROUP",
+      "statement": "Quatro colegas se reúnem uma única vez para fazer um trabalho. Só esse encontro já permite afirmar que surgiu uma nova instituição social?",
+      "options": [
+        "Sim; qualquer grupo reunido é uma instituição.",
+        "Não; um encontro isolado não basta para mostrar um sistema duradouro de papéis e expectativas.",
+        "Sim; a tarefa escolar transforma automaticamente o grupo em instituição.",
+        "Não; instituições só podem existir em prédios públicos."
+      ],
+      "correctAnswer": "Não; um encontro isolado não basta para mostrar um sistema duradouro de papéis e expectativas.",
+      "explanation": "Um grupo pode existir sem constituir uma instituição. Para essa análise, observamos padrões de regras, papéis e práticas que se mantêm e organizam a vida coletiva.",
+      "hint": "Pergunte se há um padrão duradouro ou apenas uma atividade pontual.",
+      "errorFocus": "GROUP_CONFUSED_WITH_INSTITUTION",
+      "misconceptions": {
+        "Sim; qualquer grupo reunido é uma instituição.": [
+          "GROUP_AS_INSTITUTION"
+        ],
+        "Sim; a tarefa escolar transforma automaticamente o grupo em instituição.": [
+          "GROUP_AS_INSTITUTION"
+        ],
+        "Não; instituições só podem existir em prédios públicos.": [
+          "GROUP_AS_INSTITUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FAMILY_CARE_PATTERN",
+      "statement": "Em diferentes arranjos familiares, pessoas podem combinar quem acompanha uma criança à escola e como as tarefas de cuidado serão divididas. Qual leitura sociológica é mais adequada?",
+      "options": [
+        "Existe apenas um modelo familiar que organiza o cuidado.",
+        "A divisão do cuidado é determinada biologicamente e não pode mudar.",
+        "A vida familiar pode organizar papéis e expectativas, embora os arranjos variem entre famílias.",
+        "Uma tarefa combinada por uma família vale como regra para todas."
+      ],
+      "correctAnswer": "A vida familiar pode organizar papéis e expectativas, embora os arranjos variem entre famílias.",
+      "explanation": "A família é uma instituição social, mas seus formatos e acordos variam. O exemplo não autoriza transformar uma experiência em modelo universal.",
+      "hint": "Separe a função social analisada da variedade de formas pelas quais ela pode ser organizada.",
+      "errorFocus": "FAMILY_AS_SINGLE_FIXED_MODEL",
+      "misconceptions": {
+        "Existe apenas um modelo familiar que organiza o cuidado.": [
+          "FAMILY_AS_UNIVERSAL_TEMPLATE"
+        ],
+        "A divisão do cuidado é determinada biologicamente e não pode mudar.": [
+          "FAMILY_AS_UNIVERSAL_TEMPLATE"
+        ],
+        "Uma tarefa combinada por uma família vale como regra para todas.": [
+          "FAMILY_AS_UNIVERSAL_TEMPLATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-probe-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HEALTHCARE_ROLES",
+      "statement": "Em um serviço de saúde, usuários, profissionais e gestores ocupam papéis distintos e seguem procedimentos para organizar o atendimento. O exemplo se relaciona principalmente a",
+      "options": [
+        "Um fenômeno natural sem participação coletiva.",
+        "Uma relação exclusivamente privada entre duas pessoas.",
+        "Uma regra que se aplica automaticamente a qualquer serviço do mundo.",
+        "Uma instituição social de saúde organizada por papéis e práticas."
+      ],
+      "correctAnswer": "Uma instituição social de saúde organizada por papéis e práticas.",
+      "explanation": "O atendimento é organizado por papéis, procedimentos e expectativas sociais. O exemplo não afirma que todos os serviços tenham regras idênticas.",
+      "hint": "Observe como os papéis e os procedimentos coordenam a atividade coletiva.",
+      "errorFocus": "HEALTHCARE_AS_PRIVATE_ONLY",
+      "misconceptions": {
+        "Um fenômeno natural sem participação coletiva.": [
+          "INSTITUTION_AS_PRIVATE_INTERACTION"
+        ],
+        "Uma relação exclusivamente privada entre duas pessoas.": [
+          "INSTITUTION_AS_PRIVATE_INTERACTION"
+        ],
+        "Uma regra que se aplica automaticamente a qualquer serviço do mundo.": [
+          "INSTITUTION_AS_PRIVATE_INTERACTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_OR_BUILDING",
+      "statement": "Uma escola muda de prédio, mas mantém a atividade educativa, os papéis de estudantes e docentes e suas rotinas. O que permaneceu?",
+      "options": [
+        "A instituição educacional pode continuar, apesar da mudança do edifício.",
+        "A instituição desaparece sempre que muda de endereço.",
+        "Só o edifício é uma instituição; as práticas não contam.",
+        "A mudança prova que as regras nunca existiram."
+      ],
+      "correctAnswer": "A instituição educacional pode continuar, apesar da mudança do edifício.",
+      "explanation": "O prédio é um espaço físico; a instituição educacional também inclui práticas e expectativas que podem continuar em outro local.",
+      "hint": "Diferencie o local físico do padrão social que organiza a educação.",
+      "errorFocus": "BUILDING_AS_WHOLE_INSTITUTION",
+      "misconceptions": {
+        "A instituição desaparece sempre que muda de endereço.": [
+          "BUILDING_AS_INSTITUTION"
+        ],
+        "Só o edifício é uma instituição; as práticas não contam.": [
+          "BUILDING_AS_INSTITUTION"
+        ],
+        "A mudança prova que as regras nunca existiram.": [
+          "BUILDING_AS_INSTITUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CLASSROOM_ROLE",
+      "statement": "Na sala de aula, docentes organizam situações de ensino e estudantes participam das atividades. Essa distribuição de posições e expectativas é um exemplo de",
+      "options": [
+        "Uma prova de que todas as pessoas agem do mesmo modo.",
+        "Papéis sociais relacionados a uma instituição educacional.",
+        "Um traço biológico de quem estuda.",
+        "Uma sanção aplicada a quem falta."
+      ],
+      "correctAnswer": "Papéis sociais relacionados a uma instituição educacional.",
+      "explanation": "Papel social é um conjunto de expectativas ligado a uma posição em determinada situação. Isso não determina completamente o comportamento individual.",
+      "hint": "Identifique a posição e as expectativas associadas a ela, sem tratar a expectativa como comportamento obrigatório de todos.",
+      "errorFocus": "ROLE_CONFUSED_WITH_TRAIT",
+      "misconceptions": {
+        "Uma prova de que todas as pessoas agem do mesmo modo.": [
+          "ROLE_AS_INNATE_TRAIT"
+        ],
+        "Um traço biológico de quem estuda.": [
+          "ROLE_AS_INNATE_TRAIT"
+        ],
+        "Uma sanção aplicada a quem falta.": [
+          "ROLE_AS_INNATE_TRAIT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_RULE_SCOPE",
+      "statement": "O regimento de uma escola define como reservar a biblioteca. O que essa regra permite concluir diretamente?",
+      "options": [
+        "Que todas as bibliotecas do país usam o mesmo procedimento.",
+        "Que a regra é uma lei nacional por estar escrita.",
+        "A instituição formalizou um procedimento para aquele contexto escolar.",
+        "Que todos os estudantes seguem o procedimento sem exceção."
+      ],
+      "correctAnswer": "A instituição formalizou um procedimento para aquele contexto escolar.",
+      "explanation": "O enunciado identifica uma regra formal de uma escola. Seu alcance não deve ser ampliado sem outra evidência.",
+      "hint": "Confira quem estabeleceu a regra e a quem ela se aplica.",
+      "errorFocus": "LOCAL_RULE_AS_UNIVERSAL",
+      "misconceptions": {
+        "Que todas as bibliotecas do país usam o mesmo procedimento.": [
+          "INSTITUTIONAL_RULE_AS_UNIVERSAL"
+        ],
+        "Que a regra é uma lei nacional por estar escrita.": [
+          "INSTITUTIONAL_RULE_AS_UNIVERSAL"
+        ],
+        "Que todos os estudantes seguem o procedimento sem exceção.": [
+          "INSTITUTIONAL_RULE_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_RULE_VS_INSTITUTION",
+      "statement": "Uma escola estabelece que estudantes devem devolver materiais emprestados no prazo. Qual alternativa separa melhor a regra da instituição?",
+      "options": [
+        "A regra e a instituição são exatamente a mesma coisa.",
+        "A regra é a instituição inteira porque está escrita.",
+        "A instituição só existe quando a regra é aplicada a cada pessoa.",
+        "A regra é uma orientação específica; a instituição educacional é o padrão mais amplo de papéis e práticas."
+      ],
+      "correctAnswer": "A regra é uma orientação específica; a instituição educacional é o padrão mais amplo de papéis e práticas.",
+      "explanation": "Uma regra pode integrar uma instituição, mas não representa por si só todas as relações, funções e práticas que a compõem.",
+      "hint": "Pense na regra como uma parte do conjunto institucional, não como o conjunto inteiro.",
+      "errorFocus": "RULE_AS_WHOLE_INSTITUTION",
+      "misconceptions": {
+        "A regra e a instituição são exatamente a mesma coisa.": [
+          "RULE_AS_INSTITUTION"
+        ],
+        "A regra é a instituição inteira porque está escrita.": [
+          "RULE_AS_INSTITUTION"
+        ],
+        "A instituição só existe quando a regra é aplicada a cada pessoa.": [
+          "RULE_AS_INSTITUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "EDUCATION_AND_SOCIALIZATION",
+      "statement": "Uma turma aprende procedimentos para realizar uma assembleia escolar e discutir propostas. Qual processo pode ocorrer junto à aprendizagem do conteúdo das disciplinas?",
+      "options": [
+        "A socialização em práticas de participação, sem garantir que todos participem da mesma forma.",
+        "Uma mudança biológica causada pela escola.",
+        "A eliminação de diferenças de opinião entre estudantes.",
+        "A prova de que a assembleia representa toda a sociedade."
+      ],
+      "correctAnswer": "A socialização em práticas de participação, sem garantir que todos participem da mesma forma.",
+      "explanation": "A participação pode ensinar formas de interação e organização coletiva. O resultado depende das condições concretas e não é automaticamente igual para todos.",
+      "hint": "Identifique o que pode ser aprendido na interação e limite a conclusão ao caso descrito.",
+      "errorFocus": "SOCIALIZATION_AS_UNIFORM_RESULT",
+      "misconceptions": {
+        "Uma mudança biológica causada pela escola.": [
+          "SOCIALIZATION_AS_IDENTICAL_OUTCOME"
+        ],
+        "A eliminação de diferenças de opinião entre estudantes.": [
+          "SOCIALIZATION_AS_IDENTICAL_OUTCOME"
+        ],
+        "A prova de que a assembleia representa toda a sociedade.": [
+          "SOCIALIZATION_AS_IDENTICAL_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FAMILY_ARRANGEMENT_VARIATION",
+      "statement": "Dois domicílios organizam o cuidado de crianças de formas diferentes: em um, parentes se revezam; no outro, adultos compartilham a tarefa com apoio de uma creche. O que a comparação mostra?",
+      "options": [
+        "Somente o primeiro domicílio tem vida familiar.",
+        "A instituição familiar pode organizar o cuidado por arranjos variados e relacionados a outras instituições.",
+        "A creche substitui automaticamente todos os papéis familiares.",
+        "Uma das formas é universalmente correta, independentemente do contexto."
+      ],
+      "correctAnswer": "A instituição familiar pode organizar o cuidado por arranjos variados e relacionados a outras instituições.",
+      "explanation": "Arranjos familiares são diversos e podem se relacionar com serviços educacionais e outras condições. O exemplo não estabelece hierarquia automática.",
+      "hint": "Descreva os arranjos observados antes de avaliá-los; não presuma que um representa todas as famílias.",
+      "errorFocus": "FAMILY_VARIATION_AS_DEFICIT",
+      "misconceptions": {
+        "Somente o primeiro domicílio tem vida familiar.": [
+          "FAMILY_VARIATION_AS_DEFICIT"
+        ],
+        "A creche substitui automaticamente todos os papéis familiares.": [
+          "FAMILY_VARIATION_AS_DEFICIT"
+        ],
+        "Uma das formas é universalmente correta, independentemente do contexto.": [
+          "FAMILY_VARIATION_AS_DEFICIT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "HEALTH_ORGANIZATION_AND_INSTITUTION",
+      "statement": "Uma unidade de saúde é uma organização concreta. O sistema de papéis, procedimentos e expectativas que organiza o cuidado pode ser analisado como",
+      "options": [
+        "O mesmo que o edifício da unidade, sem relações sociais.",
+        "Uma característica pessoal dos profissionais.",
+        "Uma instituição social de saúde, da qual organizações concretas podem fazer parte.",
+        "Uma garantia de que todos recebem atendimento idêntico."
+      ],
+      "correctAnswer": "Uma instituição social de saúde, da qual organizações concretas podem fazer parte.",
+      "explanation": "A organização é uma estrutura concreta; instituição social é um padrão mais amplo de relações e práticas. Uma não garante por si só resultados iguais.",
+      "hint": "Compare a unidade específica com o padrão social mais amplo que organiza o cuidado.",
+      "errorFocus": "ORGANIZATION_AND_INSTITUTION_COLLAPSED",
+      "misconceptions": {
+        "O mesmo que o edifício da unidade, sem relações sociais.": [
+          "ORGANIZATION_AS_INSTITUTION"
+        ],
+        "Uma característica pessoal dos profissionais.": [
+          "ORGANIZATION_AS_INSTITUTION"
+        ],
+        "Uma garantia de que todos recebem atendimento idêntico.": [
+          "ORGANIZATION_AS_INSTITUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "WORKPLACE_ROLES",
+      "statement": "Em uma cooperativa, integrantes decidem como distribuir tarefas, registrar decisões e repartir resultados. Qual dimensão sociológica aparece no exemplo?",
+      "options": [
+        "Uma relação sem regras ou posições sociais.",
+        "Um resultado determinado apenas por talentos individuais.",
+        "Uma regra que necessariamente vale para todas as empresas.",
+        "A instituição econômica organiza relações e expectativas sobre trabalho e recursos."
+      ],
+      "correctAnswer": "A instituição econômica organiza relações e expectativas sobre trabalho e recursos.",
+      "explanation": "O trabalho e a distribuição de recursos são organizados por práticas e relações sociais. O exemplo não descreve todas as organizações econômicas.",
+      "hint": "Procure as relações coletivas que organizam tarefas e recursos.",
+      "errorFocus": "ECONOMY_AS_INDIVIDUAL_ONLY",
+      "misconceptions": {
+        "Uma relação sem regras ou posições sociais.": [
+          "ECONOMIC_INSTITUTION_AS_INDIVIDUAL_CHOICE"
+        ],
+        "Um resultado determinado apenas por talentos individuais.": [
+          "ECONOMIC_INSTITUTION_AS_INDIVIDUAL_CHOICE"
+        ],
+        "Uma regra que necessariamente vale para todas as empresas.": [
+          "ECONOMIC_INSTITUTION_AS_INDIVIDUAL_CHOICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PUBLIC_SERVICE_PROCEDURE",
+      "statement": "Um órgão público define etapas para solicitar um serviço, identifica responsáveis e informa como acompanhar o pedido. Qual análise é mais precisa?",
+      "options": [
+        "Há procedimentos institucionais que organizam responsabilidades e acesso ao serviço.",
+        "A presença de etapas prova que ninguém enfrenta barreiras.",
+        "O procedimento é uma preferência particular sem dimensão coletiva.",
+        "A regra desse órgão se aplica automaticamente a qualquer serviço público."
+      ],
+      "correctAnswer": "Há procedimentos institucionais que organizam responsabilidades e acesso ao serviço.",
+      "explanation": "Procedimentos e papéis organizam a ação institucional, mas sua existência não mostra, sozinha, como o acesso ocorre para todas as pessoas.",
+      "hint": "Separe a regra formal da evidência sobre seus efeitos e seu alcance.",
+      "errorFocus": "FORMAL_PROCESS_AS_EQUAL_ACCESS",
+      "misconceptions": {
+        "A presença de etapas prova que ninguém enfrenta barreiras.": [
+          "RULE_AS_PROOF_OF_EQUAL_ACCESS"
+        ],
+        "O procedimento é uma preferência particular sem dimensão coletiva.": [
+          "RULE_AS_PROOF_OF_EQUAL_ACCESS"
+        ],
+        "A regra desse órgão se aplica automaticamente a qualquer serviço público.": [
+          "RULE_AS_PROOF_OF_EQUAL_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELIGION_AND_PLURALISM",
+      "statement": "Uma comunidade organiza encontros e práticas religiosas segundo suas próprias tradições. Qual afirmação evita generalização?",
+      "options": [
+        "Todas as religiões organizam seus encontros do mesmo modo.",
+        "Práticas religiosas podem variar entre comunidades e participantes; o caso descreve apenas o contexto observado.",
+        "A comunidade observada representa todas as pessoas religiosas.",
+        "A existência de uma tradição impede qualquer mudança."
+      ],
+      "correctAnswer": "Práticas religiosas podem variar entre comunidades e participantes; o caso descreve apenas o contexto observado.",
+      "explanation": "Instituições religiosas podem organizar práticas e pertencimentos, mas há diversidade entre tradições e dentro delas.",
+      "hint": "Delimite a comunidade observada e evite atribuir a mesma prática a todas as pessoas.",
+      "errorFocus": "RELIGIOUS_PRACTICE_AS_UNIVERSAL",
+      "misconceptions": {
+        "Todas as religiões organizam seus encontros do mesmo modo.": [
+          "RELIGIOUS_UNIVERSALIZATION"
+        ],
+        "A comunidade observada representa todas as pessoas religiosas.": [
+          "RELIGIOUS_UNIVERSALIZATION"
+        ],
+        "A existência de uma tradição impede qualquer mudança.": [
+          "RELIGIOUS_UNIVERSALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TEMPORARY_CAMPAIGN",
+      "statement": "Uma escola promove uma campanha de arrecadação durante uma semana. Por que a campanha, isoladamente, não prova a criação de uma instituição social?",
+      "options": [
+        "Porque instituições nunca realizam campanhas.",
+        "Porque qualquer campanha é um fenômeno natural.",
+        "Porque uma ação temporária não mostra, por si só, um padrão duradouro de papéis e expectativas.",
+        "Porque uma instituição só existe se tiver um nome oficial."
+      ],
+      "correctAnswer": "Porque uma ação temporária não mostra, por si só, um padrão duradouro de papéis e expectativas.",
+      "explanation": "Uma atividade pode ocorrer dentro de uma instituição sem constituir uma instituição própria. É preciso observar continuidade e organização social além do evento.",
+      "hint": "Pergunte se a atividade cria um padrão social duradouro ou se é uma iniciativa delimitada.",
+      "errorFocus": "EVENT_AS_INSTITUTION",
+      "misconceptions": {
+        "Porque instituições nunca realizam campanhas.": [
+          "TEMPORARY_EVENT_AS_INSTITUTION"
+        ],
+        "Porque qualquer campanha é um fenômeno natural.": [
+          "TEMPORARY_EVENT_AS_INSTITUTION"
+        ],
+        "Porque uma instituição só existe se tiver um nome oficial.": [
+          "TEMPORARY_EVENT_AS_INSTITUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-practice-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "INSTITUTIONAL_CHANGE",
+      "statement": "Após ouvir estudantes e famílias, uma escola revê uma regra de comunicação. Qual interpretação é sociologicamente cuidadosa?",
+      "options": [
+        "A mudança prova que nenhuma regra existia antes.",
+        "A revisão demonstra que todas as pessoas concordaram.",
+        "Instituições são imutáveis e só mudam quando o prédio muda.",
+        "A instituição pode mudar práticas por interação e disputa; é preciso avaliar quem participou e os efeitos."
+      ],
+      "correctAnswer": "A instituição pode mudar práticas por interação e disputa; é preciso avaliar quem participou e os efeitos.",
+      "explanation": "Instituições são reproduzidas e também podem ser transformadas. Uma revisão não demonstra, sem outras evidências, unanimidade ou efeitos iguais.",
+      "hint": "Identifique a prática alterada, os participantes ouvidos e o que ainda precisa ser observado.",
+      "errorFocus": "CHANGE_AS_UNANIMITY",
+      "misconceptions": {
+        "A mudança prova que nenhuma regra existia antes.": [
+          "INSTITUTIONAL_CHANGE_AS_UNANIMITY"
+        ],
+        "A revisão demonstra que todas as pessoas concordaram.": [
+          "INSTITUTIONAL_CHANGE_AS_UNANIMITY"
+        ],
+        "Instituições são imutáveis e só mudam quando o prédio muda.": [
+          "INSTITUTIONAL_CHANGE_AS_UNANIMITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ACCESSIBLE_SCHOOL_PROCEDURE",
+      "statement": "Uma escola altera o sistema de inscrição em atividades: passa a oferecer formulário digital e atendimento presencial em horários definidos. O que a mudança procura fazer?",
+      "options": [
+        "Reorganizar um procedimento institucional para ampliar formas de acesso; o efeito precisa ser verificado.",
+        "Provar que todos conseguem se inscrever igualmente.",
+        "Eliminar a necessidade de regras e responsabilidades.",
+        "Transformar a escola em uma instituição diferente de um dia para o outro."
+      ],
+      "correctAnswer": "Reorganizar um procedimento institucional para ampliar formas de acesso; o efeito precisa ser verificado.",
+      "explanation": "O procedimento foi alterado e pode reduzir uma barreira, mas é preciso observar quem consegue utilizá-lo e quais dificuldades permanecem.",
+      "hint": "Diferencie a intenção da mudança dos resultados observados.",
+      "errorFocus": "PROCEDURE_CHANGE_AS_PROVEN_OUTCOME",
+      "misconceptions": {
+        "Provar que todos conseguem se inscrever igualmente.": [
+          "POLICY_INTENT_AS_RESULT"
+        ],
+        "Eliminar a necessidade de regras e responsabilidades.": [
+          "POLICY_INTENT_AS_RESULT"
+        ],
+        "Transformar a escola em uma instituição diferente de um dia para o outro.": [
+          "POLICY_INTENT_AS_RESULT"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CLINIC_SHIFT_SCHEDULE",
+      "statement": "Uma clínica muda parte dos horários de atendimento após usuários que trabalham em turnos relatarem dificuldade de comparecer. Qual leitura é melhor?",
+      "options": [
+        "A mudança prova que todas as barreiras de acesso foram eliminadas.",
+        "A organização de horários é uma prática institucional que pode responder a condições de diferentes grupos.",
+        "A dificuldade dos usuários é apenas uma escolha individual sem relação com horários.",
+        "A clínica passa a atender todas as pessoas da mesma forma em qualquer situação."
+      ],
+      "correctAnswer": "A organização de horários é uma prática institucional que pode responder a condições de diferentes grupos.",
+      "explanation": "Horários organizam o acesso e podem ser revistos diante de necessidades observadas. A medida não permite afirmar que todas as barreiras desapareceram.",
+      "hint": "Relacione a regra de horário à condição relatada e identifique o limite da conclusão.",
+      "errorFocus": "INSTITUTIONAL_RESPONSE_AS_COMPLETE_SOLUTION",
+      "misconceptions": {
+        "A mudança prova que todas as barreiras de acesso foram eliminadas.": [
+          "SINGLE_CHANGE_AS_COMPLETE_SOLUTION"
+        ],
+        "A dificuldade dos usuários é apenas uma escolha individual sem relação com horários.": [
+          "SINGLE_CHANGE_AS_COMPLETE_SOLUTION"
+        ],
+        "A clínica passa a atender todas as pessoas da mesma forma em qualquer situação.": [
+          "SINGLE_CHANGE_AS_COMPLETE_SOLUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FAMILY_CARE_AND_PUBLIC_SERVICE",
+      "statement": "Uma família reorganiza os turnos de cuidado quando uma pessoa começa a frequentar um curso noturno. Qual fator ajuda a explicar a mudança sem reduzir tudo à vontade individual?",
+      "options": [
+        "A família age isolada de horários e serviços sociais.",
+        "A mudança comprova que existe um único papel familiar correto.",
+        "As rotinas familiares se relacionam com papéis e também com condições de outras instituições, como educação e trabalho.",
+        "A instituição familiar impede que seus membros negociem tarefas."
+      ],
+      "correctAnswer": "As rotinas familiares se relacionam com papéis e também com condições de outras instituições, como educação e trabalho.",
+      "explanation": "A organização do cuidado pode mudar em relação a horários de estudo, trabalho e serviços. Isso não elimina escolhas nem determina um único arranjo.",
+      "hint": "Observe como rotinas e instituições se relacionam, sem afirmar que uma causa determina todo o resultado.",
+      "errorFocus": "FAMILY_AS_ISOLATED_OR_FIXED",
+      "misconceptions": {
+        "A família age isolada de horários e serviços sociais.": [
+          "INSTITUTIONS_AS_ISOLATED"
+        ],
+        "A mudança comprova que existe um único papel familiar correto.": [
+          "INSTITUTIONS_AS_ISOLATED"
+        ],
+        "A instituição familiar impede que seus membros negociem tarefas.": [
+          "INSTITUTIONS_AS_ISOLATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LIBRARY_ORGANIZATION_AND_READING",
+      "statement": "Uma biblioteca municipal registra empréstimos, enquanto a educação escolar organiza atividades de ensino. O que a comparação permite dizer?",
+      "options": [
+        "As duas são a mesma organização porque lidam com livros.",
+        "A biblioteca substitui automaticamente a escola.",
+        "Uma atividade de leitura prova que não há diferenças institucionais.",
+        "São organizações e instituições relacionadas, mas com funções e procedimentos que não devem ser confundidos."
+      ],
+      "correctAnswer": "São organizações e instituições relacionadas, mas com funções e procedimentos que não devem ser confundidos.",
+      "explanation": "Bibliotecas e escolas podem colaborar na educação, mas têm arranjos e papéis distintos. A semelhança temática não as torna a mesma organização.",
+      "hint": "Compare os objetivos e procedimentos descritos, sem confundir colaboração com identidade.",
+      "errorFocus": "RELATED_INSTITUTIONS_AS_IDENTICAL",
+      "misconceptions": {
+        "As duas são a mesma organização porque lidam com livros.": [
+          "RELATED_AS_IDENTICAL"
+        ],
+        "A biblioteca substitui automaticamente a escola.": [
+          "RELATED_AS_IDENTICAL"
+        ],
+        "Uma atividade de leitura prova que não há diferenças institucionais.": [
+          "RELATED_AS_IDENTICAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PUBLIC_DECISION_RESPONSIBILITY",
+      "statement": "Uma prefeitura registra quem analisou uma solicitação, qual critério foi usado e como pedir revisão. Qual aspecto institucional está mais evidente?",
+      "options": [
+        "A distribuição de papéis e procedimentos que organiza decisões e permite acompanhar responsabilidades.",
+        "A garantia de que toda decisão será aceita por todos.",
+        "A ausência de poder nas relações entre órgãos e usuários.",
+        "A prova de que o procedimento não pode ser contestado."
+      ],
+      "correctAnswer": "A distribuição de papéis e procedimentos que organiza decisões e permite acompanhar responsabilidades.",
+      "explanation": "Papéis, critérios e revisão organizam decisões. A existência do processo não garante consenso nem impede contestação.",
+      "hint": "Identifique quem decide, com base em quais critérios e quais formas de revisão existem.",
+      "errorFocus": "PROCEDURE_AS_CONSENSUS",
+      "misconceptions": {
+        "A garantia de que toda decisão será aceita por todos.": [
+          "FORMAL_PROCEDURE_AS_CONSENSUS"
+        ],
+        "A ausência de poder nas relações entre órgãos e usuários.": [
+          "FORMAL_PROCEDURE_AS_CONSENSUS"
+        ],
+        "A prova de que o procedimento não pode ser contestado.": [
+          "FORMAL_PROCEDURE_AS_CONSENSUS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ONLINE_COMMUNITY_RULES",
+      "statement": "Uma comunidade digital define como moderar publicações e permite que participantes contestem decisões. Como analisar essa comunidade?",
+      "options": [
+        "Como uma instituição sem relações sociais porque funciona por aplicativo.",
+        "Como um espaço organizado por regras, papéis e relações de poder, cuja aplicação também deve ser examinada.",
+        "Como um espaço em que regras são sempre neutras e aplicadas igualmente.",
+        "Como uma instituição que representa todas as comunidades digitais."
+      ],
+      "correctAnswer": "Como um espaço organizado por regras, papéis e relações de poder, cuja aplicação também deve ser examinada.",
+      "explanation": "Tecnologias mediam interações, mas não eliminam organização, papéis ou poder. É necessário observar como as regras são formuladas e aplicadas.",
+      "hint": "Aplique ao ambiente digital as mesmas perguntas sobre regras, papéis, decisões e efeitos.",
+      "errorFocus": "DIGITAL_SPACE_AS_SOCIAL_VOID",
+      "misconceptions": {
+        "Como uma instituição sem relações sociais porque funciona por aplicativo.": [
+          "DIGITAL_AS_NON_SOCIAL"
+        ],
+        "Como um espaço em que regras são sempre neutras e aplicadas igualmente.": [
+          "DIGITAL_AS_NON_SOCIAL"
+        ],
+        "Como uma instituição que representa todas as comunidades digitais.": [
+          "DIGITAL_AS_NON_SOCIAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "UNEQUAL_RULE_ENFORCEMENT",
+      "statement": "Um regulamento escolar prevê a mesma consequência para todos, mas registros mostram que ela é aplicada com frequências diferentes entre turmas. Qual investigação é necessária?",
+      "options": [
+        "Concluir que a aplicação é igual porque o texto do regulamento é o mesmo.",
+        "Afirmar a intenção de cada profissional sem ouvir ou observar evidências.",
+        "Examinar como a regra é aplicada, quais situações são comparáveis e que efeitos a diferença produz.",
+        "Concluir que a instituição deixou de existir."
+      ],
+      "correctAnswer": "Examinar como a regra é aplicada, quais situações são comparáveis e que efeitos a diferença produz.",
+      "explanation": "O texto formal não descreve sozinho a prática. Comparar aplicação e efeitos exige contexto e não permite presumir intenções individuais.",
+      "hint": "Separe o texto da regra dos registros de aplicação e compare situações equivalentes.",
+      "errorFocus": "WRITTEN_RULE_AS_EQUAL_PRACTICE",
+      "misconceptions": {
+        "Concluir que a aplicação é igual porque o texto do regulamento é o mesmo.": [
+          "WRITTEN_RULE_AS_EQUALITY"
+        ],
+        "Afirmar a intenção de cada profissional sem ouvir ou observar evidências.": [
+          "WRITTEN_RULE_AS_EQUALITY"
+        ],
+        "Concluir que a instituição deixou de existir.": [
+          "WRITTEN_RULE_AS_EQUALITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-transfer-08",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_TRANSPORT_COORDINATION",
+      "statement": "Uma escola ajusta o horário de saída depois que o serviço de transporte do bairro muda seus itinerários. O exemplo evidencia que",
+      "options": [
+        "A escola controla sozinha todas as condições de deslocamento.",
+        "O transporte determina sem negociação qualquer rotina escolar.",
+        "A mudança prova que as duas instituições têm a mesma função.",
+        "Práticas de instituições diferentes podem se relacionar e exigir coordenação."
+      ],
+      "correctAnswer": "Práticas de instituições diferentes podem se relacionar e exigir coordenação.",
+      "explanation": "Educação e transporte podem depender de coordenação, sem que uma instituição controle integralmente a outra ou tenha a mesma função.",
+      "hint": "Identifique a relação entre as duas rotinas e evite transformar interdependência em controle total.",
+      "errorFocus": "INTERDEPENDENCE_AS_CONTROL",
+      "misconceptions": {
+        "A escola controla sozinha todas as condições de deslocamento.": [
+          "INTERDEPENDENCE_AS_TOTAL_CONTROL"
+        ],
+        "O transporte determina sem negociação qualquer rotina escolar.": [
+          "INTERDEPENDENCE_AS_TOTAL_CONTROL"
+        ],
+        "A mudança prova que as duas instituições têm a mesma função.": [
+          "INTERDEPENDENCE_AS_TOTAL_CONTROL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-lockin-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INSTITUTION_AND_AGENCY",
+      "statement": "Uma regra de uma instituição influencia as opções disponíveis, mas participantes encontram formas distintas de segui-la, negociá-la ou contestá-la. Qual conclusão é mais adequada?",
+      "options": [
+        "A instituição estrutura possibilidades, mas não determina mecanicamente cada ação individual.",
+        "A regra não tem qualquer efeito porque as pessoas podem agir de modos diferentes.",
+        "Todas as pessoas necessariamente obedecem da mesma maneira.",
+        "A instituição só existe se ninguém contestar suas regras."
+      ],
+      "correctAnswer": "A instituição estrutura possibilidades, mas não determina mecanicamente cada ação individual.",
+      "explanation": "Instituições organizam condições e expectativas; pessoas também interpretam e podem responder de formas diversas.",
+      "hint": "Considere ao mesmo tempo as condições institucionais e as respostas dos participantes.",
+      "errorFocus": "STRUCTURE_AS_TOTAL_DETERMINISM",
+      "misconceptions": {
+        "A regra não tem qualquer efeito porque as pessoas podem agir de modos diferentes.": [
+          "STRUCTURE_AS_DETERMINISM"
+        ],
+        "Todas as pessoas necessariamente obedecem da mesma maneira.": [
+          "STRUCTURE_AS_DETERMINISM"
+        ],
+        "A instituição só existe se ninguém contestar suas regras.": [
+          "STRUCTURE_AS_DETERMINISM"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-lockin-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "EQUAL_RULE_DIFFERENT_RESOURCES",
+      "statement": "Duas escolas adotam o mesmo prazo para entregar uma atividade. Uma oferece laboratório aberto; a outra não dispõe desse recurso. O que deve ser analisado antes de afirmar que a regra produz condições iguais?",
+      "options": [
+        "A igualdade do texto prova que as condições são iguais.",
+        "Como os recursos e as condições de cada escola afetam a possibilidade de cumprir o prazo.",
+        "A diferença de recursos prova que uma escola não tem instituição educacional.",
+        "O prazo determina sozinho o resultado de todos os estudantes."
+      ],
+      "correctAnswer": "Como os recursos e as condições de cada escola afetam a possibilidade de cumprir o prazo.",
+      "explanation": "Regras iguais no papel podem interagir com condições diferentes. É necessário observar recursos, oportunidades e resultados antes de concluir sobre igualdade.",
+      "hint": "Compare a regra formal e os recursos disponíveis em cada contexto.",
+      "errorFocus": "SAME_RULE_AS_SAME_CONDITION",
+      "misconceptions": {
+        "A igualdade do texto prova que as condições são iguais.": [
+          "FORMAL_EQUALITY_AS_EQUAL_CONDITIONS"
+        ],
+        "A diferença de recursos prova que uma escola não tem instituição educacional.": [
+          "FORMAL_EQUALITY_AS_EQUAL_CONDITIONS"
+        ],
+        "O prazo determina sozinho o resultado de todos os estudantes.": [
+          "FORMAL_EQUALITY_AS_EQUAL_CONDITIONS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-lockin-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_AS_ORGANIZATION_AND_INSTITUTION",
+      "statement": "Uma escola específica possui direção, funcionários e documentos próprios; a educação também envolve expectativas e práticas sociais presentes em diferentes escolas. Qual distinção é mais precisa?",
+      "options": [
+        "A organização concreta e a instituição mais ampla são idênticas em todos os sentidos.",
+        "Só documentos fazem parte de instituições sociais.",
+        "A escola específica é uma organização; a educação pode ser analisada como instituição social mais ampla.",
+        "A educação deixa de ser instituição quando uma escola fecha."
+      ],
+      "correctAnswer": "A escola específica é uma organização; a educação pode ser analisada como instituição social mais ampla.",
+      "explanation": "A organização concreta tem estrutura e participantes delimitados; a instituição se refere a padrões mais amplos. Uma organização pode expressar uma instituição sem esgotá-la.",
+      "hint": "Use “organização” para a estrutura concreta e “instituição” para o padrão social mais amplo.",
+      "errorFocus": "ORGANIZATION_EQUALS_INSTITUTION",
+      "misconceptions": {
+        "A organização concreta e a instituição mais ampla são idênticas em todos os sentidos.": [
+          "ORGANIZATION_INSTITUTION_COLLAPSED"
+        ],
+        "Só documentos fazem parte de instituições sociais.": [
+          "ORGANIZATION_INSTITUTION_COLLAPSED"
+        ],
+        "A educação deixa de ser instituição quando uma escola fecha.": [
+          "ORGANIZATION_INSTITUTION_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-lockin-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "INSTITUTIONAL_CHANGE_AND_CONFLICT",
+      "statement": "Usuários contestam uma regra de atendimento; depois de reuniões, uma instituição altera o procedimento e cria um canal de revisão. O que a sequência sustenta?",
+      "options": [
+        "A mudança prova que todos concordaram com a regra nova.",
+        "A contestação demonstra que a instituição nunca existiu.",
+        "O novo procedimento elimina qualquer conflito futuro.",
+        "Conflitos e participação podem contribuir para mudanças institucionais; a adesão e os efeitos ainda precisam ser observados."
+      ],
+      "correctAnswer": "Conflitos e participação podem contribuir para mudanças institucionais; a adesão e os efeitos ainda precisam ser observados.",
+      "explanation": "A sequência mostra mudança após contestação, mas não permite inferir consenso total nem prever que novos conflitos não ocorrerão.",
+      "hint": "Distinga a mudança registrada de conclusões sobre consenso e efeitos futuros.",
+      "errorFocus": "CHANGE_AS_CONSENSUS_OR_FINALITY",
+      "misconceptions": {
+        "A mudança prova que todos concordaram com a regra nova.": [
+          "CHANGE_AS_FINAL_CONSENSUS"
+        ],
+        "A contestação demonstra que a instituição nunca existiu.": [
+          "CHANGE_AS_FINAL_CONSENSUS"
+        ],
+        "O novo procedimento elimina qualquer conflito futuro.": [
+          "CHANGE_AS_FINAL_CONSENSUS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-lockin-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INSTITUTIONAL_FUNCTIONS_AND_EFFECTS",
+      "statement": "Uma instituição declara que sua regra busca ampliar a participação. Algumas pessoas relatam que ainda encontram obstáculos. Qual avaliação é mais adequada?",
+      "options": [
+        "Comparar objetivo declarado, procedimento e efeitos para diferentes participantes.",
+        "Considerar o objetivo declarado prova suficiente de que a participação aumentou.",
+        "Descartar os relatos porque a regra formal é igual.",
+        "Afirmar sem investigação que a instituição pretende excluir essas pessoas."
+      ],
+      "correctAnswer": "Comparar objetivo declarado, procedimento e efeitos para diferentes participantes.",
+      "explanation": "Objetivos, regras e efeitos são dimensões diferentes. A avaliação exige evidências sobre a experiência dos participantes e evita presumir intenção.",
+      "hint": "Pergunte o que a instituição declara, o que faz e o que os dados mostram sobre os efeitos.",
+      "errorFocus": "DECLARED_PURPOSE_AS_PROVEN_EFFECT",
+      "misconceptions": {
+        "Considerar o objetivo declarado prova suficiente de que a participação aumentou.": [
+          "DECLARED_GOAL_AS_OUTCOME"
+        ],
+        "Descartar os relatos porque a regra formal é igual.": [
+          "DECLARED_GOAL_AS_OUTCOME"
+        ],
+        "Afirmar sem investigação que a instituição pretende excluir essas pessoas.": [
+          "DECLARED_GOAL_AS_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-lockin-06",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "INTERDEPENDENT_INSTITUTIONS_ACCESS",
+      "statement": "Uma mudança no horário de uma escola afeta o transporte disponível e a organização do cuidado em alguns domicílios. Qual explicação evita uma causa única?",
+      "options": [
+        "A escola determina sozinha todas as rotinas familiares e de transporte.",
+        "As rotinas de educação, transporte e cuidado se relacionam; seus efeitos variam conforme recursos e contextos.",
+        "As instituições não têm relação porque possuem nomes diferentes.",
+        "Um efeito observado em alguns domicílios vale necessariamente para todos."
+      ],
+      "correctAnswer": "As rotinas de educação, transporte e cuidado se relacionam; seus efeitos variam conforme recursos e contextos.",
+      "explanation": "Instituições podem ser interdependentes, mas as relações e os efeitos variam. A observação não sustenta uma explicação única nem uma generalização universal.",
+      "hint": "Mapeie as instituições relacionadas e identifique quais grupos e condições foram observados.",
+      "errorFocus": "INTERDEPENDENCE_AS_SINGLE_CAUSE",
+      "misconceptions": {
+        "A escola determina sozinha todas as rotinas familiares e de transporte.": [
+          "INTERDEPENDENCE_AS_UNIVERSAL_CAUSE"
+        ],
+        "As instituições não têm relação porque possuem nomes diferentes.": [
+          "INTERDEPENDENCE_AS_UNIVERSAL_CAUSE"
+        ],
+        "Um efeito observado em alguns domicílios vale necessariamente para todos.": [
+          "INTERDEPENDENCE_AS_UNIVERSAL_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SCHOOL_ROLES_RECALL",
+      "statement": "Uma escola organiza atividades com papéis de estudantes e docentes e expectativas compartilhadas. Esse conjunto pode ser estudado como",
+      "options": [
+        "Um prédio sem relações sociais.",
+        "Uma característica natural imutável.",
+        "Uma instituição social.",
+        "Um acontecimento sem continuidade."
+      ],
+      "correctAnswer": "Uma instituição social.",
+      "explanation": "Papéis e expectativas que organizam práticas coletivas são parte da análise institucional.",
+      "hint": "Procure os padrões de relação, não apenas o local.",
+      "errorFocus": "INSTITUTION_AS_BUILDING",
+      "misconceptions": {
+        "Um prédio sem relações sociais.": [
+          "INSTITUTION_CONFUSED_WITH_BUILDING"
+        ],
+        "Uma característica natural imutável.": [
+          "INSTITUTION_CONFUSED_WITH_BUILDING"
+        ],
+        "Um acontecimento sem continuidade.": [
+          "INSTITUTION_CONFUSED_WITH_BUILDING"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ORGANIZATION_RECALL",
+      "statement": "Uma associação local tem nome, integrantes e tarefas definidos. Qual termo descreve melhor essa estrutura concreta?",
+      "options": [
+        "Instituição social em todos os sentidos, sem distinção possível.",
+        "Regra informal.",
+        "Papel social individual.",
+        "Organização."
+      ],
+      "correctAnswer": "Organização.",
+      "explanation": "Uma organização é uma estrutura concreta de participantes e tarefas; ela pode se relacionar com instituições mais amplas.",
+      "hint": "Pense se a pergunta fala de uma estrutura delimitada ou de um padrão social amplo.",
+      "errorFocus": "ORGANIZATION_AND_INSTITUTION_COLLAPSED",
+      "misconceptions": {
+        "Instituição social em todos os sentidos, sem distinção possível.": [
+          "ORGANIZATION_AS_INSTITUTION"
+        ],
+        "Regra informal.": [
+          "ORGANIZATION_AS_INSTITUTION"
+        ],
+        "Papel social individual.": [
+          "ORGANIZATION_AS_INSTITUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RULE_AS_PART_OF_INSTITUTION",
+      "statement": "Uma instituição altera uma regra de empréstimo, mas mantém os papéis de usuários e responsáveis pelo serviço. O que mudou no exemplo?",
+      "options": [
+        "Um procedimento específico, não necessariamente toda a instituição.",
+        "A instituição inteira desapareceu no instante da mudança.",
+        "O prédio virou uma regra formal.",
+        "Todos os participantes mudaram de papel automaticamente."
+      ],
+      "correctAnswer": "Um procedimento específico, não necessariamente toda a instituição.",
+      "explanation": "Uma instituição pode revisar práticas sem deixar de existir; é preciso observar o conjunto mais amplo de relações.",
+      "hint": "Identifique o elemento alterado e o que permaneceu organizado.",
+      "errorFocus": "RULE_CHANGE_AS_INSTITUTION_END",
+      "misconceptions": {
+        "A instituição inteira desapareceu no instante da mudança.": [
+          "RULE_CHANGE_AS_INSTITUTION_END"
+        ],
+        "O prédio virou uma regra formal.": [
+          "RULE_CHANGE_AS_INSTITUTION_END"
+        ],
+        "Todos os participantes mudaram de papel automaticamente.": [
+          "RULE_CHANGE_AS_INSTITUTION_END"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARE_ROLE_NEGOTIATION",
+      "statement": "Em um domicílio, adultos renegociam quem fará uma tarefa de cuidado depois que os horários de trabalho mudam. Qual leitura é mais adequada?",
+      "options": [
+        "O cuidado pertence naturalmente a uma única pessoa.",
+        "Papéis e rotinas podem ser negociados diante de novas condições sociais.",
+        "A mudança prova que os vínculos familiares terminaram.",
+        "O horário de trabalho não pode se relacionar com práticas familiares."
+      ],
+      "correctAnswer": "Papéis e rotinas podem ser negociados diante de novas condições sociais.",
+      "explanation": "Papéis sociais e rotinas podem mudar; o exemplo não autoriza atribuir uma tarefa por natureza a um integrante.",
+      "hint": "Relacione a mudança de horário à reorganização observada, sem generalizar o arranjo.",
+      "errorFocus": "CARE_ROLE_AS_NATURAL",
+      "misconceptions": {
+        "O cuidado pertence naturalmente a uma única pessoa.": [
+          "CARE_ROLE_AS_NATURAL"
+        ],
+        "A mudança prova que os vínculos familiares terminaram.": [
+          "CARE_ROLE_AS_NATURAL"
+        ],
+        "O horário de trabalho não pode se relacionar com práticas familiares.": [
+          "CARE_ROLE_AS_NATURAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "HEALTH_ACCESS_CHECK",
+      "statement": "Um serviço de saúde cria um canal de agendamento por telefone além do aplicativo. Que evidência ajudaria a avaliar o efeito da mudança?",
+      "options": [
+        "Apenas a existência do novo canal.",
+        "A opinião de uma única pessoa tratada como resultado de todos.",
+        "Dados ou relatos sobre quem conseguiu agendar por cada canal e quais barreiras persistiram.",
+        "O número de downloads do aplicativo, sem relação com agendamentos."
+      ],
+      "correctAnswer": "Dados ou relatos sobre quem conseguiu agendar por cada canal e quais barreiras persistiram.",
+      "explanation": "A mudança formal não prova seu efeito. É preciso acompanhar o acesso de diferentes usuários e os obstáculos restantes.",
+      "hint": "Procure evidências de uso e de acesso entre os grupos afetados.",
+      "errorFocus": "NEW_CHANNEL_AS_ACCESS_PROOF",
+      "misconceptions": {
+        "Apenas a existência do novo canal.": [
+          "PROCEDURE_AS_OUTCOME"
+        ],
+        "A opinião de uma única pessoa tratada como resultado de todos.": [
+          "PROCEDURE_AS_OUTCOME"
+        ],
+        "O número de downloads do aplicativo, sem relação com agendamentos.": [
+          "PROCEDURE_AS_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INSTITUTION_VS_EVENT_RECALL",
+      "statement": "Um festival anual reúne voluntários e segue um planejamento próprio. O que é necessário para analisar se ele se tornou uma instituição social?",
+      "options": [
+        "Basta saber que houve muitas pessoas em uma edição.",
+        "É suficiente que o festival tenha um nome.",
+        "Qualquer evento é uma instituição por definição.",
+        "Investigar continuidade, papéis, regras e expectativas para além de uma edição do evento."
+      ],
+      "correctAnswer": "Investigar continuidade, papéis, regras e expectativas para além de uma edição do evento.",
+      "explanation": "Um evento pode adquirir padrões duradouros, mas isso deve ser sustentado por evidências de continuidade e organização.",
+      "hint": "Busque evidência sobre repetição, papéis e expectativas ao longo do tempo.",
+      "errorFocus": "EVENT_AS_INSTITUTION",
+      "misconceptions": {
+        "Basta saber que houve muitas pessoas em uma edição.": [
+          "EVENT_AS_INSTITUTION"
+        ],
+        "É suficiente que o festival tenha um nome.": [
+          "EVENT_AS_INSTITUTION"
+        ],
+        "Qualquer evento é uma instituição por definição.": [
+          "EVENT_AS_INSTITUTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "INSTITUTIONS_AND_EQUALITY_RECALL",
+      "statement": "Uma regra pública usa os mesmos critérios para solicitar um benefício, mas parte dos moradores não consegue concluir o processo. O que investigar?",
+      "options": [
+        "Como informação, recursos, etapas e atendimento afetam o acesso de diferentes grupos.",
+        "Concluir que o critério é justo apenas porque está escrito da mesma forma.",
+        "Afirmar que todos os moradores desistiram pela mesma razão.",
+        "Concluir que o serviço não tem qualquer dimensão institucional."
+      ],
+      "correctAnswer": "Como informação, recursos, etapas e atendimento afetam o acesso de diferentes grupos.",
+      "explanation": "A formulação da regra é apenas uma parte da análise; condições de acesso e efeitos precisam ser observados.",
+      "hint": "Examine etapas e condições práticas para além do texto formal.",
+      "errorFocus": "SAME_CRITERIA_AS_EQUAL_ACCESS",
+      "misconceptions": {
+        "Concluir que o critério é justo apenas porque está escrito da mesma forma.": [
+          "FORMAL_RULE_AS_EQUAL_ACCESS"
+        ],
+        "Afirmar que todos os moradores desistiram pela mesma razão.": [
+          "FORMAL_RULE_AS_EQUAL_ACCESS"
+        ],
+        "Concluir que o serviço não tem qualquer dimensão institucional.": [
+          "FORMAL_RULE_AS_EQUAL_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ROLE_EXPECTATION_AND_PERSON",
+      "statement": "Uma pessoa ocupa o papel de estudante e também participa de um grupo esportivo. As expectativas de cada situação podem diferir. Qual conclusão é correta?",
+      "options": [
+        "A pessoa precisa agir da mesma maneira em todos os contextos.",
+        "Papéis são situados; nenhum deles resume completamente a identidade ou as escolhas da pessoa.",
+        "Um papel elimina automaticamente os demais.",
+        "As diferenças provam que as instituições não influenciam comportamentos."
+      ],
+      "correctAnswer": "Papéis são situados; nenhum deles resume completamente a identidade ou as escolhas da pessoa.",
+      "explanation": "Expectativas variam por contexto e podem coexistir. Papéis influenciam interações, mas não definem toda a pessoa.",
+      "hint": "Compare a situação e as expectativas de cada papel sem reduzir a pessoa a um só.",
+      "errorFocus": "ROLE_AS_TOTAL_IDENTITY",
+      "misconceptions": {
+        "A pessoa precisa agir da mesma maneira em todos os contextos.": [
+          "ROLE_AS_TOTAL_IDENTITY"
+        ],
+        "Um papel elimina automaticamente os demais.": [
+          "ROLE_AS_TOTAL_IDENTITY"
+        ],
+        "As diferenças provam que as instituições não influenciam comportamentos.": [
+          "ROLE_AS_TOTAL_IDENTITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "INSTITUTIONAL_EVIDENCE_RECALL",
+      "statement": "Uma equipe afirma que uma instituição “sempre exclui” determinado grupo, mas apresenta apenas um relato individual. Qual conclusão respeita o alcance da evidência?",
+      "options": [
+        "A afirmação geral está provada porque o relato é verdadeiro.",
+        "O relato deve ser ignorado porque é individual.",
+        "O relato identifica uma experiência que merece investigação, mas não basta para sustentar a afirmação geral.",
+        "A instituição é necessariamente inclusiva porque tem regras escritas."
+      ],
+      "correctAnswer": "O relato identifica uma experiência que merece investigação, mas não basta para sustentar a afirmação geral.",
+      "explanation": "Uma experiência individual é relevante, mas uma afirmação geral exige evidências adicionais e análise de contexto, aplicação e efeitos.",
+      "hint": "Valorize o relato e indique que dados ajudariam a verificar a extensão do padrão.",
+      "errorFocus": "SINGLE_CASE_AS_GENERAL_PATTERN",
+      "misconceptions": {
+        "A afirmação geral está provada porque o relato é verdadeiro.": [
+          "SINGLE_CASE_AS_GENERALIZATION"
+        ],
+        "O relato deve ser ignorado porque é individual.": [
+          "SINGLE_CASE_AS_GENERALIZATION"
+        ],
+        "A instituição é necessariamente inclusiva porque tem regras escritas.": [
+          "SINGLE_CASE_AS_GENERALIZATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-sociology-institutions-review-10",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INSTITUTIONAL_CHANGE_RECALL",
+      "statement": "Uma instituição muda uma rotina depois de participantes apontarem dificuldades. O que se pode afirmar sem extrapolar?",
+      "options": [
+        "Todas as pessoas apoiaram a mudança.",
+        "A nova rotina resolverá toda dificuldade.",
+        "A mudança demonstra que a instituição nunca teve regras.",
+        "Uma prática foi revista após essas manifestações; consenso e efeitos ainda precisam ser avaliados."
+      ],
+      "correctAnswer": "Uma prática foi revista após essas manifestações; consenso e efeitos ainda precisam ser avaliados.",
+      "explanation": "A sequência informa que houve revisão e quais manifestações a antecederam. Não revela automaticamente a opinião de todos nem os resultados futuros.",
+      "hint": "Registre a mudança observada e separe dela hipóteses ainda não verificadas.",
+      "errorFocus": "CHANGE_AS_UNANIMITY",
+      "misconceptions": {
+        "Todas as pessoas apoiaram a mudança.": [
+          "CHANGE_AS_UNANIMITY"
+        ],
+        "A nova rotina resolverá toda dificuldade.": [
+          "CHANGE_AS_UNANIMITY"
+        ],
+        "A mudança demonstra que a instituição nunca teve regras.": [
+          "CHANGE_AS_UNANIMITY"
+        ]
+      }
+    }
+  ],
+  "lesson": {
+    "title": "Instituições sociais: regras, papéis e mudanças",
+    "objective": "Explicar como instituições sociais organizam práticas, papéis e expectativas coletivas, distinguindo-as de organizações concretas e analisando continuidades, desigualdades e mudanças sem tratar seus efeitos como inevitáveis.",
+    "summary": "Instituições sociais são padrões relativamente duradouros de relações, regras, papéis e práticas que organizam dimensões da vida coletiva. Organizações concretas podem expressar esses padrões, mas não são sinônimos deles. Instituições influenciam possibilidades e podem ser reproduzidas, negociadas ou transformadas.",
+    "explanation": "## 1. Comece pelos padrões, não pelos prédios\nUma instituição social organiza relações e atividades importantes da vida coletiva por meio de regras, papéis, práticas e expectativas que tendem a se repetir. Educação, família, saúde, economia, religião e Estado são exemplos de campos que podem ser analisados institucionalmente. O ponto não é decorar uma lista: é localizar, em cada caso, como as pessoas coordenam ações e responsabilidades.\n\nUm prédio é um espaço físico; uma escola, um hospital ou um órgão público pode ser uma organização concreta, com participantes e tarefas delimitados. A instituição é o padrão social mais amplo que organiza relações e práticas. Uma organização pode expressar uma instituição, mas não a esgota. Um encontro ou evento pontual, por sua vez, não basta para demonstrar a existência de uma instituição própria.\n\n## 2. Regras, papéis e expectativas\nRegras formais podem estar registradas em normas ou procedimentos. Também há expectativas informais aprendidas na convivência. Um papel social reúne expectativas ligadas a uma posição em determinada situação, como as responsabilidades atribuídas a quem ensina, estuda, atende ou solicita um serviço. Papéis influenciam interações, mas não descrevem completamente cada pessoa nem determinam que todos ajam da mesma maneira.\n\nPara analisar um caso, pergunte: quem participa? Que papéis aparecem? Que regra ou expectativa organiza a atividade? Qual é o seu alcance? O que as pessoas efetivamente fazem? Essas perguntas ajudam a não confundir texto formal com prática real, nem intenção declarada com resultado comprovado.\n\n## 3. Instituições relacionadas e efeitos diferentes\nInstituições podem depender umas das outras. Horários escolares podem se relacionar com transporte e organização do cuidado; serviços de saúde podem depender de horários de trabalho e de procedimentos de acesso. Uma relação não significa que uma instituição controle totalmente as demais. Condições materiais, recursos, decisões e experiências dos grupos podem produzir efeitos distintos.\n\nUma regra igual no papel também pode interagir com recursos diferentes. Para avaliar se as condições são de fato equivalentes, examine como a regra é aplicada, quem consegue utilizá-la e quais obstáculos permanecem. Não conclua que houve igualdade apenas porque o texto é idêntico, nem presuma intenção sem evidências.\n\n## 4. Continuidade, conflito e mudança\nInstituições podem manter práticas ao longo do tempo e também mudar. Pessoas e grupos interpretam, negociam e contestam regras; decisões institucionais podem responder a essas disputas. Uma mudança observada não prova unanimidade, e a criação de um procedimento não garante que todos os problemas foram resolvidos. Compare o que existia, o que mudou, quem participou e que efeitos foram medidos.\n\n## Exemplo resolvido\nUma escola oferece inscrição em atividades apenas por um formulário digital. Depois de ouvir estudantes que não conseguem utilizá-lo com facilidade, passa a oferecer também atendimento presencial em horários definidos. O formulário e o atendimento são procedimentos; a escola é uma organização concreta; a educação é uma instituição social mais ampla. A mudança pode ampliar o acesso, mas essa conclusão precisa ser testada: é necessário verificar quem conseguiu se inscrever por cada canal e que barreiras continuam. O relato de uma dificuldade é importante, mas não informa sozinho a experiência de todos.\n\n## Roteiro de análise\n1. Delimite o contexto, os participantes e a organização concreta, se houver.\n2. Identifique papéis, regras e práticas que organizam a atividade.\n3. Diferencie o padrão institucional do prédio, do evento e da organização específica.\n4. Compare regra formal, aplicação observada e efeitos para diferentes grupos.\n5. Considere relações com outras instituições, negociação e possibilidade de mudança.",
+    "workedExample": "Na inscrição escolar, o formulário digital e o atendimento presencial são procedimentos; a escola é uma organização específica; educação é a instituição social mais ampla. A existência do novo canal mostra uma mudança de procedimento, não prova, por si só, acesso igual. Para avaliar o efeito, compare quem conseguiu realizar a inscrição e quais barreiras persistiram.",
+    "commonMistake": "Reduzir instituição ao prédio ou a uma organização específica; tratar regras formais como descrição completa da prática; presumir que uma mudança produz consenso ou efeitos iguais.",
+    "commonErrors": [
+      "Confundir instituição social, organização concreta, prédio e evento pontual.",
+      "Tratar um papel social como característica natural ou identidade completa da pessoa.",
+      "Supor que uma regra escrita é aplicada igualmente em todos os contextos.",
+      "Afirmar que um objetivo declarado comprova o resultado alcançado.",
+      "Explicar uma prática por uma causa única ou tratar instituições como imutáveis.",
+      "Generalizar a experiência de uma pessoa para todos os integrantes de um grupo."
+    ],
+    "tips": [
+      "Procure relações, regras, papéis e práticas que organizam ações coletivas ao longo do tempo.",
+      "Use “organização” para uma estrutura concreta e “instituição” para o padrão social mais amplo, verificando o contexto.",
+      "Separe o que está escrito, o que foi observado e o efeito que ainda precisa ser investigado.",
+      "Analise quem participa, quem decide e como recursos e condições influenciam o acesso.",
+      "Ao observar uma mudança, não presuma unanimidade nem solução completa."
+    ],
+    "priorKnowledge": [
+      "Identificar grupos e atividades coletivas.",
+      "Reconhecer regras, posições e responsabilidades em situações cotidianas."
+    ],
+    "keyConcepts": [
+      "Instituição social: padrão relativamente duradouro de relações, regras, papéis e práticas que organiza uma dimensão da vida coletiva.",
+      "Organização: estrutura concreta com participantes, tarefas e procedimentos delimitados; pode expressar uma instituição mais ampla.",
+      "Papel social: expectativas relacionadas a uma posição em certa situação, sem determinar integralmente a pessoa.",
+      "Regra formal e expectativa informal: orientações com fontes e alcances diferentes, ambas dependentes de contexto.",
+      "Mudança institucional: revisão ou transformação de práticas e relações; seus efeitos e níveis de adesão precisam ser investigados.",
+      "Interdependência institucional: relação entre práticas de diferentes campos sem que uma instituição controle totalmente as demais."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Reconhecer instituições por papéis, regras e práticas em exemplos curtos, distinguindo-as de prédios e eventos.",
+        "questionIds": [
+          "v5-sociology-institutions-probe-01",
+          "v5-sociology-institutions-probe-02",
+          "v5-sociology-institutions-probe-03",
+          "v5-sociology-institutions-probe-04",
+          "v5-sociology-institutions-practice-01",
+          "v5-sociology-institutions-practice-02",
+          "v5-sociology-institutions-practice-03",
+          "v5-sociology-institutions-practice-04"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Relacionar organizações concretas, papéis, procedimentos e instituições em família, educação, saúde e trabalho.",
+        "questionIds": [
+          "v5-sociology-institutions-practice-05",
+          "v5-sociology-institutions-practice-06",
+          "v5-sociology-institutions-practice-07",
+          "v5-sociology-institutions-practice-08",
+          "v5-sociology-institutions-practice-09",
+          "v5-sociology-institutions-practice-10",
+          "v5-sociology-institutions-practice-11",
+          "v5-sociology-institutions-practice-12",
+          "v5-sociology-institutions-transfer-01",
+          "v5-sociology-institutions-transfer-02",
+          "v5-sociology-institutions-transfer-03"
+        ]
+      },
+      {
+        "stage": "EFFECTS_AND_CHANGE",
+        "focus": "Analisar acesso, aplicação desigual, interdependência, conflito e mudança sem inferir resultados não observados.",
+        "questionIds": [
+          "v5-sociology-institutions-transfer-04",
+          "v5-sociology-institutions-transfer-05",
+          "v5-sociology-institutions-transfer-06",
+          "v5-sociology-institutions-transfer-07",
+          "v5-sociology-institutions-transfer-08",
+          "v5-sociology-institutions-lockin-01",
+          "v5-sociology-institutions-lockin-02",
+          "v5-sociology-institutions-lockin-03",
+          "v5-sociology-institutions-lockin-04",
+          "v5-sociology-institutions-lockin-05",
+          "v5-sociology-institutions-lockin-06"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Recuperar as distinções em contextos variados e avaliar os limites da evidência.",
+        "questionIds": [
+          "v5-sociology-institutions-review-01",
+          "v5-sociology-institutions-review-02",
+          "v5-sociology-institutions-review-03",
+          "v5-sociology-institutions-review-04",
+          "v5-sociology-institutions-review-05",
+          "v5-sociology-institutions-review-06",
+          "v5-sociology-institutions-review-07",
+          "v5-sociology-institutions-review-08",
+          "v5-sociology-institutions-review-09",
+          "v5-sociology-institutions-review-10"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "INSTITUTION_VS_BUILDING",
+        "text": "O prédio é um espaço; a instituição é o padrão de relações, papéis, regras e práticas que organiza a atividade."
+      },
+      {
+        "trigger": "INSTITUTION_VS_ORGANIZATION",
+        "text": "Uma organização é concreta e delimitada. Ela pode expressar uma instituição mais ampla sem ser sinônimo dela."
+      },
+      {
+        "trigger": "ROLE_AND_PERSON",
+        "text": "Um papel reúne expectativas de uma posição em certo contexto; ele não define toda a identidade nem determina toda ação."
+      },
+      {
+        "trigger": "FORMAL_RULE_AND_PRACTICE",
+        "text": "O texto da regra não mostra sozinho como ela é aplicada ou que efeitos produz."
+      },
+      {
+        "trigger": "INTENTION_AND_EFFECT",
+        "text": "Uma intenção institucional é diferente de um resultado observado. Verifique quem foi alcançado e quais barreiras persistiram."
+      },
+      {
+        "trigger": "CHANGE_WITHOUT_UNANIMITY",
+        "text": "A revisão de uma regra mostra mudança; não prova automaticamente consenso ou solução definitiva."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SEPARATE_BUILDING_AND_INSTITUTION",
+        "misconception": "INSTITUTION_CONFUSED_WITH_BUILDING",
+        "prompt": "Faça duas listas: elementos físicos do local e padrões de papéis, regras e práticas que poderiam continuar em outro endereço."
+      },
+      {
+        "id": "COMPARE_ORGANIZATION_AND_INSTITUTION",
+        "misconception": "ORGANIZATION_AS_INSTITUTION",
+        "prompt": "Descreva uma organização específica (participantes e tarefas) e depois o padrão social mais amplo que ela expressa."
+      },
+      {
+        "id": "MAP_ROLE_CONTEXT",
+        "misconception": "ROLE_AS_TOTAL_IDENTITY",
+        "prompt": "Indique o contexto, a posição e uma expectativa ligada ao papel; depois anote uma escolha que não pode ser inferida apenas desse papel."
+      },
+      {
+        "id": "CHECK_RULE_APPLICATION",
+        "misconception": "WRITTEN_RULE_AS_EQUALITY",
+        "prompt": "Compare o texto da regra com registros de aplicação e condições de acesso; não preencha lacunas com suposições."
+      },
+      {
+        "id": "SEPARATE_INTENT_AND_EFFECT",
+        "misconception": "DECLARED_GOAL_AS_OUTCOME",
+        "prompt": "Complete: “A instituição pretende…” e “A evidência disponível mostra…”. Liste qual informação falta para avaliar o efeito."
+      },
+      {
+        "id": "TRACE_CHANGE_EVIDENCE",
+        "misconception": "CHANGE_AS_UNANIMITY",
+        "prompt": "Registre o que mudou, quem participou e quais efeitos foram observados; marque consenso e resultados futuros como desconhecidos se não houver dados."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 35,
+    "sourceDossier": [
+      {
+        "title": "Introduction to Sociology – 3rd Canadian Edition",
+        "publisher": "BCcampus Open Education",
+        "authors": "William Little",
+        "url": "https://opentextbc.ca/introductiontosociology3rdedition/",
+        "accessedOn": "2026-10-14",
+        "license": "CC BY 4.0; attribution to William Little and BCcampus Open Education recorded; third-party exceptions remain subject to their own notices.",
+        "supports": [
+          "Introductory concepts on social structure, social interaction, groups, organizations, family, education, government and social change."
+        ],
+        "use": "Conceptual reference only. Questions, contexts, answer options, explanations and examples in this pack were independently authored in Portuguese; no source questions or passages were copied."
+      },
+      {
+        "title": "Base Nacional Comum Curricular: Ensino Médio, Ciências Humanas e Sociais Aplicadas",
+        "publisher": "Ministério da Educação (MEC)",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-14",
+        "license": "Official curriculum reference; no specific official skill code is claimed by this internal content package.",
+        "supports": [
+          "The area frames analysis of societies, culture, institutions, inequalities, conflicts and power relations."
+        ],
+        "use": "Contextual reference only; the internal skill remains unmapped pending formal review."
+      }
+    ],
+    "copyrightNote": "All scenarios, questions, answer options, explanations and feedback in this pack are original authorial writing. BCcampus Open Education is attributed under CC BY 4.0 as a conceptual reference; no protected wording or assessment items were copied. The BNCC document informs broad curricular context only. Official skill mapping and human pedagogical review remain pending."
+  }
+}
