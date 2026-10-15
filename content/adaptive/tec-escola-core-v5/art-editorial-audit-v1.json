@@ -1,0 +1,66 @@
+{
+  "auditId": "tec-escola-art-v4-visual-evidence-audit-v1",
+  "sourceFile": "content/adaptive/tec-escola-core-v4/subjects/art/questions.json",
+  "reviewedAt": "2026-10-14",
+  "reviewScope": "Editorial review of stimulus sufficiency and linked media; no historical question or answer was edited.",
+  "counts": {
+    "questionsReviewed": 21,
+    "questionsWithLinkedMedia": 0,
+    "textuallySufficient": 18,
+    "conceptualMetaPrompts": 2,
+    "insufficientVisualEvidence": 1
+  },
+  "items": [
+    { "questionId": "v3-art-art_interpretation-1", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The described diagonal lines and illuminated window support the composition question." },
+    { "questionId": "v3-art-art_interpretation-2", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The two named colors are enough to ask about contrast." },
+    { "questionId": "v3-art-art_interpretation-3", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The item asks which contextual dimensions to examine, not to interpret a specific unseen mural." },
+    { "questionId": "v3-art-art_interpretation-4", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The stem states that the work uses repeated geometric forms." },
+    { "questionId": "v3-art-art_interpretation-5", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "Restoration and residents' accounts are stated in the text; the item asks about the project's focus." },
+    { "questionId": "v3-art-art_interpretation-6", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The relative scale of the central figure is described." },
+    { "questionId": "v3-art-art_interpretation-7", "media": "NOT_LINKED", "sufficiency": "CONCEPTUAL_META_PROMPT", "note": "Answerable as a question about what to investigate, but too generic to assess interpretation of an actual campaign image." },
+    { "questionId": "v3-art-art_interpretation-8", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "Repeated marks and thicker ink are stated as evidence for the technique question." },
+    { "questionId": "v3-art-art_interpretation-9", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The convergence of lines is described directly." },
+    { "questionId": "v3-art-art_interpretation-10", "media": "NOT_LINKED", "sufficiency": "CONCEPTUAL_META_PROMPT", "note": "Tests a general principle of evidence-based interpretation; it does not let the student practice on a specific artwork." },
+    { "questionId": "v3-art-art_interpretation-11", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The sequence of sketchbook attempts is specified." },
+    { "questionId": "v3-art-art_interpretation-12", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The exhibition's organization and curatorial text are described." },
+    { "questionId": "v4-authored-art-review-01", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The contrast/repetition relationship and the reported effects are stated." },
+    { "questionId": "v4-authored-art-art_compare_compositions-probe-01", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "Diagonal lines and their effect on gaze direction are stated." },
+    { "questionId": "v4-authored-art-art_compare_compositions-probe-02", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "Both colors and their adjacency are stated." },
+    { "questionId": "v4-authored-art-art_compare_compositions-practice-03", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The wide and close framing of the two photos is described." },
+    { "questionId": "v4-authored-art-art_compare_compositions-practice-04", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "Repeated forms and regular intervals are stated." },
+    { "questionId": "v4-authored-art-art_compare_compositions-transfer-05", "media": "NOT_LINKED", "sufficiency": "INSUFFICIENT_VISUAL_EVIDENCE", "note": "The stem provides no differences between the two posters, while the keyed answer asserts high contrast and a highlighted central message." },
+    { "questionId": "v4-authored-art-art_compare_compositions-lock_in-06", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "Relative figure sizes and the red band are described." },
+    { "questionId": "v4-authored-art-art_compare_compositions-review-07", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The unsupported claim that blue alone creates calm is explicit; the item asks what additional evidence is needed." },
+    { "questionId": "v4-authored-art-art_compare_compositions-review-08", "media": "NOT_LINKED", "sufficiency": "TEXTUALLY_SUFFICIENT", "note": "The different reported effects of curved lines are stated and the item asks which comparison criterion helps explain them." }
+  ],
+  "versionedCorrectionDraft": {
+    "replacesForFutureUse": "v4-authored-art-art_compare_compositions-transfer-05",
+    "newId": "art-compare-compositions-transfer-05-v2",
+    "status": "DRAFT_STAGING",
+    "studentReady": false,
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "oldQuestionAndHistoricalAttempts": "PRESERVE_UNCHANGED",
+    "objective": "Compare visual hierarchy and contrast using evidence visible in two original campaign posters.",
+    "question": "Dois cartazes autorais de uma campanha comunitária apresentam a mesma mensagem. Qual justificativa compara melhor as escolhas de composição observáveis nos cartazes?",
+    "options": [
+      "O cartaz B destaca mais a mensagem porque seus elementos secundários ocupam mais espaço.",
+      "O cartaz A separa melhor a mensagem do fundo por contraste e hierarquia visual.",
+      "Os cartazes têm a mesma composição porque apresentam as mesmas palavras.",
+      "Não é possível comparar composição sem conhecer a biografia de quem criou os cartazes."
+    ],
+    "answerKey": "O cartaz A separa melhor a mensagem do fundo por contraste e hierarquia visual.",
+    "explanation": "A comparação deve apontar evidências observáveis. No par especificado, a relação mais forte entre texto e fundo e a hierarquia do cartaz A destacam a mensagem; a semelhança das palavras não torna as composições iguais.",
+    "requiredMedia": {
+      "assetPairId": "art-compare-compositions-contrast-v1",
+      "mustCreateOriginalAssets": true,
+      "formats": ["PNG", "WebP"],
+      "aspectRatio": "4:5",
+      "altTextA": "Cartaz vertical autoral de campanha comunitária, com mensagem principal em letras escuras sobre um bloco amarelo claro, centralizado e visualmente destacado; ilustração secundária pequena na parte inferior.",
+      "altTextB": "Cartaz vertical autoral da mesma campanha e com a mesma mensagem, mas com letras cinza-claro sobre fundo branco, elementos secundários de tamanho semelhante e menor separação visual entre texto e fundo.",
+      "textOnlyPublicationAllowed": false,
+      "linkExpected": "Attach both assets to the question stimulus as an ordered visual pair; do not infer or create a URL until assets exist."
+    },
+    "releaseGate": "Do not compile or publish until the original pair is created, the rendered assets match the alt text and answer key, and human pedagogical review is complete."
+  }
+}

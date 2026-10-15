@@ -1,0 +1,1513 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-sociology-distinguish-norm-value-wave3",
+  "subject": "SOCIOLOGY",
+  "domain": "CULTURA",
+  "topic": "normas_valores_socializacao_instituicoes",
+  "canonicalSkillCode": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+  "contentVersion": 5,
+  "lessonVersion": 5,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v93-soc-norms-01",
+      "hint": "“Acolher” é o princípio valorizado; procure se a frase descreve uma ação esperada ou apenas sua importância. Que ação concreta o grupo espera?",
+      "errorFocus": "VALUE_VS_NORM"
+    },
+    {
+      "questionId": "v93-soc-norms-02",
+      "hint": "A orientação para esperar a vez é a expectativa; a frase ainda não informa uma punição. Separe a regra de comportamento de uma consequência por descumpri-la.",
+      "errorFocus": "NORM_VS_SANCTION"
+    },
+    {
+      "questionId": "v93-soc-norms-03",
+      "hint": "O elogio é uma resposta social à conduta, não a regra nem o valor subjacente. Pergunte o que o elogio faz depois da ação.",
+      "errorFocus": "SANCTION_VS_NORM"
+    },
+    {
+      "questionId": "v93-soc-norms-04",
+      "hint": "A advertência está prevista em regulamento; observe sua fonte institucional. Quem aplica a resposta e qual procedimento a prevê?",
+      "errorFocus": "FORMAL_VS_INFORMAL_SANCTION"
+    },
+    {
+      "questionId": "v93-soc-norms-05",
+      "hint": "Um valor expressa princípio; uma norma orienta uma conduta concreta. Compare “o que importa” com “o que se espera fazer”.",
+      "errorFocus": "VALUE_NORM_DISTINCTION"
+    },
+    {
+      "questionId": "v93-soc-norms-06",
+      "hint": "A expectativa varia conforme atividade e espaço; não precisa valer da mesma forma em todos os contextos. Compare a finalidade de cada espaço antes de julgar.",
+      "errorFocus": "CONTEXT_VARIATION"
+    },
+    {
+      "questionId": "v93-soc-norms-07",
+      "hint": "A aprendizagem ocorre pela convivência, sem ser inata ou inevitável. Que interações podem ensinar essa prática?",
+      "errorFocus": "SOCIALIZATION"
+    },
+    {
+      "questionId": "v93-soc-norms-08",
+      "hint": "Uma convenção pode ser socialmente esperada sem estar em legislação. Identifique quem sustenta a expectativa e seu alcance.",
+      "errorFocus": "SOCIAL_NORM_VS_LAW"
+    },
+    {
+      "questionId": "v93-soc-norms-09",
+      "hint": "O reconhecimento público é uma consequência social positiva. Diferencie a conduta valorizada da resposta a ela.",
+      "errorFocus": "POSITIVE_SANCTION"
+    },
+    {
+      "questionId": "v93-soc-norms-10",
+      "hint": "O caso mostra adequação contextual; não prova que um modo seja universalmente correto. O que mudou entre as situações?",
+      "errorFocus": "CONTEXTUAL_EXPECTATION"
+    },
+    {
+      "questionId": "v93-soc-norms-11",
+      "hint": "A revisão pode refletir escuta, negociação e mudança institucional; verifique quem participou e o efeito. Não suponha unanimidade apenas porque a regra mudou.",
+      "errorFocus": "NORM_CHANGE"
+    },
+    {
+      "questionId": "v93-soc-norms-12",
+      "hint": "A biblioteca, como instituição, formaliza uma orientação de uso. Quem estabeleceu a regra e a quem ela se aplica?",
+      "errorFocus": "INSTITUTIONAL_NORM"
+    },
+    {
+      "questionId": "v93-soc-norms-13",
+      "hint": "Há tensão entre atenção coletiva e acessibilidade; avalie alternativas e consequências. Quais pessoas são afetadas e que opção preserva acesso?",
+      "errorFocus": "VALUE_CONFLICT_ACCESSIBILITY"
+    },
+    {
+      "questionId": "v93-soc-norms-14",
+      "hint": "Crítica sem processo oficial pode ser uma sanção informal. Observe se a consequência é social ou institucionalmente prevista.",
+      "errorFocus": "INFORMAL_SANCTION"
+    },
+    {
+      "questionId": "v93-soc-norms-15",
+      "hint": "Papéis distintos trazem expectativas situadas; uma pessoa pode ocupar vários ao mesmo tempo. Compare a situação e o papel, sem reduzir a pessoa a um só grupo.",
+      "errorFocus": "ROLE_EXPECTATION"
+    },
+    {
+      "questionId": "v93-soc-norms-16",
+      "hint": "Um rótulo generaliza um episódio e pode produzir estigma. O que a evidência diz sobre cada pessoa, e o que o rótulo acrescenta?",
+      "errorFocus": "STIGMA_GENERALIZATION"
+    },
+    {
+      "questionId": "v93-soc-norms-17",
+      "hint": "Interprete significados em contexto antes de hierarquizar práticas culturais. Pergunte como os próprios participantes explicam a cerimônia.",
+      "errorFocus": "CULTURAL_CONTEXT"
+    },
+    {
+      "questionId": "v93-soc-norms-18",
+      "hint": "Frequência descreve comportamento; obrigação formal exige evidência de regra institucional. O dado mostra o que fazem ou o que devem fazer?",
+      "errorFocus": "DESCRIPTIVE_VS_INJUNCTIVE"
+    },
+    {
+      "questionId": "v93-soc-norms-19",
+      "hint": "Identifique origem, alcance e finalidade das expectativas em conflito. Não escolha pela popularidade; considere contexto e consequência.",
+      "errorFocus": "NORM_CONFLICT"
+    },
+    {
+      "questionId": "v93-soc-norms-20",
+      "hint": "Mobilização e revisão institucional podem alterar normas sem produzir consenso instantâneo. Qual evidência mostra a mudança e o que ainda não sabemos sobre adesão?",
+      "errorFocus": "SOCIAL_CHANGE"
+    }
+  ],
+  "sourceReconciliation": {
+    "existingV9QuestionIds": [
+      "v93-soc-norms-01",
+      "v93-soc-norms-02",
+      "v93-soc-norms-03",
+      "v93-soc-norms-04",
+      "v93-soc-norms-05",
+      "v93-soc-norms-06",
+      "v93-soc-norms-07",
+      "v93-soc-norms-08",
+      "v93-soc-norms-09",
+      "v93-soc-norms-10",
+      "v93-soc-norms-11",
+      "v93-soc-norms-12",
+      "v93-soc-norms-13",
+      "v93-soc-norms-14",
+      "v93-soc-norms-15",
+      "v93-soc-norms-16",
+      "v93-soc-norms-17",
+      "v93-soc-norms-18",
+      "v93-soc-norms-19",
+      "v93-soc-norms-20"
+    ],
+    "existingV9QuestionsRetainedUnchanged": 20,
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false,
+    "allNewStemsDistinctFromExistingQuestionCatalog": true,
+    "existingAnswerPositionPattern": "20_OF_20_CORRECT_ANSWER_AT_A; retained unchanged and explicitly disclosed for editorial review"
+  },
+  "questions": [
+    {
+      "id": "sociology-norm-value-v5-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "GROUP_CHAT_AFTER_HOURS",
+      "statement": "Em um grupo de mensagens, os participantes combinam não enviar mensagens depois das 22 horas. Esse combinado é principalmente",
+      "options": [
+        "Uma norma social do grupo.",
+        "Um valor que todos necessariamente compartilham.",
+        "Uma lei válida para qualquer pessoa.",
+        "Um hábito individual sem expectativa coletiva."
+      ],
+      "correctAnswer": "Uma norma social do grupo.",
+      "explanation": "O combinado orienta como os membros devem agir naquele grupo. Ele pode ser uma norma social sem ser lei.",
+      "hint": "Pergunte: há uma expectativa compartilhada sobre como agir?",
+      "errorFocus": "Confundir regra de convivência com lei ou com valor que a sustenta.",
+      "misconceptions": {
+        "Um valor que todos necessariamente compartilham.": [
+          "NORM_AS_LAW_OR_VALUE"
+        ],
+        "Uma lei válida para qualquer pessoa.": [
+          "NORM_AS_LAW_OR_VALUE"
+        ],
+        "Um hábito individual sem expectativa coletiva.": [
+          "NORM_AS_LAW_OR_VALUE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CLASSROOM_RESPECT_VALUE",
+      "statement": "Uma turma diz que ouvir as pessoas com respeito é importante. A frase expressa principalmente",
+      "options": [
+        "Uma sanção formal.",
+        "Um valor social.",
+        "Uma regra de horário.",
+        "Um comportamento observado de todos."
+      ],
+      "correctAnswer": "Um valor social.",
+      "explanation": "A frase apresenta um princípio considerado importante; ainda não diz qual ação específica será exigida.",
+      "hint": "Valor costuma responder “o que é importante”; norma orienta “como agir”.",
+      "errorFocus": "Tratar um princípio amplo como se já fosse uma regra detalhada.",
+      "misconceptions": {
+        "Uma sanção formal.": [
+          "VALUE_CONFUSED_WITH_RULE"
+        ],
+        "Uma regra de horário.": [
+          "VALUE_CONFUSED_WITH_RULE"
+        ],
+        "Um comportamento observado de todos.": [
+          "VALUE_CONFUSED_WITH_RULE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-probe-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CLUB_TURN_TAKING",
+      "statement": "Um clube combina que cada integrante falará por até dois minutos na reunião. O combinado é",
+      "options": [
+        "Um valor amplo, sem orientação de ação.",
+        "Uma lei nacional.",
+        "Uma norma explícita do grupo.",
+        "Um dado sobre o que todos fazem espontaneamente."
+      ],
+      "correctAnswer": "Uma norma explícita do grupo.",
+      "explanation": "O grupo comunicou uma orientação concreta e compartilhada para a reunião.",
+      "hint": "Localize a ação específica que os integrantes combinaram.",
+      "errorFocus": "Confundir a justificativa da regra com a própria regra.",
+      "misconceptions": {
+        "Um valor amplo, sem orientação de ação.": [
+          "EXPLICIT_NORM_MISCLASSIFIED"
+        ],
+        "Uma lei nacional.": [
+          "EXPLICIT_NORM_MISCLASSIFIED"
+        ],
+        "Um dado sobre o que todos fazem espontaneamente.": [
+          "EXPLICIT_NORM_MISCLASSIFIED"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-probe-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "QUEUE_WITHOUT_SIGN",
+      "statement": "Em uma fila sem placa, as pessoas costumam esperar sua vez porque entendem que essa é a expectativa do local. Isso pode ser uma norma",
+      "options": [
+        "Legal, necessariamente.",
+        "Individual, sem relação com outras pessoas.",
+        "Um valor abstrato que não orienta comportamento.",
+        "Implícita."
+      ],
+      "correctAnswer": "Implícita.",
+      "explanation": "A expectativa orienta a conduta mesmo sem estar escrita; por isso, pode ser implícita.",
+      "hint": "A ausência de texto escrito não elimina uma expectativa coletiva.",
+      "errorFocus": "Supor que só existe norma quando há placa ou regulamento.",
+      "misconceptions": {
+        "Legal, necessariamente.": [
+          "IMPLICIT_NORM_REQUIRES_SIGN"
+        ],
+        "Individual, sem relação com outras pessoas.": [
+          "IMPLICIT_NORM_REQUIRES_SIGN"
+        ],
+        "Um valor abstrato que não orienta comportamento.": [
+          "IMPLICIT_NORM_REQUIRES_SIGN"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SHARED_SPEAKING_VALUE",
+      "statement": "Uma escola organiza rodas de conversa e quer que todas as pessoas tenham oportunidade de falar. Qual opção é um valor que pode justificar uma regra de turnos?",
+      "options": [
+        "Participação respeitosa.",
+        "A lista de quem faltou hoje.",
+        "O limite de dois minutos por fala.",
+        "A advertência prevista para interrupções repetidas."
+      ],
+      "correctAnswer": "Participação respeitosa.",
+      "explanation": "Participação respeitosa é um princípio amplo. O limite é uma norma concreta e a advertência, uma possível sanção.",
+      "hint": "Classifique cada opção pelo papel que desempenha: princípio, orientação ou consequência.",
+      "errorFocus": "Misturar valor, norma e resposta à violação.",
+      "misconceptions": {
+        "A lista de quem faltou hoje.": [
+          "VALUE_NORM_SANCTION_COLLAPSED"
+        ],
+        "O limite de dois minutos por fala.": [
+          "VALUE_NORM_SANCTION_COLLAPSED"
+        ],
+        "A advertência prevista para interrupções repetidas.": [
+          "VALUE_NORM_SANCTION_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIBRARY_RETURN_RULE",
+      "statement": "Na biblioteca, há um aviso: “Devolva os livros até a data registrada”. O aviso apresenta",
+      "options": [
+        "Um valor pessoal do leitor.",
+        "Uma norma explícita da instituição.",
+        "Uma prática frequente que foi apenas observada.",
+        "Uma sanção aplicada depois de uma infração."
+      ],
+      "correctAnswer": "Uma norma explícita da instituição.",
+      "explanation": "A instituição comunicou uma orientação de comportamento. O aviso, sozinho, não é a consequência por descumpri-la.",
+      "hint": "Procure se o texto orienta uma ação ou descreve uma consequência.",
+      "errorFocus": "Confundir regra escrita com sanção.",
+      "misconceptions": {
+        "Um valor pessoal do leitor.": [
+          "RULE_CONFUSED_WITH_SANCTION"
+        ],
+        "Uma prática frequente que foi apenas observada.": [
+          "RULE_CONFUSED_WITH_SANCTION"
+        ],
+        "Uma sanção aplicada depois de uma infração.": [
+          "RULE_CONFUSED_WITH_SANCTION"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TEAM_WARMUP_EXPECTATION",
+      "statement": "Em uma equipe, ninguém escreveu uma regra, mas os integrantes esperam que quem chega ajude a guardar os materiais após o treino. A expectativa é",
+      "options": [
+        "Uma lei trabalhista automaticamente.",
+        "Uma preferência isolada do treinador, mesmo sem expectativa coletiva.",
+        "Uma norma implícita do grupo, se compartilhada pelos integrantes.",
+        "Um valor sem qualquer orientação de conduta."
+      ],
+      "correctAnswer": "Uma norma implícita do grupo, se compartilhada pelos integrantes.",
+      "explanation": "A expectativa compartilhada orienta uma ação, embora não tenha sido escrita. Para chamá-la de norma do grupo, importa haver reconhecimento coletivo, não só a vontade de uma pessoa.",
+      "hint": "Observe se a expectativa é reconhecida pelo grupo, não apenas por uma pessoa.",
+      "errorFocus": "Tratar uma ordem individual como norma coletiva sem evidência de aceitação.",
+      "misconceptions": {
+        "Uma lei trabalhista automaticamente.": [
+          "INDIVIDUAL_ORDER_AS_GROUP_NORM"
+        ],
+        "Uma preferência isolada do treinador, mesmo sem expectativa coletiva.": [
+          "INDIVIDUAL_ORDER_AS_GROUP_NORM"
+        ],
+        "Um valor sem qualquer orientação de conduta.": [
+          "INDIVIDUAL_ORDER_AS_GROUP_NORM"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RECYCLING_VALUE_AND_ACTION",
+      "statement": "Moradores dizem que cuidar dos espaços comuns é importante e combinam separar o lixo nas reuniões do bairro. Qual análise diferencia melhor as duas ideias?",
+      "options": [
+        "As duas frases são sanções formais.",
+        "Separar o lixo é um valor e cuidar do espaço é uma lei.",
+        "A primeira é comportamento individual e a segunda é uma descrição estatística.",
+        "Cuidar dos espaços comuns é um valor; separar o lixo é a norma combinada."
+      ],
+      "correctAnswer": "Cuidar dos espaços comuns é um valor; separar o lixo é a norma combinada.",
+      "explanation": "O valor expressa o princípio que o grupo estima; a norma traduz uma expectativa em ação concreta naquele contexto.",
+      "hint": "Pergunte qual ideia explica por que a ação é considerada importante.",
+      "errorFocus": "Trocar o princípio amplo pela conduta específica.",
+      "misconceptions": {
+        "As duas frases são sanções formais.": [
+          "VALUE_ACTION_REVERSED"
+        ],
+        "Separar o lixo é um valor e cuidar do espaço é uma lei.": [
+          "VALUE_ACTION_REVERSED"
+        ],
+        "A primeira é comportamento individual e a segunda é uma descrição estatística.": [
+          "VALUE_ACTION_REVERSED"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DESCRIPTIVE_VS_INJUNCTIVE_STUDY",
+      "statement": "Uma pesquisa observa que muitos estudantes deixam o celular no silencioso durante uma palestra. O dado, por si só, permite concluir que existe uma norma compartilhada?",
+      "options": [
+        "Não; a frequência observada é uma pista, mas é preciso verificar se há expectativa de que se aja assim.",
+        "Sim; qualquer comportamento frequente prova uma obrigação coletiva.",
+        "Sim; a pesquisa transforma o comportamento em lei.",
+        "Não; normas só existem quando todos obedecem sem exceção."
+      ],
+      "correctAnswer": "Não; a frequência observada é uma pista, mas é preciso verificar se há expectativa de que se aja assim.",
+      "explanation": "Uma prática frequente é descritiva. Uma norma envolve expectativa social; observar o comportamento não prova sozinho que as pessoas o considerem esperado.",
+      "hint": "Separe “o que muitas pessoas fazem” de “o que o grupo espera que façam”.",
+      "errorFocus": "Inferir uma obrigação apenas pela frequência ou exigir unanimidade para reconhecer norma.",
+      "misconceptions": {
+        "Sim; qualquer comportamento frequente prova uma obrigação coletiva.": [
+          "FREQUENCY_PROVES_NORM"
+        ],
+        "Sim; a pesquisa transforma o comportamento em lei.": [
+          "FREQUENCY_PROVES_NORM"
+        ],
+        "Não; normas só existem quando todos obedecem sem exceção.": [
+          "FREQUENCY_PROVES_NORM"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FAMILY_MEAL_EXPECTATIONS",
+      "statement": "Em duas famílias, uma considera importante que todos jantem juntos; outra valoriza a autonomia de horários e combina avisar quando alguém chegará tarde. O que a comparação permite afirmar?",
+      "options": [
+        "A primeira família possui valores e a segunda não.",
+        "Valores e normas podem variar entre grupos sem que um deles seja automaticamente universal.",
+        "Uma rotina familiar prova como todas as famílias devem agir.",
+        "Horários diferentes demonstram ausência de convivência."
+      ],
+      "correctAnswer": "Valores e normas podem variar entre grupos sem que um deles seja automaticamente universal.",
+      "explanation": "Os grupos podem priorizar princípios e organizar expectativas de maneiras distintas. A comparação não autoriza hierarquizar sem critério.",
+      "hint": "Descreva o contexto de cada grupo antes de comparar.",
+      "errorFocus": "Generalizar a experiência de um grupo ou tratar diferença como ausência de valores.",
+      "misconceptions": {
+        "A primeira família possui valores e a segunda não.": [
+          "ONE_GROUP_AS_UNIVERSAL"
+        ],
+        "Uma rotina familiar prova como todas as famílias devem agir.": [
+          "ONE_GROUP_AS_UNIVERSAL"
+        ],
+        "Horários diferentes demonstram ausência de convivência.": [
+          "ONE_GROUP_AS_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCHOOL_CODE_AND_LEGAL_RULE",
+      "statement": "O regimento escolar exige identificação para retirar equipamentos emprestados. Qual afirmação é mais precisa?",
+      "options": [
+        "É apenas um valor, pois está escrita.",
+        "É uma lei nacional porque a escola a registrou.",
+        "É uma regra formal da instituição; sua existência não a transforma automaticamente em lei nacional.",
+        "É uma norma implícita, pois envolve convivência."
+      ],
+      "correctAnswer": "É uma regra formal da instituição; sua existência não a transforma automaticamente em lei nacional.",
+      "explanation": "A instituição pode estabelecer regras formais dentro de seu âmbito. A fonte e o alcance da regra precisam ser identificados antes de classificá-la como lei.",
+      "hint": "Confira quem estabeleceu a regra e a quem ela se aplica.",
+      "errorFocus": "Supor que toda regra escrita tem alcance legal nacional.",
+      "misconceptions": {
+        "É apenas um valor, pois está escrita.": [
+          "INSTITUTIONAL_RULE_AS_NATIONAL_LAW"
+        ],
+        "É uma lei nacional porque a escola a registrou.": [
+          "INSTITUTIONAL_RULE_AS_NATIONAL_LAW"
+        ],
+        "É uma norma implícita, pois envolve convivência.": [
+          "INSTITUTIONAL_RULE_AS_NATIONAL_LAW"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PEER_REACTION_APOLOGY",
+      "statement": "Após alguém interromper repetidamente uma conversa, colegas deixam de lhe passar a palavra e explicam por quê. Sem processo oficial, essa reação é principalmente",
+      "options": [
+        "Uma alteração formal no regulamento.",
+        "Um valor social em si.",
+        "Uma evidência de que todos os grupos reagiriam do mesmo modo.",
+        "Uma sanção informal do grupo."
+      ],
+      "correctAnswer": "Uma sanção informal do grupo.",
+      "explanation": "A reação do grupo comunica reprovação sem procedimento institucional formal; esse é um exemplo de sanção informal.",
+      "hint": "Pergunte quem aplica a consequência e se existe procedimento institucional.",
+      "errorFocus": "Confundir consequência social informal com regra formal ou valor.",
+      "misconceptions": {
+        "Uma alteração formal no regulamento.": [
+          "INFORMAL_SANCTION_AS_FORMAL_RULE"
+        ],
+        "Um valor social em si.": [
+          "INFORMAL_SANCTION_AS_FORMAL_RULE"
+        ],
+        "Uma evidência de que todos os grupos reagiriam do mesmo modo.": [
+          "INFORMAL_SANCTION_AS_FORMAL_RULE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NEW_MEMBER_LEARNS_GREETINGS",
+      "statement": "Uma estudante recém-chegada observa como colegas se cumprimentam e, com o tempo, passa a usar formas semelhantes. Qual explicação sociológica é mais cuidadosa?",
+      "options": [
+        "A convivência pode contribuir para aprender práticas e expectativas do grupo, sem provar que todas as pessoas as adotam.",
+        "A estudante nasceu sabendo a norma específica daquele grupo.",
+        "O comportamento prova que existe uma lei sobre cumprimentos.",
+        "Toda pessoa recém-chegada deve imitar o grupo para ser aceita."
+      ],
+      "correctAnswer": "A convivência pode contribuir para aprender práticas e expectativas do grupo, sem provar que todas as pessoas as adotam.",
+      "explanation": "A socialização ocorre em interações e pode influenciar aprendizagens; o caso não sustenta universalidade nem obrigação legal.",
+      "hint": "Explique o papel da convivência sem afirmar que o resultado é inevitável.",
+      "errorFocus": "Transformar uma observação de aprendizagem em regra universal.",
+      "misconceptions": {
+        "A estudante nasceu sabendo a norma específica daquele grupo.": [
+          "SOCIALIZATION_AS_INNATE_OR_UNIVERSAL"
+        ],
+        "O comportamento prova que existe uma lei sobre cumprimentos.": [
+          "SOCIALIZATION_AS_INNATE_OR_UNIVERSAL"
+        ],
+        "Toda pessoa recém-chegada deve imitar o grupo para ser aceita.": [
+          "SOCIALIZATION_AS_INNATE_OR_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PERSONAL_ROUTINE_VS_EXPECTATION",
+      "statement": "Um estudante sempre organiza os próprios cadernos por cor, mas ninguém do grupo conhece ou espera essa prática. O que se pode concluir?",
+      "options": [
+        "É norma social porque se repete.",
+        "É um hábito individual; não há evidência suficiente para chamá-lo de norma do grupo.",
+        "É valor coletivo porque envolve organização.",
+        "É sanção informal aplicada pelos colegas."
+      ],
+      "correctAnswer": "É um hábito individual; não há evidência suficiente para chamá-lo de norma do grupo.",
+      "explanation": "A repetição individual não mostra, por si só, uma expectativa compartilhada.",
+      "hint": "Procure evidência de que outras pessoas reconhecem a expectativa.",
+      "errorFocus": "Confundir hábito pessoal com norma coletiva.",
+      "misconceptions": {
+        "É norma social porque se repete.": [
+          "REPETITION_AS_COLLECTIVE_NORM"
+        ],
+        "É valor coletivo porque envolve organização.": [
+          "REPETITION_AS_COLLECTIVE_NORM"
+        ],
+        "É sanção informal aplicada pelos colegas.": [
+          "REPETITION_AS_COLLECTIVE_NORM"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CULTURAL_VALUE_WITHOUT_STEREOTYPE",
+      "statement": "Em um projeto, estudantes relatam que diferentes grupos valorizam formas distintas de demonstrar hospitalidade. Qual atitude evita estereótipos?",
+      "options": [
+        "Atribuir uma única prática a todas as pessoas de cada grupo.",
+        "Classificar uma forma como correta e as outras como inferiores.",
+        "Investigar os significados e as variações dentro de cada grupo, sem tratar seus integrantes como iguais.",
+        "Ignorar os relatos porque valores não podem ser estudados."
+      ],
+      "correctAnswer": "Investigar os significados e as variações dentro de cada grupo, sem tratar seus integrantes como iguais.",
+      "explanation": "Valores podem ser compartilhados e também disputados ou vividos de modos diferentes. A análise precisa considerar contexto e diversidade interna.",
+      "hint": "Diferencie padrão social de afirmação sobre cada indivíduo.",
+      "errorFocus": "Tratar cultura como característica fixa e uniforme de todas as pessoas.",
+      "misconceptions": {
+        "Atribuir uma única prática a todas as pessoas de cada grupo.": [
+          "CULTURE_AS_HOMOGENEOUS"
+        ],
+        "Classificar uma forma como correta e as outras como inferiores.": [
+          "CULTURE_AS_HOMOGENEOUS"
+        ],
+        "Ignorar os relatos porque valores não podem ser estudados.": [
+          "CULTURE_AS_HOMOGENEOUS"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-practice-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ONLINE_GROUP_MODERATION",
+      "statement": "Um fórum estudantil publica uma orientação de convivência e informa que mensagens com ataques pessoais podem ser removidas por moderadores. Qual classificação é mais adequada?",
+      "options": [
+        "A orientação é um valor e a remoção é uma lei nacional.",
+        "A remoção é uma prática descritiva, sem relação com a regra.",
+        "A orientação é apenas um hábito individual dos moderadores.",
+        "A orientação é uma norma explícita do fórum; a remoção é uma sanção prevista."
+      ],
+      "correctAnswer": "A orientação é uma norma explícita do fórum; a remoção é uma sanção prevista.",
+      "explanation": "A regra comunica a conduta esperada e a remoção é uma consequência institucional do próprio fórum. A validade fora dele não deve ser presumida.",
+      "hint": "Separe a orientação, sua fonte e a consequência prevista.",
+      "errorFocus": "Confundir alcance da regra da plataforma com lei geral.",
+      "misconceptions": {
+        "A orientação é um valor e a remoção é uma lei nacional.": [
+          "PLATFORM_RULE_SCOPE_CONFUSION"
+        ],
+        "A remoção é uma prática descritiva, sem relação com a regra.": [
+          "PLATFORM_RULE_SCOPE_CONFUSION"
+        ],
+        "A orientação é apenas um hábito individual dos moderadores.": [
+          "PLATFORM_RULE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ACCESSIBILITY_VALUE_RULE_DESIGN",
+      "statement": "Uma escola valoriza participação de todos. Em uma atividade, combina que instruções serão oferecidas por escrito e oralmente. Como relacionar as ideias?",
+      "options": [
+        "A participação de todos é um valor; oferecer instruções em formatos distintos é uma norma ou procedimento que pode apoiá-lo.",
+        "A participação é uma sanção e o formato é um valor.",
+        "O procedimento prova que todos já participam igualmente.",
+        "As ideias são incompatíveis, pois valores não podem orientar regras."
+      ],
+      "correctAnswer": "A participação de todos é um valor; oferecer instruções em formatos distintos é uma norma ou procedimento que pode apoiá-lo.",
+      "explanation": "O princípio amplo pode orientar procedimentos concretos. A existência do procedimento não prova, sozinha, que o objetivo já foi alcançado.",
+      "hint": "Diferencie o que o grupo considera importante da ação que organiza.",
+      "errorFocus": "Confundir intenção normativa com resultado efetivo.",
+      "misconceptions": {
+        "A participação é uma sanção e o formato é um valor.": [
+          "VALUE_AS_PROOF_OF_OUTCOME"
+        ],
+        "O procedimento prova que todos já participam igualmente.": [
+          "VALUE_AS_PROOF_OF_OUTCOME"
+        ],
+        "As ideias são incompatíveis, pois valores não podem orientar regras.": [
+          "VALUE_AS_PROOF_OF_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SCHOOL_CHANGE_AFTER_LISTENING",
+      "statement": "Após ouvir estudantes, uma escola altera o procedimento para reservar espaços de fala a quem ainda não participou. Qual leitura é mais adequada?",
+      "options": [
+        "A alteração prova que a regra anterior nunca existiu.",
+        "Uma instituição pode revisar normas diante de novas demandas e avaliar se a mudança amplia a participação.",
+        "A decisão mostra que todos os estudantes compartilham um único valor.",
+        "Normas institucionais não podem mudar após serem publicadas."
+      ],
+      "correctAnswer": "Uma instituição pode revisar normas diante de novas demandas e avaliar se a mudança amplia a participação.",
+      "explanation": "Regras institucionais podem ser revistas. A justificativa e os efeitos precisam ser examinados, sem supor consenso total.",
+      "hint": "Identifique a norma alterada, a demanda e quais efeitos ainda precisam ser avaliados.",
+      "errorFocus": "Tratar uma revisão como prova de inexistência anterior ou de unanimidade.",
+      "misconceptions": {
+        "A alteração prova que a regra anterior nunca existiu.": [
+          "RULE_CHANGE_AS_NO_RULE_OR_UNANIMITY"
+        ],
+        "A decisão mostra que todos os estudantes compartilham um único valor.": [
+          "RULE_CHANGE_AS_NO_RULE_OR_UNANIMITY"
+        ],
+        "Normas institucionais não podem mudar após serem publicadas.": [
+          "RULE_CHANGE_AS_NO_RULE_OR_UNANIMITY"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "QUIET_ROOM_AND_COURTYARD",
+      "statement": "Uma estudante fala baixo numa sala de leitura e usa voz mais alta no pátio durante um jogo. O que o contraste sugere?",
+      "options": [
+        "A estudante não possui valores.",
+        "Uma das situações revela necessariamente falta de respeito.",
+        "Expectativas de comportamento podem depender da atividade e do espaço social.",
+        "A mudança prova que toda regra é formal."
+      ],
+      "correctAnswer": "Expectativas de comportamento podem depender da atividade e do espaço social.",
+      "explanation": "A adequação de uma conduta depende do contexto e das expectativas em vigor; o contraste não permite julgar sem conhecer a situação.",
+      "hint": "Compare finalidade, participantes e expectativas de cada espaço.",
+      "errorFocus": "Aplicar uma expectativa de um contexto a todos os demais.",
+      "misconceptions": {
+        "A estudante não possui valores.": [
+          "CONTEXT_FREE_JUDGMENT"
+        ],
+        "Uma das situações revela necessariamente falta de respeito.": [
+          "CONTEXT_FREE_JUDGMENT"
+        ],
+        "A mudança prova que toda regra é formal.": [
+          "CONTEXT_FREE_JUDGMENT"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIGITAL_RESPONSE_TIME",
+      "statement": "Em uma equipe online, algumas pessoas defendem resposta imediata; outras precisam de períodos sem notificações. Qual encaminhamento reconhece o conflito sem chamar uma preferência de norma universal?",
+      "options": [
+        "Exigir disponibilidade contínua como regra natural de qualquer equipe.",
+        "Concluir que preferências individuais nunca podem afetar um acordo coletivo.",
+        "Transformar a preferência da maioria em obrigação legal para todos.",
+        "Negociar uma expectativa comum, explicitar exceções e revisar o acordo conforme as necessidades do grupo."
+      ],
+      "correctAnswer": "Negociar uma expectativa comum, explicitar exceções e revisar o acordo conforme as necessidades do grupo.",
+      "explanation": "O grupo pode construir uma norma explícita que concilie coordenação e limites individuais. O acordo permanece contextual e pode ser revisado.",
+      "hint": "Localize os interesses em tensão e formule um acordo de alcance definido.",
+      "errorFocus": "Confundir preferência majoritária com regra universal ou legal.",
+      "misconceptions": {
+        "Exigir disponibilidade contínua como regra natural de qualquer equipe.": [
+          "MAJORITY_PREFERENCE_AS_UNIVERSAL_NORM"
+        ],
+        "Concluir que preferências individuais nunca podem afetar um acordo coletivo.": [
+          "MAJORITY_PREFERENCE_AS_UNIVERSAL_NORM"
+        ],
+        "Transformar a preferência da maioria em obrigação legal para todos.": [
+          "MAJORITY_PREFERENCE_AS_UNIVERSAL_NORM"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESCRIPTIVE_POSTER_SURVEY",
+      "statement": "Um cartaz informa: “7 em cada 10 participantes trouxeram copo reutilizável no evento”. O que o dado sustenta diretamente?",
+      "options": [
+        "Uma descrição do comportamento observado entre os participantes medidos.",
+        "Que existe uma obrigação formal de trazer copo.",
+        "Que todos os moradores valorizam igualmente a sustentabilidade.",
+        "Que quem não trouxe copo recebeu uma sanção."
+      ],
+      "correctAnswer": "Uma descrição do comportamento observado entre os participantes medidos.",
+      "explanation": "O número relata frequência no grupo e evento observados. Para afirmar expectativa, valor compartilhado ou sanção, seriam necessárias outras evidências.",
+      "hint": "Diga exatamente quem foi observado e o que o número mede.",
+      "errorFocus": "Deduzir norma, valor ou consequência de uma frequência isolada.",
+      "misconceptions": {
+        "Que existe uma obrigação formal de trazer copo.": [
+          "OBSERVATION_AS_VALUE_OR_RULE"
+        ],
+        "Que todos os moradores valorizam igualmente a sustentabilidade.": [
+          "OBSERVATION_AS_VALUE_OR_RULE"
+        ],
+        "Que quem não trouxe copo recebeu uma sanção.": [
+          "OBSERVATION_AS_VALUE_OR_RULE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MULTIPLE_SOURCES_OF_EXPECTATION",
+      "statement": "Uma estudante recebe de colegas a expectativa de manter sigilo sobre uma conversa, enquanto um protocolo institucional exige comunicar uma ameaça imediata à segurança. Qual análise distingue melhor as normas envolvidas?",
+      "options": [
+        "Considerar que toda expectativa de colegas tem o mesmo alcance do protocolo institucional.",
+        "Identificar a origem, o alcance e a finalidade de cada expectativa e avaliar o conflito no caso concreto.",
+        "Concluir que a existência de conflito elimina todas as normas.",
+        "Escolher automaticamente a expectativa mais popular, sem examinar consequências."
+      ],
+      "correctAnswer": "Identificar a origem, o alcance e a finalidade de cada expectativa e avaliar o conflito no caso concreto.",
+      "explanation": "As expectativas podem vir de grupos e instituições diferentes. A análise precisa considerar contexto, responsabilidades e efeitos, não apenas popularidade.",
+      "hint": "Compare quem estabelece cada expectativa, a quem se aplica e qual problema busca enfrentar.",
+      "errorFocus": "Reduzir conflito normativo a uma escolha por maioria.",
+      "misconceptions": {
+        "Considerar que toda expectativa de colegas tem o mesmo alcance do protocolo institucional.": [
+          "NORM_CONFLICT_BY_POPULARITY"
+        ],
+        "Concluir que a existência de conflito elimina todas as normas.": [
+          "NORM_CONFLICT_BY_POPULARITY"
+        ],
+        "Escolher automaticamente a expectativa mais popular, sem examinar consequências.": [
+          "NORM_CONFLICT_BY_POPULARITY"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INSTITUTIONAL_RULE_AND_UNEQUAL_EFFECT",
+      "statement": "Um procedimento de inscrição é igual para todos, mas exige acesso digital que parte das famílias não possui. Qual questão ajuda a avaliar a relação entre o valor declarado de igualdade e a norma?",
+      "options": [
+        "Supor que uma regra igual produz necessariamente acesso igual.",
+        "Concluir que qualquer diferença de resultado prova discriminação intencional.",
+        "Verificar quem consegue cumprir o procedimento e se alternativas acessíveis preservam o objetivo institucional.",
+        "Ignorar os efeitos porque o texto da regra é neutro."
+      ],
+      "correctAnswer": "Verificar quem consegue cumprir o procedimento e se alternativas acessíveis preservam o objetivo institucional.",
+      "explanation": "A formulação pode ser uniforme e ainda produzir barreiras distintas. É preciso investigar efeitos, contexto e alternativas antes de concluir sobre causas ou intenção.",
+      "hint": "Separe o texto da regra, as condições para cumpri-la e os efeitos observados.",
+      "errorFocus": "Confundir igualdade formal com igualdade de acesso, ou efeito com intenção comprovada.",
+      "misconceptions": {
+        "Supor que uma regra igual produz necessariamente acesso igual.": [
+          "FORMAL_EQUALITY_AS_EQUAL_ACCESS"
+        ],
+        "Concluir que qualquer diferença de resultado prova discriminação intencional.": [
+          "FORMAL_EQUALITY_AS_EQUAL_ACCESS"
+        ],
+        "Ignorar os efeitos porque o texto da regra é neutro.": [
+          "FORMAL_EQUALITY_AS_EQUAL_ACCESS"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-transfer-08",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "COMMUNITY_NORM_CHANGE_EVIDENCE",
+      "statement": "Moradores dizem que uma prática de compartilhamento era desencorajada; depois de reuniões e mudança no regulamento local, passou a ser aceita em alguns espaços. Qual conclusão é sustentada?",
+      "options": [
+        "Toda a comunidade mudou de opinião ao mesmo tempo.",
+        "A mudança formal prova que nunca houve resistência.",
+        "A nova prática tornou-se obrigatória em qualquer comunidade.",
+        "Há evidência de mudança em expectativas e regra institucional naquele contexto; a adesão de cada pessoa ainda precisa ser investigada."
+      ],
+      "correctAnswer": "Há evidência de mudança em expectativas e regra institucional naquele contexto; a adesão de cada pessoa ainda precisa ser investigada.",
+      "explanation": "A revisão institucional e os relatos indicam transformação contextual. Não demonstram consenso individual nem validade universal.",
+      "hint": "Delimite o que mudou, onde e quais evidências ainda faltam.",
+      "errorFocus": "Generalizar uma mudança local para todas as pessoas e contextos.",
+      "misconceptions": {
+        "Toda a comunidade mudou de opinião ao mesmo tempo.": [
+          "LOCAL_CHANGE_AS_UNIVERSAL_CONSENSUS"
+        ],
+        "A mudança formal prova que nunca houve resistência.": [
+          "LOCAL_CHANGE_AS_UNIVERSAL_CONSENSUS"
+        ],
+        "A nova prática tornou-se obrigatória em qualquer comunidade.": [
+          "LOCAL_CHANGE_AS_UNIVERSAL_CONSENSUS"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-lockin-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "THREE_PARTS_CLEANUP",
+      "statement": "Em um laboratório, a turma valoriza o cuidado coletivo, combina identificar os frascos e aplica uma advertência quando alguém ignora o combinado. Qual sequência classifica corretamente?",
+      "options": [
+        "Cuidado coletivo: valor; identificar frascos: norma; advertência: sanção.",
+        "Cuidado coletivo: sanção; identificar frascos: valor; advertência: norma.",
+        "As três partes são valores, pois protegem o laboratório.",
+        "As três partes são leis nacionais por ocorrerem numa escola."
+      ],
+      "correctAnswer": "Cuidado coletivo: valor; identificar frascos: norma; advertência: sanção.",
+      "explanation": "O princípio, a orientação concreta e a consequência cumprem papéis diferentes, ainda que estejam relacionados.",
+      "hint": "Nomeie separadamente princípio, ação esperada e resposta à violação.",
+      "errorFocus": "Classificar tudo pela finalidade comum e ignorar a função de cada elemento.",
+      "misconceptions": {
+        "Cuidado coletivo: sanção; identificar frascos: valor; advertência: norma.": [
+          "FUNCTIONS_COLLAPSED"
+        ],
+        "As três partes são valores, pois protegem o laboratório.": [
+          "FUNCTIONS_COLLAPSED"
+        ],
+        "As três partes são leis nacionais por ocorrerem numa escola.": [
+          "FUNCTIONS_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-lockin-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "POSTED_RULE_VS_COMMON_PRACTICE",
+      "statement": "Num centro esportivo, um aviso exige guardar os equipamentos. Muitas pessoas já faziam isso antes do aviso. Qual distinção permanece válida?",
+      "options": [
+        "O aviso e a frequência são a mesma evidência.",
+        "O aviso formaliza uma orientação; a prática frequente é uma observação sobre o que as pessoas fazem.",
+        "A prática frequente prova que a regra foi sempre formal.",
+        "A regra só existe se todos a seguirem."
+      ],
+      "correctAnswer": "O aviso formaliza uma orientação; a prática frequente é uma observação sobre o que as pessoas fazem.",
+      "explanation": "A regra explícita e a frequência observada são tipos diferentes de informação, mesmo quando tratam da mesma conduta.",
+      "hint": "Pergunte o que o aviso estabelece e o que a observação mede.",
+      "errorFocus": "Confundir origem da expectativa com frequência de comportamento.",
+      "misconceptions": {
+        "O aviso e a frequência são a mesma evidência.": [
+          "FORMAL_RULE_AS_FREQUENCY"
+        ],
+        "A prática frequente prova que a regra foi sempre formal.": [
+          "FORMAL_RULE_AS_FREQUENCY"
+        ],
+        "A regra só existe se todos a seguirem.": [
+          "FORMAL_RULE_AS_FREQUENCY"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-lockin-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SANCTION_WITHOUT_FORMAL_PROCESS",
+      "statement": "Num coletivo cultural, alguém que descumpre um acordo perde temporariamente a confiança dos demais, sem punição prevista em documento. Como analisar?",
+      "options": [
+        "É uma sanção formal porque teve consequência.",
+        "É uma lei porque afeta a confiança.",
+        "Pode ser uma sanção informal; é preciso descrever a reação sem presumir que todos a apoiam.",
+        "Não é sanção se não houver unanimidade."
+      ],
+      "correctAnswer": "Pode ser uma sanção informal; é preciso descrever a reação sem presumir que todos a apoiam.",
+      "explanation": "Consequências sociais podem ser informais. A existência da reação não demonstra consenso nem procedimento oficial.",
+      "hint": "Observe se há uma consequência social e se ela é institucionalmente formalizada.",
+      "errorFocus": "Exigir documento para qualquer sanção ou presumir unanimidade.",
+      "misconceptions": {
+        "É uma sanção formal porque teve consequência.": [
+          "SANCTION_REQUIRES_DOCUMENT_OR_UNANIMITY"
+        ],
+        "É uma lei porque afeta a confiança.": [
+          "SANCTION_REQUIRES_DOCUMENT_OR_UNANIMITY"
+        ],
+        "Não é sanção se não houver unanimidade.": [
+          "SANCTION_REQUIRES_DOCUMENT_OR_UNANIMITY"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-lockin-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OBSERVED_RULE_VIOLATION",
+      "statement": "Em uma escola, um estudante descumpre uma orientação de uso do espaço uma vez. O que esse episódio permite concluir sobre a norma?",
+      "options": [
+        "Que ninguém reconhece mais a norma.",
+        "Que o estudante rejeita todos os valores da escola.",
+        "Que a regra é necessariamente injusta.",
+        "Que houve um caso de descumprimento; não prova sozinho que a expectativa deixou de existir."
+      ],
+      "correctAnswer": "Que houve um caso de descumprimento; não prova sozinho que a expectativa deixou de existir.",
+      "explanation": "Uma ocorrência individual não basta para inferir a expectativa de todo o grupo nem a motivação da pessoa.",
+      "hint": "Separe o comportamento observado da explicação sobre sua causa.",
+      "errorFocus": "Generalizar um ato individual para as crenças do grupo ou do estudante.",
+      "misconceptions": {
+        "Que ninguém reconhece mais a norma.": [
+          "ONE_ACTION_AS_GROUP_ATTITUDE"
+        ],
+        "Que o estudante rejeita todos os valores da escola.": [
+          "ONE_ACTION_AS_GROUP_ATTITUDE"
+        ],
+        "Que a regra é necessariamente injusta.": [
+          "ONE_ACTION_AS_GROUP_ATTITUDE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-lockin-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "VALUE_CONFLICT_MEDIATION",
+      "statement": "Em um projeto, um grupo valoriza transparência e outro, privacidade. A equipe precisa publicar resultados de uma pesquisa escolar. Qual caminho é mais justificável?",
+      "options": [
+        "Definir quais informações são necessárias, proteger dados pessoais e explicar os critérios de divulgação.",
+        "Publicar todos os dados porque transparência sempre supera privacidade.",
+        "Ocultar qualquer resultado porque privacidade impede pesquisa coletiva.",
+        "Escolher o valor do grupo mais numeroso sem examinar riscos."
+      ],
+      "correctAnswer": "Definir quais informações são necessárias, proteger dados pessoais e explicar os critérios de divulgação.",
+      "explanation": "Valores podem entrar em tensão. Um procedimento justificável delimita finalidade, necessidade e proteção, em vez de declarar um princípio vencedor para todo caso.",
+      "hint": "Pergunte que informação é necessária e qual dano pode ser evitado.",
+      "errorFocus": "Tratar valores como absolutos sem analisar finalidade e efeitos.",
+      "misconceptions": {
+        "Publicar todos os dados porque transparência sempre supera privacidade.": [
+          "VALUE_CONFLICT_AS_AUTOMATIC_WINNER"
+        ],
+        "Ocultar qualquer resultado porque privacidade impede pesquisa coletiva.": [
+          "VALUE_CONFLICT_AS_AUTOMATIC_WINNER"
+        ],
+        "Escolher o valor do grupo mais numeroso sem examinar riscos.": [
+          "VALUE_CONFLICT_AS_AUTOMATIC_WINNER"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-lockin-06",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INTERVIEW_EXPECTATION_EVIDENCE",
+      "statement": "Em entrevistas, algumas pessoas dizem que “todos” esperam uma resposta rápida no grupo digital; outras relatam que não há acordo sobre prazo. Qual conclusão respeita as evidências?",
+      "options": [
+        "A frase “todos” prova consenso.",
+        "As expectativas parecem disputadas; é preciso delimitar subgrupos, situações e fontes antes de afirmar uma norma comum.",
+        "A divergência prova que nenhuma expectativa existe.",
+        "A maioria das mensagens recebidas determina uma regra formal."
+      ],
+      "correctAnswer": "As expectativas parecem disputadas; é preciso delimitar subgrupos, situações e fontes antes de afirmar uma norma comum.",
+      "explanation": "Relatos divergentes podem indicar variação, ambiguidade ou subgrupos distintos. A análise requer contexto e não deve apagar diferenças.",
+      "hint": "Compare quem foi ouvido, em qual situação e como cada pessoa interpreta a expectativa.",
+      "errorFocus": "Tratar uma afirmação totalizante ou uma divergência como prova definitiva.",
+      "misconceptions": {
+        "A frase “todos” prova consenso.": [
+          "DISAGREEMENT_AS_NO_NORM_OR_CONSENSUS"
+        ],
+        "A divergência prova que nenhuma expectativa existe.": [
+          "DISAGREEMENT_AS_NO_NORM_OR_CONSENSUS"
+        ],
+        "A maioria das mensagens recebidas determina uma regra formal.": [
+          "DISAGREEMENT_AS_NO_NORM_OR_CONSENSUS"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NEW_STUDENT_GROUP_CHAT",
+      "statement": "Em um grupo de estudo, integrantes combinam avisar antes de enviar arquivos grandes. Isso é principalmente",
+      "options": [
+        "Um valor amplo, sem ação definida.",
+        "Uma sanção aplicada depois do envio.",
+        "Uma norma explícita do grupo.",
+        "Um dado que mede quantas pessoas estudam."
+      ],
+      "correctAnswer": "Uma norma explícita do grupo.",
+      "explanation": "O acordo orienta uma ação concreta e foi comunicado aos integrantes.",
+      "hint": "Procure a ação que o grupo espera que seja feita.",
+      "errorFocus": "Confundir o acordo com a justificativa ou com uma consequência.",
+      "misconceptions": {
+        "Um valor amplo, sem ação definida.": [
+          "NORM_AS_VALUE_OR_SANCTION"
+        ],
+        "Uma sanção aplicada depois do envio.": [
+          "NORM_AS_VALUE_OR_SANCTION"
+        ],
+        "Um dado que mede quantas pessoas estudam.": [
+          "NORM_AS_VALUE_OR_SANCTION"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "VALUE_OF_MUTUAL_AID",
+      "statement": "Uma associação afirma que ajudar pessoas novas é importante para a comunidade. Essa frase expressa",
+      "options": [
+        "Uma norma com prazo definido.",
+        "Uma sanção formal.",
+        "Uma prática que foi comprovada por contagem.",
+        "Um valor social."
+      ],
+      "correctAnswer": "Um valor social.",
+      "explanation": "A frase indica algo considerado importante, mas ainda não especifica uma ação obrigatória.",
+      "hint": "Observe se há um princípio amplo ou uma instrução específica.",
+      "errorFocus": "Ler qualquer frase sobre comportamento como regra concreta.",
+      "misconceptions": {
+        "Uma norma com prazo definido.": [
+          "VALUE_AS_CONCRETE_RULE"
+        ],
+        "Uma sanção formal.": [
+          "VALUE_AS_CONCRETE_RULE"
+        ],
+        "Uma prática que foi comprovada por contagem.": [
+          "VALUE_AS_CONCRETE_RULE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "UNWRITTEN_STUDIO_EXPECTATION",
+      "statement": "Num estúdio compartilhado, participantes esperam que cada pessoa limpe a própria bancada, embora não haja cartaz. Qual evidência adicional fortaleceria a interpretação de que é uma norma do grupo?",
+      "options": [
+        "Relatos independentes de que a expectativa é compartilhada e reações consistentes quando ela é ignorada.",
+        "Uma pessoa afirmar que gosta de bancadas limpas.",
+        "Encontrar uma bancada limpa num único dia.",
+        "Supor que todo estúdio funciona assim."
+      ],
+      "correctAnswer": "Relatos independentes de que a expectativa é compartilhada e reações consistentes quando ela é ignorada.",
+      "explanation": "Uma norma coletiva é mais bem sustentada por evidências de expectativa compartilhada, não por preferência isolada ou observação única.",
+      "hint": "Busque relatos e práticas de mais de uma pessoa e em diferentes momentos.",
+      "errorFocus": "Inferir norma coletiva de um caso ou gosto individual.",
+      "misconceptions": {
+        "Uma pessoa afirmar que gosta de bancadas limpas.": [
+          "SINGLE_OBSERVATION_AS_NORM"
+        ],
+        "Encontrar uma bancada limpa num único dia.": [
+          "SINGLE_OBSERVATION_AS_NORM"
+        ],
+        "Supor que todo estúdio funciona assim.": [
+          "SINGLE_OBSERVATION_AS_NORM"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FORMAL_CONSEQUENCE_LATE_RETURN",
+      "statement": "Uma regra de empréstimo prevê suspensão temporária do cadastro após devoluções repetidamente atrasadas. O que é a suspensão?",
+      "options": [
+        "O valor social que motivou a biblioteca.",
+        "Uma sanção formal prevista pela instituição.",
+        "Uma norma implícita dos leitores.",
+        "Uma descrição estatística de atrasos."
+      ],
+      "correctAnswer": "Uma sanção formal prevista pela instituição.",
+      "explanation": "A suspensão é uma consequência prevista; a regra que define o prazo é a norma formal.",
+      "hint": "Pergunte o que acontece após o comportamento e quem definiu a consequência.",
+      "errorFocus": "Trocar a consequência pela orientação que a prevê.",
+      "misconceptions": {
+        "O valor social que motivou a biblioteca.": [
+          "CONSEQUENCE_AS_RULE"
+        ],
+        "Uma norma implícita dos leitores.": [
+          "CONSEQUENCE_AS_RULE"
+        ],
+        "Uma descrição estatística de atrasos.": [
+          "CONSEQUENCE_AS_RULE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DIFFERENT_GROUPS_GREETING",
+      "statement": "Dois grupos cumprimentam visitantes de maneiras diferentes e ambos explicam a prática como sinal de acolhimento. Qual leitura é mais adequada?",
+      "options": [
+        "Uma das práticas é necessariamente falta de acolhimento.",
+        "Formas diferentes provam que os grupos não compartilham valores.",
+        "Práticas distintas podem expressar valores próximos; o significado depende dos contextos e relatos dos grupos.",
+        "O significado é universal e independe de quem participa."
+      ],
+      "correctAnswer": "Práticas distintas podem expressar valores próximos; o significado depende dos contextos e relatos dos grupos.",
+      "explanation": "A mesma ideia ampla pode ser expressa por práticas diferentes. É necessário compreender o sentido local antes de comparar.",
+      "hint": "Compare a justificativa e o contexto, não apenas a aparência da prática.",
+      "errorFocus": "Supor que formas diferentes impliquem valores opostos.",
+      "misconceptions": {
+        "Uma das práticas é necessariamente falta de acolhimento.": [
+          "FORM_DIFFERENCE_AS_VALUE_DIFFERENCE"
+        ],
+        "Formas diferentes provam que os grupos não compartilham valores.": [
+          "FORM_DIFFERENCE_AS_VALUE_DIFFERENCE"
+        ],
+        "O significado é universal e independe de quem participa.": [
+          "FORM_DIFFERENCE_AS_VALUE_DIFFERENCE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "RULE_ADOPTION_OVER_TIME",
+      "statement": "Uma equipe adota uma orientação escrita após meses de lembretes informais. O que essa sequência sugere?",
+      "options": [
+        "Que a expectativa só surgiu quando foi escrita.",
+        "Que toda orientação informal é ilegal.",
+        "Que a formalização prova aceitação unânime.",
+        "Uma expectativa informal pode anteceder sua formalização institucional."
+      ],
+      "correctAnswer": "Uma expectativa informal pode anteceder sua formalização institucional.",
+      "explanation": "A instituição pode registrar uma expectativa que já circulava, mas a sequência não demonstra unanimidade.",
+      "hint": "Ordene os acontecimentos e não acrescente conclusões sobre consenso sem dados.",
+      "errorFocus": "Supor que formalização cria sempre uma prática do zero.",
+      "misconceptions": {
+        "Que a expectativa só surgiu quando foi escrita.": [
+          "FORMALIZATION_AS_ORIGIN_OR_CONSENSUS"
+        ],
+        "Que toda orientação informal é ilegal.": [
+          "FORMALIZATION_AS_ORIGIN_OR_CONSENSUS"
+        ],
+        "Que a formalização prova aceitação unânime.": [
+          "FORMALIZATION_AS_ORIGIN_OR_CONSENSUS"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CULTURAL_CHANGE_GENERATIONS",
+      "statement": "Pessoas de idades diferentes relatam expectativas distintas sobre compartilhar fotos em encontros familiares. Qual investigação é mais cuidadosa?",
+      "options": [
+        "Comparar situações e razões dos relatos sem atribuir a diferença apenas à idade.",
+        "Concluir que toda pessoa mais velha rejeita tecnologia.",
+        "Considerar a geração como causa comprovada.",
+        "Tratar uma família como retrato de todas as famílias."
+      ],
+      "correctAnswer": "Comparar situações e razões dos relatos sem atribuir a diferença apenas à idade.",
+      "explanation": "Idade pode estar associada a experiências, mas contexto, privacidade e relações também podem influenciar as respostas.",
+      "hint": "Descreva as respostas e investigue fatores alternativos antes de explicar.",
+      "errorFocus": "Transformar uma diferença observada em explicação causal única.",
+      "misconceptions": {
+        "Concluir que toda pessoa mais velha rejeita tecnologia.": [
+          "DEMOGRAPHIC_DIFFERENCE_AS_CAUSE"
+        ],
+        "Considerar a geração como causa comprovada.": [
+          "DEMOGRAPHIC_DIFFERENCE_AS_CAUSE"
+        ],
+        "Tratar uma família como retrato de todas as famílias.": [
+          "DEMOGRAPHIC_DIFFERENCE_AS_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RULE_ENFORCEMENT_SELECTIVE",
+      "statement": "Um regulamento define o mesmo prazo para todos, mas registros mostram que a regra é cobrada com frequência de alguns grupos e raramente de outros. Qual questão sociológica é pertinente?",
+      "options": [
+        "Concluir sem dados que todos recebem tratamento idêntico porque o texto é igual.",
+        "Investigar como a norma é aplicada, quem decide e quais efeitos essa aplicação produz.",
+        "Dizer que o regulamento deixou de existir.",
+        "Afirmar que o resultado prova a intenção de cada responsável."
+      ],
+      "correctAnswer": "Investigar como a norma é aplicada, quem decide e quais efeitos essa aplicação produz.",
+      "explanation": "O texto formal não descreve sozinho a aplicação. É preciso investigar práticas, decisões e efeitos sem presumir intenção individual.",
+      "hint": "Compare regra, aplicação observada, responsáveis e consequências.",
+      "errorFocus": "Tomar norma escrita como descrição completa da prática institucional.",
+      "misconceptions": {
+        "Concluir sem dados que todos recebem tratamento idêntico porque o texto é igual.": [
+          "WRITTEN_RULE_AS_EQUAL_ENFORCEMENT"
+        ],
+        "Dizer que o regulamento deixou de existir.": [
+          "WRITTEN_RULE_AS_EQUAL_ENFORCEMENT"
+        ],
+        "Afirmar que o resultado prova a intenção de cada responsável.": [
+          "WRITTEN_RULE_AS_EQUAL_ENFORCEMENT"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-09",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "COMMUNITY_VALUE_AND_ACCESS_RULE",
+      "statement": "Um centro comunitário declara valorizar convivência, mas sua regra de inscrição exige etapas que dificultam a participação de parte dos moradores. O que uma avaliação completa deve fazer?",
+      "options": [
+        "Concluir que a declaração prova convivência inclusiva.",
+        "Ignorar a norma porque o valor parece positivo.",
+        "Relacionar o valor declarado à norma e investigar barreiras e efeitos para diferentes moradores.",
+        "Afirmar que toda dificuldade foi intencional."
+      ],
+      "correctAnswer": "Relacionar o valor declarado à norma e investigar barreiras e efeitos para diferentes moradores.",
+      "explanation": "Uma análise compara princípios, procedimentos e resultados. Barreiras devem ser investigadas antes de afirmar suas causas ou intenções.",
+      "hint": "Examine o que se declara, o que se exige e quem consegue participar.",
+      "errorFocus": "Tratar valor declarado como evidência suficiente de resultado.",
+      "misconceptions": {
+        "Concluir que a declaração prova convivência inclusiva.": [
+          "DECLARED_VALUE_AS_OUTCOME"
+        ],
+        "Ignorar a norma porque o valor parece positivo.": [
+          "DECLARED_VALUE_AS_OUTCOME"
+        ],
+        "Afirmar que toda dificuldade foi intencional.": [
+          "DECLARED_VALUE_AS_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "sociology-norm-value-v5-review-10",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "GROUP_CHAT_RULE_REVISION",
+      "statement": "Um grupo digital revê seu acordo após participantes explicarem que notificações noturnas afetam descanso e trabalho. Qual interpretação distingue valor, norma e mudança?",
+      "options": [
+        "O novo horário é um valor e o respeito é uma sanção.",
+        "A revisão prova que o acordo anterior nunca foi norma.",
+        "As mensagens demonstram uma lei aplicável fora do grupo.",
+        "O respeito ao descanso pode funcionar como valor; o novo horário de envio é uma norma revisada."
+      ],
+      "correctAnswer": "O respeito ao descanso pode funcionar como valor; o novo horário de envio é uma norma revisada.",
+      "explanation": "O princípio pode justificar uma orientação concreta; sua revisão mostra que normas de grupo podem mudar após negociação.",
+      "hint": "Identifique o princípio, a ação combinada e o processo de revisão.",
+      "errorFocus": "Confundir princípio com regra ou interpretar revisão como inexistência anterior.",
+      "misconceptions": {
+        "O novo horário é um valor e o respeito é uma sanção.": [
+          "REVISION_AS_NO_PRIOR_NORM"
+        ],
+        "A revisão prova que o acordo anterior nunca foi norma.": [
+          "REVISION_AS_NO_PRIOR_NORM"
+        ],
+        "As mensagens demonstram uma lei aplicável fora do grupo.": [
+          "REVISION_AS_NO_PRIOR_NORM"
+        ]
+      }
+    }
+  ],
+  "lesson": {
+    "title": "Normas e valores na vida social",
+    "objective": "Distinguir valores, normas, regras formais, expectativas, comportamentos observados e sanções em situações de família, escola, grupos digitais e instituições, reconhecendo variação, conflito e mudança social.",
+    "summary": "Valores são princípios considerados importantes; normas são expectativas que orientam condutas em contextos sociais. Uma norma pode ser explícita ou implícita, formal ou informal. Sanções são respostas sociais ou institucionais. Frequência observada não prova, sozinha, obrigação, consenso ou valor compartilhado.",
+    "explanation": "## 1. Comece pelo que é observável\nUma norma social é uma expectativa sobre como agir em uma situação ou grupo. Ela pode ser escrita e comunicada (explícita) ou aprendida e reconhecida na convivência (implícita). Para chamar uma expectativa de coletiva, procure evidências além da preferência isolada de uma pessoa. Nem toda norma é lei, e nem toda regra de grupo vale fora de seu contexto.\n\n## 2. Norma, valor e comportamento\nValor social é um princípio, ideal ou objetivo que pessoas de um grupo consideram importante, como respeito, segurança ou participação. Norma é uma orientação mais concreta que organiza a ação: por exemplo, esperar a vez para falar. Uma conduta observada é aquilo que alguém fez. Ver muitas pessoas fazendo algo descreve frequência; não demonstra, por si só, que exista uma obrigação ou que todas compartilhem o mesmo valor.\n\nUma sequência útil é: **valor (por que algo importa) → norma (o que se espera fazer) → comportamento (o que ocorreu)**. Essa relação é possível, mas não automática: uma norma pode ser justificada por mais de um valor, e as pessoas podem cumprir ou contestar uma norma por razões diferentes.\n\n## 3. Regras formais, informais e sanções\nInstituições como escolas, bibliotecas e plataformas podem comunicar regras formais dentro de um âmbito definido. Grupos também sustentam expectativas informais por meio de aprovação, crítica, confiança, reconhecimento ou exclusão. Sanção é uma resposta a uma conduta: pode ser formal, se prevista e aplicada por um procedimento institucional, ou informal, se ocorre nas relações cotidianas. Sempre identifique quem estabeleceu a regra, a quem se aplica e qual consequência está realmente descrita.\n\n## 4. Socialização, contextos e diversidade\nPessoas aprendem expectativas em interações com familiares, colegas, equipes, escolas e comunidades digitais. A aprendizagem não é automática nem igual para todos. Uma conduta pode ser esperada em um contexto e inadequada ou irrelevante em outro. Práticas culturais também têm variações internas; evite afirmar que todas as pessoas de um grupo pensam ou agem da mesma maneira.\n\n## 5. Mudança e conflito\nNormas podem ser negociadas, contestadas e revistas. Valores também podem entrar em tensão, como privacidade e transparência ou coordenação coletiva e descanso. Em vez de eleger um princípio como vencedor em todos os casos, explicite a situação, quem é afetado, as evidências disponíveis e as consequências das alternativas.\n\n## Exemplo resolvido\nUm grupo de estudo combina não enviar mensagens depois das 22h. O horário combinado é uma norma explícita daquele grupo; não é automaticamente uma lei. Se integrantes dizem que o acordo protege o descanso, esse princípio pode ser um valor que o justifica. Se alguém envia uma mensagem às 23h, isso é um comportamento observado; o fato isolado não mostra se o grupo abandonou a norma nem explica a motivação da pessoa. Uma resposta dos colegas pode ser informal; uma consequência prevista pela instituição da plataforma teria outra fonte e alcance.\n\n## Roteiro de análise\n1. Identifique a situação, o grupo e a instituição envolvidos.\n2. Separe princípio valorizado, expectativa de ação e comportamento observado.\n3. Verifique se a expectativa é explícita ou implícita e qual seu alcance.\n4. Distinga regra de consequência e evidência de frequência.\n5. Procure variações, conflitos e efeitos antes de generalizar.",
+    "workedExample": "No grupo de estudo, “proteger o descanso” é um valor possível; “não enviar mensagens após as 22h” é a norma acordada; uma mensagem enviada às 23h é um comportamento. O acordo vale para aquele grupo, salvo evidência de um âmbito maior. Uma mensagem isolada não prova que a expectativa deixou de existir, e a reação dos integrantes deve ser descrita como informal se não houver procedimento institucional previsto.",
+    "commonMistake": "Tratar valor, norma, comportamento e sanção como sinônimos; inferir consenso ou obrigação apenas porque uma prática é frequente; universalizar uma regra contextual.",
+    "commonErrors": [
+      "Confundir o princípio considerado importante com a ação esperada.",
+      "Tratar toda norma escrita como lei nacional.",
+      "Concluir que uma prática frequente prova obrigação ou consenso.",
+      "Confundir sanção com a regra que a prevê.",
+      "Generalizar um comportamento individual para todo o grupo.",
+      "Ignorar variações internas ou o contexto institucional."
+    ],
+    "tips": [
+      "Pergunte: o que importa, o que se espera fazer, o que ocorreu e qual resposta veio depois?",
+      "Identifique quem criou ou sustenta a expectativa e a quem ela se aplica.",
+      "Não transforme frequência em obrigação sem evidência de expectativa coletiva.",
+      "Ao comparar grupos, descreva contexto e diversidade interna antes de explicar diferenças."
+    ],
+    "priorKnowledge": [
+      "Reconhecer ações e expectativas em situações cotidianas.",
+      "Distinguir uma afirmação sobre importância de uma instrução concreta."
+    ],
+    "keyConcepts": [
+      "Valor social: princípio, ideal ou objetivo considerado importante em um contexto coletivo.",
+      "Norma social: expectativa que orienta condutas em situação ou grupo; pode ser explícita ou implícita.",
+      "Regra formal: orientação estabelecida ou registrada por uma instituição, com âmbito próprio.",
+      "Sanção: resposta social ou institucional a uma conduta, positiva ou negativa, formal ou informal.",
+      "Comportamento descritivo não prova sozinho uma norma injuntiva, consenso ou causa.",
+      "Socialização: aprendizagem de práticas e expectativas nas interações, com variações e possibilidade de contestação."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Reconhecer norma, valor e expectativa com exemplos curtos e explícitos.",
+        "questionIds": [
+          "sociology-norm-value-v5-probe-01",
+          "sociology-norm-value-v5-probe-02",
+          "sociology-norm-value-v5-probe-03",
+          "sociology-norm-value-v5-probe-04",
+          "sociology-norm-value-v5-practice-01",
+          "sociology-norm-value-v5-practice-02",
+          "sociology-norm-value-v5-practice-03"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Classificar regras formais, expectativas implícitas, comportamentos e sanções em grupos diversos.",
+        "questionIds": [
+          "sociology-norm-value-v5-practice-04",
+          "sociology-norm-value-v5-practice-05",
+          "sociology-norm-value-v5-practice-06",
+          "sociology-norm-value-v5-practice-07",
+          "sociology-norm-value-v5-practice-08",
+          "sociology-norm-value-v5-practice-09",
+          "sociology-norm-value-v5-practice-10",
+          "sociology-norm-value-v5-practice-11",
+          "sociology-norm-value-v5-practice-12",
+          "sociology-norm-value-v5-transfer-01",
+          "sociology-norm-value-v5-transfer-02",
+          "sociology-norm-value-v5-transfer-03"
+        ]
+      },
+      {
+        "stage": "CONTEXT_AND_CONFLICT",
+        "focus": "Analisar mudança, conflito entre valores, alcance institucional e limites das inferências.",
+        "questionIds": [
+          "sociology-norm-value-v5-transfer-04",
+          "sociology-norm-value-v5-transfer-05",
+          "sociology-norm-value-v5-transfer-06",
+          "sociology-norm-value-v5-transfer-07",
+          "sociology-norm-value-v5-transfer-08",
+          "sociology-norm-value-v5-lockin-01",
+          "sociology-norm-value-v5-lockin-02",
+          "sociology-norm-value-v5-lockin-03",
+          "sociology-norm-value-v5-lockin-04",
+          "sociology-norm-value-v5-lockin-05",
+          "sociology-norm-value-v5-lockin-06"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Recuperar as distinções em famílias, escolas, instituições e comunidades digitais.",
+        "questionIds": [
+          "sociology-norm-value-v5-review-01",
+          "sociology-norm-value-v5-review-02",
+          "sociology-norm-value-v5-review-03",
+          "sociology-norm-value-v5-review-04",
+          "sociology-norm-value-v5-review-05",
+          "sociology-norm-value-v5-review-06",
+          "sociology-norm-value-v5-review-07",
+          "sociology-norm-value-v5-review-08",
+          "sociology-norm-value-v5-review-09",
+          "sociology-norm-value-v5-review-10"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "VALUE_VS_NORM",
+        "text": "Valor: o que é considerado importante. Norma: a ação que se espera em uma situação."
+      },
+      {
+        "trigger": "DESCRIPTIVE_VS_INJUNCTIVE",
+        "text": "Frequência mostra o que foi observado; expectativa mostra o que o grupo considera adequado."
+      },
+      {
+        "trigger": "FORMAL_VS_INFORMAL",
+        "text": "Localize a fonte: instituição e procedimento formal, ou reação das relações cotidianas."
+      },
+      {
+        "trigger": "CONTEXT_AND_SCOPE",
+        "text": "Uma regra de grupo não se torna universal: delimite quem a estabeleceu e a quem se aplica."
+      },
+      {
+        "trigger": "INDIVIDUAL_VS_COLLECTIVE",
+        "text": "Um ato individual não revela sozinho o que todo o grupo espera ou valoriza."
+      },
+      {
+        "trigger": "NORM_CHANGE",
+        "text": "Revisar uma norma não prova unanimidade; procure quem participou e que efeitos foram observados."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SEPARATE_VALUE_AND_RULE",
+        "misconception": "VALUE_NORM_SANCTION_COLLAPSED",
+        "prompt": "Complete três frases separadas: “O grupo considera importante…”, “Espera que as pessoas…”, “Quando isso ocorre, a resposta é…”."
+      },
+      {
+        "id": "CHECK_COLLECTIVE_EXPECTATION",
+        "misconception": "INDIVIDUAL_ORDER_AS_GROUP_NORM",
+        "prompt": "Procure evidência de que mais de uma pessoa reconhece a expectativa; marque separadamente a opinião de quem a propôs."
+      },
+      {
+        "id": "SEPARATE_FREQUENCY_AND_EXPECTATION",
+        "misconception": "FREQUENCY_PROVES_NORM",
+        "prompt": "Reescreva o dado como descrição do observado. Depois diga qual informação adicional mostraria uma expectativa coletiva."
+      },
+      {
+        "id": "TRACE_RULE_SCOPE",
+        "misconception": "INSTITUTIONAL_RULE_AS_NATIONAL_LAW",
+        "prompt": "Anote quem criou a regra, o grupo alcançado, onde está registrada e se há fonte que lhe dê alcance além da instituição."
+      },
+      {
+        "id": "COMPARE_CONTEXTS",
+        "misconception": "CONTEXT_FREE_JUDGMENT",
+        "prompt": "Faça duas colunas com local, atividade, participantes e expectativa; só então compare as condutas."
+      },
+      {
+        "id": "LIMIT_GENERALIZATION",
+        "misconception": "ONE_ACTION_AS_GROUP_ATTITUDE",
+        "prompt": "Separe o fato observado da hipótese sobre motivação e liste que evidência seria necessária para sustentar essa hipótese."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 35,
+    "sourceDossier": [
+      {
+        "title": "Introduction to Sociology 3e, Section 3.2: Elements of Culture",
+        "publisher": "OpenStax",
+        "authors": "Tonja R. Conerly, Kathleen Holmes, Asha Lal Tamang",
+        "url": "https://openstax.org/books/introduction-sociology-3e/pages/3-2-elements-of-culture",
+        "accessedOn": "2026-10-14",
+        "license": "CC BY-NC-SA 4.0; consulted for concepts only, not reproduced or adapted; commercial reuse not claimed.",
+        "supports": [
+          "Distinctions among values, norms, formal and informal rules, and sanctions; contextual cultural expectations."
+        ],
+        "use": "Conceptual reference only. All scenarios, statements, options and explanations in this package were independently authored."
+      },
+      {
+        "title": "Base Nacional Comum Curricular: Ensino Médio, Ciências Humanas e Sociais Aplicadas",
+        "publisher": "Ministério da Educação (MEC)",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "accessedOn": "2026-10-14",
+        "license": "Official public curriculum document; no specific skill code is claimed by this internal content package.",
+        "supports": [
+          "Contextual analysis and interpretation of social and cultural processes in Human and Social Applied Sciences."
+        ],
+        "use": "Curricular context only; official mapping remains pending and requires formal review."
+      }
+    ],
+    "copyrightNote": "All questions, contexts, options, examples and feedback are original authorial writing. OpenStax was consulted only as a conceptual reference; no protected text or assessment item was copied. Its CC BY-NC-SA license is not treated as permission for commercial reuse. Official BNCC mapping and human pedagogical review remain pending."
+  }
+}

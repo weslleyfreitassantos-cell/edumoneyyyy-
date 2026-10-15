@@ -26,6 +26,7 @@ import { buildPhysicsMotionGraphPack } from './build-physics-motion-graph-v5.mjs
 import { buildEnglishInferencePack } from './build-english-inference-v5.mjs';
 import { buildPhysicsUnitConversionPack } from './build-physics-unit-conversion-v5.mjs';
 import { buildSociologyInequalityDataPack } from './build-sociology-inequality-data-v5.mjs';
+import { buildSociologyNormValuePack } from './build-sociology-norm-value-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -101,6 +102,9 @@ const englishInferencePack = JSON.parse(readFileSync(new URL('../../content/adap
 const englishInferenceMigration = readFileSync(new URL('../../supabase/migrations/20261013003200_bncc_english_infer_text_question_first_v5.sql', import.meta.url), 'utf8');
 const sociologyInequalityPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/sociology-inequality-data.json', import.meta.url), 'utf8'));
 const sociologyInequalityMigration = readFileSync(new URL('../../supabase/migrations/20261013003700_bncc_sociology_inequality_data_question_first_v5.sql', import.meta.url), 'utf8');
+const sociologyNormValuePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/sociology-norm-value.json', import.meta.url), 'utf8'));
+const sociologyNormValueMigration = readFileSync(new URL('../../supabase/migrations/20261013003800_bncc_sociology_norm_value_question_first_v5.sql', import.meta.url), 'utf8');
+const artEditorialAudit = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-editorial-audit-v1.json', import.meta.url), 'utf8'));
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -1274,6 +1278,66 @@ describe('question-first V5 staging content', () => {
     expect(sociologyInequalityMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(sociologyInequalityMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(sociologyInequalityMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('starts sociology norm/value learning with simple examples and a balanced, distinct question bank', () => {
+    const result = validateQuestionFirstPack(sociologyNormValuePack);
+    expect(result.valid).toBe(true);
+    expect(result.questionCount).toBe(40);
+    expect(result.contextCount).toBe(40);
+    expect(result.counts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(result.answerPositionCounts).toEqual({ A: 10, B: 10, C: 10, D: 10 });
+    expect(sociologyNormValuePack.sourceQuestionFeedback).toHaveLength(20);
+    expect(sociologyNormValuePack.sourceReconciliation).toMatchObject({
+      existingV9QuestionsRetainedUnchanged: 20,
+      newQuestions: 40,
+      reusedQuestionsCountedAsNew: false,
+      existingAnswerPositionPattern: expect.stringContaining('20_OF_20'),
+    });
+    expect(sociologyNormValuePack.questions[0].statement).toContain('depois das 22 horas');
+    expect(sociologyNormValuePack.questions[0].correctAnswer).toBe('Uma norma social do grupo.');
+    expect(sociologyNormValuePack.lesson.progression).toHaveLength(4);
+    expect(sociologyNormValuePack.lesson.microExplanations).toHaveLength(6);
+    expect(sociologyNormValuePack.lesson.remediations).toHaveLength(6);
+    expect(sociologyNormValuePack.lesson.explanation).toContain('descreve frequência; não demonstra');
+    expect(sociologyNormValuePack.lesson.sourceDossier[0].license).toContain('CC BY-NC-SA');
+    expect(sociologyNormValuePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(sociologyNormValuePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(sociologyNormValuePack.publicationStatus).toBe('STAGING');
+  });
+
+  it('compiles sociology norm/value as inactive staging without altering existing questions or student history', () => {
+    expect(sociologyNormValuePack).toEqual(buildSociologyNormValuePack());
+    expect(sociologyNormValuePack.contentVersion).toBe(5);
+    expect(sociologyNormValuePack.lessonVersion).toBe(5);
+    expect(sociologyNormValueMigration).toBe(buildMigration(sociologyNormValuePack));
+    expect(sociologyNormValueMigration).toContain("'SOCIOLOGY_DISTINGUISH_NORM_VALUE'");
+    expect(sociologyNormValueMigration).toContain("'v5-sociology-distinguish-norm-value-wave3'");
+    expect(sociologyNormValueMigration).toContain('"source_question_feedback"');
+    expect(sociologyNormValueMigration).toContain("'GLOBAL', v_skill_id, v_question.purpose, 5, false");
+    expect(sociologyNormValueMigration).toContain("'publication_status', 'STAGING'");
+    expect(sociologyNormValueMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(sociologyNormValueMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(sociologyNormValueMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('records the Art visual-evidence audit without rewriting historical questions', () => {
+    expect(artEditorialAudit.items).toHaveLength(21);
+    expect(new Set(artEditorialAudit.items.map(({ questionId }) => questionId)).size).toBe(21);
+    expect(artEditorialAudit.items.every(({ media }) => media === 'NOT_LINKED')).toBe(true);
+    expect(artEditorialAudit.items.filter(({ sufficiency }) => sufficiency === 'TEXTUALLY_SUFFICIENT')).toHaveLength(18);
+    expect(artEditorialAudit.items.filter(({ sufficiency }) => sufficiency === 'CONCEPTUAL_META_PROMPT')).toHaveLength(2);
+    expect(artEditorialAudit.items.filter(({ sufficiency }) => sufficiency === 'INSUFFICIENT_VISUAL_EVIDENCE').map(({ questionId }) => questionId))
+      .toEqual(['v4-authored-art-art_compare_compositions-transfer-05']);
+    expect(artEditorialAudit.versionedCorrectionDraft).toMatchObject({
+      replacesForFutureUse: 'v4-authored-art-art_compare_compositions-transfer-05',
+      studentReady: false,
+      oldQuestionAndHistoricalAttempts: 'PRESERVE_UNCHANGED',
+    });
+    expect(artEditorialAudit.versionedCorrectionDraft.options).toHaveLength(4);
+    expect(artEditorialAudit.versionedCorrectionDraft.options).toContain(artEditorialAudit.versionedCorrectionDraft.answerKey);
+    expect(artEditorialAudit.versionedCorrectionDraft.explanation).toContain('evidências observáveis');
+    expect(artEditorialAudit.versionedCorrectionDraft.requiredMedia.textOnlyPublicationAllowed).toBe(false);
   });
 
   it('deepens English inference using an exact V4 and V9 source set', () => {
