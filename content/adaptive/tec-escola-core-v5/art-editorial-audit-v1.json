@@ -35,32 +35,39 @@
   ],
   "versionedCorrectionDraft": {
     "replacesForFutureUse": "v4-authored-art-art_compare_compositions-transfer-05",
-    "newId": "art-compare-compositions-transfer-05-v2",
-    "status": "DRAFT_STAGING",
+    "newId": "v5-art-compare-compositions-transfer-contrast-05-v2",
+    "status": "IMPLEMENTED_IN_STAGING",
     "studentReady": false,
     "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
     "officialMappingStatus": "NOT_CLAIMED",
     "oldQuestionAndHistoricalAttempts": "PRESERVE_UNCHANGED",
-    "objective": "Compare visual hierarchy and contrast using evidence visible in two original campaign posters.",
-    "question": "Dois cartazes autorais de uma campanha comunitária apresentam a mesma mensagem. Qual justificativa compara melhor as escolhas de composição observáveis nos cartazes?",
+    "objective": "Comparar hierarquia visual e contraste a partir de evidências visíveis em dois cartazes autorais.",
+    "question": "Observe os dois cartazes autorais da mesma campanha. Qual comparação relaciona melhor contraste e hierarquia às diferenças visíveis?",
     "options": [
-      "O cartaz B destaca mais a mensagem porque seus elementos secundários ocupam mais espaço.",
-      "O cartaz A separa melhor a mensagem do fundo por contraste e hierarquia visual.",
-      "Os cartazes têm a mesma composição porque apresentam as mesmas palavras.",
-      "Não é possível comparar composição sem conhecer a biografia de quem criou os cartazes."
+      "O cartaz A separa melhor a chamada do fundo e a organiza como informação principal; no B, o baixo contraste e o peso semelhante dos elementos reduzem essa hierarquia.",
+      "O cartaz B destaca mais a chamada porque seus elementos secundários têm peso visual próximo.",
+      "Os cartazes têm a mesma composição porque anunciam o mesmo evento.",
+      "O cartaz A prova que cores amarelas sempre tornam uma mensagem mais importante."
     ],
-    "answerKey": "O cartaz A separa melhor a mensagem do fundo por contraste e hierarquia visual.",
-    "explanation": "A comparação deve apontar evidências observáveis. No par especificado, a relação mais forte entre texto e fundo e a hierarquia do cartaz A destacam a mensagem; a semelhança das palavras não torna as composições iguais.",
+    "answerKey": "O cartaz A separa melhor a chamada do fundo e a organiza como informação principal; no B, o baixo contraste e o peso semelhante dos elementos reduzem essa hierarquia.",
+    "explanation": "No cartaz A, a chamada escura sobre o bloco amarelo tem maior contraste e escala, enquanto os detalhes aparecem abaixo. No B, o texto claro sobre branco e os pesos próximos reduzem a separação. Isso sustenta a comparação sem transformar uma cor em significado universal.",
     "requiredMedia": {
       "assetPairId": "art-compare-compositions-contrast-v1",
-      "mustCreateOriginalAssets": true,
-      "formats": ["PNG", "WebP"],
+      "mustCreateOriginalAssets": false,
+      "formats": ["SVG"],
       "aspectRatio": "4:5",
-      "altTextA": "Cartaz vertical autoral de campanha comunitária, com mensagem principal em letras escuras sobre um bloco amarelo claro, centralizado e visualmente destacado; ilustração secundária pequena na parte inferior.",
-      "altTextB": "Cartaz vertical autoral da mesma campanha e com a mesma mensagem, mas com letras cinza-claro sobre fundo branco, elementos secundários de tamanho semelhante e menor separação visual entre texto e fundo.",
+      "assets": [
+        { "src": "/learning/art/poster-contrast-a.svg", "alt": "Cartaz A: chamada Feira de trocas do bairro em letras azul-marinho, grande, sobre um bloco amarelo; as informações de data e local aparecem menores abaixo." },
+        { "src": "/learning/art/poster-contrast-b.svg", "alt": "Cartaz B: a mesma chamada em letras cinza-claro diretamente sobre fundo branco; os detalhes têm tamanho e peso visual próximos aos da chamada." }
+      ],
       "textOnlyPublicationAllowed": false,
-      "linkExpected": "Attach both assets to the question stimulus as an ordered visual pair; do not infer or create a URL until assets exist."
+      "linkStatus": "CONNECTED_TO_STAGING_QUESTION_METADATA",
+      "linkExpected": "The ordered image pair is returned by get_guided_learning_step_v4 and rendered with alt text."
     },
-    "releaseGate": "Do not compile or publish until the original pair is created, the rendered assets match the alt text and answer key, and human pedagogical review is complete."
+    "stagingPack": "v5-art-compare-compositions-visual-evidence",
+    "stagingQuestionCount": 8,
+    "sourceQuestionsReviewed": 21,
+    "targetSourceQuestionsWithFeedback": 11,
+    "releaseGate": "Question pack and visual rendering are technically staged; keep inactive until human pedagogical review and visual QA are complete."
   }
 }

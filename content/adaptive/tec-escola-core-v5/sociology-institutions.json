@@ -5,8 +5,8 @@
   "domain": "INSTITUICOES",
   "topic": "instituicoes_papeis_regras_mudanca",
   "canonicalSkillCode": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
-  "contentVersion": 5,
-  "lessonVersion": 5,
+  "contentVersion": 6,
+  "lessonVersion": 6,
   "expectedQuestionCount": 40,
   "expectedContextCount": 40,
   "expectedAnswerPositionCounts": {

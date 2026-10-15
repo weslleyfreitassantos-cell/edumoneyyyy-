@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 import { buildMigration, validateQuestionFirstPack } from './compile-question-first-content-v5.mjs';
@@ -28,6 +28,7 @@ import { buildPhysicsUnitConversionPack } from './build-physics-unit-conversion-
 import { buildSociologyInequalityDataPack } from './build-sociology-inequality-data-v5.mjs';
 import { buildSociologyNormValuePack } from './build-sociology-norm-value-v5.mjs';
 import { buildSociologyInstitutionsPack } from './build-sociology-institutions-v5.mjs';
+import { buildArtCompareCompositionsPack } from './build-art-compare-compositions-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -107,6 +108,8 @@ const sociologyNormValuePack = JSON.parse(readFileSync(new URL('../../content/ad
 const sociologyNormValueMigration = readFileSync(new URL('../../supabase/migrations/20261013003800_bncc_sociology_norm_value_question_first_v5.sql', import.meta.url), 'utf8');
 const sociologyInstitutionsPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/sociology-institutions.json', import.meta.url), 'utf8'));
 const sociologyInstitutionsMigration = readFileSync(new URL('../../supabase/migrations/20261014000100_bncc_sociology_institutions_question_first_v5.sql', import.meta.url), 'utf8');
+const artCompositionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-compare-compositions.json', import.meta.url), 'utf8'));
+const artCompositionMigration = readFileSync(new URL('../../supabase/migrations/20261014000200_bncc_art_compare_compositions_question_first_v5.sql', import.meta.url), 'utf8');
 const artEditorialAudit = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-editorial-audit-v1.json', import.meta.url), 'utf8'));
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
@@ -1358,9 +1361,10 @@ describe('question-first V5 staging content', () => {
 
   it('compiles sociology institutions into inactive staging without changing student history', () => {
     expect(sociologyInstitutionsPack).toEqual(buildSociologyInstitutionsPack());
-    expect(sociologyInstitutionsPack.contentVersion).toBe(5);
-    expect(sociologyInstitutionsPack.lessonVersion).toBe(5);
+    expect(sociologyInstitutionsPack.contentVersion).toBe(6);
+    expect(sociologyInstitutionsPack.lessonVersion).toBe(6);
     expect(sociologyInstitutionsMigration).toBe(buildMigration(sociologyInstitutionsPack));
+    expect(sociologyInstitutionsMigration).toContain('version = 6');
     expect(sociologyInstitutionsMigration).toContain("'SOCIOLOGY_EXPLAIN_INSTITUTIONS'");
     expect(sociologyInstitutionsMigration).toContain("'v5-sociology-explain-institutions-wave3'");
     expect(sociologyInstitutionsMigration).toContain("'publication_status', 'STAGING'");
@@ -1384,8 +1388,42 @@ describe('question-first V5 staging content', () => {
     });
     expect(artEditorialAudit.versionedCorrectionDraft.options).toHaveLength(4);
     expect(artEditorialAudit.versionedCorrectionDraft.options).toContain(artEditorialAudit.versionedCorrectionDraft.answerKey);
-    expect(artEditorialAudit.versionedCorrectionDraft.explanation).toContain('evidências observáveis');
+    expect(artEditorialAudit.versionedCorrectionDraft.explanation).toContain('No cartaz A');
     expect(artEditorialAudit.versionedCorrectionDraft.requiredMedia.textOnlyPublicationAllowed).toBe(false);
+    expect(artEditorialAudit.versionedCorrectionDraft.requiredMedia.assets).toHaveLength(2);
+  });
+
+  it('stages an evidence-complete Art replacement with original linked visuals and balanced questions', () => {
+    const result = validateQuestionFirstPack(artCompositionPack);
+    expect(artCompositionPack).toEqual(buildArtCompareCompositionsPack());
+    expect(artCompositionPack.contentVersion).toBe(6);
+    expect(artCompositionPack.lessonVersion).toBe(6);
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 8,
+      contextCount: 8,
+      counts: { PROBE: 2, PRACTICE: 2, TRANSFER: 2, LOCK_IN: 1, REVIEW: 1 },
+      answerPositionCounts: { A: 2, B: 2, C: 2, D: 2 },
+    });
+    expect(artCompositionPack.sourceQuestionFeedback).toHaveLength(11);
+    const replacement = artCompositionPack.questions.find(({ id }) => id.endsWith('transfer-contrast-05-v2'));
+    expect(artEditorialAudit.versionedCorrectionDraft.newId).toBe(replacement.id);
+    expect(replacement.visualStimulus.items).toHaveLength(2);
+    expect(replacement.visualStimulus.items.every(({ alt, src }) => alt && src.startsWith('/learning/art/'))).toBe(true);
+    expect(replacement.statement).toContain('diferenças visíveis');
+    expect(replacement.explanation).toContain('No cartaz A');
+    expect(artCompositionPack.publicationStatus).toBe('STAGING');
+    expect(artCompositionPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(artCompositionPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(artCompositionPack.lesson.authenticActivities).toHaveLength(1);
+    expect(['/learning/art/poster-contrast-a.svg', '/learning/art/poster-contrast-b.svg'].every((path) =>
+      existsSync(new URL(`../../public${path}`, import.meta.url)))) .toBe(true);
+    expect(artCompositionMigration).toBe(buildMigration(artCompositionPack));
+    expect(artCompositionMigration).toContain('version = 6');
+    expect(artCompositionMigration).toContain("'visual_stimulus'");
+    expect(artCompositionMigration).toContain('V5_VISUAL_STEP_PATCH_MISMATCH');
+    expect(artCompositionMigration).toContain("'publication_status', 'STAGING'");
+    expect(artCompositionMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|active\s*=\s*true/i);
   });
 
   it('deepens English inference using an exact V4 and V9 source set', () => {

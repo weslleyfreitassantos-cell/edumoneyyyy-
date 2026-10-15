@@ -139,6 +139,9 @@ export interface GuidedQuestionV2 {
   difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
   position: number;
   hint?: string | null;
+  visual_stimulus?: {
+    items: Array<{ src: string; alt: string; caption?: string }>;
+  } | null;
 }
 
 export interface GuidedLessonV2 {

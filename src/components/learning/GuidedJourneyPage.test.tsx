@@ -33,7 +33,7 @@ const state = vi.hoisted(() => ({
       position: 0,
       lesson_id: null,
       lesson: null,
-      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }] as Array<{ id: string; statement: string; options: string[]; difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null; position: number; hint?: string | null }>,
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }] as Array<{ id: string; statement: string; options: string[]; difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null; position: number; hint?: string | null; visual_stimulus?: { items: Array<{ src: string; alt: string; caption?: string }> } | null }>,
     },
     isLoading: false,
   },
@@ -72,6 +72,26 @@ function renderPage(initialEntry = '/') {
 }
 
 describe('GuidedJourneyPage', () => {
+  it('renders authored visual stimulus with accessible alt text and local paths', () => {
+    state.step.data = {
+      ...state.step.data,
+      questions: [{
+        id: 'question-visual', statement: 'Compare os cartazes.', options: ['A', 'B'], difficulty: 'MEDIUM', position: 0,
+        visual_stimulus: { items: [{ src: '/learning/art/poster-contrast-a.svg', alt: 'Cartaz A com chamada escura em bloco amarelo.', caption: 'Cartaz A' }] },
+      }],
+    };
+
+    renderPage();
+
+    expect(screen.getByRole('img', { name: 'Cartaz A com chamada escura em bloco amarelo.' }).getAttribute('src'))
+      .toBe('/learning/art/poster-contrast-a.svg');
+    expect(screen.getByText('Cartaz A')).toBeTruthy();
+    state.step.data = {
+      ...state.step.data,
+      questions: [{ id: 'question-1', statement: 'Qual é o resultado?', options: ['4', '7'], difficulty: 'EASY', position: 0 }],
+    };
+  });
+
   it('shows one server-planned mission and keeps the answer key hidden before submit', () => {
     renderPage();
 

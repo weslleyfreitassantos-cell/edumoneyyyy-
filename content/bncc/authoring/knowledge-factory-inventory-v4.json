@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "ebff572fbbce409bbcee012c531732bb0ba25a3e03c34c53af58786af2effa7b",
+    "v5QuestionFirstPacks": "af755d842ddca201ec3e754850e57d3d8c9b9ea1f6025890aeb655678ad12aeb",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 43,
+    "auditedSequences": 44,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 17,
-    "waveTwoCandidateTargetsDeepReady": 17,
-    "deepContentReady": 43,
-    "technicalDeepReady": 43,
-    "pedagogicalReviewPending": 43,
+    "waveTwoCandidateTargetsAudited": 18,
+    "waveTwoCandidateTargetsDeepReady": 18,
+    "deepContentReady": 44,
+    "technicalDeepReady": 44,
+    "pedagogicalReviewPending": 44,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 43
+      "STRUCTURAL_READY": 44
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 43,
+      "LESSON_DEPTH_READY": 44,
       "QUESTION_POOL_DEPTH_READY": 40,
       "DIFFICULTY_PROGRESSION_READY": 40,
       "CONTEXT_DIVERSITY_READY": 40,
       "TRANSFER_READY": 40,
-      "MISCONCEPTION_RECOVERY_READY": 43,
+      "MISCONCEPTION_RECOVERY_READY": 44,
       "REVIEW_CONTENT_READY": 40,
-      "AUTHENTIC_EVIDENCE_READY": 43
+      "AUTHENTIC_EVIDENCE_READY": 44
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -110,12 +110,12 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 1222,
-    "consolidatedQuestionTotal": 1776,
+    "v5QuestionTotal": 1230,
+    "consolidatedQuestionTotal": 1808,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 43,
+    "reviewPending": 44,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -124,6 +124,64 @@
       "V5_QUESTION_FIRST_PACKS"
     ],
     "depthAudit": [
+      {
+        "targetId": "ART_COMPARE_COMPOSITIONS",
+        "unitId": null,
+        "subject": "ART",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Como a composição orienta o olhar",
+        "originalQuestionCount": 24,
+        "v5QuestionCount": 8,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 32,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 10,
+          "TRANSFER": 5,
+          "LOCK_IN": 5,
+          "REVIEW": 5
+        },
+        "minimumTargets": "AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED",
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": null,
+          "DIFFICULTY_PROGRESSION_READY": null,
+          "CONTEXT_DIVERSITY_READY": null,
+          "TRANSFER_READY": null,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": null,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [],
+        "contextFamilyCount": 32,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 4,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "NOT_APPLICABLE_FOR_PRACTICAL_EVIDENCE",
+        "technicalDeepReady": true,
+        "readinessClaim": "DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 24,
+          "actualQuestionCount": 24,
+          "status": "EXACT",
+          "questionFeedbackCount": 11
+        },
+        "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
+      },
       {
         "targetId": "ART_CREATE_CHARACTER_EXPERIMENT_FI",
         "unitId": "V3_ART_CREATION_FI",
@@ -2758,25 +2816,17 @@
     "fabricatedApprovalEvidence": false
   },
   "queue": {
-    "totalItems": 1756,
+    "totalItems": 1755,
     "byWave": {
-      "WAVE_2": 35,
+      "WAVE_2": 34,
       "WAVE_3": 1721
     },
     "byStatus": {
-      "CONTENT_GAP": 35,
+      "CONTENT_GAP": 34,
       "MAPPING_REVIEW_REQUIRED": 151,
       "SOURCE_TEXT_REVIEW_REQUIRED": 1570
     },
     "items": [
-      {
-        "wave": 2,
-        "id": "ART_COMPARE_COMPOSITIONS",
-        "stage": "FUNDAMENTAL_II",
-        "subject": "ART",
-        "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
-      },
       {
         "wave": 2,
         "id": "ART_INTERPRET_WORK",
@@ -16828,5 +16878,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "793169520d57ea989da867e90274d2cd26310891e498bf299d599b04912fcf16"
+  "inventoryHash": "f8b46cd621e6af5e57160155f894c7736ad4631007e9b74720a3c2522f9584e8"
 }

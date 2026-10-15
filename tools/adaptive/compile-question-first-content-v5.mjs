@@ -379,6 +379,29 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
     purposePositions.set(question.purpose, position);
     return { ...question, position };
   });
+  const hasVisualStimulus = questionRows.some((question) => question.visualStimulus);
+  const visualStimulusRpcPatch = hasVisualStimulus ? `
+do $patch_v5_guided_step_visual_stimulus$
+declare
+  function_definition text;
+  old_clause text := '''position'', item.position';
+  new_clause text := '''position'', item.position, ''visual_stimulus'', question.metadata->''visual_stimulus''';
+  occurrence_count integer;
+begin
+  select pg_get_functiondef('public.get_guided_learning_step_v4(uuid)'::regprocedure)
+    into function_definition;
+  if function_definition is null then raise exception 'V5_VISUAL_STEP_FUNCTION_MISSING'; end if;
+  if position(new_clause in function_definition) > 0 then return; end if;
+  select (length(function_definition)-length(replace(function_definition, old_clause, '')))/length(old_clause)
+    into occurrence_count;
+  if occurrence_count <> 1 then raise exception 'V5_VISUAL_STEP_PATCH_MISMATCH'; end if;
+  execute replace(function_definition, old_clause, new_clause);
+end;
+$patch_v5_guided_step_visual_stimulus$;
+` : '';
+  const visualStimulusRecordsetColumn = hasVisualStimulus ? ', visualStimulus jsonb' : '';
+  const visualStimulusMetadataPair = hasVisualStimulus ? `,
+          'visual_stimulus', v_question."visualStimulus"` : '';
   const questionJson = jsonSql(questionRows);
   const lesson = pack.lesson;
   const contentVersion = pack.contentVersion ?? 5;
@@ -412,9 +435,7 @@ export function buildMigration(pack = readJson(PACK_PATH)) {
   }
   const hash = createHash('sha256').update(JSON.stringify(pack)).digest('hex');
 
-  return `begin;
-
--- Authorial V5 content is compiled for review but remains inactive and unaligned.
+  return `begin;${hasVisualStimulus ? `\n\n${visualStimulusRpcPatch}\n\n` : '\n\n'}-- Authorial V5 content is compiled for review but remains inactive and unaligned.
 -- No student can receive it until separate pedagogical and publication gates pass.
 do $seed_question_first_content_v5$
 declare
@@ -451,7 +472,7 @@ begin
     select * from jsonb_to_recordset(${questionJson}) as item(
       id text, purpose text, difficulty text, "cognitiveProcess" text,
       "contextFamily" text, statement text, options jsonb, "correctAnswer" text,
-      explanation text, hint text, "errorFocus" text, misconceptions jsonb, position integer
+      explanation text, hint text, "errorFocus" text, misconceptions jsonb, position integer${visualStimulusRecordsetColumn}
     )
   loop
     insert into public.learning_question_sets(scope, canonical_skill_id, purpose, version, active, metadata)
@@ -482,7 +503,7 @@ begin
         jsonb_build_object('content_pack', ${sql(databasePackId)}, 'content_id', v_question.id,
           'purpose', v_question.purpose, 'context_family', v_question."contextFamily",
           'cognitive_process', v_question."cognitiveProcess", 'error_focus', v_question."errorFocus",
-          'remediation_hint', v_question.hint, 'misconceptions', v_question.misconceptions,
+          'remediation_hint', v_question.hint, 'misconceptions', v_question.misconceptions${visualStimulusMetadataPair},
           'content_authoring_status', 'AUTHORED', 'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING',
           'publication_status', 'STAGING', 'bncc_alignment_status', 'NOT_CLAIMED'), false
       ) returning id into v_question_id;

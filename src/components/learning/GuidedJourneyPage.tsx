@@ -263,6 +263,14 @@ export default function GuidedJourneyPage() {
           {currentQuestion ? (
             <fieldset key={currentQuestion.id} className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
               <legend className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">Questão {questionIndex + 1} de {questions.length}</legend>
+              {currentQuestion.visual_stimulus?.items?.length ? <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {currentQuestion.visual_stimulus.items.filter((item) => item.src.startsWith('/') && !item.src.startsWith('//') && Boolean(item.alt.trim())).map((item) => (
+                  <figure key={item.src} className="mx-auto w-full max-w-xs">
+                    <img src={item.src} alt={item.alt} loading="lazy" decoding="async" className="aspect-[4/5] w-full rounded-lg border border-slate-200 bg-white object-contain dark:border-slate-700" />
+                    {item.caption ? <figcaption className="mt-2 text-center text-sm font-semibold text-slate-600 dark:text-slate-300">{item.caption}</figcaption> : null}
+                  </figure>
+                ))}
+              </div> : null}
               <p className="mt-4 text-lg font-semibold leading-7 text-slate-900 dark:text-slate-100">{currentQuestion.statement}</p>
               <div className="mt-6 grid gap-3">
                 {currentQuestion.options.map((option) => {
