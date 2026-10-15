@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "af755d842ddca201ec3e754850e57d3d8c9b9ea1f6025890aeb655678ad12aeb",
+    "v5QuestionFirstPacks": "5f8006bd3aeda04b2b2f4842744a2c320b63f1c6b82bd1b00db9ebca2eedefdb",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -81,25 +81,25 @@
   },
   "existingContent": {
     "v3Targets": 24,
-    "auditedSequences": 44,
+    "auditedSequences": 52,
     "waveTwoCandidateTargets": 52,
-    "waveTwoCandidateTargetsAudited": 18,
+    "waveTwoCandidateTargetsAudited": 26,
     "waveTwoCandidateTargetsDeepReady": 18,
     "deepContentReady": 44,
     "technicalDeepReady": 44,
-    "pedagogicalReviewPending": 44,
+    "pedagogicalReviewPending": 52,
     "depthStatusCounts": {
-      "STRUCTURAL_READY": 44
+      "STRUCTURAL_READY": 52
     },
     "dimensionReadyCounts": {
-      "LESSON_DEPTH_READY": 44,
+      "LESSON_DEPTH_READY": 52,
       "QUESTION_POOL_DEPTH_READY": 40,
-      "DIFFICULTY_PROGRESSION_READY": 40,
-      "CONTEXT_DIVERSITY_READY": 40,
-      "TRANSFER_READY": 40,
-      "MISCONCEPTION_RECOVERY_READY": 44,
+      "DIFFICULTY_PROGRESSION_READY": 46,
+      "CONTEXT_DIVERSITY_READY": 44,
+      "TRANSFER_READY": 44,
+      "MISCONCEPTION_RECOVERY_READY": 52,
       "REVIEW_CONTENT_READY": 40,
-      "AUTHENTIC_EVIDENCE_READY": 44
+      "AUTHENTIC_EVIDENCE_READY": 48
     },
     "purposeMinimums": {
       "PROBE": 4,
@@ -108,14 +108,14 @@
       "LOCK_IN": 6,
       "REVIEW": 10
     },
-    "questionsBelowAnyMinimum": 0,
+    "questionsBelowAnyMinimum": 6,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 1230,
-    "consolidatedQuestionTotal": 1808,
+    "v5QuestionTotal": 1430,
+    "consolidatedQuestionTotal": 2163,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
-    "reviewPending": 44,
+    "reviewPending": 52,
     "contentSources": [
       "V1/V2/V3/V4_CONSOLIDATED_BY_V3_FACTORY",
       "V4_SUBJECT_CONTENT_FOR_EXACT_WAVE_2_TARGETS",
@@ -234,6 +234,126 @@
         "studentPublicationStatus": "STAGING_INACTIVE",
         "sourceReconciliation": null,
         "nextAction": "PEDAGOGICAL_REVIEW_AND_AUTHENTIC_EXECUTION_REQUIRED"
+      },
+      {
+        "targetId": "ART_INTERPRET_WORK",
+        "unitId": null,
+        "subject": "ART",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Interpretar uma obra com evidências",
+        "originalQuestionCount": 26,
+        "v5QuestionCount": 24,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 50,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 18,
+          "TRANSFER": 11,
+          "LOCK_IN": 7,
+          "REVIEW": 7
+        },
+        "minimumTargets": "AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED",
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": null,
+          "DIFFICULTY_PROGRESSION_READY": null,
+          "CONTEXT_DIVERSITY_READY": null,
+          "TRANSFER_READY": null,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": null,
+          "AUTHENTIC_EVIDENCE_READY": false
+        },
+        "missingDepthDimensions": [
+          "AUTHENTIC_EVIDENCE_READY"
+        ],
+        "contextFamilyCount": 47,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "NOT_APPLICABLE_FOR_PRACTICAL_EVIDENCE",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 26,
+          "actualQuestionCount": 26,
+          "status": "EXACT",
+          "questionFeedbackCount": 26
+        },
+        "nextAction": "AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE"
+      },
+      {
+        "targetId": "ART_RELATE_WORK_CONTEXT",
+        "unitId": null,
+        "subject": "ART",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Relacionar uma obra ao seu contexto com cuidado",
+        "originalQuestionCount": 24,
+        "v5QuestionCount": 24,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 48,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 19,
+          "TRANSFER": 9,
+          "LOCK_IN": 6,
+          "REVIEW": 7
+        },
+        "minimumTargets": "AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED",
+        "missingMinimums": {},
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": null,
+          "DIFFICULTY_PROGRESSION_READY": null,
+          "CONTEXT_DIVERSITY_READY": null,
+          "TRANSFER_READY": null,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": null,
+          "AUTHENTIC_EVIDENCE_READY": false
+        },
+        "missingDepthDimensions": [
+          "AUTHENTIC_EVIDENCE_READY"
+        ],
+        "contextFamilyCount": 48,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "NOT_APPLICABLE_FOR_PRACTICAL_EVIDENCE",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 24,
+          "actualQuestionCount": 24,
+          "status": "EXACT",
+          "questionFeedbackCount": 24
+        },
+        "nextAction": "AUTHOR_AND_REVIEW_AUTHENTIC_PERFORMANCE_EVIDENCE"
       },
       {
         "targetId": "BIOLOGY_CELL_FUNCTION",
@@ -797,6 +917,89 @@
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
+        "targetId": "COMPUTING_READ_TABLE_DATA",
+        "unitId": null,
+        "subject": "COMPUTING",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Ler tabelas sem perder o contexto dos dados",
+        "originalQuestionCount": 9,
+        "v5QuestionCount": 24,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 33,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 13,
+          "TRANSFER": 6,
+          "LOCK_IN": 4,
+          "REVIEW": 4
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {
+          "TRANSFER": {
+            "current": 6,
+            "target": 8
+          },
+          "LOCK_IN": {
+            "current": 4,
+            "target": 6
+          },
+          "REVIEW": {
+            "current": 4,
+            "target": 10
+          }
+        },
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": false,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": false,
+          "TRANSFER_READY": false,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": false,
+          "AUTHENTIC_EVIDENCE_READY": false
+        },
+        "missingDepthDimensions": [
+          "QUESTION_POOL_DEPTH_READY",
+          "CONTEXT_DIVERSITY_READY",
+          "TRANSFER_READY",
+          "REVIEW_CONTENT_READY",
+          "AUTHENTIC_EVIDENCE_READY"
+        ],
+        "contextFamilyCount": 33,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_GAP",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 9,
+          "actualQuestionCount": 9,
+          "status": "EXACT",
+          "questionFeedbackCount": 8
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
         "targetId": "COMPUTING_RECOGNIZE_PHISHING",
         "unitId": "V5_COMPUTING_SEGURANCA",
         "subject": "COMPUTING",
@@ -915,6 +1118,89 @@
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
       {
+        "targetId": "COMPUTING_TRACE_ALGORITHM",
+        "unitId": null,
+        "subject": "COMPUTING",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Rastrear algoritmos passo a passo",
+        "originalQuestionCount": 9,
+        "v5QuestionCount": 27,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 36,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 16,
+          "TRANSFER": 6,
+          "LOCK_IN": 4,
+          "REVIEW": 3
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {
+          "TRANSFER": {
+            "current": 6,
+            "target": 8
+          },
+          "LOCK_IN": {
+            "current": 4,
+            "target": 6
+          },
+          "REVIEW": {
+            "current": 3,
+            "target": 10
+          }
+        },
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": false,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": false,
+          "TRANSFER_READY": false,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": false,
+          "AUTHENTIC_EVIDENCE_READY": false
+        },
+        "missingDepthDimensions": [
+          "QUESTION_POOL_DEPTH_READY",
+          "CONTEXT_DIVERSITY_READY",
+          "TRANSFER_READY",
+          "REVIEW_CONTENT_READY",
+          "AUTHENTIC_EVIDENCE_READY"
+        ],
+        "contextFamilyCount": 36,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_GAP",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 9,
+          "actualQuestionCount": 9,
+          "status": "EXACT",
+          "questionFeedbackCount": 9
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
         "targetId": "ENGLISH_INFER_FROM_TEXT",
         "unitId": null,
         "subject": "ENGLISH",
@@ -975,6 +1261,294 @@
           "actualQuestionCount": 22,
           "status": "EXACT",
           "questionFeedbackCount": 22
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+        "unitId": null,
+        "subject": "ENGLISH",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Linguagem, público e contexto",
+        "originalQuestionCount": 21,
+        "v5QuestionCount": 29,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 50,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 20,
+          "TRANSFER": 12,
+          "LOCK_IN": 6,
+          "REVIEW": 6
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {
+          "REVIEW": {
+            "current": 6,
+            "target": 10
+          }
+        },
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": false,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": false,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [
+          "QUESTION_POOL_DEPTH_READY",
+          "REVIEW_CONTENT_READY"
+        ],
+        "contextFamilyCount": 50,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_GAP",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 21,
+          "actualQuestionCount": 21,
+          "status": "EXACT",
+          "questionFeedbackCount": 20
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "ENGLISH_USE_CONTEXT_VOCABULARY",
+        "unitId": null,
+        "subject": "ENGLISH",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Inferir vocabulário em contexto",
+        "originalQuestionCount": 22,
+        "v5QuestionCount": 24,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 46,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 18,
+          "TRANSFER": 9,
+          "LOCK_IN": 7,
+          "REVIEW": 5
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {
+          "REVIEW": {
+            "current": 5,
+            "target": 10
+          }
+        },
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": false,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": false,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [
+          "QUESTION_POOL_DEPTH_READY",
+          "REVIEW_CONTENT_READY"
+        ],
+        "contextFamilyCount": 46,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_GAP",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 22,
+          "actualQuestionCount": 22,
+          "status": "EXACT",
+          "questionFeedbackCount": 22
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+        "unitId": null,
+        "subject": "GEOGRAPHY",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Ler dados de tempo e clima",
+        "originalQuestionCount": 21,
+        "v5QuestionCount": 24,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 45,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 18,
+          "TRANSFER": 10,
+          "LOCK_IN": 6,
+          "REVIEW": 5
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {
+          "REVIEW": {
+            "current": 5,
+            "target": 10
+          }
+        },
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": false,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": false,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [
+          "QUESTION_POOL_DEPTH_READY",
+          "REVIEW_CONTENT_READY"
+        ],
+        "contextFamilyCount": 45,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 6,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_GAP",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 21,
+          "actualQuestionCount": 21,
+          "status": "EXACT",
+          "questionFeedbackCount": 21
+        },
+        "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
+      },
+      {
+        "targetId": "GEOGRAPHY_INTERPRET_TERRITORY",
+        "unitId": null,
+        "subject": "GEOGRAPHY",
+        "stage": "FUNDAMENTAL_II",
+        "currentDepthStatus": "STRUCTURAL_READY",
+        "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
+        "lessonTitle": "Interpretar usos, acessos e conexões no território",
+        "originalQuestionCount": 23,
+        "v5QuestionCount": 24,
+        "duplicateQuestionsCollapsed": 0,
+        "currentQuestionCount": 47,
+        "purposeCounts": {
+          "PROBE": 8,
+          "PRACTICE": 18,
+          "TRANSFER": 8,
+          "LOCK_IN": 7,
+          "REVIEW": 6
+        },
+        "minimumTargets": {
+          "PROBE": 4,
+          "PRACTICE": 12,
+          "TRANSFER": 8,
+          "LOCK_IN": 6,
+          "REVIEW": 10
+        },
+        "missingMinimums": {
+          "REVIEW": {
+            "current": 6,
+            "target": 10
+          }
+        },
+        "distinctQuestionModalities": [
+          "MULTIPLE_CHOICE"
+        ],
+        "dimensions": {
+          "LESSON_DEPTH_READY": true,
+          "QUESTION_POOL_DEPTH_READY": false,
+          "DIFFICULTY_PROGRESSION_READY": true,
+          "CONTEXT_DIVERSITY_READY": true,
+          "TRANSFER_READY": true,
+          "MISCONCEPTION_RECOVERY_READY": true,
+          "REVIEW_CONTENT_READY": false,
+          "AUTHENTIC_EVIDENCE_READY": true
+        },
+        "missingDepthDimensions": [
+          "QUESTION_POOL_DEPTH_READY",
+          "REVIEW_CONTENT_READY"
+        ],
+        "contextFamilyCount": 46,
+        "difficultyLevels": [
+          "EASY",
+          "MEDIUM",
+          "HARD"
+        ],
+        "answerKeyValid": true,
+        "lessonExplanationStepCount": 5,
+        "misconceptionRecoveryStatus": "TARGETED_REMEDIATION_PRESENT",
+        "spacedReviewStatus": "REVIEW_GAP",
+        "technicalDeepReady": false,
+        "readinessClaim": "NOT_DEEP_CONTENT_READY",
+        "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+        "officialMappingStatus": "NOT_CLAIMED",
+        "studentPublicationStatus": "STAGING_INACTIVE",
+        "sourceReconciliation": {
+          "expectedQuestionCount": 23,
+          "actualQuestionCount": 23,
+          "status": "EXACT",
+          "questionFeedbackCount": 10
         },
         "nextAction": "DEEPEN_DISTINCT_ASSESSMENT_POOL"
       },
@@ -2833,7 +3407,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "ART",
         "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "AUTHENTIC_EVIDENCE_READY",
+        "currentQuestionCount": 50,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 18,
+          "TRANSFER": 11,
+          "LOCK_IN": 7,
+          "REVIEW": 7
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 26,
+          "actualQuestionCount": 26,
+          "status": "EXACT",
+          "questionFeedbackCount": 26
+        }
       },
       {
         "wave": 2,
@@ -2841,7 +3429,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "ART",
         "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "AUTHENTIC_EVIDENCE_READY",
+        "currentQuestionCount": 48,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 19,
+          "TRANSFER": 9,
+          "LOCK_IN": 6,
+          "REVIEW": 7
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 24,
+          "actualQuestionCount": 24,
+          "status": "EXACT",
+          "questionFeedbackCount": 24
+        }
       },
       {
         "wave": 2,
@@ -2849,7 +3451,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "COMPUTING",
         "status": "CONTENT_GAP",
-        "reason": "QUESTION_GAP, PRACTICE_GAP, MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "TRANSFER, LOCK_IN, REVIEW, QUESTION_POOL_DEPTH_READY, CONTEXT_DIVERSITY_READY, TRANSFER_READY, REVIEW_CONTENT_READY, AUTHENTIC_EVIDENCE_READY",
+        "currentQuestionCount": 33,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 13,
+          "TRANSFER": 6,
+          "LOCK_IN": 4,
+          "REVIEW": 4
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 9,
+          "actualQuestionCount": 9,
+          "status": "EXACT",
+          "questionFeedbackCount": 8
+        }
       },
       {
         "wave": 2,
@@ -2857,7 +3473,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "COMPUTING",
         "status": "CONTENT_GAP",
-        "reason": "QUESTION_GAP, PRACTICE_GAP, MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "TRANSFER, LOCK_IN, REVIEW, QUESTION_POOL_DEPTH_READY, CONTEXT_DIVERSITY_READY, TRANSFER_READY, REVIEW_CONTENT_READY, AUTHENTIC_EVIDENCE_READY",
+        "currentQuestionCount": 36,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 16,
+          "TRANSFER": 6,
+          "LOCK_IN": 4,
+          "REVIEW": 3
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 9,
+          "actualQuestionCount": 9,
+          "status": "EXACT",
+          "questionFeedbackCount": 9
+        }
       },
       {
         "wave": 2,
@@ -2865,7 +3495,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "ENGLISH",
         "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "REVIEW, QUESTION_POOL_DEPTH_READY, REVIEW_CONTENT_READY",
+        "currentQuestionCount": 50,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 20,
+          "TRANSFER": 12,
+          "LOCK_IN": 6,
+          "REVIEW": 6
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 21,
+          "actualQuestionCount": 21,
+          "status": "EXACT",
+          "questionFeedbackCount": 20
+        }
       },
       {
         "wave": 2,
@@ -2873,7 +3517,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "ENGLISH",
         "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "REVIEW, QUESTION_POOL_DEPTH_READY, REVIEW_CONTENT_READY",
+        "currentQuestionCount": 46,
+        "purposeCounts": {
+          "PROBE": 7,
+          "PRACTICE": 18,
+          "TRANSFER": 9,
+          "LOCK_IN": 7,
+          "REVIEW": 5
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 22,
+          "actualQuestionCount": 22,
+          "status": "EXACT",
+          "questionFeedbackCount": 22
+        }
       },
       {
         "wave": 2,
@@ -2881,7 +3539,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "GEOGRAPHY",
         "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "REVIEW, QUESTION_POOL_DEPTH_READY, REVIEW_CONTENT_READY",
+        "currentQuestionCount": 45,
+        "purposeCounts": {
+          "PROBE": 6,
+          "PRACTICE": 18,
+          "TRANSFER": 10,
+          "LOCK_IN": 6,
+          "REVIEW": 5
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 21,
+          "actualQuestionCount": 21,
+          "status": "EXACT",
+          "questionFeedbackCount": 21
+        }
       },
       {
         "wave": 2,
@@ -2889,7 +3561,21 @@
         "stage": "FUNDAMENTAL_II",
         "subject": "GEOGRAPHY",
         "status": "CONTENT_GAP",
-        "reason": "MAPPING_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+        "reason": "REVIEW, QUESTION_POOL_DEPTH_READY, REVIEW_CONTENT_READY",
+        "currentQuestionCount": 47,
+        "purposeCounts": {
+          "PROBE": 8,
+          "PRACTICE": 18,
+          "TRANSFER": 8,
+          "LOCK_IN": 7,
+          "REVIEW": 6
+        },
+        "sourceReconciliation": {
+          "expectedQuestionCount": 23,
+          "actualQuestionCount": 23,
+          "status": "EXACT",
+          "questionFeedbackCount": 10
+        }
       },
       {
         "wave": 2,
@@ -16878,5 +17564,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "f8b46cd621e6af5e57160155f894c7736ad4631007e9b74720a3c2522f9584e8"
+  "inventoryHash": "494e30066902814f10f8bfb2834449d8fbd422b6d5b255edfa6db1c974718d74"
 }
