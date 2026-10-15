@@ -324,6 +324,7 @@ export default function SimulationPage() {
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [result, setResult] = useState<SimulationResult | null>(null);
+  const [startError, setStartError] = useState(false);
   const [failedStatementAssets, setFailedStatementAssets] = useState<
     Record<string, boolean>
   >({});
@@ -556,6 +557,7 @@ export default function SimulationPage() {
     setCurrentIndex(0);
     setReviewing(false);
     setResult(null);
+    setStartError(false);
     setFailedStatementAssets({});
   };
 
@@ -570,6 +572,23 @@ export default function SimulationPage() {
       <section className="rounded-xl border border-rose-200 bg-rose-50 p-6 text-sm text-rose-800">
         Não foi possível verificar as práticas oficiais agora. Tente novamente
         em instantes.
+      </section>
+    );
+  if (student.isError || !student.data?.id)
+    return (
+      <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">
+        <h1 className="font-bold">Matrícula não localizada</h1>
+        <p className="mt-2">
+          Não foi possível confirmar um vínculo ativo de aluno nesta instituição.
+          Confira sua matrícula com a escola antes de iniciar o simulado.
+        </p>
+        <button
+          type="button"
+          onClick={() => void student.refetch()}
+          className="mt-4 rounded-lg border border-amber-300 px-4 py-2 font-bold"
+        >
+          Tentar novamente
+        </button>
       </section>
     );
   if (!simulation)
@@ -603,6 +622,7 @@ export default function SimulationPage() {
     );
 
   const begin = () => {
+    setStartError(false);
     void start
       .mutateAsync({
         simulationId: simulation.id,
@@ -615,7 +635,8 @@ export default function SimulationPage() {
         setSaveStatus("idle");
         setNavigationStatus("idle");
         setFailedStatementAssets({});
-      });
+      })
+      .catch(() => setStartError(true));
   };
 
   const answerQuestion = (value: string) => {
@@ -850,6 +871,12 @@ export default function SimulationPage() {
                 ? "Começar simulado"
                 : "Começar prática"}
           </button>
+          {startError ? (
+            <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-300">
+              Não foi possível iniciar o simulado agora. Tente novamente; se o
+              problema continuar, volte à Central de Estudos e tente mais tarde.
+            </p>
+          ) : null}
         </div>
         {completedAttempts.length > 0 ? (
           <section className="min-h-[11rem] rounded-xl border bg-white p-6 dark:border-slate-700 dark:bg-slate-900 sm:min-h-[12rem]">
