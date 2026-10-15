@@ -4,7 +4,7 @@
   "WAVE_ID": "WAVE_2_PROGRESS",
   "STARTING_SHA": "edf53f75dc9693ff0467925cbef4613c0b432910",
   "MAIN_SHA": "9b837ff9c1639ddf23536bba9a02def0025ea586",
-  "INPUT_HASH": "sha256:ee8cf9b6af78b6171d2df97720503067c206017277bccdfedc07b63ac35117d2",
+  "INPUT_HASH": "sha256:face8ec37b6758dc09f59099dd44b329bead6fd2016a798f26e02e8eb5ed1a96",
   "INPUT_HASH_ALGORITHM": "SHA256 of lexicographically sorted filename:raw_source_sha256 lines, each terminated by LF.",
   "TARGET_COUNT": 26,
   "TARGETS_PROCESSED": 26,
@@ -575,9 +575,9 @@
   "STAGING_COMPILATION": "MIGRATION_20261014000100_GENERATED_BY_V5_COMPILER; V4_INVENTORY_REFRESHED_WITH_64_QUESTION_SOCIOLOGY_INSTITUTIONS_POOL; NOT_APPLIED_TO_PRODUCTION; DISPOSABLE_DATABASE_CI_PENDING",
   "IDEMPOTENCE": "PACK_BUILD_AND_MIGRATION_COMPILATION_DETERMINISTIC_TESTED; DATABASE_REPLAY_NOT_YET_VERIFIED_FOR_20261014000100; 20261013003800_REPLAY_NOT_EXPLICITLY_VERIFIED",
   "DATABASE_VALIDATION": "PRIOR_MIGRATIONS_PASSED_DISPOSABLE_CI_THROUGH_20261013003800; NEW_20261014000100_DATABASE_CI_PENDING; NO_PRODUCTION_APPLY",
-  "CI_STATUS": "FOCUSED_TESTS_132_PASS; V4_VALIDATION_PASS; TYPECHECK_PASS; BUILD_PASS; PRIOR_DATABASE_CI_FAILURE_FIXED_BY_CONTENT_VERSION_6; PUSH_CI_PENDING; NO_PRODUCTION_APPLY",
+  "CI_STATUS": "FOCUSED_TESTS_132_PASS; V4_VALIDATION_PASS; TYPECHECK_PASS; BUILD_PASS; DATABASE_CI_FOUND_VERSION_COLLISION_FIXED_WITH_CONTENT_VERSION_6_AND_VISUAL_RECORD_ALIAS_FIXED; PR_CI_RETRY_PENDING; NO_PRODUCTION_APPLY",
   "PR": "https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/360",
-  "CI": "FOCUSED_TESTS_132_PASS; V4_VALIDATION_PASS; TYPECHECK_PASS; BUILD_PASS; PRIOR_DATABASE_CI_FAILURE_FIXED_BY_CONTENT_VERSION_6; PUSH_CI_PENDING; NO_PRODUCTION_APPLY",
+  "CI": "FOCUSED_TESTS_132_PASS; V4_VALIDATION_PASS; TYPECHECK_PASS; BUILD_PASS; DATABASE_CI_FOUND_VERSION_COLLISION_FIXED_WITH_CONTENT_VERSION_6_AND_VISUAL_RECORD_ALIAS_FIXED; PR_CI_RETRY_PENDING; NO_PRODUCTION_APPLY",
   "LAST_SUCCESSFUL_CI_RUN": {
     "RUN_IDS": [
       "38669442993",
@@ -748,7 +748,7 @@
     "content/adaptive/tec-escola-core-v5/sociology-norm-value.json": "sha256:0fc1d709b50d18c85f5ed8531c052b1a7145c546bf62019fa29ccc357d8c422c",
     "supabase/migrations/20261013003800_bncc_sociology_norm_value_question_first_v5.sql": "sha256:f43e606a33531aa0d661519910782b0f006850cd5c25bcc9c62d3723b46f5302",
     "content/adaptive/tec-escola-core-v5/art-editorial-audit-v1.json": "sha256:3c0a26eeab0f61715ee1680d85a4e3bb9ac4e7955f317ad0dc0e151a93119b29",
-    "tools/adaptive/question-first-content-v5.test.mjs": "sha256:a63cf89e78ca3033d8f832661bef64d55f1d2b2a917b7fb27f88e2a6e89d4f78",
+    "tools/adaptive/question-first-content-v5.test.mjs": "sha256:476273656ed297b48164b3a20506de75ba8de946a890a7cfa85f495a95a73ee2",
     "build-sociology-institutions-v5.mjs": "sha256:aa7e29b6e32a6f8ee63fdaa5b3d077fb0c60239575f87beacb3fb8e24f23b8db",
     "sociology-institutions.json": "sha256:a81e5528473f9df1653adc713b2576ce97b022647676a47516cc3165db87970d",
     "20261014000100_bncc_sociology_institutions_question_first_v5.sql": "sha256:cf4de7107a953797e26f687634b73374c61b4de276e7f0186dd682d5a8a36e02",
@@ -757,10 +757,10 @@
     "knowledge-factory-checkpoint-v4.json": "sha256:7fd3d913b109712acd178a01b8e7a2276e77144be9e94bcb271a5bcb9a36faef",
     "tools/adaptive/build-art-compare-compositions-v5.mjs": "sha256:2537f78ff806ff52e3e0a9b76c3e68b3dbb520fd59acc66c2147d82bd5f4cce1",
     "content/adaptive/tec-escola-core-v5/art-compare-compositions.json": "sha256:606360a39b0d2eb1ed5d7b37b6253e63bfa9322d4204397f2a872f3cc899b970",
-    "supabase/migrations/20261014000200_bncc_art_compare_compositions_question_first_v5.sql": "sha256:0a2627d5e92925afe08b4cb5557647a9e71ac4dac6c0f17df1986ff75dea170d",
+    "supabase/migrations/20261014000200_bncc_art_compare_compositions_question_first_v5.sql": "sha256:c3db063b010c2147c2b6e1177878479969ed5b6fcc0d1cf048aa86330c37fd36",
     "public/learning/art/poster-contrast-a.svg": "sha256:1c66f29acc3eff692edc68e622f01d988940bc1e71e490aa4f4429b74aff1926",
     "public/learning/art/poster-contrast-b.svg": "sha256:21292a47610fa3b87ba7be498597295ff20080b01d5fdbbd4d4a515c4e2214dd",
-    "tools/adaptive/compile-question-first-content-v5.mjs": "sha256:3ea2fd61ac169c8992ac19ec59bc3d1126ccf263d6c51f28086b64df0381992b",
+    "tools/adaptive/compile-question-first-content-v5.mjs": "sha256:de156178152a1d4106d705c8246dfd02782e2fe4fbd697ca8348703a4ce90dd0",
     "src/services/learningCenterService.ts": "sha256:86a91fbaf0fc85ff0a86e68902964d21f1ca3e2c48807d347eab82401f56fbf0",
     "src/components/learning/GuidedJourneyPage.tsx": "sha256:dd1e39f743e4ef63c9a2cdce156d8f7b076beac0b897046acffe0688e246b04f",
     "src/components/learning/GuidedJourneyPage.test.tsx": "sha256:e636f75c389982cc1fc72e122e01a2e872c86756959f5bcaaf34d27b522c3422",
@@ -808,8 +808,8 @@
     "PEDAGOGICAL_REVIEW_STATUS": "PEDAGOGICAL_REVIEW_PENDING",
     "OFFICIAL_MAPPING_STATUS": "NOT_CLAIMED",
     "CI_FOR_20261013003800": "PASS_APPLIED_IN_DISPOSABLE_CI; NOT_EXPLICITLY_REPLAYED; NO_PRODUCTION_APPLY",
-    "CI_FOR_20261014000100": "PREVIOUS_DATABASE_CI_FAILED_V5_CONTENT_LESSON_CONFLICT; FIXED_CONTENT_VERSION_6; AWAITING_CI_RETRY; NO_PRODUCTION_APPLY",
-    "CI_FOR_20261014000200": "PENDING_CLEAN_DISPOSABLE_DATABASE_CI; CONTENT_VERSION_6; NO_PRODUCTION_APPLY"
+    "CI_FOR_20261014000100": "DATABASE_CI_CONFIRMED_VERSION_COLLISION_FIXED_WITH_CONTENT_VERSION_6; NO_PRODUCTION_APPLY",
+    "CI_FOR_20261014000200": "DATABASE_CI_FOUND_UNQUOTED_VISUAL_STIMULUS_RECORD_ALIAS_FIXED; AWAITING_CI_RETRY; NO_PRODUCTION_APPLY"
   },
   "ART_EDITORIAL_AUDIT": {
     "V4_QUESTIONS_REVIEWED": 21,
@@ -829,7 +829,7 @@
     "PEDAGOGICAL_REVIEW_STATUS": "PEDAGOGICAL_REVIEW_PENDING"
   },
   "BLOCKERS": [
-    "Migrations 20261014000100 and 20261014000200 require a fresh clean disposable-database CI run after moving content and lesson versions to 6; no production apply.",
+    "Fresh clean disposable-database CI is pending after fixing content version collisions and quoting the visual-stimulus recordset column; no production apply.",
     "Explicit migration replay/idempotence for migration 20261013003800 remains unverified.",
     "Human pedagogical review and official mapping review remain pending; all new content stays staging and student-inactive."
   ],

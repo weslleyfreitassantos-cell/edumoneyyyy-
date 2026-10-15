@@ -399,7 +399,7 @@ begin
 end;
 $patch_v5_guided_step_visual_stimulus$;
 ` : '';
-  const visualStimulusRecordsetColumn = hasVisualStimulus ? ', visualStimulus jsonb' : '';
+  const visualStimulusRecordsetColumn = hasVisualStimulus ? ', "visualStimulus" jsonb' : '';
   const visualStimulusMetadataPair = hasVisualStimulus ? `,
           'visual_stimulus', v_question."visualStimulus"` : '';
   const questionJson = jsonSql(questionRows);

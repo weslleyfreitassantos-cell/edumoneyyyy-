@@ -1421,6 +1421,7 @@ describe('question-first V5 staging content', () => {
     expect(artCompositionMigration).toBe(buildMigration(artCompositionPack));
     expect(artCompositionMigration).toContain('version = 6');
     expect(artCompositionMigration).toContain("'visual_stimulus'");
+    expect(artCompositionMigration).toContain('"visualStimulus" jsonb');
     expect(artCompositionMigration).toContain('V5_VISUAL_STEP_PATCH_MISMATCH');
     expect(artCompositionMigration).toContain("'publication_status', 'STAGING'");
     expect(artCompositionMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|active\s*=\s*true/i);
