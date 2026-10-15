@@ -29,6 +29,14 @@ import { buildSociologyInequalityDataPack } from './build-sociology-inequality-d
 import { buildSociologyNormValuePack } from './build-sociology-norm-value-v5.mjs';
 import { buildSociologyInstitutionsPack } from './build-sociology-institutions-v5.mjs';
 import { buildArtCompareCompositionsPack } from './build-art-compare-compositions-v5.mjs';
+import { buildArtInterpretWorkPack } from './build-art-interpret-work-v5.mjs';
+import { buildArtRelateWorkContextPack } from './build-art-relate-work-context-v5.mjs';
+import { buildComputingReadTableDataPack } from './build-computing-read-table-data-v5.mjs';
+import { buildComputingTraceAlgorithmPack } from './build-computing-trace-algorithm-v5.mjs';
+import { buildEnglishRelateLanguageCulturePack } from './build-english-relate-language-culture-v5.mjs';
+import { buildEnglishContextVocabularyPack } from './build-english-context-vocabulary-v5.mjs';
+import { buildGeographyClimateDataPack } from './build-geography-climate-data-v5.mjs';
+import { buildGeographyInterpretTerritoryPack } from './build-geography-interpret-territory-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
@@ -111,6 +119,25 @@ const sociologyInstitutionsMigration = readFileSync(new URL('../../supabase/migr
 const artCompositionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-compare-compositions.json', import.meta.url), 'utf8'));
 const artCompositionMigration = readFileSync(new URL('../../supabase/migrations/20261014000200_bncc_art_compare_compositions_question_first_v5.sql', import.meta.url), 'utf8');
 const artEditorialAudit = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-editorial-audit-v1.json', import.meta.url), 'utf8'));
+const artInterpretPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-interpret-work.json', import.meta.url), 'utf8'));
+const artInterpretMigration = readFileSync(new URL('../../supabase/migrations/20261015000200_bncc_art_interpret_work_question_first_v5.sql', import.meta.url), 'utf8');
+const artUnsupportedQuestionMigration = readFileSync(new URL('../../supabase/migrations/20261015000100_bncc_art_exclude_unsubstantiated_poster_question.sql', import.meta.url), 'utf8');
+const guidedRuntimeSelectionMigration = readFileSync(new URL('../../supabase/migrations/20261010001200_bncc_deep_learning_v8_runtime_gate_fix.sql', import.meta.url), 'utf8');
+const artContextPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/art-relate-work-context.json', import.meta.url), 'utf8'));
+const artContextMigration = readFileSync(new URL('../../supabase/migrations/20261015000300_bncc_art_relate_work_context_question_first_v5.sql', import.meta.url), 'utf8');
+const computingTablePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-read-table-data.json', import.meta.url), 'utf8'));
+const computingTableMigration = readFileSync(new URL('../../supabase/migrations/20261015000500_bncc_computing_read_table_data_question_first_v5.sql', import.meta.url), 'utf8');
+const computingMisclassifiedQuestionMigration = readFileSync(new URL('../../supabase/migrations/20261015000400_bncc_exclude_misclassified_computing_table_question.sql', import.meta.url), 'utf8');
+const computingTracePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/computing-trace-algorithm.json', import.meta.url), 'utf8'));
+const computingTraceMigration = readFileSync(new URL('../../supabase/migrations/20261015000600_bncc_computing_trace_algorithm_question_first_v5.sql', import.meta.url), 'utf8');
+const englishCulturePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/english-relate-language-culture.json', import.meta.url), 'utf8'));
+const englishCultureMigration = readFileSync(new URL('../../supabase/migrations/20261015000700_bncc_english_relate_language_culture_question_first_v5.sql', import.meta.url), 'utf8');
+const englishContextVocabularyPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/english-context-vocabulary.json', import.meta.url), 'utf8'));
+const englishContextVocabularyMigration = readFileSync(new URL('../../supabase/migrations/20261015000800_bncc_english_context_vocabulary_question_first_v5.sql', import.meta.url), 'utf8');
+const geographyClimateDataPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/geography-climate-data.json', import.meta.url), 'utf8'));
+const geographyClimateDataMigration = readFileSync(new URL('../../supabase/migrations/20261015000900_bncc_geography_climate_data_question_first_v5.sql', import.meta.url), 'utf8');
+const geographyInterpretTerritoryPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/geography-interpret-territory.json', import.meta.url), 'utf8'));
+const geographyInterpretTerritoryMigration = readFileSync(new URL('../../supabase/migrations/20261015001000_bncc_geography_interpret_territory_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -1425,6 +1452,281 @@ describe('question-first V5 staging content', () => {
     expect(artCompositionMigration).toContain('V5_VISUAL_STEP_PATCH_MISMATCH');
     expect(artCompositionMigration).toContain("'publication_status', 'STAGING'");
     expect(artCompositionMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|active\s*=\s*true/i);
+  });
+
+  it('expands Art interpretation from visual observation through evidence-based transfer', () => {
+    const result = validateQuestionFirstPack(artInterpretPack);
+    expect(artInterpretPack).toEqual(buildArtInterpretWorkPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 24,
+      contextCount: 24,
+      counts: { PROBE: 4, PRACTICE: 9, TRANSFER: 5, LOCK_IN: 3, REVIEW: 3 },
+      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+    });
+    expect(artInterpretPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(artInterpretPack.questions.filter(({ visualStimulus }) => visualStimulus)).toHaveLength(19);
+    expect(artInterpretPack.questions.filter(({ visualStimulus }) => visualStimulus)
+      .every(({ visualStimulus }) => visualStimulus.items.every(({ alt, src }) => alt.trim() && src.startsWith('/learning/art/')))).toBe(true);
+    expect(artInterpretPack.sourceQuestionFeedback).toHaveLength(26);
+    expect(artInterpretPack.sourceQuestionFeedback.some(({ questionId }) => questionId === 'v4-authored-art-art_compare_compositions-transfer-05')).toBe(false);
+    expect(artInterpretPack.lesson.progression.map(({ stage }) => stage))
+      .toEqual(['DIAGNOSTIC', 'PRACTICE', 'TRANSFER', 'CONSOLIDATION', 'REVIEW']);
+    expect(artInterpretPack.lesson.microExplanations).toHaveLength(5);
+    expect(artInterpretPack.lesson.remediations).toHaveLength(5);
+    expect(artInterpretPack.lesson.remediations.some(({ id }) => id === 'ACCESSIBLE_DESCRIPTION')).toBe(true);
+    expect(artInterpretPack.publicationStatus).toBe('STAGING');
+    expect(artInterpretPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(artInterpretPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    for (const src of new Set(artInterpretPack.questions.flatMap(({ visualStimulus }) => visualStimulus?.items.map(({ src }) => src) ?? []))) {
+      expect(existsSync(new URL(`../../public${src}`, import.meta.url))).toBe(true);
+    }
+    expect(artInterpretMigration).toBe(buildMigration(artInterpretPack));
+    expect(artInterpretMigration).toContain("'ART_INTERPRET_WORK'");
+    expect(artInterpretMigration).toContain("'publication_status', 'STAGING'");
+    expect(artInterpretMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(artInterpretMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(artInterpretMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('excludes only the unsupported legacy poster question from future selection', () => {
+    expect(artUnsupportedQuestionMigration).toContain("metadata->>'content_id' = 'v4-authored-art-art_compare_compositions-transfer-05'");
+    expect(artUnsupportedQuestionMigration).toContain('set active = false');
+    expect(artUnsupportedQuestionMigration).toContain("'future_selection_excluded', true");
+    expect(artUnsupportedQuestionMigration).toContain("'replacement_content_id', 'v5-art-compare-compositions-transfer-contrast-05-v2'");
+    expect(artUnsupportedQuestionMigration).toContain('ART_UNSUPPORTED_POSTER_QUESTION_STILL_SELECTABLE');
+    expect(artUnsupportedQuestionMigration).not.toMatch(/delete\s+from|learning_guided_sessions|learning_guided_step_attempts|learning_student_skill_state/i);
+    expect(guidedRuntimeSelectionMigration).toMatch(/join public\.learning_question_bank bank on bank\.id = item\.question_bank_id and bank\.active/i);
+  });
+
+  it('stages Art context questions with source limits, community care, and accessible evidence', () => {
+    const result = validateQuestionFirstPack(artContextPack);
+    expect(artContextPack).toEqual(buildArtRelateWorkContextPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 24,
+      contextCount: 24,
+      counts: { PROBE: 4, PRACTICE: 9, TRANSFER: 5, LOCK_IN: 3, REVIEW: 3 },
+      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+    });
+    expect(artContextPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(artContextPack.questions.filter(({ visualStimulus }) => visualStimulus)).toHaveLength(13);
+    expect(artContextPack.questions.filter(({ visualStimulus }) => visualStimulus)
+      .every(({ visualStimulus }) => visualStimulus.items.every(({ alt, src }) => alt.trim() && src.startsWith('/learning/art/')))).toBe(true);
+    expect(artContextPack.sourceQuestionFeedback).toHaveLength(24);
+    expect(artContextPack.lesson.microExplanations).toHaveLength(5);
+    expect(artContextPack.lesson.remediations).toHaveLength(5);
+    expect(artContextPack.questions.some(({ options, explanation }) => [...options, explanation].some((text) => text.includes('toda a comunidade')))).toBe(true);
+    expect(artContextPack.publicationStatus).toBe('STAGING');
+    expect(artContextPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(artContextPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    for (const src of new Set(artContextPack.questions.flatMap(({ visualStimulus }) => visualStimulus?.items.map(({ src }) => src) ?? []))) {
+      expect(existsSync(new URL(`../../public${src}`, import.meta.url))).toBe(true);
+    }
+    expect(artContextMigration).toBe(buildMigration(artContextPack));
+    expect(artContextMigration).toContain("'ART_RELATE_WORK_CONTEXT'");
+    expect(artContextMigration).toContain("'publication_status', 'STAGING'");
+    expect(artContextMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(artContextMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(artContextMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('expands table reading with safe filtering, comparisons, and bounded conclusions', () => {
+    const result = validateQuestionFirstPack(computingTablePack);
+    expect(computingTablePack).toEqual(buildComputingReadTableDataPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 24,
+      contextCount: 24,
+      counts: { PROBE: 4, PRACTICE: 11, TRANSFER: 5, LOCK_IN: 2, REVIEW: 2 },
+      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+    });
+    expect(computingTablePack.sourceQuestionFeedback).toHaveLength(8);
+    expect(computingTablePack.sourceReconciliation).toMatchObject({
+      sourceQuestionCount: 8,
+      feedbackAdded: 8,
+      sourceReconciliationStatus: 'EXACT',
+      newQuestions: 24,
+      reusedQuestionsCountedAsNew: false,
+    });
+    expect(computingTablePack.sourceReconciliation.outOfScopeLegacyQuestionIds).toEqual([
+      { id: 'v3-computing-computing_algorithms-10', reason: 'A pergunta aborda viés de recomendação algorítmica, não leitura de dados em tabela.' },
+    ]);
+    expect(computingTablePack.sourceQuestionFeedback.some(({ questionId }) => questionId === 'v3-computing-computing_algorithms-10')).toBe(false);
+    expect(computingTablePack.questions.every(({ visualStimulus }) => !visualStimulus)).toBe(true);
+    expect(computingTablePack.lesson.microExplanations).toHaveLength(6);
+    expect(computingTablePack.lesson.remediations).toHaveLength(5);
+    expect(computingTablePack.publicationStatus).toBe('STAGING');
+    expect(computingTablePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(computingTablePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(computingTableMigration).toBe(buildMigration(computingTablePack));
+    expect(computingTableMigration).toContain("'COMPUTING_READ_TABLE_DATA'");
+    expect(computingTableMigration).toContain("'publication_status', 'STAGING'");
+    expect(computingTableMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(computingTableMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(computingTableMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+    expect(computingMisclassifiedQuestionMigration).toContain("metadata->>'content_id' = 'v3-computing-computing_algorithms-10'");
+    expect(computingMisclassifiedQuestionMigration).toContain('set active = false');
+    expect(computingMisclassifiedQuestionMigration).toContain("'future_selection_exclusion_reason', 'OUT_OF_SCOPE_FOR_TABLE_READING'");
+    expect(computingMisclassifiedQuestionMigration).not.toMatch(/delete\s+from|learning_guided_sessions|learning_guided_step_attempts|learning_student_skill_state/i);
+  });
+
+  it('deepens algorithm tracing from assignments to branches, loops, debugging, and test limits', () => {
+    const result = validateQuestionFirstPack(computingTracePack);
+    expect(computingTracePack).toEqual(buildComputingTraceAlgorithmPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 27,
+      contextCount: 27,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 6, LOCK_IN: 3, REVIEW: 2 },
+      answerPositionCounts: { A: 7, B: 7, C: 7, D: 6 },
+    });
+    expect(computingTracePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(computingTracePack.sourceQuestionFeedback).toHaveLength(9);
+    expect(computingTracePack.sourceReconciliation.adjacentLegacyItemsForEditorialReview).toHaveLength(3);
+    expect(computingTracePack.questions.find(({ contextFamily }) => contextFamily === 'TRACE_TABLE')?.correctAnswer).toBe('(1, 1).');
+    expect(computingTracePack.lesson.microExplanations).toHaveLength(6);
+    expect(computingTracePack.lesson.remediations).toHaveLength(5);
+    expect(computingTracePack.publicationStatus).toBe('STAGING');
+    expect(computingTracePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(computingTracePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(computingTraceMigration).toBe(buildMigration(computingTracePack));
+    expect(computingTraceMigration).toContain("'COMPUTING_TRACE_ALGORITHM'");
+    expect(computingTraceMigration).toContain("'publication_status', 'STAGING'");
+    expect(computingTraceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(computingTraceMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(computingTraceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('adds contextual English practice without ranking varieties or universalizing local usage', () => {
+    const result = validateQuestionFirstPack(englishCulturePack);
+    expect(englishCulturePack).toEqual(buildEnglishRelateLanguageCulturePack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 29,
+      contextCount: 29,
+      counts: { PROBE: 4, PRACTICE: 11, TRANSFER: 8, LOCK_IN: 3, REVIEW: 3 },
+      answerPositionCounts: { A: 8, B: 7, C: 7, D: 7 },
+    });
+    expect(englishCulturePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(englishCulturePack.sourceQuestionFeedback).toHaveLength(20);
+    expect(englishCulturePack.sourceReconciliation).toMatchObject({
+      sourceQuestionCount: 20,
+      feedbackAdded: 20,
+      sourceReconciliationStatus: 'EXACT',
+      newQuestions: 29,
+      reusedQuestionsCountedAsNew: false,
+    });
+    expect(englishCulturePack.questions.every(({ visualStimulus }) => !visualStimulus)).toBe(true);
+    expect(englishCulturePack.lesson.microExplanations).toHaveLength(5);
+    expect(englishCulturePack.lesson.remediations).toHaveLength(5);
+    expect(englishCulturePack.questions.some(({ options, explanation }) => [...options, explanation].some((text) => /all communities|every English-speaking community/i.test(text)))).toBe(true);
+    expect(englishCulturePack.publicationStatus).toBe('STAGING');
+    expect(englishCulturePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(englishCulturePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(englishCultureMigration).toBe(buildMigration(englishCulturePack));
+    expect(englishCultureMigration).toContain("'ENGLISH_RELATE_LANGUAGE_CULTURE'");
+    expect(englishCultureMigration).toContain("'publication_status', 'STAGING'");
+    expect(englishCultureMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(englishCultureMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(englishCultureMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('builds a progressive English context-vocabulary sequence with bounded inference', () => {
+    const result = validateQuestionFirstPack(englishContextVocabularyPack);
+    expect(englishContextVocabularyPack).toEqual(buildEnglishContextVocabularyPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 24,
+      contextCount: 24,
+      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 2 },
+      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+    });
+    expect(englishContextVocabularyPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(englishContextVocabularyPack.sourceQuestionFeedback).toHaveLength(22);
+    expect(englishContextVocabularyPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 22, feedbackAdded: 22, sourceReconciliationStatus: 'EXACT', newQuestions: 24, reusedQuestionsCountedAsNew: false });
+    expect(englishContextVocabularyPack.questions.every(({ visualStimulus }) => !visualStimulus)).toBe(true);
+    expect(englishContextVocabularyPack.lesson.microExplanations).toHaveLength(5);
+    expect(englishContextVocabularyPack.lesson.remediations).toHaveLength(5);
+    expect(englishContextVocabularyPack.questions.some(({ contextFamily }) => contextFamily === 'SANCTION_CONTEXT')).toBe(true);
+    expect(englishContextVocabularyPack.publicationStatus).toBe('STAGING');
+    expect(englishContextVocabularyPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(englishContextVocabularyPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(englishContextVocabularyMigration).toBe(buildMigration(englishContextVocabularyPack));
+    expect(englishContextVocabularyMigration).toContain("'ENGLISH_USE_CONTEXT_VOCABULARY'");
+    expect(englishContextVocabularyMigration).toContain("'publication_status', 'STAGING'");
+    expect(englishContextVocabularyMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(englishContextVocabularyMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(englishContextVocabularyMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('stages climate-data interpretation with verified graph assets and accessible equivalents', () => {
+    const result = validateQuestionFirstPack(geographyClimateDataPack);
+    expect(geographyClimateDataPack).toEqual(buildGeographyClimateDataPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 24,
+      contextCount: 24,
+      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 2 },
+      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+    });
+    expect(geographyClimateDataPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(geographyClimateDataPack.questions.filter(({ visualStimulus }) => visualStimulus)).toHaveLength(4);
+    expect(geographyClimateDataPack.questions.filter(({ visualStimulus }) => visualStimulus)
+      .every(({ visualStimulus }) => visualStimulus.items.every(({ alt, src }) => alt.trim() && src.startsWith('/learning/geography/')))).toBe(true);
+    expect(geographyClimateDataPack.sourceQuestionFeedback).toHaveLength(21);
+    expect(geographyClimateDataPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 21, feedbackAdded: 21, sourceReconciliationStatus: 'EXACT', newQuestions: 24, reusedQuestionsCountedAsNew: false });
+    expect(geographyClimateDataPack.lesson.microExplanations).toHaveLength(5);
+    expect(geographyClimateDataPack.lesson.remediations).toHaveLength(5);
+    expect(geographyClimateDataPack.questions.some(({ statement }) => /sem dados|ausente|lacuna/i.test(statement))).toBe(true);
+    expect(geographyClimateDataPack.questions.some(({ statement }) => /causal|causa/i.test(statement))).toBe(true);
+    expect(geographyClimateDataPack.publicationStatus).toBe('STAGING');
+    expect(geographyClimateDataPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(geographyClimateDataPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    for (const src of new Set(geographyClimateDataPack.questions.flatMap(({ visualStimulus }) => visualStimulus?.items.map(({ src }) => src) ?? []))) {
+      expect(existsSync(new URL(`../../public${src}`, import.meta.url))).toBe(true);
+    }
+    expect(geographyClimateDataMigration).toBe(buildMigration(geographyClimateDataPack));
+    expect(geographyClimateDataMigration).toContain("'GEOGRAPHY_ANALYZE_CLIMATE_DATA'");
+    expect(geographyClimateDataMigration).toContain("'publication_status', 'STAGING'");
+    expect(geographyClimateDataMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(geographyClimateDataMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(geographyClimateDataMigration).toContain('"visualStimulus" jsonb');
+    expect(geographyClimateDataMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('stages territory interpretation with a gradual question sequence and accessible original maps', () => {
+    const result = validateQuestionFirstPack(geographyInterpretTerritoryPack);
+    expect(geographyInterpretTerritoryPack).toEqual(buildGeographyInterpretTerritoryPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 24,
+      contextCount: 24,
+      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 2 },
+      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+    });
+    expect(geographyInterpretTerritoryPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(geographyInterpretTerritoryPack.questions.filter(({ visualStimulus }) => visualStimulus)).toHaveLength(9);
+    expect(geographyInterpretTerritoryPack.questions.filter(({ visualStimulus }) => visualStimulus)
+      .every(({ visualStimulus }) => visualStimulus.items.every(({ alt, src }) => alt.trim() && src.startsWith('/learning/geography/')))).toBe(true);
+    expect(geographyInterpretTerritoryPack.sourceQuestionFeedback).toHaveLength(10);
+    expect(geographyInterpretTerritoryPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 10, feedbackAdded: 10, sourceReconciliationStatus: 'EXACT', newQuestions: 24, reusedQuestionsCountedAsNew: false });
+    expect(geographyInterpretTerritoryPack.lesson.microExplanations).toHaveLength(5);
+    expect(geographyInterpretTerritoryPack.lesson.remediations).toHaveLength(5);
+    expect(geographyInterpretTerritoryPack.questions.some(({ statement }) => /no recorte|no mapa|legenda/i.test(statement))).toBe(true);
+    expect(geographyInterpretTerritoryPack.questions.some(({ statement, explanation }) => /causa|causal/i.test(`${statement} ${explanation}`))).toBe(true);
+    expect(geographyInterpretTerritoryPack.publicationStatus).toBe('STAGING');
+    expect(geographyInterpretTerritoryPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(geographyInterpretTerritoryPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    for (const src of new Set(geographyInterpretTerritoryPack.questions.flatMap(({ visualStimulus }) => visualStimulus?.items.map(({ src }) => src) ?? []))) {
+      expect(existsSync(new URL(`../../public${src}`, import.meta.url))).toBe(true);
+    }
+    expect(geographyInterpretTerritoryMigration).toBe(buildMigration(geographyInterpretTerritoryPack));
+    expect(geographyInterpretTerritoryMigration).toContain("'GEOGRAPHY_INTERPRET_TERRITORY'");
+    expect(geographyInterpretTerritoryMigration).toContain("'publication_status', 'STAGING'");
+    expect(geographyInterpretTerritoryMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(geographyInterpretTerritoryMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(geographyInterpretTerritoryMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('deepens English inference using an exact V4 and V9 source set', () => {

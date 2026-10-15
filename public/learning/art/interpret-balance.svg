@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Equilíbrio sem simetria</title>
+  <desc id="desc">Um círculo grande e claro ocupa a esquerda; quatro quadrados escuros menores agrupam-se em alturas diferentes à direita.</desc>
+  <rect width="600" height="360" fill="#edf0e9"/>
+  <circle cx="180" cy="180" r="102" fill="#d99b52"/>
+  <rect x="385" y="86" width="48" height="48" fill="#315f66"/><rect x="455" y="126" width="48" height="48" fill="#315f66"/>
+  <rect x="380" y="202" width="48" height="48" fill="#315f66"/><rect x="462" y="225" width="48" height="48" fill="#315f66"/>
+</svg>

@@ -1,0 +1,120 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { buildMigration, validateQuestionFirstPack } from './compile-question-first-content-v5.mjs';
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
+const OUTPUT = resolve(ROOT, 'content/adaptive/tec-escola-core-v5/english-context-vocabulary.json');
+const MIGRATION = resolve(ROOT, 'supabase/migrations/20261015000800_bncc_english_context_vocabulary_question_first_v5.sql');
+const v4Questions = JSON.parse(readFileSync(resolve(ROOT, 'content/adaptive/tec-escola-core-v4/subjects/english/questions.json'), 'utf8'))
+  .filter((question) => question.primarySkill === 'ENGLISH_USE_CONTEXT_VOCABULARY');
+const v9Journey = JSON.parse(readFileSync(resolve(ROOT, 'content/adaptive/tec-escola-core-v9/journey-expansion-a-v1.json'), 'utf8'))
+  .journeys.find((journey) => journey.skill === 'ENGLISH_USE_CONTEXT_VOCABULARY');
+if (!v9Journey?.questions?.length) throw new Error('ENGLISH_CONTEXT_VOCABULARY_V9_SOURCE_MISSING');
+
+const rows = [
+  ['PROBE','EASY','INFER','EMPTY_JAR','Read: “The jar is empty. There is no honey left.” What does “empty” mean here?','Containing nothing.',['Very heavy.','Made of glass.','Recently opened.'],'The second sentence explains “empty”: no honey remains in the jar.','Use the clue “There is no honey left.”','CONTEXT_CLUE_IGNORED'],
+  ['PROBE','EASY','INFER','WHISPERED_BABY','Read: “Nina whispered because the baby was asleep.” What does “whispered” most likely mean?','Spoke very quietly.',['Sang loudly.','Wrote a note.','Left the room.'],'The sleeping baby gives a reason to use a quiet voice.','Connect the action to the reason introduced by “because.”','CAUSE_CLUE_IGNORED'],
+  ['PROBE','EASY','USE_CONTRAST','ROUGH_AND_SMOOTH','Read: “Unlike the rough path, the paved road was smooth.” Which meaning best fits “rough”?','Uneven or not smooth.',['Newly painted.','Very short.','Covered with water.'],'“Unlike” marks a contrast: the paved road is smooth, while the other path is not.','Use the contrast with “smooth.”','CONTRAST_CONNECTOR_MISSED'],
+  ['PROBE','EASY','USE_EXAMPLE','RELIABLE_COACH','Read: “The coach called Ravi reliable: he arrived on time each day.” What does “reliable” mean here?','Someone who can be depended on.',['Someone who changes plans often.','Someone who speaks several languages.','Someone who arrives only once.'],'Arriving on time repeatedly is evidence that Ravi can be depended on.','The example after the colon explains the adjective.','EXAMPLE_AFTER_COLON_IGNORED'],
+  ['PRACTICE','EASY','INFER','SPACIOUS_ROOM','Read: “The first room held only two desks. The next room was spacious, with tables for twenty learners.” What does “spacious” mean?','Having plenty of room.',['Being unusually quiet.','Having no windows.','Being difficult to enter.'],'The contrast in capacity and the tables for twenty indicate that the second room has more space.','Compare the number of desks and tables.','CAPACITY_CLUE_IGNORED'],
+  ['PRACTICE','EASY','INFER','FRAGILE_PACKAGE','A label says “FRAGILE”; the delivery note adds, “Handle gently: the glass inside can break.” What does “fragile” mean?','Easily broken or damaged.',['Too large to carry.','Already repaired.','Safe to heat.'],'The note explicitly links the label to glass that can break.','Use the explanation after the semicolon.','EXPLICIT_DEFINITION_IGNORED'],
+  ['PRACTICE','MEDIUM','INFER','SCARCE_WATER','Read: “After three dry months, clean water became scarce; the town opened an extra supply point.” What does “scarce” mean in this passage?','Limited and not easy to find.',['Unsafe because it is hot.','Available in every street.','More expensive than transport.'],'The dry period and extra supply point indicate limited availability.','Ask why the town opened another supply point.','CONSEQUENCE_CLUE_MISREAD'],
+  ['PRACTICE','MEDIUM','INFER','RELUCTANT_TO_SPEAK','Read: “Leila was reluctant to present. She paused at the doorway and asked whether a partner could begin.” What does “reluctant” suggest?','She was hesitant or not eager to begin.',['She had already completed the presentation.','She was certain the room was empty.','She wanted to speak first without help.'],'Pausing and asking a partner to begin are clues of hesitation, though they do not tell us exactly why.','Use the actions as evidence and avoid guessing her reason.','ACTION_CLUE_OVERRIDDEN'],
+  ['PRACTICE','MEDIUM','INFER','DENSE_FOREST','Read: “The forest was dense; only a narrow trail passed between the closely spaced trees.” What does “dense” mean?','Having many trees close together.',['Being located far from a town.','Receiving no rain all year.','Containing only young trees.'],'“Closely spaced trees” directly explains the relevant sense of “dense.”','Look for the phrase that describes distance between the trees.','NEARBY_REPHRASING_IGNORED'],
+  ['PRACTICE','MEDIUM','INFER','GENEROSITY_ACTION','Read: “Mateo showed generosity by sharing his supplies with classmates who had none.” What does “generosity” mean in this context?','A willingness to give or share with others.',['A plan to collect every supply.','A rule that everyone must work alone.','A skill for repairing broken items.'],'Sharing supplies with people who have none is an example of giving to others.','Use the action after “by” as an example.','EXAMPLE_ACTION_NOT_USED'],
+  ['PRACTICE','MEDIUM','USE_WORD_FORM','USEFUL_TOOL','Read: “The guide is useful because it gives clear steps that help new visitors.” What does “useful” mean?','Helpful for a purpose.',['Made only for experts.','Too old to read.','Written in a language no one knows.'],'The clear steps help visitors, so the guide serves a helpful purpose.','The clause after “because” states the benefit.','WORD_FORM_WITHOUT_SENTENCE'],
+  ['PRACTICE','MEDIUM','DISTINGUISH_POLYSEMY','LIGHT_BAG','Read: “The bag is light, so Jo carried it upstairs without stopping.” Which meaning of “light” fits?','Not heavy.',['Pale in color.','Bright enough to see by.','Not serious in tone.'],'Carrying the bag upstairs without stopping supports the weight meaning.','Choose the sense that explains the action.','FIRST_DICTIONARY_SENSE_SELECTED'],
+  ['PRACTICE','MEDIUM','INFER','EVENTUALLY_ARRIVED','Read: “The train was delayed, but it eventually arrived at 8:10.” What does “eventually” mean here?','In the end, after some delay.',['Possibly, but not certainly.','At the exact beginning.','Earlier than planned.'],'The delay followed by arrival shows that the event happened in the end.','Compare “was delayed” with “arrived.”','FALSE_COGNATE_EVENTUALLY'],
+  ['PRACTICE','MEDIUM','USE_EXAMPLE','HERB_EXAMPLES','Read: “The recipe uses herbs, such as basil and parsley, for flavor.” Which meaning of “herbs” is supported?','Plants used here to add flavor to food.',['Any object used to measure heat.','A kind of cooking container.','A method for freezing a recipe.'],'Basil and parsley are examples, and the sentence states their purpose.','Use both the examples and the phrase “for flavor.”','CATEGORY_FROM_EXAMPLES_MISSED'],
+  ['TRANSFER','MEDIUM','COMPARE_SENSES','CURRENT_IN_RIVER','Read: “The river current was strong after the rain, so the team waited before crossing.” What does “current” mean?','The flow of water.',['A present-day schedule.','An electrical wire.','A recent news story.'],'The river and crossing context point to moving water.','Check which meaning fits both “river” and “crossing.”','POLYSEMY_CONTEXT_NOT_TESTED'],
+  ['TRANSFER','MEDIUM','INFER_LIMIT','MAY_REDUCE','A report says: “The new shade may reduce room temperature; measurements will continue for two weeks.” Which interpretation matches the evidence?','A reduction is possible, but it has not yet been confirmed.',['The room is already cooler in every measurement.','The shade cannot affect temperature.','Two weeks of results have already been collected.'],'“May” indicates possibility, and future measurements show the claim remains under investigation.','Keep certainty at the level expressed by “may.”','POSSIBILITY_TURNED_INTO_CERTAINTY'],
+  ['TRANSFER','HARD','INFER_FROM_PARAPHRASE','WITHDRAWN_APPLICATION','Read: “After reviewing the schedule, the applicant withdrew the request. In other words, the request was no longer being pursued.” What does “withdrew” mean?','Formally took back or stopped pursuing the request.',['Moved the request to a higher shelf.','Asked for the request to be approved immediately.','Submitted the same request twice.'],'The second sentence restates the result: the request was no longer being pursued.','Treat “in other words” as a paraphrase clue.','PARAPHRASE_CONNECTOR_IGNORED'],
+  ['TRANSFER','HARD','INFER_WITH_MULTIPLE_CLUES','DIMMED_DISPLAY','Read: “The display dimmed as the battery ran low. Icons became harder to see, though the device still worked.” What does “dimmed” mean?','Became less bright.',['Stopped producing sound.','Showed more icons.','Became heavier.'],'The battery context and reduced visibility indicate lower brightness; the device did not stop working.','Use the visual consequence while keeping the contrast “though it still worked.”','CONTRAST_SCOPE_IGNORED'],
+  ['TRANSFER','HARD','EVALUATE_AMBIGUITY','SANCTION_CONTEXT','A short note says: “The committee discussed a sanction after the review,” but does not describe the action or decision. What can be inferred about “sanction” from this note alone?','It refers to a formal measure, but the note does not show whether it means approval or a penalty.',['It proves that the committee punished someone.','It confirms that the committee approved the proposal.','It means the review meeting was cancelled.'],'The noun “sanction” can refer to official approval or a penalty. The note gives no action or decision that distinguishes those meanings.','Identify what the note states, then check whether it gives a result that selects one sense.','AMBIGUOUS_WORD_FORCED_TO_ONE_SENSE'],
+  ['LOCK_IN','HARD','TEST_HYPOTHESIS','SUBSTITUTE_AND_CHECK','A learner guesses that “reluctant” means “excited” in “She was reluctant to join; she asked to watch first.” Which check best tests the guess?','Replace it with “hesitant” and see whether the following action remains coherent.',['Replace it with “excited” again and ignore the second clause.','Choose a meaning because it looks like a Portuguese word.','Assume the writer made a mistake.'],'“Hesitant” fits asking to watch first; “excited” conflicts with the stated behavior more strongly.','Test a near-synonym against the whole sentence.','HYPOTHESIS_NOT_TESTED'],
+  ['LOCK_IN','HARD','DISTINGUISH_INFERENCE','CONTEXT_NOT_ENOUGH','A short message says, “The result was remarkable,” but gives no result, comparison or reaction. What is the best conclusion about “remarkable”?','It signals that the writer considers the result notable, but the reason and degree are not specified.',['It proves the result broke a world record.','It means the result was exactly average.','It identifies which measurement was taken.'],'The adjective signals evaluation; without additional evidence, the specific reason for the judgment is unknown.','Separate the evaluation from facts the message does not provide.','EVALUATIVE_WORD_OVERREAD'],
+  ['LOCK_IN','HARD','SEQUENCE','CONTEXTUAL_INFERENCE_STEPS','Which sequence best supports a careful inference about an unfamiliar word?','Identify its role, locate explicit clues, propose a meaning, test it in the whole sentence, and note uncertainty.',['Guess from spelling, then ignore conflicting details.','Translate each word separately and stop at the first meaning.','Choose the most technical definition whether or not it fits.'],'The sequence combines grammar, textual evidence, a substitution test and a limit on certainty.','Look for a method that checks a hypothesis instead of stopping at a guess.','INFERENCE_METHOD_SKIPPED'],
+  ['REVIEW','MEDIUM','REVIEW_METHOD','CAUSE_CONTRAST_EXAMPLE','A passage includes “because,” “unlike” and “such as.” How can these words help infer vocabulary?','They signal cause, contrast and examples that constrain possible meanings.',['They guarantee that every unfamiliar word has one exact translation.','They identify the author’s age.','They replace the need to read the surrounding sentence.'],'These connectors organize relations in the text; they provide clues but do not guarantee an exact translation.','Match each connector to the relation it signals.','CONNECTORS_TREATED_AS_TRANSLATION'],
+  ['REVIEW','HARD','TRANSFER','DICTIONARY_CONFIRMATION','Context suggests two possible meanings for an unfamiliar word, and both fit the paragraph. What is a useful next step?','Check a suitable dictionary or a wider source and keep the ambiguity explicit until it is resolved.',['Pick one meaning at random and report it as certain.','Ignore the paragraph and infer from spelling alone.','Assume both meanings are identical.'],'When local clues do not distinguish meanings, a broader source can help. Until then, the evidence supports uncertainty.','Ask what additional evidence would separate the two meanings.','UNCERTAINTY_HIDDEN'],
+].map(([purpose, difficulty, cognitiveProcess, contextFamily, statement, correctAnswer, distractors, explanation, hint, misconception], index) => {
+  const options = [...distractors];
+  options.splice(index % 4, 0, correctAnswer);
+  return {
+    id: `v5-english-context-vocabulary-${String(index + 1).padStart(2, '0')}`,
+    purpose, difficulty, cognitiveProcess, contextFamily, statement, options, correctAnswer, explanation, hint,
+    errorFocus: misconception,
+    misconceptions: { [distractors[0]]: [misconception] },
+  };
+});
+
+const purposeCounts = Object.fromEntries(['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'].map((purpose) => [purpose, rows.filter((question) => question.purpose === purpose).length]));
+const sourceQuestionFeedback = [...v4Questions, ...v9Journey.questions].map((question) => ({
+  questionId: question.id,
+  hint: 'Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.',
+  errorFocus: 'CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY',
+}));
+
+export function buildEnglishContextVocabularyPack() {
+  return {
+    packVersion: 'tec-escola-core-v5-question-first', contentId: 'v5-english-context-vocabulary-inference',
+    subject: 'ENGLISH', domain: 'READING', topic: 'inferir_vocabulario_por_contexto', canonicalSkillCode: 'ENGLISH_USE_CONTEXT_VOCABULARY',
+    contentVersion: 1, lessonVersion: 1, expectedQuestionCount: 24, expectedContextCount: 24,
+    expectedPurposeCounts: purposeCounts, expectedAnswerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+    officialMappingStatus: 'NOT_CLAIMED', pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', publicationStatus: 'STAGING', contentAuthoringStatus: 'AUTHORED',
+    sourceQuestionFeedback,
+    sourceReconciliation: {
+      sourceQuestionCount: v4Questions.length + v9Journey.questions.length, feedbackAdded: sourceQuestionFeedback.length,
+      sourceReconciliationStatus: 'EXACT', adjacentLegacyItemsForEditorialReview: v4Questions.map((question) => question.id),
+      newQuestions: rows.length, reusedQuestionsCountedAsNew: false,
+    },
+    lesson: {
+      title: 'Inferir vocabulário em contexto',
+      objective: 'Inferir sentidos prováveis de palavras em inglês a partir de pistas explícitas, relações entre frases e função gramatical, testando a hipótese e reconhecendo ambiguidades.',
+      summary: 'Leia o enunciado todo, identifique a pista, formule um sentido aproximado e confira se ele funciona na frase. Contexto ajuda, mas nem sempre determina uma tradução única.',
+      explanation: '## 1. Leia a frase inteira primeiro\nObserve a função da palavra: nomeia uma coisa, descreve, indica ação ou liga ideias? Evite parar na primeira semelhança com o português. Um cognato pode ajudar, mas não prova o significado.\n\n## 2. Procure pistas próximas\nUma explicação depois de dois-pontos, exemplos após “such as”, uma consequência ou uma paráfrase podem restringir o sentido. Conectores como “because”, “unlike”, “but” e “in other words” mostram relações diferentes. Leia o trecho anterior e o seguinte quando necessário.\n\n## 3. Teste a hipótese\nProponha um sinônimo simples e substitua a palavra na frase completa. A gramática e a lógica continuam coerentes? Compare com o que a frase diz explicitamente; não descarte uma evidência só porque ela contraria seu primeiro palpite.\n\n## 4. Diferencie palavra polissêmica de pista suficiente\nUma palavra como “light” pode significar “leve” ou “claro”, dependendo da frase. A situação pode escolher um sentido. Em outras frases, como “the result was remarkable” sem descrição do resultado, o contexto informa que houve uma avaliação, mas não explica o motivo.\n\n## 5. Informe o limite\nSe dois sentidos ainda se encaixarem, não invente certeza. Consulte um dicionário apropriado ou mais texto e registre a ambiguidade até encontrar nova evidência. Inferência contextual produz uma leitura provável, não necessariamente uma tradução exata.',
+      workedExample: 'Em “The path was muddy after the storm, so hikers chose a dry route”, “muddy” é desconhecida. “After the storm” e a escolha de uma rota “dry” apontam para umidade. Testando “covered with mud” na frase, a relação continua coerente. Essa é a hipótese mais apoiada; a frase não informa a profundidade da lama.',
+      commonMistake: 'Escolher o primeiro significado do dicionário ou um falso cognato, sem testar a hipótese contra as pistas da frase inteira.',
+      tips: ['Sublinhe a palavra-alvo e circule a pista textual.', 'Diga se a pista é causa, contraste, exemplo, consequência ou paráfrase.', 'Substitua por um sinônimo e mantenha a incerteza quando duas leituras couberem.'],
+      estimatedMinutes: 24,
+      priorKnowledge: ['Localizar palavras frequentes em uma frase curta.', 'Reconhecer conectores comuns como because, but e such as.'],
+      keyConcepts: ['context clue', 'contrast and cause', 'examples and paraphrase', 'word class', 'polysemy', 'false cognates', 'inference limits'],
+      progression: [
+        { stage: 'DIAGNOSTIC', focus: 'Usar definições, causas, contrastes e exemplos explícitos.', questionIds: rows.filter((question) => question.purpose === 'PROBE').map((question) => question.id) },
+        { stage: 'PRACTICE', focus: 'Inferir palavras por consequência, forma, ação, exemplos e sentidos múltiplos.', questionIds: rows.filter((question) => question.purpose === 'PRACTICE').map((question) => question.id) },
+        { stage: 'TRANSFER', focus: 'Combinar pistas, interpretar modalização e reconhecer ambiguidade real.', questionIds: rows.filter((question) => question.purpose === 'TRANSFER').map((question) => question.id) },
+        { stage: 'CONSOLIDATION', focus: 'Testar hipóteses e limitar conclusões à evidência do trecho.', questionIds: rows.filter((question) => question.purpose === 'LOCK_IN').map((question) => question.id) },
+        { stage: 'REVIEW', focus: 'Reaplicar o procedimento e consultar fontes quando o contexto não basta.', questionIds: rows.filter((question) => question.purpose === 'REVIEW').map((question) => question.id) },
+      ],
+      microExplanations: [
+        { trigger: 'CAUSE_AND_CONSEQUENCE', text: 'A causa e o efeito ajudam a limitar o sentido, mas não revelam detalhes que a frase não informa.' },
+        { trigger: 'EXAMPLE_OR_PARAPHRASE', text: '“Such as” introduz exemplos; “in other words” costuma reapresentar a ideia. Use a relação, não uma palavra isolada.' },
+        { trigger: 'POLYSEMY', text: 'Uma palavra pode ter sentidos diferentes. Teste qual deles explica a ação ou situação descrita.' },
+        { trigger: 'SUBSTITUTE_AND_CHECK', text: 'Troque a palavra por um sinônimo aproximado e confira gramática e coerência no enunciado completo.' },
+        { trigger: 'CONTEXT_LIMIT', text: 'Se duas leituras continuam possíveis, preserve a ambiguidade e procure mais evidência.' },
+      ],
+      remediations: [
+        { id: 'LOCATE_CLUE', misconception: 'Responder sem apontar pista contextual.', prompt: 'Copie a palavra desconhecida e marque as palavras da frase que dão uma definição, exemplo, causa, contraste ou consequência.' },
+        { id: 'TEST_A_PARAPHRASE', misconception: 'Escolher por semelhança ortográfica.', prompt: 'Proponha um sinônimo simples e leia a frase novamente. Explique qual parte continua coerente ou entra em conflito.' },
+        { id: 'COMPARE_SENSES', misconception: 'Usar sempre o primeiro sentido conhecido.', prompt: 'Liste dois sentidos possíveis e associe cada um a uma pista. Elimine apenas o que não combina com o contexto.' },
+        { id: 'LIMIT_THE_INFERENCE', misconception: 'Tratar uma possibilidade como fato confirmado.', prompt: 'Complete: “O trecho apoia ___ porque ___. Ainda não informa ___.”' },
+        { id: 'SEEK_MORE_CONTEXT', misconception: 'Esconder uma ambiguidade não resolvida.', prompt: 'Indique quais dois sentidos ainda cabem e que frase, exemplo ou fonte ajudaria a distingui-los.' },
+      ],
+      reviewWindowsDays: [1, 3, 7], reviewScheduleStatus: 'SUGGESTED_NOT_AUTOMATED',
+      sourceDossier: [{ publisher: 'Ministério da Educação, Brasil', title: 'Base Nacional Comum Curricular', url: 'https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf', license: 'Referência curricular geral; alinhamento oficial específico não reivindicado.' }],
+      copyrightNote: 'Sentenças, situações, questões e feedbacks são autorais. Alinhamento oficial específico não reivindicado; revisão pedagógica pendente.',
+    },
+    questions: rows,
+  };
+}
+
+function main() {
+  const pack = buildEnglishContextVocabularyPack();
+  const result = validateQuestionFirstPack(pack);
+  if (!result.valid) throw new Error(`ENGLISH_CONTEXT_VOCABULARY_INVALID:${result.errors.join(',')}`);
+  writeFileSync(OUTPUT, `${JSON.stringify(pack, null, 2)}\n`);
+  writeFileSync(MIGRATION, buildMigration(pack));
+  process.stdout.write(`${JSON.stringify({ valid: true, questions: result.questionCount, contexts: result.contextCount, counts: result.counts, answerPositions: result.answerPositionCounts, sourceFeedback: sourceQuestionFeedback.length }, null, 2)}\n`);
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) main();

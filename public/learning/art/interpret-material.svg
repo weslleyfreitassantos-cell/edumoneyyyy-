@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Assemblage de madeira reaproveitada</title>
+  <desc id="desc">Tábuas de diferentes tamanhos formam uma estrutura geométrica suspensa; riscos e furos permanecem visíveis na superfície.</desc>
+  <rect width="600" height="360" fill="#f0eee6"/>
+  <path d="M300 0v45" stroke="#465c5f" stroke-width="5"/>
+  <path d="M174 93l230 6-26 43-226-6z" fill="#b77a50" stroke="#754e39" stroke-width="5"/>
+  <path d="M155 157l257 8-20 45-254-8z" fill="#d19a65" stroke="#805b3e" stroke-width="5"/>
+  <path d="M191 225l208 5-26 44-205-6z" fill="#986847" stroke="#654931" stroke-width="5"/>
+  <g fill="#403831"><circle cx="194" cy="117" r="4"/><circle cx="365" cy="125" r="4"/><circle cx="181" cy="181" r="4"/><circle cx="389" cy="190" r="4"/><circle cx="216" cy="249" r="4"/></g>
+  <path d="M223 104l46 10M314 177l55 10M255 240l40 12" stroke="#644831" stroke-width="4" opacity=".65"/>
+</svg>

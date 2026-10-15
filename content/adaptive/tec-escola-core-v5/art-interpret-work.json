@@ -1,0 +1,1058 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-art-interpret-work-evidence-sequence",
+  "subject": "ART",
+  "domain": "INTERPRETACAO",
+  "topic": "observacao_composicao_interpretacao_e_transferencia",
+  "canonicalSkillCode": "ART_INTERPRET_WORK",
+  "contentVersion": 6,
+  "lessonVersion": 6,
+  "expectedQuestionCount": 24,
+  "expectedContextCount": 24,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 9,
+    "TRANSFER": 5,
+    "LOCK_IN": 3,
+    "REVIEW": 3
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 6,
+    "B": 6,
+    "C": 6,
+    "D": 6
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-art-art_interpretation-2",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v3-art-art_interpretation-4",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v3-art-art_interpretation-8",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v3-art-art_interpretation-9",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v3-art-art_interpretation-11",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v4-authored-art-review-01",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-01",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-02",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-03",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-04",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-05",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-06",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-07",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-08",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-09",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-10",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-11",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-12",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-13",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-14",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-15",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-16",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-17",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-18",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-19",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    },
+    {
+      "questionId": "v93-art-interpret-20",
+      "hint": "Primeiro descreva a evidência formal ou material apresentada; depois formule uma leitura possível e explicite o que a imagem ou a fonte não permite concluir.",
+      "errorFocus": "OBSERVATION_EVIDENCE_INTERPRETATION_AND_SCOPE"
+    }
+  ],
+  "lesson": {
+    "title": "Interpretar uma obra com evidências",
+    "objective": "Descrever elementos visuais e materiais, analisar suas relações e construir interpretações possíveis que indiquem evidências e limites.",
+    "summary": "Comece pelo que está presente. Observe como os elementos se relacionam e só então proponha uma leitura que possa ser sustentada por detalhes da obra ou por fontes identificadas.",
+    "explanation": "## 1. Descreva antes de interpretar\nNomeie o que pode ser observado: cores, linhas, formas, textura, escala, posição, materiais, luz, enquadramento e espaço vazio. Uma descrição não precisa adivinhar tema, autoria ou emoção. Se houver imagem, consulte também a descrição alternativa: ela comunica os elementos essenciais para quem não a percebe visualmente.\n\n## 2. Analise relações\nPergunte como os elementos se organizam. Contraste pode destacar uma forma; repetição e intervalo podem criar ritmo; escala e posição podem estabelecer hierarquia; figura e fundo podem permitir leituras alternadas. Esses são efeitos possíveis da composição, não garantias de reação idêntica.\n\n## 3. Formule uma interpretação sustentada\nUse uma sequência curta: “observo ___; noto que ___; isso pode sugerir ___ porque ___”. A frase “pode sugerir” marca uma hipótese. Uma leitura fica mais forte quando relaciona evidência observável e interpretação, sem atribuir uma intenção íntima sem fonte.\n\n## 4. Compare com critérios consistentes\nAo comparar obras, escolha os mesmos critérios para ambas: contraste, escala, repetição, enquadramento, material ou posição. Dizer que duas obras tratam do mesmo tema não significa que tenham a mesma composição.\n\n## 5. Delimite o que não se sabe\nUma imagem recortada não revela o que ficou fora do quadro. Material não comprova sozinho a biografia de quem criou a obra. Uma legenda sustenta apenas os dados que registra. Contexto histórico e relatos de artistas podem ampliar a leitura, mas devem ser identificados como fontes, não confundidos com observações visuais.\n\n## Acessibilidade\nEm uma questão visual, a descrição alternativa deve indicar forma, posição, contraste, repetição e outros detalhes relevantes à resposta. O enunciado e o texto alternativo precisam oferecer evidência equivalente, sem depender apenas de cor; quando a informação cromática importa, combine-a com posição, forma ou contraste. O estudante pode ampliar a imagem e usar leitura por voz. Para atividades abertas, aceite resposta por texto, áudio ou descrição oral, sem reduzir o critério de evidência.",
+    "workedExample": "Em uma imagem, um círculo vermelho pequeno está isolado perto da borda, enquanto formas cinzentas maiores se agrupam no centro. Observação: há contraste de cor, diferença de escala e separação espacial. Relação: o isolamento e o contraste fazem o círculo chamar atenção. Interpretação possível: ele pode ser percebido como elemento deslocado. Limite: a imagem, sozinha, não identifica uma pessoa nem comprova o que a pessoa artista pretendia representar.",
+    "commonMistake": "Pular a descrição, transformar uma associação pessoal em significado universal ou tratar uma hipótese sobre intenção como fato comprovado.",
+    "tips": [
+      "Aponte um detalhe concreto antes de escolher uma interpretação.",
+      "Compare as obras usando os mesmos critérios.",
+      "Use “pode” para efeitos possíveis e indique o que exigiria uma fonte adicional."
+    ],
+    "estimatedMinutes": 28,
+    "priorKnowledge": [
+      "Reconhecer cores, formas, linhas e posições em composições simples.",
+      "Distinguir observação de uma hipótese de significado."
+    ],
+    "keyConcepts": [
+      "descrição e inferência",
+      "contraste e figura-fundo",
+      "escala, posição e hierarquia",
+      "repetição, intervalo e ritmo",
+      "material e técnica",
+      "evidência e limite interpretativo",
+      "acessibilidade visual"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Nomear elementos e separar observação de intenção ou significado não demonstrado.",
+        "questionIds": [
+          "v5-art-interpret-work-01",
+          "v5-art-interpret-work-02",
+          "v5-art-interpret-work-03",
+          "v5-art-interpret-work-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Analisar contraste, escala, espaço, repetição, figura-fundo, paleta, equilíbrio e material.",
+        "questionIds": [
+          "v5-art-interpret-work-05",
+          "v5-art-interpret-work-06",
+          "v5-art-interpret-work-07",
+          "v5-art-interpret-work-08",
+          "v5-art-interpret-work-09",
+          "v5-art-interpret-work-10",
+          "v5-art-interpret-work-11",
+          "v5-art-interpret-work-12",
+          "v5-art-interpret-work-13"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar a análise a cartazes, instalações, pintura, fontes e diferentes enquadramentos.",
+        "questionIds": [
+          "v5-art-interpret-work-14",
+          "v5-art-interpret-work-15",
+          "v5-art-interpret-work-16",
+          "v5-art-interpret-work-17",
+          "v5-art-interpret-work-18"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Escolher evidências, revisar generalizações e sustentar leituras abertas com critérios.",
+        "questionIds": [
+          "v5-art-interpret-work-19",
+          "v5-art-interpret-work-20",
+          "v5-art-interpret-work-21"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Retomar método, limites de fontes e acesso a evidências visuais.",
+        "questionIds": [
+          "v5-art-interpret-work-22",
+          "v5-art-interpret-work-23",
+          "v5-art-interpret-work-24"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "OBSERVATION_BEFORE_INTERPRETATION",
+        "text": "“Vejo linhas curvas” descreve. “Elas podem sugerir movimento” interpreta e precisa apontar as linhas como evidência."
+      },
+      {
+        "trigger": "RELATION_CREATES_EFFECT",
+        "text": "Destaque depende de relações como contraste, posição, escala e espaço; um elemento isolado não explica tudo."
+      },
+      {
+        "trigger": "HYPOTHESIS_NOT_INTENTION",
+        "text": "Uma interpretação plausível não comprova a intenção de quem criou a obra. Para isso, é necessária uma fonte identificada."
+      },
+      {
+        "trigger": "IMAGE_CROP_LIMIT",
+        "text": "O que não aparece no enquadramento continua desconhecido; ausência na imagem não prova ausência na situação real."
+      },
+      {
+        "trigger": "ACCESSIBLE_VISUAL_EVIDENCE",
+        "text": "A descrição alternativa deve fornecer os detalhes visuais usados na resposta, sem depender apenas da percepção de cor."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "DESCRIBE_THEN_INFER",
+        "misconception": "Atribuir significado específico a uma forma isolada.",
+        "prompt": "Complete duas frases: “Na obra, observo ___.” e “Isso pode sugerir ___ porque ___.” Se a segunda frase não aponta evidência, reveja a interpretação."
+      },
+      {
+        "id": "COMPARE_SAME_CRITERIA",
+        "misconception": "Compara duas obras usando critérios diferentes.",
+        "prompt": "Monte duas colunas e use o mesmo critério nas duas: escala, contraste, repetição ou posição. Depois descreva a diferença observada."
+      },
+      {
+        "id": "SOURCE_SCOPE",
+        "misconception": "Deduzir intenção ou biografia sem fonte.",
+        "prompt": "Sublinhe o que a imagem mostra e circule o que a legenda afirma. Tudo o que não aparece em nenhum dos dois precisa de outra fonte ou deve ficar como hipótese."
+      },
+      {
+        "id": "CROP_AND_UNKNOWN",
+        "misconception": "Supor que o enquadramento contém toda a situação.",
+        "prompt": "Liste os elementos visíveis e, separadamente, duas informações que ficaram fora do quadro. Não use essas lacunas como fatos."
+      },
+      {
+        "id": "ACCESSIBLE_DESCRIPTION",
+        "misconception": "A descrição visual não oferece a mesma evidência.",
+        "prompt": "Reescreva a descrição indicando forma, posição, contraste e relação espacial; se cor for relevante, associe-a a outro atributo perceptível."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "J. Paul Getty Museum, Education",
+        "title": "Understanding Formal Analysis",
+        "url": "https://www.getty.edu/education/teachers/classroom_resources/formal_analysis.html",
+        "license": "Referência de método de análise; as obras, ilustrações e questões deste pacote são autorais."
+      },
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; não há reivindicação de mapeamento oficial específico neste pacote."
+      }
+    ],
+    "copyrightNote": "Textos, questões e ilustrações SVG originais deste pacote. Sem imagens de terceiros. O vínculo curricular oficial e a revisão pedagógica humana permanecem pendentes."
+  },
+  "questions": [
+    {
+      "id": "v5-art-interpret-work-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CIRCULO_E_CAMPO",
+      "statement": "Observe a composição geométrica. Qual característica está visível sem precisar adivinhar a intenção de quem a criou?",
+      "options": [
+        "Há um círculo laranja isolado sobre um campo azul-escuro.",
+        "Há uma sequência de retratos em perspectiva.",
+        "As formas ocupam todas as partes do campo sem espaço vazio.",
+        "O círculo prova que a obra representa o Sol."
+      ],
+      "correctAnswer": "Há um círculo laranja isolado sobre um campo azul-escuro.",
+      "explanation": "O círculo laranja e o campo azul-escuro são elementos visíveis. A associação com o Sol é uma hipótese que exigiria contexto.",
+      "hint": "Nomeie formas, cores e posição antes de propor um significado.",
+      "errorFocus": "Atribuir significado específico a uma forma isolada.",
+      "misconceptions": {
+        "Há uma sequência de retratos em perspectiva.": [
+          "DESCRICAO_CONFUNDIDA_COM_INTENCAO"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-basics.svg",
+            "alt": "Um campo azul-escuro retangular contém um círculo laranja no centro e bastante espaço vazio ao redor.",
+            "caption": "Composição A"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LINHAS_CONVERGENTES",
+      "statement": "Na imagem, várias linhas diagonais se aproximam de um pequeno círculo amarelo. Que relação formal pode ser descrita?",
+      "options": [
+        "O círculo é certamente uma pessoa retratada.",
+        "A direção das linhas pode conduzir o olhar ao círculo.",
+        "As linhas garantem que todos sentirão tensão.",
+        "A imagem registra um lugar real."
+      ],
+      "correctAnswer": "A direção das linhas pode conduzir o olhar ao círculo.",
+      "explanation": "A convergência das linhas é observável e pode organizar o percurso visual. Ela não comprova identidade, emoção universal ou realidade documental.",
+      "hint": "Siga com os olhos a direção indicada pelas linhas.",
+      "errorFocus": "Transformar um recurso formal em fato narrativo.",
+      "misconceptions": {
+        "O círculo é certamente uma pessoa retratada.": [
+          "LINHA_TOMADA_COMO_PROVA_DE_NARRATIVA"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-lines.svg",
+            "alt": "Quatro linhas curvas e diagonais partem da borda esquerda e convergem para um pequeno círculo amarelo à direita.",
+            "caption": "Composição B"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MARCAS_DE_IMPRESSAO",
+      "statement": "Uma impressão autoral mostra marcas pretas repetidas e áreas de tinta mais espessas. Qual alternativa descreve uma evidência apresentada?",
+      "options": [
+        "A obra foi feita há mais de cem anos.",
+        "A pessoa que a criou usou uma prensa específica.",
+        "Há repetição de marcas e variação na densidade da tinta.",
+        "As marcas representam uma floresta."
+      ],
+      "correctAnswer": "Há repetição de marcas e variação na densidade da tinta.",
+      "explanation": "Repetição e densidade são descritas na imagem. Data, equipamento e tema não são identificáveis apenas por essas marcas.",
+      "hint": "Separe o que a superfície mostra do que dependeria de pesquisa.",
+      "errorFocus": "Inferir data ou técnica precisa sem evidência suficiente.",
+      "misconceptions": {
+        "A obra foi feita há mais de cem anos.": [
+          "TECNICA_E_TEMA_INFERIDOS_SEM_FONTE"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-texture.svg",
+            "alt": "Linhas curtas pretas aparecem em faixas repetidas sobre papel claro; algumas faixas têm marcas mais densas e espessas.",
+            "caption": "Impressão autoral"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "OBSERVE",
+      "contextFamily": "RECORTE_FOTOGRAFICO",
+      "statement": "Uma fotografia autoral mostra, em enquadramento fechado, mãos colocando sementes na terra. O que pode ser afirmado diretamente?",
+      "options": [
+        "A fotografia prova que a cena ocorreu em uma escola.",
+        "Todas as pessoas presentes estão plantando.",
+        "A imagem mostra a quantidade total de sementes usadas.",
+        "O enquadramento mostra mãos, sementes e terra, mas não o restante do local."
+      ],
+      "correctAnswer": "O enquadramento mostra mãos, sementes e terra, mas não o restante do local.",
+      "explanation": "O recorte torna visíveis mãos, sementes e terra. O que ficou fora do enquadramento não pode ser descrito como se estivesse mostrado.",
+      "hint": "Observe o limite da imagem: quais informações ficaram fora do quadro?",
+      "errorFocus": "Supor que o enquadramento contém toda a situação.",
+      "misconceptions": {
+        "A fotografia prova que a cena ocorreu em uma escola.": [
+          "RECORTE_TRATADO_COMO_CENA_COMPLETA"
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NATUREZA_MORTA_ESCALA",
+      "statement": "Na composição, o vaso ocupa mais área e está mais próximo do centro do que as duas folhas pequenas. Qual leitura relaciona esses dados sem exagerar?",
+      "options": [
+        "O tamanho e a posição podem dar maior destaque ao vaso.",
+        "O vaso é necessariamente o assunto autobiográfico da obra.",
+        "As folhas não fazem parte da composição.",
+        "O vaso tem maior valor econômico que as folhas."
+      ],
+      "correctAnswer": "O tamanho e a posição podem dar maior destaque ao vaso.",
+      "explanation": "A diferença de escala e a posição central podem estabelecer hierarquia visual. Não informam biografia nem valor econômico.",
+      "hint": "Compare área ocupada e posição dos três elementos.",
+      "errorFocus": "Confundir destaque visual com importância biográfica ou econômica.",
+      "misconceptions": {
+        "O vaso é necessariamente o assunto autobiográfico da obra.": [
+          "ESCALA_TOMADA_COMO_VALOR_OU_BIOGRAFIA"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-still-life.svg",
+            "alt": "Uma composição mostra um vaso azul grande próximo ao centro, duas folhas pequenas à direita e uma mesa clara com espaço vazio ao redor.",
+            "caption": "Natureza-morta autoral"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ESPACO_NEGATIVO",
+      "statement": "A forma vermelha pequena aparece perto da borda, cercada por uma grande área clara. Qual aspecto vale observar para explicar seu destaque?",
+      "options": [
+        "A área vazia não participa da composição.",
+        "A distância entre a forma e os demais elementos, junto ao contraste de cor.",
+        "A forma representa uma pessoa solitária com certeza.",
+        "O tamanho pequeno impede qualquer destaque."
+      ],
+      "correctAnswer": "A distância entre a forma e os demais elementos, junto ao contraste de cor.",
+      "explanation": "O espaço ao redor e a diferença cromática podem separar a forma do restante. Solidão ou intenção psicológica não são fatos demonstrados.",
+      "hint": "Observe tanto a forma quanto o espaço que a envolve.",
+      "errorFocus": "Ignorar o espaço negativo ou atribuir um estado emocional como certeza.",
+      "misconceptions": {
+        "A área vazia não participa da composição.": [
+          "ESPACO_VAZIO_TRATADO_COMO_AUSENCIA_DE_COMPOSICAO"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-negative-space.svg",
+            "alt": "Um pequeno retângulo vermelho fica perto da borda superior direita de um campo claro amplo, sem outras figuras.",
+            "caption": "Forma e espaço"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-07",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PADRAO_COM_VARIACAO",
+      "statement": "Na gravura, pequenas formas ovais se repetem; em uma faixa, os intervalos entre elas ficam menores. O que a mudança permite descrever?",
+      "options": [
+        "A gravura prova que as formas estão se movendo fisicamente.",
+        "A variação apaga toda repetição.",
+        "A repetição cria ritmo, e a aproximação dos intervalos altera sua cadência.",
+        "O padrão informa a velocidade exata de uma máquina."
+      ],
+      "correctAnswer": "A repetição cria ritmo, e a aproximação dos intervalos altera sua cadência.",
+      "explanation": "A recorrência das formas e a mudança dos intervalos são evidências de ritmo visual. Elas não registram movimento físico nem uma máquina específica.",
+      "hint": "Compare os intervalos antes e depois da faixa mais densa.",
+      "errorFocus": "Tomar ritmo visual como registro literal de movimento.",
+      "misconceptions": {
+        "A gravura prova que as formas estão se movendo fisicamente.": [
+          "REPETICAO_CONFUNDIDA_COM_MOVIMENTO_REAL"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-repetition.svg",
+            "alt": "Formas ovais pretas repetem-se em três fileiras sobre fundo claro; na fileira inferior, os espaços diminuem gradualmente para a direita.",
+            "caption": "Ritmo e variação"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-08",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FIGURA_E_FUNDO",
+      "statement": "A imagem permite perceber primeiro um vaso claro no centro ou dois perfis escuros voltados um para o outro. Qual conclusão descreve melhor a organização?",
+      "options": [
+        "Uma leitura elimina a outra e prova que a imagem está errada.",
+        "A imagem não tem organização porque admite mais de uma leitura.",
+        "A intenção da pessoa artista foi necessariamente esconder um rosto.",
+        "A relação figura-fundo permite alternar entre duas leituras visuais."
+      ],
+      "correctAnswer": "A relação figura-fundo permite alternar entre duas leituras visuais.",
+      "explanation": "A distribuição de claro e escuro permite alternância perceptiva. A imagem sustenta as duas leituras, mas não documenta a intenção de quem a criou.",
+      "hint": "Observe como a mesma borda pode pertencer ao vaso ou aos perfis.",
+      "errorFocus": "Supor que ambiguidade é erro ou prova de uma intenção específica.",
+      "misconceptions": {
+        "Uma leitura elimina a outra e prova que a imagem está errada.": [
+          "AMBIGUIDADE_TRATADA_COMO_ERRO"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-figure-ground.svg",
+            "alt": "Uma forma clara central lembra um vaso; as áreas escuras laterais podem ser vistas como dois perfis voltados um para o outro.",
+            "caption": "Figura e fundo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PALETAS_E_ATMOSFERA",
+      "statement": "Os dois painéis mostram a mesma praça: um usa amarelos e vermelhos, o outro azuis e verdes. Qual comparação é cuidadosa?",
+      "options": [
+        "As paletas alteram a atmosfera percebida, mas não determinam uma reação universal.",
+        "O painel quente prova que a praça estava em temperatura alta.",
+        "Todas as pessoas preferirão o painel azul.",
+        "A paleta muda o lugar representado e prova que são praças diferentes."
+      ],
+      "correctAnswer": "As paletas alteram a atmosfera percebida, mas não determinam uma reação universal.",
+      "explanation": "A paleta é uma escolha formal que pode afetar a atmosfera. Ela não registra temperatura nem permite generalizar a reação de todo público.",
+      "hint": "Compare a sensação possível e mantenha a conclusão como hipótese, não como regra universal.",
+      "errorFocus": "Tratar associações cromáticas contextuais como universais.",
+      "misconceptions": {
+        "O painel quente prova que a praça estava em temperatura alta.": [
+          "COR_COMO_SIGNIFICADO_UNIVERSAL"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-palettes.svg",
+            "alt": "Dois painéis da mesma praça estilizada: à esquerda, casas e árvores em amarelo e vermelho; à direita, formas equivalentes em azul e verde.",
+            "caption": "Duas paletas autorais"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "EQUILIBRIO_ASSIMETRICO",
+      "statement": "Um círculo claro grande fica à esquerda; quatro formas escuras menores se agrupam à direita. Qual análise considera o conjunto?",
+      "options": [
+        "A composição é simétrica porque há formas nos dois lados.",
+        "A distribuição de tamanhos, tons e posições pode criar equilíbrio sem simetria.",
+        "Só existe equilíbrio quando os dois lados são idênticos.",
+        "As formas pequenas têm menos função por ocuparem menos área."
+      ],
+      "correctAnswer": "A distribuição de tamanhos, tons e posições pode criar equilíbrio sem simetria.",
+      "explanation": "Equilíbrio visual pode surgir de pesos e posições diferentes. A composição descrita não é simétrica, mas os elementos se relacionam dos dois lados.",
+      "hint": "Compare área, contraste, agrupamento e posição; não procure apenas espelhamento.",
+      "errorFocus": "Supor que equilíbrio exige repetição espelhada.",
+      "misconceptions": {
+        "A composição é simétrica porque há formas nos dois lados.": [
+          "SIMETRIA_CONFUNDIDA_COM_EQUILIBRIO"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-balance.svg",
+            "alt": "Um círculo grande e claro ocupa a esquerda; quatro pequenos quadrados escuros agrupam-se à direita, em alturas diferentes.",
+            "caption": "Equilíbrio assimétrico"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PERCURSO_DE_INSTALACAO",
+      "statement": "No esquema da instalação, três objetos ficam em sequência e uma linha pontilhada indica um caminho entre eles. Qual aspecto a disposição convida a analisar?",
+      "options": [
+        "O número exato de pessoas que visitaram a sala.",
+        "O sentimento de cada visitante como dado comprovado.",
+        "Como a sequência espacial pode orientar o percurso e a relação do visitante com os objetos.",
+        "A intenção íntima da pessoa artista sem consultar fontes."
+      ],
+      "correctAnswer": "Como a sequência espacial pode orientar o percurso e a relação do visitante com os objetos.",
+      "explanation": "A planta mostra sequência e percurso sugerido. Ela não fornece presença real de público, experiência individual ou intenção documentada.",
+      "hint": "Siga a linha pontilhada e observe a ordem dos objetos.",
+      "errorFocus": "Inferir comportamento real a partir de percurso representado.",
+      "misconceptions": {
+        "O número exato de pessoas que visitaram a sala.": [
+          "PLANTA_TRATADA_COMO_REGISTRO_DE_VISITANTES"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-installation.svg",
+            "alt": "Planta autoral de uma sala retangular com três estações circulares em sequência e um caminho pontilhado que passa por elas.",
+            "caption": "Planta de instalação"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "LEITURA_A_DISTANCIA",
+      "statement": "Dois cartazes anunciam a mesma feira. No A, a palavra principal é grande e escura sobre amarelo; no B, é cinza-clara sobre branco. Qual característica apoia melhor a hipótese de maior legibilidade a distância?",
+      "options": [
+        "O cartaz B, porque tons claros sempre são mais legíveis.",
+        "Ambos têm legibilidade idêntica, pois anunciam o mesmo evento.",
+        "O cartaz A, porque amarelo significa feira para qualquer público.",
+        "O contraste mais forte e a escala maior da palavra no cartaz A."
+      ],
+      "correctAnswer": "O contraste mais forte e a escala maior da palavra no cartaz A.",
+      "explanation": "Contraste figura-fundo e tamanho são evidências para discutir legibilidade. O tema igual não torna a composição igual, e a cor não possui significado universal.",
+      "hint": "Compare figura-fundo e tamanho das letras, não apenas o assunto anunciado.",
+      "errorFocus": "Ignorar diferenças formais ou atribuir significado fixo à cor.",
+      "misconceptions": {
+        "O cartaz B, porque tons claros sempre são mais legíveis.": [
+          "MESMO_TEMA_CONFUNDIDO_COM_MESMA_COMPOSICAO"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-poster-distance.svg",
+            "alt": "Dois cartazes lado a lado: A traz FEIRA em letras grandes azul-escuras sobre amarelo; B traz FEIRA em letras pequenas cinza-claro sobre branco.",
+            "caption": "Cartazes autorais"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATERIAL_E_MARCA",
+      "statement": "Uma escultura de madeira reaproveitada mantém riscos e furos visíveis. Qual leitura é possível sem ultrapassar as evidências?",
+      "options": [
+        "As marcas e o reaproveitamento podem convidar a pensar sobre uso anterior e descarte.",
+        "A escultura prova que a pessoa artista viveu em pobreza.",
+        "Todos os objetos reaproveitados significam a mesma coisa.",
+        "Os riscos confirmam a idade exata da madeira."
+      ],
+      "correctAnswer": "As marcas e o reaproveitamento podem convidar a pensar sobre uso anterior e descarte.",
+      "explanation": "Material e marcas sustentam uma leitura possível sobre uso e descarte, mas não comprovam biografia, significado universal ou idade exata.",
+      "hint": "Aponte quais marcas são visíveis e qual parte da interpretação é uma hipótese.",
+      "errorFocus": "Deduzir biografia ou idade por aspecto material.",
+      "misconceptions": {
+        "A escultura prova que a pessoa artista viveu em pobreza.": [
+          "MATERIAL_USADO_COMO_PROVA_BIOGRAFICA"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-material.svg",
+            "alt": "Uma assemblage autoral combina tábuas de madeira reaproveitadas, com riscos e furos visíveis, em uma forma geométrica suspensa.",
+            "caption": "Assemblage de madeira"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-14",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REORGANIZAR_CARTAZ",
+      "statement": "Uma biblioteca quer que o horário de funcionamento seja encontrado rapidamente em um cartaz. Qual mudança tem justificativa visual mais direta?",
+      "options": [
+        "Acrescentar ornamentos em todos os espaços disponíveis.",
+        "Aumentar o contraste e separar o horário dos detalhes secundários por tamanho e posição.",
+        "Usar a mesma escala e o mesmo contraste em cada linha.",
+        "Trocar todas as palavras por uma cor sem testar a leitura."
+      ],
+      "correctAnswer": "Aumentar o contraste e separar o horário dos detalhes secundários por tamanho e posição.",
+      "explanation": "Hierarquia por contraste, escala e posição pode facilitar localizar uma informação. A proposta deve ser verificada com leitores; não há garantia automática para todos.",
+      "hint": "Qual relação visual faz o horário ser distinguido do restante?",
+      "errorFocus": "Adicionar elementos sem vínculo com o objetivo de leitura.",
+      "misconceptions": {
+        "Acrescentar ornamentos em todos os espaços disponíveis.": [
+          "DECORACAO_CONFUNDIDA_COM_HIERARQUIA"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-poster-distance.svg",
+            "alt": "Dois cartazes autorais mostram diferenças de contraste e escala entre chamada principal e informações secundárias.",
+            "caption": "Referência para revisão de cartaz"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-15",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CAMINHO_E_EXPERIENCIA",
+      "statement": "A planta de uma instalação coloca uma peça na entrada, outra no centro e a última perto da saída. O que a pessoa pode investigar ao visitar a obra?",
+      "options": [
+        "Que todos os visitantes percorrerão exatamente o mesmo caminho.",
+        "A intenção pessoal da pessoa artista, sem consultar registro.",
+        "Como a ordem espacial e o deslocamento modificam o encontro com cada peça.",
+        "Que a peça da saída tem menor valor artístico."
+      ],
+      "correctAnswer": "Como a ordem espacial e o deslocamento modificam o encontro com cada peça.",
+      "explanation": "A posição e o deslocamento podem afetar a experiência. O desenho não prova um comportamento idêntico nem uma hierarquia de valor.",
+      "hint": "Relacione a localização das peças à sequência possível da visita.",
+      "errorFocus": "Tomar uma possibilidade de percurso como comportamento universal.",
+      "misconceptions": {
+        "Que todos os visitantes percorrerão exatamente o mesmo caminho.": [
+          "PERCURSO_POSSIVEL_TRATADO_COMO_COMPORTAMENTO_CERTO"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-installation.svg",
+            "alt": "Planta de sala com três obras distribuídas da entrada ao fundo e um percurso pontilhado conectando-as.",
+            "caption": "Sequência espacial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-16",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "EVIDENCIA_DE_MOVIMENTO",
+      "statement": "Uma pintura mostra pinceladas curvas repetidas em torno de uma figura, com marcas mais densas de um lado. Qual interpretação usa evidências e limita a afirmação?",
+      "options": [
+        "A pintura prova que a figura estava girando em um instante documentado.",
+        "As pinceladas revelam a personalidade da pessoa artista.",
+        "A repetição impede qualquer leitura de movimento.",
+        "As curvas e a densidade podem conduzir o olhar em torno da figura; isso sugere movimento visual, não movimento real."
+      ],
+      "correctAnswer": "As curvas e a densidade podem conduzir o olhar em torno da figura; isso sugere movimento visual, não movimento real.",
+      "explanation": "A direção das curvas e a concentração das marcas sustentam movimento como efeito visual. A imagem não documenta movimento físico nem personalidade.",
+      "hint": "Cite a direção das pinceladas e diga se você fala de efeito visual ou evento real.",
+      "errorFocus": "Ler efeito compositivo como documentação literal.",
+      "misconceptions": {
+        "A pintura prova que a figura estava girando em um instante documentado.": [
+          "EFEITO_VISUAL_CONFUNDIDO_COM_REGISTRO"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-lines.svg",
+            "alt": "Pinceladas curvas repetidas contornam uma forma central; as marcas ficam mais densas no lado direito.",
+            "caption": "Pintura autoral"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LEITURA_COM_FONTE",
+      "statement": "Uma etiqueta informa que a artista chamou a obra de “memória do caminho de casa”. A composição mostra linhas que convergem para uma janela. Qual afirmação distingue imagem e fonte?",
+      "options": [
+        "A convergência pode conduzir o olhar à janela; a etiqueta registra a associação declarada pela artista.",
+        "A imagem sozinha comprova todos os detalhes da infância da artista.",
+        "A etiqueta torna desnecessário observar as linhas.",
+        "A convergência prova que todas as pessoas lembrarão da própria casa."
+      ],
+      "correctAnswer": "A convergência pode conduzir o olhar à janela; a etiqueta registra a associação declarada pela artista.",
+      "explanation": "A análise formal aponta linhas e direção; a etiqueta acrescenta uma fonte sobre a associação declarada. Nenhuma das duas permite inferir toda uma biografia ou reação universal.",
+      "hint": "Separe o que a composição mostra do que a etiqueta declara.",
+      "errorFocus": "Usar uma fonte limitada para inferir mais do que ela afirma.",
+      "misconceptions": {
+        "A imagem sozinha comprova todos os detalhes da infância da artista.": [
+          "FONTE_E_IMAGEM_FUNDIDAS_EM_CERTEZA_AMPLA"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-lines.svg",
+            "alt": "Linhas convergentes apontam para uma janela estilizada no centro de uma composição autoral.",
+            "caption": "Composição e etiqueta"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_VERSOES_DE_RECORTE",
+      "statement": "Duas imagens mostram a mesma mesa: uma inclui pratos, janela e pessoas ao redor; a outra enquadra apenas mãos e um caderno. O que a comparação permite concluir?",
+      "options": [
+        "A segunda imagem prova que nenhuma outra pessoa estava no local.",
+        "Cada enquadramento oferece evidências diferentes: contexto amplo em um e gesto próximo no outro.",
+        "A primeira é mais verdadeira por mostrar mais elementos.",
+        "As imagens não podem ser comparadas porque têm recortes diferentes."
+      ],
+      "correctAnswer": "Cada enquadramento oferece evidências diferentes: contexto amplo em um e gesto próximo no outro.",
+      "explanation": "O recorte seleciona o que se vê. A imagem ampla contextualiza; a fechada destaca um gesto, sem comprovar o que ficou fora do quadro.",
+      "hint": "Identifique que informação aparece em cada quadro e qual continua desconhecida.",
+      "errorFocus": "Confundir ausência no enquadramento com ausência na realidade.",
+      "misconceptions": {
+        "A segunda imagem prova que nenhuma outra pessoa estava no local.": [
+          "RECORTE_COMO_PROVA_DE_TOTALIDADE"
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-19",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAR_AFIRMACAO_CROMATICA",
+      "statement": "Um colega observa o cartaz amarelo e diz: “Essa cor sempre representa urgência”. Qual reformulação respeita melhor a evidência disponível?",
+      "options": [
+        "“Amarelo significa urgência em qualquer obra e para qualquer público.”",
+        "“A cor não participa da composição porque só importa o texto.”",
+        "“O amarelo contrasta com o azul-marinho neste cartaz; seu sentido depende do contexto e de quem o interpreta.”",
+        "“A pessoa artista quis causar urgência; a cor prova essa intenção.”"
+      ],
+      "correctAnswer": "“O amarelo contrasta com o azul-marinho neste cartaz; seu sentido depende do contexto e de quem o interpreta.”",
+      "explanation": "O contraste está visível. Significado e intenção não são universais e precisam de contexto ou fonte; a reformulação separa observação de hipótese.",
+      "hint": "Transforme “sempre” em uma descrição da relação visível nesta composição.",
+      "errorFocus": "Generalizar uma convenção ou intenção para todos os contextos.",
+      "misconceptions": {
+        "“Amarelo significa urgência em qualquer obra e para qualquer público.”": [
+          "SIGNIFICADO_UNIVERSAL_DE_COR"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-poster-distance.svg",
+            "alt": "Cartazes com amarelo e azul-marinho em uma versão e cinza-claro sobre branco na outra.",
+            "caption": "Contraste em contexto"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-20",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCOLHER_EVIDENCIA",
+      "statement": "Uma leitura afirma que um círculo pequeno é o foco da composição. Qual conjunto de observações sustentaria melhor essa afirmação?",
+      "options": [
+        "A pessoa artista gosta de círculos, embora não haja fonte.",
+        "O círculo é pequeno, então não pode ser foco.",
+        "A obra tem um título interessante, sem informação sobre a imagem.",
+        "O círculo tem contraste maior que as outras formas e está isolado por espaço vazio."
+      ],
+      "correctAnswer": "O círculo tem contraste maior que as outras formas e está isolado por espaço vazio.",
+      "explanation": "Contraste e isolamento são evidências formais que podem sustentar destaque. Preferência pessoal, tamanho isolado ou título sem relação não demonstram a afirmação.",
+      "hint": "Procure relações entre o círculo e os demais elementos, não uma causa biográfica.",
+      "errorFocus": "Escolher uma informação que não sustenta a interpretação.",
+      "misconceptions": {
+        "A pessoa artista gosta de círculos, embora não haja fonte.": [
+          "EVIDENCIA_IRRELEVANTE_PARA_A_LEITURA"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-negative-space.svg",
+            "alt": "Um pequeno círculo vermelho está isolado em uma grande área clara e contrasta com o fundo.",
+            "caption": "Foco e evidência"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-21",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MULTIPLAS_LEITURAS_JUSTIFICADAS",
+      "statement": "Duas pessoas interpretam uma composição abstrata de modos diferentes. O que torna ambas as leituras defensáveis?",
+      "options": [
+        "Cada leitura identifica elementos observáveis e explica como eles sustentam a hipótese proposta.",
+        "As duas opiniões são válidas mesmo sem relação com a obra.",
+        "Só a intenção suposta da pessoa artista pode ser considerada.",
+        "Uma interpretação diferente sempre demonstra erro."
+      ],
+      "correctAnswer": "Cada leitura identifica elementos observáveis e explica como eles sustentam a hipótese proposta.",
+      "explanation": "Leituras podem divergir e ainda ser justificadas quando mostram evidências e delimitam hipóteses. Não basta apenas afirmar uma opinião.",
+      "hint": "Para cada leitura, pergunte: qual detalhe visível a sustenta?",
+      "errorFocus": "Confundir abertura interpretativa com ausência de critérios.",
+      "misconceptions": {
+        "As duas opiniões são válidas mesmo sem relação com a obra.": [
+          "OPINIAO_SEM_EVIDENCIA_OU_UNICIDADE_FORCADA"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/art/interpret-figure-ground.svg",
+            "alt": "Uma composição abstrata de figura e fundo admite duas percepções, ambas localizáveis nas formas visíveis.",
+            "caption": "Leituras possíveis"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-22",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "METODO_DE_LEITURA",
+      "statement": "Ao analisar uma obra desconhecida, qual sequência tende a produzir uma interpretação mais bem fundamentada?",
+      "options": [
+        "Escolher um significado; procurar depois qualquer detalhe que pareça confirmá-lo.",
+        "Descrever elementos; analisar relações; propor uma leitura; indicar evidências e limites.",
+        "Adivinhar a intenção; ignorar materiais, composição e contexto.",
+        "Avaliar se é bonita; concluir que essa opinião explica a obra."
+      ],
+      "correctAnswer": "Descrever elementos; analisar relações; propor uma leitura; indicar evidências e limites.",
+      "explanation": "A sequência começa pela observação, passa pelas relações e só então formula uma leitura sustentada e limitada pelas evidências.",
+      "hint": "Marque qual etapa evita começar por uma conclusão pronta.",
+      "errorFocus": "Partir de uma conclusão e selecionar detalhes de confirmação.",
+      "misconceptions": {
+        "Escolher um significado; procurar depois qualquer detalhe que pareça confirmá-lo.": [
+          "INTERPRETACAO_ANTES_DE_OBSERVACAO"
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-23",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LIMITE_DA_LEGENDA",
+      "statement": "Uma legenda informa o título, o ano e o material de uma obra. Qual conclusão ainda exige outra fonte?",
+      "options": [
+        "O material informado na legenda.",
+        "O ano informado na legenda.",
+        "A motivação pessoal da pessoa artista ao escolher cada elemento.",
+        "A existência do título registrado."
+      ],
+      "correctAnswer": "A motivação pessoal da pessoa artista ao escolher cada elemento.",
+      "explanation": "A legenda sustenta os dados que declara. Motivações pessoais ou intenção específica exigem documentação adicional.",
+      "hint": "Leia exatamente quais fatos a legenda afirma e quais não menciona.",
+      "errorFocus": "Transformar dados de identificação em explicação de intenção.",
+      "misconceptions": {
+        "O material informado na legenda.": [
+          "DADO_DA_FONTE_AMPLIADO_ALÉM_DO_TEXTO"
+        ]
+      }
+    },
+    {
+      "id": "v5-art-interpret-work-24",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "PLANO_DE_ACESSIBILIDADE",
+      "statement": "Uma exposição inclui uma obra visual e uma pessoa cega participa da visita. Qual recurso oferece acesso sem presumir que substitui toda experiência?",
+      "options": [
+        "Retirar a obra da visita para evitar qualquer adaptação.",
+        "Oferecer apenas um adjetivo como “bonita” sem descrever elementos.",
+        "Pedir que a pessoa acompanhante interprete no lugar da visitante.",
+        "Descrição objetiva dos elementos visuais, opção de áudio e mediação tátil quando adequada e autorizada."
+      ],
+      "correctAnswer": "Descrição objetiva dos elementos visuais, opção de áudio e mediação tátil quando adequada e autorizada.",
+      "explanation": "Descrição, áudio e exploração tátil autorizada podem ampliar acesso, respeitando preferências e limites de conservação. Nenhum recurso precisa ser apresentado como substituto universal.",
+      "hint": "Priorize informação concreta, escolha da pessoa visitante e recursos compatíveis com a obra.",
+      "errorFocus": "Presumir necessidades ou substituir autonomia por julgamento de terceiros.",
+      "misconceptions": {
+        "Retirar a obra da visita para evitar qualquer adaptação.": [
+          "ACESSIBILIDADE_REDUZIDA_A_ADJETIVO_OU_SUBSTITUICAO"
+        ]
+      }
+    }
+  ]
+}

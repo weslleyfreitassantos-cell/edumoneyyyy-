@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Natureza-morta com vaso e folhas</title>
+  <desc id="desc">Um vaso azul grande ocupa a região central de uma mesa clara; duas folhas pequenas aparecem à direita e há espaço livre ao redor.</desc>
+  <rect width="600" height="360" fill="#e8eee8"/>
+  <rect y="250" width="600" height="110" fill="#d6b68d"/>
+  <ellipse cx="294" cy="264" rx="92" ry="17" fill="#a67d5a" opacity=".35"/>
+  <path d="M235 126 Q294 145 353 126 L342 244 Q294 270 246 244Z" fill="#2e7180"/>
+  <ellipse cx="294" cy="126" rx="59" ry="16" fill="#428c91"/>
+  <path d="M400 218 C428 176 458 176 469 208 C443 211 421 223 400 218Z" fill="#5b8664"/>
+  <path d="M451 239 C472 199 505 201 515 231 C490 230 472 241 451 239Z" fill="#86a16d"/>
+  <path d="M430 202 Q446 218 462 226 M479 219 Q485 228 495 235" fill="none" stroke="#47664e" stroke-width="4"/>
+</svg>

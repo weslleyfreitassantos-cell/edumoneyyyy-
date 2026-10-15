@@ -1,0 +1,853 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-english-context-vocabulary-inference",
+  "subject": "ENGLISH",
+  "domain": "READING",
+  "topic": "inferir_vocabulario_por_contexto",
+  "canonicalSkillCode": "ENGLISH_USE_CONTEXT_VOCABULARY",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 24,
+  "expectedContextCount": 24,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 10,
+    "TRANSFER": 5,
+    "LOCK_IN": 3,
+    "REVIEW": 2
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 6,
+    "B": 6,
+    "C": 6,
+    "D": 6
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-english-english_reading-3",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v3-english-english_reading-11",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-01",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-02",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-03",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-04",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-05",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-06",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-07",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-08",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-09",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-10",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-11",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-12",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-13",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-14",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-15",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-16",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-17",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-18",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-19",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    },
+    {
+      "questionId": "v93-eng-vocab-20",
+      "hint": "Read the full sentence, locate an explicit clue or connector, and test a near-synonym in context. If two meanings still fit, state what remains uncertain.",
+      "errorFocus": "CONTEXT_CLUE_HYPOTHESIS_TEST_AND_UNCERTAINTY"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 22,
+    "feedbackAdded": 22,
+    "sourceReconciliationStatus": "EXACT",
+    "adjacentLegacyItemsForEditorialReview": [
+      "v3-english-english_reading-3",
+      "v3-english-english_reading-11"
+    ],
+    "newQuestions": 24,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Inferir vocabulário em contexto",
+    "objective": "Inferir sentidos prováveis de palavras em inglês a partir de pistas explícitas, relações entre frases e função gramatical, testando a hipótese e reconhecendo ambiguidades.",
+    "summary": "Leia o enunciado todo, identifique a pista, formule um sentido aproximado e confira se ele funciona na frase. Contexto ajuda, mas nem sempre determina uma tradução única.",
+    "explanation": "## 1. Leia a frase inteira primeiro\nObserve a função da palavra: nomeia uma coisa, descreve, indica ação ou liga ideias? Evite parar na primeira semelhança com o português. Um cognato pode ajudar, mas não prova o significado.\n\n## 2. Procure pistas próximas\nUma explicação depois de dois-pontos, exemplos após “such as”, uma consequência ou uma paráfrase podem restringir o sentido. Conectores como “because”, “unlike”, “but” e “in other words” mostram relações diferentes. Leia o trecho anterior e o seguinte quando necessário.\n\n## 3. Teste a hipótese\nProponha um sinônimo simples e substitua a palavra na frase completa. A gramática e a lógica continuam coerentes? Compare com o que a frase diz explicitamente; não descarte uma evidência só porque ela contraria seu primeiro palpite.\n\n## 4. Diferencie palavra polissêmica de pista suficiente\nUma palavra como “light” pode significar “leve” ou “claro”, dependendo da frase. A situação pode escolher um sentido. Em outras frases, como “the result was remarkable” sem descrição do resultado, o contexto informa que houve uma avaliação, mas não explica o motivo.\n\n## 5. Informe o limite\nSe dois sentidos ainda se encaixarem, não invente certeza. Consulte um dicionário apropriado ou mais texto e registre a ambiguidade até encontrar nova evidência. Inferência contextual produz uma leitura provável, não necessariamente uma tradução exata.",
+    "workedExample": "Em “The path was muddy after the storm, so hikers chose a dry route”, “muddy” é desconhecida. “After the storm” e a escolha de uma rota “dry” apontam para umidade. Testando “covered with mud” na frase, a relação continua coerente. Essa é a hipótese mais apoiada; a frase não informa a profundidade da lama.",
+    "commonMistake": "Escolher o primeiro significado do dicionário ou um falso cognato, sem testar a hipótese contra as pistas da frase inteira.",
+    "tips": [
+      "Sublinhe a palavra-alvo e circule a pista textual.",
+      "Diga se a pista é causa, contraste, exemplo, consequência ou paráfrase.",
+      "Substitua por um sinônimo e mantenha a incerteza quando duas leituras couberem."
+    ],
+    "estimatedMinutes": 24,
+    "priorKnowledge": [
+      "Localizar palavras frequentes em uma frase curta.",
+      "Reconhecer conectores comuns como because, but e such as."
+    ],
+    "keyConcepts": [
+      "context clue",
+      "contrast and cause",
+      "examples and paraphrase",
+      "word class",
+      "polysemy",
+      "false cognates",
+      "inference limits"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Usar definições, causas, contrastes e exemplos explícitos.",
+        "questionIds": [
+          "v5-english-context-vocabulary-01",
+          "v5-english-context-vocabulary-02",
+          "v5-english-context-vocabulary-03",
+          "v5-english-context-vocabulary-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Inferir palavras por consequência, forma, ação, exemplos e sentidos múltiplos.",
+        "questionIds": [
+          "v5-english-context-vocabulary-05",
+          "v5-english-context-vocabulary-06",
+          "v5-english-context-vocabulary-07",
+          "v5-english-context-vocabulary-08",
+          "v5-english-context-vocabulary-09",
+          "v5-english-context-vocabulary-10",
+          "v5-english-context-vocabulary-11",
+          "v5-english-context-vocabulary-12",
+          "v5-english-context-vocabulary-13",
+          "v5-english-context-vocabulary-14"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Combinar pistas, interpretar modalização e reconhecer ambiguidade real.",
+        "questionIds": [
+          "v5-english-context-vocabulary-15",
+          "v5-english-context-vocabulary-16",
+          "v5-english-context-vocabulary-17",
+          "v5-english-context-vocabulary-18",
+          "v5-english-context-vocabulary-19"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Testar hipóteses e limitar conclusões à evidência do trecho.",
+        "questionIds": [
+          "v5-english-context-vocabulary-20",
+          "v5-english-context-vocabulary-21",
+          "v5-english-context-vocabulary-22"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Reaplicar o procedimento e consultar fontes quando o contexto não basta.",
+        "questionIds": [
+          "v5-english-context-vocabulary-23",
+          "v5-english-context-vocabulary-24"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "CAUSE_AND_CONSEQUENCE",
+        "text": "A causa e o efeito ajudam a limitar o sentido, mas não revelam detalhes que a frase não informa."
+      },
+      {
+        "trigger": "EXAMPLE_OR_PARAPHRASE",
+        "text": "“Such as” introduz exemplos; “in other words” costuma reapresentar a ideia. Use a relação, não uma palavra isolada."
+      },
+      {
+        "trigger": "POLYSEMY",
+        "text": "Uma palavra pode ter sentidos diferentes. Teste qual deles explica a ação ou situação descrita."
+      },
+      {
+        "trigger": "SUBSTITUTE_AND_CHECK",
+        "text": "Troque a palavra por um sinônimo aproximado e confira gramática e coerência no enunciado completo."
+      },
+      {
+        "trigger": "CONTEXT_LIMIT",
+        "text": "Se duas leituras continuam possíveis, preserve a ambiguidade e procure mais evidência."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_CLUE",
+        "misconception": "Responder sem apontar pista contextual.",
+        "prompt": "Copie a palavra desconhecida e marque as palavras da frase que dão uma definição, exemplo, causa, contraste ou consequência."
+      },
+      {
+        "id": "TEST_A_PARAPHRASE",
+        "misconception": "Escolher por semelhança ortográfica.",
+        "prompt": "Proponha um sinônimo simples e leia a frase novamente. Explique qual parte continua coerente ou entra em conflito."
+      },
+      {
+        "id": "COMPARE_SENSES",
+        "misconception": "Usar sempre o primeiro sentido conhecido.",
+        "prompt": "Liste dois sentidos possíveis e associe cada um a uma pista. Elimine apenas o que não combina com o contexto."
+      },
+      {
+        "id": "LIMIT_THE_INFERENCE",
+        "misconception": "Tratar uma possibilidade como fato confirmado.",
+        "prompt": "Complete: “O trecho apoia ___ porque ___. Ainda não informa ___.”"
+      },
+      {
+        "id": "SEEK_MORE_CONTEXT",
+        "misconception": "Esconder uma ambiguidade não resolvida.",
+        "prompt": "Indique quais dois sentidos ainda cabem e que frase, exemplo ou fonte ajudaria a distingui-los."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; alinhamento oficial específico não reivindicado."
+      }
+    ],
+    "copyrightNote": "Sentenças, situações, questões e feedbacks são autorais. Alinhamento oficial específico não reivindicado; revisão pedagógica pendente."
+  },
+  "questions": [
+    {
+      "id": "v5-english-context-vocabulary-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "EMPTY_JAR",
+      "statement": "Read: “The jar is empty. There is no honey left.” What does “empty” mean here?",
+      "options": [
+        "Containing nothing.",
+        "Very heavy.",
+        "Made of glass.",
+        "Recently opened."
+      ],
+      "correctAnswer": "Containing nothing.",
+      "explanation": "The second sentence explains “empty”: no honey remains in the jar.",
+      "hint": "Use the clue “There is no honey left.”",
+      "errorFocus": "CONTEXT_CLUE_IGNORED",
+      "misconceptions": {
+        "Very heavy.": [
+          "CONTEXT_CLUE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "WHISPERED_BABY",
+      "statement": "Read: “Nina whispered because the baby was asleep.” What does “whispered” most likely mean?",
+      "options": [
+        "Sang loudly.",
+        "Spoke very quietly.",
+        "Wrote a note.",
+        "Left the room."
+      ],
+      "correctAnswer": "Spoke very quietly.",
+      "explanation": "The sleeping baby gives a reason to use a quiet voice.",
+      "hint": "Connect the action to the reason introduced by “because.”",
+      "errorFocus": "CAUSE_CLUE_IGNORED",
+      "misconceptions": {
+        "Sang loudly.": [
+          "CAUSE_CLUE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "USE_CONTRAST",
+      "contextFamily": "ROUGH_AND_SMOOTH",
+      "statement": "Read: “Unlike the rough path, the paved road was smooth.” Which meaning best fits “rough”?",
+      "options": [
+        "Newly painted.",
+        "Very short.",
+        "Uneven or not smooth.",
+        "Covered with water."
+      ],
+      "correctAnswer": "Uneven or not smooth.",
+      "explanation": "“Unlike” marks a contrast: the paved road is smooth, while the other path is not.",
+      "hint": "Use the contrast with “smooth.”",
+      "errorFocus": "CONTRAST_CONNECTOR_MISSED",
+      "misconceptions": {
+        "Newly painted.": [
+          "CONTRAST_CONNECTOR_MISSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "USE_EXAMPLE",
+      "contextFamily": "RELIABLE_COACH",
+      "statement": "Read: “The coach called Ravi reliable: he arrived on time each day.” What does “reliable” mean here?",
+      "options": [
+        "Someone who changes plans often.",
+        "Someone who speaks several languages.",
+        "Someone who arrives only once.",
+        "Someone who can be depended on."
+      ],
+      "correctAnswer": "Someone who can be depended on.",
+      "explanation": "Arriving on time repeatedly is evidence that Ravi can be depended on.",
+      "hint": "The example after the colon explains the adjective.",
+      "errorFocus": "EXAMPLE_AFTER_COLON_IGNORED",
+      "misconceptions": {
+        "Someone who changes plans often.": [
+          "EXAMPLE_AFTER_COLON_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "SPACIOUS_ROOM",
+      "statement": "Read: “The first room held only two desks. The next room was spacious, with tables for twenty learners.” What does “spacious” mean?",
+      "options": [
+        "Having plenty of room.",
+        "Being unusually quiet.",
+        "Having no windows.",
+        "Being difficult to enter."
+      ],
+      "correctAnswer": "Having plenty of room.",
+      "explanation": "The contrast in capacity and the tables for twenty indicate that the second room has more space.",
+      "hint": "Compare the number of desks and tables.",
+      "errorFocus": "CAPACITY_CLUE_IGNORED",
+      "misconceptions": {
+        "Being unusually quiet.": [
+          "CAPACITY_CLUE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "FRAGILE_PACKAGE",
+      "statement": "A label says “FRAGILE”; the delivery note adds, “Handle gently: the glass inside can break.” What does “fragile” mean?",
+      "options": [
+        "Too large to carry.",
+        "Easily broken or damaged.",
+        "Already repaired.",
+        "Safe to heat."
+      ],
+      "correctAnswer": "Easily broken or damaged.",
+      "explanation": "The note explicitly links the label to glass that can break.",
+      "hint": "Use the explanation after the semicolon.",
+      "errorFocus": "EXPLICIT_DEFINITION_IGNORED",
+      "misconceptions": {
+        "Too large to carry.": [
+          "EXPLICIT_DEFINITION_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "SCARCE_WATER",
+      "statement": "Read: “After three dry months, clean water became scarce; the town opened an extra supply point.” What does “scarce” mean in this passage?",
+      "options": [
+        "Unsafe because it is hot.",
+        "Available in every street.",
+        "Limited and not easy to find.",
+        "More expensive than transport."
+      ],
+      "correctAnswer": "Limited and not easy to find.",
+      "explanation": "The dry period and extra supply point indicate limited availability.",
+      "hint": "Ask why the town opened another supply point.",
+      "errorFocus": "CONSEQUENCE_CLUE_MISREAD",
+      "misconceptions": {
+        "Unsafe because it is hot.": [
+          "CONSEQUENCE_CLUE_MISREAD"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "RELUCTANT_TO_SPEAK",
+      "statement": "Read: “Leila was reluctant to present. She paused at the doorway and asked whether a partner could begin.” What does “reluctant” suggest?",
+      "options": [
+        "She had already completed the presentation.",
+        "She was certain the room was empty.",
+        "She wanted to speak first without help.",
+        "She was hesitant or not eager to begin."
+      ],
+      "correctAnswer": "She was hesitant or not eager to begin.",
+      "explanation": "Pausing and asking a partner to begin are clues of hesitation, though they do not tell us exactly why.",
+      "hint": "Use the actions as evidence and avoid guessing her reason.",
+      "errorFocus": "ACTION_CLUE_OVERRIDDEN",
+      "misconceptions": {
+        "She had already completed the presentation.": [
+          "ACTION_CLUE_OVERRIDDEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "DENSE_FOREST",
+      "statement": "Read: “The forest was dense; only a narrow trail passed between the closely spaced trees.” What does “dense” mean?",
+      "options": [
+        "Having many trees close together.",
+        "Being located far from a town.",
+        "Receiving no rain all year.",
+        "Containing only young trees."
+      ],
+      "correctAnswer": "Having many trees close together.",
+      "explanation": "“Closely spaced trees” directly explains the relevant sense of “dense.”",
+      "hint": "Look for the phrase that describes distance between the trees.",
+      "errorFocus": "NEARBY_REPHRASING_IGNORED",
+      "misconceptions": {
+        "Being located far from a town.": [
+          "NEARBY_REPHRASING_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "GENEROSITY_ACTION",
+      "statement": "Read: “Mateo showed generosity by sharing his supplies with classmates who had none.” What does “generosity” mean in this context?",
+      "options": [
+        "A plan to collect every supply.",
+        "A willingness to give or share with others.",
+        "A rule that everyone must work alone.",
+        "A skill for repairing broken items."
+      ],
+      "correctAnswer": "A willingness to give or share with others.",
+      "explanation": "Sharing supplies with people who have none is an example of giving to others.",
+      "hint": "Use the action after “by” as an example.",
+      "errorFocus": "EXAMPLE_ACTION_NOT_USED",
+      "misconceptions": {
+        "A plan to collect every supply.": [
+          "EXAMPLE_ACTION_NOT_USED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "USE_WORD_FORM",
+      "contextFamily": "USEFUL_TOOL",
+      "statement": "Read: “The guide is useful because it gives clear steps that help new visitors.” What does “useful” mean?",
+      "options": [
+        "Made only for experts.",
+        "Too old to read.",
+        "Helpful for a purpose.",
+        "Written in a language no one knows."
+      ],
+      "correctAnswer": "Helpful for a purpose.",
+      "explanation": "The clear steps help visitors, so the guide serves a helpful purpose.",
+      "hint": "The clause after “because” states the benefit.",
+      "errorFocus": "WORD_FORM_WITHOUT_SENTENCE",
+      "misconceptions": {
+        "Made only for experts.": [
+          "WORD_FORM_WITHOUT_SENTENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH_POLYSEMY",
+      "contextFamily": "LIGHT_BAG",
+      "statement": "Read: “The bag is light, so Jo carried it upstairs without stopping.” Which meaning of “light” fits?",
+      "options": [
+        "Pale in color.",
+        "Bright enough to see by.",
+        "Not serious in tone.",
+        "Not heavy."
+      ],
+      "correctAnswer": "Not heavy.",
+      "explanation": "Carrying the bag upstairs without stopping supports the weight meaning.",
+      "hint": "Choose the sense that explains the action.",
+      "errorFocus": "FIRST_DICTIONARY_SENSE_SELECTED",
+      "misconceptions": {
+        "Pale in color.": [
+          "FIRST_DICTIONARY_SENSE_SELECTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "EVENTUALLY_ARRIVED",
+      "statement": "Read: “The train was delayed, but it eventually arrived at 8:10.” What does “eventually” mean here?",
+      "options": [
+        "In the end, after some delay.",
+        "Possibly, but not certainly.",
+        "At the exact beginning.",
+        "Earlier than planned."
+      ],
+      "correctAnswer": "In the end, after some delay.",
+      "explanation": "The delay followed by arrival shows that the event happened in the end.",
+      "hint": "Compare “was delayed” with “arrived.”",
+      "errorFocus": "FALSE_COGNATE_EVENTUALLY",
+      "misconceptions": {
+        "Possibly, but not certainly.": [
+          "FALSE_COGNATE_EVENTUALLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "USE_EXAMPLE",
+      "contextFamily": "HERB_EXAMPLES",
+      "statement": "Read: “The recipe uses herbs, such as basil and parsley, for flavor.” Which meaning of “herbs” is supported?",
+      "options": [
+        "Any object used to measure heat.",
+        "Plants used here to add flavor to food.",
+        "A kind of cooking container.",
+        "A method for freezing a recipe."
+      ],
+      "correctAnswer": "Plants used here to add flavor to food.",
+      "explanation": "Basil and parsley are examples, and the sentence states their purpose.",
+      "hint": "Use both the examples and the phrase “for flavor.”",
+      "errorFocus": "CATEGORY_FROM_EXAMPLES_MISSED",
+      "misconceptions": {
+        "Any object used to measure heat.": [
+          "CATEGORY_FROM_EXAMPLES_MISSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-15",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE_SENSES",
+      "contextFamily": "CURRENT_IN_RIVER",
+      "statement": "Read: “The river current was strong after the rain, so the team waited before crossing.” What does “current” mean?",
+      "options": [
+        "A present-day schedule.",
+        "An electrical wire.",
+        "The flow of water.",
+        "A recent news story."
+      ],
+      "correctAnswer": "The flow of water.",
+      "explanation": "The river and crossing context point to moving water.",
+      "hint": "Check which meaning fits both “river” and “crossing.”",
+      "errorFocus": "POLYSEMY_CONTEXT_NOT_TESTED",
+      "misconceptions": {
+        "A present-day schedule.": [
+          "POLYSEMY_CONTEXT_NOT_TESTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-16",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INFER_LIMIT",
+      "contextFamily": "MAY_REDUCE",
+      "statement": "A report says: “The new shade may reduce room temperature; measurements will continue for two weeks.” Which interpretation matches the evidence?",
+      "options": [
+        "The room is already cooler in every measurement.",
+        "The shade cannot affect temperature.",
+        "Two weeks of results have already been collected.",
+        "A reduction is possible, but it has not yet been confirmed."
+      ],
+      "correctAnswer": "A reduction is possible, but it has not yet been confirmed.",
+      "explanation": "“May” indicates possibility, and future measurements show the claim remains under investigation.",
+      "hint": "Keep certainty at the level expressed by “may.”",
+      "errorFocus": "POSSIBILITY_TURNED_INTO_CERTAINTY",
+      "misconceptions": {
+        "The room is already cooler in every measurement.": [
+          "POSSIBILITY_TURNED_INTO_CERTAINTY"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER_FROM_PARAPHRASE",
+      "contextFamily": "WITHDRAWN_APPLICATION",
+      "statement": "Read: “After reviewing the schedule, the applicant withdrew the request. In other words, the request was no longer being pursued.” What does “withdrew” mean?",
+      "options": [
+        "Formally took back or stopped pursuing the request.",
+        "Moved the request to a higher shelf.",
+        "Asked for the request to be approved immediately.",
+        "Submitted the same request twice."
+      ],
+      "correctAnswer": "Formally took back or stopped pursuing the request.",
+      "explanation": "The second sentence restates the result: the request was no longer being pursued.",
+      "hint": "Treat “in other words” as a paraphrase clue.",
+      "errorFocus": "PARAPHRASE_CONNECTOR_IGNORED",
+      "misconceptions": {
+        "Moved the request to a higher shelf.": [
+          "PARAPHRASE_CONNECTOR_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER_WITH_MULTIPLE_CLUES",
+      "contextFamily": "DIMMED_DISPLAY",
+      "statement": "Read: “The display dimmed as the battery ran low. Icons became harder to see, though the device still worked.” What does “dimmed” mean?",
+      "options": [
+        "Stopped producing sound.",
+        "Became less bright.",
+        "Showed more icons.",
+        "Became heavier."
+      ],
+      "correctAnswer": "Became less bright.",
+      "explanation": "The battery context and reduced visibility indicate lower brightness; the device did not stop working.",
+      "hint": "Use the visual consequence while keeping the contrast “though it still worked.”",
+      "errorFocus": "CONTRAST_SCOPE_IGNORED",
+      "misconceptions": {
+        "Stopped producing sound.": [
+          "CONTRAST_SCOPE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_AMBIGUITY",
+      "contextFamily": "SANCTION_CONTEXT",
+      "statement": "A short note says: “The committee discussed a sanction after the review,” but does not describe the action or decision. What can be inferred about “sanction” from this note alone?",
+      "options": [
+        "It proves that the committee punished someone.",
+        "It confirms that the committee approved the proposal.",
+        "It refers to a formal measure, but the note does not show whether it means approval or a penalty.",
+        "It means the review meeting was cancelled."
+      ],
+      "correctAnswer": "It refers to a formal measure, but the note does not show whether it means approval or a penalty.",
+      "explanation": "The noun “sanction” can refer to official approval or a penalty. The note gives no action or decision that distinguishes those meanings.",
+      "hint": "Identify what the note states, then check whether it gives a result that selects one sense.",
+      "errorFocus": "AMBIGUOUS_WORD_FORCED_TO_ONE_SENSE",
+      "misconceptions": {
+        "It proves that the committee punished someone.": [
+          "AMBIGUOUS_WORD_FORCED_TO_ONE_SENSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-20",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TEST_HYPOTHESIS",
+      "contextFamily": "SUBSTITUTE_AND_CHECK",
+      "statement": "A learner guesses that “reluctant” means “excited” in “She was reluctant to join; she asked to watch first.” Which check best tests the guess?",
+      "options": [
+        "Replace it with “excited” again and ignore the second clause.",
+        "Choose a meaning because it looks like a Portuguese word.",
+        "Assume the writer made a mistake.",
+        "Replace it with “hesitant” and see whether the following action remains coherent."
+      ],
+      "correctAnswer": "Replace it with “hesitant” and see whether the following action remains coherent.",
+      "explanation": "“Hesitant” fits asking to watch first; “excited” conflicts with the stated behavior more strongly.",
+      "hint": "Test a near-synonym against the whole sentence.",
+      "errorFocus": "HYPOTHESIS_NOT_TESTED",
+      "misconceptions": {
+        "Replace it with “excited” again and ignore the second clause.": [
+          "HYPOTHESIS_NOT_TESTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-21",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH_INFERENCE",
+      "contextFamily": "CONTEXT_NOT_ENOUGH",
+      "statement": "A short message says, “The result was remarkable,” but gives no result, comparison or reaction. What is the best conclusion about “remarkable”?",
+      "options": [
+        "It signals that the writer considers the result notable, but the reason and degree are not specified.",
+        "It proves the result broke a world record.",
+        "It means the result was exactly average.",
+        "It identifies which measurement was taken."
+      ],
+      "correctAnswer": "It signals that the writer considers the result notable, but the reason and degree are not specified.",
+      "explanation": "The adjective signals evaluation; without additional evidence, the specific reason for the judgment is unknown.",
+      "hint": "Separate the evaluation from facts the message does not provide.",
+      "errorFocus": "EVALUATIVE_WORD_OVERREAD",
+      "misconceptions": {
+        "It proves the result broke a world record.": [
+          "EVALUATIVE_WORD_OVERREAD"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-22",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "CONTEXTUAL_INFERENCE_STEPS",
+      "statement": "Which sequence best supports a careful inference about an unfamiliar word?",
+      "options": [
+        "Guess from spelling, then ignore conflicting details.",
+        "Identify its role, locate explicit clues, propose a meaning, test it in the whole sentence, and note uncertainty.",
+        "Translate each word separately and stop at the first meaning.",
+        "Choose the most technical definition whether or not it fits."
+      ],
+      "correctAnswer": "Identify its role, locate explicit clues, propose a meaning, test it in the whole sentence, and note uncertainty.",
+      "explanation": "The sequence combines grammar, textual evidence, a substitution test and a limit on certainty.",
+      "hint": "Look for a method that checks a hypothesis instead of stopping at a guess.",
+      "errorFocus": "INFERENCE_METHOD_SKIPPED",
+      "misconceptions": {
+        "Guess from spelling, then ignore conflicting details.": [
+          "INFERENCE_METHOD_SKIPPED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-23",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_METHOD",
+      "contextFamily": "CAUSE_CONTRAST_EXAMPLE",
+      "statement": "A passage includes “because,” “unlike” and “such as.” How can these words help infer vocabulary?",
+      "options": [
+        "They guarantee that every unfamiliar word has one exact translation.",
+        "They identify the author’s age.",
+        "They signal cause, contrast and examples that constrain possible meanings.",
+        "They replace the need to read the surrounding sentence."
+      ],
+      "correctAnswer": "They signal cause, contrast and examples that constrain possible meanings.",
+      "explanation": "These connectors organize relations in the text; they provide clues but do not guarantee an exact translation.",
+      "hint": "Match each connector to the relation it signals.",
+      "errorFocus": "CONNECTORS_TREATED_AS_TRANSLATION",
+      "misconceptions": {
+        "They guarantee that every unfamiliar word has one exact translation.": [
+          "CONNECTORS_TREATED_AS_TRANSLATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-24",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "DICTIONARY_CONFIRMATION",
+      "statement": "Context suggests two possible meanings for an unfamiliar word, and both fit the paragraph. What is a useful next step?",
+      "options": [
+        "Pick one meaning at random and report it as certain.",
+        "Ignore the paragraph and infer from spelling alone.",
+        "Assume both meanings are identical.",
+        "Check a suitable dictionary or a wider source and keep the ambiguity explicit until it is resolved."
+      ],
+      "correctAnswer": "Check a suitable dictionary or a wider source and keep the ambiguity explicit until it is resolved.",
+      "explanation": "When local clues do not distinguish meanings, a broader source can help. Until then, the evidence supports uncertainty.",
+      "hint": "Ask what additional evidence would separate the two meanings.",
+      "errorFocus": "UNCERTAINTY_HIDDEN",
+      "misconceptions": {
+        "Pick one meaning at random and report it as certain.": [
+          "UNCERTAINTY_HIDDEN"
+        ]
+      }
+    }
+  ]
+}
