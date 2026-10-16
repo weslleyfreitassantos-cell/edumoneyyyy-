@@ -134,6 +134,21 @@ describe('Sidebar', () => {
     expect(
       screen.getByRole('link', { name: 'Painel Inclusivo' }).getAttribute('href'),
     ).toBe('/inclusive-education');
+    const inclusiveLinks = [
+      'Painel Inclusivo',
+      'PEI dos Alunos',
+      'AEE / PAEE',
+      'Biblioteca de Atividades',
+      'Exercícios Interativos',
+      'Materiais para Download',
+      'Evolução Pedagógica',
+      'Vídeos didáticos',
+    ].map((label) => screen.getByRole('link', { name: label }));
+    expect(
+      new Set(
+        inclusiveLinks.map((link) => link.querySelector('svg')?.outerHTML),
+      ).size,
+    ).toBe(inclusiveLinks.length);
 
     cleanup();
     renderSidebar({
