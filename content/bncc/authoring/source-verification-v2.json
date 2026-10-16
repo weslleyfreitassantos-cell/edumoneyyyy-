@@ -24,6 +24,28 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "AUTHOR_EXPERIENTIAL_EVIDENCE_NOT_TRADITIONAL_CHILD_QUIZ",
       "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "officialCode": "EI01CG02",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "componentCode": "CG",
+      "ageRange": "Bebes, zero a 1 ano e 6 meses",
+      "fieldOfExperience": "Corpo, gestos e movimentos",
+      "descriptor": "Experimentar as possibilidades corporais nas brincadeiras e interações em ambientes acolhedores e desafiantes.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 49
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "HIERARCHY_ONLY",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHOR_EXPERIENTIAL_EVIDENCE_NOT_TRADITIONAL_CHILD_QUIZ",
+      "evidenceCheckedAt": "2026-10-16"
     }
   ]
 }

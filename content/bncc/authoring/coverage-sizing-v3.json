@@ -25,10 +25,11 @@
       "MAPPED": 2
     },
     "technicalDeepReadySequences": 78,
-    "v5QuestionTotal": 4126,
-    "consolidatedQuestionTotal": 5178,
+    "v5QuestionTotal": 5576,
+    "consolidatedQuestionTotal": 6628,
     "exactSourceVerificationCodes": [
-      "EI01CG01"
+      "EI01CG01",
+      "EI01CG02"
     ]
   },
   "sizingMethodology": {
@@ -40970,7 +40971,7 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "EXPERIENTIAL",
       "technicalMinimumQuestions": 0,
       "pedagogicalMinimumQuestions": 0,
