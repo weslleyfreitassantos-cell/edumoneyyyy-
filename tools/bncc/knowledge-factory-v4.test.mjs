@@ -391,8 +391,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(atomic).toMatchObject({
       originalQuestionCount: 27,
-      v5QuestionCount: 14,
-      currentQuestionCount: 41,
+      v5QuestionCount: 114,
+      currentQuestionCount: 141,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 27, actualQuestionCount: 27, status: 'EXACT' },
@@ -400,7 +400,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(atomic.purposeCounts).toEqual({ PROBE: 5, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(atomic.purposeCounts).toEqual({ PROBE: 15, PRACTICE: 52, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 });
     expect(atomic.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'CHEMISTRY_ATOMIC_STRUCTURE')).toEqual([]);
   });
