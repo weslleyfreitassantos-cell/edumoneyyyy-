@@ -331,10 +331,10 @@ describe('BNCC total knowledge factory V4', () => {
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
     expect(report.existingContent.depthAudit.find((item) => item.targetId === 'MATH_SUCCESSIVE_PERCENT_CHANGE')).toMatchObject({
       originalQuestionCount: 29,
-      v5QuestionCount: 14,
-      currentQuestionCount: 43,
+      v5QuestionCount: 114,
+      currentQuestionCount: 143,
       technicalDeepReady: true,
-      purposeCounts: { PROBE: 6, PRACTICE: 13, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 },
+      purposeCounts: { PROBE: 16, PRACTICE: 53, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 },
       missingMinimums: {},
       missingDepthDimensions: [],
       sourceReconciliation: { expectedQuestionCount: 29, actualQuestionCount: 29, status: 'EXACT', questionFeedbackCount: 29 },

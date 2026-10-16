@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "61f37151493dbe05602ffe73a0ed1ec4bf4de88cb5b9543edf23bb3d5a85579d",
+    "v5QuestionFirstPacks": "b90524086a32c871e444326f07faf00a1892cd0af7d1d07e941c03cb93eea60d",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 3726,
-    "consolidatedQuestionTotal": 4778,
+    "v5QuestionTotal": 3826,
+    "consolidatedQuestionTotal": 4878,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -2599,15 +2599,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "A base muda a cada variação",
         "originalQuestionCount": 29,
-        "v5QuestionCount": 14,
+        "v5QuestionCount": 114,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 43,
+        "currentQuestionCount": 143,
         "purposeCounts": {
-          "PROBE": 6,
-          "PRACTICE": 13,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 16,
+          "PRACTICE": 53,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -2631,7 +2631,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 43,
+        "contextFamilyCount": 143,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "124fe3abbdf2408a4e67122f78fb7907a2e719e04c4c410029836eaa724b38cd"
+  "inventoryHash": "5e0ad4ae7160c723cab576d0097de6b656cdeb3f9257b2372617275f6f3cf7d7"
 }
