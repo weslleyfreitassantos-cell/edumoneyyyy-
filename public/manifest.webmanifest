@@ -1,0 +1,35 @@
+{
+  "id": "/",
+  "name": "TecEscola",
+  "short_name": "TecEscola",
+  "description": "Portal acadêmico TecEscola",
+  "lang": "pt-BR",
+  "start_url": "/login?source=installed-app",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#f4f7fb",
+  "theme_color": "#075bbf",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "/icons/tecescola-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/tecescola-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/tecescola-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
