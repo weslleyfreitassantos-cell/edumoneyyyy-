@@ -17,6 +17,7 @@ import {
   ClipboardList,
   CircleHelp,
   Clock3,
+  Download,
   FileCheck2,
   FileUser,
   GraduationCap,
@@ -29,6 +30,7 @@ import {
   Palette,
   School,
   ShieldCheck,
+  TrendingUp,
   Users,
   UsersRound,
   Video,
@@ -128,16 +130,52 @@ const hiddenSectionLabels: readonly NavigationSection[] = [
   'personal',
 ];
 
-const inclusiveEducationNavigation = [
-  ['Painel Inclusivo', '/inclusive-education'],
-  ['PEI dos Alunos', '/inclusive-education/pei'],
-  ['AEE / PAEE', '/inclusive-education/aee-paee'],
-  ['Biblioteca de Atividades', '/inclusive-education/activities'],
-  ['Exercícios Interativos', '/inclusive-education/exercises'],
-  ['Materiais para Download', '/inclusive-education/materials'],
-  ['Evolução Pedagógica', '/inclusive-education/progress'],
-  ['Vídeos didáticos', '/inclusive-education/videos'],
-] as const;
+const inclusiveEducationNavigation: ReadonlyArray<{
+  label: string;
+  path: string;
+  icon: LucideIcon;
+}> = [
+  {
+    label: 'Painel Inclusivo',
+    path: '/inclusive-education',
+    icon: LayoutDashboard,
+  },
+  {
+    label: 'PEI dos Alunos',
+    path: '/inclusive-education/pei',
+    icon: GraduationCap,
+  },
+  {
+    label: 'AEE / PAEE',
+    path: '/inclusive-education/aee-paee',
+    icon: Accessibility,
+  },
+  {
+    label: 'Biblioteca de Atividades',
+    path: '/inclusive-education/activities',
+    icon: BookOpen,
+  },
+  {
+    label: 'Exercícios Interativos',
+    path: '/inclusive-education/exercises',
+    icon: ListChecks,
+  },
+  {
+    label: 'Materiais para Download',
+    path: '/inclusive-education/materials',
+    icon: Download,
+  },
+  {
+    label: 'Evolução Pedagógica',
+    path: '/inclusive-education/progress',
+    icon: TrendingUp,
+  },
+  {
+    label: 'Vídeos didáticos',
+    path: '/inclusive-education/videos',
+    icon: Video,
+  },
+];
 
 const adminModuleIcons: Record<
   AdminModuleId,
@@ -907,9 +945,9 @@ export default function Sidebar({
       <section className="mb-4" aria-label="Educação Inclusiva">
         <p className="mb-1 px-3 text-xs font-bold uppercase tracking-[0.16em] text-[#667085]">Educação Inclusiva</p>
         <div className="space-y-1.5">
-          {inclusiveEducationNavigation.map(([label, path]) => {
+          {inclusiveEducationNavigation.map(({ label, path, icon: Icon }) => {
             const active = location.pathname === path;
-            return <Link key={path} to={path} onClick={onCloseMobile} aria-current={active ? 'page' : undefined} className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#414754] hover:bg-white'}`}><Accessibility className={`h-5 w-5 shrink-0 ${active ? 'text-[#005bbf]' : 'text-[#667085]'}`} aria-hidden="true" /><span className="truncate">{label}</span></Link>;
+            return <Link key={path} to={path} onClick={onCloseMobile} aria-current={active ? 'page' : undefined} className={`flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold ${active ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]' : 'text-[#414754] hover:bg-white'}`}><Icon className={`h-5 w-5 shrink-0 ${active ? 'text-[#005bbf]' : 'text-[#667085]'}`} aria-hidden="true" /><span className="truncate">{label}</span></Link>;
           })}
         </div>
       </section>
