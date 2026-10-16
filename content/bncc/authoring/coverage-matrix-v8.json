@@ -18,7 +18,7 @@
     "noProductionWrites": true,
     "exactSourceVerificationCount": 4,
     "canonicalMappingCount": 2,
-    "authoringContextCount": 1
+    "authoringContextCount": 2
   },
   "summary": {
     "totalOfficialNodes": 1723,
@@ -33,7 +33,7 @@
       "HUMAN_REVIEW_BLOCKED": 121,
       "MAPPED": 2
     },
-    "rowsWithAuthoringContext": 1,
+    "rowsWithAuthoringContext": 2,
     "rowsWithExactSourceVerification": 4
   },
   "rows": [
@@ -51509,11 +51509,22 @@
         "mappingSource": "CANONICAL_MAPPING_GAP",
         "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
         "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
-        "packages": [],
-        "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
+        "packages": [
+          {
+            "file": "humanities-evidence-arguments-hs-v8.json",
+            "contentId": "v8-humanities-evidence-arguments-hs",
+            "canonicalSkillCode": "HUMANITIES_EVIDENCE_ARGUMENTS_HS",
+            "lesson": true,
+            "questionCount": 40,
+            "officialMappingStatus": "NOT_CLAIMED",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "publicationStatus": "STAGING_INACTIVE",
+            "relation": "AUTHORING_CONTEXT_ONLY"
+          }
+        ],
+        "contentStatus": "AUTHORING_CONTEXT_PRESENT_REVIEW_REQUIRED",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
-          "AUTHORING_PACKAGE",
+          "CANONICAL_MAPPING_REVIEW",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
         ]
@@ -58631,5 +58642,5 @@
       }
     }
   ],
-  "matrixHash": "9dddffa0954e5511aca4a88c10c767d7702be997d5c0e1bd1371a35513417668"
+  "matrixHash": "c1ce69ed48bcad957b7defad9a148583b48b31e9045af9eae954d0033fe29bd4"
 }
