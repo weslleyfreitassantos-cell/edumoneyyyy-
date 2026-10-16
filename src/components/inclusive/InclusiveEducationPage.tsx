@@ -18,7 +18,6 @@ import { INCLUSIVE_EDUCATION_DATA_ENABLED, listInclusiveAeePlans, listInclusiveP
 import { inclusiveActivities, externalResources, type InclusiveActivity } from './inclusiveEducationCatalog';
 import { InclusiveIllustration, type InclusiveVisualKey } from './InclusiveIllustration';
 import { InclusivePrintableMaterial, printableMaterials } from './InclusivePrintableMaterial';
-import { InclusiveEducationBrand } from './InclusiveEducationBrand';
 
 type InclusiveSection = 'overview' | 'pei' | 'aee-paee' | 'activities' | 'exercises' | 'materials' | 'progress' | 'videos';
 
@@ -38,15 +37,11 @@ function visualForActivity(id: string): InclusiveVisualKey {
   return map[id] ?? 'school';
 }
 
-function PageHeader({ title, description, icon: Icon = Accessibility }: { title: string; description: string; icon?: LucideIcon }) {
+function PageHeader({ title, description }: { title: string; description: string; icon?: LucideIcon }) {
   return (
     <header className="rounded-2xl bg-gradient-to-br from-[#075fc4] to-[#1686d9] p-6 text-white shadow-sm sm:p-8">
-      <div className="flex items-start gap-4">
-        <InclusiveEducationBrand size="md" />
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/15">
-          <Icon className="h-6 w-6" aria-hidden="true" />
-        </span>
-        <div>
+      <div className="flex items-start">
+        <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-100">Educação Inclusiva</p>
           <h1 className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">{title}</h1>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-blue-50">{description}</p>
@@ -228,8 +223,7 @@ export default function InclusiveEducationPage() {
   return (
     <div className="space-y-6">
       <PageHeader title="Visão Geral" description="Uma área única para planejar, acompanhar e apoiar a aprendizagem inclusiva com segurança e colaboração entre a equipe escolar." />
-      <section className="flex items-center gap-4 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <InclusiveEducationBrand size="lg" />
+      <section className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-[#075fc4]">Identidade do módulo</p><h2 className="mt-1 text-xl font-extrabold text-slate-900 dark:text-white">Educação Inclusiva Tec Escola</h2><p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Planejamento, acessibilidade e participação para diferentes formas de aprender.</p></div>
       </section>
       <section className="grid gap-3 sm:grid-cols-3" aria-label="Indicadores do catálogo local">
