@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "7484f698277006bbff5946a7227f2bcefb6cf678e768c09bc3c4c10675f7657a",
-  "outputHash": "7fa29ed847864b13913899d4ebd45259844b97346ff05c0de9429c2c185e0801",
+  "inputHash": "b14f0fa918cd672b6342467a2404a7bcd500708ee9f21e53b01b1b03e6c2e38c",
+  "outputHash": "0128337d4b596564bae962c003061ba1bdcd9cdb577d322410a7caeb281b9d98",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -10,16 +10,16 @@
     "UNIT_STAGING_PACKAGE_BUILT",
     "HUMAN_REVIEW_DRAFTS_BUILT"
   ],
-  "currentWave": 2,
+  "currentWave": 3,
   "nextQueueItem": {
-    "wave": 2,
-    "id": "PE_EXPLAIN_SPORT_PRINCIPLES",
-    "stage": "FUNDAMENTAL_II",
-    "subject": "PHYSICAL_EDUCATION",
-    "status": "CONTENT_GAP",
-    "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
+    "wave": 3,
+    "id": "EI01CG01",
+    "stage": "EDUCACAO_INFANTIL",
+    "subject": "CG",
+    "status": "SOURCE_TEXT_REVIEW_REQUIRED",
+    "reason": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_REVIEW_SOURCE"
   },
-  "pendingItems": 1729,
+  "pendingItems": 1721,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "a807c1862d38a0aa7903e523ef44efcaa22ac57679e1404e980348e47f15846c"
+  "checkpointHash": "0c9e20383fb4c3d1a865c7a4b9fb236493ed6c33558fdc2c6e96e917fe2ce227"
 }

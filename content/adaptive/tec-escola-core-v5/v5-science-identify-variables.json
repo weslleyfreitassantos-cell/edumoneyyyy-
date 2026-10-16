@@ -1,0 +1,1154 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-science-identify-variables",
+  "subject": "SCIENCE",
+  "domain": "INVESTIGACAO_CIENTIFICA",
+  "topic": "identificar variáveis em investigações",
+  "canonicalSkillCode": "SCIENCE_IDENTIFY_VARIABLES",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-science-science_transformations-8",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "SCIENCE_IDENTIFY_VARIABLES_SCOPE_AND_REASONING"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 1,
+    "feedbackAdded": 1,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Identificar variáveis em investigações",
+    "objective": "Distinguir variável manipulada, resultado medido, controles, repetição e confundidores em investigações científicas.",
+    "summary": "Um experimento confiável transforma uma pergunta em condições comparáveis, medidas claras, controles, repetição e limites de conclusão.",
+    "explanation": "## 1. Transforme pergunta em teste\nDefina qual condição será alterada e qual resultado será medido.\n\n## 2. Mantenha controles\nEspécie, volume, tempo, instrumento e ambiente podem precisar permanecer constantes para tornar a comparação justa.\n\n## 3. Meça com critério\nUnidade, ponto inicial, ponto final e repetição reduzem interpretações vagas.\n\n## Exemplo resolvido\nPara testar luz e crescimento, altere a quantidade de luz, mantenha água e espécie e meça crescimento com o mesmo procedimento.\n\n## 4. Conclua proporcionalmente\nResultados valem para as condições observadas; outras populações e contextos exigem novos testes.",
+    "workedExample": "Preencha uma matriz com pergunta, variável manipulada, resultado, controles, repetição, risco e limite da conclusão.",
+    "commonMistake": "Mudar vários fatores ao mesmo tempo, confundir hipótese com resultado ou generalizar além da amostra.",
+    "tips": [
+      "Nomeie fator e resultado.",
+      "Liste condições mantidas.",
+      "Defina medida e unidade.",
+      "Indique limites e riscos."
+    ],
+    "estimatedMinutes": 30,
+    "priorKnowledge": [
+      "Comparar situações e registrar medidas.",
+      "Reconhecer hipóteses e evidências."
+    ],
+    "keyConcepts": [
+      "variável",
+      "controle",
+      "medida",
+      "hipótese",
+      "repetição",
+      "confundidor",
+      "conclusão"
+    ],
+    "activity": "Revisar o desenho de uma investigação didática e corrigir uma variável confundidora sem alterar o objetivo.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar ideia, critério ou variável central.",
+        "questionIds": [
+          "v5-science-identify-variables-01",
+          "v5-science-identify-variables-02",
+          "v5-science-identify-variables-03",
+          "v5-science-identify-variables-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-science-identify-variables-05",
+          "v5-science-identify-variables-06",
+          "v5-science-identify-variables-07",
+          "v5-science-identify-variables-08",
+          "v5-science-identify-variables-09",
+          "v5-science-identify-variables-10",
+          "v5-science-identify-variables-11",
+          "v5-science-identify-variables-12",
+          "v5-science-identify-variables-13",
+          "v5-science-identify-variables-14",
+          "v5-science-identify-variables-15",
+          "v5-science-identify-variables-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-science-identify-variables-17",
+          "v5-science-identify-variables-18",
+          "v5-science-identify-variables-19",
+          "v5-science-identify-variables-20",
+          "v5-science-identify-variables-21",
+          "v5-science-identify-variables-22",
+          "v5-science-identify-variables-23",
+          "v5-science-identify-variables-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-science-identify-variables-25",
+          "v5-science-identify-variables-26",
+          "v5-science-identify-variables-27",
+          "v5-science-identify-variables-28",
+          "v5-science-identify-variables-29",
+          "v5-science-identify-variables-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-science-identify-variables-31",
+          "v5-science-identify-variables-32",
+          "v5-science-identify-variables-33",
+          "v5-science-identify-variables-34",
+          "v5-science-identify-variables-35",
+          "v5-science-identify-variables-36",
+          "v5-science-identify-variables-37",
+          "v5-science-identify-variables-38",
+          "v5-science-identify-variables-39",
+          "v5-science-identify-variables-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e condição antes de concluir."
+      },
+      {
+        "trigger": "BOUND_CLAIM",
+        "text": "A resposta correta não afirma mais do que a situação sustenta."
+      },
+      {
+        "trigger": "CHECK_EVIDENCE",
+        "text": "Identifique fonte, medida, regra ou observação usada."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar contexto, condição, fonte ou recorte.",
+        "prompt": "Sublinhe quem, quando, onde e em quais condições. Reescreva a resposta com esses limites."
+      },
+      {
+        "id": "SEPARATE_OBSERVATION",
+        "misconception": "Confundir observação, interpretação, causa ou julgamento.",
+        "prompt": "Faça duas colunas: o que foi observado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_COMPARISON",
+        "misconception": "Comparar situações sem manter critérios equivalentes.",
+        "prompt": "Liste o que é igual, o que mudou e qual critério permite uma comparação justa."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar uma regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de transferir o raciocínio."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-science-identify-variables-activity",
+        "title": "Oficina de identificar variáveis em investigações",
+        "objective": "Distinguir variável manipulada, resultado medido, controles, repetição e confundidores em investigações científicas.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto, situação ou registro acessível",
+          "Quadro de evidências",
+          "Registro de estratégia"
+        ],
+        "instructions": "Revisar o desenho de uma investigação didática e corrigir uma variável confundidora sem alterar o objetivo.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-science-identify-variables-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_LUZ_E_CRESCIMENTO_01",
+      "statement": "Uma turma investiga se a quantidade de luz altera o crescimento de mudas, mantendo espécie e volume de água.. Qual é a variável manipulada?",
+      "options": [
+        "a quantidade de luz, pois é a condição alterada intencionalmente.",
+        "todas as condições são variáveis independentes",
+        "água não precisa ser controlada",
+        "a hipótese substitui a medida"
+      ],
+      "correctAnswer": "a quantidade de luz, pois é a condição alterada intencionalmente.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "todas as condições são variáveis independentes": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_LUZ_E_CRESCIMENTO_02",
+      "statement": "Uma turma investiga se a quantidade de luz altera o crescimento de mudas, mantendo espécie e volume de água.. Que critério deve orientar a análise?",
+      "options": [
+        "todas as condições são variáveis independentes",
+        "separar o fator alterado, o resultado medido e as condições mantidas",
+        "água não precisa ser controlada",
+        "a hipótese substitui a medida"
+      ],
+      "correctAnswer": "separar o fator alterado, o resultado medido e as condições mantidas",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "todas as condições são variáveis independentes": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_LUZ_E_CRESCIMENTO_03",
+      "statement": "Uma turma investiga se a quantidade de luz altera o crescimento de mudas, mantendo espécie e volume de água.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "todas as condições são variáveis independentes",
+        "água não precisa ser controlada",
+        "repetir com níveis de luz e comparar crescimento com a mesma medida",
+        "a hipótese substitui a medida"
+      ],
+      "correctAnswer": "repetir com níveis de luz e comparar crescimento com a mesma medida",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "todas as condições são variáveis independentes": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_LUZ_E_CRESCIMENTO_04",
+      "statement": "Uma turma investiga se a quantidade de luz altera o crescimento de mudas, mantendo espécie e volume de água.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "todas as condições são variáveis independentes",
+        "água não precisa ser controlada",
+        "a hipótese substitui a medida",
+        "tratar o crescimento como fator manipulado"
+      ],
+      "correctAnswer": "tratar o crescimento como fator manipulado",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "todas as condições são variáveis independentes": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SAL_E_DISSOLUÇÃO_05",
+      "statement": "Grupos comparam quanto tempo diferentes quantidades de sal levam para dissolver no mesmo volume e temperatura.. O que deve ser medido como resultado?",
+      "options": [
+        "o tempo de dissolução, usando um critério de início e fim definido.",
+        "tempo não pode ser observado",
+        "temperatura é irrelevante",
+        "qualquer registro serve"
+      ],
+      "correctAnswer": "o tempo de dissolução, usando um critério de início e fim definido.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "tempo não pode ser observado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SAL_E_DISSOLUÇÃO_06",
+      "statement": "Grupos comparam quanto tempo diferentes quantidades de sal levam para dissolver no mesmo volume e temperatura.. Que critério deve orientar a análise?",
+      "options": [
+        "tempo não pode ser observado",
+        "definir unidade, ponto inicial, ponto final e instrumento",
+        "temperatura é irrelevante",
+        "qualquer registro serve"
+      ],
+      "correctAnswer": "definir unidade, ponto inicial, ponto final e instrumento",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "tempo não pode ser observado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SAL_E_DISSOLUÇÃO_07",
+      "statement": "Grupos comparam quanto tempo diferentes quantidades de sal levam para dissolver no mesmo volume e temperatura.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "tempo não pode ser observado",
+        "temperatura é irrelevante",
+        "comparar medidas repetidas e registrar variação entre grupos",
+        "qualquer registro serve"
+      ],
+      "correctAnswer": "comparar medidas repetidas e registrar variação entre grupos",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "tempo não pode ser observado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SAL_E_DISSOLUÇÃO_08",
+      "statement": "Grupos comparam quanto tempo diferentes quantidades de sal levam para dissolver no mesmo volume e temperatura.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "tempo não pode ser observado",
+        "temperatura é irrelevante",
+        "qualquer registro serve",
+        "medir apenas a quantidade de sal como resultado"
+      ],
+      "correctAnswer": "medir apenas a quantidade de sal como resultado",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "tempo não pode ser observado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONTROLE_09",
+      "statement": "Um grupo testa fertilizante e outro recebe a mesma água, luz e solo sem fertilizante.. Por que o segundo grupo é importante?",
+      "options": [
+        "ele oferece comparação para estimar o efeito do fertilizante mantendo outras condições semelhantes.",
+        "controle deve receber todos os tratamentos",
+        "um grupo elimina toda incerteza",
+        "comparação impede conclusão"
+      ],
+      "correctAnswer": "ele oferece comparação para estimar o efeito do fertilizante mantendo outras condições semelhantes.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "controle deve receber todos os tratamentos": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONTROLE_10",
+      "statement": "Um grupo testa fertilizante e outro recebe a mesma água, luz e solo sem fertilizante.. Que critério deve orientar a análise?",
+      "options": [
+        "controle deve receber todos os tratamentos",
+        "identificar o tratamento e as condições compartilhadas",
+        "um grupo elimina toda incerteza",
+        "comparação impede conclusão"
+      ],
+      "correctAnswer": "identificar o tratamento e as condições compartilhadas",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "controle deve receber todos os tratamentos": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONTROLE_11",
+      "statement": "Um grupo testa fertilizante e outro recebe a mesma água, luz e solo sem fertilizante.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "controle deve receber todos os tratamentos",
+        "um grupo elimina toda incerteza",
+        "avaliar se o controle realmente é comparável e suficiente",
+        "comparação impede conclusão"
+      ],
+      "correctAnswer": "avaliar se o controle realmente é comparável e suficiente",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "controle deve receber todos os tratamentos": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONTROLE_12",
+      "statement": "Um grupo testa fertilizante e outro recebe a mesma água, luz e solo sem fertilizante.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "controle deve receber todos os tratamentos",
+        "um grupo elimina toda incerteza",
+        "comparação impede conclusão",
+        "dizer que o controle não participa da investigação"
+      ],
+      "correctAnswer": "dizer que o controle não participa da investigação",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "controle deve receber todos os tratamentos": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_MEDIÇÃO_DA_SOMBRA_13",
+      "statement": "A turma mede a sombra de um objeto em três horários, mas muda o local a cada medida.. Qual problema aparece?",
+      "options": [
+        "mudar o local acrescenta uma variável que pode confundir a relação entre horário e comprimento da sombra.",
+        "uma variável não afeta outra",
+        "três horários bastam sempre",
+        "o instrumento não importa"
+      ],
+      "correctAnswer": "mudar o local acrescenta uma variável que pode confundir a relação entre horário e comprimento da sombra.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "uma variável não afeta outra": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_MEDIÇÃO_DA_SOMBRA_14",
+      "statement": "A turma mede a sombra de um objeto em três horários, mas muda o local a cada medida.. Que critério deve orientar a análise?",
+      "options": [
+        "uma variável não afeta outra",
+        "listar condições que precisam permanecer constantes",
+        "três horários bastam sempre",
+        "o instrumento não importa"
+      ],
+      "correctAnswer": "listar condições que precisam permanecer constantes",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "uma variável não afeta outra": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_MEDIÇÃO_DA_SOMBRA_15",
+      "statement": "A turma mede a sombra de um objeto em três horários, mas muda o local a cada medida.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "uma variável não afeta outra",
+        "três horários bastam sempre",
+        "replanejar usando o mesmo objeto, local e instrumento",
+        "o instrumento não importa"
+      ],
+      "correctAnswer": "replanejar usando o mesmo objeto, local e instrumento",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "uma variável não afeta outra": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_MEDIÇÃO_DA_SOMBRA_16",
+      "statement": "A turma mede a sombra de um objeto em três horários, mas muda o local a cada medida.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "uma variável não afeta outra",
+        "três horários bastam sempre",
+        "o instrumento não importa",
+        "dizer que mudar de local melhora o controle"
+      ],
+      "correctAnswer": "dizer que mudar de local melhora o controle",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "uma variável não afeta outra": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_HIPÓTESE_17",
+      "statement": "A estudante propõe: “Se a água estiver mais quente, o açúcar dissolverá mais rápido”.. Como testar a hipótese?",
+      "options": [
+        "alterar a temperatura, manter massa de açúcar e volume de água e medir o tempo de dissolução.",
+        "hipótese já é resultado",
+        "medir velocidade da colher resolve",
+        "uma observação basta"
+      ],
+      "correctAnswer": "alterar a temperatura, manter massa de açúcar e volume de água e medir o tempo de dissolução.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "hipótese já é resultado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_HIPÓTESE_18",
+      "statement": "A estudante propõe: “Se a água estiver mais quente, o açúcar dissolverá mais rápido”.. Que critério deve orientar a análise?",
+      "options": [
+        "hipótese já é resultado",
+        "transformar previsão em condições, medida e comparação",
+        "medir velocidade da colher resolve",
+        "uma observação basta"
+      ],
+      "correctAnswer": "transformar previsão em condições, medida e comparação",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "hipótese já é resultado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_HIPÓTESE_19",
+      "statement": "A estudante propõe: “Se a água estiver mais quente, o açúcar dissolverá mais rápido”.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "hipótese já é resultado",
+        "medir velocidade da colher resolve",
+        "repetir diferentes temperaturas e analisar os resultados",
+        "uma observação basta"
+      ],
+      "correctAnswer": "repetir diferentes temperaturas e analisar os resultados",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "hipótese já é resultado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_HIPÓTESE_20",
+      "statement": "A estudante propõe: “Se a água estiver mais quente, o açúcar dissolverá mais rápido”.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "hipótese já é resultado",
+        "medir velocidade da colher resolve",
+        "uma observação basta",
+        "alterar temperatura e quantidade ao mesmo tempo sem registro"
+      ],
+      "correctAnswer": "alterar temperatura e quantidade ao mesmo tempo sem registro",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "hipótese já é resultado": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_GRÁFICOS_21",
+      "statement": "Um gráfico mostra temperatura no eixo horizontal e tempo de germinação no vertical.. Como identificar as variáveis?",
+      "options": [
+        "temperatura é a condição comparada e tempo de germinação é o resultado representado.",
+        "eixos não têm função",
+        "o gráfico prova causa automaticamente",
+        "unidades são decoração"
+      ],
+      "correctAnswer": "temperatura é a condição comparada e tempo de germinação é o resultado representado.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "eixos não têm função": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_GRÁFICOS_22",
+      "statement": "Um gráfico mostra temperatura no eixo horizontal e tempo de germinação no vertical.. Que critério deve orientar a análise?",
+      "options": [
+        "eixos não têm função",
+        "ler títulos, eixos, unidades e relação proposta",
+        "o gráfico prova causa automaticamente",
+        "unidades são decoração"
+      ],
+      "correctAnswer": "ler títulos, eixos, unidades e relação proposta",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "eixos não têm função": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_GRÁFICOS_23",
+      "statement": "Um gráfico mostra temperatura no eixo horizontal e tempo de germinação no vertical.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "eixos não têm função",
+        "o gráfico prova causa automaticamente",
+        "verificar se a escala e os pontos permitem a comparação",
+        "unidades são decoração"
+      ],
+      "correctAnswer": "verificar se a escala e os pontos permitem a comparação",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "eixos não têm função": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_GRÁFICOS_24",
+      "statement": "Um gráfico mostra temperatura no eixo horizontal e tempo de germinação no vertical.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "eixos não têm função",
+        "o gráfico prova causa automaticamente",
+        "unidades são decoração",
+        "trocar os eixos sem mudar a interpretação"
+      ],
+      "correctAnswer": "trocar os eixos sem mudar a interpretação",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "eixos não têm função": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_REPETIÇÃO_25",
+      "statement": "Uma equipe repete cada condição quatro vezes e encontra pequenas diferenças entre os tempos.. Qual é a função da repetição?",
+      "options": [
+        "observar variação e tornar a conclusão menos dependente de uma única medida.",
+        "repetição elimina erro",
+        "diferença sempre invalida o experimento",
+        "uma medida é mais científica"
+      ],
+      "correctAnswer": "observar variação e tornar a conclusão menos dependente de uma única medida.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "repetição elimina erro": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_REPETIÇÃO_26",
+      "statement": "Uma equipe repete cada condição quatro vezes e encontra pequenas diferenças entre os tempos.. Que critério deve orientar a análise?",
+      "options": [
+        "repetição elimina erro",
+        "comparar medidas, calcular resumo e registrar dispersão",
+        "diferença sempre invalida o experimento",
+        "uma medida é mais científica"
+      ],
+      "correctAnswer": "comparar medidas, calcular resumo e registrar dispersão",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "repetição elimina erro": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_REPETIÇÃO_27",
+      "statement": "Uma equipe repete cada condição quatro vezes e encontra pequenas diferenças entre os tempos.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "repetição elimina erro",
+        "diferença sempre invalida o experimento",
+        "investigar possíveis fontes de variação antes de concluir",
+        "uma medida é mais científica"
+      ],
+      "correctAnswer": "investigar possíveis fontes de variação antes de concluir",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "repetição elimina erro": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_REPETIÇÃO_28",
+      "statement": "Uma equipe repete cada condição quatro vezes e encontra pequenas diferenças entre os tempos.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "repetição elimina erro",
+        "diferença sempre invalida o experimento",
+        "uma medida é mais científica",
+        "escolher apenas o resultado mais conveniente"
+      ],
+      "correctAnswer": "escolher apenas o resultado mais conveniente",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "repetição elimina erro": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SEGURANÇA_29",
+      "statement": "Para testar reação de limpeza, a turma pensa em misturar produtos domésticos sem orientação.. Qual decisão é correta?",
+      "options": [
+        "não realizar a mistura sem supervisão e avaliação de risco; segurança é condição do procedimento.",
+        "pequena quantidade nunca oferece risco",
+        "a curiosidade autoriza mistura",
+        "segurança não faz parte da ciência"
+      ],
+      "correctAnswer": "não realizar a mistura sem supervisão e avaliação de risco; segurança é condição do procedimento.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "pequena quantidade nunca oferece risco": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SEGURANÇA_30",
+      "statement": "Para testar reação de limpeza, a turma pensa em misturar produtos domésticos sem orientação.. Que critério deve orientar a análise?",
+      "options": [
+        "pequena quantidade nunca oferece risco",
+        "identificar substâncias, riscos, proteção e descarte autorizado",
+        "a curiosidade autoriza mistura",
+        "segurança não faz parte da ciência"
+      ],
+      "correctAnswer": "identificar substâncias, riscos, proteção e descarte autorizado",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "pequena quantidade nunca oferece risco": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SEGURANÇA_31",
+      "statement": "Para testar reação de limpeza, a turma pensa em misturar produtos domésticos sem orientação.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "pequena quantidade nunca oferece risco",
+        "a curiosidade autoriza mistura",
+        "substituir por modelo seguro ou observação orientada",
+        "segurança não faz parte da ciência"
+      ],
+      "correctAnswer": "substituir por modelo seguro ou observação orientada",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "pequena quantidade nunca oferece risco": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_SEGURANÇA_32",
+      "statement": "Para testar reação de limpeza, a turma pensa em misturar produtos domésticos sem orientação.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "pequena quantidade nunca oferece risco",
+        "a curiosidade autoriza mistura",
+        "segurança não faz parte da ciência",
+        "testar primeiro e pesquisar depois"
+      ],
+      "correctAnswer": "testar primeiro e pesquisar depois",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "pequena quantidade nunca oferece risco": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_VARIÁVEL_CONFUNDIDORA_33",
+      "statement": "Um experimento compara dois fertilizantes, mas um vaso fica no sol e outro na sombra.. Por que a conclusão fica limitada?",
+      "options": [
+        "a iluminação varia junto com o fertilizante e impede atribuir o resultado a um único fator.",
+        "sol e sombra não afetam plantas",
+        "uma comparação sempre é justa",
+        "o resultado corrige o desenho"
+      ],
+      "correctAnswer": "a iluminação varia junto com o fertilizante e impede atribuir o resultado a um único fator.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "sol e sombra não afetam plantas": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_VARIÁVEL_CONFUNDIDORA_34",
+      "statement": "Um experimento compara dois fertilizantes, mas um vaso fica no sol e outro na sombra.. Que critério deve orientar a análise?",
+      "options": [
+        "sol e sombra não afetam plantas",
+        "procurar condições diferentes além da variável investigada",
+        "uma comparação sempre é justa",
+        "o resultado corrige o desenho"
+      ],
+      "correctAnswer": "procurar condições diferentes além da variável investigada",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "sol e sombra não afetam plantas": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_VARIÁVEL_CONFUNDIDORA_35",
+      "statement": "Um experimento compara dois fertilizantes, mas um vaso fica no sol e outro na sombra.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "sol e sombra não afetam plantas",
+        "uma comparação sempre é justa",
+        "reorganizar grupos e repetir com iluminação equivalente",
+        "o resultado corrige o desenho"
+      ],
+      "correctAnswer": "reorganizar grupos e repetir com iluminação equivalente",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "sol e sombra não afetam plantas": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_VARIÁVEL_CONFUNDIDORA_36",
+      "statement": "Um experimento compara dois fertilizantes, mas um vaso fica no sol e outro na sombra.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "sol e sombra não afetam plantas",
+        "uma comparação sempre é justa",
+        "o resultado corrige o desenho",
+        "dizer que o fertilizante é a única diferença"
+      ],
+      "correctAnswer": "dizer que o fertilizante é a única diferença",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "sol e sombra não afetam plantas": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONCLUSÃO_37",
+      "statement": "O grupo encontrou crescimento maior com mais luz em quatro vasos, todos da mesma espécie.. Que conclusão é proporcional?",
+      "options": [
+        "nas condições observadas, mais luz esteve associada a maior crescimento; outros contextos exigem novos testes.",
+        "quatro vasos representam todo ambiente",
+        "a hipótese virou lei universal",
+        "limite enfraquece a ciência"
+      ],
+      "correctAnswer": "nas condições observadas, mais luz esteve associada a maior crescimento; outros contextos exigem novos testes.",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "quatro vasos representam todo ambiente": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONCLUSÃO_38",
+      "statement": "O grupo encontrou crescimento maior com mais luz em quatro vasos, todos da mesma espécie.. Que critério deve orientar a análise?",
+      "options": [
+        "quatro vasos representam todo ambiente",
+        "indicar população, condições, medida e limite da afirmação",
+        "a hipótese virou lei universal",
+        "limite enfraquece a ciência"
+      ],
+      "correctAnswer": "indicar população, condições, medida e limite da afirmação",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "quatro vasos representam todo ambiente": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONCLUSÃO_39",
+      "statement": "O grupo encontrou crescimento maior com mais luz em quatro vasos, todos da mesma espécie.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "quatro vasos representam todo ambiente",
+        "a hipótese virou lei universal",
+        "testar outras espécies, tempos e níveis de luz antes de generalizar",
+        "limite enfraquece a ciência"
+      ],
+      "correctAnswer": "testar outras espécies, tempos e níveis de luz antes de generalizar",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "quatro vasos representam todo ambiente": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-science-identify-variables-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCIENCE_IDENTIFY_VARIABLES_CONCLUSÃO_40",
+      "statement": "O grupo encontrou crescimento maior com mais luz em quatro vasos, todos da mesma espécie.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "quatro vasos representam todo ambiente",
+        "a hipótese virou lei universal",
+        "limite enfraquece a ciência",
+        "afirmar que toda planta cresce mais com qualquer luz"
+      ],
+      "correctAnswer": "afirmar que toda planta cresce mais com qualquer luz",
+      "explanation": "Uma investigação organiza variável manipulada, resultado medido, controles, repetição, riscos e limites de conclusão.",
+      "hint": "Nomeie o fator alterado, o resultado medido e o que precisa permanecer constante.",
+      "errorFocus": "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION",
+      "misconceptions": {
+        "quatro vasos representam todo ambiente": [
+          "VARIABLE_CONTROL_OR_CONCLUSION_CONFUSION"
+        ]
+      }
+    }
+  ]
+}

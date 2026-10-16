@@ -54,6 +54,7 @@ import { buildPortugueseCounterargumentPack } from './build-portuguese-counterar
 import { buildPortugueseSummarizeArgumentPack } from './build-portuguese-summarize-argument-v5.mjs';
 import { buildReligiousInclusionPack } from './build-religious-inclusion-v5.mjs';
 import { buildWave2ContentGapPacks } from './build-wave2-content-gaps-v5.mjs';
+import { buildRemainingWave2ContentGapPacks, remainingWave2TargetDefinitions } from './build-wave2-remaining-content-gaps-v5.mjs';
 
 const pack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/math-successive-percent-change.json', import.meta.url), 'utf8'));
 const migration = readFileSync(new URL('../../supabase/migrations/20261012000700_bncc_question_first_content_staging_v5.sql', import.meta.url), 'utf8');
@@ -2184,6 +2185,51 @@ describe('question-first V5 staging content', () => {
       expect(pack.publicationStatus).toBe('STAGING');
       expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
       expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+    }
+  });
+
+  it('builds the remaining wave-two gaps as balanced staged packs', () => {
+    const packs = buildRemainingWave2ContentGapPacks();
+    expect(Object.keys(packs)).toEqual([
+      'PE_EXPLAIN_SPORT_PRINCIPLES',
+      'PORTUGUESE_ARGUMENT_EVIDENCE',
+      'PORTUGUESE_DISTINGUISH_FACT_OPINION',
+      'PORTUGUESE_IDENTIFY_GENRE_PURPOSE',
+      'RELIGIOUS_COMPARE_TRADITIONS',
+      'RELIGIOUS_INTERPRET_SYMBOLS',
+      'SCIENCE_EXPLAIN_MATTER_TRANSFORMATION',
+      'SCIENCE_IDENTIFY_VARIABLES',
+    ]);
+    for (const definition of remainingWave2TargetDefinitions) {
+      const pack = packs[definition.key];
+      const migration = readFileSync(new URL(`../../supabase/migrations/${definition.migration}`, import.meta.url), 'utf8');
+      const result = validateQuestionFirstPack(pack);
+      const expectedCounts = definition.key === 'SCIENCE_IDENTIFY_VARIABLES'
+        ? { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 }
+        : { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 5, REVIEW: 11 };
+      expect(result).toMatchObject({
+        valid: true,
+        questionCount: 40,
+        contextCount: 40,
+        counts: expectedCounts,
+        answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+      });
+      expect(pack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+      expect(new Set(pack.questions.map(({ contextFamily }) => contextFamily)).size).toBe(40);
+      expect(pack.questions.every(({ statement, explanation, hint }) => statement.trim() && explanation.trim() && hint.trim())).toBe(true);
+      expect(pack.lesson.progression).toHaveLength(5);
+      expect(pack.lesson.microExplanations.length).toBeGreaterThanOrEqual(4);
+      expect(pack.lesson.remediations.length).toBeGreaterThanOrEqual(4);
+      expect(pack.sourceReconciliation.reusedQuestionsCountedAsNew).toBe(false);
+      expect(pack.publicationStatus).toBe('STAGING');
+      expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+      expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+      expect(migration).toBe(buildMigration(pack));
+      expect(migration).toContain(`'${definition.key}'`);
+      expect(migration).toContain("'publication_status', 'STAGING'");
+      expect(migration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+      expect(migration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+      expect(migration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
     }
   });
 });

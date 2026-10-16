@@ -1,0 +1,1258 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-portuguese-identify-genre-purpose",
+  "subject": "PORTUGUESE",
+  "domain": "GENEROS_TEXTUAIS",
+  "topic": "identificar gênero e finalidade",
+  "canonicalSkillCode": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-portuguese-reading_argument-3",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-portuguese-reading_argument-9",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-01",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-02",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-03",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-04",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-05",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-06",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-07",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-08",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-09",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-10",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-11",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-12",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-13",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-14",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-15",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-16",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-17",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-18",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-19",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-genre-20",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_SCOPE_AND_REASONING"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 22,
+    "feedbackAdded": 22,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Identificar gênero e finalidade",
+    "objective": "Reconhecer gêneros textuais por sua organização, público, finalidade, voz e modo de circulação.",
+    "summary": "Gênero não é apenas formato. A finalidade, o público, as fontes e a organização ajudam a compreender como um texto funciona.",
+    "explanation": "## 1. Pergunte para quê\nInformar, orientar, avaliar, mobilizar e argumentar produzem escolhas diferentes.\n\n## 2. Observe a organização\nTítulo, perguntas, passos, dados, vozes, legendas e recomendações dão pistas.\n\n## 3. Considere circulação\nUm editorial, uma notícia e uma campanha podem tratar do mesmo tema, mas constroem relações diferentes com o público.\n\n## Exemplo resolvido\nUm texto com objetivos, procedimentos, resultados e limites documenta uma atividade: sua estrutura cumpre função de relatório.\n\n## 4. Confirme com o conjunto\nNenhuma pista isolada deve substituir a leitura integral.",
+    "workedExample": "Compare uma notícia e um editorial sobre transporte. Registre tema, finalidade, voz, fontes e ação esperada do leitor.",
+    "commonMistake": "Classificar pelo título ou por uma palavra, ignorando finalidade, público e organização.",
+    "tips": [
+      "Leia o texto inteiro.",
+      "Identifique público e finalidade.",
+      "Observe vozes e fontes.",
+      "Relacione estrutura e circulação."
+    ],
+    "estimatedMinutes": 26,
+    "priorKnowledge": [
+      "Reconhecer tema e suporte.",
+      "Localizar informações e marcas de organização."
+    ],
+    "keyConcepts": [
+      "gênero",
+      "finalidade",
+      "público",
+      "circulação",
+      "voz",
+      "estrutura"
+    ],
+    "activity": "Montar uma ficha de gênero para três textos sobre o mesmo assunto e justificar as diferenças.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar ideia, critério ou variável central.",
+        "questionIds": [
+          "v5-portuguese-identify-genre-purpose-01",
+          "v5-portuguese-identify-genre-purpose-02",
+          "v5-portuguese-identify-genre-purpose-03",
+          "v5-portuguese-identify-genre-purpose-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-portuguese-identify-genre-purpose-05",
+          "v5-portuguese-identify-genre-purpose-06",
+          "v5-portuguese-identify-genre-purpose-07",
+          "v5-portuguese-identify-genre-purpose-08",
+          "v5-portuguese-identify-genre-purpose-09",
+          "v5-portuguese-identify-genre-purpose-10",
+          "v5-portuguese-identify-genre-purpose-11",
+          "v5-portuguese-identify-genre-purpose-12",
+          "v5-portuguese-identify-genre-purpose-13",
+          "v5-portuguese-identify-genre-purpose-14",
+          "v5-portuguese-identify-genre-purpose-15",
+          "v5-portuguese-identify-genre-purpose-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-portuguese-identify-genre-purpose-17",
+          "v5-portuguese-identify-genre-purpose-18",
+          "v5-portuguese-identify-genre-purpose-19",
+          "v5-portuguese-identify-genre-purpose-20",
+          "v5-portuguese-identify-genre-purpose-21",
+          "v5-portuguese-identify-genre-purpose-22",
+          "v5-portuguese-identify-genre-purpose-23",
+          "v5-portuguese-identify-genre-purpose-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-portuguese-identify-genre-purpose-25",
+          "v5-portuguese-identify-genre-purpose-26",
+          "v5-portuguese-identify-genre-purpose-27",
+          "v5-portuguese-identify-genre-purpose-28",
+          "v5-portuguese-identify-genre-purpose-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-portuguese-identify-genre-purpose-30",
+          "v5-portuguese-identify-genre-purpose-31",
+          "v5-portuguese-identify-genre-purpose-32",
+          "v5-portuguese-identify-genre-purpose-33",
+          "v5-portuguese-identify-genre-purpose-34",
+          "v5-portuguese-identify-genre-purpose-35",
+          "v5-portuguese-identify-genre-purpose-36",
+          "v5-portuguese-identify-genre-purpose-37",
+          "v5-portuguese-identify-genre-purpose-38",
+          "v5-portuguese-identify-genre-purpose-39",
+          "v5-portuguese-identify-genre-purpose-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e condição antes de concluir."
+      },
+      {
+        "trigger": "BOUND_CLAIM",
+        "text": "A resposta correta não afirma mais do que a situação sustenta."
+      },
+      {
+        "trigger": "CHECK_EVIDENCE",
+        "text": "Identifique fonte, medida, regra ou observação usada."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar contexto, condição, fonte ou recorte.",
+        "prompt": "Sublinhe quem, quando, onde e em quais condições. Reescreva a resposta com esses limites."
+      },
+      {
+        "id": "SEPARATE_OBSERVATION",
+        "misconception": "Confundir observação, interpretação, causa ou julgamento.",
+        "prompt": "Faça duas colunas: o que foi observado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_COMPARISON",
+        "misconception": "Comparar situações sem manter critérios equivalentes.",
+        "prompt": "Liste o que é igual, o que mudou e qual critério permite uma comparação justa."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar uma regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de transferir o raciocínio."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-portuguese-identify-genre-purpose-activity",
+        "title": "Oficina de identificar gênero e finalidade",
+        "objective": "Reconhecer gêneros textuais por sua organização, público, finalidade, voz e modo de circulação.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto, situação ou registro acessível",
+          "Quadro de evidências",
+          "Registro de estratégia"
+        ],
+        "instructions": "Montar uma ficha de gênero para três textos sobre o mesmo assunto e justificar as diferenças.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-portuguese-identify-genre-purpose-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_NOTÍCIA_01",
+      "statement": "O texto informa o que ocorreu, onde, quando e quem foi ouvido, com linguagem de apuração.. Qual gênero e finalidade predominam?",
+      "options": [
+        "notícia, com finalidade de informar sobre um acontecimento situado.",
+        "a presença de título define qualquer gênero",
+        "notícia não usa fontes",
+        "informar e persuadir são sempre iguais"
+      ],
+      "correctAnswer": "notícia, com finalidade de informar sobre um acontecimento situado.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "a presença de título define qualquer gênero": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_NOTÍCIA_02",
+      "statement": "O texto informa o que ocorreu, onde, quando e quem foi ouvido, com linguagem de apuração.. Que critério deve orientar a análise?",
+      "options": [
+        "a presença de título define qualquer gênero",
+        "observar organização, fontes, tempo e foco informativo",
+        "notícia não usa fontes",
+        "informar e persuadir são sempre iguais"
+      ],
+      "correctAnswer": "observar organização, fontes, tempo e foco informativo",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "a presença de título define qualquer gênero": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_NOTÍCIA_03",
+      "statement": "O texto informa o que ocorreu, onde, quando e quem foi ouvido, com linguagem de apuração.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "a presença de título define qualquer gênero",
+        "notícia não usa fontes",
+        "comparar com outro relato e notar escolhas de apuração",
+        "informar e persuadir são sempre iguais"
+      ],
+      "correctAnswer": "comparar com outro relato e notar escolhas de apuração",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "a presença de título define qualquer gênero": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_NOTÍCIA_04",
+      "statement": "O texto informa o que ocorreu, onde, quando e quem foi ouvido, com linguagem de apuração.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "a presença de título define qualquer gênero",
+        "notícia não usa fontes",
+        "informar e persuadir são sempre iguais",
+        "ler como manual de instruções"
+      ],
+      "correctAnswer": "ler como manual de instruções",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "a presença de título define qualquer gênero": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INSTRUÇÃO_05",
+      "statement": "O material apresenta passos numerados para montar um filtro de água e inclui cuidados.. Que finalidade organiza o texto?",
+      "options": [
+        "orientar uma ação por meio de sequência, materiais e procedimentos.",
+        "instruções não precisam de ordem",
+        "o título é a única pista",
+        "um procedimento não tem público"
+      ],
+      "correctAnswer": "orientar uma ação por meio de sequência, materiais e procedimentos.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "instruções não precisam de ordem": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INSTRUÇÃO_06",
+      "statement": "O material apresenta passos numerados para montar um filtro de água e inclui cuidados.. Que critério deve orientar a análise?",
+      "options": [
+        "instruções não precisam de ordem",
+        "localizar verbos de ação, ordem, materiais e advertências",
+        "o título é a única pista",
+        "um procedimento não tem público"
+      ],
+      "correctAnswer": "localizar verbos de ação, ordem, materiais e advertências",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "instruções não precisam de ordem": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INSTRUÇÃO_07",
+      "statement": "O material apresenta passos numerados para montar um filtro de água e inclui cuidados.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "instruções não precisam de ordem",
+        "o título é a única pista",
+        "adaptar o procedimento para outro material sem retirar cuidados",
+        "um procedimento não tem público"
+      ],
+      "correctAnswer": "adaptar o procedimento para outro material sem retirar cuidados",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "instruções não precisam de ordem": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INSTRUÇÃO_08",
+      "statement": "O material apresenta passos numerados para montar um filtro de água e inclui cuidados.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "instruções não precisam de ordem",
+        "o título é a única pista",
+        "um procedimento não tem público",
+        "tratar os passos como opinião sobre o filtro"
+      ],
+      "correctAnswer": "tratar os passos como opinião sobre o filtro",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "instruções não precisam de ordem": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RESENHA_09",
+      "statement": "O autor apresenta uma obra, comenta seus efeitos e recomenda ou não sua leitura.. Qual função é central?",
+      "options": [
+        "avaliar a obra e orientar o leitor, articulando descrição e julgamento.",
+        "resenha não contém opinião",
+        "recomendação é dado de bilheteria",
+        "a obra não precisa ser identificada"
+      ],
+      "correctAnswer": "avaliar a obra e orientar o leitor, articulando descrição e julgamento.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resenha não contém opinião": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RESENHA_10",
+      "statement": "O autor apresenta uma obra, comenta seus efeitos e recomenda ou não sua leitura.. Que critério deve orientar a análise?",
+      "options": [
+        "resenha não contém opinião",
+        "separar informações sobre a obra de critérios avaliativos",
+        "recomendação é dado de bilheteria",
+        "a obra não precisa ser identificada"
+      ],
+      "correctAnswer": "separar informações sobre a obra de critérios avaliativos",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resenha não contém opinião": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RESENHA_11",
+      "statement": "O autor apresenta uma obra, comenta seus efeitos e recomenda ou não sua leitura.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "resenha não contém opinião",
+        "recomendação é dado de bilheteria",
+        "comparar a recomendação com a de outro leitor",
+        "a obra não precisa ser identificada"
+      ],
+      "correctAnswer": "comparar a recomendação com a de outro leitor",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resenha não contém opinião": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RESENHA_12",
+      "statement": "O autor apresenta uma obra, comenta seus efeitos e recomenda ou não sua leitura.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "resenha não contém opinião",
+        "recomendação é dado de bilheteria",
+        "a obra não precisa ser identificada",
+        "tratar o texto como notícia neutra"
+      ],
+      "correctAnswer": "tratar o texto como notícia neutra",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resenha não contém opinião": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_EDITORIAL_13",
+      "statement": "O texto usa a voz institucional do jornal para defender uma posição sobre transporte público.. Que gênero se reconhece?",
+      "options": [
+        "editorial, que expressa posição institucional e busca influenciar o debate.",
+        "editorial não argumenta",
+        "a instituição não assume posição",
+        "o público não interfere no texto"
+      ],
+      "correctAnswer": "editorial, que expressa posição institucional e busca influenciar o debate.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "editorial não argumenta": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_EDITORIAL_14",
+      "statement": "O texto usa a voz institucional do jornal para defender uma posição sobre transporte público.. Que critério deve orientar a análise?",
+      "options": [
+        "editorial não argumenta",
+        "observar voz institucional, tese, argumentos e público",
+        "a instituição não assume posição",
+        "o público não interfere no texto"
+      ],
+      "correctAnswer": "observar voz institucional, tese, argumentos e público",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "editorial não argumenta": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_EDITORIAL_15",
+      "statement": "O texto usa a voz institucional do jornal para defender uma posição sobre transporte público.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "editorial não argumenta",
+        "a instituição não assume posição",
+        "comparar a posição com uma notícia sobre o mesmo tema",
+        "o público não interfere no texto"
+      ],
+      "correctAnswer": "comparar a posição com uma notícia sobre o mesmo tema",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "editorial não argumenta": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_EDITORIAL_16",
+      "statement": "O texto usa a voz institucional do jornal para defender uma posição sobre transporte público.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "editorial não argumenta",
+        "a instituição não assume posição",
+        "o público não interfere no texto",
+        "dizer que o jornal narra apenas fatos"
+      ],
+      "correctAnswer": "dizer que o jornal narra apenas fatos",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "editorial não argumenta": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RELATÓRIO_17",
+      "statement": "O documento registra objetivos, procedimentos, resultados e limites de uma atividade.. Por que essa organização é útil?",
+      "options": [
+        "o relatório documenta um processo e permite acompanhar evidências, decisões e limitações.",
+        "resultados não dependem de método",
+        "limites devem ser ocultados",
+        "qualquer lista é relatório"
+      ],
+      "correctAnswer": "o relatório documenta um processo e permite acompanhar evidências, decisões e limitações.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resultados não dependem de método": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RELATÓRIO_18",
+      "statement": "O documento registra objetivos, procedimentos, resultados e limites de uma atividade.. Que critério deve orientar a análise?",
+      "options": [
+        "resultados não dependem de método",
+        "localizar método, resultados, fonte e restrições",
+        "limites devem ser ocultados",
+        "qualquer lista é relatório"
+      ],
+      "correctAnswer": "localizar método, resultados, fonte e restrições",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resultados não dependem de método": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RELATÓRIO_19",
+      "statement": "O documento registra objetivos, procedimentos, resultados e limites de uma atividade.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "resultados não dependem de método",
+        "limites devem ser ocultados",
+        "usar a estrutura para relatar outra investigação sem inventar dados",
+        "qualquer lista é relatório"
+      ],
+      "correctAnswer": "usar a estrutura para relatar outra investigação sem inventar dados",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resultados não dependem de método": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_RELATÓRIO_20",
+      "statement": "O documento registra objetivos, procedimentos, resultados e limites de uma atividade.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "resultados não dependem de método",
+        "limites devem ser ocultados",
+        "qualquer lista é relatório",
+        "tratar o relatório como propaganda"
+      ],
+      "correctAnswer": "tratar o relatório como propaganda",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "resultados não dependem de método": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_CAMPANHA_21",
+      "statement": "Cartaz e texto curto convidam a economizar água e apresentam uma ação concreta.. Qual propósito predomina?",
+      "options": [
+        "mobilizar o público para uma ação por meio de apelo, informação e orientação.",
+        "campanhas não têm público",
+        "informação elimina persuasão",
+        "a ação não precisa ser clara"
+      ],
+      "correctAnswer": "mobilizar o público para uma ação por meio de apelo, informação e orientação.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "campanhas não têm público": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_CAMPANHA_22",
+      "statement": "Cartaz e texto curto convidam a economizar água e apresentam uma ação concreta.. Que critério deve orientar a análise?",
+      "options": [
+        "campanhas não têm público",
+        "examinar público, chamada, imagem, ação e justificativa",
+        "informação elimina persuasão",
+        "a ação não precisa ser clara"
+      ],
+      "correctAnswer": "examinar público, chamada, imagem, ação e justificativa",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "campanhas não têm público": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_CAMPANHA_23",
+      "statement": "Cartaz e texto curto convidam a economizar água e apresentam uma ação concreta.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "campanhas não têm público",
+        "informação elimina persuasão",
+        "criar mensagem para outro público preservando a ação verificável",
+        "a ação não precisa ser clara"
+      ],
+      "correctAnswer": "criar mensagem para outro público preservando a ação verificável",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "campanhas não têm público": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_CAMPANHA_24",
+      "statement": "Cartaz e texto curto convidam a economizar água e apresentam uma ação concreta.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "campanhas não têm público",
+        "informação elimina persuasão",
+        "a ação não precisa ser clara",
+        "ler o convite como ata de uma atividade passada"
+      ],
+      "correctAnswer": "ler o convite como ata de uma atividade passada",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "campanhas não têm público": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_BIOGRAFIA_25",
+      "statement": "O texto apresenta momentos da vida de uma cientista, suas pesquisas e o contexto histórico.. Que finalidade se destaca?",
+      "options": [
+        "apresentar uma trajetória relacionando acontecimentos pessoais, produção e contexto.",
+        "biografia não organiza tempo",
+        "o contexto é sempre irrelevante",
+        "um feito explica toda a vida"
+      ],
+      "correctAnswer": "apresentar uma trajetória relacionando acontecimentos pessoais, produção e contexto.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "biografia não organiza tempo": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_BIOGRAFIA_26",
+      "statement": "O texto apresenta momentos da vida de uma cientista, suas pesquisas e o contexto histórico.. Que critério deve orientar a análise?",
+      "options": [
+        "biografia não organiza tempo",
+        "observar ordem temporal, fontes, feitos e contexto",
+        "o contexto é sempre irrelevante",
+        "um feito explica toda a vida"
+      ],
+      "correctAnswer": "observar ordem temporal, fontes, feitos e contexto",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "biografia não organiza tempo": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_BIOGRAFIA_27",
+      "statement": "O texto apresenta momentos da vida de uma cientista, suas pesquisas e o contexto histórico.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "biografia não organiza tempo",
+        "o contexto é sempre irrelevante",
+        "comparar trajetórias sem reduzir a pessoa a uma única data",
+        "um feito explica toda a vida"
+      ],
+      "correctAnswer": "comparar trajetórias sem reduzir a pessoa a uma única data",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "biografia não organiza tempo": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_BIOGRAFIA_28",
+      "statement": "O texto apresenta momentos da vida de uma cientista, suas pesquisas e o contexto histórico.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "biografia não organiza tempo",
+        "o contexto é sempre irrelevante",
+        "um feito explica toda a vida",
+        "ler como manual de experimento"
+      ],
+      "correctAnswer": "ler como manual de experimento",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "biografia não organiza tempo": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_ENTREVISTA_29",
+      "statement": "Perguntas e respostas registram a experiência de uma moradora sobre as mudanças do bairro.. Como o formato contribui?",
+      "options": [
+        "a entrevista organiza vozes e experiências por perguntas, permitindo observar perspectiva e limites.",
+        "entrevista não tem recorte",
+        "perguntas não orientam o texto",
+        "a experiência representa todas"
+      ],
+      "correctAnswer": "a entrevista organiza vozes e experiências por perguntas, permitindo observar perspectiva e limites.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "entrevista não tem recorte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_ENTREVISTA_30",
+      "statement": "Perguntas e respostas registram a experiência de uma moradora sobre as mudanças do bairro.. Que critério deve orientar a análise?",
+      "options": [
+        "entrevista não tem recorte",
+        "identificar entrevistador, entrevistada, perguntas e contexto",
+        "perguntas não orientam o texto",
+        "a experiência representa todas"
+      ],
+      "correctAnswer": "identificar entrevistador, entrevistada, perguntas e contexto",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "entrevista não tem recorte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_ENTREVISTA_31",
+      "statement": "Perguntas e respostas registram a experiência de uma moradora sobre as mudanças do bairro.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "entrevista não tem recorte",
+        "perguntas não orientam o texto",
+        "confrontar o relato com registros do bairro sem desrespeitar a voz",
+        "a experiência representa todas"
+      ],
+      "correctAnswer": "confrontar o relato com registros do bairro sem desrespeitar a voz",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "entrevista não tem recorte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_ENTREVISTA_32",
+      "statement": "Perguntas e respostas registram a experiência de uma moradora sobre as mudanças do bairro.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "entrevista não tem recorte",
+        "perguntas não orientam o texto",
+        "a experiência representa todas",
+        "tratar toda resposta como dado universal"
+      ],
+      "correctAnswer": "tratar toda resposta como dado universal",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "entrevista não tem recorte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INFOGRÁFICO_33",
+      "statement": "Ícones, números, legendas e blocos curtos mostram o consumo de energia em quatro meses.. O que o leitor precisa fazer?",
+      "options": [
+        "integrar linguagem visual, números, legendas e fonte para interpretar a informação.",
+        "números visuais não precisam de fonte",
+        "qualquer cor indica maior valor",
+        "o desenho substitui os dados"
+      ],
+      "correctAnswer": "integrar linguagem visual, números, legendas e fonte para interpretar a informação.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "números visuais não precisam de fonte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INFOGRÁFICO_34",
+      "statement": "Ícones, números, legendas e blocos curtos mostram o consumo de energia em quatro meses.. Que critério deve orientar a análise?",
+      "options": [
+        "números visuais não precisam de fonte",
+        "ler título, unidade, escala, legenda e fonte antes de concluir",
+        "qualquer cor indica maior valor",
+        "o desenho substitui os dados"
+      ],
+      "correctAnswer": "ler título, unidade, escala, legenda e fonte antes de concluir",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "números visuais não precisam de fonte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INFOGRÁFICO_35",
+      "statement": "Ícones, números, legendas e blocos curtos mostram o consumo de energia em quatro meses.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "números visuais não precisam de fonte",
+        "qualquer cor indica maior valor",
+        "comparar outro infográfico verificando se as escalas são equivalentes",
+        "o desenho substitui os dados"
+      ],
+      "correctAnswer": "comparar outro infográfico verificando se as escalas são equivalentes",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "números visuais não precisam de fonte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_INFOGRÁFICO_36",
+      "statement": "Ícones, números, legendas e blocos curtos mostram o consumo de energia em quatro meses.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "números visuais não precisam de fonte",
+        "qualquer cor indica maior valor",
+        "o desenho substitui os dados",
+        "ignorar a legenda e olhar só os ícones"
+      ],
+      "correctAnswer": "ignorar a legenda e olhar só os ícones",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "números visuais não precisam de fonte": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_PODCAST_37",
+      "statement": "Um roteiro alterna apresentação, fala de convidado, perguntas e encerramento com indicação de fontes.. Qual organização se explica?",
+      "options": [
+        "o roteiro planeja uma comunicação oral para informar ou discutir um tema com vozes e fontes.",
+        "podcast não tem planejamento",
+        "fonte não importa na oralidade",
+        "a fala do convidado encerra qualquer análise"
+      ],
+      "correctAnswer": "o roteiro planeja uma comunicação oral para informar ou discutir um tema com vozes e fontes.",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "podcast não tem planejamento": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_PODCAST_38",
+      "statement": "Um roteiro alterna apresentação, fala de convidado, perguntas e encerramento com indicação de fontes.. Que critério deve orientar a análise?",
+      "options": [
+        "podcast não tem planejamento",
+        "observar público, turnos de fala, tema, fontes e duração",
+        "fonte não importa na oralidade",
+        "a fala do convidado encerra qualquer análise"
+      ],
+      "correctAnswer": "observar público, turnos de fala, tema, fontes e duração",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "podcast não tem planejamento": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_PODCAST_39",
+      "statement": "Um roteiro alterna apresentação, fala de convidado, perguntas e encerramento com indicação de fontes.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "podcast não tem planejamento",
+        "fonte não importa na oralidade",
+        "adaptar o conteúdo para texto mantendo vozes e referências",
+        "a fala do convidado encerra qualquer análise"
+      ],
+      "correctAnswer": "adaptar o conteúdo para texto mantendo vozes e referências",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "podcast não tem planejamento": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-identify-genre-purpose-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE_PODCAST_40",
+      "statement": "Um roteiro alterna apresentação, fala de convidado, perguntas e encerramento com indicação de fontes.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "podcast não tem planejamento",
+        "fonte não importa na oralidade",
+        "a fala do convidado encerra qualquer análise",
+        "ler como tabela estatística"
+      ],
+      "correctAnswer": "ler como tabela estatística",
+      "explanation": "Gêneros são reconhecidos pela relação entre finalidade, público, organização, voz e circulação, não por uma pista isolada.",
+      "hint": "Pergunte para que o texto existe, para quem circula e como organiza informações e vozes.",
+      "errorFocus": "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE",
+      "misconceptions": {
+        "podcast não tem planejamento": [
+          "GENRE_IDENTIFIED_BY_SINGLE_SURFACE_CLUE"
+        ]
+      }
+    }
+  ]
+}

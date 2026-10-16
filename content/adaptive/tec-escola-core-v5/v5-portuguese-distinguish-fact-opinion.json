@@ -1,0 +1,1253 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-portuguese-distinguish-fact-opinion",
+  "subject": "PORTUGUESE",
+  "domain": "LEITURA_CRITICA",
+  "topic": "distinguir fato, opinião e inferência",
+  "canonicalSkillCode": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-portuguese-reading_argument-2",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-01",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-02",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-03",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-04",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-05",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-06",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-07",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-08",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-09",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-10",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-11",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-12",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-13",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-14",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-15",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-16",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-17",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-18",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-19",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v93-pt-fact-20",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "PORTUGUESE_DISTINGUISH_FACT_OPINION_SCOPE_AND_REASONING"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 21,
+    "feedbackAdded": 21,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Distinguir fato, opinião e inferência",
+    "objective": "Diferenciar informações verificáveis, avaliações e conclusões apoiadas em textos de circulação social.",
+    "summary": "Fato, opinião e inferência podem aparecer juntos. A leitura crítica identifica fonte, critérios e alcance de cada afirmação.",
+    "explanation": "## 1. Procure a fonte\nUma informação verificável precisa indicar registro ou condição de verificação.\n\n## 2. Observe marcas de avaliação\nAdjetivos, superlativos e verbos como “deve” podem sinalizar posição ou recomendação.\n\n## 3. Reconheça inferências\nUma conclusão pode ser razoável e ainda assim depender de mais dados para ser generalizada.\n\n## Exemplo resolvido\n“A escola abriu uma horta em março e foi uma iniciativa importante” combina um dado temporal com uma avaliação.\n\n## 4. Revise o alcance\nNão trate “todos”, “sempre” ou “o melhor” como fatos sem critérios e evidências.",
+    "workedExample": "Marque cada trecho de um anúncio como descrição, promessa ou avaliação. Em seguida, transforme a promessa em critérios que poderiam ser verificados.",
+    "commonMistake": "Classificar toda frase como fato ou toda frase como opinião, sem separar partes e condições.",
+    "tips": [
+      "Localize registro e fonte.",
+      "Sublinhe modalizadores e avaliações.",
+      "Separe dado de conclusão.",
+      "Questione generalizações."
+    ],
+    "estimatedMinutes": 26,
+    "priorKnowledge": [
+      "Localizar informações explícitas.",
+      "Reconhecer ponto de vista e marcas linguísticas."
+    ],
+    "keyConcepts": [
+      "fato",
+      "opinião",
+      "inferência",
+      "fonte",
+      "modalizador",
+      "generalização"
+    ],
+    "activity": "Classificar frases de um texto real em tabela, justificando o critério e o alcance de cada classificação.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar ideia, critério ou variável central.",
+        "questionIds": [
+          "v5-portuguese-distinguish-fact-opinion-01",
+          "v5-portuguese-distinguish-fact-opinion-02",
+          "v5-portuguese-distinguish-fact-opinion-03",
+          "v5-portuguese-distinguish-fact-opinion-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-portuguese-distinguish-fact-opinion-05",
+          "v5-portuguese-distinguish-fact-opinion-06",
+          "v5-portuguese-distinguish-fact-opinion-07",
+          "v5-portuguese-distinguish-fact-opinion-08",
+          "v5-portuguese-distinguish-fact-opinion-09",
+          "v5-portuguese-distinguish-fact-opinion-10",
+          "v5-portuguese-distinguish-fact-opinion-11",
+          "v5-portuguese-distinguish-fact-opinion-12",
+          "v5-portuguese-distinguish-fact-opinion-13",
+          "v5-portuguese-distinguish-fact-opinion-14",
+          "v5-portuguese-distinguish-fact-opinion-15",
+          "v5-portuguese-distinguish-fact-opinion-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-portuguese-distinguish-fact-opinion-17",
+          "v5-portuguese-distinguish-fact-opinion-18",
+          "v5-portuguese-distinguish-fact-opinion-19",
+          "v5-portuguese-distinguish-fact-opinion-20",
+          "v5-portuguese-distinguish-fact-opinion-21",
+          "v5-portuguese-distinguish-fact-opinion-22",
+          "v5-portuguese-distinguish-fact-opinion-23",
+          "v5-portuguese-distinguish-fact-opinion-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-portuguese-distinguish-fact-opinion-25",
+          "v5-portuguese-distinguish-fact-opinion-26",
+          "v5-portuguese-distinguish-fact-opinion-27",
+          "v5-portuguese-distinguish-fact-opinion-28",
+          "v5-portuguese-distinguish-fact-opinion-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-portuguese-distinguish-fact-opinion-30",
+          "v5-portuguese-distinguish-fact-opinion-31",
+          "v5-portuguese-distinguish-fact-opinion-32",
+          "v5-portuguese-distinguish-fact-opinion-33",
+          "v5-portuguese-distinguish-fact-opinion-34",
+          "v5-portuguese-distinguish-fact-opinion-35",
+          "v5-portuguese-distinguish-fact-opinion-36",
+          "v5-portuguese-distinguish-fact-opinion-37",
+          "v5-portuguese-distinguish-fact-opinion-38",
+          "v5-portuguese-distinguish-fact-opinion-39",
+          "v5-portuguese-distinguish-fact-opinion-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e condição antes de concluir."
+      },
+      {
+        "trigger": "BOUND_CLAIM",
+        "text": "A resposta correta não afirma mais do que a situação sustenta."
+      },
+      {
+        "trigger": "CHECK_EVIDENCE",
+        "text": "Identifique fonte, medida, regra ou observação usada."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar contexto, condição, fonte ou recorte.",
+        "prompt": "Sublinhe quem, quando, onde e em quais condições. Reescreva a resposta com esses limites."
+      },
+      {
+        "id": "SEPARATE_OBSERVATION",
+        "misconception": "Confundir observação, interpretação, causa ou julgamento.",
+        "prompt": "Faça duas colunas: o que foi observado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_COMPARISON",
+        "misconception": "Comparar situações sem manter critérios equivalentes.",
+        "prompt": "Liste o que é igual, o que mudou e qual critério permite uma comparação justa."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar uma regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de transferir o raciocínio."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-portuguese-distinguish-fact-opinion-activity",
+        "title": "Oficina de distinguir fato, opinião e inferência",
+        "objective": "Diferenciar informações verificáveis, avaliações e conclusões apoiadas em textos de circulação social.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto, situação ou registro acessível",
+          "Quadro de evidências",
+          "Registro de estratégia"
+        ],
+        "instructions": "Classificar frases de um texto real em tabela, justificando o critério e o alcance de cada classificação.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_DATA_VERIFICÁVEL_01",
+      "statement": "A ata registra que a reunião começou às 14 horas.. Como classificar a afirmação?",
+      "options": [
+        "é uma informação verificável no documento citado, desde que a ata seja consultada.",
+        "qualquer dado é opinião",
+        "a fonte não pode ser consultada",
+        "o horário depende da preferência do leitor"
+      ],
+      "correctAnswer": "é uma informação verificável no documento citado, desde que a ata seja consultada.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "qualquer dado é opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_DATA_VERIFICÁVEL_02",
+      "statement": "A ata registra que a reunião começou às 14 horas.. Que critério deve orientar a análise?",
+      "options": [
+        "qualquer dado é opinião",
+        "procurar registro, fonte e condições de verificação",
+        "a fonte não pode ser consultada",
+        "o horário depende da preferência do leitor"
+      ],
+      "correctAnswer": "procurar registro, fonte e condições de verificação",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "qualquer dado é opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_DATA_VERIFICÁVEL_03",
+      "statement": "A ata registra que a reunião começou às 14 horas.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "qualquer dado é opinião",
+        "a fonte não pode ser consultada",
+        "comparar a ata com outras versões sem transformar diferença em opinião",
+        "o horário depende da preferência do leitor"
+      ],
+      "correctAnswer": "comparar a ata com outras versões sem transformar diferença em opinião",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "qualquer dado é opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_DATA_VERIFICÁVEL_04",
+      "statement": "A ata registra que a reunião começou às 14 horas.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "qualquer dado é opinião",
+        "a fonte não pode ser consultada",
+        "o horário depende da preferência do leitor",
+        "chamar o horário de gosto pessoal"
+      ],
+      "correctAnswer": "chamar o horário de gosto pessoal",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "qualquer dado é opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_AVALIAÇÃO_05",
+      "statement": "Uma resenha chama o filme de “o mais emocionante do ano”.. Que marca aparece?",
+      "options": [
+        "a expressão apresenta uma avaliação do autor, não um fato universal demonstrado.",
+        "adjetivos são sempre dados",
+        "toda resenha é neutra",
+        "o ano transforma opinião em fato"
+      ],
+      "correctAnswer": "a expressão apresenta uma avaliação do autor, não um fato universal demonstrado.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "adjetivos são sempre dados": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_AVALIAÇÃO_06",
+      "statement": "Uma resenha chama o filme de “o mais emocionante do ano”.. Que critério deve orientar a análise?",
+      "options": [
+        "adjetivos são sempre dados",
+        "separar descrição observável de adjetivo e critério de julgamento",
+        "toda resenha é neutra",
+        "o ano transforma opinião em fato"
+      ],
+      "correctAnswer": "separar descrição observável de adjetivo e critério de julgamento",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "adjetivos são sempre dados": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_AVALIAÇÃO_07",
+      "statement": "Uma resenha chama o filme de “o mais emocionante do ano”.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "adjetivos são sempre dados",
+        "toda resenha é neutra",
+        "reformular a opinião indicando quais elementos a motivam",
+        "o ano transforma opinião em fato"
+      ],
+      "correctAnswer": "reformular a opinião indicando quais elementos a motivam",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "adjetivos são sempre dados": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_AVALIAÇÃO_08",
+      "statement": "Uma resenha chama o filme de “o mais emocionante do ano”.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "adjetivos são sempre dados",
+        "toda resenha é neutra",
+        "o ano transforma opinião em fato",
+        "tratar o superlativo como medição oficial"
+      ],
+      "correctAnswer": "tratar o superlativo como medição oficial",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "adjetivos são sempre dados": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_RELATÓRIO_NUMÉRICO_09",
+      "statement": "O relatório informa 240 participantes e apresenta a tabela de inscrição.. Qual cuidado permite classificar o trecho?",
+      "options": [
+        "a quantidade pode ser verificada no registro, mas sua interpretação depende do contexto da tabela.",
+        "toda interpretação é fato",
+        "a tabela elimina a necessidade de leitura",
+        "240 significa o mesmo em qualquer contexto"
+      ],
+      "correctAnswer": "a quantidade pode ser verificada no registro, mas sua interpretação depende do contexto da tabela.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "toda interpretação é fato": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_RELATÓRIO_NUMÉRICO_10",
+      "statement": "O relatório informa 240 participantes e apresenta a tabela de inscrição.. Que critério deve orientar a análise?",
+      "options": [
+        "toda interpretação é fato",
+        "distinguir dado registrado de conclusão feita a partir dele",
+        "a tabela elimina a necessidade de leitura",
+        "240 significa o mesmo em qualquer contexto"
+      ],
+      "correctAnswer": "distinguir dado registrado de conclusão feita a partir dele",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "toda interpretação é fato": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_RELATÓRIO_NUMÉRICO_11",
+      "statement": "O relatório informa 240 participantes e apresenta a tabela de inscrição.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "toda interpretação é fato",
+        "a tabela elimina a necessidade de leitura",
+        "testar outra interpretação mantendo a mesma base",
+        "240 significa o mesmo em qualquer contexto"
+      ],
+      "correctAnswer": "testar outra interpretação mantendo a mesma base",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "toda interpretação é fato": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_RELATÓRIO_NUMÉRICO_12",
+      "statement": "O relatório informa 240 participantes e apresenta a tabela de inscrição.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "toda interpretação é fato",
+        "a tabela elimina a necessidade de leitura",
+        "240 significa o mesmo em qualquer contexto",
+        "dizer que o número é gosto pessoal"
+      ],
+      "correctAnswer": "dizer que o número é gosto pessoal",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "toda interpretação é fato": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_COMENTÁRIO_13",
+      "statement": "“A praça ficou muito melhor depois da pintura”, escreveu uma moradora.. Como tratar a frase?",
+      "options": [
+        "é uma avaliação situada da moradora; pode ser compreendida com critérios e outras observações.",
+        "opiniões não podem ser justificadas",
+        "a moradora descreveu um fato completo",
+        "a pintura prova melhoria em tudo"
+      ],
+      "correctAnswer": "é uma avaliação situada da moradora; pode ser compreendida com critérios e outras observações.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "opiniões não podem ser justificadas": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_COMENTÁRIO_14",
+      "statement": "“A praça ficou muito melhor depois da pintura”, escreveu uma moradora.. Que critério deve orientar a análise?",
+      "options": [
+        "opiniões não podem ser justificadas",
+        "identificar avaliador, critério implícito e evidências mencionadas",
+        "a moradora descreveu um fato completo",
+        "a pintura prova melhoria em tudo"
+      ],
+      "correctAnswer": "identificar avaliador, critério implícito e evidências mencionadas",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "opiniões não podem ser justificadas": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_COMENTÁRIO_15",
+      "statement": "“A praça ficou muito melhor depois da pintura”, escreveu uma moradora.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "opiniões não podem ser justificadas",
+        "a moradora descreveu um fato completo",
+        "comparar percepções diferentes sem apagar nenhuma",
+        "a pintura prova melhoria em tudo"
+      ],
+      "correctAnswer": "comparar percepções diferentes sem apagar nenhuma",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "opiniões não podem ser justificadas": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_COMENTÁRIO_16",
+      "statement": "“A praça ficou muito melhor depois da pintura”, escreveu uma moradora.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "opiniões não podem ser justificadas",
+        "a moradora descreveu um fato completo",
+        "a pintura prova melhoria em tudo",
+        "apresentar a avaliação como medida universal"
+      ],
+      "correctAnswer": "apresentar a avaliação como medida universal",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "opiniões não podem ser justificadas": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_MODALIZADOR_17",
+      "statement": "O texto afirma que a escola deve ampliar o horário da biblioteca.. Que sinal ajuda na leitura?",
+      "options": [
+        "“deve” marca uma proposta ou posição normativa, não um acontecimento já verificado.",
+        "modalizadores não mudam sentido",
+        "toda recomendação é fato",
+        "a proposta prova que ocorreu"
+      ],
+      "correctAnswer": "“deve” marca uma proposta ou posição normativa, não um acontecimento já verificado.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "modalizadores não mudam sentido": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_MODALIZADOR_18",
+      "statement": "O texto afirma que a escola deve ampliar o horário da biblioteca.. Que critério deve orientar a análise?",
+      "options": [
+        "modalizadores não mudam sentido",
+        "localizar verbos modais e separar proposta de descrição",
+        "toda recomendação é fato",
+        "a proposta prova que ocorreu"
+      ],
+      "correctAnswer": "localizar verbos modais e separar proposta de descrição",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "modalizadores não mudam sentido": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_MODALIZADOR_19",
+      "statement": "O texto afirma que a escola deve ampliar o horário da biblioteca.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "modalizadores não mudam sentido",
+        "toda recomendação é fato",
+        "reescrever a proposta e indicar quais evidências seriam necessárias",
+        "a proposta prova que ocorreu"
+      ],
+      "correctAnswer": "reescrever a proposta e indicar quais evidências seriam necessárias",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "modalizadores não mudam sentido": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_MODALIZADOR_20",
+      "statement": "O texto afirma que a escola deve ampliar o horário da biblioteca.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "modalizadores não mudam sentido",
+        "toda recomendação é fato",
+        "a proposta prova que ocorreu",
+        "ler “deve” como registro de execução"
+      ],
+      "correctAnswer": "ler “deve” como registro de execução",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "modalizadores não mudam sentido": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_INFERÊNCIA_APOIADA_21",
+      "statement": "Após observar a fila menor em três dias, o relatório diz que o atendimento parece mais rápido.. Como classificar a conclusão?",
+      "options": [
+        "é uma inferência apoiada por observações, mas precisa de mais condições para virar afirmação geral.",
+        "três dias explicam todo o ano",
+        "a palavra parece elimina a evidência",
+        "observação e conclusão são iguais"
+      ],
+      "correctAnswer": "é uma inferência apoiada por observações, mas precisa de mais condições para virar afirmação geral.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "três dias explicam todo o ano": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_INFERÊNCIA_APOIADA_22",
+      "statement": "Após observar a fila menor em três dias, o relatório diz que o atendimento parece mais rápido.. Que critério deve orientar a análise?",
+      "options": [
+        "três dias explicam todo o ano",
+        "distinguir dado observado, hipótese interpretativa e alcance",
+        "a palavra parece elimina a evidência",
+        "observação e conclusão são iguais"
+      ],
+      "correctAnswer": "distinguir dado observado, hipótese interpretativa e alcance",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "três dias explicam todo o ano": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_INFERÊNCIA_APOIADA_23",
+      "statement": "Após observar a fila menor em três dias, o relatório diz que o atendimento parece mais rápido.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "três dias explicam todo o ano",
+        "a palavra parece elimina a evidência",
+        "coletar mais dias e comparar horários antes de generalizar",
+        "observação e conclusão são iguais"
+      ],
+      "correctAnswer": "coletar mais dias e comparar horários antes de generalizar",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "três dias explicam todo o ano": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_INFERÊNCIA_APOIADA_24",
+      "statement": "Após observar a fila menor em três dias, o relatório diz que o atendimento parece mais rápido.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "três dias explicam todo o ano",
+        "a palavra parece elimina a evidência",
+        "observação e conclusão são iguais",
+        "chamar a inferência de fato definitivo"
+      ],
+      "correctAnswer": "chamar a inferência de fato definitivo",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "três dias explicam todo o ano": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_FRASE_MISTA_25",
+      "statement": "A escola abriu uma horta em março, uma iniciativa muito importante para o bairro.. O que a frase combina?",
+      "options": [
+        "um dado temporal verificável e uma avaliação sobre a importância da iniciativa.",
+        "considerar toda a frase opinião",
+        "a data é avaliação",
+        "importante é uma medida objetiva sem critério"
+      ],
+      "correctAnswer": "um dado temporal verificável e uma avaliação sobre a importância da iniciativa.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "considerar toda a frase opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_FRASE_MISTA_26",
+      "statement": "A escola abriu uma horta em março, uma iniciativa muito importante para o bairro.. Que critério deve orientar a análise?",
+      "options": [
+        "considerar toda a frase opinião",
+        "separar oração informativa de julgamento e perguntar como verificar cada uma",
+        "a data é avaliação",
+        "importante é uma medida objetiva sem critério"
+      ],
+      "correctAnswer": "separar oração informativa de julgamento e perguntar como verificar cada uma",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "considerar toda a frase opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_FRASE_MISTA_27",
+      "statement": "A escola abriu uma horta em março, uma iniciativa muito importante para o bairro.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "considerar toda a frase opinião",
+        "a data é avaliação",
+        "revisar o texto marcando fonte e critério para a avaliação",
+        "importante é uma medida objetiva sem critério"
+      ],
+      "correctAnswer": "revisar o texto marcando fonte e critério para a avaliação",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "considerar toda a frase opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_FRASE_MISTA_28",
+      "statement": "A escola abriu uma horta em março, uma iniciativa muito importante para o bairro.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "considerar toda a frase opinião",
+        "a data é avaliação",
+        "importante é uma medida objetiva sem critério",
+        "considerar toda a frase fato"
+      ],
+      "correctAnswer": "considerar toda a frase fato",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "considerar toda a frase opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_PUBLICIDADE_29",
+      "statement": "O anúncio promete “o melhor curso para transformar sua vida”.. Qual leitura é adequada?",
+      "options": [
+        "a mensagem usa linguagem persuasiva e uma avaliação ampla que exigiria critérios para ser comparada.",
+        "publicidade não tem opinião",
+        "a promessa prova o efeito",
+        "transformar vida é uma medida definida"
+      ],
+      "correctAnswer": "a mensagem usa linguagem persuasiva e uma avaliação ampla que exigiria critérios para ser comparada.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "publicidade não tem opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_PUBLICIDADE_30",
+      "statement": "O anúncio promete “o melhor curso para transformar sua vida”.. Que critério deve orientar a análise?",
+      "options": [
+        "publicidade não tem opinião",
+        "identificar promessa, público, evidência e linguagem persuasiva",
+        "a promessa prova o efeito",
+        "transformar vida é uma medida definida"
+      ],
+      "correctAnswer": "identificar promessa, público, evidência e linguagem persuasiva",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "publicidade não tem opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_PUBLICIDADE_31",
+      "statement": "O anúncio promete “o melhor curso para transformar sua vida”.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "publicidade não tem opinião",
+        "a promessa prova o efeito",
+        "reformular a promessa em critérios observáveis e comparar opções",
+        "transformar vida é uma medida definida"
+      ],
+      "correctAnswer": "reformular a promessa em critérios observáveis e comparar opções",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "publicidade não tem opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_PUBLICIDADE_32",
+      "statement": "O anúncio promete “o melhor curso para transformar sua vida”.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "publicidade não tem opinião",
+        "a promessa prova o efeito",
+        "transformar vida é uma medida definida",
+        "aceitar o superlativo como resultado de pesquisa"
+      ],
+      "correctAnswer": "aceitar o superlativo como resultado de pesquisa",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "publicidade não tem opinião": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_GENERALIZAÇÃO_33",
+      "statement": "O texto diz que todos os jovens preferem estudar à noite, mas não informa como pesquisou.. Por que desconfiar?",
+      "options": [
+        "“todos” amplia a afirmação além da evidência apresentada e a fonte não permite verificar o alcance.",
+        "uma palavra nunca altera a afirmação",
+        "a ausência do método confirma a generalização",
+        "preferência é sempre fato coletivo"
+      ],
+      "correctAnswer": "“todos” amplia a afirmação além da evidência apresentada e a fonte não permite verificar o alcance.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "uma palavra nunca altera a afirmação": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_GENERALIZAÇÃO_34",
+      "statement": "O texto diz que todos os jovens preferem estudar à noite, mas não informa como pesquisou.. Que critério deve orientar a análise?",
+      "options": [
+        "uma palavra nunca altera a afirmação",
+        "observar quantos, quem, quando e como as respostas foram obtidas",
+        "a ausência do método confirma a generalização",
+        "preferência é sempre fato coletivo"
+      ],
+      "correctAnswer": "observar quantos, quem, quando e como as respostas foram obtidas",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "uma palavra nunca altera a afirmação": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_GENERALIZAÇÃO_35",
+      "statement": "O texto diz que todos os jovens preferem estudar à noite, mas não informa como pesquisou.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "uma palavra nunca altera a afirmação",
+        "a ausência do método confirma a generalização",
+        "limitar a frase ao grupo pesquisado ou realizar nova investigação",
+        "preferência é sempre fato coletivo"
+      ],
+      "correctAnswer": "limitar a frase ao grupo pesquisado ou realizar nova investigação",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "uma palavra nunca altera a afirmação": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_GENERALIZAÇÃO_36",
+      "statement": "O texto diz que todos os jovens preferem estudar à noite, mas não informa como pesquisou.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "uma palavra nunca altera a afirmação",
+        "a ausência do método confirma a generalização",
+        "preferência é sempre fato coletivo",
+        "tratar “todos” como detalhe estilístico"
+      ],
+      "correctAnswer": "tratar “todos” como detalhe estilístico",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "uma palavra nunca altera a afirmação": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_POSIÇÃO_DO_AUTOR_37",
+      "statement": "O editorial descreve um problema e conclui que a prefeitura deveria agir imediatamente.. Como identificar a opinião?",
+      "options": [
+        "a recomendação final revela a posição do autor e pode ser analisada em relação aos argumentos apresentados.",
+        "editorial só traz fatos",
+        "a posição não precisa de justificativa",
+        "qualquer recomendação é verdadeira"
+      ],
+      "correctAnswer": "a recomendação final revela a posição do autor e pode ser analisada em relação aos argumentos apresentados.",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "editorial só traz fatos": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_POSIÇÃO_DO_AUTOR_38",
+      "statement": "O editorial descreve um problema e conclui que a prefeitura deveria agir imediatamente.. Que critério deve orientar a análise?",
+      "options": [
+        "editorial só traz fatos",
+        "separar descrição, avaliação, recomendação e evidência",
+        "a posição não precisa de justificativa",
+        "qualquer recomendação é verdadeira"
+      ],
+      "correctAnswer": "separar descrição, avaliação, recomendação e evidência",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "editorial só traz fatos": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_POSIÇÃO_DO_AUTOR_39",
+      "statement": "O editorial descreve um problema e conclui que a prefeitura deveria agir imediatamente.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "editorial só traz fatos",
+        "a posição não precisa de justificativa",
+        "avaliar se a recomendação decorre dos dados e reconhece limites",
+        "qualquer recomendação é verdadeira"
+      ],
+      "correctAnswer": "avaliar se a recomendação decorre dos dados e reconhece limites",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "editorial só traz fatos": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-distinguish-fact-opinion-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_DISTINGUISH_FACT_OPINION_POSIÇÃO_DO_AUTOR_40",
+      "statement": "O editorial descreve um problema e conclui que a prefeitura deveria agir imediatamente.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "editorial só traz fatos",
+        "a posição não precisa de justificativa",
+        "qualquer recomendação é verdadeira",
+        "tratar a recomendação como obra já realizada"
+      ],
+      "correctAnswer": "tratar a recomendação como obra já realizada",
+      "explanation": "Fatos verificáveis, avaliações e inferências podem se combinar; a leitura crítica separa fonte, critério e alcance.",
+      "hint": "Procure registro, marcas de avaliação, modalizadores e o alcance da conclusão.",
+      "errorFocus": "FACT_OPINION_OR_INFERENCE_COLLAPSED",
+      "misconceptions": {
+        "editorial só traz fatos": [
+          "FACT_OPINION_OR_INFERENCE_COLLAPSED"
+        ]
+      }
+    }
+  ]
+}
