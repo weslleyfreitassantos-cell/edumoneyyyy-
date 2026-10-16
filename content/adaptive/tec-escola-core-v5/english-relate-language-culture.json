@@ -5,22 +5,22 @@
   "domain": "LANGUAGE_AND_CULTURE",
   "topic": "register_idioms_variety_and_audience",
   "canonicalSkillCode": "ENGLISH_RELATE_LANGUAGE_CULTURE",
-  "contentVersion": 6,
+  "contentVersion": 7,
   "lessonVersion": 6,
-  "expectedQuestionCount": 29,
-  "expectedContextCount": 29,
+  "expectedQuestionCount": 33,
+  "expectedContextCount": 33,
   "expectedPurposeCounts": {
     "PROBE": 4,
     "PRACTICE": 11,
     "TRANSFER": 8,
     "LOCK_IN": 3,
-    "REVIEW": 3
+    "REVIEW": 7
   },
   "expectedAnswerPositionCounts": {
-    "A": 8,
-    "B": 7,
-    "C": 7,
-    "D": 7
+    "A": 9,
+    "B": 8,
+    "C": 8,
+    "D": 8
   },
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -135,7 +135,7 @@
     "adjacentLegacyItemsForEditorialReview": [
       "v3-english-english_reading-7"
     ],
-    "newQuestions": 29,
+    "newQuestions": 33,
     "reusedQuestionsCountedAsNew": false
   },
   "lesson": {
@@ -221,7 +221,11 @@
         "questionIds": [
           "v5-english-relate-language-culture-27",
           "v5-english-relate-language-culture-28",
-          "v5-english-relate-language-culture-29"
+          "v5-english-relate-language-culture-29",
+          "v5-english-relate-language-culture-30",
+          "v5-english-relate-language-culture-31",
+          "v5-english-relate-language-culture-32",
+          "v5-english-relate-language-culture-33"
         ]
       }
     ],
@@ -955,6 +959,98 @@
       "misconceptions": {
         "Choose the most dramatic interpretation and act on it.": [
           "UNCERTAINTY_FILLED_WITH_CULTURAL_ASSUMPTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-relate-language-culture-30",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MODAL_EVIDENCE_RECHECK",
+      "statement": "A classmate writes, “I might join the study group at 4.” What is confirmed by this message?",
+      "options": [
+        "The classmate will definitely arrive at 4.",
+        "Joining is possible, but the classmate has not confirmed attendance.",
+        "The study group has been cancelled.",
+        "The classmate has already joined the group."
+      ],
+      "correctAnswer": "Joining is possible, but the classmate has not confirmed attendance.",
+      "explanation": "“Might” expresses possibility, not a firm commitment. The message does not confirm whether the classmate will attend.",
+      "hint": "Match the certainty of your answer to the modal verb “might”.",
+      "errorFocus": "POSSIBILITY_READ_AS_CERTAINTY",
+      "misconceptions": {
+        "The classmate will definitely arrive at 4.": [
+          "POSSIBILITY_READ_AS_CERTAINTY"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-relate-language-culture-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PHRASAL_VERB_RECHECK",
+      "statement": "A teammate says, “Let’s hold off sending the report until we check the totals.” What does “hold off sending” mean here?",
+      "options": [
+        "Send the report immediately.",
+        "Delete the report permanently.",
+        "Wait before sending the report.",
+        "Send the report to a different team."
+      ],
+      "correctAnswer": "Wait before sending the report.",
+      "explanation": "The totals still need checking, so “hold off” means delay the action until that check is done.",
+      "hint": "Use the following clause as a clue to the requested timing.",
+      "errorFocus": "PHRASAL_VERB_LITERALIZED",
+      "misconceptions": {
+        "Send the report immediately.": [
+          "PHRASAL_VERB_LITERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-relate-language-culture-32",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "IDIOM_RECHECK",
+      "statement": "At the start of a meeting, a facilitator says, “Let’s play a quick game to break the ice.” What is the likely purpose?",
+      "options": [
+        "Break a piece of ice in the room.",
+        "End the meeting before discussion starts.",
+        "Choose one person to speak for everyone.",
+        "Help people feel more comfortable beginning the conversation."
+      ],
+      "correctAnswer": "Help people feel more comfortable beginning the conversation.",
+      "explanation": "In a meeting context, “break the ice” means reduce initial awkwardness and make interaction easier.",
+      "hint": "Check whether a literal reading fits the meeting situation.",
+      "errorFocus": "IDIOM_TRANSLATED_WORD_FOR_WORD",
+      "misconceptions": {
+        "Break a piece of ice in the room.": [
+          "IDIOM_TRANSLATED_WORD_FOR_WORD"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-relate-language-culture-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMBIGUOUS_CONFIRMATION_RECHECK",
+      "statement": "A colleague replies “Sounds good” after you suggest either Tuesday or Thursday, but does not name a date. What should you do before booking the room?",
+      "options": [
+        "Ask which date the colleague is confirming.",
+        "Book both dates because both were accepted.",
+        "Assume the colleague chose Tuesday.",
+        "Treat the reply as a refusal."
+      ],
+      "correctAnswer": "Ask which date the colleague is confirming.",
+      "explanation": "The positive reply does not identify which of the two options is accepted. A neutral follow-up resolves the ambiguity.",
+      "hint": "Separate agreement with the plan from the specific option selected.",
+      "errorFocus": "AMBIGUOUS_REPLY_FORCED_TO_YES_OR_NO",
+      "misconceptions": {
+        "Book both dates because both were accepted.": [
+          "AMBIGUOUS_REPLY_FORCED_TO_YES_OR_NO"
         ]
       }
     }

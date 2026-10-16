@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-labelledby="title desc">
+  <title id="title">Escala grafica e impressao redimensionada</title>
+  <desc id="desc">O mesmo mapa aparece em duas impressoes de tamanhos diferentes. A barra grafica acompanha o mapa; a escala numerica precisa ser recalibrada se o tamanho impresso mudou.</desc>
+  <rect width="640" height="300" rx="16" fill="#f7fafc"/>
+  <g font-family="Arial, sans-serif" fill="#15283d">
+    <text x="34" y="40" font-size="19" font-weight="700">Original</text>
+    <text x="350" y="40" font-size="19" font-weight="700">Impressao reduzida</text>
+    <rect x="26" y="54" width="278" height="148" rx="10" fill="#fff" stroke="#9bb4c8"/>
+    <rect x="342" y="72" width="244" height="112" rx="10" fill="#fff" stroke="#9bb4c8"/>
+    <g stroke="#176b87" stroke-width="4" fill="none">
+      <path d="M48 112h232M102 70v108M174 70v108M246 70v108"/>
+      <path d="M360 116h208M408 86v84M470 86v84M532 86v84" stroke-width="3"/>
+    </g>
+    <text x="36" y="222" font-size="15">Escala numerica: 1:50 000</text>
+    <text x="350" y="222" font-size="15" fill="#a43d2d">Escala numerica: recalibrar</text>
+    <text x="36" y="281" font-size="14">0</text><text x="126" y="281" font-size="14">2 km</text>
+    <text x="350" y="281" font-size="14">0</text><text x="422" y="281" font-size="14">2 km</text>
+    <text x="470" y="281" font-size="14">barra redimensionada</text>
+  </g>
+  <g stroke="#176b87" stroke-width="7">
+    <path d="M50 254h84"/><path d="M364 254h67"/>
+  </g>
+</svg>

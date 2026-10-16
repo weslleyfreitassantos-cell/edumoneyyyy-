@@ -71,7 +71,7 @@ export function buildArtRelateWorkContextPack() {
   return {
     packVersion: 'tec-escola-core-v5-question-first', contentId: 'v5-art-relate-work-context-situated-evidence',
     subject: 'ART', domain: 'CONTEXTO', topic: 'obra_fontes_circulacao_e_comunidades', canonicalSkillCode: 'ART_RELATE_WORK_CONTEXT',
-    contentVersion: 6, lessonVersion: 6, expectedQuestionCount: 24, expectedContextCount: 24,
+    contentVersion: 7, lessonVersion: 7, expectedQuestionCount: 24, expectedContextCount: 24,
     expectedPurposeCounts: purposeCounts, expectedAnswerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
     officialMappingStatus: 'NOT_CLAIMED', pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', publicationStatus: 'STAGING', contentAuthoringStatus: 'AUTHORED',
     sourceQuestionFeedback,
@@ -107,6 +107,19 @@ export function buildArtRelateWorkContextPack() {
         { id: 'CONFLICTING_RECORDS', misconception: 'Resolver divergência de fontes por preferência pessoal.', prompt: 'Compare autoria, data, finalidade e evidência de cada registro. Se a divergência não for resolvida, relate as duas versões com atribuição.' },
         { id: 'ACCESS_WITH_AUTONOMY', misconception: 'Impor uma única forma de mediação.', prompt: 'Ofereça alternativas compatíveis com a obra e pergunte qual recurso a pessoa prefere; preserve autonomia e conservação.' },
       ],
+      authenticActivities: [{
+        id: 'ART_CONNECT_WORK_AND_SOURCE',
+        title: 'Obra, fonte e hipótese',
+        objective: 'Relacionar elementos observáveis de uma obra a um registro contextual, preservando autoria, alcance e lacunas de cada fonte.',
+        instructions: 'Use uma obra e uma ficha de contexto indicadas pelo professor. Anote dois elementos que aparecem na obra e dois dados que a ficha realmente registra. Relacione um elemento a um dado com a frase “observo ___; a ficha informa ___; isso pode sugerir ___”. Identifique quem produziu a ficha e registre uma pergunta que ela não responde.',
+        evidence: 'Entregar uma tabela curta com observações, dados atribuídos à fonte, uma relação fundamentada e uma lacuna ou divergência explicitada.',
+        privacyGuard: 'Use somente obras e fontes autorizadas para a atividade. Não publique entrevistas, imagens de pessoas, nomes ou relatos pessoais; não transforme a ficha em representação de toda uma comunidade.',
+        rubric: [
+          { criterion: 'Separação entre obra e fonte', emerging: 'Mistura o que vê com o que a ficha declara.', developing: 'Distingue obra e ficha, mas deixa uma afirmação sem atribuição.', proficient: 'Identifica claramente os elementos visuais e atribui cada dado à fonte que o registra.' },
+          { criterion: 'Relação sustentada', emerging: 'Afirma uma ligação sem indicar evidência.', developing: 'Aponta um detalhe visual ou um dado contextual, sem explicar a relação.', proficient: 'Explica uma interpretação possível usando evidência identificável da obra e da ficha.' },
+          { criterion: 'Escopo e incerteza', emerging: 'Generaliza a fonte ou atribui intenção sem evidências.', developing: 'Registra uma limitação, mas ainda amplia o alcance de alguma afirmação.', proficient: 'Indica quem produziu a fonte, o que ela não informa e mantém interpretações como hipótese quando necessário.' },
+        ],
+      }],
       reviewWindowsDays: [1, 3, 7], reviewScheduleStatus: 'SUGGESTED_NOT_AUTOMATED',
       sourceDossier: [
         { publisher: 'J. Paul Getty Museum, Education', title: 'Understanding Formal Analysis', url: 'https://www.getty.edu/education/teachers/classroom_resources/formal_analysis.html', license: 'Referência de análise formal; casos, fontes fictícias e ilustrações deste pacote são autorais.' },

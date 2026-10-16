@@ -5,22 +5,22 @@
   "domain": "DADOS",
   "topic": "ler_filtrar_comparar_e_limitar_tabelas",
   "canonicalSkillCode": "COMPUTING_READ_TABLE_DATA",
-  "contentVersion": 6,
+  "contentVersion": 7,
   "lessonVersion": 6,
-  "expectedQuestionCount": 24,
-  "expectedContextCount": 24,
+  "expectedQuestionCount": 34,
+  "expectedContextCount": 34,
   "expectedPurposeCounts": {
     "PROBE": 4,
     "PRACTICE": 11,
-    "TRANSFER": 5,
-    "LOCK_IN": 2,
-    "REVIEW": 2
+    "TRANSFER": 7,
+    "LOCK_IN": 4,
+    "REVIEW": 8
   },
   "expectedAnswerPositionCounts": {
-    "A": 6,
-    "B": 6,
-    "C": 6,
-    "D": 6
+    "A": 9,
+    "B": 9,
+    "C": 8,
+    "D": 8
   },
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -78,7 +78,7 @@
         "reason": "A pergunta aborda viés de recomendação algorítmica, não leitura de dados em tabela."
       }
     ],
-    "newQuestions": 24,
+    "newQuestions": 34,
     "reusedQuestionsCountedAsNew": false
   },
   "lesson": {
@@ -143,7 +143,9 @@
           "v5-computing-read-table-data-17",
           "v5-computing-read-table-data-18",
           "v5-computing-read-table-data-19",
-          "v5-computing-read-table-data-20"
+          "v5-computing-read-table-data-20",
+          "v5-computing-read-table-data-25",
+          "v5-computing-read-table-data-26"
         ]
       },
       {
@@ -151,7 +153,9 @@
         "focus": "Distinguir operações e limitar comparações ao que os dados sustentam.",
         "questionIds": [
           "v5-computing-read-table-data-21",
-          "v5-computing-read-table-data-22"
+          "v5-computing-read-table-data-22",
+          "v5-computing-read-table-data-27",
+          "v5-computing-read-table-data-28"
         ]
       },
       {
@@ -159,7 +163,13 @@
         "focus": "Reaplicar leitura de esquema e limites de coleta.",
         "questionIds": [
           "v5-computing-read-table-data-23",
-          "v5-computing-read-table-data-24"
+          "v5-computing-read-table-data-24",
+          "v5-computing-read-table-data-29",
+          "v5-computing-read-table-data-30",
+          "v5-computing-read-table-data-31",
+          "v5-computing-read-table-data-32",
+          "v5-computing-read-table-data-33",
+          "v5-computing-read-table-data-34"
         ]
       }
     ],
@@ -782,6 +792,236 @@
       "misconceptions": {
         "“Esta categoria é a mais comum em qualquer situação.”": [
           "DATA_SCOPE_AND_COLLECTION_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-25",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INCOMPLETE_AGGREGATE",
+      "statement": "Um relatório registra acessos por dia: segunda 5, terça 8, quarta sem leitura e quinta 7. A nota informa que o medidor ficou desligado na quarta. Qual conclusão é sustentada?",
+      "options": [
+        "Foram registrados 20 acessos nos dias com leitura; o total dos quatro dias é desconhecido.",
+        "O total dos quatro dias foi 20.",
+        "Quarta-feira teve zero acessos.",
+        "A média dos quatro dias foi 5 acessos."
+      ],
+      "correctAnswer": "Foram registrados 20 acessos nos dias com leitura; o total dos quatro dias é desconhecido.",
+      "explanation": "A soma dos valores disponíveis é 20, mas a quarta-feira não foi medida. Portanto, 20 é o subtotal observado, não o total real do período.",
+      "hint": "Separe soma dos registros disponíveis de total do período.",
+      "errorFocus": "MISSING_VALUE_ASSUMED_ZERO",
+      "misconceptions": {
+        "O total dos quatro dias foi 20.": [
+          "MISSING_VALUE_ASSUMED_ZERO"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-26",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "GROUPED_INTERVAL_PRECISION",
+      "statement": "Uma tabela agrupa durações em minutos: “0 a menos de 10” tem 4 registros e “10 a menos de 20” tem 6. Sem os valores individuais, o que se pode determinar?",
+      "options": [
+        "A média exata é 10 minutos.",
+        "Há 10 registros nesses intervalos, mas a média exata das durações não pode ser calculada.",
+        "Todos os registros duraram 10 minutos.",
+        "A duração máxima foi exatamente 20 minutos."
+      ],
+      "correctAnswer": "Há 10 registros nesses intervalos, mas a média exata das durações não pode ser calculada.",
+      "explanation": "As frequências permitem contar 10 registros, mas cada faixa contém vários valores possíveis. Não há dados suficientes para obter a média exata.",
+      "hint": "Diferencie a contagem por faixa dos valores individuais dentro de cada faixa.",
+      "errorFocus": "GROUPED_DATA_TREATED_AS_EXACT",
+      "misconceptions": {
+        "A média exata é 10 minutos.": [
+          "GROUPED_DATA_TREATED_AS_EXACT"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FILTER_PRESERVES_VALUES",
+      "statement": "Uma tabela de leituras está ordenada da maior para a menor. Você filtra apenas leituras acima de 50 e, depois, quer manter a ordem decrescente. O que deve acontecer?",
+      "options": [
+        "Trocar cada leitura acima de 50 por 50.",
+        "Apagar definitivamente as linhas abaixo de 50 da fonte.",
+        "Exibir somente as linhas acima de 50, preservando seus valores e a ordem decrescente.",
+        "Somar as leituras e exibir apenas o total."
+      ],
+      "correctAnswer": "Exibir somente as linhas acima de 50, preservando seus valores e a ordem decrescente.",
+      "explanation": "O filtro limita a visualização e mantém a ordenação dos registros selecionados; não edita nem exclui os dados da fonte.",
+      "hint": "Filtrar seleciona linhas. Confira se o pedido não solicita alterar ou apagar valores.",
+      "errorFocus": "FILTER_CONFUSED_WITH_DELETE",
+      "misconceptions": {
+        "Trocar cada leitura acima de 50 por 50.": [
+          "FILTER_CONFUSED_WITH_DELETE"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SUMMARY_RECONCILIATION",
+      "statement": "Uma tabela detalhada mostra 6 itens na categoria A, 8 na B e 7 na C; o resumo informa total 19. Qual é a ação mais responsável?",
+      "options": [
+        "Alterar a categoria C para 5 sem consultar a origem.",
+        "Assumir que o resumo está certo e ignorar as linhas detalhadas.",
+        "Concluir que duas linhas foram duplicadas e apagá-las.",
+        "Sinalizar que as contagens detalhadas somam 21 e conferir definições ou origem antes de corrigir o resumo."
+      ],
+      "correctAnswer": "Sinalizar que as contagens detalhadas somam 21 e conferir definições ou origem antes de corrigir o resumo.",
+      "explanation": "As três categorias somam 21, não 19. A divergência deve ser investigada; a tabela não identifica qual campo está incorreto nem autoriza uma alteração automática.",
+      "hint": "Recalcule o total e reporte a divergência sem inventar qual registro deve mudar.",
+      "errorFocus": "SUMMARY_DETAIL_MISMATCH_IGNORED",
+      "misconceptions": {
+        "Alterar a categoria C para 5 sem consultar a origem.": [
+          "SUMMARY_DETAIL_MISMATCH_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-29",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HEADER_UNIT_RECHECK",
+      "statement": "Em uma tabela, a coluna se chama “Distância (km)” e uma célula contém 4,2. O que esse valor representa?",
+      "options": [
+        "Uma distância de 4,2 quilômetros.",
+        "Um tempo de 4,2 horas.",
+        "Uma contagem de 4,2 registros.",
+        "Uma velocidade de 4,2 quilômetros por hora."
+      ],
+      "correctAnswer": "Uma distância de 4,2 quilômetros.",
+      "explanation": "O cabeçalho identifica a medida e a unidade entre parênteses. Não se deve acrescentar uma dimensão que a coluna não informa.",
+      "hint": "Use o nome e a unidade da coluna para interpretar a célula.",
+      "errorFocus": "VALUE_READ_WITHOUT_HEADER",
+      "misconceptions": {
+        "Um tempo de 4,2 horas.": [
+          "VALUE_READ_WITHOUT_HEADER"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-30",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FILTERED_TOTAL_SCOPE",
+      "statement": "Uma lista tem 30 registros, dos quais 9 atendem ao filtro “Concluído”. Quantos aparecem na tela após aplicar o filtro?",
+      "options": [
+        "21 registros, pois o filtro remove os concluídos.",
+        "9 registros; os outros continuam fora da visualização, não apagados.",
+        "30 registros, porque filtros não mudam a visualização.",
+        "9 registros foram excluídos da tabela."
+      ],
+      "correctAnswer": "9 registros; os outros continuam fora da visualização, não apagados.",
+      "explanation": "O filtro mostra os nove registros que atendem à condição. Os 21 restantes continuam nos dados, embora não apareçam nessa visualização.",
+      "hint": "Responda quantos ficam visíveis e diferencie isso do total armazenado.",
+      "errorFocus": "FILTER_CONFUSED_WITH_DELETE",
+      "misconceptions": {
+        "21 registros, pois o filtro remove os concluídos.": [
+          "FILTER_CONFUSED_WITH_DELETE"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "COUNT_VERSUS_RATE_RECHECK",
+      "statement": "Dois grupos registraram 12 e 10 ocorrências. A tabela não informa o tamanho de cada grupo. O que é possível comparar?",
+      "options": [
+        "A taxa do grupo com 12 ocorrências foi maior.",
+        "Os grupos tiveram a mesma taxa.",
+        "As contagens registradas; não é possível afirmar qual grupo teve a maior taxa.",
+        "O grupo com 10 ocorrências representa menos pessoas."
+      ],
+      "correctAnswer": "As contagens registradas; não é possível afirmar qual grupo teve a maior taxa.",
+      "explanation": "A contagem é conhecida, mas uma taxa exige o denominador de cada grupo.",
+      "hint": "Para comparar taxas, procure quantas pessoas ou oportunidades existem em cada grupo.",
+      "errorFocus": "COUNT_CONFUSED_WITH_RATE",
+      "misconceptions": {
+        "A taxa do grupo com 12 ocorrências foi maior.": [
+          "COUNT_CONFUSED_WITH_RATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ASSOCIATION_RECHECK",
+      "statement": "Em uma tabela de quatro semanas, vendas e temperatura aumentaram juntas. Qual frase evita afirmar mais do que os dados mostram?",
+      "options": [
+        "“O calor causou o aumento das vendas.”",
+        "“O aumento das vendas elevou a temperatura.”",
+        "“A tabela prova que as medidas nunca variam separadamente.”",
+        "“As duas medidas aumentaram nas semanas registradas; a tabela não demonstra que uma causou a outra.”"
+      ],
+      "correctAnswer": "“As duas medidas aumentaram nas semanas registradas; a tabela não demonstra que uma causou a outra.”",
+      "explanation": "A variação conjunta descreve uma associação no período observado. Para afirmar causa, seriam necessárias evidências e controle de outros fatores.",
+      "hint": "Descreva o padrão e evite transformar associação em causa.",
+      "errorFocus": "CORRELATION_CAUSALITY_CONFUSION",
+      "misconceptions": {
+        "“O calor causou o aumento das vendas.”": [
+          "CORRELATION_CAUSALITY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SUMMARY_RECHECK",
+      "statement": "Um resumo calcula uma média de 8, mas a tabela contém os valores 4, 8 e 12. Qual afirmação é correta?",
+      "options": [
+        "A média dos três valores é 8; isso não significa que todos os registros tenham valor 8.",
+        "Todos os registros foram iguais a 8.",
+        "A soma dos valores é 8.",
+        "O maior valor foi 8."
+      ],
+      "correctAnswer": "A média dos três valores é 8; isso não significa que todos os registros tenham valor 8.",
+      "explanation": "A média é (4 + 8 + 12) / 3 = 8. Ela resume o conjunto, mas não substitui os valores individuais.",
+      "hint": "Diferencie a medida-resumo dos valores de cada linha.",
+      "errorFocus": "MEAN_CONFUSED_WITH_EACH_RECORD",
+      "misconceptions": {
+        "Todos os registros foram iguais a 8.": [
+          "MEAN_CONFUSED_WITH_EACH_RECORD"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-read-table-data-34",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SORT_NOT_CHANGE_VALUE",
+      "statement": "Uma tabela ordenada do menor para o maior mostra os valores 3, 5 e 9. O que a ordenação fez?",
+      "options": [
+        "Transformou o valor 3 em zero.",
+        "Mudou a sequência de apresentação, mas não alterou os valores registrados.",
+        "Excluiu automaticamente o valor 9.",
+        "Calculou a média dos três valores."
+      ],
+      "correctAnswer": "Mudou a sequência de apresentação, mas não alterou os valores registrados.",
+      "explanation": "Ordenar reorganiza a exibição dos registros. Não modifica os valores nem calcula outra medida.",
+      "hint": "Observe se a operação pediu reorganizar linhas ou transformar os dados.",
+      "errorFocus": "SORT_CONFUSED_WITH_DATA_EDIT",
+      "misconceptions": {
+        "Transformou o valor 3 em zero.": [
+          "SORT_CONFUSED_WITH_DATA_EDIT"
         ]
       }
     }

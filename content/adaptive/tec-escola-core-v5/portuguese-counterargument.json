@@ -1,0 +1,1250 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-portuguese-counterargument",
+  "subject": "PORTUGUESE",
+  "domain": "ARGUMENTACAO_E_LEITURA",
+  "topic": "identificar_e_responder_contrapontos",
+  "canonicalSkillCode": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 43,
+  "expectedContextCount": 43,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 13
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 11,
+    "B": 11,
+    "C": 11,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-portuguese-reading_argument-8",
+      "hint": "Identifique a preocupação real do contraponto e responda a ela sem atribuir ao interlocutor uma afirmação mais extrema.",
+      "errorFocus": "COUNTERARGUMENT_FAIR_REPRESENTATION"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 1,
+    "feedbackAdded": 1,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 43,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Reconhecer e responder a contrapontos",
+    "objective": "Identificar uma objeção ou ressalva, representá-la com fidelidade e construir resposta pertinente sem distorcer a posição alheia.",
+    "summary": "Um contraponto apresenta uma preocupação, evidência ou consequência que limita uma proposta. Reconhecê-lo não significa concordar; responder com justiça exige tratar o ponto real, avaliar seu alcance e evitar ataques pessoais ou falsas alternativas.",
+    "explanation": "## 1. Identifique a posição principal\nLocalize o que o texto propõe ou defende. Uma objeção só pode ser reconhecida em relação a uma posição específica.\n\n## 2. Encontre a preocupação contrária ou limitadora\nUm contraponto pode apontar custo, acesso, segurança, viabilidade, impacto ou uma evidência que enfraquece a conclusão. Palavras como “porém”, “embora”, “uma dificuldade é” e “é preciso considerar” ajudam, mas a função depende do sentido, não apenas do conector.\n\n## 3. Diferencie objeção, condição e rejeição\n“É preciso prever manutenção” pode ser uma condição de implementação, não uma refutação total. “A proposta não atinge o objetivo porque...” pode contestar a conclusão. Não transforme uma ressalva específica em oposição absoluta.\n\n## 4. Represente a objeção com fidelidade\nAntes de responder, reescreva a preocupação de modo que quem a apresentou a reconheceria. Não acrescente palavras como “sempre”, “ninguém” ou “impossível” se não aparecem. Evite atacar a pessoa em vez do argumento.\n\n## 5. Construa uma resposta pertinente\nUma resposta pode reconhecer o custo, oferecer alternativa, delimitar a proposta, apresentar evidência ou propor um teste. Ela precisa enfrentar a preocupação específica. Repetir a tese não é responder ao contraponto.\n\n## 6. Preserve incerteza e alcance\nUma possibilidade não é um dano observado; um caso não prova efeito universal. Se a objeção prevê um resultado, indique que dados ou teste poderiam avaliá-lo. Não invente certeza para vencer o debate.\n\n## Exemplo resolvido\nProposta: publicar tarefas em plataforma digital. Contraponto: algumas casas podem ter conexão instável. Resposta: manter uma alternativa offline e verificar acesso antes de depender da plataforma. A resposta considera a barreira sem concluir que ninguém tem internet nem abandonar todo recurso digital.\n\n## 7. Faça uma síntese equilibrada\nRegistre proposta, preocupação e resposta. Diga o que a resposta resolve e o que ainda precisa ser verificado. Uma síntese justa não apaga benefícios nem limitações.",
+    "workedExample": "Uma proposta sugere abrir a horta no recreio. A objeção é que o fluxo pode danificar os canteiros. Uma resposta pertinente delimita caminhos e acompanha o uso antes de ampliar o acesso. Isso trata do risco sem afirmar que todo visitante causará dano ou que a horta precisa ficar sempre fechada.",
+    "commonMistake": "Tratar condição como rejeição total, exagerar a fala contrária, responder a outro assunto, atacar a pessoa ou apresentar risco previsto como fato consumado.",
+    "tips": [
+      "Escreva a proposta principal em uma frase.",
+      "Resuma o contraponto sem intensificadores inventados.",
+      "Pergunte se ele limita, refuta ou condiciona a proposta.",
+      "Responda ao mesmo ponto com evidência ou alternativa.",
+      "Declare o que ainda precisa ser testado."
+    ],
+    "estimatedMinutes": 30,
+    "priorKnowledge": [
+      "Identificar tese e razão em um texto argumentativo.",
+      "Reconhecer relações de contraste e concessão."
+    ],
+    "keyConcepts": [
+      "contraponto",
+      "objeção",
+      "concessão",
+      "refutação",
+      "representação justa",
+      "espantalho",
+      "resposta pertinente",
+      "limite"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Localizar a preocupação em um argumento curto.",
+        "questionIds": [
+          "v5-portuguese-counterargument-01",
+          "v5-portuguese-counterargument-02",
+          "v5-portuguese-counterargument-03",
+          "v5-portuguese-counterargument-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Distinguir objeção, condição, dado e rejeição.",
+        "questionIds": [
+          "v5-portuguese-counterargument-05",
+          "v5-portuguese-counterargument-06",
+          "v5-portuguese-counterargument-07",
+          "v5-portuguese-counterargument-08",
+          "v5-portuguese-counterargument-09",
+          "v5-portuguese-counterargument-10",
+          "v5-portuguese-counterargument-11",
+          "v5-portuguese-counterargument-12",
+          "v5-portuguese-counterargument-13",
+          "v5-portuguese-counterargument-14",
+          "v5-portuguese-counterargument-15",
+          "v5-portuguese-counterargument-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Construir respostas proporcionais em situações novas.",
+        "questionIds": [
+          "v5-portuguese-counterargument-17",
+          "v5-portuguese-counterargument-18",
+          "v5-portuguese-counterargument-19",
+          "v5-portuguese-counterargument-20",
+          "v5-portuguese-counterargument-21",
+          "v5-portuguese-counterargument-22",
+          "v5-portuguese-counterargument-23",
+          "v5-portuguese-counterargument-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Corrigir espantalhos, ataques e respostas fora do ponto.",
+        "questionIds": [
+          "v5-portuguese-counterargument-25",
+          "v5-portuguese-counterargument-26",
+          "v5-portuguese-counterargument-27",
+          "v5-portuguese-counterargument-28",
+          "v5-portuguese-counterargument-29",
+          "v5-portuguese-counterargument-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Sintetizar posições e limites com fidelidade.",
+        "questionIds": [
+          "v5-portuguese-counterargument-31",
+          "v5-portuguese-counterargument-32",
+          "v5-portuguese-counterargument-33",
+          "v5-portuguese-counterargument-34",
+          "v5-portuguese-counterargument-35",
+          "v5-portuguese-counterargument-36",
+          "v5-portuguese-counterargument-37",
+          "v5-portuguese-counterargument-38",
+          "v5-portuguese-counterargument-39",
+          "v5-portuguese-counterargument-40",
+          "v5-portuguese-counterargument-41",
+          "v5-portuguese-counterargument-42",
+          "v5-portuguese-counterargument-43"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "POSITION_FIRST",
+        "text": "Defina qual proposta ou tese está sendo discutida."
+      },
+      {
+        "trigger": "FAIR_RESTATE",
+        "text": "Resuma o contraponto sem acrescentar “sempre”, “ninguém” ou “impossível”."
+      },
+      {
+        "trigger": "CONDITION_OR_REFUTATION",
+        "text": "Uma condição de implementação não é necessariamente rejeição da proposta."
+      },
+      {
+        "trigger": "ANSWER_THE_POINT",
+        "text": "A resposta precisa tratar da preocupação apresentada, não apenas repetir a tese."
+      },
+      {
+        "trigger": "RISK_VS_EVENT",
+        "text": "Uma consequência possível não é um fato observado."
+      },
+      {
+        "trigger": "LIMIT_THE_REPLY",
+        "text": "Diga qual parte foi respondida e qual ainda requer evidência."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "RESTORE_THE_OBJECTION",
+        "misconception": "Exagerar a posição contrária.",
+        "prompt": "Retire intensificadores não citados e reescreva a preocupação em uma frase que preserve seu alcance."
+      },
+      {
+        "id": "CLASSIFY_FUNCTION",
+        "misconception": "Confundir condição, ressalva e refutação.",
+        "prompt": "Pergunte se o trecho impede a proposta, limita sua aplicação ou pede uma condição; justifique com as palavras do texto."
+      },
+      {
+        "id": "ANSWER_SPECIFIC_POINT",
+        "misconception": "Responder a outro assunto.",
+        "prompt": "Circule a preocupação e escreva uma resposta que a mencione diretamente antes de repetir a tese."
+      },
+      {
+        "id": "AVOID_PERSONAL_ATTACK",
+        "misconception": "Atacar quem apresentou a objeção.",
+        "prompt": "Apague julgamentos sobre a pessoa e avalie evidência, premissa ou consequência do argumento."
+      },
+      {
+        "id": "TEST_PREDICTION",
+        "misconception": "Tratar um risco previsto como resultado certo.",
+        "prompt": "Marque a frase como possibilidade ou observação e proponha um dado que poderia testar o risco."
+      },
+      {
+        "id": "BALANCE_SUMMARY",
+        "misconception": "Apagar benefício ou limitação ao resumir.",
+        "prompt": "Escreva uma frase para a proposta, uma para o contraponto e outra para a resposta e seu limite."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-portuguese-counterargument-fair-debate",
+        "title": "Revisão justa de contrapontos",
+        "objective": "Representar uma objeção com fidelidade e produzir resposta pertinente baseada em critérios.",
+        "context": "Use dilemas escolares hipotéticos e não controversos preparados pelo docente; nenhuma opinião pessoal precisa ser revelada.",
+        "materials": [
+          "Cartões com proposta e contraponto",
+          "Quadro para preocupação, alcance, resposta e dado faltante",
+          "Opções de resposta oral ou escrita"
+        ],
+        "instructions": "Em duplas, identifique a proposta, reescreva o contraponto sem exagero, classifique sua função, redija uma resposta que trate do ponto e indique o que ainda seria necessário verificar. Permita que o estudante escolha um cartão sem defender posição pessoal.",
+        "evidence": "Registro com representação fiel, classificação justificada e resposta ligada à preocupação.",
+        "safety": "Use temas de baixo risco, não avalie crenças pessoais e permita participação individual, escrita ou oral.",
+        "privacyGuard": "Não coletar opiniões políticas, religiosas, familiares ou relatos pessoais; avaliar a estrutura textual do material fornecido.",
+        "ageRange": "Ensino Fundamental II ou Ensino Médio, conforme complexidade dos textos.",
+        "mediation": "O docente verifica se ambas as posições foram representadas sem caricatura e se a resposta enfrenta o argumento, não a pessoa.",
+        "rubric": [
+          {
+            "criterion": "Representação",
+            "emerging": "Distorce ou exagera a objeção.",
+            "developing": "Identifica a preocupação com apoio.",
+            "proficient": "Reconstrói a objeção preservando seu alcance e condição."
+          },
+          {
+            "criterion": "Resposta",
+            "emerging": "Muda de assunto ou ataca a pessoa.",
+            "developing": "Responde parcialmente ao ponto.",
+            "proficient": "Apresenta resposta pertinente, evidência ou alternativa."
+          },
+          {
+            "criterion": "Limites",
+            "emerging": "Trata risco como certeza ou resposta como prova total.",
+            "developing": "Reconhece uma limitação após orientação.",
+            "proficient": "Explicita o que foi respondido e o que ainda precisa ser testado."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "TecEscola",
+        "title": "Dilemas hipotéticos de argumentação",
+        "license": "Questões e cenários autorais, não controversos; revisão pedagógica pendente e mapeamento oficial não reivindicado."
+      }
+    ],
+    "copyrightNote": "Questões e cenários autorais e hipotéticos. Revisão pedagógica pendente; alinhamento oficial não reivindicado."
+  },
+  "questions": [
+    {
+      "id": "v5-portuguese-counterargument-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "UNIFORM_COST",
+      "statement": "Proposta: adotar uniforme escolar. Objeção: “O custo inicial pode pesar para algumas famílias”.\n\nQual é a função da objeção?",
+      "options": [
+        "Apontar um possível custo que a proposta precisa considerar.",
+        "Provar que uniformes nunca têm custo.",
+        "Mudar o tema para transporte.",
+        "Demonstrar que todas as famílias pensam igual."
+      ],
+      "correctAnswer": "Apontar um possível custo que a proposta precisa considerar.",
+      "explanation": "A objeção apresenta uma dificuldade pertinente; não prova que todos serão afetados da mesma forma.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "OBJECTION_MISREAD_AS_CONCLUSION",
+      "misconceptions": {
+        "Provar que uniformes nunca têm custo.": [
+          "OBJECTION_MISREAD_AS_CONCLUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LIBRARY_HOURS",
+      "statement": "Proposta: abrir a biblioteca mais cedo. Objeção: “A equipe já organiza o espaço nesse horário”.\n\nQual trecho é o contraponto?",
+      "options": [
+        "Abrir a biblioteca mais cedo.",
+        "A equipe já organiza o espaço nesse horário.",
+        "A biblioteca tem livros.",
+        "A equipe trabalha na escola."
+      ],
+      "correctAnswer": "A equipe já organiza o espaço nesse horário.",
+      "explanation": "O contraponto introduz uma consideração contrária ou limitadora da proposta.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "COUNTERPOINT_NOT_LOCATED",
+      "misconceptions": {
+        "Abrir a biblioteca mais cedo.": [
+          "COUNTERPOINT_NOT_LOCATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PRINTED_NOTICES",
+      "statement": "Proposta: substituir avisos impressos por digitais. Objeção: “Nem todas as pessoas consultam o aplicativo”.\n\nO que a objeção exige que a proposta considere?",
+      "options": [
+        "Abandonar qualquer comunicação.",
+        "Afirmar que ninguém usa aplicativo.",
+        "Manter ou oferecer outro canal para quem não acessa o aplicativo.",
+        "Provar que papel é sempre melhor."
+      ],
+      "correctAnswer": "Manter ou oferecer outro canal para quem não acessa o aplicativo.",
+      "explanation": "A objeção aponta uma lacuna de acesso, não uma rejeição de toda tecnologia.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "ACCESS_OBJECTION_OVERGENERALIZED",
+      "misconceptions": {
+        "Abandonar qualquer comunicação.": [
+          "ACCESS_OBJECTION_OVERGENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PARK_TREES",
+      "statement": "Proposta: plantar árvores na praça. Objeção: “As raízes precisam ser consideradas perto da tubulação”.\n\nQual leitura é mais justa?",
+      "options": [
+        "A pessoa é contra qualquer árvore.",
+        "A proposta prova que a tubulação está danificada.",
+        "A objeção muda o assunto para iluminação.",
+        "A objeção pede planejamento do local e das espécies, sem negar necessariamente o plantio."
+      ],
+      "correctAnswer": "A objeção pede planejamento do local e das espécies, sem negar necessariamente o plantio.",
+      "explanation": "A preocupação delimita uma condição de implementação; não equivale a recusar o objetivo.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "CONDITION_MISTAKEN_FOR_REJECTION",
+      "misconceptions": {
+        "A pessoa é contra qualquer árvore.": [
+          "CONDITION_MISTAKEN_FOR_REJECTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCHOOL_TABLETS",
+      "statement": "Proposta: emprestar tablets para atividades. Objeção: “É preciso prever manutenção e reposição”.\n\nA objeção refuta o uso pedagógico dos tablets?",
+      "options": [
+        "Não. Ela aponta custos e condições que o plano deve incluir.",
+        "Sim, prova que tablets não servem para aprender.",
+        "Sim, porque toda manutenção torna uma proposta impossível.",
+        "Não, e por isso os custos podem ser ignorados."
+      ],
+      "correctAnswer": "Não. Ela aponta custos e condições que o plano deve incluir.",
+      "explanation": "Uma objeção pode limitar a implementação sem negar todos os benefícios alegados.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "IMPLEMENTATION_CONCERN_TREATED_AS_REFUTATION",
+      "misconceptions": {
+        "Sim, prova que tablets não servem para aprender.": [
+          "IMPLEMENTATION_CONCERN_TREATED_AS_REFUTATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "BUS_SCHEDULE",
+      "statement": "Proposta: publicar horários em cartazes. Objeção: “Os horários mudam em feriados”.\n\nQual resposta incorpora a objeção sem abandonar a proposta?",
+      "options": [
+        "Dizer que horários nunca mudam.",
+        "Indicar a data de validade e atualizar o cartaz quando houver exceções.",
+        "Retirar todos os horários.",
+        "Afirmar que feriados não existem."
+      ],
+      "correctAnswer": "Indicar a data de validade e atualizar o cartaz quando houver exceções.",
+      "explanation": "A resposta adapta o plano ao problema concreto: validade e atualização.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "OBJECTION_IGNORED",
+      "misconceptions": {
+        "Dizer que horários nunca mudam.": [
+          "OBJECTION_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "READING_TIME",
+      "statement": "Proposta: reservar tempo de leitura em aula. Objeção: “O conteúdo da disciplina também precisa avançar”.\n\nQue resposta reconhece a preocupação?",
+      "options": [
+        "Negar que exista conteúdo a ensinar.",
+        "Dizer que leitura substitui qualquer objetivo.",
+        "Planejar uma duração e frequência compatíveis com os objetivos e acompanhar o tempo disponível.",
+        "Acusar quem perguntou de não gostar de livros."
+      ],
+      "correctAnswer": "Planejar uma duração e frequência compatíveis com os objetivos e acompanhar o tempo disponível.",
+      "explanation": "A resposta considera ambos os objetivos e pede planejamento, em vez de caricaturar a objeção.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "CONCERN_REPLACED_WITH_PERSONAL_ATTACK",
+      "misconceptions": {
+        "Negar que exista conteúdo a ensinar.": [
+          "CONCERN_REPLACED_WITH_PERSONAL_ATTACK"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCHOOL_GARDEN",
+      "statement": "Proposta: usar a horta em atividades semanais. Objeção: “A rotina precisa prever semanas de chuva intensa”.\n\nO contraponto é sobre quê?",
+      "options": [
+        "A validade da botânica.",
+        "A quantidade de estudantes da escola.",
+        "A prova de que a horta não pode ser usada.",
+        "Continuidade e adaptação da atividade às condições do tempo."
+      ],
+      "correctAnswer": "Continuidade e adaptação da atividade às condições do tempo.",
+      "explanation": "A objeção trata de uma condição operacional específica.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "OBJECTION_TOPIC_MISIDENTIFIED",
+      "misconceptions": {
+        "A validade da botânica.": [
+          "OBJECTION_TOPIC_MISIDENTIFIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "COMMUNITY_POLL",
+      "statement": "Proposta: decidir o horário por enquete. Objeção: “Uma enquete voluntária pode não representar quem não respondeu”.\n\nQue limitação foi levantada?",
+      "options": [
+        "Possível viés de não resposta e representatividade da consulta.",
+        "A enquete já decidiu o horário.",
+        "Nenhuma pessoa pode responder voluntariamente.",
+        "Todos os não respondentes discordam."
+      ],
+      "correctAnswer": "Possível viés de não resposta e representatividade da consulta.",
+      "explanation": "A objeção questiona o alcance da amostra; não revela a opinião de quem não respondeu.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "NONRESPONSE_OPINION_INVENTED",
+      "misconceptions": {
+        "A enquete já decidiu o horário.": [
+          "NONRESPONSE_OPINION_INVENTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "QUIET_AREA",
+      "statement": "Proposta: criar uma área silenciosa na biblioteca. Objeção: “Também precisamos de espaço para trabalho em grupo”.\n\nQual solução responde ao contraponto sem distorcer a proposta?",
+      "options": [
+        "Proibir todo trabalho em grupo.",
+        "Organizar zonas ou horários distintos, se o espaço permitir, e avaliar o uso.",
+        "Cancelar a área silenciosa sem analisar alternativas.",
+        "Afirmar que grupos nunca precisam conversar."
+      ],
+      "correctAnswer": "Organizar zonas ou horários distintos, se o espaço permitir, e avaliar o uso.",
+      "explanation": "A objeção mostra uma necessidade diferente; alternativas podem acomodar ambas.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "FALSE_EITHER_OR",
+      "misconceptions": {
+        "Proibir todo trabalho em grupo.": [
+          "FALSE_EITHER_OR"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "WATER_BOTTLES",
+      "statement": "Proposta: instalar bebedouro. Objeção: “A manutenção e a qualidade da água devem ser verificadas”.\n\nQue tipo de contraponto é esse?",
+      "options": [
+        "Uma prova de que bebedouros não funcionam.",
+        "Um dado de que a água está contaminada.",
+        "Uma condição de segurança e manutenção da implementação.",
+        "Uma conclusão sobre todos os estudantes."
+      ],
+      "correctAnswer": "Uma condição de segurança e manutenção da implementação.",
+      "explanation": "A preocupação é relevante, mas não apresenta resultado de análise nem rejeita a proposta.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "CONDITION_CONFUSED_WITH_FINDING",
+      "misconceptions": {
+        "Uma prova de que bebedouros não funcionam.": [
+          "CONDITION_CONFUSED_WITH_FINDING"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "BUS_SHELTER",
+      "statement": "Proposta: instalar cobertura no ponto. Objeção: “A estrutura não pode bloquear a passagem de pedestres”.\n\nQual resposta é proporcional?",
+      "options": [
+        "A cobertura será construída em qualquer lugar.",
+        "A proposta deve ser abandonada porque toda estrutura bloqueia.",
+        "A objeção prova que pedestres não usam o ponto.",
+        "Projetar e avaliar a localização para proteger da chuva sem obstruir a circulação."
+      ],
+      "correctAnswer": "Projetar e avaliar a localização para proteger da chuva sem obstruir a circulação.",
+      "explanation": "A objeção define um critério de projeto que pode ser verificado.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "DESIGN_CONSTRAINT_IGNORED",
+      "misconceptions": {
+        "A cobertura será construída em qualquer lugar.": [
+          "DESIGN_CONSTRAINT_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "DIGITAL_HOMEWORK",
+      "statement": "Proposta: enviar tarefas por plataforma digital. Objeção: “Algumas casas podem ter conexão instável”.\n\nQual resposta enfrenta a objeção?",
+      "options": [
+        "Disponibilizar alternativa offline ou outro canal e verificar acesso antes de depender da plataforma.",
+        "Afirmar que toda casa tem conexão.",
+        "Concluir que ninguém pode usar plataforma.",
+        "Dizer que a objeção não importa."
+      ],
+      "correctAnswer": "Disponibilizar alternativa offline ou outro canal e verificar acesso antes de depender da plataforma.",
+      "explanation": "A alternativa trata a barreira apontada sem generalizar acesso nem descartar o recurso digital.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "ACCESS_BARRIER_DENIED",
+      "misconceptions": {
+        "Afirmar que toda casa tem conexão.": [
+          "ACCESS_BARRIER_DENIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCHOOL_CLOCK",
+      "statement": "Proposta: tocar sinal cinco minutos antes. Objeção: “O sinal pode interromper atividades em andamento”.\n\nQual informação ajudaria a avaliar o contraponto?",
+      "options": [
+        "A cor do relógio.",
+        "Como a mudança afetaria aulas e transições em diferentes horários.",
+        "A afirmação de que sinais sempre ajudam.",
+        "A preferência de uma pessoa tomada como regra."
+      ],
+      "correctAnswer": "Como a mudança afetaria aulas e transições em diferentes horários.",
+      "explanation": "A preocupação identifica um possível efeito; é preciso observar os contextos em que ocorreria.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "CONSEQUENCE_ASSUMED_WITHOUT_CONTEXT",
+      "misconceptions": {
+        "A cor do relógio.": [
+          "CONSEQUENCE_ASSUMED_WITHOUT_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RESPOND",
+      "contextFamily": "PARK_LIGHT",
+      "statement": "Proposta: ampliar a iluminação de um caminho. Objeção: “A instalação pode afetar animais e moradores próximos”.\n\nQue resposta argumentativa é mais cuidadosa?",
+      "options": [
+        "Negar qualquer impacto sem estudo.",
+        "Concluir que toda iluminação é proibida.",
+        "Comparar necessidade, alternativas, direção e intensidade da luz e possíveis impactos antes de definir o projeto.",
+        "Afirmar que animais não existem no local."
+      ],
+      "correctAnswer": "Comparar necessidade, alternativas, direção e intensidade da luz e possíveis impactos antes de definir o projeto.",
+      "explanation": "A objeção introduz efeitos que precisam ser avaliados; a decisão depende de evidências sobre o local.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "IMPACT_OBJECTION_DISMISSED_OR_ABSOLUTIZED",
+      "misconceptions": {
+        "Negar qualquer impacto sem estudo.": [
+          "IMPACT_OBJECTION_DISMISSED_OR_ABSOLUTIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SCHOOL_LUNCH",
+      "statement": "Proposta: ampliar o intervalo de almoço. Objeção: “Isso reduziria o tempo de outras atividades”.\n\nQual resposta exige avaliação equilibrada?",
+      "options": [
+        "Dizer que nenhuma outra atividade importa.",
+        "Concluir que o intervalo não pode mudar.",
+        "Afirmar que o almoço não ocupa tempo.",
+        "Comparar a necessidade do intervalo com a grade completa e testar alternativas de organização."
+      ],
+      "correctAnswer": "Comparar a necessidade do intervalo com a grade completa e testar alternativas de organização.",
+      "explanation": "A objeção aponta custo de oportunidade; a resposta deve considerar os objetivos concorrentes.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "TRADEOFF_NOT_ACKNOWLEDGED",
+      "misconceptions": {
+        "Dizer que nenhuma outra atividade importa.": [
+          "TRADEOFF_NOT_ACKNOWLEDGED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "LIBRARY_DIGITAL",
+      "statement": "Proposta: ampliar o catálogo digital. Objeção: “Nem todo título tem formato acessível”.\n\nO que essa objeção indica?",
+      "options": [
+        "A expansão deve incluir avaliação de acessibilidade e alternativas para títulos indisponíveis em formato acessível.",
+        "Que catálogo digital é sempre inacessível.",
+        "Que todos os títulos já são acessíveis.",
+        "Que leitores não precisam de formatos alternativos."
+      ],
+      "correctAnswer": "A expansão deve incluir avaliação de acessibilidade e alternativas para títulos indisponíveis em formato acessível.",
+      "explanation": "A objeção identifica uma condição de inclusão a ser verificada, não uma conclusão universal.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "ACCESSIBILITY_SCOPE_GENERALIZED",
+      "misconceptions": {
+        "Que catálogo digital é sempre inacessível.": [
+          "ACCESSIBILITY_SCOPE_GENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_RECYCLING",
+      "statement": "Proposta: separar recicláveis em todas as salas. Objeção: “A coleta posterior precisa manter a separação”.\n\nQue parte do plano a objeção questiona?",
+      "options": [
+        "A possibilidade de separar materiais.",
+        "A continuidade do processo depois da separação feita na sala.",
+        "A existência de resíduos.",
+        "A cor dos cestos como única questão."
+      ],
+      "correctAnswer": "A continuidade do processo depois da separação feita na sala.",
+      "explanation": "O contraponto testa se a etapa seguinte preserva o objetivo da ação.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "PROCESS_GAP_MISSED",
+      "misconceptions": {
+        "A possibilidade de separar materiais.": [
+          "PROCESS_GAP_MISSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BIKE_RACK",
+      "statement": "Proposta: ampliar o bicicletário. Objeção: “O espaço também é rota de circulação”.\n\nQual resposta integra a restrição?",
+      "options": [
+        "Ocupar a rota por completo.",
+        "Cancelar sem verificar uso.",
+        "Medir demanda e circulação e localizar vagas sem bloquear a passagem.",
+        "Afirmar que circulação não importa."
+      ],
+      "correctAnswer": "Medir demanda e circulação e localizar vagas sem bloquear a passagem.",
+      "explanation": "A objeção define uso concorrente do espaço; medir ambos ajuda a escolher a solução.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "COMPETING_USE_IGNORED",
+      "misconceptions": {
+        "Ocupar a rota por completo.": [
+          "COMPETING_USE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "SCHOOL_AUDIO",
+      "statement": "Proposta: usar áudio nas instruções. Objeção: “O estudante pode não conseguir ouvi-lo em todas as situações”.\n\nQual resposta é mais inclusiva?",
+      "options": [
+        "Exigir fones em qualquer ambiente.",
+        "Retirar todas as instruções.",
+        "Supor que todos ouvem da mesma maneira.",
+        "Oferecer transcrição ou outra forma equivalente de acesso junto ao áudio."
+      ],
+      "correctAnswer": "Oferecer transcrição ou outra forma equivalente de acesso junto ao áudio.",
+      "explanation": "Uma alternativa equivalente responde à barreira sem presumir uma experiência única.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "SINGLE_MODALITY_ASSUMED",
+      "misconceptions": {
+        "Exigir fones em qualquer ambiente.": [
+          "SINGLE_MODALITY_ASSUMED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "COMMUNITY_GARDEN",
+      "statement": "Proposta: abrir a horta para visitas. Objeção: “É preciso proteger plantas e ferramentas”.\n\nO que a objeção demanda?",
+      "options": [
+        "Regras de visita, acompanhamento e proteção compatíveis com o uso do espaço.",
+        "Proibir qualquer visita.",
+        "Deixar o espaço sem regras.",
+        "Concluir que visitantes danificarão tudo."
+      ],
+      "correctAnswer": "Regras de visita, acompanhamento e proteção compatíveis com o uso do espaço.",
+      "explanation": "A preocupação pode orientar condições proporcionais, sem presumir dano inevitável.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "RISK_TREATED_AS_CERTAINTY",
+      "misconceptions": {
+        "Proibir qualquer visita.": [
+          "RISK_TREATED_AS_CERTAINTY"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_MAP",
+      "statement": "Proposta: distribuir mapa impresso. Objeção: “Uma versão impressa pode ficar desatualizada”.\n\nQual resposta trata diretamente do problema?",
+      "options": [
+        "Afirmar que mapas nunca mudam.",
+        "Indicar versão e data e definir como substituir mapas quando houver mudanças.",
+        "Concluir que mapas digitais também nunca mudam.",
+        "Retirar a data para evitar confusão."
+      ],
+      "correctAnswer": "Indicar versão e data e definir como substituir mapas quando houver mudanças.",
+      "explanation": "Controle de versão responde à atualização; a objeção não impede todo uso impresso.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "VERSION_RISK_UNADDRESSED",
+      "misconceptions": {
+        "Afirmar que mapas nunca mudam.": [
+          "VERSION_RISK_UNADDRESSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE",
+      "contextFamily": "SPORTS_SCHEDULE",
+      "statement": "Proposta: oferecer treino no sábado. Objeção: “Parte da equipe pode não ter transporte nesse dia”.\n\nO que deve ser investigado?",
+      "options": [
+        "Que todos têm transporte.",
+        "Que ninguém consegue comparecer.",
+        "Disponibilidade de transporte e alternativas de horário ou participação.",
+        "Que a proposta é injusta sem ouvir os envolvidos."
+      ],
+      "correctAnswer": "Disponibilidade de transporte e alternativas de horário ou participação.",
+      "explanation": "A objeção aponta barreira possível; investigar evita generalizar em qualquer direção.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "POSSIBLE_BARRIER_TURNED_UNIVERSAL",
+      "misconceptions": {
+        "Que todos têm transporte.": [
+          "POSSIBLE_BARRIER_TURNED_UNIVERSAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_PLANTS",
+      "statement": "Proposta: substituir plantas do pátio. Objeção: “As plantas atuais podem ser preservadas em outro local”.\n\nQual resposta demonstra análise do contraponto?",
+      "options": [
+        "Ignorar a possibilidade de preservação.",
+        "Concluir que nenhuma planta pode ser movida.",
+        "Dizer que a substituição já ocorreu.",
+        "Comparar viabilidade de preservação, necessidades do espaço e custos antes de escolher."
+      ],
+      "correctAnswer": "Comparar viabilidade de preservação, necessidades do espaço e custos antes de escolher.",
+      "explanation": "O contraponto sugere alternativa que precisa ser avaliada, não presumida como viável ou inviável.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "ALTERNATIVE_NOT_EVALUATED",
+      "misconceptions": {
+        "Ignorar a possibilidade de preservação.": [
+          "ALTERNATIVE_NOT_EVALUATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "CLASSROOM_SEATING",
+      "statement": "Proposta: fixar mesas em fileiras. Objeção: “Algumas tarefas exigem reorganização em grupos”.\n\nQual é a preocupação central?",
+      "options": [
+        "Flexibilidade para diferentes formatos de atividade.",
+        "A cor das mesas.",
+        "A prova de que fileiras nunca funcionam.",
+        "A conclusão de que toda aula será em grupo."
+      ],
+      "correctAnswer": "Flexibilidade para diferentes formatos de atividade.",
+      "explanation": "A objeção discute adequação a usos distintos, não rejeição total de fileiras.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "PARTIAL_USE_CASE_GENERALIZED",
+      "misconceptions": {
+        "A cor das mesas.": [
+          "PARTIAL_USE_CASE_GENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_WIFI",
+      "statement": "Proposta: concentrar materiais na rede escolar. Objeção: “A rede pode ficar indisponível em manutenção”.\n\nQual resposta preserva a continuidade?",
+      "options": [
+        "Afirmar que manutenção nunca ocorre.",
+        "Planejar cópias locais ou um canal alternativo para períodos de indisponibilidade.",
+        "Cancelar qualquer uso de rede.",
+        "Dizer que estudantes não precisam dos materiais."
+      ],
+      "correctAnswer": "Planejar cópias locais ou um canal alternativo para períodos de indisponibilidade.",
+      "explanation": "A alternativa responde ao risco operacional e mantém o objetivo de acesso.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "CONTINGENCY_IGNORED",
+      "misconceptions": {
+        "Afirmar que manutenção nunca ocorre.": [
+          "CONTINGENCY_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "MUSEUM_TRIP",
+      "statement": "Proposta: organizar visita ao museu. Objeção: “O deslocamento pode limitar a participação de algumas pessoas”.\n\nQue resposta incorpora a objeção?",
+      "options": [
+        "Presumir que todos conseguem viajar.",
+        "Cancelar a aprendizagem sobre museus.",
+        "Verificar acessibilidade e transporte e oferecer alternativa equivalente quando necessário.",
+        "Dizer que a objeção é irrelevante."
+      ],
+      "correctAnswer": "Verificar acessibilidade e transporte e oferecer alternativa equivalente quando necessário.",
+      "explanation": "A resposta considera a barreira e mantém o objetivo de aprendizagem com opções.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "PARTICIPATION_BARRIER_IGNORED",
+      "misconceptions": {
+        "Presumir que todos conseguem viajar.": [
+          "PARTICIPATION_BARRIER_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_EVENT",
+      "statement": "Proposta: realizar evento ao ar livre. Objeção: “A chuva pode alterar o espaço”.\n\nQual resposta é uma réplica pertinente?",
+      "options": [
+        "Afirmar que não choverá.",
+        "Provar que todo evento ao ar livre falha.",
+        "Mudar o tema para alimentação.",
+        "Definir local alternativo ou critério de adiamento antes do evento."
+      ],
+      "correctAnswer": "Definir local alternativo ou critério de adiamento antes do evento.",
+      "explanation": "A réplica enfrenta a contingência citada com planejamento verificável.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "CONTINGENCY_DENIED",
+      "misconceptions": {
+        "Afirmar que não choverá.": [
+          "CONTINGENCY_DENIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "BOOK_CIRCLE",
+      "statement": "Proposta: escolher um único livro para a turma. Objeção: “O tema pode não ser adequado a todos os leitores”.\n\nQue alternativa reconhece a preocupação sem supor que a leitura comum seja impossível?",
+      "options": [
+        "Oferecer contexto, mediação e opções equivalentes quando o conteúdo exigir.",
+        "Obrigar todos sem mediação.",
+        "Afirmar que nenhum livro serve a uma turma.",
+        "Concluir que a objeção proíbe leitura compartilhada."
+      ],
+      "correctAnswer": "Oferecer contexto, mediação e opções equivalentes quando o conteúdo exigir.",
+      "explanation": "A preocupação pede adequação e apoio; não demonstra impossibilidade da atividade.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "OBJECTION_ABSOLUTIZED",
+      "misconceptions": {
+        "Obrigar todos sem mediação.": [
+          "OBJECTION_ABSOLUTIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_MURAL",
+      "statement": "Proposta: pintar mural no corredor. Objeção: “A tinta pode liberar odor durante as aulas”.\n\nQual resposta é mais relevante?",
+      "options": [
+        "Dizer que qualquer tinta é inofensiva.",
+        "Planejar materiais e horários de aplicação e ventilação conforme orientação de segurança.",
+        "Proibir toda produção artística.",
+        "Responder apenas sobre as cores."
+      ],
+      "correctAnswer": "Planejar materiais e horários de aplicação e ventilação conforme orientação de segurança.",
+      "explanation": "A resposta trata o risco indicado, sem minimizar ou ampliar além das informações dadas.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "REPLY_NOT_RELEVANT_TO_OBJECTION",
+      "misconceptions": {
+        "Dizer que qualquer tinta é inofensiva.": [
+          "REPLY_NOT_RELEVANT_TO_OBJECTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PARK_SIGN",
+      "statement": "Proposta: instalar placas com regras da praça. Objeção: “Placas demais podem dificultar a leitura”.\n\nQual solução atende à objeção?",
+      "options": [
+        "Adicionar mais placas sem critério.",
+        "Retirar toda informação.",
+        "Priorizar mensagens essenciais, posicionar placas com clareza e testar legibilidade.",
+        "Afirmar que mais texto sempre melhora compreensão."
+      ],
+      "correctAnswer": "Priorizar mensagens essenciais, posicionar placas com clareza e testar legibilidade.",
+      "explanation": "A objeção trata de carga de informação; síntese e teste respondem ao problema.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "MORE_INFORMATION_ASSUMED_BETTER",
+      "misconceptions": {
+        "Adicionar mais placas sem critério.": [
+          "MORE_INFORMATION_ASSUMED_BETTER"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-32",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLASSROOM_GROUPS",
+      "statement": "Proposta: formar grupos de quatro. Objeção: “Alguns estudantes podem participar menos”.\n\nQual resposta é mais construtiva?",
+      "options": [
+        "Afirmar que grupos sempre garantem participação.",
+        "Concluir que colaboração deve ser proibida.",
+        "Culpar estudantes que falam menos.",
+        "Definir papéis, acompanhar participação e ajustar os grupos com base na atividade."
+      ],
+      "correctAnswer": "Definir papéis, acompanhar participação e ajustar os grupos com base na atividade.",
+      "explanation": "A objeção aponta um risco de dinâmica; papéis e acompanhamento podem ser avaliados.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "PARTICIPATION_RISK_PERSONALIZED",
+      "misconceptions": {
+        "Afirmar que grupos sempre garantem participação.": [
+          "PARTICIPATION_RISK_PERSONALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-33",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "DIGITAL_ARCHIVE",
+      "statement": "Proposta: guardar trabalhos em arquivo digital. Objeção: “Formatos e links podem deixar de funcionar”.\n\nQue réplica responde ao risco de preservação?",
+      "options": [
+        "Manter cópias de segurança, formatos abertos e verificação periódica de acesso.",
+        "Dizer que arquivos digitais nunca se perdem.",
+        "Imprimir tudo sem considerar organização.",
+        "Afirmar que a objeção prova que não há arquivos."
+      ],
+      "correctAnswer": "Manter cópias de segurança, formatos abertos e verificação periódica de acesso.",
+      "explanation": "A réplica propõe medidas de preservação relacionadas ao risco descrito.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "PRESERVATION_RISK_IGNORED",
+      "misconceptions": {
+        "Dizer que arquivos digitais nunca se perdem.": [
+          "PRESERVATION_RISK_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-34",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_BELL",
+      "statement": "Proposta: substituir sinal sonoro por aviso visual. Objeção: “Nem todos estarão olhando para o painel”.\n\nQual resposta considera diferentes formas de perceber o aviso?",
+      "options": [
+        "Afirmar que todos olham para o painel.",
+        "Combinar canais visuais e sonoros ou oferecer alternativa equivalente conforme o contexto.",
+        "Concluir que um canal único atende todos.",
+        "Remover qualquer aviso."
+      ],
+      "correctAnswer": "Combinar canais visuais e sonoros ou oferecer alternativa equivalente conforme o contexto.",
+      "explanation": "A objeção aponta alcance do canal; combinar meios pode ampliar acesso.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "CHANNEL_COVERAGE_ASSUMED",
+      "misconceptions": {
+        "Afirmar que todos olham para o painel.": [
+          "CHANNEL_COVERAGE_ASSUMED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-35",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_CANTEEN",
+      "statement": "Proposta: divulgar o cardápio com uma semana de antecedência. Objeção: “Pode haver substituição de ingredientes”.\n\nQual resposta é proporcional?",
+      "options": [
+        "Prometer que nunca haverá substituições.",
+        "Deixar de divulgar qualquer informação.",
+        "Publicar a previsão e registrar alterações, especialmente as que afetam ingredientes relevantes.",
+        "Afirmar que toda substituição é irrelevante."
+      ],
+      "correctAnswer": "Publicar a previsão e registrar alterações, especialmente as que afetam ingredientes relevantes.",
+      "explanation": "A resposta reconhece incerteza e propõe atualização, sem tratar previsão como garantia.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "FORECAST_TREATED_AS_GUARANTEE",
+      "misconceptions": {
+        "Prometer que nunca haverá substituições.": [
+          "FORECAST_TREATED_AS_GUARANTEE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-36",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "COMMUNITY_MEETING",
+      "statement": "Proposta: realizar reunião às 18h. Objeção: “Esse horário coincide com turnos de trabalho de alguns moradores”.\n\nQual ação responde melhor ao contraponto?",
+      "options": [
+        "Concluir que ninguém pode ir.",
+        "Presumir que todos estão livres.",
+        "Ignorar a objeção por ser individual.",
+        "Consultar disponibilidade e avaliar mais de um horário ou forma de participação."
+      ],
+      "correctAnswer": "Consultar disponibilidade e avaliar mais de um horário ou forma de participação.",
+      "explanation": "A objeção pede considerar participação; consulta e alternativas testam o alcance.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "SCHEDULE_OBJECTION_GENERALIZED_OR_DISMISSED",
+      "misconceptions": {
+        "Concluir que ninguém pode ir.": [
+          "SCHEDULE_OBJECTION_GENERALIZED_OR_DISMISSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_REPAIR",
+      "statement": "Proposta: fechar o pátio durante a reforma. Objeção: “A turma perderá espaço de recreio”.\n\nQual resposta reconhece o custo da proposta?",
+      "options": [
+        "Planejar espaço ou horário alternativo e informar a duração prevista do fechamento.",
+        "Dizer que recreio não importa.",
+        "Afirmar que o pátio não será fechado.",
+        "Concluir que a reforma é impossível."
+      ],
+      "correctAnswer": "Planejar espaço ou horário alternativo e informar a duração prevista do fechamento.",
+      "explanation": "A resposta lida com impacto temporário e busca reduzir a consequência.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "TRADEOFF_DENIED",
+      "misconceptions": {
+        "Dizer que recreio não importa.": [
+          "TRADEOFF_DENIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LIBRARY_SEATS",
+      "statement": "Proposta: reservar mesas para estudo individual. Objeção: “Grupos precisam conversar e compartilhar materiais”.\n\nQual réplica mantém o debate honesto?",
+      "options": [
+        "Dizer que grupos atrapalham sempre.",
+        "Considerar zonas ou horários com usos distintos e verificar a demanda.",
+        "Afirmar que estudo individual não existe.",
+        "Concluir que a biblioteca deve ser fechada."
+      ],
+      "correctAnswer": "Considerar zonas ou horários com usos distintos e verificar a demanda.",
+      "explanation": "A réplica preserva a necessidade apresentada e procura conciliar usos.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "COUNTERARGUMENT_STRAW_MANNED",
+      "misconceptions": {
+        "Dizer que grupos atrapalham sempre.": [
+          "COUNTERARGUMENT_STRAW_MANNED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_TRANSPORT",
+      "statement": "Proposta: concentrar embarque em um único portão. Objeção: “Isso pode aumentar a fila na rua”.\n\nQual evidência ajudaria a avaliar a objeção?",
+      "options": [
+        "A preferência por outro portão sem dados.",
+        "A afirmação de que toda fila é perigosa.",
+        "Observações de fluxo e espera em horários de entrada e saída, com comparação de alternativas.",
+        "A conclusão de que o portão único já causou acidente."
+      ],
+      "correctAnswer": "Observações de fluxo e espera em horários de entrada e saída, com comparação de alternativas.",
+      "explanation": "A objeção prevê um efeito; registros de fluxo e comparação podem verificar sua probabilidade e dimensão.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "PREDICTED_EFFECT_TREATED_AS_OBSERVED",
+      "misconceptions": {
+        "A preferência por outro portão sem dados.": [
+          "PREDICTED_EFFECT_TREATED_AS_OBSERVED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_ART",
+      "statement": "Proposta: avaliar cartazes por votação. Objeção: “Popularidade não mede necessariamente o objetivo artístico”.\n\nQual resposta preserva a diferença entre critérios?",
+      "options": [
+        "Tratar o mais votado como tecnicamente melhor.",
+        "Proibir qualquer resposta do público.",
+        "Dizer que arte não pode ser discutida.",
+        "Usar votação como uma reação do público e também critérios de composição, intenção e justificativa."
+      ],
+      "correctAnswer": "Usar votação como uma reação do público e também critérios de composição, intenção e justificativa.",
+      "explanation": "A objeção distingue preferência de critérios analíticos; os dois tipos de informação podem ter papéis diferentes.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "PREFERENCE_CONFUSED_WITH_QUALITY",
+      "misconceptions": {
+        "Tratar o mais votado como tecnicamente melhor.": [
+          "PREFERENCE_CONFUSED_WITH_QUALITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-41",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_LIBRARY_ACCESS",
+      "statement": "Proposta: oferecer somente e-book. Objeção: “Alguns leitores precisam de suporte ou formato diferente”.\n\nQual revisão é mais inclusiva?",
+      "options": [
+        "Manter opções de formato e verificar compatibilidade com tecnologias assistivas.",
+        "Afirmar que e-book funciona para todos.",
+        "Concluir que materiais digitais devem ser proibidos.",
+        "Exigir que cada leitor resolva sozinho a incompatibilidade."
+      ],
+      "correctAnswer": "Manter opções de formato e verificar compatibilidade com tecnologias assistivas.",
+      "explanation": "A objeção identifica necessidades variadas; opções e teste de compatibilidade respondem diretamente.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "FORMAT_UNIVERSALIZED",
+      "misconceptions": {
+        "Afirmar que e-book funciona para todos.": [
+          "FORMAT_UNIVERSALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-42",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_GARDEN_VISITS",
+      "statement": "Proposta: abrir a horta durante o recreio. Objeção: “O fluxo pode danificar os canteiros”.\n\nQual resposta mantém a discussão baseada em critérios?",
+      "options": [
+        "Presumir que todo visitante danificará plantas.",
+        "Delimitar caminhos, acompanhar o uso e verificar se o dano ocorre antes de ampliar a abertura.",
+        "Negar que fluxo possa afetar canteiros.",
+        "Fechar a horta sem testar alternativas."
+      ],
+      "correctAnswer": "Delimitar caminhos, acompanhar o uso e verificar se o dano ocorre antes de ampliar a abertura.",
+      "explanation": "O contraponto prevê um risco; medidas proporcionais permitem observar e ajustar.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "RISK_ASSUMED_CERTAIN",
+      "misconceptions": {
+        "Presumir que todo visitante danificará plantas.": [
+          "RISK_ASSUMED_CERTAIN"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-counterargument-43",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_NOTICEBOARD",
+      "statement": "Proposta: remover o mural físico. Objeção: “Avisos digitais podem não ser vistos por quem não acessa a rede”.\n\nQual síntese de debate é mais equilibrada?",
+      "options": [
+        "O digital substitui todos os canais sem exceção.",
+        "O mural físico é sempre superior.",
+        "O canal digital pode facilitar atualizações, mas uma alternativa presencial pode ser necessária para ampliar acesso.",
+        "A objeção prova que ninguém acessa a rede."
+      ],
+      "correctAnswer": "O canal digital pode facilitar atualizações, mas uma alternativa presencial pode ser necessária para ampliar acesso.",
+      "explanation": "A síntese preserva benefício e limite apresentados sem transformar qualquer um em regra absoluta.",
+      "hint": "Localize a preocupação apresentada, represente-a sem exagero e responda ao ponto específico com condição, evidência ou alternativa pertinente.",
+      "errorFocus": "ONE_SIDE_ONLY_SUMMARY",
+      "misconceptions": {
+        "O digital substitui todos os canais sem exceção.": [
+          "ONE_SIDE_ONLY_SUMMARY"
+        ]
+      }
+    }
+  ]
+}

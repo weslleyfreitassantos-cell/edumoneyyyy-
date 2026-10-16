@@ -1,0 +1,1222 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-math-percent-increase-change",
+  "subject": "MATHEMATICS",
+  "domain": "PERCENTAGE",
+  "topic": "calcular_e_interpretar_aumento_percentual",
+  "canonicalSkillCode": "MATH_PERCENT_INCREASE",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-mathematics-percentage-2",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v3-mathematics-percentage-9",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-probe-01",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-probe-02",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-practice-01",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-practice-02",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-transfer-01",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-lock-in-01",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-review-01",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-increase-review-02",
+      "hint": "Separe aumento absoluto, valor final e taxa relativa. Para a taxa, compare o acréscimo ao valor inicial; para o total, some o acréscimo uma vez.",
+      "errorFocus": "PERCENT_INCREASE_AMOUNT_BASE_AND_FINAL_VALUE"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 10,
+    "feedbackAdded": 10,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Calcular e interpretar aumento percentual",
+    "objective": "Calcular acréscimo absoluto, valor final e taxa relativa de aumento, usando a base inicial e distinguindo percentuais de pontos percentuais.",
+    "summary": "Aumento percentual compara a variação com o valor inicial. O acréscimo é uma quantidade; o valor final é a soma do inicial com o acréscimo; a taxa é uma razão percentual. Esses resultados não podem ser trocados.",
+    "explanation": "## 1. Separe os dados da mudança\nEm “de 80 para 100”, o valor inicial é 80, o final é 100 e o aumento absoluto é 100 − 80 = 20. Antes de calcular, anote essas três quantidades com suas unidades.\n\n## 2. Calcule a taxa sobre o valor inicial\nA fórmula é: **aumento percentual = (valor final − valor inicial) ÷ valor inicial × 100%**. No exemplo, 20 ÷ 80 × 100% = 25%. O denominador é o ponto de partida porque a pergunta mede o crescimento em relação a ele.\n\n## 3. Encontre o novo valor a partir da taxa\nSe um preço de R$ 200 aumenta 15%, calcule 0,15 × 200 = R$ 30. O acréscimo é R$ 30; o total atualizado é R$ 230. Não some “15” diretamente ao preço: 15% é uma taxa, não uma quantia em reais.\n\n## 4. Use fatores multiplicativos\nUm aumento de r% equivale a multiplicar o valor inicial por 1 + r/100. Um aumento de 8% usa o fator 1,08. Esse método é útil para conferir o resultado, mas mantenha a unidade e a base explícitas.\n\n## 5. Trabalhe de trás para frente\nSe o preço final após aumento de 20% é R$ 144, o final corresponde a 120% da base. Portanto, base = 144 ÷ 1,20 = R$ 120. Subtrair 20 unidades ou 20% do valor final não desfaz corretamente o aumento.\n\n## 6. Diferencie taxas e pontos percentuais\nUma taxa que passa de 40% para 50% aumenta 10 pontos percentuais. Em relação à taxa inicial, o crescimento relativo é 10 ÷ 40 = 25%. Informe qual medida está usando.\n\n## Exemplo resolvido\nUma quantidade passa de 160 para 184. Diferença: 184 − 160 = 24. Base: 160. Taxa: 24 ÷ 160 = 0,15 = 15%. Conferência: 160 × 1,15 = 184. Assim, 24 é o aumento absoluto e 184 é o valor final.\n\n## 7. Interprete o alcance\nUm aumento médio de 10% não significa que cada caso aumentou 10%. E, entre grupos com bases diferentes, uma taxa maior pode corresponder a uma quantidade menor. Diga se sua conclusão trata da taxa, da média ou da quantidade total.",
+    "workedExample": "Uma tarifa de R$ 80 aumenta 15%. 1) Variação: 0,15 × 80 = R$ 12. 2) Total: 80 + 12 = R$ 92. 3) Conferência: 80 × 1,15 = R$ 92. Se a pergunta pedisse a taxa de uma mudança observada de R$ 80 para R$ 92, faríamos 12 ÷ 80 = 15%.",
+    "commonMistake": "Dividir a variação pelo valor final; confundir taxa com acréscimo em unidades; somar a taxa numérica ao preço; misturar pontos percentuais e aumento relativo; ou generalizar uma média para cada caso.",
+    "tips": [
+      "Escreva “inicial”, “final” e “diferença” antes de calcular.",
+      "Para uma taxa observada, divida a diferença pelo valor inicial.",
+      "Para um novo total, calcule a parte e some uma vez.",
+      "Em problemas inversos, divida pelo fator 1 + taxa.",
+      "Mantenha unidades em valores absolutos e use % para taxas."
+    ],
+    "estimatedMinutes": 32,
+    "priorKnowledge": [
+      "Identificar a base percentual.",
+      "Calcular porcentagens simples e subtrair valores."
+    ],
+    "keyConcepts": [
+      "aumento absoluto",
+      "valor inicial",
+      "valor final",
+      "taxa relativa",
+      "fator multiplicativo",
+      "pontos percentuais",
+      "média agregada"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Calcular acréscimos simples e identificar o valor inicial.",
+        "questionIds": [
+          "v5-math-percent-increase-01",
+          "v5-math-percent-increase-02",
+          "v5-math-percent-increase-03",
+          "v5-math-percent-increase-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Calcular diferença, taxa e novo valor em contextos graduais.",
+        "questionIds": [
+          "v5-math-percent-increase-05",
+          "v5-math-percent-increase-06",
+          "v5-math-percent-increase-07",
+          "v5-math-percent-increase-08",
+          "v5-math-percent-increase-09",
+          "v5-math-percent-increase-10",
+          "v5-math-percent-increase-11",
+          "v5-math-percent-increase-12",
+          "v5-math-percent-increase-13",
+          "v5-math-percent-increase-14",
+          "v5-math-percent-increase-15",
+          "v5-math-percent-increase-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar fatores, comparar bases e resolver situações inversas.",
+        "questionIds": [
+          "v5-math-percent-increase-17",
+          "v5-math-percent-increase-18",
+          "v5-math-percent-increase-19",
+          "v5-math-percent-increase-20",
+          "v5-math-percent-increase-21",
+          "v5-math-percent-increase-22",
+          "v5-math-percent-increase-23",
+          "v5-math-percent-increase-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Corrigir confusões entre variação, taxa, total e pontos percentuais.",
+        "questionIds": [
+          "v5-math-percent-increase-26",
+          "v5-math-percent-increase-27",
+          "v5-math-percent-increase-28",
+          "v5-math-percent-increase-29",
+          "v5-math-percent-increase-30",
+          "v5-math-percent-increase-31"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Retomar cálculos, interpretação e limites de indicadores.",
+        "questionIds": [
+          "v5-math-percent-increase-25",
+          "v5-math-percent-increase-32",
+          "v5-math-percent-increase-33",
+          "v5-math-percent-increase-34",
+          "v5-math-percent-increase-35",
+          "v5-math-percent-increase-36",
+          "v5-math-percent-increase-37",
+          "v5-math-percent-increase-38",
+          "v5-math-percent-increase-39",
+          "v5-math-percent-increase-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "INITIAL_AS_BASE",
+        "text": "A taxa de crescimento compara a diferença com o valor no início do intervalo."
+      },
+      {
+        "trigger": "AMOUNT_VS_TOTAL",
+        "text": "A variação é o acréscimo; o total final é o inicial mais esse acréscimo."
+      },
+      {
+        "trigger": "RATE_IS_NOT_CURRENCY",
+        "text": "15% é uma taxa. Para obter reais, aplique-a à base."
+      },
+      {
+        "trigger": "REVERSE_FACTOR",
+        "text": "Se o final já inclui o aumento, divida pelo fator 1 + taxa para recuperar a base."
+      },
+      {
+        "trigger": "POINTS_VS_RELATIVE",
+        "text": "Subtrair duas taxas dá pontos percentuais; a mudança relativa usa a taxa inicial como base."
+      },
+      {
+        "trigger": "AGGREGATE_LIMIT",
+        "text": "Uma variação média não descreve automaticamente cada unidade do grupo."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "THREE_VALUES_TABLE",
+        "misconception": "Trocar o aumento absoluto pelo valor final.",
+        "prompt": "Preencha três linhas: valor inicial, diferença e valor final. Leia de novo o que a pergunta pede."
+      },
+      {
+        "id": "DIVIDE_BY_INITIAL",
+        "misconception": "Dividir a diferença pelo valor final.",
+        "prompt": "Escreva “de ___ para ___”. Subtraia final − inicial e divida pelo inicial."
+      },
+      {
+        "id": "APPLY_RATE_TO_BASE",
+        "misconception": "Somar o número da taxa diretamente ao preço.",
+        "prompt": "Converta a porcentagem para decimal, multiplique pela base e mantenha a unidade monetária."
+      },
+      {
+        "id": "REVERSE_MULTIPLIER",
+        "misconception": "Subtrair a taxa numérica do valor final em vez de recuperar a base.",
+        "prompt": "Represente o final como (1 + taxa) × base e isole a base dividindo pelo fator."
+      },
+      {
+        "id": "LABEL_PERCENTAGE_POINTS",
+        "misconception": "Chamar a diferença entre taxas de aumento relativo.",
+        "prompt": "Registre a diferença em pontos percentuais e depois divida pela taxa inicial se pedirem variação relativa."
+      },
+      {
+        "id": "RATE_OR_COUNT",
+        "misconception": "Concluir a quantidade absoluta apenas pela taxa.",
+        "prompt": "Calcule cada acréscimo usando sua própria base e compare separadamente taxa e quantidade."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-math-percent-increase-audit",
+        "title": "Auditoria de variações percentuais",
+        "objective": "Recalcular aumentos de dados sintéticos e verificar se texto, base, taxa e valor final são coerentes.",
+        "context": "Atividade com cartões de dados fictícios elaborados pelo docente; não usar preços pessoais, notas ou indicadores identificáveis de estudantes.",
+        "materials": [
+          "Cartões com valores iniciais e finais sintéticos",
+          "Calculadora opcional",
+          "Quadro para base, diferença, taxa e total"
+        ],
+        "instructions": "Em cada cartão, identifique valor inicial e final; calcule a diferença; divida pela base inicial; compare com a taxa anunciada; escreva o novo valor para casos em que a taxa é fornecida. Marque a unidade e explique qualquer divergência de arredondamento.",
+        "evidence": "Tabela de cálculos reproduzíveis, com base explicitada e distinção entre aumento absoluto, taxa e valor final.",
+        "safety": "Usar apenas dados fictícios e fornecer calculadora, tabela preenchível e alternativa acessível. Não comparar estudantes ou famílias.",
+        "privacyGuard": "Não utilizar nem coletar valores reais de renda, despesas domésticas, notas, presença ou desempenho de estudantes.",
+        "ageRange": "Ensino Fundamental II, com valores e precisão adequados à turma.",
+        "mediation": "O docente verifica primeiro a escolha da base e depois a operação. Arredondamentos precisam ser declarados, não escondidos.",
+        "rubric": [
+          {
+            "criterion": "Base e diferença",
+            "emerging": "Usa o final como início ou confunde diferença com total.",
+            "developing": "Identifica os três valores com apoio.",
+            "proficient": "Nomeia base, diferença e final com unidades corretas."
+          },
+          {
+            "criterion": "Taxa percentual",
+            "emerging": "Divide pela base errada ou soma o percentual como unidade.",
+            "developing": "Calcula a taxa após orientação.",
+            "proficient": "Compara a diferença ao inicial e apresenta a taxa corretamente."
+          },
+          {
+            "criterion": "Interpretação",
+            "emerging": "Confunde taxa, contagem ou pontos percentuais.",
+            "developing": "Distingue as medidas em exemplos simples.",
+            "proficient": "Explica alcance, base e limite da conclusão."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "TecEscola",
+        "title": "Conjunto sintético para aumentos percentuais",
+        "license": "Situações e valores autorais, gerados para aprendizagem; não representam séries econômicas reais."
+      }
+    ],
+    "copyrightNote": "Questões, valores, explicações e atividade são autorais e sintéticos. Revisão pedagógica pendente; alinhamento oficial não reivindicado."
+  },
+  "questions": [
+    {
+      "id": "v5-math-percent-increase-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "BOOK_PRICE",
+      "statement": "Um livro custa R$ 100 e teve aumento de 10%. Qual é o valor do aumento?",
+      "options": [
+        "R$ 10.",
+        "R$ 110.",
+        "R$ 90.",
+        "10 livros."
+      ],
+      "correctAnswer": "R$ 10.",
+      "explanation": "10% de R$ 100 é R$ 10. Esse valor é apenas o acréscimo; o novo preço seria R$ 110.",
+      "hint": "Calcule primeiro a taxa aplicada ao preço inicial.",
+      "errorFocus": "INCREASE_CONFUSED_WITH_FINAL_VALUE",
+      "misconceptions": {
+        "R$ 110.": [
+          "INCREASE_CONFUSED_WITH_FINAL_VALUE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "SNACK_PRICE",
+      "statement": "Um lanche custava R$ 80 e aumentou 15%. Qual é o novo preço?",
+      "options": [
+        "R$ 95.",
+        "R$ 92.",
+        "R$ 12.",
+        "R$ 68."
+      ],
+      "correctAnswer": "R$ 92.",
+      "explanation": "15% de R$ 80 é R$ 12. Somando o acréscimo ao preço inicial, o novo preço é R$ 92.",
+      "hint": "Encontre 10% e 5% de R$ 80 e some ao valor inicial.",
+      "errorFocus": "RATE_ADDED_AS_CURRENCY",
+      "misconceptions": {
+        "R$ 95.": [
+          "RATE_ADDED_AS_CURRENCY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "WATER_USE",
+      "statement": "O consumo registrado passou de 400 L para 460 L. Qual foi o aumento percentual em relação ao valor inicial?",
+      "options": [
+        "60%.",
+        "13%.",
+        "15%.",
+        "12%."
+      ],
+      "correctAnswer": "15%.",
+      "explanation": "A diferença é 60 L. Em relação a 400 L, 60 ÷ 400 = 0,15, ou 15%.",
+      "hint": "Divida a diferença pelo consumo inicial.",
+      "errorFocus": "CHANGE_DIVIDED_BY_FINAL",
+      "misconceptions": {
+        "60%.": [
+          "CHANGE_DIVIDED_BY_FINAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "PENCIL_BOX",
+      "statement": "Uma caixa tinha 200 lápis e recebeu aumento de 5% no estoque. Quantos lápis foram acrescentados?",
+      "options": [
+        "5 lápis.",
+        "205 lápis.",
+        "40 lápis.",
+        "10 lápis."
+      ],
+      "correctAnswer": "10 lápis.",
+      "explanation": "5% de 200 é 10. A pergunta solicita a quantidade acrescentada, não o total depois da reposição.",
+      "hint": "Diferencie “quantos foram acrescentados” de “quantos há agora”.",
+      "errorFocus": "RATE_MISTAKEN_FOR_ADDITION",
+      "misconceptions": {
+        "5 lápis.": [
+          "RATE_MISTAKEN_FOR_ADDITION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "BUS_FARE",
+      "statement": "Uma tarifa de R$ 6,00 aumenta 10%. Qual é o valor da tarifa depois do aumento?",
+      "options": [
+        "R$ 6,60.",
+        "R$ 6,10.",
+        "R$ 7,00.",
+        "R$ 5,40."
+      ],
+      "correctAnswer": "R$ 6,60.",
+      "explanation": "10% de R$ 6,00 é R$ 0,60. O preço final é R$ 6,60.",
+      "hint": "10% corresponde a um décimo do preço inicial.",
+      "errorFocus": "PERCENT_TAKEN_AS_DECIMAL_CURRENCY",
+      "misconceptions": {
+        "R$ 6,10.": [
+          "PERCENT_TAKEN_AS_DECIMAL_CURRENCY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "SCHOOL_BUDGET",
+      "statement": "Um orçamento de R$ 500 recebeu aumento de 20%. Qual foi o acréscimo?",
+      "options": [
+        "R$ 520.",
+        "R$ 100.",
+        "R$ 20.",
+        "R$ 80."
+      ],
+      "correctAnswer": "R$ 100.",
+      "explanation": "20% de R$ 500 é R$ 100. Como a pergunta pede o acréscimo, não somamos ao orçamento.",
+      "hint": "Calcule a parte percentual e pare no acréscimo solicitado.",
+      "errorFocus": "INCREASE_AMOUNT_CONFUSED_WITH_TOTAL",
+      "misconceptions": {
+        "R$ 520.": [
+          "INCREASE_AMOUNT_CONFUSED_WITH_TOTAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-07",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "LIBRARY_HOURS",
+      "statement": "O horário de atendimento aumentou de 20 para 22 horas semanais. Qual foi o aumento percentual?",
+      "options": [
+        "2%.",
+        "9%.",
+        "10%.",
+        "20%."
+      ],
+      "correctAnswer": "10%.",
+      "explanation": "O aumento absoluto foi de 2 horas. Em relação às 20 horas iniciais, 2 ÷ 20 = 10%.",
+      "hint": "A base da variação é o valor inicial, 20 horas.",
+      "errorFocus": "ABSOLUTE_CHANGE_REPORTED_AS_PERCENT",
+      "misconceptions": {
+        "2%.": [
+          "ABSOLUTE_CHANGE_REPORTED_AS_PERCENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "TRANSPORT_COST",
+      "statement": "Uma despesa passou de R$ 240 para R$ 276. Qual foi o aumento percentual?",
+      "options": [
+        "13%.",
+        "36%.",
+        "12%.",
+        "15%."
+      ],
+      "correctAnswer": "15%.",
+      "explanation": "A diferença é R$ 36. Dividindo pela base inicial de R$ 240, obtemos 0,15 = 15%.",
+      "hint": "Subtraia primeiro e divida a diferença pelo valor inicial.",
+      "errorFocus": "CHANGE_DIVIDED_BY_FINAL",
+      "misconceptions": {
+        "13%.": [
+          "CHANGE_DIVIDED_BY_FINAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "PLANT_HEIGHT",
+      "statement": "Uma planta media 80 cm e passou a medir 100 cm. Qual é o aumento percentual da altura?",
+      "options": [
+        "25%.",
+        "20%.",
+        "125%.",
+        "80%."
+      ],
+      "correctAnswer": "25%.",
+      "explanation": "A diferença é 20 cm. Em relação a 80 cm, 20 ÷ 80 = 0,25, ou 25%.",
+      "hint": "Não use a altura final como denominador.",
+      "errorFocus": "FINAL_HEIGHT_USED_AS_BASE",
+      "misconceptions": {
+        "20%.": [
+          "FINAL_HEIGHT_USED_AS_BASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "CLASS_ENROLLMENT",
+      "statement": "As inscrições em uma oficina subiram de 120 para 150. Qual foi a taxa de aumento?",
+      "options": [
+        "20%.",
+        "25%.",
+        "30%.",
+        "125%."
+      ],
+      "correctAnswer": "25%.",
+      "explanation": "Houve 30 inscrições a mais. A variação relativa é 30 ÷ 120 = 25%.",
+      "hint": "Compare o acréscimo com as inscrições no início.",
+      "errorFocus": "CHANGE_DIVIDED_BY_FINAL",
+      "misconceptions": {
+        "20%.": [
+          "CHANGE_DIVIDED_BY_FINAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "WATER_BILL",
+      "statement": "Uma conta de água de R$ 350 aumentou 8%. Qual é o novo valor?",
+      "options": [
+        "R$ 358.",
+        "R$ 28.",
+        "R$ 378.",
+        "R$ 322."
+      ],
+      "correctAnswer": "R$ 378.",
+      "explanation": "8% de R$ 350 é R$ 28. Somando ao valor inicial, o total é R$ 378.",
+      "hint": "Calcule 0,08 × 350 e some uma vez ao valor inicial.",
+      "errorFocus": "RATE_ADDED_WITHOUT_MULTIPLICATION",
+      "misconceptions": {
+        "R$ 358.": [
+          "RATE_ADDED_WITHOUT_MULTIPLICATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "BUS_DISTANCE",
+      "statement": "Uma linha de ônibus ampliou o trajeto de 25 km para 30 km. Qual foi o aumento percentual?",
+      "options": [
+        "5%.",
+        "16,7%.",
+        "120%.",
+        "20%."
+      ],
+      "correctAnswer": "20%.",
+      "explanation": "O trajeto aumentou 5 km. Como 5 ÷ 25 = 0,20, o aumento foi de 20%.",
+      "hint": "Compare os 5 km extras com os 25 km iniciais.",
+      "errorFocus": "PERCENT_CHANGE_CALCULATED_FROM_NEW_TOTAL",
+      "misconceptions": {
+        "5%.": [
+          "PERCENT_CHANGE_CALCULATED_FROM_NEW_TOTAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "SALARY_ADJUSTMENT",
+      "statement": "Uma bolsa de R$ 1.600 recebe reajuste de 5%. Qual é o novo valor?",
+      "options": [
+        "R$ 1.680.",
+        "R$ 1.605.",
+        "R$ 1.680,05.",
+        "R$ 1.520."
+      ],
+      "correctAnswer": "R$ 1.680.",
+      "explanation": "5% de R$ 1.600 é R$ 80. O novo valor é R$ 1.680.",
+      "hint": "5% é 0,05; multiplique a base pelo fator 1,05 para obter o total.",
+      "errorFocus": "PERCENT_NUMBER_ADDED_DIRECTLY",
+      "misconceptions": {
+        "R$ 1.605.": [
+          "PERCENT_NUMBER_ADDED_DIRECTLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "MUSEUM_VISITORS",
+      "statement": "Um museu recebeu 2.000 visitantes em um mês e 2.300 no seguinte. Qual foi o aumento percentual?",
+      "options": [
+        "13%.",
+        "15%.",
+        "300%.",
+        "30%."
+      ],
+      "correctAnswer": "15%.",
+      "explanation": "A diferença é 300 visitantes. Em relação aos 2.000 iniciais, 300 ÷ 2.000 = 15%.",
+      "hint": "O número de visitantes do primeiro mês é a base.",
+      "errorFocus": "ABSOLUTE_COUNT_AS_PERCENT",
+      "misconceptions": {
+        "13%.": [
+          "ABSOLUTE_COUNT_AS_PERCENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-15",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "MARKET_PRICE",
+      "statement": "O preço de um material passou de R$ 48 para R$ 60. Qual foi o aumento percentual?",
+      "options": [
+        "20%.",
+        "12%.",
+        "25%.",
+        "125%."
+      ],
+      "correctAnswer": "25%.",
+      "explanation": "O acréscimo foi R$ 12. Como 12 ÷ 48 = 0,25, a taxa de aumento é 25%.",
+      "hint": "Simplifique a razão 12/48.",
+      "errorFocus": "CHANGE_DIVIDED_BY_FINAL",
+      "misconceptions": {
+        "20%.": [
+          "CHANGE_DIVIDED_BY_FINAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-16",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "PROJECT_OUTPUT",
+      "statement": "Uma equipe concluiu 72 tarefas em uma etapa e 90 na seguinte. Qual foi o aumento percentual da quantidade concluída?",
+      "options": [
+        "20%.",
+        "18%.",
+        "125%.",
+        "25%."
+      ],
+      "correctAnswer": "25%.",
+      "explanation": "A diferença é 18 tarefas; 18 ÷ 72 = 0,25, então o aumento foi de 25%.",
+      "hint": "Use 72 como base e confira se sua resposta representa uma taxa.",
+      "errorFocus": "CHANGE_OVER_FINAL_COUNT",
+      "misconceptions": {
+        "20%.": [
+          "CHANGE_OVER_FINAL_COUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-17",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TICKET_REVENUE",
+      "statement": "A receita de bilhetes de um evento aumentou de R$ 3.000 para R$ 3.600. Qual afirmação está correta?",
+      "options": [
+        "O aumento foi de R$ 600, equivalente a 20% da receita inicial.",
+        "O aumento foi de 20% da receita final.",
+        "O aumento foi de 600%.",
+        "A receita cresceu 16,7% porque 600 ÷ 3.600 é a base."
+      ],
+      "correctAnswer": "O aumento foi de R$ 600, equivalente a 20% da receita inicial.",
+      "explanation": "A variação absoluta é R$ 600. A base inicial de R$ 3.000 produz 600 ÷ 3.000 = 20%.",
+      "hint": "Verifique qual valor representa o ponto de partida.",
+      "errorFocus": "FINAL_REVENUE_USED_AS_BASE",
+      "misconceptions": {
+        "O aumento foi de 20% da receita final.": [
+          "FINAL_REVENUE_USED_AS_BASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-18",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FUNDRAISER_GOAL",
+      "statement": "Uma campanha arrecadou R$ 800 e depois chegou a R$ 1.000. Qual foi o aumento percentual sobre a arrecadação inicial?",
+      "options": [
+        "20%.",
+        "25%.",
+        "200%.",
+        "125%."
+      ],
+      "correctAnswer": "25%.",
+      "explanation": "O acréscimo foi R$ 200. Em relação a R$ 800, a variação é 200 ÷ 800 = 25%.",
+      "hint": "A meta alcançada é o valor final, não a base.",
+      "errorFocus": "FINAL_AMOUNT_USED_AS_BASE",
+      "misconceptions": {
+        "20%.": [
+          "FINAL_AMOUNT_USED_AS_BASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-19",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRINTED_COPIES",
+      "statement": "Uma gráfica aumentou a tiragem de 1.200 para 1.500 cópias. Qual é o acréscimo e sua taxa sobre a tiragem anterior?",
+      "options": [
+        "300 cópias e 20%.",
+        "1.500 cópias e 25%.",
+        "300 cópias e 25%.",
+        "25 cópias e 300%."
+      ],
+      "correctAnswer": "300 cópias e 25%.",
+      "explanation": "A diferença é 300; 300 ÷ 1.200 = 25%. As duas medidas são distintas: quantidade e taxa.",
+      "hint": "Encontre a diferença e depois calcule a razão pela base anterior.",
+      "errorFocus": "ABSOLUTE_AND_RELATIVE_CHANGE_MIXED",
+      "misconceptions": {
+        "300 cópias e 20%.": [
+          "ABSOLUTE_AND_RELATIVE_CHANGE_MIXED"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-20",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SCHOOL_GARDEN_AREA",
+      "statement": "A área de um canteiro passou de 16 m² para 20 m². Qual foi o crescimento percentual?",
+      "options": [
+        "20%.",
+        "4%.",
+        "125%.",
+        "25%."
+      ],
+      "correctAnswer": "25%.",
+      "explanation": "A área cresceu 4 m². Dividindo 4 por 16, obtemos 0,25 = 25%.",
+      "hint": "A diferença é comparada à área de partida.",
+      "errorFocus": "AREA_DIFFERENCE_REPORTED_AS_RATE",
+      "misconceptions": {
+        "20%.": [
+          "AREA_DIFFERENCE_REPORTED_AS_RATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PRICE_WITH_TAX",
+      "statement": "Um serviço custava R$ 150. Após reajuste de 12%, qual é o acréscimo e o novo preço?",
+      "options": [
+        "R$ 18 de acréscimo e R$ 168 no total.",
+        "R$ 12 de acréscimo e R$ 162 no total.",
+        "R$ 168 de acréscimo e R$ 318 no total.",
+        "R$ 18 de acréscimo e R$ 150 no total."
+      ],
+      "correctAnswer": "R$ 18 de acréscimo e R$ 168 no total.",
+      "explanation": "12% de R$ 150 é R$ 18. Somando ao preço anterior, chega-se a R$ 168.",
+      "hint": "Calcule a variação e só então determine o total atualizado.",
+      "errorFocus": "TAX_RATE_APPLIED_TO_WRONG_BASE",
+      "misconceptions": {
+        "R$ 12 de acréscimo e R$ 162 no total.": [
+          "TAX_RATE_APPLIED_TO_WRONG_BASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "POPULATION_ESTIMATE",
+      "statement": "Uma estimativa populacional passou de 24.000 para 25.200 habitantes. Qual foi o aumento percentual?",
+      "options": [
+        "1.200%.",
+        "5%.",
+        "4,8%.",
+        "5,2%."
+      ],
+      "correctAnswer": "5%.",
+      "explanation": "O acréscimo foi 1.200 habitantes. Em relação a 24.000, 1.200 ÷ 24.000 = 5%.",
+      "hint": "Simplifique a razão 1.200/24.000 antes de converter.",
+      "errorFocus": "ABSOLUTE_INCREASE_AS_PERCENT",
+      "misconceptions": {
+        "1.200%.": [
+          "ABSOLUTE_INCREASE_AS_PERCENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVERSE_NEW_VALUE",
+      "statement": "Depois de um aumento de 20%, um preço ficou em R$ 144. Qual era o preço antes do aumento?",
+      "options": [
+        "R$ 124.",
+        "R$ 115,20.",
+        "R$ 120.",
+        "R$ 172,80."
+      ],
+      "correctAnswer": "R$ 120.",
+      "explanation": "R$ 144 corresponde a 120% da base. Assim, base = 144 ÷ 1,20 = R$ 120.",
+      "hint": "O valor final representa 100% + 20% do preço inicial.",
+      "errorFocus": "FINAL_VALUE_MINUS_RATE_POINTS",
+      "misconceptions": {
+        "R$ 124.": [
+          "FINAL_VALUE_MINUS_RATE_POINTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RATE_AND_POINTS",
+      "statement": "Uma taxa de atendimento passou de 40% para 50%. Qual alternativa distingue corretamente as duas formas de descrever a mudança?",
+      "options": [
+        "A diferença e o aumento relativo são ambos 10%.",
+        "A diferença é 25 pontos percentuais.",
+        "O aumento relativo é 10 pontos percentuais.",
+        "A diferença é 10 pontos percentuais; o aumento relativo é 25% sobre a taxa inicial."
+      ],
+      "correctAnswer": "A diferença é 10 pontos percentuais; o aumento relativo é 25% sobre a taxa inicial.",
+      "explanation": "50% − 40% = 10 pontos percentuais. Relativamente aos 40% iniciais, 10 ÷ 40 = 25%.",
+      "hint": "Calcule primeiro a diferença e depois divida pela taxa inicial.",
+      "errorFocus": "PERCENTAGE_POINTS_CONFUSED_WITH_RELATIVE_INCREASE",
+      "misconceptions": {
+        "A diferença e o aumento relativo são ambos 10%.": [
+          "PERCENTAGE_POINTS_CONFUSED_WITH_RELATIVE_INCREASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-25",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SAME_RATE_DIFFERENT_BASES",
+      "statement": "Duas taxas de aumento são 10%: uma incide sobre R$ 200 e outra sobre R$ 500. Qual comparação é correta?",
+      "options": [
+        "Os acréscimos são R$ 20 e R$ 50; a taxa é igual, mas os valores absolutos diferem.",
+        "Os dois acréscimos são R$ 10.",
+        "A primeira taxa é maior porque seu valor-base é menor.",
+        "Os preços finais são iguais porque a taxa coincide."
+      ],
+      "correctAnswer": "Os acréscimos são R$ 20 e R$ 50; a taxa é igual, mas os valores absolutos diferem.",
+      "explanation": "A mesma taxa aplicada a bases diferentes produz acréscimos diferentes. 10% de 200 é 20; 10% de 500 é 50.",
+      "hint": "Converta cada taxa usando sua própria base.",
+      "errorFocus": "SAME_PERCENT_ASSUMED_SAME_AMOUNT",
+      "misconceptions": {
+        "Os dois acréscimos são R$ 10.": [
+          "SAME_PERCENT_ASSUMED_SAME_AMOUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "LOCKIN_ADD_PERCENT",
+      "statement": "Uma pessoa calcula 15% de R$ 200 e soma 15 ao preço. Qual é o erro?",
+      "options": [
+        "O preço deveria diminuir R$ 15.",
+        "Usou a taxa numérica como valor do acréscimo; 15% de R$ 200 é R$ 30.",
+        "O acréscimo correto é R$ 215.",
+        "A base deveria ser a própria taxa."
+      ],
+      "correctAnswer": "Usou a taxa numérica como valor do acréscimo; 15% de R$ 200 é R$ 30.",
+      "explanation": "15% significa 0,15 da base. Multiplicar 200 por 0,15 dá R$ 30; a taxa não é diretamente um valor em reais.",
+      "hint": "Transforme 15% em 0,15 antes de multiplicar.",
+      "errorFocus": "RATE_POINTS_ADDED_AS_CURRENCY",
+      "misconceptions": {
+        "O preço deveria diminuir R$ 15.": [
+          "RATE_POINTS_ADDED_AS_CURRENCY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_FINAL_VS_INCREASE",
+      "statement": "Uma conta de R$ 300 aumentou 10%. Qual par apresenta corretamente acréscimo e total final?",
+      "options": [
+        "R$ 330 de acréscimo e R$ 630 de total.",
+        "R$ 10 de acréscimo e R$ 310 de total.",
+        "R$ 30 de acréscimo e R$ 330 de total.",
+        "R$ 30 de acréscimo e R$ 300 de total."
+      ],
+      "correctAnswer": "R$ 30 de acréscimo e R$ 330 de total.",
+      "explanation": "10% de R$ 300 é R$ 30. O total final inclui o valor inicial: R$ 330.",
+      "hint": "Nomeie separadamente variação e valor final.",
+      "errorFocus": "INCREASE_AND_FINAL_VALUE_SWAPPED",
+      "misconceptions": {
+        "R$ 330 de acréscimo e R$ 630 de total.": [
+          "INCREASE_AND_FINAL_VALUE_SWAPPED"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "LOCKIN_WRONG_DENOMINATOR",
+      "statement": "Um aumento foi de 30 para 36. Um cálculo usa 6 ÷ 36 para achar a taxa. Qual correção é necessária?",
+      "options": [
+        "Dividir 36 por 6; o aumento é 600%.",
+        "Dividir 6 por 30 e concluir 2%.",
+        "Usar 36 como base porque é o maior valor.",
+        "Dividir 6 pela base inicial 30; o aumento é 20%."
+      ],
+      "correctAnswer": "Dividir 6 pela base inicial 30; o aumento é 20%.",
+      "explanation": "A variação percentual “de 30 para 36” usa 30 como referência: 6 ÷ 30 = 20%.",
+      "hint": "A palavra “de” marca o ponto de partida.",
+      "errorFocus": "FINAL_VALUE_USED_AS_DENOMINATOR",
+      "misconceptions": {
+        "Dividir 36 por 6; o aumento é 600%.": [
+          "FINAL_VALUE_USED_AS_DENOMINATOR"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCKIN_PERCENT_POINTS",
+      "statement": "A taxa passou de 8% para 10%. Um relatório diz “aumento de 2%”. Qual revisão elimina a ambiguidade?",
+      "options": [
+        "A taxa aumentou 2 pontos percentuais; em termos relativos, aumentou 25% sobre 8%.",
+        "A taxa aumentou 2 pontos percentuais e 2% relativamente.",
+        "A taxa aumentou 18 pontos percentuais.",
+        "A taxa aumentou 25 pontos percentuais."
+      ],
+      "correctAnswer": "A taxa aumentou 2 pontos percentuais; em termos relativos, aumentou 25% sobre 8%.",
+      "explanation": "A diferença direta é 2 pontos percentuais. A variação relativa é 2 ÷ 8 = 25%.",
+      "hint": "Expresse diferença entre taxas e crescimento relativo separadamente.",
+      "errorFocus": "POINT_CHANGE_MISLABELED_AS_PERCENT",
+      "misconceptions": {
+        "A taxa aumentou 2 pontos percentuais e 2% relativamente.": [
+          "POINT_CHANGE_MISLABELED_AS_PERCENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCKIN_UNIFORM_INCREASE",
+      "statement": "Uma média de consumo subiu 10% em uma cidade. Qual conclusão não é sustentada sem dados adicionais?",
+      "options": [
+        "Que a média agregada aumentou 10%, conforme informado.",
+        "Que o consumo de cada domicílio subiu exatamente 10%.",
+        "Que é necessário conhecer distribuição e método de cálculo para falar de cada domicílio.",
+        "Que um indicador médio pode resumir um conjunto."
+      ],
+      "correctAnswer": "Que o consumo de cada domicílio subiu exatamente 10%.",
+      "explanation": "Um aumento na média agregada não implica mudança idêntica em cada unidade. São necessários dados desagregados para essa afirmação.",
+      "hint": "Distinga a média do comportamento de cada caso.",
+      "errorFocus": "AGGREGATE_CHANGE_GENERALIZED_TO_EACH_CASE",
+      "misconceptions": {
+        "Que a média agregada aumentou 10%, conforme informado.": [
+          "AGGREGATE_CHANGE_GENERALIZED_TO_EACH_CASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-31",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "LOCKIN_ROUNDING",
+      "statement": "Uma medida passou de 64 para 72 unidades. Qual é o aumento percentual exato?",
+      "options": [
+        "8%.",
+        "11,1%.",
+        "12,5%.",
+        "12%."
+      ],
+      "correctAnswer": "12,5%.",
+      "explanation": "A diferença é 8; 8 ÷ 64 = 0,125 = 12,5%. A resposta não exige arredondamento.",
+      "hint": "Simplifique 8/64 antes de converter para porcentagem.",
+      "errorFocus": "CHANGE_DIVIDED_BY_FINAL_AND_ROUNDED",
+      "misconceptions": {
+        "8%.": [
+          "CHANGE_DIVIDED_BY_FINAL_AND_ROUNDED"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-32",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "REVIEW_NEW_VALUE",
+      "statement": "Um equipamento de R$ 400 teve aumento de 7,5%. Qual é o novo preço?",
+      "options": [
+        "R$ 407,50.",
+        "R$ 30.",
+        "R$ 370.",
+        "R$ 430."
+      ],
+      "correctAnswer": "R$ 430.",
+      "explanation": "7,5% de R$ 400 é R$ 30; o preço atualizado é R$ 430.",
+      "hint": "7,5% é 0,075; calcule o acréscimo antes de somá-lo.",
+      "errorFocus": "DECIMAL_RATE_IGNORED",
+      "misconceptions": {
+        "R$ 407,50.": [
+          "DECIMAL_RATE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-33",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "REVIEW_RATE",
+      "statement": "Uma quantidade cresceu de 160 para 184. Qual é a taxa de aumento?",
+      "options": [
+        "15%.",
+        "13%.",
+        "24%.",
+        "115%."
+      ],
+      "correctAnswer": "15%.",
+      "explanation": "O acréscimo é 24; 24 ÷ 160 = 0,15.",
+      "hint": "Use a quantidade inicial como denominador.",
+      "errorFocus": "FINAL_COUNT_AS_BASE",
+      "misconceptions": {
+        "13%.": [
+          "FINAL_COUNT_AS_BASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "REVIEW_REVERSE",
+      "statement": "Após aumento de 25%, um valor é R$ 250. Qual era o valor inicial?",
+      "options": [
+        "R$ 225.",
+        "R$ 200.",
+        "R$ 187,50.",
+        "R$ 312,50."
+      ],
+      "correctAnswer": "R$ 200.",
+      "explanation": "R$ 250 representa 125% da base. Então 250 ÷ 1,25 = R$ 200.",
+      "hint": "Divida o total pelo fator 1,25; não subtraia 25 unidades.",
+      "errorFocus": "RATE_SUBTRACTED_AS_ABSOLUTE_AMOUNT",
+      "misconceptions": {
+        "R$ 225.": [
+          "RATE_SUBTRACTED_AS_ABSOLUTE_AMOUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "REVIEW_SMALL_BASE",
+      "statement": "Uma quantidade passa de 8 para 10. Qual é o aumento percentual?",
+      "options": [
+        "20%.",
+        "2%.",
+        "25%.",
+        "125%."
+      ],
+      "correctAnswer": "25%.",
+      "explanation": "A diferença é 2; 2 ÷ 8 = 0,25 = 25%.",
+      "hint": "A diferença pequena precisa ser comparada à base, não lida como taxa.",
+      "errorFocus": "ABSOLUTE_CHANGE_USED_AS_PERCENT",
+      "misconceptions": {
+        "20%.": [
+          "ABSOLUTE_CHANGE_USED_AS_PERCENT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_TWO_STEPS",
+      "statement": "Um preço de R$ 200 sobe 10% e, depois, sobe mais 10% sobre o novo valor. Qual é o preço final?",
+      "options": [
+        "R$ 240.",
+        "R$ 220.",
+        "R$ 244.",
+        "R$ 242."
+      ],
+      "correctAnswer": "R$ 242.",
+      "explanation": "Primeiro, R$ 200 × 1,10 = R$ 220. Depois, R$ 220 × 1,10 = R$ 242. A segunda base é atualizada.",
+      "hint": "Aplique o segundo aumento ao valor após a primeira etapa.",
+      "errorFocus": "SUCCESSIVE_RATES_ADDED_TO_ORIGINAL",
+      "misconceptions": {
+        "R$ 240.": [
+          "SUCCESSIVE_RATES_ADDED_TO_ORIGINAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_RATE_VS_COUNT",
+      "statement": "Uma região A teve aumento de 12% sobre 50 unidades; uma região B, aumento de 8% sobre 200. Qual conclusão é correta?",
+      "options": [
+        "A taxa relativa é maior em A; o aumento absoluto é maior em B: 6 contra 16 unidades.",
+        "A região A teve aumento absoluto maior porque 12% é maior.",
+        "A região B teve taxa relativa maior porque ganhou mais unidades.",
+        "Os aumentos absolutos são iguais."
+      ],
+      "correctAnswer": "A taxa relativa é maior em A; o aumento absoluto é maior em B: 6 contra 16 unidades.",
+      "explanation": "12% de 50 é 6; 8% de 200 é 16. Taxa relativa e quantidade absoluta podem ordenar os casos de formas diferentes.",
+      "hint": "Calcule as partes usando a base de cada região.",
+      "errorFocus": "RATE_AND_ABSOLUTE_INCREASE_CONFLATED",
+      "misconceptions": {
+        "A região A teve aumento absoluto maior porque 12% é maior.": [
+          "RATE_AND_ABSOLUTE_INCREASE_CONFLATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_FULL_REPORT",
+      "statement": "Um relatório informa valor inicial de 500 unidades, aumento absoluto de 75 e valor final de 575. Qual variação percentual confere os dados?",
+      "options": [
+        "13%.",
+        "15%.",
+        "75%.",
+        "115%."
+      ],
+      "correctAnswer": "15%.",
+      "explanation": "75 ÷ 500 = 0,15, ou 15%. A conferência também confirma que 500 + 75 = 575.",
+      "hint": "Verifique a soma e use o valor inicial como base percentual.",
+      "errorFocus": "FINAL_TOTAL_USED_AS_BASE",
+      "misconceptions": {
+        "13%.": [
+          "FINAL_TOTAL_USED_AS_BASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_MISSING_BASE",
+      "statement": "Uma notícia diz que um indicador aumentou 12%, mas não apresenta o valor inicial nem a definição do indicador. O que é possível concluir?",
+      "options": [
+        "Que o indicador aumentou 12 unidades.",
+        "Que todo caso individual aumentou 12%.",
+        "A notícia afirma uma variação de 12%, mas a base e o método precisam ser conhecidos para verificar e interpretar a afirmação.",
+        "Que o valor final é 112 unidades."
+      ],
+      "correctAnswer": "A notícia afirma uma variação de 12%, mas a base e o método precisam ser conhecidos para verificar e interpretar a afirmação.",
+      "explanation": "Sem base e definição, não se converte taxa em quantidade nem se verifica o alcance da afirmação.",
+      "hint": "Separe o que foi reportado do que os dados permitem recalcular.",
+      "errorFocus": "RATE_WITHOUT_BASE_TREATED_AS_ABSOLUTE",
+      "misconceptions": {
+        "Que o indicador aumentou 12 unidades.": [
+          "RATE_WITHOUT_BASE_TREATED_AS_ABSOLUTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-percent-increase-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "REVIEW_CONTEXT",
+      "statement": "Uma oficina cresceu de 24 para 30 participantes; no mês seguinte, de 30 para 36. Em qual intervalo o aumento percentual foi maior?",
+      "options": [
+        "Os dois, porque o acréscimo foi de 6 em ambos.",
+        "No segundo: 25%, pois a base é maior.",
+        "Não é possível comparar porque as diferenças absolutas são iguais.",
+        "No primeiro: 6 ÷ 24 = 25%; no segundo: 6 ÷ 30 = 20%."
+      ],
+      "correctAnswer": "No primeiro: 6 ÷ 24 = 25%; no segundo: 6 ÷ 30 = 20%.",
+      "explanation": "A diferença absoluta é 6 nos dois intervalos, mas as bases são 24 e 30. Assim, as taxas são 25% e 20%.",
+      "hint": "Compare cada diferença com o total no início do respectivo intervalo.",
+      "errorFocus": "EQUAL_ABSOLUTE_CHANGE_ASSUMED_EQUAL_RATE",
+      "misconceptions": {
+        "Os dois, porque o acréscimo foi de 6 em ambos.": [
+          "EQUAL_ABSOLUTE_CHANGE_ASSUMED_EQUAL_RATE"
+        ]
+      }
+    }
+  ]
+}

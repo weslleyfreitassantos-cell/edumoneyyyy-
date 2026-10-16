@@ -1,0 +1,1264 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-geography-map-scale-ratio-and-graphic-scale",
+  "subject": "GEOGRAPHY",
+  "domain": "CARTOGRAFIA",
+  "topic": "escala_cartografica_proporcao_e_distancia",
+  "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-geography-geography_territory-3",
+      "hint": "Diferencie escala grande e pequena, mantenha unidades coerentes e confirme se foi medida uma linha reta ou um percurso.",
+      "errorFocus": "MAP_SCALE_RATIO_UNIT_AND_DISTANCE_SCOPE"
+    },
+    {
+      "questionId": "v3-geography-geography_territory-5",
+      "hint": "Diferencie escala grande e pequena, mantenha unidades coerentes e confirme se foi medida uma linha reta ou um percurso.",
+      "errorFocus": "MAP_SCALE_RATIO_UNIT_AND_DISTANCE_SCOPE"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 2,
+    "feedbackAdded": 2,
+    "sourceReconciliationStatus": "EXACT",
+    "legacyQuestionIds": [
+      "v3-geography-geography_territory-3",
+      "v3-geography-geography_territory-5"
+    ],
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Ler escalas e converter distancias em mapas",
+    "objective": "Interpretar escalas numericas e graficas, calcular distancias no terreno, comparar niveis de detalhe e reconhecer limites de medidas cartograficas.",
+    "summary": "Escala relaciona mapa e terreno. A unidade precisa ser convertida corretamente; a escolha da escala depende da extensao e do detalhe exigidos.",
+    "explanation": "## 1. O que a escala relaciona\nNa escala numerica 1:n, uma unidade no mapa corresponde a n unidades da mesma unidade no terreno. Em 1:50 000, por exemplo, 1 cm representa 50 000 cm, isto e, 500 m. Mantenha as unidades iguais durante a multiplicacao e converta o resultado no fim.\n\n## 2. Escala grande e escala pequena\nEscala grande tem denominador menor, como 1:10 000; em um papel de mesmo tamanho, mostra uma area menor com mais detalhe. Escala pequena, como 1:1 000 000, cobre uma area maior com menos detalhe. O numero maior no denominador nao significa escala maior.\n\n## 3. Escalas graficas\nA barra grafica apresenta distancias por intervalos. Se a barra vai de 0 a 5 km em cinco intervalos iguais, cada intervalo vale 1 km. Conte os espacos entre marcas, nao somente as marcas. Se mapa e barra forem redimensionados juntos, a referencia continua acompanhando o desenho.\n\n## 4. Impressao e medicao\nUma escala numerica impressa pode ficar incorreta quando o mapa e ampliado ou reduzido sem atualizar o rotulo. Confira a escala efetiva ou use uma barra grafica que tenha sido redimensionada junto com o mapa. Compare mapas apenas depois de conferir sua escala.\n\n## 5. Limites da distancia\nUma regua entre dois pontos mede um segmento reto. Ela nao informa por si so o comprimento de uma rota sinuosa, o tempo de viagem ou as condicoes do caminho. Escolha a escala conforme a extensao e o nivel de detalhe que a tarefa pede.",
+    "workedExample": "Em 1:25 000, 1 cm representa 25 000 cm = 250 m. Se uma linha reta mede 3,2 cm, a distancia reta representada e 3,2 x 250 m = 800 m. Isso nao e necessariamente o comprimento de um caminho por ruas.",
+    "commonMistake": "Ler denominador maior como escala maior, misturar centimetros e metros, contar marcas em vez de intervalos ou tratar uma medida reta como percurso.",
+    "tips": [
+      "Converta a escala para metros por centimetro antes de multiplicar.",
+      "Em barras graficas, conte intervalos.",
+      "Depois de ampliacao/reducao, confira a escala numerica.",
+      "Diga se a medida e reta ou segue uma rota."
+    ],
+    "estimatedMinutes": 28,
+    "priorKnowledge": [
+      "Multiplicar numeros naturais e decimais simples.",
+      "Converter centimetros, metros e quilometros."
+    ],
+    "keyConcepts": [
+      "escala numerica",
+      "escala grafica",
+      "escala grande e pequena",
+      "proporcao",
+      "conversao de unidades",
+      "extensao e detalhe",
+      "distancia reta e percurso"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer escala, denominador, barra grafica e conversao simples.",
+        "questionIds": [
+          "v5-geography-map-scale-01",
+          "v5-geography-map-scale-02",
+          "v5-geography-map-scale-03",
+          "v5-geography-map-scale-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Calcular distancias, ler intervalos e escolher escalas para objetivos diferentes.",
+        "questionIds": [
+          "v5-geography-map-scale-05",
+          "v5-geography-map-scale-06",
+          "v5-geography-map-scale-07",
+          "v5-geography-map-scale-08",
+          "v5-geography-map-scale-09",
+          "v5-geography-map-scale-10",
+          "v5-geography-map-scale-11",
+          "v5-geography-map-scale-12",
+          "v5-geography-map-scale-13",
+          "v5-geography-map-scale-14",
+          "v5-geography-map-scale-15",
+          "v5-geography-map-scale-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Interpretar impressao redimensionada, comparar mapas e limitar conclusoes de medidas.",
+        "questionIds": [
+          "v5-geography-map-scale-17",
+          "v5-geography-map-scale-18",
+          "v5-geography-map-scale-19",
+          "v5-geography-map-scale-20",
+          "v5-geography-map-scale-21",
+          "v5-geography-map-scale-22",
+          "v5-geography-map-scale-23",
+          "v5-geography-map-scale-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Integrar conversao, escolha de escala e tipo de distancia.",
+        "questionIds": [
+          "v5-geography-map-scale-25",
+          "v5-geography-map-scale-26",
+          "v5-geography-map-scale-27",
+          "v5-geography-map-scale-28",
+          "v5-geography-map-scale-29",
+          "v5-geography-map-scale-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Reaplicar o metodo em novos objetivos cartograficos.",
+        "questionIds": [
+          "v5-geography-map-scale-31",
+          "v5-geography-map-scale-32",
+          "v5-geography-map-scale-33",
+          "v5-geography-map-scale-34",
+          "v5-geography-map-scale-35",
+          "v5-geography-map-scale-36",
+          "v5-geography-map-scale-37",
+          "v5-geography-map-scale-38",
+          "v5-geography-map-scale-39",
+          "v5-geography-map-scale-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SAME_UNIT_FIRST",
+        "text": "Em 1:n, a unidade e a mesma nos dois lados. Converta depois de multiplicar."
+      },
+      {
+        "trigger": "LARGE_SCALE_SMALL_DENOMINATOR",
+        "text": "Denominador menor significa escala maior: menos terreno por centimetro e mais detalhe."
+      },
+      {
+        "trigger": "BAR_INTERVALS",
+        "text": "O valor de cada intervalo e a distancia total dividida pelo numero de espacos."
+      },
+      {
+        "trigger": "PRINT_SIZE_CHECK",
+        "text": "Se a impressao mudou de tamanho, confira o rotulo numerico ou use a barra grafica redimensionada junto."
+      },
+      {
+        "trigger": "STRAIGHT_VERSUS_ROUTE",
+        "text": "A medida reta entre pontos nao e necessariamente a distancia de um percurso sinuoso."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "UNIT_CONVERSION_STEPS",
+        "misconception": "Misturar unidades ao aplicar a razao.",
+        "prompt": "Escreva 1 cm = n cm; converta n cm para metros; so entao multiplique pelo comprimento medido no mapa."
+      },
+      {
+        "id": "DENOMINATOR_COMPARISON",
+        "misconception": "Interpretar denominador maior como escala maior.",
+        "prompt": "Compare 1 cm em cada escala e anote quanto terreno cada um representa. Menos terreno por centimetro indica escala maior."
+      },
+      {
+        "id": "COUNT_BAR_SPACES",
+        "misconception": "Contar marcas em vez de intervalos.",
+        "prompt": "Marque os espacos entre os rotulos 0 e o valor final. Divida o total pelos espacos e conte os que o trecho ocupa."
+      },
+      {
+        "id": "RECALIBRATE_PRINT",
+        "misconception": "Confiar no rotulo numerico depois de redimensionar o papel.",
+        "prompt": "Compare o tamanho impresso com o original. Se a razao numerica nao foi atualizada, use uma barra que acompanhou a mudanca ou recalibre a escala."
+      },
+      {
+        "id": "DISTANCE_TYPE_CHECK",
+        "misconception": "Tratar distancia reta como percurso.",
+        "prompt": "Identifique o segmento que foi medido. Se a pergunta pede percurso, acompanhe a rota no mapa em vez de medir apenas os pontos extremos."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministerio da Educacao, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referencia curricular geral; alinhamento oficial especifico nao reivindicado."
+      },
+      {
+        "publisher": "Instituto Brasileiro de Geografia e Estatistica",
+        "title": "Atlas Geografico Escolar",
+        "url": "https://atlasescolar.ibge.gov.br/",
+        "license": "Referencia para linguagem cartografica; mapas e situacoes deste pacote sao autorais e esquematicos."
+      }
+    ],
+    "copyrightNote": "Mapas, situacoes e questoes sao autorais e esquematicos. Nenhum codigo BNCC oficial e reivindicado; revisao pedagogica pendente."
+  },
+  "questions": [
+    {
+      "id": "v5-geography-map-scale-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY_SCALE",
+      "contextFamily": "SCALE_RELATION",
+      "statement": "Em um mapa, a escala indica a relacao entre:",
+      "options": [
+        "Uma medida no mapa e a distancia correspondente no terreno.",
+        "A cor do mapa e a altitude do lugar.",
+        "O tamanho do papel e a populacao representada.",
+        "A legenda e a orientacao do norte."
+      ],
+      "correctAnswer": "Uma medida no mapa e a distancia correspondente no terreno.",
+      "explanation": "A escala relaciona medidas representadas a distancias reais; ela nao descreve cores, populacao ou orientacao.",
+      "hint": "Procure a alternativa que liga desenho e terreno.",
+      "errorFocus": "SCALE_CONFUSED_WITH_LEGEND_OR_ORIENTATION",
+      "misconceptions": {
+        "A cor do mapa e a altitude do lugar.": [
+          "SCALE_CONFUSED_WITH_LEGEND_OR_ORIENTATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE_DENOMINATORS",
+      "contextFamily": "DENOMINATOR_DETAIL",
+      "statement": "Em mapas de mesmo tamanho de papel, qual escala tende a mostrar uma area menor com mais detalhes: 1:10 000 ou 1:100 000?",
+      "options": [
+        "1:100 000, porque o denominador e maior.",
+        "1:10 000.",
+        "As duas representam sempre a mesma area e detalhe.",
+        "Nao e possivel comparar escalas numericas."
+      ],
+      "correctAnswer": "1:10 000.",
+      "explanation": "Com o mesmo tamanho de papel, 1:10 000 e uma escala maior: cada unidade no mapa corresponde a menos unidades no terreno, permitindo detalhar uma area menor.",
+      "hint": "Compare quanto terreno corresponde a mesma medida no papel.",
+      "errorFocus": "SCALE_SIZE_REVERSED",
+      "misconceptions": {
+        "1:100 000, porque o denominador e maior.": [
+          "SCALE_SIZE_REVERSED"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-comparison.svg",
+            "alt": "Dois mapas esquematicos do mesmo municipio: o quadro A, escala 1:10 000, mostra poucos quarteiroes e ruas detalhadas; o quadro B, escala 1:100 000, mostra toda a regiao com menos detalhes.",
+            "caption": "Escalas e nivel de detalhe"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ_GRAPHIC_SCALE",
+      "contextFamily": "BAR_SCALE_ZERO_TO_FIVE",
+      "statement": "Uma barra grafica esta dividida em cinco trechos iguais e marcada de 0 a 5 km. Quanto representa cada trecho?",
+      "options": [
+        "5 km.",
+        "500 m.",
+        "1 km.",
+        "25 km."
+      ],
+      "correctAnswer": "1 km.",
+      "explanation": "A diferenca total e 5 km distribuida em cinco intervalos iguais: cada intervalo representa 1 km.",
+      "hint": "Divida a distancia total pelo numero de intervalos.",
+      "errorFocus": "BAR_SCALE_INTERVAL_MISREAD",
+      "misconceptions": {
+        "5 km.": [
+          "BAR_SCALE_INTERVAL_MISREAD"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-segments.svg",
+            "alt": "Barra grafica com seis marcas igualmente espacadas, rotulos de 0 a 5 km e cinco intervalos iguais.",
+            "caption": "Leitura de uma escala grafica"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CONVERT_RATIO",
+      "contextFamily": "ONE_CENTIMETER_AT_50000",
+      "statement": "Em uma escala 1:50 000, 1 cm no mapa corresponde a:",
+      "options": [
+        "50 000 m no terreno.",
+        "5 m no terreno.",
+        "500 000 cm, ou 5 km.",
+        "50 000 cm no terreno, ou 500 m."
+      ],
+      "correctAnswer": "50 000 cm no terreno, ou 500 m.",
+      "explanation": "A razao compara centimetros com centimetros: 50 000 cm equivalem a 500 m.",
+      "hint": "Mantenha a mesma unidade nos dois lados e depois converta.",
+      "errorFocus": "RATIO_UNIT_CONVERSION_ERROR",
+      "misconceptions": {
+        "50 000 m no terreno.": [
+          "RATIO_UNIT_CONVERSION_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "THREE_CM_AT_25000",
+      "statement": "Em uma carta 1:25 000, uma distancia reta mede 3 cm. Qual e a distancia correspondente no terreno?",
+      "options": [
+        "750 m.",
+        "75 m.",
+        "7,5 km.",
+        "25 km."
+      ],
+      "correctAnswer": "750 m.",
+      "explanation": "Cada centimetro representa 25 000 cm, ou 250 m. Tres centimetros representam 750 m.",
+      "hint": "Converta 25 000 cm para metros antes de multiplicar por 3.",
+      "errorFocus": "SCALE_MULTIPLICATION_OR_UNIT_ERROR",
+      "misconceptions": {
+        "75 m.": [
+          "SCALE_MULTIPLICATION_OR_UNIT_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MEASURE_MAP_DISTANCE",
+      "contextFamily": "LINE_24CM_AT_50000",
+      "statement": "No esquema, a linha reta entre P e Q mede 2,4 cm em uma carta 1:50 000. Qual distancia reta ela representa?",
+      "options": [
+        "120 km.",
+        "1,2 km.",
+        "12 km.",
+        "240 m."
+      ],
+      "correctAnswer": "1,2 km.",
+      "explanation": "A escala indica 500 m por centimetro. Entao 2,4 x 500 m = 1 200 m = 1,2 km.",
+      "hint": "Use 500 m por centimetro e preserve a unidade ao multiplicar.",
+      "errorFocus": "CENTIMETER_TO_KILOMETER_FACTOR_ERROR",
+      "misconceptions": {
+        "120 km.": [
+          "CENTIMETER_TO_KILOMETER_FACTOR_ERROR"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-line-measurement.svg",
+            "alt": "Trecho P-Q indicado como 2,4 cm em um mapa esquematico. A legenda informa escala numerica 1:50 000 e a pergunta se refere a distancia reta.",
+            "caption": "Distancia medida e escala 1:50 000"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-07",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE_DETAIL",
+      "contextFamily": "CITY_BLOCK_VS_REGION",
+      "statement": "Uma equipe precisa identificar ruas e quarteiroes de um bairro. Qual recorte tende a ajudar mais?",
+      "options": [
+        "Um mapa estadual em escala 1:1 000 000, que mostra uma area maior com menos detalhe.",
+        "Um mapa-mundi, independentemente da escala.",
+        "Um mapa local em escala 1:10 000, que mostra uma area menor com mais detalhe.",
+        "Uma imagem sem escala nem identificacao do recorte."
+      ],
+      "correctAnswer": "Um mapa local em escala 1:10 000, que mostra uma area menor com mais detalhe.",
+      "explanation": "Para localizar ruas, um mapa local de escala maior costuma oferecer mais detalhe. A escala estadual privilegia uma area ampla.",
+      "hint": "Relacione o tamanho da area representada ao nivel de detalhe necessario.",
+      "errorFocus": "MAP_PURPOSE_AND_SCALE_MISMATCH",
+      "misconceptions": {
+        "Um mapa estadual em escala 1:1 000 000, que mostra uma area maior com menos detalhe.": [
+          "MAP_PURPOSE_AND_SCALE_MISMATCH"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-comparison.svg",
+            "alt": "Dois mapas esquematicos lado a lado: A em 1:10 000 detalha alguns quarteiroes; B em 1:100 000 resume a regiao inteira.",
+            "caption": "Escolha de escala conforme o objetivo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-08",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ_BAR_DISTANCE",
+      "contextFamily": "THREE_INTERVALS",
+      "statement": "Na barra grafica de 0 a 5 km, o trecho destacado ocupa tres intervalos iguais. Qual distancia ele representa?",
+      "options": [
+        "1,5 km.",
+        "5 km.",
+        "15 km.",
+        "3 km."
+      ],
+      "correctAnswer": "3 km.",
+      "explanation": "Cada intervalo representa 1 km; tres intervalos representam 3 km.",
+      "hint": "Conte os intervalos destacados, nao apenas as marcas.",
+      "errorFocus": "BAR_MARKS_CONFUSED_WITH_INTERVALS",
+      "misconceptions": {
+        "1,5 km.": [
+          "BAR_MARKS_CONFUSED_WITH_INTERVALS"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-three-intervals.svg",
+            "alt": "Barra de 0 a 5 km com o trecho do zero ao terceiro quilometro destacado, cobrindo tres intervalos iguais.",
+            "caption": "Contagem de intervalos na barra"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "FOUR_CM_AT_250000",
+      "statement": "Em um mapa 1:250 000, a distancia reta entre duas localidades mede 4 cm. Qual e a distancia real?",
+      "options": [
+        "10 km.",
+        "1 km.",
+        "100 km.",
+        "62,5 km."
+      ],
+      "correctAnswer": "10 km.",
+      "explanation": "Cada centimetro representa 250 000 cm = 2,5 km. Quatro centimetros representam 10 km.",
+      "hint": "Converta 250 000 cm para 2,5 km por centimetro.",
+      "errorFocus": "LARGE_DENOMINATOR_CONVERSION_ERROR",
+      "misconceptions": {
+        "1 km.": [
+          "LARGE_DENOMINATOR_CONVERSION_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "FIVE_CM_AT_20000",
+      "statement": "Um segmento reto entre dois pontos mede 5 cm em um mapa 1:20 000. Qual distancia reta ele representa?",
+      "options": [
+        "100 m.",
+        "1 km.",
+        "10 km.",
+        "4 km."
+      ],
+      "correctAnswer": "1 km.",
+      "explanation": "Em 1:20 000, cada centimetro corresponde a 200 m; 5 cm correspondem a 1 000 m, isto e, 1 km.",
+      "hint": "Primeiro encontre o valor de 1 cm; depois multiplique por 5.",
+      "errorFocus": "SCALE_DISTANCE_ARITHMETIC_ERROR",
+      "misconceptions": {
+        "100 m.": [
+          "SCALE_DISTANCE_ARITHMETIC_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT_SCALE_FOR_DETAIL",
+      "contextFamily": "BLOCK_LEVEL_PLAN",
+      "statement": "Para planejar a localizacao de entradas em um quarteirao, qual produto cartografico e mais adequado?",
+      "options": [
+        "Um mapa de pequena escala de todo o estado.",
+        "Um globo terrestre sem detalhe urbano.",
+        "Uma planta local detalhada, em escala grande e com legenda.",
+        "Uma imagem sem escala cuja ampliacao foi alterada."
+      ],
+      "correctAnswer": "Uma planta local detalhada, em escala grande e com legenda.",
+      "explanation": "O objetivo exige detalhe de um recorte pequeno; uma planta local adequada permite localizar elementos nesse nivel.",
+      "hint": "Parta do objetivo e da extensao que precisa ser observada.",
+      "errorFocus": "MAP_SCALE_NOT_MATCHED_TO_TASK",
+      "misconceptions": {
+        "Um mapa de pequena escala de todo o estado.": [
+          "MAP_SCALE_NOT_MATCHED_TO_TASK"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT_SCALE_FOR_OVERVIEW",
+      "contextFamily": "STATE_OVERVIEW",
+      "statement": "Para comparar a localizacao de tres capitais estaduais no territorio brasileiro, qual escala e mais apropriada?",
+      "options": [
+        "Uma planta 1:5 000 de um quarteirao.",
+        "Uma planta 1:10 000 de um bairro.",
+        "Uma imagem ampliada de uma unica rua.",
+        "Uma escala pequena que mostre grande extensao territorial, como 1:5 000 000."
+      ],
+      "correctAnswer": "Uma escala pequena que mostre grande extensao territorial, como 1:5 000 000.",
+      "explanation": "Uma comparacao nacional precisa incluir grande extensao; uma escala pequena permite mostrar essa area, embora com menos detalhe.",
+      "hint": "Escolha uma escala que caiba a extensao geografica da pergunta.",
+      "errorFocus": "OVERVIEW_CONFUSED_WITH_LOCAL_DETAIL",
+      "misconceptions": {
+        "Uma planta 1:5 000 de um quarteirao.": [
+          "OVERVIEW_CONFUSED_WITH_LOCAL_DETAIL"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE_SCALE_DETAIL",
+      "contextFamily": "DENOMINATOR_DECREASES",
+      "statement": "Um mapa passa de 1:100 000 para 1:25 000 e mantem o mesmo tamanho de papel. O que ocorre com o recorte e o detalhe?",
+      "options": [
+        "O recorte tende a ficar menor e os elementos podem aparecer com mais detalhe.",
+        "O recorte fica maior e o detalhe necessariamente diminui.",
+        "A escala deixa de relacionar mapa e terreno.",
+        "A area no terreno continua obrigatoriamente identica."
+      ],
+      "correctAnswer": "O recorte tende a ficar menor e os elementos podem aparecer com mais detalhe.",
+      "explanation": "Em 1:25 000, cada centimetro representa menos terreno que em 1:100 000; no mesmo papel, cabe uma area menor com mais detalhe.",
+      "hint": "Compare quantas unidades reais cabem em cada centimetro.",
+      "errorFocus": "DENOMINATOR_CHANGE_INTERPRETED_BACKWARDS",
+      "misconceptions": {
+        "O recorte fica maior e o detalhe necessariamente diminui.": [
+          "DENOMINATOR_CHANGE_INTERPRETED_BACKWARDS"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ESTIMATE_DISTANCE",
+      "contextFamily": "ONE_POINT_FIVE_AT_200000",
+      "statement": "Em um mapa 1:200 000, dois pontos estao separados por 1,5 cm em linha reta. Qual distancia aproximada os separa?",
+      "options": [
+        "300 m.",
+        "3 km.",
+        "30 km.",
+        "1,5 km."
+      ],
+      "correctAnswer": "3 km.",
+      "explanation": "Cada centimetro corresponde a 2 km; 1,5 cm correspondem a 3 km.",
+      "hint": "Use 2 km por centimetro e multiplique por 1,5.",
+      "errorFocus": "DECIMAL_DISTANCE_FACTOR_ERROR",
+      "misconceptions": {
+        "300 m.": [
+          "DECIMAL_DISTANCE_FACTOR_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "TWO_POINT_EIGHT_CM_AT_75000",
+      "statement": "Em um mapa 1:75 000, um segmento reto mede 2,8 cm. Qual distancia representa?",
+      "options": [
+        "210 m.",
+        "21 km.",
+        "2,1 km.",
+        "750 m."
+      ],
+      "correctAnswer": "2,1 km.",
+      "explanation": "Cada centimetro representa 750 m. Portanto, 2,8 x 750 m = 2 100 m = 2,1 km.",
+      "hint": "Converta 75 000 cm para metros por centimetro antes de multiplicar.",
+      "errorFocus": "SCALE_FACTOR_TENFOLD_ERROR",
+      "misconceptions": {
+        "210 m.": [
+          "SCALE_FACTOR_TENFOLD_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "SEVEN_POINT_TWO_CM_AT_400000",
+      "statement": "Em uma carta 1:400 000, uma linha reta entre duas cidades mede 7,2 cm. Qual distancia reta ela representa?",
+      "options": [
+        "2,88 km.",
+        "288 km.",
+        "28,8 m.",
+        "28,8 km."
+      ],
+      "correctAnswer": "28,8 km.",
+      "explanation": "Em 1:400 000, cada centimetro representa 4 km. Logo, 7,2 x 4 km = 28,8 km.",
+      "hint": "Converta 400 000 cm para 4 km antes de multiplicar.",
+      "errorFocus": "DECIMAL_SCALE_FACTOR_MISPLACED",
+      "misconceptions": {
+        "2,88 km.": [
+          "DECIMAL_SCALE_FACTOR_MISPLACED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-17",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "USE_GRAPHIC_AFTER_RESIZE",
+      "contextFamily": "GRAPHIC_SCALE_RESIZED",
+      "statement": "Um mapa impresso foi ampliado junto com a barra grafica. A barra continua util para medir distancias no mapa ampliado?",
+      "options": [
+        "Sim. A barra grafica foi ampliada na mesma proporcao e continua comparavel ao mapa.",
+        "Nao. Toda ampliacao invalida qualquer escala.",
+        "Sim, mas cada divisao passa a representar zero quilometro.",
+        "Nao; a barra mede apenas a folha original."
+      ],
+      "correctAnswer": "Sim. A barra grafica foi ampliada na mesma proporcao e continua comparavel ao mapa.",
+      "explanation": "Quando mapa e barra grafica sao redimensionados juntos, a relacao visual permanece consistente. Uma escala numerica impressa pode exigir recalibracao se o papel mudou de tamanho.",
+      "hint": "Verifique se a referencia grafica acompanhou o mesmo redimensionamento do mapa.",
+      "errorFocus": "GRAPHIC_SCALE_RESIZE_MISUNDERSTOOD",
+      "misconceptions": {
+        "Nao. Toda ampliacao invalida qualquer escala.": [
+          "GRAPHIC_SCALE_RESIZE_MISUNDERSTOOD"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-print-resize.svg",
+            "alt": "Dois exemplares do mesmo mapa em tamanhos diferentes. Em ambos, a barra grafica de 0 a 2 km foi redimensionada junto com o mapa; os rotulos permanecem legiveis.",
+            "caption": "Barra grafica acompanhando a ampliacao"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-18",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHECK_NUMERIC_AFTER_RESIZE",
+      "contextFamily": "NUMERIC_LABEL_NOT_UPDATED",
+      "statement": "Uma impressora reduz um mapa para 80%, mas a legenda numerica continua dizendo 1:50 000. O que fazer antes de medir com essa razao?",
+      "options": [
+        "Usar 1:50 000 sem conferir, pois a impressao nao altera medidas.",
+        "Recalcular ou corrigir a escala numerica para o tamanho impresso; uma barra grafica redimensionada junto pode ser usada.",
+        "Multiplicar todas as distancias por 80 sem definir unidades.",
+        "Substituir a escala por uma rosa dos ventos."
+      ],
+      "correctAnswer": "Recalcular ou corrigir a escala numerica para o tamanho impresso; uma barra grafica redimensionada junto pode ser usada.",
+      "explanation": "O tamanho do mapa mudou, mas o rotulo numerico nao. A razao impressa deixou de corresponder ao papel; e preciso recalibrar ou usar barra grafica redimensionada junto.",
+      "hint": "Separe a escala numerica fixa do elemento grafico que acompanhou a impressao.",
+      "errorFocus": "NUMERIC_SCALE_LEFT_UNCHANGED_AFTER_RESIZE",
+      "misconceptions": {
+        "Usar 1:50 000 sem conferir, pois a impressao nao altera medidas.": [
+          "NUMERIC_SCALE_LEFT_UNCHANGED_AFTER_RESIZE"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-print-resize.svg",
+            "alt": "Duas impressoes do mesmo mapa em tamanhos diferentes. Um aviso destaca que a escala numerica precisa ser atualizada quando somente o mapa e reduzido; a barra grafica, se reduzida junto, continua utilizavel.",
+            "caption": "Recalibracao de escala numerica"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-19",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH_STRAIGHT_AND_ROUTE",
+      "contextFamily": "STRAIGHT_LINE_NOT_ROUTE",
+      "statement": "Uma medida entre dois pontos foi feita com regua sobre o mapa, em linha reta. O que essa medida representa diretamente?",
+      "options": [
+        "A extensao exata de qualquer trajeto sinuoso.",
+        "O tempo de viagem entre os pontos.",
+        "A distancia em linha reta entre os pontos, nao necessariamente o percurso por ruas.",
+        "A distancia percorrida em uma rota que nao foi desenhada."
+      ],
+      "correctAnswer": "A distancia em linha reta entre os pontos, nao necessariamente o percurso por ruas.",
+      "explanation": "A regua mede o segmento representado. Para obter um percurso por ruas, e preciso seguir a rota desenhada ou usar dados de trajeto.",
+      "hint": "Identifique se foi medido um segmento reto ou uma linha de percurso.",
+      "errorFocus": "STRAIGHT_DISTANCE_MISTAKEN_FOR_ROUTE_DISTANCE",
+      "misconceptions": {
+        "A extensao exata de qualquer trajeto sinuoso.": [
+          "STRAIGHT_DISTANCE_MISTAKEN_FOR_ROUTE_DISTANCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE_EQUIVALENT_DISTANCES",
+      "contextFamily": "TWO_MAPS_SAME_REAL_DISTANCE",
+      "statement": "No mapa A, escala 1:25 000, uma linha mede 4 cm. No mapa B, escala 1:50 000, a mesma distancia real mede 2 cm. Qual leitura e consistente?",
+      "options": [
+        "A distancia real em A e sempre o dobro da de B.",
+        "A distancia em B e 2 cm no terreno.",
+        "Nao e possivel comparar sem saber a cor dos mapas.",
+        "As duas medidas representam 1 km no terreno, apesar dos comprimentos diferentes no papel."
+      ],
+      "correctAnswer": "As duas medidas representam 1 km no terreno, apesar dos comprimentos diferentes no papel.",
+      "explanation": "Em A, 4 cm x 250 m/cm = 1 km. Em B, 2 cm x 500 m/cm = 1 km. Escalas diferentes podem representar a mesma distancia real com comprimentos distintos.",
+      "hint": "Calcule a distancia real em cada escala antes de comparar os centimetros.",
+      "errorFocus": "MAP_LENGTH_COMPARED_WITHOUT_SCALE",
+      "misconceptions": {
+        "A distancia real em A e sempre o dobro da de B.": [
+          "MAP_LENGTH_COMPARED_WITHOUT_SCALE"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-equivalent-distance.svg",
+            "alt": "Dois mapas esquematicos mostram o mesmo trecho: no A, escala 1:25 000 e segmento de 4 cm; no B, escala 1:50 000 e segmento de 2 cm. A legenda informa que os dois representam 1 km.",
+            "caption": "Mesmo trecho em escalas diferentes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET_SCALE_AND_EXTENT",
+      "contextFamily": "DETAIL_VERSUS_COVERAGE",
+      "statement": "Uma equipe precisa ao mesmo tempo de uma visao nacional e da localizacao de uma entrada em um predio. Qual estrategia cartografica atende melhor aos dois objetivos?",
+      "options": [
+        "Usar mapas em escalas diferentes: um de pequena escala para a visao nacional e outro local de grande escala para o predio.",
+        "Ampliar o mapa nacional e presumir que detalhes ausentes aparecerao.",
+        "Usar apenas a planta do predio para comparar o pais inteiro.",
+        "Escolher um unico mapa sem considerar a extensao necessaria."
+      ],
+      "correctAnswer": "Usar mapas em escalas diferentes: um de pequena escala para a visao nacional e outro local de grande escala para o predio.",
+      "explanation": "Uma escala pequena cobre grande extensao com menos detalhe; uma escala grande mostra recorte menor com mais detalhe. Os dois objetivos pedem niveis distintos.",
+      "hint": "Combine cada pergunta com a extensao e o nivel de detalhe apropriados.",
+      "errorFocus": "ONE_SCALE_ASSUMED_TO_SERVE_ALL_PURPOSES",
+      "misconceptions": {
+        "Ampliar o mapa nacional e presumir que detalhes ausentes aparecerao.": [
+          "ONE_SCALE_ASSUMED_TO_SERVE_ALL_PURPOSES"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE_ROUTE_AND_STRAIGHT_DISTANCE",
+      "contextFamily": "CURVED_ROUTE_MEASURED_WITH_THREAD",
+      "statement": "Em um mapa 1:25 000, o segmento reto entre P e Q mede 8 cm e a rota sinuosa, medida com um fio, mede 12 cm. Qual interpretacao esta correta?",
+      "options": [
+        "Ambas medem 2 km porque ligam os mesmos pontos.",
+        "A distancia reta e 2 km; o percurso desenhado mede 3 km.",
+        "A distancia reta e 3 km e a rota e 2 km.",
+        "A escala permite calcular o tempo de viagem sem outras informacoes."
+      ],
+      "correctAnswer": "A distancia reta e 2 km; o percurso desenhado mede 3 km.",
+      "explanation": "Cada centimetro vale 250 m. Assim, 8 cm representam 2 km em linha reta e 12 cm ao longo da rota representam 3 km.",
+      "hint": "Converta cada comprimento separadamente e identifique qual segue a rota.",
+      "errorFocus": "STRAIGHT_SEGMENT_CONFUSED_WITH_ROUTE",
+      "misconceptions": {
+        "Ambas medem 2 km porque ligam os mesmos pontos.": [
+          "STRAIGHT_SEGMENT_CONFUSED_WITH_ROUTE"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-route-vs-straight.svg",
+            "alt": "Esquema com P e Q: segmento reto mede 8 cm, rota curva medida com fio mede 12 cm, e a escala numerica e 1:25 000.",
+            "caption": "Distancia reta e percurso sinuoso"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_CROPPED_SCALE_BAR",
+      "contextFamily": "SCALE_BAR_WITHOUT_CALIBRATION",
+      "statement": "Uma imagem mostra apenas um trecho de uma barra grafica; as marcas, o zero e os valores foram cortados. Sem escala numerica ou outra referencia, o que se pode afirmar sobre uma distancia medida nessa imagem?",
+      "options": [
+        "Cada centimetro vale necessariamente 1 km.",
+        "A distancia real e zero porque o zero nao aparece.",
+        "Nao e possivel converter com seguranca o comprimento em centimetros para distancia real.",
+        "Basta contar as marcas sem conhecer seus valores."
+      ],
+      "correctAnswer": "Nao e possivel converter com seguranca o comprimento em centimetros para distancia real.",
+      "explanation": "Sem uma razao numerica ou uma barra grafica calibrada visivel, falta a correspondencia entre comprimento no papel e distancia no terreno.",
+      "hint": "Procure uma referencia que associe um comprimento a uma distancia conhecida.",
+      "errorFocus": "UNCALIBRATED_CROPPED_SCALE_BAR",
+      "misconceptions": {
+        "Cada centimetro vale necessariamente 1 km.": [
+          "UNCALIBRATED_CROPPED_SCALE_BAR"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-cropped.svg",
+            "alt": "Trecho de uma barra grafica cortada nas duas extremidades, sem marca zero, rotulos numericos ou unidade de distancia.",
+            "caption": "Referencia de escala ausente"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "LIMIT_SCALE_INFERENCE",
+      "contextFamily": "MAP_DISTANCE_NOT_TRAVEL_TIME",
+      "statement": "Em um mapa 1:50 000, a distancia reta entre uma unidade de saude e uma escola mede 3,5 cm. Qual conclusao a escala sustenta diretamente?",
+      "options": [
+        "A viagem dura 3,5 minutos.",
+        "O percurso por ruas mede exatamente 1,75 km.",
+        "A escola fica a 175 km da unidade.",
+        "A distancia em linha reta e 1,75 km; o tempo e o comprimento do trajeto exigem outras informacoes."
+      ],
+      "correctAnswer": "A distancia em linha reta e 1,75 km; o tempo e o comprimento do trajeto exigem outras informacoes.",
+      "explanation": "Cada centimetro representa 500 m; 3,5 cm representam 1 750 m. A escala nao informa o trajeto usado nem a velocidade de deslocamento.",
+      "hint": "Converta a medida e limite a conclusao ao segmento reto mostrado.",
+      "errorFocus": "MAP_SCALE_USED_TO_ASSERT_TIME_OR_ROUTE",
+      "misconceptions": {
+        "A viagem dura 3,5 minutos.": [
+          "MAP_SCALE_USED_TO_ASSERT_TIME_OR_ROUTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE_SCALE_CALCULATION",
+      "contextFamily": "SIX_POINT_FOUR_AT_25000",
+      "statement": "Em uma carta 1:25 000, a distancia reta entre dois marcos mede 6,4 cm. Qual distancia reta corresponde a medida?",
+      "options": [
+        "1,6 km.",
+        "160 m.",
+        "16 km.",
+        "2,56 km."
+      ],
+      "correctAnswer": "1,6 km.",
+      "explanation": "Cada centimetro equivale a 250 m. Portanto 6,4 x 250 m = 1 600 m = 1,6 km.",
+      "hint": "Converta a escala para metros por centimetro e confira a conversao final.",
+      "errorFocus": "DECIMAL_SCALE_CALCULATION_ERROR",
+      "misconceptions": {
+        "160 m.": [
+          "DECIMAL_SCALE_CALCULATION_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CHOOSE_LARGER_SCALE",
+      "contextFamily": "DETAIL_AT_20000",
+      "statement": "Para desenhar detalhes de uma praca, qual escala tende a ser mais adequada: 1:20 000 ou 1:200 000?",
+      "options": [
+        "1:200 000, pois todo denominador maior mostra mais detalhes.",
+        "1:20 000, pois mostra menos terreno por centimetro e permite maior detalhe no mesmo tamanho de papel.",
+        "As duas tem sempre o mesmo nivel de detalhe.",
+        "Nenhuma, porque escala nao se relaciona a detalhe."
+      ],
+      "correctAnswer": "1:20 000, pois mostra menos terreno por centimetro e permite maior detalhe no mesmo tamanho de papel.",
+      "explanation": "1:20 000 e a escala maior; em um papel de mesmo tamanho, representa area menor e pode mostrar mais detalhe.",
+      "hint": "Compare a quantidade de terreno representada por cada centimetro.",
+      "errorFocus": "LARGE_SCALE_DEFINITION_NOT_APPLIED",
+      "misconceptions": {
+        "1:200 000, pois todo denominador maior mostra mais detalhes.": [
+          "LARGE_SCALE_DEFINITION_NOT_APPLIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "READ_GRAPHIC_SCALE",
+      "contextFamily": "FOUR_INTERVALS_ON_FIVE_KM_BAR",
+      "statement": "Em uma barra de 0 a 5 km dividida em cinco intervalos iguais, um percurso desenhado ocupa quatro intervalos. Qual distancia e representada?",
+      "options": [
+        "5 km.",
+        "2,5 km.",
+        "4 km.",
+        "20 km."
+      ],
+      "correctAnswer": "4 km.",
+      "explanation": "Cada intervalo vale 1 km; quatro intervalos representam 4 km.",
+      "hint": "Conte os espacos entre marcas e use o valor de cada espaco.",
+      "errorFocus": "GRAPHIC_SCALE_INTERVAL_COUNT_ERROR",
+      "misconceptions": {
+        "5 km.": [
+          "GRAPHIC_SCALE_INTERVAL_COUNT_ERROR"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-four-intervals.svg",
+            "alt": "Barra grafica de 0 a 5 km com o trecho do zero ao quarto quilometro destacado, cobrindo quatro intervalos iguais.",
+            "caption": "Quatro intervalos da barra grafica"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE_RATIO_AND_CONVERSION",
+      "contextFamily": "THREE_POINT_FIVE_CM_AT_40000",
+      "statement": "Em um mapa 1:40 000, um segmento reto mede 3,5 cm. Qual distancia representa?",
+      "options": [
+        "140 m.",
+        "14 km.",
+        "1,75 km.",
+        "1,4 km."
+      ],
+      "correctAnswer": "1,4 km.",
+      "explanation": "Cada centimetro equivale a 400 m. Entao, 3,5 x 400 m = 1 400 m = 1,4 km.",
+      "hint": "Converta a escala para metros por centimetro e confira a unidade final.",
+      "errorFocus": "RATIO_CONVERSION_AND_DECIMAL_ERROR",
+      "misconceptions": {
+        "140 m.": [
+          "RATIO_CONVERSION_AND_DECIMAL_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SELECT_SCALE_FOR_CAMPUS_DETAIL",
+      "contextFamily": "SCHOOL_CAMPUS_PLAN",
+      "statement": "Para localizar salas, acessos e quadras em uma planta do campus escolar, qual escala tende a servir melhor, em uma folha de mesmo tamanho?",
+      "options": [
+        "1:5 000, pois representa um recorte menor com mais detalhe.",
+        "1:500 000, pois o denominador maior amplia os detalhes.",
+        "As duas escalas mostram necessariamente o mesmo recorte.",
+        "Uma imagem sem escala, porque a legenda substitui a escala."
+      ],
+      "correctAnswer": "1:5 000, pois representa um recorte menor com mais detalhe.",
+      "explanation": "O campus ocupa uma area pequena e exige detalhe. Em uma folha de mesmo tamanho, 1:5 000 e escala maior que 1:500 000.",
+      "hint": "Relacione o nivel de detalhe necessario ao tamanho do recorte.",
+      "errorFocus": "CAMPUS_DETAIL_SCALE_REVERSED",
+      "misconceptions": {
+        "1:500 000, pois o denominador maior amplia os detalhes.": [
+          "CAMPUS_DETAIL_SCALE_REVERSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMBINE_PRINT_AND_GRAPHIC_SCALE",
+      "contextFamily": "REDUCED_MAP_WITH_GRAPHIC_BAR",
+      "statement": "Um mapa e sua barra grafica foram reduzidos juntos para metade do tamanho; o rotulo numerico nao foi atualizado. Qual procedimento e confiavel?",
+      "options": [
+        "Usar o rotulo original sem conferir a impressao.",
+        "Usar a barra grafica reduzida junto com o mapa e recalibrar o rotulo numerico antes de usa-lo.",
+        "Descartar a barra porque ela foi reduzida junto com o mapa.",
+        "Multiplicar qualquer distancia por dois sem saber a unidade."
+      ],
+      "correctAnswer": "Usar a barra grafica reduzida junto com o mapa e recalibrar o rotulo numerico antes de usa-lo.",
+      "explanation": "A barra grafica acompanhou a reducao e preserva a proporcao. O rotulo numerico, se nao foi corrigido, nao corresponde ao tamanho impresso.",
+      "hint": "Separe a referencia grafica que acompanhou a imagem do numero que ficou desatualizado.",
+      "errorFocus": "RESIZED_GRAPHIC_VALID_NUMERIC_LABEL_STALE",
+      "misconceptions": {
+        "Usar o rotulo original sem conferir a impressao.": [
+          "RESIZED_GRAPHIC_VALID_NUMERIC_LABEL_STALE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_METHOD",
+      "contextFamily": "SCALE_READING_STEPS",
+      "statement": "Qual sequencia e adequada para converter uma medida feita em um mapa?",
+      "options": [
+        "Multiplicar sem conferir unidades e chamar o resultado de rota.",
+        "Ler a legenda como se fosse a escala numerica.",
+        "Identificar a escala, manter unidades compativeis, converter o resultado e distinguir distancia reta de percurso.",
+        "Comparar centimetros de mapas distintos sem usar suas escalas."
+      ],
+      "correctAnswer": "Identificar a escala, manter unidades compativeis, converter o resultado e distinguir distancia reta de percurso.",
+      "explanation": "A escala precisa ser aplicada em unidades coerentes; a medida resultante depende do segmento medido e nao vira automaticamente um trajeto.",
+      "hint": "Escolha a sequencia que inclui unidades e o tipo de distancia.",
+      "errorFocus": "SCALE_WORKFLOW_OMITS_UNITS_OR_DISTANCE_TYPE",
+      "misconceptions": {
+        "Multiplicar sem conferir unidades e chamar o resultado de rota.": [
+          "SCALE_WORKFLOW_OMITS_UNITS_OR_DISTANCE_TYPE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER_SCALE_REASONING",
+      "contextFamily": "MAP_SCALE_DECISION",
+      "statement": "Ao escolher uma escala para um novo mapa, qual criterio deve vir primeiro?",
+      "options": [
+        "Apenas a cor de fundo do mapa.",
+        "O maior denominador disponivel, qualquer que seja o objetivo.",
+        "A quantidade de texto que cabe no titulo.",
+        "A extensao que precisa ser coberta e o nivel de detalhe exigido pela tarefa."
+      ],
+      "correctAnswer": "A extensao que precisa ser coberta e o nivel de detalhe exigido pela tarefa.",
+      "explanation": "Escala e escolha cartografica ligada a extensao e ao detalhe necessarios; nenhum numero serve igualmente para todos os objetivos.",
+      "hint": "Comece pelo que o leitor precisa observar e pela area que o mapa deve cobrir.",
+      "errorFocus": "SCALE_CHOSEN_WITHOUT_PURPOSE",
+      "misconceptions": {
+        "Apenas a cor de fundo do mapa.": [
+          "SCALE_CHOSEN_WITHOUT_PURPOSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-33",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_DISTANCE_CONVERSION",
+      "contextFamily": "REVIEW_2500_AT_80000",
+      "statement": "Uma planta 1:80 000 mostra 2,5 cm entre dois pontos em linha reta. Qual registro de distancia esta correto?",
+      "options": [
+        "2 km em linha reta.",
+        "200 m.",
+        "20 km.",
+        "2,5 km."
+      ],
+      "correctAnswer": "2 km em linha reta.",
+      "explanation": "Cada centimetro representa 800 m; 2,5 x 800 m = 2 000 m = 2 km.",
+      "hint": "Calcule primeiro a distancia correspondente a 1 cm.",
+      "errorFocus": "REVIEW_SCALE_FACTOR_TENFOLD",
+      "misconceptions": {
+        "200 m.": [
+          "REVIEW_SCALE_FACTOR_TENFOLD"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-34",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_SCALE_SELECTION",
+      "contextFamily": "REVIEW_NEIGHBORHOOD_SCALE",
+      "statement": "Uma equipe vai mapear ruas de um bairro em uma folha de mesmo tamanho. Qual escolha favorece mais detalhes: 1:20 000 ou 1:200 000?",
+      "options": [
+        "1:200 000, porque o denominador e maior.",
+        "1:20 000.",
+        "As duas escalas sao iguais.",
+        "A escala nao altera o nivel de detalhe."
+      ],
+      "correctAnswer": "1:20 000.",
+      "explanation": "1:20 000 representa menos terreno por centimetro e permite mostrar um recorte menor com mais detalhe.",
+      "hint": "Compare quanto terreno cabe em cada centimetro.",
+      "errorFocus": "REVIEW_DENOMINATOR_REVERSED",
+      "misconceptions": {
+        "1:200 000, porque o denominador e maior.": [
+          "REVIEW_DENOMINATOR_REVERSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-35",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_BAR_INTERVALS",
+      "contextFamily": "REVIEW_TWO_INTERVALS",
+      "statement": "Uma barra grafica vai de 0 a 5 km em cinco intervalos iguais. Um trecho ocupa dois intervalos. Qual distancia ele representa?",
+      "options": [
+        "1 km.",
+        "2,5 km.",
+        "2 km.",
+        "10 km."
+      ],
+      "correctAnswer": "2 km.",
+      "explanation": "Cada intervalo vale 1 km; dois intervalos representam 2 km.",
+      "hint": "Divida a distancia total pelos cinco espacos antes de contar o trecho.",
+      "errorFocus": "REVIEW_MARKS_CONFUSED_WITH_INTERVALS",
+      "misconceptions": {
+        "1 km.": [
+          "REVIEW_MARKS_CONFUSED_WITH_INTERVALS"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-segments.svg",
+            "alt": "Barra grafica de 0 a 5 km com cinco intervalos iguais, permitindo identificar o valor de cada intervalo.",
+            "caption": "Revisao da leitura de intervalos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-36",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_STRAIGHT_VERSUS_ROUTE",
+      "contextFamily": "REVIEW_ROUTE_SCOPE",
+      "statement": "Uma pessoa mede com regua 3 cm em linha reta entre dois enderecos de um mapa 1:50 000 e registra “distancia por ruas: 1,5 km”. Qual revisao e necessaria?",
+      "options": [
+        "Manter “por ruas”, pois a escala transforma qualquer segmento em rota.",
+        "Trocar para 15 km, sem alterar o tipo de medida.",
+        "Informar o tempo de viagem em vez de uma distancia.",
+        "Registrar 1,5 km como distancia reta e medir a rota ao longo das ruas antes de chama-la de percurso."
+      ],
+      "correctAnswer": "Registrar 1,5 km como distancia reta e medir a rota ao longo das ruas antes de chama-la de percurso.",
+      "explanation": "A conversao fornece 1,5 km para o segmento reto medido. O comprimento por ruas depende do caminho desenhado.",
+      "hint": "Confira se o nome da medida corresponde ao metodo usado.",
+      "errorFocus": "REVIEW_ROUTE_LABEL_MISMATCH",
+      "misconceptions": {
+        "Manter “por ruas”, pois a escala transforma qualquer segmento em rota.": [
+          "REVIEW_ROUTE_LABEL_MISMATCH"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-37",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_PRINT_RESIZE",
+      "contextFamily": "REVIEW_RESIZED_COPY",
+      "statement": "Uma copia de mapa foi reduzida, mas manteve o rotulo numerico original. O que deve ser verificado antes de calcular distancias?",
+      "options": [
+        "A escala efetiva da copia ou uma barra grafica que tenha sido redimensionada junto com o mapa.",
+        "Somente a cor do mapa.",
+        "Apenas o rotulo original, sem comparar a copia.",
+        "A quantidade de ruas no recorte."
+      ],
+      "correctAnswer": "A escala efetiva da copia ou uma barra grafica que tenha sido redimensionada junto com o mapa.",
+      "explanation": "A reducao pode tornar o rotulo numerico incompativel com o papel. E preciso recalibrar a razao ou usar uma referencia grafica que acompanhou a copia.",
+      "hint": "Pergunte se a referencia de escala sofreu a mesma mudanca que o desenho.",
+      "errorFocus": "REVIEW_COPY_SCALE_NOT_RECALIBRATED",
+      "misconceptions": {
+        "Somente a cor do mapa.": [
+          "REVIEW_COPY_SCALE_NOT_RECALIBRATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-38",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_PURPOSE_AND_EXTENT",
+      "contextFamily": "REVIEW_SCHOOL_MAP_SCALE",
+      "statement": "Uma escola precisa de um mapa para orientar visitantes ate salas e acessos. O que deve orientar primeiro a escolha da escala?",
+      "options": [
+        "O maior denominador possivel, sem considerar o recorte.",
+        "O tamanho da area escolar e o nivel de detalhe necessario para localizar os pontos.",
+        "A escala de um mapa nacional.",
+        "A cor da legenda."
+      ],
+      "correctAnswer": "O tamanho da area escolar e o nivel de detalhe necessario para localizar os pontos.",
+      "explanation": "O objetivo e localizar pontos em uma area pequena; escala deve ser escolhida conforme extensao e detalhe.",
+      "hint": "Comece pela pergunta que o mapa deve ajudar a responder.",
+      "errorFocus": "REVIEW_MAP_PURPOSE_IGNORED",
+      "misconceptions": {
+        "O maior denominador possivel, sem considerar o recorte.": [
+          "REVIEW_MAP_PURPOSE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVIEW_UNIT_FACTOR",
+      "contextFamily": "REVIEW_CM_TO_KM_ERROR",
+      "statement": "Em 1:100 000, uma pessoa afirma que 1 cm no mapa corresponde a 100 km no terreno. Qual correcao esta certa?",
+      "options": [
+        "1 cm corresponde a 100 km porque o denominador esta em metros.",
+        "1 cm corresponde a 10 km.",
+        "1 cm corresponde a 100 000 cm, isto e, 1 km.",
+        "A escala nao permite converter centimetros."
+      ],
+      "correctAnswer": "1 cm corresponde a 100 000 cm, isto e, 1 km.",
+      "explanation": "A razao usa a mesma unidade nos dois lados: 100 000 cm equivalem a 1 000 m, ou 1 km.",
+      "hint": "Converta centimetros para metros e depois para quilometros.",
+      "errorFocus": "REVIEW_CENTIMETER_UNIT_FACTOR",
+      "misconceptions": {
+        "1 cm corresponde a 100 km porque o denominador esta em metros.": [
+          "REVIEW_CENTIMETER_UNIT_FACTOR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVIEW_MISSING_REFERENCE",
+      "contextFamily": "REVIEW_MISSING_SCALE",
+      "statement": "Um mapa de um bairro nao informa escala numerica nem apresenta barra grafica calibrada. Qual e a atitude adequada antes de estimar uma distancia real?",
+      "options": [
+        "Assumir que cada centimetro vale 1 km.",
+        "Usar a largura da tela como escala fixa.",
+        "Contar quarteiroes sem saber suas dimensoes e registrar um valor exato.",
+        "Buscar uma referencia espacial confiavel ou uma versao do mapa com escala; nao inventar a conversao."
+      ],
+      "correctAnswer": "Buscar uma referencia espacial confiavel ou uma versao do mapa com escala; nao inventar a conversao.",
+      "explanation": "Sem uma relacao conhecida entre comprimento representado e distancia real, a conversao nao e sustentada.",
+      "hint": "Identifique que dado permitiria relacionar papel e terreno.",
+      "errorFocus": "REVIEW_SCALE_REFERENCE_MISSING",
+      "misconceptions": {
+        "Assumir que cada centimetro vale 1 km.": [
+          "REVIEW_SCALE_REFERENCE_MISSING"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1352 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-portuguese-reason-evidence",
+  "subject": "PORTUGUESE",
+  "domain": "ARGUMENTACAO_E_LEITURA",
+  "topic": "distinguir_razao_e_evidencia",
+  "canonicalSkillCode": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 47,
+  "expectedContextCount": 47,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 17
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 12,
+    "B": 12,
+    "C": 12,
+    "D": 11
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-portuguese-reading_argument-7",
+      "hint": "Localize a posição defendida; depois identifique o motivo e o dado concreto que o texto usa como apoio.",
+      "errorFocus": "CLAIM_REASON_EVIDENCE_DISTINCTION"
+    },
+    {
+      "questionId": "v3-portuguese-reading_argument-10",
+      "hint": "Localize a posição defendida; depois identifique o motivo e o dado concreto que o texto usa como apoio.",
+      "errorFocus": "CLAIM_REASON_EVIDENCE_DISTINCTION"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 2,
+    "feedbackAdded": 2,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 47,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Distinguir posição, razão e evidência",
+    "objective": "Reconhecer a posição defendida, a razão que a justifica e a evidência apresentada, avaliando relevância, suficiência e limites.",
+    "summary": "Argumentos articulam uma conclusão, razões e evidências. Um dado pode ser relevante sem provar uma solução específica; tamanho da amostra, método e correspondência entre medida e afirmação limitam o alcance.",
+    "explanation": "## 1. Encontre a posição defendida\nA tese ou conclusão responde: o que o autor quer que o leitor aceite, faça ou considere? Pode aparecer como proposta, avaliação ou explicação. Não confunda a frase mais longa com a tese.\n\n## 2. Pergunte “por quê?”\nA razão explica por que a posição parece justificável. Em “A biblioteca deve abrir mais cedo porque estudantes relatam dificuldade no horário atual”, a proposta é a conclusão e a dificuldade relatada é uma razão.\n\n## 3. Localize a evidência\nEvidência é o material usado para sustentar uma afirmação: observação, registro, dado, exemplo, documento ou resultado. Um número não é automaticamente forte: pergunte quem foi contado, quando, como e em qual grupo.\n\n## 4. Separe dado de interpretação\n“Duas pessoas seguiram pelo corredor errado” pode ser uma observação. “A placa causou a confusão” é uma interpretação causal. Para sustentá-la, é preciso examinar outras explicações e testar a relação.\n\n## 5. Avalie relevância e suficiência\nUma evidência é relevante quando se conecta à conclusão. É suficiente quando o conjunto e o método permitem sustentar o alcance pretendido. Uma contagem em uma tarde pode justificar investigação, mas não provar padrão permanente nem solução única.\n\n## 6. Confira se a medida responde à pergunta\nTempo não mede volume sem vazão; altura final não mede crescimento sem valor inicial; presença em oficina não comprova domínio. Identifique a grandeza pedida e o dado realmente disponível.\n\n## Exemplo resolvido\nProposta: consertar uma porta. Razão: ela não fecha corretamente. Evidência: em cinco testes, não encostou no batente em dois. A taxa observada foi 2/5 naquele teste; isso apoia uma inspeção, mas não prova causa nem frequência em todos os usos.\n\n## 7. Escreva uma conclusão proporcional\nAtribua cada afirmação à evidência e preserve o escopo: “Neste teste, ___ ocorreu em ___. O resultado sugere ___; não permite concluir ___ sem novas informações.”",
+    "workedExample": "Uma recomendação pede mais assentos porque pessoas aguardam em pé. Um registro conta cinco assentos vazios às 14h de terça. Esse registro não confirma diretamente a falta de assentos nesse momento; podem ser necessários horários de pico e observações da espera. Compare a evidência com a razão antes de aceitar a conclusão.",
+    "commonMistake": "Confundir proposta, motivo e dado; tratar qualquer número como prova; afirmar causalidade a partir de sequência; ou generalizar amostra pequena sem explicitar seu alcance.",
+    "tips": [
+      "Marque a conclusão com “portanto” ou uma recomendação.",
+      "Pergunte “por quê?” para localizar a razão.",
+      "Circule o dado que poderia ser conferido.",
+      "Compare a medida com a afirmação que deveria sustentar.",
+      "Registre população, período e método."
+    ],
+    "estimatedMinutes": 30,
+    "priorKnowledge": [
+      "Identificar afirmações explícitas.",
+      "Reconhecer números, observações e recomendações em textos curtos."
+    ],
+    "keyConcepts": [
+      "tese",
+      "conclusão",
+      "razão",
+      "evidência",
+      "relevância",
+      "suficiência",
+      "inferência",
+      "causalidade",
+      "amostra"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Separar conclusão de motivo e dado.",
+        "questionIds": [
+          "v5-portuguese-reason-evidence-01",
+          "v5-portuguese-reason-evidence-02",
+          "v5-portuguese-reason-evidence-03",
+          "v5-portuguese-reason-evidence-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Classificar razões e evidências explícitas.",
+        "questionIds": [
+          "v5-portuguese-reason-evidence-05",
+          "v5-portuguese-reason-evidence-06",
+          "v5-portuguese-reason-evidence-07",
+          "v5-portuguese-reason-evidence-08",
+          "v5-portuguese-reason-evidence-09",
+          "v5-portuguese-reason-evidence-10",
+          "v5-portuguese-reason-evidence-11",
+          "v5-portuguese-reason-evidence-12",
+          "v5-portuguese-reason-evidence-13",
+          "v5-portuguese-reason-evidence-14",
+          "v5-portuguese-reason-evidence-15",
+          "v5-portuguese-reason-evidence-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar correspondência, método e limites de dados.",
+        "questionIds": [
+          "v5-portuguese-reason-evidence-17",
+          "v5-portuguese-reason-evidence-18",
+          "v5-portuguese-reason-evidence-19",
+          "v5-portuguese-reason-evidence-20",
+          "v5-portuguese-reason-evidence-21",
+          "v5-portuguese-reason-evidence-22",
+          "v5-portuguese-reason-evidence-23",
+          "v5-portuguese-reason-evidence-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Revisar inferências e generalizações indevidas.",
+        "questionIds": [
+          "v5-portuguese-reason-evidence-25",
+          "v5-portuguese-reason-evidence-26",
+          "v5-portuguese-reason-evidence-27",
+          "v5-portuguese-reason-evidence-28",
+          "v5-portuguese-reason-evidence-29",
+          "v5-portuguese-reason-evidence-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Integrar relevância, suficiência e escopo.",
+        "questionIds": [
+          "v5-portuguese-reason-evidence-31",
+          "v5-portuguese-reason-evidence-32",
+          "v5-portuguese-reason-evidence-33",
+          "v5-portuguese-reason-evidence-34",
+          "v5-portuguese-reason-evidence-35",
+          "v5-portuguese-reason-evidence-36",
+          "v5-portuguese-reason-evidence-37",
+          "v5-portuguese-reason-evidence-38",
+          "v5-portuguese-reason-evidence-39",
+          "v5-portuguese-reason-evidence-40",
+          "v5-portuguese-reason-evidence-41",
+          "v5-portuguese-reason-evidence-42",
+          "v5-portuguese-reason-evidence-43",
+          "v5-portuguese-reason-evidence-44",
+          "v5-portuguese-reason-evidence-45",
+          "v5-portuguese-reason-evidence-46",
+          "v5-portuguese-reason-evidence-47"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "CLAIM_FIRST",
+        "text": "A conclusão é a posição que o texto quer sustentar."
+      },
+      {
+        "trigger": "ASK_WHY",
+        "text": "A razão explica por que a conclusão é defendida."
+      },
+      {
+        "trigger": "FIND_RECORD",
+        "text": "Evidência é o dado ou material concreto usado como apoio."
+      },
+      {
+        "trigger": "RELEVANCE",
+        "text": "Pergunte se o dado mede algo ligado à conclusão."
+      },
+      {
+        "trigger": "SUFFICIENCY",
+        "text": "Um dado relevante ainda pode não bastar para uma conclusão ampla."
+      },
+      {
+        "trigger": "CAUSATION",
+        "text": "Uma mudança depois de outra não prova, sozinha, que a primeira causou a segunda."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "THREE_COLUMN_ARGUMENT",
+        "misconception": "Misturar conclusão, razão e evidência.",
+        "prompt": "Monte três colunas: posição defendida, por quê e qual registro concreto apoia. Copie cada trecho para a coluna correspondente."
+      },
+      {
+        "id": "MATCH_MEASURE",
+        "misconception": "Usar dado que não responde à afirmação.",
+        "prompt": "Nomeie a grandeza da conclusão e a grandeza medida. Se forem diferentes, explique o dado intermediário que falta."
+      },
+      {
+        "id": "BOUND_SAMPLE",
+        "misconception": "Generalizar amostra ou observação local.",
+        "prompt": "Inclua grupo, número, local e período na frase. Só amplie o escopo se o método permitir."
+      },
+      {
+        "id": "SEPARATE_CAUSE",
+        "misconception": "Inferir causa por ordem temporal.",
+        "prompt": "Escreva o que foi observado antes e depois, liste outras mudanças e indique qual comparação testaria a causa."
+      },
+      {
+        "id": "CHECK_SUFFICIENCY",
+        "misconception": "Tratar evidência relevante como prova suficiente.",
+        "prompt": "Pergunte que explicações alternativas permanecem e que dado adicional poderia distingui-las."
+      },
+      {
+        "id": "REPAIR_CLAIM",
+        "misconception": "Repetir a conclusão como se fosse evidência.",
+        "prompt": "Retire a proposta da justificativa e procure um registro verificável que apoie a razão."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-portuguese-reason-evidence-audit",
+        "title": "Auditoria de argumentos cotidianos",
+        "objective": "Anotar posição, razão e evidência em textos curtos e avaliar se a evidência corresponde ao alcance da conclusão.",
+        "context": "Use comunicados e textos hipotéticos selecionados pelo docente; não avaliar opiniões pessoais dos estudantes.",
+        "materials": [
+          "Textos curtos acessíveis",
+          "Quadro de três colunas",
+          "Marcadores de escopo e pergunta de verificação"
+        ],
+        "instructions": "Em grupos, classifique posição, razão e evidência; anote grupo, período e método; localize uma inferência e proponha o dado que ajudaria a testá-la. Ofereça versão digital acessível e alternativa oral ou escrita.",
+        "evidence": "Quadro anotado com atribuição dos elementos e uma avaliação justificada de relevância e limite.",
+        "safety": "Não solicitar dados pessoais, relatos familiares ou opiniões políticas; permitir participação individual, escrita ou oral.",
+        "privacyGuard": "Usar somente textos fornecidos e situações fictícias; não registrar perfil ou desempenho identificável.",
+        "ageRange": "Ensino Fundamental II ou Ensino Médio, com linguagem ajustada à turma.",
+        "mediation": "O docente verifica se o dado realmente corresponde à afirmação e diferencia explicação plausível de causalidade demonstrada.",
+        "rubric": [
+          {
+            "criterion": "Classificação",
+            "emerging": "Confunde proposta, motivo e registro.",
+            "developing": "Classifica dois elementos com apoio.",
+            "proficient": "Distingue posição, razão e evidência em todo o argumento."
+          },
+          {
+            "criterion": "Correspondência",
+            "emerging": "Aceita dado sem relação com a conclusão.",
+            "developing": "Aponta relação, mas não verifica medida.",
+            "proficient": "Explica a pertinência e identifica informação ausente."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou afirma causa sem base.",
+            "developing": "Limita parcialmente o alcance.",
+            "proficient": "Delimita grupo, período, método e inferência permitida."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "TecEscola",
+        "title": "Argumentos e registros didáticos sintéticos",
+        "license": "Questões, dados e situações autorais; revisão pedagógica pendente e alinhamento oficial não reivindicado."
+      }
+    ],
+    "copyrightNote": "Questões, dados, argumentos e explicações são autorais e hipotéticos. Revisão pedagógica pendente; alinhamento oficial não reivindicado."
+  },
+  "questions": [
+    {
+      "id": "v5-portuguese-reason-evidence-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIBRARY_HOURS",
+      "statement": "Proposta: “A biblioteca deve abrir uma hora mais cedo porque 18 estudantes disseram que o horário atual dificulta a leitura”.\n\nQual é a razão apresentada?",
+      "options": [
+        "O horário atual dificulta a leitura para os estudantes ouvidos.",
+        "A biblioteca deve abrir mais cedo.",
+        "A biblioteca tem livros.",
+        "A hora mais cedo é sempre melhor."
+      ],
+      "correctAnswer": "O horário atual dificulta a leitura para os estudantes ouvidos.",
+      "explanation": "A razão é a consideração usada para apoiar a proposta; a proposta é a conclusão defendida.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "REASON_CONFUSED_WITH_CLAIM",
+      "misconceptions": {
+        "A biblioteca deve abrir mais cedo.": [
+          "REASON_CONFUSED_WITH_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "BUS_SHELTER",
+      "statement": "Texto: “O ponto deve receber cobertura. A pesquisa local registrou 14 pessoas esperando sob chuva em três manhãs”.\n\nQual informação funciona como evidência explícita?",
+      "options": [
+        "A proposta de instalar cobertura.",
+        "O registro de 14 pessoas esperando sob chuva em três manhãs.",
+        "A opinião de que cobertura é bonita.",
+        "A conclusão de que todos esperam no ponto."
+      ],
+      "correctAnswer": "O registro de 14 pessoas esperando sob chuva em três manhãs.",
+      "explanation": "A contagem e as manhãs observadas constituem dado apresentado em apoio à proposta, com alcance limitado.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "EVIDENCE_CONFUSED_WITH_CONCLUSION",
+      "misconceptions": {
+        "A proposta de instalar cobertura.": [
+          "EVIDENCE_CONFUSED_WITH_CONCLUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "GARDEN_WATER",
+      "statement": "Argumento: “A turma deve regar no início da manhã; o solo do canteiro perdeu menos umidade nas medições feitas antes das 9h”.\n\nO que é usado como apoio à recomendação?",
+      "options": [
+        "A recomendação de regar cedo.",
+        "A ideia de que manhã é agradável.",
+        "As medições de umidade feitas antes das 9h.",
+        "A conclusão de que todo solo se comporta igual."
+      ],
+      "correctAnswer": "As medições de umidade feitas antes das 9h.",
+      "explanation": "As medições são evidência; a recomendação é a conclusão. Os dados se limitam ao canteiro observado.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "SUPPORTING_DATA_MISIDENTIFIED",
+      "misconceptions": {
+        "A recomendação de regar cedo.": [
+          "SUPPORTING_DATA_MISIDENTIFIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "READING_CIRCLE",
+      "statement": "Tese: “A roda de leitura deve continuar”. Apoio: “Dez dos doze participantes disseram que conseguiram terminar mais livros”.\n\nQual parte é a tese?",
+      "options": [
+        "Dez participantes terminaram livros.",
+        "Havia doze participantes.",
+        "A roda foi realizada.",
+        "A roda de leitura deve continuar."
+      ],
+      "correctAnswer": "A roda de leitura deve continuar.",
+      "explanation": "A tese é a posição defendida. As respostas relatadas são uma razão ou evidência para defendê-la.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "THESIS_MISIDENTIFIED",
+      "misconceptions": {
+        "Dez participantes terminaram livros.": [
+          "THESIS_MISIDENTIFIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCHOOL_SHADING",
+      "statement": "Proposta: plantar árvores no pátio. Apoio: “A temperatura sob a cobertura existente ficou 4 °C menor que no trecho exposto nas três medições”.\n\nQue dado sustenta diretamente a proposta?",
+      "options": [
+        "A diferença de 4 °C observada entre os trechos nas três medições.",
+        "Plantar árvores no pátio.",
+        "A certeza de que qualquer árvore reduzirá a temperatura em 4 °C.",
+        "A afirmação de que o pátio ficará fresco o ano inteiro."
+      ],
+      "correctAnswer": "A diferença de 4 °C observada entre os trechos nas três medições.",
+      "explanation": "O dado compara os trechos nas condições medidas; não garante o mesmo efeito para qualquer árvore ou estação.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "EVIDENCE_SCOPE_OVERSTATED",
+      "misconceptions": {
+        "Plantar árvores no pátio.": [
+          "EVIDENCE_SCOPE_OVERSTATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CANTEEN_MENU",
+      "statement": "Argumento: “O cardápio deveria identificar alergênicos. Em quatro formulários, famílias pediram essa informação antes de escolher”.\n\nQual é a evidência e qual é a conclusão?",
+      "options": [
+        "Evidência: identificar alergênicos; conclusão: quatro formulários.",
+        "Evidência: quatro formulários registram o pedido; conclusão: identificar alergênicos no cardápio.",
+        "As duas frases são evidências porque têm números.",
+        "Não há conclusão no argumento."
+      ],
+      "correctAnswer": "Evidência: quatro formulários registram o pedido; conclusão: identificar alergênicos no cardápio.",
+      "explanation": "A informação observada apoia a ação recomendada. A quantidade de formulários não mede todas as famílias.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Marque o que aconteceu e o que o autor recomenda.",
+      "misconceptions": {
+        "Evidência: identificar alergênicos; conclusão: quatro formulários.": [
+          "Marque o que aconteceu e o que o autor recomenda."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "BUS_SCHEDULE",
+      "statement": "Uma proposta pede divulgar horários de ônibus em cartaz. A justificativa diz: “Em uma enquete com 30 usuários, 21 não encontraram o horário no ponto”.\n\nO que a enquete pode apoiar?",
+      "options": [
+        "Que todos os usuários da cidade enfrentam o problema.",
+        "Que cartazes sempre resolvem a falta de informação.",
+        "Que, entre os 30 respondentes, 21 relataram não encontrar o horário no ponto.",
+        "Que o horário dos ônibus está errado."
+      ],
+      "correctAnswer": "Que, entre os 30 respondentes, 21 relataram não encontrar o horário no ponto.",
+      "explanation": "A enquete sustenta uma afirmação sobre respondentes. Efeito de cartaz ou população maior exigem outras evidências.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Repita o tamanho e o grupo da amostra na conclusão.",
+      "misconceptions": {
+        "Que todos os usuários da cidade enfrentam o problema.": [
+          "Repita o tamanho e o grupo da amostra na conclusão."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REPAIR_BENCH",
+      "statement": "Tese: reparar o banco da praça. Razão: “O assento está instável”. Evidência: “A vistoria registrou dois parafusos soltos”.\n\nQual frase é evidência observável?",
+      "options": [
+        "O banco deve ser reparado.",
+        "O assento é instável.",
+        "Todo mobiliário da praça está perigoso.",
+        "A vistoria registrou dois parafusos soltos."
+      ],
+      "correctAnswer": "A vistoria registrou dois parafusos soltos.",
+      "explanation": "O registro de vistoria apresenta observação específica; instabilidade é uma razão interpretativa e reparo é a conclusão.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Procure o dado que poderia ser conferido no registro.",
+      "misconceptions": {
+        "O banco deve ser reparado.": [
+          "Procure o dado que poderia ser conferido no registro."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "WATER_BOTTLE",
+      "statement": "Proposta: instalar bebedouro. Apoio: “A distância entre o pátio e o bebedouro atual é de 240 m, medida no mapa da escola”.\n\nA medida, sozinha, demonstra que instalar outro bebedouro é a única solução?",
+      "options": [
+        "Não. Ela informa uma distância; a necessidade e as alternativas precisam ser avaliadas.",
+        "Sim, 240 m prova que qualquer outra solução é impossível.",
+        "Sim, porque toda medida é suficiente para uma decisão.",
+        "Não, a medida prova que o bebedouro atual não existe."
+      ],
+      "correctAnswer": "Não. Ela informa uma distância; a necessidade e as alternativas precisam ser avaliadas.",
+      "explanation": "A evidência pode ser relevante sem ser suficiente para provar uma solução única.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Separe relevância de suficiência.",
+      "misconceptions": {
+        "Sim, 240 m prova que qualquer outra solução é impossível.": [
+          "Separe relevância de suficiência."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CLASSROOM_BOOKS",
+      "statement": "Texto: “A turma deve ampliar o acervo. No levantamento, 6 dos 20 títulos solicitados não estavam disponíveis”.\n\nQual inferência é mais cuidadosa?",
+      "options": [
+        "A escola não possui livros.",
+        "No levantamento, seis títulos solicitados estavam indisponíveis; isso pode apoiar uma revisão do acervo.",
+        "Todos os estudantes querem os mesmos títulos.",
+        "A ampliação do acervo resolverá qualquer dificuldade de leitura."
+      ],
+      "correctAnswer": "No levantamento, seis títulos solicitados estavam indisponíveis; isso pode apoiar uma revisão do acervo.",
+      "explanation": "O levantamento descreve títulos e solicitações observados; não prova ausência de livros em geral nem efeito garantido.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Mantenha a unidade: títulos solicitados no levantamento.",
+      "misconceptions": {
+        "A escola não possui livros.": [
+          "Mantenha a unidade: títulos solicitados no levantamento."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BIKE_RACK",
+      "statement": "Proposta: ampliar o bicicletário. Evidência: “O registro contou 18 bicicletas e 12 vagas às 8h de segunda-feira”.\n\nO que o registro permite afirmar?",
+      "options": [
+        "O bicicletário fica lotado em todos os dias.",
+        "Todos os ciclistas precisam de novas vagas.",
+        "Naquele horário e dia, havia seis bicicletas a mais que vagas registradas.",
+        "A ampliação é a única alternativa possível."
+      ],
+      "correctAnswer": "Naquele horário e dia, havia seis bicicletas a mais que vagas registradas.",
+      "explanation": "18 − 12 = 6 no registro situado. Frequência, demanda futura e alternativas ainda precisam de dados.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Inclua o horário da contagem na conclusão.",
+      "misconceptions": {
+        "O bicicletário fica lotado em todos os dias.": [
+          "Inclua o horário da contagem na conclusão."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SCHOOL_WIFI",
+      "statement": "Argumento: “A escola deve oferecer material impresso. Em uma atividade, 7 de 25 estudantes relataram conexão instável”.\n\nQual apoio está explicitamente apresentado?",
+      "options": [
+        "Todo estudante não tem internet.",
+        "Material impresso garante aprendizagem.",
+        "A escola deve oferecer material impresso.",
+        "Sete de 25 estudantes relataram conexão instável naquela atividade."
+      ],
+      "correctAnswer": "Sete de 25 estudantes relataram conexão instável naquela atividade.",
+      "explanation": "O dado registra relatos na atividade; pode apoiar a proposta, mas não estima sozinho toda a situação de acesso.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Repita “naquela atividade” e “7 de 25”.",
+      "misconceptions": {
+        "Todo estudante não tem internet.": [
+          "Repita “naquela atividade” e “7 de 25”."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PARK_LIGHT",
+      "statement": "Tese: instalar iluminação no caminho. Razão: “O trecho é usado após o pôr do sol”. Evidência: “O registro de uso anotou 23 passagens entre 18h e 19h”.\n\nQual alternativa distingue evidência da razão?",
+      "options": [
+        "Evidência: 23 passagens registradas; razão: uso do trecho após o pôr do sol.",
+        "Evidência: instalar iluminação; razão: 23 passagens.",
+        "As duas são conclusões.",
+        "A razão é que qualquer caminho precisa de luz."
+      ],
+      "correctAnswer": "Evidência: 23 passagens registradas; razão: uso do trecho após o pôr do sol.",
+      "explanation": "O registro numérico documenta o uso; a razão interpreta por que esse uso importa para a proposta.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Procure o dado registrado e a interpretação que o conecta à proposta.",
+      "misconceptions": {
+        "Evidência: instalar iluminação; razão: 23 passagens.": [
+          "Procure o dado registrado e a interpretação que o conecta à proposta."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "WASTE_SORTING",
+      "statement": "Proposta: separar papel na sala. Apoio: “A pesagem didática encontrou 3 kg de papel misturado ao lixo comum em uma semana”.\n\nO que a pesagem não prova?",
+      "options": [
+        "Que foram pesados 3 kg naquele exercício.",
+        "Que a separação reduzirá exatamente 3 kg de resíduos em toda semana futura.",
+        "Que o dado pode motivar um teste de separação.",
+        "Que o papel estava no conjunto pesado."
+      ],
+      "correctAnswer": "Que a separação reduzirá exatamente 3 kg de resíduos em toda semana futura.",
+      "explanation": "A medida descreve uma semana. O efeito de uma intervenção futura precisa ser observado e comparado.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Diferencie linha de base de resultado após a mudança.",
+      "misconceptions": {
+        "Que foram pesados 3 kg naquele exercício.": [
+          "Diferencie linha de base de resultado após a mudança."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SCHOOL_GARDEN",
+      "statement": "Texto: “A horta deve receber etiquetas. Em teste com 12 placas, estudantes identificaram corretamente 10 espécies”.\n\nQual conclusão é proporcional aos dados?",
+      "options": [
+        "As etiquetas garantem identificação correta de todas as espécies.",
+        "Todos os estudantes aprenderam botânica.",
+        "No teste, 10 das 12 identificações foram corretas; as etiquetas podem ser avaliadas em novas atividades.",
+        "A horta não precisa de mediação."
+      ],
+      "correctAnswer": "No teste, 10 das 12 identificações foram corretas; as etiquetas podem ser avaliadas em novas atividades.",
+      "explanation": "O resultado pertence ao teste descrito e não garante desempenho universal ou duradouro.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Mantenha o número e o contexto do teste.",
+      "misconceptions": {
+        "As etiquetas garantem identificação correta de todas as espécies.": [
+          "Mantenha o número e o contexto do teste."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SCHOOL_CLOCK",
+      "statement": "Recomendação: ajustar o relógio do corredor. Evidência: “Em três verificações, ele marcou de 4 a 6 minutos a menos que o relógio de referência”.\n\nQual é a evidência?",
+      "options": [
+        "A recomendação de ajustar o relógio.",
+        "A afirmação de que todos se atrasaram.",
+        "A conclusão de que a bateria é a causa.",
+        "As três diferenças observadas, de 4 a 6 minutos."
+      ],
+      "correctAnswer": "As três diferenças observadas, de 4 a 6 minutos.",
+      "explanation": "As diferenças foram medidas; causa e consequências não aparecem no registro.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Não transforme observação em causa.",
+      "misconceptions": {
+        "A recomendação de ajustar o relógio.": [
+          "Não transforme observação em causa."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "READING_TIME",
+      "statement": "Proposta: reservar 15 minutos para leitura. Apoio: “Em uma atividade de 20 minutos, 16 participantes leram ao menos uma página”.\n\nO que o dado apoia sem provar?",
+      "options": [
+        "Que houve leitura durante a atividade observada; não prova que 15 minutos sejam o tempo ideal.",
+        "Que quinze minutos são ideais para todos.",
+        "Que todos leram o mesmo número de páginas.",
+        "Que a proposta causou melhora de compreensão."
+      ],
+      "correctAnswer": "Que houve leitura durante a atividade observada; não prova que 15 minutos sejam o tempo ideal.",
+      "explanation": "O registro mostra participação em uma atividade, mas não compara durações nem mede compreensão.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Veja se a evidência mede exatamente a conclusão defendida.",
+      "misconceptions": {
+        "Que quinze minutos são ideais para todos.": [
+          "Veja se a evidência mede exatamente a conclusão defendida."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "WATER_FILTER",
+      "statement": "Tese: trocar o filtro. Apoio: “A ficha indica que o filtro atingiu o prazo de substituição”.\n\nA ficha demonstra que a água está contaminada?",
+      "options": [
+        "Sim, prazo vencido prova contaminação.",
+        "Não. Ela indica prazo de substituição; qualidade da água requer análise apropriada.",
+        "Sim, porque todo filtro fora do prazo altera a água da mesma forma.",
+        "Não, a ficha prova que a água está segura."
+      ],
+      "correctAnswer": "Não. Ela indica prazo de substituição; qualidade da água requer análise apropriada.",
+      "explanation": "Uma recomendação de manutenção não equivale a resultado de análise da água.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Identifique qual pergunta a ficha responde e qual permanece aberta.",
+      "misconceptions": {
+        "Sim, prazo vencido prova contaminação.": [
+          "Identifique qual pergunta a ficha responde e qual permanece aberta."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_ROUTE",
+      "statement": "Proposta: marcar a travessia perto da escola. Evidência: “Em observação de 30 minutos, 17 pedestres cruzaram naquele ponto”.\n\nQue dado adicional fortaleceria a decisão?",
+      "options": [
+        "A cor preferida dos estudantes.",
+        "A afirmação de que todos cruzam ali.",
+        "Observações em outros horários e dados sobre visibilidade, fluxo e alternativas do local.",
+        "Somente a repetição da proposta."
+      ],
+      "correctAnswer": "Observações em outros horários e dados sobre visibilidade, fluxo e alternativas do local.",
+      "explanation": "Uma janela de 30 minutos evidencia uso naquele período, mas não cobre variação temporal nem condições de segurança.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Pergunte quais dimensões faltam para avaliar o local.",
+      "misconceptions": {
+        "A cor preferida dos estudantes.": [
+          "Pergunte quais dimensões faltam para avaliar o local."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CLASSROOM_SEATING",
+      "statement": "Recomendação: reorganizar as mesas. Apoio: “Na atividade, 4 de 28 estudantes disseram não enxergar o quadro”.\n\nQual frase é evidência, não conclusão?",
+      "options": [
+        "As mesas devem ser reorganizadas.",
+        "A nova disposição resolverá o problema.",
+        "Todos os estudantes têm dificuldade visual.",
+        "Quatro de 28 estudantes relataram não enxergar o quadro naquela atividade."
+      ],
+      "correctAnswer": "Quatro de 28 estudantes relataram não enxergar o quadro naquela atividade.",
+      "explanation": "O relato quantificado é dado de uma atividade. A solução deve ser testada sem generalizar.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Escolha a frase que informa o registro, não a ação proposta.",
+      "misconceptions": {
+        "As mesas devem ser reorganizadas.": [
+          "Escolha a frase que informa o registro, não a ação proposta."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LIBRARY_NOISE",
+      "statement": "Tese: criar área silenciosa. Justificativa: “Algumas atividades exigem concentração”. Evidência: “Em formulário, 9 de 15 respondentes pediram um espaço com menos conversa”.\n\nQual distinção está correta?",
+      "options": [
+        "A necessidade de concentração é razão; os nove pedidos são evidência de uma preferência no grupo consultado.",
+        "Os nove pedidos são a tese.",
+        "A criação da área é a evidência.",
+        "O formulário prova que toda atividade exige silêncio."
+      ],
+      "correctAnswer": "A necessidade de concentração é razão; os nove pedidos são evidência de uma preferência no grupo consultado.",
+      "explanation": "A razão conecta a necessidade à proposta; o formulário documenta respostas delimitadas.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Separe proposta, motivo e registro.",
+      "misconceptions": {
+        "Os nove pedidos são a tese.": [
+          "Separe proposta, motivo e registro."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PARK_WATER",
+      "statement": "Proposta: instalar torneira com fechamento automático. Dado: “A torneira ficou aberta por 6 minutos em duas observações”.\n\nO que falta para estimar o desperdício?",
+      "options": [
+        "Somente o nome da torneira.",
+        "A vazão durante essas observações e informações sobre a representatividade dos casos.",
+        "A certeza de que todos deixam torneiras abertas.",
+        "Uma conclusão sobre consumo anual."
+      ],
+      "correctAnswer": "A vazão durante essas observações e informações sobre a representatividade dos casos.",
+      "explanation": "Duração sem vazão não determina volume; duas observações não representam automaticamente o ano.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Identifique a grandeza que falta para transformar tempo em volume.",
+      "misconceptions": {
+        "Somente o nome da torneira.": [
+          "Identifique a grandeza que falta para transformar tempo em volume."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BUS_CARD",
+      "statement": "Argumento: “A escola deve explicar como recarregar o cartão. Em uma consulta, 8 de 19 dúvidas recebidas eram sobre recarga”.\n\nQual é a base da afirmação numérica?",
+      "options": [
+        "Todos os estudantes da escola.",
+        "As 8 recargas realizadas.",
+        "As 19 dúvidas recebidas naquela consulta.",
+        "O total de cartões existentes."
+      ],
+      "correctAnswer": "As 19 dúvidas recebidas naquela consulta.",
+      "explanation": "O numerador 8 pertence ao conjunto de 19 dúvidas; não é uma taxa de toda a escola.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Pergunte: oito entre quais registros?",
+      "misconceptions": {
+        "Todos os estudantes da escola.": [
+          "Pergunte: oito entre quais registros?"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_RECYCLING",
+      "statement": "Afirmação: “A campanha aumentou a reciclagem”. O registro mostra 12 kg antes e 15 kg depois, em semanas diferentes.\n\nQual avaliação identifica a lacuna?",
+      "options": [
+        "A campanha causou exatamente 3 kg de aumento.",
+        "Não houve qualquer diferença.",
+        "O peso prova que todos reciclaram mais.",
+        "A quantidade registrada cresceu 3 kg, mas diferenças entre semanas e outros fatores impedem atribuir o aumento apenas à campanha."
+      ],
+      "correctAnswer": "A quantidade registrada cresceu 3 kg, mas diferenças entre semanas e outros fatores impedem atribuir o aumento apenas à campanha.",
+      "explanation": "A comparação mostra diferença, não causalidade isolada; datas, composição e condições precisam ser avaliadas.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Descreva a mudança observada antes de atribuir causa.",
+      "misconceptions": {
+        "A campanha causou exatamente 3 kg de aumento.": [
+          "Descreva a mudança observada antes de atribuir causa."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "MUSEUM_VISIT",
+      "statement": "Recomendação: ampliar horários do museu. Evidência: “A contagem registrou 42 visitantes no sábado e 18 na quarta”.\n\nO que a comparação não informa?",
+      "options": [
+        "Se a diferença decorre do horário, pois também podem variar dia, programação e outros fatores.",
+        "Que as contagens foram 42 e 18.",
+        "Que os registros são de dias diferentes.",
+        "Que sábado teve mais visitantes nessa contagem."
+      ],
+      "correctAnswer": "Se a diferença decorre do horário, pois também podem variar dia, programação e outros fatores.",
+      "explanation": "As contagens diferem, mas o desenho não isola o efeito do horário.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Procure variáveis que também mudaram entre os dias.",
+      "misconceptions": {
+        "Que as contagens foram 42 e 18.": [
+          "Procure variáveis que também mudaram entre os dias."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLASS_SHELF",
+      "statement": "Proposta: instalar prateleira baixa. Apoio: “Na tarefa, 6 de 10 livros usados estavam na prateleira superior”.\n\nQual informação adicional avalia melhor a necessidade?",
+      "options": [
+        "A cor da prateleira.",
+        "Observar quem usa os livros, alcance atual e dificuldades de acesso em atividades variadas.",
+        "A opinião de uma pessoa sem relação com o uso.",
+        "A conclusão de que todos os livros devem ficar no chão."
+      ],
+      "correctAnswer": "Observar quem usa os livros, alcance atual e dificuldades de acesso em atividades variadas.",
+      "explanation": "A contagem descreve localização dos livros, não quem precisa alcançá-los nem quais barreiras ocorrem.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Compare o dado registrado com a necessidade alegada.",
+      "misconceptions": {
+        "A cor da prateleira.": [
+          "Compare o dado registrado com a necessidade alegada."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "HEALTH_POSTER",
+      "statement": "Texto: “O cartaz deve usar letras maiores porque a versão atual foi lida por 5 de 12 pessoas a dois metros”.\n\nQual é o papel do trecho “porque...” no argumento?",
+      "options": [
+        "Apresentar a conclusão final sobre toda a população.",
+        "Refutar que letras possam variar de tamanho.",
+        "Apresentar uma razão apoiada por um teste de leitura limitado.",
+        "Provar que todas as pessoas precisam da mesma fonte."
+      ],
+      "correctAnswer": "Apresentar uma razão apoiada por um teste de leitura limitado.",
+      "explanation": "O teste oferece evidência delimitada para a razão de revisar o cartaz; testes adicionais podem ampliar a avaliação.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Localize a palavra que introduz a justificativa e o dado citado.",
+      "misconceptions": {
+        "Apresentar a conclusão final sobre toda a população.": [
+          "Localize a palavra que introduz a justificativa e o dado citado."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_DOOR",
+      "statement": "Proposta: trocar a mola da porta. Evidência: “Em cinco fechamentos, a porta não encostou no batente em dois”.\n\nO que se pode dizer?",
+      "options": [
+        "A porta falha em 40% de todos os usos.",
+        "A mola é definitivamente a causa.",
+        "A porta nunca fecha.",
+        "O problema ocorreu em duas das cinco observações; frequência futura e causa ainda não estão estabelecidas."
+      ],
+      "correctAnswer": "O problema ocorreu em duas das cinco observações; frequência futura e causa ainda não estão estabelecidas.",
+      "explanation": "2/5 descreve a amostra observada, não necessariamente todos os usos; a causa requer inspeção.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Preserve o denominador e evite atribuir causa sem teste.",
+      "misconceptions": {
+        "A porta falha em 40% de todos os usos.": [
+          "Preserve o denominador e evite atribuir causa sem teste."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "CLASS_PLANTS",
+      "statement": "Afirmação: “As plantas cresceram mais perto da janela”. A tabela registra alturas finais, mas não informa alturas iniciais.\n\nQual inferência não é sustentada?",
+      "options": [
+        "Que as plantas cresceram mais; faltam medidas iniciais para comparar crescimento.",
+        "Que foram registradas alturas finais.",
+        "Que os grupos estão em posições distintas.",
+        "Que uma comparação posterior pode ser planejada."
+      ],
+      "correctAnswer": "Que as plantas cresceram mais; faltam medidas iniciais para comparar crescimento.",
+      "explanation": "Altura final compara estado, não crescimento. Para crescimento, é preciso comparar mudança desde uma medida inicial.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Diferencie valor final de variação.",
+      "misconceptions": {
+        "Que foram registradas alturas finais.": [
+          "Diferencie valor final de variação."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_BOTTLES",
+      "statement": "Proposta: instalar ponto de água. Evidência: “Foram recolhidas 34 garrafas descartáveis após o evento”.\n\nQue conclusão não decorre diretamente da contagem?",
+      "options": [
+        "Que 34 garrafas foram recolhidas após aquele evento.",
+        "Que o ponto de água reduzirá o uso de descartáveis em 34 unidades em cada evento.",
+        "Que a contagem pode motivar uma hipótese de redução.",
+        "Que a medida se refere a um evento específico."
+      ],
+      "correctAnswer": "Que o ponto de água reduzirá o uso de descartáveis em 34 unidades em cada evento.",
+      "explanation": "Uma contagem de linha de base não mede o efeito de uma intervenção ainda não testada.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Não atribua resultado futuro a um dado anterior.",
+      "misconceptions": {
+        "Que 34 garrafas foram recolhidas após aquele evento.": [
+          "Não atribua resultado futuro a um dado anterior."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "STUDY_GROUP",
+      "statement": "Argumento: “Criar grupo de estudo semanal”. Apoio: “Em formulário opcional, 11 pessoas marcaram interesse”.\n\nQual limitação acompanha a evidência?",
+      "options": [
+        "A proposta é inválida porque o formulário é opcional.",
+        "Todos os estudantes querem participar.",
+        "O formulário descreve quem respondeu voluntariamente, não necessariamente todos os estudantes.",
+        "O formulário demonstra melhoria de notas."
+      ],
+      "correctAnswer": "O formulário descreve quem respondeu voluntariamente, não necessariamente todos os estudantes.",
+      "explanation": "Respostas voluntárias podem diferir de quem não respondeu; interesse não mede efeito acadêmico.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Observe como participantes foram selecionados e o que foi perguntado.",
+      "misconceptions": {
+        "A proposta é inválida porque o formulário é opcional.": [
+          "Observe como participantes foram selecionados e o que foi perguntado."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-32",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PARK_PATH",
+      "statement": "Tese: reparar o caminho. Dado: “Há três placas de piso soltas em um trecho de 20 metros”.\n\nQual conclusão é apoiada sem extrapolação?",
+      "options": [
+        "Todo o caminho está danificado.",
+        "O caminho inteiro é seguro.",
+        "A causa das placas soltas é conhecida.",
+        "Há três placas soltas no trecho observado de 20 metros; a extensão do problema no restante precisa ser verificada."
+      ],
+      "correctAnswer": "Há três placas soltas no trecho observado de 20 metros; a extensão do problema no restante precisa ser verificada.",
+      "explanation": "O dado localiza e quantifica o achado, mas não descreve outros trechos nem sua causa.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Mantenha o limite espacial informado.",
+      "misconceptions": {
+        "Todo o caminho está danificado.": [
+          "Mantenha o limite espacial informado."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-33",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_CROSSING",
+      "statement": "Recomendação: revisar a travessia. Razão: “A visibilidade pode ser limitada por veículos estacionados”. Registro: “Em duas de seis observações, havia veículo junto à esquina”.\n\nQual afirmação distingue melhor razão e evidência?",
+      "options": [
+        "A possível limitação de visibilidade é a razão; duas observações documentam veículos junto à esquina.",
+        "As duas observações provam risco constante.",
+        "A revisão da travessia é evidência.",
+        "A possibilidade é uma medição direta."
+      ],
+      "correctAnswer": "A possível limitação de visibilidade é a razão; duas observações documentam veículos junto à esquina.",
+      "explanation": "A razão interpreta a relevância; o registro observado é evidência situada e não mede frequência contínua.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Separe hipótese interpretativa de ocorrência registrada.",
+      "misconceptions": {
+        "As duas observações provam risco constante.": [
+          "Separe hipótese interpretativa de ocorrência registrada."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-34",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LIBRARY_TABLE",
+      "statement": "Tese: ampliar o horário de atendimento. Dado: “Na semana de prova, 22 visitas ocorreram nos últimos 30 minutos antes do fechamento”.\n\nO dado basta para definir o novo horário?",
+      "options": [
+        "Sim, prova que o horário deve ser estendido em uma hora.",
+        "Não. Mostra uso concentrado naquele intervalo, mas faltam demanda em outros períodos, equipe e viabilidade.",
+        "Não, porque visitas não podem ser contadas.",
+        "Sim, todas as 22 pessoas pediram extensão."
+      ],
+      "correctAnswer": "Não. Mostra uso concentrado naquele intervalo, mas faltam demanda em outros períodos, equipe e viabilidade.",
+      "explanation": "A contagem pode justificar investigação, mas não indica duração ótima nem a opinião de cada visitante.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Pergunte quais alternativas e custos a proposta ainda precisa avaliar.",
+      "misconceptions": {
+        "Sim, prova que o horário deve ser estendido em uma hora.": [
+          "Pergunte quais alternativas e custos a proposta ainda precisa avaliar."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-35",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLASS_AUDIO",
+      "statement": "Proposta: disponibilizar transcrição do áudio. Evidência: “Em teste, 3 de 16 participantes pediram repetição de um trecho”.\n\nO que a evidência permite inferir com prudência?",
+      "options": [
+        "Só três pessoas podem se beneficiar da transcrição.",
+        "Todos os participantes têm a mesma necessidade.",
+        "Naquele teste, três participantes solicitaram repetição; isso é um sinal para avaliar apoio textual, não uma medida de todas as necessidades.",
+        "O pedido prova que o áudio está incorreto."
+      ],
+      "correctAnswer": "Naquele teste, três participantes solicitaram repetição; isso é um sinal para avaliar apoio textual, não uma medida de todas as necessidades.",
+      "explanation": "A observação apoia investigação de acessibilidade sem definir sozinha todas as necessidades ou a solução final.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Não transforme pedido registrado em limite de beneficiários.",
+      "misconceptions": {
+        "Só três pessoas podem se beneficiar da transcrição.": [
+          "Não transforme pedido registrado em limite de beneficiários."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-36",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_PLANTS",
+      "statement": "Afirmação: “A nova rotina de rega melhorou as plantas”. O texto informa que as folhas estavam verdes depois de uma semana, sem comparação.\n\nQual avaliação é mais rigorosa?",
+      "options": [
+        "A rotina causou a melhora.",
+        "A cor prova crescimento.",
+        "Não houve observação alguma.",
+        "A cor foi observada depois da rotina, mas sem comparação não se pode atribuir a mudança à rega."
+      ],
+      "correctAnswer": "A cor foi observada depois da rotina, mas sem comparação não se pode atribuir a mudança à rega.",
+      "explanation": "Uma observação posterior não estabelece mudança nem causalidade sem medida inicial ou comparação adequada.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Procure linha de base e evidência de mudança.",
+      "misconceptions": {
+        "A rotina causou a melhora.": [
+          "Procure linha de base e evidência de mudança."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "BOOK_RETURN",
+      "statement": "Recomendação: enviar lembrete de devolução. Registro: “12 livros passaram do prazo no último mês”.\n\nQual evidência adicional avaliaria o efeito do lembrete?",
+      "options": [
+        "Comparar atrasos em períodos equivalentes antes e depois, considerando mudanças no número de empréstimos.",
+        "Repetir a recomendação.",
+        "Contar apenas os livros emprestados depois.",
+        "Perguntar se o lembrete parece bonito."
+      ],
+      "correctAnswer": "Comparar atrasos em períodos equivalentes antes e depois, considerando mudanças no número de empréstimos.",
+      "explanation": "Para avaliar efeito, compare medidas compatíveis e considere o volume de empréstimos e outras mudanças.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Escolha uma medida de resultado e uma comparação justa.",
+      "misconceptions": {
+        "Repetir a recomendação.": [
+          "Escolha uma medida de resultado e uma comparação justa."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SPORTS_EQUIPMENT",
+      "statement": "Proposta: comprar mais bolas. Evidência: “Em duas aulas, quatro grupos aguardaram enquanto uma bola era usada”.\n\nO que o registro apoia e o que ainda falta?",
+      "options": [
+        "A compra de quatro bolas é obrigatória.",
+        "A espera ocorreu nas aulas observadas; falta verificar frequência, organização e quantidade necessária.",
+        "Todos os grupos esperam em toda aula.",
+        "A espera prova que as bolas estão danificadas."
+      ],
+      "correctAnswer": "A espera ocorreu nas aulas observadas; falta verificar frequência, organização e quantidade necessária.",
+      "explanation": "O dado sustenta uma situação observada, mas não determina sozinho a causa nem o número ideal de equipamentos.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Separe a ocorrência do diagnóstico e da solução.",
+      "misconceptions": {
+        "A compra de quatro bolas é obrigatória.": [
+          "Separe a ocorrência do diagnóstico e da solução."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_SIGN",
+      "statement": "Tese: colocar placa direcional. Apoio: “Em um percurso acompanhado, 3 de 8 visitantes perguntaram onde ficava a sala”.\n\nQual conclusão respeita a amostra?",
+      "options": [
+        "37,5% de todos os visitantes se perdem.",
+        "A sala é impossível de encontrar.",
+        "Três dos oito visitantes daquele percurso fizeram a pergunta; mais observações podem verificar se é recorrente.",
+        "A placa reduzirá perguntas a zero."
+      ],
+      "correctAnswer": "Três dos oito visitantes daquele percurso fizeram a pergunta; mais observações podem verificar se é recorrente.",
+      "explanation": "3/8 descreve o grupo acompanhado. Não estima automaticamente todos os visitantes nem o efeito da placa.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Mantenha o denominador e o tipo de resultado observado.",
+      "misconceptions": {
+        "37,5% de todos os visitantes se perdem.": [
+          "Mantenha o denominador e o tipo de resultado observado."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LIBRARY_CHAIRS",
+      "statement": "Argumento: “Adicionar cadeiras”. Motivo: “Alguns leitores ficam em pé”. Registro: “Na terça, 5 de 20 assentos estavam ocupados às 14h”.\n\nO registro apoia diretamente a conclusão?",
+      "options": [
+        "Sim, prova falta de assentos.",
+        "Sim, cinco assentos vazios significam cinco pessoas em pé.",
+        "Não, porque números nunca são evidência.",
+        "Não claramente: ele mostra assentos vazios naquele horário e pode exigir observações em outros períodos."
+      ],
+      "correctAnswer": "Não claramente: ele mostra assentos vazios naquele horário e pode exigir observações em outros períodos.",
+      "explanation": "O registro citado não corrobora diretamente a falta de assentos; horário, lotação em outros momentos e relato precisam ser comparados.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Verifique se a evidência aponta na mesma direção da razão.",
+      "misconceptions": {
+        "Sim, prova falta de assentos.": [
+          "Verifique se a evidência aponta na mesma direção da razão."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-41",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLASS_CALENDAR",
+      "statement": "Proposta: publicar calendário em formato acessível. Apoio: “Dois avisos tiveram datas diferentes”.\n\nQue dado seria necessário para sustentar que o formato causou a divergência?",
+      "options": [
+        "Evidência sobre como o formato levou a leitura equivocada, além de verificar datas, versões e distribuição dos avisos.",
+        "Apenas repetir que as datas eram diferentes.",
+        "A preferência de cor de um estudante.",
+        "A conclusão de que todo formato digital causa erro."
+      ],
+      "correctAnswer": "Evidência sobre como o formato levou a leitura equivocada, além de verificar datas, versões e distribuição dos avisos.",
+      "explanation": "A divergência é observada, mas sua causa não foi estabelecida; verifique versão e caminho de acesso.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Não confunda problema observado com causa explicada.",
+      "misconceptions": {
+        "Apenas repetir que as datas eram diferentes.": [
+          "Não confunda problema observado com causa explicada."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-42",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_WATER",
+      "statement": "Proposta: consertar vazamento. Registro: “O medidor avançou 120 litros entre sexta e segunda, com o prédio fechado”.\n\nO que o dado sugere e qual cuidado permanece?",
+      "options": [
+        "Prova que um vazamento específico causou os 120 litros.",
+        "Sugere consumo no período fechado; é preciso verificar medidor, instalações e outros usos antes de atribuir tudo a um vazamento.",
+        "Prova que o medidor está quebrado.",
+        "Não permite qualquer investigação."
+      ],
+      "correctAnswer": "Sugere consumo no período fechado; é preciso verificar medidor, instalações e outros usos antes de atribuir tudo a um vazamento.",
+      "explanation": "O consumo registrado motiva inspeção, mas não identifica sozinho a causa.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Use o dado para orientar teste, não para pular o diagnóstico.",
+      "misconceptions": {
+        "Prova que um vazamento específico causou os 120 litros.": [
+          "Use o dado para orientar teste, não para pular o diagnóstico."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-43",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "CLASS_READING",
+      "statement": "Argumento: “Oferecer textos em fonte ampliada”. Evidência: “Na atividade, 4 de 18 estudantes escolheram a cópia ampliada”.\n\nQual afirmação não é sustentada pelo número?",
+      "options": [
+        "Que quatro fizeram aquela escolha.",
+        "Que a opção foi usada na atividade.",
+        "Que apenas esses quatro estudantes podem se beneficiar da fonte ampliada.",
+        "Que a turma tinha 18 participantes."
+      ],
+      "correctAnswer": "Que apenas esses quatro estudantes podem se beneficiar da fonte ampliada.",
+      "explanation": "Escolha observada não delimita quem pode se beneficiar; preferência e necessidade podem variar por tarefa.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Não interprete adesão como lista completa de necessidade.",
+      "misconceptions": {
+        "Que quatro fizeram aquela escolha.": [
+          "Não interprete adesão como lista completa de necessidade."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-44",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CLASS_TEMPERATURE",
+      "statement": "Recomendação: abrir janelas no intervalo. Registro: “A sala marcou 27 °C às 10h e 25 °C às 11h”.\n\nO que falta para atribuir a queda à abertura das janelas?",
+      "options": [
+        "Nada; a ordem temporal prova a causa.",
+        "A cor do termômetro.",
+        "A afirmação de que a sala deve ser ventilada.",
+        "Saber se as janelas foram abertas e considerar mudanças externas e outras condições entre as medições."
+      ],
+      "correctAnswer": "Saber se as janelas foram abertas e considerar mudanças externas e outras condições entre as medições.",
+      "explanation": "Duas medidas mostram diferença temporal, mas sem informação sobre intervenção e condições não identificam causa.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Procure o que mudou junto com a temperatura.",
+      "misconceptions": {
+        "Nada; a ordem temporal prova a causa.": [
+          "Procure o que mudou junto com a temperatura."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-45",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_LUNCH",
+      "statement": "Proposta: ampliar o tempo do almoço. Evidência: “Em cinco dias observados, a fila levou de 8 a 12 minutos”.\n\nQue conclusão é mais proporcional?",
+      "options": [
+        "Nos cinco dias observados, a espera ficou entre 8 e 12 minutos; avaliar adequação exige conhecer o tempo disponível e outras condições.",
+        "O almoço deve durar exatamente 12 minutos a mais.",
+        "Todos os estudantes esperam 12 minutos.",
+        "A fila prova que a comida é insuficiente."
+      ],
+      "correctAnswer": "Nos cinco dias observados, a espera ficou entre 8 e 12 minutos; avaliar adequação exige conhecer o tempo disponível e outras condições.",
+      "explanation": "O dado descreve uma faixa observada, não o tempo ideal nem a experiência de todos.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Compare duração observada com a pergunta que a proposta pretende responder.",
+      "misconceptions": {
+        "O almoço deve durar exatamente 12 minutos a mais.": [
+          "Compare duração observada com a pergunta que a proposta pretende responder."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-46",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_GARDEN_TOOLS",
+      "statement": "Afirmação: “A ferramenta nova tornou a atividade mais rápida”. Medidas: 18 minutos na primeira turma e 15 na segunda, sem informar tarefas ou grupos.\n\nQual crítica à evidência é mais forte?",
+      "options": [
+        "A diferença prova melhora de 3 minutos para todas as turmas.",
+        "As turmas podem ter realizado tarefas ou condições diferentes, então a comparação não isola o efeito da ferramenta.",
+        "A evidência é perfeita porque há números.",
+        "A ferramenta não pode afetar duração."
+      ],
+      "correctAnswer": "As turmas podem ter realizado tarefas ou condições diferentes, então a comparação não isola o efeito da ferramenta.",
+      "explanation": "A presença de números não garante comparação justa; tarefa, grupo e condições precisam ser comparáveis.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Verifique se as medidas representam a mesma atividade e condições.",
+      "misconceptions": {
+        "A diferença prova melhora de 3 minutos para todas as turmas.": [
+          "Verifique se as medidas representam a mesma atividade e condições."
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-reason-evidence-47",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_NOTICE",
+      "statement": "Tese: revisar a placa de saída. Razão: “A seta atual pode gerar dúvida”. Evidência: “Em observação, duas pessoas seguiram pelo corredor errado”.\n\nQual elemento é uma inferência, e não observação direta?",
+      "options": [
+        "Duas pessoas seguiram pelo corredor errado.",
+        "Havia uma placa de saída.",
+        "A afirmação de que a seta pode gerar dúvida.",
+        "A observação foi feita no local."
+      ],
+      "correctAnswer": "A afirmação de que a seta pode gerar dúvida.",
+      "explanation": "A rota seguida é observada; a relação com a seta é uma interpretação plausível a ser testada.",
+      "hint": "Separe a posição defendida, a razão que a conecta ao tema e o dado observável usado como evidência. Depois confira se esse dado mede a conclusão.",
+      "errorFocus": "Separe comportamento registrado de explicação proposta.",
+      "misconceptions": {
+        "Duas pessoas seguiram pelo corredor errado.": [
+          "Separe comportamento registrado de explicação proposta."
+        ]
+      }
+    }
+  ]
+}

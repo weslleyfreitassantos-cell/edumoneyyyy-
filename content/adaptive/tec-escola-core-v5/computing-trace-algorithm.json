@@ -5,22 +5,22 @@
   "domain": "ALGORITMOS",
   "topic": "rastreio_condicoes_repeticoes_e_debug",
   "canonicalSkillCode": "COMPUTING_TRACE_ALGORITHM",
-  "contentVersion": 6,
+  "contentVersion": 7,
   "lessonVersion": 6,
-  "expectedQuestionCount": 27,
-  "expectedContextCount": 27,
+  "expectedQuestionCount": 38,
+  "expectedContextCount": 38,
   "expectedPurposeCounts": {
     "PROBE": 4,
     "PRACTICE": 12,
-    "TRANSFER": 6,
-    "LOCK_IN": 3,
-    "REVIEW": 2
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 9
   },
   "expectedAnswerPositionCounts": {
-    "A": 7,
-    "B": 7,
-    "C": 7,
-    "D": 6
+    "A": 10,
+    "B": 10,
+    "C": 9,
+    "D": 9
   },
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -82,7 +82,7 @@
       "v3-computing-computing_algorithms-7",
       "v3-computing-computing_algorithms-11"
     ],
-    "newQuestions": 27,
+    "newQuestions": 38,
     "reusedQuestionsCountedAsNew": false
   },
   "lesson": {
@@ -149,7 +149,9 @@
           "v5-computing-trace-algorithm-19",
           "v5-computing-trace-algorithm-20",
           "v5-computing-trace-algorithm-21",
-          "v5-computing-trace-algorithm-22"
+          "v5-computing-trace-algorithm-22",
+          "v5-computing-trace-algorithm-28",
+          "v5-computing-trace-algorithm-29"
         ]
       },
       {
@@ -158,7 +160,9 @@
         "questionIds": [
           "v5-computing-trace-algorithm-23",
           "v5-computing-trace-algorithm-24",
-          "v5-computing-trace-algorithm-25"
+          "v5-computing-trace-algorithm-25",
+          "v5-computing-trace-algorithm-30",
+          "v5-computing-trace-algorithm-31"
         ]
       },
       {
@@ -166,7 +170,14 @@
         "focus": "Reaplicar a tabela de rastreio e avaliar limites dos testes.",
         "questionIds": [
           "v5-computing-trace-algorithm-26",
-          "v5-computing-trace-algorithm-27"
+          "v5-computing-trace-algorithm-27",
+          "v5-computing-trace-algorithm-32",
+          "v5-computing-trace-algorithm-33",
+          "v5-computing-trace-algorithm-34",
+          "v5-computing-trace-algorithm-35",
+          "v5-computing-trace-algorithm-36",
+          "v5-computing-trace-algorithm-37",
+          "v5-computing-trace-algorithm-38"
         ]
       }
     ],
@@ -858,6 +869,259 @@
       "misconceptions": {
         "Ele está correto para toda entrada possível.": [
           "ONE_TEST_GENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-28",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "NESTED_LOOP_COUNT",
+      "statement": "Um algoritmo executa uma ação para j=1 até i dentro de um laço externo i=1,2,3. Quantas vezes a ação ocorre ao todo?",
+      "options": [
+        "3 vezes, uma por volta externa.",
+        "9 vezes, pois há três valores em cada laço.",
+        "5 vezes, contando apenas as mudanças entre valores.",
+        "6 vezes: 1 na primeira volta, 2 na segunda e 3 na terceira."
+      ],
+      "correctAnswer": "6 vezes: 1 na primeira volta, 2 na segunda e 3 na terceira.",
+      "explanation": "O laço interno executa i vezes: 1 + 2 + 3 = 6. A quantidade varia a cada volta externa.",
+      "hint": "Conte as execuções internas separadamente para cada valor de i.",
+      "errorFocus": "NESTED_LOOP_ITERATIONS_FLATTENED",
+      "misconceptions": {
+        "3 vezes, uma por volta externa.": [
+          "NESTED_LOOP_ITERATIONS_FLATTENED"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-29",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "LOOP_STATE_TRANSITIONS",
+      "statement": "Comece saldo=3. Enquanto saldo>0, mostre saldo e depois subtraia 2. Quais valores são mostrados antes do laço terminar?",
+      "options": [
+        "3 e 1.",
+        "3, 1 e -1.",
+        "3 apenas, porque o saldo diminui.",
+        "1 e -1, porque o primeiro teste ocorre depois da subtração."
+      ],
+      "correctAnswer": "3 e 1.",
+      "explanation": "O teste ocorre antes de cada volta: 3>0, mostra 3 e atualiza para 1; 1>0, mostra 1 e atualiza para -1; então -1>0 é falso.",
+      "hint": "Registre o teste antes da saída e da atualização em cada volta.",
+      "errorFocus": "LOOP_TEST_AND_UPDATE_ORDER",
+      "misconceptions": {
+        "3, 1 e -1.": [
+          "LOOP_TEST_AND_UPDATE_ORDER"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "TEMPORARY_VARIABLE_SWAP",
+      "statement": "Comece x=2 e y=5. Execute nesta ordem: temp=x; x=y; y=temp. Quais são os valores finais?",
+      "options": [
+        "x=2 e y=5.",
+        "x=5 e y=2.",
+        "x=5 e y=5.",
+        "x=2 e y=2."
+      ],
+      "correctAnswer": "x=5 e y=2.",
+      "explanation": "temp guarda o valor inicial de x (2); x recebe 5; por fim, y recebe o valor guardado.",
+      "hint": "Acompanhe temp, x e y após cada atribuição.",
+      "errorFocus": "TEMP_VALUE_OVERWRITTEN",
+      "misconceptions": {
+        "x=2 e y=5.": [
+          "TEMP_VALUE_OVERWRITTEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-31",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "SENTINEL_STOPS_INPUT",
+      "statement": "O algoritmo lê números e para ao encontrar 0; o sentinela não é processado. Entradas: 6, 0, 9. Qual número é processado antes da parada?",
+      "options": [
+        "6 e 0, pois o sentinela também é dado comum.",
+        "6 e 9, pois o algoritmo continua após o sentinela.",
+        "Somente 6; a leitura termina no 0 e o 9 não é alcançado.",
+        "Nenhum, porque 0 encerra antes de ler a primeira entrada."
+      ],
+      "correctAnswer": "Somente 6; a leitura termina no 0 e o 9 não é alcançado.",
+      "explanation": "O 6 é processado; o 0 sinaliza parada, e as entradas posteriores não são lidas nessa execução.",
+      "hint": "Separe o valor de parada dos dados processados e respeite a ordem de entrada.",
+      "errorFocus": "SENTINEL_OR_LATER_INPUT_PROCESSED",
+      "misconceptions": {
+        "6 e 0, pois o sentinela também é dado comum.": [
+          "SENTINEL_OR_LATER_INPUT_PROCESSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-32",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INCLUSIVE_BOUNDARY_RECHECK",
+      "statement": "Uma condição executa “mostrar” quando pontos<=10. Se pontos vale exatamente 10, o que ocorre?",
+      "options": [
+        "A mensagem não é mostrada, porque só valores menores servem.",
+        "A condição é verdadeira apenas se pontos for maior que 10.",
+        "O algoritmo não consegue comparar valores iguais.",
+        "A mensagem é mostrada, porque <= inclui a igualdade."
+      ],
+      "correctAnswer": "A mensagem é mostrada, porque <= inclui a igualdade.",
+      "explanation": "O símbolo <= significa menor ou igual. Assim, o valor-limite 10 satisfaz a condição.",
+      "hint": "Substitua 10 na expressão e leia o símbolo completo.",
+      "errorFocus": "BOUNDARY_OPERATOR_CONFUSED",
+      "misconceptions": {
+        "A mensagem não é mostrada, porque só valores menores servem.": [
+          "BOUNDARY_OPERATOR_CONFUSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-33",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BOOLEAN_OR_RECHECK",
+      "statement": "Uma ação ocorre se “tem autorização” OU “é responsável”. A pessoa tem autorização=false e é responsável=true. A ação ocorre?",
+      "options": [
+        "Sim; em OR, basta uma das condições ser verdadeira.",
+        "Não; OR exige que ambas sejam verdadeiras.",
+        "Não; ambas as condições são falsas.",
+        "Sim, porque valores false são ignorados em qualquer condição."
+      ],
+      "correctAnswer": "Sim; em OR, basta uma das condições ser verdadeira.",
+      "explanation": "A segunda condição é verdadeira, então a expressão OR é verdadeira.",
+      "hint": "Avalie cada parte e aplique a regra específica de OR.",
+      "errorFocus": "OR_CONFUSED_WITH_AND",
+      "misconceptions": {
+        "Não; OR exige que ambas sejam verdadeiras.": [
+          "OR_CONFUSED_WITH_AND"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-34",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ZERO_BASED_LAST_INDEX",
+      "statement": "Uma lista tem quatro itens e usa posições começando em 0. Qual é o índice do último item?",
+      "options": [
+        "4, porque a lista contém quatro itens.",
+        "3.",
+        "0, porque a contagem começa no zero.",
+        "5, porque se conta também o fim da lista."
+      ],
+      "correctAnswer": "3.",
+      "explanation": "Com quatro itens, os índices são 0, 1, 2 e 3. O último índice é tamanho menos um.",
+      "hint": "Escreva os quatro índices antes de escolher o último.",
+      "errorFocus": "LIST_LENGTH_CONFUSED_WITH_LAST_INDEX",
+      "misconceptions": {
+        "4, porque a lista contém quatro itens.": [
+          "LIST_LENGTH_CONFUSED_WITH_LAST_INDEX"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-35",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "ACCUMULATOR_RESET_SCOPE",
+      "statement": "Um programa calcula o total de cada equipe. Por que iniciar total=0 antes do laço interno de cada equipe?",
+      "options": [
+        "Para impedir que o laço interno execute.",
+        "Para substituir cada quantidade pelo número da equipe.",
+        "Para que a soma de uma equipe não carregue valores da equipe anterior.",
+        "Para fazer o total acumular igualmente entre todas as equipes."
+      ],
+      "correctAnswer": "Para que a soma de uma equipe não carregue valores da equipe anterior.",
+      "explanation": "Reiniciar o acumulador no escopo correto separa os subtotais. Se ficar fora do laço das equipes, os valores podem se misturar.",
+      "hint": "Identifique qual conjunto cada acumulador deve representar e onde ele precisa ser reiniciado.",
+      "errorFocus": "ACCUMULATOR_SCOPE_NOT_RESET",
+      "misconceptions": {
+        "Para impedir que o laço interno execute.": [
+          "ACCUMULATOR_SCOPE_NOT_RESET"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DEBUG",
+      "contextFamily": "BRANCH_BOUNDARY_TESTS",
+      "statement": "Um algoritmo escolhe “desconto” quando idade>=18. Quais entradas testam abaixo, exatamente no limite e acima do limite?",
+      "options": [
+        "18, 19 e 20.",
+        "0, 1 e 2.",
+        "17, 19 e 21, sem testar 18.",
+        "17, 18 e 19."
+      ],
+      "correctAnswer": "17, 18 e 19.",
+      "explanation": "Testar 17, 18 e 19 verifica os dois lados e a igualdade, onde erros de operador são comuns.",
+      "hint": "Inclua o próprio limite e um valor imediatamente de cada lado.",
+      "errorFocus": "BOUNDARY_CASE_OMITTED",
+      "misconceptions": {
+        "18, 19 e 20.": [
+          "BOUNDARY_CASE_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRACE",
+      "contextFamily": "CONDITION_BEFORE_OUTPUT",
+      "statement": "Um laço primeiro verifica n<3; se verdadeiro, mostra n e soma 1. Começando em n=2, qual saída ocorre?",
+      "options": [
+        "2; depois n vira 3 e a condição fica falsa antes de outra saída.",
+        "2 e 3, porque o valor é mostrado antes de verificar a condição.",
+        "3, pois a atualização ocorre antes do primeiro teste.",
+        "2, 3 e 4, porque o laço não tem condição."
+      ],
+      "correctAnswer": "2; depois n vira 3 e a condição fica falsa antes de outra saída.",
+      "explanation": "A primeira verificação aceita 2, que é mostrado. Depois n passa a 3; 3<3 é falso, então não há outra saída.",
+      "hint": "Mantenha a ordem: teste, saída, atualização, novo teste.",
+      "errorFocus": "LOOP_TEST_AND_OUTPUT_ORDER",
+      "misconceptions": {
+        "2 e 3, porque o valor é mostrado antes de verificar a condição.": [
+          "LOOP_TEST_AND_OUTPUT_ORDER"
+        ]
+      }
+    },
+    {
+      "id": "v5-computing-trace-algorithm-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TEST_BRANCH_COVERAGE_RECHECK",
+      "statement": "Uma decisão tem os ramos “se temperatura<10” e “caso contrário”. Qual par de testes cobre os dois ramos?",
+      "options": [
+        "Duas entradas iguais a 9.",
+        "Uma entrada 9 e outra 10.",
+        "Uma entrada 10 e outra 11.",
+        "Uma entrada 8 sem testar outra."
+      ],
+      "correctAnswer": "Uma entrada 9 e outra 10.",
+      "explanation": "9 ativa o primeiro ramo; 10 não satisfaz <10 e ativa o caso contrário.",
+      "hint": "Escolha entradas que façam a condição ficar verdadeira e falsa.",
+      "errorFocus": "TESTS_DO_NOT_COVER_BRANCHES",
+      "misconceptions": {
+        "Duas entradas iguais a 9.": [
+          "TESTS_DO_NOT_COVER_BRANCHES"
         ]
       }
     }

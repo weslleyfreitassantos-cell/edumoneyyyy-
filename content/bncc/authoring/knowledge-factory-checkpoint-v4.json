@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "05ae875304ff3be8273c7d25217dc706c265c0f45d309faf9078eda6073192e0",
-  "outputHash": "494e30066902814f10f8bfb2834449d8fbd422b6d5b255edfa6db1c974718d74",
+  "inputHash": "7484f698277006bbff5946a7227f2bcefb6cf678e768c09bc3c4c10675f7657a",
+  "outputHash": "7fa29ed847864b13913899d4ebd45259844b97346ff05c0de9429c2c185e0801",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -13,27 +13,13 @@
   "currentWave": 2,
   "nextQueueItem": {
     "wave": 2,
-    "id": "ART_INTERPRET_WORK",
+    "id": "PE_EXPLAIN_SPORT_PRINCIPLES",
     "stage": "FUNDAMENTAL_II",
-    "subject": "ART",
+    "subject": "PHYSICAL_EDUCATION",
     "status": "CONTENT_GAP",
-    "reason": "AUTHENTIC_EVIDENCE_READY",
-    "currentQuestionCount": 50,
-    "purposeCounts": {
-      "PROBE": 7,
-      "PRACTICE": 18,
-      "TRANSFER": 11,
-      "LOCK_IN": 7,
-      "REVIEW": 7
-    },
-    "sourceReconciliation": {
-      "expectedQuestionCount": 26,
-      "actualQuestionCount": 26,
-      "status": "EXACT",
-      "questionFeedbackCount": 26
-    }
+    "reason": "MAPPING_GAP, ADAPTIVE_READINESS_GAP, REVIEW_GAP, PEDAGOGICAL_VALIDATION_GAP"
   },
-  "pendingItems": 1755,
+  "pendingItems": 1729,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -42,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "d4db95f43aeb8291fc39c75a6aaa4af20babf4aaebb7da4c0f38a493e18eba86"
+  "checkpointHash": "a807c1862d38a0aa7903e523ef44efcaa22ac57679e1404e980348e47f15846c"
 }

@@ -5,22 +5,22 @@
   "domain": "READING",
   "topic": "inferir_vocabulario_por_contexto",
   "canonicalSkillCode": "ENGLISH_USE_CONTEXT_VOCABULARY",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "lessonVersion": 1,
-  "expectedQuestionCount": 24,
-  "expectedContextCount": 24,
+  "expectedQuestionCount": 29,
+  "expectedContextCount": 29,
   "expectedPurposeCounts": {
     "PROBE": 4,
     "PRACTICE": 10,
     "TRANSFER": 5,
     "LOCK_IN": 3,
-    "REVIEW": 2
+    "REVIEW": 7
   },
   "expectedAnswerPositionCounts": {
-    "A": 6,
-    "B": 6,
-    "C": 6,
-    "D": 6
+    "A": 8,
+    "B": 7,
+    "C": 7,
+    "D": 7
   },
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -146,7 +146,7 @@
       "v3-english-english_reading-3",
       "v3-english-english_reading-11"
     ],
-    "newQuestions": 24,
+    "newQuestions": 29,
     "reusedQuestionsCountedAsNew": false
   },
   "lesson": {
@@ -227,7 +227,12 @@
         "focus": "Reaplicar o procedimento e consultar fontes quando o contexto não basta.",
         "questionIds": [
           "v5-english-context-vocabulary-23",
-          "v5-english-context-vocabulary-24"
+          "v5-english-context-vocabulary-24",
+          "v5-english-context-vocabulary-25",
+          "v5-english-context-vocabulary-26",
+          "v5-english-context-vocabulary-27",
+          "v5-english-context-vocabulary-28",
+          "v5-english-context-vocabulary-29"
         ]
       }
     ],
@@ -846,6 +851,121 @@
       "misconceptions": {
         "Pick one meaning at random and report it as certain.": [
           "UNCERTAINTY_HIDDEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-25",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INFER",
+      "contextFamily": "REFRIGERATED_LABEL",
+      "statement": "A label says, “Keep refrigerated to stay fresh.” What does “refrigerated” mean here?",
+      "options": [
+        "Kept cold, usually in a refrigerator.",
+        "Left in direct sunlight.",
+        "Frozen until completely solid.",
+        "Stored without any temperature control."
+      ],
+      "correctAnswer": "Kept cold, usually in a refrigerator.",
+      "explanation": "The instruction to keep the item fresh and the familiar storage context indicate that it should be kept cold.",
+      "hint": "Connect the word to the storage action described on the label.",
+      "errorFocus": "WORD_MEANING_SEPARATED_FROM_CONTEXT",
+      "misconceptions": {
+        "Left in direct sunlight.": [
+          "WORD_MEANING_SEPARATED_FROM_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-26",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH_POLYSEMY",
+      "contextFamily": "ACTUALLY_CORRECTION",
+      "statement": "A message says, “Actually, the library closes at 6, not 7.” What does “actually” do in this sentence?",
+      "options": [
+        "Means that the library is open at the present moment.",
+        "Introduces a correction or clarification: the closing time is 6.",
+        "Says that the library closes at both times.",
+        "Shows that the speaker is uncertain about the time."
+      ],
+      "correctAnswer": "Introduces a correction or clarification: the closing time is 6.",
+      "explanation": "The contrast “at 6, not 7” shows that “actually” introduces a correction, not a statement about what is happening now.",
+      "hint": "Use the corrected detail after “not” to identify the function.",
+      "errorFocus": "FALSE_FRIEND_ACTUALLY",
+      "misconceptions": {
+        "Means that the library is open at the present moment.": [
+          "FALSE_FRIEND_ACTUALLY"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-27",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH_POLYSEMY",
+      "contextFamily": "PHONE_CHARGE_CONTEXT",
+      "statement": "A phone is at 4%, so a student plugs it in before leaving. In this context, what does “charge” mean?",
+      "options": [
+        "Ask the student to pay a fee.",
+        "Accuse someone of an action.",
+        "Supply electrical energy to the phone battery.",
+        "Load a package onto a vehicle."
+      ],
+      "correctAnswer": "Supply electrical energy to the phone battery.",
+      "explanation": "The low battery and plugging in identify the electrical sense of “charge.”",
+      "hint": "Use the percentage and the action with the cable as context clues.",
+      "errorFocus": "POLYSEMY_FIRST_SENSE_SELECTED",
+      "misconceptions": {
+        "Ask the student to pay a fee.": [
+          "POLYSEMY_FIRST_SENSE_SELECTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-28",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INFER_WITH_CONTRAST",
+      "contextFamily": "CAUTIOUSLY_SLIPPERY_PATH",
+      "statement": "Read: “The path was slippery, so the hikers walked cautiously and held the rail.” What does “cautiously” mean?",
+      "options": [
+        "Quickly, to finish before the rain.",
+        "Loudly, so others could hear.",
+        "Without paying attention to the path.",
+        "Carefully, to reduce the risk of slipping."
+      ],
+      "correctAnswer": "Carefully, to reduce the risk of slipping.",
+      "explanation": "The slippery surface and use of the rail show that the hikers acted carefully.",
+      "hint": "Test a synonym against both the cause and the action.",
+      "errorFocus": "ACTION_CLUE_OVERRIDDEN",
+      "misconceptions": {
+        "Quickly, to finish before the rain.": [
+          "ACTION_CLUE_OVERRIDDEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-english-context-vocabulary-29",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_WORD_STRENGTH",
+      "contextFamily": "CONSISTENT_SMALL_SAMPLE",
+      "statement": "A report says, “The result is consistent with an earlier measurement, although the sample was small.” What does “consistent with” support?",
+      "options": [
+        "The result agrees with the earlier measurement, but the small sample limits the strength of the conclusion.",
+        "The result proves the same pattern for every group.",
+        "The earlier measurement must be incorrect.",
+        "The sample size has no effect on interpretation."
+      ],
+      "correctAnswer": "The result agrees with the earlier measurement, but the small sample limits the strength of the conclusion.",
+      "explanation": "“Consistent with” signals agreement, not proof. The stated small sample is a reason to keep the conclusion limited.",
+      "hint": "Separate agreement between measurements from certainty about a broader claim.",
+      "errorFocus": "AGREEMENT_OVERSTATED_AS_PROOF",
+      "misconceptions": {
+        "The result proves the same pattern for every group.": [
+          "AGREEMENT_OVERSTATED_AS_PROOF"
         ]
       }
     }

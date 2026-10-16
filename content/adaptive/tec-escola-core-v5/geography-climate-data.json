@@ -5,22 +5,22 @@
   "domain": "CLIMA",
   "topic": "analise_de_dados_climaticos",
   "canonicalSkillCode": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "lessonVersion": 1,
-  "expectedQuestionCount": 24,
-  "expectedContextCount": 24,
+  "expectedQuestionCount": 29,
+  "expectedContextCount": 29,
   "expectedPurposeCounts": {
     "PROBE": 4,
     "PRACTICE": 10,
     "TRANSFER": 5,
     "LOCK_IN": 3,
-    "REVIEW": 2
+    "REVIEW": 7
   },
   "expectedAnswerPositionCounts": {
-    "A": 6,
-    "B": 6,
-    "C": 6,
-    "D": 6
+    "A": 8,
+    "B": 7,
+    "C": 7,
+    "D": 7
   },
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -140,7 +140,7 @@
     "adjacentLegacyItemsForEditorialReview": [
       "v3-geography-geography_territory-9"
     ],
-    "newQuestions": 24,
+    "newQuestions": 29,
     "reusedQuestionsCountedAsNew": false
   },
   "lesson": {
@@ -221,7 +221,12 @@
         "focus": "Reaplicar o método e distinguir previsão probabilística de padrão climático.",
         "questionIds": [
           "v5-geography-climate-data-23",
-          "v5-geography-climate-data-24"
+          "v5-geography-climate-data-24",
+          "v5-geography-climate-data-25",
+          "v5-geography-climate-data-26",
+          "v5-geography-climate-data-27",
+          "v5-geography-climate-data-28",
+          "v5-geography-climate-data-29"
         ]
       }
     ],
@@ -886,6 +891,121 @@
       "misconceptions": {
         "A possibilidade de chuva no período da previsão.": [
           "FORECAST_PROBABILITY_OVERGENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-climate-data-25",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "AFTERNOON_VS_CLIMATE",
+      "statement": "Uma tarde registrou 38 °C em uma cidade. O que esse único registro permite afirmar?",
+      "options": [
+        "A temperatura registrada naquela tarde foi 38 °C; sozinho, o dado não descreve o clima de longo prazo.",
+        "A temperatura média anual da cidade é 38 °C.",
+        "Todos os dias daquele ano tiveram 38 °C.",
+        "A cidade necessariamente ficou mais quente por causa de uma obra."
+      ],
+      "correctAnswer": "A temperatura registrada naquela tarde foi 38 °C; sozinho, o dado não descreve o clima de longo prazo.",
+      "explanation": "O registro descreve uma observação localizada no tempo. Para caracterizar um padrão climático são necessárias séries adequadas e comparáveis.",
+      "hint": "Nomeie a duração e o lugar da observação antes de ampliar a conclusão.",
+      "errorFocus": "SINGLE_EVENT_USED_FOR_LONG_TERM_PATTERN",
+      "misconceptions": {
+        "A temperatura média anual da cidade é 38 °C.": [
+          "SINGLE_EVENT_USED_FOR_LONG_TERM_PATTERN"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-climate-data-26",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MEAN_VS_MAXIMUM_RECHECK",
+      "statement": "Uma série mensal tem temperaturas máximas diárias de 20, 25 e 35 °C. Qual frase distingue corretamente média e máximo?",
+      "options": [
+        "A média e o máximo são ambos 35 °C.",
+        "A média desses três valores é aproximadamente 26,7 °C, e o máximo é 35 °C.",
+        "A média é 80 °C e o máximo é 26,7 °C.",
+        "A média é 25 °C porque é o valor do meio."
+      ],
+      "correctAnswer": "A média desses três valores é aproximadamente 26,7 °C, e o máximo é 35 °C.",
+      "explanation": "A média é (20+25+35)÷3 ≈ 26,7 °C; o maior valor é 35 °C. Média e máximo respondem a perguntas diferentes.",
+      "hint": "Calcule a soma dividida por três e compare-a com o maior dado.",
+      "errorFocus": "MEAN_CONFUSED_WITH_MAXIMUM",
+      "misconceptions": {
+        "A média e o máximo são ambos 35 °C.": [
+          "MEAN_CONFUSED_WITH_MAXIMUM"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-climate-data-27",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ZERO_VS_MISSING_RECHECK",
+      "statement": "Uma estação registra 0 mm de chuva em uma data e não tem registro na data seguinte por falha do equipamento. Como classificar os dois campos?",
+      "options": [
+        "Ambos são zero, pois não há chuva registrada.",
+        "Ambos são dados ausentes.",
+        "O primeiro é zero medido; o segundo é dado ausente.",
+        "A falha do equipamento prova que choveu muito."
+      ],
+      "correctAnswer": "O primeiro é zero medido; o segundo é dado ausente.",
+      "explanation": "Zero é uma medição válida; a falha impediu a observação seguinte. Não se deve substituir uma lacuna por zero sem regra explícita.",
+      "hint": "Diferencie uma leitura igual a zero de uma leitura que não foi feita.",
+      "errorFocus": "MISSING_DATA_AS_ZERO",
+      "misconceptions": {
+        "Ambos são zero, pois não há chuva registrada.": [
+          "MISSING_DATA_AS_ZERO"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-climate-data-28",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_COMPARABILITY",
+      "contextFamily": "STATION_COMPARISON_RECHECK",
+      "statement": "Duas estações são comparadas em gráficos, mas uma mudou de altitude e usou outro período. O que deve ser verificado antes de atribuir a diferença à região?",
+      "options": [
+        "Somente qual linha tem a cor mais forte.",
+        "Qual gráfico foi publicado primeiro.",
+        "Se a diferença prova que uma região é sempre mais quente.",
+        "Se local, altitude, período, variável e método permitem comparar as séries."
+      ],
+      "correctAnswer": "Se local, altitude, período, variável e método permitem comparar as séries.",
+      "explanation": "Mudanças de local, altitude ou período podem afetar os valores. A comparabilidade precisa ser avaliada antes de interpretar a diferença como regional.",
+      "hint": "Confira as condições de medição antes de explicar o contraste.",
+      "errorFocus": "BASELINE_AND_MEASUREMENT_CHANGE_IGNORED",
+      "misconceptions": {
+        "Somente qual linha tem a cor mais forte.": [
+          "BASELINE_AND_MEASUREMENT_CHANGE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-climate-data-29",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_SCOPE",
+      "contextFamily": "SHORT_SERIES_LIMIT_RECHECK",
+      "statement": "Uma série contém quatro meses e mostra chuva maior nos dois últimos. Qual afirmação mantém o escopo correto?",
+      "options": [
+        "A chuva registrada foi maior nos dois últimos meses apresentados; a série não informa o restante do ano.",
+        "A região tem estação chuvosa anual nos dois últimos meses.",
+        "A chuva aumentou continuamente durante o ano todo.",
+        "A série comprova uma tendência climática de longo prazo."
+      ],
+      "correctAnswer": "A chuva registrada foi maior nos dois últimos meses apresentados; a série não informa o restante do ano.",
+      "explanation": "A comparação vale para os quatro meses mostrados. Não há dados do restante do ano nem de anos suficientes para essas generalizações.",
+      "hint": "Limite a frase aos meses e aos anos efetivamente apresentados.",
+      "errorFocus": "PARTIAL_PERIOD_REPORTED_AS_ANNUAL",
+      "misconceptions": {
+        "A região tem estação chuvosa anual nos dois últimos meses.": [
+          "PARTIAL_PERIOD_REPORTED_AS_ANNUAL"
         ]
       }
     }

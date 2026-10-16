@@ -1,0 +1,1346 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-portuguese-summarize-argument",
+  "subject": "PORTUGUESE",
+  "domain": "ARGUMENTACAO_E_LEITURA",
+  "topic": "sintetizar_linha_argumentativa",
+  "canonicalSkillCode": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 47,
+  "expectedContextCount": 47,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 17
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 12,
+    "B": 12,
+    "C": 12,
+    "D": 11
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-portuguese-reading_argument-12",
+      "hint": "Resuma problema, evidência e proposta sem transformar um dado limitado em acusação ou certeza universal.",
+      "errorFocus": "ARGUMENT_SUMMARY_SCOPE_AND_STRUCTURE"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 1,
+    "feedbackAdded": 1,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 47,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Sintetizar a linha de um argumento",
+    "objective": "Produzir sínteses que preservem a tese ou proposta, as razões e evidências relevantes e os limites do que o texto permite concluir.",
+    "summary": "Uma síntese argumentativa mostra como problema, posição, razões e proposta se conectam. Ela seleciona o essencial sem copiar detalhes em excesso, apagar ressalvas ou acrescentar conclusões que o texto não sustenta.",
+    "explanation": "## 1. Encontre o problema ou a pergunta\nIdentifique a questão que organiza o texto. Exemplos e dados só ganham função quando relacionados a essa questão.\n\n## 2. Localize a tese ou proposta\nPergunte o que o autor defende, recomenda ou pretende investigar. Diferencie proposta de resultado já alcançado.\n\n## 3. Relacione razões e evidências\nUma razão explica por que a tese é defendida; uma evidência oferece apoio observável. Não trate uma hipótese, previsão ou relato localizado como prova universal.\n\n## 4. Preserve condições e limites\nExpressões como “em uma turma”, “durante três dias” ou “a equipe avaliará” delimitam o alcance e o estágio do argumento. Retirá-las pode mudar o sentido.\n\n## 5. Selecione o essencial\nDetalhes ilustram o argumento, mas não precisam ocupar a síntese se não alteram a relação entre problema, razão e proposta. Compare cada detalhe com a pergunta central.\n\n## 6. Evite acrescentar o que não está dito\nNão invente causa, intenção, consenso, resultado ou certeza. Uma sequência temporal não prova causalidade; uma amostra não representa automaticamente todo o grupo.\n\n## Exemplo resolvido\nTexto: uma escola registrou atrasos na devolução por causa do transporte e ampliou o prazo por dois meses, quando observará os registros. Síntese: “O prazo foi ampliado em resposta aos atrasos associados ao transporte, e a escola acompanhará os resultados por dois meses.” A frase preserva problema, ação e avaliação, sem afirmar que os atrasos foram resolvidos.\n\n## 7. Revise a síntese\nConfira se ela responde à pergunta central, inclui a razão principal, conserva condições importantes e não afirma mais do que as fontes permitem.",
+    "workedExample": "Texto: uma consulta com 24 respostas encontrou 15 preferências por atividade em grupo; a professora alternará formatos e observará participação. Síntese adequada: “A maioria dos respondentes preferiu atividades em grupo, que serão alternadas com tarefas individuais para comparar participação.” A pesquisa registra preferência, não prova qual formato produz melhores resultados.",
+    "commonMistake": "Confundir resumo com opinião, tratar intenção como resultado, omitir denominadores e condições, ou ampliar uma observação localizada para todo o grupo.",
+    "tips": [
+      "Escreva primeiro a questão central.",
+      "Identifique tese, razões e evidências.",
+      "Mantenha palavras que delimitam tempo, grupo e certeza.",
+      "Retire detalhes que não mudam a linha do argumento.",
+      "Compare cada afirmação da síntese com o texto de origem."
+    ],
+    "estimatedMinutes": 30,
+    "priorKnowledge": [
+      "Identificar ideia principal e informações de apoio.",
+      "Distinguir fato, opinião, proposta e evidência."
+    ],
+    "keyConcepts": [
+      "síntese",
+      "tese",
+      "razão",
+      "evidência",
+      "escopo",
+      "qualificação",
+      "causalidade",
+      "paráfrase"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer a ideia central em argumentos curtos.",
+        "questionIds": [
+          "v5-portuguese-summarize-argument-01",
+          "v5-portuguese-summarize-argument-02",
+          "v5-portuguese-summarize-argument-03",
+          "v5-portuguese-summarize-argument-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Relacionar problema, evidência e proposta sem extrapolar.",
+        "questionIds": [
+          "v5-portuguese-summarize-argument-05",
+          "v5-portuguese-summarize-argument-06",
+          "v5-portuguese-summarize-argument-07",
+          "v5-portuguese-summarize-argument-08",
+          "v5-portuguese-summarize-argument-09",
+          "v5-portuguese-summarize-argument-10",
+          "v5-portuguese-summarize-argument-11",
+          "v5-portuguese-summarize-argument-12",
+          "v5-portuguese-summarize-argument-13",
+          "v5-portuguese-summarize-argument-14",
+          "v5-portuguese-summarize-argument-15",
+          "v5-portuguese-summarize-argument-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Sintetizar argumentos com amostras, condições e evidências concorrentes.",
+        "questionIds": [
+          "v5-portuguese-summarize-argument-17",
+          "v5-portuguese-summarize-argument-18",
+          "v5-portuguese-summarize-argument-19",
+          "v5-portuguese-summarize-argument-20",
+          "v5-portuguese-summarize-argument-21",
+          "v5-portuguese-summarize-argument-22",
+          "v5-portuguese-summarize-argument-23",
+          "v5-portuguese-summarize-argument-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Revisar sínteses que omitem limites ou inventam resultados.",
+        "questionIds": [
+          "v5-portuguese-summarize-argument-25",
+          "v5-portuguese-summarize-argument-26",
+          "v5-portuguese-summarize-argument-27",
+          "v5-portuguese-summarize-argument-28",
+          "v5-portuguese-summarize-argument-29",
+          "v5-portuguese-summarize-argument-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Integrar tese, razões, evidências e limites em uma síntese proporcional.",
+        "questionIds": [
+          "v5-portuguese-summarize-argument-31",
+          "v5-portuguese-summarize-argument-32",
+          "v5-portuguese-summarize-argument-33",
+          "v5-portuguese-summarize-argument-34",
+          "v5-portuguese-summarize-argument-35",
+          "v5-portuguese-summarize-argument-36",
+          "v5-portuguese-summarize-argument-37",
+          "v5-portuguese-summarize-argument-38",
+          "v5-portuguese-summarize-argument-39",
+          "v5-portuguese-summarize-argument-40",
+          "v5-portuguese-summarize-argument-41",
+          "v5-portuguese-summarize-argument-42",
+          "v5-portuguese-summarize-argument-43",
+          "v5-portuguese-summarize-argument-44",
+          "v5-portuguese-summarize-argument-45",
+          "v5-portuguese-summarize-argument-46",
+          "v5-portuguese-summarize-argument-47"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "FIND_THE_ISSUE",
+        "text": "A questão central organiza quais detalhes são relevantes."
+      },
+      {
+        "trigger": "PROPOSAL_VS_RESULT",
+        "text": "“Pretende avaliar” descreve um plano, não um resultado."
+      },
+      {
+        "trigger": "KEEP_THE_DENOMINATOR",
+        "text": "Mantenha grupo, período e quantidade quando delimitam a evidência."
+      },
+      {
+        "trigger": "ASSOCIATION_NOT_CAUSE",
+        "text": "Dois fatos que ocorrem juntos não demonstram, sozinhos, causa e efeito."
+      },
+      {
+        "trigger": "ESSENTIAL_DETAIL",
+        "text": "Inclua detalhes que explicam a razão; retire os que não alteram a tese."
+      },
+      {
+        "trigger": "SCOPE_CHECK",
+        "text": "Confira se sua síntese afirma algo mais amplo do que o texto."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "RESTORE_ARGUMENT_STRUCTURE",
+        "misconception": "Listar detalhes sem mostrar a linha do argumento.",
+        "prompt": "Complete: problema; posição; razão ou evidência; proposta. Depois ligue esses elementos em uma ou duas frases."
+      },
+      {
+        "id": "SEPARATE_PLAN_FROM_OUTCOME",
+        "misconception": "Tratar uma proposta como ação concluída.",
+        "prompt": "Marque os verbos no passado, no presente e no futuro. Reescreva mantendo o estágio indicado pelo texto."
+      },
+      {
+        "id": "PRESERVE_SCOPE",
+        "misconception": "Generalizar uma amostra ou observação localizada.",
+        "prompt": "Circule números, grupos, locais e períodos. Inclua no resumo os limites que mudam o alcance da conclusão."
+      },
+      {
+        "id": "CHECK_CAUSALITY",
+        "misconception": "Afirmar causa a partir de associação ou sequência temporal.",
+        "prompt": "Procure evidência que compare condições e descarte explicações alternativas; sem ela, use formulação de hipótese ou associação."
+      },
+      {
+        "id": "REMOVE_UNSUPPORTED_CLAIM",
+        "misconception": "Acrescentar intenção, consenso ou resultado não informado.",
+        "prompt": "Sublinhe cada afirmação da síntese e aponte a frase do texto que a sustenta; retire as que não têm apoio."
+      },
+      {
+        "id": "BALANCE_SELECTION",
+        "misconception": "Omitir uma ressalva ou incluir detalhes sem função.",
+        "prompt": "Compare a síntese com a pergunta central e verifique se tese, razão principal e limitação relevante continuam presentes."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-portuguese-summary-editor",
+        "title": "Oficina de sínteses fiéis",
+        "objective": "Selecionar e relacionar tese, evidências, proposta e limites em uma síntese concisa.",
+        "context": "Use textos hipotéticos curtos criados para a atividade, sem solicitar opiniões ou experiências pessoais.",
+        "materials": [
+          "Textos de 3 a 5 frases",
+          "Marcadores para tese, razão, evidência e limite",
+          "Quadro de revisão de síntese"
+        ],
+        "instructions": "Individualmente ou em duplas, marque a questão central, a posição, as razões e os limites; escreva uma síntese e justifique uma inclusão e uma omissão. Compare versões verificando se cada afirmação tem apoio textual.",
+        "evidence": "Síntese com estrutura identificável e justificativa de escopo baseada em trechos fornecidos.",
+        "safety": "Permita resposta escrita, oral ou com organizador visual; os exemplos não devem exigir exposição de crenças ou vivências pessoais.",
+        "privacyGuard": "Não recolher dados pessoais; avaliar somente a síntese produzida a partir do texto fornecido.",
+        "ageRange": "Ensino Fundamental II ou Ensino Médio conforme extensão e complexidade dos textos.",
+        "mediation": "O docente pergunta qual trecho sustenta cada parte e se alguma ressalva importante foi perdida.",
+        "rubric": [
+          {
+            "criterion": "Estrutura",
+            "emerging": "Repete detalhes sem localizar a posição.",
+            "developing": "Identifica a posição e uma razão.",
+            "proficient": "Relaciona questão, posição, razão e proposta de modo claro."
+          },
+          {
+            "criterion": "Fidelidade",
+            "emerging": "Acrescenta ou generaliza informação.",
+            "developing": "Mantém a maior parte do escopo após orientação.",
+            "proficient": "Preserva evidências, condições e limites sem extrapolar."
+          },
+          {
+            "criterion": "Seleção",
+            "emerging": "O resumo omite a razão central ou mantém detalhes irrelevantes.",
+            "developing": "Seleciona elementos centrais com alguma redundância.",
+            "proficient": "É conciso e explica por que os elementos escolhidos são essenciais."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "TecEscola",
+        "title": "Argumentos hipotéticos para síntese e revisão",
+        "license": "Questões, textos e cenários autorais; revisão pedagógica pendente; alinhamento oficial não reivindicado."
+      }
+    ],
+    "copyrightNote": "Textos e contextos autorais. Revisão pedagógica pendente; mapeamento oficial não reivindicado."
+  },
+  "questions": [
+    {
+      "id": "v5-portuguese-summarize-argument-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIBRARY_RETURN",
+      "statement": "A biblioteca ampliou o prazo de devolução após registrar atrasos no transporte escolar. A equipe acompanhará os atrasos por dois meses.\n\nQual síntese preserva proposta, motivo e acompanhamento?",
+      "options": [
+        "O prazo foi ampliado por causa dos atrasos no transporte, e a equipe observará os resultados por dois meses.",
+        "A biblioteca cancelou as devoluções por dois meses.",
+        "O transporte escolar sempre impede a devolução.",
+        "O novo prazo eliminou todos os atrasos."
+      ],
+      "correctAnswer": "O prazo foi ampliado por causa dos atrasos no transporte, e a equipe observará os resultados por dois meses.",
+      "explanation": "A síntese reúne a mudança, a razão indicada e o período de acompanhamento sem afirmar um resultado ainda não observado.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "OUTCOME_INVENTED",
+      "misconceptions": {
+        "A biblioteca cancelou as devoluções por dois meses.": [
+          "OUTCOME_INVENTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "WATER_TAP",
+      "statement": "Após medir o consumo, a escola propôs consertar torneiras com vazamento e repetir a medição no mês seguinte.\n\nQual é a linha principal do argumento?",
+      "options": [
+        "Toda torneira da escola está quebrada.",
+        "Medir o problema orienta o conserto, e uma nova medição permite verificar a mudança.",
+        "O conserto já reduziu o consumo.",
+        "A medição torna desnecessário reparar torneiras."
+      ],
+      "correctAnswer": "Medir o problema orienta o conserto, e uma nova medição permite verificar a mudança.",
+      "explanation": "A ideia central liga diagnóstico, ação proposta e verificação posterior.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "PROPOSAL_CONFUSED_WITH_RESULT",
+      "misconceptions": {
+        "Toda torneira da escola está quebrada.": [
+          "PROPOSAL_CONFUSED_WITH_RESULT"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SHADE_BREAK",
+      "statement": "Estudantes relataram desconforto no pátio ao meio-dia. A direção considera instalar cobertura e consultar a comunidade sobre os locais prioritários.\n\nQual resumo mantém o alcance das informações?",
+      "options": [
+        "Todos os estudantes passaram mal ao meio-dia.",
+        "A direção instalou cobertura em todo o pátio.",
+        "Relatos de desconforto motivaram a avaliação de coberturas, com consulta sobre prioridades.",
+        "A consulta comprovou que a cobertura é a única solução."
+      ],
+      "correctAnswer": "Relatos de desconforto motivaram a avaliação de coberturas, com consulta sobre prioridades.",
+      "explanation": "O texto informa relatos e uma avaliação em andamento; não declara instalação nem consenso.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "REPORT_SCOPE_EXPANDED",
+      "misconceptions": {
+        "Todos os estudantes passaram mal ao meio-dia.": [
+          "REPORT_SCOPE_EXPANDED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "READING_CORNER",
+      "statement": "Uma turma pediu mais livros de aventura. A professora pretende organizar empréstimos por interesse e verificar quais títulos são mais procurados.\n\nQual síntese é mais fiel?",
+      "options": [
+        "A turma rejeitou todos os outros gêneros.",
+        "Os livros mais procurados são os melhores para todos.",
+        "A professora já comprou todos os títulos pedidos.",
+        "A turma pediu livros de aventura, e a professora propõe empréstimos acompanhados de dados de procura."
+      ],
+      "correctAnswer": "A turma pediu livros de aventura, e a professora propõe empréstimos acompanhados de dados de procura.",
+      "explanation": "A síntese preserva pedido e plano de observação sem converter preferência em regra universal.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "PREFERENCE_GENERALIZED",
+      "misconceptions": {
+        "A turma rejeitou todos os outros gêneros.": [
+          "PREFERENCE_GENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BUS_SHELTER",
+      "statement": "Moradores solicitaram abrigo no ponto de ônibus. Uma vistoria identificou pouco espaço na calçada; a prefeitura estudará alternativas de localização.\n\nQual opção reúne o argumento sem omitir sua condição?",
+      "options": [
+        "O pedido por abrigo será analisado, mas o espaço da calçada exige estudar outro posicionamento.",
+        "O abrigo já foi instalado no local vistoriado.",
+        "A vistoria concluiu que nenhum abrigo é possível.",
+        "A falta de espaço prova que o pedido não tem importância."
+      ],
+      "correctAnswer": "O pedido por abrigo será analisado, mas o espaço da calçada exige estudar outro posicionamento.",
+      "explanation": "O resumo integra a demanda e a restrição registrada, sem tratar estudo como decisão final.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "CONDITION_OMITTED",
+      "misconceptions": {
+        "O abrigo já foi instalado no local vistoriado.": [
+          "CONDITION_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SUMMARIZE",
+      "contextFamily": "SCHOOL_GARDEN",
+      "statement": "A horta produziu menos folhas durante um período seco. O grupo propôs registrar a irrigação e comparar o desenvolvimento de canteiros com rotinas diferentes.\n\nQual síntese preserva método e objetivo?",
+      "options": [
+        "A seca foi a única causa comprovada da produção menor.",
+        "O grupo quer relacionar rotinas de irrigação ao desenvolvimento dos canteiros por meio de registros comparáveis.",
+        "Todos os canteiros receberam a mesma quantidade de água.",
+        "A horta deixou de produzir folhas definitivamente."
+      ],
+      "correctAnswer": "O grupo quer relacionar rotinas de irrigação ao desenvolvimento dos canteiros por meio de registros comparáveis.",
+      "explanation": "A proposta busca comparar registros; a causa ainda será investigada.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "HYPOTHESIS_TREATED_AS_FINDING",
+      "misconceptions": {
+        "A seca foi a única causa comprovada da produção menor.": [
+          "HYPOTHESIS_TREATED_AS_FINDING"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SCHOOL_BUS",
+      "statement": "A pesquisa da escola apontou concentração de atrasos na saída da tarde. A coordenação pretende comparar os horários de duas rotas antes de alterar o embarque.\n\nQual é a síntese mais adequada?",
+      "options": [
+        "A coordenação já mudou as duas rotas.",
+        "Todas as saídas da tarde atrasam.",
+        "A concentração de atrasos motivou uma comparação entre rotas antes de qualquer mudança no embarque.",
+        "A pesquisa provou que o embarque causa os atrasos."
+      ],
+      "correctAnswer": "A concentração de atrasos motivou uma comparação entre rotas antes de qualquer mudança no embarque.",
+      "explanation": "A investigação identifica um padrão e propõe comparar alternativas; não confirma causalidade.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "CORRELATION_AS_CAUSE",
+      "misconceptions": {
+        "A coordenação já mudou as duas rotas.": [
+          "CORRELATION_AS_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PARK_BINS",
+      "statement": "A praça recebeu lixeiras em três pontos. Em uma semana, a equipe encontrou materiais misturados e propôs placas com exemplos de separação.\n\nQual síntese mantém a sequência argumentativa?",
+      "options": [
+        "As placas já resolveram a mistura de materiais.",
+        "As lixeiras foram retiradas da praça.",
+        "Os frequentadores misturam materiais de propósito.",
+        "A mistura observada levou à proposta de orientar o descarte com placas exemplificadas."
+      ],
+      "correctAnswer": "A mistura observada levou à proposta de orientar o descarte com placas exemplificadas.",
+      "explanation": "A síntese liga observação e resposta proposta sem atribuir intenção ou resultado.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "CAUSE_OR_RESULT_INVENTED",
+      "misconceptions": {
+        "As placas já resolveram a mistura de materiais.": [
+          "CAUSE_OR_RESULT_INVENTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SUMMARIZE",
+      "contextFamily": "CLASS_START",
+      "statement": "Em uma consulta, 18 de 30 estudantes preferiram iniciar a aula com leitura breve. A equipe testará a rotina em uma turma e recolherá comentários.\n\nQual resumo respeita o dado e o plano?",
+      "options": [
+        "Na consulta, 18 de 30 preferiram a leitura breve, que será testada em uma turma com coleta de comentários.",
+        "Toda a escola prefere leitura breve.",
+        "O teste já mostrou melhora na aprendizagem.",
+        "Os 12 restantes se opuseram à leitura."
+      ],
+      "correctAnswer": "Na consulta, 18 de 30 preferiram a leitura breve, que será testada em uma turma com coleta de comentários.",
+      "explanation": "A síntese informa denominador, preferência e caráter experimental do plano.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "SAMPLE_OR_TEST_SCOPE_LOST",
+      "misconceptions": {
+        "Toda a escola prefere leitura breve.": [
+          "SAMPLE_OR_TEST_SCOPE_LOST"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "RIVER_WALK",
+      "statement": "Uma caminhada registrou resíduos em dois trechos do rio. O grupo propôs repetir o percurso em outra estação antes de comparar a quantidade.\n\nQual ideia central é sustentada?",
+      "options": [
+        "O rio inteiro está poluído igualmente.",
+        "O grupo pretende repetir a observação em outra estação para comparar registros sazonais.",
+        "A caminhada provou que a estação causa resíduos.",
+        "A quantidade de resíduos já diminuiu."
+      ],
+      "correctAnswer": "O grupo pretende repetir a observação em outra estação para comparar registros sazonais.",
+      "explanation": "A proposta prevê comparação em tempos diferentes; não há resultado posterior informado.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "TEMPORAL_COMPARISON_INVENTED",
+      "misconceptions": {
+        "O rio inteiro está poluído igualmente.": [
+          "TEMPORAL_COMPARISON_INVENTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCHOOL_MURAL",
+      "statement": "O mural informa atividades, mas parte das mensagens fica coberta por avisos novos. A equipe propôs separar um espaço fixo e revisar a organização mensalmente.\n\nQual síntese contempla problema e ação?",
+      "options": [
+        "O mural será substituído por mensagens digitais.",
+        "Todas as atividades deixam de ser divulgadas.",
+        "Mensagens encobertas motivaram um espaço fixo para atividades e revisões mensais da organização.",
+        "A revisão mensal já garantiu que nenhuma mensagem fique coberta."
+      ],
+      "correctAnswer": "Mensagens encobertas motivaram um espaço fixo para atividades e revisões mensais da organização.",
+      "explanation": "O texto propõe uma organização e uma rotina de revisão, não garante um efeito.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "SOLUTION_AS_CERTAINTY",
+      "misconceptions": {
+        "O mural será substituído por mensagens digitais.": [
+          "SOLUTION_AS_CERTAINTY"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SUMMARIZE",
+      "contextFamily": "BIKE_RACK",
+      "statement": "A escola recebeu pedidos de bicicletário, mas ainda não conhece a demanda por turno. A direção propôs uma contagem voluntária e vistoria dos locais possíveis.\n\nQual síntese é mais completa sem extrapolar?",
+      "options": [
+        "A instalação está confirmada para todos os turnos.",
+        "A contagem voluntária representa necessariamente todos.",
+        "A vistoria concluiu que não há espaço.",
+        "A demanda e os locais serão avaliados antes de decidir se e onde instalar bicicletário."
+      ],
+      "correctAnswer": "A demanda e os locais serão avaliados antes de decidir se e onde instalar bicicletário.",
+      "explanation": "A proposta reúne levantamento de demanda e viabilidade, sem antecipar a decisão.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "DECISION_PREMATURE",
+      "misconceptions": {
+        "A instalação está confirmada para todos os turnos.": [
+          "DECISION_PREMATURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SCHOOL_CANTEEN",
+      "statement": "A cantina recebeu comentários sobre fila longa. Um registro de três dias mostrou maior espera no primeiro intervalo; a escola avaliará escalonar a retirada.\n\nQual síntese preserva a evidência e a proposta?",
+      "options": [
+        "Registros de três dias localizaram maior espera no primeiro intervalo, e a escola avaliará escalonar a retirada.",
+        "A fila é longa em todos os intervalos.",
+        "O escalonamento já reduziu a espera.",
+        "Os comentários provam que a cantina atende mal."
+      ],
+      "correctAnswer": "Registros de três dias localizaram maior espera no primeiro intervalo, e a escola avaliará escalonar a retirada.",
+      "explanation": "A síntese mantém período, recorte e caráter de avaliação da medida.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "LIMITED_SAMPLE_GENERALIZED",
+      "misconceptions": {
+        "A fila é longa em todos os intervalos.": [
+          "LIMITED_SAMPLE_GENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SCHOOL_NOISE",
+      "statement": "Uma turma relatou dificuldade de ouvir instruções perto da quadra. A equipe pretende medir o ruído em horários distintos e testar recursos visuais.\n\nQual síntese respeita os dois caminhos de investigação?",
+      "options": [
+        "A quadra impede qualquer comunicação.",
+        "A equipe investigará o ruído em diferentes horários e testará apoio visual para as instruções.",
+        "O ruído já foi medido como causa única.",
+        "Os recursos visuais substituem toda instrução oral."
+      ],
+      "correctAnswer": "A equipe investigará o ruído em diferentes horários e testará apoio visual para as instruções.",
+      "explanation": "O plano combina medição e teste de apoio sem declarar causa ou substituição total.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "PLAN_REDUCED_TO_SINGLE_CAUSE",
+      "misconceptions": {
+        "A quadra impede qualquer comunicação.": [
+          "PLAN_REDUCED_TO_SINGLE_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SUMMARIZE",
+      "contextFamily": "SCHOOL_LIGHTS",
+      "statement": "A troca por lâmpadas de menor potência foi proposta para reduzir consumo. A equipe comparará leituras mensais, considerando também mudanças no horário de uso.\n\nQue resumo preserva a cautela causal?",
+      "options": [
+        "A troca já comprovou economia.",
+        "A potência menor garante consumo total menor em qualquer situação.",
+        "A proposta busca reduzir o consumo, e a comparação mensal considerará também o tempo de uso.",
+        "O horário de uso não interfere no consumo."
+      ],
+      "correctAnswer": "A proposta busca reduzir o consumo, e a comparação mensal considerará também o tempo de uso.",
+      "explanation": "A síntese distingue objetivo de resultado e reconhece outro fator relevante.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "GOAL_STATED_AS_PROOF",
+      "misconceptions": {
+        "A troca já comprovou economia.": [
+          "GOAL_STATED_AS_PROOF"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SCHOOL_GAMES",
+      "statement": "Após poucos estudantes usarem os jogos no recreio, a escola propôs perguntar sobre horários e preferências antes de comprar novos materiais.\n\nQual síntese evita atribuir uma causa não verificada?",
+      "options": [
+        "Os estudantes não gostam de jogos.",
+        "A compra de materiais já foi aprovada.",
+        "A consulta mostrará que o recreio é curto.",
+        "O uso reduzido motivou uma consulta sobre horários e preferências antes de novas compras."
+      ],
+      "correctAnswer": "O uso reduzido motivou uma consulta sobre horários e preferências antes de novas compras.",
+      "explanation": "O texto relata o uso observado e apresenta uma investigação, não uma explicação fechada.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "OBSERVATION_MISTAKEN_FOR_MOTIVE",
+      "misconceptions": {
+        "Os estudantes não gostam de jogos.": [
+          "OBSERVATION_MISTAKEN_FOR_MOTIVE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "NEIGHBORHOOD_TREES",
+      "statement": "Um levantamento contou árvores em quatro ruas. O conselho quer priorizar plantio onde há menos sombra, após verificar redes subterrâneas e circulação.\n\nQual síntese mantém os critérios de decisão?",
+      "options": [
+        "O plantio deve priorizar áreas com menos sombra, condicionado à verificação de redes e circulação.",
+        "A contagem cobre todas as ruas do bairro.",
+        "As árvores serão plantadas sem vistoria.",
+        "A rua com menos árvores é automaticamente a única prioridade."
+      ],
+      "correctAnswer": "O plantio deve priorizar áreas com menos sombra, condicionado à verificação de redes e circulação.",
+      "explanation": "A proposta combina critério de necessidade e condições locais.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "CONDITION_DROPPED",
+      "misconceptions": {
+        "A contagem cobre todas as ruas do bairro.": [
+          "CONDITION_DROPPED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "QUALIFY",
+      "contextFamily": "SCHOOL_TEXTS",
+      "statement": "Dois grupos leram textos diferentes sobre coleta seletiva. Ambos defenderam orientar o descarte, mas um enfatizou sinalização e o outro, formação dos funcionários.\n\nQual síntese compara as posições sem apagar a diferença?",
+      "options": [
+        "Os grupos discordam sobre a necessidade de orientar.",
+        "Os grupos concordam sobre orientar o descarte, mas propõem meios distintos: sinalização e formação.",
+        "Os dois textos defendem apenas sinalização.",
+        "A formação já foi realizada e resolveu o problema."
+      ],
+      "correctAnswer": "Os grupos concordam sobre orientar o descarte, mas propõem meios distintos: sinalização e formação.",
+      "explanation": "A síntese preserva o ponto comum e diferencia os meios propostos.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "COMMONALITY_OR_DIFFERENCE_ERASED",
+      "misconceptions": {
+        "Os grupos discordam sobre a necessidade de orientar.": [
+          "COMMONALITY_OR_DIFFERENCE_ERASED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_GARDEN_WATER",
+      "statement": "O relatório associa menor irrigação a folhas menores em um canteiro. A professora propôs comparar plantas da mesma espécie em condições controladas.\n\nQual resumo não transforma associação em conclusão?",
+      "options": [
+        "A irrigação foi comprovada como causa única.",
+        "Todas as espécies respondem do mesmo modo.",
+        "O registro sugere uma relação a investigar; a comparação controlada poderá testar se a irrigação contribui para a diferença.",
+        "O relatório não contém observação alguma."
+      ],
+      "correctAnswer": "O registro sugere uma relação a investigar; a comparação controlada poderá testar se a irrigação contribui para a diferença.",
+      "explanation": "A síntese preserva a observação como indício e descreve a proposta de teste.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "ASSOCIATION_AS_CAUSAL_PROOF",
+      "misconceptions": {
+        "A irrigação foi comprovada como causa única.": [
+          "ASSOCIATION_AS_CAUSAL_PROOF"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LOCAL_MARKET",
+      "statement": "Uma reportagem descreve aumento de feirantes aos sábados. Uma entrevista cita dificuldade de encontrar vagas nesse horário. O município avaliará circulação e estacionamento.\n\nQual síntese articula evidência e decisão prevista?",
+      "options": [
+        "A entrevista prova que todos os visitantes não encontram vaga.",
+        "A reportagem diz que a feira ocorre apenas aos sábados.",
+        "O município já decidiu proibir a feira.",
+        "O aumento de feirantes e o relato sobre vagas serão considerados na avaliação de circulação e estacionamento."
+      ],
+      "correctAnswer": "O aumento de feirantes e o relato sobre vagas serão considerados na avaliação de circulação e estacionamento.",
+      "explanation": "A síntese reúne fontes com alcances diferentes e mantém a avaliação como etapa futura.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "SINGLE_SOURCE_OVERGENERALIZED",
+      "misconceptions": {
+        "A entrevista prova que todos os visitantes não encontram vaga.": [
+          "SINGLE_SOURCE_OVERGENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "QUALIFY",
+      "contextFamily": "CLIMATE_GARDEN",
+      "statement": "Em um mês, a horta recebeu menos chuva que no mês anterior. O grupo propôs registrar precipitação e crescimento por mais períodos antes de alterar o calendário de plantio.\n\nQual é a linha argumentativa?",
+      "options": [
+        "Uma diferença mensal justifica ampliar os registros antes de mudar o calendário de plantio.",
+        "Um mês prova uma tendência climática permanente.",
+        "O calendário já foi alterado.",
+        "A chuva não pode influenciar o crescimento."
+      ],
+      "correctAnswer": "Uma diferença mensal justifica ampliar os registros antes de mudar o calendário de plantio.",
+      "explanation": "O resumo preserva a limitação temporal e a decisão de coletar mais dados.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "SHORT_PERIOD_TREATED_AS_TREND",
+      "misconceptions": {
+        "Um mês prova uma tendência climática permanente.": [
+          "SHORT_PERIOD_TREATED_AS_TREND"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_ACCESS",
+      "statement": "Uma visita técnica identificou degrau na entrada lateral. A escola propôs comparar rotas de acesso e consultar usuários antes de definir a intervenção.\n\nQual resumo mantém a participação como parte do processo?",
+      "options": [
+        "A visita confirmou que o prédio inteiro é inacessível.",
+        "A barreira observada levou à comparação de rotas e à consulta de usuários antes da intervenção.",
+        "A intervenção já foi escolhida sem consulta.",
+        "A consulta substitui a avaliação técnica."
+      ],
+      "correctAnswer": "A barreira observada levou à comparação de rotas e à consulta de usuários antes da intervenção.",
+      "explanation": "A síntese inclui diagnóstico, comparação e consulta como etapas complementares.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "PROCESS_STEP_OMITTED",
+      "misconceptions": {
+        "A visita confirmou que o prédio inteiro é inacessível.": [
+          "PROCESS_STEP_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "CLASS_SURVEY",
+      "statement": "Em uma amostra de 24 respostas, 15 estudantes escolheram atividades em grupo. A professora propôs alternar grupos e tarefas individuais para comparar participação.\n\nQual síntese preserva o que a pesquisa mede e o que será observado?",
+      "options": [
+        "A pesquisa mediu aprendizagem e provou que grupos são melhores.",
+        "Todos os estudantes preferem o mesmo formato.",
+        "A maioria das 24 respostas preferiu grupo, e a professora comparará participação em formatos alternados.",
+        "A alternância já mostrou participação igual."
+      ],
+      "correctAnswer": "A maioria das 24 respostas preferiu grupo, e a professora comparará participação em formatos alternados.",
+      "explanation": "Preferência declarada e participação observada são informações distintas; a segunda ainda será acompanhada.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "PREFERENCE_AS_OUTCOME",
+      "misconceptions": {
+        "A pesquisa mediu aprendizagem e provou que grupos são melhores.": [
+          "PREFERENCE_AS_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "QUALIFY",
+      "contextFamily": "NEIGHBORHOOD_ROUTE",
+      "statement": "Um mapa indica trajeto de 1,8 km até a biblioteca. Uma caminhada registrou 25 minutos em um dia de chuva. A equipe quer repetir o percurso em condições comuns.\n\nQual síntese relaciona as fontes sem confundi-las?",
+      "options": [
+        "A chuva aumentou a distância para 1,8 km.",
+        "Todas as caminhadas duram 25 minutos.",
+        "O mapa prova que o trajeto é acessível.",
+        "O mapa informa distância e a caminhada registra tempo em uma condição específica; repetir o trajeto permitirá comparar tempos."
+      ],
+      "correctAnswer": "O mapa informa distância e a caminhada registra tempo em uma condição específica; repetir o trajeto permitirá comparar tempos.",
+      "explanation": "Distância e duração são medidas distintas, e o registro ocorreu sob condição indicada.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "MEASUREMENTS_COLLAPSED",
+      "misconceptions": {
+        "A chuva aumentou a distância para 1,8 km.": [
+          "MEASUREMENTS_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_SUMMARY",
+      "contextFamily": "SCHOOL_READING",
+      "statement": "A leitura semanal foi associada a mais empréstimos de livros. Como a campanha começou no mesmo período, a equipe propôs comparar novos registros e ouvir leitores.\n\nQual resumo conserva a incerteza sobre a causa?",
+      "options": [
+        "Os empréstimos aumentaram junto à leitura semanal, mas a campanha também pode contribuir; novos dados e relatos ajudarão a investigar.",
+        "A leitura semanal causou todo o aumento.",
+        "A campanha não teve qualquer efeito.",
+        "Os novos registros já confirmaram a causa."
+      ],
+      "correctAnswer": "Os empréstimos aumentaram junto à leitura semanal, mas a campanha também pode contribuir; novos dados e relatos ajudarão a investigar.",
+      "explanation": "A síntese menciona associação e explicação alternativa sem atribuir causalidade prematura.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "ALTERNATIVE_EXPLANATION_OMITTED",
+      "misconceptions": {
+        "A leitura semanal causou todo o aumento.": [
+          "ALTERNATIVE_EXPLANATION_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_TRANSPORT_COST",
+      "statement": "Uma proposta prevê ônibus em uma visita. O orçamento cobre combustível, mas ainda não inclui acessibilidade do veículo nem a equipe de acompanhamento.\n\nQual síntese explicita o limite decisório?",
+      "options": [
+        "O orçamento cobre todos os custos da visita.",
+        "O orçamento parcial permite avaliar combustível, mas a decisão depende também dos custos de acessibilidade e acompanhamento.",
+        "A visita é inviável em qualquer veículo.",
+        "A acessibilidade pode ser ignorada porque há combustível."
+      ],
+      "correctAnswer": "O orçamento parcial permite avaliar combustível, mas a decisão depende também dos custos de acessibilidade e acompanhamento.",
+      "explanation": "O resumo separa o que o orçamento cobre dos elementos ainda ausentes.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "MISSING_COSTS_HIDDEN",
+      "misconceptions": {
+        "O orçamento cobre todos os custos da visita.": [
+          "MISSING_COSTS_HIDDEN"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_SUMMARY",
+      "contextFamily": "CITY_PARK",
+      "statement": "A manutenção registrou três bancos danificados em uma praça. Uma consulta recebeu 42 respostas, das quais 29 pediram reparo prioritário. A equipe verificará a segurança antes de definir a ordem.\n\nQual síntese integra quantidades, demanda e próximo passo?",
+      "options": [
+        "Todos os bancos da praça estão danificados.",
+        "A consulta representa necessariamente todos os usuários.",
+        "Três bancos foram registrados como danificados; 29 de 42 respostas priorizaram reparos, que serão ordenados após verificação de segurança.",
+        "Os reparos já foram concluídos."
+      ],
+      "correctAnswer": "Três bancos foram registrados como danificados; 29 de 42 respostas priorizaram reparos, que serão ordenados após verificação de segurança.",
+      "explanation": "A síntese preserva os denominadores e a etapa de segurança que antecede a decisão.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "COUNT_SCOPE_OR_STATUS_CHANGED",
+      "misconceptions": {
+        "Todos os bancos da praça estão danificados.": [
+          "COUNT_SCOPE_OR_STATUS_CHANGED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_WASTE",
+      "statement": "Em duas semanas, a escola pesou resíduos de quatro salas. A maior massa veio da sala com mais estudantes. O grupo quer comparar a massa por pessoa antes de propor metas.\n\nQual síntese respeita a comparação proposta?",
+      "options": [
+        "A sala com maior massa produz mais por estudante.",
+        "A pesagem prova que uma sala desperdiça mais.",
+        "A meta já foi definida para todas as salas.",
+        "A massa total maior pode refletir o número de estudantes; comparar por pessoa ajudará a avaliar o descarte relativo."
+      ],
+      "correctAnswer": "A massa total maior pode refletir o número de estudantes; comparar por pessoa ajudará a avaliar o descarte relativo.",
+      "explanation": "A normalização pelo número de pessoas é necessária antes de comparar taxas relativas.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "TOTAL_CONFUSED_WITH_RATE",
+      "misconceptions": {
+        "A sala com maior massa produz mais por estudante.": [
+          "TOTAL_CONFUSED_WITH_RATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_SUMMARY",
+      "contextFamily": "SCHOOL_EVENT",
+      "statement": "Um evento gratuito recebeu mais visitantes que o anterior. No novo evento, também houve divulgação em mais canais e horário diferente. A equipe propôs registrar esses fatores na próxima avaliação.\n\nQual síntese evita atribuição causal simples?",
+      "options": [
+        "A presença aumentou, mas divulgação e horário também mudaram; a avaliação seguinte registrará os fatores para interpretar a diferença.",
+        "A gratuidade explica sozinha o aumento.",
+        "A divulgação não pode influenciar presença.",
+        "O evento anterior teve menos visitantes por ser pago."
+      ],
+      "correctAnswer": "A presença aumentou, mas divulgação e horário também mudaram; a avaliação seguinte registrará os fatores para interpretar a diferença.",
+      "explanation": "Como várias condições mudaram, a diferença não isola o efeito de uma única delas.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "CONFOUNDING_FACTORS_IGNORED",
+      "misconceptions": {
+        "A gratuidade explica sozinha o aumento.": [
+          "CONFOUNDING_FACTORS_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LIBRARY_HOURS",
+      "statement": "A biblioteca recebeu pedidos para abrir antes das aulas. A equipe estima que a mudança exigiria reorganizar a escala e propôs consultar usuários e funcionários.\n\nQual resumo equilibra benefício solicitado e condição operacional?",
+      "options": [
+        "A biblioteca já abrirá mais cedo todos os dias.",
+        "O pedido por abertura antecipada será avaliado com consulta e análise da escala de trabalho.",
+        "A escala torna o pedido impossível.",
+        "A consulta decidirá sem considerar a equipe."
+      ],
+      "correctAnswer": "O pedido por abertura antecipada será avaliado com consulta e análise da escala de trabalho.",
+      "explanation": "A proposta combina demanda e viabilidade, sem converter nenhuma em decisão definitiva.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "TRADEOFF_ONE_SIDED",
+      "misconceptions": {
+        "A biblioteca já abrirá mais cedo todos os dias.": [
+          "TRADEOFF_ONE_SIDED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_WATER",
+      "statement": "Uma torneira ficou aberta durante a limpeza em três observações. A equipe propôs testar um aviso visual e comparar novas observações nos mesmos horários.\n\nQual síntese descreve um teste verificável?",
+      "options": [
+        "O aviso visual já eliminou o desperdício.",
+        "A torneira fica aberta durante toda a limpeza.",
+        "Após três observações, a equipe testará um aviso visual e comparará registros nos mesmos horários.",
+        "Os horários não precisam ser mantidos iguais."
+      ],
+      "correctAnswer": "Após três observações, a equipe testará um aviso visual e comparará registros nos mesmos horários.",
+      "explanation": "A comparação nos mesmos horários ajuda a avaliar a mudança sem antecipar o resultado.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "TEST_RESULT_INVENTED",
+      "misconceptions": {
+        "O aviso visual já eliminou o desperdício.": [
+          "TEST_RESULT_INVENTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-32",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_EXHIBIT",
+      "statement": "Estudantes propuseram expor trabalhos no corredor. A equipe reconheceu o valor de compartilhar produções, mas pediu verificar circulação, altura de leitura e alternativas acessíveis.\n\nQual síntese mantém propósito e critérios?",
+      "options": [
+        "A exposição será instalada sem avaliação.",
+        "O corredor não pode receber qualquer trabalho.",
+        "Acessibilidade é independente da altura de leitura.",
+        "A exposição pretende compartilhar trabalhos, condicionada a uma organização que preserve circulação e acesso."
+      ],
+      "correctAnswer": "A exposição pretende compartilhar trabalhos, condicionada a uma organização que preserve circulação e acesso.",
+      "explanation": "O resumo preserva objetivo e critérios necessários à implementação.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "IMPLEMENTATION_CRITERIA_DROPPED",
+      "misconceptions": {
+        "A exposição será instalada sem avaliação.": [
+          "IMPLEMENTATION_CRITERIA_DROPPED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-33",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "GARDEN_COMPOST",
+      "statement": "A composteira recebeu restos vegetais e resíduos não identificados. O grupo propôs separar os materiais por tipo e acompanhar odor e temperatura antes de ampliar o uso.\n\nQual síntese representa a sequência proposta?",
+      "options": [
+        "A mistura observada motivou separação por tipo e monitoramento antes de ampliar a composteira.",
+        "A composteira está segura para qualquer resíduo.",
+        "O odor prova que todo material está impróprio.",
+        "O grupo já ampliou o uso."
+      ],
+      "correctAnswer": "A mistura observada motivou separação por tipo e monitoramento antes de ampliar a composteira.",
+      "explanation": "A proposta busca identificar condições e monitorar indicadores antes de expandir.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "READINESS_ASSUMED",
+      "misconceptions": {
+        "A composteira está segura para qualquer resíduo.": [
+          "READINESS_ASSUMED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-34",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "CLASS_FEEDBACK",
+      "statement": "Após uma explicação, 8 de 20 estudantes disseram que ainda tinham dúvidas. A professora propôs recolher perguntas anônimas e revisar os pontos mais citados.\n\nQual síntese mantém o alcance do retorno?",
+      "options": [
+        "A turma inteira não entendeu a explicação.",
+        "Oito de 20 relataram dúvidas; perguntas anônimas orientarão a revisão dos pontos recorrentes.",
+        "As perguntas já foram respondidas.",
+        "O anonimato prova que as dúvidas são iguais."
+      ],
+      "correctAnswer": "Oito de 20 relataram dúvidas; perguntas anônimas orientarão a revisão dos pontos recorrentes.",
+      "explanation": "A síntese preserva quantidade e plano sem generalizar para todos.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "MINORITY_RESPONSE_GENERALIZED",
+      "misconceptions": {
+        "A turma inteira não entendeu a explicação.": [
+          "MINORITY_RESPONSE_GENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-35",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BUS_WAIT",
+      "statement": "Em cinco dias, a espera média foi de 14 minutos. Um dia teve espera de 31 minutos após uma interdição. A equipe quer comparar dias com e sem interrupção.\n\nQual resumo preserva a distinção entre padrão e exceção observada?",
+      "options": [
+        "A espera usual é exatamente 31 minutos.",
+        "A interdição explica todas as esperas.",
+        "A média foi 14 minutos, com um dia de 31 após interdição; a comparação separará condições com e sem interrupção.",
+        "A média prova que nenhum dia excedeu 14 minutos."
+      ],
+      "correctAnswer": "A média foi 14 minutos, com um dia de 31 após interdição; a comparação separará condições com e sem interrupção.",
+      "explanation": "Uma média não descreve todos os dias; a condição excepcional deve ser considerada na comparação.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "AVERAGE_MISTAKEN_FOR_EACH_CASE",
+      "misconceptions": {
+        "A espera usual é exatamente 31 minutos.": [
+          "AVERAGE_MISTAKEN_FOR_EACH_CASE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-36",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_DEVICES",
+      "statement": "A proposta é emprestar tablets para pesquisa. O registro de uma turma mostra uso frequente, mas não inclui manutenção nem acesso fora da escola. A comissão pediu completar a análise.\n\nQual síntese preserva o benefício e as lacunas?",
+      "options": [
+        "O registro prova que todos têm acesso fora da escola.",
+        "A manutenção torna a proposta impossível.",
+        "O empréstimo já foi aprovado para toda a escola.",
+        "O uso observado apoia avaliar o empréstimo, mas manutenção e acesso fora da escola ainda precisam ser analisados."
+      ],
+      "correctAnswer": "O uso observado apoia avaliar o empréstimo, mas manutenção e acesso fora da escola ainda precisam ser analisados.",
+      "explanation": "O dado de uma turma informa uso naquele contexto; não responde às lacunas destacadas.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "EVIDENCE_SCOPE_AND_GAPS_OMITTED",
+      "misconceptions": {
+        "O registro prova que todos têm acesso fora da escola.": [
+          "EVIDENCE_SCOPE_AND_GAPS_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "NEIGHBORHOOD_NOISE",
+      "statement": "Uma medição no portão registrou 68 dB às 8h. Moradores relatam incômodo à noite. A equipe planeja medir em outros horários e pontos antes de sugerir mudanças.\n\nQual resumo conecta corretamente as evidências?",
+      "options": [
+        "A medida descreve o portão às 8h, enquanto os relatos se referem à noite; novas medições compararão horários e locais.",
+        "A medida das 8h representa a noite inteira.",
+        "Os relatos provam que o nível noturno é 68 dB.",
+        "O incômodo foi causado pelo portão."
+      ],
+      "correctAnswer": "A medida descreve o portão às 8h, enquanto os relatos se referem à noite; novas medições compararão horários e locais.",
+      "explanation": "Os dados têm horário e tipo diferentes; a proposta amplia a observação antes de concluir.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "TIME_AND_SOURCE_COLLAPSED",
+      "misconceptions": {
+        "A medida das 8h representa a noite inteira.": [
+          "TIME_AND_SOURCE_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_STUDY",
+      "statement": "Uma turma que participou de encontros de estudo obteve média maior que outra turma. As turmas tinham horários e composição diferentes. A coordenação propôs avaliar outras medidas antes de atribuir o resultado aos encontros.\n\nQual síntese mantém a cautela necessária?",
+      "options": [
+        "Os encontros causaram a diferença.",
+        "A diferença de médias é observada, mas as turmas também diferem; outras medidas são necessárias para avaliar o papel dos encontros.",
+        "Os encontros não podem ajudar em nenhum caso.",
+        "A média elimina diferenças entre as turmas."
+      ],
+      "correctAnswer": "A diferença de médias é observada, mas as turmas também diferem; outras medidas são necessárias para avaliar o papel dos encontros.",
+      "explanation": "Comparação entre grupos distintos não isola por si só o efeito dos encontros.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "GROUP_DIFFERENCE_AS_CAUSAL_PROOF",
+      "misconceptions": {
+        "Os encontros causaram a diferença.": [
+          "GROUP_DIFFERENCE_AS_CAUSAL_PROOF"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "COMMUNITY_GARDEN",
+      "statement": "A proposta de ampliar a horta recebeu apoio em uma reunião com 12 participantes. A ata também registra pedido para manter uma passagem livre. O conselho verificará o desenho antes de votar.\n\nQual síntese contempla apoio, ressalva e decisão pendente?",
+      "options": [
+        "Toda a comunidade aprovou a ampliação.",
+        "A passagem livre impede qualquer horta.",
+        "Participantes apoiaram a ampliação e solicitaram passagem livre; o desenho será verificado antes da votação.",
+        "A votação já ocorreu."
+      ],
+      "correctAnswer": "Participantes apoiaram a ampliação e solicitaram passagem livre; o desenho será verificado antes da votação.",
+      "explanation": "A síntese mantém o escopo da reunião, a condição e o estágio ainda pendente.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "PARTICIPANT_SCOPE_AND_STATUS_LOST",
+      "misconceptions": {
+        "Toda a comunidade aprovou a ampliação.": [
+          "PARTICIPANT_SCOPE_AND_STATUS_LOST"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_RECYCLING",
+      "statement": "Uma campanha aumentou o material separado em três salas. Não houve pesagem do total recolhido. A equipe propôs pesar os sacos e comparar períodos equivalentes.\n\nQual resumo distingue participação de resultado material?",
+      "options": [
+        "A campanha aumentou a reciclagem total comprovadamente.",
+        "A separação não mudou.",
+        "Os sacos pesados já foram comparados.",
+        "A separação aumentou nas salas observadas, mas o total recolhido ainda será medido e comparado."
+      ],
+      "correctAnswer": "A separação aumentou nas salas observadas, mas o total recolhido ainda será medido e comparado.",
+      "explanation": "Separar materiais e medir o total recolhido são indicadores diferentes.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "PROXY_CONFUSED_WITH_OUTCOME",
+      "misconceptions": {
+        "A campanha aumentou a reciclagem total comprovadamente.": [
+          "PROXY_CONFUSED_WITH_OUTCOME"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-41",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_MUSIC",
+      "statement": "Alguns estudantes pediram música no intervalo. A consulta recebeu 16 respostas: 10 favoráveis, quatro contrárias e duas condicionadas a volume baixo. A escola propõe testar em um dia e registrar o nível sonoro.\n\nQual síntese preserva as posições diversas e o teste?",
+      "options": [
+        "Entre 16 respostas, 10 apoiaram, quatro se opuseram e duas condicionaram o apoio; um teste registrará o nível sonoro.",
+        "Todos apoiaram música em qualquer volume.",
+        "A consulta prova que a música será adotada diariamente.",
+        "As duas respostas condicionais são contrárias."
+      ],
+      "correctAnswer": "Entre 16 respostas, 10 apoiaram, quatro se opuseram e duas condicionaram o apoio; um teste registrará o nível sonoro.",
+      "explanation": "A síntese preserva as categorias e deixa claro que a adoção será testada.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "RESPONSE_CATEGORIES_COLLAPSED",
+      "misconceptions": {
+        "Todos apoiaram música em qualquer volume.": [
+          "RESPONSE_CATEGORIES_COLLAPSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-42",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_LUNCH",
+      "statement": "O conselho propôs ampliar o intervalo para reduzir pressa na refeição. A grade mostra que isso reduziria em dez minutos outra atividade. A comissão comparará opções de horário e ouvirá as turmas.\n\nQual resumo contempla objetivo, custo e método de decisão?",
+      "options": [
+        "A ampliação já foi aprovada sem impacto.",
+        "A ampliação busca reduzir a pressa, mas afeta outra atividade; horários alternativos serão comparados com consulta às turmas.",
+        "A outra atividade é dispensável.",
+        "A consulta medirá apenas a duração da refeição."
+      ],
+      "correctAnswer": "A ampliação busca reduzir a pressa, mas afeta outra atividade; horários alternativos serão comparados com consulta às turmas.",
+      "explanation": "A síntese representa ambos os efeitos e o processo comparativo previsto.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "TRADEOFF_OMITTED",
+      "misconceptions": {
+        "A ampliação já foi aprovada sem impacto.": [
+          "TRADEOFF_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-43",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_HEAT",
+      "statement": "A estação registrou temperaturas maiores no pátio sem sombra que no pátio arborizado em quatro tardes. O grupo propôs repetir as medições e considerar orientação e horário.\n\nQual síntese preserva o recorte e a próxima verificação?",
+      "options": [
+        "A árvore é a única causa da diferença.",
+        "O padrão ocorre em todos os meses.",
+        "Em quatro tardes, o pátio sem sombra teve temperaturas maiores; novas medições considerarão orientação e horário.",
+        "As novas medições já confirmaram o resultado."
+      ],
+      "correctAnswer": "Em quatro tardes, o pátio sem sombra teve temperaturas maiores; novas medições considerarão orientação e horário.",
+      "explanation": "O resumo informa número de tardes e variáveis adicionais que podem influenciar a comparação.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "SMALL_SAMPLE_AND_ALTERNATIVES_OMITTED",
+      "misconceptions": {
+        "A árvore é a única causa da diferença.": [
+          "SMALL_SAMPLE_AND_ALTERNATIVES_OMITTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-44",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_NEWS",
+      "statement": "A escola publicou notícias em dois canais. O canal digital teve mais visualizações, mas a equipe ainda não sabe quantas pessoas diferentes acessaram os dois. Uma nova pesquisa perguntará qual canal foi visto.\n\nQual síntese diferencia visualizações de alcance de pessoas?",
+      "options": [
+        "Mais visualizações significam mais pessoas diferentes.",
+        "O canal impresso não foi consultado.",
+        "A pesquisa já provou preferência pelo digital.",
+        "O canal digital acumulou mais visualizações, mas o número de pessoas únicas e o alcance entre canais serão investigados."
+      ],
+      "correctAnswer": "O canal digital acumulou mais visualizações, mas o número de pessoas únicas e o alcance entre canais serão investigados.",
+      "explanation": "Visualizações podem incluir acessos repetidos; alcance individual não foi medido.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "VIEWS_AS_UNIQUE_PEOPLE",
+      "misconceptions": {
+        "Mais visualizações significam mais pessoas diferentes.": [
+          "VIEWS_AS_UNIQUE_PEOPLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-45",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_LIBRARY",
+      "statement": "A proposta de estender o horário recebeu 31 apoios em formulário online. O formulário não perguntou sobre disponibilidade dos funcionários nem ouviu quem não usa a plataforma.\n\nQual síntese identifica o apoio e seus limites?",
+      "options": [
+        "O formulário registrou 31 apoios entre respondentes online, mas não avaliou escala de trabalho nem alcançou quem não usa a plataforma.",
+        "A escola inteira apoia a mudança.",
+        "A mudança é viável porque recebeu apoios.",
+        "Quem não respondeu é contrário."
+      ],
+      "correctAnswer": "O formulário registrou 31 apoios entre respondentes online, mas não avaliou escala de trabalho nem alcançou quem não usa a plataforma.",
+      "explanation": "A síntese preserva o alcance dos respondentes e as questões ainda não avaliadas.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "SUPPORT_COUNT_AS_FEASIBILITY",
+      "misconceptions": {
+        "A escola inteira apoia a mudança.": [
+          "SUPPORT_COUNT_AS_FEASIBILITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-46",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SCHOOL_SOLAR",
+      "statement": "Um projeto estima geração solar anual com base em dias ensolarados. A equipe propôs incluir meses nublados, manutenção e consumo por horário antes de comparar economia.\n\nQual síntese reúne as lacunas relevantes?",
+      "options": [
+        "A estimativa já garante economia anual.",
+        "A estimativa inicial será revista com variação do tempo, manutenção e perfil de consumo antes de concluir a economia.",
+        "Dias nublados tornam energia solar inútil.",
+        "Manutenção não altera a análise."
+      ],
+      "correctAnswer": "A estimativa inicial será revista com variação do tempo, manutenção e perfil de consumo antes de concluir a economia.",
+      "explanation": "A proposta reconhece fatores que faltam para uma comparação anual completa.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "ESTIMATE_AS_GUARANTEE",
+      "misconceptions": {
+        "A estimativa já garante economia anual.": [
+          "ESTIMATE_AS_GUARANTEE"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-summarize-argument-47",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SCHOOL_GARDEN_FINAL",
+      "statement": "Um relatório encontrou mais polinizadores em canteiros com flores observados em dois dias. A equipe quer repetir em outras semanas e registrar clima, horário e número de observações.\n\nQual síntese preserva o achado sem extrapolar sua força?",
+      "options": [
+        "Flores sempre aumentam polinizadores em qualquer lugar.",
+        "O clima não interfere nas observações.",
+        "Em dois dias, os canteiros floridos tiveram mais polinizadores; novas observações controlarão período e condições para avaliar se o padrão se mantém.",
+        "O padrão já foi comprovado para o ano inteiro."
+      ],
+      "correctAnswer": "Em dois dias, os canteiros floridos tiveram mais polinizadores; novas observações controlarão período e condições para avaliar se o padrão se mantém.",
+      "explanation": "A síntese registra o resultado localizado e descreve variáveis para testar sua consistência.",
+      "hint": "Separe a ideia principal, as razões ou evidências e a proposta. Preserve o alcance e o que ainda não foi confirmado.",
+      "errorFocus": "LOCAL_OBSERVATION_UNIVERSALIZED",
+      "misconceptions": {
+        "Flores sempre aumentam polinizadores em qualquer lugar.": [
+          "LOCAL_OBSERVATION_UNIVERSALIZED"
+        ]
+      }
+    }
+  ]
+}

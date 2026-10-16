@@ -5,22 +5,22 @@
   "domain": "TERRITORIO",
   "topic": "uso_acesso_redes_e_representacao_espacial",
   "canonicalSkillCode": "GEOGRAPHY_INTERPRET_TERRITORY",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "lessonVersion": 1,
-  "expectedQuestionCount": 24,
-  "expectedContextCount": 24,
+  "expectedQuestionCount": 28,
+  "expectedContextCount": 28,
   "expectedPurposeCounts": {
     "PROBE": 4,
     "PRACTICE": 10,
     "TRANSFER": 5,
     "LOCK_IN": 3,
-    "REVIEW": 2
+    "REVIEW": 6
   },
   "expectedAnswerPositionCounts": {
-    "A": 6,
-    "B": 6,
-    "C": 6,
-    "D": 6
+    "A": 7,
+    "B": 7,
+    "C": 7,
+    "D": 7
   },
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -94,7 +94,7 @@
       "v3-geography-geography_territory-12",
       "v4-authored-geography-review-01"
     ],
-    "newQuestions": 24,
+    "newQuestions": 28,
     "reusedQuestionsCountedAsNew": false
   },
   "lesson": {
@@ -175,7 +175,11 @@
         "focus": "Reaplicar leitura de mapa e critérios de acessibilidade territorial.",
         "questionIds": [
           "v5-geography-interpret-territory-23",
-          "v5-geography-interpret-territory-24"
+          "v5-geography-interpret-territory-24",
+          "v5-geography-interpret-territory-25",
+          "v5-geography-interpret-territory-26",
+          "v5-geography-interpret-territory-27",
+          "v5-geography-interpret-territory-28"
         ]
       }
     ],
@@ -890,6 +894,98 @@
       "misconceptions": {
         "Somente a distância ao centro, sem observar trajetos ou serviços.": [
           "ACCESSIBILITY_REDUCED_TO_DISTANCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-interpret-territory-25",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY_MAP_SCOPE",
+      "contextFamily": "LEGEND_AND_RECUT_RECHECK",
+      "statement": "A legenda informa que um mapa mostra apenas ciclovias municipais. Uma rua sem símbolo aparece no recorte. O que se pode concluir?",
+      "options": [
+        "A ciclovia não está representada nessa rua no mapa; isso não prova que nenhum tipo de rota exista ali.",
+        "A rua não existe.",
+        "Não há qualquer forma de circulação nessa rua.",
+        "Todas as ciclovias da região estão fora do mapa."
+      ],
+      "correctAnswer": "A ciclovia não está representada nessa rua no mapa; isso não prova que nenhum tipo de rota exista ali.",
+      "explanation": "O mapa representa uma categoria específica. A ausência do símbolo limita o que está mapeado, não descreve todas as formas de circulação no local.",
+      "hint": "Use a legenda para delimitar exatamente o que a ausência do símbolo significa.",
+      "errorFocus": "MAP_ABSENCE_TREATED_AS_REAL_ABSENCE",
+      "misconceptions": {
+        "A rua não existe.": [
+          "MAP_ABSENCE_TREATED_AS_REAL_ABSENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-interpret-territory-26",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE_ACCESS",
+      "contextFamily": "DISTANCE_AND_ACCESS_RECHECK",
+      "statement": "Dois bairros estão a 2 km de um hospital; um tem ônibus a cada 10 minutos e o outro, um ônibus por dia. Que comparação é sustentada?",
+      "options": [
+        "Os moradores têm acesso idêntico porque a distância é igual.",
+        "A distância indicada é igual, mas a frequência de transporte informada difere; o acesso completo depende de outros fatores.",
+        "O bairro com ônibus diário não tem nenhuma conexão.",
+        "A frequência prova qual bairro tem melhor atendimento médico."
+      ],
+      "correctAnswer": "A distância indicada é igual, mas a frequência de transporte informada difere; o acesso completo depende de outros fatores.",
+      "explanation": "Distância e frequência são dimensões diferentes. A situação não informa tarifa, capacidade, horários adequados, barreiras nem atendimento.",
+      "hint": "Compare cada dimensão explicitamente informada e nomeie o que ainda falta.",
+      "errorFocus": "DISTANCE_USED_AS_ONLY_ACCESS_MEASURE",
+      "misconceptions": {
+        "Os moradores têm acesso idêntico porque a distância é igual.": [
+          "DISTANCE_USED_AS_ONLY_ACCESS_MEASURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-interpret-territory-27",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH_OBSERVATION_CAUSE",
+      "contextFamily": "LAND_USE_CHANGE_RECHECK",
+      "statement": "Duas imagens datadas mostram um terreno com vegetação em 2018 e pavimentado em 2024. O que a comparação demonstra diretamente?",
+      "options": [
+        "Uma obra específica causou a mudança, mesmo sem informação sobre ela.",
+        "A temperatura do bairro aumentou em uma quantidade conhecida.",
+        "A cobertura representada mudou entre as datas; a causa da mudança não é determinada só pelas imagens.",
+        "Todos os terrenos da cidade passaram pela mesma mudança."
+      ],
+      "correctAnswer": "A cobertura representada mudou entre as datas; a causa da mudança não é determinada só pelas imagens.",
+      "explanation": "As imagens documentam a diferença visual entre dois momentos. Para explicar causa ou generalizar, são necessárias outras fontes e áreas observadas.",
+      "hint": "Descreva a mudança visível separadamente de sua explicação.",
+      "errorFocus": "VISUAL_CHANGE_OVEREXTENDED_TO_CAUSE",
+      "misconceptions": {
+        "Uma obra específica causou a mudança, mesmo sem informação sobre ela.": [
+          "VISUAL_CHANGE_OVEREXTENDED_TO_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-interpret-territory-28",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH_CONCEPTS",
+      "contextFamily": "LANDSCAPE_TERRITORY_NETWORK_RECHECK",
+      "statement": "Uma praça tem árvores visíveis, regras de horário e linhas de ônibus que conectam bairros a ela. Qual associação dos conceitos é mais adequada?",
+      "options": [
+        "Os três conceitos significam somente a aparência das árvores.",
+        "A rede corresponde às regras de horário, e território é apenas a distância.",
+        "Paisagem e rede são sinônimos de transporte.",
+        "Árvores compõem aspectos da paisagem; regras envolvem uso e controle do território; linhas de ônibus formam conexões de uma rede."
+      ],
+      "correctAnswer": "Árvores compõem aspectos da paisagem; regras envolvem uso e controle do território; linhas de ônibus formam conexões de uma rede.",
+      "explanation": "A situação reúne dimensões distintas: elementos observáveis, organização do uso e conexões entre lugares.",
+      "hint": "Associe cada conceito ao foco que ele ajuda a analisar.",
+      "errorFocus": "GEOGRAPHIC_CONCEPTS_COLLAPSED",
+      "misconceptions": {
+        "Os três conceitos significam somente a aparência das árvores.": [
+          "GEOGRAPHIC_CONCEPTS_COLLAPSED"
         ]
       }
     }

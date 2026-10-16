@@ -5,6 +5,11 @@ import { buildMigration, validateQuestionFirstPack } from './compile-question-fi
 import { buildComputingPhishingPack } from './build-computing-phishing-v5.mjs';
 import { buildScienceHumanDiversityPack } from './build-science-human-diversity-v5.mjs';
 import { buildHistoryCompareCausesPack } from './build-history-causes-v5.mjs';
+import { buildHistoryChangeContinuityPack } from './build-history-change-continuity-v5.mjs';
+import { buildHistoryComparePerspectivesPack } from './build-history-compare-perspectives-v5.mjs';
+import { buildHistoryMemoryEvidencePack } from './build-history-memory-evidence-v5.mjs';
+import { buildMathPercentBasePack } from './build-math-percent-base-v5.mjs';
+import { buildMathPercentIncreasePack } from './build-math-percent-increase-v5.mjs';
 import { buildMathRatioUnitRatePack } from './build-math-ratio-rate-v5.mjs';
 import { buildPhysicalEducationAuthenticPacks } from './build-physical-education-authentic-v5.mjs';
 import { buildPortugueseConnectIdeasPack } from './build-portuguese-connect-ideas-v5.mjs';
@@ -25,6 +30,7 @@ import { buildPhysicsAverageSpeedPack } from './build-physics-average-speed-v5.m
 import { buildPhysicsMotionGraphPack } from './build-physics-motion-graph-v5.mjs';
 import { buildEnglishInferencePack } from './build-english-inference-v5.mjs';
 import { buildPhysicsUnitConversionPack } from './build-physics-unit-conversion-v5.mjs';
+import { buildPhysicsMotionPacks } from './build-physics-motion-v5.mjs';
 import { buildSociologyInequalityDataPack } from './build-sociology-inequality-data-v5.mjs';
 import { buildSociologyNormValuePack } from './build-sociology-norm-value-v5.mjs';
 import { buildSociologyInstitutionsPack } from './build-sociology-institutions-v5.mjs';
@@ -37,11 +43,17 @@ import { buildEnglishRelateLanguageCulturePack } from './build-english-relate-la
 import { buildEnglishContextVocabularyPack } from './build-english-context-vocabulary-v5.mjs';
 import { buildGeographyClimateDataPack } from './build-geography-climate-data-v5.mjs';
 import { buildGeographyInterpretTerritoryPack } from './build-geography-interpret-territory-v5.mjs';
+import { buildGeographyMapScalePack } from './build-geography-map-scale-v5.mjs';
 import { buildLanguagesCollaborationPack } from './build-languages-collaboration-v5.mjs';
 import { buildMathRiskPack } from './build-math-risk-v5.mjs';
 import { buildMathPositionPack } from './build-math-position-v5.mjs';
 import { buildPortugueseSignsPack } from './build-portuguese-signs-v5.mjs';
+import { buildPortugueseCompareSourcesPack } from './build-portuguese-compare-sources-v5.mjs';
+import { buildPortugueseReasonEvidencePack } from './build-portuguese-reason-evidence-v5.mjs';
+import { buildPortugueseCounterargumentPack } from './build-portuguese-counterargument-v5.mjs';
+import { buildPortugueseSummarizeArgumentPack } from './build-portuguese-summarize-argument-v5.mjs';
 import { buildReligiousInclusionPack } from './build-religious-inclusion-v5.mjs';
+import { buildWave2ContentGapPacks } from './build-wave2-content-gaps-v5.mjs';
 
 const pack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/math-successive-percent-change.json', import.meta.url), 'utf8'));
 const migration = readFileSync(new URL('../../supabase/migrations/20261012000700_bncc_question_first_content_staging_v5.sql', import.meta.url), 'utf8');
@@ -66,6 +78,34 @@ const scienceHumanDiversityPack = JSON.parse(readFileSync(new URL('../../content
 const scienceHumanDiversityMigration = readFileSync(new URL('../../supabase/migrations/20261013001300_bncc_science_human_diversity_question_first_v5.sql', import.meta.url), 'utf8');
 const historyCausesPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/history-compare-causes.json', import.meta.url), 'utf8'));
 const historyCausesMigration = readFileSync(new URL('../../supabase/migrations/20261013001400_bncc_history_compare_causes_question_first_v5.sql', import.meta.url), 'utf8');
+const historyChangePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/history-change-continuity.json', import.meta.url), 'utf8'));
+const historyChangeMigration = readFileSync(new URL('../../supabase/migrations/20261015001200_bncc_history_change_continuity_question_first_v5.sql', import.meta.url), 'utf8');
+const historyChangeLegacyQuestions = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v4/subjects/history/questions.json', import.meta.url), 'utf8'))
+  .filter((question) => question.primarySkill === 'HISTORY_ANALYZE_CHANGE_CONTINUITY');
+const historyPerspectivesPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/history-compare-perspectives.json', import.meta.url), 'utf8'));
+const historyPerspectivesMigration = readFileSync(new URL('../../supabase/migrations/20261015001300_bncc_history_compare_perspectives_question_first_v5.sql', import.meta.url), 'utf8');
+const historyPerspectivesLegacyQuestions = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v4/subjects/history/questions.json', import.meta.url), 'utf8'))
+  .filter((question) => question.primarySkill === 'HISTORY_COMPARE_PERSPECTIVES');
+const historyMemoryPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/history-memory-evidence.json', import.meta.url), 'utf8'));
+const historyMemoryMigration = readFileSync(new URL('../../supabase/migrations/20261015001400_bncc_history_memory_evidence_question_first_v5.sql', import.meta.url), 'utf8');
+const historyMemoryLegacyQuestions = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v4/subjects/history/questions.json', import.meta.url), 'utf8'))
+  .filter((question) => question.primarySkill === 'HISTORY_DISTINGUISH_MEMORY_HISTORY');
+const mathPercentBasePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/math-percent-base.json', import.meta.url), 'utf8'));
+const mathPercentBaseMigration = readFileSync(new URL('../../supabase/migrations/20261015001500_bncc_math_percent_base_question_first_v5.sql', import.meta.url), 'utf8');
+const mathPercentBaseLegacyQuestions = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v4/subjects/mathematics/questions.json', import.meta.url), 'utf8'))
+  .filter((question) => question.primarySkill === 'MATH_IDENTIFY_PERCENT_BASE');
+const mathPercentIncreasePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/math-percent-increase.json', import.meta.url), 'utf8'));
+const mathPercentIncreaseMigration = readFileSync(new URL('../../supabase/migrations/20261015001600_bncc_math_percent_increase_question_first_v5.sql', import.meta.url), 'utf8');
+const mathPercentIncreaseLegacyQuestions = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v4/subjects/mathematics/questions.json', import.meta.url), 'utf8'))
+  .filter((question) => question.primarySkill === 'MATH_PERCENT_INCREASE');
+const portugueseCompareSourcesPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/portuguese-compare-sources.json', import.meta.url), 'utf8'));
+const portugueseCompareSourcesMigration = readFileSync(new URL('../../supabase/migrations/20261015002000_bncc_portuguese_compare_sources_question_first_v5.sql', import.meta.url), 'utf8');
+const portugueseReasonEvidencePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/portuguese-reason-evidence.json', import.meta.url), 'utf8'));
+const portugueseReasonEvidenceMigration = readFileSync(new URL('../../supabase/migrations/20261015002100_bncc_portuguese_reason_evidence_question_first_v5.sql', import.meta.url), 'utf8');
+const portugueseCounterargumentPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/portuguese-counterargument.json', import.meta.url), 'utf8'));
+const portugueseCounterargumentMigration = readFileSync(new URL('../../supabase/migrations/20261015002200_bncc_portuguese_counterargument_question_first_v5.sql', import.meta.url), 'utf8');
+const portugueseSummarizeArgumentPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/portuguese-summarize-argument.json', import.meta.url), 'utf8'));
+const portugueseSummarizeArgumentMigration = readFileSync(new URL('../../supabase/migrations/20261015002300_bncc_portuguese_summarize_argument_question_first_v5.sql', import.meta.url), 'utf8');
 const mathRatioRatePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/math-ratio-unit-rate.json', import.meta.url), 'utf8'));
 const mathRatioRateMigration = readFileSync(new URL('../../supabase/migrations/20261013001500_bncc_math_ratio_unit_rate_question_first_v5.sql', import.meta.url), 'utf8');
 const physicalEducationPacks = buildPhysicalEducationAuthenticPacks();
@@ -138,6 +178,8 @@ const geographyClimateDataPack = JSON.parse(readFileSync(new URL('../../content/
 const geographyClimateDataMigration = readFileSync(new URL('../../supabase/migrations/20261015000900_bncc_geography_climate_data_question_first_v5.sql', import.meta.url), 'utf8');
 const geographyInterpretTerritoryPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/geography-interpret-territory.json', import.meta.url), 'utf8'));
 const geographyInterpretTerritoryMigration = readFileSync(new URL('../../supabase/migrations/20261015001000_bncc_geography_interpret_territory_question_first_v5.sql', import.meta.url), 'utf8');
+const geographyMapScalePack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/geography-map-scale.json', import.meta.url), 'utf8'));
+const geographyMapScaleMigration = readFileSync(new URL('../../supabase/migrations/20261015001100_bncc_geography_map_scale_question_first_v5.sql', import.meta.url), 'utf8');
 const humanitiesProductionPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/humanities-production-impacts.json', import.meta.url), 'utf8'));
 const languagesSemioticPack = JSON.parse(readFileSync(new URL('../../content/adaptive/tec-escola-core-v5/languages-semiotic-function.json', import.meta.url), 'utf8'));
 const portugueseVariationMigration = readFileSync(new URL('../../supabase/migrations/20261013000100_bncc_portuguese_variation_question_first_v5.sql', import.meta.url), 'utf8');
@@ -760,6 +802,149 @@ describe('question-first V5 staging content', () => {
     expect(historyCausesMigration).toContain("'publication_status', 'STAGING'");
     expect(historyCausesMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(historyCausesMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('stages change-and-continuity questions with source limits and a contextual evidence activity', () => {
+    const result = validateQuestionFirstPack(historyChangePack);
+    expect(historyChangePack).toEqual(buildHistoryChangeContinuityPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 40,
+      contextCount: 40,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 5, REVIEW: 11 },
+      answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+    });
+    expect(historyChangePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(historyChangePack.sourceQuestionFeedback).toHaveLength(1);
+    expect(historyChangePack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 1, feedbackAdded: 1, sourceReconciliationStatus: 'EXACT', newQuestions: 40, reusedQuestionsCountedAsNew: false });
+    expect(historyChangePack.lesson.microExplanations).toHaveLength(6);
+    expect(historyChangePack.lesson.remediations).toHaveLength(6);
+    expect(historyChangePack.lesson.authenticActivities).toHaveLength(1);
+    expect(historyChangePack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(historyChangePack.lesson.authenticActivities[0].context).toContain('hipotéticos');
+    expect(historyChangePack.publicationStatus).toBe('STAGING');
+    expect(historyChangePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(historyChangePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(historyChangeLegacyQuestions).toHaveLength(1);
+    const sourceCounts = Object.fromEntries(['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'].map((purpose) => [
+      purpose,
+      historyChangeLegacyQuestions.filter((question) => question.purpose === purpose).length,
+    ]));
+    expect(Object.fromEntries(Object.entries(result.counts).map(([purpose, count]) => [purpose, count + sourceCounts[purpose]]))).toEqual({
+      PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 11,
+    });
+    expect(historyChangeMigration).toBe(buildMigration(historyChangePack));
+    expect(historyChangeMigration).toContain("'HISTORY_ANALYZE_CHANGE_CONTINUITY'");
+    expect(historyChangeMigration).toContain("'publication_status', 'STAGING'");
+    expect(historyChangeMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(historyChangeMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(historyChangeMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('stages a progressive source-perspectives sequence without presenting hypothetical excerpts as historical records', () => {
+    const result = validateQuestionFirstPack(historyPerspectivesPack);
+    expect(historyPerspectivesPack).toEqual(buildHistoryComparePerspectivesPack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 40,
+      contextCount: 40,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 },
+      answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+    });
+    expect(historyPerspectivesPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(historyPerspectivesPack.sourceQuestionFeedback).toHaveLength(1);
+    expect(historyPerspectivesPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 1, feedbackAdded: 1, sourceReconciliationStatus: 'EXACT', newQuestions: 40, reusedQuestionsCountedAsNew: false });
+    expect(historyPerspectivesPack.lesson.microExplanations).toHaveLength(6);
+    expect(historyPerspectivesPack.lesson.remediations).toHaveLength(6);
+    expect(historyPerspectivesPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(historyPerspectivesPack.lesson.authenticActivities[0].context).toContain('hipotéticos');
+    expect(historyPerspectivesPack.lesson.copyrightNote).toContain('não devem ser apresentadas como documentos reais');
+    expect(historyPerspectivesPack.publicationStatus).toBe('STAGING');
+    expect(historyPerspectivesPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(historyPerspectivesPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(historyPerspectivesLegacyQuestions).toHaveLength(1);
+    expect(historyPerspectivesMigration).toBe(buildMigration(historyPerspectivesPack));
+    expect(historyPerspectivesMigration).toContain("'HISTORY_COMPARE_PERSPECTIVES'");
+    expect(historyPerspectivesMigration).toContain("'publication_status', 'STAGING'");
+    expect(historyPerspectivesMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(historyPerspectivesMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(historyPerspectivesMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('stages memory and historical evidence with ethical, non-disclosive activities', () => {
+    const result = validateQuestionFirstPack(historyMemoryPack);
+    expect(historyMemoryPack).toEqual(buildHistoryMemoryEvidencePack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 40,
+      contextCount: 40,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 },
+      answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+    });
+    expect(historyMemoryPack.sourceQuestionFeedback).toHaveLength(1);
+    expect(historyMemoryPack.lesson.microExplanations).toHaveLength(6);
+    expect(historyMemoryPack.lesson.remediations).toHaveLength(6);
+    expect(historyMemoryPack.lesson.authenticActivities[0].privacyGuard).toContain('Não coletar história familiar');
+    expect(historyMemoryPack.lesson.authenticActivities[0].safety).toContain('Não obrigar relatos pessoais');
+    expect(historyMemoryPack.lesson.copyrightNote).toContain('Nenhum relato hipotético');
+    expect(historyMemoryLegacyQuestions).toHaveLength(1);
+    expect(historyMemoryPack.publicationStatus).toBe('STAGING');
+    expect(historyMemoryPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(historyMemoryPack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(historyMemoryMigration).toBe(buildMigration(historyMemoryPack));
+    expect(historyMemoryMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('teaches percent bases across initial values, subgroups and successive changes', () => {
+    const result = validateQuestionFirstPack(mathPercentBasePack);
+    expect(mathPercentBasePack).toEqual(buildMathPercentBasePack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 40,
+      contextCount: 40,
+      answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+    });
+    expect(mathPercentBasePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(mathPercentBasePack.sourceQuestionFeedback).toHaveLength(8);
+    expect(mathPercentBasePack.lesson.microExplanations).toHaveLength(6);
+    expect(mathPercentBasePack.lesson.remediations).toHaveLength(6);
+    expect(mathPercentBasePack.lesson.authenticActivities[0].privacyGuard).toContain('Não inserir nomes');
+    expect(mathPercentBasePack.publicationStatus).toBe('STAGING');
+    expect(mathPercentBasePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(mathPercentBasePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    const combinedCounts = Object.fromEntries(['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'].map((purpose) => [
+      purpose,
+      [...mathPercentBasePack.questions, ...mathPercentBaseLegacyQuestions].filter((question) => question.purpose === purpose).length,
+    ]));
+    expect(combinedCounts).toEqual({ PROBE: 6, PRACTICE: 16, TRANSFER: 9, LOCK_IN: 6, REVIEW: 11 });
+    expect(mathPercentBaseMigration).toBe(buildMigration(mathPercentBasePack));
+    expect(mathPercentBaseMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('stages percent-increase calculations with distinct base, change and final-value reasoning', () => {
+    const result = validateQuestionFirstPack(mathPercentIncreasePack);
+    expect(mathPercentIncreasePack).toEqual(buildMathPercentIncreasePack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 40,
+      contextCount: 40,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 },
+      answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+    });
+    expect(mathPercentIncreasePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(new Set(mathPercentIncreasePack.questions.filter(({ purpose }) => purpose === 'TRANSFER').map(({ cognitiveProcess }) => cognitiveProcess)).size).toBeGreaterThanOrEqual(3);
+    expect(mathPercentIncreasePack.sourceQuestionFeedback).toHaveLength(10);
+    expect(mathPercentIncreasePack.lesson.microExplanations).toHaveLength(6);
+    expect(mathPercentIncreasePack.lesson.remediations).toHaveLength(6);
+    expect(mathPercentIncreasePack.publicationStatus).toBe('STAGING');
+    expect(mathPercentIncreasePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(mathPercentIncreasePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(mathPercentIncreaseLegacyQuestions).toHaveLength(10);
+    expect(mathPercentIncreaseMigration).toBe(buildMigration(mathPercentIncreasePack));
+    expect(mathPercentIncreaseMigration).toContain("'MATH_PERCENT_INCREASE'");
+    expect(mathPercentIncreaseMigration).toContain("'publication_status', 'STAGING'");
+    expect(mathPercentIncreaseMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(mathPercentIncreaseMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('deepens unit-rate reasoning across conversions, comparisons, and non-proportional cases', () => {
@@ -1475,6 +1660,10 @@ describe('question-first V5 staging content', () => {
     expect(artInterpretPack.lesson.microExplanations).toHaveLength(5);
     expect(artInterpretPack.lesson.remediations).toHaveLength(5);
     expect(artInterpretPack.lesson.remediations.some(({ id }) => id === 'ACCESSIBLE_DESCRIPTION')).toBe(true);
+    expect(artInterpretPack.contentVersion).toBe(7);
+    expect(artInterpretPack.lesson.authenticActivities).toHaveLength(1);
+    expect(artInterpretPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(artInterpretPack.lesson.authenticActivities[0].privacyGuard).toContain('Não inclua rostos');
     expect(artInterpretPack.publicationStatus).toBe('STAGING');
     expect(artInterpretPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
     expect(artInterpretPack.officialMappingStatus).toBe('NOT_CLAIMED');
@@ -1516,6 +1705,10 @@ describe('question-first V5 staging content', () => {
     expect(artContextPack.sourceQuestionFeedback).toHaveLength(24);
     expect(artContextPack.lesson.microExplanations).toHaveLength(5);
     expect(artContextPack.lesson.remediations).toHaveLength(5);
+    expect(artContextPack.contentVersion).toBe(7);
+    expect(artContextPack.lesson.authenticActivities).toHaveLength(1);
+    expect(artContextPack.lesson.authenticActivities[0].rubric).toHaveLength(3);
+    expect(artContextPack.lesson.authenticActivities[0].privacyGuard).toContain('Não publique entrevistas');
     expect(artContextPack.questions.some(({ options, explanation }) => [...options, explanation].some((text) => text.includes('toda a comunidade')))).toBe(true);
     expect(artContextPack.publicationStatus).toBe('STAGING');
     expect(artContextPack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
@@ -1536,17 +1729,17 @@ describe('question-first V5 staging content', () => {
     expect(computingTablePack).toEqual(buildComputingReadTableDataPack());
     expect(result).toMatchObject({
       valid: true,
-      questionCount: 24,
-      contextCount: 24,
-      counts: { PROBE: 4, PRACTICE: 11, TRANSFER: 5, LOCK_IN: 2, REVIEW: 2 },
-      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+      questionCount: 34,
+      contextCount: 34,
+      counts: { PROBE: 4, PRACTICE: 11, TRANSFER: 7, LOCK_IN: 4, REVIEW: 8 },
+      answerPositionCounts: { A: 9, B: 9, C: 8, D: 8 },
     });
     expect(computingTablePack.sourceQuestionFeedback).toHaveLength(8);
     expect(computingTablePack.sourceReconciliation).toMatchObject({
       sourceQuestionCount: 8,
       feedbackAdded: 8,
       sourceReconciliationStatus: 'EXACT',
-      newQuestions: 24,
+      newQuestions: 34,
       reusedQuestionsCountedAsNew: false,
     });
     expect(computingTablePack.sourceReconciliation.outOfScopeLegacyQuestionIds).toEqual([
@@ -1576,10 +1769,10 @@ describe('question-first V5 staging content', () => {
     expect(computingTracePack).toEqual(buildComputingTraceAlgorithmPack());
     expect(result).toMatchObject({
       valid: true,
-      questionCount: 27,
-      contextCount: 27,
-      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 6, LOCK_IN: 3, REVIEW: 2 },
-      answerPositionCounts: { A: 7, B: 7, C: 7, D: 6 },
+      questionCount: 38,
+      contextCount: 38,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 5, REVIEW: 9 },
+      answerPositionCounts: { A: 10, B: 10, C: 9, D: 9 },
     });
     expect(computingTracePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
     expect(computingTracePack.sourceQuestionFeedback).toHaveLength(9);
@@ -1603,10 +1796,10 @@ describe('question-first V5 staging content', () => {
     expect(englishCulturePack).toEqual(buildEnglishRelateLanguageCulturePack());
     expect(result).toMatchObject({
       valid: true,
-      questionCount: 29,
-      contextCount: 29,
-      counts: { PROBE: 4, PRACTICE: 11, TRANSFER: 8, LOCK_IN: 3, REVIEW: 3 },
-      answerPositionCounts: { A: 8, B: 7, C: 7, D: 7 },
+      questionCount: 33,
+      contextCount: 33,
+      counts: { PROBE: 4, PRACTICE: 11, TRANSFER: 8, LOCK_IN: 3, REVIEW: 7 },
+      answerPositionCounts: { A: 9, B: 8, C: 8, D: 8 },
     });
     expect(englishCulturePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
     expect(englishCulturePack.sourceQuestionFeedback).toHaveLength(20);
@@ -1614,7 +1807,7 @@ describe('question-first V5 staging content', () => {
       sourceQuestionCount: 20,
       feedbackAdded: 20,
       sourceReconciliationStatus: 'EXACT',
-      newQuestions: 29,
+      newQuestions: 33,
       reusedQuestionsCountedAsNew: false,
     });
     expect(englishCulturePack.questions.every(({ visualStimulus }) => !visualStimulus)).toBe(true);
@@ -1637,14 +1830,14 @@ describe('question-first V5 staging content', () => {
     expect(englishContextVocabularyPack).toEqual(buildEnglishContextVocabularyPack());
     expect(result).toMatchObject({
       valid: true,
-      questionCount: 24,
-      contextCount: 24,
-      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 2 },
-      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+      questionCount: 29,
+      contextCount: 29,
+      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 7 },
+      answerPositionCounts: { A: 8, B: 7, C: 7, D: 7 },
     });
     expect(englishContextVocabularyPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
     expect(englishContextVocabularyPack.sourceQuestionFeedback).toHaveLength(22);
-    expect(englishContextVocabularyPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 22, feedbackAdded: 22, sourceReconciliationStatus: 'EXACT', newQuestions: 24, reusedQuestionsCountedAsNew: false });
+    expect(englishContextVocabularyPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 22, feedbackAdded: 22, sourceReconciliationStatus: 'EXACT', newQuestions: 29, reusedQuestionsCountedAsNew: false });
     expect(englishContextVocabularyPack.questions.every(({ visualStimulus }) => !visualStimulus)).toBe(true);
     expect(englishContextVocabularyPack.lesson.microExplanations).toHaveLength(5);
     expect(englishContextVocabularyPack.lesson.remediations).toHaveLength(5);
@@ -1665,17 +1858,17 @@ describe('question-first V5 staging content', () => {
     expect(geographyClimateDataPack).toEqual(buildGeographyClimateDataPack());
     expect(result).toMatchObject({
       valid: true,
-      questionCount: 24,
-      contextCount: 24,
-      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 2 },
-      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+      questionCount: 29,
+      contextCount: 29,
+      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 7 },
+      answerPositionCounts: { A: 8, B: 7, C: 7, D: 7 },
     });
     expect(geographyClimateDataPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
     expect(geographyClimateDataPack.questions.filter(({ visualStimulus }) => visualStimulus)).toHaveLength(4);
     expect(geographyClimateDataPack.questions.filter(({ visualStimulus }) => visualStimulus)
       .every(({ visualStimulus }) => visualStimulus.items.every(({ alt, src }) => alt.trim() && src.startsWith('/learning/geography/')))).toBe(true);
     expect(geographyClimateDataPack.sourceQuestionFeedback).toHaveLength(21);
-    expect(geographyClimateDataPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 21, feedbackAdded: 21, sourceReconciliationStatus: 'EXACT', newQuestions: 24, reusedQuestionsCountedAsNew: false });
+    expect(geographyClimateDataPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 21, feedbackAdded: 21, sourceReconciliationStatus: 'EXACT', newQuestions: 29, reusedQuestionsCountedAsNew: false });
     expect(geographyClimateDataPack.lesson.microExplanations).toHaveLength(5);
     expect(geographyClimateDataPack.lesson.remediations).toHaveLength(5);
     expect(geographyClimateDataPack.questions.some(({ statement }) => /sem dados|ausente|lacuna/i.test(statement))).toBe(true);
@@ -1700,17 +1893,17 @@ describe('question-first V5 staging content', () => {
     expect(geographyInterpretTerritoryPack).toEqual(buildGeographyInterpretTerritoryPack());
     expect(result).toMatchObject({
       valid: true,
-      questionCount: 24,
-      contextCount: 24,
-      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 2 },
-      answerPositionCounts: { A: 6, B: 6, C: 6, D: 6 },
+      questionCount: 28,
+      contextCount: 28,
+      counts: { PROBE: 4, PRACTICE: 10, TRANSFER: 5, LOCK_IN: 3, REVIEW: 6 },
+      answerPositionCounts: { A: 7, B: 7, C: 7, D: 7 },
     });
     expect(geographyInterpretTerritoryPack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
     expect(geographyInterpretTerritoryPack.questions.filter(({ visualStimulus }) => visualStimulus)).toHaveLength(9);
     expect(geographyInterpretTerritoryPack.questions.filter(({ visualStimulus }) => visualStimulus)
       .every(({ visualStimulus }) => visualStimulus.items.every(({ alt, src }) => alt.trim() && src.startsWith('/learning/geography/')))).toBe(true);
     expect(geographyInterpretTerritoryPack.sourceQuestionFeedback).toHaveLength(10);
-    expect(geographyInterpretTerritoryPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 10, feedbackAdded: 10, sourceReconciliationStatus: 'EXACT', newQuestions: 24, reusedQuestionsCountedAsNew: false });
+    expect(geographyInterpretTerritoryPack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 10, feedbackAdded: 10, sourceReconciliationStatus: 'EXACT', newQuestions: 28, reusedQuestionsCountedAsNew: false });
     expect(geographyInterpretTerritoryPack.lesson.microExplanations).toHaveLength(5);
     expect(geographyInterpretTerritoryPack.lesson.remediations).toHaveLength(5);
     expect(geographyInterpretTerritoryPack.questions.some(({ statement }) => /no recorte|no mapa|legenda/i.test(statement))).toBe(true);
@@ -1727,6 +1920,40 @@ describe('question-first V5 staging content', () => {
     expect(geographyInterpretTerritoryMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
     expect(geographyInterpretTerritoryMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
     expect(geographyInterpretTerritoryMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('stages map-scale interpretation with exact source feedback and accessible diagrams', () => {
+    const result = validateQuestionFirstPack(geographyMapScalePack);
+    expect(geographyMapScalePack).toEqual(buildGeographyMapScalePack());
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 40,
+      contextCount: 40,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 },
+      answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+    });
+    expect(geographyMapScalePack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(geographyMapScalePack.questions.filter(({ visualStimulus }) => visualStimulus)).toHaveLength(12);
+    expect(geographyMapScalePack.questions.filter(({ visualStimulus }) => visualStimulus)
+      .every(({ visualStimulus }) => visualStimulus.items.every(({ alt, src }) => alt.trim() && src.startsWith('/learning/geography/')))).toBe(true);
+    expect(geographyMapScalePack.sourceQuestionFeedback).toHaveLength(2);
+    expect(geographyMapScalePack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 2, feedbackAdded: 2, sourceReconciliationStatus: 'EXACT', newQuestions: 40, reusedQuestionsCountedAsNew: false });
+    expect(geographyMapScalePack.lesson.microExplanations).toHaveLength(5);
+    expect(geographyMapScalePack.lesson.remediations).toHaveLength(5);
+    expect(geographyMapScalePack.publicationStatus).toBe('STAGING');
+    expect(geographyMapScalePack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(geographyMapScalePack.officialMappingStatus).toBe('NOT_CLAIMED');
+    for (const src of new Set(geographyMapScalePack.questions.flatMap(({ visualStimulus }) => visualStimulus?.items.map(({ src }) => src) ?? []))) {
+      const svg = readFileSync(new URL(`../../public${src}`, import.meta.url), 'utf8');
+      expect(svg).toContain('<title');
+      expect(svg).toContain('<desc');
+    }
+    expect(geographyMapScaleMigration).toBe(buildMigration(geographyMapScalePack));
+    expect(geographyMapScaleMigration).toContain("'GEOGRAPHY_MAP_SCALE'");
+    expect(geographyMapScaleMigration).toContain("'publication_status', 'STAGING'");
+    expect(geographyMapScaleMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(geographyMapScaleMigration).toContain("'bncc_alignment_status', 'NOT_CLAIMED'");
+    expect(geographyMapScaleMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
   });
 
   it('deepens English inference using an exact V4 and V9 source set', () => {
@@ -1784,5 +2011,179 @@ describe('question-first V5 staging content', () => {
     }
     expect(peDistinguishPack).toEqual(physicalEducationPacks.distinguish);
     expect(peSafePlanPack).toEqual(physicalEducationPacks.safePlan);
+  });
+
+  it('builds three staged physics sequences with accurate keys and error-sensitive explanations', () => {
+    const packs = buildPhysicsMotionPacks();
+    const migrations = [
+      '20261015001700_bncc_interpret_acceleration_sequence_question_first_v5.sql',
+      '20261015001800_bncc_relative_speed_sequence_question_first_v5.sql',
+      '20261015001900_bncc_uniform_motion_sequence_question_first_v5.sql',
+    ];
+    expect(packs.map(({ canonicalSkillCode }) => canonicalSkillCode)).toEqual([
+      'PHYSICS_INTERPRET_ACCELERATION', 'PHYSICS_RELATIVE_SPEED', 'PHYSICS_UNIFORM_MOTION',
+    ]);
+    for (const [index, pack] of packs.entries()) {
+      const result = validateQuestionFirstPack(pack);
+      const migrationText = readFileSync(new URL(`../../supabase/migrations/${migrations[index]}`, import.meta.url), 'utf8');
+      expect(result).toMatchObject({
+        valid: true,
+        questionCount: 40,
+        contextCount: 40,
+        counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 },
+        answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+      });
+      expect(pack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+      expect(new Set(pack.questions.filter(({ purpose }) => purpose === 'TRANSFER').map(({ cognitiveProcess }) => cognitiveProcess)).size).toBeGreaterThanOrEqual(3);
+      expect(pack.lesson.progression).toHaveLength(5);
+      expect(pack.lesson.microExplanations).toHaveLength(6);
+      expect(pack.lesson.remediations).toHaveLength(6);
+      expect(pack.lesson.authenticActivities[0].privacyGuard).toBeTruthy();
+      expect(pack.publicationStatus).toBe('STAGING');
+      expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+      expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+      expect(migrationText).toBe(buildMigration(pack));
+      expect(migrationText).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+    }
+    const [acceleration, relative, uniform] = packs;
+    expect(acceleration.questions[0].correctAnswer).toContain('2 m/s²');
+    expect(acceleration.questions[3].correctAnswer).toContain('sentido negativo');
+    expect(relative.questions[0].correctAnswer).toBe('6 km/h');
+    expect(relative.questions[2].correctAnswer).toBe('126 km/h');
+    expect(relative.questions[19].correctAnswer).toBe('2 h');
+    expect(uniform.questions[0].correctAnswer).toContain('5 m/s');
+    expect(uniform.questions[19].correctAnswer).toContain('não sustentam movimento uniforme');
+    expect(uniform.questions[21].correctAnswer).toContain('sentido negativo');
+    expect(uniform.questions[29].correctAnswer).toContain('Sim:');
+    expect(uniform.questions[29].explanation).toContain('0 m/s');
+  });
+
+  it('builds a staged Portuguese source-comparison sequence with bounded claims and feedback', () => {
+    const pack = buildPortugueseCompareSourcesPack();
+    const result = validateQuestionFirstPack(pack);
+    expect(pack).toEqual(portugueseCompareSourcesPack);
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 40,
+      contextCount: 40,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 },
+      answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+    });
+    expect(new Set(pack.questions.filter(({ purpose }) => purpose === 'TRANSFER').map(({ cognitiveProcess }) => cognitiveProcess)).size).toBeGreaterThanOrEqual(3);
+    expect(pack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(pack.questions.every(({ statement, explanation, hint }) => statement.trim() && explanation.trim() && hint.trim())).toBe(true);
+    expect(pack.questions.some(({ statement }) => /hoje|na terça|em maio|em 2020/i.test(statement))).toBe(true);
+    expect(pack.lesson.microExplanations).toHaveLength(6);
+    expect(pack.lesson.remediations).toHaveLength(6);
+    expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(pack.publicationStatus).toBe('STAGING');
+    expect(portugueseCompareSourcesMigration).toBe(buildMigration(pack));
+    expect(portugueseCompareSourcesMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(portugueseCompareSourcesMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('builds a staged Portuguese reasoning sequence that distinguishes claims from evidence', () => {
+    const pack = buildPortugueseReasonEvidencePack();
+    const result = validateQuestionFirstPack(pack);
+    expect(pack).toEqual(portugueseReasonEvidencePack);
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 47,
+      contextCount: 47,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 17 },
+      answerPositionCounts: { A: 12, B: 12, C: 12, D: 11 },
+    });
+    expect(new Set(pack.questions.filter(({ purpose }) => purpose === 'TRANSFER').map(({ cognitiveProcess }) => cognitiveProcess)).size).toBeGreaterThanOrEqual(3);
+    expect(pack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(pack.questions.every(({ statement, explanation, hint }) => statement.trim() && explanation.trim() && hint.trim())).toBe(true);
+    expect(pack.lesson.microExplanations).toHaveLength(6);
+    expect(pack.lesson.remediations).toHaveLength(6);
+    expect(pack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 2, newQuestions: 47, reusedQuestionsCountedAsNew: false });
+    expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(pack.publicationStatus).toBe('STAGING');
+    expect(portugueseReasonEvidenceMigration).toBe(buildMigration(pack));
+    expect(portugueseReasonEvidenceMigration).toContain("'pedagogical_review_status', 'PEDAGOGICAL_REVIEW_PENDING'");
+    expect(portugueseReasonEvidenceMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('builds a staged counterargument sequence with gradual practice and fair, specific responses', () => {
+    const pack = buildPortugueseCounterargumentPack();
+    const result = validateQuestionFirstPack(pack);
+    expect(pack).toEqual(portugueseCounterargumentPack);
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 43,
+      contextCount: 43,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 13 },
+      answerPositionCounts: { A: 11, B: 11, C: 11, D: 10 },
+    });
+    expect(new Set(pack.questions.map(({ contextFamily }) => contextFamily)).size).toBe(43);
+    expect(new Set(pack.questions.filter(({ purpose }) => purpose === 'TRANSFER').map(({ cognitiveProcess }) => cognitiveProcess)).size).toBeGreaterThanOrEqual(3);
+    expect(pack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(pack.questions.every(({ statement, explanation, hint }) => statement.trim() && explanation.trim() && hint.trim())).toBe(true);
+    expect(pack.lesson.microExplanations).toHaveLength(6);
+    expect(pack.lesson.remediations).toHaveLength(6);
+    expect(pack.sourceReconciliation).toMatchObject({ newQuestions: 43, reusedQuestionsCountedAsNew: false });
+    expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(pack.publicationStatus).toBe('STAGING');
+    expect(portugueseCounterargumentMigration).toBe(buildMigration(pack));
+    expect(portugueseCounterargumentMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('builds a staged argument-summary sequence that preserves evidence scope and pending decisions', () => {
+    const pack = buildPortugueseSummarizeArgumentPack();
+    const result = validateQuestionFirstPack(pack);
+    expect(pack).toEqual(portugueseSummarizeArgumentPack);
+    expect(result).toMatchObject({
+      valid: true,
+      questionCount: 47,
+      contextCount: 47,
+      counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 17 },
+      answerPositionCounts: { A: 12, B: 12, C: 12, D: 11 },
+    });
+    expect(new Set(pack.questions.map(({ contextFamily }) => contextFamily)).size).toBe(47);
+    expect(pack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+    expect(pack.questions.every(({ statement, explanation, hint }) => statement.trim() && explanation.trim() && hint.trim())).toBe(true);
+    expect(pack.questions.some(({ errorFocus }) => errorFocus === 'ASSOCIATION_AS_CAUSAL_PROOF')).toBe(true);
+    expect(pack.lesson.microExplanations).toHaveLength(6);
+    expect(pack.lesson.remediations).toHaveLength(6);
+    expect(pack.sourceReconciliation).toMatchObject({ sourceQuestionCount: 1, newQuestions: 47, reusedQuestionsCountedAsNew: false });
+    expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+    expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+    expect(pack.publicationStatus).toBe('STAGING');
+    expect(portugueseSummarizeArgumentMigration).toBe(buildMigration(pack));
+    expect(portugueseSummarizeArgumentMigration).not.toMatch(/learning_guided_sessions|learning_student_skill_state|student_answers|active\s*=\s*true/i);
+  });
+
+  it('builds the next five wave-two content gaps as balanced staged packs', () => {
+    const packs = buildWave2ContentGapPacks();
+    expect(Object.keys(packs)).toEqual([
+      'HISTORY_INTERPRET_EVIDENCE',
+      'HISTORY_INTERPRET_PERIODIZATION',
+      'MATH_INTERPRET_DATA_TABLE',
+      'MATH_PERCENT_OF_QUANTITY',
+      'PE_ANALYZE_MOVEMENT',
+    ]);
+    for (const pack of Object.values(packs)) {
+      const result = validateQuestionFirstPack(pack);
+      expect(result).toMatchObject({
+        valid: true,
+        questionCount: 40,
+        contextCount: 40,
+        counts: { PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 5, REVIEW: 11 },
+        answerPositionCounts: { A: 10, B: 10, C: 10, D: 10 },
+      });
+      expect(pack.questions.slice(0, 4).every(({ difficulty }) => difficulty === 'EASY')).toBe(true);
+      expect(pack.questions.every(({ statement, explanation, hint }) => statement.trim() && explanation.trim() && hint.trim())).toBe(true);
+      expect(pack.sourceReconciliation).toMatchObject({ newQuestions: 40, reusedQuestionsCountedAsNew: false });
+      expect(pack.lesson.microExplanations.length).toBeGreaterThanOrEqual(4);
+      expect(pack.lesson.remediations.length).toBeGreaterThanOrEqual(4);
+      expect(pack.publicationStatus).toBe('STAGING');
+      expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
+      expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+    }
   });
 });

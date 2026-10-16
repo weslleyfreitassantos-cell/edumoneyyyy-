@@ -1,0 +1,1199 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-math-interpret-data-table",
+  "subject": "MATHEMATICS",
+  "domain": "DADOS",
+  "topic": "interpretar dados em tabelas",
+  "canonicalSkillCode": "MATH_INTERPRET_DATA_TABLE",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-mathematics-percentage-8",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v3-mathematics-percentage-10",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-probe-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-probe-02",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-practice-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-practice-02",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-transfer-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-lock-in-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-review-01",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    },
+    {
+      "questionId": "v4-authored-mathematics-table-review-02",
+      "hint": "Leia o recorte, identifique a habilidade solicitada e limite a conclusão ao que a fonte ou situação sustenta.",
+      "errorFocus": "MATH_INTERPRET_DATA_TABLE_SCOPE_AND_EVIDENCE"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 10,
+    "feedbackAdded": 10,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Interpretar dados em tabelas",
+    "objective": "Ler cabeçalhos, unidades, linhas e colunas para calcular e comunicar resultados proporcionais.",
+    "summary": "Uma célula depende do cabeçalho e do registro ao qual pertence. Máximo, diferença, soma, média e contagem respondem perguntas diferentes.",
+    "explanation": "## 1. Leia a estrutura\nIdentifique título, cabeçalhos, unidades e período. Mantenha os valores da mesma linha associados.\n\n## 2. Traduza a pergunta\n“Maior” pede máximo; “diferença” pede subtração; “total” pede soma; “média” pede soma dividida pela quantidade de registros.\n\n## 3. Confira a unidade\nNão compare quilômetros com horas nem conte uma célula vazia como zero sem uma regra explícita.\n\n## 4. Limite a conclusão\nOs valores descrevem os registros apresentados. Não explicam sozinhos a causa nem representam períodos ausentes.\n\n## Exemplo resolvido\nSe uma tabela registra 8, 12, 10 e 6 empréstimos de segunda a quinta, o maior valor é 12 e o total é 36. São respostas diferentes para perguntas diferentes.\n\n## 5. Revise\nReleia a pergunta, refaça a operação e escreva a unidade do resultado.",
+    "workedExample": "Para uma tabela de quatro dias, localize a coluna pedida, some somente os registros correspondentes e informe o período coberto. Não transforme uma manhã observada no total do dia.",
+    "commonMistake": "Misturar linhas, confundir máximo com soma, ignorar unidade ou generalizar um conjunto pequeno.",
+    "tips": [
+      "Leia cabeçalho e unidade antes do número.",
+      "Associe cada valor ao período correto.",
+      "Recalcule e escreva a unidade.",
+      "Diga qual período a tabela cobre."
+    ],
+    "estimatedMinutes": 24,
+    "priorKnowledge": [
+      "Comparar números e realizar as quatro operações.",
+      "Ler linhas e colunas simples."
+    ],
+    "keyConcepts": [
+      "cabeçalho",
+      "unidade",
+      "máximo",
+      "diferença",
+      "soma",
+      "média",
+      "escopo"
+    ],
+    "activity": "Revisar uma tabela didática, marcar a pergunta, escolher a operação e justificar o limite da resposta.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar a ideia ou operação central.",
+        "questionIds": [
+          "v5-math-interpret-data-table-01",
+          "v5-math-interpret-data-table-02",
+          "v5-math-interpret-data-table-03",
+          "v5-math-interpret-data-table-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-math-interpret-data-table-05",
+          "v5-math-interpret-data-table-06",
+          "v5-math-interpret-data-table-07",
+          "v5-math-interpret-data-table-08",
+          "v5-math-interpret-data-table-09",
+          "v5-math-interpret-data-table-10",
+          "v5-math-interpret-data-table-11",
+          "v5-math-interpret-data-table-12",
+          "v5-math-interpret-data-table-13",
+          "v5-math-interpret-data-table-14",
+          "v5-math-interpret-data-table-15",
+          "v5-math-interpret-data-table-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-math-interpret-data-table-17",
+          "v5-math-interpret-data-table-18",
+          "v5-math-interpret-data-table-19",
+          "v5-math-interpret-data-table-20",
+          "v5-math-interpret-data-table-21",
+          "v5-math-interpret-data-table-22",
+          "v5-math-interpret-data-table-23",
+          "v5-math-interpret-data-table-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-math-interpret-data-table-25",
+          "v5-math-interpret-data-table-26",
+          "v5-math-interpret-data-table-27",
+          "v5-math-interpret-data-table-28",
+          "v5-math-interpret-data-table-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-math-interpret-data-table-30",
+          "v5-math-interpret-data-table-31",
+          "v5-math-interpret-data-table-32",
+          "v5-math-interpret-data-table-33",
+          "v5-math-interpret-data-table-34",
+          "v5-math-interpret-data-table-35",
+          "v5-math-interpret-data-table-36",
+          "v5-math-interpret-data-table-37",
+          "v5-math-interpret-data-table-38",
+          "v5-math-interpret-data-table-39",
+          "v5-math-interpret-data-table-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e unidade antes de escolher."
+      },
+      {
+        "trigger": "BOUND_CONCLUSION",
+        "text": "A melhor resposta é a que não afirma mais do que os dados permitem."
+      },
+      {
+        "trigger": "CHECK_OPERATION",
+        "text": "Nomeie a operação ou evidência usada antes de concluir."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar recorte, base ou condição da situação.",
+        "prompt": "Sublinhe sujeito, período, unidade e condição. Reescreva a resposta incluindo esses limites."
+      },
+      {
+        "id": "SEPARATE_EVIDENCE",
+        "misconception": "Confundir observação, cálculo, causa ou conclusão.",
+        "prompt": "Faça duas colunas: o que está registrado ou calculado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_RESULT",
+        "misconception": "Aceitar resultado sem verificar operação ou coerência.",
+        "prompt": "Refaça a operação, compare com uma estimativa e escreva a unidade ou consequência."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de aplicar o procedimento."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-math-interpret-data-table-activity",
+        "title": "Oficina de interpretar dados em tabelas",
+        "objective": "Ler cabeçalhos, unidades, linhas e colunas para calcular e comunicar resultados proporcionais.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto ou tabela didática acessível",
+          "Registro de estratégia",
+          "Feedback do professor"
+        ],
+        "instructions": "Revisar uma tabela didática, marcar a pergunta, escolher a operação e justificar o limite da resposta.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-math-interpret-data-table-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MATH_TABLE_BIBLIOTECA_01",
+      "statement": "Tabela didática de biblioteca: segunda: 8; terça: 12; quarta: 10; quinta: 6. Qual foi o maior número registrado?",
+      "options": [
+        "12 empréstimos, na terça-feira",
+        "6 empréstimos, porque é o menor valor",
+        "36 empréstimos, confundindo soma e maior valor",
+        "10 empréstimos, porque aparece no meio"
+      ],
+      "correctAnswer": "12 empréstimos, na terça-feira",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 empréstimos, porque é o menor valor": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MATH_TABLE_BIBLIOTECA_02",
+      "statement": "Tabela didática de biblioteca: segunda: 8; terça: 12; quarta: 10; quinta: 6. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "6 empréstimos, porque é o menor valor",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "36 empréstimos, confundindo soma e maior valor",
+        "10 empréstimos, porque aparece no meio"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 empréstimos, porque é o menor valor": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_TABLE_BIBLIOTECA_03",
+      "statement": "Tabela didática de biblioteca: segunda: 8; terça: 12; quarta: 10; quinta: 6. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "6 empréstimos, porque é o menor valor",
+        "36 empréstimos, confundindo soma e maior valor",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "10 empréstimos, porque aparece no meio"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 empréstimos, porque é o menor valor": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_TABLE_BIBLIOTECA_04",
+      "statement": "Tabela didática de biblioteca: segunda: 8; terça: 12; quarta: 10; quinta: 6. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "6 empréstimos, porque é o menor valor",
+        "36 empréstimos, confundindo soma e maior valor",
+        "10 empréstimos, porque aparece no meio",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 empréstimos, porque é o menor valor": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_TABLE_HORTA_05",
+      "statement": "Tabela didática de horta: segunda: 14; terça: 9; quarta: 11; quinta: 16. Qual foi a diferença entre o maior e o menor registro?",
+      "options": [
+        "7 unidades",
+        "5 unidades",
+        "40 unidades",
+        "2 unidades"
+      ],
+      "correctAnswer": "7 unidades",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "5 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MATH_TABLE_HORTA_06",
+      "statement": "Tabela didática de horta: segunda: 14; terça: 9; quarta: 11; quinta: 16. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "5 unidades",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "40 unidades",
+        "2 unidades"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "5 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_TABLE_HORTA_07",
+      "statement": "Tabela didática de horta: segunda: 14; terça: 9; quarta: 11; quinta: 16. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "5 unidades",
+        "40 unidades",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "2 unidades"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "5 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_TABLE_HORTA_08",
+      "statement": "Tabela didática de horta: segunda: 14; terça: 9; quarta: 11; quinta: 16. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "5 unidades",
+        "40 unidades",
+        "2 unidades",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "5 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_TABLE_TRANSPORTE_ESCOLAR_09",
+      "statement": "Tabela didática de transporte escolar: segunda: 18; terça: 22; quarta: 20; quinta: 16. Qual é o total dos quatro registros?",
+      "options": [
+        "76 passageiros",
+        "60 passageiros",
+        "22 passageiros",
+        "4 passageiros"
+      ],
+      "correctAnswer": "76 passageiros",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "60 passageiros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MATH_TABLE_TRANSPORTE_ESCOLAR_10",
+      "statement": "Tabela didática de transporte escolar: segunda: 18; terça: 22; quarta: 20; quinta: 16. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "60 passageiros",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "22 passageiros",
+        "4 passageiros"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "60 passageiros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_TABLE_TRANSPORTE_ESCOLAR_11",
+      "statement": "Tabela didática de transporte escolar: segunda: 18; terça: 22; quarta: 20; quinta: 16. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "60 passageiros",
+        "22 passageiros",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "4 passageiros"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "60 passageiros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_TABLE_TRANSPORTE_ESCOLAR_12",
+      "statement": "Tabela didática de transporte escolar: segunda: 18; terça: 22; quarta: 20; quinta: 16. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "60 passageiros",
+        "22 passageiros",
+        "4 passageiros",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "60 passageiros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_TABLE_LEITURA_13",
+      "statement": "Tabela didática de leitura: segunda: 6; terça: 10; quarta: 14; quinta: 18. Qual é a média dos quatro valores?",
+      "options": [
+        "12 livros",
+        "18 livros",
+        "48 livros",
+        "10 livros"
+      ],
+      "correctAnswer": "12 livros",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "18 livros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MATH_TABLE_LEITURA_14",
+      "statement": "Tabela didática de leitura: segunda: 6; terça: 10; quarta: 14; quinta: 18. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "18 livros",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "48 livros",
+        "10 livros"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "18 livros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_TABLE_LEITURA_15",
+      "statement": "Tabela didática de leitura: segunda: 6; terça: 10; quarta: 14; quinta: 18. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "18 livros",
+        "48 livros",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "10 livros"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "18 livros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_TABLE_LEITURA_16",
+      "statement": "Tabela didática de leitura: segunda: 6; terça: 10; quarta: 14; quinta: 18. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "18 livros",
+        "48 livros",
+        "10 livros",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "18 livros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_TABLE_CHUVA_17",
+      "statement": "Tabela didática de chuva: segunda: 20; terça: 15; quarta: 25; quinta: 10. Em qual período aparece o menor valor?",
+      "options": [
+        "no quarto período",
+        "no primeiro período",
+        "no terceiro período",
+        "em todos os períodos"
+      ],
+      "correctAnswer": "no quarto período",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "no primeiro período": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_TABLE_CHUVA_18",
+      "statement": "Tabela didática de chuva: segunda: 20; terça: 15; quarta: 25; quinta: 10. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "no primeiro período",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "no terceiro período",
+        "em todos os períodos"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "no primeiro período": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_TABLE_CHUVA_19",
+      "statement": "Tabela didática de chuva: segunda: 20; terça: 15; quarta: 25; quinta: 10. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "no primeiro período",
+        "no terceiro período",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "em todos os períodos"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "no primeiro período": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "MATH_TABLE_CHUVA_20",
+      "statement": "Tabela didática de chuva: segunda: 20; terça: 15; quarta: 25; quinta: 10. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "no primeiro período",
+        "no terceiro período",
+        "em todos os períodos",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "no primeiro período": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_TABLE_ENERGIA_21",
+      "statement": "Tabela didática de energia: segunda: 30; terça: 24; quarta: 18; quinta: 12. Quanto o último valor difere do primeiro?",
+      "options": [
+        "18 unidades a menos",
+        "6 unidades a menos",
+        "18 unidades a mais",
+        "84 unidades a menos"
+      ],
+      "correctAnswer": "18 unidades a menos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 unidades a menos": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MATH_TABLE_ENERGIA_22",
+      "statement": "Tabela didática de energia: segunda: 30; terça: 24; quarta: 18; quinta: 12. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "6 unidades a menos",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "18 unidades a mais",
+        "84 unidades a menos"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 unidades a menos": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_TABLE_ENERGIA_23",
+      "statement": "Tabela didática de energia: segunda: 30; terça: 24; quarta: 18; quinta: 12. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "6 unidades a menos",
+        "18 unidades a mais",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "84 unidades a menos"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 unidades a menos": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "MATH_TABLE_ENERGIA_24",
+      "statement": "Tabela didática de energia: segunda: 30; terça: 24; quarta: 18; quinta: 12. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "6 unidades a menos",
+        "18 unidades a mais",
+        "84 unidades a menos",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "6 unidades a menos": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MATH_TABLE_FEIRA_25",
+      "statement": "Tabela didática de feira: segunda: 7; terça: 13; quarta: 9; quinta: 11. Qual é a soma dos dois maiores valores?",
+      "options": [
+        "24 registros",
+        "20 registros",
+        "40 registros",
+        "13 registros"
+      ],
+      "correctAnswer": "24 registros",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "20 registros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_TABLE_FEIRA_26",
+      "statement": "Tabela didática de feira: segunda: 7; terça: 13; quarta: 9; quinta: 11. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "20 registros",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "40 registros",
+        "13 registros"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "20 registros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_TABLE_FEIRA_27",
+      "statement": "Tabela didática de feira: segunda: 7; terça: 13; quarta: 9; quinta: 11. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "20 registros",
+        "40 registros",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "13 registros"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "20 registros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MATH_TABLE_FEIRA_28",
+      "statement": "Tabela didática de feira: segunda: 7; terça: 13; quarta: 9; quinta: 11. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "20 registros",
+        "40 registros",
+        "13 registros",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "20 registros": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_TABLE_ÁGUA_29",
+      "statement": "Tabela didática de água: segunda: 40; terça: 35; quarta: 45; quinta: 30. Qual valor representa a mediana dos quatro registros?",
+      "options": [
+        "37,5 unidades",
+        "35 unidades",
+        "40 unidades",
+        "150 unidades"
+      ],
+      "correctAnswer": "37,5 unidades",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "35 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_TABLE_ÁGUA_30",
+      "statement": "Tabela didática de água: segunda: 40; terça: 35; quarta: 45; quinta: 30. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "35 unidades",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "40 unidades",
+        "150 unidades"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "35 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_TABLE_ÁGUA_31",
+      "statement": "Tabela didática de água: segunda: 40; terça: 35; quarta: 45; quinta: 30. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "35 unidades",
+        "40 unidades",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "150 unidades"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "35 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_TABLE_ÁGUA_32",
+      "statement": "Tabela didática de água: segunda: 40; terça: 35; quarta: 45; quinta: 30. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "35 unidades",
+        "40 unidades",
+        "150 unidades",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "35 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_TABLE_OFICINA_33",
+      "statement": "Tabela didática de oficina: segunda: 5; terça: 8; quarta: 8; quinta: 11. Quantos registros são iguais a 8?",
+      "options": [
+        "2 registros",
+        "1 registro",
+        "3 registros",
+        "32 registros"
+      ],
+      "correctAnswer": "2 registros",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "1 registro": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_TABLE_OFICINA_34",
+      "statement": "Tabela didática de oficina: segunda: 5; terça: 8; quarta: 8; quinta: 11. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "1 registro",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "3 registros",
+        "32 registros"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "1 registro": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_TABLE_OFICINA_35",
+      "statement": "Tabela didática de oficina: segunda: 5; terça: 8; quarta: 8; quinta: 11. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "1 registro",
+        "3 registros",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "32 registros"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "1 registro": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_TABLE_OFICINA_36",
+      "statement": "Tabela didática de oficina: segunda: 5; terça: 8; quarta: 8; quinta: 11. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "1 registro",
+        "3 registros",
+        "32 registros",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "1 registro": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MATH_TABLE_ESPORTE_37",
+      "statement": "Tabela didática de esporte: segunda: 12; terça: 16; quarta: 20; quinta: 24. Qual é o aumento do primeiro para o último valor?",
+      "options": [
+        "12 unidades",
+        "8 unidades",
+        "36 unidades",
+        "2 unidades"
+      ],
+      "correctAnswer": "12 unidades",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "8 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATH_TABLE_ESPORTE_38",
+      "statement": "Tabela didática de esporte: segunda: 12; terça: 16; quarta: 20; quinta: 24. Qual leitura compara os registros sem misturar linha, coluna e unidade?",
+      "options": [
+        "8 unidades",
+        "manter cada valor associado ao período indicado e usar somente a operação pedida",
+        "36 unidades",
+        "2 unidades"
+      ],
+      "correctAnswer": "manter cada valor associado ao período indicado e usar somente a operação pedida",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "8 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATH_TABLE_ESPORTE_39",
+      "statement": "Tabela didática de esporte: segunda: 12; terça: 16; quarta: 20; quinta: 24. Que limite deve acompanhar uma conclusão baseada nesses valores?",
+      "options": [
+        "8 unidades",
+        "36 unidades",
+        "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+        "2 unidades"
+      ],
+      "correctAnswer": "afirmar apenas o que os quatro registros mostram, sem generalizar para outros períodos",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "8 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-interpret-data-table-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATH_TABLE_ESPORTE_40",
+      "statement": "Tabela didática de esporte: segunda: 12; terça: 16; quarta: 20; quinta: 24. Qual procedimento confere o resultado antes de responder?",
+      "options": [
+        "8 unidades",
+        "36 unidades",
+        "2 unidades",
+        "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela"
+      ],
+      "correctAnswer": "identificar cabeçalho, unidade, operação e recalcular com os valores da tabela",
+      "explanation": "A leitura correta mantém os registros associados e executa a operação indicada. Uma tabela mostra o conjunto observado; ela não autoriza misturar valores nem generalizar além do período informado.",
+      "hint": "Leia a pergunta, localize os valores correspondentes e confira se a operação é máximo, diferença, soma, média ou contagem.",
+      "errorFocus": "TABLE_OPERATION_OR_SCOPE_CONFUSION",
+      "misconceptions": {
+        "8 unidades": [
+          "TABLE_OPERATION_OR_SCOPE_CONFUSION"
+        ]
+      }
+    }
+  ]
+}
