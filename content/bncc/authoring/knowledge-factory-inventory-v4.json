@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "6e2a7252bccbcef9a38ef38b305d8754371ac0081e50e3aaa3351d5083313d89",
+    "v5QuestionFirstPacks": "9ad2857ffd9c4c4a37f1514d049f655016586cb796e49457d963e8c6bbaa03cc",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,10 +110,17 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 5576,
+    "v5QuestionTotal": 5616,
     "consolidatedQuestionTotal": 6628,
     "duplicateQuestionsCollapsed": 0,
-    "v5PacksOutsideV3AuditedTargets": [],
+    "v5PacksOutsideV3AuditedTargets": [
+      {
+        "file": "science-materials-conscious-use-fi-v8.json",
+        "skillCode": "SCIENCE_MATERIALS_CONSCIOUS_USE_FI",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      }
+    ],
     "lessonsNeedingDepthReview": 0,
     "reviewPending": 78,
     "contentSources": [
@@ -18756,5 +18763,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "2ff2463178edf3bbb7439af9fcae8f241a433c3caed8b2996a825f2420c2b105"
+  "inventoryHash": "6f164395d9280d69f90828f80c81a13fc3722238becab905c94ff1e06dfc2de0"
 }
