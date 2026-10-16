@@ -29,7 +29,8 @@
     "consolidatedQuestionTotal": 6628,
     "exactSourceVerificationCodes": [
       "EI01CG01",
-      "EI01CG02"
+      "EI01CG02",
+      "EI01CG03"
     ]
   },
   "sizingMethodology": {
@@ -40992,7 +40993,7 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "EXPERIENTIAL",
       "technicalMinimumQuestions": 0,
       "pedagogicalMinimumQuestions": 0,

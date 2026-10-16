@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "tec-escola.bncc.experiential-evidence.v1",
+  "campaignId": "TECESCOLA_BNCC_COMPLETE_LEARNING_AUTONOMOUS_V7",
+  "officialCode": "EI01CG03",
+  "stage": "EDUCACAO_INFANTIL",
+  "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+  "componentCode": "CG",
+  "ageRange": "Bebes, zero a 1 ano e 6 meses",
+  "fieldOfExperience": "Corpo, gestos e movimentos",
+  "descriptor": "Imitar gestos e movimentos de outras crianças, adultos e animais.",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 49
+  },
+  "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+  "evidenceMode": "EDUCATOR_MEDIATED_OBSERVATION",
+  "learningDesign": {
+    "title": "Imitar gestos e movimentos em interações significativas",
+    "objective": "Oferecer ao bebê oportunidades de observar e experimentar gestos e movimentos de pessoas, animais e personagens, respeitando a escolha de imitar, variar, observar ou responder de outro modo.",
+    "experience": "O educador realiza uma interação recíproca e breve, com gestos simples, pausas e repetição voluntária. Pode usar uma história, um objeto cênico ou uma brincadeira conhecida para apresentar movimentos de pessoas e animais, sempre tratando a imitação como uma possibilidade de participação e não como exigência de desempenho.",
+    "possibleInvitations": [
+      "Fazer um gesto simples, aguardar e repetir somente se o bebê demonstrar interesse ou solicitar continuidade.",
+      "Apresentar movimentos de um animal em uma história ou brincadeira com fantoche, permitindo que o bebê observe, toque, vocalize ou movimente o corpo.",
+      "Alternar um movimento conhecido do adulto com uma pausa para perceber se o bebê repete, transforma ou responde com outro gesto.",
+      "Convidar outra criança ou adulto conhecido a participar de uma brincadeira curta, com espaço para observar e escolher a distância da interação."
+    ],
+    "educatorPrompts": [
+      "Eu fiz este gesto; você quer olhar, repetir ou fazer outro movimento?",
+      "Vou esperar para ver como você responde.",
+      "Você mudou o gesto; vou acompanhar o seu jeito.",
+      "Podemos parar, repetir ou observar juntos."
+    ],
+    "observationCriteria": [
+      "Observa gestos ou movimentos de uma criança, adulto, animal representado ou personagem em uma situação significativa.",
+      "Repete, inicia, transforma ou responde a um gesto por movimento, olhar, toque, vocalização ou outra forma de comunicação disponível.",
+      "Demonstra interesse, recusa ou necessidade de pausa e tem sua escolha respeitada pelo adulto.",
+      "Participa de interações individuais ou coletivas sem que a imitação seja tratada como obrigatória ou como medida de valor.",
+      "Tem tempo, espaço, estímulos e apoios ajustados às suas necessidades de comunicação, sensorialidade e movimento."
+    ],
+    "evidenceRecord": {
+      "requiredFields": ["date", "context", "modeledGestureOrMovement", "observedResponse", "childChoice", "educatorSupport", "nextInvitation"],
+      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "privacy": "Registrar somente o necessário no contexto institucional autorizado; não incluir diagnóstico, não expor a imagem da criança e não inferir desenvolvimento além do observado."
+    },
+    "adaptations": [
+      "Usar gestos lentos, repetíveis e visualmente acessíveis, com pausas suficientes para processamento.",
+      "Permitir resposta por olhar, movimento parcial, vocalização, toque, recurso de comunicação alternativa ou observação.",
+      "Substituir sons intensos, contato físico ou aproximação por objetos, imagens, fantoches ou demonstração à distância.",
+      "Interromper a proposta diante de sinais de desconforto e retomar somente com indicação de interesse e segurança."
+    ]
+  },
+  "contentStatus": {
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "studentQuiz": "NOT_CREATED",
+    "humanApproval": "NOT_GRANTED"
+  }
+}
