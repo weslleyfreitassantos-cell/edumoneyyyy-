@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "8593ba0d38e6261d10d2a86c82e7b2ed1ccf77c52118a8a3e87f05b156883ac2",
+    "v5QuestionFirstPacks": "fbcf1c9f4c734203b3f374688eaf8977c7cf91af07879642dca8aa306f64cac3",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 3126,
-    "consolidatedQuestionTotal": 4178,
+    "v5QuestionTotal": 3426,
+    "consolidatedQuestionTotal": 4478,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -424,15 +424,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Como organismos e ambiente se influenciam",
         "originalQuestionCount": 12,
-        "v5QuestionCount": 28,
+        "v5QuestionCount": 128,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -456,7 +456,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 140,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -611,15 +611,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Acidez, basicidade e leitura de pH",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 35,
+        "v5QuestionCount": 135,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -643,7 +643,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 140,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3085,15 +3085,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Rapidez média: caminho, tempo e unidades",
         "originalQuestionCount": 20,
-        "v5QuestionCount": 20,
+        "v5QuestionCount": 120,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3117,7 +3117,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 39,
+        "contextFamilyCount": 139,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "5ec495e4be0293d3b473328c893b23169aa65e43345b404a24fdb2ef039f4d02"
+  "inventoryHash": "3ead0108192b0a5eb9828a3e78bf9d20924d8be0d825ac2f0144d8ef1331ae61"
 }

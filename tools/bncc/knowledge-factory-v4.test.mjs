@@ -514,8 +514,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(speed).toMatchObject({
       originalQuestionCount: 20,
-      v5QuestionCount: 20,
-      currentQuestionCount: 40,
+      v5QuestionCount: 120,
+      currentQuestionCount: 140,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 20, actualQuestionCount: 20, status: 'EXACT', questionFeedbackCount: 20 },
@@ -523,7 +523,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(speed.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(speed.purposeCounts).toEqual({ PROBE: 14, PRACTICE: 52, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 });
     expect(speed.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.some((item) => item.id === 'PHYSICS_AVERAGE_SPEED')).toBe(false);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
