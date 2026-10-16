@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "b90524086a32c871e444326f07faf00a1892cd0af7d1d07e941c03cb93eea60d",
+    "v5QuestionFirstPacks": "dc39daf005a1d1e36ea715e62e07642290d6491468ddda8e76731f9f84b4a54e",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 3826,
-    "consolidatedQuestionTotal": 4878,
+    "v5QuestionTotal": 3926,
+    "consolidatedQuestionTotal": 4978,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -547,15 +547,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Populações: medir, comparar e explicar tendências",
         "originalQuestionCount": 23,
-        "v5QuestionCount": 17,
+        "v5QuestionCount": 117,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -579,7 +579,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 140,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "5e0ad4ae7160c723cab576d0097de6b656cdeb3f9257b2372617275f6f3cf7d7"
+  "inventoryHash": "db47561de2d80b87ae2de51d69b99b8a5cfb57b3b6767d94d77bfd387c74f9c8"
 }

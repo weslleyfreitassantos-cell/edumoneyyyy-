@@ -371,8 +371,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(population).toMatchObject({
       originalQuestionCount: 23,
-      v5QuestionCount: 17,
-      currentQuestionCount: 40,
+      v5QuestionCount: 117,
+      currentQuestionCount: 140,
       technicalDeepReady: true,
       readinessClaim: 'DEEP_CONTENT_READY',
       sourceReconciliation: { expectedQuestionCount: 23, actualQuestionCount: 23, status: 'EXACT' },
@@ -380,7 +380,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(population.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(population.purposeCounts).toEqual({ PROBE: 14, PRACTICE: 52, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 });
     expect(population.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'BIOLOGY_INTERPRET_POPULATION_DATA')).toEqual([]);
   });
