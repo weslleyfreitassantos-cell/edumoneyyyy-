@@ -17,10 +17,12 @@ import {
   Routes,
   RouterProvider,
   useLocation,
-  useRouteError,
 } from 'react-router-dom';
 
-import { QueryClientProvider } from '@tanstack/react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 
 import {
   AuthProvider,
@@ -37,11 +39,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import AppShell from './components/AppShell';
 import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import LoadingIndicator from './components/LoadingIndicator';
-import InitialLoadingGate from './components/InitialLoadingGate';
-import BrandingLoadingGate from './components/branding/BrandingLoadingGate';
-import AppVersionRefreshGuard from './components/AppVersionRefreshGuard';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { PsychologyRouteGate } from './components/PsychologyRouteGate';
 import { Login } from './pages/Login';
 
 import {
@@ -49,7 +47,6 @@ import {
   mapPlatformRole,
 } from './lib/roles';
 import { hasEffectivePermission } from './lib/permissions';
-import { queryClient } from './lib/queryClient';
 
 import type { UserRole } from './types';
 
@@ -85,10 +82,6 @@ const PlatformPage = lazy(
   () => import('./pages/Platform/PlatformPage'),
 );
 
-const TecIdiomasReleasePage = lazy(
-  () => import('./pages/Platform/TecIdiomasReleasePage'),
-);
-
 const AccountPage = lazy(
   () => import('./pages/Account/AccountPage'),
 );
@@ -107,45 +100,24 @@ const StudentDashboard = lazy(
     ),
 );
 
-const StudentAcademicResultsPage = lazy(
-  () => import('./components/StudentAcademicResultsPage'),
-);
-
-const StudentCalendarPage = lazy(
-  () => import('./components/StudentCalendarPage'),
-);
-
 const LearningContentPage = lazy(
   () => import('./components/learning/LearningContentPage'),
 );
 const StudyCenterPage = lazy(() => import('./components/learning/StudyCenterPage'));
-const StudentPublishedActivitiesPage = lazy(() => import('./components/learning/StudentPublishedActivitiesPage'));
-const EnglishLearningPage = lazy(() => import('./components/learning/EnglishLearningPage'));
-const EnglishLegacyLearningPage = lazy(() => import('./components/learning/EnglishLegacyLearningPage'));
-const StudentSubjectPage = lazy(() => import('./components/learning/StudentSubjectPage'));
-const WritingModulePage = lazy(() => import('./components/learning/WritingModulePage'));
-const GuidedStudyRoute = lazy(() => import('./components/learning/GuidedStudyRoute'));
+const GuidedJourneyPage = lazy(() => import('./components/learning/GuidedJourneyPage'));
 const PedagogicalCenterPage = lazy(() => import('./components/learning/PedagogicalCenterPage'));
 const PedagogicalCenterOverviewPage = lazy(() => import('./components/learning/PedagogicalCenterOverviewPage'));
+const PedagogicalCenterStudentsPage = lazy(() => import('./components/learning/PedagogicalCenterStudentsPage'));
 const PedagogicalCenterMapPage = lazy(() => import('./components/learning/PedagogicalCenterMapPage'));
 const PedagogicalCenterJourneysPage = lazy(() => import('./components/learning/PedagogicalCenterJourneysPage'));
 const PedagogicalCenterContentPage = lazy(() => import('./components/learning/PedagogicalCenterContentPage'));
-const PedagogicalReviewQueuePage = lazy(() => import('./components/learning/PedagogicalReviewQueuePage'));
-const GuidedStudyContentValidationPage = lazy(() => import('./components/learning/GuidedStudyContentValidationPage'));
-const TeacherSimulationWorkflowPage = lazy(() => import('./components/learning/TeacherSimulationWorkflowPage'));
 const PublishedActivitiesPage = lazy(() => import('./components/learning/PublishedActivitiesPage'));
-const TeacherClassroomPage = lazy(() => import('./components/learning/TeacherClassroomPage'));
-const TeacherActivityBuilderPage = lazy(() => import('./components/learning/TeacherActivityBuilderPage'));
-const TeacherLiveQuizPage = lazy(() => import('./components/learning/TeacherLiveQuizPage'));
-const StudentLiveQuizPage = lazy(() => import('./components/learning/StudentLiveQuizPage'));
 const PracticePage = lazy(() => import('./components/learning/PracticePage'));
 const LessonPage = lazy(() => import('./components/learning/LessonPage'));
 const SimulationPage = lazy(() => import('./components/learning/SimulationPage'));
 const ErrorReviewPage = lazy(() => import('./components/learning/ErrorReviewPage'));
 const TeacherStudentDetailPage = lazy(() => import('./components/learning/TeacherStudentDetailPage'));
 const InclusiveEducationPage = lazy(() => import('./components/inclusive/InclusiveEducationPage'));
-const InventoryPage = lazy(() => import('./components/inventory/InventoryPage'));
-const PsychologyPage = lazy(() => import('./pages/Psychology/PsychologyPage'));
 
 const LibraryPage = lazy(
   () => import('./components/learning/LibraryPage'),
@@ -186,6 +158,34 @@ const TerminalsPage = lazy(
   () => import('./pages/Terminals/TerminalsPage'),
 );
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // Keep already visited screens warm while the user changes browser tabs.
+      staleTime: 1000 * 60 * 10,
+      gcTime: 1000 * 60 * 60,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: true,
+      retry: 1,
+    },
+    mutations: {
+      retry: 0,
+    },
+  },
+});
+
+function preloadApplicationScreens(): void {
+  void Promise.all([
+    import('./pages/Login'),
+    import('./pages/Admin/AdminPage'),
+    import('./pages/Platform/PlatformPage'),
+    import('./pages/Account/AccountPage'),
+    import('./components/TeacherDashboard'),
+    import('./components/StudentDashboard'),
+    import('./components/DirectorDashboard'),
+    import('./components/ParentDashboard'),
+  ]);
+}
 const resolvedTerminalsAccessProfiles = new Set<string>();
 
 class AppErrorBoundary extends Component<
@@ -251,91 +251,10 @@ class AppErrorBoundary extends Component<
   }
 }
 
-const CHUNK_RECOVERY_KEY = 'edumanager-chunk-recovery-at';
-const CHUNK_RECOVERY_WINDOW_MS = 30_000;
-
-function isDynamicImportError(error: unknown): boolean {
-  const message = error instanceof Error
-    ? error.message
-    : typeof error === 'object' && error !== null && 'message' in error
-      ? String(error.message)
-      : String(error);
-
-  return /failed to fetch dynamically imported module|importing a module script failed|loading chunk/i.test(message);
-}
-
-function getRouteErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (typeof error === 'object' && error !== null && 'statusText' in error) {
-    return String(error.statusText);
-  }
-
-  return String(error);
-}
-
-function RouteErrorElement() {
-  const error = useRouteError();
-  const isChunkError = isDynamicImportError(error);
-
-  useEffect(() => {
-    if (!isChunkError) {
-      return undefined;
-    }
-
-    try {
-      const previousAttempt = Number(
-        window.sessionStorage.getItem(CHUNK_RECOVERY_KEY) ?? 0,
-      );
-      const now = Date.now();
-
-      if (
-        Number.isFinite(previousAttempt) &&
-        now - previousAttempt < CHUNK_RECOVERY_WINDOW_MS
-      ) {
-        return undefined;
-      }
-
-      window.sessionStorage.setItem(CHUNK_RECOVERY_KEY, String(now));
-      const timeoutId = window.setTimeout(() => {
-        window.location.reload();
-      }, 50);
-
-      return () => window.clearTimeout(timeoutId);
-    } catch {
-      return undefined;
-    }
-  }, [isChunkError]);
-
-  return (
-    <main className="grid min-h-screen place-items-center bg-slate-50 p-6">
-      <section className="w-full max-w-md rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-sm">
-        <h1 className="text-xl font-bold text-[#181c20]">
-          {isChunkError ? 'Atualizando o sistema' : 'Não foi possível carregar esta página'}
-        </h1>
-        <p className="mt-3 text-sm text-[#727785]">
-          {isChunkError
-            ? 'Esta versão foi atualizada. A página será recarregada automaticamente.'
-            : getRouteErrorMessage(error)}
-        </p>
-        <button
-          type="button"
-          onClick={() => window.location.reload()}
-          className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-[#1a73e8] focus:outline-none focus:ring-2 focus:ring-[#005bbf] focus:ring-offset-2"
-        >
-          Atualizar página
-        </button>
-      </section>
-    </main>
-  );
-}
-
 function PageLoading() {
   return (
     <main className="grid min-h-screen place-items-center bg-slate-50">
-      <LoadingIndicator size="screen" />
+      <LoadingIndicator />
     </main>
   );
 }
@@ -344,9 +263,14 @@ function AuthenticatedPageLoading() {
   return (
     <main
       id="app-main-content"
-      className="grid min-h-[calc(100dvh-5rem)] min-w-0 flex-1 place-items-center bg-[#f3f6fb] p-4 dark:bg-slate-950 sm:p-6"
+      className="min-w-0 flex-1 bg-[#f3f6fb] p-4 sm:p-6 dark:bg-slate-950"
     >
-      <LoadingIndicator label={null} size="screen" />
+      <div
+        role="status"
+        className="grid min-h-48 place-items-center rounded-2xl border border-slate-200 bg-white text-sm font-medium text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400"
+      >
+        <LoadingIndicator label="Carregando conteúdo..." />
+      </div>
     </main>
   );
 }
@@ -385,9 +309,6 @@ function renderDashboard(
 
     case 'parent':
       return <ParentDashboard />;
-
-    case 'psychologist':
-      return <Navigate to="/psychology/agenda" replace />;
 
     default: {
       const exhaustiveRole: never =
@@ -476,7 +397,7 @@ export function DirectorLoginBrandingRoute() {
   if (isLoading) {
     return (
       <main className="grid min-h-screen place-items-center">
-        <LoadingIndicator size="screen" />
+        <LoadingIndicator />
       </main>
     );
   }
@@ -495,7 +416,7 @@ export function DirectorLoginBrandingRoute() {
 
 function DirectorCamerasRoute() {
   const { profile } = useAuth();
-  const { currentRole, currentInstitution, isLoading } = useInstitution();
+  const { currentRole, isLoading } = useInstitution();
 
   if (isLoading) {
     return <PageLoading />;
@@ -503,10 +424,6 @@ function DirectorCamerasRoute() {
 
   if (currentRole !== 'DIRECTOR' && profile?.role !== 'DIRECTOR') {
     return <Navigate to="/unauthorized" replace />;
-  }
-
-  if (currentInstitution?.plan === 'BASIC') {
-    return <Navigate to="/admin?module=overview" replace />;
   }
 
   return <CamerasPage />;
@@ -611,12 +528,10 @@ function AuthenticatedShellLayout() {
   return (
     <ProtectedRoute>
       <AuthenticatedDataPreloader />
-      <InitialLoadingGate>
-        <AppShell>
-          <PersistentTerminalsView />
-          <Outlet />
-        </AppShell>
-      </InitialLoadingGate>
+      <AppShell>
+        <PersistentTerminalsView />
+        <Outlet />
+      </AppShell>
     </ProtectedRoute>
   );
 }
@@ -688,7 +603,7 @@ function AppRoutes() {
           element={
             <ProtectedRoute allowedRoles={['STUDENT']}>
               <AuthenticatedRouteContent>
-                <StudentAcademicResultsPage />
+                <StudentDashboard />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
@@ -698,7 +613,7 @@ function AppRoutes() {
           element={
             <ProtectedRoute allowedRoles={['STUDENT']}>
               <AuthenticatedRouteContent>
-                <StudentAcademicResultsPage />
+                <StudentDashboard />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
@@ -708,17 +623,7 @@ function AppRoutes() {
           element={
             <ProtectedRoute allowedRoles={['STUDENT']}>
               <AuthenticatedRouteContent>
-                <StudentAcademicResultsPage />
-              </AuthenticatedRouteContent>
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student/calendar"
-          element={
-            <ProtectedRoute allowedRoles={['STUDENT']}>
-              <AuthenticatedRouteContent>
-                <StudentCalendarPage />
+                <StudentDashboard />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
@@ -804,36 +709,22 @@ function AppRoutes() {
           }
         />
         <Route path="/student/study" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudyCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/activities" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentPublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/live-quiz" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentLiveQuizPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/study/idiomas" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><EnglishLearningPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/study/english" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><EnglishLegacyLearningPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/study/subject/:subjectId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudentSubjectPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/study/writing" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><WritingModulePage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedStudyRoute /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedJourneyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/activity/:activityId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><PracticePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/lesson/:lessonId/:stepId?" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><LessonPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/simulation" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><SimulationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/error/:errorId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><ErrorReviewPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterOverviewPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/pedagogical-center/students" element={<Navigate to="/teacher/pedagogical-center" replace />} />
+        <Route path="/teacher/pedagogical-center/students" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterStudentsPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/map" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterMapPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/journeys" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterJourneysPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/content" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterContentPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/pedagogical-center/reviews" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><PedagogicalReviewQueuePage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/pedagogical-center/content-validation" element={<ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><GuidedStudyContentValidationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/pedagogical-center/simulations" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherSimulationWorkflowPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/classroom" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherClassroomPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/classroom/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherActivityBuilderPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/classroom/live-quiz" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherLiveQuizPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/students/:studentId" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherStudentDetailPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/inclusive-education" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/inclusive-education/materials/:materialId" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/inclusive-education/:section" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/inventory" element={<ProtectedRoute allowedRoles={['DIRECTOR', 'SECRETARY', 'TEACHER']} deniedRoles={['ADMIN']} deniedPlatformRoles={['SUPER_ADMIN']}><AuthenticatedRouteContent><InventoryPage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/psychology/*" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'STUDENT', 'GUARDIAN', 'PSYCHOLOGIST']}><AuthenticatedRouteContent><PsychologyRouteGate><PsychologyPage /></PsychologyRouteGate></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/inclusive-education" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/inclusive-education/materials/:materialId" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/inclusive-education/:section" element={<ProtectedRoute allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER']}><AuthenticatedRouteContent><InclusiveEducationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
 
         <Route
           path="/dashboard/*"
@@ -895,17 +786,6 @@ function AppRoutes() {
         />
 
         <Route
-          path="/platform/tec-idiomas"
-          element={
-            <ProtectedRoute allowedPlatformRoles={['SUPER_ADMIN']}>
-              <AuthenticatedRouteContent>
-                <TecIdiomasReleasePage />
-              </AuthenticatedRouteContent>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
           path="/platform/*"
           element={
             <ProtectedRoute
@@ -958,11 +838,9 @@ function AppRouteProviders() {
     <AuthProvider>
       <InstitutionProvider>
         <ThemeProvider>
-          <BrandingLoadingGate>
-            <Suspense fallback={<PageLoading />}>
-              <AppRoutes />
-            </Suspense>
-          </BrandingLoadingGate>
+          <Suspense fallback={<PageLoading />}>
+            <AppRoutes />
+          </Suspense>
         </ThemeProvider>
       </InstitutionProvider>
     </AuthProvider>
@@ -973,17 +851,38 @@ const appRouter = createBrowserRouter([
   {
     path: '*',
     element: <AppRouteProviders />,
-    errorElement: <RouteErrorElement />,
   },
 ]);
 
 function App() {
+  useEffect(() => {
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void) => number;
+    };
+
+    if (idleWindow.requestIdleCallback) {
+      const idleId = idleWindow.requestIdleCallback(
+        preloadApplicationScreens,
+      );
+
+      return () => {
+        window.clearTimeout(idleId);
+      };
+    }
+
+    const timeoutId = window.setTimeout(
+      preloadApplicationScreens,
+      800,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <AppErrorBoundary>
       <QueryClientProvider
         client={queryClient}
       >
-        <AppVersionRefreshGuard />
         <RouterProvider router={appRouter} />
       </QueryClientProvider>
     </AppErrorBoundary>

@@ -700,4 +700,33 @@ html.dark .login-card input::placeholder {
   body[data-print-target="inclusive"] .inclusive-printable .print-hidden {
     display: none !important;
   }
+
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+
+  .print-hidden,
+  #app-sidebar,
+  [data-sidebar],
+  aside,
+  nav {
+    display: none !important;
+  }
+
+  .printable-material {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #172033 !important;
+  }
+
+  .print-section,
+  .print-card,
+  .print-field {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }
