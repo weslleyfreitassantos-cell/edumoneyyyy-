@@ -413,8 +413,8 @@ describe('BNCC total knowledge factory V4', () => {
     expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBeGreaterThanOrEqual(18);
     expect(reactions).toMatchObject({
       originalQuestionCount: 24,
-      v5QuestionCount: 16,
-      currentQuestionCount: 40,
+      v5QuestionCount: 116,
+      currentQuestionCount: 140,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 24, actualQuestionCount: 24, status: 'EXACT' },
@@ -422,7 +422,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(reactions.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(reactions.purposeCounts).toEqual({ PROBE: 14, PRACTICE: 52, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 });
     expect(reactions.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'CHEMISTRY_REACTION_EVIDENCE')).toEqual([]);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
