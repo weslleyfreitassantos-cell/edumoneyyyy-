@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-labelledby="title">
+  <title id="title">TecEscola</title>
+  <rect width="192" height="192" fill="#0d61bd"/>
+  <path d="M72 0h48v192H72z" fill="#fff"/>
+  <rect x="57" y="96" width="78" height="14" rx="2" fill="#4fdfbd"/>
+</svg>

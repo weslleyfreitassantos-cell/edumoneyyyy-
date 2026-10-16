@@ -348,7 +348,7 @@ async function resolveInstitutionBranding(
   );
 
   if (error) {
-    return FALLBACK_BRANDING;
+    throw error;
   }
 
   const rows = Array.isArray(data) ? data : data ? [data] : [];
@@ -794,24 +794,20 @@ export const brandingService = {
       return resolveInstitutionBranding(resolution);
     }
 
-    try {
-      const { data, error } = await supabase.rpc(
-        'resolve_public_branding',
-        {
-          hostname: normalizedHostname,
-        },
-      );
+    const { data, error } = await supabase.rpc(
+      'resolve_public_branding',
+      {
+        hostname: normalizedHostname,
+      },
+    );
 
-      if (error) {
-        return FALLBACK_BRANDING;
-      }
-
-      const row = Array.isArray(data) ? data[0] : data;
-
-      return normalizePublicBrandingRow(row as PublicBrandingRow);
-    } catch {
-      return FALLBACK_BRANDING;
+    if (error) {
+      throw error;
     }
+
+    const row = Array.isArray(data) ? data[0] : data;
+
+    return normalizePublicBrandingRow(row as PublicBrandingRow);
   },
 
   getGlobalBranding(): Promise<BrandingRecord | null> {

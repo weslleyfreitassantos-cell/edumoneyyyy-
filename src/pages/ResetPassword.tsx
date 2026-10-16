@@ -326,7 +326,7 @@ export default function ResetPassword() {
   const displayName =
     brandingQuery.data?.displayName ??
     branding.displayName ??
-    'EduManager Pro';
+    'Tec Escola';
 
   useEffect(
     () => applyDocumentBranding(branding),

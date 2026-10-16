@@ -139,7 +139,7 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
         Educação que transforma. Tecnologia que aproxima.
       </p>
       <p className="text-slate-500 dark:text-slate-400">
-        © 2026 {branding.displayName ?? 'EduManager Pro'}. Todos os direitos reservados.
+        © 2026 {branding.displayName ?? 'Tec Escola'}. Todos os direitos reservados.
       </p>
     </div>
   );
