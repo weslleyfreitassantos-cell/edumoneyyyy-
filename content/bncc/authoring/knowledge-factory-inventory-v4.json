@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "8c2d94fdc1f3518770a614b40245863ff39a7ae6af95c0149e7b3f2ffd56ed10",
+    "v5QuestionFirstPacks": "6e2a7252bccbcef9a38ef38b305d8754371ac0081e50e3aaa3351d5083313d89",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 4226,
-    "consolidatedQuestionTotal": 5278,
+    "v5QuestionTotal": 5576,
+    "consolidatedQuestionTotal": 6628,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -360,15 +360,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "A celula como sistema: estrutura, transporte e funcao",
         "originalQuestionCount": 22,
-        "v5QuestionCount": 23,
+        "v5QuestionCount": 123,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 45,
+        "currentQuestionCount": 145,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 14,
-          "TRANSFER": 9,
-          "LOCK_IN": 6,
-          "REVIEW": 12
+          "PROBE": 14,
+          "PRACTICE": 54,
+          "TRANSFER": 34,
+          "LOCK_IN": 16,
+          "REVIEW": 27
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -392,7 +392,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 45,
+        "contextFamilyCount": 145,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -1487,15 +1487,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Ler escalas e converter distancias em mapas",
         "originalQuestionCount": 22,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 62,
+        "currentQuestionCount": 162,
         "purposeCounts": {
-          "PROBE": 7,
-          "PRACTICE": 21,
-          "TRANSFER": 12,
-          "LOCK_IN": 9,
-          "REVIEW": 13
+          "PROBE": 17,
+          "PRACTICE": 61,
+          "TRANSFER": 37,
+          "LOCK_IN": 19,
+          "REVIEW": 28
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1519,7 +1519,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 62,
+        "contextFamilyCount": 162,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -1551,15 +1551,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Analisar mudança e continuidade com fontes",
         "originalQuestionCount": 1,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 41,
+        "currentQuestionCount": 141,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 11
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 26
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1583,7 +1583,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 41,
+        "contextFamilyCount": 141,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -1674,15 +1674,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Comparar perspectivas em fontes históricas",
         "originalQuestionCount": 21,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 61,
+        "currentQuestionCount": 161,
         "purposeCounts": {
-          "PROBE": 6,
-          "PRACTICE": 21,
-          "TRANSFER": 12,
-          "LOCK_IN": 9,
-          "REVIEW": 13
+          "PROBE": 16,
+          "PRACTICE": 61,
+          "TRANSFER": 37,
+          "LOCK_IN": 19,
+          "REVIEW": 28
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1706,7 +1706,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 61,
+        "contextFamilyCount": 161,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -2885,15 +2885,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Decidir com razões: princípios, consequências e proporcionalidade",
         "originalQuestionCount": 21,
-        "v5QuestionCount": 19,
+        "v5QuestionCount": 119,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -2917,7 +2917,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 140,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -2949,15 +2949,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Como distinguir conceitos, critérios e opiniões",
         "originalQuestionCount": 0,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -2981,7 +2981,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 140,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3016,15 +3016,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Como avaliar razões, evidências e conclusões",
         "originalQuestionCount": 45,
-        "v5QuestionCount": 20,
+        "v5QuestionCount": 120,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 65,
+        "currentQuestionCount": 165,
         "purposeCounts": {
-          "PROBE": 9,
-          "PRACTICE": 20,
-          "TRANSFER": 12,
-          "LOCK_IN": 9,
-          "REVIEW": 15
+          "PROBE": 19,
+          "PRACTICE": 60,
+          "TRANSFER": 37,
+          "LOCK_IN": 19,
+          "REVIEW": 30
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3048,7 +3048,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 60,
+        "contextFamilyCount": 160,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3149,15 +3149,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Interpretar aceleração como variação da velocidade",
         "originalQuestionCount": 1,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 41,
+        "currentQuestionCount": 141,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 7,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 17,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3181,7 +3181,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 41,
+        "contextFamilyCount": 141,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3213,15 +3213,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Ler gráficos de movimento: posição, velocidade e área",
         "originalQuestionCount": 22,
-        "v5QuestionCount": 24,
+        "v5QuestionCount": 124,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 46,
+        "currentQuestionCount": 146,
         "purposeCounts": {
-          "PROBE": 5,
-          "PRACTICE": 16,
-          "TRANSFER": 8,
-          "LOCK_IN": 7,
-          "REVIEW": 10
+          "PROBE": 15,
+          "PRACTICE": 56,
+          "TRANSFER": 33,
+          "LOCK_IN": 17,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3245,7 +3245,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 46,
+        "contextFamilyCount": 146,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3277,15 +3277,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Força resultante: o que muda o movimento?",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 35,
+        "v5QuestionCount": 135,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3309,7 +3309,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 140,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3336,15 +3336,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Comparar movimentos a partir de um referencial",
         "originalQuestionCount": 1,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 41,
+        "currentQuestionCount": 141,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 13,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 53,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3368,7 +3368,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 41,
+        "contextFamilyCount": 141,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3400,15 +3400,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Identificar movimento uniforme em registros",
         "originalQuestionCount": 1,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 41,
+        "currentQuestionCount": 141,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 13,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 53,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3432,7 +3432,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 41,
+        "contextFamilyCount": 141,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3464,15 +3464,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Converter unidades e comparar movimentos",
         "originalQuestionCount": 22,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 62,
+        "currentQuestionCount": 162,
         "purposeCounts": {
-          "PROBE": 7,
-          "PRACTICE": 20,
-          "TRANSFER": 13,
-          "LOCK_IN": 9,
-          "REVIEW": 13
+          "PROBE": 17,
+          "PRACTICE": 60,
+          "TRANSFER": 38,
+          "LOCK_IN": 19,
+          "REVIEW": 28
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3496,7 +3496,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 62,
+        "contextFamilyCount": 162,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3651,15 +3651,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Comparar fontes e sustentar uma síntese",
         "originalQuestionCount": 1,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 90,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 41,
+        "currentQuestionCount": 91,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 13,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 9,
+          "PRACTICE": 28,
+          "TRANSFER": 20,
+          "LOCK_IN": 14,
+          "REVIEW": 20
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3683,7 +3683,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 41,
+        "contextFamilyCount": 91,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "81a3dca57ff0aa20570e1bc8877471d3a4a100ddd9ba475f5cee4994afc284c2"
+  "inventoryHash": "2ff2463178edf3bbb7439af9fcae8f241a433c3caed8b2996a825f2420c2b105"
 }

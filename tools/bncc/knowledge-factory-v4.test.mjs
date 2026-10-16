@@ -200,8 +200,8 @@ describe('BNCC total knowledge factory V4', () => {
     const report = compileKnowledgeFactoryV4(undefined, true);
     const physics = report.existingContent.depthAudit.find((item) => item.targetId === 'PHYSICS_MODEL_FORCE');
 
-    expect(physics).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 35, currentQuestionCount: 40 });
-    expect(physics.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(physics).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 135, currentQuestionCount: 140 });
+    expect(physics.purposeCounts).toEqual({ PROBE: 14, PRACTICE: 52, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 });
     expect(physics.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
     expect(physics.studentPublicationStatus).toBe('STAGING_INACTIVE');
   });
@@ -317,8 +317,8 @@ describe('BNCC total knowledge factory V4', () => {
     expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBeGreaterThanOrEqual(18);
     expect(biology).toMatchObject({
       originalQuestionCount: 22,
-      v5QuestionCount: 23,
-      currentQuestionCount: 45,
+      v5QuestionCount: 123,
+      currentQuestionCount: 145,
       technicalDeepReady: true,
       readinessClaim: 'DEEP_CONTENT_READY',
       sourceReconciliation: { expectedQuestionCount: 22, actualQuestionCount: 22, status: 'EXACT' },
@@ -326,7 +326,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(biology.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 14, TRANSFER: 9, LOCK_IN: 6, REVIEW: 12 });
+    expect(biology.purposeCounts).toEqual({ PROBE: 14, PRACTICE: 54, TRANSFER: 34, LOCK_IN: 16, REVIEW: 27 });
     expect(biology.missingDepthDimensions).toEqual([]);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
     expect(report.existingContent.depthAudit.find((item) => item.targetId === 'MATH_SUCCESSIVE_PERCENT_CHANGE')).toMatchObject({
@@ -457,8 +457,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(ethics).toMatchObject({
       originalQuestionCount: 21,
-      v5QuestionCount: 19,
-      currentQuestionCount: 40,
+      v5QuestionCount: 119,
+      currentQuestionCount: 140,
       technicalDeepReady: true,
       readinessClaim: 'DEEP_CONTENT_READY',
       answerKeyValid: true,
@@ -467,7 +467,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(ethics.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(ethics.purposeCounts).toEqual({ PROBE: 14, PRACTICE: 52, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 });
     expect(ethics.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE')).toEqual([]);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
@@ -480,8 +480,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(argument).toMatchObject({
       originalQuestionCount: 45,
-      v5QuestionCount: 20,
-      currentQuestionCount: 65,
+      v5QuestionCount: 120,
+      currentQuestionCount: 165,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 45, actualQuestionCount: 45, status: 'EXACT_WITH_SEMANTICALLY_REASSIGNED_ITEMS', reassignedQuestionCount: 20, reassignedFromSkillCodes: ['PHILOSOPHY_DISTINGUISH_CONCEPT'], historicalRowsPreserved: true, questionFeedbackCount: 45 },
@@ -489,12 +489,12 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(argument.purposeCounts).toEqual({ PROBE: 9, PRACTICE: 20, TRANSFER: 12, LOCK_IN: 9, REVIEW: 15 });
+    expect(argument.purposeCounts).toEqual({ PROBE: 19, PRACTICE: 60, TRANSFER: 37, LOCK_IN: 19, REVIEW: 30 });
     expect(argument.missingDepthDimensions).toEqual([]);
     expect(concept).toMatchObject({
       originalQuestionCount: 0,
-      v5QuestionCount: 40,
-      currentQuestionCount: 40,
+      v5QuestionCount: 140,
+      currentQuestionCount: 140,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 20, actualQuestionCount: 0, status: 'SEMANTICALLY_REASSIGNED', reassignedQuestionCount: 20, reassignedToSkillCode: 'PHILOSOPHY_EVALUATE_ARGUMENT', historicalRowsPreserved: true, questionFeedbackCount: 0 },
@@ -502,7 +502,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(concept.purposeCounts).toEqual({ PROBE: 4, PRACTICE: 12, TRANSFER: 8, LOCK_IN: 6, REVIEW: 10 });
+    expect(concept.purposeCounts).toEqual({ PROBE: 14, PRACTICE: 52, TRANSFER: 33, LOCK_IN: 16, REVIEW: 25 });
     expect(concept.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.some((item) => item.id === 'PHILOSOPHY_DISTINGUISH_CONCEPT')).toBe(false);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
@@ -535,8 +535,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(motionGraph).toMatchObject({
       originalQuestionCount: 22,
-      v5QuestionCount: 24,
-      currentQuestionCount: 46,
+      v5QuestionCount: 124,
+      currentQuestionCount: 146,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 22, actualQuestionCount: 22, status: 'EXACT', questionFeedbackCount: 22 },
@@ -544,7 +544,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(motionGraph.purposeCounts).toEqual({ PROBE: 5, PRACTICE: 16, TRANSFER: 8, LOCK_IN: 7, REVIEW: 10 });
+    expect(motionGraph.purposeCounts).toEqual({ PROBE: 15, PRACTICE: 56, TRANSFER: 33, LOCK_IN: 17, REVIEW: 25 });
     expect(motionGraph.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.some((item) => item.id === 'PHYSICS_INTERPRET_MOTION_GRAPH')).toBe(false);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
