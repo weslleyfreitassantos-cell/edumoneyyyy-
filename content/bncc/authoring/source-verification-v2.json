@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "tec-escola.bncc.source-verification.v2",
+  "campaignId": "TECESCOLA_BNCC_FULL_COVERAGE",
+  "verificationPolicy": "A source is marked as technically verified only when the official document URL, page, code and exact descriptor agree with the local catalog. This is not human pedagogical approval and does not promote a mapping.",
+  "records": [
+    {
+      "officialCode": "EI01CG01",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "componentCode": "CG",
+      "ageRange": "Bebes, zero a 1 ano e 6 meses",
+      "fieldOfExperience": "Corpo, gestos e movimentos",
+      "descriptor": "Movimentar as partes do corpo para exprimir corporalmente emoções, necessidades e desejos.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 49
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHOR_EXPERIENTIAL_EVIDENCE_NOT_TRADITIONAL_CHILD_QUIZ",
+      "evidenceCheckedAt": "2026-10-16"
+    }
+  ]
+}

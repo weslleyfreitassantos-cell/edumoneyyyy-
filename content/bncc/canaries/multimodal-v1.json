@@ -11,7 +11,7 @@
       "mode": "OBJECTIVE",
       "officialCode": "EF06MA15",
       "canonicalSkill": "MATH_IDENTIFY_PERCENT_BASE",
-      "mappingStatus": "MAPPING_PENDING",
+      "mappingStatus": "HUMAN_REVIEW_BLOCKED",
       "contentIds": ["MATH_IDENTIFY_PERCENT_BASE"],
       "content": {
         "lesson": true,

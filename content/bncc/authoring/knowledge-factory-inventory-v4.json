@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "17787aa9364f68bc2aaa9e1abb5445e8d63ee082d534b2316a1317611e3593dd",
+    "v5QuestionFirstPacks": "047c6a5c63794f3ea6c1ffe69a403f5a9c68b4ca180a395377a356688bbd3ae4",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 2526,
-    "consolidatedQuestionTotal": 3578,
+    "v5QuestionTotal": 2726,
+    "consolidatedQuestionTotal": 3778,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -1167,15 +1167,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Inferir sentidos com pistas do texto",
         "originalQuestionCount": 22,
-        "v5QuestionCount": 24,
+        "v5QuestionCount": 64,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 46,
+        "currentQuestionCount": 86,
         "purposeCounts": {
-          "PROBE": 7,
-          "PRACTICE": 14,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 11
+          "PROBE": 11,
+          "PRACTICE": 26,
+          "TRANSFER": 16,
+          "LOCK_IN": 12,
+          "REVIEW": 21
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1199,7 +1199,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 46,
+        "contextFamilyCount": 86,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -1615,15 +1615,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Causas históricas se combinam e atuam em tempos diferentes",
         "originalQuestionCount": 6,
-        "v5QuestionCount": 34,
+        "v5QuestionCount": 74,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 80,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 8,
+          "PRACTICE": 24,
+          "TRANSFER": 16,
+          "LOCK_IN": 12,
+          "REVIEW": 20
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1647,7 +1647,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 80,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -2540,15 +2540,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Razão, taxa unitária e comparação justa",
         "originalQuestionCount": 10,
-        "v5QuestionCount": 30,
+        "v5QuestionCount": 70,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 80,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 8,
+          "PRACTICE": 24,
+          "TRANSFER": 16,
+          "LOCK_IN": 12,
+          "REVIEW": 20
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -2572,7 +2572,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 80,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -3715,15 +3715,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Conectores mostram como as ideias se relacionam",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 35,
+        "v5QuestionCount": 75,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 80,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 8,
+          "PRACTICE": 24,
+          "TRANSFER": 16,
+          "LOCK_IN": 12,
+          "REVIEW": 20
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -3747,7 +3747,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 40,
+        "contextFamilyCount": 80,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -4517,15 +4517,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "O que os dados permitem concluir?",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 35,
+        "v5QuestionCount": 75,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 80,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 8,
+          "PRACTICE": 24,
+          "TRANSFER": 16,
+          "LOCK_IN": 12,
+          "REVIEW": 20
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -4549,7 +4549,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 39,
+        "contextFamilyCount": 79,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "0128337d4b596564bae962c003061ba1bdcd9cdb577d322410a7caeb281b9d98"
+  "inventoryHash": "207e9891d1c1e9f7205cd96ac8607d22cc3ce71185c13018675222d513338b2e"
 }

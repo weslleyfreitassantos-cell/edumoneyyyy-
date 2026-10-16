@@ -1,0 +1,1039 @@
+{
+  "schemaVersion": "tec-escola.bncc.coverage-sizing.v2",
+  "campaignId": "TECESCOLA_BNCC_FULL_COVERAGE",
+  "generatedAt": "2026-10-16",
+  "sourceBasis": {
+    "officialCatalog": "content/bncc/official/catalog-2018.json",
+    "mappingCoverage": "content/bncc/mappings/coverage-2018.json",
+    "technicalInventory": "content/bncc/authoring/knowledge-factory-inventory-v4.json",
+    "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
+    "officialPortal": "https://downloadbncc.mec.gov.br/",
+    "officialDocument": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf"
+  },
+  "auditedFacts": {
+    "officialNodes": 1723,
+    "skills": 1619,
+    "developmentObjectives": 104,
+    "mappingStatuses": {
+      "CANONICAL_GAP": 1496,
+      "HIERARCHY_ONLY": 104,
+      "HUMAN_REVIEW_BLOCKED": 121,
+      "MAPPED": 2
+    },
+    "sourceTextHumanVerifiedByFactory": 0,
+    "sourceTextRequiresReviewByFactory": 1723,
+    "exactSourceVerificationsThisIncrement": 1,
+    "exactSourceVerificationCodes": [
+      "EI01CG01"
+    ],
+    "technicalDeepReadySequences": 78,
+    "v5QuestionTotal": 2726,
+    "consolidatedQuestionTotal": 3778,
+    "humanReviewedContent": 0,
+    "studentAvailableNewContent": 0
+  },
+  "scenarioRubric": {
+    "skill": {
+      "basis": "The V4 depth gate requires 4 PROBE, 12 PRACTICE, 8 TRANSFER, 6 LOCK_IN and 10 REVIEW items: 40 questions as the minimum technical journey.",
+      "minimum": {
+        "lessons": 1,
+        "workedExamples": 1,
+        "activities": 1,
+        "diagnosticAssessments": 1,
+        "masteryAssessments": 1,
+        "reviewQuestions": 10,
+        "questions": 40
+      },
+      "recommended": {
+        "lessons": 2,
+        "workedExamples": 3,
+        "activities": 2,
+        "diagnosticAssessments": 2,
+        "masteryAssessments": 2,
+        "reviewQuestions": 20,
+        "questions": 80
+      },
+      "extensive": {
+        "lessons": 3,
+        "workedExamples": 5,
+        "activities": 3,
+        "diagnosticAssessments": 3,
+        "masteryAssessments": 3,
+        "reviewQuestions": 30,
+        "questions": 120
+      }
+    },
+    "developmentObjective": {
+      "basis": "Development objectives in Early Childhood require observable, mediated experiences. They are not converted into a child quiz; counts refer to experiences and educator records.",
+      "minimum": {
+        "lessons": 1,
+        "workedExamples": 0,
+        "activities": 1,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 1,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 1,
+        "observationCriteria": 3
+      },
+      "recommended": {
+        "lessons": 2,
+        "workedExamples": 0,
+        "activities": 2,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 2,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 2,
+        "observationCriteria": 5
+      },
+      "extensive": {
+        "lessons": 3,
+        "workedExamples": 0,
+        "activities": 3,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 3,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 3,
+        "observationCriteria": 7
+      }
+    }
+  },
+  "estimates": {
+    "minimum": {
+      "lessons": 1723,
+      "workedExamples": 1619,
+      "activities": 1723,
+      "diagnosticAssessments": 1619,
+      "masteryAssessments": 1723,
+      "reviewQuestions": 16190,
+      "questions": 64760,
+      "observationalExperiences": 104,
+      "observationCriteria": 312
+    },
+    "recommended": {
+      "lessons": 3446,
+      "workedExamples": 4857,
+      "activities": 3446,
+      "diagnosticAssessments": 3238,
+      "masteryAssessments": 3446,
+      "reviewQuestions": 32380,
+      "questions": 129520,
+      "observationalExperiences": 208,
+      "observationCriteria": 520
+    },
+    "extensive": {
+      "lessons": 5169,
+      "workedExamples": 8095,
+      "activities": 5169,
+      "diagnosticAssessments": 4857,
+      "masteryAssessments": 5169,
+      "reviewQuestions": 48570,
+      "questions": 194280,
+      "observationalExperiences": 312,
+      "observationCriteria": 728
+    }
+  },
+  "byStage": {
+    "EDUCACAO_INFANTIL": {
+      "officialNodes": 104,
+      "skills": 0,
+      "developmentObjectives": 104,
+      "minimum": {
+        "lessons": 104,
+        "workedExamples": 0,
+        "activities": 104,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 104,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 104,
+        "observationCriteria": 312
+      },
+      "recommended": {
+        "lessons": 208,
+        "workedExamples": 0,
+        "activities": 208,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 208,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 208,
+        "observationCriteria": 520
+      },
+      "extensive": {
+        "lessons": 312,
+        "workedExamples": 0,
+        "activities": 312,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 312,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 312,
+        "observationCriteria": 728
+      }
+    },
+    "ENSINO_FUNDAMENTAL": {
+      "officialNodes": 1407,
+      "skills": 1407,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 1407,
+        "workedExamples": 1407,
+        "activities": 1407,
+        "diagnosticAssessments": 1407,
+        "masteryAssessments": 1407,
+        "reviewQuestions": 14070,
+        "questions": 56280
+      },
+      "recommended": {
+        "lessons": 2814,
+        "workedExamples": 4221,
+        "activities": 2814,
+        "diagnosticAssessments": 2814,
+        "masteryAssessments": 2814,
+        "reviewQuestions": 28140,
+        "questions": 112560
+      },
+      "extensive": {
+        "lessons": 4221,
+        "workedExamples": 7035,
+        "activities": 4221,
+        "diagnosticAssessments": 4221,
+        "masteryAssessments": 4221,
+        "reviewQuestions": 42210,
+        "questions": 168840
+      }
+    },
+    "ENSINO_MEDIO": {
+      "officialNodes": 212,
+      "skills": 212,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 212,
+        "workedExamples": 212,
+        "activities": 212,
+        "diagnosticAssessments": 212,
+        "masteryAssessments": 212,
+        "reviewQuestions": 2120,
+        "questions": 8480
+      },
+      "recommended": {
+        "lessons": 424,
+        "workedExamples": 636,
+        "activities": 424,
+        "diagnosticAssessments": 424,
+        "masteryAssessments": 424,
+        "reviewQuestions": 4240,
+        "questions": 16960
+      },
+      "extensive": {
+        "lessons": 636,
+        "workedExamples": 1060,
+        "activities": 636,
+        "diagnosticAssessments": 636,
+        "masteryAssessments": 636,
+        "reviewQuestions": 6360,
+        "questions": 25440
+      }
+    }
+  },
+  "byStageAndComponent": [
+    {
+      "stage": "EDUCACAO_INFANTIL",
+      "componentCode": "CG",
+      "officialNodes": 15,
+      "skills": 0,
+      "developmentObjectives": 15,
+      "minimum": {
+        "lessons": 15,
+        "workedExamples": 0,
+        "activities": 15,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 15,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 15,
+        "observationCriteria": 45
+      },
+      "recommended": {
+        "lessons": 30,
+        "workedExamples": 0,
+        "activities": 30,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 30,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 30,
+        "observationCriteria": 75
+      },
+      "extensive": {
+        "lessons": 45,
+        "workedExamples": 0,
+        "activities": 45,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 45,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 45,
+        "observationCriteria": 105
+      }
+    },
+    {
+      "stage": "EDUCACAO_INFANTIL",
+      "componentCode": "CO",
+      "officialNodes": 11,
+      "skills": 0,
+      "developmentObjectives": 11,
+      "minimum": {
+        "lessons": 11,
+        "workedExamples": 0,
+        "activities": 11,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 11,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 11,
+        "observationCriteria": 33
+      },
+      "recommended": {
+        "lessons": 22,
+        "workedExamples": 0,
+        "activities": 22,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 22,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 22,
+        "observationCriteria": 55
+      },
+      "extensive": {
+        "lessons": 33,
+        "workedExamples": 0,
+        "activities": 33,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 33,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 33,
+        "observationCriteria": 77
+      }
+    },
+    {
+      "stage": "EDUCACAO_INFANTIL",
+      "componentCode": "EF",
+      "officialNodes": 27,
+      "skills": 0,
+      "developmentObjectives": 27,
+      "minimum": {
+        "lessons": 27,
+        "workedExamples": 0,
+        "activities": 27,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 27,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 27,
+        "observationCriteria": 81
+      },
+      "recommended": {
+        "lessons": 54,
+        "workedExamples": 0,
+        "activities": 54,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 54,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 54,
+        "observationCriteria": 135
+      },
+      "extensive": {
+        "lessons": 81,
+        "workedExamples": 0,
+        "activities": 81,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 81,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 81,
+        "observationCriteria": 189
+      }
+    },
+    {
+      "stage": "EDUCACAO_INFANTIL",
+      "componentCode": "EO",
+      "officialNodes": 20,
+      "skills": 0,
+      "developmentObjectives": 20,
+      "minimum": {
+        "lessons": 20,
+        "workedExamples": 0,
+        "activities": 20,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 20,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 20,
+        "observationCriteria": 60
+      },
+      "recommended": {
+        "lessons": 40,
+        "workedExamples": 0,
+        "activities": 40,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 40,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 40,
+        "observationCriteria": 100
+      },
+      "extensive": {
+        "lessons": 60,
+        "workedExamples": 0,
+        "activities": 60,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 60,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 60,
+        "observationCriteria": 140
+      }
+    },
+    {
+      "stage": "EDUCACAO_INFANTIL",
+      "componentCode": "ET",
+      "officialNodes": 22,
+      "skills": 0,
+      "developmentObjectives": 22,
+      "minimum": {
+        "lessons": 22,
+        "workedExamples": 0,
+        "activities": 22,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 22,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 22,
+        "observationCriteria": 66
+      },
+      "recommended": {
+        "lessons": 44,
+        "workedExamples": 0,
+        "activities": 44,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 44,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 44,
+        "observationCriteria": 110
+      },
+      "extensive": {
+        "lessons": 66,
+        "workedExamples": 0,
+        "activities": 66,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 66,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 66,
+        "observationCriteria": 154
+      }
+    },
+    {
+      "stage": "EDUCACAO_INFANTIL",
+      "componentCode": "TS",
+      "officialNodes": 9,
+      "skills": 0,
+      "developmentObjectives": 9,
+      "minimum": {
+        "lessons": 9,
+        "workedExamples": 0,
+        "activities": 9,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 9,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 9,
+        "observationCriteria": 27
+      },
+      "recommended": {
+        "lessons": 18,
+        "workedExamples": 0,
+        "activities": 18,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 18,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 18,
+        "observationCriteria": 45
+      },
+      "extensive": {
+        "lessons": 27,
+        "workedExamples": 0,
+        "activities": 27,
+        "diagnosticAssessments": 0,
+        "masteryAssessments": 27,
+        "reviewQuestions": 0,
+        "questions": 0,
+        "observationalExperiences": 27,
+        "observationCriteria": 63
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "AR",
+      "officialNodes": 61,
+      "skills": 61,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 61,
+        "workedExamples": 61,
+        "activities": 61,
+        "diagnosticAssessments": 61,
+        "masteryAssessments": 61,
+        "reviewQuestions": 610,
+        "questions": 2440
+      },
+      "recommended": {
+        "lessons": 122,
+        "workedExamples": 183,
+        "activities": 122,
+        "diagnosticAssessments": 122,
+        "masteryAssessments": 122,
+        "reviewQuestions": 1220,
+        "questions": 4880
+      },
+      "extensive": {
+        "lessons": 183,
+        "workedExamples": 305,
+        "activities": 183,
+        "diagnosticAssessments": 183,
+        "masteryAssessments": 183,
+        "reviewQuestions": 1830,
+        "questions": 7320
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "CI",
+      "officialNodes": 111,
+      "skills": 111,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 111,
+        "workedExamples": 111,
+        "activities": 111,
+        "diagnosticAssessments": 111,
+        "masteryAssessments": 111,
+        "reviewQuestions": 1110,
+        "questions": 4440
+      },
+      "recommended": {
+        "lessons": 222,
+        "workedExamples": 333,
+        "activities": 222,
+        "diagnosticAssessments": 222,
+        "masteryAssessments": 222,
+        "reviewQuestions": 2220,
+        "questions": 8880
+      },
+      "extensive": {
+        "lessons": 333,
+        "workedExamples": 555,
+        "activities": 333,
+        "diagnosticAssessments": 333,
+        "masteryAssessments": 333,
+        "reviewQuestions": 3330,
+        "questions": 13320
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "CO",
+      "officialNodes": 103,
+      "skills": 103,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 103,
+        "workedExamples": 103,
+        "activities": 103,
+        "diagnosticAssessments": 103,
+        "masteryAssessments": 103,
+        "reviewQuestions": 1030,
+        "questions": 4120
+      },
+      "recommended": {
+        "lessons": 206,
+        "workedExamples": 309,
+        "activities": 206,
+        "diagnosticAssessments": 206,
+        "masteryAssessments": 206,
+        "reviewQuestions": 2060,
+        "questions": 8240
+      },
+      "extensive": {
+        "lessons": 309,
+        "workedExamples": 515,
+        "activities": 309,
+        "diagnosticAssessments": 309,
+        "masteryAssessments": 309,
+        "reviewQuestions": 3090,
+        "questions": 12360
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "EF",
+      "officialNodes": 69,
+      "skills": 69,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 69,
+        "workedExamples": 69,
+        "activities": 69,
+        "diagnosticAssessments": 69,
+        "masteryAssessments": 69,
+        "reviewQuestions": 690,
+        "questions": 2760
+      },
+      "recommended": {
+        "lessons": 138,
+        "workedExamples": 207,
+        "activities": 138,
+        "diagnosticAssessments": 138,
+        "masteryAssessments": 138,
+        "reviewQuestions": 1380,
+        "questions": 5520
+      },
+      "extensive": {
+        "lessons": 207,
+        "workedExamples": 345,
+        "activities": 207,
+        "diagnosticAssessments": 207,
+        "masteryAssessments": 207,
+        "reviewQuestions": 2070,
+        "questions": 8280
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "ER",
+      "officialNodes": 63,
+      "skills": 63,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 63,
+        "workedExamples": 63,
+        "activities": 63,
+        "diagnosticAssessments": 63,
+        "masteryAssessments": 63,
+        "reviewQuestions": 630,
+        "questions": 2520
+      },
+      "recommended": {
+        "lessons": 126,
+        "workedExamples": 189,
+        "activities": 126,
+        "diagnosticAssessments": 126,
+        "masteryAssessments": 126,
+        "reviewQuestions": 1260,
+        "questions": 5040
+      },
+      "extensive": {
+        "lessons": 189,
+        "workedExamples": 315,
+        "activities": 189,
+        "diagnosticAssessments": 189,
+        "masteryAssessments": 189,
+        "reviewQuestions": 1890,
+        "questions": 7560
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "GE",
+      "officialNodes": 123,
+      "skills": 123,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 123,
+        "workedExamples": 123,
+        "activities": 123,
+        "diagnosticAssessments": 123,
+        "masteryAssessments": 123,
+        "reviewQuestions": 1230,
+        "questions": 4920
+      },
+      "recommended": {
+        "lessons": 246,
+        "workedExamples": 369,
+        "activities": 246,
+        "diagnosticAssessments": 246,
+        "masteryAssessments": 246,
+        "reviewQuestions": 2460,
+        "questions": 9840
+      },
+      "extensive": {
+        "lessons": 369,
+        "workedExamples": 615,
+        "activities": 369,
+        "diagnosticAssessments": 369,
+        "masteryAssessments": 369,
+        "reviewQuestions": 3690,
+        "questions": 14760
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "HI",
+      "officialNodes": 151,
+      "skills": 151,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 151,
+        "workedExamples": 151,
+        "activities": 151,
+        "diagnosticAssessments": 151,
+        "masteryAssessments": 151,
+        "reviewQuestions": 1510,
+        "questions": 6040
+      },
+      "recommended": {
+        "lessons": 302,
+        "workedExamples": 453,
+        "activities": 302,
+        "diagnosticAssessments": 302,
+        "masteryAssessments": 302,
+        "reviewQuestions": 3020,
+        "questions": 12080
+      },
+      "extensive": {
+        "lessons": 453,
+        "workedExamples": 755,
+        "activities": 453,
+        "diagnosticAssessments": 453,
+        "masteryAssessments": 453,
+        "reviewQuestions": 4530,
+        "questions": 18120
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "LI",
+      "officialNodes": 88,
+      "skills": 88,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 88,
+        "workedExamples": 88,
+        "activities": 88,
+        "diagnosticAssessments": 88,
+        "masteryAssessments": 88,
+        "reviewQuestions": 880,
+        "questions": 3520
+      },
+      "recommended": {
+        "lessons": 176,
+        "workedExamples": 264,
+        "activities": 176,
+        "diagnosticAssessments": 176,
+        "masteryAssessments": 176,
+        "reviewQuestions": 1760,
+        "questions": 7040
+      },
+      "extensive": {
+        "lessons": 264,
+        "workedExamples": 440,
+        "activities": 264,
+        "diagnosticAssessments": 264,
+        "masteryAssessments": 264,
+        "reviewQuestions": 2640,
+        "questions": 10560
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "LP",
+      "officialNodes": 391,
+      "skills": 391,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 391,
+        "workedExamples": 391,
+        "activities": 391,
+        "diagnosticAssessments": 391,
+        "masteryAssessments": 391,
+        "reviewQuestions": 3910,
+        "questions": 15640
+      },
+      "recommended": {
+        "lessons": 782,
+        "workedExamples": 1173,
+        "activities": 782,
+        "diagnosticAssessments": 782,
+        "masteryAssessments": 782,
+        "reviewQuestions": 7820,
+        "questions": 31280
+      },
+      "extensive": {
+        "lessons": 1173,
+        "workedExamples": 1955,
+        "activities": 1173,
+        "diagnosticAssessments": 1173,
+        "masteryAssessments": 1173,
+        "reviewQuestions": 11730,
+        "questions": 46920
+      }
+    },
+    {
+      "stage": "ENSINO_FUNDAMENTAL",
+      "componentCode": "MA",
+      "officialNodes": 247,
+      "skills": 247,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 247,
+        "workedExamples": 247,
+        "activities": 247,
+        "diagnosticAssessments": 247,
+        "masteryAssessments": 247,
+        "reviewQuestions": 2470,
+        "questions": 9880
+      },
+      "recommended": {
+        "lessons": 494,
+        "workedExamples": 741,
+        "activities": 494,
+        "diagnosticAssessments": 494,
+        "masteryAssessments": 494,
+        "reviewQuestions": 4940,
+        "questions": 19760
+      },
+      "extensive": {
+        "lessons": 741,
+        "workedExamples": 1235,
+        "activities": 741,
+        "diagnosticAssessments": 741,
+        "masteryAssessments": 741,
+        "reviewQuestions": 7410,
+        "questions": 29640
+      }
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "componentCode": "CHS",
+      "officialNodes": 32,
+      "skills": 32,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 32,
+        "workedExamples": 32,
+        "activities": 32,
+        "diagnosticAssessments": 32,
+        "masteryAssessments": 32,
+        "reviewQuestions": 320,
+        "questions": 1280
+      },
+      "recommended": {
+        "lessons": 64,
+        "workedExamples": 96,
+        "activities": 64,
+        "diagnosticAssessments": 64,
+        "masteryAssessments": 64,
+        "reviewQuestions": 640,
+        "questions": 2560
+      },
+      "extensive": {
+        "lessons": 96,
+        "workedExamples": 160,
+        "activities": 96,
+        "diagnosticAssessments": 96,
+        "masteryAssessments": 96,
+        "reviewQuestions": 960,
+        "questions": 3840
+      }
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "componentCode": "CNT",
+      "officialNodes": 26,
+      "skills": 26,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 26,
+        "workedExamples": 26,
+        "activities": 26,
+        "diagnosticAssessments": 26,
+        "masteryAssessments": 26,
+        "reviewQuestions": 260,
+        "questions": 1040
+      },
+      "recommended": {
+        "lessons": 52,
+        "workedExamples": 78,
+        "activities": 52,
+        "diagnosticAssessments": 52,
+        "masteryAssessments": 52,
+        "reviewQuestions": 520,
+        "questions": 2080
+      },
+      "extensive": {
+        "lessons": 78,
+        "workedExamples": 130,
+        "activities": 78,
+        "diagnosticAssessments": 78,
+        "masteryAssessments": 78,
+        "reviewQuestions": 780,
+        "questions": 3120
+      }
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "componentCode": "CO",
+      "officialNodes": 26,
+      "skills": 26,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 26,
+        "workedExamples": 26,
+        "activities": 26,
+        "diagnosticAssessments": 26,
+        "masteryAssessments": 26,
+        "reviewQuestions": 260,
+        "questions": 1040
+      },
+      "recommended": {
+        "lessons": 52,
+        "workedExamples": 78,
+        "activities": 52,
+        "diagnosticAssessments": 52,
+        "masteryAssessments": 52,
+        "reviewQuestions": 520,
+        "questions": 2080
+      },
+      "extensive": {
+        "lessons": 78,
+        "workedExamples": 130,
+        "activities": 78,
+        "diagnosticAssessments": 78,
+        "masteryAssessments": 78,
+        "reviewQuestions": 780,
+        "questions": 3120
+      }
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "componentCode": "LGG",
+      "officialNodes": 28,
+      "skills": 28,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 28,
+        "workedExamples": 28,
+        "activities": 28,
+        "diagnosticAssessments": 28,
+        "masteryAssessments": 28,
+        "reviewQuestions": 280,
+        "questions": 1120
+      },
+      "recommended": {
+        "lessons": 56,
+        "workedExamples": 84,
+        "activities": 56,
+        "diagnosticAssessments": 56,
+        "masteryAssessments": 56,
+        "reviewQuestions": 560,
+        "questions": 2240
+      },
+      "extensive": {
+        "lessons": 84,
+        "workedExamples": 140,
+        "activities": 84,
+        "diagnosticAssessments": 84,
+        "masteryAssessments": 84,
+        "reviewQuestions": 840,
+        "questions": 3360
+      }
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "componentCode": "LP",
+      "officialNodes": 54,
+      "skills": 54,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 54,
+        "workedExamples": 54,
+        "activities": 54,
+        "diagnosticAssessments": 54,
+        "masteryAssessments": 54,
+        "reviewQuestions": 540,
+        "questions": 2160
+      },
+      "recommended": {
+        "lessons": 108,
+        "workedExamples": 162,
+        "activities": 108,
+        "diagnosticAssessments": 108,
+        "masteryAssessments": 108,
+        "reviewQuestions": 1080,
+        "questions": 4320
+      },
+      "extensive": {
+        "lessons": 162,
+        "workedExamples": 270,
+        "activities": 162,
+        "diagnosticAssessments": 162,
+        "masteryAssessments": 162,
+        "reviewQuestions": 1620,
+        "questions": 6480
+      }
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "componentCode": "MAT",
+      "officialNodes": 46,
+      "skills": 46,
+      "developmentObjectives": 0,
+      "minimum": {
+        "lessons": 46,
+        "workedExamples": 46,
+        "activities": 46,
+        "diagnosticAssessments": 46,
+        "masteryAssessments": 46,
+        "reviewQuestions": 460,
+        "questions": 1840
+      },
+      "recommended": {
+        "lessons": 92,
+        "workedExamples": 138,
+        "activities": 92,
+        "diagnosticAssessments": 92,
+        "masteryAssessments": 92,
+        "reviewQuestions": 920,
+        "questions": 3680
+      },
+      "extensive": {
+        "lessons": 138,
+        "workedExamples": 230,
+        "activities": 138,
+        "diagnosticAssessments": 138,
+        "masteryAssessments": 138,
+        "reviewQuestions": 1380,
+        "questions": 5520
+      }
+    }
+  ],
+  "interpretation": {
+    "minimum": "One complete technical journey per skill; development objectives use mediated observation instead of child quizzes.",
+    "recommended": "Two distinct lessons and twice the minimum question/experience evidence to support alternate contexts, review and remediation.",
+    "extensive": "Three lessons and three times the minimum evidence, with additional examples, contexts and recovery opportunities.",
+    "limitation": "These are library-size estimates. They do not prove individual learning, curriculum implementation or human pedagogical approval."
+  },
+  "pending": [
+    "Official source text and canonical mapping review remains open for the 1,723-node matrix except for the one exact technical verification recorded in this increment.",
+    "Pedagogical human review remains pending for all generated content.",
+    "Early Childhood objectives require experiential product wiring and educator observation records before publication."
+  ]
+}
