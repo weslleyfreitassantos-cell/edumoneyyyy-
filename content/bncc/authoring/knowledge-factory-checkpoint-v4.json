@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "1249af7f338c2f78074882a74c4a3843293c6b97d5336c7980cf4e008b8e4069",
-  "outputHash": "0077c68543ea7494ebc363632cd255b3d548efdc06dcefff5a071fac4c7176f9",
+  "inputHash": "0d70f24312baa11b8a5c56b4375fba3263ee8cf706578f082b2e177f66fa458e",
+  "outputHash": "5ec495e4be0293d3b473328c893b23169aa65e43345b404a24fdb2ef039f4d02",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -28,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "f8604587158228597798c82c767d234b92b2aba1f97ce9411f3474f1c8d30b7e"
+  "checkpointHash": "bbb8d303f880b53d7148002b0975498e75b73f7693218f2fbd91a0483cac5660"
 }

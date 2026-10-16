@@ -350,8 +350,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(inheritance).toMatchObject({
       originalQuestionCount: 29,
-      v5QuestionCount: 21,
-      currentQuestionCount: 50,
+      v5QuestionCount: 121,
+      currentQuestionCount: 150,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 29, actualQuestionCount: 29, status: 'EXACT' },
@@ -359,7 +359,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(inheritance.purposeCounts).toEqual({ PROBE: 5, PRACTICE: 15, TRANSFER: 9, LOCK_IN: 8, REVIEW: 13 });
+    expect(inheritance.purposeCounts).toEqual({ PROBE: 15, PRACTICE: 55, TRANSFER: 34, LOCK_IN: 18, REVIEW: 28 });
     expect(inheritance.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.filter((item) => item.id === 'BIOLOGY_EXPLAIN_INHERITANCE')).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
@@ -582,8 +582,8 @@ describe('BNCC total knowledge factory V4', () => {
     expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBeGreaterThanOrEqual(18);
     expect(english).toMatchObject({
       originalQuestionCount: 22,
-      v5QuestionCount: 64,
-      currentQuestionCount: 86,
+      v5QuestionCount: 164,
+      currentQuestionCount: 186,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 22, actualQuestionCount: 22, status: 'EXACT', questionFeedbackCount: 22 },
@@ -591,7 +591,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(english.purposeCounts).toEqual({ PROBE: 11, PRACTICE: 26, TRANSFER: 16, LOCK_IN: 12, REVIEW: 21 });
+    expect(english.purposeCounts).toEqual({ PROBE: 21, PRACTICE: 66, TRANSFER: 41, LOCK_IN: 22, REVIEW: 36 });
     expect(english.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.some((item) => item.id === 'ENGLISH_INFER_FROM_TEXT')).toBe(false);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);

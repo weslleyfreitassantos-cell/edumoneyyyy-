@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "tec-escola.bncc.experiential-evidence.v1",
+  "campaignId": "TECESCOLA_BNCC_AUTONOMOUS_5000_V4",
+  "officialCode": "EI02CG01",
+  "stage": "EDUCACAO_INFANTIL",
+  "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+  "componentCode": "CG",
+  "ageRange": "Crianças bem pequenas, de 1 ano e 7 meses a 3 anos e 11 meses",
+  "fieldOfExperience": "Corpo, gestos e movimentos",
+  "descriptor": "Apropriar-se de gestos e movimentos de sua cultura no cuidado de si e nos jogos e brincadeiras.",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 49
+  },
+  "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+  "evidenceMode": "EDUCATOR_MEDIATED_OBSERVATION",
+  "learningDesign": {
+    "title": "Explorar gestos e movimentos da cultura em cuidados e brincadeiras",
+    "objective": "Oferecer situações acolhedoras para a criança experimentar gestos e movimentos presentes em seus cuidados, jogos e brincadeiras, sem exigir imitação ou desempenho padronizado.",
+    "experience": "O educador convida a criança para uma brincadeira conhecida do grupo ou para um cuidado cotidiano, observa os gestos que ela escolhe repetir ou transformar e amplia a experiência com objetos, músicas e movimentos culturalmente significativos para a comunidade.",
+    "possibleInvitations": [
+      "Explorar uma brincadeira de roda ou de imitação escolhida com as crianças e suas famílias.",
+      "Convidar a criança a participar de um cuidado cotidiano, como guardar objetos, lavar as mãos ou alimentar uma boneca, respeitando sua autonomia.",
+      "Disponibilizar tecidos, potes e objetos seguros para dramatizar gestos de uma brincadeira conhecida, sem corrigir a forma corporal da criança."
+    ],
+    "educatorPrompts": [
+      "Esse gesto faz parte da brincadeira que você conhece?",
+      "Você quer repetir, transformar ou observar o movimento?",
+      "Como podemos cuidar do corpo e dos objetos com segurança?"
+    ],
+    "observationCriteria": [
+      "Participa de gestos ou movimentos de uma brincadeira, cuidado ou prática cultural do grupo, por imitação, repetição, variação ou observação participante.",
+      "Escolhe continuar, modificar ou interromper a ação, comunicando preferência por fala, gesto, olhar ou outro modo disponível.",
+      "Relaciona movimentos a uma situação de cuidado, jogo ou brincadeira sem que o adulto imponha uma única forma correta.",
+      "Tem suas referências culturais acolhidas e pode participar com adaptações de espaço, tempo, objetos e apoio."
+    ],
+    "evidenceRecord": {
+      "requiredFields": ["date", "context", "culturalReferenceOrGame", "observedGestureOrMovement", "childChoice", "educatorSupport", "nextInvitation"],
+      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "privacy": "Registrar somente o necessário no contexto institucional autorizado; não classificar a criança por desempenho, não expor sua imagem e não inferir desenvolvimento além do observado."
+    },
+    "adaptations": [
+      "Permitir que a criança observe antes de participar e ofereça diferentes formas de comunicação.",
+      "Adaptar objetos, espaço, ritmo e apoio corporal conforme necessidades individuais e orientação da equipe.",
+      "Valorizar gestos familiares e variações culturais sem exigir que a criança reproduza uma prática desconhecida."
+    ]
+  },
+  "contentStatus": {
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "studentQuiz": "NOT_CREATED",
+    "humanApproval": "NOT_GRANTED"
+  }
+}

@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "196775e4f1c47c70b199ab1fc4c61bb7aabf009871398c075069cb215b6460c7",
+    "v5QuestionFirstPacks": "8593ba0d38e6261d10d2a86c82e7b2ed1ccf77c52118a8a3e87f05b156883ac2",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 2926,
-    "consolidatedQuestionTotal": 3978,
+    "v5QuestionTotal": 3126,
+    "consolidatedQuestionTotal": 4178,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -483,15 +483,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Herança genética: modelos, probabilidade e limites",
         "originalQuestionCount": 29,
-        "v5QuestionCount": 21,
+        "v5QuestionCount": 121,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 50,
+        "currentQuestionCount": 150,
         "purposeCounts": {
-          "PROBE": 5,
-          "PRACTICE": 15,
-          "TRANSFER": 9,
-          "LOCK_IN": 8,
-          "REVIEW": 13
+          "PROBE": 15,
+          "PRACTICE": 55,
+          "TRANSFER": 34,
+          "LOCK_IN": 18,
+          "REVIEW": 28
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -515,7 +515,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 50,
+        "contextFamilyCount": 150,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -1167,15 +1167,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Inferir sentidos com pistas do texto",
         "originalQuestionCount": 22,
-        "v5QuestionCount": 64,
+        "v5QuestionCount": 164,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 86,
+        "currentQuestionCount": 186,
         "purposeCounts": {
-          "PROBE": 11,
-          "PRACTICE": 26,
-          "TRANSFER": 16,
-          "LOCK_IN": 12,
-          "REVIEW": 21
+          "PROBE": 21,
+          "PRACTICE": 66,
+          "TRANSFER": 41,
+          "LOCK_IN": 22,
+          "REVIEW": 36
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1199,7 +1199,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 86,
+        "contextFamilyCount": 186,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "0077c68543ea7494ebc363632cd255b3d548efdc06dcefff5a071fac4c7176f9"
+  "inventoryHash": "5ec495e4be0293d3b473328c893b23169aa65e43345b404a24fdb2ef039f4d02"
 }
