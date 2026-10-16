@@ -1,0 +1,3590 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v27-geography-map-scale",
+  "subject": "GEOGRAPHY",
+  "domain": "CARTOGRAFIA",
+  "topic": "escala_cartografica_proporcao_e_distancia",
+  "canonicalSkillCode": "GEOGRAPHY_MAP_SCALE",
+  "contentVersion": 27,
+  "lessonVersion": 27,
+  "expectedQuestionCount": 140,
+  "expectedContextCount": 140,
+  "expectedPurposeCounts": {
+    "PROBE": 14,
+    "PRACTICE": 52,
+    "TRANSFER": 33,
+    "LOCK_IN": 16,
+    "REVIEW": 25
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 35,
+    "B": 35,
+    "C": 35,
+    "D": 35
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-geography-geography_territory-3",
+      "hint": "Diferencie escala grande e pequena, mantenha unidades coerentes e confirme se foi medida uma linha reta ou um percurso.",
+      "errorFocus": "MAP_SCALE_RATIO_UNIT_AND_DISTANCE_SCOPE"
+    },
+    {
+      "questionId": "v3-geography-geography_territory-5",
+      "hint": "Diferencie escala grande e pequena, mantenha unidades coerentes e confirme se foi medida uma linha reta ou um percurso.",
+      "errorFocus": "MAP_SCALE_RATIO_UNIT_AND_DISTANCE_SCOPE"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 40,
+    "feedbackAdded": 2,
+    "sourceReconciliationStatus": "EXACT",
+    "legacyQuestionIds": [
+      "v3-geography-geography_territory-3",
+      "v3-geography-geography_territory-5"
+    ],
+    "newQuestions": 100,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V27"
+  },
+  "lesson": {
+    "title": "Ler escalas e converter distancias em mapas",
+    "objective": "Interpretar escalas numericas e graficas, calcular distancias no terreno, comparar niveis de detalhe e reconhecer limites de medidas cartograficas.",
+    "summary": "Escala relaciona mapa e terreno. A unidade precisa ser convertida corretamente; a escolha da escala depende da extensao e do detalhe exigidos.",
+    "explanation": "## 1. O que a escala relaciona\nNa escala numerica 1:n, uma unidade no mapa corresponde a n unidades da mesma unidade no terreno. Em 1:50 000, por exemplo, 1 cm representa 50 000 cm, isto e, 500 m. Mantenha as unidades iguais durante a multiplicacao e converta o resultado no fim.\n\n## 2. Escala grande e escala pequena\nEscala grande tem denominador menor, como 1:10 000; em um papel de mesmo tamanho, mostra uma area menor com mais detalhe. Escala pequena, como 1:1 000 000, cobre uma area maior com menos detalhe. O numero maior no denominador nao significa escala maior.\n\n## 3. Escalas graficas\nA barra grafica apresenta distancias por intervalos. Se a barra vai de 0 a 5 km em cinco intervalos iguais, cada intervalo vale 1 km. Conte os espacos entre marcas, nao somente as marcas. Se mapa e barra forem redimensionados juntos, a referencia continua acompanhando o desenho.\n\n## 4. Impressao e medicao\nUma escala numerica impressa pode ficar incorreta quando o mapa e ampliado ou reduzido sem atualizar o rotulo. Confira a escala efetiva ou use uma barra grafica que tenha sido redimensionada junto com o mapa. Compare mapas apenas depois de conferir sua escala.\n\n## 5. Limites da distancia\nUma regua entre dois pontos mede um segmento reto. Ela nao informa por si so o comprimento de uma rota sinuosa, o tempo de viagem ou as condicoes do caminho. Escolha a escala conforme a extensao e o nivel de detalhe que a tarefa pede.",
+    "workedExample": "Em 1:25 000, 1 cm representa 25 000 cm = 250 m. Se uma linha reta mede 3,2 cm, a distancia reta representada e 3,2 x 250 m = 800 m. Isso nao e necessariamente o comprimento de um caminho por ruas.",
+    "commonMistake": "Ler denominador maior como escala maior, misturar centimetros e metros, contar marcas em vez de intervalos ou tratar uma medida reta como percurso.",
+    "tips": [
+      "Converta a escala para metros por centimetro antes de multiplicar.",
+      "Em barras graficas, conte intervalos.",
+      "Depois de ampliacao/reducao, confira a escala numerica.",
+      "Diga se a medida e reta ou segue uma rota."
+    ],
+    "estimatedMinutes": 28,
+    "priorKnowledge": [
+      "Multiplicar numeros naturais e decimais simples.",
+      "Converter centimetros, metros e quilometros."
+    ],
+    "keyConcepts": [
+      "escala numerica",
+      "escala grafica",
+      "escala grande e pequena",
+      "proporcao",
+      "conversao de unidades",
+      "extensao e detalhe",
+      "distancia reta e percurso"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer escala, denominador, barra grafica e conversao simples.",
+        "questionIds": [
+          "v5-geography-map-scale-01",
+          "v5-geography-map-scale-02",
+          "v5-geography-map-scale-03",
+          "v5-geography-map-scale-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Calcular distancias, ler intervalos e escolher escalas para objetivos diferentes.",
+        "questionIds": [
+          "v5-geography-map-scale-05",
+          "v5-geography-map-scale-06",
+          "v5-geography-map-scale-07",
+          "v5-geography-map-scale-08",
+          "v5-geography-map-scale-09",
+          "v5-geography-map-scale-10",
+          "v5-geography-map-scale-11",
+          "v5-geography-map-scale-12",
+          "v5-geography-map-scale-13",
+          "v5-geography-map-scale-14",
+          "v5-geography-map-scale-15",
+          "v5-geography-map-scale-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Interpretar impressao redimensionada, comparar mapas e limitar conclusoes de medidas.",
+        "questionIds": [
+          "v5-geography-map-scale-17",
+          "v5-geography-map-scale-18",
+          "v5-geography-map-scale-19",
+          "v5-geography-map-scale-20",
+          "v5-geography-map-scale-21",
+          "v5-geography-map-scale-22",
+          "v5-geography-map-scale-23",
+          "v5-geography-map-scale-24",
+          "v27-geography-map-scale-051",
+          "v27-geography-map-scale-052",
+          "v27-geography-map-scale-053",
+          "v27-geography-map-scale-054",
+          "v27-geography-map-scale-055",
+          "v27-geography-map-scale-056",
+          "v27-geography-map-scale-057",
+          "v27-geography-map-scale-058",
+          "v27-geography-map-scale-059",
+          "v27-geography-map-scale-060",
+          "v27-geography-map-scale-061",
+          "v27-geography-map-scale-062",
+          "v27-geography-map-scale-063",
+          "v27-geography-map-scale-064",
+          "v27-geography-map-scale-065",
+          "v27-geography-map-scale-066",
+          "v27-geography-map-scale-067",
+          "v27-geography-map-scale-068",
+          "v27-geography-map-scale-069",
+          "v27-geography-map-scale-070",
+          "v27-geography-map-scale-071",
+          "v27-geography-map-scale-072",
+          "v27-geography-map-scale-073",
+          "v27-geography-map-scale-074",
+          "v27-geography-map-scale-075"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Integrar conversao, escolha de escala e tipo de distancia.",
+        "questionIds": [
+          "v5-geography-map-scale-25",
+          "v5-geography-map-scale-26",
+          "v5-geography-map-scale-27",
+          "v5-geography-map-scale-28",
+          "v5-geography-map-scale-29",
+          "v5-geography-map-scale-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Reaplicar o metodo em novos objetivos cartograficos.",
+        "questionIds": [
+          "v5-geography-map-scale-31",
+          "v5-geography-map-scale-32",
+          "v5-geography-map-scale-33",
+          "v5-geography-map-scale-34",
+          "v5-geography-map-scale-35",
+          "v5-geography-map-scale-36",
+          "v5-geography-map-scale-37",
+          "v5-geography-map-scale-38",
+          "v5-geography-map-scale-39",
+          "v5-geography-map-scale-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SAME_UNIT_FIRST",
+        "text": "Em 1:n, a unidade e a mesma nos dois lados. Converta depois de multiplicar."
+      },
+      {
+        "trigger": "LARGE_SCALE_SMALL_DENOMINATOR",
+        "text": "Denominador menor significa escala maior: menos terreno por centimetro e mais detalhe."
+      },
+      {
+        "trigger": "BAR_INTERVALS",
+        "text": "O valor de cada intervalo e a distancia total dividida pelo numero de espacos."
+      },
+      {
+        "trigger": "PRINT_SIZE_CHECK",
+        "text": "Se a impressao mudou de tamanho, confira o rotulo numerico ou use a barra grafica redimensionada junto."
+      },
+      {
+        "trigger": "STRAIGHT_VERSUS_ROUTE",
+        "text": "A medida reta entre pontos nao e necessariamente a distancia de um percurso sinuoso."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "UNIT_CONVERSION_STEPS",
+        "misconception": "Misturar unidades ao aplicar a razao.",
+        "prompt": "Escreva 1 cm = n cm; converta n cm para metros; so entao multiplique pelo comprimento medido no mapa."
+      },
+      {
+        "id": "DENOMINATOR_COMPARISON",
+        "misconception": "Interpretar denominador maior como escala maior.",
+        "prompt": "Compare 1 cm em cada escala e anote quanto terreno cada um representa. Menos terreno por centimetro indica escala maior."
+      },
+      {
+        "id": "COUNT_BAR_SPACES",
+        "misconception": "Contar marcas em vez de intervalos.",
+        "prompt": "Marque os espacos entre os rotulos 0 e o valor final. Divida o total pelos espacos e conte os que o trecho ocupa."
+      },
+      {
+        "id": "RECALIBRATE_PRINT",
+        "misconception": "Confiar no rotulo numerico depois de redimensionar o papel.",
+        "prompt": "Compare o tamanho impresso com o original. Se a razao numerica nao foi atualizada, use uma barra que acompanhou a mudanca ou recalibre a escala."
+      },
+      {
+        "id": "DISTANCE_TYPE_CHECK",
+        "misconception": "Tratar distancia reta como percurso.",
+        "prompt": "Identifique o segmento que foi medido. Se a pergunta pede percurso, acompanhe a rota no mapa em vez de medir apenas os pontos extremos."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministerio da Educacao, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referencia curricular geral; alinhamento oficial especifico nao reivindicado."
+      },
+      {
+        "publisher": "Instituto Brasileiro de Geografia e Estatistica",
+        "title": "Atlas Geografico Escolar",
+        "url": "https://atlasescolar.ibge.gov.br/",
+        "license": "Referencia para linguagem cartografica; mapas e situacoes deste pacote sao autorais e esquematicos."
+      }
+    ],
+    "copyrightNote": "Mapas, situacoes e questoes sao autorais e esquematicos. Nenhum codigo BNCC oficial e reivindicado; revisao pedagogica pendente. Lote V27 autoral com 100 questões; publicação mantida em STAGING e revisão pedagógica pendente."
+  },
+  "questions": [
+    {
+      "id": "v5-geography-map-scale-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY_SCALE",
+      "contextFamily": "SCALE_RELATION",
+      "statement": "Em um mapa, a escala indica a relacao entre:",
+      "options": [
+        "Uma medida no mapa e a distancia correspondente no terreno.",
+        "A cor do mapa e a altitude do lugar.",
+        "O tamanho do papel e a populacao representada.",
+        "A legenda e a orientacao do norte."
+      ],
+      "correctAnswer": "Uma medida no mapa e a distancia correspondente no terreno.",
+      "explanation": "A escala relaciona medidas representadas a distancias reais; ela nao descreve cores, populacao ou orientacao.",
+      "hint": "Procure a alternativa que liga desenho e terreno.",
+      "errorFocus": "SCALE_CONFUSED_WITH_LEGEND_OR_ORIENTATION",
+      "misconceptions": {
+        "A cor do mapa e a altitude do lugar.": [
+          "SCALE_CONFUSED_WITH_LEGEND_OR_ORIENTATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE_DENOMINATORS",
+      "contextFamily": "DENOMINATOR_DETAIL",
+      "statement": "Em mapas de mesmo tamanho de papel, qual escala tende a mostrar uma area menor com mais detalhes: 1:10 000 ou 1:100 000?",
+      "options": [
+        "1:100 000, porque o denominador e maior.",
+        "1:10 000.",
+        "As duas representam sempre a mesma area e detalhe.",
+        "Nao e possivel comparar escalas numericas."
+      ],
+      "correctAnswer": "1:10 000.",
+      "explanation": "Com o mesmo tamanho de papel, 1:10 000 e uma escala maior: cada unidade no mapa corresponde a menos unidades no terreno, permitindo detalhar uma area menor.",
+      "hint": "Compare quanto terreno corresponde a mesma medida no papel.",
+      "errorFocus": "SCALE_SIZE_REVERSED",
+      "misconceptions": {
+        "1:100 000, porque o denominador e maior.": [
+          "SCALE_SIZE_REVERSED"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-comparison.svg",
+            "alt": "Dois mapas esquematicos do mesmo municipio: o quadro A, escala 1:10 000, mostra poucos quarteiroes e ruas detalhadas; o quadro B, escala 1:100 000, mostra toda a regiao com menos detalhes.",
+            "caption": "Escalas e nivel de detalhe"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ_GRAPHIC_SCALE",
+      "contextFamily": "BAR_SCALE_ZERO_TO_FIVE",
+      "statement": "Uma barra grafica esta dividida em cinco trechos iguais e marcada de 0 a 5 km. Quanto representa cada trecho?",
+      "options": [
+        "5 km.",
+        "500 m.",
+        "1 km.",
+        "25 km."
+      ],
+      "correctAnswer": "1 km.",
+      "explanation": "A diferenca total e 5 km distribuida em cinco intervalos iguais: cada intervalo representa 1 km.",
+      "hint": "Divida a distancia total pelo numero de intervalos.",
+      "errorFocus": "BAR_SCALE_INTERVAL_MISREAD",
+      "misconceptions": {
+        "5 km.": [
+          "BAR_SCALE_INTERVAL_MISREAD"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-segments.svg",
+            "alt": "Barra grafica com seis marcas igualmente espacadas, rotulos de 0 a 5 km e cinco intervalos iguais.",
+            "caption": "Leitura de uma escala grafica"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CONVERT_RATIO",
+      "contextFamily": "ONE_CENTIMETER_AT_50000",
+      "statement": "Em uma escala 1:50 000, 1 cm no mapa corresponde a:",
+      "options": [
+        "50 000 m no terreno.",
+        "5 m no terreno.",
+        "500 000 cm, ou 5 km.",
+        "50 000 cm no terreno, ou 500 m."
+      ],
+      "correctAnswer": "50 000 cm no terreno, ou 500 m.",
+      "explanation": "A razao compara centimetros com centimetros: 50 000 cm equivalem a 500 m.",
+      "hint": "Mantenha a mesma unidade nos dois lados e depois converta.",
+      "errorFocus": "RATIO_UNIT_CONVERSION_ERROR",
+      "misconceptions": {
+        "50 000 m no terreno.": [
+          "RATIO_UNIT_CONVERSION_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "THREE_CM_AT_25000",
+      "statement": "Em uma carta 1:25 000, uma distancia reta mede 3 cm. Qual e a distancia correspondente no terreno?",
+      "options": [
+        "750 m.",
+        "75 m.",
+        "7,5 km.",
+        "25 km."
+      ],
+      "correctAnswer": "750 m.",
+      "explanation": "Cada centimetro representa 25 000 cm, ou 250 m. Tres centimetros representam 750 m.",
+      "hint": "Converta 25 000 cm para metros antes de multiplicar por 3.",
+      "errorFocus": "SCALE_MULTIPLICATION_OR_UNIT_ERROR",
+      "misconceptions": {
+        "75 m.": [
+          "SCALE_MULTIPLICATION_OR_UNIT_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MEASURE_MAP_DISTANCE",
+      "contextFamily": "LINE_24CM_AT_50000",
+      "statement": "No esquema, a linha reta entre P e Q mede 2,4 cm em uma carta 1:50 000. Qual distancia reta ela representa?",
+      "options": [
+        "120 km.",
+        "1,2 km.",
+        "12 km.",
+        "240 m."
+      ],
+      "correctAnswer": "1,2 km.",
+      "explanation": "A escala indica 500 m por centimetro. Entao 2,4 x 500 m = 1 200 m = 1,2 km.",
+      "hint": "Use 500 m por centimetro e preserve a unidade ao multiplicar.",
+      "errorFocus": "CENTIMETER_TO_KILOMETER_FACTOR_ERROR",
+      "misconceptions": {
+        "120 km.": [
+          "CENTIMETER_TO_KILOMETER_FACTOR_ERROR"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-line-measurement.svg",
+            "alt": "Trecho P-Q indicado como 2,4 cm em um mapa esquematico. A legenda informa escala numerica 1:50 000 e a pergunta se refere a distancia reta.",
+            "caption": "Distancia medida e escala 1:50 000"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-07",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE_DETAIL",
+      "contextFamily": "CITY_BLOCK_VS_REGION",
+      "statement": "Uma equipe precisa identificar ruas e quarteiroes de um bairro. Qual recorte tende a ajudar mais?",
+      "options": [
+        "Um mapa estadual em escala 1:1 000 000, que mostra uma area maior com menos detalhe.",
+        "Um mapa-mundi, independentemente da escala.",
+        "Um mapa local em escala 1:10 000, que mostra uma area menor com mais detalhe.",
+        "Uma imagem sem escala nem identificacao do recorte."
+      ],
+      "correctAnswer": "Um mapa local em escala 1:10 000, que mostra uma area menor com mais detalhe.",
+      "explanation": "Para localizar ruas, um mapa local de escala maior costuma oferecer mais detalhe. A escala estadual privilegia uma area ampla.",
+      "hint": "Relacione o tamanho da area representada ao nivel de detalhe necessario.",
+      "errorFocus": "MAP_PURPOSE_AND_SCALE_MISMATCH",
+      "misconceptions": {
+        "Um mapa estadual em escala 1:1 000 000, que mostra uma area maior com menos detalhe.": [
+          "MAP_PURPOSE_AND_SCALE_MISMATCH"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-comparison.svg",
+            "alt": "Dois mapas esquematicos lado a lado: A em 1:10 000 detalha alguns quarteiroes; B em 1:100 000 resume a regiao inteira.",
+            "caption": "Escolha de escala conforme o objetivo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-08",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ_BAR_DISTANCE",
+      "contextFamily": "THREE_INTERVALS",
+      "statement": "Na barra grafica de 0 a 5 km, o trecho destacado ocupa tres intervalos iguais. Qual distancia ele representa?",
+      "options": [
+        "1,5 km.",
+        "5 km.",
+        "15 km.",
+        "3 km."
+      ],
+      "correctAnswer": "3 km.",
+      "explanation": "Cada intervalo representa 1 km; tres intervalos representam 3 km.",
+      "hint": "Conte os intervalos destacados, nao apenas as marcas.",
+      "errorFocus": "BAR_MARKS_CONFUSED_WITH_INTERVALS",
+      "misconceptions": {
+        "1,5 km.": [
+          "BAR_MARKS_CONFUSED_WITH_INTERVALS"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-three-intervals.svg",
+            "alt": "Barra de 0 a 5 km com o trecho do zero ao terceiro quilometro destacado, cobrindo tres intervalos iguais.",
+            "caption": "Contagem de intervalos na barra"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "FOUR_CM_AT_250000",
+      "statement": "Em um mapa 1:250 000, a distancia reta entre duas localidades mede 4 cm. Qual e a distancia real?",
+      "options": [
+        "10 km.",
+        "1 km.",
+        "100 km.",
+        "62,5 km."
+      ],
+      "correctAnswer": "10 km.",
+      "explanation": "Cada centimetro representa 250 000 cm = 2,5 km. Quatro centimetros representam 10 km.",
+      "hint": "Converta 250 000 cm para 2,5 km por centimetro.",
+      "errorFocus": "LARGE_DENOMINATOR_CONVERSION_ERROR",
+      "misconceptions": {
+        "1 km.": [
+          "LARGE_DENOMINATOR_CONVERSION_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "FIVE_CM_AT_20000",
+      "statement": "Um segmento reto entre dois pontos mede 5 cm em um mapa 1:20 000. Qual distancia reta ele representa?",
+      "options": [
+        "100 m.",
+        "1 km.",
+        "10 km.",
+        "4 km."
+      ],
+      "correctAnswer": "1 km.",
+      "explanation": "Em 1:20 000, cada centimetro corresponde a 200 m; 5 cm correspondem a 1 000 m, isto e, 1 km.",
+      "hint": "Primeiro encontre o valor de 1 cm; depois multiplique por 5.",
+      "errorFocus": "SCALE_DISTANCE_ARITHMETIC_ERROR",
+      "misconceptions": {
+        "100 m.": [
+          "SCALE_DISTANCE_ARITHMETIC_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT_SCALE_FOR_DETAIL",
+      "contextFamily": "BLOCK_LEVEL_PLAN",
+      "statement": "Para planejar a localizacao de entradas em um quarteirao, qual produto cartografico e mais adequado?",
+      "options": [
+        "Um mapa de pequena escala de todo o estado.",
+        "Um globo terrestre sem detalhe urbano.",
+        "Uma planta local detalhada, em escala grande e com legenda.",
+        "Uma imagem sem escala cuja ampliacao foi alterada."
+      ],
+      "correctAnswer": "Uma planta local detalhada, em escala grande e com legenda.",
+      "explanation": "O objetivo exige detalhe de um recorte pequeno; uma planta local adequada permite localizar elementos nesse nivel.",
+      "hint": "Parta do objetivo e da extensao que precisa ser observada.",
+      "errorFocus": "MAP_SCALE_NOT_MATCHED_TO_TASK",
+      "misconceptions": {
+        "Um mapa de pequena escala de todo o estado.": [
+          "MAP_SCALE_NOT_MATCHED_TO_TASK"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT_SCALE_FOR_OVERVIEW",
+      "contextFamily": "STATE_OVERVIEW",
+      "statement": "Para comparar a localizacao de tres capitais estaduais no territorio brasileiro, qual escala e mais apropriada?",
+      "options": [
+        "Uma planta 1:5 000 de um quarteirao.",
+        "Uma planta 1:10 000 de um bairro.",
+        "Uma imagem ampliada de uma unica rua.",
+        "Uma escala pequena que mostre grande extensao territorial, como 1:5 000 000."
+      ],
+      "correctAnswer": "Uma escala pequena que mostre grande extensao territorial, como 1:5 000 000.",
+      "explanation": "Uma comparacao nacional precisa incluir grande extensao; uma escala pequena permite mostrar essa area, embora com menos detalhe.",
+      "hint": "Escolha uma escala que caiba a extensao geografica da pergunta.",
+      "errorFocus": "OVERVIEW_CONFUSED_WITH_LOCAL_DETAIL",
+      "misconceptions": {
+        "Uma planta 1:5 000 de um quarteirao.": [
+          "OVERVIEW_CONFUSED_WITH_LOCAL_DETAIL"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE_SCALE_DETAIL",
+      "contextFamily": "DENOMINATOR_DECREASES",
+      "statement": "Um mapa passa de 1:100 000 para 1:25 000 e mantem o mesmo tamanho de papel. O que ocorre com o recorte e o detalhe?",
+      "options": [
+        "O recorte tende a ficar menor e os elementos podem aparecer com mais detalhe.",
+        "O recorte fica maior e o detalhe necessariamente diminui.",
+        "A escala deixa de relacionar mapa e terreno.",
+        "A area no terreno continua obrigatoriamente identica."
+      ],
+      "correctAnswer": "O recorte tende a ficar menor e os elementos podem aparecer com mais detalhe.",
+      "explanation": "Em 1:25 000, cada centimetro representa menos terreno que em 1:100 000; no mesmo papel, cabe uma area menor com mais detalhe.",
+      "hint": "Compare quantas unidades reais cabem em cada centimetro.",
+      "errorFocus": "DENOMINATOR_CHANGE_INTERPRETED_BACKWARDS",
+      "misconceptions": {
+        "O recorte fica maior e o detalhe necessariamente diminui.": [
+          "DENOMINATOR_CHANGE_INTERPRETED_BACKWARDS"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ESTIMATE_DISTANCE",
+      "contextFamily": "ONE_POINT_FIVE_AT_200000",
+      "statement": "Em um mapa 1:200 000, dois pontos estao separados por 1,5 cm em linha reta. Qual distancia aproximada os separa?",
+      "options": [
+        "300 m.",
+        "3 km.",
+        "30 km.",
+        "1,5 km."
+      ],
+      "correctAnswer": "3 km.",
+      "explanation": "Cada centimetro corresponde a 2 km; 1,5 cm correspondem a 3 km.",
+      "hint": "Use 2 km por centimetro e multiplique por 1,5.",
+      "errorFocus": "DECIMAL_DISTANCE_FACTOR_ERROR",
+      "misconceptions": {
+        "300 m.": [
+          "DECIMAL_DISTANCE_FACTOR_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "TWO_POINT_EIGHT_CM_AT_75000",
+      "statement": "Em um mapa 1:75 000, um segmento reto mede 2,8 cm. Qual distancia representa?",
+      "options": [
+        "210 m.",
+        "21 km.",
+        "2,1 km.",
+        "750 m."
+      ],
+      "correctAnswer": "2,1 km.",
+      "explanation": "Cada centimetro representa 750 m. Portanto, 2,8 x 750 m = 2 100 m = 2,1 km.",
+      "hint": "Converta 75 000 cm para metros por centimetro antes de multiplicar.",
+      "errorFocus": "SCALE_FACTOR_TENFOLD_ERROR",
+      "misconceptions": {
+        "210 m.": [
+          "SCALE_FACTOR_TENFOLD_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE_DISTANCE",
+      "contextFamily": "SEVEN_POINT_TWO_CM_AT_400000",
+      "statement": "Em uma carta 1:400 000, uma linha reta entre duas cidades mede 7,2 cm. Qual distancia reta ela representa?",
+      "options": [
+        "2,88 km.",
+        "288 km.",
+        "28,8 m.",
+        "28,8 km."
+      ],
+      "correctAnswer": "28,8 km.",
+      "explanation": "Em 1:400 000, cada centimetro representa 4 km. Logo, 7,2 x 4 km = 28,8 km.",
+      "hint": "Converta 400 000 cm para 4 km antes de multiplicar.",
+      "errorFocus": "DECIMAL_SCALE_FACTOR_MISPLACED",
+      "misconceptions": {
+        "2,88 km.": [
+          "DECIMAL_SCALE_FACTOR_MISPLACED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-17",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "USE_GRAPHIC_AFTER_RESIZE",
+      "contextFamily": "GRAPHIC_SCALE_RESIZED",
+      "statement": "Um mapa impresso foi ampliado junto com a barra grafica. A barra continua util para medir distancias no mapa ampliado?",
+      "options": [
+        "Sim. A barra grafica foi ampliada na mesma proporcao e continua comparavel ao mapa.",
+        "Nao. Toda ampliacao invalida qualquer escala.",
+        "Sim, mas cada divisao passa a representar zero quilometro.",
+        "Nao; a barra mede apenas a folha original."
+      ],
+      "correctAnswer": "Sim. A barra grafica foi ampliada na mesma proporcao e continua comparavel ao mapa.",
+      "explanation": "Quando mapa e barra grafica sao redimensionados juntos, a relacao visual permanece consistente. Uma escala numerica impressa pode exigir recalibracao se o papel mudou de tamanho.",
+      "hint": "Verifique se a referencia grafica acompanhou o mesmo redimensionamento do mapa.",
+      "errorFocus": "GRAPHIC_SCALE_RESIZE_MISUNDERSTOOD",
+      "misconceptions": {
+        "Nao. Toda ampliacao invalida qualquer escala.": [
+          "GRAPHIC_SCALE_RESIZE_MISUNDERSTOOD"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-print-resize.svg",
+            "alt": "Dois exemplares do mesmo mapa em tamanhos diferentes. Em ambos, a barra grafica de 0 a 2 km foi redimensionada junto com o mapa; os rotulos permanecem legiveis.",
+            "caption": "Barra grafica acompanhando a ampliacao"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-18",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CHECK_NUMERIC_AFTER_RESIZE",
+      "contextFamily": "NUMERIC_LABEL_NOT_UPDATED",
+      "statement": "Uma impressora reduz um mapa para 80%, mas a legenda numerica continua dizendo 1:50 000. O que fazer antes de medir com essa razao?",
+      "options": [
+        "Usar 1:50 000 sem conferir, pois a impressao nao altera medidas.",
+        "Recalcular ou corrigir a escala numerica para o tamanho impresso; uma barra grafica redimensionada junto pode ser usada.",
+        "Multiplicar todas as distancias por 80 sem definir unidades.",
+        "Substituir a escala por uma rosa dos ventos."
+      ],
+      "correctAnswer": "Recalcular ou corrigir a escala numerica para o tamanho impresso; uma barra grafica redimensionada junto pode ser usada.",
+      "explanation": "O tamanho do mapa mudou, mas o rotulo numerico nao. A razao impressa deixou de corresponder ao papel; e preciso recalibrar ou usar barra grafica redimensionada junto.",
+      "hint": "Separe a escala numerica fixa do elemento grafico que acompanhou a impressao.",
+      "errorFocus": "NUMERIC_SCALE_LEFT_UNCHANGED_AFTER_RESIZE",
+      "misconceptions": {
+        "Usar 1:50 000 sem conferir, pois a impressao nao altera medidas.": [
+          "NUMERIC_SCALE_LEFT_UNCHANGED_AFTER_RESIZE"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-print-resize.svg",
+            "alt": "Duas impressoes do mesmo mapa em tamanhos diferentes. Um aviso destaca que a escala numerica precisa ser atualizada quando somente o mapa e reduzido; a barra grafica, se reduzida junto, continua utilizavel.",
+            "caption": "Recalibracao de escala numerica"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-19",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH_STRAIGHT_AND_ROUTE",
+      "contextFamily": "STRAIGHT_LINE_NOT_ROUTE",
+      "statement": "Uma medida entre dois pontos foi feita com regua sobre o mapa, em linha reta. O que essa medida representa diretamente?",
+      "options": [
+        "A extensao exata de qualquer trajeto sinuoso.",
+        "O tempo de viagem entre os pontos.",
+        "A distancia em linha reta entre os pontos, nao necessariamente o percurso por ruas.",
+        "A distancia percorrida em uma rota que nao foi desenhada."
+      ],
+      "correctAnswer": "A distancia em linha reta entre os pontos, nao necessariamente o percurso por ruas.",
+      "explanation": "A regua mede o segmento representado. Para obter um percurso por ruas, e preciso seguir a rota desenhada ou usar dados de trajeto.",
+      "hint": "Identifique se foi medido um segmento reto ou uma linha de percurso.",
+      "errorFocus": "STRAIGHT_DISTANCE_MISTAKEN_FOR_ROUTE_DISTANCE",
+      "misconceptions": {
+        "A extensao exata de qualquer trajeto sinuoso.": [
+          "STRAIGHT_DISTANCE_MISTAKEN_FOR_ROUTE_DISTANCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE_EQUIVALENT_DISTANCES",
+      "contextFamily": "TWO_MAPS_SAME_REAL_DISTANCE",
+      "statement": "No mapa A, escala 1:25 000, uma linha mede 4 cm. No mapa B, escala 1:50 000, a mesma distancia real mede 2 cm. Qual leitura e consistente?",
+      "options": [
+        "A distancia real em A e sempre o dobro da de B.",
+        "A distancia em B e 2 cm no terreno.",
+        "Nao e possivel comparar sem saber a cor dos mapas.",
+        "As duas medidas representam 1 km no terreno, apesar dos comprimentos diferentes no papel."
+      ],
+      "correctAnswer": "As duas medidas representam 1 km no terreno, apesar dos comprimentos diferentes no papel.",
+      "explanation": "Em A, 4 cm x 250 m/cm = 1 km. Em B, 2 cm x 500 m/cm = 1 km. Escalas diferentes podem representar a mesma distancia real com comprimentos distintos.",
+      "hint": "Calcule a distancia real em cada escala antes de comparar os centimetros.",
+      "errorFocus": "MAP_LENGTH_COMPARED_WITHOUT_SCALE",
+      "misconceptions": {
+        "A distancia real em A e sempre o dobro da de B.": [
+          "MAP_LENGTH_COMPARED_WITHOUT_SCALE"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-equivalent-distance.svg",
+            "alt": "Dois mapas esquematicos mostram o mesmo trecho: no A, escala 1:25 000 e segmento de 4 cm; no B, escala 1:50 000 e segmento de 2 cm. A legenda informa que os dois representam 1 km.",
+            "caption": "Mesmo trecho em escalas diferentes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET_SCALE_AND_EXTENT",
+      "contextFamily": "DETAIL_VERSUS_COVERAGE",
+      "statement": "Uma equipe precisa ao mesmo tempo de uma visao nacional e da localizacao de uma entrada em um predio. Qual estrategia cartografica atende melhor aos dois objetivos?",
+      "options": [
+        "Usar mapas em escalas diferentes: um de pequena escala para a visao nacional e outro local de grande escala para o predio.",
+        "Ampliar o mapa nacional e presumir que detalhes ausentes aparecerao.",
+        "Usar apenas a planta do predio para comparar o pais inteiro.",
+        "Escolher um unico mapa sem considerar a extensao necessaria."
+      ],
+      "correctAnswer": "Usar mapas em escalas diferentes: um de pequena escala para a visao nacional e outro local de grande escala para o predio.",
+      "explanation": "Uma escala pequena cobre grande extensao com menos detalhe; uma escala grande mostra recorte menor com mais detalhe. Os dois objetivos pedem niveis distintos.",
+      "hint": "Combine cada pergunta com a extensao e o nivel de detalhe apropriados.",
+      "errorFocus": "ONE_SCALE_ASSUMED_TO_SERVE_ALL_PURPOSES",
+      "misconceptions": {
+        "Ampliar o mapa nacional e presumir que detalhes ausentes aparecerao.": [
+          "ONE_SCALE_ASSUMED_TO_SERVE_ALL_PURPOSES"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE_ROUTE_AND_STRAIGHT_DISTANCE",
+      "contextFamily": "CURVED_ROUTE_MEASURED_WITH_THREAD",
+      "statement": "Em um mapa 1:25 000, o segmento reto entre P e Q mede 8 cm e a rota sinuosa, medida com um fio, mede 12 cm. Qual interpretacao esta correta?",
+      "options": [
+        "Ambas medem 2 km porque ligam os mesmos pontos.",
+        "A distancia reta e 2 km; o percurso desenhado mede 3 km.",
+        "A distancia reta e 3 km e a rota e 2 km.",
+        "A escala permite calcular o tempo de viagem sem outras informacoes."
+      ],
+      "correctAnswer": "A distancia reta e 2 km; o percurso desenhado mede 3 km.",
+      "explanation": "Cada centimetro vale 250 m. Assim, 8 cm representam 2 km em linha reta e 12 cm ao longo da rota representam 3 km.",
+      "hint": "Converta cada comprimento separadamente e identifique qual segue a rota.",
+      "errorFocus": "STRAIGHT_SEGMENT_CONFUSED_WITH_ROUTE",
+      "misconceptions": {
+        "Ambas medem 2 km porque ligam os mesmos pontos.": [
+          "STRAIGHT_SEGMENT_CONFUSED_WITH_ROUTE"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-route-vs-straight.svg",
+            "alt": "Esquema com P e Q: segmento reto mede 8 cm, rota curva medida com fio mede 12 cm, e a escala numerica e 1:25 000.",
+            "caption": "Distancia reta e percurso sinuoso"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_CROPPED_SCALE_BAR",
+      "contextFamily": "SCALE_BAR_WITHOUT_CALIBRATION",
+      "statement": "Uma imagem mostra apenas um trecho de uma barra grafica; as marcas, o zero e os valores foram cortados. Sem escala numerica ou outra referencia, o que se pode afirmar sobre uma distancia medida nessa imagem?",
+      "options": [
+        "Cada centimetro vale necessariamente 1 km.",
+        "A distancia real e zero porque o zero nao aparece.",
+        "Nao e possivel converter com seguranca o comprimento em centimetros para distancia real.",
+        "Basta contar as marcas sem conhecer seus valores."
+      ],
+      "correctAnswer": "Nao e possivel converter com seguranca o comprimento em centimetros para distancia real.",
+      "explanation": "Sem uma razao numerica ou uma barra grafica calibrada visivel, falta a correspondencia entre comprimento no papel e distancia no terreno.",
+      "hint": "Procure uma referencia que associe um comprimento a uma distancia conhecida.",
+      "errorFocus": "UNCALIBRATED_CROPPED_SCALE_BAR",
+      "misconceptions": {
+        "Cada centimetro vale necessariamente 1 km.": [
+          "UNCALIBRATED_CROPPED_SCALE_BAR"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-cropped.svg",
+            "alt": "Trecho de uma barra grafica cortada nas duas extremidades, sem marca zero, rotulos numericos ou unidade de distancia.",
+            "caption": "Referencia de escala ausente"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "LIMIT_SCALE_INFERENCE",
+      "contextFamily": "MAP_DISTANCE_NOT_TRAVEL_TIME",
+      "statement": "Em um mapa 1:50 000, a distancia reta entre uma unidade de saude e uma escola mede 3,5 cm. Qual conclusao a escala sustenta diretamente?",
+      "options": [
+        "A viagem dura 3,5 minutos.",
+        "O percurso por ruas mede exatamente 1,75 km.",
+        "A escola fica a 175 km da unidade.",
+        "A distancia em linha reta e 1,75 km; o tempo e o comprimento do trajeto exigem outras informacoes."
+      ],
+      "correctAnswer": "A distancia em linha reta e 1,75 km; o tempo e o comprimento do trajeto exigem outras informacoes.",
+      "explanation": "Cada centimetro representa 500 m; 3,5 cm representam 1 750 m. A escala nao informa o trajeto usado nem a velocidade de deslocamento.",
+      "hint": "Converta a medida e limite a conclusao ao segmento reto mostrado.",
+      "errorFocus": "MAP_SCALE_USED_TO_ASSERT_TIME_OR_ROUTE",
+      "misconceptions": {
+        "A viagem dura 3,5 minutos.": [
+          "MAP_SCALE_USED_TO_ASSERT_TIME_OR_ROUTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE_SCALE_CALCULATION",
+      "contextFamily": "SIX_POINT_FOUR_AT_25000",
+      "statement": "Em uma carta 1:25 000, a distancia reta entre dois marcos mede 6,4 cm. Qual distancia reta corresponde a medida?",
+      "options": [
+        "1,6 km.",
+        "160 m.",
+        "16 km.",
+        "2,56 km."
+      ],
+      "correctAnswer": "1,6 km.",
+      "explanation": "Cada centimetro equivale a 250 m. Portanto 6,4 x 250 m = 1 600 m = 1,6 km.",
+      "hint": "Converta a escala para metros por centimetro e confira a conversao final.",
+      "errorFocus": "DECIMAL_SCALE_CALCULATION_ERROR",
+      "misconceptions": {
+        "160 m.": [
+          "DECIMAL_SCALE_CALCULATION_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CHOOSE_LARGER_SCALE",
+      "contextFamily": "DETAIL_AT_20000",
+      "statement": "Para desenhar detalhes de uma praca, qual escala tende a ser mais adequada: 1:20 000 ou 1:200 000?",
+      "options": [
+        "1:200 000, pois todo denominador maior mostra mais detalhes.",
+        "1:20 000, pois mostra menos terreno por centimetro e permite maior detalhe no mesmo tamanho de papel.",
+        "As duas tem sempre o mesmo nivel de detalhe.",
+        "Nenhuma, porque escala nao se relaciona a detalhe."
+      ],
+      "correctAnswer": "1:20 000, pois mostra menos terreno por centimetro e permite maior detalhe no mesmo tamanho de papel.",
+      "explanation": "1:20 000 e a escala maior; em um papel de mesmo tamanho, representa area menor e pode mostrar mais detalhe.",
+      "hint": "Compare a quantidade de terreno representada por cada centimetro.",
+      "errorFocus": "LARGE_SCALE_DEFINITION_NOT_APPLIED",
+      "misconceptions": {
+        "1:200 000, pois todo denominador maior mostra mais detalhes.": [
+          "LARGE_SCALE_DEFINITION_NOT_APPLIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "READ_GRAPHIC_SCALE",
+      "contextFamily": "FOUR_INTERVALS_ON_FIVE_KM_BAR",
+      "statement": "Em uma barra de 0 a 5 km dividida em cinco intervalos iguais, um percurso desenhado ocupa quatro intervalos. Qual distancia e representada?",
+      "options": [
+        "5 km.",
+        "2,5 km.",
+        "4 km.",
+        "20 km."
+      ],
+      "correctAnswer": "4 km.",
+      "explanation": "Cada intervalo vale 1 km; quatro intervalos representam 4 km.",
+      "hint": "Conte os espacos entre marcas e use o valor de cada espaco.",
+      "errorFocus": "GRAPHIC_SCALE_INTERVAL_COUNT_ERROR",
+      "misconceptions": {
+        "5 km.": [
+          "GRAPHIC_SCALE_INTERVAL_COUNT_ERROR"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-four-intervals.svg",
+            "alt": "Barra grafica de 0 a 5 km com o trecho do zero ao quarto quilometro destacado, cobrindo quatro intervalos iguais.",
+            "caption": "Quatro intervalos da barra grafica"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE_RATIO_AND_CONVERSION",
+      "contextFamily": "THREE_POINT_FIVE_CM_AT_40000",
+      "statement": "Em um mapa 1:40 000, um segmento reto mede 3,5 cm. Qual distancia representa?",
+      "options": [
+        "140 m.",
+        "14 km.",
+        "1,75 km.",
+        "1,4 km."
+      ],
+      "correctAnswer": "1,4 km.",
+      "explanation": "Cada centimetro equivale a 400 m. Entao, 3,5 x 400 m = 1 400 m = 1,4 km.",
+      "hint": "Converta a escala para metros por centimetro e confira a unidade final.",
+      "errorFocus": "RATIO_CONVERSION_AND_DECIMAL_ERROR",
+      "misconceptions": {
+        "140 m.": [
+          "RATIO_CONVERSION_AND_DECIMAL_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SELECT_SCALE_FOR_CAMPUS_DETAIL",
+      "contextFamily": "SCHOOL_CAMPUS_PLAN",
+      "statement": "Para localizar salas, acessos e quadras em uma planta do campus escolar, qual escala tende a servir melhor, em uma folha de mesmo tamanho?",
+      "options": [
+        "1:5 000, pois representa um recorte menor com mais detalhe.",
+        "1:500 000, pois o denominador maior amplia os detalhes.",
+        "As duas escalas mostram necessariamente o mesmo recorte.",
+        "Uma imagem sem escala, porque a legenda substitui a escala."
+      ],
+      "correctAnswer": "1:5 000, pois representa um recorte menor com mais detalhe.",
+      "explanation": "O campus ocupa uma area pequena e exige detalhe. Em uma folha de mesmo tamanho, 1:5 000 e escala maior que 1:500 000.",
+      "hint": "Relacione o nivel de detalhe necessario ao tamanho do recorte.",
+      "errorFocus": "CAMPUS_DETAIL_SCALE_REVERSED",
+      "misconceptions": {
+        "1:500 000, pois o denominador maior amplia os detalhes.": [
+          "CAMPUS_DETAIL_SCALE_REVERSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMBINE_PRINT_AND_GRAPHIC_SCALE",
+      "contextFamily": "REDUCED_MAP_WITH_GRAPHIC_BAR",
+      "statement": "Um mapa e sua barra grafica foram reduzidos juntos para metade do tamanho; o rotulo numerico nao foi atualizado. Qual procedimento e confiavel?",
+      "options": [
+        "Usar o rotulo original sem conferir a impressao.",
+        "Usar a barra grafica reduzida junto com o mapa e recalibrar o rotulo numerico antes de usa-lo.",
+        "Descartar a barra porque ela foi reduzida junto com o mapa.",
+        "Multiplicar qualquer distancia por dois sem saber a unidade."
+      ],
+      "correctAnswer": "Usar a barra grafica reduzida junto com o mapa e recalibrar o rotulo numerico antes de usa-lo.",
+      "explanation": "A barra grafica acompanhou a reducao e preserva a proporcao. O rotulo numerico, se nao foi corrigido, nao corresponde ao tamanho impresso.",
+      "hint": "Separe a referencia grafica que acompanhou a imagem do numero que ficou desatualizado.",
+      "errorFocus": "RESIZED_GRAPHIC_VALID_NUMERIC_LABEL_STALE",
+      "misconceptions": {
+        "Usar o rotulo original sem conferir a impressao.": [
+          "RESIZED_GRAPHIC_VALID_NUMERIC_LABEL_STALE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-31",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_METHOD",
+      "contextFamily": "SCALE_READING_STEPS",
+      "statement": "Qual sequencia e adequada para converter uma medida feita em um mapa?",
+      "options": [
+        "Multiplicar sem conferir unidades e chamar o resultado de rota.",
+        "Ler a legenda como se fosse a escala numerica.",
+        "Identificar a escala, manter unidades compativeis, converter o resultado e distinguir distancia reta de percurso.",
+        "Comparar centimetros de mapas distintos sem usar suas escalas."
+      ],
+      "correctAnswer": "Identificar a escala, manter unidades compativeis, converter o resultado e distinguir distancia reta de percurso.",
+      "explanation": "A escala precisa ser aplicada em unidades coerentes; a medida resultante depende do segmento medido e nao vira automaticamente um trajeto.",
+      "hint": "Escolha a sequencia que inclui unidades e o tipo de distancia.",
+      "errorFocus": "SCALE_WORKFLOW_OMITS_UNITS_OR_DISTANCE_TYPE",
+      "misconceptions": {
+        "Multiplicar sem conferir unidades e chamar o resultado de rota.": [
+          "SCALE_WORKFLOW_OMITS_UNITS_OR_DISTANCE_TYPE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER_SCALE_REASONING",
+      "contextFamily": "MAP_SCALE_DECISION",
+      "statement": "Ao escolher uma escala para um novo mapa, qual criterio deve vir primeiro?",
+      "options": [
+        "Apenas a cor de fundo do mapa.",
+        "O maior denominador disponivel, qualquer que seja o objetivo.",
+        "A quantidade de texto que cabe no titulo.",
+        "A extensao que precisa ser coberta e o nivel de detalhe exigido pela tarefa."
+      ],
+      "correctAnswer": "A extensao que precisa ser coberta e o nivel de detalhe exigido pela tarefa.",
+      "explanation": "Escala e escolha cartografica ligada a extensao e ao detalhe necessarios; nenhum numero serve igualmente para todos os objetivos.",
+      "hint": "Comece pelo que o leitor precisa observar e pela area que o mapa deve cobrir.",
+      "errorFocus": "SCALE_CHOSEN_WITHOUT_PURPOSE",
+      "misconceptions": {
+        "Apenas a cor de fundo do mapa.": [
+          "SCALE_CHOSEN_WITHOUT_PURPOSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-33",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_DISTANCE_CONVERSION",
+      "contextFamily": "REVIEW_2500_AT_80000",
+      "statement": "Uma planta 1:80 000 mostra 2,5 cm entre dois pontos em linha reta. Qual registro de distancia esta correto?",
+      "options": [
+        "2 km em linha reta.",
+        "200 m.",
+        "20 km.",
+        "2,5 km."
+      ],
+      "correctAnswer": "2 km em linha reta.",
+      "explanation": "Cada centimetro representa 800 m; 2,5 x 800 m = 2 000 m = 2 km.",
+      "hint": "Calcule primeiro a distancia correspondente a 1 cm.",
+      "errorFocus": "REVIEW_SCALE_FACTOR_TENFOLD",
+      "misconceptions": {
+        "200 m.": [
+          "REVIEW_SCALE_FACTOR_TENFOLD"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-34",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_SCALE_SELECTION",
+      "contextFamily": "REVIEW_NEIGHBORHOOD_SCALE",
+      "statement": "Uma equipe vai mapear ruas de um bairro em uma folha de mesmo tamanho. Qual escolha favorece mais detalhes: 1:20 000 ou 1:200 000?",
+      "options": [
+        "1:200 000, porque o denominador e maior.",
+        "1:20 000.",
+        "As duas escalas sao iguais.",
+        "A escala nao altera o nivel de detalhe."
+      ],
+      "correctAnswer": "1:20 000.",
+      "explanation": "1:20 000 representa menos terreno por centimetro e permite mostrar um recorte menor com mais detalhe.",
+      "hint": "Compare quanto terreno cabe em cada centimetro.",
+      "errorFocus": "REVIEW_DENOMINATOR_REVERSED",
+      "misconceptions": {
+        "1:200 000, porque o denominador e maior.": [
+          "REVIEW_DENOMINATOR_REVERSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-35",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_BAR_INTERVALS",
+      "contextFamily": "REVIEW_TWO_INTERVALS",
+      "statement": "Uma barra grafica vai de 0 a 5 km em cinco intervalos iguais. Um trecho ocupa dois intervalos. Qual distancia ele representa?",
+      "options": [
+        "1 km.",
+        "2,5 km.",
+        "2 km.",
+        "10 km."
+      ],
+      "correctAnswer": "2 km.",
+      "explanation": "Cada intervalo vale 1 km; dois intervalos representam 2 km.",
+      "hint": "Divida a distancia total pelos cinco espacos antes de contar o trecho.",
+      "errorFocus": "REVIEW_MARKS_CONFUSED_WITH_INTERVALS",
+      "misconceptions": {
+        "1 km.": [
+          "REVIEW_MARKS_CONFUSED_WITH_INTERVALS"
+        ]
+      },
+      "visualStimulus": {
+        "layout": "SINGLE",
+        "items": [
+          {
+            "src": "/learning/geography/scale-bar-segments.svg",
+            "alt": "Barra grafica de 0 a 5 km com cinco intervalos iguais, permitindo identificar o valor de cada intervalo.",
+            "caption": "Revisao da leitura de intervalos"
+          }
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-36",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_STRAIGHT_VERSUS_ROUTE",
+      "contextFamily": "REVIEW_ROUTE_SCOPE",
+      "statement": "Uma pessoa mede com regua 3 cm em linha reta entre dois enderecos de um mapa 1:50 000 e registra “distancia por ruas: 1,5 km”. Qual revisao e necessaria?",
+      "options": [
+        "Manter “por ruas”, pois a escala transforma qualquer segmento em rota.",
+        "Trocar para 15 km, sem alterar o tipo de medida.",
+        "Informar o tempo de viagem em vez de uma distancia.",
+        "Registrar 1,5 km como distancia reta e medir a rota ao longo das ruas antes de chama-la de percurso."
+      ],
+      "correctAnswer": "Registrar 1,5 km como distancia reta e medir a rota ao longo das ruas antes de chama-la de percurso.",
+      "explanation": "A conversao fornece 1,5 km para o segmento reto medido. O comprimento por ruas depende do caminho desenhado.",
+      "hint": "Confira se o nome da medida corresponde ao metodo usado.",
+      "errorFocus": "REVIEW_ROUTE_LABEL_MISMATCH",
+      "misconceptions": {
+        "Manter “por ruas”, pois a escala transforma qualquer segmento em rota.": [
+          "REVIEW_ROUTE_LABEL_MISMATCH"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-37",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_PRINT_RESIZE",
+      "contextFamily": "REVIEW_RESIZED_COPY",
+      "statement": "Uma copia de mapa foi reduzida, mas manteve o rotulo numerico original. O que deve ser verificado antes de calcular distancias?",
+      "options": [
+        "A escala efetiva da copia ou uma barra grafica que tenha sido redimensionada junto com o mapa.",
+        "Somente a cor do mapa.",
+        "Apenas o rotulo original, sem comparar a copia.",
+        "A quantidade de ruas no recorte."
+      ],
+      "correctAnswer": "A escala efetiva da copia ou uma barra grafica que tenha sido redimensionada junto com o mapa.",
+      "explanation": "A reducao pode tornar o rotulo numerico incompativel com o papel. E preciso recalibrar a razao ou usar uma referencia grafica que acompanhou a copia.",
+      "hint": "Pergunte se a referencia de escala sofreu a mesma mudanca que o desenho.",
+      "errorFocus": "REVIEW_COPY_SCALE_NOT_RECALIBRATED",
+      "misconceptions": {
+        "Somente a cor do mapa.": [
+          "REVIEW_COPY_SCALE_NOT_RECALIBRATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-38",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REVIEW_PURPOSE_AND_EXTENT",
+      "contextFamily": "REVIEW_SCHOOL_MAP_SCALE",
+      "statement": "Uma escola precisa de um mapa para orientar visitantes ate salas e acessos. O que deve orientar primeiro a escolha da escala?",
+      "options": [
+        "O maior denominador possivel, sem considerar o recorte.",
+        "O tamanho da area escolar e o nivel de detalhe necessario para localizar os pontos.",
+        "A escala de um mapa nacional.",
+        "A cor da legenda."
+      ],
+      "correctAnswer": "O tamanho da area escolar e o nivel de detalhe necessario para localizar os pontos.",
+      "explanation": "O objetivo e localizar pontos em uma area pequena; escala deve ser escolhida conforme extensao e detalhe.",
+      "hint": "Comece pela pergunta que o mapa deve ajudar a responder.",
+      "errorFocus": "REVIEW_MAP_PURPOSE_IGNORED",
+      "misconceptions": {
+        "O maior denominador possivel, sem considerar o recorte.": [
+          "REVIEW_MAP_PURPOSE_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVIEW_UNIT_FACTOR",
+      "contextFamily": "REVIEW_CM_TO_KM_ERROR",
+      "statement": "Em 1:100 000, uma pessoa afirma que 1 cm no mapa corresponde a 100 km no terreno. Qual correcao esta certa?",
+      "options": [
+        "1 cm corresponde a 100 km porque o denominador esta em metros.",
+        "1 cm corresponde a 10 km.",
+        "1 cm corresponde a 100 000 cm, isto e, 1 km.",
+        "A escala nao permite converter centimetros."
+      ],
+      "correctAnswer": "1 cm corresponde a 100 000 cm, isto e, 1 km.",
+      "explanation": "A razao usa a mesma unidade nos dois lados: 100 000 cm equivalem a 1 000 m, ou 1 km.",
+      "hint": "Converta centimetros para metros e depois para quilometros.",
+      "errorFocus": "REVIEW_CENTIMETER_UNIT_FACTOR",
+      "misconceptions": {
+        "1 cm corresponde a 100 km porque o denominador esta em metros.": [
+          "REVIEW_CENTIMETER_UNIT_FACTOR"
+        ]
+      }
+    },
+    {
+      "id": "v5-geography-map-scale-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVIEW_MISSING_REFERENCE",
+      "contextFamily": "REVIEW_MISSING_SCALE",
+      "statement": "Um mapa de um bairro nao informa escala numerica nem apresenta barra grafica calibrada. Qual e a atitude adequada antes de estimar uma distancia real?",
+      "options": [
+        "Assumir que cada centimetro vale 1 km.",
+        "Usar a largura da tela como escala fixa.",
+        "Contar quarteiroes sem saber suas dimensoes e registrar um valor exato.",
+        "Buscar uma referencia espacial confiavel ou uma versao do mapa com escala; nao inventar a conversao."
+      ],
+      "correctAnswer": "Buscar uma referencia espacial confiavel ou uma versao do mapa com escala; nao inventar a conversao.",
+      "explanation": "Sem uma relacao conhecida entre comprimento representado e distancia real, a conversao nao e sustentada.",
+      "hint": "Identifique que dado permitiria relacionar papel e terreno.",
+      "errorFocus": "REVIEW_SCALE_REFERENCE_MISSING",
+      "misconceptions": {
+        "Assumir que cada centimetro vale 1 km.": [
+          "REVIEW_SCALE_REFERENCE_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_01",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. O que essa relação informa?",
+      "options": [
+        "A escala estabelece a correspondência entre a distância no mapa e a distância real.",
+        "Toda distância no mapa é igual à distância real.",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "A escala estabelece a correspondência entre a distância no mapa e a distância real.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_02",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Qual critério deve orientar a análise?",
+      "options": [
+        "Toda distância no mapa é igual à distância real.",
+        "Use Escala relaciona uma medida representada à medida correspondente no espaço real.",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "Use Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_03",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Toda distância no mapa é igual à distância real.",
+        "A escala indica apenas a cor das regiões.",
+        "Aplique a relação a plantas de sala, mapas rodoviários e mapas de pequena escala.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "Aplique a relação a plantas de sala, mapas rodoviários e mapas de pequena escala.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_04",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Qual conclusão deve ser evitada?",
+      "options": [
+        "Toda distância no mapa é igual à distância real.",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa.",
+        "Evite tratar o centímetro do mapa como se fosse um centímetro no território."
+      ],
+      "correctAnswer": "Evite tratar o centímetro do mapa como se fosse um centímetro no território.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_05",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira unidade do mapa, unidade real e relação indicada pela escala.",
+        "Toda distância no mapa é igual à distância real.",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "Confira unidade do mapa, unidade real e relação indicada pela escala.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-006",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_06",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Toda distância no mapa é igual à distância real.",
+        "converter a medida do mapa usando o fator informado",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "converter a medida do mapa usando o fator informado",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-007",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_07",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Toda distância no mapa é igual à distância real.",
+        "A escala indica apenas a cor das regiões.",
+        "Mantenha a conclusão ligada a a escala e as unidades do mapa analisado.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a escala e as unidades do mapa analisado.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-008",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_08",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Que comparação é mais justa?",
+      "options": [
+        "Toda distância no mapa é igual à distância real.",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa.",
+        "Compare distância representada e distância real."
+      ],
+      "correctAnswer": "Compare distância representada e distância real.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-009",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_09",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero tratar o centímetro do mapa como se fosse um centímetro no território.",
+        "Toda distância no mapa é igual à distância real.",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "Seria exagero tratar o centímetro do mapa como se fosse um centímetro no território.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-010",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_SCALE_10",
+      "statement": "Em um mapa, 1 cm representa 5 km no território. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "Toda distância no mapa é igual à distância real.",
+        "qual fator liga as duas medidas?",
+        "A escala indica apenas a cor das regiões.",
+        "1 cm sempre representa 1 km em qualquer mapa."
+      ],
+      "correctAnswer": "qual fator liga as duas medidas?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Escala relaciona uma medida representada à medida correspondente no espaço real.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Toda distância no mapa é igual à distância real.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_01",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Qual distância aproximada existe entre elas?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "10 km, porque 4 cm no mapa correspondem a 1 000 000 cm, ou 10 km, no real.",
+        "0,016 km, dividindo a distância pelo denominador."
+      ],
+      "correctAnswer": "10 km, porque 4 cm no mapa correspondem a 1 000 000 cm, ou 10 km, no real.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_02",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Qual critério deve orientar a análise?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "0,016 km, dividindo a distância pelo denominador.",
+        "Use Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais."
+      ],
+      "correctAnswer": "Use Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_03",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Use o procedimento em um mapa com outra escala numérica.",
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "0,016 km, dividindo a distância pelo denominador."
+      ],
+      "correctAnswer": "Use o procedimento em um mapa com outra escala numérica.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_04",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Qual conclusão deve ser evitada?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "Evite multiplicar ou dividir sem conferir a unidade final.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "0,016 km, dividindo a distância pelo denominador."
+      ],
+      "correctAnswer": "Evite multiplicar ou dividir sem conferir a unidade final.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_05",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "Confira medida no mapa, denominador da escala e conversão para quilômetros.",
+        "0,016 km, dividindo a distância pelo denominador."
+      ],
+      "correctAnswer": "Confira medida no mapa, denominador da escala e conversão para quilômetros.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_06",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "0,016 km, dividindo a distância pelo denominador.",
+        "multiplicar 4 por 250 000 e converter centímetros para quilômetros"
+      ],
+      "correctAnswer": "multiplicar 4 por 250 000 e converter centímetros para quilômetros",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_07",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a distância aproximada no plano representado.",
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "0,016 km, dividindo a distância pelo denominador."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a distância aproximada no plano representado.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_08",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Que comparação é mais justa?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "Compare 4 cm no mapa e distância territorial.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "0,016 km, dividindo a distância pelo denominador."
+      ],
+      "correctAnswer": "Compare 4 cm no mapa e distância territorial.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_09",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Qual seria um exagero interpretativo?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "Seria exagero multiplicar ou dividir sem conferir a unidade final.",
+        "0,016 km, dividindo a distância pelo denominador."
+      ],
+      "correctAnswer": "Seria exagero multiplicar ou dividir sem conferir a unidade final.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_DISTANCE_10",
+      "statement": "Duas cidades aparecem separadas por 4 cm em um mapa cuja escala é 1:250 000. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "1 km, usando apenas o denominador sem multiplicar por 4.",
+        "1000 km, convertendo centímetros na direção errada.",
+        "0,016 km, dividindo a distância pelo denominador.",
+        "a unidade intermediária ficou em centímetros ou quilômetros?"
+      ],
+      "correctAnswer": "a unidade intermediária ficou em centímetros ou quilômetros?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Na escala 1:250 000, cada unidade no mapa corresponde a 250 000 unidades reais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "1 km, usando apenas o denominador sem multiplicar por 4.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-021",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_01",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Como interpretar uma área azul escura?",
+      "options": [
+        "Como uma área que pertence à classe de maior disponibilidade segundo a legenda.",
+        "A área é necessariamente mais fria porque é azul.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "Como uma área que pertence à classe de maior disponibilidade segundo a legenda.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-022",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_02",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Qual critério deve orientar a análise?",
+      "options": [
+        "A área é necessariamente mais fria porque é azul.",
+        "Use A legenda define o significado dos símbolos e das cores usados no mapa.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "Use A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-023",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_03",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "A área é necessariamente mais fria porque é azul.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Aplique o cuidado a mapas de população, clima, altitude e uso da terra.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "Aplique o cuidado a mapas de população, clima, altitude e uso da terra.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-024",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_04",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Qual conclusão deve ser evitada?",
+      "options": [
+        "A área é necessariamente mais fria porque é azul.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor.",
+        "Evite interpretar uma cor pelo senso comum sem consultar a legenda."
+      ],
+      "correctAnswer": "Evite interpretar uma cor pelo senso comum sem consultar a legenda.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-025",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_05",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira cor, classe correspondente e variável representada.",
+        "A área é necessariamente mais fria porque é azul.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "Confira cor, classe correspondente e variável representada.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-026",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_06",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A área é necessariamente mais fria porque é azul.",
+        "ler a legenda e relacionar a cor ao indicador antes de comparar áreas",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "ler a legenda e relacionar a cor ao indicador antes de comparar áreas",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-027",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_07",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Qual limite deve aparecer na resposta?",
+      "options": [
+        "A área é necessariamente mais fria porque é azul.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Mantenha a conclusão ligada a a variável e as classes definidas pela legenda.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a variável e as classes definidas pela legenda.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-028",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_08",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Que comparação é mais justa?",
+      "options": [
+        "A área é necessariamente mais fria porque é azul.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor.",
+        "Compare cor observada e categoria indicada."
+      ],
+      "correctAnswer": "Compare cor observada e categoria indicada.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-029",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_09",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero interpretar uma cor pelo senso comum sem consultar a legenda.",
+        "A área é necessariamente mais fria porque é azul.",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "Seria exagero interpretar uma cor pelo senso comum sem consultar a legenda.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-030",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_LEGEND_10",
+      "statement": "A legenda de um mapa usa azul escuro para áreas com maior disponibilidade de água e azul claro para menor disponibilidade. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "A área é necessariamente mais fria porque é azul.",
+        "o mapa explica o que a cor representa?",
+        "A cor mostra o tamanho da região, não a disponibilidade.",
+        "Toda área azul possui exatamente o mesmo valor."
+      ],
+      "correctAnswer": "o mapa explica o que a cor representa?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A legenda define o significado dos símbolos e das cores usados no mapa.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A área é necessariamente mais fria porque é azul.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-031",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_01",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Que fator ajuda a explicar essa diferença?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção cartográfica, que transforma uma superfície curva em uma representação plana e pode gerar distorções.",
+        "A projeção altera a existência dos continentes."
+      ],
+      "correctAnswer": "A projeção cartográfica, que transforma uma superfície curva em uma representação plana e pode gerar distorções.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-032",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_02",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Qual critério deve orientar a análise?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção altera a existência dos continentes.",
+        "Use Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções."
+      ],
+      "correctAnswer": "Use Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-033",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_03",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Aplique a análise ao escolher um mapa para navegação ou comparação de áreas.",
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção altera a existência dos continentes."
+      ],
+      "correctAnswer": "Aplique a análise ao escolher um mapa para navegação ou comparação de áreas.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-034",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_04",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Qual conclusão deve ser evitada?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Evite considerar que um mapa plano reproduz a Terra sem nenhuma distorção.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção altera a existência dos continentes."
+      ],
+      "correctAnswer": "Evite considerar que um mapa plano reproduz a Terra sem nenhuma distorção.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-035",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_05",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "Confira tipo de projeção, propriedade preservada e região comparada.",
+        "A projeção altera a existência dos continentes."
+      ],
+      "correctAnswer": "Confira tipo de projeção, propriedade preservada e região comparada.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-036",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_06",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção altera a existência dos continentes.",
+        "identificar qual aspecto a projeção prioriza e qual distorção aparece"
+      ],
+      "correctAnswer": "identificar qual aspecto a projeção prioriza e qual distorção aparece",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-037",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_07",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a finalidade e a projeção específica do mapa.",
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção altera a existência dos continentes."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a finalidade e a projeção específica do mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-038",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_08",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Que comparação é mais justa?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Compare globo tridimensional e mapa plano.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção altera a existência dos continentes."
+      ],
+      "correctAnswer": "Compare globo tridimensional e mapa plano.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-039",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_09",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Qual seria um exagero interpretativo?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "Seria exagero considerar que um mapa plano reproduz a Terra sem nenhuma distorção.",
+        "A projeção altera a existência dos continentes."
+      ],
+      "correctAnswer": "Seria exagero considerar que um mapa plano reproduz a Terra sem nenhuma distorção.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-040",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_PROJECTION_10",
+      "statement": "Um mapa-múndi apresenta regiões próximas aos polos com formas e tamanhos diferentes dos observados em um globo. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "A diferença prova que os dados da Terra estão errados.",
+        "Todo mapa plano preserva todas as propriedades ao mesmo tempo.",
+        "A projeção altera a existência dos continentes.",
+        "o mapa preserva áreas, formas, distâncias ou outra propriedade?"
+      ],
+      "correctAnswer": "o mapa preserva áreas, formas, distâncias ou outra propriedade?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Toda projeção seleciona o que preservar e pode distorcer áreas, formas, distâncias ou direções.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A diferença prova que os dados da Terra estão errados.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-041",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_01",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Para que servem essas coordenadas?",
+      "options": [
+        "Para localizar pontos na superfície terrestre usando referências de posição norte-sul e leste-oeste.",
+        "Latitude e longitude são medidas de altitude.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "Para localizar pontos na superfície terrestre usando referências de posição norte-sul e leste-oeste.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-042",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_02",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Qual critério deve orientar a análise?",
+      "options": [
+        "Latitude e longitude são medidas de altitude.",
+        "Use Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "Use Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-043",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_03",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Latitude e longitude são medidas de altitude.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "Aplique o sistema a pontos de cidades, rotas marítimas e imagens de satélite.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "Aplique o sistema a pontos de cidades, rotas marítimas e imagens de satélite.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-044",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_04",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Qual conclusão deve ser evitada?",
+      "options": [
+        "Latitude e longitude são medidas de altitude.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra.",
+        "Evite confundir latitude com distância em quilômetros sem considerar a posição."
+      ],
+      "correctAnswer": "Evite confundir latitude com distância em quilômetros sem considerar a posição.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-045",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_05",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira par de coordenadas, hemisférios e linhas de referência.",
+        "Latitude e longitude são medidas de altitude.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "Confira par de coordenadas, hemisférios e linhas de referência.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-046",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_06",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Latitude e longitude são medidas de altitude.",
+        "ler primeiro latitude e depois longitude com seus sinais ou hemisférios",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "ler primeiro latitude e depois longitude com seus sinais ou hemisférios",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-047",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_07",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Latitude e longitude são medidas de altitude.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "Mantenha a conclusão ligada a a localização no sistema de coordenadas adotado.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a localização no sistema de coordenadas adotado.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-048",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_08",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Que comparação é mais justa?",
+      "options": [
+        "Latitude e longitude são medidas de altitude.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra.",
+        "Compare latitude, longitude e posição do ponto."
+      ],
+      "correctAnswer": "Compare latitude, longitude e posição do ponto.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-049",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_09",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero confundir latitude com distância em quilômetros sem considerar a posição.",
+        "Latitude e longitude são medidas de altitude.",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "Seria exagero confundir latitude com distância em quilômetros sem considerar a posição.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-050",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_COORDINATES_10",
+      "statement": "Uma localização é indicada por latitude e longitude em um mapa. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "Latitude e longitude são medidas de altitude.",
+        "qual coordenada indica norte-sul e qual indica leste-oeste?",
+        "Uma coordenada basta sempre, sem referência de hemisfério.",
+        "As duas coordenadas indicam apenas distância ao centro da Terra."
+      ],
+      "correctAnswer": "qual coordenada indica norte-sul e qual indica leste-oeste?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Latitude e longitude formam um sistema de localização baseado em linhas de referência globais.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Latitude e longitude são medidas de altitude.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-051",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_01",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Que leitura evita uma comparação equivocada?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Comparar os tons pela taxa indicada e não concluir que o município mais escuro tem necessariamente mais pessoas vacinadas.",
+        "Taxa e total são sempre numericamente iguais."
+      ],
+      "correctAnswer": "Comparar os tons pela taxa indicada e não concluir que o município mais escuro tem necessariamente mais pessoas vacinadas.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-052",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_02",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Qual critério deve orientar a análise?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Taxa e total são sempre numericamente iguais.",
+        "Use O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema."
+      ],
+      "correctAnswer": "Use O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-053",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_03",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Aplique a distinção a mapas de renda média, densidade e percentual de cobertura.",
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Taxa e total são sempre numericamente iguais."
+      ],
+      "correctAnswer": "Aplique a distinção a mapas de renda média, densidade e percentual de cobertura.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-054",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_04",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Qual conclusão deve ser evitada?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Evite confundir taxa, total e densidade por aparecerem no mesmo mapa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Taxa e total são sempre numericamente iguais."
+      ],
+      "correctAnswer": "Evite confundir taxa, total e densidade por aparecerem no mesmo mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-055",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_05",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Confira variável, unidade, denominador e legenda do mapa.",
+        "Taxa e total são sempre numericamente iguais."
+      ],
+      "correctAnswer": "Confira variável, unidade, denominador e legenda do mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-056",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_06",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Taxa e total são sempre numericamente iguais.",
+        "identificar se o dado é absoluto, relativo ou uma taxa antes de comparar"
+      ],
+      "correctAnswer": "identificar se o dado é absoluto, relativo ou uma taxa antes de comparar",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-057",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_07",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o indicador escolhido e a escala de classes.",
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Taxa e total são sempre numericamente iguais."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o indicador escolhido e a escala de classes.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-058",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_08",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Que comparação é mais justa?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Compare percentual de vacinação e número de pessoas.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Taxa e total são sempre numericamente iguais."
+      ],
+      "correctAnswer": "Compare percentual de vacinação e número de pessoas.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-059",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_09",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Qual seria um exagero interpretativo?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Seria exagero confundir taxa, total e densidade por aparecerem no mesmo mapa.",
+        "Taxa e total são sempre numericamente iguais."
+      ],
+      "correctAnswer": "Seria exagero confundir taxa, total e densidade por aparecerem no mesmo mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-060",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CHOROPLETH_10",
+      "statement": "Um mapa colore municípios em tons diferentes conforme a taxa de vacinação, e não conforme o número absoluto de pessoas vacinadas. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "O município mais populoso sempre terá a maior taxa.",
+        "Qualquer tom escuro representa maior população absoluta.",
+        "Taxa e total são sempre numericamente iguais.",
+        "a cor representa quantidade total ou proporção?"
+      ],
+      "correctAnswer": "a cor representa quantidade total ou proporção?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. O indicador representado precisa ser distinguido de outras medidas possíveis sobre o mesmo tema.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O município mais populoso sempre terá a maior taxa.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-061",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_01",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Que informação ajuda a orientar a leitura?",
+      "options": [
+        "A orientação indicada por rosa dos ventos, coordenadas ou convenção explícita do mapa.",
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "A orientação indicada por rosa dos ventos, coordenadas ou convenção explícita do mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-062",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_02",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Qual critério deve orientar a análise?",
+      "options": [
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "Use A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "Use A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-063",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_03",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "A escala determina a orientação.",
+        "Aplique o cuidado a mapas digitais que permitem rotação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "Aplique o cuidado a mapas digitais que permitem rotação.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-064",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_04",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Qual conclusão deve ser evitada?",
+      "options": [
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção.",
+        "Evite assumir que o topo da página é sempre o norte."
+      ],
+      "correctAnswer": "Evite assumir que o topo da página é sempre o norte.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-065",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_05",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira seta, rosa dos ventos, coordenadas e convenção do mapa.",
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "Confira seta, rosa dos ventos, coordenadas e convenção do mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-066",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_06",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "localizar uma referência de orientação antes de descrever direções",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "localizar uma referência de orientação antes de descrever direções",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-067",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_07",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Qual limite deve aparecer na resposta?",
+      "options": [
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "A escala determina a orientação.",
+        "Mantenha a conclusão ligada a a orientação efetivamente indicada na representação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a orientação efetivamente indicada na representação.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-068",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_08",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Que comparação é mais justa?",
+      "options": [
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção.",
+        "Compare topo da página e direção geográfica."
+      ],
+      "correctAnswer": "Compare topo da página e direção geográfica.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-069",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_09",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero assumir que o topo da página é sempre o norte.",
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "Seria exagero assumir que o topo da página é sempre o norte.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-070",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_ORIENTATION_10",
+      "statement": "Um mapa foi girado e não mostra uma seta indicando o norte. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "O norte é sempre o lado de cima, mesmo sem indicação.",
+        "qual elemento confirma o norte?",
+        "A escala determina a orientação.",
+        "A legenda substitui toda referência de direção."
+      ],
+      "correctAnswer": "qual elemento confirma o norte?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A posição de norte, sul, leste e oeste precisa ser inferida por uma referência cartográfica.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O norte é sempre o lado de cima, mesmo sem indicação.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-071",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_01",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Por que os níveis de detalhe são diferentes?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "A escala e a finalidade do mapa determinam quanto espaço é representado e quais detalhes podem aparecer.",
+        "Detalhe é definido apenas pelo tamanho da folha."
+      ],
+      "correctAnswer": "A escala e a finalidade do mapa determinam quanto espaço é representado e quais detalhes podem aparecer.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-072",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_02",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Qual critério deve orientar a análise?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Detalhe é definido apenas pelo tamanho da folha.",
+        "Use Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores."
+      ],
+      "correctAnswer": "Use Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-073",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_03",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Aplique a diferença a mapas de bairro, estado e mundo.",
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Detalhe é definido apenas pelo tamanho da folha."
+      ],
+      "correctAnswer": "Aplique a diferença a mapas de bairro, estado e mundo.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-074",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_04",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Qual conclusão deve ser evitada?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "Evite dizer que um mapa com mais área sempre tem mais detalhes.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Detalhe é definido apenas pelo tamanho da folha."
+      ],
+      "correctAnswer": "Evite dizer que um mapa com mais área sempre tem mais detalhes.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-075",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_05",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Confira área coberta, escala e finalidade da representação.",
+        "Detalhe é definido apenas pelo tamanho da folha."
+      ],
+      "correctAnswer": "Confira área coberta, escala e finalidade da representação.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-076",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_06",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Detalhe é definido apenas pelo tamanho da folha.",
+        "comparar escala e extensão antes de avaliar o detalhe"
+      ],
+      "correctAnswer": "comparar escala e extensão antes de avaliar o detalhe",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-077",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_07",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o nível de generalização do mapa.",
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Detalhe é definido apenas pelo tamanho da folha."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o nível de generalização do mapa.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-078",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_08",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Que comparação é mais justa?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "Compare extensão territorial e detalhe cartográfico.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Detalhe é definido apenas pelo tamanho da folha."
+      ],
+      "correctAnswer": "Compare extensão territorial e detalhe cartográfico.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-079",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_09",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Qual seria um exagero interpretativo?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Seria exagero dizer que um mapa com mais área sempre tem mais detalhes.",
+        "Detalhe é definido apenas pelo tamanho da folha."
+      ],
+      "correctAnswer": "Seria exagero dizer que um mapa com mais área sempre tem mais detalhes.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-080",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_CRITICAL_10",
+      "statement": "Dois mapas representam a mesma região, mas um amplia a área de estudo e o outro mostra ruas e quarteirões com mais detalhes. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "A escala não interfere no detalhe.",
+        "O mapa de maior área sempre mostra todas as ruas.",
+        "Detalhe é definido apenas pelo tamanho da folha.",
+        "o mapa foi feito para visão geral ou localização precisa?"
+      ],
+      "correctAnswer": "o mapa foi feito para visão geral ou localização precisa?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas de maior detalhe geralmente cobrem áreas menores, enquanto mapas de menor detalhe abrangem áreas maiores.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "A escala não interfere no detalhe.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-081",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_01",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Que cuidado aumenta a qualidade da representação?",
+      "options": [
+        "Registrar localização, data, método de coleta e possíveis áreas sem observação antes de generalizar o padrão.",
+        "Um ponto basta para mapear toda a cidade.",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "Registrar localização, data, método de coleta e possíveis áreas sem observação antes de generalizar o padrão.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-082",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_02",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Qual critério deve orientar a análise?",
+      "options": [
+        "Um ponto basta para mapear toda a cidade.",
+        "Use Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "Use Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-083",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_03",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Um ponto basta para mapear toda a cidade.",
+        "A data da coleta nunca interfere no mapa.",
+        "Aplique o cuidado a mapas de ruído, árvores, acessibilidade ou lixo.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "Aplique o cuidado a mapas de ruído, árvores, acessibilidade ou lixo.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-084",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_04",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Um ponto basta para mapear toda a cidade.",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados.",
+        "Evite tratar os pontos coletados como retrato completo sem avaliar a cobertura."
+      ],
+      "correctAnswer": "Evite tratar os pontos coletados como retrato completo sem avaliar a cobertura.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-085",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_05",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira localização dos relatos, período, método e lacunas da coleta.",
+        "Um ponto basta para mapear toda a cidade.",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "Confira localização dos relatos, período, método e lacunas da coleta.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-086",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_06",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Um ponto basta para mapear toda a cidade.",
+        "documentar a coleta e indicar incertezas ou áreas não observadas",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "documentar a coleta e indicar incertezas ou áreas não observadas",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-087",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_07",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Um ponto basta para mapear toda a cidade.",
+        "A data da coleta nunca interfere no mapa.",
+        "Mantenha a conclusão ligada a o conjunto de relatos e o período representado.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o conjunto de relatos e o período representado.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-088",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_08",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Que comparação é mais justa?",
+      "options": [
+        "Um ponto basta para mapear toda a cidade.",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados.",
+        "Compare pontos registrados e fenômeno territorial completo."
+      ],
+      "correctAnswer": "Compare pontos registrados e fenômeno territorial completo.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-089",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_09",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero tratar os pontos coletados como retrato completo sem avaliar a cobertura.",
+        "Um ponto basta para mapear toda a cidade.",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "Seria exagero tratar os pontos coletados como retrato completo sem avaliar a cobertura.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-090",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_FIELD-DATA_10",
+      "statement": "Uma turma cria um mapa de pontos de alagamento a partir de relatos coletados em diferentes ruas. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "Um ponto basta para mapear toda a cidade.",
+        "há locais sem dados que podem alterar o padrão?",
+        "A data da coleta nunca interfere no mapa.",
+        "A legenda corrige automaticamente qualquer lacuna de dados."
+      ],
+      "correctAnswer": "há locais sem dados que podem alterar o padrão?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. Mapas baseados em dados de campo dependem da cobertura, da precisão e do método de coleta.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "Um ponto basta para mapear toda a cidade.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-091",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_01",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Que pergunta deve orientar a escolha?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "Qual variável, escala e nível de detalhe representam melhor a decisão que precisa ser tomada?",
+        "A escala é irrelevante quando o tema é importante."
+      ],
+      "correctAnswer": "Qual variável, escala e nível de detalhe representam melhor a decisão que precisa ser tomada?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-092",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_02",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Qual critério deve orientar a análise?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "A escala é irrelevante quando o tema é importante.",
+        "Use A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade."
+      ],
+      "correctAnswer": "Use A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-093",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_03",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Transfira o critério para mapas de transporte, saúde, educação ou risco ambiental.",
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "A escala é irrelevante quando o tema é importante."
+      ],
+      "correctAnswer": "Transfira o critério para mapas de transporte, saúde, educação ou risco ambiental.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-094",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_04",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Qual conclusão deve ser evitada?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Evite escolher qualquer mapa do tema sem verificar a variável e a escala.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "A escala é irrelevante quando o tema é importante."
+      ],
+      "correctAnswer": "Evite escolher qualquer mapa do tema sem verificar a variável e a escala.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-095",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_05",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "Confira finalidade da decisão, indicador, resolução e limitações da representação.",
+        "A escala é irrelevante quando o tema é importante."
+      ],
+      "correctAnswer": "Confira finalidade da decisão, indicador, resolução e limitações da representação.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-096",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_06",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "A escala é irrelevante quando o tema é importante.",
+        "comparar o mapa com a pergunta pública e verificar se os dados são adequados"
+      ],
+      "correctAnswer": "comparar o mapa com a pergunta pública e verificar se os dados são adequados",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-097",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_07",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a decisão e o território efetivamente representados.",
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "A escala é irrelevante quando o tema é importante."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a decisão e o território efetivamente representados.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-098",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_08",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Que comparação é mais justa?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Compare tema do mapa e necessidade da política pública.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "A escala é irrelevante quando o tema é importante."
+      ],
+      "correctAnswer": "Compare tema do mapa e necessidade da política pública.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-099",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_09",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Qual seria um exagero interpretativo?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "Seria exagero escolher qualquer mapa do tema sem verificar a variável e a escala.",
+        "A escala é irrelevante quando o tema é importante."
+      ],
+      "correctAnswer": "Seria exagero escolher qualquer mapa do tema sem verificar a variável e a escala.",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    },
+    {
+      "id": "v27-geography-map-scale-100",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V27_GEOGRAPHY_MAP_SCALE_TRANSFER_10",
+      "statement": "Uma prefeitura escolhe um mapa para decidir onde instalar um serviço público. Que pergunta ajuda a refinar a leitura?",
+      "options": [
+        "O mapa mais colorido sempre é o mais adequado.",
+        "Qualquer mapa de uma cidade serve para toda decisão.",
+        "A escala é irrelevante quando o tema é importante.",
+        "o mapa responde à decisão ou apenas mostra um tema relacionado?"
+      ],
+      "correctAnswer": "o mapa responde à decisão ou apenas mostra um tema relacionado?",
+      "explanation": "Ler mapas exige relacionar escala, legenda, projeção, dados e finalidade. A utilidade de um mapa depende da correspondência entre seus dados, escala, projeção e finalidade.",
+      "hint": "Confira a legenda, a escala, a variável e a orientação antes de comparar áreas.",
+      "errorFocus": "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS",
+      "misconceptions": {
+        "O mapa mais colorido sempre é o mais adequado.": [
+          "GEOGRAPHY_MAP_SCALE_LEGEND_PROJECTION_AND_DATA_LIMITS"
+        ]
+      }
+    }
+  ]
+}
