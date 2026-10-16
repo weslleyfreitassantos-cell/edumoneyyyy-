@@ -247,11 +247,11 @@ describe('BNCC total knowledge factory V4', () => {
     const history = report.existingContent.depthAudit.find((item) => item.targetId === 'HISTORY_COMPARE_CAUSES');
     const ratio = report.existingContent.depthAudit.find((item) => item.targetId === 'MATH_RATIO_UNIT_RATE');
 
-    expect(history).toMatchObject({ originalQuestionCount: 6, v5QuestionCount: 34, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
-    expect(history.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(history).toMatchObject({ originalQuestionCount: 6, v5QuestionCount: 74, currentQuestionCount: 80, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(history.purposeCounts).toEqual({ PROBE: 8, PRACTICE: 24, TRANSFER: 16, LOCK_IN: 12, REVIEW: 20 });
     expect(history.missingDepthDimensions).toEqual([]);
-    expect(ratio).toMatchObject({ originalQuestionCount: 10, v5QuestionCount: 30, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
-    expect(ratio.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(ratio).toMatchObject({ originalQuestionCount: 10, v5QuestionCount: 70, currentQuestionCount: 80, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(ratio.purposeCounts).toEqual({ PROBE: 8, PRACTICE: 24, TRANSFER: 16, LOCK_IN: 12, REVIEW: 20 });
     expect(ratio.missingDepthDimensions).toEqual([]);
   });
 
@@ -273,8 +273,8 @@ describe('BNCC total knowledge factory V4', () => {
     const report = compileKnowledgeFactoryV4(undefined, true);
     const cohesion = report.existingContent.depthAudit.find((item) => item.targetId === 'PORTUGUESE_CONNECT_IDEAS');
 
-    expect(cohesion).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 35, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
-    expect(cohesion.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(cohesion).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 75, currentQuestionCount: 80, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(cohesion.purposeCounts).toEqual({ PROBE: 8, PRACTICE: 24, TRANSFER: 16, LOCK_IN: 12, REVIEW: 20 });
     expect(cohesion.missingDepthDimensions).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
   });
@@ -302,8 +302,8 @@ describe('BNCC total knowledge factory V4', () => {
     const report = compileKnowledgeFactoryV4(undefined, true);
     const evidence = report.existingContent.depthAudit.find((item) => item.targetId === 'SCIENCE_EVIDENCE_CONCLUSION');
 
-    expect(evidence).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 35, currentQuestionCount: 40, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
-    expect(evidence.purposeCounts).toEqual(PURPOSE_COUNTS);
+    expect(evidence).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 75, currentQuestionCount: 80, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(evidence.purposeCounts).toEqual({ PROBE: 8, PRACTICE: 24, TRANSFER: 16, LOCK_IN: 12, REVIEW: 20 });
     expect(evidence.missingDepthDimensions).toEqual([]);
     expect(report.queue.byWave.WAVE_1 ?? 0).toBe(0);
     expect(report.existingContent.technicalDeepReady).toBe(report.existingContent.depthAudit.filter((item) => item.readinessClaim === 'DEEP_CONTENT_READY').length);
@@ -582,8 +582,8 @@ describe('BNCC total knowledge factory V4', () => {
     expect(report.existingContent.waveTwoCandidateTargetsDeepReady).toBeGreaterThanOrEqual(18);
     expect(english).toMatchObject({
       originalQuestionCount: 22,
-      v5QuestionCount: 24,
-      currentQuestionCount: 46,
+      v5QuestionCount: 64,
+      currentQuestionCount: 86,
       technicalDeepReady: true,
       answerKeyValid: true,
       sourceReconciliation: { expectedQuestionCount: 22, actualQuestionCount: 22, status: 'EXACT', questionFeedbackCount: 22 },
@@ -591,7 +591,7 @@ describe('BNCC total knowledge factory V4', () => {
       officialMappingStatus: 'NOT_CLAIMED',
       studentPublicationStatus: 'STAGING_INACTIVE',
     });
-    expect(english.purposeCounts).toEqual({ PROBE: 7, PRACTICE: 14, TRANSFER: 8, LOCK_IN: 6, REVIEW: 11 });
+    expect(english.purposeCounts).toEqual({ PROBE: 11, PRACTICE: 26, TRANSFER: 16, LOCK_IN: 12, REVIEW: 21 });
     expect(english.missingDepthDimensions).toEqual([]);
     expect(report.queue.items.some((item) => item.id === 'ENGLISH_INFER_FROM_TEXT')).toBe(false);
     expect(report.queue.byWave.WAVE_2 ?? 0).toBe(report.queue.items.filter(({ wave }) => wave === 2).length);
