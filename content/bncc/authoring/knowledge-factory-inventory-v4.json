@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "5e9ce474ebf2f1d716d9fca89c11ecb3ac763b06a79ae7474dad3c6c434f6166",
+    "v5QuestionFirstPacks": "8c2d94fdc1f3518770a614b40245863ff39a7ae6af95c0149e7b3f2ffd56ed10",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 4126,
-    "consolidatedQuestionTotal": 5178,
+    "v5QuestionTotal": 4226,
+    "consolidatedQuestionTotal": 5278,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -798,15 +798,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Da equação à quantidade de produto",
         "originalQuestionCount": 22,
-        "v5QuestionCount": 18,
+        "v5QuestionCount": 118,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 40,
+        "currentQuestionCount": 140,
         "purposeCounts": {
-          "PROBE": 4,
-          "PRACTICE": 12,
-          "TRANSFER": 8,
-          "LOCK_IN": 6,
-          "REVIEW": 10
+          "PROBE": 14,
+          "PRACTICE": 52,
+          "TRANSFER": 33,
+          "LOCK_IN": 16,
+          "REVIEW": 25
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -830,7 +830,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 39,
+        "contextFamilyCount": 139,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "9eb403ccaa3878d7cbbbce593ff1c443bb40542d251670dfbdcf5cf34e4b497b"
+  "inventoryHash": "81a3dca57ff0aa20570e1bc8877471d3a4a100ddd9ba475f5cee4994afc284c2"
 }
