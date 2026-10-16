@@ -624,8 +624,8 @@ describe('BNCC total knowledge factory V4', () => {
 
     expect(art).toMatchObject({
       originalQuestionCount: 24,
-      v5QuestionCount: 8,
-      currentQuestionCount: 32,
+      v5QuestionCount: 108,
+      currentQuestionCount: 132,
       technicalDeepReady: true,
       dimensions: { AUTHENTIC_EVIDENCE_READY: true },
       sourceReconciliation: { expectedQuestionCount: 24, actualQuestionCount: 24, status: 'EXACT', questionFeedbackCount: 11 },
