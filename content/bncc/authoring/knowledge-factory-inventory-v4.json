@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "047c6a5c63794f3ea6c1ffe69a403f5a9c68b4ca180a395377a356688bbd3ae4",
+    "v5QuestionFirstPacks": "196775e4f1c47c70b199ab1fc4c61bb7aabf009871398c075069cb215b6460c7",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 2726,
-    "consolidatedQuestionTotal": 3778,
+    "v5QuestionTotal": 2926,
+    "consolidatedQuestionTotal": 3978,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -1866,15 +1866,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Construir periodizações históricas",
         "originalQuestionCount": 28,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 68,
+        "currentQuestionCount": 168,
         "purposeCounts": {
-          "PROBE": 8,
-          "PRACTICE": 22,
-          "TRANSFER": 13,
-          "LOCK_IN": 9,
-          "REVIEW": 16
+          "PROBE": 18,
+          "PRACTICE": 62,
+          "TRANSFER": 38,
+          "LOCK_IN": 19,
+          "REVIEW": 31
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -1898,7 +1898,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 68,
+        "contextFamilyCount": 168,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -4576,15 +4576,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Explicar transformações da matéria",
         "originalQuestionCount": 12,
-        "v5QuestionCount": 40,
+        "v5QuestionCount": 140,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 52,
+        "currentQuestionCount": 152,
         "purposeCounts": {
-          "PROBE": 7,
-          "PRACTICE": 16,
-          "TRANSFER": 9,
-          "LOCK_IN": 7,
-          "REVIEW": 13
+          "PROBE": 17,
+          "PRACTICE": 56,
+          "TRANSFER": 34,
+          "LOCK_IN": 17,
+          "REVIEW": 28
         },
         "minimumTargets": {
           "PROBE": 4,
@@ -4608,7 +4608,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 52,
+        "contextFamilyCount": 152,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "207e9891d1c1e9f7205cd96ac8607d22cc3ce71185c13018675222d513338b2e"
+  "inventoryHash": "0077c68543ea7494ebc363632cd255b3d548efdc06dcefff5a071fac4c7176f9"
 }
