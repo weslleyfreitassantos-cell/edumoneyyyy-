@@ -30,7 +30,8 @@
     "exactSourceVerificationCodes": [
       "EI01CG01",
       "EI01CG02",
-      "EI01CG03"
+      "EI01CG03",
+      "EI01CG04"
     ]
   },
   "sizingMethodology": {
@@ -41014,7 +41015,7 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "EXPERIENTIAL",
       "technicalMinimumQuestions": 0,
       "pedagogicalMinimumQuestions": 0,
