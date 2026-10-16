@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 const state = vi.hoisted(() => ({
   students: [
     { student_id: 'student-joao', full_name: 'João da Silva', class_id: 'class-1', class_name: '1ª Série A', open_error_count: 0, average_mastery: 72, active_session_status: null, target_skill_title: null },
-    { student_id: 'student-ana', full_name: 'Ana Carolina Gomes', class_id: 'class-1', class_name: '1ª Série A', open_error_count: 0, average_mastery: 0, active_session_status: null, target_skill_title: null },
+    { student_id: 'student-ana', full_name: 'Ana Carolina Gomes', class_id: 'class-1', class_name: '1ª Série A', open_error_count: 0, average_mastery: null, active_session_status: 'ACTIVE', target_skill_title: 'Proporção' },
     { student_id: 'student-arthur', full_name: 'Arthur Martins Cardoso', class_id: 'class-1', class_name: '1ª Série A', open_error_count: 0, average_mastery: 0, active_session_status: null, target_skill_title: null },
     { student_id: 'student-beatriz', full_name: 'Beatriz Augusto Rocha', class_id: 'class-1', class_name: '1ª Série A', open_error_count: 0, average_mastery: 0, active_session_status: null, target_skill_title: null },
     { student_id: 'student-bernardo', full_name: 'Bernardo Ribeiro', class_id: 'class-1', class_name: '1ª Série A', open_error_count: 0, average_mastery: 0, active_session_status: null, target_skill_title: null },
@@ -55,6 +55,8 @@ describe('PedagogicalCenterOverviewPage', () => {
     expect(screen.getByRole('searchbox', { name: 'Buscar aluno' })).toBeTruthy();
     expect(screen.getByRole('columnheader', { name: 'Nome' })).toBeTruthy();
     expect(screen.getByText('João da Silva')).toBeTruthy();
+    expect(screen.getByText('Sem dados suficientes')).toBeTruthy();
+    expect(screen.getByText('Atividade iniciada')).toBeTruthy();
     expect(screen.queryByText('Daniel Costa')).toBeNull();
     expect(screen.getByText('Página 1 de 2')).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Ver desempenho de João da Silva' }).getAttribute('href')).toBe('/teacher/pedagogical-center/students/student-joao?class=class-1&subject=subject-physics');

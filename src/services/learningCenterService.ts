@@ -678,7 +678,7 @@ export interface LearningTeacherStudent {
   class_id: string;
   class_name: string;
   open_error_count: number;
-  average_mastery: number;
+  average_mastery: number | null;
   active_session_status: GuidedSession['status'] | null;
   target_skill_title: string | null;
 }
@@ -725,6 +725,16 @@ export interface LearningTeacherStudentDetail {
     total_points: number;
     completed_at: string;
   }>;
+}
+
+export interface LearningTeacherGuidedAttempt {
+  id: string;
+  source: 'GUIDED';
+  activity_id: null;
+  activity_title: string;
+  score: number;
+  total_points: number;
+  completed_at: string;
 }
 
 export interface LearningErrorReview {
@@ -1728,6 +1738,16 @@ export const learningCenterService = {
   teacherStudentDetail: (institutionId: string, studentId: string, classId: string, subjectId: string) =>
     read<LearningTeacherStudentDetail>(
       supabase.rpc('get_teacher_learning_student_detail', {
+        p_institution_id: institutionId,
+        p_student_id: studentId,
+        p_class_id: classId,
+        p_subject_id: subjectId,
+      }),
+    ),
+
+  teacherGuidedAttempts: (institutionId: string, studentId: string, classId: string, subjectId: string) =>
+    read<LearningTeacherGuidedAttempt[]>(
+      supabase.rpc('get_teacher_guided_learning_attempts', {
         p_institution_id: institutionId,
         p_student_id: studentId,
         p_class_id: classId,

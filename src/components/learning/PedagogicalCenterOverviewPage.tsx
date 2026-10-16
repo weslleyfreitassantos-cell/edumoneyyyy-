@@ -16,7 +16,7 @@ const PAGE_SIZE = 6;
 
 type TeacherPerformanceRow = LearningTeacherStudent & {
   id: string;
-  mastery: number;
+  mastery: number | null;
   status: string;
 };
 
@@ -24,10 +24,11 @@ function normalizeStudentSearch(value: string): string {
   return normalizeListSearch(value).replace(/\s+/g, ' ');
 }
 
-function studentStatus(student: LearningTeacherStudent, mastery: number): string {
+function studentStatus(student: LearningTeacherStudent, mastery: number | null): string {
   if (student.open_error_count > 0 || student.active_session_status === 'NEEDS_TEACHER_SUPPORT') {
     return 'Precisa de atenção';
   }
+  if (mastery === null) return student.active_session_status ? 'Atividade iniciada' : 'Sem dados suficientes';
   return mastery >= 70 ? 'Bom andamento' : 'Em desenvolvimento';
 }
 
@@ -52,7 +53,9 @@ export default function PedagogicalCenterOverviewPage() {
   const scopedStudents = students.data ?? [];
   const performanceRows = useMemo<TeacherPerformanceRow[]>(
     () => scopedStudents.map((student) => {
-      const mastery = Math.max(0, Math.min(100, Math.round(student.average_mastery)));
+      const mastery = student.average_mastery === null
+        ? null
+        : Math.max(0, Math.min(100, Math.round(student.average_mastery)));
       return { ...student, id: `${student.student_id}-${student.class_id}`, mastery, status: studentStatus(student, mastery) };
     }),
     [scopedStudents],
@@ -67,14 +70,15 @@ export default function PedagogicalCenterOverviewPage() {
   const attention = scopedStudents.filter(
     (student) => student.open_error_count > 0 || student.active_session_status === 'NEEDS_TEACHER_SUPPORT',
   );
-  const averageMastery = scopedStudents.length
-    ? Math.round(scopedStudents.reduce((total, student) => total + student.average_mastery, 0) / scopedStudents.length)
-    : 0;
+  const measuredMastery = scopedStudents.flatMap((student) => student.average_mastery === null ? [] : [student.average_mastery]);
+  const averageMastery = measuredMastery.length
+    ? Math.round(measuredMastery.reduce((total, value) => total + value, 0) / measuredMastery.length)
+    : null;
   const difficultTopics = (heatmap.data ?? []).filter((row) => row.needsReviewCount > 0).slice(0, 6);
   const columns: Column<TeacherPerformanceRow>[] = [
     { key: 'full_name', label: 'Nome' },
     { key: 'class_name', label: 'Turma' },
-    { key: 'mastery', label: 'Progresso', render: (value) => `${value}%` },
+    { key: 'mastery', label: 'Progresso', render: (value) => value === null ? 'Sem dados suficientes' : `${value}%` },
     { key: 'status', label: 'Situação' },
   ];
 
@@ -139,7 +143,7 @@ export default function PedagogicalCenterOverviewPage() {
       <section aria-label="Resumo do desempenho" className="grid gap-3 sm:grid-cols-3">
         <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><UsersRound className="h-5 w-5 text-[#005bbf]" aria-hidden="true" /><p className="mt-3 text-2xl font-bold dark:text-white">{scopedStudents.length}</p><p className="text-sm text-slate-500">alunos acompanhados</p></article>
         <article className="rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20"><AlertTriangle className="h-5 w-5 text-amber-600" aria-hidden="true" /><p className="mt-3 text-2xl font-bold text-amber-950 dark:text-amber-100">{attention.length}</p><p className="text-sm text-amber-800 dark:text-amber-200">precisam de atenção</p></article>
-        <article className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-900/60 dark:bg-emerald-950/20"><BarChart3 className="h-5 w-5 text-emerald-600" aria-hidden="true" /><p className="mt-3 text-2xl font-bold text-emerald-950 dark:text-emerald-100">{averageMastery}%</p><p className="text-sm text-emerald-800 dark:text-emerald-200">progresso médio</p></article>
+        <article className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-900/60 dark:bg-emerald-950/20"><BarChart3 className="h-5 w-5 text-emerald-600" aria-hidden="true" /><p className={`mt-3 font-bold text-emerald-950 dark:text-emerald-100 ${averageMastery === null ? 'text-lg' : 'text-2xl'}`}>{averageMastery === null ? 'Sem dados suficientes' : `${averageMastery}%`}</p><p className="text-sm text-emerald-800 dark:text-emerald-200">média de domínio dos alunos com evidência</p></article>
       </section>
 
       <section aria-label="Dificuldades da turma" className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-6">
