@@ -260,9 +260,9 @@ describe('BNCC total knowledge factory V4', () => {
     const distinguish = report.existingContent.depthAudit.find((item) => item.targetId === 'PE_DISTINGUISH_ACTIVITY_EXERCISE_FII');
     const safePlan = report.existingContent.depthAudit.find((item) => item.targetId === 'PE_PLAN_SAFE_ACTIVITY');
 
-    expect(distinguish).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 6, currentQuestionCount: 11, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(distinguish).toMatchObject({ originalQuestionCount: 5, v5QuestionCount: 106, currentQuestionCount: 111, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
     expect(distinguish.dimensions.AUTHENTIC_EVIDENCE_READY).toBe(true);
-    expect(safePlan).toMatchObject({ originalQuestionCount: 7, v5QuestionCount: 6, currentQuestionCount: 13, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
+    expect(safePlan).toMatchObject({ originalQuestionCount: 7, v5QuestionCount: 106, currentQuestionCount: 113, technicalDeepReady: true, pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING', officialMappingStatus: 'NOT_CLAIMED', studentPublicationStatus: 'STAGING_INACTIVE' });
     expect(safePlan.dimensions.AUTHENTIC_EVIDENCE_READY).toBe(true);
     expect(safePlan.dimensions.MISCONCEPTION_RECOVERY_READY).toBe(true);
     expect(distinguish.missingDepthDimensions).toEqual([]);

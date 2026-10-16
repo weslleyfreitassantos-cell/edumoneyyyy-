@@ -1,0 +1,2674 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 10,
+  "contentId": "v10-pe-distinguish-activity-exercise-expansion-v10",
+  "canonicalSkillCode": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII",
+  "subject": "PHYSICAL_EDUCATION",
+  "domain": "ATIVIDADE_E_EXERCICIO",
+  "topic": "atividade física e exercício: observar contexto e propósito",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 11,
+    "PRACTICE": 42,
+    "TRANSFER": 26,
+    "LOCK_IN": 11,
+    "REVIEW": 16
+  },
+  "expectedQuestionCount": 106,
+  "expectedContextCount": 106,
+  "expectedAnswerPositionCounts": {
+    "A": 27,
+    "B": 27,
+    "C": 26,
+    "D": 26
+  },
+  "lesson": {
+    "title": "Atividade física e exercício: observar contexto e propósito",
+    "objective": "Distinguir movimento cotidiano de exercício planejado e propor alternativas de participação considerando escolha, acesso e segurança.",
+    "summary": "Atividade física inclui movimentos em diferentes situações. Exercício é uma forma planejada, estruturada e repetida com propósito. A mesma ação pode aparecer em contextos diferentes. Compreender essa distinção não exige teste corporal nem comparação de aptidão.",
+    "explanation": "## Movimento em muitos contextos\nCaminhar para chegar a um lugar, brincar, dançar ou participar de uma aula podem envolver atividade física. A categoria é ampla e não depende de competição.\n\n## Quando falamos em exercício\nExercício é uma subcategoria: há planejamento, estrutura, repetição e um propósito. Um movimento cotidiano pode também fazer parte de exercício quando é organizado com esses elementos. Observe a situação inteira, não apenas o nome do movimento.\n\n## Planejar sem excluir\nUma proposta escolar precisa considerar espaço, supervisão, escolha e formas diferentes de participação. Não prescreva intensidade individual, não compare corpos e não exija que alguém revele saúde, deficiência ou rotina. Uma atividade escrita ou desenhada pode ser uma alternativa equivalente à demonstração de movimento.\n\n## Exemplo resolvido\nSubir escadas para chegar à sala envolve atividade física, mas a descrição não informa um plano de exercício. Em uma aula, uma sequência de movimentos repetida com propósito definido pode ser exercício e também atividade física. Para a turma, o professor verifica espaço seguro, alternativas e participação voluntária.",
+    "workedExample": "Pergunta: uma turma se movimenta livremente numa festa e, em outra aula, pratica uma sequência repetida com objetivo combinado. Passo 1: note que as duas situações envolvem movimento. Passo 2: procure planejamento, estrutura, repetição e propósito. Passo 3: classifique a segunda também como exercício planejado, sem dizer que a festa “não conta” como atividade física.",
+    "commonMistake": "Tratar atividade física e exercício como sinônimos perfeitos; exigir academia ou competição; transformar uma resposta sobre conceitos em diagnóstico ou medida de aptidão.",
+    "tips": [
+      "Observe o contexto e o propósito, não apenas o nome do movimento.",
+      "Planeje opções seguras e acessíveis com mediação do professor.",
+      "A atividade digital verifica compreensão e planejamento, não aptidão física."
+    ],
+    "priorKnowledge": [
+      "Reconhecer movimentos corporais em situações cotidianas.",
+      "Descrever espaço, regras e escolhas em uma atividade."
+    ],
+    "keyConcepts": [
+      "Atividade física é uma categoria ampla de movimento.",
+      "Exercício físico é planejado, estruturado e repetido com propósito.",
+      "Segurança, acesso, escolha e adaptação fazem parte do planejamento."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Identificar o contexto, o planejamento e o propósito de uma situação.",
+        "questionIds": [
+          "v5-pe-distinguish-probe-01",
+          "v5-pe-distinguish-practice-01"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Planejar uma opção e justificar cuidados e adaptações.",
+        "questionIds": [
+          "v5-pe-distinguish-practice-02",
+          "v5-pe-distinguish-transfer-01",
+          "v5-pe-distinguish-lock-01"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Revisar uma proposta diante de um novo contexto ou barreira.",
+        "questionIds": [
+          "v5-pe-distinguish-review-01"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "MOVEMENT_IS_BROAD",
+        "text": "Atividade física pode ocorrer em transporte, brincadeira, lazer e aula; competição não é requisito."
+      },
+      {
+        "trigger": "EXERCISE_IS_PLANNED",
+        "text": "Procure planejamento, estrutura, repetição e propósito para identificar exercício."
+      },
+      {
+        "trigger": "SAME_MOVEMENT_DIFFERENT_CONTEXT",
+        "text": "O contexto pode mudar a classificação; compare como e por que a ação foi organizada."
+      },
+      {
+        "trigger": "NO_BODY_TEST",
+        "text": "Esta tarefa avalia raciocínio sobre situações, não força, velocidade, saúde ou aptidão do estudante."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "pe-distinguish-remediate-context",
+        "misconception": "CONTEXT_IGNORED",
+        "prompt": "Descreva primeiro o movimento; depois marque se havia plano, estrutura, repetição e propósito. Reavalie a classificação."
+      },
+      {
+        "id": "pe-distinguish-remediate-competition",
+        "misconception": "COMPETITION_REQUIRED",
+        "prompt": "Pense em uma brincadeira sem vencedor e em uma sequência orientada sem competição. Que elementos, além de competir, ajudam a classificar exercício?"
+      },
+      {
+        "id": "pe-distinguish-remediate-equipment",
+        "misconception": "EQUIPMENT_REQUIRED",
+        "prompt": "Retire os equipamentos do cenário e verifique se ainda existe uma sequência planejada e repetida com propósito."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-pe-distinguish-movement-context-lab",
+        "title": "Movimento, contexto e escolha",
+        "objective": "Classificar situações fictícias e planejar uma opção de movimento com alternativas voluntárias e acessíveis.",
+        "context": "Investigação em pequenos grupos com cartões de situações cotidianas e propostas de aula preparadas pelo educador.",
+        "materials": [
+          "Cartões fictícios de situações de movimento",
+          "Quadro “atividade física”, “exercício planejado” e “o que falta saber”",
+          "Folha para desenhar uma proposta com duas formas de participação"
+        ],
+        "instructions": "Classifique cartões justificando a decisão por movimento, planejamento, estrutura, repetição e propósito. Depois crie uma proposta curta para a escola com uma opção de movimento e uma alternativa equivalente sentada, observacional ou desenhada. Se houver demonstração, ela é voluntária, supervisionada e pode ser substituída pela representação em papel. Não medir desempenho nem pedir relatos sobre corpos, saúde ou rotina familiar.",
+        "evidence": "Quadro de classificação com justificativas, proposta com duas formas de participação e anotação de uma condição de segurança ou acesso.",
+        "safety": "Qualquer vivência corporal depende de espaço e supervisão docente, é voluntária e pode ser substituída por alternativa equivalente. Não aplicar teste de aptidão, comparar resultados, prescrever exercício individual ou pedir diagnóstico/atestado como conteúdo da aula.",
+        "privacyGuard": "Não coletar peso, medidas, frequência cardíaca, diagnóstico, deficiência, imagens, rotina de movimento ou dados de saúde dos estudantes.",
+        "ageRange": "6º e 7º anos do Ensino Fundamental, com mediação docente.",
+        "mediation": "O professor contextualiza os exemplos, verifica condições locais e garante alternativa sem movimento. A rubrica observa classificação, justificativa, acesso e segurança, não habilidade atlética.",
+        "rubric": [
+          {
+            "criterion": "Distinção conceitual",
+            "emerging": "Confunde toda atividade física com exercício planejado.",
+            "developing": "Identifica movimento e planejamento com perguntas de apoio.",
+            "proficient": "Justifica a classificação usando contexto, organização e propósito."
+          },
+          {
+            "criterion": "Justificativa",
+            "emerging": "Baseia a resposta em competição ou equipamento como regra.",
+            "developing": "Nomeia um critério adequado após orientação.",
+            "proficient": "Usa critérios pertinentes e identifica informação ausente quando necessário."
+          },
+          {
+            "criterion": "Acesso e participação",
+            "emerging": "Propõe uma única forma obrigatória.",
+            "developing": "Adiciona alternativa após mediação.",
+            "proficient": "Inclui escolhas equivalentes e condição de segurança sem medir aptidão."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 25,
+    "sourceDossier": [
+      {
+        "title": "WHO Guidelines on Physical Activity and Sedentary Behaviour: Glossary of Terms",
+        "publisher": "World Health Organization",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK566047/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Exercício é subcategoria de atividade física planejada, estruturada e repetitiva com propósito definido."
+        ],
+        "use": "Checagem conceitual para diferenciar atividade física e exercício; enunciados, exemplos e atividades deste pacote são autorais."
+      },
+      {
+        "title": "WHO Guidelines on Physical Activity and Sedentary Behaviour: Children and Adolescents",
+        "publisher": "World Health Organization",
+        "url": "https://www.who.int/publications/i/item/9789240015128",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Atividade física juvenil pode ocorrer em lazer, educação física, transporte e tarefas; oportunidades devem ser seguras, equitativas, agradáveis e adequadas à idade e capacidade."
+        ],
+        "use": "Fundamenta variedade, segurança e acessibilidade; não é usado para prescrever dose ou rotina individual."
+      },
+      {
+        "title": "Guia de Atividade Física para a População Brasileira",
+        "publisher": "Ministério da Saúde",
+        "url": "https://bvsms.saude.gov.br/bvs/publicacoes/guia_atividade_fisica_populacao_brasileira.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Orientações brasileiras para atividade física e exercício, inclusive crianças e jovens; distinção de que exercício é uma forma planejada de atividade física."
+        ],
+        "use": "Referência pública para contexto e linguagem; os pacotes não reproduzem o guia nem formulam recomendação clínica."
+      }
+    ],
+    "copyrightNote": "Questões e propostas de atividade são autorais. Fontes oficiais fundamentam conceitos e salvaguardas, mas não equivalem a validação do percurso ou aprovação curricular. Mapeamento e revisão pedagógica permanecem pendentes. Lote V10 autoral com 100 questões, progressão e revisão pedagógica pendente; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-pe-distinguish-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "GARDEN_POT_ARRANGING",
+      "statement": "Durante uma atividade escolar, uma estudante organiza vasos leves na horta, sem seguir um plano de treino. Como classificar o movimento descrito?",
+      "options": [
+        "É atividade física; não há evidência de exercício planejado.",
+        "É exercício físico estruturado obrigatoriamente.",
+        "Não é atividade física porque não houve competição.",
+        "É treinamento de força."
+      ],
+      "correctAnswer": "É atividade física; não há evidência de exercício planejado.",
+      "explanation": "O movimento corporal pode ser atividade física. A descrição não informa plano, estrutura, repetição e propósito de exercício.",
+      "hint": "Procure movimento e depois verifique se a situação também foi planejada e estruturada.",
+      "errorFocus": "Exigir plano ou competição para reconhecer atividade física",
+      "misconceptions": {
+        "É exercício físico estruturado obrigatoriamente.": [
+          "NO_PLAN_NO_ACTIVITY"
+        ],
+        "Não é atividade física porque não houve competição.": [
+          "COMPETITION_REQUIRED"
+        ],
+        "É treinamento de força.": [
+          "GARDEN_WORK_IS_STRENGTH_TRAINING"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-distinguish-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REHEARSED_MOVEMENT",
+      "statement": "Uma turma repete uma sequência de movimentos com objetivo de praticar coordenação, sob orientação docente. Qual leitura é mais precisa?",
+      "options": [
+        "Não é atividade física porque a sequência tem regras.",
+        "É atividade física e pode ser exercício planejado, pois há estrutura, repetição e propósito.",
+        "Só é exercício se houver competição.",
+        "É apenas lazer porque não usa equipamento."
+      ],
+      "correctAnswer": "É atividade física e pode ser exercício planejado, pois há estrutura, repetição e propósito.",
+      "explanation": "A situação contém movimento e uma organização repetida com objetivo; equipamento ou competição não são requisitos para a categoria.",
+      "hint": "Observe a estrutura, a repetição e o objetivo descritos.",
+      "errorFocus": "Reduzir exercício a esporte competitivo ou equipamento",
+      "misconceptions": {
+        "Não é atividade física porque a sequência tem regras.": [
+          "RULES_EXCLUDE_ACTIVITY"
+        ],
+        "Só é exercício se houver competição.": [
+          "COMPETITION_DEFINES_EXERCISE"
+        ],
+        "É apenas lazer porque não usa equipamento.": [
+          "EQUIPMENT_REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-distinguish-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "SCHOOL_ROUTE_CHOICES",
+      "statement": "Uma escola quer oferecer movimento em um dia de chuva. Qual proposta distingue uma atividade cotidiana de uma opção planejada e considera o contexto?",
+      "options": [
+        "Mandar todos correrem no corredor molhado para cumprir uma meta.",
+        "Dizer que só uma aula competitiva conta como movimento.",
+        "Mapear deslocamentos seguros no espaço interno e oferecer uma sequência opcional com objetivo, adaptações e supervisão.",
+        "Exigir que cada estudante conte quanto se movimenta em casa."
+      ],
+      "correctAnswer": "Mapear deslocamentos seguros no espaço interno e oferecer uma sequência opcional com objetivo, adaptações e supervisão.",
+      "explanation": "A proposta observa opções no contexto escolar e estrutura uma possibilidade planejada sem obrigar nem coletar dados pessoais.",
+      "hint": "Considere espaço, supervisão, escolha e uma alternativa acessível.",
+      "errorFocus": "Ignorar contexto, segurança ou privacidade",
+      "misconceptions": {
+        "Mandar todos correrem no corredor molhado para cumprir uma meta.": [
+          "UNSAFE_CORRIDOR"
+        ],
+        "Dizer que só uma aula competitiva conta como movimento.": [
+          "COMPETITION_ONLY"
+        ],
+        "Exigir que cada estudante conte quanto se movimenta em casa.": [
+          "PERSONAL_ACTIVITY_DISCLOSURE"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-distinguish-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "PLANNED_MOBILITY_SEQUENCE",
+      "statement": "Um estudante afirma: “Sem aparelhos, não pode ser exercício”. Como corrigir a ideia?",
+      "options": [
+        "Todo movimento é exercício, mesmo sem organização.",
+        "Só aparelhos de academia definem exercício.",
+        "Exercício exige medir o desempenho de cada colega.",
+        "Uma sequência de movimentos pode ser exercício se for planejada, estruturada, repetida e tiver propósito; equipamento não é obrigatório."
+      ],
+      "correctAnswer": "Uma sequência de movimentos pode ser exercício se for planejada, estruturada, repetida e tiver propósito; equipamento não é obrigatório.",
+      "explanation": "O critério está na organização e no propósito, não em aparelhos ou competição. A avaliação da aula não precisa medir corpos.",
+      "hint": "Retire o aparelho da explicação e confira se os critérios de planejamento continuam presentes.",
+      "errorFocus": "Confundir exercício com academia ou teste de desempenho",
+      "misconceptions": {
+        "Todo movimento é exercício, mesmo sem organização.": [
+          "GYM_EQUIPMENT_REQUIRED"
+        ],
+        "Só aparelhos de academia definem exercício.": [
+          "ALL_MOVEMENT_IS_EXERCISE"
+        ],
+        "Exercício exige medir o desempenho de cada colega.": [
+          "BODY_TEST_REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-distinguish-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PLAY_AND_PRACTICE",
+      "statement": "Um grupo brinca espontaneamente de lançar uma bola; em outra aula, pratica lançamentos repetidos com um objetivo definido pelo professor. Qual conclusão é melhor?",
+      "options": [
+        "Ambas envolvem atividade física; a segunda também pode ser exercício planejado.",
+        "A brincadeira não envolve atividade física porque não tem plano.",
+        "A prática só é exercício se alguém vencer.",
+        "As duas situações são idênticas em organização e propósito."
+      ],
+      "correctAnswer": "Ambas envolvem atividade física; a segunda também pode ser exercício planejado.",
+      "explanation": "O tipo de movimento pode ser parecido, mas o contexto e o planejamento diferem. A brincadeira continua sendo atividade física.",
+      "hint": "Compare o movimento com o modo como cada situação foi organizada.",
+      "errorFocus": "Ignorar contexto ou reduzir exercício à competição",
+      "misconceptions": {
+        "A brincadeira não envolve atividade física porque não tem plano.": [
+          "PLAY_NOT_ACTIVITY"
+        ],
+        "A prática só é exercício se alguém vencer.": [
+          "WINNER_REQUIRED"
+        ],
+        "As duas situações são idênticas em organização e propósito.": [
+          "CONTEXT_IRRELEVANT"
+        ]
+      }
+    },
+    {
+      "id": "v5-pe-distinguish-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "BREAKTIME_DANCE",
+      "statement": "No intervalo, um grupo dança espontaneamente ao ouvir uma música. O que a descrição permite afirmar?",
+      "options": [
+        "Não é atividade física porque não foi uma aula.",
+        "É atividade física; não há informação suficiente para dizer que seja exercício planejado.",
+        "É exercício estruturado porque existe música.",
+        "Só conta como movimento se houver coreografia avaliada."
+      ],
+      "correctAnswer": "É atividade física; não há informação suficiente para dizer que seja exercício planejado.",
+      "explanation": "Dançar envolve movimento e pode ser atividade física. A presença de música não demonstra, sozinha, planejamento, estrutura e propósito de exercício.",
+      "hint": "Separe a atividade observada da organização que não foi descrita.",
+      "errorFocus": "Inferir exercício planejado a partir de música ou avaliação",
+      "misconceptions": {
+        "Não é atividade física porque não foi uma aula.": [
+          "MUSIC_MEANS_EXERCISE"
+        ],
+        "É exercício estruturado porque existe música.": [
+          "SCHOOL_LESSON_REQUIRED"
+        ],
+        "Só conta como movimento se houver coreografia avaliada.": [
+          "ASSESSMENT_REQUIRED"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_01",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. O que a situação permite classificar?",
+      "options": [
+        "É atividade física, mas não há evidência suficiente de exercício planejado.",
+        "Não há atividade física porque não houve competição.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "É atividade física, mas não há evidência suficiente de exercício planejado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_02",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Qual critério deve orientar a análise?",
+      "options": [
+        "Não há atividade física porque não houve competição.",
+        "Use Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "Use Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_03",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Não há atividade física porque não houve competição.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "Classifique outro deslocamento cotidiano separando movimento de exercício planejado.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "Classifique outro deslocamento cotidiano separando movimento de exercício planejado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_04",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Não há atividade física porque não houve competição.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento.",
+        "Evite afirmar que só existe atividade física quando há aula ou competição."
+      ],
+      "correctAnswer": "Evite afirmar que só existe atividade física quando há aula ou competição.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_05",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique caminhada, finalidade cotidiana e ausência de plano de treino.",
+        "Não há atividade física porque não houve competição.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "Verifique caminhada, finalidade cotidiana e ausência de plano de treino.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-006",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_06",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Não há atividade física porque não houve competição.",
+        "descrever o contexto e perguntar se havia planejamento, estrutura, repetição e propósito",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "descrever o contexto e perguntar se havia planejamento, estrutura, repetição e propósito",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-007",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_07",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Não há atividade física porque não houve competição.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "Mantenha a conclusão ligada a a situação cotidiana descrita.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a situação cotidiana descrita.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-008",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_08",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Que comparação é mais justa?",
+      "options": [
+        "Não há atividade física porque não houve competição.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento.",
+        "Compare movimento realizado e organização da ação."
+      ],
+      "correctAnswer": "Compare movimento realizado e organização da ação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-009",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_09",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero afirmar que só existe atividade física quando há aula ou competição.",
+        "Não há atividade física porque não houve competição.",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "Seria exagero afirmar que só existe atividade física quando há aula ou competição.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-010",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVERYDAY_10",
+      "statement": "Uma estudante caminha até a biblioteca para buscar um livro, sem que a ação tenha sido organizada como treino. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Não há atividade física porque não houve competição.",
+        "o que teria de ser acrescentado para caracterizar exercício?",
+        "É exercício estruturado apenas por envolver caminhada.",
+        "É treinamento de força comprovado pelo deslocamento."
+      ],
+      "correctAnswer": "o que teria de ser acrescentado para caracterizar exercício?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça movimento sem exigir que toda atividade física tenha objetivo de treino.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não há atividade física porque não houve competição.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_01",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Qual leitura usa os critérios adequados?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Há atividade física e a sequência pode ser exercício planejado, pois tem estrutura, repetição e propósito.",
+        "Só conta se alguém vencer a sequência."
+      ],
+      "correctAnswer": "Há atividade física e a sequência pode ser exercício planejado, pois tem estrutura, repetição e propósito.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_02",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Qual critério deve orientar a análise?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Só conta se alguém vencer a sequência.",
+        "Use Procure organização, repetição e propósito, não aparelho ou vencedor."
+      ],
+      "correctAnswer": "Use Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_03",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Analise uma sequência diferente usando os mesmos critérios de planejamento.",
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Só conta se alguém vencer a sequência."
+      ],
+      "correctAnswer": "Analise uma sequência diferente usando os mesmos critérios de planejamento.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_04",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Evite dizer que regras ou música retiram uma proposta da atividade física.",
+        "Só é exercício se houver aparelho de academia.",
+        "Só conta se alguém vencer a sequência."
+      ],
+      "correctAnswer": "Evite dizer que regras ou música retiram uma proposta da atividade física.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_05",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Verifique sequência, repetição, ordem e objetivo combinado.",
+        "Só conta se alguém vencer a sequência."
+      ],
+      "correctAnswer": "Verifique sequência, repetição, ordem e objetivo combinado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_06",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Só conta se alguém vencer a sequência.",
+        "verificar se a proposta também oferece escolha, acesso e segurança"
+      ],
+      "correctAnswer": "verificar se a proposta também oferece escolha, acesso e segurança",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_07",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a sequência descrita e seus critérios de organização.",
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Só conta se alguém vencer a sequência."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a sequência descrita e seus critérios de organização.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_08",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Que comparação é mais justa?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Compare movimento, repetição e finalidade.",
+        "Só é exercício se houver aparelho de academia.",
+        "Só conta se alguém vencer a sequência."
+      ],
+      "correctAnswer": "Compare movimento, repetição e finalidade.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_09",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Qual seria um exagero interpretativo?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Seria exagero dizer que regras ou música retiram uma proposta da atividade física.",
+        "Só conta se alguém vencer a sequência."
+      ],
+      "correctAnswer": "Seria exagero dizer que regras ou música retiram uma proposta da atividade física.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_STRUCTURE_10",
+      "statement": "A turma repete uma sequência de movimentos durante dez minutos, seguindo uma ordem e um objetivo combinados com o professor. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Não é atividade física porque foi organizada.",
+        "Só é exercício se houver aparelho de academia.",
+        "Só conta se alguém vencer a sequência.",
+        "qual critério está presente além do simples movimento?"
+      ],
+      "correctAnswer": "qual critério está presente além do simples movimento?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Procure organização, repetição e propósito, não aparelho ou vencedor.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Não é atividade física porque foi organizada.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-021",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_01",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Por que a classificação pode ser diferente?",
+      "options": [
+        "O movimento é semelhante, mas contexto, planejamento, repetição e propósito mudam a interpretação.",
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "O movimento é semelhante, mas contexto, planejamento, repetição e propósito mudam a interpretação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-022",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_02",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Qual critério deve orientar a análise?",
+      "options": [
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "Use Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "Use Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-023",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_03",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "Use contexto e propósito para classificar o mesmo movimento em outra situação.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "Use contexto e propósito para classificar o mesmo movimento em outra situação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-024",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_04",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação.",
+        "Evite usar somente o nome do movimento como prova de exercício."
+      ],
+      "correctAnswer": "Evite usar somente o nome do movimento como prova de exercício.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-025",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_05",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique mesmo alongamento, situações distintas e série planejada.",
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "Verifique mesmo alongamento, situações distintas e série planejada.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-026",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_06",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "separar o movimento observado dos critérios de organização",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "separar o movimento observado dos critérios de organização",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-027",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_07",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Qual limite deve aparecer na resposta?",
+      "options": [
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "Mantenha a conclusão ligada a as duas situações apresentadas.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as duas situações apresentadas.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-028",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_08",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Que comparação é mais justa?",
+      "options": [
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação.",
+        "Compare forma do movimento e contexto de realização."
+      ],
+      "correctAnswer": "Compare forma do movimento e contexto de realização.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-029",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_09",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero usar somente o nome do movimento como prova de exercício.",
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "Seria exagero usar somente o nome do movimento como prova de exercício.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-030",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_PURPOSE_10",
+      "statement": "Duas pessoas fazem o mesmo alongamento: uma o realiza ao se acomodar, e outra segue uma série planejada com repetições e propósito definido. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "O alongamento sempre é exercício, em qualquer situação.",
+        "que elemento diferencia a série planejada do gesto cotidiano?",
+        "A primeira pessoa não fez nenhum movimento.",
+        "O propósito nunca interfere na classificação."
+      ],
+      "correctAnswer": "que elemento diferencia a série planejada do gesto cotidiano?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Compare como e por que a ação foi organizada, não apenas o nome do gesto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O alongamento sempre é exercício, em qualquer situação.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-031",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_01",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. O que se pode concluir?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "A proposta mantém repetição e organização, e escolhas ou pausas não anulam seu caráter planejado.",
+        "Apenas quem executa fisicamente participa."
+      ],
+      "correctAnswer": "A proposta mantém repetição e organização, e escolhas ou pausas não anulam seu caráter planejado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-032",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_02",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Qual critério deve orientar a análise?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Apenas quem executa fisicamente participa.",
+        "Use Não confunda exercício planejado com obrigação de ritmo idêntico."
+      ],
+      "correctAnswer": "Use Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-033",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_03",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Avalie outra prática planejada observando repetição e formas de participação.",
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Apenas quem executa fisicamente participa."
+      ],
+      "correctAnswer": "Avalie outra prática planejada observando repetição e formas de participação.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-034",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_04",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Evite afirmar que pausa transforma automaticamente exercício em movimento casual.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Apenas quem executa fisicamente participa."
+      ],
+      "correctAnswer": "Evite afirmar que pausa transforma automaticamente exercício em movimento casual.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-035",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_05",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Verifique ensaio, sequência, pausas e formas equivalentes de acompanhar.",
+        "Apenas quem executa fisicamente participa."
+      ],
+      "correctAnswer": "Verifique ensaio, sequência, pausas e formas equivalentes de acompanhar.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-036",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_06",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Apenas quem executa fisicamente participa.",
+        "analisar se o objetivo da proposta continua claro e seguro"
+      ],
+      "correctAnswer": "analisar se o objetivo da proposta continua claro e seguro",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-037",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_07",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o plano da oficina e as opções oferecidas.",
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Apenas quem executa fisicamente participa."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o plano da oficina e as opções oferecidas.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-038",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_08",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Que comparação é mais justa?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Compare repetição planejada e autonomia para participar.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Apenas quem executa fisicamente participa."
+      ],
+      "correctAnswer": "Compare repetição planejada e autonomia para participar.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-039",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_09",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Qual seria um exagero interpretativo?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Seria exagero afirmar que pausa transforma automaticamente exercício em movimento casual.",
+        "Apenas quem executa fisicamente participa."
+      ],
+      "correctAnswer": "Seria exagero afirmar que pausa transforma automaticamente exercício em movimento casual.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-040",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_REPEAT_10",
+      "statement": "Em uma oficina, um grupo ensaia uma sequência de passos, mas cada participante pode fazer pausas e escolher uma forma equivalente de acompanhar. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Uma pausa elimina todo planejamento.",
+        "Todos precisam repetir no mesmo ritmo para existir atividade física.",
+        "Apenas quem executa fisicamente participa.",
+        "a proposta preserva o objetivo mesmo com ritmos diferentes?"
+      ],
+      "correctAnswer": "a proposta preserva o objetivo mesmo com ritmos diferentes?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Não confunda exercício planejado com obrigação de ritmo idêntico.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Uma pausa elimina todo planejamento.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-041",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_01",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Qual conclusão é adequada?",
+      "options": [
+        "A ausência de competição não impede atividade física nem exercício planejado.",
+        "Sem vencedor não existe atividade física.",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "A ausência de competição não impede atividade física nem exercício planejado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-042",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_02",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Qual critério deve orientar a análise?",
+      "options": [
+        "Sem vencedor não existe atividade física.",
+        "Use Separe propósito e organização de disputa ou desempenho comparado.",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "Use Separe propósito e organização de disputa ou desempenho comparado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-043",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_03",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Sem vencedor não existe atividade física.",
+        "Só esportes competitivos podem ser exercício.",
+        "Classifique uma proposta cooperativa de outra turma sem procurar vencedor.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "Classifique uma proposta cooperativa de outra turma sem procurar vencedor.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-044",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_04",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Sem vencedor não existe atividade física.",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição.",
+        "Evite tratar competição como requisito universal de exercício."
+      ],
+      "correctAnswer": "Evite tratar competição como requisito universal de exercício.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-045",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_05",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique sequência, cooperação, coordenação e ausência de ranking.",
+        "Sem vencedor não existe atividade física.",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "Verifique sequência, cooperação, coordenação e ausência de ranking.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-046",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_06",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Sem vencedor não existe atividade física.",
+        "verificar planejamento, repetição e participação voluntária",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "verificar planejamento, repetição e participação voluntária",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-047",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_07",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Sem vencedor não existe atividade física.",
+        "Só esportes competitivos podem ser exercício.",
+        "Mantenha a conclusão ligada a a proposta cooperativa descrita.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a proposta cooperativa descrita.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-048",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_08",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Que comparação é mais justa?",
+      "options": [
+        "Sem vencedor não existe atividade física.",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição.",
+        "Compare objetivo pedagógico e presença ou ausência de competição."
+      ],
+      "correctAnswer": "Compare objetivo pedagógico e presença ou ausência de competição.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-049",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_09",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero tratar competição como requisito universal de exercício.",
+        "Sem vencedor não existe atividade física.",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "Seria exagero tratar competição como requisito universal de exercício.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-050",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_COMPETITION_10",
+      "statement": "Uma escola propõe uma sequência cooperativa de movimentos, sem ranking, para explorar coordenação e criação coletiva. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Sem vencedor não existe atividade física.",
+        "qual elemento sustenta o planejamento sem ranking?",
+        "Só esportes competitivos podem ser exercício.",
+        "A cooperação impede qualquer repetição."
+      ],
+      "correctAnswer": "qual elemento sustenta o planejamento sem ranking?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Separe propósito e organização de disputa ou desempenho comparado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Sem vencedor não existe atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-051",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_01",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Como comparar as duas situações?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "As duas envolvem atividade física; o circuito também apresenta elementos de exercício planejado.",
+        "Estações e objetivos não alteram a organização."
+      ],
+      "correctAnswer": "As duas envolvem atividade física; o circuito também apresenta elementos de exercício planejado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-052",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_02",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Qual critério deve orientar a análise?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "Estações e objetivos não alteram a organização.",
+        "Use Reconheça a categoria ampla e procure planejamento no segundo contexto."
+      ],
+      "correctAnswer": "Use Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-053",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_03",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Compare brincadeira e circuito em uma nova situação escolar.",
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "Estações e objetivos não alteram a organização."
+      ],
+      "correctAnswer": "Compare brincadeira e circuito em uma nova situação escolar.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-054",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_04",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "Evite dizer que brincadeira espontânea não envolve movimento válido.",
+        "A brincadeira é exercício obrigatório.",
+        "Estações e objetivos não alteram a organização."
+      ],
+      "correctAnswer": "Evite dizer que brincadeira espontânea não envolve movimento válido.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-055",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_05",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "Verifique corrida espontânea, circuito, estações e objetivos.",
+        "Estações e objetivos não alteram a organização."
+      ],
+      "correctAnswer": "Verifique corrida espontânea, circuito, estações e objetivos.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-056",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_06",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "Estações e objetivos não alteram a organização.",
+        "descrever o que muda no planejamento sem desvalorizar a brincadeira"
+      ],
+      "correctAnswer": "descrever o que muda no planejamento sem desvalorizar a brincadeira",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-057",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_07",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a os contextos do recreio e da aula.",
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "Estações e objetivos não alteram a organização."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a os contextos do recreio e da aula.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-058",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_08",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Que comparação é mais justa?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "Compare espontaneidade, estações e objetivos combinados.",
+        "A brincadeira é exercício obrigatório.",
+        "Estações e objetivos não alteram a organização."
+      ],
+      "correctAnswer": "Compare espontaneidade, estações e objetivos combinados.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-059",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_09",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Qual seria um exagero interpretativo?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "Seria exagero dizer que brincadeira espontânea não envolve movimento válido.",
+        "Estações e objetivos não alteram a organização."
+      ],
+      "correctAnswer": "Seria exagero dizer que brincadeira espontânea não envolve movimento válido.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-060",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_SETTING_10",
+      "statement": "Uma brincadeira espontânea de correr ocorre no recreio; em outro momento, o professor organiza circuitos com estações e objetivos combinados. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Só o circuito é atividade física.",
+        "A brincadeira é exercício obrigatório.",
+        "Estações e objetivos não alteram a organização.",
+        "o que torna o circuito mais estruturado?"
+      ],
+      "correctAnswer": "o que torna o circuito mais estruturado?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Reconheça a categoria ampla e procure planejamento no segundo contexto.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só o circuito é atividade física.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-061",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_01",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Como interpretar as pausas?",
+      "options": [
+        "Elas podem fazer parte do planejamento e não eliminam a possibilidade de exercício estruturado.",
+        "Pausa torna qualquer movimento desorganizado.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "Elas podem fazer parte do planejamento e não eliminam a possibilidade de exercício estruturado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-062",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_02",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Qual critério deve orientar a análise?",
+      "options": [
+        "Pausa torna qualquer movimento desorganizado.",
+        "Use Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "Use Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-063",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_03",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Pausa torna qualquer movimento desorganizado.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "Analise outra rotina com intervalos e propósito explícito.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "Analise outra rotina com intervalos e propósito explícito.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-064",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_04",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Pausa torna qualquer movimento desorganizado.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento.",
+        "Evite considerar toda pausa como prova de que não há exercício."
+      ],
+      "correctAnswer": "Evite considerar toda pausa como prova de que não há exercício.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-065",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_05",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique séries, intervalos planejados e objetivo de segurança.",
+        "Pausa torna qualquer movimento desorganizado.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "Verifique séries, intervalos planejados e objetivo de segurança.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-066",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_06",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Pausa torna qualquer movimento desorganizado.",
+        "verificar se o plano permite ajuste e comunicação de desconforto",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "verificar se o plano permite ajuste e comunicação de desconforto",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-067",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_07",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Pausa torna qualquer movimento desorganizado.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "Mantenha a conclusão ligada a o planejamento e as condições da proposta.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o planejamento e as condições da proposta.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-068",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_08",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Que comparação é mais justa?",
+      "options": [
+        "Pausa torna qualquer movimento desorganizado.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento.",
+        "Compare períodos de esforço, pausa e propósito."
+      ],
+      "correctAnswer": "Compare períodos de esforço, pausa e propósito.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-069",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_09",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero considerar toda pausa como prova de que não há exercício.",
+        "Pausa torna qualquer movimento desorganizado.",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "Seria exagero considerar toda pausa como prova de que não há exercício.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-070",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_RECOVERY_10",
+      "statement": "Uma proposta inclui períodos de pausa e recuperação entre séries, definidos para que o grupo acompanhe a atividade com segurança. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Pausa torna qualquer movimento desorganizado.",
+        "a pausa foi prevista ou ocorreu por outro motivo?",
+        "Exercício exige movimento contínuo sem recuperação.",
+        "A segurança é irrelevante quando há planejamento."
+      ],
+      "correctAnswer": "a pausa foi prevista ou ocorreu por outro motivo?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Inclua recuperação na leitura do plano sem transformar pausa em falha.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Pausa torna qualquer movimento desorganizado.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-071",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_01",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Por que essas opções podem atender ao mesmo objetivo?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "Elas permitem investigar estratégias e contexto sem transformar uma forma corporal em requisito único.",
+        "A adaptação exige revelar diagnóstico à turma."
+      ],
+      "correctAnswer": "Elas permitem investigar estratégias e contexto sem transformar uma forma corporal em requisito único.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-072",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_02",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Qual critério deve orientar a análise?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "A adaptação exige revelar diagnóstico à turma.",
+        "Use Relacione objetivo de aprendizagem, escolha e acesso."
+      ],
+      "correctAnswer": "Use Relacione objetivo de aprendizagem, escolha e acesso.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-073",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_03",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Planeje alternativas equivalentes em outro objetivo de Educação Física.",
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "A adaptação exige revelar diagnóstico à turma."
+      ],
+      "correctAnswer": "Planeje alternativas equivalentes em outro objetivo de Educação Física.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-074",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_04",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Evite confundir adaptação com redução automática da aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "A adaptação exige revelar diagnóstico à turma."
+      ],
+      "correctAnswer": "Evite confundir adaptação com redução automática da aprendizagem.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-075",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_05",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "Verifique objetivo comum, formas de participação e registro de decisões.",
+        "A adaptação exige revelar diagnóstico à turma."
+      ],
+      "correctAnswer": "Verifique objetivo comum, formas de participação e registro de decisões.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-076",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_06",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "A adaptação exige revelar diagnóstico à turma.",
+        "verificar se cada opção produz evidência do objetivo pedagógico"
+      ],
+      "correctAnswer": "verificar se cada opção produz evidência do objetivo pedagógico",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-077",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_07",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o objetivo de analisar estratégias.",
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "A adaptação exige revelar diagnóstico à turma."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o objetivo de analisar estratégias.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-078",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_08",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Que comparação é mais justa?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Compare forma de participação e evidência produzida.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "A adaptação exige revelar diagnóstico à turma."
+      ],
+      "correctAnswer": "Compare forma de participação e evidência produzida.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-079",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_09",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Qual seria um exagero interpretativo?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "Seria exagero confundir adaptação com redução automática da aprendizagem.",
+        "A adaptação exige revelar diagnóstico à turma."
+      ],
+      "correctAnswer": "Seria exagero confundir adaptação com redução automática da aprendizagem.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-080",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_ACCESS_10",
+      "statement": "Em uma aula, o objetivo é analisar estratégias de deslocamento. O professor oferece participação caminhando, sentada, observando ou registrando decisões. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Só a execução corporal produz aprendizagem.",
+        "Uma alternativa sentada sempre abandona o objetivo.",
+        "A adaptação exige revelar diagnóstico à turma.",
+        "o que precisa permanecer igual entre as opções?"
+      ],
+      "correctAnswer": "o que precisa permanecer igual entre as opções?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Relacione objetivo de aprendizagem, escolha e acesso.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Só a execução corporal produz aprendizagem.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-081",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_01",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Que evidência é mais adequada para avaliar o projeto?",
+      "options": [
+        "A justificativa baseada nos critérios do contexto, não uma medida de velocidade, força ou resistência.",
+        "Tempo de corrida prova toda compreensão.",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "A justificativa baseada nos critérios do contexto, não uma medida de velocidade, força ou resistência.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-082",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_02",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Qual critério deve orientar a análise?",
+      "options": [
+        "Tempo de corrida prova toda compreensão.",
+        "Use Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "Use Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-083",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_03",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Tempo de corrida prova toda compreensão.",
+        "Peso corporal é evidência da classificação.",
+        "Escolha evidência de aprendizagem em outra atividade conceitual de movimento.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "Escolha evidência de aprendizagem em outra atividade conceitual de movimento.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-084",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_04",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Tempo de corrida prova toda compreensão.",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito.",
+        "Evite usar desempenho atlético como prova de compreensão conceitual."
+      ],
+      "correctAnswer": "Evite usar desempenho atlético como prova de compreensão conceitual.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-085",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_05",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique classificação, justificativa, contexto, estrutura e propósito.",
+        "Tempo de corrida prova toda compreensão.",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "Verifique classificação, justificativa, contexto, estrutura e propósito.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-086",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_06",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Tempo de corrida prova toda compreensão.",
+        "analisar se a resposta usa os critérios e reconhece limites",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "analisar se a resposta usa os critérios e reconhece limites",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-087",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_07",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Tempo de corrida prova toda compreensão.",
+        "Peso corporal é evidência da classificação.",
+        "Mantenha a conclusão ligada a o objetivo conceitual do projeto.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o objetivo conceitual do projeto.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-088",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_08",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Que comparação é mais justa?",
+      "options": [
+        "Tempo de corrida prova toda compreensão.",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito.",
+        "Compare evidência de raciocínio e medida de aptidão."
+      ],
+      "correctAnswer": "Compare evidência de raciocínio e medida de aptidão.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-089",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_09",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero usar desempenho atlético como prova de compreensão conceitual.",
+        "Tempo de corrida prova toda compreensão.",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "Seria exagero usar desempenho atlético como prova de compreensão conceitual.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-090",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_EVIDENCE_10",
+      "statement": "Um projeto pede que os estudantes classifiquem situações fictícias como atividade física ou exercício, justificando por contexto, estrutura e propósito. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "Tempo de corrida prova toda compreensão.",
+        "a medida escolhida realmente responde à pergunta pedagógica?",
+        "Peso corporal é evidência da classificação.",
+        "Só uma competição permite avaliar o conceito."
+      ],
+      "correctAnswer": "a medida escolhida realmente responde à pergunta pedagógica?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Avalie o raciocínio solicitado sem substituir o objetivo por teste corporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "Tempo de corrida prova toda compreensão.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-091",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_01",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Qual conclusão é mais responsável?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "É preciso pedir mais contexto antes de classificar a proposta como exercício planejado.",
+        "A falta de detalhes prova que não existe movimento."
+      ],
+      "correctAnswer": "É preciso pedir mais contexto antes de classificar a proposta como exercício planejado.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-092",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_02",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Qual critério deve orientar a análise?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "A falta de detalhes prova que não existe movimento.",
+        "Use Identifique informação ausente em vez de preencher a lacuna com suposição."
+      ],
+      "correctAnswer": "Use Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-093",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_03",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Analise outro anúncio de atividade procurando critérios explícitos.",
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "A falta de detalhes prova que não existe movimento."
+      ],
+      "correctAnswer": "Analise outro anúncio de atividade procurando critérios explícitos.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-094",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_04",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Evite inferir planejamento apenas por um slogan.",
+        "Toda atividade diária é necessariamente competição.",
+        "A falta de detalhes prova que não existe movimento."
+      ],
+      "correctAnswer": "Evite inferir planejamento apenas por um slogan.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-095",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_05",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "Verifique nome da proposta e ausência de detalhes sobre organização.",
+        "A falta de detalhes prova que não existe movimento."
+      ],
+      "correctAnswer": "Verifique nome da proposta e ausência de detalhes sobre organização.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-096",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_06",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "A falta de detalhes prova que não existe movimento.",
+        "perguntar pelo plano, propósito, estrutura, repetição e condições de participação"
+      ],
+      "correctAnswer": "perguntar pelo plano, propósito, estrutura, repetição e condições de participação",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-097",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_07",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a as informações disponíveis no cartaz.",
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "A falta de detalhes prova que não existe movimento."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as informações disponíveis no cartaz.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-098",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_08",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Que comparação é mais justa?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Compare rótulo da atividade e evidências de planejamento.",
+        "Toda atividade diária é necessariamente competição.",
+        "A falta de detalhes prova que não existe movimento."
+      ],
+      "correctAnswer": "Compare rótulo da atividade e evidências de planejamento.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-099",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_09",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Qual seria um exagero interpretativo?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "Seria exagero inferir planejamento apenas por um slogan.",
+        "A falta de detalhes prova que não existe movimento."
+      ],
+      "correctAnswer": "Seria exagero inferir planejamento apenas por um slogan.",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v10-pe-distinguish-activity-exercise-expansion-v10-100",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V10_PE-DISTINGUISH-ACTIVITY-EXERCISE-EXPANSION-V10_AMBIGUOUS_10",
+      "statement": "Um cartaz anuncia “movimento diário”, mas não informa se há sequência, repetição, objetivo ou orientação. Que pergunta ajuda a refinar o planejamento?",
+      "options": [
+        "O slogan prova que é exercício completo.",
+        "Toda atividade diária é necessariamente competição.",
+        "A falta de detalhes prova que não existe movimento.",
+        "qual informação faltante mudaria a classificação?"
+      ],
+      "correctAnswer": "qual informação faltante mudaria a classificação?",
+      "explanation": "A resposta usa as evidências do contexto e respeita os limites de segurança, acesso e privacidade. Identifique informação ausente em vez de preencher a lacuna com suposição.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da decisão.",
+      "errorFocus": "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION",
+      "misconceptions": {
+        "O slogan prova que é exercício completo.": [
+          "PE_DISTINGUISH_ACTIVITY_EXERCISE_FII_CONTEXT_AND_SAFETY_CONFUSION"
+        ]
+      }
+    }
+  ],
+  "lessonVersion": 10,
+  "sourceReconciliation": {
+    "sourceQuestionCount": 6,
+    "newQuestions": 100,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V10"
+  }
+}

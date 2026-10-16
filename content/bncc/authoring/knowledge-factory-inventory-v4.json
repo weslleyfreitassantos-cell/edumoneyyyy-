@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "fbcf1c9f4c734203b3f374688eaf8977c7cf91af07879642dca8aa306f64cac3",
+    "v5QuestionFirstPacks": "ad0e756955fee34d4a89241b7be51565714997e5bd37128cfa44ec0f0a1c4e0b",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,8 +110,8 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 3426,
-    "consolidatedQuestionTotal": 4478,
+    "v5QuestionTotal": 3626,
+    "consolidatedQuestionTotal": 4678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [],
     "lessonsNeedingDepthReview": 0,
@@ -2721,15 +2721,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Atividade fisica e exercicio: relacionados, mas nao iguais",
         "originalQuestionCount": 5,
-        "v5QuestionCount": 6,
+        "v5QuestionCount": 106,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 11,
+        "currentQuestionCount": 111,
         "purposeCounts": {
-          "PROBE": 2,
-          "PRACTICE": 3,
-          "TRANSFER": 2,
-          "LOCK_IN": 2,
-          "REVIEW": 2
+          "PROBE": 12,
+          "PRACTICE": 43,
+          "TRANSFER": 27,
+          "LOCK_IN": 12,
+          "REVIEW": 17
         },
         "minimumTargets": "AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED",
         "missingMinimums": {},
@@ -2747,7 +2747,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 11,
+        "contextFamilyCount": 111,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -2832,15 +2832,15 @@
         "lessonStatus": "STRUCTURED_LESSON_CANDIDATE",
         "lessonTitle": "Atividade fisica, exercicio e escolhas seguras",
         "originalQuestionCount": 7,
-        "v5QuestionCount": 6,
+        "v5QuestionCount": 106,
         "duplicateQuestionsCollapsed": 0,
-        "currentQuestionCount": 13,
+        "currentQuestionCount": 113,
         "purposeCounts": {
-          "PROBE": 2,
-          "PRACTICE": 4,
-          "TRANSFER": 2,
-          "LOCK_IN": 3,
-          "REVIEW": 2
+          "PROBE": 12,
+          "PRACTICE": 44,
+          "TRANSFER": 27,
+          "LOCK_IN": 13,
+          "REVIEW": 17
         },
         "minimumTargets": "AUTHENTIC_PRACTICAL_OR_OBSERVATIONAL_EVIDENCE_REQUIRED",
         "missingMinimums": {},
@@ -2858,7 +2858,7 @@
           "AUTHENTIC_EVIDENCE_READY": true
         },
         "missingDepthDimensions": [],
-        "contextFamilyCount": 13,
+        "contextFamilyCount": 113,
         "difficultyLevels": [
           "EASY",
           "MEDIUM",
@@ -18756,5 +18756,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "3ead0108192b0a5eb9828a3e78bf9d20924d8be0d825ac2f0144d8ef1331ae61"
+  "inventoryHash": "eacaa6f1f9fd8677f3cd456307bd688e93f92de929eb7e4d1608e1ad96ddae4d"
 }
