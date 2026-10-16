@@ -431,7 +431,7 @@ describe('Login', () => {
     expect(screen.getByRole('alert').textContent).toContain(
       'E-mail ou senha incorretos.',
     );
-    expect(screen.queryByText(/subdomínio|escola/i)).toBeNull();
+    expect(screen.queryByText(/sua conta não possui|não é o subdomínio/i)).toBeNull();
     expect(screen.getByRole('button', { name: 'Trocar de usuário' })).toBeTruthy();
     expect(authMock.navigate).not.toHaveBeenCalledWith('/dashboard');
   });

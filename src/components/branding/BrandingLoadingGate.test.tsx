@@ -48,4 +48,21 @@ describe('BrandingLoadingGate', () => {
 
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
   });
+
+  it('mantem as rotas durante uma falha de revalidacao com branding anterior', () => {
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: false,
+      isError: true,
+      data: { scope: 'GLOBAL' },
+    } as never);
+
+    render(
+      <BrandingLoadingGate>
+        <div>Conteúdo da escola</div>
+      </BrandingLoadingGate>,
+    );
+
+    expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
 });
