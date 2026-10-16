@@ -22,13 +22,16 @@
     },
     "sourceTextHumanVerifiedByFactory": 0,
     "sourceTextRequiresReviewByFactory": 1723,
-    "exactSourceVerificationsThisIncrement": 1,
+    "exactSourceVerificationsThisIncrement": 4,
     "exactSourceVerificationCodes": [
-      "EI01CG01"
+      "EI01CG01",
+      "EI01CG02",
+      "EI01CG03",
+      "EI01CG04"
     ],
     "technicalDeepReadySequences": 78,
-    "v5QuestionTotal": 2726,
-    "consolidatedQuestionTotal": 3778,
+    "v5QuestionTotal": 5576,
+    "consolidatedQuestionTotal": 6628,
     "humanReviewedContent": 0,
     "studentAvailableNewContent": 0
   },
