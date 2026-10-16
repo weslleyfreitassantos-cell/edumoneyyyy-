@@ -136,6 +136,7 @@ const inclusiveEducationNavigation = [
   ['Exercícios Interativos', '/inclusive-education/exercises'],
   ['Materiais para Download', '/inclusive-education/materials'],
   ['Evolução Pedagógica', '/inclusive-education/progress'],
+  ['Vídeos didáticos', '/inclusive-education/videos'],
 ] as const;
 
 const adminModuleIcons: Record<
