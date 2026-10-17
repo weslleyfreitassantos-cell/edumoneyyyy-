@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "a26c2f8a1907f7417bbd1fc8254ccda583942c697e40acaed454711ab28774ac",
+    "v5QuestionFirstPacks": "af37da019574888a164500b8d0bc694e2c432604423acbdb3e994df1ff14a103",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 5856,
+    "v5QuestionTotal": 5956,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -129,6 +129,18 @@
       {
         "file": "v13-history-local-heritage.json",
         "skillCode": "AUTHORING_EF03HI04_HISTORY_HERITAGE",
+        "questionCount": 50,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "v13-history-local-landmarks.json",
+        "skillCode": "AUTHORING_EF03HI05_HISTORY_MARKERS",
+        "questionCount": 50,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "v13-history-memory-records.json",
+        "skillCode": "AUTHORING_EF03HI06_MEMORY_RECORDS",
         "questionCount": 50,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -18787,5 +18799,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "4e4910b927f0f5186aceac9165eb86063714cef6e0f79edf50e0ad301db474ba"
+  "inventoryHash": "473e8daa93b55b8fe9911365486be0475c08516bf31f81f69ac4e85e7484736e"
 }

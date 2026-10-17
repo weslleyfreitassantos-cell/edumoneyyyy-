@@ -12498,6 +12498,52 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03HI05_MEC_P413_V1",
+      "officialCode": "EF03HI05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "HI",
+      "gradeOrRange": "03",
+      "descriptor": "Identificar os marcos históricos do lugar em que vive e compreender seus significados.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 413 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03HI06_MEC_P413_V1",
+      "officialCode": "EF03HI06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "HI",
+      "gradeOrRange": "03",
+      "descriptor": "Identificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 413 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
     }
   ]
 }

@@ -5,7 +5,7 @@
   "head": "d5b0550bbf4c29cfbb129eef05a27a5eef7a9605",
   "recordedAt": "2026-10-17",
   "lastOperation": {
-    "target": ["EF03HI02", "EF03HI03", "EF03HI04"],
+    "target": ["EF03HI02", "EF03HI03", "EF03HI04", "EF03HI05", "EF03HI06"],
     "type": "MULTISET_AUTHORING_CONTEXT_AND_STAGED_CONTENT",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
     "result": "STAGED_AUTHORING_CONTEXTS_CREATED",
@@ -18,24 +18,26 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 557,
-    "newStagingPackagesInThisOperation": 3,
-    "stagedQuestionsInThisOperation": 150,
-    "authoringContextPackages": 6,
+    "exactSourceVerifications": 559,
+    "newStagingPackagesInThisOperation": 5,
+    "stagedQuestionsInThisOperation": 250,
+    "authoringContextPackages": 8,
     "v5QuestionTotal": 5856,
     "consolidatedQuestionTotal": 6678,
     "contentTechnicallyComplete": 0,
     "learningPathsComplete": 0,
-    "lessonsAdded": 3,
-    "activitiesAdded": 3,
-    "assessmentsAdded": 3
+    "lessonsAdded": 5,
+    "activitiesAdded": 5,
+    "assessmentsAdded": 5
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
     "verificationIds": [
       "BNCC_EF03HI02_MEC_P413_V1",
       "BNCC_EF03HI03_MEC_P413_V1",
-      "BNCC_EF03HI04_MEC_P413_V1"
+      "BNCC_EF03HI04_MEC_P413_V1",
+      "BNCC_EF03HI05_MEC_P413_V1",
+      "BNCC_EF03HI06_MEC_P413_V1"
     ],
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "coverageSizing": "content/bncc/authoring/coverage-sizing-v3.json",
@@ -44,7 +46,9 @@
     "contentPackages": [
       "content/adaptive/tec-escola-core-v5/v13-history-time-sources.json",
       "content/adaptive/tec-escola-core-v5/v13-history-local-perspectives.json",
-      "content/adaptive/tec-escola-core-v5/v13-history-local-heritage.json"
+      "content/adaptive/tec-escola-core-v5/v13-history-local-heritage.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-local-landmarks.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-memory-records.json"
     ]
   },
   "validation": {
@@ -64,6 +68,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF03HI05_OR_NEXT_INDEPENDENT_CURRICULAR_SET",
+  "nextTarget": "EF03HI07_OR_NEXT_INDEPENDENT_CURRICULAR_SET",
   "nextOperation": "Continue with the next independent curricular set; keep V13 packages inactive until canonical mapping and pedagogical review are independently approved."
 }

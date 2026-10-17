@@ -1,0 +1,1391 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-memory-records",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "registros_de_memoria_e_criterios_de_nomeacao",
+  "canonicalSkillCode": "AUTHORING_EF03HI06_MEMORY_RECORDS",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI06",
+    "sourceVerificationRecord": "BNCC_EF03HI06_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_IDENTIFICAR_REGISTROS_MEMORIA",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre registros de memória na cidade para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+  },
+  "lesson": {
+    "title": "Registros de memória na cidade",
+    "objective": "Identificar registros de memória na cidade e discutir, com fontes, os critérios e grupos envolvidos na escolha de nomes e monumentos.",
+    "summary": "Nomes de ruas, monumentos e edifícios registram escolhas sobre o que uma cidade lembra. Investigar esses registros ajuda a perceber homenagens, disputas, ausências e mudanças.",
+    "explanation": "## O que investigar\nIdentificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "commonMistake": "Tratar o nome de um lugar como natural e neutro, sem investigar quem escolheu, quem foi homenageado e quais memórias ficaram ausentes.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Reconhecer nomes e funções de espaços públicos.",
+      "Comparar duas fontes sobre um mesmo lugar."
+    ],
+    "keyConcepts": [
+      "registro de memória",
+      "nome de rua",
+      "monumento",
+      "homenagem",
+      "critério",
+      "ausência",
+      "mudança de nome"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-memory-records-001",
+          "v13-history-memory-records-002",
+          "v13-history-memory-records-003",
+          "v13-history-memory-records-004",
+          "v13-history-memory-records-005"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-memory-records-006",
+          "v13-history-memory-records-007",
+          "v13-history-memory-records-008",
+          "v13-history-memory-records-009",
+          "v13-history-memory-records-010",
+          "v13-history-memory-records-011",
+          "v13-history-memory-records-012",
+          "v13-history-memory-records-013",
+          "v13-history-memory-records-014",
+          "v13-history-memory-records-015",
+          "v13-history-memory-records-016",
+          "v13-history-memory-records-017",
+          "v13-history-memory-records-018",
+          "v13-history-memory-records-019",
+          "v13-history-memory-records-020"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-memory-records-021",
+          "v13-history-memory-records-022",
+          "v13-history-memory-records-023",
+          "v13-history-memory-records-024",
+          "v13-history-memory-records-025",
+          "v13-history-memory-records-026",
+          "v13-history-memory-records-027",
+          "v13-history-memory-records-028",
+          "v13-history-memory-records-029",
+          "v13-history-memory-records-030",
+          "v13-history-memory-records-031",
+          "v13-history-memory-records-032"
+        ]
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-memory-records-033",
+          "v13-history-memory-records-034",
+          "v13-history-memory-records-035",
+          "v13-history-memory-records-036",
+          "v13-history-memory-records-037",
+          "v13-history-memory-records-038",
+          "v13-history-memory-records-039",
+          "v13-history-memory-records-040"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-memory-records-041",
+          "v13-history-memory-records-042",
+          "v13-history-memory-records-043",
+          "v13-history-memory-records-044",
+          "v13-history-memory-records-045",
+          "v13-history-memory-records-046",
+          "v13-history-memory-records-047",
+          "v13-history-memory-records-048",
+          "v13-history-memory-records-049",
+          "v13-history-memory-records-050"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-memory-records-local-inquiry",
+        "title": "Investigação acessível da história local",
+        "objective": "Identificar registros de memória na cidade e discutir, com fontes, os critérios e grupos envolvidos na escolha de nomes e monumentos.",
+        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
+        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Fontes",
+            "emerging": "Não identifica a procedência.",
+            "developing": "Identifica parte das fontes com apoio.",
+            "proficient": "Registra tipo, autoria, período e procedência."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Mistura informações de fontes diferentes.",
+            "developing": "Compara alguns aspectos após orientação.",
+            "proficient": "Explica convergências, diferenças e lacunas."
+          },
+          {
+            "criterion": "Conclusão",
+            "emerging": "Generaliza além do registro.",
+            "developing": "Limita a conclusão com apoio.",
+            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+          }
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI06",
+        "descriptor": "Identificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-memory-records-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_STREET_01",
+      "statement": "Uma rua recebeu o nome de uma professora que criou a primeira biblioteca comunitária do bairro. Que registro de memória aparece?",
+      "options": [
+        "O nome da rua homenageia uma pessoa e pode preservar sua contribuição para a história local.",
+        "Um nome sem relação com a história.",
+        "A prova de que todos conheceram a professora.",
+        "Uma descrição completa da rua apenas pelo nome."
+      ],
+      "correctAnswer": "O nome da rua homenageia uma pessoa e pode preservar sua contribuição para a história local.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes de lugares podem funcionar como registros de memória quando sua escolha e seu significado são documentados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um nome sem relação com a história.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_STREET_02",
+      "statement": "Uma rua recebeu o nome de uma professora que criou a primeira biblioteca comunitária do bairro. Que critério deve orientar a análise?",
+      "options": [
+        "Um nome sem relação com a história.",
+        "Considere Nomes de lugares podem funcionar como registros de memória quando sua escolha e seu significado são documentados.",
+        "A prova de que todos conheceram a professora.",
+        "Uma descrição completa da rua apenas pelo nome."
+      ],
+      "correctAnswer": "Considere Nomes de lugares podem funcionar como registros de memória quando sua escolha e seu significado são documentados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes de lugares podem funcionar como registros de memória quando sua escolha e seu significado são documentados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um nome sem relação com a história.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_STREET_03",
+      "statement": "Uma rua recebeu o nome de uma professora que criou a primeira biblioteca comunitária do bairro. Como transferir esse raciocínio?",
+      "options": [
+        "Um nome sem relação com a história.",
+        "A prova de que todos conheceram a professora.",
+        "Investigue o nome de outra rua sem coletar dados pessoais de moradores.",
+        "Uma descrição completa da rua apenas pelo nome."
+      ],
+      "correctAnswer": "Investigue o nome de outra rua sem coletar dados pessoais de moradores.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes de lugares podem funcionar como registros de memória quando sua escolha e seu significado são documentados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um nome sem relação com a história.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_STREET_04",
+      "statement": "Uma rua recebeu o nome de uma professora que criou a primeira biblioteca comunitária do bairro. Qual conclusão deve ser evitada?",
+      "options": [
+        "Um nome sem relação com a história.",
+        "A prova de que todos conheceram a professora.",
+        "Uma descrição completa da rua apenas pelo nome.",
+        "Evite dizer que a homenageada foi importante para todos os acontecimentos da cidade."
+      ],
+      "correctAnswer": "Evite dizer que a homenageada foi importante para todos os acontecimentos da cidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes de lugares podem funcionar como registros de memória quando sua escolha e seu significado são documentados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um nome sem relação com a história.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_STREET_05",
+      "statement": "Uma rua recebeu o nome de uma professora que criou a primeira biblioteca comunitária do bairro. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira lei ou ato de nomeação, história da biblioteca e fontes sobre a professora.",
+        "Um nome sem relação com a história.",
+        "A prova de que todos conheceram a professora.",
+        "Uma descrição completa da rua apenas pelo nome."
+      ],
+      "correctAnswer": "Confira lei ou ato de nomeação, história da biblioteca e fontes sobre a professora.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes de lugares podem funcionar como registros de memória quando sua escolha e seu significado são documentados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Um nome sem relação com a história.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CRITERION_01",
+      "statement": "A Câmara registra que uma praça recebeu o nome de um líder comunitário por sua atuação durante uma enchente. Que critério de escolha está documentado?",
+      "options": [
+        "A idade da praça é o único critério.",
+        "A atuação reconhecida no enfrentamento da enchente foi usada como razão para a homenagem.",
+        "Toda homenagem ocorre porque todos concordaram.",
+        "O nome prova que a pessoa fundou a praça."
+      ],
+      "correctAnswer": "A atuação reconhecida no enfrentamento da enchente foi usada como razão para a homenagem.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O critério precisa ser ligado à fonte que explica a escolha, não apenas deduzido do nome.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A idade da praça é o único critério.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CRITERION_02",
+      "statement": "A Câmara registra que uma praça recebeu o nome de um líder comunitário por sua atuação durante uma enchente. Que critério deve orientar a análise?",
+      "options": [
+        "A idade da praça é o único critério.",
+        "Toda homenagem ocorre porque todos concordaram.",
+        "Considere O critério precisa ser ligado à fonte que explica a escolha, não apenas deduzido do nome.",
+        "O nome prova que a pessoa fundou a praça."
+      ],
+      "correctAnswer": "Considere O critério precisa ser ligado à fonte que explica a escolha, não apenas deduzido do nome.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O critério precisa ser ligado à fonte que explica a escolha, não apenas deduzido do nome.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A idade da praça é o único critério.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CRITERION_03",
+      "statement": "A Câmara registra que uma praça recebeu o nome de um líder comunitário por sua atuação durante uma enchente. Como transferir esse raciocínio?",
+      "options": [
+        "A idade da praça é o único critério.",
+        "Toda homenagem ocorre porque todos concordaram.",
+        "O nome prova que a pessoa fundou a praça.",
+        "Aplique a pergunta a um monumento com placa."
+      ],
+      "correctAnswer": "Aplique a pergunta a um monumento com placa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O critério precisa ser ligado à fonte que explica a escolha, não apenas deduzido do nome.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A idade da praça é o único critério.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CRITERION_04",
+      "statement": "A Câmara registra que uma praça recebeu o nome de um líder comunitário por sua atuação durante uma enchente. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite inventar outros méritos não citados no documento.",
+        "A idade da praça é o único critério.",
+        "Toda homenagem ocorre porque todos concordaram.",
+        "O nome prova que a pessoa fundou a praça."
+      ],
+      "correctAnswer": "Evite inventar outros méritos não citados no documento.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O critério precisa ser ligado à fonte que explica a escolha, não apenas deduzido do nome.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A idade da praça é o único critério.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CRITERION_05",
+      "statement": "A Câmara registra que uma praça recebeu o nome de um líder comunitário por sua atuação durante uma enchente. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A idade da praça é o único critério.",
+        "Confira ato oficial, data, atuação descrita e autoria da decisão.",
+        "Toda homenagem ocorre porque todos concordaram.",
+        "O nome prova que a pessoa fundou a praça."
+      ],
+      "correctAnswer": "Confira ato oficial, data, atuação descrita e autoria da decisão.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O critério precisa ser ligado à fonte que explica a escolha, não apenas deduzido do nome.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A idade da praça é o único critério.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_MONUMENT_01",
+      "statement": "Um monumento na estação lembra trabalhadores que participaram da construção da ferrovia. Como investigar seu significado?",
+      "options": [
+        "Dizer que o monumento representa apenas a estação.",
+        "Concluir que todos os trabalhadores tiveram a mesma história.",
+        "Consultar a placa, registros da ferrovia e vozes sobre os trabalhadores e a construção.",
+        "Ignorar a placa porque ela é curta."
+      ],
+      "correctAnswer": "Consultar a placa, registros da ferrovia e vozes sobre os trabalhadores e a construção.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Monumentos registram memórias por meio de símbolos e textos, mas seu significado exige contexto e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o monumento representa apenas a estação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_MONUMENT_02",
+      "statement": "Um monumento na estação lembra trabalhadores que participaram da construção da ferrovia. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que o monumento representa apenas a estação.",
+        "Concluir que todos os trabalhadores tiveram a mesma história.",
+        "Ignorar a placa porque ela é curta.",
+        "Considere Monumentos registram memórias por meio de símbolos e textos, mas seu significado exige contexto e fontes."
+      ],
+      "correctAnswer": "Considere Monumentos registram memórias por meio de símbolos e textos, mas seu significado exige contexto e fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Monumentos registram memórias por meio de símbolos e textos, mas seu significado exige contexto e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o monumento representa apenas a estação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_MONUMENT_03",
+      "statement": "Um monumento na estação lembra trabalhadores que participaram da construção da ferrovia. Como transferir esse raciocínio?",
+      "options": [
+        "Investigue um monumento em uma escola ou praça.",
+        "Dizer que o monumento representa apenas a estação.",
+        "Concluir que todos os trabalhadores tiveram a mesma história.",
+        "Ignorar a placa porque ela é curta."
+      ],
+      "correctAnswer": "Investigue um monumento em uma escola ou praça.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Monumentos registram memórias por meio de símbolos e textos, mas seu significado exige contexto e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o monumento representa apenas a estação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_MONUMENT_04",
+      "statement": "Um monumento na estação lembra trabalhadores que participaram da construção da ferrovia. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que o monumento representa apenas a estação.",
+        "Evite tratar a imagem do monumento como explicação suficiente.",
+        "Concluir que todos os trabalhadores tiveram a mesma história.",
+        "Ignorar a placa porque ela é curta."
+      ],
+      "correctAnswer": "Evite tratar a imagem do monumento como explicação suficiente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Monumentos registram memórias por meio de símbolos e textos, mas seu significado exige contexto e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o monumento representa apenas a estação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_MONUMENT_05",
+      "statement": "Um monumento na estação lembra trabalhadores que participaram da construção da ferrovia. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que o monumento representa apenas a estação.",
+        "Concluir que todos os trabalhadores tiveram a mesma história.",
+        "Confira placa, fotografias, documentos da ferrovia e relatos de grupos envolvidos.",
+        "Ignorar a placa porque ela é curta."
+      ],
+      "correctAnswer": "Confira placa, fotografias, documentos da ferrovia e relatos de grupos envolvidos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Monumentos registram memórias por meio de símbolos e textos, mas seu significado exige contexto e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o monumento representa apenas a estação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_BUILDING_01",
+      "statement": "Um antigo edifício público abriga atualmente um centro cultural, mas ainda conserva o nome da repartição anterior. O que o nome preserva?",
+      "options": [
+        "Que prédios nunca mudam de função.",
+        "Que o uso atual apaga toda referência anterior.",
+        "Que o nome é apenas decoração sem história.",
+        "Uma referência à função anterior do edifício, que pode ser comparada com seu uso atual."
+      ],
+      "correctAnswer": "Uma referência à função anterior do edifício, que pode ser comparada com seu uso atual.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Edifícios e seus nomes podem registrar mudanças de função e camadas de memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que prédios nunca mudam de função.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_BUILDING_02",
+      "statement": "Um antigo edifício público abriga atualmente um centro cultural, mas ainda conserva o nome da repartição anterior. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Edifícios e seus nomes podem registrar mudanças de função e camadas de memória.",
+        "Que prédios nunca mudam de função.",
+        "Que o uso atual apaga toda referência anterior.",
+        "Que o nome é apenas decoração sem história."
+      ],
+      "correctAnswer": "Considere Edifícios e seus nomes podem registrar mudanças de função e camadas de memória.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Edifícios e seus nomes podem registrar mudanças de função e camadas de memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que prédios nunca mudam de função.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_BUILDING_03",
+      "statement": "Um antigo edifício público abriga atualmente um centro cultural, mas ainda conserva o nome da repartição anterior. Como transferir esse raciocínio?",
+      "options": [
+        "Que prédios nunca mudam de função.",
+        "Compare o nome antigo e o uso atual de outro prédio.",
+        "Que o uso atual apaga toda referência anterior.",
+        "Que o nome é apenas decoração sem história."
+      ],
+      "correctAnswer": "Compare o nome antigo e o uso atual de outro prédio.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Edifícios e seus nomes podem registrar mudanças de função e camadas de memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que prédios nunca mudam de função.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_BUILDING_04",
+      "statement": "Um antigo edifício público abriga atualmente um centro cultural, mas ainda conserva o nome da repartição anterior. Qual conclusão deve ser evitada?",
+      "options": [
+        "Que prédios nunca mudam de função.",
+        "Que o uso atual apaga toda referência anterior.",
+        "Evite dizer que o edifício ainda exerce a função antiga.",
+        "Que o nome é apenas decoração sem história."
+      ],
+      "correctAnswer": "Evite dizer que o edifício ainda exerce a função antiga.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Edifícios e seus nomes podem registrar mudanças de função e camadas de memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que prédios nunca mudam de função.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_BUILDING_05",
+      "statement": "Um antigo edifício público abriga atualmente um centro cultural, mas ainda conserva o nome da repartição anterior. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Que prédios nunca mudam de função.",
+        "Que o uso atual apaga toda referência anterior.",
+        "Que o nome é apenas decoração sem história.",
+        "Confira nome, documentos de uso, fotografias e data da mudança."
+      ],
+      "correctAnswer": "Confira nome, documentos de uso, fotografias e data da mudança.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Edifícios e seus nomes podem registrar mudanças de função e camadas de memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que prédios nunca mudam de função.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ABSENCE_01",
+      "statement": "Uma lista de monumentos homenageia autoridades, mas não apresenta trabalhadores nem grupos que participaram da formação do bairro. Que pergunta histórica é importante?",
+      "options": [
+        "Quais critérios orientaram a lista e quais memórias ou grupos ficaram ausentes?",
+        "Dizer que a lista é neutra porque é oficial.",
+        "Apagar todos os monumentos existentes.",
+        "Concluir que somente autoridades têm memória histórica."
+      ],
+      "correctAnswer": "Quais critérios orientaram a lista e quais memórias ou grupos ficaram ausentes?",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Analisar registros de memória inclui observar presenças e ausências, sem inventar histórias para preencher lacunas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a lista é neutra porque é oficial.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ABSENCE_02",
+      "statement": "Uma lista de monumentos homenageia autoridades, mas não apresenta trabalhadores nem grupos que participaram da formação do bairro. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que a lista é neutra porque é oficial.",
+        "Considere Analisar registros de memória inclui observar presenças e ausências, sem inventar histórias para preencher lacunas.",
+        "Apagar todos os monumentos existentes.",
+        "Concluir que somente autoridades têm memória histórica."
+      ],
+      "correctAnswer": "Considere Analisar registros de memória inclui observar presenças e ausências, sem inventar histórias para preencher lacunas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Analisar registros de memória inclui observar presenças e ausências, sem inventar histórias para preencher lacunas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a lista é neutra porque é oficial.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ABSENCE_03",
+      "statement": "Uma lista de monumentos homenageia autoridades, mas não apresenta trabalhadores nem grupos que participaram da formação do bairro. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que a lista é neutra porque é oficial.",
+        "Apagar todos os monumentos existentes.",
+        "Faça a mesma pergunta a um roteiro da cidade.",
+        "Concluir que somente autoridades têm memória histórica."
+      ],
+      "correctAnswer": "Faça a mesma pergunta a um roteiro da cidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Analisar registros de memória inclui observar presenças e ausências, sem inventar histórias para preencher lacunas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a lista é neutra porque é oficial.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ABSENCE_04",
+      "statement": "Uma lista de monumentos homenageia autoridades, mas não apresenta trabalhadores nem grupos que participaram da formação do bairro. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que a lista é neutra porque é oficial.",
+        "Apagar todos os monumentos existentes.",
+        "Concluir que somente autoridades têm memória histórica.",
+        "Evite afirmar que os grupos ausentes nunca participaram."
+      ],
+      "correctAnswer": "Evite afirmar que os grupos ausentes nunca participaram.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Analisar registros de memória inclui observar presenças e ausências, sem inventar histórias para preencher lacunas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a lista é neutra porque é oficial.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ABSENCE_05",
+      "statement": "Uma lista de monumentos homenageia autoridades, mas não apresenta trabalhadores nem grupos que participaram da formação do bairro. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira lista, datas, critérios publicados e fontes sobre a formação do bairro.",
+        "Dizer que a lista é neutra porque é oficial.",
+        "Apagar todos os monumentos existentes.",
+        "Concluir que somente autoridades têm memória histórica."
+      ],
+      "correctAnswer": "Confira lista, datas, critérios publicados e fontes sobre a formação do bairro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Analisar registros de memória inclui observar presenças e ausências, sem inventar histórias para preencher lacunas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que a lista é neutra porque é oficial.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CHANGE_01",
+      "statement": "Uma rua teve o nome alterado depois de uma consulta pública e um novo ato legal. Como registrar a mudança?",
+      "options": [
+        "Registrar apenas o nome atual.",
+        "Indicar os dois nomes, as datas, o processo de escolha e as razões documentadas para a alteração.",
+        "Dizer que nomes nunca mudam por decisão pública.",
+        "Escolher o nome mais conhecido sem consultar datas."
+      ],
+      "correctAnswer": "Indicar os dois nomes, as datas, o processo de escolha e as razões documentadas para a alteração.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças de nome também são registros de memória e revelam decisões sociais e políticas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Registrar apenas o nome atual.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CHANGE_02",
+      "statement": "Uma rua teve o nome alterado depois de uma consulta pública e um novo ato legal. Que critério deve orientar a análise?",
+      "options": [
+        "Registrar apenas o nome atual.",
+        "Dizer que nomes nunca mudam por decisão pública.",
+        "Considere Mudanças de nome também são registros de memória e revelam decisões sociais e políticas.",
+        "Escolher o nome mais conhecido sem consultar datas."
+      ],
+      "correctAnswer": "Considere Mudanças de nome também são registros de memória e revelam decisões sociais e políticas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças de nome também são registros de memória e revelam decisões sociais e políticas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Registrar apenas o nome atual.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CHANGE_03",
+      "statement": "Uma rua teve o nome alterado depois de uma consulta pública e um novo ato legal. Como transferir esse raciocínio?",
+      "options": [
+        "Registrar apenas o nome atual.",
+        "Dizer que nomes nunca mudam por decisão pública.",
+        "Escolher o nome mais conhecido sem consultar datas.",
+        "Aplique o procedimento a uma praça ou escola renomeada."
+      ],
+      "correctAnswer": "Aplique o procedimento a uma praça ou escola renomeada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças de nome também são registros de memória e revelam decisões sociais e políticas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Registrar apenas o nome atual.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CHANGE_04",
+      "statement": "Uma rua teve o nome alterado depois de uma consulta pública e um novo ato legal. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que a troca apaga automaticamente todo uso do nome antigo.",
+        "Registrar apenas o nome atual.",
+        "Dizer que nomes nunca mudam por decisão pública.",
+        "Escolher o nome mais conhecido sem consultar datas."
+      ],
+      "correctAnswer": "Evite dizer que a troca apaga automaticamente todo uso do nome antigo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças de nome também são registros de memória e revelam decisões sociais e políticas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Registrar apenas o nome atual.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_CHANGE_05",
+      "statement": "Uma rua teve o nome alterado depois de uma consulta pública e um novo ato legal. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Registrar apenas o nome atual.",
+        "Confira ato legal, consulta, nomes, datas e justificativas.",
+        "Dizer que nomes nunca mudam por decisão pública.",
+        "Escolher o nome mais conhecido sem consultar datas."
+      ],
+      "correctAnswer": "Confira ato legal, consulta, nomes, datas e justificativas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças de nome também são registros de memória e revelam decisões sociais e políticas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Registrar apenas o nome atual.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_LANGUAGE_01",
+      "statement": "Uma comunidade prefere uma forma de nomear o lugar, enquanto um mapa antigo registra outra grafia. Que cuidado é adequado?",
+      "options": [
+        "Usar apenas o mapa antigo em qualquer situação.",
+        "Dizer que nomes diferentes significam lugares diferentes sempre.",
+        "Registrar as formas com seus períodos e contextos, respeitando a autodenominação atual da comunidade.",
+        "Escolher a forma mais curta sem consultar contexto."
+      ],
+      "correctAnswer": "Registrar as formas com seus períodos e contextos, respeitando a autodenominação atual da comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Grafias e nomes podem mudar; a comparação deve contextualizar sem desrespeitar quem vive no lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar apenas o mapa antigo em qualquer situação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_LANGUAGE_02",
+      "statement": "Uma comunidade prefere uma forma de nomear o lugar, enquanto um mapa antigo registra outra grafia. Que critério deve orientar a análise?",
+      "options": [
+        "Usar apenas o mapa antigo em qualquer situação.",
+        "Dizer que nomes diferentes significam lugares diferentes sempre.",
+        "Escolher a forma mais curta sem consultar contexto.",
+        "Considere Grafias e nomes podem mudar; a comparação deve contextualizar sem desrespeitar quem vive no lugar."
+      ],
+      "correctAnswer": "Considere Grafias e nomes podem mudar; a comparação deve contextualizar sem desrespeitar quem vive no lugar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Grafias e nomes podem mudar; a comparação deve contextualizar sem desrespeitar quem vive no lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar apenas o mapa antigo em qualquer situação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_LANGUAGE_03",
+      "statement": "Uma comunidade prefere uma forma de nomear o lugar, enquanto um mapa antigo registra outra grafia. Como transferir esse raciocínio?",
+      "options": [
+        "Revise a legenda de um mapa histórico com esse cuidado.",
+        "Usar apenas o mapa antigo em qualquer situação.",
+        "Dizer que nomes diferentes significam lugares diferentes sempre.",
+        "Escolher a forma mais curta sem consultar contexto."
+      ],
+      "correctAnswer": "Revise a legenda de um mapa histórico com esse cuidado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Grafias e nomes podem mudar; a comparação deve contextualizar sem desrespeitar quem vive no lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar apenas o mapa antigo em qualquer situação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_LANGUAGE_04",
+      "statement": "Uma comunidade prefere uma forma de nomear o lugar, enquanto um mapa antigo registra outra grafia. Qual conclusão deve ser evitada?",
+      "options": [
+        "Usar apenas o mapa antigo em qualquer situação.",
+        "Evite corrigir a grafia antiga como se ela nunca tivesse existido.",
+        "Dizer que nomes diferentes significam lugares diferentes sempre.",
+        "Escolher a forma mais curta sem consultar contexto."
+      ],
+      "correctAnswer": "Evite corrigir a grafia antiga como se ela nunca tivesse existido.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Grafias e nomes podem mudar; a comparação deve contextualizar sem desrespeitar quem vive no lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar apenas o mapa antigo em qualquer situação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_LANGUAGE_05",
+      "statement": "Uma comunidade prefere uma forma de nomear o lugar, enquanto um mapa antigo registra outra grafia. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Usar apenas o mapa antigo em qualquer situação.",
+        "Dizer que nomes diferentes significam lugares diferentes sempre.",
+        "Confira mapa, documentos, preferência da comunidade e contexto de cada forma.",
+        "Escolher a forma mais curta sem consultar contexto."
+      ],
+      "correctAnswer": "Confira mapa, documentos, preferência da comunidade e contexto de cada forma.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Grafias e nomes podem mudar; a comparação deve contextualizar sem desrespeitar quem vive no lugar.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar apenas o mapa antigo em qualquer situação.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ACCESS_01",
+      "statement": "Um roteiro digital apresenta nomes de ruas com texto alternativo e áudio, mas não informa a fonte dos critérios de nomeação. O que precisa ser complementado?",
+      "options": [
+        "Retirar o áudio para simplificar.",
+        "Usar somente o nome sem explicar o critério.",
+        "Inventar critérios para preencher a ficha.",
+        "Manter os recursos acessíveis e acrescentar a procedência das informações e dos critérios apresentados."
+      ],
+      "correctAnswer": "Manter os recursos acessíveis e acrescentar a procedência das informações e dos critérios apresentados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade e rastreabilidade são dimensões complementares de um registro histórico.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar o áudio para simplificar.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ACCESS_02",
+      "statement": "Um roteiro digital apresenta nomes de ruas com texto alternativo e áudio, mas não informa a fonte dos critérios de nomeação. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Acessibilidade e rastreabilidade são dimensões complementares de um registro histórico.",
+        "Retirar o áudio para simplificar.",
+        "Usar somente o nome sem explicar o critério.",
+        "Inventar critérios para preencher a ficha."
+      ],
+      "correctAnswer": "Considere Acessibilidade e rastreabilidade são dimensões complementares de um registro histórico.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade e rastreabilidade são dimensões complementares de um registro histórico.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar o áudio para simplificar.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ACCESS_03",
+      "statement": "Um roteiro digital apresenta nomes de ruas com texto alternativo e áudio, mas não informa a fonte dos critérios de nomeação. Como transferir esse raciocínio?",
+      "options": [
+        "Retirar o áudio para simplificar.",
+        "Revise uma ficha de monumento para garantir acesso e fonte.",
+        "Usar somente o nome sem explicar o critério.",
+        "Inventar critérios para preencher a ficha."
+      ],
+      "correctAnswer": "Revise uma ficha de monumento para garantir acesso e fonte.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade e rastreabilidade são dimensões complementares de um registro histórico.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar o áudio para simplificar.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ACCESS_04",
+      "statement": "Um roteiro digital apresenta nomes de ruas com texto alternativo e áudio, mas não informa a fonte dos critérios de nomeação. Qual conclusão deve ser evitada?",
+      "options": [
+        "Retirar o áudio para simplificar.",
+        "Usar somente o nome sem explicar o critério.",
+        "Evite dizer que um áudio dispensa a identificação da fonte.",
+        "Inventar critérios para preencher a ficha."
+      ],
+      "correctAnswer": "Evite dizer que um áudio dispensa a identificação da fonte.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade e rastreabilidade são dimensões complementares de um registro histórico.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar o áudio para simplificar.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_ACCESS_05",
+      "statement": "Um roteiro digital apresenta nomes de ruas com texto alternativo e áudio, mas não informa a fonte dos critérios de nomeação. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Retirar o áudio para simplificar.",
+        "Usar somente o nome sem explicar o critério.",
+        "Inventar critérios para preencher a ficha.",
+        "Confira texto, áudio, descrição, ato de nomeação e autoria do roteiro."
+      ],
+      "correctAnswer": "Confira texto, áudio, descrição, ato de nomeação e autoria do roteiro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade e rastreabilidade são dimensões complementares de um registro histórico.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar o áudio para simplificar.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_COMPARE_01",
+      "statement": "Duas ruas homenageiam pessoas diferentes: uma por atuação em saúde e outra por liderança cultural. Que comparação é possível?",
+      "options": [
+        "Comparar os critérios documentados e perceber que diferentes contribuições podem ser reconhecidas na memória da cidade.",
+        "Concluir que os nomes têm o mesmo significado.",
+        "Escolher a pessoa mais conhecida como melhor homenageada.",
+        "Dizer que nomes não revelam decisões sociais."
+      ],
+      "correctAnswer": "Comparar os critérios documentados e perceber que diferentes contribuições podem ser reconhecidas na memória da cidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar nomes exige observar razões, períodos e fontes sem criar uma hierarquia automática entre contribuições.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que os nomes têm o mesmo significado.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_COMPARE_02",
+      "statement": "Duas ruas homenageiam pessoas diferentes: uma por atuação em saúde e outra por liderança cultural. Que critério deve orientar a análise?",
+      "options": [
+        "Concluir que os nomes têm o mesmo significado.",
+        "Considere Comparar nomes exige observar razões, períodos e fontes sem criar uma hierarquia automática entre contribuições.",
+        "Escolher a pessoa mais conhecida como melhor homenageada.",
+        "Dizer que nomes não revelam decisões sociais."
+      ],
+      "correctAnswer": "Considere Comparar nomes exige observar razões, períodos e fontes sem criar uma hierarquia automática entre contribuições.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar nomes exige observar razões, períodos e fontes sem criar uma hierarquia automática entre contribuições.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que os nomes têm o mesmo significado.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_COMPARE_03",
+      "statement": "Duas ruas homenageiam pessoas diferentes: uma por atuação em saúde e outra por liderança cultural. Como transferir esse raciocínio?",
+      "options": [
+        "Concluir que os nomes têm o mesmo significado.",
+        "Escolher a pessoa mais conhecida como melhor homenageada.",
+        "Compare dois nomes de praças ou edifícios.",
+        "Dizer que nomes não revelam decisões sociais."
+      ],
+      "correctAnswer": "Compare dois nomes de praças ou edifícios.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar nomes exige observar razões, períodos e fontes sem criar uma hierarquia automática entre contribuições.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que os nomes têm o mesmo significado.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_COMPARE_04",
+      "statement": "Duas ruas homenageiam pessoas diferentes: uma por atuação em saúde e outra por liderança cultural. Qual conclusão deve ser evitada?",
+      "options": [
+        "Concluir que os nomes têm o mesmo significado.",
+        "Escolher a pessoa mais conhecida como melhor homenageada.",
+        "Dizer que nomes não revelam decisões sociais.",
+        "Evite dizer que uma homenagem torna a outra menos importante sem critério."
+      ],
+      "correctAnswer": "Evite dizer que uma homenagem torna a outra menos importante sem critério.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar nomes exige observar razões, períodos e fontes sem criar uma hierarquia automática entre contribuições.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que os nomes têm o mesmo significado.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_COMPARE_05",
+      "statement": "Duas ruas homenageiam pessoas diferentes: uma por atuação em saúde e outra por liderança cultural. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira atos de nomeação, biografias e contexto das homenagens.",
+        "Concluir que os nomes têm o mesmo significado.",
+        "Escolher a pessoa mais conhecida como melhor homenageada.",
+        "Dizer que nomes não revelam decisões sociais."
+      ],
+      "correctAnswer": "Confira atos de nomeação, biografias e contexto das homenagens.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar nomes exige observar razões, períodos e fontes sem criar uma hierarquia automática entre contribuições.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Concluir que os nomes têm o mesmo significado.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_SYNTHESIS_01",
+      "statement": "Uma investigação reúne nomes de ruas, monumentos e edifícios, além de atos públicos e entrevistas sobre suas histórias. Como apresentar a conclusão?",
+      "options": [
+        "Listar nomes sem explicar seus significados.",
+        "Explicar que os registros preservam memórias por escolhas específicas, indicando critérios, fontes, mudanças e ausências.",
+        "Afirmar que toda homenagem foi consensual.",
+        "Apagar nomes antigos para deixar a narrativa mais simples."
+      ],
+      "correctAnswer": "Explicar que os registros preservam memórias por escolhas específicas, indicando critérios, fontes, mudanças e ausências.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve tornar visíveis os critérios de nomeação e os limites do conjunto consultado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem explicar seus significados.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_SYNTHESIS_02",
+      "statement": "Uma investigação reúne nomes de ruas, monumentos e edifícios, além de atos públicos e entrevistas sobre suas histórias. Que critério deve orientar a análise?",
+      "options": [
+        "Listar nomes sem explicar seus significados.",
+        "Afirmar que toda homenagem foi consensual.",
+        "Considere A síntese deve tornar visíveis os critérios de nomeação e os limites do conjunto consultado.",
+        "Apagar nomes antigos para deixar a narrativa mais simples."
+      ],
+      "correctAnswer": "Considere A síntese deve tornar visíveis os critérios de nomeação e os limites do conjunto consultado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve tornar visíveis os critérios de nomeação e os limites do conjunto consultado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem explicar seus significados.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_SYNTHESIS_03",
+      "statement": "Uma investigação reúne nomes de ruas, monumentos e edifícios, além de atos públicos e entrevistas sobre suas histórias. Como transferir esse raciocínio?",
+      "options": [
+        "Listar nomes sem explicar seus significados.",
+        "Afirmar que toda homenagem foi consensual.",
+        "Apagar nomes antigos para deixar a narrativa mais simples.",
+        "Produza um painel acessível sobre a memória de outro bairro."
+      ],
+      "correctAnswer": "Produza um painel acessível sobre a memória de outro bairro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve tornar visíveis os critérios de nomeação e os limites do conjunto consultado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem explicar seus significados.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_SYNTHESIS_04",
+      "statement": "Uma investigação reúne nomes de ruas, monumentos e edifícios, além de atos públicos e entrevistas sobre suas histórias. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que os registros representam toda a história da cidade.",
+        "Listar nomes sem explicar seus significados.",
+        "Afirmar que toda homenagem foi consensual.",
+        "Apagar nomes antigos para deixar a narrativa mais simples."
+      ],
+      "correctAnswer": "Evite dizer que os registros representam toda a história da cidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve tornar visíveis os critérios de nomeação e os limites do conjunto consultado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem explicar seus significados.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-memory-records-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-MEMORY-RECORDS_SYNTHESIS_05",
+      "statement": "Uma investigação reúne nomes de ruas, monumentos e edifícios, além de atos públicos e entrevistas sobre suas histórias. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Listar nomes sem explicar seus significados.",
+        "Confira nomes, monumentos, atos, entrevistas, datas e grupos lembrados.",
+        "Afirmar que toda homenagem foi consensual.",
+        "Apagar nomes antigos para deixar a narrativa mais simples."
+      ],
+      "correctAnswer": "Confira nomes, monumentos, atos, entrevistas, datas e grupos lembrados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve tornar visíveis os critérios de nomeação e os limites do conjunto consultado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Listar nomes sem explicar seus significados.": [
+          "HISTORY_EF03HI06_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

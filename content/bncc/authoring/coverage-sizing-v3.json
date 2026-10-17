@@ -584,7 +584,9 @@
       "EF03HI01",
       "EF03HI02",
       "EF03HI03",
-      "EF03HI04"
+      "EF03HI04",
+      "EF03HI05",
+      "EF03HI06"
     ]
   },
   "sizingMethodology": {
@@ -7101,7 +7103,7 @@
       "componentCode": "HI",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "FOUNDATIONAL",
       "complexityScore": 8,
       "technicalMinimumQuestions": 40,
@@ -7130,7 +7132,7 @@
       "componentCode": "HI",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "FOUNDATIONAL",
       "complexityScore": 5,
       "technicalMinimumQuestions": 40,

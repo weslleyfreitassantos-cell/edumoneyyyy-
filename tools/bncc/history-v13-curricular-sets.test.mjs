@@ -7,6 +7,8 @@ const packs = [
   'v13-history-time-sources.json',
   'v13-history-local-perspectives.json',
   'v13-history-local-heritage.json',
+  'v13-history-local-landmarks.json',
+  'v13-history-memory-records.json',
 ].map((file) => JSON.parse(readFileSync(`content/adaptive/tec-escola-core-v5/${file}`, 'utf8')));
 const proposals = JSON.parse(readFileSync('content/bncc/mappings/proposals-v8.json', 'utf8'));
 const sourceVerification = JSON.parse(readFileSync('content/bncc/authoring/source-verification-v2.json', 'utf8'));
@@ -20,7 +22,7 @@ describe('BNCC V13 history curricular sets', () => {
       expect(pack.questions).toHaveLength(50);
       expect(pack.sourceReconciliation).toMatchObject({ newQuestions: 50, reusedQuestionsCountedAsNew: false });
       expect(pack.sourceContext).toMatchObject({
-        officialCode: expect.stringMatching(/^EF03HI0[2-4]$/),
+        officialCode: expect.stringMatching(/^EF03HI0[2-6]$/),
         mappingStatus: 'CANONICAL_GAP',
         relation: 'AUTHORING_CONTEXT_ONLY',
         relationDecision: 'NOT_ASSERTED',
@@ -33,7 +35,7 @@ describe('BNCC V13 history curricular sets', () => {
         ids.add(question.id);
       }
     }
-    expect(ids).toHaveLength(150);
+    expect(ids).toHaveLength(250);
   });
 
   it('keeps source verification and proposal evidence separate from canonical mapping', () => {

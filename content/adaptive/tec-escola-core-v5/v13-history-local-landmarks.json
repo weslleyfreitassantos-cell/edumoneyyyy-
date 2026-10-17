@@ -1,0 +1,1391 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-local-landmarks",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "marcos_historicos_e_significados_locais",
+  "canonicalSkillCode": "AUTHORING_EF03HI05_HISTORY_MARKERS",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI05",
+    "sourceVerificationRecord": "BNCC_EF03HI05_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_COMPREENDER_IDENTIFICAR_MARCOS",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre marcos históricos e seus significados para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+  },
+  "lesson": {
+    "title": "Marcos históricos e seus significados",
+    "objective": "Identificar marcos históricos do lugar e explicar seus significados a partir de fontes, usos e memórias situadas.",
+    "summary": "Marcos históricos são referências que ajudam pessoas e grupos a lembrar acontecimentos, trajetórias e transformações. Seu significado precisa ser investigado, não presumido pela aparência.",
+    "explanation": "## O que investigar\nIdentificar os marcos históricos do lugar em que vive e compreender seus significados.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "commonMistake": "Confundir marco histórico com qualquer objeto antigo ou presumir um único significado sem consultar o contexto e as pessoas relacionadas ao lugar.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Localizar um lugar em um mapa simples.",
+      "Identificar informações explícitas em uma fotografia ou relato."
+    ],
+    "keyConcepts": [
+      "marco histórico",
+      "referência",
+      "memória",
+      "significado",
+      "contexto",
+      "uso social",
+      "evidência"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-local-landmarks-001",
+          "v13-history-local-landmarks-002",
+          "v13-history-local-landmarks-003",
+          "v13-history-local-landmarks-004",
+          "v13-history-local-landmarks-005"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-local-landmarks-006",
+          "v13-history-local-landmarks-007",
+          "v13-history-local-landmarks-008",
+          "v13-history-local-landmarks-009",
+          "v13-history-local-landmarks-010",
+          "v13-history-local-landmarks-011",
+          "v13-history-local-landmarks-012",
+          "v13-history-local-landmarks-013",
+          "v13-history-local-landmarks-014",
+          "v13-history-local-landmarks-015",
+          "v13-history-local-landmarks-016",
+          "v13-history-local-landmarks-017",
+          "v13-history-local-landmarks-018",
+          "v13-history-local-landmarks-019",
+          "v13-history-local-landmarks-020"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-local-landmarks-021",
+          "v13-history-local-landmarks-022",
+          "v13-history-local-landmarks-023",
+          "v13-history-local-landmarks-024",
+          "v13-history-local-landmarks-025",
+          "v13-history-local-landmarks-026",
+          "v13-history-local-landmarks-027",
+          "v13-history-local-landmarks-028",
+          "v13-history-local-landmarks-029",
+          "v13-history-local-landmarks-030",
+          "v13-history-local-landmarks-031",
+          "v13-history-local-landmarks-032"
+        ]
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-local-landmarks-033",
+          "v13-history-local-landmarks-034",
+          "v13-history-local-landmarks-035",
+          "v13-history-local-landmarks-036",
+          "v13-history-local-landmarks-037",
+          "v13-history-local-landmarks-038",
+          "v13-history-local-landmarks-039",
+          "v13-history-local-landmarks-040"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-local-landmarks-041",
+          "v13-history-local-landmarks-042",
+          "v13-history-local-landmarks-043",
+          "v13-history-local-landmarks-044",
+          "v13-history-local-landmarks-045",
+          "v13-history-local-landmarks-046",
+          "v13-history-local-landmarks-047",
+          "v13-history-local-landmarks-048",
+          "v13-history-local-landmarks-049",
+          "v13-history-local-landmarks-050"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-local-landmarks-local-inquiry",
+        "title": "Investigação acessível da história local",
+        "objective": "Identificar marcos históricos do lugar e explicar seus significados a partir de fontes, usos e memórias situadas.",
+        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
+        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Fontes",
+            "emerging": "Não identifica a procedência.",
+            "developing": "Identifica parte das fontes com apoio.",
+            "proficient": "Registra tipo, autoria, período e procedência."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Mistura informações de fontes diferentes.",
+            "developing": "Compara alguns aspectos após orientação.",
+            "proficient": "Explica convergências, diferenças e lacunas."
+          },
+          {
+            "criterion": "Conclusão",
+            "emerging": "Generaliza além do registro.",
+            "developing": "Limita a conclusão com apoio.",
+            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+          }
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI05",
+        "descriptor": "Identificar os marcos históricos do lugar em que vive e compreender seus significados.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-local-landmarks-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DEFINITION_01",
+      "statement": "Uma placa na entrada da cidade lembra a construção da primeira escola do município. Por que a placa pode ser investigada como marco histórico?",
+      "options": [
+        "Porque referencia um acontecimento da história local e pode ajudar a compreender seu significado com fontes.",
+        "Porque qualquer objeto colocado na rua é um marco.",
+        "Porque a placa conta toda a história da cidade sozinha.",
+        "Porque a idade do metal prova o significado."
+      ],
+      "correctAnswer": "Porque referencia um acontecimento da história local e pode ajudar a compreender seu significado com fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco é identificado pela relação documentada com acontecimentos e memórias, não apenas pela sua aparência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer objeto colocado na rua é um marco.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DEFINITION_02",
+      "statement": "Uma placa na entrada da cidade lembra a construção da primeira escola do município. Que critério deve orientar a análise?",
+      "options": [
+        "Porque qualquer objeto colocado na rua é um marco.",
+        "Considere Um marco é identificado pela relação documentada com acontecimentos e memórias, não apenas pela sua aparência.",
+        "Porque a placa conta toda a história da cidade sozinha.",
+        "Porque a idade do metal prova o significado."
+      ],
+      "correctAnswer": "Considere Um marco é identificado pela relação documentada com acontecimentos e memórias, não apenas pela sua aparência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco é identificado pela relação documentada com acontecimentos e memórias, não apenas pela sua aparência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer objeto colocado na rua é um marco.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DEFINITION_03",
+      "statement": "Uma placa na entrada da cidade lembra a construção da primeira escola do município. Como transferir esse raciocínio?",
+      "options": [
+        "Porque qualquer objeto colocado na rua é um marco.",
+        "Porque a placa conta toda a história da cidade sozinha.",
+        "Aplique o critério a uma ponte, praça ou árvore conhecida no bairro.",
+        "Porque a idade do metal prova o significado."
+      ],
+      "correctAnswer": "Aplique o critério a uma ponte, praça ou árvore conhecida no bairro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco é identificado pela relação documentada com acontecimentos e memórias, não apenas pela sua aparência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer objeto colocado na rua é um marco.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DEFINITION_04",
+      "statement": "Uma placa na entrada da cidade lembra a construção da primeira escola do município. Qual conclusão deve ser evitada?",
+      "options": [
+        "Porque qualquer objeto colocado na rua é um marco.",
+        "Porque a placa conta toda a história da cidade sozinha.",
+        "Porque a idade do metal prova o significado.",
+        "Evite dizer que toda placa antiga tem o mesmo significado para todos."
+      ],
+      "correctAnswer": "Evite dizer que toda placa antiga tem o mesmo significado para todos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco é identificado pela relação documentada com acontecimentos e memórias, não apenas pela sua aparência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer objeto colocado na rua é um marco.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DEFINITION_05",
+      "statement": "Uma placa na entrada da cidade lembra a construção da primeira escola do município. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira texto da placa, data, local e fontes sobre a primeira escola.",
+        "Porque qualquer objeto colocado na rua é um marco.",
+        "Porque a placa conta toda a história da cidade sozinha.",
+        "Porque a idade do metal prova o significado."
+      ],
+      "correctAnswer": "Confira texto da placa, data, local e fontes sobre a primeira escola.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco é identificado pela relação documentada com acontecimentos e memórias, não apenas pela sua aparência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque qualquer objeto colocado na rua é um marco.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CONTEXT_01",
+      "statement": "Um coreto é chamado de marco por causa das apresentações e reuniões realizadas ali durante décadas. Que informação ajuda a compreender o significado?",
+      "options": [
+        "A cor atual do coreto sem outra fonte.",
+        "Os usos sociais e os acontecimentos relacionados ao coreto em diferentes períodos.",
+        "A opinião de uma pessoa como se fosse universal.",
+        "O fato de o coreto estar no centro, sem investigar sua história."
+      ],
+      "correctAnswer": "Os usos sociais e os acontecimentos relacionados ao coreto em diferentes períodos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O sentido de um marco depende de contexto, usos e memórias que podem ser conferidos em fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A cor atual do coreto sem outra fonte.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CONTEXT_02",
+      "statement": "Um coreto é chamado de marco por causa das apresentações e reuniões realizadas ali durante décadas. Que critério deve orientar a análise?",
+      "options": [
+        "A cor atual do coreto sem outra fonte.",
+        "A opinião de uma pessoa como se fosse universal.",
+        "Considere O sentido de um marco depende de contexto, usos e memórias que podem ser conferidos em fontes.",
+        "O fato de o coreto estar no centro, sem investigar sua história."
+      ],
+      "correctAnswer": "Considere O sentido de um marco depende de contexto, usos e memórias que podem ser conferidos em fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O sentido de um marco depende de contexto, usos e memórias que podem ser conferidos em fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A cor atual do coreto sem outra fonte.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CONTEXT_03",
+      "statement": "Um coreto é chamado de marco por causa das apresentações e reuniões realizadas ali durante décadas. Como transferir esse raciocínio?",
+      "options": [
+        "A cor atual do coreto sem outra fonte.",
+        "A opinião de uma pessoa como se fosse universal.",
+        "O fato de o coreto estar no centro, sem investigar sua história.",
+        "Investigue os usos históricos de uma praça."
+      ],
+      "correctAnswer": "Investigue os usos históricos de uma praça.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O sentido de um marco depende de contexto, usos e memórias que podem ser conferidos em fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A cor atual do coreto sem outra fonte.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CONTEXT_04",
+      "statement": "Um coreto é chamado de marco por causa das apresentações e reuniões realizadas ali durante décadas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite atribuir o significado apenas ao formato do coreto.",
+        "A cor atual do coreto sem outra fonte.",
+        "A opinião de uma pessoa como se fosse universal.",
+        "O fato de o coreto estar no centro, sem investigar sua história."
+      ],
+      "correctAnswer": "Evite atribuir o significado apenas ao formato do coreto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O sentido de um marco depende de contexto, usos e memórias que podem ser conferidos em fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A cor atual do coreto sem outra fonte.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CONTEXT_05",
+      "statement": "Um coreto é chamado de marco por causa das apresentações e reuniões realizadas ali durante décadas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A cor atual do coreto sem outra fonte.",
+        "Confira fotografias, programas, relatos e registros de reuniões.",
+        "A opinião de uma pessoa como se fosse universal.",
+        "O fato de o coreto estar no centro, sem investigar sua história."
+      ],
+      "correctAnswer": "Confira fotografias, programas, relatos e registros de reuniões.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O sentido de um marco depende de contexto, usos e memórias que podem ser conferidos em fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A cor atual do coreto sem outra fonte.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MULTIPLE_01",
+      "statement": "Uma fotografia mostra um monumento, e uma entrevista explica que ele lembra uma enchente; outra fonte diz que ele foi construído por causa de uma obra pública. Como lidar com os significados diferentes?",
+      "options": [
+        "Dizer que apenas uma fonte pode ter razão.",
+        "Somar as versões sem indicar quem fala.",
+        "Apresentar as interpretações com suas fontes e investigar se o monumento reúne mais de uma memória.",
+        "Concluir que o monumento não tem significado algum."
+      ],
+      "correctAnswer": "Apresentar as interpretações com suas fontes e investigar se o monumento reúne mais de uma memória.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco pode acumular significados; divergências devem ser atribuídas às fontes e não apagadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas uma fonte pode ter razão.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MULTIPLE_02",
+      "statement": "Uma fotografia mostra um monumento, e uma entrevista explica que ele lembra uma enchente; outra fonte diz que ele foi construído por causa de uma obra pública. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que apenas uma fonte pode ter razão.",
+        "Somar as versões sem indicar quem fala.",
+        "Concluir que o monumento não tem significado algum.",
+        "Considere Um marco pode acumular significados; divergências devem ser atribuídas às fontes e não apagadas."
+      ],
+      "correctAnswer": "Considere Um marco pode acumular significados; divergências devem ser atribuídas às fontes e não apagadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco pode acumular significados; divergências devem ser atribuídas às fontes e não apagadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas uma fonte pode ter razão.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MULTIPLE_03",
+      "statement": "Uma fotografia mostra um monumento, e uma entrevista explica que ele lembra uma enchente; outra fonte diz que ele foi construído por causa de uma obra pública. Como transferir esse raciocínio?",
+      "options": [
+        "Compare explicações diferentes para o nome de uma praça.",
+        "Dizer que apenas uma fonte pode ter razão.",
+        "Somar as versões sem indicar quem fala.",
+        "Concluir que o monumento não tem significado algum."
+      ],
+      "correctAnswer": "Compare explicações diferentes para o nome de uma praça.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco pode acumular significados; divergências devem ser atribuídas às fontes e não apagadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas uma fonte pode ter razão.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MULTIPLE_04",
+      "statement": "Uma fotografia mostra um monumento, e uma entrevista explica que ele lembra uma enchente; outra fonte diz que ele foi construído por causa de uma obra pública. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que apenas uma fonte pode ter razão.",
+        "Evite escolher a versão mais simples sem conferir sua procedência.",
+        "Somar as versões sem indicar quem fala.",
+        "Concluir que o monumento não tem significado algum."
+      ],
+      "correctAnswer": "Evite escolher a versão mais simples sem conferir sua procedência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco pode acumular significados; divergências devem ser atribuídas às fontes e não apagadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas uma fonte pode ter razão.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MULTIPLE_05",
+      "statement": "Uma fotografia mostra um monumento, e uma entrevista explica que ele lembra uma enchente; outra fonte diz que ele foi construído por causa de uma obra pública. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que apenas uma fonte pode ter razão.",
+        "Somar as versões sem indicar quem fala.",
+        "Confira fotografia, entrevista, data de construção e documento da obra.",
+        "Concluir que o monumento não tem significado algum."
+      ],
+      "correctAnswer": "Confira fotografia, entrevista, data de construção e documento da obra.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um marco pode acumular significados; divergências devem ser atribuídas às fontes e não apagadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que apenas uma fonte pode ter razão.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CHANGE_01",
+      "statement": "Um antigo moinho deixou de funcionar, mas o prédio passou a abrigar uma biblioteca comunitária. O que a situação permite observar?",
+      "options": [
+        "Que o prédio deixou de ter qualquer valor histórico.",
+        "Que todo novo uso é contrário à memória.",
+        "Que o uso atual prova a intenção dos construtores.",
+        "Que o mesmo lugar pode conservar referências do passado e ganhar novos usos ao longo do tempo."
+      ],
+      "correctAnswer": "Que o mesmo lugar pode conservar referências do passado e ganhar novos usos ao longo do tempo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Identificar um marco inclui observar continuidades e mudanças no significado e no uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que o prédio deixou de ter qualquer valor histórico.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CHANGE_02",
+      "statement": "Um antigo moinho deixou de funcionar, mas o prédio passou a abrigar uma biblioteca comunitária. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Identificar um marco inclui observar continuidades e mudanças no significado e no uso.",
+        "Que o prédio deixou de ter qualquer valor histórico.",
+        "Que todo novo uso é contrário à memória.",
+        "Que o uso atual prova a intenção dos construtores."
+      ],
+      "correctAnswer": "Considere Identificar um marco inclui observar continuidades e mudanças no significado e no uso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Identificar um marco inclui observar continuidades e mudanças no significado e no uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que o prédio deixou de ter qualquer valor histórico.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CHANGE_03",
+      "statement": "Um antigo moinho deixou de funcionar, mas o prédio passou a abrigar uma biblioteca comunitária. Como transferir esse raciocínio?",
+      "options": [
+        "Que o prédio deixou de ter qualquer valor histórico.",
+        "Aplique o raciocínio a uma estação, mercado ou escola.",
+        "Que todo novo uso é contrário à memória.",
+        "Que o uso atual prova a intenção dos construtores."
+      ],
+      "correctAnswer": "Aplique o raciocínio a uma estação, mercado ou escola.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Identificar um marco inclui observar continuidades e mudanças no significado e no uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que o prédio deixou de ter qualquer valor histórico.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CHANGE_04",
+      "statement": "Um antigo moinho deixou de funcionar, mas o prédio passou a abrigar uma biblioteca comunitária. Qual conclusão deve ser evitada?",
+      "options": [
+        "Que o prédio deixou de ter qualquer valor histórico.",
+        "Que todo novo uso é contrário à memória.",
+        "Evite dizer que um novo uso apaga todo o significado anterior.",
+        "Que o uso atual prova a intenção dos construtores."
+      ],
+      "correctAnswer": "Evite dizer que um novo uso apaga todo o significado anterior.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Identificar um marco inclui observar continuidades e mudanças no significado e no uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que o prédio deixou de ter qualquer valor histórico.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CHANGE_05",
+      "statement": "Um antigo moinho deixou de funcionar, mas o prédio passou a abrigar uma biblioteca comunitária. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Que o prédio deixou de ter qualquer valor histórico.",
+        "Que todo novo uso é contrário à memória.",
+        "Que o uso atual prova a intenção dos construtores.",
+        "Confira registros do moinho, fotos, data da biblioteca e relatos de usuários."
+      ],
+      "correctAnswer": "Confira registros do moinho, fotos, data da biblioteca e relatos de usuários.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Identificar um marco inclui observar continuidades e mudanças no significado e no uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que o prédio deixou de ter qualquer valor histórico.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_VOICES_01",
+      "statement": "Um marco associado a uma comunidade indígena é descrito no guia turístico sem citar a explicação da própria comunidade. Que revisão é necessária?",
+      "options": [
+        "Incluir fontes e vozes da comunidade para compreender o significado sem substituí-lo por uma descrição externa.",
+        "Retirar toda referência cultural para evitar perguntas.",
+        "Usar apenas o guia porque ele é mais curto.",
+        "Concluir que o marco pertence a quem o visita."
+      ],
+      "correctAnswer": "Incluir fontes e vozes da comunidade para compreender o significado sem substituí-lo por uma descrição externa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A interpretação de um marco precisa respeitar as pessoas e grupos ligados à sua memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar toda referência cultural para evitar perguntas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_VOICES_02",
+      "statement": "Um marco associado a uma comunidade indígena é descrito no guia turístico sem citar a explicação da própria comunidade. Que critério deve orientar a análise?",
+      "options": [
+        "Retirar toda referência cultural para evitar perguntas.",
+        "Considere A interpretação de um marco precisa respeitar as pessoas e grupos ligados à sua memória.",
+        "Usar apenas o guia porque ele é mais curto.",
+        "Concluir que o marco pertence a quem o visita."
+      ],
+      "correctAnswer": "Considere A interpretação de um marco precisa respeitar as pessoas e grupos ligados à sua memória.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A interpretação de um marco precisa respeitar as pessoas e grupos ligados à sua memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar toda referência cultural para evitar perguntas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_VOICES_03",
+      "statement": "Um marco associado a uma comunidade indígena é descrito no guia turístico sem citar a explicação da própria comunidade. Como transferir esse raciocínio?",
+      "options": [
+        "Retirar toda referência cultural para evitar perguntas.",
+        "Usar apenas o guia porque ele é mais curto.",
+        "Revise uma descrição de outro lugar culturalmente significativo.",
+        "Concluir que o marco pertence a quem o visita."
+      ],
+      "correctAnswer": "Revise uma descrição de outro lugar culturalmente significativo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A interpretação de um marco precisa respeitar as pessoas e grupos ligados à sua memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar toda referência cultural para evitar perguntas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_VOICES_04",
+      "statement": "Um marco associado a uma comunidade indígena é descrito no guia turístico sem citar a explicação da própria comunidade. Qual conclusão deve ser evitada?",
+      "options": [
+        "Retirar toda referência cultural para evitar perguntas.",
+        "Usar apenas o guia porque ele é mais curto.",
+        "Concluir que o marco pertence a quem o visita.",
+        "Evite falar pela comunidade sem consultar suas fontes."
+      ],
+      "correctAnswer": "Evite falar pela comunidade sem consultar suas fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A interpretação de um marco precisa respeitar as pessoas e grupos ligados à sua memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar toda referência cultural para evitar perguntas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_VOICES_05",
+      "statement": "Um marco associado a uma comunidade indígena é descrito no guia turístico sem citar a explicação da própria comunidade. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira guia, autodenominação, relatos da comunidade e contexto do marco.",
+        "Retirar toda referência cultural para evitar perguntas.",
+        "Usar apenas o guia porque ele é mais curto.",
+        "Concluir que o marco pertence a quem o visita."
+      ],
+      "correctAnswer": "Confira guia, autodenominação, relatos da comunidade e contexto do marco.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A interpretação de um marco precisa respeitar as pessoas e grupos ligados à sua memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Retirar toda referência cultural para evitar perguntas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DATE_01",
+      "statement": "Duas fotografias mostram uma estátua antes e depois de uma mudança de lugar, mas apenas a segunda tem data. Que cuidado deve orientar o registro?",
+      "options": [
+        "Dizer que as fotos não podem ser comparadas.",
+        "Registrar a mudança observada e marcar a data ausente da primeira fotografia como uma lacuna.",
+        "Tratar a data da segunda imagem como data da primeira.",
+        "Concluir que a estátua sempre esteve no segundo lugar."
+      ],
+      "correctAnswer": "Registrar a mudança observada e marcar a data ausente da primeira fotografia como uma lacuna.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A sequência visual ajuda, mas datas e procedência delimitam o que pode ser afirmado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que as fotos não podem ser comparadas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DATE_02",
+      "statement": "Duas fotografias mostram uma estátua antes e depois de uma mudança de lugar, mas apenas a segunda tem data. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que as fotos não podem ser comparadas.",
+        "Tratar a data da segunda imagem como data da primeira.",
+        "Considere A sequência visual ajuda, mas datas e procedência delimitam o que pode ser afirmado.",
+        "Concluir que a estátua sempre esteve no segundo lugar."
+      ],
+      "correctAnswer": "Considere A sequência visual ajuda, mas datas e procedência delimitam o que pode ser afirmado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A sequência visual ajuda, mas datas e procedência delimitam o que pode ser afirmado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que as fotos não podem ser comparadas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DATE_03",
+      "statement": "Duas fotografias mostram uma estátua antes e depois de uma mudança de lugar, mas apenas a segunda tem data. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que as fotos não podem ser comparadas.",
+        "Tratar a data da segunda imagem como data da primeira.",
+        "Concluir que a estátua sempre esteve no segundo lugar.",
+        "Aplique o cuidado a fotos de uma rua ou prédio."
+      ],
+      "correctAnswer": "Aplique o cuidado a fotos de uma rua ou prédio.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A sequência visual ajuda, mas datas e procedência delimitam o que pode ser afirmado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que as fotos não podem ser comparadas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DATE_04",
+      "statement": "Duas fotografias mostram uma estátua antes e depois de uma mudança de lugar, mas apenas a segunda tem data. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite inventar o ano da mudança pela aparência da imagem.",
+        "Dizer que as fotos não podem ser comparadas.",
+        "Tratar a data da segunda imagem como data da primeira.",
+        "Concluir que a estátua sempre esteve no segundo lugar."
+      ],
+      "correctAnswer": "Evite inventar o ano da mudança pela aparência da imagem.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A sequência visual ajuda, mas datas e procedência delimitam o que pode ser afirmado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que as fotos não podem ser comparadas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_DATE_05",
+      "statement": "Duas fotografias mostram uma estátua antes e depois de uma mudança de lugar, mas apenas a segunda tem data. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Dizer que as fotos não podem ser comparadas.",
+        "Confira elementos comuns, data disponível, autoria e localização da estátua.",
+        "Tratar a data da segunda imagem como data da primeira.",
+        "Concluir que a estátua sempre esteve no segundo lugar."
+      ],
+      "correctAnswer": "Confira elementos comuns, data disponível, autoria e localização da estátua.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A sequência visual ajuda, mas datas e procedência delimitam o que pode ser afirmado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que as fotos não podem ser comparadas.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MEMORY_01",
+      "statement": "Moradores chamam uma esquina de “Largo da Feira”, embora a feira tenha mudado para outro local há muitos anos. O que o nome pode indicar?",
+      "options": [
+        "Que nomes nunca mudam de significado.",
+        "Que o uso antigo é irrelevante para a história.",
+        "Uma memória de uso anterior que continua como referência, mesmo depois da transformação do espaço.",
+        "Que todos os nomes informais são oficiais."
+      ],
+      "correctAnswer": "Uma memória de uso anterior que continua como referência, mesmo depois da transformação do espaço.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes e usos podem preservar memórias de acontecimentos e práticas que já mudaram.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que nomes nunca mudam de significado.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MEMORY_02",
+      "statement": "Moradores chamam uma esquina de “Largo da Feira”, embora a feira tenha mudado para outro local há muitos anos. Que critério deve orientar a análise?",
+      "options": [
+        "Que nomes nunca mudam de significado.",
+        "Que o uso antigo é irrelevante para a história.",
+        "Que todos os nomes informais são oficiais.",
+        "Considere Nomes e usos podem preservar memórias de acontecimentos e práticas que já mudaram."
+      ],
+      "correctAnswer": "Considere Nomes e usos podem preservar memórias de acontecimentos e práticas que já mudaram.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes e usos podem preservar memórias de acontecimentos e práticas que já mudaram.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que nomes nunca mudam de significado.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MEMORY_03",
+      "statement": "Moradores chamam uma esquina de “Largo da Feira”, embora a feira tenha mudado para outro local há muitos anos. Como transferir esse raciocínio?",
+      "options": [
+        "Investigue um nome antigo usado para uma rua ou praça.",
+        "Que nomes nunca mudam de significado.",
+        "Que o uso antigo é irrelevante para a história.",
+        "Que todos os nomes informais são oficiais."
+      ],
+      "correctAnswer": "Investigue um nome antigo usado para uma rua ou praça.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes e usos podem preservar memórias de acontecimentos e práticas que já mudaram.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que nomes nunca mudam de significado.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MEMORY_04",
+      "statement": "Moradores chamam uma esquina de “Largo da Feira”, embora a feira tenha mudado para outro local há muitos anos. Qual conclusão deve ser evitada?",
+      "options": [
+        "Que nomes nunca mudam de significado.",
+        "Evite dizer que a feira ainda acontece ali só por causa do nome.",
+        "Que o uso antigo é irrelevante para a história.",
+        "Que todos os nomes informais são oficiais."
+      ],
+      "correctAnswer": "Evite dizer que a feira ainda acontece ali só por causa do nome.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes e usos podem preservar memórias de acontecimentos e práticas que já mudaram.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que nomes nunca mudam de significado.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_MEMORY_05",
+      "statement": "Moradores chamam uma esquina de “Largo da Feira”, embora a feira tenha mudado para outro local há muitos anos. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Que nomes nunca mudam de significado.",
+        "Que o uso antigo é irrelevante para a história.",
+        "Confira nome usado, relatos, registros da feira e mudança de local.",
+        "Que todos os nomes informais são oficiais."
+      ],
+      "correctAnswer": "Confira nome usado, relatos, registros da feira e mudança de local.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Nomes e usos podem preservar memórias de acontecimentos e práticas que já mudaram.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que nomes nunca mudam de significado.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_ACCESS_01",
+      "statement": "A turma estuda um marco com fotografia em alta resolução, descrição de imagem e áudio de um relato. Como os formatos ajudam a investigação?",
+      "options": [
+        "Usar somente a imagem original como fonte legítima.",
+        "Excluir estudantes que não podem visitar o local.",
+        "Trocar o relato por uma opinião sem identificação.",
+        "Permitem que mais estudantes consultem as mesmas informações e comparem evidências de modo acessível."
+      ],
+      "correctAnswer": "Permitem que mais estudantes consultem as mesmas informações e comparem evidências de modo acessível.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade amplia a participação sem autorizar alterações no conteúdo ou na procedência da fonte.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar somente a imagem original como fonte legítima.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_ACCESS_02",
+      "statement": "A turma estuda um marco com fotografia em alta resolução, descrição de imagem e áudio de um relato. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Acessibilidade amplia a participação sem autorizar alterações no conteúdo ou na procedência da fonte.",
+        "Usar somente a imagem original como fonte legítima.",
+        "Excluir estudantes que não podem visitar o local.",
+        "Trocar o relato por uma opinião sem identificação."
+      ],
+      "correctAnswer": "Considere Acessibilidade amplia a participação sem autorizar alterações no conteúdo ou na procedência da fonte.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade amplia a participação sem autorizar alterações no conteúdo ou na procedência da fonte.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar somente a imagem original como fonte legítima.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_ACCESS_03",
+      "statement": "A turma estuda um marco com fotografia em alta resolução, descrição de imagem e áudio de um relato. Como transferir esse raciocínio?",
+      "options": [
+        "Usar somente a imagem original como fonte legítima.",
+        "Planeje recursos acessíveis para uma placa ou monumento.",
+        "Excluir estudantes que não podem visitar o local.",
+        "Trocar o relato por uma opinião sem identificação."
+      ],
+      "correctAnswer": "Planeje recursos acessíveis para uma placa ou monumento.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade amplia a participação sem autorizar alterações no conteúdo ou na procedência da fonte.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar somente a imagem original como fonte legítima.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_ACCESS_04",
+      "statement": "A turma estuda um marco com fotografia em alta resolução, descrição de imagem e áudio de um relato. Qual conclusão deve ser evitada?",
+      "options": [
+        "Usar somente a imagem original como fonte legítima.",
+        "Excluir estudantes que não podem visitar o local.",
+        "Evite dizer que uma descrição pode inventar detalhes ausentes.",
+        "Trocar o relato por uma opinião sem identificação."
+      ],
+      "correctAnswer": "Evite dizer que uma descrição pode inventar detalhes ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade amplia a participação sem autorizar alterações no conteúdo ou na procedência da fonte.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar somente a imagem original como fonte legítima.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_ACCESS_05",
+      "statement": "A turma estuda um marco com fotografia em alta resolução, descrição de imagem e áudio de um relato. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Usar somente a imagem original como fonte legítima.",
+        "Excluir estudantes que não podem visitar o local.",
+        "Trocar o relato por uma opinião sem identificação.",
+        "Confira correspondência entre imagem, descrição, áudio e transcrição."
+      ],
+      "correctAnswer": "Confira correspondência entre imagem, descrição, áudio e transcrição.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade amplia a participação sem autorizar alterações no conteúdo ou na procedência da fonte.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Usar somente a imagem original como fonte legítima.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CLAIM_01",
+      "statement": "Um monumento aparece em um mapa escolar, mas não há fonte que explique quando foi instalado ou o que recorda. Qual é a conclusão mais cuidadosa?",
+      "options": [
+        "O monumento pode ser localizado e investigado, mas seu significado e sua história ainda precisam de fontes.",
+        "Dizer que o mapa prova a história completa.",
+        "Inventar um significado baseado no formato.",
+        "Concluir que o monumento não tem valor por faltar legenda."
+      ],
+      "correctAnswer": "O monumento pode ser localizado e investigado, mas seu significado e sua história ainda precisam de fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localizar um marco não equivale a compreender sua origem ou seu significado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o mapa prova a história completa.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CLAIM_02",
+      "statement": "Um monumento aparece em um mapa escolar, mas não há fonte que explique quando foi instalado ou o que recorda. Que critério deve orientar a análise?",
+      "options": [
+        "Dizer que o mapa prova a história completa.",
+        "Considere Localizar um marco não equivale a compreender sua origem ou seu significado.",
+        "Inventar um significado baseado no formato.",
+        "Concluir que o monumento não tem valor por faltar legenda."
+      ],
+      "correctAnswer": "Considere Localizar um marco não equivale a compreender sua origem ou seu significado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localizar um marco não equivale a compreender sua origem ou seu significado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o mapa prova a história completa.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CLAIM_03",
+      "statement": "Um monumento aparece em um mapa escolar, mas não há fonte que explique quando foi instalado ou o que recorda. Como transferir esse raciocínio?",
+      "options": [
+        "Dizer que o mapa prova a história completa.",
+        "Inventar um significado baseado no formato.",
+        "Aplique o limite a uma estátua encontrada em um mapa.",
+        "Concluir que o monumento não tem valor por faltar legenda."
+      ],
+      "correctAnswer": "Aplique o limite a uma estátua encontrada em um mapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localizar um marco não equivale a compreender sua origem ou seu significado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o mapa prova a história completa.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CLAIM_04",
+      "statement": "Um monumento aparece em um mapa escolar, mas não há fonte que explique quando foi instalado ou o que recorda. Qual conclusão deve ser evitada?",
+      "options": [
+        "Dizer que o mapa prova a história completa.",
+        "Inventar um significado baseado no formato.",
+        "Concluir que o monumento não tem valor por faltar legenda.",
+        "Evite afirmar o motivo da instalação sem evidência."
+      ],
+      "correctAnswer": "Evite afirmar o motivo da instalação sem evidência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localizar um marco não equivale a compreender sua origem ou seu significado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o mapa prova a história completa.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_CLAIM_05",
+      "statement": "Um monumento aparece em um mapa escolar, mas não há fonte que explique quando foi instalado ou o que recorda. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira mapa, legenda, registros municipais e relatos locais.",
+        "Dizer que o mapa prova a história completa.",
+        "Inventar um significado baseado no formato.",
+        "Concluir que o monumento não tem valor por faltar legenda."
+      ],
+      "correctAnswer": "Confira mapa, legenda, registros municipais e relatos locais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Localizar um marco não equivale a compreender sua origem ou seu significado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Dizer que o mapa prova a história completa.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_SYNTHESIS_01",
+      "statement": "Uma pesquisa reúne placa, fotografias, entrevistas e atas para estudar um antigo mercado que se tornou centro cultural. Como sintetizar o significado do lugar?",
+      "options": [
+        "Escolher apenas a função atual.",
+        "Relacionar a função antiga, a transformação e as memórias documentadas, indicando quais grupos e fontes sustentam cada parte.",
+        "Dizer que a transformação destruiu toda a memória.",
+        "Afirmar que todos atribuem o mesmo significado ao mercado."
+      ],
+      "correctAnswer": "Relacionar a função antiga, a transformação e as memórias documentadas, indicando quais grupos e fontes sustentam cada parte.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve mostrar continuidades, mudanças, vozes e limites sem reduzir o marco a uma única narrativa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas a função atual.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_SYNTHESIS_02",
+      "statement": "Uma pesquisa reúne placa, fotografias, entrevistas e atas para estudar um antigo mercado que se tornou centro cultural. Que critério deve orientar a análise?",
+      "options": [
+        "Escolher apenas a função atual.",
+        "Dizer que a transformação destruiu toda a memória.",
+        "Considere A síntese deve mostrar continuidades, mudanças, vozes e limites sem reduzir o marco a uma única narrativa.",
+        "Afirmar que todos atribuem o mesmo significado ao mercado."
+      ],
+      "correctAnswer": "Considere A síntese deve mostrar continuidades, mudanças, vozes e limites sem reduzir o marco a uma única narrativa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve mostrar continuidades, mudanças, vozes e limites sem reduzir o marco a uma única narrativa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas a função atual.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_SYNTHESIS_03",
+      "statement": "Uma pesquisa reúne placa, fotografias, entrevistas e atas para estudar um antigo mercado que se tornou centro cultural. Como transferir esse raciocínio?",
+      "options": [
+        "Escolher apenas a função atual.",
+        "Dizer que a transformação destruiu toda a memória.",
+        "Afirmar que todos atribuem o mesmo significado ao mercado.",
+        "Escreva uma síntese sobre outro marco do município."
+      ],
+      "correctAnswer": "Escreva uma síntese sobre outro marco do município.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve mostrar continuidades, mudanças, vozes e limites sem reduzir o marco a uma única narrativa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas a função atual.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_SYNTHESIS_04",
+      "statement": "Uma pesquisa reúne placa, fotografias, entrevistas e atas para estudar um antigo mercado que se tornou centro cultural. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite apresentar uma memória individual como história completa.",
+        "Escolher apenas a função atual.",
+        "Dizer que a transformação destruiu toda a memória.",
+        "Afirmar que todos atribuem o mesmo significado ao mercado."
+      ],
+      "correctAnswer": "Evite apresentar uma memória individual como história completa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve mostrar continuidades, mudanças, vozes e limites sem reduzir o marco a uma única narrativa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas a função atual.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-local-landmarks-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-LOCAL-LANDMARKS_SYNTHESIS_05",
+      "statement": "Uma pesquisa reúne placa, fotografias, entrevistas e atas para estudar um antigo mercado que se tornou centro cultural. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Escolher apenas a função atual.",
+        "Confira placa, fotografias, entrevistas, atas e períodos.",
+        "Dizer que a transformação destruiu toda a memória.",
+        "Afirmar que todos atribuem o mesmo significado ao mercado."
+      ],
+      "correctAnswer": "Confira placa, fotografias, entrevistas, atas e períodos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve mostrar continuidades, mudanças, vozes e limites sem reduzir o marco a uma única narrativa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas a função atual.": [
+          "HISTORY_EF03HI05_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}
