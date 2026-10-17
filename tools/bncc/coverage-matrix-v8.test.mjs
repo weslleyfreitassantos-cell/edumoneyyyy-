@@ -16,5 +16,15 @@ describe('BNCC V8 coverage matrix', () => {
     const science = matrix.rows.find((row) => row.officialCode === 'EF01CI01');
     expect(science.evidence.packages.some((item) => item.contentId === 'v8-science-materials-conscious-use-fi')).toBe(true);
     expect(science.governance.officialMappingStatus).toBe('NOT_CLAIMED');
+
+    const mixtures = matrix.rows.find((row) => row.officialCode === 'EF06CI01');
+    expect(mixtures.evidence.exactSourceVerified).toBe(true);
+    expect(mixtures.evidence.queueStatus).toBe('MAPPING_REVIEW_REQUIRED');
+    expect(mixtures.evidence.missingWork).toEqual([
+      'CANONICAL_MAPPING_REVIEW',
+      'AUTHORING_PACKAGE',
+      'PEDAGOGICAL_REVIEW',
+      'PUBLICATION_GATE',
+    ]);
   });
 });

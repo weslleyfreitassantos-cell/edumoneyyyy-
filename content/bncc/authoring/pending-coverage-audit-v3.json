@@ -14,16 +14,20 @@
     "HUMAN_REVIEW_BLOCKED": 121
   },
   "byQueueStatus": {
-    "MAPPING_REVIEW_REQUIRED": 151,
-    "SOURCE_TEXT_REVIEW_REQUIRED": 1570
+    "MAPPING_REVIEW_REQUIRED": 152,
+    "SOURCE_TEXT_REVIEW_REQUIRED": 1569
   },
   "byNextAction": {
+    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": 1,
     "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW": 4,
     "CANONICAL_MAPPING_REVIEW_REQUIRED": 1496,
     "CURRICULAR_HIERARCHY_REVIEW_REQUIRED": 100,
-    "HUMAN_MAPPING_REVIEW_REQUIRED": 121
+    "HUMAN_MAPPING_REVIEW_REQUIRED": 120
   },
   "samples": {
+    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": [
+      "EF06CI01"
+    ],
     "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW": [
       "EI01CG01",
       "EI01CG02",
@@ -59,7 +63,6 @@
       "EI01EO02"
     ],
     "HUMAN_MAPPING_REVIEW_REQUIRED": [
-      "EF06CI01",
       "EF06CI02",
       "EF06CO04",
       "EF06CO05",
@@ -70,7 +73,8 @@
       "EF06ER04",
       "EF06GE01",
       "EF06GE02",
-      "EF06LP03"
+      "EF06LP03",
+      "EF06MA12"
     ]
   },
   "policy": {
@@ -5994,9 +5998,9 @@
       "componentCode": "CI",
       "kind": "SKILL",
       "mappingStatus": "HUMAN_REVIEW_BLOCKED",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "HUMAN_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },

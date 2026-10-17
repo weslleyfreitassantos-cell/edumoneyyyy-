@@ -25,13 +25,16 @@ export function buildPendingCoverageAuditV3() {
   const records = pending.map((node) => {
     const mapping = mappings.get(node.code) ?? { status: 'UNACCOUNTED' };
     const queueItem = queue.get(node.code);
+    const queueStatus = verified.has(node.code) && mapping.status === 'HUMAN_REVIEW_BLOCKED'
+      ? 'MAPPING_REVIEW_REQUIRED'
+      : queueItem?.status ?? 'NOT_IN_QUEUE';
     return {
       officialCode: node.code,
       stage: node.stage,
       componentCode: node.componentCode,
       kind: node.kind,
       mappingStatus: mapping.status,
-      queueStatus: queueItem?.status ?? 'NOT_IN_QUEUE',
+      queueStatus,
       exactSourceVerified: verified.has(node.code),
       nextAction: nextAction(node, mapping, verified.has(node.code)),
       studentPublicationStatus: 'STAGING_INACTIVE',

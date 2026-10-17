@@ -72,6 +72,11 @@ export function buildCoverageMatrix(root = ROOT) {
     const source = sourceByCode.get(node.code);
     const packages = contentByCode.get(node.code) ?? [];
     if (!mapping || !queue) throw new Error(`MISSING_AUDIT_RECORD:${node.code}`);
+    const missingWork = packages.length
+      ? ['CANONICAL_MAPPING_REVIEW', 'PEDAGOGICAL_REVIEW', 'PUBLICATION_GATE']
+      : source
+        ? ['CANONICAL_MAPPING_REVIEW', 'AUTHORING_PACKAGE', 'PEDAGOGICAL_REVIEW', 'PUBLICATION_GATE']
+        : ['SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW', 'AUTHORING_PACKAGE', 'PEDAGOGICAL_REVIEW', 'PUBLICATION_GATE'];
     return {
       officialCode: node.code,
       stage: node.stage,
@@ -88,9 +93,7 @@ export function buildCoverageMatrix(root = ROOT) {
         nextAction: queue.nextAction,
         packages,
         contentStatus: packages.length ? 'AUTHORING_CONTEXT_PRESENT_REVIEW_REQUIRED' : 'NO_EXPLICIT_AUTHORING_PACKAGE',
-        missingWork: packages.length
-          ? ['CANONICAL_MAPPING_REVIEW', 'PEDAGOGICAL_REVIEW', 'PUBLICATION_GATE']
-          : ['SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW', 'AUTHORING_PACKAGE', 'PEDAGOGICAL_REVIEW', 'PUBLICATION_GATE'],
+        missingWork,
       },
       governance: {
         studentPublicationStatus: queue.studentPublicationStatus,

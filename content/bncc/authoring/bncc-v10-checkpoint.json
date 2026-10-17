@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v10",
+  "campaignId": "TECESCOLA_BNCC_TOTAL_COMPLETION_AUTONOMOUS_V10",
+  "branch": "codex/bncc-question-first-adaptive-tutor-v5",
+  "head": "f938bca4834491018536e917ce7a557d5c9a1caf",
+  "recordedAt": "2026-10-16",
+  "lastOperation": {
+    "target": "EF06CI01",
+    "type": "OFFICIAL_SOURCE_VERIFICATION",
+    "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
+    "result": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "mappingStatus": "HUMAN_REVIEW_BLOCKED",
+    "relationDecision": "NOT_ASSERTED",
+    "studentPublicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+  },
+  "inventory": {
+    "officialNodes": 1723,
+    "pendingNodes": 1721,
+    "canonicalMappings": 2,
+    "exactSourceVerifications": 5,
+    "newStagingPackagesInThisOperation": 0
+  },
+  "evidence": {
+    "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
+    "verificationId": "BNCC_EF06CI01_MEC_P346_V1",
+    "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
+    "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
+    "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
+  },
+  "validation": {
+    "focusedTests": "PASS: 3 files, 3 tests",
+    "bnccValidate": "PASS",
+    "knowledgeFactoryV4": "PASS",
+    "contentPackages": "PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "gates": {
+    "productionWrites": "NONE",
+    "productionDeploy": "NO",
+    "remoteMigrations": "NO",
+    "newContent": "STAGING_ONLY",
+    "officialMappingClaim": "NONE",
+    "pedagogicalReview": "PENDING"
+  },
+  "nextTarget": "EF06CI01_HUMAN_MAPPING_REVIEW_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
+}
