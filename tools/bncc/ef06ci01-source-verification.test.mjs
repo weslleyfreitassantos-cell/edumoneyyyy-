@@ -44,4 +44,22 @@ describe('EF06CI01 source verification', () => {
     expect(auditRecord.queueStatus).toBe('MAPPING_REVIEW_REQUIRED');
     expect(auditRecord.nextAction).toBe('AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW');
   });
+
+  it('keeps the next science descriptors source-verified and unpublished', () => {
+    const expected = {
+      EF06CI02: 'HUMAN_REVIEW_BLOCKED',
+      EF06CI03: 'CANONICAL_GAP',
+      EF06CI04: 'CANONICAL_GAP',
+      EF06CI05: 'CANONICAL_GAP',
+    };
+    for (const [code, mappingStatus] of Object.entries(expected)) {
+      const record = sourceVerification.records.find((item) => item.officialCode === code);
+      expect(record).toMatchObject({
+        technicalVerificationStatus: 'OFFICIAL_SOURCE_VERIFIED_EXACT',
+        mappingStatus,
+        studentPublicationStatus: 'STAGING_INACTIVE',
+        pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      });
+    }
+  });
 });
