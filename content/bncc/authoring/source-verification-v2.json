@@ -12015,6 +12015,144 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03ER01_MEC_P449_V1",
+      "officialCode": "EF03ER01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "03",
+      "descriptor": "Identificar e respeitar os diferentes espaços e territórios religiosos de diferentes tradições e movimentos religiosos.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 449
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 449 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03ER02_MEC_P449_V1",
+      "officialCode": "EF03ER02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "03",
+      "descriptor": "Caracterizar os espaços e territórios religiosos como locais de realização das práticas celebrativas.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 449
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 449 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03ER03_MEC_P449_V1",
+      "officialCode": "EF03ER03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "03",
+      "descriptor": "Identificar e respeitar práticas celebrativas (cerimônias, orações, festividades, peregrinações, entre outras) de diferentes tradições religiosas.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 449
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 449 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03ER04_MEC_P449_V1",
+      "officialCode": "EF03ER04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "03",
+      "descriptor": "Caracterizar as práticas celebrativas como parte integrante do conjunto das manifestações religiosas de diferentes culturas e sociedades.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 449
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 449 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03ER05_MEC_P449_V1",
+      "officialCode": "EF03ER05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "03",
+      "descriptor": "Reconhecer as indumentárias (roupas, acessórios, símbolos, pinturas corporais) utilizadas em diferentes manifestações e tradições religiosas.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 449
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 449 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03ER06_MEC_P449_V1",
+      "officialCode": "EF03ER06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "03",
+      "descriptor": "Caracterizar as indumentárias como elementos integrantes das identidades religiosas.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 449
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 449 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
     }
   ]
 }

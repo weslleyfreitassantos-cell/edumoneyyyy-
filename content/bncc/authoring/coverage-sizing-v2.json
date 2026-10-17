@@ -22,7 +22,7 @@
     },
     "sourceTextHumanVerifiedByFactory": 0,
     "sourceTextRequiresReviewByFactory": 1723,
-    "exactSourceVerificationsThisIncrement": 536,
+    "exactSourceVerificationsThisIncrement": 542,
     "exactSourceVerificationCodes": [
       "EF01CI01",
       "EF01CI02",
@@ -224,6 +224,12 @@
       "EF03CO07",
       "EF03CO08",
       "EF03CO09",
+      "EF03ER01",
+      "EF03ER02",
+      "EF03ER03",
+      "EF03ER04",
+      "EF03ER05",
+      "EF03ER06",
       "EF03LP01",
       "EF03LP02",
       "EF03LP03",
@@ -1567,7 +1573,7 @@
     "limitation": "These are library-size estimates. They do not prove individual learning, curriculum implementation or human pedagogical approval."
   },
   "pending": [
-    "Official source text and canonical mapping review remains open for the 1,723-node matrix; 536 exact technical verifications are recorded in the current authoring ledger.",
+    "Official source text and canonical mapping review remains open for the 1,723-node matrix; 542 exact technical verifications are recorded in the current authoring ledger.",
     "Pedagogical human review remains pending for all generated content.",
     "Early Childhood objectives require experiential product wiring and educator observation records before publication."
   ]

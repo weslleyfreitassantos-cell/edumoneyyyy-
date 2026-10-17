@@ -6,29 +6,12 @@
   "recordedAt": "2026-10-17",
   "lastOperation": {
     "target": [
-      "EF02MA01",
-      "EF02MA02",
-      "EF02MA03",
-      "EF02MA04",
-      "EF02MA05",
-      "EF02MA06",
-      "EF02MA07",
-      "EF02MA08",
-      "EF02MA09",
-      "EF02MA10",
-      "EF02MA11",
-      "EF02MA12",
-      "EF02MA13",
-      "EF02MA14",
-      "EF02MA15",
-      "EF02MA16",
-      "EF02MA17",
-      "EF02MA18",
-      "EF02MA19",
-      "EF02MA20",
-      "EF02MA21",
-      "EF02MA22",
-      "EF02MA23"
+      "EF03ER01",
+      "EF03ER02",
+      "EF03ER03",
+      "EF03ER04",
+      "EF03ER05",
+      "EF03ER06"
     ],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
@@ -42,18 +25,18 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 536,
+    "exactSourceVerifications": 542,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF02MA01_MEC_P285_V1",
+    "verificationId": "BNCC_EF03ER01_MEC_P449_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
   },
   "validation": {
-    "focusedTests": "PASS: 11 files, 19 tests",
+    "focusedTests": "PASS: 12 files, 21 tests",
     "bnccValidate": "PASS: catalog, coverage, mapping resolutions",
     "knowledgeFactoryV4": "PASS: 1723 official nodes, 78 sequences audited, 1721 queued gaps, 65 inactive units",
     "contentPackages": "PASS: 15 packages, 65 skills",
@@ -67,6 +50,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF03ER01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF03GE01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Continue with EF01MA01 or the next independent curricular gap; do not assert a relation or publish content until canonical mapping and pedagogical review are independently approved."
 }
