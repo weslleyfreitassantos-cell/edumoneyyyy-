@@ -76,6 +76,22 @@ describe('EF06CI01 source verification', () => {
       EF07CI14: 'CANONICAL_GAP',
       EF07CI15: 'CANONICAL_GAP',
       EF07CI16: 'CANONICAL_GAP',
+      EF08CI01: 'CANONICAL_GAP',
+      EF08CI02: 'CANONICAL_GAP',
+      EF08CI03: 'CANONICAL_GAP',
+      EF08CI04: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI05: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI06: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI07: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI08: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI09: 'CANONICAL_GAP',
+      EF08CI10: 'CANONICAL_GAP',
+      EF08CI11: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI12: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI13: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI14: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI15: 'HUMAN_REVIEW_BLOCKED',
+      EF08CI16: 'HUMAN_REVIEW_BLOCKED',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -85,7 +101,7 @@ describe('EF06CI01 source verification', () => {
         studentPublicationStatus: 'STAGING_INACTIVE',
         pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
       });
-      const officialPage = code.startsWith('EF07') ? 348 : 346;
+      const officialPage = code.startsWith('EF08') ? 350 : code.startsWith('EF07') ? 348 : 346;
       expect(record.verificationId).toBe(`BNCC_${code}_MEC_P${officialPage}_V1`);
       expect(record.officialSource.page).toBe(officialPage);
     }
