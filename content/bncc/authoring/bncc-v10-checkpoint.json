@@ -2,7 +2,7 @@
   "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v10",
   "campaignId": "TECESCOLA_BNCC_TOTAL_COMPLETION_AUTONOMOUS_V10",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
-  "head": "50bd76f768890b5f1a2fa751c35e5a6cc6ea47fe",
+  "head": "6c8ef5431b6c255c774818f81ddba99b59c4fdf1",
   "recordedAt": "2026-10-16",
   "lastOperation": {
     "target": ["EF09GE01", "EF09GE02", "EF09GE03", "EF09GE04", "EF09GE05", "EF09GE06", "EF09GE07", "EF09GE08", "EF09GE09", "EF09GE10", "EF09GE11", "EF09GE12", "EF09GE13", "EF09GE14", "EF09GE15", "EF09GE16", "EF09GE17", "EF09GE18"],
