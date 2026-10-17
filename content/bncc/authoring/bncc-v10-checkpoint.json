@@ -2,7 +2,7 @@
   "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v10",
   "campaignId": "TECESCOLA_BNCC_TOTAL_COMPLETION_AUTONOMOUS_V10",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
-  "head": "PENDING_COMMIT",
+  "head": "150bf9fe6e997b15d37a76b3866fd1eeedcf80ae",
   "recordedAt": "2026-10-16",
   "lastOperation": {
     "target": [
