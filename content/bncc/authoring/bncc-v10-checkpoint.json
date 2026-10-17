@@ -5,7 +5,7 @@
   "head": "e8d86b733fd855215817d723f9130a66de564bfc",
   "recordedAt": "2026-10-16",
   "lastOperation": {
-    "target": ["EF09CO01", "EF09CO02", "EF09CO03", "EF09CO04", "EF09CO05", "EF09CO06", "EF09CO07", "EF09CO08", "EF09CO09", "EF09CO10"],
+    "target": ["EF09ER01", "EF09ER02", "EF09ER03", "EF09ER04", "EF09ER05", "EF09ER06", "EF09ER07", "EF09ER08"],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
     "result": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -18,21 +18,21 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 76,
+    "exactSourceVerifications": 84,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF06CI01_MEC_P346_V1",
+    "verificationId": "BNCC_EF09ER01_MEC_P461_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
   },
   "validation": {
-    "focusedTests": "PASS: 3 files, 3 tests",
-    "bnccValidate": "PASS",
-    "knowledgeFactoryV4": "PASS",
-    "contentPackages": "PASS",
+    "focusedTests": "PASS: 4 files, 5 tests",
+    "bnccValidate": "PASS: catalog, coverage, mapping resolutions",
+    "knowledgeFactoryV4": "PASS: 1723 official nodes, 78 sequences audited, 1721 queued gaps, 65 inactive units",
+    "contentPackages": "PASS: 15 packages, 65 skills",
     "gitDiffCheck": "PASS"
   },
   "gates": {
@@ -43,6 +43,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF09ER01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF09GE01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
 }
