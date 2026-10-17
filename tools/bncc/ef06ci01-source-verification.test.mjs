@@ -310,6 +310,16 @@ describe('EF06CI01 source verification', () => {
       EF05CO08: 'CANONICAL_GAP',
       EF05CO09: 'CANONICAL_GAP',
       EF05CO10: 'CANONICAL_GAP',
+      EF06CO01: 'CANONICAL_GAP',
+      EF06CO02: 'CANONICAL_GAP',
+      EF06CO03: 'CANONICAL_GAP',
+      EF06CO04: 'CANONICAL_GAP',
+      EF06CO05: 'CANONICAL_GAP',
+      EF06CO06: 'CANONICAL_GAP',
+      EF06CO07: 'CANONICAL_GAP',
+      EF06CO08: 'CANONICAL_GAP',
+      EF06CO09: 'CANONICAL_GAP',
+      EF06CO10: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -326,6 +336,7 @@ describe('EF06CI01 source verification', () => {
         : code.startsWith('EF03CO') ? Number(code.slice(-2)) <= 3 ? 22 : Number(code.slice(-2)) <= 6 ? 24 : 26
         : code.startsWith('EF04CO') ? Number(code.slice(-2)) <= 2 ? 28 : 30
         : code.startsWith('EF05CO') ? Number(code.slice(-2)) <= 3 ? 32 : Number(code.slice(-2)) <= 7 ? 34 : 36
+        : code.startsWith('EF06CO') ? Number(code.slice(-2)) <= 6 ? 42 : 44
         : code.startsWith('EF09ER') ? 461
         : code.startsWith('EF09GE') ? Number(code.slice(-2)) <= 13 ? 395 : 397
         : code.startsWith('EF09HI') ? Number(code.slice(-2)) <= 16 ? 431 : Number(code.slice(-2)) <= 27 ? 433 : 435
@@ -338,7 +349,7 @@ describe('EF06CI01 source verification', () => {
         : code.startsWith('EF04CI') ? 341
         : code.startsWith('EF05CI') ? 343
         : code.startsWith('EF08') ? 350 : code.startsWith('EF07') ? 348 : 346;
-      const pageToken = code.startsWith('EF09CO') || code.startsWith('EF01CO') || code.startsWith('EF02CO') || code.startsWith('EF03CO') || code.startsWith('EF04CO') || code.startsWith('EF05CO')
+      const pageToken = code.startsWith('EF09CO') || code.startsWith('EF01CO') || code.startsWith('EF02CO') || code.startsWith('EF03CO') || code.startsWith('EF04CO') || code.startsWith('EF05CO') || code.startsWith('EF06CO')
         ? String(officialPage).padStart(3, '0')
         : officialPage;
       expect(record.verificationId).toBe(`BNCC_${code}_MEC_P${pageToken}_V1`);
