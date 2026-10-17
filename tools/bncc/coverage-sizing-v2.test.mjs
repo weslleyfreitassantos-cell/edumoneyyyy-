@@ -9,6 +9,7 @@ describe('BNCC coverage sizing V2', () => {
     const catalog = JSON.parse(fs.readFileSync('content/bncc/official/catalog-2018.json', 'utf8'));
     const sourceVerification = JSON.parse(fs.readFileSync('content/bncc/authoring/source-verification-v2.json', 'utf8'));
     const verifiedCodes = sourceVerification.records.map((record) => record.officialCode);
+    const sortCodes = (codes) => [...codes].sort((left, right) => left.localeCompare(right));
     const catalogCodes = new Set(catalog.nodes.map((node) => node.code));
 
     expect(report.campaignId).toBe('TECESCOLA_BNCC_FULL_COVERAGE');
@@ -25,7 +26,7 @@ describe('BNCC coverage sizing V2', () => {
         && record.officialSource?.url
         && Number.isInteger(record.officialSource?.page);
     })).toBe(true);
-    expect(report.auditedFacts.exactSourceVerificationCodes).toEqual(verifiedCodes);
+    expect(sortCodes(report.auditedFacts.exactSourceVerificationCodes)).toEqual(sortCodes(verifiedCodes));
     expect(report.auditedFacts.exactSourceVerificationsThisIncrement).toBe(verifiedCodes.length);
   });
 

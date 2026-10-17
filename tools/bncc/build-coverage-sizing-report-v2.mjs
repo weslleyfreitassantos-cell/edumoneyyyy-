@@ -64,7 +64,10 @@ function build() {
     addScenarioTotals(estimates.extensive, 1, scenarioRubric[kind].extensive);
   }
 
-  const verifiedSourceCodes = nodes.filter((node) => verificationByCode.has(node.code)).map((node) => node.code);
+  const verifiedSourceCodes = nodes
+    .filter((node) => verificationByCode.has(node.code))
+    .map((node) => node.code)
+    .sort((left, right) => left.localeCompare(right));
   const report = {
     schemaVersion: 'tec-escola.bncc.coverage-sizing.v2',
     campaignId: 'TECESCOLA_BNCC_FULL_COVERAGE',
@@ -101,7 +104,7 @@ function build() {
       limitation: 'These are library-size estimates. They do not prove individual learning, curriculum implementation or human pedagogical approval.',
     },
     pending: [
-      'Official source text and canonical mapping review remains open for the 1,723-node matrix except for the one exact technical verification recorded in this increment.',
+      `Official source text and canonical mapping review remains open for the 1,723-node matrix; ${verifiedSourceCodes.length} exact technical verifications are recorded in the current authoring ledger.`,
       'Pedagogical human review remains pending for all generated content.',
       'Early Childhood objectives require experiential product wiring and educator observation records before publication.',
     ],
