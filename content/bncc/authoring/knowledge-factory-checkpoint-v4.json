@@ -1,8 +1,8 @@
 {
   "schemaVersion": "tec-escola.bncc.knowledge-factory-checkpoint.v4",
   "campaign": "TECESCOLA_BNCC_TOTAL_KNOWLEDGE_COVERAGE_AND_DEEP_LEARNING_V4",
-  "inputHash": "3328ea3f51122309ec4b020707d0c189a96c5f1996f24144892af2154305ca94",
-  "outputHash": "878a91a58487687b93cdb6c46291900d483d501812b3e3d00a63acc5cfbe61f1",
+  "inputHash": "35d72d666232e718c07f82e7483095915cd5236e6f9d00c3a608cf2f7ad38e24",
+  "outputHash": "3bd381e400a1c70594a22cd6aed0eef6770855c25953c2de826323c4bcaea9f1",
   "completedWork": [
     "FOUNDATION_RECONCILED",
     "OFFICIAL_NODE_MATRIX_BUILT",
@@ -10,38 +10,16 @@
     "UNIT_STAGING_PACKAGE_BUILT",
     "HUMAN_REVIEW_DRAFTS_BUILT"
   ],
-  "currentWave": 1,
+  "currentWave": 3,
   "nextQueueItem": {
-    "wave": 1,
-    "id": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
-    "stage": "ENSINO_MEDIO",
-    "subject": "BIOLOGY",
-    "status": "DEPTH_GAP",
-    "reason": "One or more purpose-specific pools are below the V4 deep-assessment minimum.",
-    "missingMinimums": {
-      "PROBE": {
-        "current": 2,
-        "target": 4
-      },
-      "PRACTICE": {
-        "current": 4,
-        "target": 12
-      },
-      "TRANSFER": {
-        "current": 2,
-        "target": 8
-      },
-      "LOCK_IN": {
-        "current": 2,
-        "target": 6
-      },
-      "REVIEW": {
-        "current": 2,
-        "target": 10
-      }
-    }
+    "wave": 3,
+    "id": "EI01CG01",
+    "stage": "EDUCACAO_INFANTIL",
+    "subject": "CG",
+    "status": "SOURCE_TEXT_REVIEW_REQUIRED",
+    "reason": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_REVIEW_SOURCE"
   },
-  "pendingItems": 1799,
+  "pendingItems": 1721,
   "resumePolicy": "Recompute from source hashes; completed artifacts are deterministic and never interpreted as approval or publication.",
   "nextSteps": [
     "AUTHOR_AND_VALIDATE_WAVE_1_DEPTH",
@@ -50,5 +28,5 @@
     "REVIEW_OFFICIAL_SOURCE_TEXT_AND_MAPPINGS",
     "HUMAN_PEDAGOGICAL_REVIEW"
   ],
-  "checkpointHash": "99dc9432898bc9169d155f1b40d6e18e3a1a6cc6efbff9cf68a0c05e9a27de43"
+  "checkpointHash": "e97a5b69c1b7851dc2b0629944cc32568b549a298d500488dd2f28217f8ee093"
 }

@@ -517,7 +517,7 @@ export function BrandingEditor({
                 <AssetControl
                   id={`${title}-favicon`}
                   label="Favicon"
-                  helper="PNG, JPEG ou WebP."
+                  helper="PNG, JPEG ou WebP quadrado."
                   kind="favicon"
                   draft={faviconDraft}
                   persistedUrl={branding?.faviconUrl}

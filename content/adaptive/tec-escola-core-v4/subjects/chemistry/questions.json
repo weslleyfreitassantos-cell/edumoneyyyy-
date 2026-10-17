@@ -351,6 +351,8 @@
     ],
     "correctAnswer": "Os atomos se reorganizam sem desaparecer.",
     "explanation": "A conservacao da massa decorre da reorganizacao das particulas.",
+    "errorFocus": "Confundir conservacao de massa com destruicao de atomos em uma reacao.",
+    "hint": "Compare quais atomos existem antes e depois; eles mudam de organizacao, nao deixam de existir.",
     "misconceptions": {
       "A materia sai do recipiente.": [
         "MASS_CONSERVATION_DENIED"
@@ -407,6 +409,8 @@
     ],
     "correctAnswer": "Duas unidades de H2 na proporcao da reacao.",
     "explanation": "O coeficiente indica quantas particulas ou mols participam na proporcao da equacao.",
+    "errorFocus": "Confundir o coeficiente da equacao com o indice presente na formula H2.",
+    "hint": "Observe a posicao do numero: o que vem antes da formula indica a proporcao; o indice fica junto ao simbolo do elemento.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
@@ -433,6 +437,8 @@
     ],
     "correctAnswer": "Para conservar a quantidade de atomos de cada elemento.",
     "explanation": "Em uma transformacao quimica, os atomos se reorganizam, mas nao desaparecem.",
+    "errorFocus": "Achar que balancear serve para aumentar o produto ou eliminar reagentes.",
+    "hint": "Conte os atomos de cada elemento nos dois lados da equacao antes de escolher o motivo.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
@@ -459,6 +465,8 @@
     ],
     "correctAnswer": "3 mol.",
     "explanation": "A proporcao 2 para 1 se repete tres vezes quando A passa a 6 mol.",
+    "errorFocus": "Multiplicar a quantidade de A sem aplicar o mesmo fator a relacao A:B.",
+    "hint": "Descubra por qual fator 2 mol de A viraram 6 mol e use a mesma escala para B.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
@@ -485,6 +493,8 @@
     ],
     "correctAnswer": "Y tambem dobra.",
     "explanation": "Escalar todos os coeficientes pelo mesmo fator preserva a proporcao da reacao.",
+    "errorFocus": "Escalar apenas um reagente e deixar a proporcao entre os componentes mudar.",
+    "hint": "Se o fator aplicado a X e 2, aplique esse mesmo fator a Y para manter a receita quimica.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
@@ -511,6 +521,8 @@
     ],
     "correctAnswer": "Representa a mesma proporcao em uma escala maior.",
     "explanation": "Multiplicar todos os coeficientes por um mesmo fator nao muda a relacao entre as substancias.",
+    "errorFocus": "Interpretar a multiplicacao uniforme dos coeficientes como mudanca de identidade ou quebra da conservacao.",
+    "hint": "Compare as razoes entre cada par de coeficientes antes e depois de todos serem multiplicados pelo mesmo numero.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
@@ -537,6 +549,8 @@
     ],
     "correctAnswer": "O coeficiente do produto pode precisar ser ajustado para conservar oxigenio.",
     "explanation": "O balanceamento ajusta coeficientes para que cada elemento tenha a mesma quantidade nos dois lados.",
+    "errorFocus": "Tentar corrigir o balanceamento alterando os indices das formulas ou removendo elementos.",
+    "hint": "Verifique primeiro os coeficientes; os indices definem as substancias e nao devem ser alterados para balancear.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
@@ -563,6 +577,8 @@
     ],
     "correctAnswer": "O indice indica atomos na particula; o coeficiente indica a quantidade de particulas.",
     "explanation": "Distinguir indice e coeficiente evita alterar a proporcao interpretada.",
+    "errorFocus": "Ler o indice da formula como a quantidade de mol indicada pela equacao.",
+    "hint": "Compare H2 com 3 H2: o indice faz parte de cada molecula; o coeficiente conta unidades na proporcao.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
@@ -589,6 +605,8 @@
     ],
     "correctAnswer": "Os coeficientes mantem a proporcao e a contagem de atomos e conservada.",
     "explanation": "A coerencia depende simultaneamente de proporcao e conservacao dos elementos.",
+    "errorFocus": "Avaliar somente o tamanho dos coeficientes sem conferir proporcoes e balanco atomico.",
+    "hint": "Confira duas coisas: a equacao conserva cada elemento e as razoes entre coeficientes fazem sentido.",
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"

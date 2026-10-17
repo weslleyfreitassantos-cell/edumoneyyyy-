@@ -138,6 +138,10 @@ export interface GuidedQuestionV2 {
   options: string[];
   difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
   position: number;
+  hint?: string | null;
+  visual_stimulus?: {
+    items: Array<{ src: string; alt: string; caption?: string }>;
+  } | null;
 }
 
 export interface GuidedLessonV2 {
@@ -265,6 +269,8 @@ export interface GuidedStepAttemptResultV2 {
   score: number;
   correct_count: number;
   total_questions: number;
+  independent_score?: number;
+  assisted_question_count?: number;
   feedback: Array<{
     question_bank_id: string;
     is_correct: boolean;
@@ -1388,6 +1394,14 @@ export const learningCenterService = {
       }
       return read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(supabase.rpc('advance_guided_learning_session_v2', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey }));
     })(),
+
+  recordGuidedHintV5: (input: { stepId: string; questionId: string }) =>
+    read<{ step_id: string; question_bank_id: string; recorded: boolean }>(
+      supabase.rpc('record_guided_learning_hint_v5', {
+        p_step_id: input.stepId,
+        p_question_bank_id: input.questionId,
+      }),
+    ),
 
   submitGuidedStepV2: (input: { stepId: string; answers: Array<{ question_bank_id: string; answer: unknown }>; idempotencyKey: string }) =>
     (async () => {

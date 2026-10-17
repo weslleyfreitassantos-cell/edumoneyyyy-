@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 210" role="img" aria-labelledby="title desc">
+  <title id="title">Barra grafica de zero a cinco quilometros</title>
+  <desc id="desc">Barra horizontal com cinco intervalos iguais. As marcas estao rotuladas de zero a cinco quilometros; cada intervalo representa um quilometro.</desc>
+  <rect width="640" height="210" rx="16" fill="#f7fafc"/>
+  <g font-family="Arial, sans-serif" fill="#15283d">
+    <text x="42" y="48" font-size="20" font-weight="700">Distancia no terreno</text>
+    <rect x="64" y="82" width="100" height="34" fill="#176b87"/>
+    <rect x="164" y="82" width="100" height="34" fill="#fff" stroke="#176b87" stroke-width="2"/>
+    <rect x="264" y="82" width="100" height="34" fill="#176b87"/>
+    <rect x="364" y="82" width="100" height="34" fill="#fff" stroke="#176b87" stroke-width="2"/>
+    <rect x="464" y="82" width="100" height="34" fill="#176b87"/>
+    <g stroke="#15283d" stroke-width="2">
+      <path d="M64 74v52M164 74v52M264 74v52M364 74v52M464 74v52M564 74v52"/>
+    </g>
+    <g font-size="17" text-anchor="middle">
+      <text x="64" y="153">0</text><text x="164" y="153">1</text><text x="264" y="153">2</text>
+      <text x="364" y="153">3</text><text x="464" y="153">4</text><text x="564" y="153">5 km</text>
+    </g>
+    <text x="64" y="188" font-size="15">Cada espaco entre marcas = 1 km</text>
+  </g>
+</svg>

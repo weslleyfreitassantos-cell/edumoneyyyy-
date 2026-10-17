@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Composição com círculo isolado</title>
+  <desc id="desc">Um círculo laranja aparece no centro de um campo azul-escuro, cercado por espaço vazio.</desc>
+  <rect width="600" height="360" fill="#15384f"/>
+  <circle cx="300" cy="180" r="66" fill="#ed9b45"/>
+  <circle cx="300" cy="180" r="47" fill="#f5c16c"/>
+</svg>

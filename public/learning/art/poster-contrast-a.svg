@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" role="img" aria-labelledby="title desc">
+  <title id="title">Cartaz A: feira de trocas do bairro</title>
+  <desc id="desc">Cartaz autoral vertical com uma chamada em letras azul-marinho sobre um bloco amarelo, maior que os detalhes menores abaixo.</desc>
+  <rect width="600" height="750" fill="#f8fafc"/>
+  <rect x="28" y="28" width="544" height="694" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="5"/>
+  <path d="M52 102h496" stroke="#0f766e" stroke-width="12"/>
+  <text x="300" y="158" text-anchor="middle" fill="#0f172a" font-family="Arial, sans-serif" font-size="28" font-weight="700">CAMPANHA COMUNITÁRIA</text>
+  <rect x="70" y="205" width="460" height="256" rx="10" fill="#fde047"/>
+  <text x="300" y="278" text-anchor="middle" fill="#172554" font-family="Arial, sans-serif" font-size="44" font-weight="800">FEIRA DE TROCAS</text>
+  <text x="300" y="338" text-anchor="middle" fill="#172554" font-family="Arial, sans-serif" font-size="42" font-weight="800">DO BAIRRO</text>
+  <path d="M160 367h280" stroke="#172554" stroke-width="6"/>
+  <text x="300" y="410" text-anchor="middle" fill="#172554" font-family="Arial, sans-serif" font-size="25" font-weight="700">TRAGA UM OBJETO</text>
+  <circle cx="300" cy="536" r="42" fill="#ccfbf1" stroke="#0f766e" stroke-width="6"/>
+  <path d="M280 536h40m-20-20v40" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
+  <text x="300" y="622" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="25">SÁBADO · 10H</text>
+  <text x="300" y="666" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="22">PRAÇA DO BAIRRO · ENTRADA LIVRE</text>
+</svg>

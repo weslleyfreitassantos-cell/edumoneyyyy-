@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 210" role="img" aria-labelledby="title desc">
+  <title id="title">Quatro intervalos em uma barra de zero a cinco quilometros</title>
+  <desc id="desc">Barra grafica de cinco intervalos iguais, com o trecho do zero ate quatro quilometros destacado.</desc>
+  <rect width="640" height="210" rx="16" fill="#f7fafc"/>
+  <g font-family="Arial, sans-serif" fill="#15283d">
+    <text x="48" y="45" font-size="20" font-weight="700">Trecho destacado: 4 intervalos</text>
+    <rect x="64" y="82" width="400" height="32" fill="#176b87"/>
+    <rect x="464" y="82" width="100" height="32" fill="#fff" stroke="#176b87" stroke-width="2"/>
+    <g stroke="#15283d" stroke-width="2"><path d="M64 74v48M164 74v48M264 74v48M364 74v48M464 74v48M564 74v48"/></g>
+    <g font-size="16" text-anchor="middle"><text x="64" y="150">0</text><text x="164" y="150">1</text><text x="264" y="150">2</text><text x="364" y="150">3</text><text x="464" y="150">4</text><text x="564" y="150">5 km</text></g>
+    <text x="64" y="184" font-size="15">Cada intervalo vale 1 km</text>
+  </g>
+</svg>

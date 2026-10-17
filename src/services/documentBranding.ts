@@ -5,7 +5,7 @@ import {
   sanitizeBrandColor,
 } from './brandingValidation';
 
-export const fallbackDocumentTitle = 'EduManager Pro';
+export const fallbackDocumentTitle = 'Tec Escola';
 
 function getOrCreateFaviconLink(): HTMLLinkElement {
   const existing = document.querySelector<HTMLLinkElement>(

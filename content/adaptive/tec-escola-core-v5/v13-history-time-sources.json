@@ -1,0 +1,1391 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-time-sources",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "fontes_historicas_e_registros_locais",
+  "canonicalSkillCode": "AUTHORING_EF03HI02_HISTORY_SOURCES",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI02",
+    "sourceVerificationRecord": "BNCC_EF03HI02_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_SELECIONAR_HISTORY_TIME_SOURCES",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre fontes e acontecimentos da história local para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+  },
+  "lesson": {
+    "title": "Fontes e acontecimentos da história local",
+    "objective": "Selecionar fontes de diferentes naturezas e registrar acontecimentos da cidade ou região, indicando tempo, lugar, procedência e limites da evidência.",
+    "summary": "A história local pode ser investigada com fotografias, mapas, relatos, objetos, jornais e outros registros. Cada fonte mostra um aspecto e precisa ser identificada antes de sustentar uma conclusão.",
+    "explanation": "## O que investigar\nSelecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "commonMistake": "Tratar qualquer fonte como prova completa, esquecer sua data ou registrar uma hipótese como se fosse um acontecimento confirmado.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Reconhecer antes e depois em uma sequência.",
+      "Localizar informação explícita em uma fonte curta."
+    ],
+    "keyConcepts": [
+      "fonte histórica",
+      "procedência",
+      "data",
+      "registro",
+      "linha do tempo",
+      "evidência",
+      "limite da fonte"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-time-sources-001",
+          "v13-history-time-sources-002",
+          "v13-history-time-sources-003",
+          "v13-history-time-sources-004",
+          "v13-history-time-sources-005"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-time-sources-006",
+          "v13-history-time-sources-007",
+          "v13-history-time-sources-008",
+          "v13-history-time-sources-009",
+          "v13-history-time-sources-010",
+          "v13-history-time-sources-011",
+          "v13-history-time-sources-012",
+          "v13-history-time-sources-013",
+          "v13-history-time-sources-014",
+          "v13-history-time-sources-015",
+          "v13-history-time-sources-016",
+          "v13-history-time-sources-017",
+          "v13-history-time-sources-018",
+          "v13-history-time-sources-019",
+          "v13-history-time-sources-020"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-time-sources-021",
+          "v13-history-time-sources-022",
+          "v13-history-time-sources-023",
+          "v13-history-time-sources-024",
+          "v13-history-time-sources-025",
+          "v13-history-time-sources-026",
+          "v13-history-time-sources-027",
+          "v13-history-time-sources-028",
+          "v13-history-time-sources-029",
+          "v13-history-time-sources-030",
+          "v13-history-time-sources-031",
+          "v13-history-time-sources-032"
+        ]
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-time-sources-033",
+          "v13-history-time-sources-034",
+          "v13-history-time-sources-035",
+          "v13-history-time-sources-036",
+          "v13-history-time-sources-037",
+          "v13-history-time-sources-038",
+          "v13-history-time-sources-039",
+          "v13-history-time-sources-040"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-time-sources-041",
+          "v13-history-time-sources-042",
+          "v13-history-time-sources-043",
+          "v13-history-time-sources-044",
+          "v13-history-time-sources-045",
+          "v13-history-time-sources-046",
+          "v13-history-time-sources-047",
+          "v13-history-time-sources-048",
+          "v13-history-time-sources-049",
+          "v13-history-time-sources-050"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-time-sources-local-inquiry",
+        "title": "Investigação acessível da história local",
+        "objective": "Selecionar fontes de diferentes naturezas e registrar acontecimentos da cidade ou região, indicando tempo, lugar, procedência e limites da evidência.",
+        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
+        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Fontes",
+            "emerging": "Não identifica a procedência.",
+            "developing": "Identifica parte das fontes com apoio.",
+            "proficient": "Registra tipo, autoria, período e procedência."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Mistura informações de fontes diferentes.",
+            "developing": "Compara alguns aspectos após orientação.",
+            "proficient": "Explica convergências, diferenças e lacunas."
+          },
+          {
+            "criterion": "Conclusão",
+            "emerging": "Generaliza além do registro.",
+            "developing": "Limita a conclusão com apoio.",
+            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+          }
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI02",
+        "descriptor": "Selecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-time-sources-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NATURE_01",
+      "statement": "Uma fotografia mostra a inauguração de uma ponte, e uma legenda informa o ano e o local. Por que essa fotografia pode ser escolhida para investigar a ponte?",
+      "options": [
+        "Porque registra visualmente um acontecimento situado por data e local, conforme a legenda.",
+        "Porque toda fotografia prova todos os detalhes do passado.",
+        "Porque uma imagem não precisa de data nem de local.",
+        "Porque a ponte só pode ser estudada por fotografias."
+      ],
+      "correctAnswer": "Porque registra visualmente um acontecimento situado por data e local, conforme a legenda.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A fonte é útil quando o tipo, a data, o local e a informação que ela registra estão claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque toda fotografia prova todos os detalhes do passado.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NATURE_02",
+      "statement": "Uma fotografia mostra a inauguração de uma ponte, e uma legenda informa o ano e o local. Que critério deve orientar a análise?",
+      "options": [
+        "Porque toda fotografia prova todos os detalhes do passado.",
+        "Considere A fonte é útil quando o tipo, a data, o local e a informação que ela registra estão claros.",
+        "Porque uma imagem não precisa de data nem de local.",
+        "Porque a ponte só pode ser estudada por fotografias."
+      ],
+      "correctAnswer": "Considere A fonte é útil quando o tipo, a data, o local e a informação que ela registra estão claros.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A fonte é útil quando o tipo, a data, o local e a informação que ela registra estão claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque toda fotografia prova todos os detalhes do passado.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NATURE_03",
+      "statement": "Uma fotografia mostra a inauguração de uma ponte, e uma legenda informa o ano e o local. Como transferir esse raciocínio?",
+      "options": [
+        "Porque toda fotografia prova todos os detalhes do passado.",
+        "Porque uma imagem não precisa de data nem de local.",
+        "Aplique o critério a uma fotografia de uma praça do bairro.",
+        "Porque a ponte só pode ser estudada por fotografias."
+      ],
+      "correctAnswer": "Aplique o critério a uma fotografia de uma praça do bairro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A fonte é útil quando o tipo, a data, o local e a informação que ela registra estão claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque toda fotografia prova todos os detalhes do passado.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NATURE_04",
+      "statement": "Uma fotografia mostra a inauguração de uma ponte, e uma legenda informa o ano e o local. Qual conclusão deve ser evitada?",
+      "options": [
+        "Porque toda fotografia prova todos os detalhes do passado.",
+        "Porque uma imagem não precisa de data nem de local.",
+        "Porque a ponte só pode ser estudada por fotografias.",
+        "Evite dizer que a fotografia explica sozinha todas as razões da construção."
+      ],
+      "correctAnswer": "Evite dizer que a fotografia explica sozinha todas as razões da construção.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A fonte é útil quando o tipo, a data, o local e a informação que ela registra estão claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque toda fotografia prova todos os detalhes do passado.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NATURE_05",
+      "statement": "Uma fotografia mostra a inauguração de uma ponte, e uma legenda informa o ano e o local. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira imagem, legenda, data e local informados.",
+        "Porque toda fotografia prova todos os detalhes do passado.",
+        "Porque uma imagem não precisa de data nem de local.",
+        "Porque a ponte só pode ser estudada por fotografias."
+      ],
+      "correctAnswer": "Confira imagem, legenda, data e local informados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A fonte é útil quando o tipo, a data, o local e a informação que ela registra estão claros.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque toda fotografia prova todos os detalhes do passado.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ORAL_01",
+      "statement": "Uma moradora relata que o mercado mudou de lugar depois de uma enchente, mas não informa o ano. Como usar esse relato no registro?",
+      "options": [
+        "Descartar o relato porque apenas documentos escritos valem.",
+        "Registrar a mudança e indicar que o ano ainda precisa ser conferido em outra fonte.",
+        "Inventar um ano aproximado e registrá-lo como fato.",
+        "Concluir que a enchente mudou todos os mercados da região."
+      ],
+      "correctAnswer": "Registrar a mudança e indicar que o ano ainda precisa ser conferido em outra fonte.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Relatos orais preservam experiências, mas devem ser situados no tempo e identificados quanto a quem relata.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o relato porque apenas documentos escritos valem.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ORAL_02",
+      "statement": "Uma moradora relata que o mercado mudou de lugar depois de uma enchente, mas não informa o ano. Que critério deve orientar a análise?",
+      "options": [
+        "Descartar o relato porque apenas documentos escritos valem.",
+        "Inventar um ano aproximado e registrá-lo como fato.",
+        "Considere Relatos orais preservam experiências, mas devem ser situados no tempo e identificados quanto a quem relata.",
+        "Concluir que a enchente mudou todos os mercados da região."
+      ],
+      "correctAnswer": "Considere Relatos orais preservam experiências, mas devem ser situados no tempo e identificados quanto a quem relata.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Relatos orais preservam experiências, mas devem ser situados no tempo e identificados quanto a quem relata.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o relato porque apenas documentos escritos valem.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ORAL_03",
+      "statement": "Uma moradora relata que o mercado mudou de lugar depois de uma enchente, mas não informa o ano. Como transferir esse raciocínio?",
+      "options": [
+        "Descartar o relato porque apenas documentos escritos valem.",
+        "Inventar um ano aproximado e registrá-lo como fato.",
+        "Concluir que a enchente mudou todos os mercados da região.",
+        "Aplique o procedimento a uma entrevista sobre a escola do bairro."
+      ],
+      "correctAnswer": "Aplique o procedimento a uma entrevista sobre a escola do bairro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Relatos orais preservam experiências, mas devem ser situados no tempo e identificados quanto a quem relata.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o relato porque apenas documentos escritos valem.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ORAL_04",
+      "statement": "Uma moradora relata que o mercado mudou de lugar depois de uma enchente, mas não informa o ano. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite afirmar a data exata apenas porque o relato parece detalhado.",
+        "Descartar o relato porque apenas documentos escritos valem.",
+        "Inventar um ano aproximado e registrá-lo como fato.",
+        "Concluir que a enchente mudou todos os mercados da região."
+      ],
+      "correctAnswer": "Evite afirmar a data exata apenas porque o relato parece detalhado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Relatos orais preservam experiências, mas devem ser situados no tempo e identificados quanto a quem relata.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o relato porque apenas documentos escritos valem.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ORAL_05",
+      "statement": "Uma moradora relata que o mercado mudou de lugar depois de uma enchente, mas não informa o ano. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Descartar o relato porque apenas documentos escritos valem.",
+        "Confira identificação da pessoa, conteúdo do relato e ausência do ano.",
+        "Inventar um ano aproximado e registrá-lo como fato.",
+        "Concluir que a enchente mudou todos os mercados da região."
+      ],
+      "correctAnswer": "Confira identificação da pessoa, conteúdo do relato e ausência do ano.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Relatos orais preservam experiências, mas devem ser situados no tempo e identificados quanto a quem relata.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o relato porque apenas documentos escritos valem.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_MAP_01",
+      "statement": "Um mapa antigo apresenta o traçado de uma rua, enquanto um mapa atual mostra a rua alargada. Que acontecimento pode ser registrado com esses mapas?",
+      "options": [
+        "A intenção de todos os moradores que usavam a rua.",
+        "A história completa do bairro sem consultar outras fontes.",
+        "A mudança no traçado ou na largura da rua entre os períodos representados.",
+        "Que mapas de épocas diferentes sempre mostram o mesmo espaço."
+      ],
+      "correctAnswer": "A mudança no traçado ou na largura da rua entre os períodos representados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas ajudam a registrar configurações espaciais em momentos distintos, desde que suas datas e legendas sejam consultadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A intenção de todos os moradores que usavam a rua.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_MAP_02",
+      "statement": "Um mapa antigo apresenta o traçado de uma rua, enquanto um mapa atual mostra a rua alargada. Que critério deve orientar a análise?",
+      "options": [
+        "A intenção de todos os moradores que usavam a rua.",
+        "A história completa do bairro sem consultar outras fontes.",
+        "Que mapas de épocas diferentes sempre mostram o mesmo espaço.",
+        "Considere Mapas ajudam a registrar configurações espaciais em momentos distintos, desde que suas datas e legendas sejam consultadas."
+      ],
+      "correctAnswer": "Considere Mapas ajudam a registrar configurações espaciais em momentos distintos, desde que suas datas e legendas sejam consultadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas ajudam a registrar configurações espaciais em momentos distintos, desde que suas datas e legendas sejam consultadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A intenção de todos os moradores que usavam a rua.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_MAP_03",
+      "statement": "Um mapa antigo apresenta o traçado de uma rua, enquanto um mapa atual mostra a rua alargada. Como transferir esse raciocínio?",
+      "options": [
+        "Compare mapas de uma praça, rio ou estrada.",
+        "A intenção de todos os moradores que usavam a rua.",
+        "A história completa do bairro sem consultar outras fontes.",
+        "Que mapas de épocas diferentes sempre mostram o mesmo espaço."
+      ],
+      "correctAnswer": "Compare mapas de uma praça, rio ou estrada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas ajudam a registrar configurações espaciais em momentos distintos, desde que suas datas e legendas sejam consultadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A intenção de todos os moradores que usavam a rua.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_MAP_04",
+      "statement": "Um mapa antigo apresenta o traçado de uma rua, enquanto um mapa atual mostra a rua alargada. Qual conclusão deve ser evitada?",
+      "options": [
+        "A intenção de todos os moradores que usavam a rua.",
+        "Evite concluir quem decidiu a obra sem uma fonte sobre a decisão.",
+        "A história completa do bairro sem consultar outras fontes.",
+        "Que mapas de épocas diferentes sempre mostram o mesmo espaço."
+      ],
+      "correctAnswer": "Evite concluir quem decidiu a obra sem uma fonte sobre a decisão.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas ajudam a registrar configurações espaciais em momentos distintos, desde que suas datas e legendas sejam consultadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A intenção de todos os moradores que usavam a rua.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_MAP_05",
+      "statement": "Um mapa antigo apresenta o traçado de uma rua, enquanto um mapa atual mostra a rua alargada. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A intenção de todos os moradores que usavam a rua.",
+        "A história completa do bairro sem consultar outras fontes.",
+        "Confira datas, escala, legenda e elementos que mudaram.",
+        "Que mapas de épocas diferentes sempre mostram o mesmo espaço."
+      ],
+      "correctAnswer": "Confira datas, escala, legenda e elementos que mudaram.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mapas ajudam a registrar configurações espaciais em momentos distintos, desde que suas datas e legendas sejam consultadas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A intenção de todos os moradores que usavam a rua.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_OBJECT_01",
+      "statement": "Uma escola guarda um sino com uma etiqueta que informa que ele veio da primeira sede do bairro. Que cuidado é necessário antes de registrar essa informação?",
+      "options": [
+        "Descartar o objeto porque ele não tem texto longo.",
+        "Presumir a data pela aparência sem consultar o acervo.",
+        "Dizer que o objeto representa a experiência de todos os moradores.",
+        "Conferir a procedência da etiqueta e buscar outros registros que situem o objeto no tempo."
+      ],
+      "correctAnswer": "Conferir a procedência da etiqueta e buscar outros registros que situem o objeto no tempo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Objetos são fontes quando sua procedência, uso e relação com o acontecimento podem ser investigados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o objeto porque ele não tem texto longo.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_OBJECT_02",
+      "statement": "Uma escola guarda um sino com uma etiqueta que informa que ele veio da primeira sede do bairro. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Objetos são fontes quando sua procedência, uso e relação com o acontecimento podem ser investigados.",
+        "Descartar o objeto porque ele não tem texto longo.",
+        "Presumir a data pela aparência sem consultar o acervo.",
+        "Dizer que o objeto representa a experiência de todos os moradores."
+      ],
+      "correctAnswer": "Considere Objetos são fontes quando sua procedência, uso e relação com o acontecimento podem ser investigados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Objetos são fontes quando sua procedência, uso e relação com o acontecimento podem ser investigados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o objeto porque ele não tem texto longo.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_OBJECT_03",
+      "statement": "Uma escola guarda um sino com uma etiqueta que informa que ele veio da primeira sede do bairro. Como transferir esse raciocínio?",
+      "options": [
+        "Descartar o objeto porque ele não tem texto longo.",
+        "Aplique o cuidado a uma placa, ferramenta ou caderno antigo.",
+        "Presumir a data pela aparência sem consultar o acervo.",
+        "Dizer que o objeto representa a experiência de todos os moradores."
+      ],
+      "correctAnswer": "Aplique o cuidado a uma placa, ferramenta ou caderno antigo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Objetos são fontes quando sua procedência, uso e relação com o acontecimento podem ser investigados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o objeto porque ele não tem texto longo.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_OBJECT_04",
+      "statement": "Uma escola guarda um sino com uma etiqueta que informa que ele veio da primeira sede do bairro. Qual conclusão deve ser evitada?",
+      "options": [
+        "Descartar o objeto porque ele não tem texto longo.",
+        "Presumir a data pela aparência sem consultar o acervo.",
+        "Evite tratar a etiqueta como prova suficiente de toda a história do objeto.",
+        "Dizer que o objeto representa a experiência de todos os moradores."
+      ],
+      "correctAnswer": "Evite tratar a etiqueta como prova suficiente de toda a história do objeto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Objetos são fontes quando sua procedência, uso e relação com o acontecimento podem ser investigados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o objeto porque ele não tem texto longo.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_OBJECT_05",
+      "statement": "Uma escola guarda um sino com uma etiqueta que informa que ele veio da primeira sede do bairro. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Descartar o objeto porque ele não tem texto longo.",
+        "Presumir a data pela aparência sem consultar o acervo.",
+        "Dizer que o objeto representa a experiência de todos os moradores.",
+        "Confira objeto, etiqueta, responsável pelo acervo e fontes de confirmação."
+      ],
+      "correctAnswer": "Confira objeto, etiqueta, responsável pelo acervo e fontes de confirmação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Objetos são fontes quando sua procedência, uso e relação com o acontecimento podem ser investigados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Descartar o objeto porque ele não tem texto longo.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NEWSPAPER_01",
+      "statement": "Um jornal local noticia a abertura de uma biblioteca e cita a data da cerimônia. Que registro esse jornal permite elaborar?",
+      "options": [
+        "Um registro do acontecimento noticiado, com data e informações atribuídas ao jornal.",
+        "Uma lista completa de quem participou da cerimônia.",
+        "A opinião de toda a comunidade sobre a biblioteca.",
+        "A prova de que nenhuma pessoa discordou do projeto."
+      ],
+      "correctAnswer": "Um registro do acontecimento noticiado, com data e informações atribuídas ao jornal.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Notícias registram um acontecimento segundo seu recorte, autoria e finalidade; não são relatos neutros de tudo o que ocorreu.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma lista completa de quem participou da cerimônia.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NEWSPAPER_02",
+      "statement": "Um jornal local noticia a abertura de uma biblioteca e cita a data da cerimônia. Que critério deve orientar a análise?",
+      "options": [
+        "Uma lista completa de quem participou da cerimônia.",
+        "Considere Notícias registram um acontecimento segundo seu recorte, autoria e finalidade; não são relatos neutros de tudo o que ocorreu.",
+        "A opinião de toda a comunidade sobre a biblioteca.",
+        "A prova de que nenhuma pessoa discordou do projeto."
+      ],
+      "correctAnswer": "Considere Notícias registram um acontecimento segundo seu recorte, autoria e finalidade; não são relatos neutros de tudo o que ocorreu.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Notícias registram um acontecimento segundo seu recorte, autoria e finalidade; não são relatos neutros de tudo o que ocorreu.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma lista completa de quem participou da cerimônia.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NEWSPAPER_03",
+      "statement": "Um jornal local noticia a abertura de uma biblioteca e cita a data da cerimônia. Como transferir esse raciocínio?",
+      "options": [
+        "Uma lista completa de quem participou da cerimônia.",
+        "A opinião de toda a comunidade sobre a biblioteca.",
+        "Use o mesmo critério em uma notícia sobre uma escola ou serviço público.",
+        "A prova de que nenhuma pessoa discordou do projeto."
+      ],
+      "correctAnswer": "Use o mesmo critério em uma notícia sobre uma escola ou serviço público.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Notícias registram um acontecimento segundo seu recorte, autoria e finalidade; não são relatos neutros de tudo o que ocorreu.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma lista completa de quem participou da cerimônia.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NEWSPAPER_04",
+      "statement": "Um jornal local noticia a abertura de uma biblioteca e cita a data da cerimônia. Qual conclusão deve ser evitada?",
+      "options": [
+        "Uma lista completa de quem participou da cerimônia.",
+        "A opinião de toda a comunidade sobre a biblioteca.",
+        "A prova de que nenhuma pessoa discordou do projeto.",
+        "Evite afirmar que o jornal ouviu todas as pessoas envolvidas."
+      ],
+      "correctAnswer": "Evite afirmar que o jornal ouviu todas as pessoas envolvidas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Notícias registram um acontecimento segundo seu recorte, autoria e finalidade; não são relatos neutros de tudo o que ocorreu.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma lista completa de quem participou da cerimônia.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_NEWSPAPER_05",
+      "statement": "Um jornal local noticia a abertura de uma biblioteca e cita a data da cerimônia. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira data, autoria, texto da notícia e fontes citadas.",
+        "Uma lista completa de quem participou da cerimônia.",
+        "A opinião de toda a comunidade sobre a biblioteca.",
+        "A prova de que nenhuma pessoa discordou do projeto."
+      ],
+      "correctAnswer": "Confira data, autoria, texto da notícia e fontes citadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Notícias registram um acontecimento segundo seu recorte, autoria e finalidade; não são relatos neutros de tudo o que ocorreu.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma lista completa de quem participou da cerimônia.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CHRONOLOGY_01",
+      "statement": "Uma lista apresenta quatro eventos: chegada do ônibus, abertura da praça, construção da escola e reforma do mercado, com anos diferentes. Como transformar a lista em um registro histórico útil?",
+      "options": [
+        "Misturar os eventos para mostrar que todos são iguais.",
+        "Organizar os eventos em ordem de tempo e manter o ano e o local de cada registro.",
+        "Ordenar pela importância imaginada, sem olhar os anos.",
+        "Apagar os acontecimentos que não têm uma fotografia."
+      ],
+      "correctAnswer": "Organizar os eventos em ordem de tempo e manter o ano e o local de cada registro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma linha do tempo precisa preservar a ordem, as datas e a identificação do acontecimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Misturar os eventos para mostrar que todos são iguais.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CHRONOLOGY_02",
+      "statement": "Uma lista apresenta quatro eventos: chegada do ônibus, abertura da praça, construção da escola e reforma do mercado, com anos diferentes. Que critério deve orientar a análise?",
+      "options": [
+        "Misturar os eventos para mostrar que todos são iguais.",
+        "Ordenar pela importância imaginada, sem olhar os anos.",
+        "Considere Uma linha do tempo precisa preservar a ordem, as datas e a identificação do acontecimento.",
+        "Apagar os acontecimentos que não têm uma fotografia."
+      ],
+      "correctAnswer": "Considere Uma linha do tempo precisa preservar a ordem, as datas e a identificação do acontecimento.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma linha do tempo precisa preservar a ordem, as datas e a identificação do acontecimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Misturar os eventos para mostrar que todos são iguais.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CHRONOLOGY_03",
+      "statement": "Uma lista apresenta quatro eventos: chegada do ônibus, abertura da praça, construção da escola e reforma do mercado, com anos diferentes. Como transferir esse raciocínio?",
+      "options": [
+        "Misturar os eventos para mostrar que todos são iguais.",
+        "Ordenar pela importância imaginada, sem olhar os anos.",
+        "Apagar os acontecimentos que não têm uma fotografia.",
+        "Organize uma sequência de mudanças em outra rua."
+      ],
+      "correctAnswer": "Organize uma sequência de mudanças em outra rua.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma linha do tempo precisa preservar a ordem, as datas e a identificação do acontecimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Misturar os eventos para mostrar que todos são iguais.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CHRONOLOGY_04",
+      "statement": "Uma lista apresenta quatro eventos: chegada do ônibus, abertura da praça, construção da escola e reforma do mercado, com anos diferentes. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que o evento mais antigo causou todos os posteriores.",
+        "Misturar os eventos para mostrar que todos são iguais.",
+        "Ordenar pela importância imaginada, sem olhar os anos.",
+        "Apagar os acontecimentos que não têm uma fotografia."
+      ],
+      "correctAnswer": "Evite dizer que o evento mais antigo causou todos os posteriores.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma linha do tempo precisa preservar a ordem, as datas e a identificação do acontecimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Misturar os eventos para mostrar que todos são iguais.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CHRONOLOGY_05",
+      "statement": "Uma lista apresenta quatro eventos: chegada do ônibus, abertura da praça, construção da escola e reforma do mercado, com anos diferentes. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Misturar os eventos para mostrar que todos são iguais.",
+        "Confira anos, acontecimentos e local indicado para cada item.",
+        "Ordenar pela importância imaginada, sem olhar os anos.",
+        "Apagar os acontecimentos que não têm uma fotografia."
+      ],
+      "correctAnswer": "Confira anos, acontecimentos e local indicado para cada item.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma linha do tempo precisa preservar a ordem, as datas e a identificação do acontecimento.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Misturar os eventos para mostrar que todos são iguais.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CONFLICT_01",
+      "statement": "Uma ata marca a inauguração da praça em março, enquanto um depoimento menciona abril sem indicar a fonte da lembrança. Como registrar a divergência?",
+      "options": [
+        "Apagar o depoimento automaticamente.",
+        "Somar março e abril como se fossem uma única data.",
+        "Apresentar as duas informações, identificar as fontes e indicar que a data precisa de conferência.",
+        "Dizer que não existe acontecimento porque as fontes divergem."
+      ],
+      "correctAnswer": "Apresentar as duas informações, identificar as fontes e indicar que a data precisa de conferência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes divergentes devem ser comparadas sem escolher uma apenas por parecer mais convincente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apagar o depoimento automaticamente.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CONFLICT_02",
+      "statement": "Uma ata marca a inauguração da praça em março, enquanto um depoimento menciona abril sem indicar a fonte da lembrança. Que critério deve orientar a análise?",
+      "options": [
+        "Apagar o depoimento automaticamente.",
+        "Somar março e abril como se fossem uma única data.",
+        "Dizer que não existe acontecimento porque as fontes divergem.",
+        "Considere Fontes divergentes devem ser comparadas sem escolher uma apenas por parecer mais convincente."
+      ],
+      "correctAnswer": "Considere Fontes divergentes devem ser comparadas sem escolher uma apenas por parecer mais convincente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes divergentes devem ser comparadas sem escolher uma apenas por parecer mais convincente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apagar o depoimento automaticamente.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CONFLICT_03",
+      "statement": "Uma ata marca a inauguração da praça em março, enquanto um depoimento menciona abril sem indicar a fonte da lembrança. Como transferir esse raciocínio?",
+      "options": [
+        "Aplique o procedimento a datas diferentes para a fundação de uma associação.",
+        "Apagar o depoimento automaticamente.",
+        "Somar março e abril como se fossem uma única data.",
+        "Dizer que não existe acontecimento porque as fontes divergem."
+      ],
+      "correctAnswer": "Aplique o procedimento a datas diferentes para a fundação de uma associação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes divergentes devem ser comparadas sem escolher uma apenas por parecer mais convincente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apagar o depoimento automaticamente.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CONFLICT_04",
+      "statement": "Uma ata marca a inauguração da praça em março, enquanto um depoimento menciona abril sem indicar a fonte da lembrança. Qual conclusão deve ser evitada?",
+      "options": [
+        "Apagar o depoimento automaticamente.",
+        "Evite escolher a data mais repetida sem comparar a procedência.",
+        "Somar março e abril como se fossem uma única data.",
+        "Dizer que não existe acontecimento porque as fontes divergem."
+      ],
+      "correctAnswer": "Evite escolher a data mais repetida sem comparar a procedência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes divergentes devem ser comparadas sem escolher uma apenas por parecer mais convincente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apagar o depoimento automaticamente.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_CONFLICT_05",
+      "statement": "Uma ata marca a inauguração da praça em março, enquanto um depoimento menciona abril sem indicar a fonte da lembrança. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Apagar o depoimento automaticamente.",
+        "Somar março e abril como se fossem uma única data.",
+        "Confira ata, depoimento, autoria, data de produção e contexto.",
+        "Dizer que não existe acontecimento porque as fontes divergem."
+      ],
+      "correctAnswer": "Confira ata, depoimento, autoria, data de produção e contexto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes divergentes devem ser comparadas sem escolher uma apenas por parecer mais convincente.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Apagar o depoimento automaticamente.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_LIMITS_01",
+      "statement": "Uma fotografia mostra uma rua cheia durante uma festa, mas não informa por que a festa foi organizada. O que a fotografia permite afirmar com segurança?",
+      "options": [
+        "Que todos os moradores participaram da festa.",
+        "Que a rua estava sempre cheia naquele período.",
+        "Que a festa foi criada pela pessoa que tirou a foto.",
+        "Que a rua aparece ocupada no momento registrado, sem explicar sozinha a razão da festa."
+      ],
+      "correctAnswer": "Que a rua aparece ocupada no momento registrado, sem explicar sozinha a razão da festa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O limite da fonte é parte do registro: observar o que aparece não autoriza inventar o que não foi documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que todos os moradores participaram da festa.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_LIMITS_02",
+      "statement": "Uma fotografia mostra uma rua cheia durante uma festa, mas não informa por que a festa foi organizada. Que critério deve orientar a análise?",
+      "options": [
+        "Considere O limite da fonte é parte do registro: observar o que aparece não autoriza inventar o que não foi documentado.",
+        "Que todos os moradores participaram da festa.",
+        "Que a rua estava sempre cheia naquele período.",
+        "Que a festa foi criada pela pessoa que tirou a foto."
+      ],
+      "correctAnswer": "Considere O limite da fonte é parte do registro: observar o que aparece não autoriza inventar o que não foi documentado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O limite da fonte é parte do registro: observar o que aparece não autoriza inventar o que não foi documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que todos os moradores participaram da festa.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_LIMITS_03",
+      "statement": "Uma fotografia mostra uma rua cheia durante uma festa, mas não informa por que a festa foi organizada. Como transferir esse raciocínio?",
+      "options": [
+        "Que todos os moradores participaram da festa.",
+        "Aplique o limite a uma fotografia de uma feira escolar.",
+        "Que a rua estava sempre cheia naquele período.",
+        "Que a festa foi criada pela pessoa que tirou a foto."
+      ],
+      "correctAnswer": "Aplique o limite a uma fotografia de uma feira escolar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O limite da fonte é parte do registro: observar o que aparece não autoriza inventar o que não foi documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que todos os moradores participaram da festa.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_LIMITS_04",
+      "statement": "Uma fotografia mostra uma rua cheia durante uma festa, mas não informa por que a festa foi organizada. Qual conclusão deve ser evitada?",
+      "options": [
+        "Que todos os moradores participaram da festa.",
+        "Que a rua estava sempre cheia naquele período.",
+        "Evite atribuir a causa do evento apenas pela quantidade de pessoas.",
+        "Que a festa foi criada pela pessoa que tirou a foto."
+      ],
+      "correctAnswer": "Evite atribuir a causa do evento apenas pela quantidade de pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O limite da fonte é parte do registro: observar o que aparece não autoriza inventar o que não foi documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que todos os moradores participaram da festa.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_LIMITS_05",
+      "statement": "Uma fotografia mostra uma rua cheia durante uma festa, mas não informa por que a festa foi organizada. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Que todos os moradores participaram da festa.",
+        "Que a rua estava sempre cheia naquele período.",
+        "Que a festa foi criada pela pessoa que tirou a foto.",
+        "Confira elementos visíveis, data disponível e informações ausentes."
+      ],
+      "correctAnswer": "Confira elementos visíveis, data disponível e informações ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O limite da fonte é parte do registro: observar o que aparece não autoriza inventar o que não foi documentado.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Que todos os moradores participaram da festa.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ACCESS_01",
+      "statement": "A turma consulta uma entrevista em áudio, uma transcrição ampliada e uma fotografia com descrição escrita. Por que oferecer formatos diferentes é importante?",
+      "options": [
+        "Porque amplia o acesso às mesmas evidências sem mudar o acontecimento investigado.",
+        "Porque apenas o áudio contém a informação verdadeira.",
+        "Porque a descrição deve inventar detalhes que não aparecem.",
+        "Porque fontes acessíveis não precisam de procedência."
+      ],
+      "correctAnswer": "Porque amplia o acesso às mesmas evidências sem mudar o acontecimento investigado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve permitir que estudantes consultem e comparem fontes por meios adequados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque apenas o áudio contém a informação verdadeira.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ACCESS_02",
+      "statement": "A turma consulta uma entrevista em áudio, uma transcrição ampliada e uma fotografia com descrição escrita. Que critério deve orientar a análise?",
+      "options": [
+        "Porque apenas o áudio contém a informação verdadeira.",
+        "Considere Acessibilidade deve permitir que estudantes consultem e comparem fontes por meios adequados.",
+        "Porque a descrição deve inventar detalhes que não aparecem.",
+        "Porque fontes acessíveis não precisam de procedência."
+      ],
+      "correctAnswer": "Considere Acessibilidade deve permitir que estudantes consultem e comparem fontes por meios adequados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve permitir que estudantes consultem e comparem fontes por meios adequados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque apenas o áudio contém a informação verdadeira.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ACCESS_03",
+      "statement": "A turma consulta uma entrevista em áudio, uma transcrição ampliada e uma fotografia com descrição escrita. Como transferir esse raciocínio?",
+      "options": [
+        "Porque apenas o áudio contém a informação verdadeira.",
+        "Porque a descrição deve inventar detalhes que não aparecem.",
+        "Planeje formatos acessíveis para um mapa ou documento curto.",
+        "Porque fontes acessíveis não precisam de procedência."
+      ],
+      "correctAnswer": "Planeje formatos acessíveis para um mapa ou documento curto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve permitir que estudantes consultem e comparem fontes por meios adequados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque apenas o áudio contém a informação verdadeira.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ACCESS_04",
+      "statement": "A turma consulta uma entrevista em áudio, uma transcrição ampliada e uma fotografia com descrição escrita. Qual conclusão deve ser evitada?",
+      "options": [
+        "Porque apenas o áudio contém a informação verdadeira.",
+        "Porque a descrição deve inventar detalhes que não aparecem.",
+        "Porque fontes acessíveis não precisam de procedência.",
+        "Evite dizer que mudar o formato muda o conteúdo histórico da fonte."
+      ],
+      "correctAnswer": "Evite dizer que mudar o formato muda o conteúdo histórico da fonte.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve permitir que estudantes consultem e comparem fontes por meios adequados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque apenas o áudio contém a informação verdadeira.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_ACCESS_05",
+      "statement": "A turma consulta uma entrevista em áudio, uma transcrição ampliada e uma fotografia com descrição escrita. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira áudio, transcrição, fotografia e descrição correspondentes.",
+        "Porque apenas o áudio contém a informação verdadeira.",
+        "Porque a descrição deve inventar detalhes que não aparecem.",
+        "Porque fontes acessíveis não precisam de procedência."
+      ],
+      "correctAnswer": "Confira áudio, transcrição, fotografia e descrição correspondentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Acessibilidade deve permitir que estudantes consultem e comparem fontes por meios adequados.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Porque apenas o áudio contém a informação verdadeira.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_SYNTHESIS_01",
+      "statement": "Uma pesquisa reúne mapa, entrevista e jornal sobre a mudança de uma feira para outra praça. Como escrever a síntese?",
+      "options": [
+        "Escolher apenas o jornal e ignorar as demais fontes.",
+        "Relacionar o deslocamento às fontes, indicar o que cada uma registra e deixar abertas as causas não documentadas.",
+        "Transformar uma lembrança em data oficial sem conferência.",
+        "Dizer que todas as fontes têm exatamente a mesma função."
+      ],
+      "correctAnswer": "Relacionar o deslocamento às fontes, indicar o que cada uma registra e deixar abertas as causas não documentadas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma boa síntese atribui cada afirmação à fonte e diferencia acontecimento observado de interpretação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas o jornal e ignorar as demais fontes.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_SYNTHESIS_02",
+      "statement": "Uma pesquisa reúne mapa, entrevista e jornal sobre a mudança de uma feira para outra praça. Que critério deve orientar a análise?",
+      "options": [
+        "Escolher apenas o jornal e ignorar as demais fontes.",
+        "Transformar uma lembrança em data oficial sem conferência.",
+        "Considere Uma boa síntese atribui cada afirmação à fonte e diferencia acontecimento observado de interpretação.",
+        "Dizer que todas as fontes têm exatamente a mesma função."
+      ],
+      "correctAnswer": "Considere Uma boa síntese atribui cada afirmação à fonte e diferencia acontecimento observado de interpretação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma boa síntese atribui cada afirmação à fonte e diferencia acontecimento observado de interpretação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas o jornal e ignorar as demais fontes.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_SYNTHESIS_03",
+      "statement": "Uma pesquisa reúne mapa, entrevista e jornal sobre a mudança de uma feira para outra praça. Como transferir esse raciocínio?",
+      "options": [
+        "Escolher apenas o jornal e ignorar as demais fontes.",
+        "Transformar uma lembrança em data oficial sem conferência.",
+        "Dizer que todas as fontes têm exatamente a mesma função.",
+        "Faça uma síntese sobre a mudança de uma escola ou posto de saúde."
+      ],
+      "correctAnswer": "Faça uma síntese sobre a mudança de uma escola ou posto de saúde.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma boa síntese atribui cada afirmação à fonte e diferencia acontecimento observado de interpretação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas o jornal e ignorar as demais fontes.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_SYNTHESIS_04",
+      "statement": "Uma pesquisa reúne mapa, entrevista e jornal sobre a mudança de uma feira para outra praça. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite afirmar uma causa única sem fonte que a sustente.",
+        "Escolher apenas o jornal e ignorar as demais fontes.",
+        "Transformar uma lembrança em data oficial sem conferência.",
+        "Dizer que todas as fontes têm exatamente a mesma função."
+      ],
+      "correctAnswer": "Evite afirmar uma causa única sem fonte que a sustente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma boa síntese atribui cada afirmação à fonte e diferencia acontecimento observado de interpretação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas o jornal e ignorar as demais fontes.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-time-sources-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-TIME-SOURCES_SYNTHESIS_05",
+      "statement": "Uma pesquisa reúne mapa, entrevista e jornal sobre a mudança de uma feira para outra praça. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Escolher apenas o jornal e ignorar as demais fontes.",
+        "Confira mapa, entrevista, jornal, datas e informações que não coincidem.",
+        "Transformar uma lembrança em data oficial sem conferência.",
+        "Dizer que todas as fontes têm exatamente a mesma função."
+      ],
+      "correctAnswer": "Confira mapa, entrevista, jornal, datas e informações que não coincidem.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma boa síntese atribui cada afirmação à fonte e diferencia acontecimento observado de interpretação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher apenas o jornal e ignorar as demais fontes.": [
+          "HISTORY_EF03HI02_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

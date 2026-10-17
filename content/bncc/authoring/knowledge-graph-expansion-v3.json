@@ -2,7 +2,7 @@
   "schemaVersion": "tec-escola.bncc.knowledge-graph-expansion.v3",
   "baseGraphHash": "054013ca631792655d91cc0d0962c3e86c6ec9ba3cd073033a5656bd600a5cda",
   "packVersion": "tec-escola-knowledge-expansion-v3",
-  "contentHash": "aef2d4f2a6f7d3fe1d8b00415e879d6c5fc32d56d19f250a6bbc1e6d42599f77",
+  "contentHash": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
   "graphStatus": "STAGING_NOT_BNCC_PROMOTED",
   "summary": {
     "existingSkillsExtended": 13,
@@ -1995,5 +1995,5 @@
     "humanApprovalClaimed": false,
     "officialCanonicalGapReduction": 0
   },
-  "expansionHash": "003171459e740c5eceb068f97c8eea5812011bcca40cf8a8dab47eede8b61583"
+  "expansionHash": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a"
 }

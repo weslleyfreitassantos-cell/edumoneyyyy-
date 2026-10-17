@@ -1,0 +1,1116 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 5,
+  "contentId": "math-ratio-unit-rate",
+  "canonicalSkillCode": "MATH_RATIO_UNIT_RATE",
+  "subject": "MATHEMATICS",
+  "domain": "RAZAO",
+  "topic": "razão, taxa unitária e relações proporcionais",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 2,
+    "PRACTICE": 8,
+    "TRANSFER": 7,
+    "LOCK_IN": 5,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 30,
+  "expectedContextCount": 30,
+  "expectedAnswerPositionCounts": {
+    "A": 8,
+    "B": 8,
+    "C": 7,
+    "D": 7
+  },
+  "lesson": {
+    "title": "Razão, taxa unitária e comparação justa",
+    "objective": "Interpretar a ordem das grandezas em uma razão, calcular e comparar taxas por unidade, converter unidades e reconhecer quando uma situação não mantém proporcionalidade.",
+    "summary": "Uma taxa unitária diz quanto corresponde a uma unidade de referência, como reais por kg ou quilômetros por hora. Calcular exige dividir na ordem pedida e manter as unidades. Uma taxa observada só pode ser usada para prever se a situação mantiver as condições; uma cobrança fixa pode fazer o custo médio variar.",
+    "explanation": "## 1. Leia a ordem e as unidades\n“Quilômetros por litro” pede distância dividida por combustível. “Reais por kg” pede preço dividido pela massa. A unidade ajuda a decidir qual quantidade fica no numerador e qual no denominador. Escreva-a junto ao resultado: 12 km/L, não apenas 12.\n\n## 2. Transforme a taxa em valor por uma unidade\nPara encontrar unidades de produto por pacote, divida o total de produtos pelo número de pacotes. Para encontrar preço por item, divida o preço pela quantidade. Por exemplo, 240 km com 20 L correspondem a 240 ÷ 20 = 12 km/L. A ordem contrária seria 20/240 L/km e responderia outra pergunta.\n\n## 3. Compare depois de normalizar\nSe os tamanhos são diferentes, comparar só os preços totais engana. Converta para a mesma unidade e calcule o preço por kg ou por item. Então compare as taxas. Uma taxa menor pode ser melhor para o objetivo, mas a escolha ainda depende de qualidade, necessidade e outras condições que os números não descrevem.\n\n## 4. Converta unidades antes de comparar\nSe uma taxa está em metros por minuto e a outra em quilômetros por hora, transforme-as para unidades iguais. Como 60 min = 1 h, 200 m/min equivalem a 12 000 m/h, ou 12 km/h. Confira se o tamanho do resultado faz sentido.\n\n## 5. Verifique se a relação é proporcional\nEm uma relação diretamente proporcional, dividir o total por unidades dá a mesma taxa em situações comparáveis, e zero unidades correspondem a zero total. Se houver taxa inicial, assinatura ou parcela fixa, o custo médio por unidade pode mudar. Exemplo: R$ 6 fixos + R$ 2 por km dá R$ 10 para 2 km (R$ 5/km) e R$ 22 para 8 km (R$ 2,75/km). Não é uma taxa constante por km.\n\n## Exemplo resolvido\nDuas embalagens custam R$ 24 por 750 g e R$ 45 por 1,2 kg. Primeiro, 750 g = 0,75 kg. A primeira custa 24 ÷ 0,75 = R$ 32/kg; a segunda, 45 ÷ 1,2 = R$ 37,50/kg. Pelo critério de preço por massa, a primeira tem menor taxa. Essa conta não informa, sozinha, sabor, qualidade ou se a quantidade serve à necessidade.\n\n## Quando uma previsão é válida?\nSe uma máquina processou 120 peças em 4 horas, sua taxa média observada foi 30 peças/h. Projetar mais 4 horas e obter 120 peças exige supor que máquina, material e ritmo permaneçam iguais. Indique essa condição; a taxa passada não é garantia do futuro.",
+    "workedExample": "Problema: um pacote de 400 g custa R$ 12. Calcule o preço por kg. 1) Converta 400 g para 0,4 kg. 2) Divida R$ 12 por 0,4 kg. 3) Obtenha R$ 30/kg. 4) Confira: 0,4 × R$ 30 = R$ 12. A verificação reconstrói o valor total e confirma a unidade.",
+    "commonMistake": "Dividir na ordem contrária à unidade pedida; comparar preços ou produções totais de tamanhos/tempos diferentes; misturar unidades sem converter; presumir que uma taxa observada sempre continuará igual; ou ignorar uma parcela fixa e chamar a situação de proporcional.",
+    "tips": [
+      "Leia “por” como pista da unidade de referência e escreva a unidade final.",
+      "Para comparar opções, normalize para o mesmo denominador: 1 kg, 1 item ou 1 hora.",
+      "Converta unidades antes de dividir ou comparar.",
+      "Teste se há valor inicial fixo antes de supor proporcionalidade direta.",
+      "Ao projetar uma taxa, declare as condições que precisam permanecer iguais.",
+      "Verifique o cálculo multiplicando a taxa unitária pela quantidade."
+    ],
+    "priorKnowledge": [
+      "Dividir números naturais e decimais simples.",
+      "Interpretar multiplicação como grupos iguais.",
+      "Reconhecer unidades de medida e conversões usuais."
+    ],
+    "keyConcepts": [
+      "razão ordenada",
+      "taxa entre grandezas com unidades diferentes",
+      "taxa unitária",
+      "preço unitário",
+      "normalização para comparação",
+      "proporcionalidade direta",
+      "parcela fixa",
+      "média observada versus previsão"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Identificar grandeza por unidade e manter unidades na divisão.",
+        "questionIds": [
+          "v5-math-ratio-probe-01",
+          "v5-math-ratio-probe-02",
+          "v5-math-ratio-practice-01",
+          "v5-math-ratio-practice-02",
+          "v5-math-ratio-practice-03"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Calcular, converter e comparar taxas em contextos distintos.",
+        "questionIds": [
+          "v5-math-ratio-practice-04",
+          "v5-math-ratio-practice-05",
+          "v5-math-ratio-practice-06",
+          "v5-math-ratio-practice-07",
+          "v5-math-ratio-practice-08"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Usar taxas em receitas, mapas, transporte e projeções condicionais.",
+        "questionIds": [
+          "v5-math-ratio-transfer-01",
+          "v5-math-ratio-transfer-02",
+          "v5-math-ratio-transfer-03",
+          "v5-math-ratio-transfer-04",
+          "v5-math-ratio-transfer-05",
+          "v5-math-ratio-transfer-06",
+          "v5-math-ratio-transfer-07"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Reparar inversões, conversões e falsas suposições de proporcionalidade.",
+        "questionIds": [
+          "v5-math-ratio-lock-01",
+          "v5-math-ratio-lock-02",
+          "v5-math-ratio-lock-03",
+          "v5-math-ratio-lock-04",
+          "v5-math-ratio-lock-05"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar unidades, comparação, proporcionalidade e limites da previsão.",
+        "questionIds": [
+          "v5-math-ratio-review-01",
+          "v5-math-ratio-review-02",
+          "v5-math-ratio-review-03",
+          "v5-math-ratio-review-04",
+          "v5-math-ratio-review-05",
+          "v5-math-ratio-review-06",
+          "v5-math-ratio-review-07",
+          "v5-math-ratio-review-08"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "RATE_ORDER",
+        "text": "A ordem da pergunta vira a ordem da divisão: km por L = km ÷ L. A unidade final denuncia uma inversão."
+      },
+      {
+        "trigger": "COMPARE_NORMALIZED",
+        "text": "Antes de comparar, converta para o mesmo “por 1”: R$/kg, páginas/min ou R$/item."
+      },
+      {
+        "trigger": "UNIT_CONVERSION",
+        "text": "Converta as grandezas para unidades compatíveis antes de calcular; mantenha os fatores de conversão visíveis."
+      },
+      {
+        "trigger": "FIXED_FEE",
+        "text": "Taxa fixa mais valor por uso não é uma única taxa por unidade: a média muda conforme a quantidade."
+      },
+      {
+        "trigger": "RATE_PREDICTION",
+        "text": "Uma média passada descreve os dados observados. Uma previsão exige condições constantes e deve dizê-lo."
+      },
+      {
+        "trigger": "CHECK_RATE",
+        "text": "Multiplique a taxa unitária pela quantidade para conferir se recupera o total."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "math-ratio-remediate-rate-direction",
+        "misconception": "RATE_DIRECTION_REVERSED",
+        "prompt": "Reescreva a unidade solicitada (por exemplo, km/L). Coloque a primeira grandeza no numerador e divida; depois confira cancelando as unidades."
+      },
+      {
+        "id": "math-ratio-remediate-total-price",
+        "misconception": "TOTAL_PRICE_ONLY",
+        "prompt": "Converta os tamanhos para uma unidade igual. Calcule preço ÷ quantidade para cada opção e compare as taxas, não os totais."
+      },
+      {
+        "id": "math-ratio-remediate-unit-conversion",
+        "misconception": "MIXED_MASS_UNITS",
+        "prompt": "Escreva a conversão em uma linha (1 kg = 1000 g) antes da divisão. Substitua cada quantidade por seu valor na mesma unidade."
+      },
+      {
+        "id": "math-ratio-remediate-fixed-fee",
+        "misconception": "IGNORE_FIXED_FEE",
+        "prompt": "Calcule o custo total em duas quantidades diferentes e divida cada total pela quantidade. Se as médias diferem, a taxa não é constante."
+      },
+      {
+        "id": "math-ratio-remediate-unjustified-projection",
+        "misconception": "RATE_GUARANTEED_FUTURE",
+        "prompt": "Separe “a média observada foi...” de “se as condições permanecerem iguais, estimamos...”. Nomeie uma condição que pode alterar a taxa."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-math-compare-unit-rates",
+        "title": "Qual opção tem menor custo por unidade?",
+        "objective": "Construir e verificar taxas unitárias para comparar opções equivalentes, explicando limites da conclusão numérica.",
+        "context": "Investigação com preços e quantidades fictícios de produtos da mesma categoria, usando rótulos preparados pelo professor ou dados públicos sem identificação de pessoas.",
+        "materials": [
+          "Três cartões de produto com preço e massa/quantidade fictícios",
+          "Calculadora opcional",
+          "Tabela “total, quantidade, unidade, taxa unitária”"
+        ],
+        "instructions": "Em grupos, converta as quantidades para uma unidade comum, calcule o preço por unidade, confira cada resultado multiplicando de volta e escreva qual opção tem menor taxa. Depois indique uma informação que a conta não revela (por exemplo, qualidade, necessidade ou desperdício). O professor pode trocar os dados por uma investigação de vazão ou velocidade, mantendo a comparação de unidades.",
+        "evidence": "Tabela com unidades explícitas, cálculos conferidos, comparação justificada por taxas e uma limitação da conclusão.",
+        "safety": "Usar dados fictícios ou preços públicos; não solicitar renda familiar, hábitos de compra, marca usada em casa ou justificativa sobre decisões econômicas da família. Oferecer números alternativos para evitar exposição.",
+        "privacyGuard": "Não coletar nem inferir renda, condição financeira, hábitos de compra ou dados familiares dos estudantes.",
+        "ageRange": "6º ao 9º ano do Ensino Fundamental, com números e unidades graduados conforme a turma.",
+        "mediation": "O professor verifica se as opções são comparáveis e se a conversão está correta, pergunta que condições a taxa pressupõe e distingue “menor preço unitário” de “melhor produto para qualquer pessoa”.",
+        "rubric": [
+          {
+            "criterion": "Unidade e ordem da razão",
+            "emerging": "Divide na ordem contrária ou omite a unidade.",
+            "developing": "Calcula a taxa com apoio, mas precisa revisar a unidade.",
+            "proficient": "Organiza grandezas na ordem pedida e registra unidade coerente."
+          },
+          {
+            "criterion": "Comparação e verificação",
+            "emerging": "Compara somente totais.",
+            "developing": "Normaliza as quantidades, mas não confere o cálculo.",
+            "proficient": "Compara taxas na mesma unidade e verifica ao reconstruir os totais."
+          },
+          {
+            "criterion": "Interpretação",
+            "emerging": "Trata a taxa como recomendação universal.",
+            "developing": "Nomeia uma condição com orientação.",
+            "proficient": "Explica o que a taxa permite comparar e identifica ao menos um limite."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 24,
+    "sourceDossier": [
+      {
+        "title": "Ratios and Rate — Prealgebra 2e, seção 5.6",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/prealgebra-2e/pages/5-6-ratios-and-rate",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Distinção entre razão e taxa; escrita e simplificação de taxas; taxa unitária e preço unitário."
+        ],
+        "use": "Referência conceitual aberta para checagem. Questões, números, explicações e atividade do pacote são autorais; não reproduzem exercícios da fonte."
+      },
+      {
+        "title": "Developing Effective Fractions Instruction for Kindergarten Through 8th Grade",
+        "publisher": "Institute of Education Sciences / What Works Clearinghouse",
+        "url": "https://ies.ed.gov/ncee/wwc/Docs/practiceguide/fractions_pg_093010.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Raciocínio proporcional como compreensão multiplicativa entre quantidades; importância de apoiar conhecimentos prévios."
+        ],
+        "use": "Fundamenta progressão e checagem de concepções multiplicativas, sem alegar validação deste conteúdo ou alinhamento BNCC aprovado."
+      }
+    ],
+    "copyrightNote": "Questões, alternativas, explicações e atividade são autorais. As fontes apoiam a precisão conceitual e a progressão; o mapeamento oficial e a revisão pedagógica humana permanecem pendentes."
+  },
+  "questions": [
+    {
+      "id": "v5-math-ratio-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TILE_TRAYS",
+      "statement": "Uma oficina separa 18 azulejos igualmente em 6 bandejas. Quantos azulejos ficam em cada bandeja?",
+      "options": [
+        "3 azulejos",
+        "12 azulejos",
+        "24 azulejos",
+        "108 azulejos"
+      ],
+      "correctAnswer": "3 azulejos",
+      "explanation": "Para saber a quantidade por bandeja, dividimos 18 azulejos por 6 bandejas: 3 azulejos por bandeja.",
+      "hint": "A unidade que queremos é “por bandeja”; divida o total pelo número de bandejas.",
+      "errorFocus": "Multiplicar as grandezas em vez de encontrar a quantidade por unidade",
+      "misconceptions": {
+        "12 azulejos": [
+          "ADD_INSTEAD_OF_DIVIDE"
+        ],
+        "24 azulejos": [
+          "MULTIPLY_TOTAL"
+        ],
+        "108 azulejos": [
+          "IGNORE_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "JUICE_BOTTLES",
+      "statement": "Quatro garrafas iguais contêm juntas 6 litros de suco. Qual é a quantidade de suco por garrafa?",
+      "options": [
+        "2 litros",
+        "1,5 litro",
+        "10 litros",
+        "24 litros"
+      ],
+      "correctAnswer": "1,5 litro",
+      "explanation": "A taxa por garrafa é 6 litros ÷ 4 garrafas = 1,5 litro por garrafa.",
+      "hint": "Divida os litros pelo número de garrafas e mantenha a unidade no resultado.",
+      "errorFocus": "Inverter a ordem da divisão ou descartar a unidade",
+      "misconceptions": {
+        "2 litros": [
+          "INVERTED_RATE"
+        ],
+        "10 litros": [
+          "ADD_QUANTITIES"
+        ],
+        "24 litros": [
+          "UNIT_OMISSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "POSTER_PRINTING",
+      "statement": "Uma gráfica imprime 126 convites em 7 minutos, mantendo o mesmo ritmo. Quantos convites imprime por minuto?",
+      "options": [
+        "119 convites por minuto",
+        "133 convites por minuto",
+        "18 convites por minuto",
+        "882 convites por minuto"
+      ],
+      "correctAnswer": "18 convites por minuto",
+      "explanation": "126 ÷ 7 = 18. A unidade da taxa é convite por minuto.",
+      "hint": "Divida a quantidade impressa pelo tempo.",
+      "errorFocus": "Confundir diferença com taxa",
+      "misconceptions": {
+        "119 convites por minuto": [
+          "SUBTRACT_FOR_RATE"
+        ],
+        "133 convites por minuto": [
+          "ADD_FOR_RATE"
+        ],
+        "882 convites por minuto": [
+          "MULTIPLY_FOR_RATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CONVERT",
+      "contextFamily": "PARCEL_MASS",
+      "statement": "Uma equipe divide 3,6 kg de material igualmente entre 12 pacotes. Quantos gramas vão em cada pacote?",
+      "options": [
+        "30 g",
+        "3 g",
+        "4 320 g",
+        "300 g"
+      ],
+      "correctAnswer": "300 g",
+      "explanation": "3,6 kg ÷ 12 = 0,3 kg por pacote. Como 0,3 kg = 300 g, cada pacote recebe 300 g.",
+      "hint": "Encontre primeiro a massa em kg por pacote; depois converta kg para g.",
+      "errorFocus": "Esquecer a conversão de kg para g",
+      "misconceptions": {
+        "30 g": [
+          "KG_EQUALS_GRAMS"
+        ],
+        "3 g": [
+          "DECIMAL_SHIFT_WRONG"
+        ],
+        "4 320 g": [
+          "MULTIPLY_TOTAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "UNIT_PRICE",
+      "contextFamily": "ORANGES_PER_KG",
+      "statement": "Cinco quilogramas de laranjas custam R$ 40,00. Mantido o mesmo preço por quilograma, quanto custa 1 kg?",
+      "options": [
+        "R$ 8,00",
+        "R$ 5,00",
+        "R$ 35,00",
+        "R$ 200,00"
+      ],
+      "correctAnswer": "R$ 8,00",
+      "explanation": "O preço por quilograma é R$ 40,00 ÷ 5 kg = R$ 8,00/kg.",
+      "hint": "Preço unitário é o custo dividido pela quantidade de quilogramas.",
+      "errorFocus": "Subtrair ou multiplicar quantidade e preço",
+      "misconceptions": {
+        "R$ 5,00": [
+          "SUBTRACT_TO_FIND_UNIT_PRICE"
+        ],
+        "R$ 35,00": [
+          "MULTIPLY_PRICE"
+        ],
+        "R$ 200,00": [
+          "COST_AS_QUANTITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "COFFEE_PACKAGES",
+      "statement": "Um pacote de café de 750 g custa R$ 24,00 e outro de 1,2 kg custa R$ 45,00. Qual tem menor preço por quilograma?",
+      "options": [
+        "O pacote de 1,2 kg: R$ 27,00/kg",
+        "O pacote de 750 g: R$ 32,00/kg",
+        "Os dois custam R$ 24,00/kg",
+        "Não é possível comparar mesmo convertendo as massas"
+      ],
+      "correctAnswer": "O pacote de 750 g: R$ 32,00/kg",
+      "explanation": "750 g = 0,75 kg; R$ 24 ÷ 0,75 = R$ 32/kg. O outro custa R$ 45 ÷ 1,2 = R$ 37,50/kg. O primeiro tem menor preço por kg.",
+      "hint": "Converta as duas massas para kg antes de comparar o preço por kg.",
+      "errorFocus": "Comparar o preço total quando os tamanhos diferem",
+      "misconceptions": {
+        "O pacote de 1,2 kg: R$ 27,00/kg": [
+          "TOTAL_PRICE_ONLY"
+        ],
+        "Os dois custam R$ 24,00/kg": [
+          "MIXED_MASS_UNITS"
+        ],
+        "Não é possível comparar mesmo convertendo as massas": [
+          "DIVIDE_MASS_BY_PRICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "DATA_TRANSFER",
+      "statement": "Um arquivo de 480 MB é transferido em 6 minutos a uma velocidade constante. Qual é a taxa média de transferência?",
+      "options": [
+        "474 MB por minuto",
+        "486 MB por minuto",
+        "80 MB por minuto",
+        "2 880 MB por minuto"
+      ],
+      "correctAnswer": "80 MB por minuto",
+      "explanation": "480 MB ÷ 6 min = 80 MB por minuto. Essa é a média sob a condição informada de velocidade constante.",
+      "hint": "Divida o tamanho do arquivo pelo tempo e mantenha MB/min.",
+      "errorFocus": "Confundir a taxa com o total transferido",
+      "misconceptions": {
+        "474 MB por minuto": [
+          "SUBTRACT_SIZE_TIME"
+        ],
+        "486 MB por minuto": [
+          "ADD_SIZE_TIME"
+        ],
+        "2 880 MB por minuto": [
+          "MULTIPLY_SIZE_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PRINTER_SPEEDS",
+      "statement": "A impressora A produz 198 páginas em 9 minutos; a B produz 250 páginas em 10 minutos. Qual tem maior taxa de impressão?",
+      "options": [
+        "A impressora A, com 22 páginas por minuto",
+        "As duas, com 20 páginas por minuto",
+        "A impressora A, porque imprime menos páginas",
+        "A impressora B, com 25 páginas por minuto"
+      ],
+      "correctAnswer": "A impressora B, com 25 páginas por minuto",
+      "explanation": "A: 198 ÷ 9 = 22 páginas/min. B: 250 ÷ 10 = 25 páginas/min. Comparar as taxas por minuto mostra que B é mais rápida.",
+      "hint": "Calcule páginas por minuto para as duas, sem comparar apenas os totais.",
+      "errorFocus": "Comparar totais obtidos em tempos diferentes",
+      "misconceptions": {
+        "A impressora A, com 22 páginas por minuto": [
+          "TOTALS_WITHOUT_TIME"
+        ],
+        "As duas, com 20 páginas por minuto": [
+          "WRONG_DIVISOR"
+        ],
+        "A impressora A, porque imprime menos páginas": [
+          "LOWER_TOTAL_IS_FASTER"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CONVERT",
+      "contextFamily": "RIBBON_SEGMENTS",
+      "statement": "Uma fita de 2,4 m será cortada em 6 partes iguais. Quantos centímetros terá cada parte?",
+      "options": [
+        "40 cm",
+        "4 cm",
+        "400 cm",
+        "14,4 cm"
+      ],
+      "correctAnswer": "40 cm",
+      "explanation": "2,4 m ÷ 6 = 0,4 m por parte. Como 1 m = 100 cm, 0,4 m = 40 cm.",
+      "hint": "Divida primeiro e converta metros em centímetros no final.",
+      "errorFocus": "Fazer a conversão decimal incorretamente",
+      "misconceptions": {
+        "4 cm": [
+          "METRE_TO_CM_WRONG"
+        ],
+        "400 cm": [
+          "MULTIPLY_BEFORE_DIVIDE"
+        ],
+        "14,4 cm": [
+          "DECIMAL_UNIT_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TEST_PROPORTIONALITY",
+      "contextFamily": "DELIVERY_BASE_FEE",
+      "statement": "Um serviço cobra R$ 6,00 de taxa fixa mais R$ 2,00 por quilômetro. O custo por quilômetro é constante para qualquer distância?",
+      "options": [
+        "Sim. O custo é sempre R$ 2,00 por km, incluindo a taxa fixa.",
+        "Não. A taxa fixa faz o custo médio por km depender da distância.",
+        "Sim. A taxa fixa pode ser dividida por qualquer distância e desaparece.",
+        "Não. O custo total é sempre R$ 6,00."
+      ],
+      "correctAnswer": "Não. A taxa fixa faz o custo médio por km depender da distância.",
+      "explanation": "Para 2 km, o total é R$ 10 e a média é R$ 5/km; para 8 km, R$ 22 e R$ 2,75/km. O valor por km não é constante porque há uma parcela fixa.",
+      "hint": "Compare o custo médio em duas distâncias; não ignore a taxa fixa.",
+      "errorFocus": "Assumir proporcionalidade quando existe valor inicial fixo",
+      "misconceptions": {
+        "Sim. O custo é sempre R$ 2,00 por km, incluindo a taxa fixa.": [
+          "IGNORE_FIXED_FEE"
+        ],
+        "Sim. A taxa fixa pode ser dividida por qualquer distância e desaparece.": [
+          "FIXED_FEE_IS_RATE"
+        ],
+        "Não. O custo total é sempre R$ 6,00.": [
+          "TOTAL_FIXED"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "WATER_FLOW_RATES",
+      "statement": "Uma torneira enche 45 L em 6 min; outra enche 65 L em 10 min. Qual tem maior vazão média?",
+      "options": [
+        "A segunda: 6,5 L/min",
+        "A segunda: 10 L/min",
+        "A primeira: 7,5 L/min",
+        "As duas: 5 L/min"
+      ],
+      "correctAnswer": "A primeira: 7,5 L/min",
+      "explanation": "45 ÷ 6 = 7,5 L/min; 65 ÷ 10 = 6,5 L/min. A primeira tem maior vazão média.",
+      "hint": "Compare litros por minuto, não só o volume total.",
+      "errorFocus": "Escolher a maior quantidade total sem normalizar o tempo",
+      "misconceptions": {
+        "A segunda: 6,5 L/min": [
+          "COMPARE_TOTAL_ONLY"
+        ],
+        "A segunda: 10 L/min": [
+          "DIVIDE_TIME_BY_VOLUME"
+        ],
+        "As duas: 5 L/min": [
+          "AVERAGE_AS_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SOLVE_INVERSE",
+      "contextFamily": "BULK_PENCILS",
+      "statement": "Quatro caixas iguais contêm 31,60 unidades monetárias em lápis, com o mesmo preço por caixa. Quanto custam 11 caixas?",
+      "options": [
+        "R$ 35,60",
+        "R$ 42,60",
+        "R$ 347,60",
+        "R$ 86,90"
+      ],
+      "correctAnswer": "R$ 86,90",
+      "explanation": "Cada caixa custa R$ 31,60 ÷ 4 = R$ 7,90. Para 11 caixas: 11 × R$ 7,90 = R$ 86,90.",
+      "hint": "Encontre o valor por caixa antes de multiplicar pela nova quantidade.",
+      "errorFocus": "Escalar o total sem calcular o fator corretamente",
+      "misconceptions": {
+        "R$ 35,60": [
+          "ADD_BOX_DIFFERENCE"
+        ],
+        "R$ 42,60": [
+          "WRONG_SCALE_FACTOR"
+        ],
+        "R$ 347,60": [
+          "MULTIPLY_TOTAL_BY_NEW_COUNT"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SCALE_RECIPE",
+      "contextFamily": "RECIPE_SERVINGS",
+      "statement": "Uma receita usa 350 g de farinha para 5 porções. Mantendo a proporção, quanta farinha será necessária para 14 porções?",
+      "options": [
+        "980 g",
+        "490 g",
+        "945 g",
+        "2 450 g"
+      ],
+      "correctAnswer": "980 g",
+      "explanation": "350 g ÷ 5 = 70 g por porção; 70 × 14 = 980 g.",
+      "hint": "Calcule a quantidade por porção e depois multiplique por 14.",
+      "errorFocus": "Somar porções sem manter a razão",
+      "misconceptions": {
+        "490 g": [
+          "ADD_SERVINGS_ONLY"
+        ],
+        "945 g": [
+          "SUBTRACT_TO_SCALE"
+        ],
+        "2 450 g": [
+          "MULTIPLY_TOTAL_BY_SERVINGS"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TRANSIT_PASS",
+      "statement": "Um cartão de 10 viagens custa R$ 55,00 e outro de 15 viagens custa R$ 81,00. Qual tem menor custo por viagem?",
+      "options": [
+        "O cartão de 10 viagens: R$ 5,50 por viagem",
+        "O cartão de 15 viagens: R$ 5,40 por viagem",
+        "Os dois: R$ 6,00 por viagem",
+        "O de 15 viagens: R$ 26,00 por viagem"
+      ],
+      "correctAnswer": "O cartão de 15 viagens: R$ 5,40 por viagem",
+      "explanation": "R$ 55 ÷ 10 = R$ 5,50 por viagem; R$ 81 ÷ 15 = R$ 5,40. O segundo é ligeiramente mais barato por viagem.",
+      "hint": "Divida o preço de cada cartão pelo número de viagens incluídas.",
+      "errorFocus": "Comparar o preço total sem considerar quantas viagens cada cartão cobre",
+      "misconceptions": {
+        "O cartão de 10 viagens: R$ 5,50 por viagem": [
+          "TOTAL_PRICE_ONLY"
+        ],
+        "Os dois: R$ 6,00 por viagem": [
+          "SUBTRACT_TRIPS"
+        ],
+        "O de 15 viagens: R$ 26,00 por viagem": [
+          "WRONG_RATE_DIRECTION"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET_SCALE",
+      "contextFamily": "MAP_DISTANCE",
+      "statement": "Em um mapa, 2,5 cm representam 15 km. Mantida a escala, quantos quilômetros representam 4 cm?",
+      "options": [
+        "6 km",
+        "16,5 km",
+        "24 km",
+        "60 km"
+      ],
+      "correctAnswer": "24 km",
+      "explanation": "A taxa é 15 km ÷ 2,5 cm = 6 km/cm. Então 4 cm representam 4 × 6 = 24 km.",
+      "hint": "Encontre quantos quilômetros correspondem a 1 cm.",
+      "errorFocus": "Inverter mapa por distância real ou somar a diferença",
+      "misconceptions": {
+        "6 km": [
+          "MAP_RATE_INVERTED"
+        ],
+        "16,5 km": [
+          "ADD_SCALE_DIFFERENCE"
+        ],
+        "60 km": [
+          "MULTIPLY_WITHOUT_UNIT_RATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CONVERT_RATE",
+      "contextFamily": "CYCLING_SPEED",
+      "statement": "Uma ciclista percorre 9 km em 30 minutos, mantendo o ritmo. Qual é sua velocidade média em km/h?",
+      "options": [
+        "0,3 km/h",
+        "4,5 km/h",
+        "270 km/h",
+        "18 km/h"
+      ],
+      "correctAnswer": "18 km/h",
+      "explanation": "30 minutos correspondem a 0,5 hora. 9 km ÷ 0,5 h = 18 km/h.",
+      "hint": "Converta o tempo para horas antes de calcular km por hora.",
+      "errorFocus": "Usar 30 como se fossem 30 horas",
+      "misconceptions": {
+        "0,3 km/h": [
+          "MINUTES_AS_HOURS"
+        ],
+        "4,5 km/h": [
+          "DIVIDE_BY_30_AFTER_CONVERSION"
+        ],
+        "270 km/h": [
+          "MULTIPLY_DISTANCE_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-transfer-07",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "RECOGNIZE_LIMIT",
+      "contextFamily": "CONSTANT_RATE_EVIDENCE",
+      "statement": "Uma máquina produziu 120 peças em 4 horas ontem. Sem outra informação, o que se pode afirmar sobre as próximas 4 horas?",
+      "options": [
+        "A taxa média de ontem foi 30 peças/h; não sabemos se ela será mantida.",
+        "Ela certamente produzirá mais 120 peças.",
+        "Sua taxa é sempre 30 peças/h em qualquer condição.",
+        "Ela produzirá 480 peças porque 120 × 4 = 480."
+      ],
+      "correctAnswer": "A taxa média de ontem foi 30 peças/h; não sabemos se ela será mantida.",
+      "explanation": "Os dados permitem calcular a média do período observado, mas não provam que as condições futuras serão iguais.",
+      "hint": "Separe o que foi medido do que precisaria ser assumido para prever.",
+      "errorFocus": "Generalizar uma taxa observada como garantia futura",
+      "misconceptions": {
+        "Ela certamente produzirá mais 120 peças.": [
+          "RATE_GUARANTEED_FUTURE"
+        ],
+        "Sua taxa é sempre 30 peças/h em qualquer condição.": [
+          "RATE_ALWAYS_CONSTANT"
+        ],
+        "Ela produzirá 480 peças porque 120 × 4 = 480.": [
+          "MULTIPLY_TOTAL_BY_HOURS"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "INVERTED_RATE_ERROR",
+      "statement": "Um estudante percorreu 240 km com 20 L de combustível e calculou 0,083 km/L fazendo 20 ÷ 240. Como corrigir?",
+      "options": [
+        "Dividir 20 por 240 e escrever 12 L/km.",
+        "Dividir 240 km por 20 L: 12 km/L.",
+        "Multiplicar 240 por 20: 4 800 km/L.",
+        "Subtrair 20 de 240: 220 km/L."
+      ],
+      "correctAnswer": "Dividir 240 km por 20 L: 12 km/L.",
+      "explanation": "A pergunta pede quilômetros por litro, então quilômetros ficam no numerador: 240 km ÷ 20 L = 12 km/L.",
+      "hint": "A ordem das unidades da pergunta indica a ordem da divisão.",
+      "errorFocus": "Inverter numerador e denominador da taxa",
+      "misconceptions": {
+        "Dividir 20 por 240 e escrever 12 L/km.": [
+          "RATE_DIRECTION_REVERSED"
+        ],
+        "Multiplicar 240 por 20: 4 800 km/L.": [
+          "UNIT_LABEL_PATCH"
+        ],
+        "Subtrair 20 de 240: 220 km/L.": [
+          "MULTIPLY_FOR_RATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "ADDITIVE_SCALING_ERROR",
+      "statement": "Uma equipe monta 6 kits com 9 peças em cada um. Quantas peças são necessárias para 10 kits iguais?",
+      "options": [
+        "13 peças",
+        "54 peças",
+        "90 peças",
+        "60 peças"
+      ],
+      "correctAnswer": "90 peças",
+      "explanation": "A quantidade por kit é 9 peças; para 10 kits, 9 × 10 = 90. Aumentar 4 kits acrescenta 36 peças, não apenas 4.",
+      "hint": "Use a quantidade por kit como fator, não a diferença entre números de kits.",
+      "errorFocus": "Escalar uma relação multiplicativa por adição",
+      "misconceptions": {
+        "13 peças": [
+          "ADD_KIT_DIFFERENCE"
+        ],
+        "54 peças": [
+          "KEEP_ORIGINAL_TOTAL"
+        ],
+        "60 peças": [
+          "KITS_AS_PIECES"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "MIXED_TIME_UNITS",
+      "statement": "Um sensor registra 800 m em 4 minutos. Qual é a taxa em metros por hora, supondo o mesmo ritmo?",
+      "options": [
+        "200 m/h",
+        "3 200 m/h",
+        "48 000 m/h",
+        "12 000 m/h"
+      ],
+      "correctAnswer": "12 000 m/h",
+      "explanation": "800 ÷ 4 = 200 m/min. Como há 60 minutos em uma hora, 200 × 60 = 12 000 m/h.",
+      "hint": "Calcule por minuto e depois multiplique por 60 min/h.",
+      "errorFocus": "Confundir taxa por minuto com taxa por hora",
+      "misconceptions": {
+        "200 m/h": [
+          "MINUTE_RATE_AS_HOUR"
+        ],
+        "3 200 m/h": [
+          "DIVIDE_BY_60"
+        ],
+        "48 000 m/h": [
+          "MULTIPLY_BY_4"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "PACKAGE_UNIT_PRICE",
+      "statement": "Uma embalagem com 400 g custa R$ 12,00. Qual seria o preço por quilograma se o mesmo preço proporcional fosse mantido?",
+      "options": [
+        "R$ 30,00/kg",
+        "R$ 4,80/kg",
+        "R$ 12,00/kg",
+        "R$ 48,00/kg"
+      ],
+      "correctAnswer": "R$ 30,00/kg",
+      "explanation": "400 g = 0,4 kg. R$ 12 ÷ 0,4 kg = R$ 30/kg.",
+      "hint": "Converta 400 g para 0,4 kg antes de dividir o preço pela massa.",
+      "errorFocus": "Usar a quantidade em gramas como se fosse quilogramas",
+      "misconceptions": {
+        "R$ 4,80/kg": [
+          "GRAMS_AS_KG"
+        ],
+        "R$ 12,00/kg": [
+          "MULTIPLY_PRICE_BY_MASS"
+        ],
+        "R$ 48,00/kg": [
+          "PRICE_TOTAL_AS_UNIT_PRICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-lock-05",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "REPAIR",
+      "contextFamily": "SUBSCRIPTION_FIXED_PLUS_USAGE",
+      "statement": "Um aplicativo cobra R$ 12,00 de mensalidade fixa mais R$ 3,00 por aula assistida. O custo médio por aula é sempre R$ 3,00?",
+      "options": [
+        "Sim. A mensalidade não faz parte do custo.",
+        "Não. A mensalidade fixa também precisa ser dividida pelo número de aulas.",
+        "Sim. O custo médio é sempre R$ 15,00 por aula.",
+        "Não. O custo total é sempre R$ 12,00."
+      ],
+      "correctAnswer": "Não. A mensalidade fixa também precisa ser dividida pelo número de aulas.",
+      "explanation": "Com 1 aula, o custo total é R$ 15; com 6, é R$ 30. A média por aula é diferente: R$ 15 e R$ 5, respectivamente.",
+      "hint": "Inclua a mensalidade no custo total antes de calcular por aula.",
+      "errorFocus": "Ignorar parcela fixa ao encontrar média unitária",
+      "misconceptions": {
+        "Sim. A mensalidade não faz parte do custo.": [
+          "IGNORE_SUBSCRIPTION"
+        ],
+        "Sim. O custo médio é sempre R$ 15,00 por aula.": [
+          "ADD_FIXED_AND_VARIABLE_AS_RATE"
+        ],
+        "Não. O custo total é sempre R$ 12,00.": [
+          "TOTAL_FIXED"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY_UNITS",
+      "contextFamily": "NEW_REVIEW_UNIT_LABEL",
+      "statement": "Uma bicicleta percorreu 42 km em 3 horas. Qual expressão representa a taxa média em quilômetros por hora?",
+      "options": [
+        "3 h ÷ 42 km = 14 km/h",
+        "42 km × 3 h = 126 km/h",
+        "42 km ÷ 3 h = 14 km/h",
+        "42 km − 3 h = 39 km/h"
+      ],
+      "correctAnswer": "42 km ÷ 3 h = 14 km/h",
+      "explanation": "A distância deve ser dividida pelo tempo para obter quilômetros por hora: 14 km/h.",
+      "hint": "Confira se a unidade final é km dividido por h.",
+      "errorFocus": "Ignorar a ordem das unidades",
+      "misconceptions": {
+        "3 h ÷ 42 km = 14 km/h": [
+          "TIME_OVER_DISTANCE"
+        ],
+        "42 km × 3 h = 126 km/h": [
+          "MULTIPLY_UNITS"
+        ],
+        "42 km − 3 h = 39 km/h": [
+          "SUBTRACT_UNITS"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "NEW_REVIEW_UNIT_PRICE",
+      "statement": "Um pacote de 6 canetas custa R$ 18,00 e outro de 10 custa R$ 28,00. Qual tem menor preço por caneta?",
+      "options": [
+        "O pacote de 6: R$ 3,00 por caneta",
+        "Os dois: R$ 4,00 por caneta",
+        "O pacote de 10: R$ 10,00 por caneta",
+        "O pacote de 10: R$ 2,80 por caneta"
+      ],
+      "correctAnswer": "O pacote de 10: R$ 2,80 por caneta",
+      "explanation": "R$ 18 ÷ 6 = R$ 3,00; R$ 28 ÷ 10 = R$ 2,80. A segunda embalagem tem menor preço unitário.",
+      "hint": "Compare o preço dividido pelo número de canetas.",
+      "errorFocus": "Confundir tamanho do pacote com menor custo unitário",
+      "misconceptions": {
+        "O pacote de 6: R$ 3,00 por caneta": [
+          "TOTAL_ONLY"
+        ],
+        "Os dois: R$ 4,00 por caneta": [
+          "SUBTRACT_ITEMS"
+        ],
+        "O pacote de 10: R$ 10,00 por caneta": [
+          "ITEMS_OVER_PRICE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SOLVE_INVERSE",
+      "contextFamily": "NEW_REVIEW_OUTPUT",
+      "statement": "Uma bomba mantém a vazão de 12 L por minuto durante 8 minutos. Quantos litros ela bombeia?",
+      "options": [
+        "96 L",
+        "20 L",
+        "84 L",
+        "120 L"
+      ],
+      "correctAnswer": "96 L",
+      "explanation": "12 L/min × 8 min = 96 L; as unidades “minuto” se cancelam.",
+      "hint": "Multiplique a taxa por minuto pelo número de minutos.",
+      "errorFocus": "Somar ou subtrair em vez de usar taxa × tempo",
+      "misconceptions": {
+        "20 L": [
+          "ADD_RATE_AND_TIME"
+        ],
+        "84 L": [
+          "SUBTRACT_RATE_TIME"
+        ],
+        "120 L": [
+          "DIVIDE_RATE_BY_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CONVERT_RATE",
+      "contextFamily": "NEW_REVIEW_MINUTE_CONVERSION",
+      "statement": "Uma pessoa caminha 1,8 km em 24 minutos. Qual é a velocidade média em km/h?",
+      "options": [
+        "0,075 km/h",
+        "4,5 km/h",
+        "3,2 km/h",
+        "43,2 km/h"
+      ],
+      "correctAnswer": "4,5 km/h",
+      "explanation": "24 min = 0,4 h. Então 1,8 km ÷ 0,4 h = 4,5 km/h.",
+      "hint": "Converta minutos para horas antes de dividir a distância.",
+      "errorFocus": "Tratar minutos como horas ou converter incorretamente",
+      "misconceptions": {
+        "0,075 km/h": [
+          "MINUTES_AS_HOURS"
+        ],
+        "3,2 km/h": [
+          "DISTANCE_OVER_MINUTES_AS_HOUR"
+        ],
+        "43,2 km/h": [
+          "MULTIPLY_DISTANCE_BY_HOUR"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET_ORDER",
+      "contextFamily": "NEW_REVIEW_RATIO_ORDER",
+      "statement": "Uma mistura usa 2 copos de concentrado para 5 copos de água. Qual razão representa concentrado para água?",
+      "options": [
+        "5 para 2",
+        "2 para 7",
+        "2 para 5",
+        "7 para 2"
+      ],
+      "correctAnswer": "2 para 5",
+      "explanation": "A ordem pedida é concentrado primeiro e água depois; por isso, a razão é 2:5.",
+      "hint": "Mantenha a mesma ordem das grandezas indicada na pergunta.",
+      "errorFocus": "Inverter a ordem da razão",
+      "misconceptions": {
+        "5 para 2": [
+          "REVERSE_ORDER"
+        ],
+        "2 para 7": [
+          "ADD_PARTS_AS_RATIO"
+        ],
+        "7 para 2": [
+          "TOTAL_AS_PART"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TEST_PROPORTIONALITY",
+      "contextFamily": "NEW_REVIEW_FIXED_COST",
+      "statement": "Uma gráfica cobra R$ 10,00 de preparação mais R$ 2,00 por cartaz. O custo total é diretamente proporcional ao número de cartazes?",
+      "options": [
+        "Sim, porque cada cartaz custa R$ 2,00.",
+        "Sim, porque o custo aumenta quando a quantidade aumenta.",
+        "Não, porque o custo por cartaz é sempre R$ 10,00.",
+        "Não, pois mesmo com zero cartazes o custo seria R$ 10,00."
+      ],
+      "correctAnswer": "Não, pois mesmo com zero cartazes o custo seria R$ 10,00.",
+      "explanation": "Em uma relação diretamente proporcional, zero unidades correspondem a custo zero. A taxa variável não elimina a taxa inicial.",
+      "hint": "Teste o que acontece com o total quando a quantidade é zero.",
+      "errorFocus": "Confundir crescimento com proporcionalidade direta",
+      "misconceptions": {
+        "Sim, porque cada cartaz custa R$ 2,00.": [
+          "VARIABLE_RATE_MEANS_PROPORTIONAL"
+        ],
+        "Sim, porque o custo aumenta quando a quantidade aumenta.": [
+          "GROWTH_MEANS_PROPORTIONAL"
+        ],
+        "Não, porque o custo por cartaz é sempre R$ 10,00.": [
+          "FIXED_FEE_IS_UNIT_RATE"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SOLVE_INVERSE",
+      "contextFamily": "NEW_REVIEW_TIME",
+      "statement": "Um equipamento processa 360 documentos a uma taxa constante de 45 documentos por hora. Quanto tempo leva?",
+      "options": [
+        "8 horas",
+        "315 horas",
+        "405 horas",
+        "16 horas"
+      ],
+      "correctAnswer": "8 horas",
+      "explanation": "Tempo = total ÷ taxa = 360 documentos ÷ 45 documentos/h = 8 h.",
+      "hint": "Divida a quantidade total pela taxa; confira que documentos se cancelam.",
+      "errorFocus": "Multiplicar o total pela taxa ou subtrair valores",
+      "misconceptions": {
+        "315 horas": [
+          "TOTAL_TIMES_RATE"
+        ],
+        "405 horas": [
+          "SUBTRACT_TOTAL_RATE"
+        ],
+        "16 horas": [
+          "RATE_OVER_TOTAL"
+        ]
+      }
+    },
+    {
+      "id": "v5-math-ratio-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE_CLAIM",
+      "contextFamily": "NEW_REVIEW_RATE_CLAIM",
+      "statement": "Dois ciclistas percorreram distâncias diferentes em tempos diferentes. Um colega diz que o mais rápido foi quem percorreu a maior distância. Que informação resolve melhor a comparação?",
+      "options": [
+        "Apenas a maior distância total.",
+        "A distância por unidade de tempo de cada ciclista.",
+        "Apenas o maior tempo total.",
+        "A diferença entre as distâncias, sem considerar o tempo."
+      ],
+      "correctAnswer": "A distância por unidade de tempo de cada ciclista.",
+      "explanation": "A rapidez média compara distância por tempo. Sem normalizar pelo tempo, a distância total não basta.",
+      "hint": "Calcule a taxa com a mesma unidade de tempo para os dois.",
+      "errorFocus": "Comparar totais sem normalizar pelo tempo",
+      "misconceptions": {
+        "Apenas a maior distância total.": [
+          "DISTANCE_TOTAL_ONLY"
+        ],
+        "Apenas o maior tempo total.": [
+          "TIME_TOTAL_ONLY"
+        ],
+        "A diferença entre as distâncias, sem considerar o tempo.": [
+          "SUBTRACT_DISTANCES"
+        ]
+      }
+    }
+  ]
+}

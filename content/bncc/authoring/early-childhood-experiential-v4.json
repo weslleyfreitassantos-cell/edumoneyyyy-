@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "tec-escola.bncc.experiential-evidence.v1",
+  "campaignId": "TECESCOLA_BNCC_COMPLETE_LEARNING_AUTONOMOUS_V7",
+  "officialCode": "EI01CG02",
+  "stage": "EDUCACAO_INFANTIL",
+  "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+  "componentCode": "CG",
+  "ageRange": "Bebes, zero a 1 ano e 6 meses",
+  "fieldOfExperience": "Corpo, gestos e movimentos",
+  "descriptor": "Experimentar as possibilidades corporais nas brincadeiras e interações em ambientes acolhedores e desafiantes.",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 49
+  },
+  "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+  "evidenceMode": "EDUCATOR_MEDIATED_OBSERVATION",
+  "learningDesign": {
+    "title": "Experimentar possibilidades corporais em brincadeiras acolhedoras",
+    "objective": "Oferecer ao bebê oportunidades seguras para explorar movimentos do corpo em brincadeiras e interações, acompanhando seus sinais, seu ritmo e sua escolha de participar ou pausar.",
+    "experience": "O educador organiza um espaço protegido, com superfície estável e poucos materiais seguros, e oferece uma interação breve com voz, olhar, objetos e pausas. O adulto acompanha os movimentos espontâneos do bebê, ajusta a distância e o tempo da proposta e responde sem exigir uma forma específica de brincar ou deslocar-se.",
+    "possibleInvitations": [
+      "Disponibilizar um objeto seguro ligeiramente ao alcance para que o bebê escolha aproximar-se, tocar, observar ou recusar.",
+      "Brincar com uma canção curta, alternando movimento e pausa para que o bebê acompanhe, interrompa ou retome a interação.",
+      "Oferecer diferentes posições seguras, conforme orientação da equipe, observando como o bebê explora mãos, braços, pernas, tronco e olhar.",
+      "Repetir uma brincadeira conhecida em pequenas variações de espaço, ritmo ou objeto, respeitando sinais de interesse e cansaço."
+    ],
+    "educatorPrompts": [
+      "Você quer se aproximar, tocar ou apenas observar?",
+      "Vou fazer uma pausa e esperar seu próximo movimento.",
+      "Percebi que você virou o corpo; vou ajustar o espaço para você ficar confortável.",
+      "Podemos repetir ou parar quando você sinalizar."
+    ],
+    "observationCriteria": [
+      "Explora uma ou mais possibilidades corporais durante uma brincadeira ou interação, por movimento, postura, olhar, toque ou pausa.",
+      "Demonstra interesse, recusa ou necessidade de continuidade por sinais corporais e tem esses sinais acolhidos pelo adulto.",
+      "Experimenta uma variação de posição, ritmo, objeto ou distância sem que o adulto exija deslocamento, imitação ou desempenho.",
+      "Participa por períodos breves ou prolongados, podendo repetir, alterar, interromper ou observar a proposta.",
+      "Tem acesso a um espaço previsível, seguro e ajustado às suas necessidades de comunicação, sensorialidade e movimento."
+    ],
+    "evidenceRecord": {
+      "requiredFields": ["date", "context", "offeredInvitation", "observedBodyExploration", "childSignals", "educatorAdjustment", "nextInvitation"],
+      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "privacy": "Registrar somente o necessário no contexto institucional autorizado; não incluir diagnóstico, não expor a imagem da criança e não inferir desenvolvimento além do observado."
+    },
+    "adaptations": [
+      "Reduzir ruídos, luzes, objetos e duração quando houver sinais de sobrecarga ou cansaço.",
+      "Oferecer apoio postural, posição e espaço conforme orientação da equipe responsável, sem forçar movimentos.",
+      "Permitir participação por olhar, gesto, vocalização, toque, pausa ou outro recurso de comunicação disponível.",
+      "Manter objetos grandes, íntegros, laváveis e apropriados à faixa etária, com supervisão contínua do adulto."
+    ]
+  },
+  "contentStatus": {
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "studentQuiz": "NOT_CREATED",
+    "humanApproval": "NOT_GRANTED"
+  }
+}

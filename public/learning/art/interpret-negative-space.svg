@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Forma isolada em espaço vazio</title>
+  <desc id="desc">Um pequeno retângulo vermelho perto da borda superior direita contrasta com um campo claro amplo e quase sem outros elementos.</desc>
+  <rect width="600" height="360" fill="#f1eee7"/>
+  <rect x="455" y="45" width="62" height="37" rx="4" fill="#c84c3b"/>
+</svg>

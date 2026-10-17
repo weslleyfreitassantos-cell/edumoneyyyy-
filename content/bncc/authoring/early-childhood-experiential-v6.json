@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "tec-escola.bncc.experiential-evidence.v1",
+  "campaignId": "TECESCOLA_BNCC_COMPLETE_LEARNING_AUTONOMOUS_V7",
+  "officialCode": "EI01CG04",
+  "stage": "EDUCACAO_INFANTIL",
+  "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+  "componentCode": "CG",
+  "ageRange": "Bebes, zero a 1 ano e 6 meses",
+  "fieldOfExperience": "Corpo, gestos e movimentos",
+  "descriptor": "Participar do cuidado do seu corpo e da promoção do seu bem-estar.",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 49
+  },
+  "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+  "evidenceMode": "EDUCATOR_MEDIATED_OBSERVATION",
+  "learningDesign": {
+    "title": "Participar dos cuidados do corpo com respeito e segurança",
+    "objective": "Oferecer ao bebê oportunidades de participar das rotinas de cuidado e bem-estar, reconhecendo suas formas de comunicação, seu conforto e sua possibilidade de escolher, antecipar ou interromper a interação.",
+    "experience": "Durante uma rotina real de cuidado, o educador antecipa com voz, gesto ou recurso visual o que vai acontecer, aguarda sinais do bebê e oferece pequenas possibilidades de participação, como estender a mão, escolher um objeto, ajustar a posição ou comunicar pausa. O adulto mantém o cuidado responsivo e não transforma a participação em teste de independência.",
+    "possibleInvitations": [
+      "Anunciar uma etapa do cuidado e esperar o olhar, gesto, movimento ou vocalização do bebê antes de prosseguir quando for seguro.",
+      "Oferecer uma escolha simples entre dois objetos adequados à rotina, como um pano macio ou um brinquedo seguro para acompanhar o cuidado.",
+      "Convidar o bebê a movimentar uma parte do corpo durante a troca de roupa, higiene ou alimentação, respeitando sua posição e seu ritmo.",
+      "Nomear sinais de conforto, desconforto, cansaço ou interesse e ajustar o tempo, a posição, os estímulos e o apoio."
+    ],
+    "educatorPrompts": [
+      "Vou avisar antes de tocar e esperar seu sinal.",
+      "Você prefere este objeto ou aquele?",
+      "Percebi que você quer uma pausa; vou esperar.",
+      "Como podemos deixar seu corpo mais confortável e seguro?"
+    ],
+    "observationCriteria": [
+      "Participa de uma rotina de cuidado por movimento, olhar, toque, vocalização, escolha, antecipação ou outra forma de comunicação.",
+      "Demonstra sinais de conforto, desconforto, interesse ou necessidade de pausa que são percebidos e respondidos pelo adulto.",
+      "Aceita, recusa ou modifica uma possibilidade de participação sem que o adulto force autonomia ou atribua intenção além do observado.",
+      "Reconhece gradualmente a sequência de uma rotina por antecipação corporal, atenção compartilhada ou repetição voluntária.",
+      "Tem sua dignidade, privacidade, segurança corporal e forma de comunicação preservadas durante o cuidado."
+    ],
+    "evidenceRecord": {
+      "requiredFields": ["date", "careContext", "anticipatedStep", "observedParticipation", "comfortSignals", "educatorResponse", "nextSupport"],
+      "allowedFormats": ["short_text", "voice_note_reference"],
+      "privacy": "Registrar somente o necessário no contexto institucional autorizado; não registrar imagens de momentos íntimos de cuidado, não incluir diagnóstico e não inferir desenvolvimento além do observado."
+    },
+    "adaptations": [
+      "Antecipar cada etapa com fala, gesto, objeto de referência ou recurso visual conforme a forma de comunicação do bebê.",
+      "Ajustar temperatura, iluminação, ruído, posição, ritmo e quantidade de pessoas para ampliar conforto e segurança.",
+      "Oferecer apoio físico somente quando necessário e autorizado, sem puxar, apressar ou restringir movimentos sem motivo de segurança.",
+      "Aceitar participação parcial, observação, pausa, recusa e retomada posterior, preservando a rotina essencial de cuidado."
+    ]
+  },
+  "contentStatus": {
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "studentQuiz": "NOT_CREATED",
+    "humanApproval": "NOT_GRANTED"
+  }
+}

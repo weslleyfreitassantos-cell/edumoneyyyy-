@@ -1,0 +1,749 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-philosophy-ethical-principle",
+  "subject": "PHILOSOPHY",
+  "domain": "ETICA",
+  "topic": "justificacao de decisoes eticas em casos concretos",
+  "canonicalSkillCode": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+  "contentVersion": 5,
+  "expectedQuestionCount": 19,
+  "expectedContextCount": 19,
+  "expectedAnswerPositionCounts": {
+    "A": 5,
+    "B": 5,
+    "C": 5,
+    "D": 4
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 2,
+    "PRACTICE": 3,
+    "TRANSFER": 4,
+    "LOCK_IN": 3,
+    "REVIEW": 7
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v93-phil-ethics-01",
+      "hint": "Distinga o fato de que há uma ameaça específica da suposição sobre quem a divulgaria; priorize proteção e verificação.",
+      "errorFocus": "Ampliar a exposição da ameaça ou presumir culpa antes de confirmar fatos."
+    },
+    {
+      "questionId": "v93-phil-ethics-02",
+      "hint": "Compare a promessa de sigilo com a especificidade, proximidade e gravidade do risco; limite qualquer encaminhamento.",
+      "errorFocus": "Tratar confidencialidade como absoluta mesmo diante de risco concreto, ou ignorá-la sem necessidade."
+    },
+    {
+      "questionId": "v93-phil-ethics-03",
+      "hint": "Observe quem fica sem acesso e quais adaptações removem a barreira sem abandonar o objetivo.",
+      "errorFocus": "Confundir oferecer exatamente o mesmo formato com garantir participação justa."
+    },
+    {
+      "questionId": "v93-phil-ethics-04",
+      "hint": "Pergunte se a regra continuaria defensável caso fosse adotada por todos e se preservaria a finalidade da avaliação.",
+      "errorFocus": "Usar a chance de não ser descoberto como justificativa moral."
+    },
+    {
+      "questionId": "v93-phil-ethics-05",
+      "hint": "Identifique a barreira que impede a leitura e compare o apoio com o objetivo comum da atividade.",
+      "errorFocus": "Tratar recursos diferentes como injustiça sem avaliar a barreira que cada pessoa enfrenta."
+    },
+    {
+      "questionId": "v93-phil-ethics-06",
+      "hint": "Verifique se a pessoa conhece finalidade, público e circulação antes de aceitar o uso da gravação.",
+      "errorFocus": "Confundir registro da voz com autorização para reutilizá-la em qualquer contexto."
+    },
+    {
+      "questionId": "v93-phil-ethics-07",
+      "hint": "Considere intenção, dano, possibilidade de reparação e segurança antes de propor a resposta.",
+      "errorFocus": "Escolher punição ou ausência de consequência sem considerar reparação proporcional."
+    },
+    {
+      "questionId": "v93-phil-ethics-08",
+      "hint": "Separe quem criou, encaminhou e recebeu a mensagem; interrompa a circulação e apoie quem foi atingido.",
+      "errorFocus": "Atribuir culpa igual a todas as pessoas ou responsabilizar somente quem encaminhou por último."
+    },
+    {
+      "questionId": "v93-phil-ethics-09",
+      "hint": "Avalie o risco previsível, sua gravidade e uma medida razoável que o reduza antes da atividade.",
+      "errorFocus": "Ignorar risco concreto por causa do cronograma ou presumir que todo risco exige cancelar tudo."
+    },
+    {
+      "questionId": "v93-phil-ethics-10",
+      "hint": "Considere a razão da denúncia e também a escolha de um canal seguro e adequado.",
+      "errorFocus": "Confundir coragem com exposição impulsiva ou silêncio obrigatório."
+    },
+    {
+      "questionId": "v93-phil-ethics-11",
+      "hint": "Torne explícitas as necessidades em conflito, os critérios aplicáveis e como a decisão será revisada.",
+      "errorFocus": "Tratar maioria numérica como justificativa suficiente para distribuir um recurso comum."
+    },
+    {
+      "questionId": "v93-phil-ethics-12",
+      "hint": "Considere a dignidade da pessoa atingida e evite exigir que ela prove que merece respeito.",
+      "errorFocus": "Transferir à pessoa exposta o dever de justificar por que a humilhação deve parar."
+    },
+    {
+      "questionId": "v93-phil-ethics-13",
+      "hint": "Pergunte se os dados são necessários, para qual finalidade e quem terá acesso à apresentação.",
+      "errorFocus": "Coletar ou divulgar informação sensível sem necessidade e sem participação voluntária."
+    },
+    {
+      "questionId": "v93-phil-ethics-14",
+      "hint": "Identifique o interesse concorrente e uma salvaguarda que reduza influência indevida na avaliação.",
+      "errorFocus": "Supor que imparcialidade existe sem declarar ou administrar um conflito de interesses."
+    },
+    {
+      "questionId": "v93-phil-ethics-15",
+      "hint": "Compare critérios, efeitos para grupos diferentes e informação que pode justificar uma revisão futura.",
+      "errorFocus": "Confundir transparência com simplesmente anunciar a decisão já tomada."
+    },
+    {
+      "questionId": "v93-phil-ethics-16",
+      "hint": "Considere reparação e responsabilização sem dispensar segurança, apuração e participação voluntária.",
+      "errorFocus": "Tratar mediação como substituta automática da proteção ou da verificação dos fatos."
+    },
+    {
+      "questionId": "v93-phil-ethics-17",
+      "hint": "Use o contexto histórico para explicar a prática e ainda avalie seus efeitos e as razões oferecidas.",
+      "errorFocus": "Confundir contextualização com aprovação automática ou julgar o passado sem contexto."
+    },
+    {
+      "questionId": "v93-phil-ethics-18",
+      "hint": "Localize palavras que descrevem o que ocorre e palavras que dizem o que deveria ocorrer.",
+      "errorFocus": "Tratar uma descrição verificável como se ela já contivesse uma justificativa normativa."
+    },
+    {
+      "questionId": "v93-phil-ethics-19",
+      "hint": "Teste se o procedimento de votação protege participação, direitos e possibilidade de contestação.",
+      "errorFocus": "Supor que qualquer resultado majoritário seja justo independentemente do processo e dos efeitos."
+    },
+    {
+      "questionId": "v93-phil-ethics-20",
+      "hint": "Registre o que era conhecido no momento e defina como novos dados serão considerados depois.",
+      "errorFocus": "Tratar uma decisão inicial sob incerteza como imune a revisão ou como prova automática de erro."
+    },
+    {
+      "questionId": "v3-philosophy-philosophy_argument-5",
+      "hint": "Nomeie as pessoas afetadas e compare como benefícios e danos seriam distribuídos; depois avalie alternativas e razões.",
+      "errorFocus": "Reduzir uma avaliação ética à popularidade de uma escolha, sem analisar impactos ou justificativas."
+    }
+  ],
+  "questions": [
+    {
+      "id": "v5-phil-ethics-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REIDENTIFICATION_RISK",
+      "statement": "Uma escola pretende divulgar resultados de um questionário sem nomes. Em uma turma pequena, combinações de respostas ainda podem revelar quem respondeu. Qual cuidado vem primeiro?",
+      "options": [
+        "Verificar o risco de identificação e reduzir os detalhes divulgados, preservando apenas o necessário para a finalidade.",
+        "Divulgar porque nenhum nome aparece.",
+        "Perguntar somente se a maioria concorda.",
+        "Publicar as respostas completas e retirar o arquivo depois se alguém reclamar."
+      ],
+      "correctAnswer": "Verificar o risco de identificação e reduzir os detalhes divulgados, preservando apenas o necessário para a finalidade.",
+      "explanation": "Remover nomes não garante anonimato quando grupos pequenos podem ser reconhecidos. A finalidade e o risco precisam ser avaliados antes da divulgação.",
+      "errorFocus": "Tratar a retirada do nome como garantia suficiente de privacidade.",
+      "hint": "Procure sinais indiretos que permitam reconhecer alguém e considere se todos os detalhes são necessários.",
+      "misconceptions": {
+        "Divulgar porque nenhum nome aparece.": [
+          "TRATAR_A_RETIRADA_DO_NOME_COMO_GARANTIA_SUFICIENTE_DE_PRIVACIDADE"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ACCESS_AND_EQUAL_TREATMENT",
+      "statement": "Um grupo precisa escolher como entregar uma atividade. Uma pessoa relata que o formato único impede sua participação. Qual é a pergunta ética mais útil antes de decidir?",
+      "options": [
+        "Como manter o formato idêntico para todos, qualquer que seja a barreira?",
+        "Que barreira existe e que alternativa assegura participação sem impor uma desvantagem evitável?",
+        "Quem tem mais votos para decidir?",
+        "Como dispensar a pessoa sem rever a atividade?"
+      ],
+      "correctAnswer": "Que barreira existe e que alternativa assegura participação sem impor uma desvantagem evitável?",
+      "explanation": "Justiça não é necessariamente oferecer meios idênticos. Identificar a barreira ajuda a comparar alternativas que preservem participação e critérios comuns.",
+      "errorFocus": "Confundir tratamento idêntico com oportunidade justa.",
+      "hint": "Descreva a barreira concreta e avalie uma alternativa que remova essa barreira sem mudar o objetivo da atividade.",
+      "misconceptions": {
+        "Como manter o formato idêntico para todos, qualquer que seja a barreira?": [
+          "CONFUNDIR_TRATAMENTO_ID_NTICO_COM_OPORTUNIDADE_JUSTA"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "STUDENT_WORK_ATTRIBUTION",
+      "statement": "Uma estudante cria um desenho para um mural. A equipe quer publicar a imagem e seu nome no site da escola. Qual procedimento respeita melhor sua autonomia?",
+      "options": [
+        "Publicar porque o desenho foi feito em uma atividade escolar.",
+        "Pedir autorização apenas se a publicação receber comentários negativos.",
+        "Explicar onde e como a imagem será usada e pedir autorização antes da publicação, oferecendo uma opção real de recusa.",
+        "Omitir o nome, mesmo que a estudante tenha pedido crédito, sem conversar com ela."
+      ],
+      "correctAnswer": "Explicar onde e como a imagem será usada e pedir autorização antes da publicação, oferecendo uma opção real de recusa.",
+      "explanation": "A autorização deve anteceder o uso e informar finalidade e circulação. Participar da atividade não equivale a consentir com qualquer publicação.",
+      "errorFocus": "Presumir consentimento amplo a partir da participação na atividade.",
+      "hint": "Separe a criação do desenho da decisão sobre onde, para quem e com que identificação ele será divulgado.",
+      "misconceptions": {
+        "Publicar porque o desenho foi feito em uma atividade escolar.": [
+          "PRESUMIR_CONSENTIMENTO_AMPLO_A_PARTIR_DA_PARTICIPA_O_NA_ATIVIDADE"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SHARED_ROOM_SCHEDULING",
+      "statement": "Uma sala de estudo é disputada por dois grupos: um precisa de silêncio em horário fixo; outro usa o espaço para encontros colaborativos. Qual processo oferece uma decisão mais justificável?",
+      "options": [
+        "Dar todos os horários ao grupo que chegou primeiro.",
+        "Decidir pela maioria sem registrar os impactos para o outro grupo.",
+        "Proibir qualquer uso compartilhado para evitar negociação.",
+        "Ouvir as necessidades de ambos, explicitar critérios de uso e testar uma divisão com data para reavaliar os efeitos."
+      ],
+      "correctAnswer": "Ouvir as necessidades de ambos, explicitar critérios de uso e testar uma divisão com data para reavaliar os efeitos.",
+      "explanation": "Critérios transparentes permitem comparar necessidades e efeitos; um teste revisável evita tratar a primeira decisão como definitiva.",
+      "errorFocus": "Confundir prioridade temporal ou maioria com justificativa suficiente.",
+      "hint": "Identifique quem é afetado, quais necessidades são incompatíveis e que arranjo pode ser acompanhado e revisto.",
+      "misconceptions": {
+        "Dar todos os horários ao grupo que chegou primeiro.": [
+          "CONFUNDIR_PRIORIDADE_TEMPORAL_OU_MAIORIA_COM_JUSTIFICATIVA_SUFICIENTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PHONE_REQUIRED_CLASS_ACCESS",
+      "statement": "Uma atividade só pode ser acessada por um aplicativo de celular, mas parte da turma não tem aparelho ou pacote de dados. O que melhor combina equidade e responsabilidade?",
+      "options": [
+        "Oferecer acesso escolar ou alternativa equivalente e verificar se ela preserva o objetivo da atividade.",
+        "Manter a exigência porque o mesmo aplicativo foi indicado para todos.",
+        "Reduzir a nota de quem não tem celular para manter o padrão.",
+        "Pedir que estudantes compartilhem senhas pessoais para entrar no aplicativo."
+      ],
+      "correctAnswer": "Oferecer acesso escolar ou alternativa equivalente e verificar se ela preserva o objetivo da atividade.",
+      "explanation": "Uma regra uniforme pode produzir uma barreira desigual. A alternativa deve permitir participação sem expor credenciais nem abandonar o objetivo pedagógico.",
+      "errorFocus": "Confundir uma instrução igual com condições iguais de participação.",
+      "hint": "Pergunte se a diferença de acesso impede demonstrar a mesma aprendizagem e busque um meio seguro equivalente.",
+      "misconceptions": {
+        "Manter a exigência porque o mesmo aplicativo foi indicado para todos.": [
+          "CONFUNDIR_UMA_INSTRU_O_IGUAL_COM_CONDI_ES_IGUAIS_DE_PARTICIPA_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PUBLIC_ALERT_UNCERTAINTY",
+      "statement": "Uma associação precisa avisar sobre uma interrupção de água. A causa ainda não foi confirmada, mas o local e o horário afetados foram verificados. Qual comunicação é mais responsável?",
+      "options": [
+        "Afirmar uma causa provável como fato para parecer mais convincente.",
+        "Informar o que foi confirmado, distinguir o que ainda é incerto e indicar quando haverá nova atualização.",
+        "Omitir o local até que todas as causas possíveis sejam conhecidas.",
+        "Compartilhar uma captura sem fonte para que cada pessoa decida."
+      ],
+      "correctAnswer": "Informar o que foi confirmado, distinguir o que ainda é incerto e indicar quando haverá nova atualização.",
+      "explanation": "Uma comunicação proporcional informa dados úteis e confiáveis sem transformar hipótese em fato; a atualização posterior permite corrigir o quadro.",
+      "errorFocus": "Apresentar uma hipótese como certeza ou esconder informação prática já confirmada.",
+      "hint": "Separe fato verificado, hipótese e informação que ajuda a pessoa a agir com segurança.",
+      "misconceptions": {
+        "Afirmar uma causa provável como fato para parecer mais convincente.": [
+          "APRESENTAR_UMA_HIP_TESE_COMO_CERTEZA_OU_ESCONDER_INFORMA_O_PR_TICA_J_CONFIRMADA"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CREATIVE_CREDIT",
+      "statement": "Um estudante encontra uma fotografia feita por outra pessoa e quer usá-la em um cartaz do bairro. Qual decisão considera autoria e finalidade?",
+      "options": [
+        "Usar sem crédito porque o cartaz não será vendido.",
+        "Apagar a marca d’água e atribuir a imagem ao grupo.",
+        "Verificar as condições de uso, solicitar autorização quando necessária e creditar a autoria de modo visível.",
+        "Evitar qualquer imagem, mesmo havendo autorização e formas legítimas de uso."
+      ],
+      "correctAnswer": "Verificar as condições de uso, solicitar autorização quando necessária e creditar a autoria de modo visível.",
+      "explanation": "A finalidade não elimina automaticamente os direitos da autoria. Verificar licença, autorização e atribuição permite um uso justificável.",
+      "errorFocus": "Supor que uso não comercial elimina deveres de autoria.",
+      "hint": "Confira quem criou a imagem, quais usos foram autorizados e como a autoria deve ser indicada.",
+      "misconceptions": {
+        "Usar sem crédito porque o cartaz não será vendido.": [
+          "SUPOR_QUE_USO_N_O_COMERCIAL_ELIMINA_DEVERES_DE_AUTORIA"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "GROUP_WORK_ABSENCE",
+      "statement": "Em um projeto coletivo, uma integrante faltou por motivo de saúde e não conseguiu cumprir parte do combinado. O grupo precisa concluir o trabalho sem apagar sua contribuição anterior. Qual encaminhamento é mais justo?",
+      "options": [
+        "Atribuir a ela todo o trabalho restante porque o grupo perdeu tempo.",
+        "Retirar seu nome sem conversar ou verificar sua contribuição.",
+        "Manter a divisão original mesmo que o prazo torne a tarefa inviável.",
+        "Apurar o que já foi realizado, redistribuir tarefas com diálogo e registrar responsabilidades de forma compatível com as circunstâncias."
+      ],
+      "correctAnswer": "Apurar o que já foi realizado, redistribuir tarefas com diálogo e registrar responsabilidades de forma compatível com as circunstâncias.",
+      "explanation": "Uma decisão justa considera contribuição, circunstâncias, efeitos sobre o grupo e possibilidade de ajuste sem presumir má-fé.",
+      "errorFocus": "Tratar ausência como prova suficiente de desinteresse ou ignorar a carga restante.",
+      "hint": "Diferencie o que já foi feito, o motivo conhecido e as opções de redistribuição antes de atribuir responsabilidade.",
+      "misconceptions": {
+        "Atribuir a ela todo o trabalho restante porque o grupo perdeu tempo.": [
+          "TRATAR_AUS_NCIA_COMO_PROVA_SUFICIENTE_DE_DESINTERESSE_OU_IGNORAR_A_CARGA_RESTANTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "STAFF_PASSWORD_REQUEST",
+      "statement": "Uma pessoa voluntária pede a senha pessoal de uma colega para organizar inscrições em um evento. Qual resposta protege melhor os envolvidos e mantém o trabalho possível?",
+      "options": [
+        "Recusar o compartilhamento da senha e pedir um acesso próprio, com permissões limitadas à tarefa.",
+        "Enviar a senha por mensagem e pedir que ela não a repasse.",
+        "Usar a conta da colega porque o evento é urgente.",
+        "Cancelar as inscrições sem verificar se há um meio de acesso autorizado."
+      ],
+      "correctAnswer": "Recusar o compartilhamento da senha e pedir um acesso próprio, com permissões limitadas à tarefa.",
+      "explanation": "Compartilhar uma credencial pessoal elimina controle individual e expõe dados. Um acesso próprio e restrito atende à tarefa com menos risco.",
+      "errorFocus": "Tratar urgência ou confiança pessoal como autorização para compartilhar credenciais.",
+      "hint": "Procure uma alternativa que permita realizar a tarefa sem revelar uma senha individual.",
+      "misconceptions": {
+        "Enviar a senha por mensagem e pedir que ela não a repasse.": [
+          "TRATAR_URG_NCIA_OU_CONFIAN_A_PESSOAL_COMO_AUTORIZA_O_PARA_COMPARTILHAR_CREDENCIAIS"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTEGRATE",
+      "contextFamily": "CONFIDENTIALITY_SPECIFIC_RISK",
+      "statement": "Uma orientadora recebe um relato privado com ameaça específica e iminente contra uma pessoa. Ela precisa buscar proteção sem ampliar desnecessariamente a exposição. Qual decisão equilibra melhor os valores em jogo?",
+      "options": [
+        "Prometer segredo absoluto mesmo diante do risco iminente.",
+        "Verificar o risco e acionar o protocolo de proteção, compartilhando apenas as informações necessárias com responsáveis apropriados.",
+        "Publicar o relato para que a comunidade identifique quem fez a ameaça.",
+        "Repassar toda a conversa a qualquer pessoa interessada, sem verificar necessidade."
+      ],
+      "correctAnswer": "Verificar o risco e acionar o protocolo de proteção, compartilhando apenas as informações necessárias com responsáveis apropriados.",
+      "explanation": "A confidencialidade tem valor, mas um risco concreto pode exigir proteção. Limitar a divulgação e seguir um protocolo preserva proporcionalidade e segurança.",
+      "errorFocus": "Tratar confidencialidade como absoluta ou como irrelevante.",
+      "hint": "Diferencie uma preocupação vaga de risco concreto e limite a resposta às pessoas e informações necessárias.",
+      "misconceptions": {
+        "Prometer segredo absoluto mesmo diante do risco iminente.": [
+          "TRATAR_CONFIDENCIALIDADE_COMO_ABSOLUTA_OU_COMO_IRRELEVANTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "ACCESSIBLE_EVENT_BUDGET",
+      "statement": "Um evento tem orçamento limitado. A proposta mais votada usa um espaço sem acesso por rampa; uma opção acessível custa mais, mas pode ser ajustada em outro item. Como a comissão deve justificar a decisão?",
+      "options": [
+        "Executar a proposta mais votada porque a maioria encerra qualquer discussão.",
+        "Excluir do evento quem não consegue acessar o espaço escolhido.",
+        "Comparar custos e alternativas sem tratar a participação de pessoas com deficiência como preferência dispensável, e explicar publicamente os critérios adotados.",
+        "Escolher a opção mais cara sem verificar o orçamento ou outras alternativas."
+      ],
+      "correctAnswer": "Comparar custos e alternativas sem tratar a participação de pessoas com deficiência como preferência dispensável, e explicar publicamente os critérios adotados.",
+      "explanation": "O voto é uma informação sobre preferência, não uma justificativa completa. A comissão precisa considerar barreiras, direitos de participação, custos e alternativas reais.",
+      "errorFocus": "Confundir decisão majoritária com análise suficiente de direitos e impactos.",
+      "hint": "Considere quem fica impedido de participar, quais adaptações são viáveis e quais critérios podem ser explicados a todos.",
+      "misconceptions": {
+        "Executar a proposta mais votada porque a maioria encerra qualquer discussão.": [
+          "CONFUNDIR_DECIS_O_MAJORIT_RIA_COM_AN_LISE_SUFICIENTE_DE_DIREITOS_E_IMPACTOS"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COMMUNITY_CENTER_HOURS",
+      "statement": "Um centro comunitário recebe pedidos para ampliar o horário noturno. Há interesse de estudantes, mas vizinhos relatam ruído e a equipe ainda não mediu a frequência. Qual plano é mais justificável?",
+      "options": [
+        "Manter o horário atual porque mudanças sempre causam conflito.",
+        "Ampliar sem limite porque estudantes também são moradores.",
+        "Encerrar atividades noturnas apenas com base em relatos ainda não verificados.",
+        "Testar um horário limitado, combinar medidas contra ruído, registrar efeitos e definir uma data para revisar a decisão com os grupos afetados."
+      ],
+      "correctAnswer": "Testar um horário limitado, combinar medidas contra ruído, registrar efeitos e definir uma data para revisar a decisão com os grupos afetados.",
+      "explanation": "Um teste limitado produz evidência e permite reduzir danos; critérios e revisão tornam a decisão responsável diante da incerteza.",
+      "errorFocus": "Escolher um grupo como se o interesse do outro não tivesse relevância ou tratar relato como medição conclusiva.",
+      "hint": "Procure uma alternativa reversível que atenda necessidades, limite danos e permita verificar os efeitos.",
+      "misconceptions": {
+        "Manter o horário atual porque mudanças sempre causam conflito.": [
+          "ESCOLHER_UM_GRUPO_COMO_SE_O_INTERESSE_DO_OUTRO_N_O_TIVESSE_RELEV_NCIA_OU_TRATAR_RELATO_COMO_MEDI_O_CONCLUSIVA"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRIVATE_CHAT_EVIDENCE",
+      "statement": "Uma estudante quer mostrar mensagens privadas a uma pessoa responsável para pedir ajuda sobre uma situação de intimidação. Qual opção preserva melhor a finalidade sem espalhar a conversa?",
+      "options": [
+        "Compartilhar apenas o trecho necessário em um canal apropriado e perguntar como proteger as pessoas envolvidas.",
+        "Publicar toda a conversa para que a comunidade decida quem tem razão.",
+        "Apagar as mensagens antes de buscar ajuda.",
+        "Encaminhar a conversa a todos os colegas para obter votos."
+      ],
+      "correctAnswer": "Compartilhar apenas o trecho necessário em um canal apropriado e perguntar como proteger as pessoas envolvidas.",
+      "explanation": "Buscar apoio não exige divulgação pública. Uma amostra limitada e um canal apropriado podem permitir avaliação sem ampliar a exposição.",
+      "errorFocus": "Confundir pedido de ajuda com autorização para tornar a conversa pública.",
+      "hint": "Identifique quem precisa da informação para agir e qual parte é realmente necessária.",
+      "misconceptions": {
+        "Publicar toda a conversa para que a comunidade decida quem tem razão.": [
+          "CONFUNDIR_PEDIDO_DE_AJUDA_COM_AUTORIZA_O_PARA_TORNAR_A_CONVERSA_P_BLICA"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FOOD_POLICY_ALLERGIES",
+      "statement": "Uma feira escolar adota uma regra de que todos devem consumir o mesmo lanche. Uma estudante informa uma alergia alimentar. Qual revisão é mais adequada?",
+      "options": [
+        "Exigir que ela prove o lanche para confirmar a alergia.",
+        "Manter o objetivo coletivo da feira e oferecer uma opção segura, verificando ingredientes e evitando exposição desnecessária da estudante.",
+        "Retirá-la da atividade para não alterar a regra.",
+        "Ignorar o relato porque a regra foi aplicada igualmente."
+      ],
+      "correctAnswer": "Manter o objetivo coletivo da feira e oferecer uma opção segura, verificando ingredientes e evitando exposição desnecessária da estudante.",
+      "explanation": "A mesma opção pode criar um risco diferente para alguém. Uma alternativa segura preserva participação sem exigir exposição como condição.",
+      "errorFocus": "Confundir aplicação uniforme da regra com segurança e equidade.",
+      "hint": "Avalie o risco concreto e uma adaptação que permita participar sem exigir que a pessoa prove sua condição publicamente.",
+      "misconceptions": {
+        "Exigir que ela prove o lanche para confirmar a alergia.": [
+          "CONFUNDIR_APLICA_O_UNIFORME_DA_REGRA_COM_SEGURAN_A_E_EQUIDADE"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DEBATE_PARTICIPATION_MODES",
+      "statement": "Em um debate, a regra exige que cada estudante fale ao microfone. Uma participante se comunica melhor por escrito e pediu outra forma de contribuição. Qual ajuste mantém a finalidade do debate?",
+      "options": [
+        "Dispensá-la de participar sem oferecer alternativa.",
+        "Contar somente falas orais para preservar a regra original.",
+        "Aceitar uma contribuição escrita ou outro formato equivalente e avaliar a qualidade das razões apresentadas.",
+        "Exigir que outra pessoa fale em seu nome sem consultar a estudante."
+      ],
+      "correctAnswer": "Aceitar uma contribuição escrita ou outro formato equivalente e avaliar a qualidade das razões apresentadas.",
+      "explanation": "Se o objetivo é apresentar e considerar razões, mais de um formato pode demonstrar a mesma capacidade. O ajuste não deve retirar a autonomia da participante.",
+      "errorFocus": "Confundir o formato escolhido com a habilidade que se pretende observar.",
+      "hint": "Identifique o objetivo de aprendizagem e se ele exige necessariamente fala oral ou apenas uma justificativa compreensível.",
+      "misconceptions": {
+        "Dispensá-la de participar sem oferecer alternativa.": [
+          "CONFUNDIR_O_FORMATO_ESCOLHIDO_COM_A_HABILIDADE_QUE_SE_PRETENDE_OBSERVAR"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "UNVERIFIED_RUMOR",
+      "statement": "Circula um áudio que acusa uma funcionária de ter retirado materiais de uma sala. Não há confirmação independente. Qual resposta é mais responsável?",
+      "options": [
+        "Publicar o áudio com o nome da funcionária para pedir explicações.",
+        "Concluir que a acusação é verdadeira porque muitas pessoas a encaminharam.",
+        "Apagar toda evidência e impedir qualquer apuração.",
+        "Não retransmitir a acusação, preservar o registro necessário e encaminhar a informação por um canal de apuração adequado."
+      ],
+      "correctAnswer": "Não retransmitir a acusação, preservar o registro necessário e encaminhar a informação por um canal de apuração adequado.",
+      "explanation": "A circulação de uma alegação não a confirma. Evitar amplificação e permitir apuração reduz danos sem impedir a busca de fatos.",
+      "errorFocus": "Tratar repetição ou popularidade como confirmação.",
+      "hint": "Separe a existência do áudio da verdade da acusação e considere um canal que permita verificar sem exposição pública.",
+      "misconceptions": {
+        "Publicar o áudio com o nome da funcionária para pedir explicações.": [
+          "TRATAR_REPETI_O_OU_POPULARIDADE_COMO_CONFIRMA_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CLASS_PHOTO_DISTRIBUTION",
+      "statement": "Uma escola registra uma apresentação para o arquivo interno e depois recebe pedido para publicar as imagens em uma rede aberta. O que deve ser verificado?",
+      "options": [
+        "Se a autorização cobre essa finalidade e esse alcance; se não cobrir, solicitar consentimento adequado ou não publicar.",
+        "Se a fotografia ficou nítida, pois isso determina se pode ser publicada.",
+        "Se pelo menos metade das pessoas fotografadas concorda.",
+        "Se a imagem foi feita dentro do prédio escolar."
+      ],
+      "correctAnswer": "Se a autorização cobre essa finalidade e esse alcance; se não cobrir, solicitar consentimento adequado ou não publicar.",
+      "explanation": "Registrar para uso interno e publicar em rede aberta são finalidades e alcances diferentes. A autorização precisa corresponder ao uso pretendido.",
+      "errorFocus": "Supor que local ou qualidade da imagem substitui consentimento e finalidade.",
+      "hint": "Compare o uso originalmente informado com o novo público e alcance da publicação.",
+      "misconceptions": {
+        "Se a fotografia ficou nítida, pois isso determina se pode ser publicada.": [
+          "SUPOR_QUE_LOCAL_OU_QUALIDADE_DA_IMAGEM_SUBSTITUI_CONSENTIMENTO_E_FINALIDADE"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PROGRAM_SELECTION_ALGORITHM",
+      "statement": "Um programa de verão usa um formulário automático para ordenar inscrições. A equipe percebe que candidatos de uma região quase não aparecem entre os selecionados. Qual revisão é mais responsável antes de manter o resultado?",
+      "options": [
+        "Aceitar a ordem porque um cálculo automático é necessariamente neutro.",
+        "Examinar critérios e dados de entrada, verificar possíveis barreiras e permitir revisão humana das decisões contestadas.",
+        "Descartar toda inscrição da região menos representada.",
+        "Alterar os critérios sem informar candidatos nem registrar a razão."
+      ],
+      "correctAnswer": "Examinar critérios e dados de entrada, verificar possíveis barreiras e permitir revisão humana das decisões contestadas.",
+      "explanation": "Automatizar uma regra não garante imparcialidade. Examinar dados e permitir contestação ajuda a identificar falhas e tornar a decisão explicável.",
+      "errorFocus": "Confundir consistência computacional com neutralidade ou justiça.",
+      "hint": "Pergunte quais dados e critérios produzem a ordenação e como alguém pode contestar um resultado incorreto.",
+      "misconceptions": {
+        "Aceitar a ordem porque um cálculo automático é necessariamente neutro.": [
+          "CONFUNDIR_CONSIST_NCIA_COMPUTACIONAL_COM_NEUTRALIDADE_OU_JUSTI_A"
+        ]
+      }
+    },
+    {
+      "id": "v5-phil-ethics-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SHARED_GARDEN_WATER_USE",
+      "statement": "Em uma horta comunitária, um grupo quer economizar água e outro precisa irrigar plantas recém-transplantadas. Qual decisão combina melhor cuidado, consequências e justificativa pública?",
+      "options": [
+        "Proibir irrigação para todos, sem observar as condições da horta.",
+        "Permitir uso ilimitado a quem chegou primeiro.",
+        "Verificar as necessidades das plantas e a disponibilidade de água, definir uma regra temporária de uso e revisá-la conforme os resultados.",
+        "Escolher qual grupo parece mais simpático sem explicitar um critério."
+      ],
+      "correctAnswer": "Verificar as necessidades das plantas e a disponibilidade de água, definir uma regra temporária de uso e revisá-la conforme os resultados.",
+      "explanation": "Uma regra temporária pode considerar necessidades diferentes e consequências ambientais, enquanto dados posteriores permitem ajustar a decisão.",
+      "errorFocus": "Usar preferência pessoal ou prioridade temporal sem avaliar necessidade e efeitos.",
+      "hint": "Compare a necessidade imediata, o recurso disponível e uma regra que possa ser revista à luz de observações.",
+      "misconceptions": {
+        "Proibir irrigação para todos, sem observar as condições da horta.": [
+          "USAR_PREFER_NCIA_PESSOAL_OU_PRIORIDADE_TEMPORAL_SEM_AVALIAR_NECESSIDADE_E_EFEITOS"
+        ]
+      }
+    }
+  ],
+  "lesson": {
+    "title": "Decidir com razões: princípios, consequências e proporcionalidade",
+    "objective": "Analisar um caso identificando fatos, pessoas afetadas, valores ou direitos em tensão, consequências e alternativas; justificar uma decisão proporcional e indicar seus limites.",
+    "summary": "Uma decisão ética não se prova por popularidade nem por uma palavra-chave. Separe fatos de suposições, compare razões e alternativas, proteja direitos e explique por que a resposta é proporcional naquele contexto.",
+    "explanation": "## 1. Separe fatos e suposições\nDescreva o que se sabe e indique o que ainda precisa ser confirmado. “A mensagem foi encaminhada às 10h” pode ser verificável; “a pessoa queria humilhar alguém” atribui uma intenção que talvez não esteja demonstrada. Uma conclusão responsável não transforma hipótese em fato.\n\n## 2. Identifique pessoas, valores e responsabilidades\nPergunte quem será afetado, quem decide e quem pode ficar sem voz. Privacidade, autonomia, segurança, justiça, cuidado e bem comum podem apontar em direções diferentes. Um conflito real não desaparece ao escolher o princípio que parece mais familiar.\n\n## 3. Compare razões sem reduzir a análise a uma fórmula\nConsequências previsíveis importam, mas não são o único critério: direitos, deveres, consentimento, distribuição dos danos e relações de cuidado também podem limitar o que se deve fazer. Uma votação informa preferências; não demonstra, por si só, que a decisão respeita direitos ou distribui custos justamente.\n\n## 4. Procure alternativas e teste a proporcionalidade\nCompare a ação proposta com outras que possam atingir o objetivo causando menos dano ou expondo menos pessoas. Verifique se o meio é necessário, quem suporta o custo e se a regra pode ser explicada a quem discorda. Tratar todos de modo idêntico nem sempre remove barreiras diferentes.\n\n## 5. Justifique e indique o que pode mudar a decisão\nUma boa justificativa liga decisão, fatos, princípio e consequência: “Proponho X porque a evidência Y mostra Z; esta alternativa protege A e limita B”. Reconheça incertezas e indique que informação levaria a revisar o plano. O contexto ajuda a compreender práticas e valores, mas popularidade ou tradição não substitui justificativa.\n\n## Exemplo resolvido\nUma turma tem verba para melhorar um espaço de estudo. A proposta mais votada compra cadeiras novas, mas uma estudante relata que o acesso ao espaço tem um degrau e impede sua entrada com cadeira de rodas. Primeiro, confirme a barreira e o custo das opções; depois compare uma rampa portátil, mudança de sala e compra das cadeiras em outro momento. O voto explica uma preferência, mas não encerra a análise da participação. Uma decisão justificável explicita custos e critérios, busca remover a barreira e combina uma revisão após testar a solução. Se nenhuma opção couber no orçamento atual, a comissão deve dizer isso, procurar alternativa segura e não apresentar a exclusão como se fosse participação igual.",
+    "workedExample": "No exemplo do espaço de estudo, a turma separa o fato verificável (o degrau impede a entrada de uma participante), a preferência (mais cadeiras) e as alternativas (mudar a sala, adaptar o acesso ou reprogramar a compra). A justificativa considera participação, custo e efeitos. A decisão não precisa fingir que não há conflito: deve explicar o critério, reduzir a barreira dentro das condições reais e prever quando reavaliará o resultado.",
+    "commonMistake": "Resolver um dilema por uma palavra-chave, por maioria ou pela consequência mais conveniente, sem verificar fatos, direitos, alternativas e quem suporta os custos.",
+    "commonErrors": [
+      "Atribuir intenção sem evidência.",
+      "Tratar regra ou votação como prova automática de justiça.",
+      "Somar benefícios e danos sem considerar direitos e distribuição.",
+      "Confundir igualdade de formato com igualdade de participação.",
+      "Propor uma resposta excessiva sem comparar alternativa menos danosa.",
+      "Ignorar incerteza, consentimento ou a possibilidade de revisão."
+    ],
+    "tips": [
+      "Escreva primeiro os fatos e marque separadamente as suposições.",
+      "Nomeie quem será afetado e quais valores entram em conflito.",
+      "Compare ao menos duas alternativas e seus efeitos distribuídos.",
+      "Justifique a escolha com evidência e indique um limite ou condição de revisão."
+    ],
+    "priorKnowledge": [
+      "Distinguir uma afirmação factual de uma avaliação.",
+      "Reconhecer que uma decisão pode afetar pessoas de maneiras diferentes.",
+      "Apresentar uma razão para uma escolha."
+    ],
+    "keyConcepts": [
+      "raciocínio moral como reflexão prática sobre o que fazer",
+      "fatos, inferências e intenções",
+      "direitos, deveres, consequências, cuidado e justiça como razões que podem entrar em tensão",
+      "proporcionalidade e alternativa menos danosa",
+      "contexto, pluralidade e revisão de decisões"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Separar fatos de avaliações e identificar pessoas afetadas.",
+        "questionIds": [
+          "v5-phil-ethics-probe-01",
+          "v5-phil-ethics-probe-02"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Aplicar consentimento, equidade e transparência a situações escolares e comunitárias.",
+        "questionIds": [
+          "v5-phil-ethics-practice-01",
+          "v5-phil-ethics-practice-02",
+          "v5-phil-ethics-practice-03"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Transferir a análise para comunicação pública, autoria, trabalho coletivo e segurança digital.",
+        "questionIds": [
+          "v5-phil-ethics-transfer-01",
+          "v5-phil-ethics-transfer-02",
+          "v5-phil-ethics-transfer-03",
+          "v5-phil-ethics-transfer-04"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Integrar direitos, consequências, incerteza e proporcionalidade em conflitos de valores.",
+        "questionIds": [
+          "v5-phil-ethics-lock-01",
+          "v5-phil-ethics-lock-02",
+          "v5-phil-ethics-lock-03"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar o método em novos contextos, verificando limites e condições de revisão.",
+        "questionIds": [
+          "v5-phil-ethics-review-01",
+          "v5-phil-ethics-review-02",
+          "v5-phil-ethics-review-03",
+          "v5-phil-ethics-review-04",
+          "v5-phil-ethics-review-05",
+          "v5-phil-ethics-review-06",
+          "v5-phil-ethics-review-07"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "FACT_VS_ASSUMPTION",
+        "text": "Uma intenção atribuída não é fato confirmado; indique qual evidência sustentaria essa leitura."
+      },
+      {
+        "trigger": "AFFECTED_PEOPLE",
+        "text": "Pergunte quem recebe benefícios, quem suporta custos e quem ainda não foi ouvido."
+      },
+      {
+        "trigger": "RIGHTS_AND_OUTCOMES",
+        "text": "Consequências importam, mas não apagam automaticamente consentimento, deveres ou direitos."
+      },
+      {
+        "trigger": "MAJORITY_IS_NOT_ENOUGH",
+        "text": "Uma votação registra preferências; ainda é preciso analisar impactos e critérios."
+      },
+      {
+        "trigger": "PROPORTIONATE_ALTERNATIVE",
+        "text": "Compare a resposta proposta com uma alternativa eficaz que cause menos exposição ou dano."
+      },
+      {
+        "trigger": "REVISABLE_DECISION",
+        "text": "Diga que informação nova levaria você a rever a decisão."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "FACTS_BEFORE_INTENT",
+        "misconception": "INTENCAO_TRATADA_COMO_FATO",
+        "prompt": "Reescreva o caso em duas colunas: fatos observáveis e hipóteses sobre intenção. Que evidência falta?"
+      },
+      {
+        "id": "DISTRIBUTION_CHECK",
+        "misconception": "MAIORIA_COMO_JUSTIFICATIVA_COMPLETA",
+        "prompt": "Liste quem ganha, quem perde e qual direito ou necessidade pode ficar sem representação."
+      },
+      {
+        "id": "LOWER_HARM_OPTION",
+        "misconception": "RESPOSTA_DESPROPORCIONAL",
+        "prompt": "Proponha uma alternativa que alcance o objetivo com menos dano ou divulgação e compare seus limites."
+      },
+      {
+        "id": "REASON_AND_REVISION",
+        "misconception": "DECISAO_SEM_RAZOES_REVOGAVEIS",
+        "prompt": "Complete: “Escolho X porque o fato Y sustenta Z; mudaria a decisão se...”"
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 24,
+    "sourceDossier": [
+      {
+        "title": "Moral Reasoning",
+        "publisher": "Stanford Encyclopedia of Philosophy",
+        "url": "https://plato.stanford.edu/entries/reasoning-moral/",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Raciocínio moral como raciocínio prático sobre o que fazer.",
+          "Conflitos entre considerações morais exigem análise filosófica."
+        ],
+        "use": "Referência conceitual para estruturar a análise de razões; não é fonte de alinhamento BNCC nem de itens copiados."
+      },
+      {
+        "title": "BNCC - Ensino Médio: Ciências Humanas e Sociais Aplicadas",
+        "publisher": "Ministério da Educação / Conselho Nacional de Educação",
+        "url": "https://www.gov.br/mec/pt-br/cne/bncc_ensino_medio.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Discussão ética em situações concretas, respeito, convivência, bem comum, direitos humanos e acolhimento das diferenças.",
+          "A pluralidade histórica e cultural deve ser considerada na análise de princípios."
+        ],
+        "use": "Contexto educacional de apoio. O pacote não reivindica código ou mapeamento oficial da BNCC."
+      },
+      {
+        "title": "Ética e Cidadania: Construindo Valores na Escola e na Sociedade",
+        "publisher": "Ministério da Educação; autores vinculados à Universidade de São Paulo",
+        "url": "https://portal.mec.gov.br/seb/arquivos/pdf/Etica/liv_etic_cidad.pdf",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Aprendizagem ética ligada a situações reais e ao desenvolvimento da autonomia moral."
+        ],
+        "use": "Referência pedagógica; exemplos e questões do pacote são autorais e revisão humana permanece pendente."
+      }
+    ],
+    "copyrightNote": "Os dilemas, alternativas, exemplos e explicações do pacote são autorais. As referências apoiam a precisão conceitual; mapeamento oficial e revisão pedagógica humana permanecem pendentes."
+  }
+}

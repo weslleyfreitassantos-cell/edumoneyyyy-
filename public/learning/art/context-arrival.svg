@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Linhas que se aproximam de uma porta</title>
+  <desc id="desc">Linhas curvas de diferentes tons convergem para uma forma retangular que lembra uma porta; a ficha fictícia informa o título Chegada.</desc>
+  <rect width="600" height="360" fill="#e9eee8"/>
+  <path d="M40 60C190 70 260 155 420 170 M40 130C180 130 270 168 420 170 M40 220C180 210 265 178 420 170 M40 300C200 270 280 185 420 170" fill="none" stroke="#477980" stroke-width="8"/>
+  <rect x="420" y="96" width="92" height="150" fill="#d9a65c" stroke="#344f55" stroke-width="7"/>
+  <circle cx="490" cy="172" r="5" fill="#344f55"/>
+  <rect x="318" y="278" width="235" height="46" rx="5" fill="#fffdf5" stroke="#687973" stroke-width="3"/>
+  <text x="435" y="308" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#304c51">Título: Chegada</text>
+</svg>

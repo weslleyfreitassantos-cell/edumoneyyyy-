@@ -176,6 +176,7 @@ describe('useResolvedBranding', () => {
       onerror: ((event: Event) => void) | null;
       complete: boolean;
       naturalWidth: number;
+      naturalHeight: number;
       src: string;
       decode: ReturnType<typeof vi.fn>;
     }> = [];
@@ -184,6 +185,7 @@ describe('useResolvedBranding', () => {
       onerror: ((event: Event) => void) | null = null;
       complete = false;
       naturalWidth = 100;
+      naturalHeight = 100;
       src = '';
       decode = vi.fn().mockResolvedValue(undefined);
 
@@ -262,5 +264,34 @@ describe('useResolvedBranding', () => {
     expect(result.logoUrl).toBeNull();
     expect(result.faviconUrl).toBeNull();
     expect(result.loginBackgroundUrl).toBeNull();
+  });
+
+  it('ignora favicon retangular para preservar o icone estatico quadrado', async () => {
+    class DimensionedImage {
+      onload: ((event: Event) => void) | null = null;
+      onerror: ((event: Event) => void) | null = null;
+      complete = false;
+      naturalWidth = 100;
+      naturalHeight = 100;
+      src = '';
+
+      constructor() {
+        queueMicrotask(() => {
+          if (this.src.includes('favicon')) {
+            this.naturalWidth = 1774;
+            this.naturalHeight = 887;
+          }
+          this.complete = true;
+          this.onload?.(new Event('load'));
+        });
+      }
+    }
+    vi.stubGlobal('Image', DimensionedImage);
+
+    const result = await preloadPublicBrandingAssets(staleBranding);
+
+    expect(result.logoUrl).toBe(staleBranding.logoUrl);
+    expect(result.faviconUrl).toBeNull();
+    expect(result.loginBackgroundUrl).toBe(staleBranding.loginBackgroundUrl);
   });
 });

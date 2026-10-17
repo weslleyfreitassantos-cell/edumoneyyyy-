@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "tec-escola.bncc.experiential-evidence.v1",
+  "campaignId": "TECESCOLA_5000_CONTINUOUS_AUTONOMOUS_EXECUTION_V5",
+  "officialCode": "EI03CG01",
+  "stage": "EDUCACAO_INFANTIL",
+  "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+  "componentCode": "CG",
+  "ageRange": "Crianças pequenas, de 4 anos a 5 anos e 11 meses",
+  "fieldOfExperience": "Corpo, gestos e movimentos",
+  "descriptor": "Criar com o corpo formas diversificadas de expressão de sentimentos, sensações e emoções, tanto nas situações do cotidiano quanto em brincadeiras, dança, teatro, música.",
+  "officialSource": {
+    "id": "BNCC_EI_EF_2018",
+    "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+    "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+    "page": 49
+  },
+  "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+  "evidenceMode": "EDUCATOR_MEDIATED_OBSERVATION",
+  "learningDesign": {
+    "title": "Criar expressões corporais para sentimentos, sensações e emoções",
+    "objective": "Oferecer situações de brincadeira, dança, teatro, música e cotidiano para que a criança crie formas próprias de expressar sentimentos, sensações e emoções, sem impor uma representação única ou interpretar a intenção da criança além do que ela comunica.",
+    "experience": "O educador organiza um convite aberto com músicas, tecidos, objetos cênicos e espaço seguro. A criança pode observar, escolher, combinar ou transformar movimentos para expressar uma sensação ou emoção, individualmente ou com o grupo, e também pode participar por fala, gesto, olhar ou outro modo de comunicação.",
+    "possibleInvitations": [
+      "Convidar a criança a criar movimentos para uma música escolhida pelo grupo, oferecendo a opção de ouvir, observar ou participar de outro modo.",
+      "Disponibilizar tecidos, objetos cênicos seguros e diferentes espaços para dramatizar uma situação cotidiana ou uma história inventada.",
+      "Propor que a criança mostre, transforme ou combine gestos para comunicar uma sensação, sempre aceitando que ela escolha não representar.",
+      "Retomar a experiência com desenhos, fala, sinais ou registros da própria criança sobre o que ela quis expressar."
+    ],
+    "educatorPrompts": [
+      "Como você quer mostrar essa sensação com o corpo?",
+      "Você prefere repetir, transformar, observar ou escolher outro modo de participar?",
+      "Que movimento, gesto, som ou objeto ajuda a comunicar o que você quer expressar?",
+      "O que podemos mudar no espaço, no tempo ou nos materiais para você participar com segurança?"
+    ],
+    "observationCriteria": [
+      "Cria, combina ou transforma gestos, movimentos, sons ou posturas para expressar uma sensação, sentimento ou emoção em uma situação significativa.",
+      "Escolhe diferentes formas de participação e comunica preferência por fala, gesto, olhar, movimento, silêncio ou outro recurso disponível.",
+      "Relaciona a expressão corporal a uma brincadeira, dança, teatro, música ou situação do cotidiano sem que o adulto imponha uma interpretação única.",
+      "Experimenta formas individuais e coletivas de expressão, respeitando seu próprio ritmo e os limites corporais dos demais.",
+      "Tem suas referências culturais, formas de comunicação e necessidades de acessibilidade acolhidas durante a experiência."
+    ],
+    "evidenceRecord": {
+      "requiredFields": ["date", "context", "chosenExpressionMode", "observedCreationOrTransformation", "childCommunication", "educatorSupport", "nextInvitation"],
+      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "privacy": "Registrar somente o necessário no contexto institucional autorizado; não classificar a criança por desempenho, não expor sua imagem e não inferir desenvolvimento além do observado.",
+      "reviewNote": "A evidência deve descrever o que foi observado e comunicado, preservando a autoria da criança e evitando interpretar uma emoção como fato interno."
+    },
+    "adaptations": [
+      "Permitir que a criança participe sentada, em movimento, com apoio, por gesto, por som, por fala, por recurso de comunicação alternativa ou apenas observando.",
+      "Adaptar iluminação, ruído, espaço, materiais, ritmo e apoio corporal conforme necessidades individuais e orientação da equipe.",
+      "Oferecer antecipação visual, pausas e repetição voluntária sem exigir contato visual, imitação ou apresentação diante do grupo.",
+      "Valorizar referências culturais e expressões diversas sem comparar crianças ou definir uma forma correta de demonstrar emoção."
+    ]
+  },
+  "contentStatus": {
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "studentQuiz": "NOT_CREATED",
+    "humanApproval": "NOT_GRANTED"
+  }
+}

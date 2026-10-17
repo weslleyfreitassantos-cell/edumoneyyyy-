@@ -320,7 +320,13 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
       errors.push(`INVALID_LEAF_STAGE_METADATA:${leaf.code}`);
     }
   }
-  const canonicalHash = createHash('sha256').update(stableJson({ manifest: pack.manifest, registry: pack.registry, relationships: pack.relationships, topicOwnership: pack.topicOwnership, misconceptions: pack.misconceptions, misconceptionDetails: pack.misconceptionDetails, questions: pack.questions, lessons: pack.lessons })).digest('hex');
+  const persistedQuestions = pack.questions.map((question) => {
+    const persisted = { ...question } as Question & { hint?: string; errorFocus?: string };
+    delete persisted.hint;
+    delete persisted.errorFocus;
+    return persisted;
+  });
+  const canonicalHash = createHash('sha256').update(stableJson({ manifest: pack.manifest, registry: pack.registry, relationships: pack.relationships, topicOwnership: pack.topicOwnership, misconceptions: pack.misconceptions, misconceptionDetails: pack.misconceptionDetails, questions: persistedQuestions, lessons: pack.lessons })).digest('hex');
   const unknownPrerequisites = pack.relationships.prerequisites.filter(([from, to]) => !skillCodes.has(from) || !skillCodes.has(to)).map((edge) => edge.join(':')).sort();
   const prerequisiteCycles = cycleNodes(pack.relationships.prerequisites);
   for (const cycle of prerequisiteCycles) errors.push(`PREREQUISITE_CYCLE:${cycle}`);

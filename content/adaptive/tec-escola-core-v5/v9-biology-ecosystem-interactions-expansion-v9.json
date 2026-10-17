@@ -1,0 +1,3131 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v9-biology-ecosystem-interactions-expansion-v9",
+  "subject": "BIOLOGY",
+  "domain": "ECOLOGIA",
+  "topic": "interacoes em ecossistemas",
+  "canonicalSkillCode": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+  "contentVersion": 9,
+  "expectedQuestionCount": 128,
+  "expectedAnswerPositionCounts": {
+    "A": 32,
+    "B": 32,
+    "C": 32,
+    "D": 32
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 12,
+    "PRACTICE": 48,
+    "TRANSFER": 31,
+    "LOCK_IN": 14,
+    "REVIEW": 23
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "lesson": {
+    "title": "Ler as relações de um ecossistema com evidências",
+    "objective": "Relacionar organismos, interações e condições físicas ou químicas de um ecossistema, distinguindo observações de hipóteses causais.",
+    "summary": "Ecossistemas reúnem componentes bióticos e abióticos. Para explicar mudanças, acompanhe relações, matéria e energia, compare condições e limite a conclusão ao que os dados permitem.",
+    "explanation": "## 1. O sistema e seus componentes\nUm ecossistema inclui os organismos de uma área e as condições físicas e químicas com as quais interagem. Organismos e suas relações são componentes bióticos; luz, água, temperatura, salinidade e características do solo são exemplos de fatores abióticos. Uma condição pode afetar espécies de formas diferentes: a resposta depende de suas necessidades, tolerâncias e das demais relações presentes.\n\n## 2. Relações entre organismos\nNa competição, organismos disputam um recurso limitado; apenas viver no mesmo lugar não prova competição. Na predação e na herbivoria, um organismo consome outro ou parte dele. No mutualismo, há benefício para ambos; no parasitismo, o parasita obtém benefício e o hospedeiro é prejudicado. Em uma teia alimentar, uma espécie pode ter mais de uma relação, então retirar um componente pode produzir efeitos indiretos e não necessariamente previsíveis com uma única seta.\n\n## 3. Matéria e energia\nA energia entra sobretudo pela produção primária e é transferida entre níveis tróficos; em cada transferência, parte é usada no metabolismo e dissipada como calor. A matéria não segue esse mesmo percurso: elementos podem circular entre organismos, água, ar e solo. Decompositores transformam matéria orgânica e participam dessa circulação. Por isso, desenhe fluxo de energia e ciclos de matéria de maneiras distintas.\n\n## 4. Como sustentar uma explicação\nUma observação registra o que foi medido; uma hipótese propõe um mecanismo. Se uma população muda depois de uma estiagem, isso não prova, sozinho, que a estiagem foi a única causa. Compare séries temporais, locais de referência, esforço de amostragem e outras condições, como temperatura, oxigênio e alimento. Uma conclusão científica pode ser útil sem ser absoluta: declare a evidência, a explicação compatível e o que ainda precisaria ser medido.",
+    "workedExample": "Em dois trechos de um riacho, pesquisadores medem a temperatura e contam macroinvertebrados em vários dias. No trecho próximo a uma área sem sombra, a temperatura sobe e a contagem de alguns grupos cai; no trecho sombreado, ambas variam pouco. Primeiro, descreva os dados observados. Depois, formule a hipótese de que o aquecimento contribuiu para a mudança. Por fim, verifique se vazão, oxigênio dissolvido, poluição e esforço de coleta também foram comparados. O padrão apoia a hipótese, mas não autoriza atribuir o resultado a uma causa única sem controlar alternativas.",
+    "commonMistake": "Confundir coincidência temporal com prova de causa, tratar toda relação alimentar como uma cadeia simples ou dizer que energia e matéria são recicladas do mesmo modo.",
+    "tips": [
+      "Classifique primeiro o que foi medido: organismo, interação ou condição abiótica.",
+      "Desenhe setas de energia e ciclos de matéria separadamente.",
+      "Ao explicar uma mudança, procure mecanismo, comparação e explicações alternativas.",
+      "Não generalize um indivíduo ou um ponto de coleta para toda a população sem amostragem adequada."
+    ],
+    "priorKnowledge": [
+      "Distinguir seres vivos de condições físicas e químicas do ambiente.",
+      "Ler comparações simples entre grupos, locais ou momentos."
+    ],
+    "keyConcepts": [
+      "Componentes bióticos e abióticos interagem.",
+      "Interações incluem competição, predação, herbivoria, mutualismo e parasitismo.",
+      "Energia flui pelas relações tróficas; matéria circula entre organismos e ambiente.",
+      "A força de uma conclusão depende do desenho de observação e das alternativas consideradas."
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Classificar componentes e reconhecer relações explícitas.",
+        "questionIds": [
+          "v5-bio-eco-probe-01",
+          "v5-bio-eco-probe-02"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Explicar mecanismos em redes alimentares, recursos e decomposição.",
+        "questionIds": [
+          "v5-bio-eco-practice-01",
+          "v5-bio-eco-practice-08"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar o raciocínio a ambientes e dados novos, considerando controles e alternativas.",
+        "questionIds": [
+          "v5-bio-eco-transfer-01",
+          "v5-bio-eco-transfer-06",
+          "v9-biology-ecosystem-interactions-expansion-v9-051",
+          "v9-biology-ecosystem-interactions-expansion-v9-052",
+          "v9-biology-ecosystem-interactions-expansion-v9-053",
+          "v9-biology-ecosystem-interactions-expansion-v9-054",
+          "v9-biology-ecosystem-interactions-expansion-v9-055",
+          "v9-biology-ecosystem-interactions-expansion-v9-056",
+          "v9-biology-ecosystem-interactions-expansion-v9-057",
+          "v9-biology-ecosystem-interactions-expansion-v9-058",
+          "v9-biology-ecosystem-interactions-expansion-v9-059",
+          "v9-biology-ecosystem-interactions-expansion-v9-060",
+          "v9-biology-ecosystem-interactions-expansion-v9-061",
+          "v9-biology-ecosystem-interactions-expansion-v9-062",
+          "v9-biology-ecosystem-interactions-expansion-v9-063",
+          "v9-biology-ecosystem-interactions-expansion-v9-064",
+          "v9-biology-ecosystem-interactions-expansion-v9-065",
+          "v9-biology-ecosystem-interactions-expansion-v9-066",
+          "v9-biology-ecosystem-interactions-expansion-v9-067",
+          "v9-biology-ecosystem-interactions-expansion-v9-068",
+          "v9-biology-ecosystem-interactions-expansion-v9-069",
+          "v9-biology-ecosystem-interactions-expansion-v9-070",
+          "v9-biology-ecosystem-interactions-expansion-v9-071",
+          "v9-biology-ecosystem-interactions-expansion-v9-072",
+          "v9-biology-ecosystem-interactions-expansion-v9-073",
+          "v9-biology-ecosystem-interactions-expansion-v9-074",
+          "v9-biology-ecosystem-interactions-expansion-v9-075"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Distinguir níveis ecológicos, fluxos e limites de inferência.",
+        "questionIds": [
+          "v5-bio-eco-lock-01",
+          "v5-bio-eco-lock-04"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar ideias centrais em contextos distintos; espaçamento ainda depende do agendador do produto.",
+        "questionIds": [
+          "v5-bio-eco-review-01",
+          "v5-bio-eco-review-08"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "CLASSIFICATION_ERROR",
+        "text": "Pergunte se o elemento é um organismo ou uma condição física/química. A interação entre ambos pode ser a explicação, mas não muda sua classificação."
+      },
+      {
+        "trigger": "ENERGY_MATTER_CONFUSION",
+        "text": "Siga uma parcela de energia até o uso metabólico e o calor; depois siga um elemento da matéria, que pode passar entre organismos e ambiente."
+      },
+      {
+        "trigger": "CAUSALITY_OVERCLAIM",
+        "text": "Separe o registro observado da hipótese. Procure uma comparação que ajude a afastar outras explicações."
+      },
+      {
+        "trigger": "LEVEL_OF_ORGANIZATION_ERROR",
+        "text": "Um indivíduo é um organismo; indivíduos da mesma espécie formam uma população; várias populações formam uma comunidade; o ecossistema inclui também fatores abióticos."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "BIOTIC_ABIOTIC_MIXUP",
+        "prompt": "Monte duas colunas: organismos/interações e condições físicas/químicas. Depois conecte um elemento de cada coluna com uma relação observável."
+      },
+      {
+        "misconception": "ENERGY_AND_MATTER_SAME_PATH",
+        "prompt": "Desenhe uma seta de energia entre níveis tróficos e um ciclo para um nutriente; marque onde há transferência e onde há retorno ao ambiente."
+      },
+      {
+        "misconception": "CORRELATION_PROVES_SINGLE_CAUSE",
+        "prompt": "Liste o que foi medido, a hipótese e duas variáveis alternativas. Indique que comparação adicional diferenciaria as explicações."
+      },
+      {
+        "misconception": "INDIVIDUAL_EQUALS_POPULATION",
+        "prompt": "Identifique a unidade observada e proponha uma amostra que represente a população em mais de um local ou momento."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 12,
+    "sourceDossier": [
+      {
+        "title": "Ecological Processes",
+        "publisher": "U.S. Environmental Protection Agency",
+        "url": "https://www.epa.gov/report-environment/ecological-processes",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "primary production",
+          "carbon and nutrient cycling",
+          "ecosystem stressors",
+          "repeated measurement and limits of indicators"
+        ],
+        "use": "Scientific fact-check only; wording, examples, questions and explanations in this package are original."
+      }
+    ],
+    "copyrightNote": "No source wording, questions, figures or data were copied. Scenarios and values are hypothetical and authored for this package. Lote V9 autoral com 100 questões, progressão e revisão pedagógica pendente; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-bio-eco-probe-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SALINIDADE_ESTUARIO",
+      "statement": "Em uma medição de estuário, pesquisadores registram salinidade da água e presença de caranguejos. Como esses dois elementos são classificados?",
+      "options": [
+        "Salinidade é abiótica e caranguejos são bióticos.",
+        "Salinidade é biótica porque afeta seres vivos; caranguejos são abióticos.",
+        "Os dois são bióticos porque foram medidos no mesmo local.",
+        "Os dois são abióticos porque fazem parte da água."
+      ],
+      "correctAnswer": "Salinidade é abiótica e caranguejos são bióticos.",
+      "explanation": "Salinidade é uma condição química do ambiente; caranguejos são organismos. Uma condição abiótica pode influenciar organismos sem se tornar biótica.",
+      "hint": "Classifique cada item pelo que ele é, não pelo efeito que pode causar.",
+      "errorFocus": "BIOTIC_ABIOTIC_MIXUP",
+      "misconceptions": {
+        "Salinidade é biótica porque afeta seres vivos; caranguejos são abióticos.": [
+          "EFFECT_CONFUSED_WITH_COMPONENT_TYPE"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-probe-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TEIA_DE_BREJO",
+      "statement": "Em um esquema, uma seta vai de uma planta aquática para um caramujo que se alimenta dela. O que a seta representa nesse modelo alimentar?",
+      "options": [
+        "A direção em que a planta consome o caramujo.",
+        "Que a planta depende do caramujo para realizar fotossíntese.",
+        "Que a quantidade de indivíduos das duas espécies é igual.",
+        "A direção de transferência de matéria e energia alimentar da planta para o consumidor."
+      ],
+      "correctAnswer": "A direção de transferência de matéria e energia alimentar da planta para o consumidor.",
+      "explanation": "Na convenção usual de teias alimentares, a seta aponta do recurso consumido para o consumidor, representando a transferência pela alimentação.",
+      "hint": "Pergunte qual organismo serve de alimento e qual o consome.",
+      "errorFocus": "FOOD_WEB_ARROW_REVERSED",
+      "misconceptions": {
+        "A direção em que a planta consome o caramujo.": [
+          "FOOD_WEB_ARROW_REVERSED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DECOMPOSICAO_FOLHICA",
+      "statement": "Em uma área de mata, folhas caídas são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Qual interpretação relaciona melhor esse processo ao ecossistema?",
+      "options": [
+        "A energia volta intacta às folhas e dispensa a luz solar.",
+        "A decomposição interrompe qualquer circulação de nutrientes.",
+        "Fungos e bactérias convertem matéria em energia que permanece sem perdas.",
+        "A matéria orgânica é transformada e elementos podem retornar ao ambiente; isso não significa que a energia seja reciclada integralmente."
+      ],
+      "correctAnswer": "A matéria orgânica é transformada e elementos podem retornar ao ambiente; isso não significa que a energia seja reciclada integralmente.",
+      "explanation": "Decompositores participam da transformação da matéria orgânica e da circulação de elementos. Energia, por outro lado, é transferida e parte se dissipa como calor.",
+      "hint": "Siga separadamente um elemento químico e a energia armazenada na matéria orgânica.",
+      "errorFocus": "ENERGY_AND_MATTER_SAME_PATH",
+      "misconceptions": {
+        "A energia volta intacta às folhas e dispensa a luz solar.": [
+          "ENERGY_RECYCLED_AS_MATTER"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SOMBRA_E_PRODUCAO",
+      "statement": "Em um experimento de vasos, plantas da mesma espécie recebem igual água e solo; metade fica sob sombra intensa. Após alguns dias, o grupo sombreado apresenta menor crescimento. Qual conclusão é mais compatível com o desenho?",
+      "options": [
+        "A diferença é compatível com efeito da luz no crescimento, embora o resultado dependa de como as demais condições foram mantidas.",
+        "A sombra prova que a água nunca influencia o crescimento de plantas.",
+        "A menor altura demonstra que todas as plantas morreram por falta de nutrientes.",
+        "Como os vasos são da mesma espécie, o resultado não pode envolver fator abiótico."
+      ],
+      "correctAnswer": "A diferença é compatível com efeito da luz no crescimento, embora o resultado dependa de como as demais condições foram mantidas.",
+      "explanation": "A comparação controlada torna a luz uma explicação plausível, mas a interpretação requer verificar se os grupos diferiram apenas na condição planejada e se houve replicação suficiente.",
+      "hint": "Identifique a variável alterada e quais condições precisariam permanecer comparáveis.",
+      "errorFocus": "EXPERIMENTAL_CONTROL_IGNORED",
+      "misconceptions": {
+        "A sombra prova que a água nunca influencia o crescimento de plantas.": [
+          "ONE_FACTOR_EXCLUDES_ALL_OTHERS"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COMPETICAO_POR_AGUA",
+      "statement": "Duas espécies de gramíneas ocupam o mesmo canteiro. Em parcelas com pouca água, a remoção de uma delas é seguida por maior crescimento da outra; com irrigação abundante, a diferença quase desaparece. Qual hipótese é mais consistente?",
+      "options": [
+        "As espécies mantêm mutualismo obrigatório em qualquer condição.",
+        "A água é um componente biótico que uma espécie oferece à outra.",
+        "A disponibilidade limitada de água pode intensificar a competição entre as espécies.",
+        "O crescimento prova que a espécie removida era predadora da gramínea restante."
+      ],
+      "correctAnswer": "A disponibilidade limitada de água pode intensificar a competição entre as espécies.",
+      "explanation": "A resposta à remoção depende da disponibilidade do recurso e é compatível com competição por água. O padrão não prova que esse seja o único mecanismo sem medidas adicionais.",
+      "hint": "Compare o resultado quando o recurso é escasso com o resultado quando é abundante.",
+      "errorFocus": "RESOURCE_LIMITATION_IGNORED",
+      "misconceptions": {
+        "A água é um componente biótico que uma espécie oferece à outra.": [
+          "ABIOTIC_RESOURCE_MISCLASSIFIED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PREDICT",
+      "contextFamily": "PREDACAO_LAGOA",
+      "statement": "Em uma lagoa, peixes predadores consomem pequenos peixes que se alimentam de zooplâncton. Se a abundância dos predadores cair, qual previsão deve ser tratada como hipótese a testar, não como certeza?",
+      "options": [
+        "A população pode aumentar, mas alimento, abrigo e outras relações também podem limitar essa resposta.",
+        "A população de pequenos peixes pode aumentar se a predação for limitante, mas outros fatores podem compensar a mudança.",
+        "A população ficará necessariamente igual, pois predadores não afetam suas presas quando há outros recursos.",
+        "O zooplâncton necessariamente diminuirá antes de qualquer mudança nos peixes."
+      ],
+      "correctAnswer": "A população pode aumentar, mas alimento, abrigo e outras relações também podem limitar essa resposta.",
+      "explanation": "A redução de predadores pode aliviar a pressão de predação, mas populações respondem a vários fatores e a rede pode produzir efeitos indiretos.",
+      "hint": "Siga uma relação direta e depois liste outros fatores que afetam a população.",
+      "errorFocus": "SINGLE_LINK_DETERMINISM",
+      "misconceptions": {
+        "A população ficará necessariamente igual, pois predadores não afetam suas presas quando há outros recursos.": [
+          "PREDATION_EFFECT_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "NUTRIENTES_COSTEIROS",
+      "statement": "Após aumento de nutrientes em uma enseada, sensores registram maior crescimento de algas e, dias depois, menos oxigênio dissolvido. Qual mecanismo é uma explicação plausível para a sequência?",
+      "options": [
+        "O oxigênio dissolvido é transformado em luz pelas algas e deixa de existir.",
+        "Nutrientes eliminam decompositores, impedindo qualquer consumo de oxigênio.",
+        "As algas retiram todo o sal da água, causando diretamente a queda do oxigênio.",
+        "A produção elevada pode gerar mais matéria orgânica; sua decomposição consome oxigênio da água."
+      ],
+      "correctAnswer": "A produção elevada pode gerar mais matéria orgânica; sua decomposição consome oxigênio da água.",
+      "explanation": "Uma carga excessiva de nutrientes pode favorecer produção elevada; a decomposição da matéria orgânica pode reduzir o oxigênio dissolvido. A sequência observada é compatível com esse mecanismo e pode ser investigada com medidas adicionais.",
+      "hint": "Considere o que acontece com a matéria orgânica produzida quando ela morre e é decomposta.",
+      "errorFocus": "NUTRIENT_PRODUCTION_DECOMPOSITION_LINK",
+      "misconceptions": {
+        "Nutrientes eliminam decompositores, impedindo qualquer consumo de oxigênio.": [
+          "DECOMPOSERS_EXCLUDED_FROM_CYCLE"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FIXACAO_NITROGENIO_SOLO",
+      "statement": "Em raízes de uma planta, bactérias vivem em associação e transformam compostos de nitrogênio em formas que podem entrar em processos biológicos. Qual leitura é mais cuidadosa?",
+      "options": [
+        "O nitrogênio é energia e por isso não pode circular entre solo e organismos.",
+        "Como as bactérias são microscópicas, elas são fatores abióticos.",
+        "Há uma interação entre organismos ligada à transformação de matéria; o benefício para cada parceiro deve ser avaliado pelas evidências do caso.",
+        "A associação prova, sem dados, que ambos os parceiros sempre recebem o mesmo benefício."
+      ],
+      "correctAnswer": "Há uma interação entre organismos ligada à transformação de matéria; o benefício para cada parceiro deve ser avaliado pelas evidências do caso.",
+      "explanation": "Bactérias são componentes bióticos, e transformações de nitrogênio integram ciclos de matéria. A descrição da associação, sozinha, não basta para atribuir intensidade ou simetria de benefício.",
+      "hint": "Separe a classificação dos organismos da conclusão sobre o tipo de interação.",
+      "errorFocus": "INTERACTION_LABEL_WITHOUT_EVIDENCE",
+      "misconceptions": {
+        "A associação prova, sem dados, que ambos os parceiros sempre recebem o mesmo benefício.": [
+          "MUTUALISM_ASSUMED_FROM_COLOCATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-07",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "POLINIZACAO_MATA",
+      "statement": "Em flores visitadas por insetos, observam-se grãos de pólen aderidos ao corpo dos visitantes e maior formação de frutos em flores acessíveis a eles. Qual interpretação distingue melhor evidência de conclusão?",
+      "options": [
+        "Os dados apoiam participação dos visitantes na polinização; para chamar a relação de benefício mútuo, também é preciso evidência sobre efeitos nos insetos.",
+        "Os dados provam que todos os visitantes recebem alimento de todas as flores.",
+        "A formação de frutos demonstra que os insetos são fatores abióticos.",
+        "A presença de pólen prova que nenhuma outra forma de polinização ocorre."
+      ],
+      "correctAnswer": "Os dados apoiam participação dos visitantes na polinização; para chamar a relação de benefício mútuo, também é preciso evidência sobre efeitos nos insetos.",
+      "explanation": "Os registros apoiam uma contribuição para a reprodução das plantas. Mutualismo requer evidência de benefício para ambos, e a observação não exclui outros agentes.",
+      "hint": "Pergunte quais efeitos foram medidos para a planta e quais para o inseto.",
+      "errorFocus": "ONE_PARTNER_BENEFIT_AS_MUTUALISM_PROOF",
+      "misconceptions": {
+        "Os dados provam que todos os visitantes recebem alimento de todas as flores.": [
+          "UNMEASURED_BENEFIT_ASSUMED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-practice-08",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NITROGENIO_PRODUTIVIDADE",
+      "statement": "Em duas parcelas de um mesmo campo, a adição de um nutriente aumenta a biomassa vegetal apenas na parcela em que esse nutriente estava inicialmente escasso. O que o resultado sugere?",
+      "options": [
+        "Todo nutriente sempre aumenta a produção em qualquer quantidade e ecossistema.",
+        "A disponibilidade do nutriente pode limitar a produção naquele contexto, mas a limitação não precisa ser igual em todo o campo.",
+        "O nutriente é um organismo porque sua adição alterou plantas.",
+        "A biomassa vegetal mede diretamente toda a energia que entra no ecossistema."
+      ],
+      "correctAnswer": "A disponibilidade do nutriente pode limitar a produção naquele contexto, mas a limitação não precisa ser igual em todo o campo.",
+      "explanation": "A resposta diferente entre parcelas é compatível com limitação por disponibilidade local. O resultado não autoriza extrapolar para qualquer quantidade ou sistema.",
+      "hint": "Compare a resposta à adição nas duas condições iniciais.",
+      "errorFocus": "LIMITING_FACTOR_GENERALIZED_UNIVERSALLY",
+      "misconceptions": {
+        "Todo nutriente sempre aumenta a produção em qualquer quantidade e ecossistema.": [
+          "CONTEXT_FREE_LIMITATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CORREGO_URBANO_TERMICO",
+      "statement": "Em um riacho, pesquisadores medem temperatura e macroinvertebrados a montante e a jusante de um trecho sem mata ciliar, repetindo as coletas por várias semanas. A jusante fica mais quente e alguns grupos diminuem, enquanto o trecho de referência permanece estável. Qual conclusão é mais defensável?",
+      "options": [
+        "A ausência de mata é comprovadamente a única causa possível para toda mudança observada.",
+        "A estabilidade do trecho de referência prova que temperatura não afeta organismos.",
+        "O padrão apoia a hipótese de que a perda de sombra contribui para o aquecimento e a mudança biológica; outros fatores e o método de coleta ainda devem ser verificados.",
+        "Uma única medição já permite afirmar que todas as espécies do riacho desapareceram."
+      ],
+      "correctAnswer": "O padrão apoia a hipótese de que a perda de sombra contribui para o aquecimento e a mudança biológica; outros fatores e o método de coleta ainda devem ser verificados.",
+      "explanation": "Medições repetidas e um trecho de referência fortalecem a comparação, mas diferenças de vazão, poluição, substrato e esforço amostral também podem importar.",
+      "hint": "Use a comparação espacial e temporal, mas confira se outras condições variaram junto.",
+      "errorFocus": "CONTROLLED_COMPARISON_TREATED_AS_CERTAINTY",
+      "misconceptions": {
+        "A ausência de mata é comprovadamente a única causa possível para toda mudança observada.": [
+          "ALTERNATIVE_CAUSES_IGNORED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "POLINIZACAO_HORTA_SECA",
+      "statement": "Em uma horta, a contagem de visitas de abelhas e a produção de frutos caem no mesmo mês de estiagem. Qual dado adicional ajudaria mais a avaliar se a redução de visitas contribuiu para a produção?",
+      "options": [
+        "Contar apenas as abelhas em um dia de chuva no ano seguinte.",
+        "Medir a cor dos frutos já colhidos sem registrar quantas flores havia.",
+        "Perguntar se as abelhas preferem jardins de outra cidade.",
+        "Comparar flores com acesso livre e flores protegidas de visitantes, mantendo condições semelhantes e registrando água, floração e formação de frutos."
+      ],
+      "correctAnswer": "Comparar flores com acesso livre e flores protegidas de visitantes, mantendo condições semelhantes e registrando água, floração e formação de frutos.",
+      "explanation": "Uma comparação planejada pode separar a contribuição de visitantes de efeitos da seca sobre as flores e a produção. O protocolo ainda deve respeitar o bem-estar dos organismos.",
+      "hint": "Procure uma comparação que altere o acesso dos polinizadores e registre outros efeitos da seca.",
+      "errorFocus": "CORRELATION_PROVES_SINGLE_CAUSE",
+      "misconceptions": {
+        "Contar apenas as abelhas em um dia de chuva no ano seguinte.": [
+          "UNMATCHED_TIME_AND_CONDITION"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MANGUEZAL_GRADIENTE_SALINO",
+      "statement": "Ao longo de um manguezal, a salinidade aumenta da margem do rio para uma área mais aberta. Duas espécies de plantas apresentam distribuições diferentes nesse gradiente. Qual explicação deve orientar a próxima análise?",
+      "options": [
+        "A espécie mais distante do rio necessariamente causou o aumento da salinidade.",
+        "Como ambas são plantas, suas tolerâncias devem ser idênticas.",
+        "A salinidade pode contribuir para a distribuição, mas inundação, sedimento, luz e interações também precisam ser comparados.",
+        "A distribuição observada elimina a possibilidade de qualquer outro fator ambiental."
+      ],
+      "correctAnswer": "A salinidade pode contribuir para a distribuição, mas inundação, sedimento, luz e interações também precisam ser comparados.",
+      "explanation": "Um gradiente mostra associação espacial e gera hipóteses; outros fatores que variam com a posição podem explicar parte do padrão.",
+      "hint": "Liste condições que mudam junto com a distância da margem.",
+      "errorFocus": "GRADIENT_CONFOUNDED_WITH_CAUSALITY",
+      "misconceptions": {
+        "A espécie mais distante do rio necessariamente causou o aumento da salinidade.": [
+          "SPATIAL_ASSOCIATION_REVERSED_AS_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FRAGMENTACAO_CERRADO",
+      "statement": "Após a abertura de uma estrada, uma equipe encontra menos plantas jovens na borda de fragmentos do Cerrado do que no interior. Qual plano de investigação é mais forte para avaliar a relação com a fragmentação?",
+      "options": [
+        "Contar uma única planta na borda e concluir que a estrada eliminou a população inteira.",
+        "Repetir amostragens padronizadas em várias bordas e interiores, medir luz, umidade e perturbações e comparar fragmentos de tamanhos diferentes.",
+        "Comparar uma borda recém-aberta com uma floresta distante de outro clima, sem controlar diferenças.",
+        "Usar somente o número de carros na estrada como medida da regeneração vegetal."
+      ],
+      "correctAnswer": "Repetir amostragens padronizadas em várias bordas e interiores, medir luz, umidade e perturbações e comparar fragmentos de tamanhos diferentes.",
+      "explanation": "Replicação, protocolo consistente e medição de mecanismos plausíveis ajudam a avaliar padrões de borda e outras diferenças entre áreas.",
+      "hint": "Combine repetição, comparação equivalente e medidas de condições que podem mediar o efeito.",
+      "errorFocus": "SINGLE_SITE_OVERGENERALIZATION",
+      "misconceptions": {
+        "Contar uma única planta na borda e concluir que a estrada eliminou a população inteira.": [
+          "SAMPLE_GENERALIZED_TO_POPULATION"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RECIFE_ESTRESSE_TERMICO",
+      "statement": "Em um recife, episódios de branqueamento coincidem com semanas de água mais quente. Em alguns locais, a intensidade difere e também há registros distintos de turbidez. Que interpretação é mais rigorosa?",
+      "options": [
+        "A coincidência prova que a turbidez nunca influencia corais.",
+        "O aquecimento é uma hipótese relevante, mas comparar duração do calor, turbidez, profundidade e locais de referência ajuda a avaliar diferenças.",
+        "Branqueamento significa que todos os organismos do recife morreram.",
+        "A temperatura é um fator biótico porque os corais responderam a ela."
+      ],
+      "correctAnswer": "O aquecimento é uma hipótese relevante, mas comparar duração do calor, turbidez, profundidade e locais de referência ajuda a avaliar diferenças.",
+      "explanation": "A associação temporal sugere um mecanismo, mas a distribuição desigual do efeito pode envolver condições locais e outras pressões; branqueamento não equivale automaticamente à morte de todos os organismos.",
+      "hint": "Separe a condição abiótica observada, a resposta e as diferenças entre locais.",
+      "errorFocus": "STRESSOR_AS_SOLE_CAUSE",
+      "misconceptions": {
+        "Branqueamento significa que todos os organismos do recife morreram.": [
+          "RESPONSE_INDICATOR_CONFUSED_WITH_TOTAL_MORTALITY"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-transfer-06",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PREDICT",
+      "contextFamily": "BARRAGEM_FLUXO_RIO",
+      "statement": "Após a operação de uma barragem, a vazão diária de um trecho passa a variar menos. A equipe quer avaliar efeitos sobre organismos aquáticos. Qual conjunto de dados é mais informativo?",
+      "options": [
+        "Séries antes e depois de vazão, temperatura, oxigênio, habitat e abundância de grupos, incluindo um trecho comparável não afetado.",
+        "Apenas a altura da barragem medida uma vez.",
+        "Somente a opinião de um pescador sobre uma espécie em um dia.",
+        "A quantidade de água armazenada, sem observações do trecho ou de organismos."
+      ],
+      "correctAnswer": "Séries antes e depois de vazão, temperatura, oxigênio, habitat e abundância de grupos, incluindo um trecho comparável não afetado.",
+      "explanation": "Séries temporais e local de referência permitem examinar mecanismos e separar mudanças associadas à operação de variações regionais.",
+      "hint": "Meça a alteração física, respostas biológicas e um local de comparação ao longo do tempo.",
+      "errorFocus": "BIOLOGICAL_EFFECT_WITHOUT_BASELINE",
+      "misconceptions": {
+        "A quantidade de água armazenada, sem observações do trecho ou de organismos.": [
+          "INFRASTRUCTURE_METRIC_SUBSTITUTES_ECOSYSTEM_EVIDENCE"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "NIVEIS_ECOLOGICOS_LAGOA",
+      "statement": "Uma equipe observa três espécies de peixes, algas, temperatura e oxigênio dissolvido em uma lagoa. Qual objeto de estudo inclui todos esses dados em conjunto?",
+      "options": [
+        "Uma população, porque qualquer conjunto observado em um local pertence à mesma espécie.",
+        "O ecossistema, porque inclui comunidades de organismos e condições abióticas.",
+        "Um organismo, porque a lagoa funciona como um indivíduo.",
+        "Uma comunidade, que inclui necessariamente as condições químicas da água."
+      ],
+      "correctAnswer": "O ecossistema, porque inclui comunidades de organismos e condições abióticas.",
+      "explanation": "Uma comunidade reúne populações de diferentes espécies; ao incluir fatores físicos e químicos, o recorte é ecossistêmico.",
+      "hint": "Veja se o recorte inclui apenas organismos ou também o ambiente não vivo.",
+      "errorFocus": "LEVEL_OF_ORGANIZATION_ERROR",
+      "misconceptions": {
+        "Uma comunidade, que inclui necessariamente as condições químicas da água.": [
+          "COMMUNITY_INCLUDES_ABIOTIC_COMPONENTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ENERGIA_CICLO_CARBONO",
+      "statement": "Em um modelo, setas alimentares mostram transferência de energia; outro esquema acompanha átomos de carbono entre atmosfera, plantas, animais e decompositores. Qual comparação está correta?",
+      "options": [
+        "Energia e carbono retornam intactos ao ponto inicial em cada alimentação.",
+        "O carbono só se move entre animais e nunca passa pelo ambiente.",
+        "A energia é matéria e por isso forma ciclos idênticos aos do carbono.",
+        "A energia é transferida e parte se dissipa; o carbono pode circular entre organismos e ambiente."
+      ],
+      "correctAnswer": "A energia é transferida e parte se dissipa; o carbono pode circular entre organismos e ambiente.",
+      "explanation": "Os modelos representam processos diferentes: fluxo de energia e circulação de matéria. A energia não se recicla como os átomos de carbono.",
+      "hint": "Acompanhe o destino de uma parcela de energia e de um átomo de carbono separadamente.",
+      "errorFocus": "ENERGY_CYCLE_CONFUSED_WITH_MATTER_CYCLE",
+      "misconceptions": {
+        "Energia e carbono retornam intactos ao ponto inicial em cada alimentação.": [
+          "ENERGY_RECYCLED_WITH_MATTER"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMOSTRAGEM_ANFIBIOS",
+      "statement": "Durante uma noite chuvosa, uma estudante observa um único anfíbio fora de uma poça e relata o local de encontro. O que esse registro permite concluir diretamente?",
+      "options": [
+        "Um indivíduo foi observado naquele local e momento; tendências populacionais exigem amostragens repetidas e representativas.",
+        "A população inteira aumentou naquela noite.",
+        "A chuva foi comprovadamente a única causa do deslocamento.",
+        "A espécie deixou de depender das condições abióticas."
+      ],
+      "correctAnswer": "Um indivíduo foi observado naquele local e momento; tendências populacionais exigem amostragens repetidas e representativas.",
+      "explanation": "O registro individual é uma observação localizada. Não estima sozinho abundância nem prova a causa do comportamento.",
+      "hint": "Diferencie a unidade observada da população que se quer descrever.",
+      "errorFocus": "INDIVIDUAL_EQUALS_POPULATION",
+      "misconceptions": {
+        "A população inteira aumentou naquela noite.": [
+          "SINGLE_OBSERVATION_AS_POPULATION_TREND"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-lock-04",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COMPETICAO_NINHOS",
+      "statement": "Duas espécies de aves usam cavidades semelhantes para nidificar. Em anos com poucas cavidades, uma espécie ocupa mais cavidades quando a outra é temporariamente ausente; em anos com muitas cavidades, a diferença diminui. Qual interpretação é mais sustentada?",
+      "options": [
+        "A ausência de uma espécie prova que a outra se alimenta dela.",
+        "O padrão é compatível com competição por cavidades quando o recurso é escasso, mas outras diferenças entre anos também devem ser consideradas.",
+        "Como as aves são diferentes, não podem competir por um recurso compartilhado.",
+        "O resultado demonstra que a disponibilidade de cavidades não afeta a ocupação."
+      ],
+      "correctAnswer": "O padrão é compatível com competição por cavidades quando o recurso é escasso, mas outras diferenças entre anos também devem ser consideradas.",
+      "explanation": "Uso de um recurso limitado e resposta à ausência de uma espécie são compatíveis com competição; a comparação entre anos pode incluir outras mudanças ambientais.",
+      "hint": "Observe o recurso compartilhado e se a resposta muda quando ele é abundante ou escasso.",
+      "errorFocus": "COMPETITION_RESOURCE_CONTEXT_IGNORED",
+      "misconceptions": {
+        "Como as aves são diferentes, não podem competir por um recurso compartilhado.": [
+          "COMPETITION_REQUIRES_SAME_SPECIES"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PREDICT",
+      "contextFamily": "PRODUTOR_TURBIDEZ",
+      "statement": "Uma descarga de sedimentos deixa a água temporariamente mais turva em um lago e reduz a luz em plantas aquáticas. Qual efeito inicial é plausível, sem ser inevitável para todas as espécies?",
+      "options": [
+        "A turbidez transforma plantas em consumidores de outros peixes.",
+        "A menor luz faz a matéria desaparecer do lago.",
+        "A produção fotossintética de algumas plantas pode diminuir, alterando recursos disponíveis a outros organismos.",
+        "A mudança garante que todas as populações aumentem na mesma proporção."
+      ],
+      "correctAnswer": "A produção fotossintética de algumas plantas pode diminuir, alterando recursos disponíveis a outros organismos.",
+      "explanation": "Menor luz pode limitar a fotossíntese de organismos fotossintetizantes; efeitos posteriores dependem das espécies, da duração e de outras condições.",
+      "hint": "Conecte luz, produção primária e recursos sem presumir resposta uniforme.",
+      "errorFocus": "UNIFORM_RESPONSE_ASSUMED",
+      "misconceptions": {
+        "A mudança garante que todas as populações aumentem na mesma proporção.": [
+          "ECOSYSTEM_RESPONSE_ASSUMED_UNIFORM"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TRANSFERENCIA_NIVEL_TROFICO",
+      "statement": "Um modelo indica 1.000 unidades de energia produzida por plantas e 120 unidades incorporadas à produção de consumidores primários no mesmo período. Qual afirmação respeita o alcance do modelo?",
+      "options": [
+        "Exatamente 880 unidades foram destruídas e não podem aparecer em nenhum outro processo.",
+        "Os consumidores primários produziram as 1.000 unidades inicialmente captadas pelas plantas.",
+        "O modelo registra transferência de parte da energia para a produção dos consumidores; o restante pode ter destinos como respiração, calor, material não consumido e decomposição.",
+        "Toda a matéria do ecossistema foi transferida junto com as 120 unidades de energia."
+      ],
+      "correctAnswer": "O modelo registra transferência de parte da energia para a produção dos consumidores; o restante pode ter destinos como respiração, calor, material não consumido e decomposição.",
+      "explanation": "A diferença entre valores não equivale a energia simplesmente destruída. A energia pode seguir diferentes vias, e o diagrama precisa especificar os compartimentos incluídos.",
+      "hint": "Não trate a diferença entre dois compartimentos como um destino único sem dados.",
+      "errorFocus": "ENERGY_DIFFERENCE_AS_DISAPPEARANCE",
+      "misconceptions": {
+        "Exatamente 880 unidades foram destruídas e não podem aparecer em nenhum outro processo.": [
+          "ENERGY_DESTROYED_OR_UNACCOUNTED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PARASITISMO_FOLHAS",
+      "statement": "Uma planta hospedeira apresenta perda de nutrientes enquanto um organismo vive sobre ela e obtém alimento. Qual descrição caracteriza melhor a interação, se os efeitos forem confirmados?",
+      "options": [
+        "Parasitismo: o organismo obtém benefício e o hospedeiro sofre prejuízo.",
+        "Mutualismo: ambos necessariamente se beneficiam porque estão associados.",
+        "Competição: os dois organismos disputam sempre o mesmo alimento.",
+        "Comensalismo: o hospedeiro recebe benefício comprovado e o outro não é afetado."
+      ],
+      "correctAnswer": "Parasitismo: o organismo obtém benefício e o hospedeiro sofre prejuízo.",
+      "explanation": "A classificação depende dos efeitos nos dois parceiros. O cenário descreve benefício de um e prejuízo do hospedeiro, padrão de parasitismo.",
+      "hint": "Avalie separadamente o efeito da interação sobre cada parceiro.",
+      "errorFocus": "INTERACTION_SIGNS_CONFUSED",
+      "misconceptions": {
+        "Mutualismo: ambos necessariamente se beneficiam porque estão associados.": [
+          "ASSOCIATION_ASSUMED_MUTUALISTIC"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESPACAMENTO_PLANTAS",
+      "statement": "Em uma área, plantas adultas aparecem aproximadamente espaçadas. Qual investigação ajudaria a distinguir competição por recursos de outras explicações para esse padrão?",
+      "options": [
+        "Concluir competição apenas porque as plantas não estão agrupadas.",
+        "Contar flores em uma única planta e inferir a distribuição de todas as sementes.",
+        "Medir a cor do solo em um ponto sem registrar posições das plantas.",
+        "Medir recursos e sobrevivência em diferentes densidades, comparar parcelas e verificar se o espaçamento muda quando a disponibilidade de recursos é alterada."
+      ],
+      "correctAnswer": "Medir recursos e sobrevivência em diferentes densidades, comparar parcelas e verificar se o espaçamento muda quando a disponibilidade de recursos é alterada.",
+      "explanation": "Um padrão espacial pode resultar de competição, dispersão, condições locais ou outras interações; manipulação e medidas comparáveis ajudam a distinguir mecanismos.",
+      "hint": "Procure testar como o padrão responde à densidade e à disponibilidade do recurso proposto.",
+      "errorFocus": "PATTERN_AS_MECHANISM_PROOF",
+      "misconceptions": {
+        "Concluir competição apenas porque as plantas não estão agrupadas.": [
+          "SPATIAL_PATTERN_PROVES_CAUSE"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PESTICIDA_INDICADOR",
+      "statement": "Após uma aplicação de pesticida em uma região agrícola, uma espécie de inseto é menos observada. Qual abordagem apoia melhor uma avaliação do efeito?",
+      "options": [
+        "Atribuir a diferença ao produto com base em uma contagem feita em um único dia.",
+        "Comparar somente o número de insetos com a produção agrícola de outro estado.",
+        "Usar contagens repetidas com protocolo constante em áreas tratadas e comparáveis não tratadas, medindo também clima, habitat e outras pressões.",
+        "Considerar a ausência de registros como prova de extinção local imediata."
+      ],
+      "correctAnswer": "Usar contagens repetidas com protocolo constante em áreas tratadas e comparáveis não tratadas, medindo também clima, habitat e outras pressões.",
+      "explanation": "Repetição, comparação e registro de fatores alternativos tornam a inferência mais confiável; uma observação isolada não determina a causa.",
+      "hint": "Pense em linha de base, controle comparável e consistência de amostragem.",
+      "errorFocus": "POST_EVENT_SINGLE_COUNT",
+      "misconceptions": {
+        "Atribuir a diferença ao produto com base em uma contagem feita em um único dia.": [
+          "BEFORE_AFTER_CAUSALITY_ASSUMED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-06",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DECOMPOSICAO_NUTRIENTES",
+      "statement": "Após a queda de folhas, organismos do solo fragmentam o material e liberam compostos que podem ser absorvidos por plantas. Qual processo essa descrição destaca?",
+      "options": [
+        "A reciclagem integral de toda energia sem dissipação.",
+        "A transformação e circulação de matéria entre componentes bióticos e abióticos.",
+        "A interrupção da produção primária por qualquer decompositor.",
+        "A conversão de plantas em fatores abióticos antes de ocorrer decomposição."
+      ],
+      "correctAnswer": "A transformação e circulação de matéria entre componentes bióticos e abióticos.",
+      "explanation": "A decomposição transforma matéria orgânica e pode disponibilizar elementos no ambiente; depois, organismos podem incorporá-los novamente.",
+      "hint": "Siga os elementos químicos da folha para o solo e, depois, para uma planta.",
+      "errorFocus": "MATTER_CYCLE_STEP_MISSING",
+      "misconceptions": {
+        "A reciclagem integral de toda energia sem dissipação.": [
+          "ENERGY_AND_MATTER_CONFLATED"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-07",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PREDICT",
+      "contextFamily": "REDE_PREDADORES_ALTERNATIVOS",
+      "statement": "Em uma teia, uma espécie de predador consome duas espécies de herbívoros, e ambas também são consumidas por outro predador. Se o primeiro predador diminuir, qual previsão é mais prudente?",
+      "options": [
+        "Os herbívoros necessariamente dobrarão porque existe apenas uma relação na teia.",
+        "O outro predador deixará de consumir suas presas por causa da ausência do primeiro.",
+        "A teia alimentar deixa de existir assim que uma população muda.",
+        "A pressão de predação sobre os herbívoros pode mudar, mas a resposta dependerá também do segundo predador, dos recursos e de outras relações."
+      ],
+      "correctAnswer": "A pressão de predação sobre os herbívoros pode mudar, mas a resposta dependerá também do segundo predador, dos recursos e de outras relações.",
+      "explanation": "A teia contém caminhos alternativos e fatores adicionais. Uma previsão deve indicar o mecanismo plausível sem transformar a resposta em certeza quantitativa.",
+      "hint": "Siga todos os caminhos que chegam às duas presas, não apenas uma seta.",
+      "errorFocus": "FOOD_WEB_REDUCED_TO_SINGLE_CHAIN",
+      "misconceptions": {
+        "Os herbívoros necessariamente dobrarão porque existe apenas uma relação na teia.": [
+          "NETWORK_EFFECT_ASSUMED_LINEAR"
+        ]
+      }
+    },
+    {
+      "id": "v5-bio-eco-review-08",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "SERIE_TEMPORAL_RIO",
+      "statement": "Em um rio, quatro meses de dados mostram chuva menor, temperatura maior e queda de um grupo de organismos. Qual síntese é mais adequada para um relatório inicial?",
+      "options": [
+        "Os dados provam que a falta de chuva eliminou todo o grupo em toda a bacia.",
+        "A série registra mudanças concomitantes e permite formular hipóteses; comparar vazão, oxigênio, habitat, esforço de coleta e locais de referência ajudará a avaliar mecanismos.",
+        "A temperatura não pode ter relação com organismos porque é abiótica.",
+        "A queda do grupo prova que os organismos causaram a redução da chuva."
+      ],
+      "correctAnswer": "A série registra mudanças concomitantes e permite formular hipóteses; comparar vazão, oxigênio, habitat, esforço de coleta e locais de referência ajudará a avaliar mecanismos.",
+      "explanation": "A série temporal mostra padrões conjuntos, mas não separa sozinha causalidade. Medidas adicionais e comparações ampliam a força da interpretação.",
+      "hint": "Escreva uma frase sobre o observado e outra sobre o que ainda precisa ser testado.",
+      "errorFocus": "TEMPORAL_COVARIATION_AS_CAUSAL_PROOF",
+      "misconceptions": {
+        "Os dados provam que a falta de chuva eliminou todo o grupo em toda a bacia.": [
+          "LOCAL_SHORT_SERIES_GENERALIZED"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_01",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Como a energia entra no sistema descrito?",
+      "options": [
+        "A luz é captada pelas algas, que produzem matéria orgânica para a cadeia alimentar.",
+        "Os peixes produzem luz para as algas.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "A luz é captada pelas algas, que produzem matéria orgânica para a cadeia alimentar.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_02",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Qual critério deve orientar a análise?",
+      "options": [
+        "Os peixes produzem luz para as algas.",
+        "Use Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "Use Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_03",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Os peixes produzem luz para as algas.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "Use produtor e fonte de energia para analisar outra cadeia alimentar.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "Use produtor e fonte de energia para analisar outra cadeia alimentar.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_04",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Os peixes produzem luz para as algas.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor.",
+        "Evite dizer que a energia é criada pelos peixes."
+      ],
+      "correctAnswer": "Evite dizer que a energia é criada pelos peixes.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_05",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique luz, algas e relações de alimentação.",
+        "Os peixes produzem luz para as algas.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "Verifique luz, algas e relações de alimentação.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-006",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_06",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Os peixes produzem luz para as algas.",
+        "representar o fluxo da luz para produtores e consumidores",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "representar o fluxo da luz para produtores e consumidores",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-007",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_07",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Os peixes produzem luz para as algas.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "Mantenha a conclusão ligada a a cadeia da lagoa descrita.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a cadeia da lagoa descrita.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-008",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_08",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Que comparação é mais justa?",
+      "options": [
+        "Os peixes produzem luz para as algas.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor.",
+        "Compare fonte de energia e posição de cada organismo."
+      ],
+      "correctAnswer": "Compare fonte de energia e posição de cada organismo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-009",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_09",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero dizer que a energia é criada pelos peixes.",
+        "Os peixes produzem luz para as algas.",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "Seria exagero dizer que a energia é criada pelos peixes.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-010",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_ENERGY_10",
+      "statement": "Em uma lagoa, algas captam luz, pequenos animais alimentam-se delas e peixes alimentam-se dos animais. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Os peixes produzem luz para as algas.",
+        "qual organismo transforma a energia luminosa em matéria orgânica?",
+        "A energia aparece apenas quando os animais se alimentam.",
+        "A água substitui a luz como produtor."
+      ],
+      "correctAnswer": "qual organismo transforma a energia luminosa em matéria orgânica?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Identifique o produtor e a fonte de energia antes de ordenar os consumidores.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os peixes produzem luz para as algas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_01",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Qual organismo ocupa o segundo nível trófico?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "O gafanhoto, porque consome o produtor capim.",
+        "A água, por estar na base da cadeia."
+      ],
+      "correctAnswer": "O gafanhoto, porque consome o produtor capim.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_02",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Qual critério deve orientar a análise?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "A água, por estar na base da cadeia.",
+        "Use Ordene os níveis a partir do produtor e da alimentação observada."
+      ],
+      "correctAnswer": "Use Ordene os níveis a partir do produtor e da alimentação observada.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_03",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Classifique níveis tróficos em uma cadeia com outros organismos.",
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "A água, por estar na base da cadeia."
+      ],
+      "correctAnswer": "Classifique níveis tróficos em uma cadeia com outros organismos.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_04",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "Evite confundir posição na cadeia com tamanho ou força do organismo.",
+        "O sapo, por produzir seu próprio alimento.",
+        "A água, por estar na base da cadeia."
+      ],
+      "correctAnswer": "Evite confundir posição na cadeia com tamanho ou força do organismo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_05",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "Verifique capim como produtor e gafanhoto como consumidor do capim.",
+        "A água, por estar na base da cadeia."
+      ],
+      "correctAnswer": "Verifique capim como produtor e gafanhoto como consumidor do capim.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_06",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "A água, por estar na base da cadeia.",
+        "marcar produtor, consumidor primário e consumidores seguintes"
+      ],
+      "correctAnswer": "marcar produtor, consumidor primário e consumidores seguintes",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_07",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a cadeia linear fornecida.",
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "A água, por estar na base da cadeia."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a cadeia linear fornecida.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_08",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Que comparação é mais justa?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "Compare alimento consumido e nível trófico resultante.",
+        "O sapo, por produzir seu próprio alimento.",
+        "A água, por estar na base da cadeia."
+      ],
+      "correctAnswer": "Compare alimento consumido e nível trófico resultante.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_09",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Qual seria um exagero interpretativo?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "Seria exagero confundir posição na cadeia com tamanho ou força do organismo.",
+        "A água, por estar na base da cadeia."
+      ],
+      "correctAnswer": "Seria exagero confundir posição na cadeia com tamanho ou força do organismo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_TROPHIC_10",
+      "statement": "Uma cadeia apresenta capim, gafanhoto, sapo e cobra. A quantidade de energia disponível diminui a cada transferência. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A cobra, por ser o maior predador.",
+        "O sapo, por produzir seu próprio alimento.",
+        "A água, por estar na base da cadeia.",
+        "qual organismo recebe matéria diretamente do produtor?"
+      ],
+      "correctAnswer": "qual organismo recebe matéria diretamente do produtor?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Ordene os níveis a partir do produtor e da alimentação observada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A cobra, por ser o maior predador.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-021",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_01",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Que interação pode ocorrer?",
+      "options": [
+        "Competição, pois as espécies utilizam o mesmo recurso limitado.",
+        "Predação, porque uma ave caça a outra.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "Competição, pois as espécies utilizam o mesmo recurso limitado.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-022",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_02",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Qual critério deve orientar a análise?",
+      "options": [
+        "Predação, porque uma ave caça a outra.",
+        "Use Relacione espécies diferentes e recurso disputado.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "Use Relacione espécies diferentes e recurso disputado.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-023",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_03",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Predação, porque uma ave caça a outra.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Procure recurso compartilhado ao analisar outra comunidade.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "Procure recurso compartilhado ao analisar outra comunidade.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-024",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_04",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Predação, porque uma ave caça a outra.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica.",
+        "Evite afirmar competição sem indicar recurso ou sobreposição."
+      ],
+      "correctAnswer": "Evite afirmar competição sem indicar recurso ou sobreposição.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-025",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_05",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique duas espécies, mesma semente e escassez de chuva.",
+        "Predação, porque uma ave caça a outra.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "Verifique duas espécies, mesma semente e escassez de chuva.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-026",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_06",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Predação, porque uma ave caça a outra.",
+        "investigar se o recurso é limitante e se há sobreposição de uso",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "investigar se o recurso é limitante e se há sobreposição de uso",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-027",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_07",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Predação, porque uma ave caça a outra.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Mantenha a conclusão ligada a as aves e a semente no período observado.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as aves e a semente no período observado.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-028",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_08",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Que comparação é mais justa?",
+      "options": [
+        "Predação, porque uma ave caça a outra.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica.",
+        "Compare recurso comum e possíveis efeitos sobre cada espécie."
+      ],
+      "correctAnswer": "Compare recurso comum e possíveis efeitos sobre cada espécie.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-029",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_09",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero afirmar competição sem indicar recurso ou sobreposição.",
+        "Predação, porque uma ave caça a outra.",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "Seria exagero afirmar competição sem indicar recurso ou sobreposição.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-030",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_COMPETITION_10",
+      "statement": "Duas espécies de aves usam o mesmo tipo de semente durante uma estação de pouca chuva. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Predação, porque uma ave caça a outra.",
+        "o recurso é realmente limitante ou apenas compartilhado?",
+        "Mutualismo, porque toda disputa beneficia ambas.",
+        "Decomposição, porque sementes são matéria orgânica."
+      ],
+      "correctAnswer": "o recurso é realmente limitante ou apenas compartilhado?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione espécies diferentes e recurso disputado.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Predação, porque uma ave caça a outra.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-031",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_01",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Qual benefício está evidenciado para as duas partes?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "A abelha obtém alimento e a planta pode ter sua reprodução favorecida pela polinização.",
+        "A relação é competição porque há flores envolvidas."
+      ],
+      "correctAnswer": "A abelha obtém alimento e a planta pode ter sua reprodução favorecida pela polinização.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-032",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_02",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Qual critério deve orientar a análise?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "A relação é competição porque há flores envolvidas.",
+        "Use Indique o benefício observado para cada participante sem generalizar para toda relação."
+      ],
+      "correctAnswer": "Use Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-033",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_03",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Compare benefícios de uma relação entre outra planta e outro polinizador.",
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "A relação é competição porque há flores envolvidas."
+      ],
+      "correctAnswer": "Compare benefícios de uma relação entre outra planta e outro polinizador.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-034",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_04",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "Evite dizer que toda visita de inseto é obrigatoriamente mutualismo.",
+        "A planta caça a abelha para obter energia.",
+        "A relação é competição porque há flores envolvidas."
+      ],
+      "correctAnswer": "Evite dizer que toda visita de inseto é obrigatoriamente mutualismo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-035",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_05",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "Verifique néctar obtido e transporte de pólen.",
+        "A relação é competição porque há flores envolvidas."
+      ],
+      "correctAnswer": "Verifique néctar obtido e transporte de pólen.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-036",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_06",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "A relação é competição porque há flores envolvidas.",
+        "verificar se a visita aumenta a transferência de pólen ou apenas o consumo"
+      ],
+      "correctAnswer": "verificar se a visita aumenta a transferência de pólen ou apenas o consumo",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-037",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_07",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a relação descrita entre abelha e flores.",
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "A relação é competição porque há flores envolvidas."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a relação descrita entre abelha e flores.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-038",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_08",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Que comparação é mais justa?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "Compare benefício do animal e efeito reprodutivo da planta.",
+        "A planta caça a abelha para obter energia.",
+        "A relação é competição porque há flores envolvidas."
+      ],
+      "correctAnswer": "Compare benefício do animal e efeito reprodutivo da planta.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-039",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_09",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Qual seria um exagero interpretativo?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "Seria exagero dizer que toda visita de inseto é obrigatoriamente mutualismo.",
+        "A relação é competição porque há flores envolvidas."
+      ],
+      "correctAnswer": "Seria exagero dizer que toda visita de inseto é obrigatoriamente mutualismo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-040",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_MUTUALISM_10",
+      "statement": "Abelhas obtêm néctar de flores e transportam pólen entre flores da mesma espécie. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A abelha perde todo alimento e a flor deixa de reproduzir.",
+        "A planta caça a abelha para obter energia.",
+        "A relação é competição porque há flores envolvidas.",
+        "que evidência mostra benefício para a planta?"
+      ],
+      "correctAnswer": "que evidência mostra benefício para a planta?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Indique o benefício observado para cada participante sem generalizar para toda relação.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A abelha perde todo alimento e a flor deixa de reproduzir.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-041",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_01",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Qual hipótese é compatível com os dados?",
+      "options": [
+        "A predação pode contribuir para reduzir a população de roedores, embora outros fatores também devam ser avaliados.",
+        "Os roedores produzem mais corujas.",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "A predação pode contribuir para reduzir a população de roedores, embora outros fatores também devam ser avaliados.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-042",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_02",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Qual critério deve orientar a análise?",
+      "options": [
+        "Os roedores produzem mais corujas.",
+        "Use Relacione predador, presa e limite da evidência observacional.",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "Use Relacione predador, presa e limite da evidência observacional.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-043",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_03",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Os roedores produzem mais corujas.",
+        "A ausência de observação prova extinção imediata.",
+        "Formule uma hipótese de predação em outro sistema e indique um controle.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "Formule uma hipótese de predação em outro sistema e indique um controle.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-044",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_04",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Os roedores produzem mais corujas.",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações.",
+        "Evite atribuir toda mudança aos predadores sem medir alimento e habitat."
+      ],
+      "correctAnswer": "Evite atribuir toda mudança aos predadores sem medir alimento e habitat.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-045",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_05",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique número de corujas, roedores observados e período.",
+        "Os roedores produzem mais corujas.",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "Verifique número de corujas, roedores observados e período.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-046",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_06",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Os roedores produzem mais corujas.",
+        "acompanhar as duas populações e fatores ambientais ao longo do tempo",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "acompanhar as duas populações e fatores ambientais ao longo do tempo",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-047",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_07",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Os roedores produzem mais corujas.",
+        "A ausência de observação prova extinção imediata.",
+        "Mantenha a conclusão ligada a a associação observada na área.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a associação observada na área.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-048",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_08",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Que comparação é mais justa?",
+      "options": [
+        "Os roedores produzem mais corujas.",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações.",
+        "Compare variação do predador e da presa com outras condições."
+      ],
+      "correctAnswer": "Compare variação do predador e da presa com outras condições.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-049",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_09",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero atribuir toda mudança aos predadores sem medir alimento e habitat.",
+        "Os roedores produzem mais corujas.",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "Seria exagero atribuir toda mudança aos predadores sem medir alimento e habitat.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-050",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_PREDATION_10",
+      "statement": "Uma população de corujas aumenta em uma área onde há muitos roedores, e os roedores passam a ser menos observados. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Os roedores produzem mais corujas.",
+        "que outro fator poderia reduzir os roedores?",
+        "A ausência de observação prova extinção imediata.",
+        "Predadores nunca alteram populações."
+      ],
+      "correctAnswer": "que outro fator poderia reduzir os roedores?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione predador, presa e limite da evidência observacional.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Os roedores produzem mais corujas.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-051",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_01",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Qual função ecológica está representada?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "A decomposição contribui para reciclar matéria e devolver nutrientes ao ambiente.",
+        "A matéria desaparece sem transformação."
+      ],
+      "correctAnswer": "A decomposição contribui para reciclar matéria e devolver nutrientes ao ambiente.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-052",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_02",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Qual critério deve orientar a análise?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "A matéria desaparece sem transformação.",
+        "Use Diferencie fluxo de energia de reciclagem de matéria."
+      ],
+      "correctAnswer": "Use Diferencie fluxo de energia de reciclagem de matéria.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-053",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_03",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Identifique decomposição em outro ambiente sem chamar o processo de produção primária.",
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "A matéria desaparece sem transformação."
+      ],
+      "correctAnswer": "Identifique decomposição em outro ambiente sem chamar o processo de produção primária.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-054",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_04",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Evite dizer que decompositores criam nutrientes do nada.",
+        "Fungos produzem luz para o solo.",
+        "A matéria desaparece sem transformação."
+      ],
+      "correctAnswer": "Evite dizer que decompositores criam nutrientes do nada.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-055",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_05",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "Verifique folhas, organismos decompositores e retorno de matéria ao solo.",
+        "A matéria desaparece sem transformação."
+      ],
+      "correctAnswer": "Verifique folhas, organismos decompositores e retorno de matéria ao solo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-056",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_06",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "A matéria desaparece sem transformação.",
+        "acompanhar matéria orgânica e nutrientes ao longo do processo"
+      ],
+      "correctAnswer": "acompanhar matéria orgânica e nutrientes ao longo do processo",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-057",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_07",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o material vegetal e o ambiente descritos.",
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "A matéria desaparece sem transformação."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o material vegetal e o ambiente descritos.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-058",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_08",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Que comparação é mais justa?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Compare restos orgânicos e nutrientes disponibilizados.",
+        "Fungos produzem luz para o solo.",
+        "A matéria desaparece sem transformação."
+      ],
+      "correctAnswer": "Compare restos orgânicos e nutrientes disponibilizados.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-059",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_09",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Qual seria um exagero interpretativo?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "Seria exagero dizer que decompositores criam nutrientes do nada.",
+        "A matéria desaparece sem transformação."
+      ],
+      "correctAnswer": "Seria exagero dizer que decompositores criam nutrientes do nada.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-060",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DECOMPOSITION_10",
+      "statement": "Folhas acumuladas no solo são fragmentadas por pequenos animais e transformadas por fungos e bactérias. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A decomposição interrompe todo ciclo de matéria.",
+        "Fungos produzem luz para o solo.",
+        "A matéria desaparece sem transformação.",
+        "o que é reciclado e o que não retorna como energia?"
+      ],
+      "correctAnswer": "o que é reciclado e o que não retorna como energia?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Diferencie fluxo de energia de reciclagem de matéria.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A decomposição interrompe todo ciclo de matéria.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-061",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_01",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Que nível ecológico está sendo observado?",
+      "options": [
+        "Uma população, pois são indivíduos da mesma espécie em uma área e período definidos.",
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "Uma população, pois são indivíduos da mesma espécie em uma área e período definidos.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-062",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_02",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Qual critério deve orientar a análise?",
+      "options": [
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Use Use espécie, espaço e tempo para reconhecer população.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "Use Use espécie, espaço e tempo para reconhecer população.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-063",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_03",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Classifique outra contagem ecológica com base na espécie e no local.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "Classifique outra contagem ecológica com base na espécie e no local.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-064",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_04",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local.",
+        "Evite chamar qualquer grupo de animais de comunidade."
+      ],
+      "correctAnswer": "Evite chamar qualquer grupo de animais de comunidade.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-065",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_05",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique mesma espécie, manguezal e dois anos de contagem.",
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "Verifique mesma espécie, manguezal e dois anos de contagem.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-066",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_06",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "registrar espécie, área, período e método de contagem",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "registrar espécie, área, período e método de contagem",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-067",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_07",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Mantenha a conclusão ligada a a espécie e o manguezal observados.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a espécie e o manguezal observados.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-068",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_08",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Que comparação é mais justa?",
+      "options": [
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local.",
+        "Compare indivíduos da mesma espécie em tempos diferentes."
+      ],
+      "correctAnswer": "Compare indivíduos da mesma espécie em tempos diferentes.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-069",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_09",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero chamar qualquer grupo de animais de comunidade.",
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "Seria exagero chamar qualquer grupo de animais de comunidade.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-070",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_POPULATION_10",
+      "statement": "Pesquisadores contam indivíduos de uma mesma espécie em um manguezal e comparam o número entre dois anos. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "Ecossistema inteiro, sem delimitar ambiente.",
+        "há uma espécie ou várias espécies no conjunto?",
+        "Comunidade, porque toda população reúne espécies diferentes.",
+        "Biosfera, porque há uma contagem local."
+      ],
+      "correctAnswer": "há uma espécie ou várias espécies no conjunto?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use espécie, espaço e tempo para reconhecer população.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "Ecossistema inteiro, sem delimitar ambiente.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-071",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_01",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Qual conceito ajuda a interpretar o limite?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "A capacidade de suporte, relacionada aos recursos e condições que o ambiente consegue manter.",
+        "O limite depende apenas do tamanho das cabras."
+      ],
+      "correctAnswer": "A capacidade de suporte, relacionada aos recursos e condições que o ambiente consegue manter.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-072",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_02",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Qual critério deve orientar a análise?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "O limite depende apenas do tamanho das cabras.",
+        "Use Relacione tamanho populacional, recursos e condições do ambiente."
+      ],
+      "correctAnswer": "Use Relacione tamanho populacional, recursos e condições do ambiente.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-073",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_03",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Analise o limite de outra população considerando alimento, espaço e competição.",
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "O limite depende apenas do tamanho das cabras."
+      ],
+      "correctAnswer": "Analise o limite de outra população considerando alimento, espaço e competição.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-074",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_04",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Evite tratar capacidade de suporte como número fixo em qualquer estação.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "O limite depende apenas do tamanho das cabras."
+      ],
+      "correctAnswer": "Evite tratar capacidade de suporte como número fixo em qualquer estação.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-075",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_05",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "Verifique cabras, plantas, alimento limitado e mudança ao longo do tempo.",
+        "O limite depende apenas do tamanho das cabras."
+      ],
+      "correctAnswer": "Verifique cabras, plantas, alimento limitado e mudança ao longo do tempo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-076",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_06",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "O limite depende apenas do tamanho das cabras.",
+        "medir recursos e crescimento em estações diferentes"
+      ],
+      "correctAnswer": "medir recursos e crescimento em estações diferentes",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-077",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_07",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a ilha e as condições observadas.",
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "O limite depende apenas do tamanho das cabras."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a ilha e as condições observadas.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-078",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_08",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Que comparação é mais justa?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Compare tamanho da população e disponibilidade de recursos.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "O limite depende apenas do tamanho das cabras."
+      ],
+      "correctAnswer": "Compare tamanho da população e disponibilidade de recursos.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-079",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_09",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Qual seria um exagero interpretativo?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "Seria exagero tratar capacidade de suporte como número fixo em qualquer estação.",
+        "O limite depende apenas do tamanho das cabras."
+      ],
+      "correctAnswer": "Seria exagero tratar capacidade de suporte como número fixo em qualquer estação.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-080",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_CARRYING_10",
+      "statement": "Uma ilha possui alimento limitado e uma população de cabras cresce até que a disponibilidade de plantas diminui. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A capacidade de suporte é o número de espécies da biosfera.",
+        "Recursos limitados sempre fazem a população crescer.",
+        "O limite depende apenas do tamanho das cabras.",
+        "que condição ambiental poderia alterar o limite?"
+      ],
+      "correctAnswer": "que condição ambiental poderia alterar o limite?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione tamanho populacional, recursos e condições do ambiente.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A capacidade de suporte é o número de espécies da biosfera.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-081",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_01",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Qual processo deve ser acompanhado?",
+      "options": [
+        "A sucessão ecológica, observando mudanças na comunidade ao longo do tempo.",
+        "A sucessão impede qualquer mudança futura.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "A sucessão ecológica, observando mudanças na comunidade ao longo do tempo.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-082",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_02",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Qual critério deve orientar a análise?",
+      "options": [
+        "A sucessão impede qualquer mudança futura.",
+        "Use Relacione perturbação, espécies pioneiras e mudança temporal.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "Use Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-083",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_03",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "A sucessão impede qualquer mudança futura.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Acompanhe sucessão em outra área após uma perturbação sem presumir recuperação instantânea.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "Acompanhe sucessão em outra área após uma perturbação sem presumir recuperação instantânea.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-084",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_04",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "A sucessão impede qualquer mudança futura.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo.",
+        "Evite dizer que a área volta exatamente ao estado anterior em poucos dias."
+      ],
+      "correctAnswer": "Evite dizer que a área volta exatamente ao estado anterior em poucos dias.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-085",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_05",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "Verifique queimada, solo exposto, pioneiras e sequência temporal.",
+        "A sucessão impede qualquer mudança futura.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "Verifique queimada, solo exposto, pioneiras e sequência temporal.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-086",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_06",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A sucessão impede qualquer mudança futura.",
+        "registrar espécies e condições do solo em diferentes momentos",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "registrar espécies e condições do solo em diferentes momentos",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-087",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_07",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Qual limite deve aparecer na resposta?",
+      "options": [
+        "A sucessão impede qualquer mudança futura.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Mantenha a conclusão ligada a a área queimada e o processo observado.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a área queimada e o processo observado.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-088",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_08",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Que comparação é mais justa?",
+      "options": [
+        "A sucessão impede qualquer mudança futura.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo.",
+        "Compare comunidade inicial após a perturbação e mudanças posteriores."
+      ],
+      "correctAnswer": "Compare comunidade inicial após a perturbação e mudanças posteriores.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-089",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_09",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero dizer que a área volta exatamente ao estado anterior em poucos dias.",
+        "A sucessão impede qualquer mudança futura.",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "Seria exagero dizer que a área volta exatamente ao estado anterior em poucos dias.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-090",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_DISTURBANCE_10",
+      "statement": "Após uma queimada, poucas plantas permanecem, o solo fica exposto e espécies pioneiras começam a aparecer. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A sucessão impede qualquer mudança futura.",
+        "quais condições permitem a chegada de novas espécies?",
+        "Espécies pioneiras são sempre predadores de topo.",
+        "Uma observação imediata mostra todo o processo."
+      ],
+      "correctAnswer": "quais condições permitem a chegada de novas espécies?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Relacione perturbação, espécies pioneiras e mudança temporal.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A sucessão impede qualquer mudança futura.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-091",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_01",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Qual interpretação é mais responsável?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "A mudança é um sinal de alteração ambiental, mas requer controle de vazão, chuva e características do efluente.",
+        "Um único organismo prova toda a qualidade da água."
+      ],
+      "correctAnswer": "A mudança é um sinal de alteração ambiental, mas requer controle de vazão, chuva e características do efluente.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-092",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_02",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Qual critério deve orientar a análise?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Um único organismo prova toda a qualidade da água.",
+        "Use Use bioindicadores sem transformar correlação isolada em causa comprovada."
+      ],
+      "correctAnswer": "Use Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-093",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_03",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Planeje outra investigação ambiental com local de referência e variáveis controladas.",
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Um único organismo prova toda a qualidade da água."
+      ],
+      "correctAnswer": "Planeje outra investigação ambiental com local de referência e variáveis controladas.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-094",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_04",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Qual conclusão deve ser evitada sem mais informações?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "Evite afirmar a causa exclusiva apenas pela queda de diversidade.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Um único organismo prova toda a qualidade da água."
+      ],
+      "correctAnswer": "Evite afirmar a causa exclusiva apenas pela queda de diversidade.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-095",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_05",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Que evidência deve ser verificada primeiro?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Verifique diversidade, efluente, vazão, chuva e local de referência.",
+        "Um único organismo prova toda a qualidade da água."
+      ],
+      "correctAnswer": "Verifique diversidade, efluente, vazão, chuva e local de referência.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-096",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_06",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Um único organismo prova toda a qualidade da água.",
+        "comparar pontos e períodos com as variáveis ambientais registradas"
+      ],
+      "correctAnswer": "comparar pontos e períodos com as variáveis ambientais registradas",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-097",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_07",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a o riacho e os dados disponíveis.",
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Um único organismo prova toda a qualidade da água."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o riacho e os dados disponíveis.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-098",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_08",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Que comparação é mais justa?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "Compare diversidade antes/depois e condições de controle.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Um único organismo prova toda a qualidade da água."
+      ],
+      "correctAnswer": "Compare diversidade antes/depois e condições de controle.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-099",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_09",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Qual seria um exagero interpretativo?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Seria exagero afirmar a causa exclusiva apenas pela queda de diversidade.",
+        "Um único organismo prova toda a qualidade da água."
+      ],
+      "correctAnswer": "Seria exagero afirmar a causa exclusiva apenas pela queda de diversidade.",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v9-biology-ecosystem-interactions-expansion-v9-100",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V9_BIOLOGY-ECOSYSTEM-INTERACTIONS-EXPANSION-V9_INDICATOR_10",
+      "statement": "Um riacho perde diversidade de macroinvertebrados após o lançamento de efluentes, mas a vazão e a chuva também variaram. Que pergunta ajuda a refinar a investigação?",
+      "options": [
+        "A diversidade não pode indicar mudanças ambientais.",
+        "A chuva explica tudo sem necessidade de medição.",
+        "Um único organismo prova toda a qualidade da água.",
+        "qual comparação separa o efeito do efluente da variação da chuva?"
+      ],
+      "correctAnswer": "qual comparação separa o efeito do efluente da variação da chuva?",
+      "explanation": "A resposta utiliza as evidências do contexto e mantém a conclusão dentro das condições descritas. Use bioindicadores sem transformar correlação isolada em causa comprovada.",
+      "hint": "Leia o contexto, identifique a evidência e confira o limite da conclusão.",
+      "errorFocus": "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION",
+      "misconceptions": {
+        "A diversidade não pode indicar mudanças ambientais.": [
+          "BIOLOGY_ECOSYSTEM_INTERACTIONS_EVIDENCE_SCOPE_CONFUSION"
+        ]
+      }
+    }
+  ],
+  "lessonVersion": 9,
+  "expectedContextCount": 128,
+  "sourceReconciliation": {
+    "sourceQuestionCount": 28,
+    "newQuestions": 100,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V9"
+  }
+}

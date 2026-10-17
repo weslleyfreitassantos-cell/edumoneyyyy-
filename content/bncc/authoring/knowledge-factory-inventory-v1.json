@@ -11,7 +11,7 @@
     "content/adaptive/tec-escola-core-v4/subjects/biology/questions.json": "dcfbac36b4f1d058f9dfafd7efd62e8c3689e492e01e1d8e82981d89d31cee39",
     "content/adaptive/tec-escola-core-v4/subjects/biology/skills.json": "950d5531142cf73a27688905b2a527184545e81473baa84f1a9aa5bb8e47f398",
     "content/adaptive/tec-escola-core-v4/subjects/chemistry/lessons.json": "9b17f1f0f802e2199a34072143e08291f0afc77f8fc7702c0042ba6313ecbe06",
-    "content/adaptive/tec-escola-core-v4/subjects/chemistry/questions.json": "1a80389958cac3161cd016c72025219abc9d3cd44a40d4e1feb94de8de4de178",
+    "content/adaptive/tec-escola-core-v4/subjects/chemistry/questions.json": "7898a39035d18718c1fb590801b7f5627756f25f301ef00093e149f0bf41cc34",
     "content/adaptive/tec-escola-core-v4/subjects/chemistry/skills.json": "e05ead71371ba9372fade2c0ba74be642581fc634c66e4b7dc7535231d8bf14d",
     "content/adaptive/tec-escola-core-v4/subjects/computing/lessons.json": "b28ce80407945b410a1d6a78f0e6f4f935f72355e80c1f593ed2ac12d3f5bc58",
     "content/adaptive/tec-escola-core-v4/subjects/computing/questions.json": "c5c5de030c224d74c68f15ad648aebdbdb5a59c97d3aa5c77d7a5bc8c28be060",
@@ -27995,5 +27995,5 @@
     "newContentAvailableToStudents": false,
     "publicationBlocker": "Human pedagogical review and explicit scoped publication are pending."
   },
-  "inventoryHash": "ff4d7a433cbd7881d1b2aba0411bf430123a894656c31137d707a198e0acd2a8"
+  "inventoryHash": "d27efde87d4f7ce0fa1f3846459251a8222af7b8c4581c7fcceeb5ab41bef7ad"
 }

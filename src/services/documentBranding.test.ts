@@ -59,4 +59,17 @@ describe('applyDocumentBranding', () => {
       )?.href,
     ).toContain('/favicon-old.png');
   });
+
+  it('usa Tec Escola quando a identidade ainda nao tem nome', () => {
+    applyDocumentBranding({
+      scope: 'FALLBACK',
+      displayName: null,
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#005bbf',
+      secondaryColor: '#55e6b5',
+    });
+
+    expect(document.title).toBe('Tec Escola');
+  });
 });

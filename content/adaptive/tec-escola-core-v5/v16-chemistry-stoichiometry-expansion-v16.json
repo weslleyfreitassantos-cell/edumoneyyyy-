@@ -1,0 +1,2948 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v16-chemistry-stoichiometry",
+  "subject": "CHEMISTRY",
+  "domain": "REACOES",
+  "topic": "proporcoes molares, reagente limitante e rendimento",
+  "canonicalSkillCode": "CHEMISTRY_STOICHIOMETRY",
+  "contentVersion": 16,
+  "expectedQuestionCount": 118,
+  "expectedContextCount": 118,
+  "expectedAnswerPositionCounts": {
+    "A": 30,
+    "B": 30,
+    "C": 29,
+    "D": 29
+  },
+  "expectedPurposeCounts": {
+    "PROBE": 10,
+    "PRACTICE": 45,
+    "TRANSFER": 30,
+    "LOCK_IN": 13,
+    "REVIEW": 20
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "questions": [
+    {
+      "id": "v5-chem-stoich-practice-01",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ALUMINUM_CHLORIDE_MOLE_RATIO",
+      "statement": "Na equação balanceada 2 Al + 3 Cl₂ → 2 AlCl₃, o alumínio está em excesso. Se 9 mol de Cl₂ reagirem completamente, quantos mol de AlCl₃ podem se formar?",
+      "options": [
+        "6 mol",
+        "3 mol",
+        "9 mol",
+        "12 mol"
+      ],
+      "correctAnswer": "6 mol",
+      "explanation": "A razão entre Cl₂ e AlCl₃ é 3:2. Multiplicando os dois coeficientes por 3, 9 mol de Cl₂ correspondem a 6 mol de AlCl₃.",
+      "errorFocus": "Usar o coeficiente do reagente como se fosse a quantidade de produto.",
+      "hint": "Escreva a fração molar produto/reagente com os coeficientes 2/3 e aplique-a a 9 mol de Cl₂.",
+      "misconceptions": {
+        "3 mol": [
+          "USAR_O_COEFICIENTE_DO_REAGENTE_COMO_SE_FOSSE_A_QUANTIDADE_DE_PRODUTO"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-practice-02",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "METHANE_MASS_TO_CARBON_DIOXIDE",
+      "statement": "Na combustão CH₄ + 2 O₂ → CO₂ + 2 H₂O, há oxigênio suficiente. Considere M(CH₄) = 16 g/mol e M(CO₂) = 44 g/mol. Que massa de CO₂ pode ser formada a partir de 32 g de CH₄?",
+      "options": [
+        "44 g",
+        "32 g",
+        "88 g",
+        "16 g"
+      ],
+      "correctAnswer": "88 g",
+      "explanation": "32 g de CH₄ equivalem a 2 mol. A razão CH₄:CO₂ é 1:1, então formam-se 2 mol de CO₂; 2 × 44 g/mol = 88 g.",
+      "errorFocus": "Converter massa diretamente pela razão dos coeficientes, sem passar por mol.",
+      "hint": "Faça a cadeia g CH₄ → mol CH₄ → mol CO₂ → g CO₂ e confira o cancelamento das unidades.",
+      "misconceptions": {
+        "44 g": [
+          "CONVERTER_MASSA_DIRETAMENTE_PELA_RAZ_O_DOS_COEFICIENTES_SEM_PASSAR_POR_MOL"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-practice-03",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "IRON_OXIDE_CO_REDUCTION",
+      "statement": "Na reação balanceada Fe₂O₃ + 3 CO → 2 Fe + 3 CO₂, o CO está em excesso. Partindo de 1,5 mol de Fe₂O₃, qual é a quantidade máxima de ferro produzida?",
+      "options": [
+        "1,5 mol",
+        "3 mol",
+        "4,5 mol",
+        "6 mol"
+      ],
+      "correctAnswer": "3 mol",
+      "explanation": "A equação relaciona 1 mol de Fe₂O₃ a 2 mol de Fe. Assim, 1,5 mol × 2 = 3 mol de Fe.",
+      "errorFocus": "Achar que os coeficientes descrevem uma única reação indivisível, sem poder escalar a proporção.",
+      "hint": "Compare os coeficientes de Fe₂O₃ e Fe: para cada 1 mol do primeiro, formam-se 2 mol do segundo.",
+      "misconceptions": {
+        "1,5 mol": [
+          "ACHAR_QUE_OS_COEFICIENTES_DESCREVEM_UMA_NICA_REA_O_INDIVIS_VEL_SEM_PODER_ESCALAR_A_PROPOR_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-practice-04",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "POTASSIUM_CHLORATE_OXYGEN",
+      "statement": "A decomposição é 2 KClO₃ → 2 KCl + 3 O₂. Se 4 mol de KClO₃ se decompõem completamente, quantos mol de O₂ são formados?",
+      "options": [
+        "3 mol",
+        "4 mol",
+        "8 mol",
+        "6 mol"
+      ],
+      "correctAnswer": "6 mol",
+      "explanation": "A razão KClO₃:O₂ é 2:3. Duplicar 2 mol para 4 mol também duplica 3 mol para 6 mol.",
+      "errorFocus": "Trocar a razão produto/reagente ou ignorar o coeficiente 3 do oxigênio.",
+      "hint": "Use 3 mol O₂ / 2 mol KClO₃ como fator e multiplique por 4 mol KClO₃.",
+      "misconceptions": {
+        "3 mol": [
+          "TROCAR_A_RAZ_O_PRODUTO_REAGENTE_OU_IGNORAR_O_COEFICIENTE_3_DO_OXIG_NIO"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-practice-05",
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "CERAMIC_PROCESS_PERCENT_YIELD",
+      "statement": "Um processo cerâmico tinha rendimento teórico de 20 kg de produto e forneceu 14 kg após a separação. Qual foi o rendimento percentual?",
+      "options": [
+        "60%",
+        "70%",
+        "140%",
+        "35%"
+      ],
+      "correctAnswer": "70%",
+      "explanation": "Rendimento percentual = rendimento real ÷ rendimento teórico × 100. Portanto, 14 ÷ 20 × 100 = 70%.",
+      "errorFocus": "Dividir o rendimento teórico pelo real ou inverter numerador e denominador.",
+      "hint": "Coloque a quantidade realmente obtida no numerador e a quantidade prevista no denominador.",
+      "misconceptions": {
+        "60%": [
+          "DIVIDIR_O_RENDIMENTO_TE_RICO_PELO_REAL_OU_INVERTER_NUMERADOR_E_DENOMINADOR"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-transfer-01",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "AMMONIA_FEEDSTOCK_REQUIREMENT",
+      "statement": "Na síntese N₂ + 3 H₂ → 2 NH₃, uma fábrica planeja produzir 8 mol de NH₃ sem sobra de reagentes. Quantos mol de N₂ e H₂ são necessários?",
+      "options": [
+        "4 mol de N₂ e 12 mol de H₂.",
+        "8 mol de N₂ e 12 mol de H₂.",
+        "4 mol de N₂ e 8 mol de H₂.",
+        "12 mol de N₂ e 4 mol de H₂."
+      ],
+      "correctAnswer": "4 mol de N₂ e 12 mol de H₂.",
+      "explanation": "A razão 1:3:2 deve ser multiplicada por 4 para que o produto passe de 2 para 8 mol. Isso exige 4 mol de N₂ e 12 mol de H₂.",
+      "errorFocus": "Multiplicar somente o coeficiente do produto ou associar os coeficientes às espécies erradas.",
+      "hint": "Encontre o fator comum entre 2 mol de NH₃ e 8 mol; aplique-o aos dois reagentes.",
+      "misconceptions": {
+        "8 mol de N₂ e 12 mol de H₂.": [
+          "MULTIPLICAR_SOMENTE_O_COEFICIENTE_DO_PRODUTO_OU_ASSOCIAR_OS_COEFICIENTES_S_ESP_CIES_ERRADAS"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-transfer-02",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "LIMESTONE_ACID_NEUTRALIZATION",
+      "statement": "A reação CaCO₃ + 2 HCl → CaCl₂ + CO₂ + H₂O ocorre com HCl em excesso. Considere M(CaCO₃) = 100 g/mol e M(CO₂) = 44 g/mol. Qual massa de CO₂ pode resultar de 50 g de CaCO₃?",
+      "options": [
+        "44 g",
+        "22 g",
+        "50 g",
+        "11 g"
+      ],
+      "correctAnswer": "22 g",
+      "explanation": "50 g de CaCO₃ correspondem a 0,50 mol. A razão CaCO₃:CO₂ é 1:1, então formam-se 0,50 mol de CO₂, ou 22 g.",
+      "errorFocus": "Usar a proporção entre massas como se massa e mol tivessem a mesma razão dos coeficientes.",
+      "hint": "Converta 50 g de CaCO₃ em mol, aplique a razão 1:1 e converta o CO₂ de volta para gramas.",
+      "misconceptions": {
+        "44 g": [
+          "USAR_A_PROPOR_O_ENTRE_MASSAS_COMO_SE_MASSA_E_MOL_TIVESSEM_A_MESMA_RAZ_O_DOS_COEFICIENTES"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-transfer-03",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BAKING_SODA_GAS_QUANTITY",
+      "statement": "No modelo 2 NaHCO₃ → Na₂CO₃ + CO₂ + H₂O, considere M(NaHCO₃) = 84 g/mol. Uma amostra de 252 g se decompõe completamente. Quantos mol de CO₂ são previstos?",
+      "options": [
+        "3 mol",
+        "2 mol",
+        "1,5 mol",
+        "0,5 mol"
+      ],
+      "correctAnswer": "1,5 mol",
+      "explanation": "252 g ÷ 84 g/mol = 3 mol de NaHCO₃. Como 2 mol do reagente formam 1 mol de CO₂, a quantidade prevista é 1,5 mol.",
+      "errorFocus": "Confundir a quantidade do reagente com a do produto ou esquecer o coeficiente 2.",
+      "hint": "Primeiro descubra quantos mol de NaHCO₃ existem; depois use a razão 1 mol CO₂ para 2 mol NaHCO₃.",
+      "misconceptions": {
+        "3 mol": [
+          "CONFUNDIR_A_QUANTIDADE_DO_REAGENTE_COM_A_DO_PRODUTO_OU_ESQUECER_O_COEFICIENTE_2"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-transfer-04",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ANTACID_LIMITING_REACTANT",
+      "statement": "No modelo NaHCO₃ + HCl → NaCl + CO₂ + H₂O, um ensaio usa 0,75 mol de NaHCO₃ e 0,50 mol de HCl. Admitindo reação completa, qual conclusão está correta?",
+      "options": [
+        "NaHCO₃ é limitante e podem se formar 0,75 mol de CO₂.",
+        "Nenhum reagente é limitante porque a equação tem coeficientes iguais.",
+        "HCl é limitante e podem se formar 0,75 mol de CO₂.",
+        "HCl é limitante e podem se formar 0,50 mol de CO₂."
+      ],
+      "correctAnswer": "HCl é limitante e podem se formar 0,50 mol de CO₂.",
+      "explanation": "A proporção entre NaHCO₃, HCl e CO₂ é 1:1:1. Os 0,50 mol de HCl reagem com 0,50 mol de NaHCO₃ e limitam a formação a 0,50 mol de CO₂.",
+      "errorFocus": "Comparar apenas os nomes ou massas dos reagentes, em vez de comparar suas quantidades com a proporção da equação.",
+      "hint": "Para coeficientes iguais, o menor número de mol limita; o produto acompanha esse mesmo número.",
+      "misconceptions": {
+        "NaHCO₃ é limitante e podem se formar 0,75 mol de CO₂.": [
+          "COMPARAR_APENAS_OS_NOMES_OU_MASSAS_DOS_REAGENTES_EM_VEZ_DE_COMPARAR_SUAS_QUANTIDADES_COM_A_PROPOR_O_DA_EQUA_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-transfer-05",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INDUSTRIAL_PRODUCT_RECOVERY",
+      "statement": "Uma linha de produção previa teoricamente 250 kg de um material e recuperou 210 kg após purificação. Qual leitura combina corretamente rendimento e perda de processo?",
+      "options": [
+        "O rendimento foi 84%; a diferença de 40 kg não deve ser chamada de produto recuperado.",
+        "O rendimento foi 119%; a massa recuperada supera a prevista.",
+        "O rendimento foi 16%; esse valor é a razão entre a perda e o total previsto.",
+        "O rendimento foi 40%; esse valor é a massa que não foi recuperada."
+      ],
+      "correctAnswer": "O rendimento foi 84%; a diferença de 40 kg não deve ser chamada de produto recuperado.",
+      "explanation": "210 ÷ 250 × 100 = 84%. Os 40 kg são a diferença entre previsão e recuperação, não o rendimento percentual.",
+      "errorFocus": "Confundir a massa perdida com a razão percentual ou inverter a fração.",
+      "hint": "Calcule primeiro a fração 210/250; só depois transforme-a em porcentagem.",
+      "misconceptions": {
+        "O rendimento foi 119%; a massa recuperada supera a prevista.": [
+          "CONFUNDIR_A_MASSA_PERDIDA_COM_A_RAZ_O_PERCENTUAL_OU_INVERTER_A_FRA_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-lock-01",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTEGRATE",
+      "contextFamily": "ALUMINUM_CHLORIDE_MASS_LIMITING",
+      "statement": "Na reação 2 Al + 3 Cl₂ → 2 AlCl₃, misturam-se 54 g de Al e 284 g de Cl₂. Considere M(Al) = 27 g/mol e M(Cl₂) = 71 g/mol. Qual é o resultado teórico?",
+      "options": [
+        "Cl₂ é limitante e podem se formar 4 mol de AlCl₃.",
+        "Al é limitante e podem se formar 2 mol de AlCl₃.",
+        "Al é limitante e podem se formar 4 mol de AlCl₃.",
+        "Os reagentes estão na proporção exata e formam 3 mol de AlCl₃."
+      ],
+      "correctAnswer": "Al é limitante e podem se formar 2 mol de AlCl₃.",
+      "explanation": "54 g Al = 2 mol e 284 g Cl₂ = 4 mol. Dois mol de Al exigem 3 mol de Cl₂; portanto, Al limita e 2 mol de AlCl₃ são previstos.",
+      "errorFocus": "Escolher o reagente limitante comparando apenas os mol disponíveis, sem dividir pela proporção da equação.",
+      "hint": "Compare 2/2 para Al e 4/3 para Cl₂: o menor quociente indica quanto a reação pode avançar.",
+      "misconceptions": {
+        "Cl₂ é limitante e podem se formar 4 mol de AlCl₃.": [
+          "ESCOLHER_O_REAGENTE_LIMITANTE_COMPARANDO_APENAS_OS_MOL_DISPON_VEIS_SEM_DIVIDIR_PELA_PROPOR_O_DA_EQUA_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-lock-02",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTEGRATE",
+      "contextFamily": "MAGNESIUM_OXIDE_MASS_BALANCE",
+      "statement": "A reação 2 Mg + O₂ → 2 MgO recebe 48 g de Mg e 48 g de O₂. Considere M(Mg) = 24 g/mol e M(O₂) = 32 g/mol; M(MgO) = 40 g/mol. Qual massa teórica de MgO pode ser formada?",
+      "options": [
+        "40 g",
+        "96 g",
+        "80 g",
+        "120 g"
+      ],
+      "correctAnswer": "80 g",
+      "explanation": "48 g Mg = 2 mol, enquanto 48 g O₂ = 1,5 mol. Os 2 mol de Mg exigem 1 mol de O₂, então Mg limita e formam-se 2 mol MgO = 80 g.",
+      "errorFocus": "Supor que o reagente com menor massa sempre limita ou esquecer de converter cada massa em mol.",
+      "hint": "Converta as duas massas; compare mol disponíveis divididos pelos coeficientes e só então converta o produto em gramas.",
+      "misconceptions": {
+        "40 g": [
+          "SUPOR_QUE_O_REAGENTE_COM_MENOR_MASSA_SEMPRE_LIMITA_OU_ESQUECER_DE_CONVERTER_CADA_MASSA_EM_MOL"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-lock-03",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CALCIUM_CARBONATE_REAL_YIELD",
+      "statement": "Na decomposição CaCO₃ → CaO + CO₂, 250 g de CaCO₃ são processados. Use M(CaCO₃) = 100 g/mol e M(CaO) = 56 g/mol. Se forem obtidos 112 g de CaO, qual foi o rendimento percentual?",
+      "options": [
+        "56%",
+        "112%",
+        "125%",
+        "80%"
+      ],
+      "correctAnswer": "80%",
+      "explanation": "250 g de CaCO₃ são 2,5 mol; a razão 1:1 prevê 2,5 mol de CaO, ou 140 g. O rendimento é 112/140 × 100 = 80%.",
+      "errorFocus": "Usar a massa inicial como rendimento teórico sem aplicar a razão molar e a massa molar do produto.",
+      "hint": "Calcule primeiro a massa teórica de CaO; depois divida a massa real por esse valor.",
+      "misconceptions": {
+        "56%": [
+          "USAR_A_MASSA_INICIAL_COMO_RENDIMENTO_TE_RICO_SEM_APLICAR_A_RAZ_O_MOLAR_E_A_MASSA_MOLAR_DO_PRODUTO"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-review-01",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "WATER_COEFFICIENT_VS_SUBSCRIPT",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, o que representa o coeficiente 2 diante de H₂O?",
+      "options": [
+        "Uma proporção de duas unidades de H₂O para cada unidade de O₂ na equação balanceada.",
+        "Dois átomos de hidrogênio dentro de cada molécula de água.",
+        "Dois gramas de água formados em qualquer escala.",
+        "Dois mol de água obrigatoriamente, mesmo que a reação ocorra em outra escala."
+      ],
+      "correctAnswer": "Uma proporção de duas unidades de H₂O para cada unidade de O₂ na equação balanceada.",
+      "explanation": "O coeficiente dá a proporção entre quantidades de partículas ou mol. O índice 2 em H₂O indica dois átomos de hidrogênio em cada molécula.",
+      "errorFocus": "Confundir coeficiente, índice da fórmula, massa e quantidade absoluta.",
+      "hint": "Leia o número antes da fórmula como proporção da reação e o número pequeno como composição da partícula.",
+      "misconceptions": {
+        "Dois átomos de hidrogênio dentro de cada molécula de água.": [
+          "CONFUNDIR_COEFICIENTE_NDICE_DA_F_RMULA_MASSA_E_QUANTIDADE_ABSOLUTA"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-review-02",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CHLORATE_SPACED_RATIO",
+      "statement": "Para 2 KClO₃ → 2 KCl + 3 O₂, quantos mol de O₂ correspondem a 0,4 mol de KClO₃?",
+      "options": [
+        "0,4 mol",
+        "0,6 mol",
+        "0,8 mol",
+        "1,2 mol"
+      ],
+      "correctAnswer": "0,6 mol",
+      "explanation": "A razão O₂/KClO₃ é 3/2. Logo, 0,4 × 3/2 = 0,6 mol de O₂.",
+      "errorFocus": "Aplicar o fator 2/3 quando a pergunta pede produto por reagente.",
+      "hint": "Monte a fração com o produto no numerador: 3 mol O₂ / 2 mol KClO₃.",
+      "misconceptions": {
+        "0,4 mol": [
+          "APLICAR_O_FATOR_2_3_QUANDO_A_PERGUNTA_PEDE_PRODUTO_POR_REAGENTE"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-review-03",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PROPANE_COMBUSTION_LIMITING",
+      "statement": "Na combustão C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O, há 1 mol de C₃H₈ e 4 mol de O₂. Qual resultado é previsto?",
+      "options": [
+        "C₃H₈ é limitante e podem se formar 3 mol de CO₂.",
+        "O₂ é limitante e podem se formar 4 mol de CO₂.",
+        "O₂ é limitante e podem se formar 2,4 mol de CO₂.",
+        "Os reagentes estão na proporção estequiométrica e formam 3 mol de CO₂."
+      ],
+      "correctAnswer": "O₂ é limitante e podem se formar 2,4 mol de CO₂.",
+      "explanation": "Um mol de C₃H₈ exigiria 5 mol de O₂, mas há apenas 4. A quantidade de CO₂ é 4 × 3/5 = 2,4 mol.",
+      "errorFocus": "Achar que uma mistura é estequiométrica por ter números próximos ou usar o coeficiente do produto sem limitar pelos reagentes.",
+      "hint": "Calcule quanto CO₂ cada reagente poderia produzir; o menor resultado identifica o limitante.",
+      "misconceptions": {
+        "C₃H₈ é limitante e podem se formar 3 mol de CO₂.": [
+          "ACHAR_QUE_UMA_MISTURA_ESTEQUIOM_TRICA_POR_TER_N_MEROS_PR_XIMOS_OU_USAR_O_COEFICIENTE_DO_PRODUTO_SEM_LIMITAR_PELOS_REAGENTES"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-review-04",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CALCULATE",
+      "contextFamily": "SALT_MOLAR_AMOUNT_RECOVERY",
+      "statement": "Na reação HCl + NaOH → NaCl + H₂O, considere M(NaCl) = 58,5 g/mol. Uma amostra contém 117 g de NaCl. Quantos mol de NaCl ela representa?",
+      "options": [
+        "1 mol",
+        "58,5 mol",
+        "0,5 mol",
+        "2 mol"
+      ],
+      "correctAnswer": "2 mol",
+      "explanation": "A quantidade de matéria é n = m/M. Portanto, 117 g ÷ 58,5 g/mol = 2 mol.",
+      "errorFocus": "Multiplicar massa por massa molar ou esquecer a unidade mol na divisão.",
+      "hint": "Use n = m/M; gramas divididos por gramas por mol resultam em mol.",
+      "misconceptions": {
+        "1 mol": [
+          "MULTIPLICAR_MASSA_POR_MASSA_MOLAR_OU_ESQUECER_A_UNIDADE_MOL_NA_DIVIS_O"
+        ]
+      }
+    },
+    {
+      "id": "v5-chem-stoich-review-05",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "YIELD_CLAIM_AUDIT",
+      "statement": "Um relatório informa rendimento teórico de 40 g e rendimento real de 46 g, atribuindo rendimento de 115%. Qual análise é mais adequada para um produto isolado e seco?",
+      "options": [
+        "A razão calculada é 115%, mas o resultado pede verificar pureza, secagem, medição e pressupostos antes de tratá-lo como rendimento químico acima do teórico.",
+        "O valor prova que a conservação da matéria foi violada.",
+        "O rendimento é necessariamente 85%, pois deve-se subtrair 40 de 46.",
+        "O cálculo está errado; todo rendimento real precisa ser menor que 40 g, qualquer que seja a medição."
+      ],
+      "correctAnswer": "A razão calculada é 115%, mas o resultado pede verificar pureza, secagem, medição e pressupostos antes de tratá-lo como rendimento químico acima do teórico.",
+      "explanation": "46/40 × 100 = 115%, mas uma massa aparente acima do teórico pode indicar umidade, impurezas, erro de medição ou modelo incompleto. O cálculo não valida sozinho a qualidade da amostra.",
+      "errorFocus": "Aceitar ou rejeitar o número sem separar o cálculo da avaliação da amostra e das medições.",
+      "hint": "Confira a fórmula percentual e depois verifique se a massa real representa produto puro, seco e corretamente medido.",
+      "misconceptions": {
+        "O valor prova que a conservação da matéria foi violada.": [
+          "ACEITAR_OU_REJEITAR_O_N_MERO_SEM_SEPARAR_O_C_LCULO_DA_AVALIA_O_DA_AMOSTRA_E_DAS_MEDI_ES"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_01",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Que ajuste conserva os átomos de cada elemento?",
+      "options": [
+        "2 H₂ + O₂ → 2 H₂O.",
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "2 H₂ + O₂ → 2 H₂O.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_02",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Qual critério deve orientar a análise?",
+      "options": [
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "Use Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "Use Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_03",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "H₂ + 2 O₂ → H₂O.",
+        "Balanceie outra equação simples conferindo cada elemento após o ajuste.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "Balanceie outra equação simples conferindo cada elemento após o ajuste.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_04",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Qual conclusão deve ser evitada?",
+      "options": [
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O.",
+        "Evite alterar índices das fórmulas para fazer uma equação parecer balanceada."
+      ],
+      "correctAnswer": "Evite alterar índices das fórmulas para fazer uma equação parecer balanceada.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_05",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira quantidade de átomos de hidrogênio e oxigênio em cada lado.",
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "Confira quantidade de átomos de hidrogênio e oxigênio em cada lado.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-006",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_06",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "contar os átomos antes e depois e ajustar os coeficientes mínimos",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "contar os átomos antes e depois e ajustar os coeficientes mínimos",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-007",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_07",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Qual limite deve aparecer na resposta?",
+      "options": [
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "H₂ + 2 O₂ → H₂O.",
+        "Mantenha a conclusão ligada a a conservação de átomos representada pela equação.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a conservação de átomos representada pela equação.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-008",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_08",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Que comparação é mais justa?",
+      "options": [
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O.",
+        "Compare átomos nos reagentes e nos produtos."
+      ],
+      "correctAnswer": "Compare átomos nos reagentes e nos produtos.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-009",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_09",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero alterar índices das fórmulas para fazer uma equação parecer balanceada.",
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "Seria exagero alterar índices das fórmulas para fazer uma equação parecer balanceada.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-010",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_BALANCE_10",
+      "statement": "A reação de formação da água é representada por H₂ + O₂ → H₂O. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.",
+        "algum elemento aparece com contagem diferente em um dos lados?",
+        "H₂ + 2 O₂ → H₂O.",
+        "2 H₂ + 2 O₂ → H₂O."
+      ],
+      "correctAnswer": "algum elemento aparece com contagem diferente em um dos lados?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Conte os átomos dos dois lados e altere coeficientes, não índices das fórmulas.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "H₂ + O₂ → H₂O₂, pois basta mudar um índice.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_01",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Quantos mol de água correspondem a 3 mol de O₂ com H₂ em excesso?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "6 mol de H₂O, pois a proporção O₂:H₂O é 1:2.",
+        "2 mol, pois o coeficiente da água é sempre fixo."
+      ],
+      "correctAnswer": "6 mol de H₂O, pois a proporção O₂:H₂O é 1:2.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_02",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Qual critério deve orientar a análise?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "2 mol, pois o coeficiente da água é sempre fixo.",
+        "Use Leia a razão molar pelos coeficientes da equação balanceada."
+      ],
+      "correctAnswer": "Use Leia a razão molar pelos coeficientes da equação balanceada.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_03",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Use outra equação balanceada para converter mol de reagente em mol de produto.",
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "2 mol, pois o coeficiente da água é sempre fixo."
+      ],
+      "correctAnswer": "Use outra equação balanceada para converter mol de reagente em mol de produto.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_04",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Qual conclusão deve ser evitada?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "Evite usar a massa dos coeficientes como se fossem massas molares.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "2 mol, pois o coeficiente da água é sempre fixo."
+      ],
+      "correctAnswer": "Evite usar a massa dos coeficientes como se fossem massas molares.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_05",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "Confira coeficientes 2:1:2 e excesso de hidrogênio.",
+        "2 mol, pois o coeficiente da água é sempre fixo."
+      ],
+      "correctAnswer": "Confira coeficientes 2:1:2 e excesso de hidrogênio.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_06",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "2 mol, pois o coeficiente da água é sempre fixo.",
+        "montar uma relação molar e verificar qual reagente limita"
+      ],
+      "correctAnswer": "montar uma relação molar e verificar qual reagente limita",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_07",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a proporção da equação e o excesso informado.",
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "2 mol, pois o coeficiente da água é sempre fixo."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a proporção da equação e o excesso informado.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_08",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Que comparação é mais justa?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "Compare mol de oxigênio disponíveis e mol de água previstos.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "2 mol, pois o coeficiente da água é sempre fixo."
+      ],
+      "correctAnswer": "Compare mol de oxigênio disponíveis e mol de água previstos.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_09",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Qual seria um exagero interpretativo?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "Seria exagero usar a massa dos coeficientes como se fossem massas molares.",
+        "2 mol, pois o coeficiente da água é sempre fixo."
+      ],
+      "correctAnswer": "Seria exagero usar a massa dos coeficientes como se fossem massas molares.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_RATIO_10",
+      "statement": "Na equação 2 H₂ + O₂ → 2 H₂O, os coeficientes indicam a proporção entre as substâncias. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "3 mol, porque o produto acompanha diretamente o reagente.",
+        "1,5 mol, porque é preciso dividir o oxigênio por dois.",
+        "2 mol, pois o coeficiente da água é sempre fixo.",
+        "o reagente usado está em excesso ou limita a formação?"
+      ],
+      "correctAnswer": "o reagente usado está em excesso ou limita a formação?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Leia a razão molar pelos coeficientes da equação balanceada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "3 mol, porque o produto acompanha diretamente o reagente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-021",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_01",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Qual reagente limita a formação de sal?",
+      "options": [
+        "O sódio limita, pois 3 mol de Na exigem apenas 1,5 mol de Cl₂ e permitem formar 3 mol de NaCl.",
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "O sódio limita, pois 3 mol de Na exigem apenas 1,5 mol de Cl₂ e permitem formar 3 mol de NaCl.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-022",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_02",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Qual critério deve orientar a análise?",
+      "options": [
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Use Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "Use Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-023",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_03",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Nenhum limita porque há dois reagentes.",
+        "Determine o reagente limitante em outra mistura antes de calcular o produto.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "Determine o reagente limitante em outra mistura antes de calcular o produto.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-024",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_04",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Qual conclusão deve ser evitada?",
+      "options": [
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior.",
+        "Evite escolher como limitante o reagente com menor número de mol sem considerar a proporção."
+      ],
+      "correctAnswer": "Evite escolher como limitante o reagente com menor número de mol sem considerar a proporção.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-025",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_05",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira quantidades disponíveis e razão 2 Na para 1 Cl₂.",
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "Confira quantidades disponíveis e razão 2 Na para 1 Cl₂.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-026",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_06",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "calcular quanto produto cada reagente poderia formar",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "calcular quanto produto cada reagente poderia formar",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-027",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_07",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Qual limite deve aparecer na resposta?",
+      "options": [
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Nenhum limita porque há dois reagentes.",
+        "Mantenha a conclusão ligada a a mistura específica e a equação balanceada.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a mistura específica e a equação balanceada.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-028",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_08",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Que comparação é mais justa?",
+      "options": [
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior.",
+        "Compare produto previsto a partir de cada reagente."
+      ],
+      "correctAnswer": "Compare produto previsto a partir de cada reagente.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-029",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_09",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero escolher como limitante o reagente com menor número de mol sem considerar a proporção.",
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "Seria exagero escolher como limitante o reagente com menor número de mol sem considerar a proporção.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-030",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_LIMITING_10",
+      "statement": "Para 2 Na + Cl₂ → 2 NaCl, são misturados 3 mol de Na e 2 mol de Cl₂. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "O cloro limita porque há menos coeficiente na fórmula.",
+        "qual reagente se esgota primeiro na proporção da equação?",
+        "Nenhum limita porque há dois reagentes.",
+        "O sódio está em excesso porque seu número é maior."
+      ],
+      "correctAnswer": "qual reagente se esgota primeiro na proporção da equação?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Compare a quantidade disponível com a quantidade exigida pela proporção molar.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O cloro limita porque há menos coeficiente na fórmula.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-031",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_01",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Que massa de CaCO₃ corresponde a 0,5 mol?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "50 g, calculados por 0,5 mol × 100 g/mol.",
+        "0,005 g, dividindo massa molar por 100."
+      ],
+      "correctAnswer": "50 g, calculados por 0,5 mol × 100 g/mol.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-032",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_02",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Qual critério deve orientar a análise?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "0,005 g, dividindo massa molar por 100.",
+        "Use Converta mol e massa usando a massa molar com unidades compatíveis."
+      ],
+      "correctAnswer": "Use Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-033",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_03",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Converta uma quantidade de massa em mol em outra reação sem perder unidades.",
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "0,005 g, dividindo massa molar por 100."
+      ],
+      "correctAnswer": "Converta uma quantidade de massa em mol em outra reação sem perder unidades.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-034",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_04",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Qual conclusão deve ser evitada?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "Evite multiplicar massa molar por mol sem conferir a unidade obtida.",
+        "100,5 g, somando mol e massa molar.",
+        "0,005 g, dividindo massa molar por 100."
+      ],
+      "correctAnswer": "Evite multiplicar massa molar por mol sem conferir a unidade obtida.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-035",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_05",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "Confira quantidade em mol e massa molar do composto.",
+        "0,005 g, dividindo massa molar por 100."
+      ],
+      "correctAnswer": "Confira quantidade em mol e massa molar do composto.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-036",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_06",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "0,005 g, dividindo massa molar por 100.",
+        "escrever a relação m = n × M antes de substituir os valores"
+      ],
+      "correctAnswer": "escrever a relação m = n × M antes de substituir os valores",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-037",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_07",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a massa molar fornecida e a quantidade da amostra.",
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "0,005 g, dividindo massa molar por 100."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a massa molar fornecida e a quantidade da amostra.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-038",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_08",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Que comparação é mais justa?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "Compare mol disponíveis e gramas correspondentes.",
+        "100,5 g, somando mol e massa molar.",
+        "0,005 g, dividindo massa molar por 100."
+      ],
+      "correctAnswer": "Compare mol disponíveis e gramas correspondentes.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-039",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_09",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Qual seria um exagero interpretativo?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "Seria exagero multiplicar massa molar por mol sem conferir a unidade obtida.",
+        "0,005 g, dividindo massa molar por 100."
+      ],
+      "correctAnswer": "Seria exagero multiplicar massa molar por mol sem conferir a unidade obtida.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-040",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_MOLAR-MASS_10",
+      "statement": "A decomposição de 1 mol de CaCO₃ produz 1 mol de CaO e 1 mol de CO₂. A massa molar de CaCO₃ é 100 g/mol. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "200 g, pois é preciso dobrar a massa molar.",
+        "100,5 g, somando mol e massa molar.",
+        "0,005 g, dividindo massa molar por 100.",
+        "o resultado está em gramas e é proporcional à quantidade de matéria?"
+      ],
+      "correctAnswer": "o resultado está em gramas e é proporcional à quantidade de matéria?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Converta mol e massa usando a massa molar com unidades compatíveis.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "200 g, pois é preciso dobrar a massa molar.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-041",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_01",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Como comparar os volumes dos gases na mesma condição?",
+      "options": [
+        "O volume de H₂ será o dobro do volume de O₂, porque o número de mols está na razão 2:1.",
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "O volume de H₂ será o dobro do volume de O₂, porque o número de mols está na razão 2:1.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-042",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_02",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Qual critério deve orientar a análise?",
+      "options": [
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "Use Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "Use Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-043",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_03",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Compare volumes gasosos de outra equação em condições iguais.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "Compare volumes gasosos de outra equação em condições iguais.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-044",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_04",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Qual conclusão deve ser evitada?",
+      "options": [
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição.",
+        "Evite comparar volumes de gases sem considerar temperatura e pressão."
+      ],
+      "correctAnswer": "Evite comparar volumes de gases sem considerar temperatura e pressão.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-045",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_05",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira razão molar e condições iguais de temperatura e pressão.",
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "Confira razão molar e condições iguais de temperatura e pressão.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-046",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_06",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "verificar se as condições permitem usar a proporção de volumes",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "verificar se as condições permitem usar a proporção de volumes",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-047",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_07",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Qual limite deve aparecer na resposta?",
+      "options": [
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Mantenha a conclusão ligada a a comparação entre gases nas condições informadas.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a comparação entre gases nas condições informadas.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-048",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_08",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Que comparação é mais justa?",
+      "options": [
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição.",
+        "Compare mols e volumes de H₂ e O₂."
+      ],
+      "correctAnswer": "Compare mols e volumes de H₂ e O₂.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-049",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_09",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero comparar volumes de gases sem considerar temperatura e pressão.",
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "Seria exagero comparar volumes de gases sem considerar temperatura e pressão.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-050",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_GAS_10",
+      "statement": "Em condições iguais de temperatura e pressão, uma reação libera 2 mol de H₂ para cada 1 mol de O₂ consumido. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "O volume será igual porque gases ocupam todo o recipiente.",
+        "temperatura e pressão são iguais para os dois gases?",
+        "O₂ terá o dobro do volume porque sua molécula é maior.",
+        "Não é possível comparar volumes em nenhuma condição."
+      ],
+      "correctAnswer": "temperatura e pressão são iguais para os dois gases?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Em mesma temperatura e pressão, relacione volume gasoso e quantidade de matéria.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O volume será igual porque gases ocupam todo o recipiente.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-051",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_01",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Qual é o rendimento percentual aproximado?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "80%, pois o rendimento é a massa obtida dividida pela massa teórica, vezes 100.",
+        "8%, porque a massa real já é o percentual."
+      ],
+      "correctAnswer": "80%, pois o rendimento é a massa obtida dividida pela massa teórica, vezes 100.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-052",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_02",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Qual critério deve orientar a análise?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "8%, porque a massa real já é o percentual.",
+        "Use Relacione rendimento real e rendimento teórico sem inverter a fração."
+      ],
+      "correctAnswer": "Use Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-053",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_03",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Calcule o rendimento de outro experimento com perdas de produto.",
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "8%, porque a massa real já é o percentual."
+      ],
+      "correctAnswer": "Calcule o rendimento de outro experimento com perdas de produto.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-054",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_04",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Qual conclusão deve ser evitada?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "Evite usar a massa obtida como se fosse sempre o rendimento teórico.",
+        "18%, subtraindo as duas massas.",
+        "8%, porque a massa real já é o percentual."
+      ],
+      "correctAnswer": "Evite usar a massa obtida como se fosse sempre o rendimento teórico.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-055",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_05",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "Confira massa real de 8 g e massa teórica de 10 g.",
+        "8%, porque a massa real já é o percentual."
+      ],
+      "correctAnswer": "Confira massa real de 8 g e massa teórica de 10 g.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-056",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_06",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "8%, porque a massa real já é o percentual.",
+        "dividir 8 por 10 e converter a razão em porcentagem"
+      ],
+      "correctAnswer": "dividir 8 por 10 e converter a razão em porcentagem",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-057",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_07",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a as massas comparadas após a mesma etapa de purificação.",
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "8%, porque a massa real já é o percentual."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as massas comparadas após a mesma etapa de purificação.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-058",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_08",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Que comparação é mais justa?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "Compare produto previsto e produto recuperado.",
+        "18%, subtraindo as duas massas.",
+        "8%, porque a massa real já é o percentual."
+      ],
+      "correctAnswer": "Compare produto previsto e produto recuperado.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-059",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_09",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Qual seria um exagero interpretativo?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "Seria exagero usar a massa obtida como se fosse sempre o rendimento teórico.",
+        "8%, porque a massa real já é o percentual."
+      ],
+      "correctAnswer": "Seria exagero usar a massa obtida como se fosse sempre o rendimento teórico.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-060",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_YIELD_10",
+      "statement": "Uma reação deveria produzir 10 g de produto, mas o laboratório recupera 8 g após a purificação. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "125%, dividindo a massa teórica pela real.",
+        "18%, subtraindo as duas massas.",
+        "8%, porque a massa real já é o percentual.",
+        "qual massa representa o limite teórico da reação?"
+      ],
+      "correctAnswer": "qual massa representa o limite teórico da reação?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Relacione rendimento real e rendimento teórico sem inverter a fração.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "125%, dividindo a massa teórica pela real.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-061",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_01",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Qual resultado é esperado pela conservação da massa?",
+      "options": [
+        "A massa total dos produtos deve corresponder a 12 g, mesmo que a distribuição entre gás e sólido mude.",
+        "A massa diminui porque gases não têm massa.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "A massa total dos produtos deve corresponder a 12 g, mesmo que a distribuição entre gás e sólido mude.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-062",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_02",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Qual critério deve orientar a análise?",
+      "options": [
+        "A massa diminui porque gases não têm massa.",
+        "Use Considere a fronteira fechada e conserve a massa total dos átomos.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "Use Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-063",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_03",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "A massa diminui porque gases não têm massa.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Analise uma reação com diferentes estados físicos mantendo o sistema completo.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "Analise uma reação com diferentes estados físicos mantendo o sistema completo.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-064",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_04",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Qual conclusão deve ser evitada?",
+      "options": [
+        "A massa diminui porque gases não têm massa.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação.",
+        "Evite dizer que um gás não participa da massa total dos produtos."
+      ],
+      "correctAnswer": "Evite dizer que um gás não participa da massa total dos produtos.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-065",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_05",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira sistema fechado e massa total inicial de reagentes.",
+        "A massa diminui porque gases não têm massa.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "Confira sistema fechado e massa total inicial de reagentes.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-066",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_06",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A massa diminui porque gases não têm massa.",
+        "somar as massas de todas as fases presentes no sistema",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "somar as massas de todas as fases presentes no sistema",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-067",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_07",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Qual limite deve aparecer na resposta?",
+      "options": [
+        "A massa diminui porque gases não têm massa.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Mantenha a conclusão ligada a o conjunto de matéria dentro da fronteira definida.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a o conjunto de matéria dentro da fronteira definida.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-068",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_08",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Que comparação é mais justa?",
+      "options": [
+        "A massa diminui porque gases não têm massa.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação.",
+        "Compare massa total antes e depois, incluindo o gás."
+      ],
+      "correctAnswer": "Compare massa total antes e depois, incluindo o gás.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-069",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_09",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero dizer que um gás não participa da massa total dos produtos.",
+        "A massa diminui porque gases não têm massa.",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "Seria exagero dizer que um gás não participa da massa total dos produtos.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-070",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_CONSERVATION_10",
+      "statement": "Em uma reação fechada, 12 g de reagentes formam produtos gasosos e sólidos. O sistema inteiro é pesado antes e depois. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "A massa diminui porque gases não têm massa.",
+        "alguma fase ficou fora da medição?",
+        "A massa aumenta sempre que aparece um sólido.",
+        "Somente o sólido deve ser pesado para conferir a conservação."
+      ],
+      "correctAnswer": "alguma fase ficou fora da medição?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Considere a fronteira fechada e conserve a massa total dos átomos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A massa diminui porque gases não têm massa.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-071",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_01",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Qual afirmação descreve a mistura?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B é limitante e A fica em excesso, pois 4 mol de A exigiriam 8 mol de B.",
+        "B está em excesso porque sua quantidade absoluta é maior."
+      ],
+      "correctAnswer": "B é limitante e A fica em excesso, pois 4 mol de A exigiriam 8 mol de B.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-072",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_02",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Qual critério deve orientar a análise?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B está em excesso porque sua quantidade absoluta é maior.",
+        "Use Calcule a demanda de cada reagente antes de identificar o excesso."
+      ],
+      "correctAnswer": "Use Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-073",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_03",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Classifique reagentes em excesso e limitante em outra proporção.",
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B está em excesso porque sua quantidade absoluta é maior."
+      ],
+      "correctAnswer": "Classifique reagentes em excesso e limitante em outra proporção.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-074",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_04",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Qual conclusão deve ser evitada?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Evite chamar de excesso o reagente com maior massa sem usar os mols e a equação.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B está em excesso porque sua quantidade absoluta é maior."
+      ],
+      "correctAnswer": "Evite chamar de excesso o reagente com maior massa sem usar os mols e a equação.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-075",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_05",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "Confira proporção 1:2 e quantidades de A e B.",
+        "B está em excesso porque sua quantidade absoluta é maior."
+      ],
+      "correctAnswer": "Confira proporção 1:2 e quantidades de A e B.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-076",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_06",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B está em excesso porque sua quantidade absoluta é maior.",
+        "comparar cada quantidade disponível com a demanda estequiométrica"
+      ],
+      "correctAnswer": "comparar cada quantidade disponível com a demanda estequiométrica",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-077",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_07",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a a proporção molar e os valores informados.",
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B está em excesso porque sua quantidade absoluta é maior."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a proporção molar e os valores informados.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-078",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_08",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Que comparação é mais justa?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Compare B disponível e B necessário para consumir A.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B está em excesso porque sua quantidade absoluta é maior."
+      ],
+      "correctAnswer": "Compare B disponível e B necessário para consumir A.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-079",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_09",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Qual seria um exagero interpretativo?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "Seria exagero chamar de excesso o reagente com maior massa sem usar os mols e a equação.",
+        "B está em excesso porque sua quantidade absoluta é maior."
+      ],
+      "correctAnswer": "Seria exagero chamar de excesso o reagente com maior massa sem usar os mols e a equação.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-080",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_EXCESS_10",
+      "statement": "Em uma síntese, a proporção exige 1 mol de A para 2 mol de B. Há 4 mol de A e 5 mol de B. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "A é limitante porque seu número de mol é menor.",
+        "Os dois estão em excesso porque sobrará matéria.",
+        "B está em excesso porque sua quantidade absoluta é maior.",
+        "quanto de B seria necessário para usar todo A?"
+      ],
+      "correctAnswer": "quanto de B seria necessário para usar todo A?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Calcule a demanda de cada reagente antes de identificar o excesso.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "A é limitante porque seu número de mol é menor.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-081",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_01",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Qual problema deve ser corrigido?",
+      "options": [
+        "Mol e gramas são grandezas diferentes; é necessário informar a massa molar para converter entre elas.",
+        "0,25 mol é sempre igual a 25 g.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "Mol e gramas são grandezas diferentes; é necessário informar a massa molar para converter entre elas.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-082",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_02",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Qual critério deve orientar a análise?",
+      "options": [
+        "0,25 mol é sempre igual a 25 g.",
+        "Use Mantenha unidades explícitas e use uma relação de conversão justificada.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "Use Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-083",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_03",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "0,25 mol é sempre igual a 25 g.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Revise outro cálculo químico procurando trocas indevidas entre mol, massa e volume.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "Revise outro cálculo químico procurando trocas indevidas entre mol, massa e volume.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-084",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_04",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Qual conclusão deve ser evitada?",
+      "options": [
+        "0,25 mol é sempre igual a 25 g.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases.",
+        "Evite tratar qualquer número em uma tabela como se tivesse a mesma unidade."
+      ],
+      "correctAnswer": "Evite tratar qualquer número em uma tabela como se tivesse a mesma unidade.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-085",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_05",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira unidade registrada, unidade usada e massa molar ausente.",
+        "0,25 mol é sempre igual a 25 g.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "Confira unidade registrada, unidade usada e massa molar ausente.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-086",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_06",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "0,25 mol é sempre igual a 25 g.",
+        "anotar as unidades em cada etapa e obter a massa molar necessária",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "anotar as unidades em cada etapa e obter a massa molar necessária",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-087",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_07",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Qual limite deve aparecer na resposta?",
+      "options": [
+        "0,25 mol é sempre igual a 25 g.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Mantenha a conclusão ligada a a conversão autorizada pelos dados disponíveis.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a a conversão autorizada pelos dados disponíveis.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-088",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_08",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Que comparação é mais justa?",
+      "options": [
+        "0,25 mol é sempre igual a 25 g.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases.",
+        "Compare quantidade de matéria e massa correspondente."
+      ],
+      "correctAnswer": "Compare quantidade de matéria e massa correspondente.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-089",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_09",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Qual seria um exagero interpretativo?",
+      "options": [
+        "Seria exagero tratar qualquer número em uma tabela como se tivesse a mesma unidade.",
+        "0,25 mol é sempre igual a 25 g.",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "Seria exagero tratar qualquer número em uma tabela como se tivesse a mesma unidade.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-090",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_UNIT_10",
+      "statement": "Uma tabela registra 0,25 mol de uma substância, mas o cálculo do estudante usa 25 g sem informar a massa molar. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "0,25 mol é sempre igual a 25 g.",
+        "há informação suficiente para converter a unidade?",
+        "Basta remover a unidade para o cálculo ficar correto.",
+        "Massa molar só importa em reações com gases."
+      ],
+      "correctAnswer": "há informação suficiente para converter a unidade?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Mantenha unidades explícitas e use uma relação de conversão justificada.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "0,25 mol é sempre igual a 25 g.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-091",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_01",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Qual revisão é necessária?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "Balancear a equação, registrar as quantidades e identificar o reagente limitante antes de aceitar o cálculo do produto.",
+        "O reagente limitante é irrelevante quando a massa é medida."
+      ],
+      "correctAnswer": "Balancear a equação, registrar as quantidades e identificar o reagente limitante antes de aceitar o cálculo do produto.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-092",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_02",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Qual critério deve orientar a análise?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "O reagente limitante é irrelevante quando a massa é medida.",
+        "Use Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos."
+      ],
+      "correctAnswer": "Use Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-093",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_03",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Como transferir esse raciocínio para outro caso?",
+      "options": [
+        "Audite outro relatório de estequiometria procurando etapas que impedem a reprodução.",
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "O reagente limitante é irrelevante quando a massa é medida."
+      ],
+      "correctAnswer": "Audite outro relatório de estequiometria procurando etapas que impedem a reprodução.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-094",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_04",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Qual conclusão deve ser evitada?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Evite aceitar um resultado numérico sem conferir a equação e as condições da mistura.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "O reagente limitante é irrelevante quando a massa é medida."
+      ],
+      "correctAnswer": "Evite aceitar um resultado numérico sem conferir a equação e as condições da mistura.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-095",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_05",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "Confira equação não balanceada e excesso não informado.",
+        "O reagente limitante é irrelevante quando a massa é medida."
+      ],
+      "correctAnswer": "Confira equação não balanceada e excesso não informado.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-096",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_06",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Qual é o próximo passo mais cuidadoso?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "O reagente limitante é irrelevante quando a massa é medida.",
+        "corrigir a equação e explicitar a base do cálculo"
+      ],
+      "correctAnswer": "corrigir a equação e explicitar a base do cálculo",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-097",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_07",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Qual limite deve aparecer na resposta?",
+      "options": [
+        "Mantenha a conclusão ligada a as premissas quantitativas registradas no relatório.",
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "O reagente limitante é irrelevante quando a massa é medida."
+      ],
+      "correctAnswer": "Mantenha a conclusão ligada a as premissas quantitativas registradas no relatório.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-098",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_08",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Que comparação é mais justa?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Compare resultado calculado e método que o produziu.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "O reagente limitante é irrelevante quando a massa é medida."
+      ],
+      "correctAnswer": "Compare resultado calculado e método que o produziu.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-099",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_09",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Qual seria um exagero interpretativo?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "Seria exagero aceitar um resultado numérico sem conferir a equação e as condições da mistura.",
+        "O reagente limitante é irrelevante quando a massa é medida."
+      ],
+      "correctAnswer": "Seria exagero aceitar um resultado numérico sem conferir a equação e as condições da mistura.",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    },
+    {
+      "id": "v16-chemistry-stoichiometry-100",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V16_CHEMISTRY_STOICHIOMETRY_REPORT_10",
+      "statement": "Um relatório calcula o produto usando uma equação não balanceada e não informa qual reagente foi usado em excesso. Que pergunta ajuda a refinar o cálculo?",
+      "options": [
+        "O relatório está correto porque apresenta um número final.",
+        "Balanceamento não interfere na quantidade de produto.",
+        "O reagente limitante é irrelevante quando a massa é medida.",
+        "a proporção usada vem de uma equação balanceada?"
+      ],
+      "correctAnswer": "a proporção usada vem de uma equação balanceada?",
+      "explanation": "A resposta usa a equação balanceada, unidades e limites da mistura para justificar o cálculo. Verifique a equação, as unidades e o limitante antes de interpretar resultados quantitativos.",
+      "hint": "Escreva a equação balanceada, destaque as unidades e confira o reagente limitante.",
+      "errorFocus": "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT",
+      "misconceptions": {
+        "O relatório está correto porque apresenta um número final.": [
+          "CHEMISTRY_STOICHIOMETRY_RATIO_AND_UNIT"
+        ]
+      }
+    }
+  ],
+  "lesson": {
+    "title": "Da equação à quantidade de produto",
+    "objective": "Usar uma equação balanceada e quantidades fornecidas para relacionar mols, massas, reagente limitante e rendimento.",
+    "summary": "Balanceie primeiro. Converta massa em mol, aplique a razão dos coeficientes e só então converta a unidade pedida.",
+    "explanation": "## 1. O que a equação informa\nEm uma equação balanceada, os coeficientes dão a proporção entre quantidades de partículas e de mol. Em N₂ + 3 H₂ → 2 NH₃, cada proporção de 1 mol de N₂ para 3 mol de H₂ pode formar 2 mol de NH₃. A proporção pode ser ampliada ou reduzida; os coeficientes não fixam uma quantidade absoluta nem indicam a velocidade da reação.\n\n## 2. Balanceie antes de calcular\nA equação precisa conservar o número de átomos de cada elemento. Ao balancear, alteramos coeficientes, nunca os índices dentro de uma fórmula: trocar H₂O por H₂O₂ mudaria a substância. Use somente os coeficientes de uma equação balanceada para obter fatores estequiométricos.\n\n## 3. De massa para massa\nOs coeficientes relacionam mol, não gramas diretamente. Para uma massa conhecida, calcule n = m/M. Use então a razão molar da equação para chegar aos mol da substância desejada. Se a resposta pede massa, finalize com m = n × M. Em cada etapa, acompanhe as unidades para que as unidades intermediárias se cancelem.\n\n## 4. Encontre o reagente limitante\nQuando há mais de um reagente, calcule quanto produto cada um poderia formar, mantendo os outros suficientes. O reagente que prevê a menor quantidade de produto é o limitante; ele determina o rendimento teórico. Não compare somente as massas nem escolha automaticamente o menor número de mol: leve em conta os coeficientes e, se a resposta exigir massa, as massas molares.\n\n## 5. Exemplo resolvido e rendimento\nConsidere 2 Al + 3 Cl₂ → 2 AlCl₃. Com 54 g de Al e 284 g de Cl₂, usando M(Al)=27 g/mol e M(Cl₂)=71 g/mol, temos 2 mol de Al e 4 mol de Cl₂. Dois mol de Al exigem 3 mol de Cl₂, então o alumínio limita. A proporção prevê 2 mol de AlCl₃. Se M(AlCl₃)=133,5 g/mol, o rendimento teórico é 267 g. Se o experimento recuperar 213,6 g de produto puro e seco, o rendimento percentual é 213,6/267 × 100 = 80%. O rendimento real pode ser menor por perdas ou reação incompleta; um valor aparente acima do teórico exige verificar pureza, secagem, medição e modelo.",
+    "workedExample": "Para 2 Al + 3 Cl₂ → 2 AlCl₃, converta 54 g Al em 2 mol e 284 g Cl₂ em 4 mol. Compare as capacidades: 2/2 = 1 para Al e 4/3 ≈ 1,33 para Cl₂. O menor fator é o do Al; logo, Al é limitante. Ele forma 2 mol AlCl₃. Com 133,5 g/mol, isso corresponde a 267 g teóricos. Uma recuperação de 213,6 g dá 80% de rendimento.",
+    "commonMistake": "Aplicar a razão dos coeficientes diretamente a gramas ou decidir o limitante apenas pela menor massa ou quantidade em mol.",
+    "commonErrors": [
+      "Usar uma equação ainda não balanceada.",
+      "Alterar índices da fórmula em vez de coeficientes.",
+      "Inverter a razão entre produto e reagente.",
+      "Esquecer a conversão de gramas para mol antes de usar os coeficientes.",
+      "Escolher limitante comparando somente massas ou mol absolutos.",
+      "Dividir rendimento teórico pelo real em vez de real pelo teórico."
+    ],
+    "tips": [
+      "Confira átomos e balanceamento antes da conta.",
+      "Escreva os fatores como frações com unidades.",
+      "Para cada reagente, estime o produto possível e compare.",
+      "Converta para gramas apenas no fim, quando essa for a unidade pedida.",
+      "Mantenha rendimento real, teórico e percentual como grandezas diferentes."
+    ],
+    "priorKnowledge": [
+      "Ler fórmulas químicas e reconhecer coeficientes e índices.",
+      "Calcular massa molar e usar n = m/M.",
+      "Trabalhar com proporções, frações e porcentagens."
+    ],
+    "keyConcepts": [
+      "coeficientes como proporções molares",
+      "equação balanceada e conservação de átomos",
+      "cadeia massa-mol-mol-massa",
+      "reagente limitante e rendimento teórico",
+      "rendimento real e rendimento percentual"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "A sequência reutiliza sondagens existentes; retome coeficientes, unidades e proporções se necessário.",
+        "questionIds": []
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Aplicar razões molares em cálculos diretos e conversões entre massa e mol.",
+        "questionIds": [
+          "v5-chem-stoich-practice-01",
+          "v5-chem-stoich-practice-02",
+          "v5-chem-stoich-practice-03",
+          "v5-chem-stoich-practice-04",
+          "v5-chem-stoich-practice-05"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Levar o método a processos de produção, neutralização, decomposição e recuperação.",
+        "questionIds": [
+          "v5-chem-stoich-transfer-01",
+          "v5-chem-stoich-transfer-02",
+          "v5-chem-stoich-transfer-03",
+          "v5-chem-stoich-transfer-04",
+          "v5-chem-stoich-transfer-05",
+          "v16-chemistry-stoichiometry-051",
+          "v16-chemistry-stoichiometry-052",
+          "v16-chemistry-stoichiometry-053",
+          "v16-chemistry-stoichiometry-054",
+          "v16-chemistry-stoichiometry-055",
+          "v16-chemistry-stoichiometry-056",
+          "v16-chemistry-stoichiometry-057",
+          "v16-chemistry-stoichiometry-058",
+          "v16-chemistry-stoichiometry-059",
+          "v16-chemistry-stoichiometry-060",
+          "v16-chemistry-stoichiometry-061",
+          "v16-chemistry-stoichiometry-062",
+          "v16-chemistry-stoichiometry-063",
+          "v16-chemistry-stoichiometry-064",
+          "v16-chemistry-stoichiometry-065",
+          "v16-chemistry-stoichiometry-066",
+          "v16-chemistry-stoichiometry-067",
+          "v16-chemistry-stoichiometry-068",
+          "v16-chemistry-stoichiometry-069",
+          "v16-chemistry-stoichiometry-070",
+          "v16-chemistry-stoichiometry-071",
+          "v16-chemistry-stoichiometry-072",
+          "v16-chemistry-stoichiometry-073",
+          "v16-chemistry-stoichiometry-074",
+          "v16-chemistry-stoichiometry-075"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Combinar massas molares, limitante, produto teórico e rendimento real.",
+        "questionIds": [
+          "v5-chem-stoich-lock-01",
+          "v5-chem-stoich-lock-02",
+          "v5-chem-stoich-lock-03"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Recuperar distinções e aplicar o raciocínio em novos contextos e tempos de revisão.",
+        "questionIds": [
+          "v5-chem-stoich-review-01",
+          "v5-chem-stoich-review-02",
+          "v5-chem-stoich-review-03",
+          "v5-chem-stoich-review-04",
+          "v5-chem-stoich-review-05"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "COEFFICIENT_RATIO",
+        "text": "Coeficientes dão uma razão escalável entre mol; não são uma quantidade absoluta."
+      },
+      {
+        "trigger": "BALANCE_BEFORE_CALCULATION",
+        "text": "Balanceie mudando coeficientes, nunca os índices que definem as fórmulas."
+      },
+      {
+        "trigger": "MASS_TO_MOLE",
+        "text": "Converta a massa conhecida em mol com n = m/M antes de usar a proporção da equação."
+      },
+      {
+        "trigger": "LIMITING_REACTANT",
+        "text": "O limitante é o reagente que, respeitada a proporção, permite formar menos produto."
+      },
+      {
+        "trigger": "MOLE_TO_MASS",
+        "text": "Depois da razão molar, converta os mol do produto em gramas usando sua massa molar."
+      },
+      {
+        "trigger": "PERCENT_YIELD",
+        "text": "Rendimento percentual compara o valor real ao teórico: real ÷ teórico × 100."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "COEFFICIENT_VS_SUBSCRIPT",
+        "misconception": "INDICE_CONFUNDIDO_COM_COEFICIENTE",
+        "prompt": "Marque o número que pode ser ajustado no balanceamento e conte os átomos dentro de cada fórmula sem alterá-la."
+      },
+      {
+        "id": "UNIT_CHAIN",
+        "misconception": "MASSA_USADA_COMO_MOL",
+        "prompt": "Escreva a cadeia g da substância conhecida → mol conhecida → mol desejado → g desejado, anotando unidades em cada etapa."
+      },
+      {
+        "id": "LIMITING_CAPACITY",
+        "misconception": "LIMITANTE_ESCOLHIDO_PELA_MASSA",
+        "prompt": "Calcule o produto possível a partir de cada reagente e compare as duas previsões."
+      },
+      {
+        "id": "YIELD_RATIO",
+        "misconception": "RENDIMENTO_PERCENTUAL_INVERTIDO",
+        "prompt": "Identifique a quantidade real e a teórica, escreva real/teórica × 100 e estime se o resultado faz sentido."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "estimatedMinutes": 25,
+    "sourceDossier": [
+      {
+        "title": "IUPAC Gold Book: stoichiometry (S06026)",
+        "publisher": "International Union of Pure and Applied Chemistry",
+        "url": "https://goldbook.iupac.org/terms/view/S06026",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "A equação estequiométrica relaciona quantidades de reagentes e produtos pelos coeficientes."
+        ],
+        "use": "Conferência da definição e do significado quantitativo dos coeficientes; itens do pacote são autorais."
+      },
+      {
+        "title": "Chemistry 2e, Section 4.3: Reaction Stoichiometry",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "Equações balanceadas fornecem fatores estequiométricos para converter quantidades de reagentes e produtos; cálculos podem relacionar mol e massa."
+        ],
+        "use": "Conferência conceitual do fluxo de cálculo; exemplos, valores e questões deste pacote foram escritos independentemente."
+      },
+      {
+        "title": "Chemistry 2e, Section 4.4: Reaction Yields",
+        "publisher": "OpenStax",
+        "url": "https://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields",
+        "accessedOn": "2026-10-13",
+        "supports": [
+          "O reagente limitante determina a quantidade teórica de produto; rendimento real e teórico fundamentam o rendimento percentual."
+        ],
+        "use": "Conferência dos conceitos de limitante e rendimento; texto e questões do pacote são autorais."
+      }
+    ],
+    "copyrightNote": "Questões, números, cenários e explicações são autorais. As fontes conferem conceitos; revisão pedagógica humana permanece pendente e nenhum alinhamento BNCC oficial é reivindicado. Lote V16 autoral com 100 questões e revisão pedagógica pendente; publicação mantida em STAGING."
+  },
+  "lessonVersion": 16,
+  "sourceReconciliation": {
+    "sourceQuestionCount": 18,
+    "newQuestions": 100,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V16"
+  }
+}

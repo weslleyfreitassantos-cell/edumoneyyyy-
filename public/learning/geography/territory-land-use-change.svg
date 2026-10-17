@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" role="img" aria-labelledby="title desc">
+  <title id="title">Mudança de cobertura e uso do solo</title>
+  <desc id="desc">Dois mapas do mesmo quarteirão: antes, a área central tem vegetação e árvores; depois, a mesma área está pavimentada e marcada como estacionamento. As ruas ao redor permanecem iguais.</desc>
+  <rect width="720" height="410" fill="#f7f9fc"/>
+  <g fill="#34495e" font-family="Arial,sans-serif" font-size="24" font-weight="700"><text x="164" y="52">ANTES</text><text x="500" y="52">DEPOIS</text></g>
+  <g fill="#d9e1e8" stroke="#506477" stroke-width="3"><rect x="48" y="70" width="280" height="250" rx="10"/><rect x="392" y="70" width="280" height="250" rx="10"/></g>
+  <g fill="#4b5563"><path d="M48 125h280v30H48zM48 254h280v30H48zM166 70h30v250h-30z"/><path d="M392 125h280v30H392zM392 254h280v30H392zM510 70h30v250h-30z"/></g>
+  <rect x="92" y="177" width="192" height="62" rx="8" fill="#69b578" stroke="#32734a" stroke-width="3"/>
+  <g fill="#32734a"><circle cx="128" cy="199" r="12"/><circle cx="182" cy="215" r="14"/><circle cx="244" cy="198" r="11"/></g>
+  <rect x="436" y="177" width="192" height="62" rx="8" fill="#b9c4ce" stroke="#596b7b" stroke-width="3"/>
+  <g stroke="#fff" stroke-width="3"><path d="M450 187v42M480 187v42M510 187v42M540 187v42M570 187v42M600 187v42"/></g>
+  <g fill="#34495e" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-anchor="middle"><text x="188" y="354">VEGETACAO E ARVORES</text><text x="532" y="354">PAVIMENTADO PARA VAGAS</text></g>
+  <text x="360" y="393" text-anchor="middle" fill="#53677b" font-family="Arial,sans-serif" font-size="17">Mesmo quarteirao; as ruas permanecem iguais.</text>
+</svg>

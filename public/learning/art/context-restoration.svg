@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Registros de conservação antes e depois</title>
+  <desc id="desc">Dois registros do mesmo painel geométrico: no primeiro há uma área desgastada; no segundo a área está protegida e contornada como intervenção.</desc>
+  <rect width="600" height="360" fill="#f3efe5"/>
+  <rect x="28" y="28" width="260" height="300" rx="6" fill="#e8dfcf" stroke="#586b67" stroke-width="4"/>
+  <rect x="312" y="28" width="260" height="300" rx="6" fill="#e8dfcf" stroke="#586b67" stroke-width="4"/>
+  <path d="M52 102h95v180H52z M154 70h110v90H154z M154 168h110v114H154z" fill="#c27e55"/>
+  <path d="M336 102h95v180h-95z M438 70h110v90H438z M438 168h110v114H438z" fill="#c27e55"/>
+  <path d="M52 102h95v180H52z" fill="#bdb5a4" opacity=".65"/>
+  <rect x="336" y="102" width="95" height="180" fill="none" stroke="#347b83" stroke-width="5" stroke-dasharray="8 7"/>
+  <text x="158" y="54" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#304c51">registro anterior</text>
+  <text x="442" y="54" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#304c51">área protegida</text>
+</svg>

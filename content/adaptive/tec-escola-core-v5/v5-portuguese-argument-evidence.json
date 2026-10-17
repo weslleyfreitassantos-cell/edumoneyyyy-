@@ -1,0 +1,1189 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-portuguese-argument-evidence",
+  "subject": "PORTUGUESE",
+  "domain": "ARGUMENTACAO",
+  "topic": "relacionar argumentos e evidências",
+  "canonicalSkillCode": "PORTUGUESE_ARGUMENT_EVIDENCE",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 5,
+    "REVIEW": 11
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-portuguese-reading_argument-1",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-portuguese-reading_argument-4",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v3-portuguese-reading_argument-11",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-portuguese-review-01",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-probe-01",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-practice-01",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-transfer-01",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-review-01",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "PORTUGUESE_ARGUMENT_EVIDENCE_SCOPE_AND_REASONING"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 8,
+    "feedbackAdded": 8,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Relacionar argumentos e evidências",
+    "objective": "Identificar tese, evidências, limites e relações de causa em textos argumentativos.",
+    "summary": "Um argumento é mais confiável quando a evidência é pertinente, verificável e suficiente para o alcance da conclusão.",
+    "explanation": "## 1. Localize a tese\nPergunte qual posição o texto defende e para qual público.\n\n## 2. Encontre os apoios\nDados, exemplos, pesquisas e relatos podem cumprir funções diferentes. Verifique fonte, método e base.\n\n## 3. Evite saltos\nAssociação não prova causa; uma amostra limitada não representa automaticamente todos.\n\n## 4. Leia objeções\nUm contra-argumento pode revelar limite e mostrar como o autor responde a uma dificuldade.\n\n## Exemplo resolvido\nTrinta participantes em uma turma mostram uma experiência localizada. Para generalizar, é preciso conhecer seleção, tamanho e condições da pesquisa.\n\n## 5. Escreva com medida\nIndique o que os dados sustentam e o que ainda exige investigação.",
+    "workedExample": "Separe em três colunas: tese, evidência e limite. Depois reescreva a conclusão usando “neste grupo” ou “nas condições observadas” quando necessário.",
+    "commonMistake": "Aceitar autoridade ou compartilhamento como prova, confundir relato pessoal com evidência geral e transformar associação em causa.",
+    "tips": [
+      "Pergunte qual é a base do dado.",
+      "Confira autoria e método.",
+      "Diferencie exemplo de prova.",
+      "Delimite a conclusão."
+    ],
+    "estimatedMinutes": 30,
+    "priorKnowledge": [
+      "Identificar tema e ponto de vista.",
+      "Localizar informações explícitas e inferir relações."
+    ],
+    "keyConcepts": [
+      "tese",
+      "evidência",
+      "amostra",
+      "causa",
+      "correlação",
+      "objeção",
+      "limite"
+    ],
+    "activity": "Auditar um pequeno texto de opinião, destacando tese, dois apoios, uma ressalva e uma conclusão proporcional.",
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Identificar ideia, critério ou variável central.",
+        "questionIds": [
+          "v5-portuguese-argument-evidence-01",
+          "v5-portuguese-argument-evidence-02",
+          "v5-portuguese-argument-evidence-03",
+          "v5-portuguese-argument-evidence-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o procedimento em situações variadas.",
+        "questionIds": [
+          "v5-portuguese-argument-evidence-05",
+          "v5-portuguese-argument-evidence-06",
+          "v5-portuguese-argument-evidence-07",
+          "v5-portuguese-argument-evidence-08",
+          "v5-portuguese-argument-evidence-09",
+          "v5-portuguese-argument-evidence-10",
+          "v5-portuguese-argument-evidence-11",
+          "v5-portuguese-argument-evidence-12",
+          "v5-portuguese-argument-evidence-13",
+          "v5-portuguese-argument-evidence-14",
+          "v5-portuguese-argument-evidence-15",
+          "v5-portuguese-argument-evidence-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Avaliar limites e transferir para novo contexto.",
+        "questionIds": [
+          "v5-portuguese-argument-evidence-17",
+          "v5-portuguese-argument-evidence-18",
+          "v5-portuguese-argument-evidence-19",
+          "v5-portuguese-argument-evidence-20",
+          "v5-portuguese-argument-evidence-21",
+          "v5-portuguese-argument-evidence-22",
+          "v5-portuguese-argument-evidence-23",
+          "v5-portuguese-argument-evidence-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Consolidar o raciocínio e reparar erros comuns.",
+        "questionIds": [
+          "v5-portuguese-argument-evidence-25",
+          "v5-portuguese-argument-evidence-26",
+          "v5-portuguese-argument-evidence-27",
+          "v5-portuguese-argument-evidence-28",
+          "v5-portuguese-argument-evidence-29"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Revisar evidência, estratégia e comunicação.",
+        "questionIds": [
+          "v5-portuguese-argument-evidence-30",
+          "v5-portuguese-argument-evidence-31",
+          "v5-portuguese-argument-evidence-32",
+          "v5-portuguese-argument-evidence-33",
+          "v5-portuguese-argument-evidence-34",
+          "v5-portuguese-argument-evidence-35",
+          "v5-portuguese-argument-evidence-36",
+          "v5-portuguese-argument-evidence-37",
+          "v5-portuguese-argument-evidence-38",
+          "v5-portuguese-argument-evidence-39",
+          "v5-portuguese-argument-evidence-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "READ_CONTEXT",
+        "text": "Leia contexto, pergunta e condição antes de concluir."
+      },
+      {
+        "trigger": "BOUND_CLAIM",
+        "text": "A resposta correta não afirma mais do que a situação sustenta."
+      },
+      {
+        "trigger": "CHECK_EVIDENCE",
+        "text": "Identifique fonte, medida, regra ou observação usada."
+      },
+      {
+        "trigger": "REPAIR_ERROR",
+        "text": "Quando errar, compare sua resposta com o aspecto que a pergunta realmente mede."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "LOCATE_SCOPE",
+        "misconception": "Ignorar contexto, condição, fonte ou recorte.",
+        "prompt": "Sublinhe quem, quando, onde e em quais condições. Reescreva a resposta com esses limites."
+      },
+      {
+        "id": "SEPARATE_OBSERVATION",
+        "misconception": "Confundir observação, interpretação, causa ou julgamento.",
+        "prompt": "Faça duas colunas: o que foi observado e o que seria uma interpretação adicional."
+      },
+      {
+        "id": "CHECK_COMPARISON",
+        "misconception": "Comparar situações sem manter critérios equivalentes.",
+        "prompt": "Liste o que é igual, o que mudou e qual critério permite uma comparação justa."
+      },
+      {
+        "id": "TRANSFER_CONTEXT",
+        "misconception": "Aplicar uma regra de um caso a todos os casos.",
+        "prompt": "Identifique o que permanece igual e o que mudou no novo contexto antes de transferir o raciocínio."
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "Ministério da Educação, Brasil",
+        "title": "Base Nacional Comum Curricular",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "license": "Referência curricular geral; o alinhamento oficial específico deste pacote não foi reivindicado."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-portuguese-argument-evidence-activity",
+        "title": "Oficina de relacionar argumentos e evidências",
+        "objective": "Identificar tese, evidências, limites e relações de causa em textos argumentativos.",
+        "context": "Situação didática autoral e sem coleta de dados pessoais.",
+        "materials": [
+          "Texto, situação ou registro acessível",
+          "Quadro de evidências",
+          "Registro de estratégia"
+        ],
+        "instructions": "Auditar um pequeno texto de opinião, destacando tese, dois apoios, uma ressalva e uma conclusão proporcional.",
+        "evidence": "Registro da análise com resposta, justificativa e limite explicitado.",
+        "safety": "Permitir resposta escrita, oral ou digital e adaptar linguagem, tempo e suporte.",
+        "privacyGuard": "Usar apenas situações fictícias; não registrar dados pessoais do estudante.",
+        "ageRange": "Ensino Fundamental II, com mediação docente.",
+        "mediation": "O docente verifica evidência, estratégia, limite e possibilidade de transferência.",
+        "rubric": [
+          {
+            "criterion": "Estratégia",
+            "emerging": "Escolhe sem explicar.",
+            "developing": "Explica parte do procedimento.",
+            "proficient": "Justifica a estratégia e confere o resultado."
+          },
+          {
+            "criterion": "Limite",
+            "emerging": "Generaliza ou omite condição.",
+            "developing": "Reconhece parte do recorte.",
+            "proficient": "Comunica exatamente o que a situação sustenta."
+          }
+        ]
+      }
+    ],
+    "copyrightNote": "Questões, dados, situações, explicações e feedbacks são autorais. Revisão pedagógica pendente; alinhamento oficial não reivindicado; publicação mantida em STAGING."
+  },
+  "questions": [
+    {
+      "id": "v5-portuguese-argument-evidence-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_AMOSTRA_DE_PESQUISA_01",
+      "statement": "Um texto afirma que a escola inteira prefere a biblioteca nova, mas ouviu apenas 12 estudantes de uma turma.. Qual avaliação é mais cuidadosa?",
+      "options": [
+        "a amostra limitada não sustenta a generalização para toda a escola sem conhecer seleção e tamanho do grupo.",
+        "qualquer amostra representa sempre a população",
+        "o número não importa",
+        "a conclusão é verdadeira porque parece plausível"
+      ],
+      "correctAnswer": "a amostra limitada não sustenta a generalização para toda a escola sem conhecer seleção e tamanho do grupo.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "qualquer amostra representa sempre a população": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_AMOSTRA_DE_PESQUISA_02",
+      "statement": "Um texto afirma que a escola inteira prefere a biblioteca nova, mas ouviu apenas 12 estudantes de uma turma.. Que critério deve orientar a análise?",
+      "options": [
+        "qualquer amostra representa sempre a população",
+        "comparar população, amostra, método de seleção e pergunta realizada",
+        "o número não importa",
+        "a conclusão é verdadeira porque parece plausível"
+      ],
+      "correctAnswer": "comparar população, amostra, método de seleção e pergunta realizada",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "qualquer amostra representa sempre a população": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_AMOSTRA_DE_PESQUISA_03",
+      "statement": "Um texto afirma que a escola inteira prefere a biblioteca nova, mas ouviu apenas 12 estudantes de uma turma.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "qualquer amostra representa sempre a população",
+        "o número não importa",
+        "propor nova coleta e verificar se o resultado se mantém em outros grupos",
+        "a conclusão é verdadeira porque parece plausível"
+      ],
+      "correctAnswer": "propor nova coleta e verificar se o resultado se mantém em outros grupos",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "qualquer amostra representa sempre a população": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_AMOSTRA_DE_PESQUISA_04",
+      "statement": "Um texto afirma que a escola inteira prefere a biblioteca nova, mas ouviu apenas 12 estudantes de uma turma.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "qualquer amostra representa sempre a população",
+        "o número não importa",
+        "a conclusão é verdadeira porque parece plausível",
+        "tratar 12 respostas como retrato automático de todos"
+      ],
+      "correctAnswer": "tratar 12 respostas como retrato automático de todos",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "qualquer amostra representa sempre a população": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_DADO_EM_ARTIGO_05",
+      "statement": "Um artigo defende mais árvores na rua e informa que a temperatura medida sob sombra foi menor.. Que relação entre argumento e evidência aparece?",
+      "options": [
+        "o dado oferece apoio para discutir o efeito observado, mas não prova sozinho todas as consequências da proposta.",
+        "um dado não pode apoiar argumento algum",
+        "a sombra mede todas as causas da temperatura",
+        "o artigo dispensa metodologia"
+      ],
+      "correctAnswer": "o dado oferece apoio para discutir o efeito observado, mas não prova sozinho todas as consequências da proposta.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "um dado não pode apoiar argumento algum": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_DADO_EM_ARTIGO_06",
+      "statement": "Um artigo defende mais árvores na rua e informa que a temperatura medida sob sombra foi menor.. Que critério deve orientar a análise?",
+      "options": [
+        "um dado não pode apoiar argumento algum",
+        "perguntar como, onde, quando e com quais medidas o dado foi obtido",
+        "a sombra mede todas as causas da temperatura",
+        "o artigo dispensa metodologia"
+      ],
+      "correctAnswer": "perguntar como, onde, quando e com quais medidas o dado foi obtido",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "um dado não pode apoiar argumento algum": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_DADO_EM_ARTIGO_07",
+      "statement": "Um artigo defende mais árvores na rua e informa que a temperatura medida sob sombra foi menor.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "um dado não pode apoiar argumento algum",
+        "a sombra mede todas as causas da temperatura",
+        "buscar outros locais e efeitos para avaliar a proposta com mais segurança",
+        "o artigo dispensa metodologia"
+      ],
+      "correctAnswer": "buscar outros locais e efeitos para avaliar a proposta com mais segurança",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "um dado não pode apoiar argumento algum": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_DADO_EM_ARTIGO_08",
+      "statement": "Um artigo defende mais árvores na rua e informa que a temperatura medida sob sombra foi menor.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "um dado não pode apoiar argumento algum",
+        "a sombra mede todas as causas da temperatura",
+        "o artigo dispensa metodologia",
+        "dizer que uma medida prova qualquer benefício futuro"
+      ],
+      "correctAnswer": "dizer que uma medida prova qualquer benefício futuro",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "um dado não pode apoiar argumento algum": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_POST_SEM_FONTE_09",
+      "statement": "Uma publicação diz que um alimento cura qualquer doença, mas não apresenta estudo, autor ou data.. Qual é o problema central?",
+      "options": [
+        "a afirmação extraordinária não vem acompanhada de evidência verificável suficiente.",
+        "compartilhamento é prova experimental",
+        "a ausência de fonte confirma a cura",
+        "toda experiência pessoal é evidência geral"
+      ],
+      "correctAnswer": "a afirmação extraordinária não vem acompanhada de evidência verificável suficiente.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "compartilhamento é prova experimental": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_POST_SEM_FONTE_10",
+      "statement": "Uma publicação diz que um alimento cura qualquer doença, mas não apresenta estudo, autor ou data.. Que critério deve orientar a análise?",
+      "options": [
+        "compartilhamento é prova experimental",
+        "localizar autoria, fonte, método e limites da afirmação",
+        "a ausência de fonte confirma a cura",
+        "toda experiência pessoal é evidência geral"
+      ],
+      "correctAnswer": "localizar autoria, fonte, método e limites da afirmação",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "compartilhamento é prova experimental": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_POST_SEM_FONTE_11",
+      "statement": "Uma publicação diz que um alimento cura qualquer doença, mas não apresenta estudo, autor ou data.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "compartilhamento é prova experimental",
+        "a ausência de fonte confirma a cura",
+        "comparar a alegação com fontes de saúde confiáveis e específicas",
+        "toda experiência pessoal é evidência geral"
+      ],
+      "correctAnswer": "comparar a alegação com fontes de saúde confiáveis e específicas",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "compartilhamento é prova experimental": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_POST_SEM_FONTE_12",
+      "statement": "Uma publicação diz que um alimento cura qualquer doença, mas não apresenta estudo, autor ou data.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "compartilhamento é prova experimental",
+        "a ausência de fonte confirma a cura",
+        "toda experiência pessoal é evidência geral",
+        "aceitar porque muitas pessoas compartilharam"
+      ],
+      "correctAnswer": "aceitar porque muitas pessoas compartilharam",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "compartilhamento é prova experimental": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CONTRA-ARGUMENTO_13",
+      "statement": "Um editorial defende ciclovias, reconhece o custo inicial e responde que o planejamento pode reduzir o impacto.. Como a estrutura fortalece o texto?",
+      "options": [
+        "apresentar objeção e resposta mostra que o autor considera uma dificuldade e sustenta sua posição.",
+        "argumento forte nunca reconhece limites",
+        "a objeção é sempre a conclusão",
+        "a resposta não precisa se relacionar ao problema"
+      ],
+      "correctAnswer": "apresentar objeção e resposta mostra que o autor considera uma dificuldade e sustenta sua posição.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "argumento forte nunca reconhece limites": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CONTRA-ARGUMENTO_14",
+      "statement": "Um editorial defende ciclovias, reconhece o custo inicial e responde que o planejamento pode reduzir o impacto.. Que critério deve orientar a análise?",
+      "options": [
+        "argumento forte nunca reconhece limites",
+        "separar tese, objeção, evidência e resposta",
+        "a objeção é sempre a conclusão",
+        "a resposta não precisa se relacionar ao problema"
+      ],
+      "correctAnswer": "separar tese, objeção, evidência e resposta",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "argumento forte nunca reconhece limites": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CONTRA-ARGUMENTO_15",
+      "statement": "Um editorial defende ciclovias, reconhece o custo inicial e responde que o planejamento pode reduzir o impacto.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "argumento forte nunca reconhece limites",
+        "a objeção é sempre a conclusão",
+        "verificar se a resposta realmente enfrenta a objeção em outro caso",
+        "a resposta não precisa se relacionar ao problema"
+      ],
+      "correctAnswer": "verificar se a resposta realmente enfrenta a objeção em outro caso",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "argumento forte nunca reconhece limites": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CONTRA-ARGUMENTO_16",
+      "statement": "Um editorial defende ciclovias, reconhece o custo inicial e responde que o planejamento pode reduzir o impacto.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "argumento forte nunca reconhece limites",
+        "a objeção é sempre a conclusão",
+        "a resposta não precisa se relacionar ao problema",
+        "dizer que admitir problema destrói toda a tese"
+      ],
+      "correctAnswer": "dizer que admitir problema destrói toda a tese",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "argumento forte nunca reconhece limites": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-17",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_ESTATÍSTICA_E_BASE_17",
+      "statement": "Um relatório informa que 30 de 100 estudantes participaram da oficina; outro informa 30 de 500.. O que precisa ser comparado?",
+      "options": [
+        "a mesma quantidade absoluta pode representar proporções diferentes porque as bases são distintas.",
+        "o denominador não altera percentual",
+        "30 é sempre a maior participação",
+        "qualquer comparação é válida"
+      ],
+      "correctAnswer": "a mesma quantidade absoluta pode representar proporções diferentes porque as bases são distintas.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "o denominador não altera percentual": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-18",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_ESTATÍSTICA_E_BASE_18",
+      "statement": "Um relatório informa que 30 de 100 estudantes participaram da oficina; outro informa 30 de 500.. Que critério deve orientar a análise?",
+      "options": [
+        "o denominador não altera percentual",
+        "calcular ou comparar numerador, denominador e contexto da coleta",
+        "30 é sempre a maior participação",
+        "qualquer comparação é válida"
+      ],
+      "correctAnswer": "calcular ou comparar numerador, denominador e contexto da coleta",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "o denominador não altera percentual": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-19",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_ESTATÍSTICA_E_BASE_19",
+      "statement": "Um relatório informa que 30 de 100 estudantes participaram da oficina; outro informa 30 de 500.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "o denominador não altera percentual",
+        "30 é sempre a maior participação",
+        "reformular os dados em proporções antes de concluir",
+        "qualquer comparação é válida"
+      ],
+      "correctAnswer": "reformular os dados em proporções antes de concluir",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "o denominador não altera percentual": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-20",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_ESTATÍSTICA_E_BASE_20",
+      "statement": "Um relatório informa que 30 de 100 estudantes participaram da oficina; outro informa 30 de 500.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "o denominador não altera percentual",
+        "30 é sempre a maior participação",
+        "qualquer comparação é válida",
+        "afirmar que os grupos tiveram a mesma participação"
+      ],
+      "correctAnswer": "afirmar que os grupos tiveram a mesma participação",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "o denominador não altera percentual": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-21",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CITAÇÃO_DE_ESPECIALISTA_21",
+      "statement": "Uma reportagem cita uma pesquisadora para explicar um conceito, mas usa a fala para provar uma conclusão sobre todos os casos.. Que cuidado é necessário?",
+      "options": [
+        "a autoridade pode esclarecer um aspecto, mas não substitui evidências adequadas para cada conclusão.",
+        "especialistas não podem ser questionados",
+        "uma citação prova todos os efeitos",
+        "a fala vale independentemente do contexto"
+      ],
+      "correctAnswer": "a autoridade pode esclarecer um aspecto, mas não substitui evidências adequadas para cada conclusão.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "especialistas não podem ser questionados": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-22",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CITAÇÃO_DE_ESPECIALISTA_22",
+      "statement": "Uma reportagem cita uma pesquisadora para explicar um conceito, mas usa a fala para provar uma conclusão sobre todos os casos.. Que critério deve orientar a análise?",
+      "options": [
+        "especialistas não podem ser questionados",
+        "verificar o que a fala afirma e se o dado usado realmente sustenta a conclusão",
+        "uma citação prova todos os efeitos",
+        "a fala vale independentemente do contexto"
+      ],
+      "correctAnswer": "verificar o que a fala afirma e se o dado usado realmente sustenta a conclusão",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "especialistas não podem ser questionados": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CITAÇÃO_DE_ESPECIALISTA_23",
+      "statement": "Uma reportagem cita uma pesquisadora para explicar um conceito, mas usa a fala para provar uma conclusão sobre todos os casos.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "especialistas não podem ser questionados",
+        "uma citação prova todos os efeitos",
+        "buscar evidências complementares e reconhecer o alcance da citação",
+        "a fala vale independentemente do contexto"
+      ],
+      "correctAnswer": "buscar evidências complementares e reconhecer o alcance da citação",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "especialistas não podem ser questionados": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CITAÇÃO_DE_ESPECIALISTA_24",
+      "statement": "Uma reportagem cita uma pesquisadora para explicar um conceito, mas usa a fala para provar uma conclusão sobre todos os casos.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "especialistas não podem ser questionados",
+        "uma citação prova todos os efeitos",
+        "a fala vale independentemente do contexto",
+        "aceitar qualquer conclusão por causa do título da pessoa"
+      ],
+      "correctAnswer": "aceitar qualquer conclusão por causa do título da pessoa",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "especialistas não podem ser questionados": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_RELATO_PESSOAL_25",
+      "statement": "Um estudante conta que estudar ouvindo música ajudou sua concentração em uma tarde.. Como usar esse relato?",
+      "options": [
+        "o relato informa uma experiência individual e não prova que o efeito será igual para todas as pessoas.",
+        "experiências pessoais nunca informam nada",
+        "um caso é uma lei geral",
+        "a música é causa comprovada"
+      ],
+      "correctAnswer": "o relato informa uma experiência individual e não prova que o efeito será igual para todas as pessoas.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "experiências pessoais nunca informam nada": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_RELATO_PESSOAL_26",
+      "statement": "Um estudante conta que estudar ouvindo música ajudou sua concentração em uma tarde.. Que critério deve orientar a análise?",
+      "options": [
+        "experiências pessoais nunca informam nada",
+        "distinguir experiência, hipótese e evidência comparável",
+        "um caso é uma lei geral",
+        "a música é causa comprovada"
+      ],
+      "correctAnswer": "distinguir experiência, hipótese e evidência comparável",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "experiências pessoais nunca informam nada": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_RELATO_PESSOAL_27",
+      "statement": "Um estudante conta que estudar ouvindo música ajudou sua concentração em uma tarde.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "experiências pessoais nunca informam nada",
+        "um caso é uma lei geral",
+        "planejar uma observação com mais pessoas e condições descritas",
+        "a música é causa comprovada"
+      ],
+      "correctAnswer": "planejar uma observação com mais pessoas e condições descritas",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "experiências pessoais nunca informam nada": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_RELATO_PESSOAL_28",
+      "statement": "Um estudante conta que estudar ouvindo música ajudou sua concentração em uma tarde.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "experiências pessoais nunca informam nada",
+        "um caso é uma lei geral",
+        "a música é causa comprovada",
+        "generalizar o caso para toda a escola"
+      ],
+      "correctAnswer": "generalizar o caso para toda a escola",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "experiências pessoais nunca informam nada": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_PROPOSTA_ESCOLAR_29",
+      "statement": "Uma proposta pede bebedouros e apresenta registros de filas longas em três horários.. O que torna o apoio mais relevante?",
+      "options": [
+        "os registros relacionam a proposta a uma necessidade observada, ainda que outras informações sejam úteis.",
+        "a fila não tem relação com a proposta",
+        "custos não devem ser discutidos",
+        "a proposta se prova sozinha"
+      ],
+      "correctAnswer": "os registros relacionam a proposta a uma necessidade observada, ainda que outras informações sejam úteis.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a fila não tem relação com a proposta": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-30",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_PROPOSTA_ESCOLAR_30",
+      "statement": "Uma proposta pede bebedouros e apresenta registros de filas longas em três horários.. Que critério deve orientar a análise?",
+      "options": [
+        "a fila não tem relação com a proposta",
+        "examinar horários, frequência, condições e alternativas possíveis",
+        "custos não devem ser discutidos",
+        "a proposta se prova sozinha"
+      ],
+      "correctAnswer": "examinar horários, frequência, condições e alternativas possíveis",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a fila não tem relação com a proposta": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_PROPOSTA_ESCOLAR_31",
+      "statement": "Uma proposta pede bebedouros e apresenta registros de filas longas em três horários.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "a fila não tem relação com a proposta",
+        "custos não devem ser discutidos",
+        "comparar a necessidade com custos, manutenção e acesso de diferentes grupos",
+        "a proposta se prova sozinha"
+      ],
+      "correctAnswer": "comparar a necessidade com custos, manutenção e acesso de diferentes grupos",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a fila não tem relação com a proposta": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_PROPOSTA_ESCOLAR_32",
+      "statement": "Uma proposta pede bebedouros e apresenta registros de filas longas em três horários.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "a fila não tem relação com a proposta",
+        "custos não devem ser discutidos",
+        "a proposta se prova sozinha",
+        "dizer que três registros provam toda a situação anual"
+      ],
+      "correctAnswer": "dizer que três registros provam toda a situação anual",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a fila não tem relação com a proposta": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CORRELAÇÃO_E_CAUSA_33",
+      "statement": "As vendas de sorvete e os atendimentos na piscina aumentam no mesmo mês.. Qual conclusão é inadequada?",
+      "options": [
+        "afirmar que a venda de sorvete causou os atendimentos sem investigar o fator comum, como o calor.",
+        "associação e causa são sempre iguais",
+        "o mês não importa",
+        "uma coincidência explica tudo"
+      ],
+      "correctAnswer": "afirmar que a venda de sorvete causou os atendimentos sem investigar o fator comum, como o calor.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "associação e causa são sempre iguais": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CORRELAÇÃO_E_CAUSA_34",
+      "statement": "As vendas de sorvete e os atendimentos na piscina aumentam no mesmo mês.. Que critério deve orientar a análise?",
+      "options": [
+        "associação e causa são sempre iguais",
+        "buscar variáveis comuns, ordem temporal e mecanismo plausível",
+        "o mês não importa",
+        "uma coincidência explica tudo"
+      ],
+      "correctAnswer": "buscar variáveis comuns, ordem temporal e mecanismo plausível",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "associação e causa são sempre iguais": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CORRELAÇÃO_E_CAUSA_35",
+      "statement": "As vendas de sorvete e os atendimentos na piscina aumentam no mesmo mês.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "associação e causa são sempre iguais",
+        "o mês não importa",
+        "testar a hipótese com outros períodos e medidas relevantes",
+        "uma coincidência explica tudo"
+      ],
+      "correctAnswer": "testar a hipótese com outros períodos e medidas relevantes",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "associação e causa são sempre iguais": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_CORRELAÇÃO_E_CAUSA_36",
+      "statement": "As vendas de sorvete e os atendimentos na piscina aumentam no mesmo mês.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "associação e causa são sempre iguais",
+        "o mês não importa",
+        "uma coincidência explica tudo",
+        "transformar associação em causa direta"
+      ],
+      "correctAnswer": "transformar associação em causa direta",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "associação e causa são sempre iguais": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_SÍNTESE_ARGUMENTATIVA_37",
+      "statement": "Um texto apresenta tese, dois dados, uma ressalva e uma proposta final.. Como resumir o argumento com fidelidade?",
+      "options": [
+        "registrar tese, principais apoios, limite reconhecido e conclusão sem acrescentar opinião própria.",
+        "a ressalva pode ser omitida sempre",
+        "a proposta não depende da tese",
+        "resumo é comentário pessoal"
+      ],
+      "correctAnswer": "registrar tese, principais apoios, limite reconhecido e conclusão sem acrescentar opinião própria.",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a ressalva pode ser omitida sempre": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_SÍNTESE_ARGUMENTATIVA_38",
+      "statement": "Um texto apresenta tese, dois dados, uma ressalva e uma proposta final.. Que critério deve orientar a análise?",
+      "options": [
+        "a ressalva pode ser omitida sempre",
+        "identificar a função de cada parte e preservar a relação entre elas",
+        "a proposta não depende da tese",
+        "resumo é comentário pessoal"
+      ],
+      "correctAnswer": "identificar a função de cada parte e preservar a relação entre elas",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a ressalva pode ser omitida sempre": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_SÍNTESE_ARGUMENTATIVA_39",
+      "statement": "Um texto apresenta tese, dois dados, uma ressalva e uma proposta final.. Como transferir esse raciocínio para outro contexto?",
+      "options": [
+        "a ressalva pode ser omitida sempre",
+        "a proposta não depende da tese",
+        "comparar o resumo com o texto e retirar afirmações não sustentadas",
+        "resumo é comentário pessoal"
+      ],
+      "correctAnswer": "comparar o resumo com o texto e retirar afirmações não sustentadas",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a ressalva pode ser omitida sempre": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    },
+    {
+      "id": "v5-portuguese-argument-evidence-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "PORTUGUESE_ARGUMENT_EVIDENCE_SÍNTESE_ARGUMENTATIVA_40",
+      "statement": "Um texto apresenta tese, dois dados, uma ressalva e uma proposta final.. Qual conclusão deve ser evitada sem informação adicional?",
+      "options": [
+        "a ressalva pode ser omitida sempre",
+        "a proposta não depende da tese",
+        "resumo é comentário pessoal",
+        "copiar uma frase e chamá-la de argumento completo"
+      ],
+      "correctAnswer": "copiar uma frase e chamá-la de argumento completo",
+      "explanation": "Um argumento precisa ser lido pela relação entre tese, evidência, método, alcance e limite.",
+      "hint": "Localize a tese, pergunte qual evidência a apoia e delimite a conclusão ao que foi observado.",
+      "errorFocus": "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION",
+      "misconceptions": {
+        "a ressalva pode ser omitida sempre": [
+          "ARGUMENT_SCOPE_OR_EVIDENCE_CONFUSION"
+        ]
+      }
+    }
+  ]
+}

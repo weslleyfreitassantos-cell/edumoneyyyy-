@@ -1,0 +1,1170 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v5-physics-uniform-motion-sequence",
+  "subject": "PHYSICS",
+  "domain": "MOVIMENTO",
+  "topic": "identificar_movimento_uniforme",
+  "canonicalSkillCode": "PHYSICS_UNIFORM_MOTION",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceQuestionFeedback": [
+    {
+      "questionId": "v3-physics-physics_average_speed-6",
+      "hint": "Compare a variação da posição em cada intervalo igual de tempo, mantendo o sinal.",
+      "errorFocus": "PHYSICS_UNIFORM_MOTION"
+    }
+  ],
+  "sourceReconciliation": {
+    "sourceQuestionCount": 1,
+    "feedbackAdded": 1,
+    "sourceReconciliationStatus": "EXACT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Identificar movimento uniforme em registros",
+    "objective": "Reconhecer movimento uniforme comparando deslocamentos em intervalos iguais e distinguindo posição de velocidade.",
+    "summary": "Reconhecer movimento uniforme comparando deslocamentos em intervalos iguais e distinguindo posição de velocidade. A explicação usa dados explícitos e distingue o modelo físico de conclusões que os dados não autorizam.",
+    "explanation": "## O critério é a velocidade constante\nEm movimento uniforme, a velocidade permanece constante: em intervalos iguais de tempo, o deslocamento é igual. A razão Δposição/Δtempo tem o mesmo valor em cada trecho.\n\n## Posição não é velocidade\nPosição constante descreve repouso, um caso particular de movimento uniforme com velocidade zero. Uma posição que cresce ou diminui linearmente pode representar movimento uniforme; o sinal mostra o sentido no eixo escolhido.\n\n## Leia tabelas e gráficos com cuidado\nCompare cada par de medidas, não apenas o primeiro e o último valor. Em um gráfico posição-tempo, uma reta com inclinação constante indica velocidade constante; uma reta horizontal indica repouso. Intervalos de tempo iguais, por si só, não garantem movimento uniforme: as variações de posição também precisam ser iguais.",
+    "workedExample": "As posições são 0 m, 10 m, 20 m e 30 m nos tempos 0 s, 2 s, 4 s e 6 s. Cada intervalo tem Δposição = 10 m e Δtempo = 2 s; logo v = 5 m/s constante.",
+    "commonMistake": "Ignorar o referencial, inverter a variação, misturar unidades ou concluir mais do que os dados mostram.",
+    "tips": [
+      "Anote dados e unidades antes de calcular.",
+      "Declare o referencial ou o eixo adotado.",
+      "Mostre a relação usada e confira se a conclusão responde ao enunciado."
+    ],
+    "estimatedMinutes": 28,
+    "priorKnowledge": [
+      "Ler tabelas de valores.",
+      "Calcular diferenças e razões simples."
+    ],
+    "keyConcepts": [
+      "posição",
+      "deslocamento",
+      "velocidade constante",
+      "intervalos iguais",
+      "inclinação"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Verificar ideias iniciais e leitura das grandezas.",
+        "questionIds": [
+          "v5-physics-uniform-motion-01",
+          "v5-physics-uniform-motion-02",
+          "v5-physics-uniform-motion-03",
+          "v5-physics-uniform-motion-04"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Aplicar o critério com apoio gradual.",
+        "questionIds": [
+          "v5-physics-uniform-motion-05",
+          "v5-physics-uniform-motion-06",
+          "v5-physics-uniform-motion-07",
+          "v5-physics-uniform-motion-08",
+          "v5-physics-uniform-motion-09",
+          "v5-physics-uniform-motion-10",
+          "v5-physics-uniform-motion-11",
+          "v5-physics-uniform-motion-12",
+          "v5-physics-uniform-motion-13",
+          "v5-physics-uniform-motion-14",
+          "v5-physics-uniform-motion-15",
+          "v5-physics-uniform-motion-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Interpretar dados em contextos e justificar a escolha do modelo.",
+        "questionIds": [
+          "v5-physics-uniform-motion-17",
+          "v5-physics-uniform-motion-18",
+          "v5-physics-uniform-motion-19",
+          "v5-physics-uniform-motion-20",
+          "v5-physics-uniform-motion-21",
+          "v5-physics-uniform-motion-22",
+          "v5-physics-uniform-motion-23",
+          "v5-physics-uniform-motion-24"
+        ]
+      },
+      {
+        "stage": "CONSOLIDATION",
+        "focus": "Localizar e corrigir erros de raciocínio.",
+        "questionIds": [
+          "v5-physics-uniform-motion-25",
+          "v5-physics-uniform-motion-26",
+          "v5-physics-uniform-motion-27",
+          "v5-physics-uniform-motion-28",
+          "v5-physics-uniform-motion-29",
+          "v5-physics-uniform-motion-30"
+        ]
+      },
+      {
+        "stage": "REVIEW",
+        "focus": "Retomar conceitos com dados e representações variadas.",
+        "questionIds": [
+          "v5-physics-uniform-motion-31",
+          "v5-physics-uniform-motion-32",
+          "v5-physics-uniform-motion-33",
+          "v5-physics-uniform-motion-34",
+          "v5-physics-uniform-motion-35",
+          "v5-physics-uniform-motion-36",
+          "v5-physics-uniform-motion-37",
+          "v5-physics-uniform-motion-38",
+          "v5-physics-uniform-motion-39",
+          "v5-physics-uniform-motion-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "COMPARE_INTERVALS",
+        "text": "Compare deslocamentos em intervalos iguais, não só posições finais."
+      },
+      {
+        "trigger": "CONSTANT_RATIO",
+        "text": "Movimento uniforme mantém Δposição/Δtempo constante."
+      },
+      {
+        "trigger": "REST_IS_ZERO",
+        "text": "Posição constante é repouso: velocidade uniforme igual a zero."
+      },
+      {
+        "trigger": "SLOPE_POSITION_TIME",
+        "text": "A inclinação de posição-tempo representa velocidade."
+      },
+      {
+        "trigger": "SIGNED_DIRECTION",
+        "text": "Inclinação negativa indica movimento no sentido negativo do eixo escolhido."
+      },
+      {
+        "trigger": "EQUAL_TIME_NOT_ENOUGH",
+        "text": "Tempos igualmente espaçados não bastam; verifique as mudanças de posição."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SUBTRACT_EACH_STEP",
+        "misconception": "Usar apenas o deslocamento total.",
+        "prompt": "Calcule posição final menos inicial em cada intervalo e compare as razões."
+      },
+      {
+        "id": "REST_VS_UNIFORM",
+        "misconception": "Achar que velocidade constante exige posição constante.",
+        "prompt": "Separe posição de velocidade: uma reta inclinada pode ter velocidade constante; horizontal é repouso."
+      },
+      {
+        "id": "EQUAL_INTERVALS",
+        "misconception": "Confundir intervalos iguais com movimento uniforme.",
+        "prompt": "Compare também os deslocamentos correspondentes a cada intervalo."
+      },
+      {
+        "id": "SIGNED_SLOPE",
+        "misconception": "Ignorar movimento no sentido negativo.",
+        "prompt": "Mantenha o sinal do deslocamento e interprete-o em relação ao eixo."
+      },
+      {
+        "id": "RATIO_NOT_POSITION",
+        "misconception": "Dividir posição final pelo tempo total sem checar trechos.",
+        "prompt": "Verifique cada intervalo antes de concluir que a velocidade foi constante."
+      },
+      {
+        "id": "READ_TABLE",
+        "misconception": "Ler linhas fora de ordem.",
+        "prompt": "Organize pares tempo–posição e percorra-os cronologicamente."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v5-physics-uniform-motion-motion-audit",
+        "title": "Auditoria de registros: identificar movimento uniforme em registros",
+        "objective": "Reconhecer movimento uniforme comparando deslocamentos em intervalos iguais e distinguindo posição de velocidade.",
+        "context": "Use tabelas sintéticas elaboradas para a atividade, com medidas fictícias e unidades explícitas.",
+        "materials": [
+          "Tabela de dados sintéticos",
+          "Papel quadriculado ou planilha acessível",
+          "Calculadora opcional"
+        ],
+        "instructions": "Em pares, organize os dados, identifique o referencial ou eixo, calcule as grandezas solicitadas e escreva uma conclusão limitada às evidências. Em seguida, confira um cálculo de outro grupo e explique eventual divergência.",
+        "evidence": "Registro reproduzível dos dados, operações com unidades e justificativa baseada nas medidas fornecidas.",
+        "privacyGuard": "Utilize apenas dados sintéticos. Não registrar trajetos, velocidade, rotina ou localização de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Leitura dos dados",
+            "emerging": "Troca valores, unidades ou intervalos.",
+            "developing": "Organiza os dados com uma orientação.",
+            "proficient": "Organiza todos os pares e unidades corretamente."
+          },
+          {
+            "criterion": "Modelo e cálculo",
+            "emerging": "Escolhe operação sem relacioná-la aos dados.",
+            "developing": "Aplica a relação correta com apoio.",
+            "proficient": "Justifica o modelo e calcula com sinais e unidades coerentes."
+          },
+          {
+            "criterion": "Conclusão",
+            "emerging": "Afirma algo não sustentado pelo registro.",
+            "developing": "Conclui a partir de parte dos dados.",
+            "proficient": "Explica a conclusão e seus limites usando as evidências."
+          }
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "publisher": "TecEscola",
+        "title": "Conjunto de medidas e situações de movimento sintéticas",
+        "license": "Dados, enunciados e explicações autorais; cenários hipotéticos, sem alegação de fonte oficial."
+      }
+    ],
+    "copyrightNote": "Questões, valores, explicações e atividade são autorais e sintéticos. Revisão pedagógica pendente; alinhamento oficial não reivindicado."
+  },
+  "questions": [
+    {
+      "id": "v5-physics-uniform-motion-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TREM_INTERVALOS",
+      "statement": "Um sensor registra a posição de um trem: 0 s → 0 m; 2 s → 10 m; 4 s → 20 m; 6 s → 30 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 10 m em 2 s; 10 m em 2 s; 10 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 5 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "5 m/s, sentido positivo",
+        "7 m/s, sentido positivo",
+        "3 m/s, sentido positivo",
+        "6 m/s, sentido positivo"
+      ],
+      "correctAnswer": "5 m/s, sentido positivo",
+      "misconceptions": {
+        "7 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CICLISTA_TRILHA",
+      "statement": "Um sensor registra a posição de uma ciclista: 0 s → 2 m; 1 s → 5 m; 2 s → 8 m; 3 s → 11 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 3 m em 1 s; 3 m em 1 s; 3 m em 1 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "3,67 m/s, sentido positivo",
+        "3 m/s, sentido positivo",
+        "5 m/s, sentido positivo",
+        "1 m/s, sentido positivo"
+      ],
+      "correctAnswer": "3 m/s, sentido positivo",
+      "misconceptions": {
+        "5 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ELEVADOR_ANDAR",
+      "statement": "Um sensor registra a posição de um elevador: 0 s → 12 m; 2 s → 8 m; 4 s → 4 m; 6 s → 0 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -4 m em 2 s; -4 m em 2 s; -4 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "0 m/s (repouso)",
+        "4 m/s, sentido negativo",
+        "2 m/s, sentido negativo",
+        "1 m/s, sentido negativo"
+      ],
+      "correctAnswer": "2 m/s, sentido negativo",
+      "misconceptions": {
+        "1 m/s, sentido negativo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ESTEIRA_CAIXAS",
+      "statement": "Um sensor registra a posição de um móvel: 0 s → 0 m; 3 s → 6 m; 6 s → 12 m; 9 s → 18 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 6 m em 3 s; 6 m em 3 s; 6 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "4 m/s, sentido positivo",
+        "0 m/s (repouso)",
+        "3 m/s, sentido positivo",
+        "2 m/s, sentido positivo"
+      ],
+      "correctAnswer": "2 m/s, sentido positivo",
+      "misconceptions": {
+        "4 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-05",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ONIBUS_RETA",
+      "statement": "Um sensor registra a posição de um ônibus: 0 s → 4 m; 5 s → 14 m; 10 s → 24 m; 15 s → 34 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 10 m em 5 s; 10 m em 5 s; 10 m em 5 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "2 m/s, sentido positivo",
+        "2,27 m/s, sentido positivo",
+        "4 m/s, sentido positivo",
+        "0 m/s (repouso)"
+      ],
+      "correctAnswer": "2 m/s, sentido positivo",
+      "misconceptions": {
+        "2,27 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-06",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BARCO_CANAL",
+      "statement": "Um sensor registra a posição de um barco: 0 s → 30 m; 2 s → 24 m; 4 s → 18 m; 6 s → 12 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -6 m em 2 s; -6 m em 2 s; -6 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "2 m/s, sentido positivo",
+        "3 m/s, sentido negativo",
+        "1 m/s, sentido negativo",
+        "5 m/s, sentido negativo"
+      ],
+      "correctAnswer": "3 m/s, sentido negativo",
+      "misconceptions": {
+        "1 m/s, sentido negativo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-07",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ROBO_CORREDOR",
+      "statement": "Um sensor registra a posição de um robô: 0 s → 0 m; 4 s → 12 m; 8 s → 24 m; 12 s → 36 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 12 m em 4 s; 12 m em 4 s; 12 m em 4 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "5 m/s, sentido positivo",
+        "1 m/s, sentido positivo",
+        "3 m/s, sentido positivo",
+        "4 m/s, sentido positivo"
+      ],
+      "correctAnswer": "3 m/s, sentido positivo",
+      "misconceptions": {
+        "4 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ATLETA_PISTA",
+      "statement": "Um sensor registra a posição de um atleta: 0 s → 5 m; 2 s → 13 m; 4 s → 21 m; 6 s → 29 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 8 m em 2 s; 8 m em 2 s; 8 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 4 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "4,83 m/s, sentido positivo",
+        "6 m/s, sentido positivo",
+        "2 m/s, sentido positivo",
+        "4 m/s, sentido positivo"
+      ],
+      "correctAnswer": "4 m/s, sentido positivo",
+      "misconceptions": {
+        "4,83 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-09",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "METRO_TRECHO",
+      "statement": "Um sensor registra a posição de um metrô: 0 s → 18 m; 3 s → 33 m; 6 s → 48 m; 9 s → 63 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 15 m em 3 s; 15 m em 3 s; 15 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 5 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "5 m/s, sentido positivo",
+        "7 m/s, sentido positivo",
+        "3 m/s, sentido positivo",
+        "6 m/s, sentido positivo"
+      ],
+      "correctAnswer": "5 m/s, sentido positivo",
+      "misconceptions": {
+        "7 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-10",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PATINADOR_GINASIO",
+      "statement": "Um sensor registra a posição de uma pessoa de patins: 0 s → 40 m; 5 s → 30 m; 10 s → 20 m; 15 s → 10 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -10 m em 5 s; -10 m em 5 s; -10 m em 5 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "0,67 m/s, sentido positivo",
+        "2 m/s, sentido negativo",
+        "0 m/s (repouso)",
+        "4 m/s, sentido negativo"
+      ],
+      "correctAnswer": "2 m/s, sentido negativo",
+      "misconceptions": {
+        "0 m/s (repouso)": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-11",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARRINHO_LAB",
+      "statement": "Um sensor registra a posição de um carrinho: 0 s → 7 m; 1 s → 10 m; 2 s → 13 m; 3 s → 16 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 3 m em 1 s; 3 m em 1 s; 3 m em 1 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "5,33 m/s, sentido positivo",
+        "5 m/s, sentido positivo",
+        "3 m/s, sentido positivo",
+        "1 m/s, sentido positivo"
+      ],
+      "correctAnswer": "3 m/s, sentido positivo",
+      "misconceptions": {
+        "1 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-12",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FERRY_TRAVESSIA",
+      "statement": "Um sensor registra a posição de uma balsa: 0 s → 0 m; 4 s → 20 m; 8 s → 40 m; 12 s → 60 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 20 m em 4 s; 20 m em 4 s; 20 m em 4 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 5 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "7 m/s, sentido positivo",
+        "3 m/s, sentido positivo",
+        "6 m/s, sentido positivo",
+        "5 m/s, sentido positivo"
+      ],
+      "correctAnswer": "5 m/s, sentido positivo",
+      "misconceptions": {
+        "7 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TRATOR_ESTRADA",
+      "statement": "Um sensor registra a posição de um trator: 0 s → 10 m; 2 s → 16 m; 4 s → 22 m; 6 s → 28 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 6 m em 2 s; 6 m em 2 s; 6 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "3 m/s, sentido positivo",
+        "4,67 m/s, sentido positivo",
+        "5 m/s, sentido positivo",
+        "1 m/s, sentido positivo"
+      ],
+      "correctAnswer": "3 m/s, sentido positivo",
+      "misconceptions": {
+        "4,67 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CORREDOR_PARQUE",
+      "statement": "Um sensor registra a posição de uma pessoa correndo: 0 s → 27 m; 3 s → 21 m; 6 s → 15 m; 9 s → 9 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -6 m em 3 s; -6 m em 3 s; -6 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "1 m/s, sentido positivo",
+        "2 m/s, sentido negativo",
+        "0 m/s (repouso)",
+        "4 m/s, sentido negativo"
+      ],
+      "correctAnswer": "2 m/s, sentido negativo",
+      "misconceptions": {
+        "0 m/s (repouso)": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "VAN_BAIRRO",
+      "statement": "Um sensor registra a posição de uma van: 0 s → 3 m; 4 s → 19 m; 8 s → 35 m; 12 s → 51 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 16 m em 4 s; 16 m em 4 s; 16 m em 4 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 4 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "4,25 m/s, sentido positivo",
+        "6 m/s, sentido positivo",
+        "4 m/s, sentido positivo",
+        "2 m/s, sentido positivo"
+      ],
+      "correctAnswer": "4 m/s, sentido positivo",
+      "misconceptions": {
+        "2 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SKATE_RAMPA",
+      "statement": "Um sensor registra a posição de uma pessoa no skate: 0 s → 12 m; 2 s → 8 m; 4 s → 4 m; 6 s → 0 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -4 m em 2 s; -4 m em 2 s; -4 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "0 m/s (repouso)",
+        "4 m/s, sentido negativo",
+        "1 m/s, sentido negativo",
+        "2 m/s, sentido negativo"
+      ],
+      "correctAnswer": "2 m/s, sentido negativo",
+      "misconceptions": {
+        "0 m/s (repouso)": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-17",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TREM_CARGA",
+      "statement": "Considere os pares tempo–posição de um trem: 0 s → 50 m; 5 s → 75 m; 10 s → 100 m; 15 s → 125 m. O que os dados permitem concluir sobre a constância da velocidade?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 25 m em 5 s; 25 m em 5 s; 25 m em 5 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 5 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "5 m/s, sentido positivo; movimento uniforme.",
+        "7 m/s, sentido positivo; movimento uniforme.",
+        "3 m/s, sentido positivo; movimento uniforme.",
+        "Os dados não sustentam movimento uniforme."
+      ],
+      "correctAnswer": "5 m/s, sentido positivo; movimento uniforme.",
+      "misconceptions": {
+        "7 m/s, sentido positivo; movimento uniforme.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-18",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BICICLETA_CICLOVIA",
+      "statement": "Uma ficha de uma bicicleta traz os dados 0 s → 1 m; 2 s → 9 m; 4 s → 17 m; 6 s → 25 m. A equipe afirma que eles mostram movimento uniforme; qual conclusão, apoiada pelos intervalos, confirma ou corrige essa afirmação?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 8 m em 2 s; 8 m em 2 s; 8 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 4 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "6 m/s, sentido positivo; movimento uniforme.",
+        "4 m/s, sentido positivo; movimento uniforme.",
+        "2 m/s, sentido positivo; movimento uniforme.",
+        "Os dados não sustentam movimento uniforme."
+      ],
+      "correctAnswer": "4 m/s, sentido positivo; movimento uniforme.",
+      "misconceptions": {
+        "2 m/s, sentido positivo; movimento uniforme.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-19",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BARCO_MARINA",
+      "statement": "Uma equipe registra a posição de um barco: 0 s → 30 m; 3 s → 42 m; 6 s → 54 m; 9 s → 66 m. Qual conclusão sobre a uniformidade e a velocidade com sinal é sustentada pelos trechos?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 12 m em 3 s; 12 m em 3 s; 12 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 4 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "6 m/s, sentido positivo; movimento uniforme.",
+        "2 m/s, sentido positivo; movimento uniforme.",
+        "4 m/s, sentido positivo; movimento uniforme.",
+        "Os dados não sustentam movimento uniforme."
+      ],
+      "correctAnswer": "4 m/s, sentido positivo; movimento uniforme.",
+      "misconceptions": {
+        "Os dados não sustentam movimento uniforme.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-20",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ELEVADOR_DESCIDA",
+      "statement": "Considere os pares tempo–posição de um elevador: 0 s → 24 m; 2 s → 18 m; 4 s → 11 m; 6 s → 6 m. O que os dados permitem concluir sobre a constância da velocidade?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -6 m em 2 s; -7 m em 2 s; -5 m em 2 s. As razões por intervalo não são iguais; portanto, os dados não sustentam movimento uniforme. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS",
+      "options": [
+        "3 m/s, sentido negativo; movimento uniforme.",
+        "2,5 m/s, sentido negativo; movimento uniforme.",
+        "A posição final maior, por si só, prova velocidade constante.",
+        "Os dados não sustentam movimento uniforme: a razão varia entre trechos."
+      ],
+      "correctAnswer": "Os dados não sustentam movimento uniforme: a razão varia entre trechos.",
+      "misconceptions": {
+        "3 m/s, sentido negativo; movimento uniforme.": [
+          "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-21",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MOTO_AVENIDA",
+      "statement": "Uma ficha de uma moto traz os dados 0 s → 0 m; 4 s → 36 m; 8 s → 72 m; 12 s → 108 m. A equipe afirma que eles mostram movimento uniforme; qual conclusão, apoiada pelos intervalos, confirma ou corrige essa afirmação?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 36 m em 4 s; 36 m em 4 s; 36 m em 4 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 9 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "9 m/s, sentido positivo; movimento uniforme.",
+        "11 m/s, sentido positivo; movimento uniforme.",
+        "7 m/s, sentido positivo; movimento uniforme.",
+        "Os dados não sustentam movimento uniforme."
+      ],
+      "correctAnswer": "9 m/s, sentido positivo; movimento uniforme.",
+      "misconceptions": {
+        "11 m/s, sentido positivo; movimento uniforme.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-22",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PESSOA_CALCADA",
+      "statement": "Uma equipe registra a posição de uma pessoa: 0 s → 20 m; 5 s → 15 m; 10 s → 10 m; 15 s → 5 m. Qual conclusão sobre a uniformidade e a velocidade com sinal é sustentada pelos trechos?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -5 m em 5 s; -5 m em 5 s; -5 m em 5 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -1 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "1 m/s, sentido positivo; movimento uniforme.",
+        "1 m/s, sentido negativo; movimento uniforme.",
+        "3 m/s, sentido negativo; movimento uniforme.",
+        "Os dados não sustentam movimento uniforme."
+      ],
+      "correctAnswer": "1 m/s, sentido negativo; movimento uniforme.",
+      "misconceptions": {
+        "3 m/s, sentido negativo; movimento uniforme.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-23",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ONIBUS_INTERURBANO",
+      "statement": "Considere os pares tempo–posição de um ônibus: 0 s → 2 m; 6 s → 38 m; 12 s → 74 m; 18 s → 110 m. O que os dados permitem concluir sobre a constância da velocidade?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 36 m em 6 s; 36 m em 6 s; 36 m em 6 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 6 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "8 m/s, sentido positivo; movimento uniforme.",
+        "4 m/s, sentido positivo; movimento uniforme.",
+        "6 m/s, sentido positivo; movimento uniforme.",
+        "Os dados não sustentam movimento uniforme."
+      ],
+      "correctAnswer": "6 m/s, sentido positivo; movimento uniforme.",
+      "misconceptions": {
+        "Os dados não sustentam movimento uniforme.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-24",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ROBO_ARMAZEM",
+      "statement": "Uma ficha de um robô traz os dados 0 s → 15 m; 3 s → 6 m; 6 s → -3 m; 9 s → -12 m. A equipe afirma que eles mostram movimento uniforme; qual conclusão, apoiada pelos intervalos, confirma ou corrige essa afirmação?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -9 m em 3 s; -9 m em 3 s; -9 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "1 m/s, sentido negativo; movimento uniforme.",
+        "5 m/s, sentido negativo; movimento uniforme.",
+        "Os dados não sustentam movimento uniforme.",
+        "3 m/s, sentido negativo; movimento uniforme."
+      ],
+      "correctAnswer": "3 m/s, sentido negativo; movimento uniforme.",
+      "misconceptions": {
+        "1 m/s, sentido negativo; movimento uniforme.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TREM_SUBURBANO",
+      "statement": "Uma turma analisou a posição de um trem nos instantes 0 s → 0 m; 2 s → 14 m; 4 s → 28 m; 6 s → 42 m. Um estudante conclui que o movimento é uniforme porque os instantes estão igualmente espaçados. Qual avaliação usa o critério físico correto?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 14 m em 2 s; 14 m em 2 s; 14 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 7 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.",
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.",
+        "Basta dividir a posição final pelo tempo total para provar que a velocidade foi constante."
+      ],
+      "correctAnswer": "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+      "misconceptions": {
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ATLETA_RETROCESSO",
+      "statement": "Uma turma analisou a posição de um atleta nos instantes 0 s → 9 m; 3 s → 3 m; 6 s → -3 m; 9 s → -9 m. Um estudante conclui que o movimento é uniforme porque os instantes estão igualmente espaçados. Qual avaliação usa o critério físico correto?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -6 m em 3 s; -6 m em 3 s; -6 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.",
+        "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.",
+        "Basta dividir a posição final pelo tempo total para provar que a velocidade foi constante."
+      ],
+      "correctAnswer": "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+      "misconceptions": {
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CAMINHAO_RODOVIA",
+      "statement": "Uma turma analisou a posição de um caminhão nos instantes 0 s → 10 m; 5 s → 35 m; 10 s → 60 m; 15 s → 85 m. Um estudante conclui que o movimento é uniforme porque os instantes estão igualmente espaçados. Qual avaliação usa o critério físico correto?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 25 m em 5 s; 25 m em 5 s; 25 m em 5 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 5 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.",
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.",
+        "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+        "Basta dividir a posição final pelo tempo total para provar que a velocidade foi constante."
+      ],
+      "correctAnswer": "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+      "misconceptions": {
+        "Basta dividir a posição final pelo tempo total para provar que a velocidade foi constante.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PATINETE_CICLOVIA",
+      "statement": "Uma turma analisou a posição de um patinete nos instantes 0 s → 0 m; 2 s → 7 m; 4 s → 14 m; 6 s → 21 m. Um estudante conclui que o movimento é uniforme porque os instantes estão igualmente espaçados. Qual avaliação usa o critério físico correto?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 7 m em 2 s; 7 m em 2 s; 7 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 3,5 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.",
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.",
+        "Basta dividir a posição final pelo tempo total para provar que a velocidade foi constante.",
+        "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante."
+      ],
+      "correctAnswer": "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+      "misconceptions": {
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BARCO_CORRENTE",
+      "statement": "Uma turma analisou a posição de um barco nos instantes 0 s → 48 m; 4 s → 32 m; 8 s → 17 m; 12 s → 0 m. Um estudante conclui que o movimento é uniforme porque os instantes estão igualmente espaçados. Qual avaliação usa o critério físico correto?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -16 m em 4 s; -15 m em 4 s; -17 m em 4 s. As razões por intervalo não são iguais; portanto, os dados não sustentam movimento uniforme. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS",
+      "options": [
+        "Não: as razões entre deslocamento e tempo variam entre intervalos.",
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.",
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.",
+        "Basta dividir a posição final pelo tempo total para provar que a velocidade foi constante."
+      ],
+      "correctAnswer": "Não: as razões entre deslocamento e tempo variam entre intervalos.",
+      "misconceptions": {
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.": [
+          "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "METRO_PLATAFORMA",
+      "statement": "Uma turma analisou a posição de um metrô nos instantes 0 s → 100 m; 2 s → 100 m; 4 s → 100 m; 6 s → 100 m. Um estudante conclui que o movimento é uniforme porque os instantes estão igualmente espaçados. Qual avaliação usa o critério físico correto?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 0 m em 2 s; 0 m em 2 s; 0 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 0 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "Sim, porque os instantes estão igualmente espaçados, mesmo sem comparar as posições.",
+        "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.",
+        "Basta dividir a posição final pelo tempo total para provar que a velocidade foi constante."
+      ],
+      "correctAnswer": "Sim: deslocamentos iguais em tempos iguais indicam velocidade constante.",
+      "misconceptions": {
+        "Não, porque a posição precisa ficar constante para haver velocidade constante.": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-31",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CICLISTA_SUBIDA",
+      "statement": "Um sensor registra a posição de uma ciclista: 0 s → 0 m; 3 s → 9 m; 6 s → 18 m; 9 s → 27 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 9 m em 3 s; 9 m em 3 s; 9 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "5 m/s, sentido positivo",
+        "1 m/s, sentido positivo",
+        "3 m/s, sentido positivo",
+        "4 m/s, sentido positivo"
+      ],
+      "correctAnswer": "3 m/s, sentido positivo",
+      "misconceptions": {
+        "4 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-32",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARRINHO_DESCIDA",
+      "statement": "Um sensor registra a posição de um carrinho: 0 s → 20 m; 1 s → 17 m; 2 s → 13 m; 3 s → 11 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -3 m em 1 s; -4 m em 1 s; -2 m em 1 s. As razões por intervalo não são iguais; portanto, os dados não sustentam movimento uniforme. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS",
+      "options": [
+        "-2 m/s",
+        "Sim: a posição final é maior que a inicial.",
+        "Sim: todo deslocamento indica velocidade constante.",
+        "Não é uniforme: a razão entre deslocamento e tempo varia."
+      ],
+      "correctAnswer": "Não é uniforme: a razão entre deslocamento e tempo varia.",
+      "misconceptions": {
+        "-2 m/s": [
+          "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-33",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "VAN_ESTRADA",
+      "statement": "Um sensor registra a posição de uma van: 0 s → 5 m; 5 s → 30 m; 10 s → 55 m; 15 s → 80 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 25 m em 5 s; 25 m em 5 s; 25 m em 5 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 5 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "5 m/s, sentido positivo",
+        "5,33 m/s, sentido positivo",
+        "7 m/s, sentido positivo",
+        "3 m/s, sentido positivo"
+      ],
+      "correctAnswer": "5 m/s, sentido positivo",
+      "misconceptions": {
+        "5,33 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-34",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PESSOA_CORREDOR",
+      "statement": "Um sensor registra a posição de uma pessoa: 0 s → 0 m; 2 s → 6 m; 4 s → 11 m; 6 s → 18 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 6 m em 2 s; 5 m em 2 s; 7 m em 2 s. As razões por intervalo não são iguais; portanto, os dados não sustentam movimento uniforme. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS",
+      "options": [
+        "3,5 m/s",
+        "Não é uniforme: a razão entre deslocamento e tempo varia.",
+        "Sim: a posição final é maior que a inicial.",
+        "Sim: todo deslocamento indica velocidade constante."
+      ],
+      "correctAnswer": "Não é uniforme: a razão entre deslocamento e tempo varia.",
+      "misconceptions": {
+        "Sim: a posição final é maior que a inicial.": [
+          "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-35",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TREM_LINHA",
+      "statement": "Um sensor registra a posição de um trem: 0 s → 45 m; 3 s → 30 m; 6 s → 14 m; 9 s → 0 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -15 m em 3 s; -16 m em 3 s; -14 m em 3 s. As razões por intervalo não são iguais; portanto, os dados não sustentam movimento uniforme. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS",
+      "options": [
+        "-4,67 m/s",
+        "Sim: a posição final é maior que a inicial.",
+        "Não é uniforme: a razão entre deslocamento e tempo varia.",
+        "Sim: todo deslocamento indica velocidade constante."
+      ],
+      "correctAnswer": "Não é uniforme: a razão entre deslocamento e tempo varia.",
+      "misconceptions": {
+        "Sim: todo deslocamento indica velocidade constante.": [
+          "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-36",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ROBO_LABORATORIO",
+      "statement": "Um sensor registra a posição de um robô: 0 s → 2 m; 4 s → 14 m; 8 s → 26 m; 12 s → 38 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 12 m em 4 s; 12 m em 4 s; 12 m em 4 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 3 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "3,17 m/s, sentido positivo",
+        "5 m/s, sentido positivo",
+        "1 m/s, sentido positivo",
+        "3 m/s, sentido positivo"
+      ],
+      "correctAnswer": "3 m/s, sentido positivo",
+      "misconceptions": {
+        "3,17 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-37",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BARCO_LAGO",
+      "statement": "Um sensor registra a posição de um barco: 0 s → 6 m; 3 s → 0 m; 6 s → -6 m; 9 s → -12 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -6 m em 3 s; -6 m em 3 s; -6 m em 3 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = -2 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "2 m/s, sentido negativo",
+        "1,33 m/s, sentido negativo",
+        "0 m/s (repouso)",
+        "4 m/s, sentido negativo"
+      ],
+      "correctAnswer": "2 m/s, sentido negativo",
+      "misconceptions": {
+        "1,33 m/s, sentido negativo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-38",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PATINADOR_PISTA",
+      "statement": "Um sensor registra a posição de uma pessoa de patins: 0 s → 4 m; 2 s → 12 m; 4 s → 20 m; 6 s → 28 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 8 m em 2 s; 8 m em 2 s; 8 m em 2 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 4 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "4,67 m/s, sentido positivo",
+        "4 m/s, sentido positivo",
+        "6 m/s, sentido positivo",
+        "2 m/s, sentido positivo"
+      ],
+      "correctAnswer": "4 m/s, sentido positivo",
+      "misconceptions": {
+        "6 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CAMINHANTE_TRILHA",
+      "statement": "Um sensor registra a posição de uma pessoa caminhando: 0 s → 0 m; 6 s → 24 m; 12 s → 48 m; 18 s → 72 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: 24 m em 6 s; 24 m em 6 s; 24 m em 6 s. A razão é constante, então o movimento é uniforme e v = Δposição/Δtempo = 4 m/s. O sinal indica o sentido no eixo escolhido. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME",
+      "options": [
+        "6 m/s, sentido positivo",
+        "2 m/s, sentido positivo",
+        "4 m/s, sentido positivo",
+        "5 m/s, sentido positivo"
+      ],
+      "correctAnswer": "4 m/s, sentido positivo",
+      "misconceptions": {
+        "5 m/s, sentido positivo": [
+          "UNIFORM_MOTION_CONFUSED_WITH_REST_OR_FINAL_POSITION_OVER_TOTAL_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v5-physics-uniform-motion-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ELEVADOR_TORRE",
+      "statement": "Um sensor registra a posição de um elevador: 0 s → 30 m; 5 s → 10 m; 10 s → -9 m; 15 s → -30 m. Considerando os intervalos iguais de tempo, qual é a classificação e, se for uniforme, a velocidade com sinal?",
+      "explanation": "Compare a variação de posição em cada intervalo igual: -20 m em 5 s; -19 m em 5 s; -21 m em 5 s. As razões por intervalo não são iguais; portanto, os dados não sustentam movimento uniforme. Posição constante seria repouso, que é um caso particular de velocidade constante igual a zero.",
+      "hint": "Compare Δposição/Δtempo em cada trecho. Em movimento uniforme, a razão é a mesma; posição constante significa repouso.",
+      "errorFocus": "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS",
+      "options": [
+        "-4,2 m/s",
+        "Sim: a posição final é maior que a inicial.",
+        "Sim: todo deslocamento indica velocidade constante.",
+        "Não é uniforme: a razão entre deslocamento e tempo varia."
+      ],
+      "correctAnswer": "Não é uniforme: a razão entre deslocamento e tempo varia.",
+      "misconceptions": {
+        "-4,2 m/s": [
+          "EQUAL_TIME_STEPS_DO_NOT_GUARANTEE_EQUAL_DISPLACEMENTS"
+        ]
+      }
+    }
+  ]
+}

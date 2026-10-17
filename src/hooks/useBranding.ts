@@ -36,13 +36,20 @@ function getPublicBrandingCacheKey(hostname: string): string {
 
 const brandingAssetLoadTimeoutMs = 10000;
 
-function preloadImage(url: string): Promise<boolean> {
+function preloadImage(
+  url: string,
+  requireSquare = false,
+): Promise<boolean> {
   if (typeof Image === 'undefined') {
     return Promise.resolve(true);
   }
 
   return new Promise((resolve) => {
     const image = new Image();
+    const hasUsableDimensions = () =>
+      image.naturalWidth > 0 &&
+      image.naturalHeight > 0 &&
+      (!requireSquare || image.naturalWidth === image.naturalHeight);
     let settled = false;
     let timeoutId: number | undefined;
 
@@ -57,13 +64,13 @@ function preloadImage(url: string): Promise<boolean> {
 
     const decodeAndFinish = () => {
       if (typeof image.decode !== 'function') {
-        finish(image.naturalWidth > 0);
+        finish(hasUsableDimensions());
         return;
       }
 
       void image.decode().then(
-        () => finish(true),
-        () => finish(image.naturalWidth > 0),
+        () => finish(hasUsableDimensions()),
+        () => finish(hasUsableDimensions()),
       );
     };
 
@@ -76,7 +83,7 @@ function preloadImage(url: string): Promise<boolean> {
     image.src = url;
 
     if (image.complete) {
-      if (image.naturalWidth > 0) {
+      if (hasUsableDimensions()) {
         decodeAndFinish();
       } else {
         finish(false);
@@ -89,31 +96,44 @@ export async function preloadPublicBrandingAssets(
   branding: PublicBranding,
 ): Promise<PublicBranding> {
   const normalizedBranding = normalizePublicBrandingAssetUrls(branding);
-  const urls = new Set(
-    [
-      normalizedBranding.logoUrl,
-      normalizedBranding.faviconUrl,
-      normalizedBranding.loginBackgroundUrl,
-    ]
-      .map((url) => url?.trim())
-      .filter((url): url is string => Boolean(url)),
-  );
-
+  const assets = [
+    ['logo', normalizedBranding.logoUrl, false],
+    ['favicon', normalizedBranding.faviconUrl, true],
+    ['loginBackground', normalizedBranding.loginBackgroundUrl, false],
+  ] as const;
   const loaded = new Map<string, boolean>();
   await Promise.all(
-    [...urls].map(async (url) => {
-      loaded.set(url, await preloadImage(url));
+    assets.flatMap(([kind, url, requireSquare]) => {
+      const normalizedUrl = url?.trim();
+
+      if (!normalizedUrl) {
+        return [];
+      }
+
+      return [
+        preloadImage(normalizedUrl, requireSquare).then((isLoaded) => {
+          loaded.set(`${kind}:${normalizedUrl}`, isLoaded);
+        }),
+      ];
     }),
   );
 
-  const keepLoadedAsset = (url: string | null | undefined) =>
-    url && loaded.get(url.trim()) ? url : null;
+  const keepLoadedAsset = (
+    kind: (typeof assets)[number][0],
+    url: string | null | undefined,
+  ) => {
+    const normalizedUrl = url?.trim();
+    return normalizedUrl && loaded.get(`${kind}:${normalizedUrl}`)
+      ? url
+      : null;
+  };
 
   return {
     ...normalizedBranding,
-    logoUrl: keepLoadedAsset(normalizedBranding.logoUrl),
-    faviconUrl: keepLoadedAsset(normalizedBranding.faviconUrl),
+    logoUrl: keepLoadedAsset('logo', normalizedBranding.logoUrl),
+    faviconUrl: keepLoadedAsset('favicon', normalizedBranding.faviconUrl),
     loginBackgroundUrl: keepLoadedAsset(
+      'loginBackground',
       normalizedBranding.loginBackgroundUrl,
     ),
   };
