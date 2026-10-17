@@ -14,13 +14,13 @@
     "HUMAN_REVIEW_BLOCKED": 121
   },
   "byQueueStatus": {
-    "MAPPING_REVIEW_REQUIRED": 538,
-    "SOURCE_TEXT_REVIEW_REQUIRED": 1183
+    "MAPPING_REVIEW_REQUIRED": 543,
+    "SOURCE_TEXT_REVIEW_REQUIRED": 1178
   },
   "byNextAction": {
-    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": 423,
+    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": 430,
     "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW": 4,
-    "CANONICAL_MAPPING_REVIEW_REQUIRED": 1120,
+    "CANONICAL_MAPPING_REVIEW_REQUIRED": 1113,
     "CURRICULAR_HIERARCHY_REVIEW_REQUIRED": 100,
     "HUMAN_MAPPING_REVIEW_REQUIRED": 74
   },
@@ -4329,9 +4329,9 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -4341,9 +4341,9 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -4353,9 +4353,9 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -4366,8 +4366,8 @@
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
       "queueStatus": "MAPPING_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -4377,9 +4377,9 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -4389,9 +4389,9 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -4402,8 +4402,8 @@
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
       "queueStatus": "MAPPING_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },

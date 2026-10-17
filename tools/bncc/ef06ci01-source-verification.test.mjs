@@ -469,6 +469,13 @@ describe('EF06CI01 source verification', () => {
       EF04LP18: 'CANONICAL_GAP',
       EF04LP19: 'CANONICAL_GAP',
       EF04LP20: 'CANONICAL_GAP',
+      EF04LP21: 'CANONICAL_GAP',
+      EF04LP22: 'CANONICAL_GAP',
+      EF04LP23: 'CANONICAL_GAP',
+      EF04LP24: 'CANONICAL_GAP',
+      EF04LP25: 'CANONICAL_GAP',
+      EF04LP26: 'CANONICAL_GAP',
+      EF04LP27: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -494,7 +501,7 @@ describe('EF06CI01 source verification', () => {
         : code.startsWith('EF01LP') ? Number(code.slice(-2)) <= 7 ? 101 : Number(code.slice(-2)) <= 15 ? 103 : Number(code.slice(-2)) <= 19 ? 105 : Number(code.slice(-2)) === 20 ? 107 : Number(code.slice(-2)) === 21 ? 109 : Number(code.slice(-2)) <= 23 ? 111 : 113
         : code.startsWith('EF02LP') ? Number(code.slice(-2)) <= 3 ? 101 : Number(code.slice(-2)) <= 11 ? 103 : Number(code.slice(-2)) <= 15 ? 105 : Number(code.slice(-2)) <= 17 ? 107 : Number(code.slice(-2)) <= 19 ? 109 : Number(code.slice(-2)) <= 24 ? 111 : 113
         : code.startsWith('EF03LP') ? Number(code.slice(-2)) <= 3 ? 117 : Number(code.slice(-2)) <= 8 ? 119 : Number(code.slice(-2)) <= 11 ? 121 : Number(code.slice(-2)) <= 15 ? 123 : Number(code.slice(-2)) <= 18 ? 125 : Number(code.slice(-2)) <= 21 ? 127 : Number(code.slice(-2)) <= 23 ? 129 : Number(code.slice(-2)) <= 25 ? 131 : Number(code.slice(-2)) === 26 ? 133 : 135
-        : code.startsWith('EF04LP') ? Number(code.slice(-2)) <= 3 ? 117 : Number(code.slice(-2)) <= 6 ? 119 : Number(code.slice(-2)) <= 9 ? 121 : Number(code.slice(-2)) <= 12 ? 123 : Number(code.slice(-2)) <= 14 ? 125 : Number(code.slice(-2)) <= 16 ? 127 : Number(code.slice(-2)) <= 18 ? 129 : 131
+        : code.startsWith('EF04LP') ? Number(code.slice(-2)) <= 3 ? 117 : Number(code.slice(-2)) <= 6 ? 119 : Number(code.slice(-2)) <= 9 ? 121 : Number(code.slice(-2)) <= 12 ? 123 : Number(code.slice(-2)) <= 14 ? 125 : Number(code.slice(-2)) <= 16 ? 127 : Number(code.slice(-2)) <= 18 ? 129 : Number(code.slice(-2)) <= 22 ? 131 : Number(code.slice(-2)) <= 24 ? 133 : Number(code.slice(-2)) === 25 ? 135 : 137
         : code.startsWith('EF09ER') ? 461
         : code.startsWith('EF09GE') ? Number(code.slice(-2)) <= 13 ? 395 : 397
         : code.startsWith('EF09HI') ? Number(code.slice(-2)) <= 16 ? 431 : Number(code.slice(-2)) <= 27 ? 433 : 435
