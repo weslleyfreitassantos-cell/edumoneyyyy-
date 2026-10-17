@@ -5,7 +5,7 @@
   "head": "97acf190fd77e62a14a30c67ec0abcc89dae17a8",
   "recordedAt": "2026-10-16",
   "lastOperation": {
-    "target": ["EF09HI01", "EF09HI02", "EF09HI03", "EF09HI04", "EF09HI05", "EF09HI06", "EF09HI07", "EF09HI08", "EF09HI09", "EF09HI10", "EF09HI11", "EF09HI12", "EF09HI13", "EF09HI14", "EF09HI15", "EF09HI16"],
+    "target": ["EF09HI17", "EF09HI18", "EF09HI19", "EF09HI20", "EF09HI21", "EF09HI22", "EF09HI23", "EF09HI24", "EF09HI25", "EF09HI26", "EF09HI27"],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
     "result": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -18,12 +18,12 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 118,
+    "exactSourceVerifications": 129,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF09HI01_MEC_P431_V1",
+    "verificationId": "BNCC_EF09HI17_MEC_P433_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
@@ -43,6 +43,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF09HI17_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF09HI28_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
 }
