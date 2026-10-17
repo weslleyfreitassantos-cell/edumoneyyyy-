@@ -292,6 +292,14 @@ describe('EF06CI01 source verification', () => {
       EF03CO07: 'CANONICAL_GAP',
       EF03CO08: 'CANONICAL_GAP',
       EF03CO09: 'CANONICAL_GAP',
+      EF04CO01: 'CANONICAL_GAP',
+      EF04CO02: 'CANONICAL_GAP',
+      EF04CO03: 'CANONICAL_GAP',
+      EF04CO04: 'CANONICAL_GAP',
+      EF04CO05: 'CANONICAL_GAP',
+      EF04CO06: 'CANONICAL_GAP',
+      EF04CO07: 'CANONICAL_GAP',
+      EF04CO08: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -306,6 +314,7 @@ describe('EF06CI01 source verification', () => {
         : code.startsWith('EF01CO') ? Number(code.slice(-2)) <= 5 ? 16 : 18
         : code.startsWith('EF02CO') ? 20
         : code.startsWith('EF03CO') ? Number(code.slice(-2)) <= 3 ? 22 : Number(code.slice(-2)) <= 6 ? 24 : 26
+        : code.startsWith('EF04CO') ? Number(code.slice(-2)) <= 2 ? 28 : 30
         : code.startsWith('EF09ER') ? 461
         : code.startsWith('EF09GE') ? Number(code.slice(-2)) <= 13 ? 395 : 397
         : code.startsWith('EF09HI') ? Number(code.slice(-2)) <= 16 ? 431 : Number(code.slice(-2)) <= 27 ? 433 : 435
@@ -318,7 +327,7 @@ describe('EF06CI01 source verification', () => {
         : code.startsWith('EF04CI') ? 341
         : code.startsWith('EF05CI') ? 343
         : code.startsWith('EF08') ? 350 : code.startsWith('EF07') ? 348 : 346;
-      const pageToken = code.startsWith('EF09CO') || code.startsWith('EF01CO') || code.startsWith('EF02CO') || code.startsWith('EF03CO')
+      const pageToken = code.startsWith('EF09CO') || code.startsWith('EF01CO') || code.startsWith('EF02CO') || code.startsWith('EF03CO') || code.startsWith('EF04CO')
         ? String(officialPage).padStart(3, '0')
         : officialPage;
       expect(record.verificationId).toBe(`BNCC_${code}_MEC_P${pageToken}_V1`);
