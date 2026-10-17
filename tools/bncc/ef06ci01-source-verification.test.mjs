@@ -342,6 +342,12 @@ describe('EF06CI01 source verification', () => {
       EF08CO09: 'CANONICAL_GAP',
       EF08CO10: 'CANONICAL_GAP',
       EF08CO11: 'CANONICAL_GAP',
+      EF01ER01: 'CANONICAL_GAP',
+      EF01ER02: 'CANONICAL_GAP',
+      EF01ER03: 'CANONICAL_GAP',
+      EF01ER04: 'CANONICAL_GAP',
+      EF01ER05: 'CANONICAL_GAP',
+      EF01ER06: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -361,6 +367,7 @@ describe('EF06CI01 source verification', () => {
         : code.startsWith('EF06CO') ? Number(code.slice(-2)) <= 6 ? 42 : 44
         : code.startsWith('EF07CO') ? Number(code.slice(-2)) <= 4 ? 46 : Number(code.slice(-2)) <= 7 ? 48 : 50
         : code.startsWith('EF08CO') ? Number(code.slice(-2)) <= 6 ? 52 : 54
+        : code.startsWith('EF01ER') ? 445
         : code.startsWith('EF09ER') ? 461
         : code.startsWith('EF09GE') ? Number(code.slice(-2)) <= 13 ? 395 : 397
         : code.startsWith('EF09HI') ? Number(code.slice(-2)) <= 16 ? 431 : Number(code.slice(-2)) <= 27 ? 433 : 435
