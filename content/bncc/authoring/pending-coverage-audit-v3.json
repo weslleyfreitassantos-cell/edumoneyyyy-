@@ -14,13 +14,13 @@
     "HUMAN_REVIEW_BLOCKED": 121
   },
   "byQueueStatus": {
-    "MAPPING_REVIEW_REQUIRED": 370,
-    "SOURCE_TEXT_REVIEW_REQUIRED": 1351
+    "MAPPING_REVIEW_REQUIRED": 376,
+    "SOURCE_TEXT_REVIEW_REQUIRED": 1345
   },
   "byNextAction": {
-    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": 237,
+    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": 246,
     "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW": 4,
-    "CANONICAL_MAPPING_REVIEW_REQUIRED": 1294,
+    "CANONICAL_MAPPING_REVIEW_REQUIRED": 1285,
     "CURRICULAR_HIERARCHY_REVIEW_REQUIRED": 100,
     "HUMAN_MAPPING_REVIEW_REQUIRED": 86
   },
@@ -2397,9 +2397,9 @@
       "componentCode": "CO",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2409,9 +2409,9 @@
       "componentCode": "CO",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2422,8 +2422,8 @@
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
       "queueStatus": "MAPPING_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2433,9 +2433,9 @@
       "componentCode": "CO",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2445,9 +2445,9 @@
       "componentCode": "CO",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2458,8 +2458,8 @@
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
       "queueStatus": "MAPPING_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2469,9 +2469,9 @@
       "componentCode": "CO",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2481,9 +2481,9 @@
       "componentCode": "CO",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -2494,8 +2494,8 @@
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
       "queueStatus": "MAPPING_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
