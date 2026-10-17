@@ -171,6 +171,15 @@ describe('EF06CI01 source verification', () => {
       EF09HI25: 'HUMAN_REVIEW_BLOCKED',
       EF09HI26: 'HUMAN_REVIEW_BLOCKED',
       EF09HI27: 'HUMAN_REVIEW_BLOCKED',
+      EF09HI28: 'CANONICAL_GAP',
+      EF09HI29: 'CANONICAL_GAP',
+      EF09HI30: 'CANONICAL_GAP',
+      EF09HI31: 'CANONICAL_GAP',
+      EF09HI32: 'CANONICAL_GAP',
+      EF09HI33: 'CANONICAL_GAP',
+      EF09HI34: 'CANONICAL_GAP',
+      EF09HI35: 'CANONICAL_GAP',
+      EF09HI36: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -184,7 +193,7 @@ describe('EF06CI01 source verification', () => {
         ? Number(code.slice(-2)) <= 4 ? 56 : 58
         : code.startsWith('EF09ER') ? 461
         : code.startsWith('EF09GE') ? Number(code.slice(-2)) <= 13 ? 395 : 397
-        : code.startsWith('EF09HI') ? Number(code.slice(-2)) <= 16 ? 431 : 433
+        : code.startsWith('EF09HI') ? Number(code.slice(-2)) <= 16 ? 431 : Number(code.slice(-2)) <= 27 ? 433 : 435
         : code.startsWith('EF09CI') ? 352 : code.startsWith('EF08') ? 350 : code.startsWith('EF07') ? 348 : 346;
       const pageToken = code.startsWith('EF09CO') ? String(officialPage).padStart(3, '0') : officialPage;
       expect(record.verificationId).toBe(`BNCC_${code}_MEC_P${pageToken}_V1`);
