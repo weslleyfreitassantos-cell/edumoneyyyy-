@@ -2,10 +2,30 @@
   "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v10",
   "campaignId": "TECESCOLA_BNCC_TOTAL_COMPLETION_AUTONOMOUS_V10",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
-  "head": "abb66d66800023e228772002b33a7ad4227d6b7b",
+  "head": "51bbf3bd21977cf4fae3976b64208afd7c4182ca",
   "recordedAt": "2026-10-16",
   "lastOperation": {
-    "target": ["EF09HI28", "EF09HI29", "EF09HI30", "EF09HI31", "EF09HI32", "EF09HI33", "EF09HI34", "EF09HI35", "EF09HI36"],
+    "target": [
+      "EF09LI01",
+      "EF09LI02",
+      "EF09LI03",
+      "EF09LI04",
+      "EF09LI05",
+      "EF09LI06",
+      "EF09LI07",
+      "EF09LI08",
+      "EF09LI09",
+      "EF09LI10",
+      "EF09LI11",
+      "EF09LI12",
+      "EF09LI13",
+      "EF09LI14",
+      "EF09LI15",
+      "EF09LI16",
+      "EF09LI17",
+      "EF09LI18",
+      "EF09LI19"
+    ],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
     "result": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -18,12 +38,12 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 138,
+    "exactSourceVerifications": 157,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF09HI28_MEC_P435_V1",
+    "verificationId": "BNCC_EF09LI01_MEC_P263_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
@@ -43,6 +63,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF09LI01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF09MA01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
 }
