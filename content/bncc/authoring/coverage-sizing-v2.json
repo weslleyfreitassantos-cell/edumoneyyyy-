@@ -22,7 +22,7 @@
     },
     "sourceTextHumanVerifiedByFactory": 0,
     "sourceTextRequiresReviewByFactory": 1723,
-    "exactSourceVerificationsThisIncrement": 553,
+    "exactSourceVerificationsThisIncrement": 554,
     "exactSourceVerificationCodes": [
       "EF01CI01",
       "EF01CI02",
@@ -241,6 +241,7 @@
       "EF03GE09",
       "EF03GE10",
       "EF03GE11",
+      "EF03HI01",
       "EF03LP01",
       "EF03LP02",
       "EF03LP03",
@@ -579,8 +580,8 @@
       "EI01CG04"
     ],
     "technicalDeepReadySequences": 78,
-    "v5QuestionTotal": 5656,
-    "consolidatedQuestionTotal": 6628,
+    "v5QuestionTotal": 5706,
+    "consolidatedQuestionTotal": 6678,
     "humanReviewedContent": 0,
     "studentAvailableNewContent": 0
   },
@@ -1584,7 +1585,7 @@
     "limitation": "These are library-size estimates. They do not prove individual learning, curriculum implementation or human pedagogical approval."
   },
   "pending": [
-    "Official source text and canonical mapping review remains open for the 1,723-node matrix; 553 exact technical verifications are recorded in the current authoring ledger.",
+    "Official source text and canonical mapping review remains open for the 1,723-node matrix; 554 exact technical verifications are recorded in the current authoring ledger.",
     "Pedagogical human review remains pending for all generated content.",
     "Early Childhood objectives require experiential product wiring and educator observation records before publication."
   ]

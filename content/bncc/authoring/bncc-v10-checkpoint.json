@@ -1,27 +1,15 @@
 {
-  "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v10",
-  "campaignId": "TECESCOLA_BNCC_TOTAL_COMPLETION_AUTONOMOUS_V10",
+  "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v12",
+  "campaignId": "TECESCOLA_BNCC_FULL_EXECUTION_AND_MAPPING_RESOLUTION_V12",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
   "head": "c8ee7d15aa51dbb7eddaf7937958c724e01a9f63",
   "recordedAt": "2026-10-17",
   "lastOperation": {
-    "target": [
-      "EF03GE01",
-      "EF03GE02",
-      "EF03GE03",
-      "EF03GE04",
-      "EF03GE05",
-      "EF03GE06",
-      "EF03GE07",
-      "EF03GE08",
-      "EF03GE09",
-      "EF03GE10",
-      "EF03GE11"
-    ],
-    "type": "OFFICIAL_SOURCE_VERIFICATION",
+    "target": ["EF03HI01"],
+    "type": "AUTHORING_CONTEXT_AND_STAGED_CONTENT",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
-    "result": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-    "mappingStatus": "REVIEW_REQUIRED_PER_CODE",
+    "result": "STAGED_AUTHORING_CONTEXT_CREATED",
+    "mappingStatus": "CANONICAL_GAP",
     "relationDecision": "NOT_ASSERTED",
     "studentPublicationStatus": "STAGING_INACTIVE",
     "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
@@ -30,18 +18,20 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 553,
-    "newStagingPackagesInThisOperation": 0
+    "exactSourceVerifications": 554,
+    "newStagingPackagesInThisOperation": 1,
+    "stagedQuestionsInThisOperation": 50,
+    "authoringContextPackages": 3
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF03GE01_MEC_P377_V1",
+    "verificationId": "BNCC_EF03HI01_MEC_P413_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
   },
   "validation": {
-    "focusedTests": "PASS: 13 files, 23 tests",
+    "focusedTests": "PASS: current increment 4 files, 6 tests; prior baseline 13 files, 23 tests",
     "bnccValidate": "PASS: catalog, coverage, mapping resolutions",
     "knowledgeFactoryV4": "PASS: 1723 official nodes, 78 sequences audited, 1721 queued gaps, 65 inactive units",
     "contentPackages": "PASS: 15 packages, 65 skills",
@@ -55,6 +45,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF03HI01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
-  "nextOperation": "Continue with EF01MA01 or the next independent curricular gap; do not assert a relation or publish content until canonical mapping and pedagogical review are independently approved."
+  "nextTarget": "EF03HI02_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextOperation": "Continue with EF03HI02 or the next independent curricular gap; do not assert a relation or publish content until canonical mapping and pedagogical review are independently approved."
 }
