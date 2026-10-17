@@ -10819,6 +10819,167 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF02ER01_MEC_P447_V1",
+      "officialCode": "EF02ER01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "02",
+      "descriptor": "Reconhecer os diferentes espaços de convivência.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 447
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 447 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF02ER02_MEC_P447_V1",
+      "officialCode": "EF02ER02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "02",
+      "descriptor": "Identificar costumes, crenças e formas diversas de viver em variados ambientes de convivência.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 447
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 447 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF02ER03_MEC_P447_V1",
+      "officialCode": "EF02ER03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "02",
+      "descriptor": "Identificar as diferentes formas de registro das memórias pessoais, familiares e escolares (fotos, músicas, narrativas, álbuns...).",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 447
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 447 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF02ER04_MEC_P447_V1",
+      "officialCode": "EF02ER04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "02",
+      "descriptor": "Identificar os símbolos presentes nos variados espaços de convivência.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 447
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 447 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF02ER05_MEC_P447_V1",
+      "officialCode": "EF02ER05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "02",
+      "descriptor": "Identificar, distinguir e respeitar símbolos religiosos de distintas manifestações, tradições e instituições religiosas.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 447
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 447 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF02ER06_MEC_P447_V1",
+      "officialCode": "EF02ER06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "02",
+      "descriptor": "Exemplificar alimentos considerados sagrados por diferentes culturas, tradições e expressões religiosas.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 447
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 447 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF02ER07_MEC_P447_V1",
+      "officialCode": "EF02ER07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "ER",
+      "gradeOrRange": "02",
+      "descriptor": "Identificar significados atribuídos a alimentos em diferentes manifestações e tradições religiosas.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 447
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 447 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
     }
   ]
 }
