@@ -1,0 +1,1391 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v13-history-space-distinctions",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "distincao_espacos_domesticos_publicos_conservacao",
+  "canonicalSkillCode": "AUTHORING_EF03HI10_HISTORY_SPACE_DISTINCTIONS",
+  "contentVersion": 13,
+  "lessonVersion": 13,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V13_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI10",
+    "sourceVerificationRecord": "BNCC_EF03HI10_MEC_P413_V1",
+    "proposalId": "V8_PROPOSAL_ENSINO_FUNDAMENTAL_03_HI_IDENTIFICAR_DIFERENCAS_ESPACO",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre espaços domésticos, públicos e de conservação para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+  },
+  "lesson": {
+    "title": "Espaços domésticos, públicos e de conservação",
+    "objective": "Distinguir espaços domésticos, públicos e áreas de conservação ambiental, relacionando função, regras, acesso e cuidado coletivo.",
+    "summary": "Os espaços têm funções, regras e responsabilidades diferentes. Distinguir casa, praça, escola, parque e área de conservação ajuda a cuidar do lugar e respeitar direitos de acesso.",
+    "explanation": "## O que investigar\nIdentificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "commonMistake": "Tratar todo espaço aberto como público, ignorar regras de conservação ou confundir direito de uso coletivo com entrada irrestrita.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Reconhecer funções de lugares próximos.",
+      "Ler avisos e símbolos de regras de uso."
+    ],
+    "keyConcepts": [
+      "espaço doméstico",
+      "espaço público",
+      "conservação ambiental",
+      "acesso",
+      "regra",
+      "cuidado coletivo",
+      "responsabilidade"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v13-history-space-distinctions-001",
+          "v13-history-space-distinctions-002",
+          "v13-history-space-distinctions-003",
+          "v13-history-space-distinctions-004",
+          "v13-history-space-distinctions-005"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v13-history-space-distinctions-006",
+          "v13-history-space-distinctions-007",
+          "v13-history-space-distinctions-008",
+          "v13-history-space-distinctions-009",
+          "v13-history-space-distinctions-010",
+          "v13-history-space-distinctions-011",
+          "v13-history-space-distinctions-012",
+          "v13-history-space-distinctions-013",
+          "v13-history-space-distinctions-014",
+          "v13-history-space-distinctions-015",
+          "v13-history-space-distinctions-016",
+          "v13-history-space-distinctions-017",
+          "v13-history-space-distinctions-018",
+          "v13-history-space-distinctions-019",
+          "v13-history-space-distinctions-020"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v13-history-space-distinctions-021",
+          "v13-history-space-distinctions-022",
+          "v13-history-space-distinctions-023",
+          "v13-history-space-distinctions-024",
+          "v13-history-space-distinctions-025",
+          "v13-history-space-distinctions-026",
+          "v13-history-space-distinctions-027",
+          "v13-history-space-distinctions-028",
+          "v13-history-space-distinctions-029",
+          "v13-history-space-distinctions-030",
+          "v13-history-space-distinctions-031",
+          "v13-history-space-distinctions-032"
+        ]
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v13-history-space-distinctions-033",
+          "v13-history-space-distinctions-034",
+          "v13-history-space-distinctions-035",
+          "v13-history-space-distinctions-036",
+          "v13-history-space-distinctions-037",
+          "v13-history-space-distinctions-038",
+          "v13-history-space-distinctions-039",
+          "v13-history-space-distinctions-040"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v13-history-space-distinctions-041",
+          "v13-history-space-distinctions-042",
+          "v13-history-space-distinctions-043",
+          "v13-history-space-distinctions-044",
+          "v13-history-space-distinctions-045",
+          "v13-history-space-distinctions-046",
+          "v13-history-space-distinctions-047",
+          "v13-history-space-distinctions-048",
+          "v13-history-space-distinctions-049",
+          "v13-history-space-distinctions-050"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v13-history-space-distinctions-local-inquiry",
+        "title": "Investigação acessível da história local",
+        "objective": "Distinguir espaços domésticos, públicos e áreas de conservação ambiental, relacionando função, regras, acesso e cuidado coletivo.",
+        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
+        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Fontes",
+            "emerging": "Não identifica a procedência.",
+            "developing": "Identifica parte das fontes com apoio.",
+            "proficient": "Registra tipo, autoria, período e procedência."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Mistura informações de fontes diferentes.",
+            "developing": "Compara alguns aspectos após orientação.",
+            "proficient": "Explica convergências, diferenças e lacunas."
+          },
+          {
+            "criterion": "Conclusão",
+            "emerging": "Generaliza além do registro.",
+            "developing": "Limita a conclusão com apoio.",
+            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+          }
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI10",
+        "descriptor": "Identificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "v13-history-space-distinctions-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_HOME_01",
+      "statement": "Uma casa é usada por uma família e possui espaços de convivência e privacidade. Que característica ajuda a classificá-la?",
+      "options": [
+        "É um espaço doméstico, com uso e responsabilidades ligados aos moradores e às regras de privacidade.",
+        "Toda casa é espaço público.",
+        "Privacidade não é uma regra.",
+        "A classificação depende do tamanho da casa."
+      ],
+      "correctAnswer": "É um espaço doméstico, com uso e responsabilidades ligados aos moradores e às regras de privacidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A classificação considera função, uso e responsabilidade, não apenas o fato de haver pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda casa é espaço público.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_HOME_02",
+      "statement": "Uma casa é usada por uma família e possui espaços de convivência e privacidade. Que critério deve orientar a análise?",
+      "options": [
+        "Toda casa é espaço público.",
+        "Considere A classificação considera função, uso e responsabilidade, não apenas o fato de haver pessoas.",
+        "Privacidade não é uma regra.",
+        "A classificação depende do tamanho da casa."
+      ],
+      "correctAnswer": "Considere A classificação considera função, uso e responsabilidade, não apenas o fato de haver pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A classificação considera função, uso e responsabilidade, não apenas o fato de haver pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda casa é espaço público.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_HOME_03",
+      "statement": "Uma casa é usada por uma família e possui espaços de convivência e privacidade. Como transferir esse raciocínio?",
+      "options": [
+        "Toda casa é espaço público.",
+        "Privacidade não é uma regra.",
+        "Classifique outros lugares sem expor a rotina de famílias.",
+        "A classificação depende do tamanho da casa."
+      ],
+      "correctAnswer": "Classifique outros lugares sem expor a rotina de famílias.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A classificação considera função, uso e responsabilidade, não apenas o fato de haver pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda casa é espaço público.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_HOME_04",
+      "statement": "Uma casa é usada por uma família e possui espaços de convivência e privacidade. Qual conclusão deve ser evitada?",
+      "options": [
+        "Toda casa é espaço público.",
+        "Privacidade não é uma regra.",
+        "A classificação depende do tamanho da casa.",
+        "Evite dizer que qualquer pessoa pode entrar porque a casa aparece no mapa."
+      ],
+      "correctAnswer": "Evite dizer que qualquer pessoa pode entrar porque a casa aparece no mapa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A classificação considera função, uso e responsabilidade, não apenas o fato de haver pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda casa é espaço público.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_HOME_05",
+      "statement": "Uma casa é usada por uma família e possui espaços de convivência e privacidade. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira função do lugar e regra de acesso.",
+        "Toda casa é espaço público.",
+        "Privacidade não é uma regra.",
+        "A classificação depende do tamanho da casa."
+      ],
+      "correctAnswer": "Confira função do lugar e regra de acesso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A classificação considera função, uso e responsabilidade, não apenas o fato de haver pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda casa é espaço público.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SQUARE_01",
+      "statement": "Uma praça pode ser usada por pessoas diferentes, respeitando horários e regras de cuidado. Como classificá-la?",
+      "options": [
+        "Praças são espaços domésticos.",
+        "Como espaço público, pois oferece uso coletivo sob regras comuns.",
+        "Regra elimina o caráter público.",
+        "A praça pertence à primeira pessoa que chega."
+      ],
+      "correctAnswer": "Como espaço público, pois oferece uso coletivo sob regras comuns.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Espaço público não significa ausência de regras nem uso exclusivo por um grupo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Praças são espaços domésticos.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SQUARE_02",
+      "statement": "Uma praça pode ser usada por pessoas diferentes, respeitando horários e regras de cuidado. Que critério deve orientar a análise?",
+      "options": [
+        "Praças são espaços domésticos.",
+        "Regra elimina o caráter público.",
+        "Considere Espaço público não significa ausência de regras nem uso exclusivo por um grupo.",
+        "A praça pertence à primeira pessoa que chega."
+      ],
+      "correctAnswer": "Considere Espaço público não significa ausência de regras nem uso exclusivo por um grupo.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Espaço público não significa ausência de regras nem uso exclusivo por um grupo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Praças são espaços domésticos.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SQUARE_03",
+      "statement": "Uma praça pode ser usada por pessoas diferentes, respeitando horários e regras de cuidado. Como transferir esse raciocínio?",
+      "options": [
+        "Praças são espaços domésticos.",
+        "Regra elimina o caráter público.",
+        "A praça pertence à primeira pessoa que chega.",
+        "Compare praça, escola e biblioteca."
+      ],
+      "correctAnswer": "Compare praça, escola e biblioteca.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Espaço público não significa ausência de regras nem uso exclusivo por um grupo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Praças são espaços domésticos.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SQUARE_04",
+      "statement": "Uma praça pode ser usada por pessoas diferentes, respeitando horários e regras de cuidado. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que o público pode destruir qualquer equipamento.",
+        "Praças são espaços domésticos.",
+        "Regra elimina o caráter público.",
+        "A praça pertence à primeira pessoa que chega."
+      ],
+      "correctAnswer": "Evite dizer que o público pode destruir qualquer equipamento.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Espaço público não significa ausência de regras nem uso exclusivo por um grupo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Praças são espaços domésticos.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SQUARE_05",
+      "statement": "Uma praça pode ser usada por pessoas diferentes, respeitando horários e regras de cuidado. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Praças são espaços domésticos.",
+        "Confira placas, equipamentos e órgão responsável.",
+        "Regra elimina o caráter público.",
+        "A praça pertence à primeira pessoa que chega."
+      ],
+      "correctAnswer": "Confira placas, equipamentos e órgão responsável.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Espaço público não significa ausência de regras nem uso exclusivo por um grupo.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Praças são espaços domésticos.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RESERVE_01",
+      "statement": "Uma área de conservação protege nascente, vegetação e animais, com trilha definida e acesso orientado. Por que não tratá-la como qualquer praça?",
+      "options": [
+        "Toda área verde é igual.",
+        "Conservação é apenas decoração.",
+        "Porque sua função inclui conservar a natureza e suas regras de acesso protegem o ambiente.",
+        "A trilha pode ser usada sem regra."
+      ],
+      "correctAnswer": "Porque sua função inclui conservar a natureza e suas regras de acesso protegem o ambiente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Áreas de conservação têm finalidade ambiental específica e exigem cuidados próprios.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda área verde é igual.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RESERVE_02",
+      "statement": "Uma área de conservação protege nascente, vegetação e animais, com trilha definida e acesso orientado. Que critério deve orientar a análise?",
+      "options": [
+        "Toda área verde é igual.",
+        "Conservação é apenas decoração.",
+        "A trilha pode ser usada sem regra.",
+        "Considere Áreas de conservação têm finalidade ambiental específica e exigem cuidados próprios."
+      ],
+      "correctAnswer": "Considere Áreas de conservação têm finalidade ambiental específica e exigem cuidados próprios.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Áreas de conservação têm finalidade ambiental específica e exigem cuidados próprios.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda área verde é igual.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RESERVE_03",
+      "statement": "Uma área de conservação protege nascente, vegetação e animais, com trilha definida e acesso orientado. Como transferir esse raciocínio?",
+      "options": [
+        "Compare uma praça de lazer com uma área protegida.",
+        "Toda área verde é igual.",
+        "Conservação é apenas decoração.",
+        "A trilha pode ser usada sem regra."
+      ],
+      "correctAnswer": "Compare uma praça de lazer com uma área protegida.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Áreas de conservação têm finalidade ambiental específica e exigem cuidados próprios.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda área verde é igual.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RESERVE_04",
+      "statement": "Uma área de conservação protege nascente, vegetação e animais, com trilha definida e acesso orientado. Qual conclusão deve ser evitada?",
+      "options": [
+        "Toda área verde é igual.",
+        "Evite dizer que conservação impede qualquer visita.",
+        "Conservação é apenas decoração.",
+        "A trilha pode ser usada sem regra."
+      ],
+      "correctAnswer": "Evite dizer que conservação impede qualquer visita.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Áreas de conservação têm finalidade ambiental específica e exigem cuidados próprios.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda área verde é igual.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RESERVE_05",
+      "statement": "Uma área de conservação protege nascente, vegetação e animais, com trilha definida e acesso orientado. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Toda área verde é igual.",
+        "Conservação é apenas decoração.",
+        "Confira placas, plano de manejo e elementos ambientais.",
+        "A trilha pode ser usada sem regra."
+      ],
+      "correctAnswer": "Confira placas, plano de manejo e elementos ambientais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Áreas de conservação têm finalidade ambiental específica e exigem cuidados próprios.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda área verde é igual.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_ACCESS_01",
+      "statement": "Uma escola pública recebe estudantes, profissionais e visitantes em horários definidos. Que distinção é importante?",
+      "options": [
+        "Escola pública é espaço doméstico.",
+        "Horários não importam.",
+        "A função muda conforme quem entra.",
+        "É um espaço público de função educacional, com acesso coletivo organizado por regras."
+      ],
+      "correctAnswer": "É um espaço público de função educacional, com acesso coletivo organizado por regras.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uso público pode ser regulado para proteger pessoas e atividades.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escola pública é espaço doméstico.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_ACCESS_02",
+      "statement": "Uma escola pública recebe estudantes, profissionais e visitantes em horários definidos. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Uso público pode ser regulado para proteger pessoas e atividades.",
+        "Escola pública é espaço doméstico.",
+        "Horários não importam.",
+        "A função muda conforme quem entra."
+      ],
+      "correctAnswer": "Considere Uso público pode ser regulado para proteger pessoas e atividades.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uso público pode ser regulado para proteger pessoas e atividades.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escola pública é espaço doméstico.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_ACCESS_03",
+      "statement": "Uma escola pública recebe estudantes, profissionais e visitantes em horários definidos. Como transferir esse raciocínio?",
+      "options": [
+        "Escola pública é espaço doméstico.",
+        "Analise as regras de acesso de um equipamento público.",
+        "Horários não importam.",
+        "A função muda conforme quem entra."
+      ],
+      "correctAnswer": "Analise as regras de acesso de um equipamento público.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uso público pode ser regulado para proteger pessoas e atividades.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escola pública é espaço doméstico.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_ACCESS_04",
+      "statement": "Uma escola pública recebe estudantes, profissionais e visitantes em horários definidos. Qual conclusão deve ser evitada?",
+      "options": [
+        "Escola pública é espaço doméstico.",
+        "Horários não importam.",
+        "Evite afirmar que qualquer pessoa pode entrar em qualquer horário.",
+        "A função muda conforme quem entra."
+      ],
+      "correctAnswer": "Evite afirmar que qualquer pessoa pode entrar em qualquer horário.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uso público pode ser regulado para proteger pessoas e atividades.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escola pública é espaço doméstico.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_ACCESS_05",
+      "statement": "Uma escola pública recebe estudantes, profissionais e visitantes em horários definidos. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Escola pública é espaço doméstico.",
+        "Horários não importam.",
+        "A função muda conforme quem entra.",
+        "Confira portaria, horário e finalidade institucional."
+      ],
+      "correctAnswer": "Confira portaria, horário e finalidade institucional.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uso público pode ser regulado para proteger pessoas e atividades.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escola pública é espaço doméstico.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_CARE_01",
+      "statement": "Visitantes deixam lixo em uma área de conservação e uma placa orienta levar os resíduos de volta. Qual responsabilidade aparece?",
+      "options": [
+        "Cuidar do ambiente e seguir a regra que reduz impactos da visita.",
+        "Lixo não afeta a conservação.",
+        "Visitar autoriza retirar plantas.",
+        "Regra ambiental vale apenas para crianças."
+      ],
+      "correctAnswer": "Cuidar do ambiente e seguir a regra que reduz impactos da visita.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras de conservação relacionam uso do espaço e responsabilidade coletiva.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Lixo não afeta a conservação.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_CARE_02",
+      "statement": "Visitantes deixam lixo em uma área de conservação e uma placa orienta levar os resíduos de volta. Que critério deve orientar a análise?",
+      "options": [
+        "Lixo não afeta a conservação.",
+        "Considere Regras de conservação relacionam uso do espaço e responsabilidade coletiva.",
+        "Visitar autoriza retirar plantas.",
+        "Regra ambiental vale apenas para crianças."
+      ],
+      "correctAnswer": "Considere Regras de conservação relacionam uso do espaço e responsabilidade coletiva.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras de conservação relacionam uso do espaço e responsabilidade coletiva.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Lixo não afeta a conservação.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_CARE_03",
+      "statement": "Visitantes deixam lixo em uma área de conservação e uma placa orienta levar os resíduos de volta. Como transferir esse raciocínio?",
+      "options": [
+        "Lixo não afeta a conservação.",
+        "Visitar autoriza retirar plantas.",
+        "Crie uma orientação de cuidado para uma trilha.",
+        "Regra ambiental vale apenas para crianças."
+      ],
+      "correctAnswer": "Crie uma orientação de cuidado para uma trilha.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras de conservação relacionam uso do espaço e responsabilidade coletiva.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Lixo não afeta a conservação.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_CARE_04",
+      "statement": "Visitantes deixam lixo em uma área de conservação e uma placa orienta levar os resíduos de volta. Qual conclusão deve ser evitada?",
+      "options": [
+        "Lixo não afeta a conservação.",
+        "Visitar autoriza retirar plantas.",
+        "Regra ambiental vale apenas para crianças.",
+        "Evite dizer que somente funcionários devem cuidar da área."
+      ],
+      "correctAnswer": "Evite dizer que somente funcionários devem cuidar da área.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras de conservação relacionam uso do espaço e responsabilidade coletiva.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Lixo não afeta a conservação.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_CARE_05",
+      "statement": "Visitantes deixam lixo em uma área de conservação e uma placa orienta levar os resíduos de volta. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira placa, resíduos e finalidade da regra.",
+        "Lixo não afeta a conservação.",
+        "Visitar autoriza retirar plantas.",
+        "Regra ambiental vale apenas para crianças."
+      ],
+      "correctAnswer": "Confira placa, resíduos e finalidade da regra.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras de conservação relacionam uso do espaço e responsabilidade coletiva.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Lixo não afeta a conservação.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_PRIVACY_01",
+      "statement": "Um trabalho escolar compara espaço doméstico e praça sem publicar fotos de interiores ou endereços. Por que esse cuidado é adequado?",
+      "options": [
+        "Privacidade não existe em trabalhos escolares.",
+        "Porque permite estudar funções dos espaços sem expor a privacidade das pessoas.",
+        "Toda foto de casa é pública.",
+        "Endereço é necessário para qualquer comparação."
+      ],
+      "correctAnswer": "Porque permite estudar funções dos espaços sem expor a privacidade das pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Distinguir espaços também exige proteger dados e imagens pessoais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Privacidade não existe em trabalhos escolares.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_PRIVACY_02",
+      "statement": "Um trabalho escolar compara espaço doméstico e praça sem publicar fotos de interiores ou endereços. Que critério deve orientar a análise?",
+      "options": [
+        "Privacidade não existe em trabalhos escolares.",
+        "Toda foto de casa é pública.",
+        "Considere Distinguir espaços também exige proteger dados e imagens pessoais.",
+        "Endereço é necessário para qualquer comparação."
+      ],
+      "correctAnswer": "Considere Distinguir espaços também exige proteger dados e imagens pessoais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Distinguir espaços também exige proteger dados e imagens pessoais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Privacidade não existe em trabalhos escolares.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_PRIVACY_03",
+      "statement": "Um trabalho escolar compara espaço doméstico e praça sem publicar fotos de interiores ou endereços. Como transferir esse raciocínio?",
+      "options": [
+        "Privacidade não existe em trabalhos escolares.",
+        "Toda foto de casa é pública.",
+        "Endereço é necessário para qualquer comparação.",
+        "Compare espaços com imagens públicas ou desenhos genéricos."
+      ],
+      "correctAnswer": "Compare espaços com imagens públicas ou desenhos genéricos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Distinguir espaços também exige proteger dados e imagens pessoais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Privacidade não existe em trabalhos escolares.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_PRIVACY_04",
+      "statement": "Um trabalho escolar compara espaço doméstico e praça sem publicar fotos de interiores ou endereços. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que estudar um lugar autoriza mostrar qualquer interior.",
+        "Privacidade não existe em trabalhos escolares.",
+        "Toda foto de casa é pública.",
+        "Endereço é necessário para qualquer comparação."
+      ],
+      "correctAnswer": "Evite dizer que estudar um lugar autoriza mostrar qualquer interior.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Distinguir espaços também exige proteger dados e imagens pessoais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Privacidade não existe em trabalhos escolares.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_PRIVACY_05",
+      "statement": "Um trabalho escolar compara espaço doméstico e praça sem publicar fotos de interiores ou endereços. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Privacidade não existe em trabalhos escolares.",
+        "Confira tipo de fonte, autorização e dados removidos.",
+        "Toda foto de casa é pública.",
+        "Endereço é necessário para qualquer comparação."
+      ],
+      "correctAnswer": "Confira tipo de fonte, autorização e dados removidos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Distinguir espaços também exige proteger dados e imagens pessoais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Privacidade não existe em trabalhos escolares.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RULES_01",
+      "statement": "Uma praça permite jogos, mas proíbe danificar árvores e equipamentos. Como interpretar as regras?",
+      "options": [
+        "Regras são apenas sugestões sem efeito.",
+        "Jogar impede qualquer cuidado.",
+        "Elas organizam o uso coletivo e protegem o espaço e as pessoas.",
+        "A praça pode ser usada para qualquer finalidade."
+      ],
+      "correctAnswer": "Elas organizam o uso coletivo e protegem o espaço e as pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras públicas podem combinar acesso, segurança e conservação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Regras são apenas sugestões sem efeito.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RULES_02",
+      "statement": "Uma praça permite jogos, mas proíbe danificar árvores e equipamentos. Que critério deve orientar a análise?",
+      "options": [
+        "Regras são apenas sugestões sem efeito.",
+        "Jogar impede qualquer cuidado.",
+        "A praça pode ser usada para qualquer finalidade.",
+        "Considere Regras públicas podem combinar acesso, segurança e conservação."
+      ],
+      "correctAnswer": "Considere Regras públicas podem combinar acesso, segurança e conservação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras públicas podem combinar acesso, segurança e conservação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Regras são apenas sugestões sem efeito.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RULES_03",
+      "statement": "Uma praça permite jogos, mas proíbe danificar árvores e equipamentos. Como transferir esse raciocínio?",
+      "options": [
+        "Leia regras de um parque ou biblioteca.",
+        "Regras são apenas sugestões sem efeito.",
+        "Jogar impede qualquer cuidado.",
+        "A praça pode ser usada para qualquer finalidade."
+      ],
+      "correctAnswer": "Leia regras de um parque ou biblioteca.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras públicas podem combinar acesso, segurança e conservação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Regras são apenas sugestões sem efeito.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RULES_04",
+      "statement": "Uma praça permite jogos, mas proíbe danificar árvores e equipamentos. Qual conclusão deve ser evitada?",
+      "options": [
+        "Regras são apenas sugestões sem efeito.",
+        "Evite dizer que uma regra torna a praça privada.",
+        "Jogar impede qualquer cuidado.",
+        "A praça pode ser usada para qualquer finalidade."
+      ],
+      "correctAnswer": "Evite dizer que uma regra torna a praça privada.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras públicas podem combinar acesso, segurança e conservação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Regras são apenas sugestões sem efeito.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_RULES_05",
+      "statement": "Uma praça permite jogos, mas proíbe danificar árvores e equipamentos. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Regras são apenas sugestões sem efeito.",
+        "Jogar impede qualquer cuidado.",
+        "Confira placas, finalidade e órgão responsável.",
+        "A praça pode ser usada para qualquer finalidade."
+      ],
+      "correctAnswer": "Confira placas, finalidade e órgão responsável.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Regras públicas podem combinar acesso, segurança e conservação.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Regras são apenas sugestões sem efeito.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_BOUNDARY_01",
+      "statement": "Um parque possui área de lazer e trecho de preservação com acesso restrito. Que distinção deve ser feita?",
+      "options": [
+        "Parques têm uma única função.",
+        "A área restrita não faz parte do parque.",
+        "Lazer e preservação são incompatíveis.",
+        "Distinguir a área de lazer da área de preservação e seguir as regras específicas de cada trecho."
+      ],
+      "correctAnswer": "Distinguir a área de lazer da área de preservação e seguir as regras específicas de cada trecho.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mesmo parque pode reunir funções e regras diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Parques têm uma única função.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_BOUNDARY_02",
+      "statement": "Um parque possui área de lazer e trecho de preservação com acesso restrito. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Um mesmo parque pode reunir funções e regras diferentes.",
+        "Parques têm uma única função.",
+        "A área restrita não faz parte do parque.",
+        "Lazer e preservação são incompatíveis."
+      ],
+      "correctAnswer": "Considere Um mesmo parque pode reunir funções e regras diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mesmo parque pode reunir funções e regras diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Parques têm uma única função.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_BOUNDARY_03",
+      "statement": "Um parque possui área de lazer e trecho de preservação com acesso restrito. Como transferir esse raciocínio?",
+      "options": [
+        "Parques têm uma única função.",
+        "Mapeie zonas com funções distintas sem coletar trajetos pessoais.",
+        "A área restrita não faz parte do parque.",
+        "Lazer e preservação são incompatíveis."
+      ],
+      "correctAnswer": "Mapeie zonas com funções distintas sem coletar trajetos pessoais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mesmo parque pode reunir funções e regras diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Parques têm uma única função.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_BOUNDARY_04",
+      "statement": "Um parque possui área de lazer e trecho de preservação com acesso restrito. Qual conclusão deve ser evitada?",
+      "options": [
+        "Parques têm uma única função.",
+        "A área restrita não faz parte do parque.",
+        "Evite tratar todo o parque como espaço livre de restrições.",
+        "Lazer e preservação são incompatíveis."
+      ],
+      "correctAnswer": "Evite tratar todo o parque como espaço livre de restrições.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mesmo parque pode reunir funções e regras diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Parques têm uma única função.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_BOUNDARY_05",
+      "statement": "Um parque possui área de lazer e trecho de preservação com acesso restrito. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Parques têm uma única função.",
+        "A área restrita não faz parte do parque.",
+        "Lazer e preservação são incompatíveis.",
+        "Confira mapa, placas, zoneamento e finalidade ambiental."
+      ],
+      "correctAnswer": "Confira mapa, placas, zoneamento e finalidade ambiental.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Um mesmo parque pode reunir funções e regras diferentes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Parques têm uma única função.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_COMPARE_01",
+      "statement": "Uma casa, uma praça e uma reserva têm árvores, mas as regras para cuidar delas são diferentes. O que a comparação ensina?",
+      "options": [
+        "A mesma característica pode ter funções e responsabilidades diferentes conforme o espaço.",
+        "A árvore define o tipo do espaço.",
+        "Regras são iguais em qualquer lugar.",
+        "Elementos naturais não têm função."
+      ],
+      "correctAnswer": "A mesma característica pode ter funções e responsabilidades diferentes conforme o espaço.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Classificar exige observar contexto, função e regras, não apenas elementos parecidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A árvore define o tipo do espaço.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_COMPARE_02",
+      "statement": "Uma casa, uma praça e uma reserva têm árvores, mas as regras para cuidar delas são diferentes. Que critério deve orientar a análise?",
+      "options": [
+        "A árvore define o tipo do espaço.",
+        "Considere Classificar exige observar contexto, função e regras, não apenas elementos parecidos.",
+        "Regras são iguais em qualquer lugar.",
+        "Elementos naturais não têm função."
+      ],
+      "correctAnswer": "Considere Classificar exige observar contexto, função e regras, não apenas elementos parecidos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Classificar exige observar contexto, função e regras, não apenas elementos parecidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A árvore define o tipo do espaço.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_COMPARE_03",
+      "statement": "Uma casa, uma praça e uma reserva têm árvores, mas as regras para cuidar delas são diferentes. Como transferir esse raciocínio?",
+      "options": [
+        "A árvore define o tipo do espaço.",
+        "Regras são iguais em qualquer lugar.",
+        "Compare outros lugares com um elemento comum.",
+        "Elementos naturais não têm função."
+      ],
+      "correctAnswer": "Compare outros lugares com um elemento comum.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Classificar exige observar contexto, função e regras, não apenas elementos parecidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A árvore define o tipo do espaço.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_COMPARE_04",
+      "statement": "Uma casa, uma praça e uma reserva têm árvores, mas as regras para cuidar delas são diferentes. Qual conclusão deve ser evitada?",
+      "options": [
+        "A árvore define o tipo do espaço.",
+        "Regras são iguais em qualquer lugar.",
+        "Elementos naturais não têm função.",
+        "Evite dizer que árvores tornam todos os lugares iguais."
+      ],
+      "correctAnswer": "Evite dizer que árvores tornam todos os lugares iguais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Classificar exige observar contexto, função e regras, não apenas elementos parecidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A árvore define o tipo do espaço.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_COMPARE_05",
+      "statement": "Uma casa, uma praça e uma reserva têm árvores, mas as regras para cuidar delas são diferentes. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira função, acesso e regra de cada espaço.",
+        "A árvore define o tipo do espaço.",
+        "Regras são iguais em qualquer lugar.",
+        "Elementos naturais não têm função."
+      ],
+      "correctAnswer": "Confira função, acesso e regra de cada espaço.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Classificar exige observar contexto, função e regras, não apenas elementos parecidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A árvore define o tipo do espaço.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SYNTHESIS_01",
+      "statement": "A turma prepara um guia com casa, escola, praça e área de conservação usando mapas, fotos públicas e placas. Como garantir uma conclusão responsável?",
+      "options": [
+        "O guia não precisa indicar regras.",
+        "Explicar diferenças de função, acesso e cuidado, indicar fontes e proteger a privacidade.",
+        "Todo espaço deve ter o mesmo acesso.",
+        "A área de conservação pode ser descrita sem fonte."
+      ],
+      "correctAnswer": "Explicar diferenças de função, acesso e cuidado, indicar fontes e proteger a privacidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve orientar o uso respeitoso sem transformar classificação em julgamento sobre pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O guia não precisa indicar regras.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SYNTHESIS_02",
+      "statement": "A turma prepara um guia com casa, escola, praça e área de conservação usando mapas, fotos públicas e placas. Que critério deve orientar a análise?",
+      "options": [
+        "O guia não precisa indicar regras.",
+        "Todo espaço deve ter o mesmo acesso.",
+        "Considere A síntese deve orientar o uso respeitoso sem transformar classificação em julgamento sobre pessoas.",
+        "A área de conservação pode ser descrita sem fonte."
+      ],
+      "correctAnswer": "Considere A síntese deve orientar o uso respeitoso sem transformar classificação em julgamento sobre pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve orientar o uso respeitoso sem transformar classificação em julgamento sobre pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O guia não precisa indicar regras.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SYNTHESIS_03",
+      "statement": "A turma prepara um guia com casa, escola, praça e área de conservação usando mapas, fotos públicas e placas. Como transferir esse raciocínio?",
+      "options": [
+        "O guia não precisa indicar regras.",
+        "Todo espaço deve ter o mesmo acesso.",
+        "A área de conservação pode ser descrita sem fonte.",
+        "Revise um guia acessível de espaços locais."
+      ],
+      "correctAnswer": "Revise um guia acessível de espaços locais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve orientar o uso respeitoso sem transformar classificação em julgamento sobre pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O guia não precisa indicar regras.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SYNTHESIS_04",
+      "statement": "A turma prepara um guia com casa, escola, praça e área de conservação usando mapas, fotos públicas e placas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite publicar dados pessoais ou recomendar acesso fora das regras.",
+        "O guia não precisa indicar regras.",
+        "Todo espaço deve ter o mesmo acesso.",
+        "A área de conservação pode ser descrita sem fonte."
+      ],
+      "correctAnswer": "Evite publicar dados pessoais ou recomendar acesso fora das regras.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve orientar o uso respeitoso sem transformar classificação em julgamento sobre pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O guia não precisa indicar regras.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v13-history-space-distinctions-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V13-HISTORY-SPACE-DISTINCTIONS_SYNTHESIS_05",
+      "statement": "A turma prepara um guia com casa, escola, praça e área de conservação usando mapas, fotos públicas e placas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O guia não precisa indicar regras.",
+        "Confira mapas, placas, finalidade, fontes e proteção de dados.",
+        "Todo espaço deve ter o mesmo acesso.",
+        "A área de conservação pode ser descrita sem fonte."
+      ],
+      "correctAnswer": "Confira mapas, placas, finalidade, fontes e proteção de dados.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A síntese deve orientar o uso respeitoso sem transformar classificação em julgamento sobre pessoas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O guia não precisa indicar regras.": [
+          "HISTORY_EF03HI10_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

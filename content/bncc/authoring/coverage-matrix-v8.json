@@ -16,9 +16,9 @@
     "authoringContextIsNotOfficialApproval": true,
     "noStudentPublication": true,
     "noProductionWrites": true,
-    "exactSourceVerificationCount": 559,
+    "exactSourceVerificationCount": 563,
     "canonicalMappingCount": 2,
-    "authoringContextCount": 8
+    "authoringContextCount": 12
   },
   "summary": {
     "totalOfficialNodes": 1723,
@@ -33,8 +33,8 @@
       "HUMAN_REVIEW_BLOCKED": 121,
       "MAPPED": 2
     },
-    "rowsWithAuthoringContext": 8,
-    "rowsWithExactSourceVerification": 559
+    "rowsWithAuthoringContext": 12,
+    "rowsWithExactSourceVerification": 563
   },
   "rows": [
     {
@@ -7709,17 +7709,28 @@
         "page": 413
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF03HI07_MEC_P413_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
         "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
         "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
-        "packages": [],
-        "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
+        "packages": [
+          {
+            "file": "v13-history-community-comparisons.json",
+            "contentId": "v13-history-community-comparisons",
+            "canonicalSkillCode": "AUTHORING_EF03HI07_HISTORY_COMMUNITIES",
+            "lesson": true,
+            "questionCount": 50,
+            "officialMappingStatus": "NOT_CLAIMED",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "publicationStatus": "STAGING",
+            "relation": "AUTHORING_CONTEXT_ONLY"
+          }
+        ],
+        "contentStatus": "AUTHORING_CONTEXT_PRESENT_REVIEW_REQUIRED",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
-          "AUTHORING_PACKAGE",
+          "CANONICAL_MAPPING_REVIEW",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
         ]
@@ -7743,17 +7754,28 @@
         "page": 413
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF03HI08_MEC_P413_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
         "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
         "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
-        "packages": [],
-        "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
+        "packages": [
+          {
+            "file": "v13-history-city-country-life.json",
+            "contentId": "v13-history-city-country-life",
+            "canonicalSkillCode": "AUTHORING_EF03HI08_HISTORY_CITY_COUNTRY_LIFE",
+            "lesson": true,
+            "questionCount": 50,
+            "officialMappingStatus": "NOT_CLAIMED",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "publicationStatus": "STAGING",
+            "relation": "AUTHORING_CONTEXT_ONLY"
+          }
+        ],
+        "contentStatus": "AUTHORING_CONTEXT_PRESENT_REVIEW_REQUIRED",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
-          "AUTHORING_PACKAGE",
+          "CANONICAL_MAPPING_REVIEW",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
         ]
@@ -7777,17 +7799,28 @@
         "page": 413
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF03HI09_MEC_P413_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
         "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
         "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
-        "packages": [],
-        "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
+        "packages": [
+          {
+            "file": "v13-history-public-spaces-map.json",
+            "contentId": "v13-history-public-spaces-map",
+            "canonicalSkillCode": "AUTHORING_EF03HI09_HISTORY_PUBLIC_SPACES",
+            "lesson": true,
+            "questionCount": 50,
+            "officialMappingStatus": "NOT_CLAIMED",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "publicationStatus": "STAGING",
+            "relation": "AUTHORING_CONTEXT_ONLY"
+          }
+        ],
+        "contentStatus": "AUTHORING_CONTEXT_PRESENT_REVIEW_REQUIRED",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
-          "AUTHORING_PACKAGE",
+          "CANONICAL_MAPPING_REVIEW",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
         ]
@@ -7811,17 +7844,28 @@
         "page": 413
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF03HI10_MEC_P413_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
         "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
         "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
-        "packages": [],
-        "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
+        "packages": [
+          {
+            "file": "v13-history-space-distinctions.json",
+            "contentId": "v13-history-space-distinctions",
+            "canonicalSkillCode": "AUTHORING_EF03HI10_HISTORY_SPACE_DISTINCTIONS",
+            "lesson": true,
+            "questionCount": 50,
+            "officialMappingStatus": "NOT_CLAIMED",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "publicationStatus": "STAGING",
+            "relation": "AUTHORING_CONTEXT_ONLY"
+          }
+        ],
+        "contentStatus": "AUTHORING_CONTEXT_PRESENT_REVIEW_REQUIRED",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
-          "AUTHORING_PACKAGE",
+          "CANONICAL_MAPPING_REVIEW",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
         ]
@@ -58708,5 +58752,5 @@
       }
     }
   ],
-  "matrixHash": "fa7a3cd7ce8b8114911a1bdedf78c1f4fbe5c6a4c8a143d4b6cd3a7e53453a92"
+  "matrixHash": "6b83eddc0593c8ce99001a43d1f5c62b0a13acaaa635948d4ee6616a28417ebe"
 }

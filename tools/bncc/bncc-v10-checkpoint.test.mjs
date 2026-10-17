@@ -10,14 +10,14 @@ const checkpoint = JSON.parse(fs.readFileSync(
 describe('BNCC V13 checkpoint', () => {
   it('keeps the current operation auditable and production-free', () => {
     expect(checkpoint.schemaVersion).toBe('tec-escola.bncc.campaign-checkpoint.v13');
-    expect(checkpoint.lastOperation.target).toEqual(['EF03HI02', 'EF03HI03', 'EF03HI04', 'EF03HI05', 'EF03HI06']);
+    expect(checkpoint.lastOperation.target).toEqual(['EF03HI02', 'EF03HI03', 'EF03HI04', 'EF03HI05', 'EF03HI06', 'EF03HI07', 'EF03HI08', 'EF03HI09', 'EF03HI10']);
     expect(checkpoint.lastOperation.result).toBe('STAGED_AUTHORING_CONTEXTS_CREATED');
     expect(checkpoint.lastOperation.mappingStatus).toBe('CANONICAL_GAP');
     expect(checkpoint.lastOperation.relationDecision).toBe('NOT_ASSERTED');
-    expect(checkpoint.inventory.exactSourceVerifications).toBe(559);
-    expect(checkpoint.inventory.newStagingPackagesInThisOperation).toBe(5);
-    expect(checkpoint.inventory.stagedQuestionsInThisOperation).toBe(250);
-    expect(checkpoint.inventory.authoringContextPackages).toBe(8);
+    expect(checkpoint.inventory.exactSourceVerifications).toBe(563);
+    expect(checkpoint.inventory.newStagingPackagesInThisOperation).toBe(9);
+    expect(checkpoint.inventory.stagedQuestionsInThisOperation).toBe(450);
+    expect(checkpoint.inventory.authoringContextPackages).toBe(12);
     expect(checkpoint.gates.productionWrites).toBe('NONE');
     expect(checkpoint.gates.productionDeploy).toBe('NO');
     expect(checkpoint.gates.remoteMigrations).toBe('NO');

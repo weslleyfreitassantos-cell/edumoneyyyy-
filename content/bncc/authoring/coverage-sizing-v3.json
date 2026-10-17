@@ -25,7 +25,7 @@
       "MAPPED": 2
     },
     "technicalDeepReadySequences": 78,
-    "v5QuestionTotal": 5856,
+    "v5QuestionTotal": 5956,
     "consolidatedQuestionTotal": 6678,
     "exactSourceVerificationCodes": [
       "EI01CG01",
@@ -586,7 +586,11 @@
       "EF03HI03",
       "EF03HI04",
       "EF03HI05",
-      "EF03HI06"
+      "EF03HI06",
+      "EF03HI07",
+      "EF03HI08",
+      "EF03HI09",
+      "EF03HI10"
     ]
   },
   "sizingMethodology": {
@@ -7161,7 +7165,7 @@
       "componentCode": "HI",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "FOUNDATIONAL",
       "complexityScore": 7,
       "technicalMinimumQuestions": 40,
@@ -7191,7 +7195,7 @@
       "componentCode": "HI",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "FOUNDATIONAL",
       "complexityScore": 5,
       "technicalMinimumQuestions": 40,
@@ -7218,7 +7222,7 @@
       "componentCode": "HI",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "MEDIUM",
       "complexityScore": 9,
       "technicalMinimumQuestions": 40,
@@ -7249,7 +7253,7 @@
       "componentCode": "HI",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "exactSourceVerified": false,
+      "exactSourceVerified": true,
       "complexityTier": "FOUNDATIONAL",
       "complexityScore": 6,
       "technicalMinimumQuestions": 40,
