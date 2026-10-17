@@ -6,13 +6,17 @@
   "recordedAt": "2026-10-17",
   "lastOperation": {
     "target": [
-      "EF02ER01",
-      "EF02ER02",
-      "EF02ER03",
-      "EF02ER04",
-      "EF02ER05",
-      "EF02ER06",
-      "EF02ER07"
+      "EF02GE01",
+      "EF02GE02",
+      "EF02GE03",
+      "EF02GE04",
+      "EF02GE05",
+      "EF02GE06",
+      "EF02GE07",
+      "EF02GE08",
+      "EF02GE09",
+      "EF02GE10",
+      "EF02GE11"
     ],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
@@ -26,18 +30,18 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 491,
+    "exactSourceVerifications": 502,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF02ER01_MEC_P447_V1",
+    "verificationId": "BNCC_EF02GE01_MEC_P375_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
   },
   "validation": {
-    "focusedTests": "PASS: 8 files, 13 tests",
+    "focusedTests": "PASS: 9 files, 15 tests",
     "bnccValidate": "PASS: catalog, coverage, mapping resolutions",
     "knowledgeFactoryV4": "PASS: 1723 official nodes, 78 sequences audited, 1721 queued gaps, 65 inactive units",
     "contentPackages": "PASS: 15 packages, 65 skills",
@@ -51,6 +55,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF02GE01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF02HI01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Continue with EF01MA01 or the next independent curricular gap; do not assert a relation or publish content until canonical mapping and pedagogical review are independently approved."
 }
