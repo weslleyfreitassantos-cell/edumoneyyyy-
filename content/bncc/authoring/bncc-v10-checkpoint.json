@@ -67,6 +67,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF09CI02_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF01CI01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
 }
