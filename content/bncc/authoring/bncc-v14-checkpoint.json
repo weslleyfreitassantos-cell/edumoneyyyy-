@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v14",
+  "campaignId": "TECESCOLA_BNCC_AUTONOMOUS_COMPLETION_ENGINE_V14",
+  "branch": "codex/bncc-question-first-adaptive-tutor-v5",
+  "head": "e4459d2d558ec4c990245d4096450a000c075737",
+  "recordedAt": "2026-10-17",
+  "lastOperation": {
+    "type": "GLOBAL_COMPLETION_QUEUE_AND_V14_STAGED_HISTORY_CONTENT",
+    "status": "PARTIAL_TECHNICAL_PROGRESS",
+    "result": "QUEUE_RECONCILED_AND_TWO_AUTHORING_CONTEXT_PACKAGES_STAGED",
+    "studentPublicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED"
+  },
+  "inventory": {
+    "officialNodes": 1723,
+    "auditedSequences": 78,
+    "priorTechnicalDeepReady": 78,
+    "pendingCoverageItems": 1721
+  },
+  "summary": {
+    "totalTasks": 1721,
+    "byState": {
+      "BLOCKED_CANONICAL_REVIEW": 502,
+      "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
+      "BLOCKED_SOURCE": 1160,
+      "CONTENT_TECHNICALLY_COMPLETE": 12
+    },
+    "byQueueState": {
+      "BLOCKED_CANONICAL_REVIEW": 514,
+      "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
+      "BLOCKED_SOURCE": 1160
+    },
+    "contentTechnicallyComplete": 12,
+    "canonicalMappingVerified": 0,
+    "readyForPedagogicalReview": 12,
+    "humanPedagogicalApproved": 0,
+    "publicationAuthorized": 0
+  },
+  "evidence": {
+    "queue": "content/bncc/authoring/completion-queue-v14.json",
+    "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
+    "priorInventory": "content/bncc/authoring/knowledge-factory-inventory-v4.json"
+  },
+  "gates": {
+    "contentMayBePreparedWithoutCanonicalMapping": true,
+    "relationForUnmappedContent": "AUTHORING_CONTEXT_ONLY",
+    "contentDefault": "STAGING_INACTIVE",
+    "pedagogicalReviewDefault": "PEDAGOGICAL_REVIEW_PENDING",
+    "publicationAuthorizationDefault": false,
+    "productionWrites": "NONE"
+  },
+  "nextTarget": "EI01CG01",
+  "checkpointHash": "5cbc5073c51a51e30340e4ebda656bb9e81f50ea7df8294241d8f2bbc7a95440"
+}

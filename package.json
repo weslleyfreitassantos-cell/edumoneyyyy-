@@ -200,6 +200,7 @@
     "bncc:knowledge-factory:v4": "node tools/bncc/knowledge-factory-v4.mjs",
     "bncc:validate-knowledge-factory:v4": "node tools/bncc/knowledge-factory-v4.mjs --check",
     "bncc:reconcile-progress": "node tools/bncc/reconcile-progress.mjs",
+    "bncc:completion-queue:v14": "node tools/bncc/build-completion-queue-v14.mjs",
     "check": "npm run routing:guard && npm run bncc:validate-knowledge-factory && npm run bncc:validate-knowledge-factory:v2 && npm run bncc:validate-knowledge-factory:v3 && npm run bncc:validate-knowledge-factory:v4 && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

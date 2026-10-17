@@ -1,0 +1,1272 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v14-history-work-leisure-change",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "relacoes_de_trabalho_e_lazer_no_tempo",
+  "canonicalSkillCode": "AUTHORING_EF03HI12_HISTORY_WORK_LEISURE_CHANGE",
+  "contentVersion": 14,
+  "lessonVersion": 14,
+  "expectedQuestionCount": 45,
+  "expectedContextCount": 45,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 5
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 12,
+    "B": 11,
+    "C": 11,
+    "D": 11
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 45,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V14_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI12",
+    "sourceVerificationRecord": "BNCC_EF03HI12_MEC_P413_V1",
+    "proposalId": "V14_AUTHORING_EF03HI12_HISTORY_WORK_LEISURE_CHANGE",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre trabalho, lazer, mudanças e permanências para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+  },
+  "lesson": {
+    "title": "Trabalho, lazer, mudanças e permanências",
+    "objective": "Comparar relações de trabalho e lazer em diferentes tempos e espaços, identificando mudanças, permanências, condições de acesso e limites das fontes.",
+    "summary": "Trabalho e lazer se organizam de acordo com tempo, espaço, recursos e condições sociais. Comparar épocas exige observar tanto o que mudou quanto o que permaneceu, sem idealizar o passado ou generalizar o presente.",
+    "explanation": "## O que investigar\nComparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "commonMistake": "Imaginar que o passado foi igual para todas as pessoas ou que toda mudança tecnológica ampliou o lazer de todos.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Organizar acontecimentos em ordem temporal.",
+      "Distinguir informação de avaliação em um relato."
+    ],
+    "keyConcepts": [
+      "trabalho",
+      "lazer",
+      "tempo",
+      "espaço",
+      "mudança",
+      "permanência",
+      "acesso",
+      "fonte"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v14-history-work-leisure-change-001",
+          "v14-history-work-leisure-change-002",
+          "v14-history-work-leisure-change-003",
+          "v14-history-work-leisure-change-004",
+          "v14-history-work-leisure-change-005"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v14-history-work-leisure-change-006",
+          "v14-history-work-leisure-change-007",
+          "v14-history-work-leisure-change-008",
+          "v14-history-work-leisure-change-009",
+          "v14-history-work-leisure-change-010",
+          "v14-history-work-leisure-change-011",
+          "v14-history-work-leisure-change-012",
+          "v14-history-work-leisure-change-013",
+          "v14-history-work-leisure-change-014",
+          "v14-history-work-leisure-change-015",
+          "v14-history-work-leisure-change-016",
+          "v14-history-work-leisure-change-017",
+          "v14-history-work-leisure-change-018",
+          "v14-history-work-leisure-change-019",
+          "v14-history-work-leisure-change-020"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v14-history-work-leisure-change-021",
+          "v14-history-work-leisure-change-022",
+          "v14-history-work-leisure-change-023",
+          "v14-history-work-leisure-change-024",
+          "v14-history-work-leisure-change-025",
+          "v14-history-work-leisure-change-026",
+          "v14-history-work-leisure-change-027",
+          "v14-history-work-leisure-change-028",
+          "v14-history-work-leisure-change-029",
+          "v14-history-work-leisure-change-030",
+          "v14-history-work-leisure-change-031",
+          "v14-history-work-leisure-change-032"
+        ]
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v14-history-work-leisure-change-033",
+          "v14-history-work-leisure-change-034",
+          "v14-history-work-leisure-change-035",
+          "v14-history-work-leisure-change-036",
+          "v14-history-work-leisure-change-037",
+          "v14-history-work-leisure-change-038",
+          "v14-history-work-leisure-change-039",
+          "v14-history-work-leisure-change-040"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v14-history-work-leisure-change-041",
+          "v14-history-work-leisure-change-042",
+          "v14-history-work-leisure-change-043",
+          "v14-history-work-leisure-change-044",
+          "v14-history-work-leisure-change-045"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v14-history-work-leisure-change-local-inquiry",
+        "title": "Investigação acessível da história local",
+        "objective": "Comparar relações de trabalho e lazer em diferentes tempos e espaços, identificando mudanças, permanências, condições de acesso e limites das fontes.",
+        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
+        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Fontes",
+            "emerging": "Não identifica a procedência.",
+            "developing": "Identifica parte das fontes com apoio.",
+            "proficient": "Registra tipo, autoria, período e procedência."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Mistura informações de fontes diferentes.",
+            "developing": "Compara alguns aspectos após orientação.",
+            "proficient": "Explica convergências, diferenças e lacunas."
+          },
+          {
+            "criterion": "Conclusão",
+            "emerging": "Generaliza além do registro.",
+            "developing": "Limita a conclusão com apoio.",
+            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+          }
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI12",
+        "descriptor": "Comparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "v14-history-work-leisure-change-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ROUTINE_01",
+      "statement": "Uma fotografia mostra pessoas reunidas em uma praça no domingo; um relato atual descreve um parque usado no mesmo dia. O que pode ser comparado?",
+      "options": [
+        "As formas de uso do tempo e do espaço de lazer, considerando as datas, as atividades e as condições registradas.",
+        "Domingo tem sempre o mesmo significado.",
+        "Uma fotografia mostra todos os moradores.",
+        "Lazer não depende do espaço."
+      ],
+      "correctAnswer": "As formas de uso do tempo e do espaço de lazer, considerando as datas, as atividades e as condições registradas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar lazer exige situar a fonte e observar práticas concretas, não apenas dizer que as pessoas “se divertiam”.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Domingo tem sempre o mesmo significado.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ROUTINE_02",
+      "statement": "Uma fotografia mostra pessoas reunidas em uma praça no domingo; um relato atual descreve um parque usado no mesmo dia. Que critério deve orientar a análise?",
+      "options": [
+        "Domingo tem sempre o mesmo significado.",
+        "Considere Comparar lazer exige situar a fonte e observar práticas concretas, não apenas dizer que as pessoas “se divertiam”.",
+        "Uma fotografia mostra todos os moradores.",
+        "Lazer não depende do espaço."
+      ],
+      "correctAnswer": "Considere Comparar lazer exige situar a fonte e observar práticas concretas, não apenas dizer que as pessoas “se divertiam”.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar lazer exige situar a fonte e observar práticas concretas, não apenas dizer que as pessoas “se divertiam”.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Domingo tem sempre o mesmo significado.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ROUTINE_03",
+      "statement": "Uma fotografia mostra pessoas reunidas em uma praça no domingo; um relato atual descreve um parque usado no mesmo dia. Como transferir esse raciocínio?",
+      "options": [
+        "Domingo tem sempre o mesmo significado.",
+        "Uma fotografia mostra todos os moradores.",
+        "Compare dois lugares de convivência.",
+        "Lazer não depende do espaço."
+      ],
+      "correctAnswer": "Compare dois lugares de convivência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar lazer exige situar a fonte e observar práticas concretas, não apenas dizer que as pessoas “se divertiam”.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Domingo tem sempre o mesmo significado.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ROUTINE_04",
+      "statement": "Uma fotografia mostra pessoas reunidas em uma praça no domingo; um relato atual descreve um parque usado no mesmo dia. Qual conclusão deve ser evitada?",
+      "options": [
+        "Domingo tem sempre o mesmo significado.",
+        "Uma fotografia mostra todos os moradores.",
+        "Lazer não depende do espaço.",
+        "Evite dizer que as duas imagens provam que todos tinham o mesmo lazer."
+      ],
+      "correctAnswer": "Evite dizer que as duas imagens provam que todos tinham o mesmo lazer.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar lazer exige situar a fonte e observar práticas concretas, não apenas dizer que as pessoas “se divertiam”.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Domingo tem sempre o mesmo significado.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ROUTINE_05",
+      "statement": "Uma fotografia mostra pessoas reunidas em uma praça no domingo; um relato atual descreve um parque usado no mesmo dia. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira data, local, atividades, participantes visíveis e informações ausentes.",
+        "Domingo tem sempre o mesmo significado.",
+        "Uma fotografia mostra todos os moradores.",
+        "Lazer não depende do espaço."
+      ],
+      "correctAnswer": "Confira data, local, atividades, participantes visíveis e informações ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar lazer exige situar a fonte e observar práticas concretas, não apenas dizer que as pessoas “se divertiam”.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Domingo tem sempre o mesmo significado.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORKTIME_01",
+      "statement": "Um depoimento antigo menciona longas jornadas e um registro atual informa horários de uma ocupação. Que relação pode ser investigada?",
+      "options": [
+        "Toda ocupação tem o mesmo horário.",
+        "Mudanças e permanências na duração e na organização do trabalho, respeitando as fontes e seus contextos.",
+        "O relato antigo não tem valor.",
+        "Horário explica sozinho as condições de trabalho."
+      ],
+      "correctAnswer": "Mudanças e permanências na duração e na organização do trabalho, respeitando as fontes e seus contextos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Horários são evidências situadas; não permitem concluir sozinhos sobre todas as ocupações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda ocupação tem o mesmo horário.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORKTIME_02",
+      "statement": "Um depoimento antigo menciona longas jornadas e um registro atual informa horários de uma ocupação. Que critério deve orientar a análise?",
+      "options": [
+        "Toda ocupação tem o mesmo horário.",
+        "O relato antigo não tem valor.",
+        "Considere Horários são evidências situadas; não permitem concluir sozinhos sobre todas as ocupações.",
+        "Horário explica sozinho as condições de trabalho."
+      ],
+      "correctAnswer": "Considere Horários são evidências situadas; não permitem concluir sozinhos sobre todas as ocupações.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Horários são evidências situadas; não permitem concluir sozinhos sobre todas as ocupações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda ocupação tem o mesmo horário.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORKTIME_03",
+      "statement": "Um depoimento antigo menciona longas jornadas e um registro atual informa horários de uma ocupação. Como transferir esse raciocínio?",
+      "options": [
+        "Toda ocupação tem o mesmo horário.",
+        "O relato antigo não tem valor.",
+        "Horário explica sozinho as condições de trabalho.",
+        "Compare horários de duas atividades sem usar dados pessoais."
+      ],
+      "correctAnswer": "Compare horários de duas atividades sem usar dados pessoais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Horários são evidências situadas; não permitem concluir sozinhos sobre todas as ocupações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda ocupação tem o mesmo horário.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORKTIME_04",
+      "statement": "Um depoimento antigo menciona longas jornadas e um registro atual informa horários de uma ocupação. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite afirmar que a jornada de uma pessoa representa todos os trabalhadores.",
+        "Toda ocupação tem o mesmo horário.",
+        "O relato antigo não tem valor.",
+        "Horário explica sozinho as condições de trabalho."
+      ],
+      "correctAnswer": "Evite afirmar que a jornada de uma pessoa representa todos os trabalhadores.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Horários são evidências situadas; não permitem concluir sozinhos sobre todas as ocupações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda ocupação tem o mesmo horário.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORKTIME_05",
+      "statement": "Um depoimento antigo menciona longas jornadas e um registro atual informa horários de uma ocupação. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Toda ocupação tem o mesmo horário.",
+        "Confira data, ocupação, jornada, autoria e contexto do registro.",
+        "O relato antigo não tem valor.",
+        "Horário explica sozinho as condições de trabalho."
+      ],
+      "correctAnswer": "Confira data, ocupação, jornada, autoria e contexto do registro.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Horários são evidências situadas; não permitem concluir sozinhos sobre todas as ocupações.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Toda ocupação tem o mesmo horário.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ACCESS_01",
+      "statement": "Um clube do passado cobrava entrada, enquanto uma praça atual oferece atividades gratuitas em alguns horários. Que aspecto da comparação é importante?",
+      "options": [
+        "Entrada gratuita resolve todas as barreiras.",
+        "Clube e praça têm as mesmas regras.",
+        "Analisar as condições de acesso e as regras de cada espaço, além das atividades oferecidas.",
+        "A atividade é igual para todos."
+      ],
+      "correctAnswer": "Analisar as condições de acesso e as regras de cada espaço, além das atividades oferecidas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Lazer não se define apenas pela existência de uma atividade; acesso, custo e regras também fazem parte da experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Entrada gratuita resolve todas as barreiras.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ACCESS_02",
+      "statement": "Um clube do passado cobrava entrada, enquanto uma praça atual oferece atividades gratuitas em alguns horários. Que critério deve orientar a análise?",
+      "options": [
+        "Entrada gratuita resolve todas as barreiras.",
+        "Clube e praça têm as mesmas regras.",
+        "A atividade é igual para todos.",
+        "Considere Lazer não se define apenas pela existência de uma atividade; acesso, custo e regras também fazem parte da experiência."
+      ],
+      "correctAnswer": "Considere Lazer não se define apenas pela existência de uma atividade; acesso, custo e regras também fazem parte da experiência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Lazer não se define apenas pela existência de uma atividade; acesso, custo e regras também fazem parte da experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Entrada gratuita resolve todas as barreiras.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ACCESS_03",
+      "statement": "Um clube do passado cobrava entrada, enquanto uma praça atual oferece atividades gratuitas em alguns horários. Como transferir esse raciocínio?",
+      "options": [
+        "Compare biblioteca, praça e clube.",
+        "Entrada gratuita resolve todas as barreiras.",
+        "Clube e praça têm as mesmas regras.",
+        "A atividade é igual para todos."
+      ],
+      "correctAnswer": "Compare biblioteca, praça e clube.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Lazer não se define apenas pela existência de uma atividade; acesso, custo e regras também fazem parte da experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Entrada gratuita resolve todas as barreiras.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ACCESS_04",
+      "statement": "Um clube do passado cobrava entrada, enquanto uma praça atual oferece atividades gratuitas em alguns horários. Qual conclusão deve ser evitada?",
+      "options": [
+        "Entrada gratuita resolve todas as barreiras.",
+        "Evite dizer que uma atividade gratuita é acessível para todas as pessoas.",
+        "Clube e praça têm as mesmas regras.",
+        "A atividade é igual para todos."
+      ],
+      "correctAnswer": "Evite dizer que uma atividade gratuita é acessível para todas as pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Lazer não se define apenas pela existência de uma atividade; acesso, custo e regras também fazem parte da experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Entrada gratuita resolve todas as barreiras.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_ACCESS_05",
+      "statement": "Um clube do passado cobrava entrada, enquanto uma praça atual oferece atividades gratuitas em alguns horários. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Entrada gratuita resolve todas as barreiras.",
+        "Clube e praça têm as mesmas regras.",
+        "Confira custo, horário, localização, regras e atividades.",
+        "A atividade é igual para todos."
+      ],
+      "correctAnswer": "Confira custo, horário, localização, regras e atividades.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Lazer não se define apenas pela existência de uma atividade; acesso, custo e regras também fazem parte da experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Entrada gratuita resolve todas as barreiras.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_TECHNOLOGY_01",
+      "statement": "Uma família registrava encontros por carta; hoje seus integrantes usam chamadas de vídeo para conversar. O que mudou e o que permaneceu?",
+      "options": [
+        "A tecnologia não muda nenhuma relação.",
+        "Carta nunca foi forma de lazer.",
+        "Chamada de vídeo elimina distância física.",
+        "Mudou o meio e o ritmo da comunicação, enquanto permaneceu a intenção de manter relações entre pessoas distantes."
+      ],
+      "correctAnswer": "Mudou o meio e o ritmo da comunicação, enquanto permaneceu a intenção de manter relações entre pessoas distantes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação equilibrada identifica função e tecnologia sem supor que o novo meio produza a mesma experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A tecnologia não muda nenhuma relação.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_TECHNOLOGY_02",
+      "statement": "Uma família registrava encontros por carta; hoje seus integrantes usam chamadas de vídeo para conversar. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Uma comparação equilibrada identifica função e tecnologia sem supor que o novo meio produza a mesma experiência.",
+        "A tecnologia não muda nenhuma relação.",
+        "Carta nunca foi forma de lazer.",
+        "Chamada de vídeo elimina distância física."
+      ],
+      "correctAnswer": "Considere Uma comparação equilibrada identifica função e tecnologia sem supor que o novo meio produza a mesma experiência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação equilibrada identifica função e tecnologia sem supor que o novo meio produza a mesma experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A tecnologia não muda nenhuma relação.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_TECHNOLOGY_03",
+      "statement": "Uma família registrava encontros por carta; hoje seus integrantes usam chamadas de vídeo para conversar. Como transferir esse raciocínio?",
+      "options": [
+        "A tecnologia não muda nenhuma relação.",
+        "Compare outras formas de comunicação.",
+        "Carta nunca foi forma de lazer.",
+        "Chamada de vídeo elimina distância física."
+      ],
+      "correctAnswer": "Compare outras formas de comunicação.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação equilibrada identifica função e tecnologia sem supor que o novo meio produza a mesma experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A tecnologia não muda nenhuma relação.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_TECHNOLOGY_04",
+      "statement": "Uma família registrava encontros por carta; hoje seus integrantes usam chamadas de vídeo para conversar. Qual conclusão deve ser evitada?",
+      "options": [
+        "A tecnologia não muda nenhuma relação.",
+        "Carta nunca foi forma de lazer.",
+        "Evite dizer que a carta e a chamada de vídeo têm exatamente o mesmo uso.",
+        "Chamada de vídeo elimina distância física."
+      ],
+      "correctAnswer": "Evite dizer que a carta e a chamada de vídeo têm exatamente o mesmo uso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação equilibrada identifica função e tecnologia sem supor que o novo meio produza a mesma experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A tecnologia não muda nenhuma relação.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_TECHNOLOGY_05",
+      "statement": "Uma família registrava encontros por carta; hoje seus integrantes usam chamadas de vídeo para conversar. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A tecnologia não muda nenhuma relação.",
+        "Carta nunca foi forma de lazer.",
+        "Chamada de vídeo elimina distância física.",
+        "Confira meio, tempo de espera, participantes e finalidade."
+      ],
+      "correctAnswer": "Confira meio, tempo de espera, participantes e finalidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma comparação equilibrada identifica função e tecnologia sem supor que o novo meio produza a mesma experiência.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A tecnologia não muda nenhuma relação.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORK-LEISURE_01",
+      "statement": "Uma pessoa trabalha em casa e participa de um curso on-line à noite, mas precisa compartilhar o mesmo equipamento com familiares. Que condição deve ser considerada?",
+      "options": [
+        "Que os limites entre trabalho, estudo e lazer dependem de tempo, espaço, equipamento e condições de acesso.",
+        "Casa garante tempo livre.",
+        "Todo uso de tela é lazer.",
+        "A atividade tem o mesmo sentido para todos."
+      ],
+      "correctAnswer": "Que os limites entre trabalho, estudo e lazer dependem de tempo, espaço, equipamento e condições de acesso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. As categorias ajudam a analisar a atividade, mas a experiência concreta depende das condições sociais e materiais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Casa garante tempo livre.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORK-LEISURE_02",
+      "statement": "Uma pessoa trabalha em casa e participa de um curso on-line à noite, mas precisa compartilhar o mesmo equipamento com familiares. Que critério deve orientar a análise?",
+      "options": [
+        "Casa garante tempo livre.",
+        "Considere As categorias ajudam a analisar a atividade, mas a experiência concreta depende das condições sociais e materiais.",
+        "Todo uso de tela é lazer.",
+        "A atividade tem o mesmo sentido para todos."
+      ],
+      "correctAnswer": "Considere As categorias ajudam a analisar a atividade, mas a experiência concreta depende das condições sociais e materiais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. As categorias ajudam a analisar a atividade, mas a experiência concreta depende das condições sociais e materiais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Casa garante tempo livre.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORK-LEISURE_03",
+      "statement": "Uma pessoa trabalha em casa e participa de um curso on-line à noite, mas precisa compartilhar o mesmo equipamento com familiares. Como transferir esse raciocínio?",
+      "options": [
+        "Casa garante tempo livre.",
+        "Todo uso de tela é lazer.",
+        "Analise outra rotina sem pedir relatos íntimos.",
+        "A atividade tem o mesmo sentido para todos."
+      ],
+      "correctAnswer": "Analise outra rotina sem pedir relatos íntimos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. As categorias ajudam a analisar a atividade, mas a experiência concreta depende das condições sociais e materiais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Casa garante tempo livre.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORK-LEISURE_04",
+      "statement": "Uma pessoa trabalha em casa e participa de um curso on-line à noite, mas precisa compartilhar o mesmo equipamento com familiares. Qual conclusão deve ser evitada?",
+      "options": [
+        "Casa garante tempo livre.",
+        "Todo uso de tela é lazer.",
+        "A atividade tem o mesmo sentido para todos.",
+        "Evite concluir que trabalhar em casa sempre aumenta o lazer."
+      ],
+      "correctAnswer": "Evite concluir que trabalhar em casa sempre aumenta o lazer.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. As categorias ajudam a analisar a atividade, mas a experiência concreta depende das condições sociais e materiais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Casa garante tempo livre.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_WORK-LEISURE_05",
+      "statement": "Uma pessoa trabalha em casa e participa de um curso on-line à noite, mas precisa compartilhar o mesmo equipamento com familiares. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira tempo disponível, equipamento, espaço e finalidade da atividade.",
+        "Casa garante tempo livre.",
+        "Todo uso de tela é lazer.",
+        "A atividade tem o mesmo sentido para todos."
+      ],
+      "correctAnswer": "Confira tempo disponível, equipamento, espaço e finalidade da atividade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. As categorias ajudam a analisar a atividade, mas a experiência concreta depende das condições sociais e materiais.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Casa garante tempo livre.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_PAST-IDEAL_01",
+      "statement": "Um texto afirma que no passado as pessoas tinham mais tempo livre porque não havia internet. Como avaliar essa afirmação?",
+      "options": [
+        "O passado é sempre mais tranquilo.",
+        "Indicar que a frase é uma hipótese limitada e buscar dados sobre trabalho, tarefas, deslocamento e lazer em diferentes grupos.",
+        "Internet é a única causa da falta de lazer.",
+        "Uma lembrança basta para todos os grupos."
+      ],
+      "correctAnswer": "Indicar que a frase é uma hipótese limitada e buscar dados sobre trabalho, tarefas, deslocamento e lazer em diferentes grupos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A ausência de uma tecnologia não prova que havia mais lazer; é preciso comparar condições e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O passado é sempre mais tranquilo.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_PAST-IDEAL_02",
+      "statement": "Um texto afirma que no passado as pessoas tinham mais tempo livre porque não havia internet. Que critério deve orientar a análise?",
+      "options": [
+        "O passado é sempre mais tranquilo.",
+        "Internet é a única causa da falta de lazer.",
+        "Considere A ausência de uma tecnologia não prova que havia mais lazer; é preciso comparar condições e fontes.",
+        "Uma lembrança basta para todos os grupos."
+      ],
+      "correctAnswer": "Considere A ausência de uma tecnologia não prova que havia mais lazer; é preciso comparar condições e fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A ausência de uma tecnologia não prova que havia mais lazer; é preciso comparar condições e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O passado é sempre mais tranquilo.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_PAST-IDEAL_03",
+      "statement": "Um texto afirma que no passado as pessoas tinham mais tempo livre porque não havia internet. Como transferir esse raciocínio?",
+      "options": [
+        "O passado é sempre mais tranquilo.",
+        "Internet é a única causa da falta de lazer.",
+        "Uma lembrança basta para todos os grupos.",
+        "Avalie outra afirmação sobre o passado."
+      ],
+      "correctAnswer": "Avalie outra afirmação sobre o passado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A ausência de uma tecnologia não prova que havia mais lazer; é preciso comparar condições e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O passado é sempre mais tranquilo.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_PAST-IDEAL_04",
+      "statement": "Um texto afirma que no passado as pessoas tinham mais tempo livre porque não havia internet. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite aceitar a idealização sem examinar o trabalho e o acesso.",
+        "O passado é sempre mais tranquilo.",
+        "Internet é a única causa da falta de lazer.",
+        "Uma lembrança basta para todos os grupos."
+      ],
+      "correctAnswer": "Evite aceitar a idealização sem examinar o trabalho e o acesso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A ausência de uma tecnologia não prova que havia mais lazer; é preciso comparar condições e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O passado é sempre mais tranquilo.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_PAST-IDEAL_05",
+      "statement": "Um texto afirma que no passado as pessoas tinham mais tempo livre porque não havia internet. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "O passado é sempre mais tranquilo.",
+        "Confira autoria, período, grupos considerados e evidências de tempo livre.",
+        "Internet é a única causa da falta de lazer.",
+        "Uma lembrança basta para todos os grupos."
+      ],
+      "correctAnswer": "Confira autoria, período, grupos considerados e evidências de tempo livre.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A ausência de uma tecnologia não prova que havia mais lazer; é preciso comparar condições e fontes.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O passado é sempre mais tranquilo.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SPACE_01",
+      "statement": "Uma quadra escolar era usada apenas por uma turma em um registro antigo e hoje possui horários compartilhados. Que mudança pode ser identificada?",
+      "options": [
+        "Horário não é parte da história.",
+        "Compartilhar elimina a função da quadra.",
+        "Uma mudança na organização e no acesso ao espaço, mantendo a função de prática e convivência.",
+        "A turma antiga usava o espaço inteiro."
+      ],
+      "correctAnswer": "Uma mudança na organização e no acesso ao espaço, mantendo a função de prática e convivência.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O mesmo espaço pode conservar uma função e mudar suas regras de uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Horário não é parte da história.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SPACE_02",
+      "statement": "Uma quadra escolar era usada apenas por uma turma em um registro antigo e hoje possui horários compartilhados. Que critério deve orientar a análise?",
+      "options": [
+        "Horário não é parte da história.",
+        "Compartilhar elimina a função da quadra.",
+        "A turma antiga usava o espaço inteiro.",
+        "Considere O mesmo espaço pode conservar uma função e mudar suas regras de uso."
+      ],
+      "correctAnswer": "Considere O mesmo espaço pode conservar uma função e mudar suas regras de uso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O mesmo espaço pode conservar uma função e mudar suas regras de uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Horário não é parte da história.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SPACE_03",
+      "statement": "Uma quadra escolar era usada apenas por uma turma em um registro antigo e hoje possui horários compartilhados. Como transferir esse raciocínio?",
+      "options": [
+        "Compare horários de uma biblioteca ou laboratório.",
+        "Horário não é parte da história.",
+        "Compartilhar elimina a função da quadra.",
+        "A turma antiga usava o espaço inteiro."
+      ],
+      "correctAnswer": "Compare horários de uma biblioteca ou laboratório.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O mesmo espaço pode conservar uma função e mudar suas regras de uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Horário não é parte da história.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SPACE_04",
+      "statement": "Uma quadra escolar era usada apenas por uma turma em um registro antigo e hoje possui horários compartilhados. Qual conclusão deve ser evitada?",
+      "options": [
+        "Horário não é parte da história.",
+        "Evite dizer que a função permaneceu exatamente igual.",
+        "Compartilhar elimina a função da quadra.",
+        "A turma antiga usava o espaço inteiro."
+      ],
+      "correctAnswer": "Evite dizer que a função permaneceu exatamente igual.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O mesmo espaço pode conservar uma função e mudar suas regras de uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Horário não é parte da história.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SPACE_05",
+      "statement": "Uma quadra escolar era usada apenas por uma turma em um registro antigo e hoje possui horários compartilhados. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Horário não é parte da história.",
+        "Compartilhar elimina a função da quadra.",
+        "Confira registros de uso, horários, regras e atividades.",
+        "A turma antiga usava o espaço inteiro."
+      ],
+      "correctAnswer": "Confira registros de uso, horários, regras e atividades.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O mesmo espaço pode conservar uma função e mudar suas regras de uso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Horário não é parte da história.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_MISSING_01",
+      "statement": "Um álbum mostra apenas festas de uma família em uma década, sem registrar dias de trabalho ou pessoas que não participavam. Que limite deve ser apontado?",
+      "options": [
+        "Álbuns não são fontes.",
+        "Toda festa aparece no álbum.",
+        "O que não foi fotografado não aconteceu.",
+        "O álbum documenta momentos escolhidos de lazer e não representa todas as experiências da época."
+      ],
+      "correctAnswer": "O álbum documenta momentos escolhidos de lazer e não representa todas as experiências da época.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes pessoais são úteis, mas têm recorte de autoria, seleção e memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Álbuns não são fontes.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_MISSING_02",
+      "statement": "Um álbum mostra apenas festas de uma família em uma década, sem registrar dias de trabalho ou pessoas que não participavam. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Fontes pessoais são úteis, mas têm recorte de autoria, seleção e memória.",
+        "Álbuns não são fontes.",
+        "Toda festa aparece no álbum.",
+        "O que não foi fotografado não aconteceu."
+      ],
+      "correctAnswer": "Considere Fontes pessoais são úteis, mas têm recorte de autoria, seleção e memória.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes pessoais são úteis, mas têm recorte de autoria, seleção e memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Álbuns não são fontes.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_MISSING_03",
+      "statement": "Um álbum mostra apenas festas de uma família em uma década, sem registrar dias de trabalho ou pessoas que não participavam. Como transferir esse raciocínio?",
+      "options": [
+        "Álbuns não são fontes.",
+        "Aponte limites em um álbum ou postagem pública.",
+        "Toda festa aparece no álbum.",
+        "O que não foi fotografado não aconteceu."
+      ],
+      "correctAnswer": "Aponte limites em um álbum ou postagem pública.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes pessoais são úteis, mas têm recorte de autoria, seleção e memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Álbuns não são fontes.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_MISSING_04",
+      "statement": "Um álbum mostra apenas festas de uma família em uma década, sem registrar dias de trabalho ou pessoas que não participavam. Qual conclusão deve ser evitada?",
+      "options": [
+        "Álbuns não são fontes.",
+        "Toda festa aparece no álbum.",
+        "Evite generalizar o conteúdo para toda a comunidade.",
+        "O que não foi fotografado não aconteceu."
+      ],
+      "correctAnswer": "Evite generalizar o conteúdo para toda a comunidade.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes pessoais são úteis, mas têm recorte de autoria, seleção e memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Álbuns não são fontes.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_MISSING_05",
+      "statement": "Um álbum mostra apenas festas de uma família em uma década, sem registrar dias de trabalho ou pessoas que não participavam. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Álbuns não são fontes.",
+        "Toda festa aparece no álbum.",
+        "O que não foi fotografado não aconteceu.",
+        "Confira autoria, seleção das imagens, período e pessoas ausentes."
+      ],
+      "correctAnswer": "Confira autoria, seleção das imagens, período e pessoas ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Fontes pessoais são úteis, mas têm recorte de autoria, seleção e memória.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Álbuns não são fontes.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SYNTHESIS_01",
+      "statement": "Uma pesquisa reúne horários de trabalho, relatos de lazer e mapas de espaços de convivência de duas épocas. Como apresentar a conclusão?",
+      "options": [
+        "Apontar mudanças e permanências, relacionar acesso e organização e indicar quais conclusões dependem de novas fontes.",
+        "Uma fonte basta para comparar épocas.",
+        "Mudança significa melhora para todos.",
+        "Lazer não tem relação com trabalho."
+      ],
+      "correctAnswer": "Apontar mudanças e permanências, relacionar acesso e organização e indicar quais conclusões dependem de novas fontes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve ser proporcional ao conjunto de evidências e explicitar diferenças entre grupos e períodos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma fonte basta para comparar épocas.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SYNTHESIS_02",
+      "statement": "Uma pesquisa reúne horários de trabalho, relatos de lazer e mapas de espaços de convivência de duas épocas. Que critério deve orientar a análise?",
+      "options": [
+        "Uma fonte basta para comparar épocas.",
+        "Considere A conclusão deve ser proporcional ao conjunto de evidências e explicitar diferenças entre grupos e períodos.",
+        "Mudança significa melhora para todos.",
+        "Lazer não tem relação com trabalho."
+      ],
+      "correctAnswer": "Considere A conclusão deve ser proporcional ao conjunto de evidências e explicitar diferenças entre grupos e períodos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve ser proporcional ao conjunto de evidências e explicitar diferenças entre grupos e períodos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma fonte basta para comparar épocas.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SYNTHESIS_03",
+      "statement": "Uma pesquisa reúne horários de trabalho, relatos de lazer e mapas de espaços de convivência de duas épocas. Como transferir esse raciocínio?",
+      "options": [
+        "Uma fonte basta para comparar épocas.",
+        "Mudança significa melhora para todos.",
+        "Revise uma conclusão sobre transporte e tempo livre.",
+        "Lazer não tem relação com trabalho."
+      ],
+      "correctAnswer": "Revise uma conclusão sobre transporte e tempo livre.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve ser proporcional ao conjunto de evidências e explicitar diferenças entre grupos e períodos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma fonte basta para comparar épocas.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SYNTHESIS_04",
+      "statement": "Uma pesquisa reúne horários de trabalho, relatos de lazer e mapas de espaços de convivência de duas épocas. Qual conclusão deve ser evitada?",
+      "options": [
+        "Uma fonte basta para comparar épocas.",
+        "Mudança significa melhora para todos.",
+        "Lazer não tem relação com trabalho.",
+        "Evite dizer que uma época foi melhor para todas as pessoas."
+      ],
+      "correctAnswer": "Evite dizer que uma época foi melhor para todas as pessoas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve ser proporcional ao conjunto de evidências e explicitar diferenças entre grupos e períodos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma fonte basta para comparar épocas.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-leisure-change-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V14-HISTORY-WORK-LEISURE-CHANGE_SYNTHESIS_05",
+      "statement": "Uma pesquisa reúne horários de trabalho, relatos de lazer e mapas de espaços de convivência de duas épocas. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira fontes, períodos, atividades, acesso, mudanças e lacunas.",
+        "Uma fonte basta para comparar épocas.",
+        "Mudança significa melhora para todos.",
+        "Lazer não tem relação com trabalho."
+      ],
+      "correctAnswer": "Confira fontes, períodos, atividades, acesso, mudanças e lacunas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A conclusão deve ser proporcional ao conjunto de evidências e explicitar diferenças entre grupos e períodos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Uma fonte basta para comparar épocas.": [
+          "HISTORY_EF03HI12_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}

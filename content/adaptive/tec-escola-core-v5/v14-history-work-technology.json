@@ -1,0 +1,1392 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentId": "v14-history-work-technology",
+  "subject": "HISTORY",
+  "domain": "HISTORICAL_INTERPRETATION",
+  "topic": "formas_de_trabalho_cidade_campo_e_tecnologia",
+  "canonicalSkillCode": "AUTHORING_EF03HI11_HISTORY_WORK_TECHNOLOGY",
+  "contentVersion": 14,
+  "lessonVersion": 14,
+  "expectedQuestionCount": 50,
+  "expectedContextCount": 50,
+  "expectedPurposeCounts": {
+    "PROBE": 5,
+    "PRACTICE": 15,
+    "TRANSFER": 12,
+    "LOCK_IN": 8,
+    "REVIEW": 10
+  },
+  "expectedAnswerPositionCounts": {
+    "A": 13,
+    "B": 13,
+    "C": 12,
+    "D": 12
+  },
+  "active": false,
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING",
+  "contentAuthoringStatus": "AUTHORED",
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "newQuestions": 50,
+    "reusedQuestionsCountedAsNew": false,
+    "expansionStatus": "AUTHORIAL_V14_WITH_PENDING_CANONICAL_REVIEW"
+  },
+  "sourceContext": {
+    "officialCode": "EF03HI11",
+    "sourceVerificationRecord": "BNCC_EF03HI11_MEC_P413_V1",
+    "proposalId": "V14_AUTHORING_EF03HI11_HISTORY_WORK_TECHNOLOGY",
+    "mappingStatus": "CANONICAL_GAP",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "relationDecision": "NOT_ASSERTED",
+    "authoringPurpose": "Desenvolver materiais autorais sobre trabalho, cidade, campo e tecnologia para revisão humana.",
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+  },
+  "lesson": {
+    "title": "Trabalho, cidade, campo e tecnologia",
+    "objective": "Identificar e comparar formas de trabalho na cidade e no campo, relacionando ferramentas, organização, saberes e mudanças tecnológicas sem hierarquizar os contextos.",
+    "summary": "O trabalho acontece em diferentes lugares e depende de conhecimentos, ferramentas, relações e condições. A tecnologia pode mudar tarefas e ritmos, mas não torna um contexto automaticamente melhor ou mais simples.",
+    "explanation": "## O que investigar\nIdentificar diferenças entre formas de trabalho realizadas na cidade e no campo, considerando também o uso da tecnologia nesses diferentes contextos.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "commonMistake": "Tratar cidade e campo como opostos fixos, considerar tecnologia apenas como aparelho eletrônico ou concluir que uma ferramenta elimina todo o conhecimento do trabalhador.",
+    "tips": [
+      "Defina lugar, acontecimento e período antes de comparar.",
+      "Identifique autoria, tipo e procedência de cada fonte.",
+      "Separe observação, interpretação e avaliação.",
+      "Registre lacunas e procure fontes complementares responsáveis.",
+      "Respeite a autodenominação e a diversidade dos grupos envolvidos."
+    ],
+    "estimatedMinutes": 35,
+    "priorKnowledge": [
+      "Reconhecer diferenças entre cidade e campo.",
+      "Descrever a função de ferramentas em uma atividade."
+    ],
+    "keyConcepts": [
+      "trabalho",
+      "cidade",
+      "campo",
+      "tecnologia",
+      "ferramenta",
+      "organização",
+      "mudança",
+      "permanência"
+    ],
+    "progression": [
+      {
+        "stage": "DIAGNOSTIC",
+        "focus": "Reconhecer fontes, grupos e informações explícitas.",
+        "questionIds": [
+          "v14-history-work-technology-001",
+          "v14-history-work-technology-002",
+          "v14-history-work-technology-003",
+          "v14-history-work-technology-004",
+          "v14-history-work-technology-005"
+        ]
+      },
+      {
+        "stage": "PRACTICE",
+        "focus": "Interpretar, comparar e delimitar evidências.",
+        "questionIds": [
+          "v14-history-work-technology-006",
+          "v14-history-work-technology-007",
+          "v14-history-work-technology-008",
+          "v14-history-work-technology-009",
+          "v14-history-work-technology-010",
+          "v14-history-work-technology-011",
+          "v14-history-work-technology-012",
+          "v14-history-work-technology-013",
+          "v14-history-work-technology-014",
+          "v14-history-work-technology-015",
+          "v14-history-work-technology-016",
+          "v14-history-work-technology-017",
+          "v14-history-work-technology-018",
+          "v14-history-work-technology-019",
+          "v14-history-work-technology-020"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar os critérios a novos casos locais.",
+        "questionIds": [
+          "v14-history-work-technology-021",
+          "v14-history-work-technology-022",
+          "v14-history-work-technology-023",
+          "v14-history-work-technology-024",
+          "v14-history-work-technology-025",
+          "v14-history-work-technology-026",
+          "v14-history-work-technology-027",
+          "v14-history-work-technology-028",
+          "v14-history-work-technology-029",
+          "v14-history-work-technology-030",
+          "v14-history-work-technology-031",
+          "v14-history-work-technology-032"
+        ]
+      },
+      {
+        "stage": "LOCK_IN",
+        "focus": "Revisar conclusões excessivas e corrigir generalizações.",
+        "questionIds": [
+          "v14-history-work-technology-033",
+          "v14-history-work-technology-034",
+          "v14-history-work-technology-035",
+          "v14-history-work-technology-036",
+          "v14-history-work-technology-037",
+          "v14-history-work-technology-038",
+          "v14-history-work-technology-039",
+          "v14-history-work-technology-040"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar fontes, perspectivas e limites em sínteses.",
+        "questionIds": [
+          "v14-history-work-technology-041",
+          "v14-history-work-technology-042",
+          "v14-history-work-technology-043",
+          "v14-history-work-technology-044",
+          "v14-history-work-technology-045",
+          "v14-history-work-technology-046",
+          "v14-history-work-technology-047",
+          "v14-history-work-technology-048",
+          "v14-history-work-technology-049",
+          "v14-history-work-technology-050"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "SOURCE_SCOPE",
+        "text": "Toda fonte mostra um recorte: identifique o que ela registra e o que ela não pode provar sozinha."
+      },
+      {
+        "trigger": "PERSPECTIVE",
+        "text": "Pergunte quem fala, de qual posição e sobre qual experiência antes de transformar um relato em generalização."
+      },
+      {
+        "trigger": "LOCAL_CONTEXT",
+        "text": "Ligue o acontecimento ao lugar e ao tempo, preservando as vozes e os significados dos grupos envolvidos."
+      }
+    ],
+    "remediations": [
+      {
+        "id": "SOURCE_TABLE",
+        "misconception": "Misturar fonte, fato e hipótese.",
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+      },
+      {
+        "id": "PERSPECTIVE_TABLE",
+        "misconception": "Tratar um grupo como uma voz única.",
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+      },
+      {
+        "id": "CLAIM_REVIEW",
+        "misconception": "Escrever conclusão maior que a evidência.",
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "v14-history-work-technology-local-inquiry",
+        "title": "Investigação acessível da história local",
+        "objective": "Identificar e comparar formas de trabalho na cidade e no campo, relacionando ferramentas, organização, saberes e mudanças tecnológicas sem hierarquizar os contextos.",
+        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "materials": [
+          "Duas ou três fontes com data e procedência",
+          "Tabela ou linha do tempo acessível",
+          "Mapa, imagem ou áudio com descrição/transcrição"
+        ],
+        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
+        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
+        "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
+        "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
+        "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
+        "rubric": [
+          {
+            "criterion": "Fontes",
+            "emerging": "Não identifica a procedência.",
+            "developing": "Identifica parte das fontes com apoio.",
+            "proficient": "Registra tipo, autoria, período e procedência."
+          },
+          {
+            "criterion": "Comparação",
+            "emerging": "Mistura informações de fontes diferentes.",
+            "developing": "Compara alguns aspectos após orientação.",
+            "proficient": "Explica convergências, diferenças e lacunas."
+          },
+          {
+            "criterion": "Conclusão",
+            "emerging": "Generaliza além do registro.",
+            "developing": "Limita a conclusão com apoio.",
+            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+          }
+        ]
+      }
+    ],
+    "sourceDossier": [
+      {
+        "sourceType": "OFFICIAL_CURRICULUM",
+        "sourceId": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413,
+        "officialCode": "EF03HI11",
+        "descriptor": "Identificar diferenças entre formas de trabalho realizadas na cidade e no campo, considerando também o uso da tecnologia nesses diferentes contextos.",
+        "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "v14-history-work-technology-001",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_PLACE_01",
+      "statement": "Uma pessoa trabalha em uma horta próxima à cidade, enquanto outra organiza entregas em um galpão urbano. O que a comparação deve considerar?",
+      "options": [
+        "As tarefas, os lugares, os recursos e a organização do trabalho, sem concluir que um trabalho pertence somente a um tipo de espaço.",
+        "O nome do bairro basta para explicar o trabalho.",
+        "A cidade não depende do campo.",
+        "Toda horta é trabalho doméstico."
+      ],
+      "correctAnswer": "As tarefas, os lugares, os recursos e a organização do trabalho, sem concluir que um trabalho pertence somente a um tipo de espaço.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo podem se relacionar; o local da atividade não explica sozinho todas as formas de trabalho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O nome do bairro basta para explicar o trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-002",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_PLACE_02",
+      "statement": "Uma pessoa trabalha em uma horta próxima à cidade, enquanto outra organiza entregas em um galpão urbano. Que critério deve orientar a análise?",
+      "options": [
+        "O nome do bairro basta para explicar o trabalho.",
+        "Considere Cidade e campo podem se relacionar; o local da atividade não explica sozinho todas as formas de trabalho.",
+        "A cidade não depende do campo.",
+        "Toda horta é trabalho doméstico."
+      ],
+      "correctAnswer": "Considere Cidade e campo podem se relacionar; o local da atividade não explica sozinho todas as formas de trabalho.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo podem se relacionar; o local da atividade não explica sozinho todas as formas de trabalho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O nome do bairro basta para explicar o trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-003",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LOCATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_PLACE_03",
+      "statement": "Uma pessoa trabalha em uma horta próxima à cidade, enquanto outra organiza entregas em um galpão urbano. Como transferir esse raciocínio?",
+      "options": [
+        "O nome do bairro basta para explicar o trabalho.",
+        "A cidade não depende do campo.",
+        "Compare uma feira, uma oficina e uma horta.",
+        "Toda horta é trabalho doméstico."
+      ],
+      "correctAnswer": "Compare uma feira, uma oficina e uma horta.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo podem se relacionar; o local da atividade não explica sozinho todas as formas de trabalho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O nome do bairro basta para explicar o trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-004",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_PLACE_04",
+      "statement": "Uma pessoa trabalha em uma horta próxima à cidade, enquanto outra organiza entregas em um galpão urbano. Qual conclusão deve ser evitada?",
+      "options": [
+        "O nome do bairro basta para explicar o trabalho.",
+        "A cidade não depende do campo.",
+        "Toda horta é trabalho doméstico.",
+        "Evite dizer que toda atividade da cidade é industrial e toda atividade do campo é manual."
+      ],
+      "correctAnswer": "Evite dizer que toda atividade da cidade é industrial e toda atividade do campo é manual.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo podem se relacionar; o local da atividade não explica sozinho todas as formas de trabalho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O nome do bairro basta para explicar o trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-005",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_PLACE_05",
+      "statement": "Uma pessoa trabalha em uma horta próxima à cidade, enquanto outra organiza entregas em um galpão urbano. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira local, tarefa, recursos, pessoas envolvidas e destino da produção.",
+        "O nome do bairro basta para explicar o trabalho.",
+        "A cidade não depende do campo.",
+        "Toda horta é trabalho doméstico."
+      ],
+      "correctAnswer": "Confira local, tarefa, recursos, pessoas envolvidas e destino da produção.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Cidade e campo podem se relacionar; o local da atividade não explica sozinho todas as formas de trabalho.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O nome do bairro basta para explicar o trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-006",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_TOOL_01",
+      "statement": "Uma agricultora usa enxada, sementes selecionadas e um aplicativo que informa a previsão do tempo. Como identificar a tecnologia nessa atividade?",
+      "options": [
+        "A enxada não envolve tecnologia.",
+        "Reconhecer ferramentas, conhecimentos e recursos digitais como meios que apoiam decisões e tarefas diferentes.",
+        "A previsão decide tudo sozinha.",
+        "Tecnologia só existe em fábricas."
+      ],
+      "correctAnswer": "Reconhecer ferramentas, conhecimentos e recursos digitais como meios que apoiam decisões e tarefas diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia inclui técnicas, ferramentas, conhecimentos e sistemas, não apenas telas ou máquinas novas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A enxada não envolve tecnologia.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-007",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_TOOL_02",
+      "statement": "Uma agricultora usa enxada, sementes selecionadas e um aplicativo que informa a previsão do tempo. Que critério deve orientar a análise?",
+      "options": [
+        "A enxada não envolve tecnologia.",
+        "A previsão decide tudo sozinha.",
+        "Considere Tecnologia inclui técnicas, ferramentas, conhecimentos e sistemas, não apenas telas ou máquinas novas.",
+        "Tecnologia só existe em fábricas."
+      ],
+      "correctAnswer": "Considere Tecnologia inclui técnicas, ferramentas, conhecimentos e sistemas, não apenas telas ou máquinas novas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia inclui técnicas, ferramentas, conhecimentos e sistemas, não apenas telas ou máquinas novas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A enxada não envolve tecnologia.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-008",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_TOOL_03",
+      "statement": "Uma agricultora usa enxada, sementes selecionadas e um aplicativo que informa a previsão do tempo. Como transferir esse raciocínio?",
+      "options": [
+        "A enxada não envolve tecnologia.",
+        "A previsão decide tudo sozinha.",
+        "Tecnologia só existe em fábricas.",
+        "Identifique tecnologias em uma padaria ou oficina."
+      ],
+      "correctAnswer": "Identifique tecnologias em uma padaria ou oficina.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia inclui técnicas, ferramentas, conhecimentos e sistemas, não apenas telas ou máquinas novas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A enxada não envolve tecnologia.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-009",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_TOOL_04",
+      "statement": "Uma agricultora usa enxada, sementes selecionadas e um aplicativo que informa a previsão do tempo. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que somente o aplicativo é tecnologia.",
+        "A enxada não envolve tecnologia.",
+        "A previsão decide tudo sozinha.",
+        "Tecnologia só existe em fábricas."
+      ],
+      "correctAnswer": "Evite dizer que somente o aplicativo é tecnologia.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia inclui técnicas, ferramentas, conhecimentos e sistemas, não apenas telas ou máquinas novas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A enxada não envolve tecnologia.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-010",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_TOOL_05",
+      "statement": "Uma agricultora usa enxada, sementes selecionadas e um aplicativo que informa a previsão do tempo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A enxada não envolve tecnologia.",
+        "Confira função de cada recurso e decisão que ele apoia.",
+        "A previsão decide tudo sozinha.",
+        "Tecnologia só existe em fábricas."
+      ],
+      "correctAnswer": "Confira função de cada recurso e decisão que ele apoia.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Tecnologia inclui técnicas, ferramentas, conhecimentos e sistemas, não apenas telas ou máquinas novas.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A enxada não envolve tecnologia.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-011",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ORGANIZATION_01",
+      "statement": "Uma cooperativa divide etapas entre plantio, colheita, transporte e venda de alimentos. O que a divisão das etapas mostra?",
+      "options": [
+        "Transporte não faz parte do trabalho.",
+        "A venda acontece antes do plantio.",
+        "Que diferentes pessoas e tarefas podem se organizar para produzir e fazer circular um produto.",
+        "Uma cooperativa tem uma única tarefa."
+      ],
+      "correctAnswer": "Que diferentes pessoas e tarefas podem se organizar para produzir e fazer circular um produto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Formas de trabalho também se diferenciam pela organização das tarefas e pelas relações entre quem participa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Transporte não faz parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-012",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ORGANIZATION_02",
+      "statement": "Uma cooperativa divide etapas entre plantio, colheita, transporte e venda de alimentos. Que critério deve orientar a análise?",
+      "options": [
+        "Transporte não faz parte do trabalho.",
+        "A venda acontece antes do plantio.",
+        "Uma cooperativa tem uma única tarefa.",
+        "Considere Formas de trabalho também se diferenciam pela organização das tarefas e pelas relações entre quem participa."
+      ],
+      "correctAnswer": "Considere Formas de trabalho também se diferenciam pela organização das tarefas e pelas relações entre quem participa.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Formas de trabalho também se diferenciam pela organização das tarefas e pelas relações entre quem participa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Transporte não faz parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-013",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ORGANIZATION_03",
+      "statement": "Uma cooperativa divide etapas entre plantio, colheita, transporte e venda de alimentos. Como transferir esse raciocínio?",
+      "options": [
+        "Compare etapas de um alimento ou objeto usado na escola.",
+        "Transporte não faz parte do trabalho.",
+        "A venda acontece antes do plantio.",
+        "Uma cooperativa tem uma única tarefa."
+      ],
+      "correctAnswer": "Compare etapas de um alimento ou objeto usado na escola.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Formas de trabalho também se diferenciam pela organização das tarefas e pelas relações entre quem participa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Transporte não faz parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-014",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ORGANIZATION_04",
+      "statement": "Uma cooperativa divide etapas entre plantio, colheita, transporte e venda de alimentos. Qual conclusão deve ser evitada?",
+      "options": [
+        "Transporte não faz parte do trabalho.",
+        "Evite afirmar que apenas quem produz diretamente realiza trabalho.",
+        "A venda acontece antes do plantio.",
+        "Uma cooperativa tem uma única tarefa."
+      ],
+      "correctAnswer": "Evite afirmar que apenas quem produz diretamente realiza trabalho.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Formas de trabalho também se diferenciam pela organização das tarefas e pelas relações entre quem participa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Transporte não faz parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-015",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ORGANIZATION_05",
+      "statement": "Uma cooperativa divide etapas entre plantio, colheita, transporte e venda de alimentos. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Transporte não faz parte do trabalho.",
+        "A venda acontece antes do plantio.",
+        "Confira etapas, participantes, ferramentas e circulação do produto.",
+        "Uma cooperativa tem uma única tarefa."
+      ],
+      "correctAnswer": "Confira etapas, participantes, ferramentas e circulação do produto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Formas de trabalho também se diferenciam pela organização das tarefas e pelas relações entre quem participa.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Transporte não faz parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-016",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONTINUITY_01",
+      "statement": "Um artesão mantém uma técnica aprendida com a família e usa uma ferramenta elétrica para preparar parte da peça. Que mudança e permanência podem ser identificadas?",
+      "options": [
+        "Nada mudou porque a técnica permanece.",
+        "Tudo mudou porque existe uma ferramenta elétrica.",
+        "O saber familiar impede qualquer inovação.",
+        "A técnica e os saberes podem permanecer enquanto uma ferramenta modifica parte do modo de fazer."
+      ],
+      "correctAnswer": "A técnica e os saberes podem permanecer enquanto uma ferramenta modifica parte do modo de fazer.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças tecnológicas podem coexistir com conhecimentos e práticas que continuam sendo transmitidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Nada mudou porque a técnica permanece.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-017",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONTINUITY_02",
+      "statement": "Um artesão mantém uma técnica aprendida com a família e usa uma ferramenta elétrica para preparar parte da peça. Que critério deve orientar a análise?",
+      "options": [
+        "Considere Mudanças tecnológicas podem coexistir com conhecimentos e práticas que continuam sendo transmitidos.",
+        "Nada mudou porque a técnica permanece.",
+        "Tudo mudou porque existe uma ferramenta elétrica.",
+        "O saber familiar impede qualquer inovação."
+      ],
+      "correctAnswer": "Considere Mudanças tecnológicas podem coexistir com conhecimentos e práticas que continuam sendo transmitidos.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças tecnológicas podem coexistir com conhecimentos e práticas que continuam sendo transmitidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Nada mudou porque a técnica permanece.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-018",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONTINUITY_03",
+      "statement": "Um artesão mantém uma técnica aprendida com a família e usa uma ferramenta elétrica para preparar parte da peça. Como transferir esse raciocínio?",
+      "options": [
+        "Nada mudou porque a técnica permanece.",
+        "Analise uma receita ou prática artesanal com ferramentas atuais.",
+        "Tudo mudou porque existe uma ferramenta elétrica.",
+        "O saber familiar impede qualquer inovação."
+      ],
+      "correctAnswer": "Analise uma receita ou prática artesanal com ferramentas atuais.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças tecnológicas podem coexistir com conhecimentos e práticas que continuam sendo transmitidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Nada mudou porque a técnica permanece.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-019",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONTINUITY_04",
+      "statement": "Um artesão mantém uma técnica aprendida com a família e usa uma ferramenta elétrica para preparar parte da peça. Qual conclusão deve ser evitada?",
+      "options": [
+        "Nada mudou porque a técnica permanece.",
+        "Tudo mudou porque existe uma ferramenta elétrica.",
+        "Evite dizer que uma ferramenta apaga todo o saber anterior.",
+        "O saber familiar impede qualquer inovação."
+      ],
+      "correctAnswer": "Evite dizer que uma ferramenta apaga todo o saber anterior.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças tecnológicas podem coexistir com conhecimentos e práticas que continuam sendo transmitidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Nada mudou porque a técnica permanece.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-020",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONTINUITY_05",
+      "statement": "Um artesão mantém uma técnica aprendida com a família e usa uma ferramenta elétrica para preparar parte da peça. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Nada mudou porque a técnica permanece.",
+        "Tudo mudou porque existe uma ferramenta elétrica.",
+        "O saber familiar impede qualquer inovação.",
+        "Confira etapas mantidas, etapa modificada e finalidade do recurso."
+      ],
+      "correctAnswer": "Confira etapas mantidas, etapa modificada e finalidade do recurso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Mudanças tecnológicas podem coexistir com conhecimentos e práticas que continuam sendo transmitidos.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Nada mudou porque a técnica permanece.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-021",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONDITIONS_01",
+      "statement": "Uma trabalhadora rural relata que a irrigação reduziu o tempo de rega, mas exige manutenção e treinamento. Como interpretar esse relato?",
+      "options": [
+        "Reconhecer um benefício e também as condições necessárias para usar e manter a tecnologia.",
+        "Manutenção não é parte do trabalho.",
+        "Toda tecnologia reduz qualquer esforço.",
+        "O relato prova que todos tiveram o mesmo resultado."
+      ],
+      "correctAnswer": "Reconhecer um benefício e também as condições necessárias para usar e manter a tecnologia.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma mudança tecnológica pode criar possibilidades e novas responsabilidades; não deve ser descrita apenas como ganho automático.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Manutenção não é parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-022",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONDITIONS_02",
+      "statement": "Uma trabalhadora rural relata que a irrigação reduziu o tempo de rega, mas exige manutenção e treinamento. Que critério deve orientar a análise?",
+      "options": [
+        "Manutenção não é parte do trabalho.",
+        "Considere Uma mudança tecnológica pode criar possibilidades e novas responsabilidades; não deve ser descrita apenas como ganho automático.",
+        "Toda tecnologia reduz qualquer esforço.",
+        "O relato prova que todos tiveram o mesmo resultado."
+      ],
+      "correctAnswer": "Considere Uma mudança tecnológica pode criar possibilidades e novas responsabilidades; não deve ser descrita apenas como ganho automático.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma mudança tecnológica pode criar possibilidades e novas responsabilidades; não deve ser descrita apenas como ganho automático.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Manutenção não é parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-023",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONDITIONS_03",
+      "statement": "Uma trabalhadora rural relata que a irrigação reduziu o tempo de rega, mas exige manutenção e treinamento. Como transferir esse raciocínio?",
+      "options": [
+        "Manutenção não é parte do trabalho.",
+        "Toda tecnologia reduz qualquer esforço.",
+        "Avalie uma tecnologia usada na escola.",
+        "O relato prova que todos tiveram o mesmo resultado."
+      ],
+      "correctAnswer": "Avalie uma tecnologia usada na escola.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma mudança tecnológica pode criar possibilidades e novas responsabilidades; não deve ser descrita apenas como ganho automático.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Manutenção não é parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-024",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONDITIONS_04",
+      "statement": "Uma trabalhadora rural relata que a irrigação reduziu o tempo de rega, mas exige manutenção e treinamento. Qual conclusão deve ser evitada?",
+      "options": [
+        "Manutenção não é parte do trabalho.",
+        "Toda tecnologia reduz qualquer esforço.",
+        "O relato prova que todos tiveram o mesmo resultado.",
+        "Evite concluir que a irrigação resolveu todos os problemas do trabalho."
+      ],
+      "correctAnswer": "Evite concluir que a irrigação resolveu todos os problemas do trabalho.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma mudança tecnológica pode criar possibilidades e novas responsabilidades; não deve ser descrita apenas como ganho automático.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Manutenção não é parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-025",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_CONDITIONS_05",
+      "statement": "Uma trabalhadora rural relata que a irrigação reduziu o tempo de rega, mas exige manutenção e treinamento. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira tempo, manutenção, treinamento, acesso e efeito relatado.",
+        "Manutenção não é parte do trabalho.",
+        "Toda tecnologia reduz qualquer esforço.",
+        "O relato prova que todos tiveram o mesmo resultado."
+      ],
+      "correctAnswer": "Confira tempo, manutenção, treinamento, acesso e efeito relatado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma mudança tecnológica pode criar possibilidades e novas responsabilidades; não deve ser descrita apenas como ganho automático.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Manutenção não é parte do trabalho.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-026",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_COMPARISON_01",
+      "statement": "Uma fábrica urbana usa máquinas para embalar alimentos, e uma família rural usa instrumentos para preparar o solo. Qual comparação é responsável?",
+      "options": [
+        "Basta contar as máquinas.",
+        "Comparar a finalidade, a escala, os recursos e a organização de cada atividade, evitando medir todos os trabalhos por um único critério.",
+        "O trabalho rural não usa organização.",
+        "Escala e finalidade são a mesma coisa."
+      ],
+      "correctAnswer": "Comparar a finalidade, a escala, os recursos e a organização de cada atividade, evitando medir todos os trabalhos por um único critério.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação histórica precisa explicar diferenças sem transformar uma forma de trabalho em modelo universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Basta contar as máquinas.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-027",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_COMPARISON_02",
+      "statement": "Uma fábrica urbana usa máquinas para embalar alimentos, e uma família rural usa instrumentos para preparar o solo. Que critério deve orientar a análise?",
+      "options": [
+        "Basta contar as máquinas.",
+        "O trabalho rural não usa organização.",
+        "Considere A comparação histórica precisa explicar diferenças sem transformar uma forma de trabalho em modelo universal.",
+        "Escala e finalidade são a mesma coisa."
+      ],
+      "correctAnswer": "Considere A comparação histórica precisa explicar diferenças sem transformar uma forma de trabalho em modelo universal.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação histórica precisa explicar diferenças sem transformar uma forma de trabalho em modelo universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Basta contar as máquinas.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-028",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_COMPARISON_03",
+      "statement": "Uma fábrica urbana usa máquinas para embalar alimentos, e uma família rural usa instrumentos para preparar o solo. Como transferir esse raciocínio?",
+      "options": [
+        "Basta contar as máquinas.",
+        "O trabalho rural não usa organização.",
+        "Escala e finalidade são a mesma coisa.",
+        "Compare duas atividades com escalas diferentes."
+      ],
+      "correctAnswer": "Compare duas atividades com escalas diferentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação histórica precisa explicar diferenças sem transformar uma forma de trabalho em modelo universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Basta contar as máquinas.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-029",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_COMPARISON_04",
+      "statement": "Uma fábrica urbana usa máquinas para embalar alimentos, e uma família rural usa instrumentos para preparar o solo. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite dizer que máquinas tornam o trabalho sempre mais importante.",
+        "Basta contar as máquinas.",
+        "O trabalho rural não usa organização.",
+        "Escala e finalidade são a mesma coisa."
+      ],
+      "correctAnswer": "Evite dizer que máquinas tornam o trabalho sempre mais importante.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação histórica precisa explicar diferenças sem transformar uma forma de trabalho em modelo universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Basta contar as máquinas.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-030",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_COMPARISON_05",
+      "statement": "Uma fábrica urbana usa máquinas para embalar alimentos, e uma família rural usa instrumentos para preparar o solo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Basta contar as máquinas.",
+        "Confira finalidade, escala, ritmo, ferramentas e pessoas envolvidas.",
+        "O trabalho rural não usa organização.",
+        "Escala e finalidade são a mesma coisa."
+      ],
+      "correctAnswer": "Confira finalidade, escala, ritmo, ferramentas e pessoas envolvidas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. A comparação histórica precisa explicar diferenças sem transformar uma forma de trabalho em modelo universal.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Basta contar as máquinas.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-031",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_GENDER_01",
+      "statement": "Em um registro antigo, mulheres aparecem como responsáveis pelo cultivo e pelo cuidado; em uma notícia atual, essas tarefas são divididas de outro modo. O que pode ser investigado?",
+      "options": [
+        "A divisão é natural e não muda.",
+        "A fonte prova como todas as mulheres trabalham.",
+        "Mudanças na divisão das tarefas e permanências nos conhecimentos e responsabilidades, considerando a fonte e o período.",
+        "Cuidado nunca é trabalho."
+      ],
+      "correctAnswer": "Mudanças na divisão das tarefas e permanências nos conhecimentos e responsabilidades, considerando a fonte e o período.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar trabalho exige evitar estereótipos e observar quem aparece, quem é omitido e como a fonte foi produzida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A divisão é natural e não muda.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-032",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_GENDER_02",
+      "statement": "Em um registro antigo, mulheres aparecem como responsáveis pelo cultivo e pelo cuidado; em uma notícia atual, essas tarefas são divididas de outro modo. Que critério deve orientar a análise?",
+      "options": [
+        "A divisão é natural e não muda.",
+        "A fonte prova como todas as mulheres trabalham.",
+        "Cuidado nunca é trabalho.",
+        "Considere Comparar trabalho exige evitar estereótipos e observar quem aparece, quem é omitido e como a fonte foi produzida."
+      ],
+      "correctAnswer": "Considere Comparar trabalho exige evitar estereótipos e observar quem aparece, quem é omitido e como a fonte foi produzida.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar trabalho exige evitar estereótipos e observar quem aparece, quem é omitido e como a fonte foi produzida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A divisão é natural e não muda.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-033",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_GENDER_03",
+      "statement": "Em um registro antigo, mulheres aparecem como responsáveis pelo cultivo e pelo cuidado; em uma notícia atual, essas tarefas são divididas de outro modo. Como transferir esse raciocínio?",
+      "options": [
+        "Analise uma lista de tarefas de uma atividade coletiva.",
+        "A divisão é natural e não muda.",
+        "A fonte prova como todas as mulheres trabalham.",
+        "Cuidado nunca é trabalho."
+      ],
+      "correctAnswer": "Analise uma lista de tarefas de uma atividade coletiva.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar trabalho exige evitar estereótipos e observar quem aparece, quem é omitido e como a fonte foi produzida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A divisão é natural e não muda.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-034",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_GENDER_04",
+      "statement": "Em um registro antigo, mulheres aparecem como responsáveis pelo cultivo e pelo cuidado; em uma notícia atual, essas tarefas são divididas de outro modo. Qual conclusão deve ser evitada?",
+      "options": [
+        "A divisão é natural e não muda.",
+        "Evite concluir que uma fonte representa todas as famílias.",
+        "A fonte prova como todas as mulheres trabalham.",
+        "Cuidado nunca é trabalho."
+      ],
+      "correctAnswer": "Evite concluir que uma fonte representa todas as famílias.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar trabalho exige evitar estereótipos e observar quem aparece, quem é omitido e como a fonte foi produzida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A divisão é natural e não muda.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-035",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_GENDER_05",
+      "statement": "Em um registro antigo, mulheres aparecem como responsáveis pelo cultivo e pelo cuidado; em uma notícia atual, essas tarefas são divididas de outro modo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "A divisão é natural e não muda.",
+        "A fonte prova como todas as mulheres trabalham.",
+        "Confira autoria, data, tarefas descritas e pessoas visíveis ou ausentes.",
+        "Cuidado nunca é trabalho."
+      ],
+      "correctAnswer": "Confira autoria, data, tarefas descritas e pessoas visíveis ou ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Comparar trabalho exige evitar estereótipos e observar quem aparece, quem é omitido e como a fonte foi produzida.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "A divisão é natural e não muda.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-036",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ENVIRONMENT_01",
+      "statement": "Uma comunidade utiliza uma máquina para retirar água, mas acompanha o nível do poço para evitar desperdício. Que relação deve ser registrada?",
+      "options": [
+        "Tecnologia elimina qualquer limite.",
+        "O poço é inesgotável.",
+        "Cuidado ambiental não tem relação com trabalho.",
+        "A relação entre tecnologia, necessidade de trabalho e cuidado com os recursos disponíveis."
+      ],
+      "correctAnswer": "A relação entre tecnologia, necessidade de trabalho e cuidado com os recursos disponíveis.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O uso de uma ferramenta deve ser analisado junto de seus efeitos e das regras de cuidado do contexto.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Tecnologia elimina qualquer limite.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-037",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ENVIRONMENT_02",
+      "statement": "Uma comunidade utiliza uma máquina para retirar água, mas acompanha o nível do poço para evitar desperdício. Que critério deve orientar a análise?",
+      "options": [
+        "Considere O uso de uma ferramenta deve ser analisado junto de seus efeitos e das regras de cuidado do contexto.",
+        "Tecnologia elimina qualquer limite.",
+        "O poço é inesgotável.",
+        "Cuidado ambiental não tem relação com trabalho."
+      ],
+      "correctAnswer": "Considere O uso de uma ferramenta deve ser analisado junto de seus efeitos e das regras de cuidado do contexto.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O uso de uma ferramenta deve ser analisado junto de seus efeitos e das regras de cuidado do contexto.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Tecnologia elimina qualquer limite.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-038",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ENVIRONMENT_03",
+      "statement": "Uma comunidade utiliza uma máquina para retirar água, mas acompanha o nível do poço para evitar desperdício. Como transferir esse raciocínio?",
+      "options": [
+        "Tecnologia elimina qualquer limite.",
+        "Avalie o uso de água em uma atividade escolar.",
+        "O poço é inesgotável.",
+        "Cuidado ambiental não tem relação com trabalho."
+      ],
+      "correctAnswer": "Avalie o uso de água em uma atividade escolar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O uso de uma ferramenta deve ser analisado junto de seus efeitos e das regras de cuidado do contexto.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Tecnologia elimina qualquer limite.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-039",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ENVIRONMENT_04",
+      "statement": "Uma comunidade utiliza uma máquina para retirar água, mas acompanha o nível do poço para evitar desperdício. Qual conclusão deve ser evitada?",
+      "options": [
+        "Tecnologia elimina qualquer limite.",
+        "O poço é inesgotável.",
+        "Evite dizer que a máquina permite retirar água sem limite.",
+        "Cuidado ambiental não tem relação com trabalho."
+      ],
+      "correctAnswer": "Evite dizer que a máquina permite retirar água sem limite.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O uso de uma ferramenta deve ser analisado junto de seus efeitos e das regras de cuidado do contexto.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Tecnologia elimina qualquer limite.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-040",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REVISE_CLAIM",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_ENVIRONMENT_05",
+      "statement": "Uma comunidade utiliza uma máquina para retirar água, mas acompanha o nível do poço para evitar desperdício. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Tecnologia elimina qualquer limite.",
+        "O poço é inesgotável.",
+        "Cuidado ambiental não tem relação com trabalho.",
+        "Confira finalidade, quantidade, regra de uso e efeito observado."
+      ],
+      "correctAnswer": "Confira finalidade, quantidade, regra de uso e efeito observado.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. O uso de uma ferramenta deve ser analisado junto de seus efeitos e das regras de cuidado do contexto.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Tecnologia elimina qualquer limite.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-041",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_VOICES_01",
+      "statement": "Um vídeo mostra apenas a máquina de uma empresa, mas não informa quem opera, conserta ou decide seu uso. Que limite a fonte apresenta?",
+      "options": [
+        "Ela permite observar a máquina, mas não sustenta conclusões sobre todas as pessoas e decisões envolvidas.",
+        "O vídeo mostra toda a organização.",
+        "A máquina é a única trabalhadora.",
+        "O silêncio prova que ninguém opera o equipamento."
+      ],
+      "correctAnswer": "Ela permite observar a máquina, mas não sustenta conclusões sobre todas as pessoas e decisões envolvidas.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte visual tem recorte; o que não aparece precisa ser investigado com outras evidências.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O vídeo mostra toda a organização.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-042",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_VOICES_02",
+      "statement": "Um vídeo mostra apenas a máquina de uma empresa, mas não informa quem opera, conserta ou decide seu uso. Que critério deve orientar a análise?",
+      "options": [
+        "O vídeo mostra toda a organização.",
+        "Considere Uma fonte visual tem recorte; o que não aparece precisa ser investigado com outras evidências.",
+        "A máquina é a única trabalhadora.",
+        "O silêncio prova que ninguém opera o equipamento."
+      ],
+      "correctAnswer": "Considere Uma fonte visual tem recorte; o que não aparece precisa ser investigado com outras evidências.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte visual tem recorte; o que não aparece precisa ser investigado com outras evidências.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O vídeo mostra toda a organização.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-043",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_VOICES_03",
+      "statement": "Um vídeo mostra apenas a máquina de uma empresa, mas não informa quem opera, conserta ou decide seu uso. Como transferir esse raciocínio?",
+      "options": [
+        "O vídeo mostra toda a organização.",
+        "A máquina é a única trabalhadora.",
+        "Aponte limites em uma fotografia de uma oficina.",
+        "O silêncio prova que ninguém opera o equipamento."
+      ],
+      "correctAnswer": "Aponte limites em uma fotografia de uma oficina.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte visual tem recorte; o que não aparece precisa ser investigado com outras evidências.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O vídeo mostra toda a organização.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-044",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_VOICES_04",
+      "statement": "Um vídeo mostra apenas a máquina de uma empresa, mas não informa quem opera, conserta ou decide seu uso. Qual conclusão deve ser evitada?",
+      "options": [
+        "O vídeo mostra toda a organização.",
+        "A máquina é a única trabalhadora.",
+        "O silêncio prova que ninguém opera o equipamento.",
+        "Evite afirmar que a máquina funciona sozinha."
+      ],
+      "correctAnswer": "Evite afirmar que a máquina funciona sozinha.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte visual tem recorte; o que não aparece precisa ser investigado com outras evidências.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O vídeo mostra toda a organização.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-045",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_VOICES_05",
+      "statement": "Um vídeo mostra apenas a máquina de uma empresa, mas não informa quem opera, conserta ou decide seu uso. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Confira elementos visíveis, autoria, data e pessoas ausentes.",
+        "O vídeo mostra toda a organização.",
+        "A máquina é a única trabalhadora.",
+        "O silêncio prova que ninguém opera o equipamento."
+      ],
+      "correctAnswer": "Confira elementos visíveis, autoria, data e pessoas ausentes.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma fonte visual tem recorte; o que não aparece precisa ser investigado com outras evidências.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "O vídeo mostra toda a organização.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-046",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_SYNTHESIS_01",
+      "statement": "A turma compara relatos, fotografias e dados sobre uma atividade de produção em cidade e campo. Como escrever uma síntese adequada?",
+      "options": [
+        "Escolher a fonte mais recente e ignorar as demais.",
+        "Relacionar formas de trabalho, tecnologia, permanências e mudanças, atribuindo cada afirmação à fonte correspondente.",
+        "Transformar um exemplo em regra geral.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Relacionar formas de trabalho, tecnologia, permanências e mudanças, atribuindo cada afirmação à fonte correspondente.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma síntese histórica distingue observação, comparação e interpretação, sem generalizar a partir de um único caso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher a fonte mais recente e ignorar as demais.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-047",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_SYNTHESIS_02",
+      "statement": "A turma compara relatos, fotografias e dados sobre uma atividade de produção em cidade e campo. Que critério deve orientar a análise?",
+      "options": [
+        "Escolher a fonte mais recente e ignorar as demais.",
+        "Transformar um exemplo em regra geral.",
+        "Considere Uma síntese histórica distingue observação, comparação e interpretação, sem generalizar a partir de um único caso.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Considere Uma síntese histórica distingue observação, comparação e interpretação, sem generalizar a partir de um único caso.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma síntese histórica distingue observação, comparação e interpretação, sem generalizar a partir de um único caso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher a fonte mais recente e ignorar as demais.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-048",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_SYNTHESIS_03",
+      "statement": "A turma compara relatos, fotografias e dados sobre uma atividade de produção em cidade e campo. Como transferir esse raciocínio?",
+      "options": [
+        "Escolher a fonte mais recente e ignorar as demais.",
+        "Transformar um exemplo em regra geral.",
+        "Dizer que cidade e campo não se relacionam.",
+        "Faça uma síntese sobre transporte ou comércio."
+      ],
+      "correctAnswer": "Faça uma síntese sobre transporte ou comércio.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma síntese histórica distingue observação, comparação e interpretação, sem generalizar a partir de um único caso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher a fonte mais recente e ignorar as demais.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-049",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_SYNTHESIS_04",
+      "statement": "A turma compara relatos, fotografias e dados sobre uma atividade de produção em cidade e campo. Qual conclusão deve ser evitada?",
+      "options": [
+        "Evite afirmar que toda tecnologia produz o mesmo efeito em qualquer lugar.",
+        "Escolher a fonte mais recente e ignorar as demais.",
+        "Transformar um exemplo em regra geral.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Evite afirmar que toda tecnologia produz o mesmo efeito em qualquer lugar.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma síntese histórica distingue observação, comparação e interpretação, sem generalizar a partir de um único caso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher a fonte mais recente e ignorar as demais.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    },
+    {
+      "id": "v14-history-work-technology-050",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "V14-HISTORY-WORK-TECHNOLOGY_SYNTHESIS_05",
+      "statement": "A turma compara relatos, fotografias e dados sobre uma atividade de produção em cidade e campo. Que evidência deve ser conferida primeiro?",
+      "options": [
+        "Escolher a fonte mais recente e ignorar as demais.",
+        "Confira fontes, períodos, tarefas, recursos, mudanças e limites.",
+        "Transformar um exemplo em regra geral.",
+        "Dizer que cidade e campo não se relacionam."
+      ],
+      "correctAnswer": "Confira fontes, períodos, tarefas, recursos, mudanças e limites.",
+      "explanation": "A análise histórica deve respeitar o recorte da fonte e o ponto de vista envolvido. Uma síntese histórica distingue observação, comparação e interpretação, sem generalizar a partir de um único caso.",
+      "hint": "Separe o que a fonte registra, quem fala, em que período e qual conclusão ainda depende de outra evidência.",
+      "errorFocus": "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT",
+      "misconceptions": {
+        "Escolher a fonte mais recente e ignorar as demais.": [
+          "HISTORY_EF03HI11_EVIDENCE_SCOPE_AND_CONTEXT"
+        ]
+      }
+    }
+  ]
+}
