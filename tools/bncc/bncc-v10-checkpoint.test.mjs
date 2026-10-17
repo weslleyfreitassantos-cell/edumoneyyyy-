@@ -10,7 +10,8 @@ const checkpoint = JSON.parse(fs.readFileSync(
 describe('BNCC V10 checkpoint', () => {
   it('keeps the current operation auditable and production-free', () => {
     expect(checkpoint.lastOperation.target).toEqual([
-      'EF03ER01', 'EF03ER02', 'EF03ER03', 'EF03ER04', 'EF03ER05', 'EF03ER06',
+      'EF03GE01', 'EF03GE02', 'EF03GE03', 'EF03GE04', 'EF03GE05', 'EF03GE06',
+      'EF03GE07', 'EF03GE08', 'EF03GE09', 'EF03GE10', 'EF03GE11',
     ]);
     expect(checkpoint.lastOperation.result).toBe('OFFICIAL_SOURCE_VERIFIED_EXACT');
     expect(checkpoint.lastOperation.mappingStatus).toBe('REVIEW_REQUIRED_PER_CODE');
