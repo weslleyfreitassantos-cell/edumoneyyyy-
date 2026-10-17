@@ -12429,6 +12429,75 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03HI02_MEC_P413_V1",
+      "officialCode": "EF03HI02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "HI",
+      "gradeOrRange": "03",
+      "descriptor": "Selecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 413 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03HI03_MEC_P413_V1",
+      "officialCode": "EF03HI03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "HI",
+      "gradeOrRange": "03",
+      "descriptor": "Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 413 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EF03HI04_MEC_P413_V1",
+      "officialCode": "EF03HI04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "HI",
+      "gradeOrRange": "03",
+      "descriptor": "Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 413
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 413 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-17"
     }
   ]
 }

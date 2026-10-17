@@ -1,14 +1,14 @@
 {
-  "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v12",
-  "campaignId": "TECESCOLA_BNCC_FULL_EXECUTION_AND_MAPPING_RESOLUTION_V12",
+  "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v13",
+  "campaignId": "TECESCOLA_BNCC_FULL_CURRICULUM_PRODUCTION_V13",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
-  "head": "11e0ae4c04c12e29cefa03223ae2f188ac616139",
+  "head": "b29c8e70eed344b076d9bbf3e0ba11e1216c3afd",
   "recordedAt": "2026-10-17",
   "lastOperation": {
-    "target": ["EF03HI01"],
-    "type": "AUTHORING_CONTEXT_AND_STAGED_CONTENT",
+    "target": ["EF03HI02", "EF03HI03", "EF03HI04"],
+    "type": "MULTISET_AUTHORING_CONTEXT_AND_STAGED_CONTENT",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
-    "result": "STAGED_AUTHORING_CONTEXT_CREATED",
+    "result": "STAGED_AUTHORING_CONTEXTS_CREATED",
     "mappingStatus": "CANONICAL_GAP",
     "relationDecision": "NOT_ASSERTED",
     "studentPublicationStatus": "STAGING_INACTIVE",
@@ -18,23 +18,40 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 554,
-    "newStagingPackagesInThisOperation": 1,
-    "stagedQuestionsInThisOperation": 50,
-    "authoringContextPackages": 3
+    "exactSourceVerifications": 557,
+    "newStagingPackagesInThisOperation": 3,
+    "stagedQuestionsInThisOperation": 150,
+    "authoringContextPackages": 6,
+    "v5QuestionTotal": 5856,
+    "consolidatedQuestionTotal": 6678,
+    "contentTechnicallyComplete": 0,
+    "learningPathsComplete": 0,
+    "lessonsAdded": 3,
+    "activitiesAdded": 3,
+    "assessmentsAdded": 3
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF03HI01_MEC_P413_V1",
+    "verificationIds": [
+      "BNCC_EF03HI02_MEC_P413_V1",
+      "BNCC_EF03HI03_MEC_P413_V1",
+      "BNCC_EF03HI04_MEC_P413_V1"
+    ],
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
+    "coverageSizing": "content/bncc/authoring/coverage-sizing-v3.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
-    "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
+    "mappingResolution": "content/bncc/mappings/resolutions-v8.json",
+    "contentPackages": [
+      "content/adaptive/tec-escola-core-v5/v13-history-time-sources.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-local-perspectives.json",
+      "content/adaptive/tec-escola-core-v5/v13-history-local-heritage.json"
+    ]
   },
   "validation": {
-    "focusedTests": "PASS: current increment 4 files, 6 tests; prior baseline 13 files, 23 tests",
-    "bnccValidate": "PASS: catalog, coverage, mapping resolutions",
+    "focusedTests": "PASS: 6 files, 9 tests; V13 history sets and prior checkpoint coverage",
+    "bnccValidate": "PASS: catalog 1723, mappings 1723, resolutions 121",
     "knowledgeFactoryV4": "PASS: 1723 official nodes, 78 sequences audited, 1721 queued gaps, 65 inactive units",
-    "contentPackages": "PASS: 15 packages, 65 skills",
+    "contentPackages": "PASS: 15 packages, 65 skills; V13 packages validated separately",
     "gitDiffCheck": "PASS"
   },
   "gates": {
@@ -45,6 +62,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF03HI02_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
-  "nextOperation": "Continue with EF03HI02 or the next independent curricular gap; do not assert a relation or publish content until canonical mapping and pedagogical review are independently approved."
+  "nextTarget": "EF03HI05_OR_NEXT_INDEPENDENT_CURRICULAR_SET",
+  "nextOperation": "Continue with the next independent curricular set; keep V13 packages inactive until canonical mapping and pedagogical review are independently approved."
 }

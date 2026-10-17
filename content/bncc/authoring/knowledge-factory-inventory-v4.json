@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "e6c6387e0a9aea06065c6b2d970e6cba258e61255122f216eec4ee48de265bbc",
+    "v5QuestionFirstPacks": "a26c2f8a1907f7417bbd1fc8254ccda583942c697e40acaed454711ab28774ac",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,10 +110,28 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 5706,
+    "v5QuestionTotal": 5856,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
+      {
+        "file": "v13-history-time-sources.json",
+        "skillCode": "AUTHORING_EF03HI02_HISTORY_SOURCES",
+        "questionCount": 50,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "v13-history-local-perspectives.json",
+        "skillCode": "AUTHORING_EF03HI03_HISTORY_PERSPECTIVES",
+        "questionCount": 50,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "v13-history-local-heritage.json",
+        "skillCode": "AUTHORING_EF03HI04_HISTORY_HERITAGE",
+        "questionCount": 50,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
       {
         "file": "humanities-evidence-arguments-hs-v8.json",
         "skillCode": "HUMANITIES_EVIDENCE_ARGUMENTS_HS",
@@ -18769,5 +18787,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "af70f6cd2d2650af265a2c29cfd027bd79d0751f4e25c80ca92313597049070a"
+  "inventoryHash": "4e4910b927f0f5186aceac9165eb86063714cef6e0f79edf50e0ad301db474ba"
 }
