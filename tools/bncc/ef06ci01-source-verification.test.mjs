@@ -51,12 +51,36 @@ describe('EF06CI01 source verification', () => {
       EF06CI03: 'CANONICAL_GAP',
       EF06CI04: 'CANONICAL_GAP',
       EF06CI05: 'CANONICAL_GAP',
+      EF06CI06: 'CANONICAL_GAP',
+      EF06CI07: 'CANONICAL_GAP',
+      EF06CI08: 'CANONICAL_GAP',
+      EF06CI09: 'CANONICAL_GAP',
+      EF06CI10: 'CANONICAL_GAP',
+      EF06CI11: 'CANONICAL_GAP',
+      EF06CI12: 'CANONICAL_GAP',
+      EF06CI13: 'CANONICAL_GAP',
+      EF06CI14: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
       expect(record).toMatchObject({
         technicalVerificationStatus: 'OFFICIAL_SOURCE_VERIFIED_EXACT',
         mappingStatus,
+        studentPublicationStatus: 'STAGING_INACTIVE',
+        pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
+      });
+    }
+
+    const pendingAudit = JSON.parse(fs.readFileSync(
+      path.resolve(root, 'content/bncc/authoring/pending-coverage-audit-v3.json'),
+      'utf8',
+    ));
+    for (const code of Object.keys(expected).filter((item) => item !== 'EF06CI02')) {
+      const auditRecord = pendingAudit.records.find((item) => item.officialCode === code);
+      expect(auditRecord).toMatchObject({
+        queueStatus: 'MAPPING_REVIEW_REQUIRED',
+        exactSourceVerified: true,
+        nextAction: 'AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW',
         studentPublicationStatus: 'STAGING_INACTIVE',
         pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
       });
