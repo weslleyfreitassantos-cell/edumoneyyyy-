@@ -16,7 +16,7 @@
     "authoringContextIsNotOfficialApproval": true,
     "noStudentPublication": true,
     "noProductionWrites": true,
-    "exactSourceVerificationCount": 502,
+    "exactSourceVerificationCount": 513,
     "canonicalMappingCount": 2,
     "authoringContextCount": 2
   },
@@ -34,7 +34,7 @@
       "MAPPED": 2
     },
     "rowsWithAuthoringContext": 2,
-    "rowsWithExactSourceVerification": 502
+    "rowsWithExactSourceVerification": 513
   },
   "rows": [
     {
@@ -3703,8 +3703,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE01_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3737,8 +3737,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE02_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3771,8 +3771,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE03_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3805,8 +3805,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE04_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3839,8 +3839,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE05_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3873,8 +3873,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE06_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3907,8 +3907,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE07_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3941,8 +3941,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE08_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -3975,8 +3975,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE09_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -4009,8 +4009,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE10_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -4043,8 +4043,8 @@
         "exactSourceVerificationRecord": "BNCC_EF02GE11_MEC_P375_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
@@ -4073,16 +4073,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI01_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4107,16 +4107,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI02_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4141,16 +4141,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI03_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4175,16 +4175,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI04_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4209,16 +4209,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI05_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4243,16 +4243,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI06_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4277,16 +4277,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI07_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4311,16 +4311,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI08_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4345,16 +4345,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI09_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4379,16 +4379,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI10_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
-        "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "queueStatus": "MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -4413,16 +4413,16 @@
         "page": 411
       },
       "evidence": {
-        "exactSourceVerified": false,
-        "exactSourceVerificationRecord": null,
+        "exactSourceVerified": true,
+        "exactSourceVerificationRecord": "BNCC_EF02HI11_MEC_P411_V1",
         "mappingStatus": "CANONICAL_GAP",
         "mappingSource": "CANONICAL_MAPPING_GAP",
         "queueStatus": "MAPPING_REVIEW_REQUIRED",
-        "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+        "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
         "packages": [],
         "contentStatus": "NO_EXPLICIT_AUTHORING_PACKAGE",
         "missingWork": [
-          "SOURCE_TEXT_REVIEW_OR_MAPPING_REVIEW",
+          "CANONICAL_MAPPING_REVIEW",
           "AUTHORING_PACKAGE",
           "PEDAGOGICAL_REVIEW",
           "PUBLICATION_GATE"
@@ -58642,5 +58642,5 @@
       }
     }
   ],
-  "matrixHash": "5ab41550800ad923ff00a6790313f7ac10b754fe25100d85cffe5c7363db74a7"
+  "matrixHash": "493fd148cafaff9b8e7688f6d04804b436d3e5988cc454a750fcfce72ee077b5"
 }
