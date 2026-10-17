@@ -6,13 +6,16 @@
   "recordedAt": "2026-10-17",
   "lastOperation": {
     "target": [
-      "EF03LP21",
-      "EF03LP22",
-      "EF03LP23",
-      "EF03LP24",
-      "EF03LP25",
-      "EF03LP26",
-      "EF03LP27"
+      "EF04LP01",
+      "EF04LP02",
+      "EF04LP03",
+      "EF04LP04",
+      "EF04LP05",
+      "EF04LP06",
+      "EF04LP07",
+      "EF04LP08",
+      "EF04LP09",
+      "EF04LP10"
     ],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
@@ -26,12 +29,12 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 407,
+    "exactSourceVerifications": 417,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF03LP21_MEC_P127_V1",
+    "verificationId": "BNCC_EF04LP01_MEC_P117_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
@@ -51,6 +54,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF04LP01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF04LP11_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
 }
