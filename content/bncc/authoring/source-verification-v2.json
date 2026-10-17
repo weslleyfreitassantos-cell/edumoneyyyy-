@@ -5637,6 +5637,144 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "verificationId": "BNCC_EF02CO01_MEC_P020_V1",
+      "officialCode": "EF02CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "CO",
+      "gradeOrRange": "02",
+      "descriptor": "Criar e comparar modelos (representações) de objetos, identificando padrões e atributos essenciais.",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "verificationId": "BNCC_EF02CO02_MEC_P020_V1",
+      "officialCode": "EF02CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "CO",
+      "gradeOrRange": "02",
+      "descriptor": "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, construídos como sequências com repetições simples (iterações definidas) com base em instruções preestabelecidas ou criadas, analisando como a precisão da instrução impacta na execução do algoritmo.",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "verificationId": "BNCC_EF02CO03_MEC_P020_V1",
+      "officialCode": "EF02CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "CO",
+      "gradeOrRange": "02",
+      "descriptor": "Identificar que máquinas diferentes executam conjuntos próprios de instruções e que podem ser usadas para definir algoritmos.",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "verificationId": "BNCC_EF02CO04_MEC_P020_V1",
+      "officialCode": "EF02CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "CO",
+      "gradeOrRange": "02",
+      "descriptor": "Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "verificationId": "BNCC_EF02CO05_MEC_P020_V1",
+      "officialCode": "EF02CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "CO",
+      "gradeOrRange": "02",
+      "descriptor": "Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "verificationId": "BNCC_EF02CO06_MEC_P020_V1",
+      "officialCode": "EF02CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "CO",
+      "gradeOrRange": "02",
+      "descriptor": "Reconhecer os cuidados com a segurança no uso de dispositivos computacionais.",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-16"
     }
   ]
 }

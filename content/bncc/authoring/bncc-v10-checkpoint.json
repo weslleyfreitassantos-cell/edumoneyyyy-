@@ -2,17 +2,16 @@
   "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v10",
   "campaignId": "TECESCOLA_BNCC_TOTAL_COMPLETION_AUTONOMOUS_V10",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
-  "head": "83db0c586e8fc606c4dec5f21e81d793ca6205ab",
+  "head": "PENDING_COMMIT",
   "recordedAt": "2026-10-16",
   "lastOperation": {
     "target": [
-      "EF01CO01",
-      "EF01CO02",
-      "EF01CO03",
-      "EF01CO04",
-      "EF01CO05",
-      "EF01CO06",
-      "EF01CO07"
+      "EF02CO01",
+      "EF02CO02",
+      "EF02CO03",
+      "EF02CO04",
+      "EF02CO05",
+      "EF02CO06"
     ],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
@@ -26,12 +25,12 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 235,
+    "exactSourceVerifications": 241,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
     "sourceVerification": "content/bncc/authoring/source-verification-v2.json",
-    "verificationId": "BNCC_EF01CO01_MEC_P016_V1",
+    "verificationId": "BNCC_EF02CO01_MEC_P020_V1",
     "coverageMatrix": "content/bncc/authoring/coverage-matrix-v8.json",
     "pendingAudit": "content/bncc/authoring/pending-coverage-audit-v3.json",
     "mappingResolution": "content/bncc/mappings/resolutions-v8.json"
@@ -51,6 +50,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF02CO01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF03CO01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
 }
