@@ -246,6 +246,17 @@ describe('EF06CI01 source verification', () => {
       EF03CI08: 'CANONICAL_GAP',
       EF03CI09: 'CANONICAL_GAP',
       EF03CI10: 'CANONICAL_GAP',
+      EF04CI01: 'CANONICAL_GAP',
+      EF04CI02: 'CANONICAL_GAP',
+      EF04CI03: 'CANONICAL_GAP',
+      EF04CI04: 'CANONICAL_GAP',
+      EF04CI05: 'CANONICAL_GAP',
+      EF04CI06: 'CANONICAL_GAP',
+      EF04CI07: 'CANONICAL_GAP',
+      EF04CI08: 'CANONICAL_GAP',
+      EF04CI09: 'CANONICAL_GAP',
+      EF04CI10: 'CANONICAL_GAP',
+      EF04CI11: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -266,6 +277,7 @@ describe('EF06CI01 source verification', () => {
         : code.startsWith('EF01CI') ? 335
         : code.startsWith('EF02CI') ? 337
         : code.startsWith('EF03CI') ? 339
+        : code.startsWith('EF04CI') ? 341
         : code.startsWith('EF08') ? 350 : code.startsWith('EF07') ? 348 : 346;
       const pageToken = code.startsWith('EF09CO') ? String(officialPage).padStart(3, '0') : officialPage;
       expect(record.verificationId).toBe(`BNCC_${code}_MEC_P${pageToken}_V1`);
