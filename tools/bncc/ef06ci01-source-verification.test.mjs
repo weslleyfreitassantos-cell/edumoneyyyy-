@@ -60,6 +60,22 @@ describe('EF06CI01 source verification', () => {
       EF06CI12: 'CANONICAL_GAP',
       EF06CI13: 'CANONICAL_GAP',
       EF06CI14: 'CANONICAL_GAP',
+      EF07CI01: 'CANONICAL_GAP',
+      EF07CI02: 'CANONICAL_GAP',
+      EF07CI03: 'CANONICAL_GAP',
+      EF07CI04: 'CANONICAL_GAP',
+      EF07CI05: 'CANONICAL_GAP',
+      EF07CI06: 'CANONICAL_GAP',
+      EF07CI07: 'CANONICAL_GAP',
+      EF07CI08: 'CANONICAL_GAP',
+      EF07CI09: 'CANONICAL_GAP',
+      EF07CI10: 'CANONICAL_GAP',
+      EF07CI11: 'CANONICAL_GAP',
+      EF07CI12: 'CANONICAL_GAP',
+      EF07CI13: 'CANONICAL_GAP',
+      EF07CI14: 'CANONICAL_GAP',
+      EF07CI15: 'CANONICAL_GAP',
+      EF07CI16: 'CANONICAL_GAP',
     };
     for (const [code, mappingStatus] of Object.entries(expected)) {
       const record = sourceVerification.records.find((item) => item.officialCode === code);
@@ -69,6 +85,9 @@ describe('EF06CI01 source verification', () => {
         studentPublicationStatus: 'STAGING_INACTIVE',
         pedagogicalReviewStatus: 'PEDAGOGICAL_REVIEW_PENDING',
       });
+      const officialPage = code.startsWith('EF07') ? 348 : 346;
+      expect(record.verificationId).toBe(`BNCC_${code}_MEC_P${officialPage}_V1`);
+      expect(record.officialSource.page).toBe(officialPage);
     }
 
     const pendingAudit = JSON.parse(fs.readFileSync(

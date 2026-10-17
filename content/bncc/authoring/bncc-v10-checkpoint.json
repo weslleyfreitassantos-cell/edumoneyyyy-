@@ -5,7 +5,7 @@
   "head": "a7a45931aad971a051693830f51a0a362064489f",
   "recordedAt": "2026-10-16",
   "lastOperation": {
-    "target": ["EF06CI06", "EF06CI07", "EF06CI08", "EF06CI09", "EF06CI10", "EF06CI11", "EF06CI12", "EF06CI13", "EF06CI14"],
+    "target": ["EF07CI01", "EF07CI02", "EF07CI03", "EF07CI04", "EF07CI05", "EF07CI06", "EF07CI07", "EF07CI08", "EF07CI09", "EF07CI10", "EF07CI11", "EF07CI12", "EF07CI13", "EF07CI14", "EF07CI15", "EF07CI16"],
     "type": "OFFICIAL_SOURCE_VERIFICATION",
     "status": "TECHNICALLY_COMPLETE_PENDING_HUMAN_REVIEW",
     "result": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -18,7 +18,7 @@
     "officialNodes": 1723,
     "pendingNodes": 1721,
     "canonicalMappings": 2,
-    "exactSourceVerifications": 18,
+    "exactSourceVerifications": 34,
     "newStagingPackagesInThisOperation": 0
   },
   "evidence": {
@@ -43,6 +43,6 @@
     "officialMappingClaim": "NONE",
     "pedagogicalReview": "PENDING"
   },
-  "nextTarget": "EF06CI15_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
+  "nextTarget": "EF08CI01_OR_NEXT_INDEPENDENT_CURRICULAR_GAP",
   "nextOperation": "Do not assert a relation or publish content until the canonical mapping and pedagogical review are independently approved."
 }
