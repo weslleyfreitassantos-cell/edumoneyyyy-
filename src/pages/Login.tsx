@@ -62,7 +62,11 @@ function getLoginErrorMessage(error: unknown): string {
   if (
     message.includes('network') ||
     message.includes('fetch') ||
-    message.includes('unavailable')
+    message.includes('unavailable') ||
+    message.includes('timeout') ||
+    message.includes('timed out') ||
+    message.includes('expirou') ||
+    message.includes('aborted')
   ) {
     return 'Servico temporariamente indisponivel. Tente novamente em instantes.';
   }
@@ -95,15 +99,14 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
     }
   }, [profile, navigate, showSubdomainMismatch]);
 
-  useEffect(
-    () => applyDocumentBranding(branding),
-    [
-      branding.displayName,
-      branding.faviconUrl,
-      branding.primaryColor,
-      branding.secondaryColor,
-    ],
-  );
+  useEffect(() => {
+    applyDocumentBranding(branding);
+  }, [
+    branding.displayName,
+    branding.faviconUrl,
+    branding.primaryColor,
+    branding.secondaryColor,
+  ]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -139,7 +142,7 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
         Educação que transforma. Tecnologia que aproxima.
       </p>
       <p className="text-slate-500 dark:text-slate-400">
-        © 2026 {branding.displayName ?? 'EduManager Pro'}. Todos os direitos reservados.
+        © 2026 {branding.displayName ?? 'Tec Escola'}. Todos os direitos reservados.
       </p>
     </div>
   );
@@ -149,7 +152,10 @@ export function Login({ subdomainMismatch = false }: LoginProps) {
       heroVariant="default"
       layoutVariant="login"
       showBrand={false}
-      backgroundLoading={brandingQuery.isLoading}
+      backgroundLoading={
+        brandingQuery.isLoading ||
+        (brandingQuery.isError && !brandingQuery.data)
+      }
       backgroundImageUrl={branding.loginBackgroundUrl}
       footer={footerContent}
     >

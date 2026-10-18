@@ -11,6 +11,8 @@ import {
 
 import { supabase } from '../lib/supabaseClient';
 import {
+  DEFAULT_BRAND_FAVICON_URL,
+  DEFAULT_BRAND_LOGO_URL,
   brandingService,
   type BrandingRecord,
 } from './brandingService';
@@ -209,6 +211,36 @@ describe('brandingService', () => {
     });
   });
 
+  it('reutiliza a logo institucional como favicon quando nao ha favicon separado', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [
+        {
+          id: 'institution-1',
+          name: 'Escola Luz',
+          subdomain: 'escola-luz',
+          login_display_name: 'Luz Colegio',
+          logo_url: 'https://cdn.example.com/escola-luz/logo.png',
+          favicon_url: null,
+          login_background_url: null,
+          primary_color: '#123456',
+          secondary_color: '#abcdef',
+        },
+      ],
+      error: null,
+    } as never);
+
+    const result = await brandingService.resolveForHostname(
+      'escola-luz.grupotec.dev.br',
+    );
+
+    expect(result.logoUrl).toBe(
+      'https://cdn.example.com/escola-luz/logo.png',
+    );
+    expect(result.faviconUrl).toBe(
+      'https://cdn.example.com/escola-luz/logo.png',
+    );
+  });
+
   it('converte URLs institucionais legadas para cacheNonce e preserva URLs externas', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [
@@ -274,6 +306,32 @@ describe('brandingService', () => {
     );
   });
 
+  it('substitui a identidade nativa legada por Tec Escola', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [
+        {
+          scope: 'GLOBAL',
+          display_name: 'EduManager Pro',
+          logo_path: null,
+          favicon_path: null,
+          primary_color: '#005bbf',
+          secondary_color: '#6ffbbe',
+        },
+      ],
+      error: null,
+    } as never);
+
+    const result = await brandingService.resolveForHostname(
+      'admin.grupotec.dev.br',
+    );
+
+    expect(result).toMatchObject({
+      displayName: 'Tec Escola',
+      logoUrl: DEFAULT_BRAND_LOGO_URL,
+      faviconUrl: DEFAULT_BRAND_FAVICON_URL,
+    });
+  });
+
   it('nao faz fallback para outra escola quando subdominio institucional inexiste', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [],
@@ -291,8 +349,9 @@ describe('brandingService', () => {
     );
     expect(result).toMatchObject({
       scope: 'FALLBACK',
-      displayName: null,
-      logoUrl: null,
+      displayName: 'Tec Escola',
+      logoUrl: DEFAULT_BRAND_LOGO_URL,
+      faviconUrl: DEFAULT_BRAND_FAVICON_URL,
     });
   });
 
@@ -321,7 +380,7 @@ describe('brandingService', () => {
     expect(supabase.storage.from).not.toHaveBeenCalled();
   });
 
-  it('retorna fallback neutro quando a RPC publica falha', async () => {
+  it('propaga a falha da RPC publica para preservar o branding anterior', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: null,
       error: new Error('rpc unavailable'),
@@ -329,11 +388,7 @@ describe('brandingService', () => {
 
     await expect(
       brandingService.resolveForHostname('desconhecido.com'),
-    ).resolves.toMatchObject({
-      scope: 'FALLBACK',
-      logoUrl: null,
-      primaryColor: '#005bbf',
-    });
+    ).rejects.toThrow('rpc unavailable');
   });
 
   it('normaliza e solicita dominio como PENDING', async () => {

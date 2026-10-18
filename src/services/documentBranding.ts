@@ -1,4 +1,7 @@
-import type { PublicBranding } from './brandingService';
+import {
+  DEFAULT_BRAND_FAVICON_URL,
+  type PublicBranding,
+} from './brandingService';
 import {
   DEFAULT_BRAND_PRIMARY_COLOR,
   DEFAULT_BRAND_SECONDARY_COLOR,
@@ -6,6 +9,7 @@ import {
 } from './brandingValidation';
 
 export const fallbackDocumentTitle = 'Tec Escola';
+export const defaultFaviconHref = DEFAULT_BRAND_FAVICON_URL;
 
 function getOrCreateFaviconLink(): HTMLLinkElement {
   const existing = document.querySelector<HTMLLinkElement>(
@@ -70,10 +74,8 @@ export function applyDocumentBranding(
 
   if (branding.faviconUrl) {
     favicon.href = branding.faviconUrl;
-  } else if (previousFaviconHref) {
-    favicon.href = previousFaviconHref;
   } else {
-    favicon.removeAttribute('href');
+    favicon.href = defaultFaviconHref;
   }
 
   return () => {

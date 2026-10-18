@@ -192,7 +192,7 @@ describe('brandingValidation', () => {
     ).toBeNull();
   });
 
-  it('valida PNG, JPEG e WebP coerentes', async () => {
+  it('aceita PNG, JPEG e WebP para todos os tipos de branding', async () => {
     expect(
       await validateBrandingImageFile(pngFile(), 'logo'),
     ).toBeNull();
@@ -201,6 +201,9 @@ describe('brandingValidation', () => {
     ).toBeNull();
     expect(
       await validateBrandingImageFile(webpFile(), 'favicon'),
+    ).toBeNull();
+    expect(
+      await validateBrandingImageFile(pngFile(), 'favicon'),
     ).toBeNull();
   });
 

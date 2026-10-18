@@ -318,7 +318,7 @@ export function getRouteVisualContext(
   }
 
   return {
-    section: 'EduManager Pro',
+    section: 'Tec Escola',
     title: 'Dashboard',
   };
 }

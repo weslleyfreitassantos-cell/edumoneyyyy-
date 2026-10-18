@@ -127,7 +127,11 @@ const hiddenSectionLabels: readonly NavigationSection[] = [
   'global',
   'account',
   'school',
+];
+
+const collapsibleNavigationSections: readonly NavigationSection[] = [
   'personal',
+  'teacher',
 ];
 
 const inclusiveEducationNavigation: ReadonlyArray<{
@@ -662,6 +666,8 @@ export default function Sidebar({
     useState(false);
   const [openAdminGroupId, setOpenAdminGroupId] =
     useState<AdminNavigationGroupId | null>(null);
+  const [openNavigationSection, setOpenNavigationSection] =
+    useState<NavigationSection | null>(null);
   const [isInclusiveEducationOpen, setIsInclusiveEducationOpen] =
     useState(false);
   const navigationItems = getSidebarNavigationItems({
@@ -721,7 +727,7 @@ export default function Sidebar({
     ),
   );
   const brandName =
-    branding.displayName?.trim() || 'EduManager Pro';
+    branding.displayName?.trim() || 'Tec Escola';
   const brandLogoUrl =
     branding.logoUrl && !brandLogoFailed
       ? branding.logoUrl
@@ -755,6 +761,14 @@ export default function Sidebar({
   ): void {
     setOpenAdminGroupId((current) =>
       current === groupId ? null : groupId,
+    );
+  }
+
+  function toggleNavigationSection(
+    section: NavigationSection,
+  ): void {
+    setOpenNavigationSection((current) =>
+      current === section ? null : section,
     );
   }
 
@@ -945,7 +959,7 @@ export default function Sidebar({
   function renderInclusiveEducationNavigation() {
     if (
       !currentInstitutionId ||
-      !['ADMIN', 'DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
+      !['DIRECTOR', 'SECRETARY', 'TEACHER'].includes(currentInstitutionRole ?? '')
     ) return null;
     const isCollapsed = !isInclusiveEducationOpen;
     const childGroupId = 'sidebar-inclusive-education';
@@ -1096,22 +1110,73 @@ export default function Sidebar({
             const items = navigationItems.filter(
               (item) => item.section === section,
             );
+            const isCollapsible =
+              collapsibleNavigationSections.includes(section);
+            const isCollapsed =
+              isCollapsible && openNavigationSection !== section;
+            const childGroupId =
+              `sidebar-navigation-section-${section}`;
 
             return (
-              <div
+              <section
                 key={section}
                 className="mb-4 last:mb-0"
+                aria-label={
+                  isCollapsible
+                    ? sectionLabels[section]
+                    : undefined
+                }
               >
-                {hiddenSectionLabels.includes(section) ? null : (
+                {isCollapsible ? (
+                  <button
+                    type="button"
+                    aria-expanded={!isCollapsed}
+                    aria-controls={childGroupId}
+                    onClick={() =>
+                      toggleNavigationSection(section)
+                    }
+                    className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                  >
+                    {section === 'teacher' ? (
+                      <GraduationCap
+                        className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <LayoutDashboard
+                        className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                        aria-hidden="true"
+                      />
+                    )}
+                    <span className="min-w-0 flex-1">
+                      {sectionLabels[section]}
+                    </span>
+                    {isCollapsed ? (
+                      <ChevronRight
+                        className="h-4 w-4 shrink-0 text-[#7b879d]"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <ChevronDown
+                        className="h-4 w-4 shrink-0 text-[#7b879d]"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </button>
+                ) : hiddenSectionLabels.includes(section) ? null : (
                   <p className="mb-1 px-3 text-xs font-bold uppercase tracking-[0.16em] text-[#667085]">
                     {sectionLabels[section]}
                   </p>
                 )}
 
-                <div className="space-y-1.5">
+                <div
+                  id={isCollapsible ? childGroupId : undefined}
+                  hidden={isCollapsed}
+                  className="space-y-1.5"
+                >
                   {items.map(renderNavigationLink)}
                 </div>
-              </div>
+              </section>
             );
           })}
 

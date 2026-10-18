@@ -102,7 +102,47 @@ describe('updateResolvedPublicBrandingCache', () => {
     );
 
     expect(queryClient.getQueryData(['public-branding', 'escola.example.com'])).toEqual(readyBranding);
-    expect(localStorage.getItem('tecescola:public-branding:escola.example.com')).toBeNull();
+    expect(
+      JSON.parse(
+        localStorage.getItem(
+          'tecescola:public-branding:escola.example.com',
+        ) ?? '{}',
+      ),
+    ).toMatchObject({
+      version: 3,
+      branding: readyBranding,
+    });
+    queryClient.clear();
+  });
+
+  it('reidrata o branding do proprio subdominio antes da revalidacao', () => {
+    const host = 'escola.example.com';
+    localStorage.setItem(
+      `tecescola:public-branding:${host}`,
+      JSON.stringify({
+        version: 3,
+        cachedAt: Date.now(),
+        branding: staleBranding,
+      }),
+    );
+    vi.spyOn(brandingService, 'resolveForHostname').mockReturnValue(
+      new Promise<PublicBranding>(() => undefined),
+    );
+
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+    const wrapper = ({ children }: PropsWithChildren) =>
+      createElement(QueryClientProvider, { client: queryClient }, children);
+    const { result, unmount } = renderHook(
+      () => useResolvedBranding(host),
+      { wrapper },
+    );
+
+    expect(result.current.data).toEqual(staleBranding);
+    expect(result.current.isLoading).toBe(false);
+
+    unmount();
     queryClient.clear();
   });
 });
@@ -210,8 +250,8 @@ describe('useResolvedBranding', () => {
       { wrapper },
     );
 
-    expect(result.current.data).toBeUndefined();
-    expect(result.current.isLoading).toBe(true);
+    expect(result.current.data).toEqual(staleBranding);
+    expect(result.current.isLoading).toBe(false);
 
     await act(async () => {
       resolveBranding(currentBranding);
@@ -225,7 +265,7 @@ describe('useResolvedBranding', () => {
         currentBranding.loginBackgroundUrl,
       ]),
     );
-    expect(result.current.data).toBeUndefined();
+    expect(result.current.data).toEqual(staleBranding);
 
     await act(async () => {
       images.forEach((image) => {
@@ -235,6 +275,37 @@ describe('useResolvedBranding', () => {
     });
 
     await waitFor(() => expect(result.current.data).toEqual(currentBranding));
+    expect(resolveSpy).toHaveBeenCalledWith(host);
+
+    unmount();
+    queryClient.clear();
+  });
+
+  it('mantem o ultimo branding quando a revalidacao da aba falha', async () => {
+    const host = 'escola.example.com';
+    const resolveSpy = vi
+      .spyOn(brandingService, 'resolveForHostname')
+      .mockRejectedValue(new Error('network unavailable'));
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
+    queryClient.setQueryData(
+      brandingKeys.public(host),
+      staleBranding,
+      { updatedAt: Date.now() - PUBLIC_BRANDING_STALE_TIME - 1 },
+    );
+    const wrapper = ({ children }: PropsWithChildren) =>
+      createElement(QueryClientProvider, { client: queryClient }, children);
+
+    const { result, unmount } = renderHook(
+      () => useResolvedBranding(host),
+      { wrapper },
+    );
+
+    await waitFor(() => expect(result.current.isError).toBe(true));
+
+    expect(result.current.data).toEqual(staleBranding);
+    expect(result.current.isLoading).toBe(false);
     expect(resolveSpy).toHaveBeenCalledWith(host);
 
     unmount();
@@ -266,7 +337,37 @@ describe('useResolvedBranding', () => {
     expect(result.loginBackgroundUrl).toBeNull();
   });
 
-  it('ignora favicon retangular para preservar o icone estatico quadrado', async () => {
+  it('preserva assets anteriores quando o preload da revalidacao falha', async () => {
+    class FailedImage {
+      onload: ((event: Event) => void) | null = null;
+      onerror: ((event: Event) => void) | null = null;
+      complete = false;
+      naturalWidth = 0;
+      src = '';
+
+      constructor() {
+        queueMicrotask(() => this.onerror?.(new Event('error')));
+      }
+    }
+    vi.stubGlobal('Image', FailedImage);
+
+    const refreshedBranding: PublicBranding = {
+      ...staleBranding,
+      logoUrl: 'https://cdn.example.com/new-logo.png',
+      faviconUrl: 'https://cdn.example.com/new-favicon.png',
+      loginBackgroundUrl: 'https://cdn.example.com/new-background.png',
+    };
+    const result = await preloadPublicBrandingAssets(
+      refreshedBranding,
+      staleBranding,
+    );
+
+    expect(result.logoUrl).toBe(staleBranding.logoUrl);
+    expect(result.faviconUrl).toBe(staleBranding.faviconUrl);
+    expect(result.loginBackgroundUrl).toBe(staleBranding.loginBackgroundUrl);
+  });
+
+  it('preserva favicon institucional mesmo quando o arquivo e retangular', async () => {
     class DimensionedImage {
       onload: ((event: Event) => void) | null = null;
       onerror: ((event: Event) => void) | null = null;
@@ -291,7 +392,7 @@ describe('useResolvedBranding', () => {
     const result = await preloadPublicBrandingAssets(staleBranding);
 
     expect(result.logoUrl).toBe(staleBranding.logoUrl);
-    expect(result.faviconUrl).toBeNull();
+    expect(result.faviconUrl).toBe(staleBranding.faviconUrl);
     expect(result.loginBackgroundUrl).toBe(staleBranding.loginBackgroundUrl);
   });
 });
