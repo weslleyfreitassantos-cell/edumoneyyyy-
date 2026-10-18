@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "tec-escola.bncc.authoring-context-brief.v1",
+  "taskId": "BNCC_EF01CO01",
+  "officialCode": "EF01CO01",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "componentCode": "CO",
+  "relation": "AUTHORING_CONTEXT_ONLY",
+  "sourceStatus": "VERIFIED",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "publicationStatus": "STAGING_INACTIVE",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "sourceEvidence": {
+    "verificationId": "BNCC_EF01CO01_MEC_P016_V1",
+    "descriptor": "Organizar objetos físicos ou digitais considerando diferentes características para esta organização, explicitando semelhanças (padrões) e diferenças.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "evidenceCheckedAt": "2026-10-16"
+  },
+  "requirements": {
+    "mode": "OBJECTIVE_LEARNING_PATH",
+    "lessons": 1,
+    "workedExamples": 1,
+    "activities": 1,
+    "diagnosticAssessments": 1,
+    "masteryAssessments": 1,
+    "questions": 40
+  },
+  "missingRequirements": [
+    "AUTHORING_PACKAGE",
+    "LESSON",
+    "WORKED_EXAMPLES",
+    "GUIDED_ACTIVITIES",
+    "ASSESSMENTS",
+    "REMEDIATION",
+    "PEDAGOGICAL_REVIEW"
+  ],
+  "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
+  "checkpointHash": "7dc61bc40f2c434fec4c179dc44dc1efe0d6bf87dc29620cc0f26af14d2ec6c0"
+}

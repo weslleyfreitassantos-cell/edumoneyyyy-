@@ -132,7 +132,7 @@
     "adaptive:question-first:v5:compile:sociology-norm-value": "node tools/adaptive/compile-question-first-content-v5.mjs compile --pack content/adaptive/tec-escola-core-v5/sociology-norm-value.json --output supabase/migrations/20261013003800_bncc_sociology_norm_value_question_first_v5.sql",
     "adaptive:question-first:v5:build:sociology-institutions": "node tools/adaptive/build-sociology-institutions-v5.mjs",
     "adaptive:question-first:v5:validate:sociology-institutions": "node tools/adaptive/compile-question-first-content-v5.mjs validate --pack content/adaptive/tec-escola-core-v5/sociology-institutions.json",
-    "adaptive:question-first:v5:compile:sociology-institutions": "node tools/adaptive/compile-question-first-content-v5.mjs compile --pack content/adaptive/tec-escola-core-v5/sociology-institutions.json --output supabase/migrations/20261014000100_bncc_sociology_institutions_question_first_v5.sql",
+    "adaptive:question-first:v5:compile:sociology-institutions": "node tools/adaptive/compile-question-first-content-v5.mjs compile --pack content/adaptive/tec-escola-core-v5/sociology-institutions.json --output supabase/migrations/20261014000150_bncc_sociology_institutions_question_first_v5.sql",
     "adaptive:question-first:v5:build:art-composition": "node tools/adaptive/build-art-compare-compositions-v5.mjs",
     "adaptive:question-first:v5:validate:art-composition": "node tools/adaptive/compile-question-first-content-v5.mjs validate --pack content/adaptive/tec-escola-core-v5/art-compare-compositions.json",
     "adaptive:question-first:v5:compile:art-composition": "node tools/adaptive/compile-question-first-content-v5.mjs compile --pack content/adaptive/tec-escola-core-v5/art-compare-compositions.json --output supabase/migrations/20261014000200_bncc_art_compare_compositions_question_first_v5.sql",
@@ -202,6 +202,8 @@
     "bncc:reconcile-progress": "node tools/bncc/reconcile-progress.mjs",
     "bncc:completion-queue:v14": "node tools/bncc/build-completion-queue-v14.mjs",
     "bncc:autopilot": "node tools/bncc/bncc-autopilot.mjs",
+    "bncc:autopilot:build:ef01ci04": "node tools/bncc/build-ef01ci04-authoring-pack.mjs",
+    "bncc:autopilot:build:ef01ci05": "node tools/bncc/build-ef01ci05-authoring-pack.mjs",
     "check": "npm run routing:guard && npm run bncc:validate-knowledge-factory && npm run bncc:validate-knowledge-factory:v2 && npm run bncc:validate-knowledge-factory:v3 && npm run bncc:validate-knowledge-factory:v4 && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "tec-escola.bncc.authoring-context-brief.v1",
+  "taskId": "BNCC_EF01CO02",
+  "officialCode": "EF01CO02",
+  "stage": "ENSINO_FUNDAMENTAL",
+  "componentCode": "CO",
+  "relation": "AUTHORING_CONTEXT_ONLY",
+  "sourceStatus": "VERIFIED",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "publicationStatus": "STAGING_INACTIVE",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "sourceEvidence": {
+    "verificationId": "BNCC_EF01CO02_MEC_P016_V1",
+    "descriptor": "Identificar e seguir sequências de passos aplicados no dia a dia para resolver problemas.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 16
+    },
+    "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "evidenceCheckedAt": "2026-10-16"
+  },
+  "requirements": {
+    "mode": "OBJECTIVE_LEARNING_PATH",
+    "lessons": 1,
+    "workedExamples": 1,
+    "activities": 1,
+    "diagnosticAssessments": 1,
+    "masteryAssessments": 1,
+    "questions": 40
+  },
+  "missingRequirements": [
+    "AUTHORING_PACKAGE",
+    "LESSON",
+    "WORKED_EXAMPLES",
+    "GUIDED_ACTIVITIES",
+    "ASSESSMENTS",
+    "REMEDIATION",
+    "PEDAGOGICAL_REVIEW"
+  ],
+  "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
+  "checkpointHash": "dae2c30773bcb2a57a6fe8eb65fe7bc8e493915674eff717e55840e04cf7e481"
+}

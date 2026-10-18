@@ -3,12 +3,12 @@
   "campaignId": "TECESCOLA_BNCC_AUTOPILOT",
   "executionId": "0bcba5ce-1652-4e0d-9488-a30b659a5bee",
   "createdAt": "2026-10-18T01:41:02.951Z",
-  "updatedAt": "2026-10-18T01:42:08.940Z",
+  "updatedAt": "2026-10-18T03:07:21.338Z",
   "runStatus": "LIMIT_REACHED",
   "currentTask": null,
   "lastCompletedTask": "BNCC_EF01CI02",
-  "nextTask": "BNCC_EF01CI05",
-  "queueHash": "006b7fd1b7837aef3268266d35fa6354964160ac0c25b8dbd3c4a8ebfa248cd5",
+  "nextTask": "BNCC_EF01CO03",
+  "queueHash": "8ee241cb7660f152c274fccc137663635d43f18c72ac9885186a33def5eeb25f",
   "taskRecords": {
     "BNCC_EF03HI01": {
       "taskId": "BNCC_EF03HI01",
@@ -146,25 +146,76 @@
       "taskId": "BNCC_EF01CI04",
       "attempts": 1,
       "lastStartedAt": "2026-10-18T01:42:07.471Z",
-      "status": "CONTENT_PARTIAL",
-      "lastAction": "AUTHORING_CONTEXT_BRIEF_CREATED",
-      "lastPath": "content/bncc/authoring/tasks/BNCC_EF01CI04.json",
+      "status": "CONTENT_TECHNICALLY_COMPLETE",
+      "lastAction": "QUEUE_COMPLETION_RECONCILED",
+      "lastPath": "content/adaptive/tec-escola-core-v5/v1-science-human-diversity-fi.json",
       "lastValidation": {
         "valid": true,
         "errors": []
       },
-      "updatedAt": "2026-10-18T01:42:08.930Z",
-      "checkpointHash": "28140dd310b2caa4598828fe8a8236151d60becf0a04205353ebdbfb377bfeda"
+      "updatedAt": "2026-10-18T03:04:51.617Z",
+      "checkpointHash": "144d55613f8c889c4847fbe7ee25dc5ed6728c138ad3ef89b18f20d3f41eca2e"
+    },
+    "BNCC_EF01CI05": {
+      "taskId": "BNCC_EF01CI05",
+      "attempts": 0,
+      "status": "CONTENT_TECHNICALLY_COMPLETE",
+      "lastAction": "QUEUE_COMPLETION_RECONCILED",
+      "lastPath": "content/adaptive/tec-escola-core-v5/v1-science-time-scales-fi.json",
+      "updatedAt": "2026-10-18T03:04:51.644Z",
+      "checkpointHash": "85b1b9e855aff9eca91d137a28c740fc72d85134b56fab3b881ac6dbcf629c77"
+    },
+    "BNCC_EF01CI06": {
+      "taskId": "BNCC_EF01CI06",
+      "attempts": 1,
+      "lastStartedAt": "2026-10-18T03:07:06.462Z",
+      "status": "CONTENT_PARTIAL",
+      "lastAction": "AUTHORING_CONTEXT_BRIEF_CREATED",
+      "lastPath": "content/bncc/authoring/tasks/BNCC_EF01CI06.json",
+      "lastValidation": {
+        "valid": true,
+        "errors": []
+      },
+      "updatedAt": "2026-10-18T03:07:07.113Z",
+      "checkpointHash": "fd8b6be633d3b4c905d1f338546270fea1ee620a7e7830e099d422940b755b6c"
+    },
+    "BNCC_EF01CO01": {
+      "taskId": "BNCC_EF01CO01",
+      "attempts": 1,
+      "lastStartedAt": "2026-10-18T03:07:08.092Z",
+      "status": "CONTENT_PARTIAL",
+      "lastAction": "AUTHORING_CONTEXT_BRIEF_CREATED",
+      "lastPath": "content/bncc/authoring/tasks/BNCC_EF01CO01.json",
+      "lastValidation": {
+        "valid": true,
+        "errors": []
+      },
+      "updatedAt": "2026-10-18T03:07:09.036Z",
+      "checkpointHash": "a6184d17b864f0c276ffcb33e6a3d4d6bb3c8267242bde8da58eacc3a7ea6cf8"
+    },
+    "BNCC_EF01CO02": {
+      "taskId": "BNCC_EF01CO02",
+      "attempts": 1,
+      "lastStartedAt": "2026-10-18T03:07:09.649Z",
+      "status": "CONTENT_PARTIAL",
+      "lastAction": "AUTHORING_CONTEXT_BRIEF_CREATED",
+      "lastPath": "content/bncc/authoring/tasks/BNCC_EF01CO02.json",
+      "lastValidation": {
+        "valid": true,
+        "errors": []
+      },
+      "updatedAt": "2026-10-18T03:07:10.260Z",
+      "checkpointHash": "ee7b90dad1cc29e806830cc88a633f5df5b9a6d3e219529998f1f45dcad4dae5"
     }
   },
   "blockedTasks": [],
   "metrics": {
-    "cycles": 5,
-    "completedTasks": 14,
-    "partialTasks": 2,
+    "cycles": 8,
+    "completedTasks": 16,
+    "partialTasks": 4,
     "blockedTasks": 0,
-    "failedTasks": 1,
-    "pendingTasks": 1707
+    "failedTasks": 0,
+    "pendingTasks": 1705
   },
   "checkpoints": [
     {
@@ -200,6 +251,27 @@
       "checkpointHash": "28140dd310b2caa4598828fe8a8236151d60becf0a04205353ebdbfb377bfeda",
       "at": "2026-10-18T01:42:08.931Z",
       "queueHash": "006b7fd1b7837aef3268266d35fa6354964160ac0c25b8dbd3c4a8ebfa248cd5"
+    },
+    {
+      "taskId": "BNCC_EF01CI06",
+      "status": "CONTENT_PARTIAL",
+      "checkpointHash": "fd8b6be633d3b4c905d1f338546270fea1ee620a7e7830e099d422940b755b6c",
+      "at": "2026-10-18T03:07:07.113Z",
+      "queueHash": "8ee241cb7660f152c274fccc137663635d43f18c72ac9885186a33def5eeb25f"
+    },
+    {
+      "taskId": "BNCC_EF01CO01",
+      "status": "CONTENT_PARTIAL",
+      "checkpointHash": "a6184d17b864f0c276ffcb33e6a3d4d6bb3c8267242bde8da58eacc3a7ea6cf8",
+      "at": "2026-10-18T03:07:09.037Z",
+      "queueHash": "8ee241cb7660f152c274fccc137663635d43f18c72ac9885186a33def5eeb25f"
+    },
+    {
+      "taskId": "BNCC_EF01CO02",
+      "status": "CONTENT_PARTIAL",
+      "checkpointHash": "ee7b90dad1cc29e806830cc88a633f5df5b9a6d3e219529998f1f45dcad4dae5",
+      "at": "2026-10-18T03:07:10.260Z",
+      "queueHash": "8ee241cb7660f152c274fccc137663635d43f18c72ac9885186a33def5eeb25f"
     }
   ],
   "policy": {

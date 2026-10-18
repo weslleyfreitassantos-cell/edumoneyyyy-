@@ -5,7 +5,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { buildCompletionQueue } from './build-completion-queue-v14.mjs';
-import { buildPack as buildEf01Ci02Pack, validatePack as validateEf01Ci02Pack } from './build-ef01ci02-authoring-pack.mjs';
+import { getAuthoringProducer } from './bncc-authoring-producers.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const PATHS = {
@@ -19,8 +19,8 @@ const PATHS = {
 const CAMPAIGN_ID = 'TECESCOLA_BNCC_AUTOPILOT';
 const SCHEMA_VERSION = 'tec-escola.bncc.autopilot-state.v1';
 const DEFAULTS = {
-  maxTasks: Number(process.env.BNCC_AUTOPILOT_MAX_TASKS ?? 1),
-  maxCycles: Number(process.env.BNCC_AUTOPILOT_MAX_CYCLES ?? 8),
+  maxTasks: Number(process.env.BNCC_AUTOPILOT_MAX_TASKS ?? 8),
+  maxCycles: Number(process.env.BNCC_AUTOPILOT_MAX_CYCLES ?? 32),
   maxSeconds: Number(process.env.BNCC_AUTOPILOT_MAX_SECONDS ?? 900),
   retryLimit: Number(process.env.BNCC_AUTOPILOT_RETRY_LIMIT ?? 3),
 };
@@ -159,12 +159,39 @@ function loadState(queue) {
   if (!fs.existsSync(statePath)) return createInitialState(queue);
   const state = readJson(PATHS.state);
   if (state.schemaVersion !== SCHEMA_VERSION || state.campaignId !== CAMPAIGN_ID) throw new Error('AUTOPILOT_STATE_SCHEMA_INVALID');
-  return state;
+  return reconcileStateWithQueue(queue, state);
 }
 
 function saveState(state) {
   state.updatedAt = now();
   writeJsonAtomic(PATHS.state, state);
+}
+
+function reconcileStateWithQueue(queue, state) {
+  const completedTasks = queue.tasks.filter((task) => task.state === 'CONTENT_TECHNICALLY_COMPLETE');
+  for (const task of completedTasks) {
+    const record = state.taskRecords[task.taskId] ?? { taskId: task.taskId, attempts: 0 };
+    if (record.status !== 'CONTENT_TECHNICALLY_COMPLETE') {
+      record.status = 'CONTENT_TECHNICALLY_COMPLETE';
+      record.lastAction = 'QUEUE_COMPLETION_RECONCILED';
+      record.lastPath = task.evidence.stagedPackages?.[0]?.file ?? null;
+      record.updatedAt = now();
+      record.checkpointHash = hash({ taskId: task.taskId, status: record.status, queueHash: queue.queueHash });
+    }
+    state.taskRecords[task.taskId] = record;
+  }
+  state.queueHash = queue.queueHash;
+  state.metrics.completedTasks = completedTasks.length;
+  state.metrics.pendingTasks = queue.tasks.length - completedTasks.length;
+  state.metrics.partialTasks = Object.values(state.taskRecords).filter((record) => record.status === 'CONTENT_PARTIAL').length;
+  state.metrics.failedTasks = Object.values(state.taskRecords).filter((record) => record.status === 'FAILED_RECOVERABLE').length;
+  state.metrics.blockedTasks = state.blockedTasks.length;
+  const completedIds = new Set(completedTasks.map((task) => task.taskId));
+  state.lastCompletedTask = completedIds.has(state.lastCompletedTask)
+    ? state.lastCompletedTask
+    : completedTasks.at(-1)?.taskId ?? null;
+  state.nextTask = selectNextTask(queue, state)?.taskId ?? null;
+  return state;
 }
 
 function queueSummary(queue, state) {
@@ -187,7 +214,28 @@ function queueSummary(queue, state) {
     nextTask: state.nextTask,
     runStatus: state.runStatus,
     stopRequested: fs.existsSync(absolute(PATHS.stop)),
+    metricReconciliation: reconcileMetrics(queue),
     policy: state.policy,
+  };
+}
+
+function reconcileMetrics(queue) {
+  const inventory = readJson('content/bncc/authoring/knowledge-factory-inventory-v4.json');
+  const sourceVerification = readJson('content/bncc/authoring/source-verification-v2.json');
+  const coverageMatrix = readJson('content/bncc/authoring/coverage-matrix-v8.json');
+  const coverage = readJson('content/bncc/mappings/coverage-2018.json');
+  const queueCanonicalMappingVerified = queue.tasks.filter((task) => task.technicalCompleteness.canonicalMappingVerified).length;
+  return {
+    officialCatalogNodes: inventory.officialCoverage?.totalNodes ?? 0,
+    queueTasks: queue.summary.totalTasks,
+    queuePendingTasks: queue.tasks.filter((task) => task.state !== 'CONTENT_TECHNICALLY_COMPLETE').length,
+    sourceVerificationRecords: sourceVerification.records?.length ?? 0,
+    coverageMatrixExactSourceVerification: coverageMatrix.summary?.rowsWithExactSourceVerification ?? 0,
+    canonicalMappingDatasetClaims: coverage.summary?.mapped ?? 0,
+    canonicalMappingDatasetPending: coverage.summary?.canonicalGaps ?? 0,
+    queueCanonicalMappingVerified,
+    queueCanonicalMappingPending: queue.tasks.length - queueCanonicalMappingVerified,
+    explanation: 'MAPPED is the coverage-dataset scope; queueCanonicalMappingVerified is the publication-gate scope and remains false until each task is explicitly validated and promoted.',
   };
 }
 
@@ -201,7 +249,9 @@ function selectNextTask(queue, state) {
     const record = state.taskRecords[task.taskId];
     return hasSafeAuthoringCandidate(task)
       && !blocked.has(task.taskId)
-      && !['CONTENT_PARTIAL', 'BLOCKED_REVIEW'].includes(record?.status);
+      && (!['CONTENT_PARTIAL', 'BLOCKED_REVIEW'].includes(record?.status)
+        || Boolean(getAuthoringProducer(task))
+        || Boolean(task.evidence.stagedPackages?.length));
   }) ?? null;
 }
 
@@ -228,12 +278,14 @@ function validateExistingPackage(task, stagedPackage) {
   return { valid: errors.length === 0, errors, questionCount: stagedPackage.questions?.length ?? 0, contextCount: contexts.size };
 }
 
-function writeEf01Ci02Package() {
-  const pack = buildEf01Ci02Pack();
-  const validation = validateEf01Ci02Pack(pack);
-  if (!validation.valid) throw new Error(`EF01CI02_GENERATED_PACK_INVALID:${validation.errors.join(',')}`);
-  writeJsonAtomic('content/adaptive/tec-escola-core-v5/v1-science-body-parts-fi.json', pack);
-  return { kind: 'CONTENT_PACKAGE_CREATED', path: 'content/adaptive/tec-escola-core-v5/v1-science-body-parts-fi.json', validation };
+function writeProducerPackage(task, producer) {
+  const pack = producer.build();
+  const producerValidation = producer.validate(pack);
+  if (!producerValidation.valid) throw new Error(`${producer.id.toUpperCase()}_PACK_INVALID:${producerValidation.errors.join(',')}`);
+  const validation = validateExistingPackage(task, pack);
+  if (!validation.valid) throw new Error(`${producer.id.toUpperCase()}_AUTOPILOT_VALIDATION_FAILED:${validation.errors.join(',')}`);
+  writeJsonAtomic(producer.path, pack);
+  return { kind: 'CONTENT_PACKAGE_CREATED', path: producer.path, validation: { ...validation, producer: producerValidation } };
 }
 
 function writeEf01Ci01Activity() {
@@ -306,8 +358,8 @@ function processTask(task, state, options) {
   try {
     if (task.officialCode === 'EF01CI01') {
       outcome = writeEf01Ci01Activity();
-    } else if (task.officialCode === 'EF01CI02') {
-      outcome = writeEf01Ci02Package();
+    } else if (getAuthoringProducer(task)) {
+      outcome = writeProducerPackage(task, getAuthoringProducer(task));
     } else if (task.evidence.stagedPackages?.length) {
       const packagePath = task.evidence.stagedPackages[0].file;
       const packageData = readJson(packagePath);
@@ -393,9 +445,13 @@ function run(mode, options) {
       const result = processTask(task, state, options);
       tasksProcessed += 1;
       if (result.status === 'FAILED_RECOVERABLE' && (state.taskRecords[task.taskId]?.attempts ?? 0) < options.retryLimit) continue;
-      if (mode === 'once' || mode === 'resume') break;
+      if (mode === 'once') break;
     }
-    if (state.runStatus === 'RUNNING') state.runStatus = tasksProcessed >= options.maxTasks ? 'LIMIT_REACHED' : 'SAFE_BUDGET_REACHED';
+    if (state.runStatus === 'RUNNING') {
+      state.runStatus = tasksProcessed >= options.maxTasks || cycles >= options.maxCycles
+        ? 'LIMIT_REACHED'
+        : 'SAFE_BUDGET_REACHED';
+    }
     state.currentTask = null;
     saveState(state);
     return { mode, cycles, tasksProcessed, summary: queueSummary(refreshQueue(), state) };
@@ -407,6 +463,7 @@ function run(mode, options) {
 function status() {
   const queue = readJson(PATHS.queue);
   const state = loadState(queue);
+  saveState(state);
   console.log(JSON.stringify(queueSummary(queue, state), null, 2));
 }
 
@@ -424,11 +481,14 @@ function main() {
   if (mode === '--status') return status();
   if (mode === '--stop') return stop();
   if (!['--once', '--loop', '--resume'].includes(mode)) throw new Error('USAGE: --status|--once|--loop|--resume|--stop');
-  if (mode === '--once' || mode === '--resume') options.maxCycles = 1;
+  if (mode === '--once') {
+    options.maxCycles = 1;
+    options.maxTasks = 1;
+  }
   const result = run(mode.slice(2), options);
   console.log(JSON.stringify(result, null, 2));
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
 
-export { createInitialState, parseOptions, queueSummary, selectNextTask, validateExistingPackage };
+export { createInitialState, parseOptions, queueSummary, reconcileMetrics, selectNextTask, validateExistingPackage };

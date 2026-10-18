@@ -27,19 +27,19 @@
   "summary": {
     "totalTasks": 1721,
     "byState": {
-      "BLOCKED_CANONICAL_REVIEW": 500,
+      "BLOCKED_CANONICAL_REVIEW": 498,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
       "BLOCKED_SOURCE": 1160,
-      "CONTENT_TECHNICALLY_COMPLETE": 14
+      "CONTENT_TECHNICALLY_COMPLETE": 16
     },
     "byQueueState": {
       "BLOCKED_CANONICAL_REVIEW": 514,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
       "BLOCKED_SOURCE": 1160
     },
-    "contentTechnicallyComplete": 14,
+    "contentTechnicallyComplete": 16,
     "canonicalMappingVerified": 0,
-    "readyForPedagogicalReview": 14,
+    "readyForPedagogicalReview": 16,
     "humanPedagogicalApproved": 0,
     "publicationAuthorized": 0
   },
@@ -359,7 +359,7 @@
       "componentCode": "CI",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -378,11 +378,24 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01CI04_MEC_P335_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/v1-science-human-diversity-fi.json",
+            "contentId": "v1-science-human-diversity-fi",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 1,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED"
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -401,7 +414,7 @@
       "componentCode": "CI",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -420,11 +433,24 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01CI05_MEC_P335_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/v1-science-time-scales-fi.json",
+            "contentId": "v1-science-time-scales-fi",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 1,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED"
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -72210,5 +72236,5 @@
       }
     }
   ],
-  "queueHash": "006b7fd1b7837aef3268266d35fa6354964160ac0c25b8dbd3c4a8ebfa248cd5"
+  "queueHash": "8ee241cb7660f152c274fccc137663635d43f18c72ac9885186a33def5eeb25f"
 }

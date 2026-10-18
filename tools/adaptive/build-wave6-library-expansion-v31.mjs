@@ -140,7 +140,7 @@ function main() {
   const validation = validateQuestionFirstPack(pack);
   if (!validation.valid) throw new Error(`HISTORY_POPULATION_GROUPS_V31_INVALID:${validation.errors.join(',')}`);
   writeFileSync(resolve(ROOT, 'content/adaptive/tec-escola-core-v5/v31-history-population-groups-expansion-v31.json'), `${JSON.stringify(pack, null, 2)}\n`);
-  writeFileSync(resolve(ROOT, 'supabase/migrations/20261017000100_bncc_history_population_groups_library_expansion_v31.sql'), buildMigration(pack));
+  writeFileSync(resolve(ROOT, 'supabase/migrations/20261017000150_bncc_history_population_groups_library_expansion_v31.sql'), buildMigration(pack));
   process.stdout.write(`${JSON.stringify({ valid: true, newQuestions: 50, totalQuestions: questions.length, purposeCounts: validation.counts, answerPositionCounts: validation.answerPositionCounts, publicationStatus: pack.publicationStatus, pedagogicalReviewStatus: pack.pedagogicalReviewStatus, officialMappingStatus: pack.officialMappingStatus, sourceContext: pack.sourceContext }, null, 2)}\n`);
 }
 

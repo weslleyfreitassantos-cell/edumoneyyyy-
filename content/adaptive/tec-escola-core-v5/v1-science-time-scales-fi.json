@@ -1,0 +1,1407 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-science-time-scales-fi",
+  "canonicalSkillCode": "AUTHORING_EF01CI05_TIME_SCALES",
+  "subject": "SCIENCE",
+  "domain": "TERRA_E_UNIVERSO",
+  "topic": "períodos diários e sucessão de dias, semanas, meses e anos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01CI05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e nomear diferentes escalas de tempo: os períodos diários (manhã, tarde, noite) e a sucessão de dias, semanas, meses e anos.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 335
+    },
+    "note": "Conteúdo autoral contextualizado para EF01CI05; o mapeamento canônico e a revisão pedagógica continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "ORIGINAL_AUTHORING_CONTEXT",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Organizar o tempo em diferentes escalas",
+    "objective": "Identificar e nomear manhã, tarde e noite e acompanhar a sucessão de dias, semanas, meses e anos em situações de calendário e rotina.",
+    "summary": "Um dia pode ser observado em períodos como manhã, tarde e noite. Os dias se sucedem e podem ser organizados em semanas, meses e anos; cada escala responde a uma pergunta diferente.",
+    "explanation": "## Partes do dia\nManhã, tarde e noite são períodos usados para localizar acontecimentos dentro de um dia. Uma rotina pode começar pela manhã, continuar à tarde e terminar à noite, mas nem toda atividade segue a mesma rotina.\n\n## Sucessão dos dias\nDias têm uma ordem: depois de terça vem quarta, e antes de sexta vem quinta. As palavras ontem, hoje e amanhã dependem do dia escolhido como referência.\n\n## Semanas, meses e anos\nUma semana organiza uma sucessão de dias. Os meses reúnem dias no calendário e ajudam a acompanhar a passagem do ano. Um ano é uma escala mais ampla organizada por meses. Não confunda o nome de um mês com o horário ou o dia exato de um evento.\n\n## Exemplo resolvido\nSe hoje é terça-feira e uma atividade acontecerá daqui a uma semana, ela será novamente na terça-feira da semana seguinte. Para saber a data concreta, é preciso consultar o calendário; a informação “à tarde” ainda seria necessária para localizar o período dentro do dia.",
+    "workedExample": "Organize os cartões “acordar”, “almoçar” e “dormir” como manhã, tarde e noite. Depois use um calendário fictício para marcar segunda, terça e quarta. Explique que a primeira sequência usa partes do dia e a segunda usa dias sucessivos.",
+    "commonMistake": "Tratar manhã, semana e ano como unidades equivalentes; confundir ontem e amanhã; concluir um horário a partir apenas do nome do mês; ou afirmar uma duração que o calendário não informa.",
+    "tips": [
+      "Classifique primeiro a escala: parte do dia, dia, semana, mês ou ano.",
+      "Use ontem, hoje e amanhã a partir de uma referência explícita.",
+      "Avance ou volte uma posição por vez ao ordenar dias e meses.",
+      "Consulte o calendário quando uma pergunta exigir uma data concreta.",
+      "Não invente horário, duração ou frequência que não foram informados."
+    ],
+    "priorKnowledge": [
+      "Ordenar acontecimentos simples de uma rotina.",
+      "Reconhecer antes, depois e agora.",
+      "Ler nomes de dias e meses com apoio visual."
+    ],
+    "keyConcepts": [
+      "manhã, tarde e noite",
+      "sucessão",
+      "ontem, hoje e amanhã",
+      "semana",
+      "mês",
+      "ano",
+      "calendário",
+      "escala de tempo"
+    ],
+    "progression": [
+      {
+        "stage": "FOUNDATION",
+        "focus": "Nomear períodos do dia e reconhecer unidades básicas.",
+        "questionIds": [
+          "v1-science-time-scales-fi-01",
+          "v1-science-time-scales-fi-02",
+          "v1-science-time-scales-fi-03",
+          "v1-science-time-scales-fi-04"
+        ]
+      },
+      {
+        "stage": "APPLICATION",
+        "focus": "Ordenar dias e meses em situações de calendário.",
+        "questionIds": [
+          "v1-science-time-scales-fi-05",
+          "v1-science-time-scales-fi-06",
+          "v1-science-time-scales-fi-07",
+          "v1-science-time-scales-fi-08",
+          "v1-science-time-scales-fi-09",
+          "v1-science-time-scales-fi-10",
+          "v1-science-time-scales-fi-11",
+          "v1-science-time-scales-fi-12",
+          "v1-science-time-scales-fi-13",
+          "v1-science-time-scales-fi-14",
+          "v1-science-time-scales-fi-15",
+          "v1-science-time-scales-fi-16"
+        ]
+      },
+      {
+        "stage": "TRANSFER",
+        "focus": "Aplicar diferentes escalas para organizar rotinas e eventos.",
+        "questionIds": [
+          "v1-science-time-scales-fi-17",
+          "v1-science-time-scales-fi-18",
+          "v1-science-time-scales-fi-19",
+          "v1-science-time-scales-fi-20",
+          "v1-science-time-scales-fi-21",
+          "v1-science-time-scales-fi-22",
+          "v1-science-time-scales-fi-23",
+          "v1-science-time-scales-fi-24"
+        ]
+      },
+      {
+        "stage": "INTEGRATION",
+        "focus": "Justificar a escala adequada e respeitar limites da informação.",
+        "questionIds": [
+          "v1-science-time-scales-fi-25",
+          "v1-science-time-scales-fi-26",
+          "v1-science-time-scales-fi-27",
+          "v1-science-time-scales-fi-28",
+          "v1-science-time-scales-fi-29",
+          "v1-science-time-scales-fi-30"
+        ]
+      },
+      {
+        "stage": "SPACED_REVIEW_CANDIDATE",
+        "focus": "Retomar períodos, sucessões e relações entre escalas.",
+        "questionIds": [
+          "v1-science-time-scales-fi-31",
+          "v1-science-time-scales-fi-32",
+          "v1-science-time-scales-fi-33",
+          "v1-science-time-scales-fi-34",
+          "v1-science-time-scales-fi-35",
+          "v1-science-time-scales-fi-36",
+          "v1-science-time-scales-fi-37",
+          "v1-science-time-scales-fi-38",
+          "v1-science-time-scales-fi-39",
+          "v1-science-time-scales-fi-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "MIX_SCALES",
+        "text": "Manhã, tarde e noite são períodos dentro do dia; semana, mês e ano organizam sucessões mais amplas."
+      },
+      {
+        "trigger": "SEQUENCE_REFERENCE",
+        "text": "Ontem é o dia anterior e amanhã é o seguinte, sempre a partir do dia usado como referência."
+      },
+      {
+        "trigger": "CALENDAR_EVIDENCE_LIMIT",
+        "text": "Um mês ou um dia da semana não informa sozinho o horário ou a duração de uma atividade."
+      }
+    ],
+    "remediations": [
+      {
+        "misconception": "MIX_SCALES",
+        "prompt": "Separe cartões em cinco grupos: período do dia, dia, semana, mês e ano; explique por que cada cartão pertence ao grupo."
+      },
+      {
+        "misconception": "DAY_SEQUENCE_ERROR",
+        "prompt": "Use uma faixa de dias e avance ou volte uma casa a partir de uma referência explícita."
+      },
+      {
+        "misconception": "INFER_UNSTATED_TIME",
+        "prompt": "Marque o que o calendário informa e escreva uma pergunta sobre o que ainda falta saber."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "id": "time-scale-calendar-map",
+        "title": "Mapa de escalas do calendário",
+        "objective": "Organizar cartões de períodos do dia, dias da semana, meses e anos e justificar qual escala responde a cada pergunta.",
+        "context": "Atividade mediada pelo professor com calendário de estudo fictício, cartões de rotina e uma linha do tempo sem datas pessoais.",
+        "materials": [
+          "Calendário fictício impresso",
+          "Cartões com manhã, tarde e noite",
+          "Cartões com dias e meses",
+          "Fita ou quadro para montar sequências"
+        ],
+        "instructions": "Em grupos, organize uma rotina diária e depois monte uma sequência de dias e meses usando o calendário fictício. Para cada situação, indique a escala usada e registre uma informação que ainda não pode ser concluída. Não usar datas de nascimento, endereços ou compromissos reais de estudantes.",
+        "evidence": "Registro que ordena períodos e unidades de tempo, nomeia a escala usada e distingue evidência disponível de informação ausente.",
+        "safety": "Usar exemplos fictícios e permitir que o estudante participe por fala, desenho, cartões ou outra forma acessível.",
+        "privacyGuard": "Não coletar aniversários, rotinas familiares, localização ou outros dados pessoais; trabalhar somente com calendário inventado.",
+        "ageRange": "1º ano do Ensino Fundamental, com leitura e mediação docente.",
+        "mediation": "O professor oferece referências visuais, pergunta qual escala está sendo usada e não exige exposição de rotina pessoal.",
+        "rubric": [
+          {
+            "criterion": "Nomeação e sucessão",
+            "emerging": "Mistura períodos e unidades sem ordenar.",
+            "developing": "Ordena parte da sequência com apoio.",
+            "proficient": "Nomeia períodos e organiza sucessões de dias e meses com justificativa."
+          },
+          {
+            "criterion": "Escolha da escala",
+            "emerging": "Usa mês para responder a qualquer pergunta.",
+            "developing": "Escolhe uma escala adequada após mediação.",
+            "proficient": "Relaciona pergunta, evidência e escala sem inventar horário ou duração."
+          },
+          {
+            "criterion": "Participação e segurança",
+            "emerging": "Usa dados reais de colegas.",
+            "developing": "Aceita exemplos fictícios após orientação.",
+            "proficient": "Mantém o calendário fictício e oferece formas acessíveis de participação."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 30,
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "title": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "publisher": "MEC/CNE",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 335,
+        "accessedOn": "2026-10-16",
+        "supports": [
+          "períodos diários",
+          "sucessão de dias",
+          "semanas, meses e anos"
+        ],
+        "use": "Fonte oficial usada para rastreabilidade do descritor; os cenários, questões e atividade são autorais."
+      }
+    ],
+    "copyrightNote": "Situações, alternativas, explicações e atividade são autorais e hipotéticas; o descritor oficial permanece apenas como contexto de autoria."
+  },
+  "questions": [
+    {
+      "id": "v1-science-time-scales-fi-01",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DAY_PARTS_ORDER",
+      "statement": "Uma rotina começa pela manhã, continua à tarde e termina à noite. Qual é a ordem apresentada?",
+      "options": [
+        "Manhã, tarde e noite.",
+        "Noite, manhã e tarde.",
+        "Tarde, noite e manhã.",
+        "Manhã, noite e tarde."
+      ],
+      "correctAnswer": "Manhã, tarde e noite.",
+      "explanation": "A sequência nomeia os três períodos diários na ordem usada na rotina.",
+      "hint": "Observe as partes do mesmo dia antes de pensar em dias diferentes.",
+      "errorFocus": "REVERSE_DAY_PARTS",
+      "misconceptions": {
+        "Noite, manhã e tarde.": [
+          "REVERSE_DAY_PARTS"
+        ],
+        "Tarde, noite e manhã.": [
+          "REVERSE_DAY_PARTS"
+        ],
+        "Manhã, noite e tarde.": [
+          "REVERSE_DAY_PARTS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-02",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "MORNING_CLUE",
+      "statement": "O sol está surgindo e a criança está se preparando para a escola. Qual período do dia a situação representa?",
+      "options": [
+        "Tarde.",
+        "Manhã.",
+        "Noite.",
+        "Um mês."
+      ],
+      "correctAnswer": "Manhã.",
+      "explanation": "A situação descreve o começo do dia, chamado manhã.",
+      "hint": "Procure o momento de início da rotina diária.",
+      "errorFocus": "MISLABEL_DAY_PERIOD",
+      "misconceptions": {
+        "Tarde.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Noite.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Um mês.": [
+          "MISLABEL_DAY_PERIOD"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-03",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "WEEK_LENGTH",
+      "statement": "Como chamamos a sucessão de sete dias?",
+      "options": [
+        "Uma noite.",
+        "Um mês.",
+        "Uma semana.",
+        "Um ano."
+      ],
+      "correctAnswer": "Uma semana.",
+      "explanation": "Sete dias formam uma semana.",
+      "hint": "Conte a unidade que reúne vários dias.",
+      "errorFocus": "CONFUSE_TIME_UNITS",
+      "misconceptions": {
+        "Uma noite.": [
+          "CONFUSE_TIME_UNITS"
+        ],
+        "Um mês.": [
+          "CONFUSE_TIME_UNITS"
+        ],
+        "Um ano.": [
+          "CONFUSE_TIME_UNITS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-04",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "YEAR_UNIT",
+      "statement": "Qual unidade reúne vários meses e marca uma volta completa do calendário anual?",
+      "options": [
+        "Uma manhã.",
+        "Uma semana.",
+        "Uma tarde.",
+        "Um ano."
+      ],
+      "correctAnswer": "Um ano.",
+      "explanation": "O ano é uma escala maior que reúne meses no calendário.",
+      "hint": "Pense na unidade usada para comparar aniversários de um ano para outro.",
+      "errorFocus": "CONFUSE_YEAR_WITH_DAY",
+      "misconceptions": {
+        "Uma manhã.": [
+          "CONFUSE_YEAR_WITH_DAY"
+        ],
+        "Uma semana.": [
+          "CONFUSE_YEAR_WITH_DAY"
+        ],
+        "Uma tarde.": [
+          "CONFUSE_YEAR_WITH_DAY"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-05",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "AFTER_MONDAY",
+      "statement": "No calendário de uma semana, qual dia vem depois de segunda-feira?",
+      "options": [
+        "Terça-feira.",
+        "Domingo.",
+        "Sábado.",
+        "Sexta-feira."
+      ],
+      "correctAnswer": "Terça-feira.",
+      "explanation": "A sucessão mostra terça-feira depois de segunda-feira.",
+      "hint": "Avance uma posição na sequência dos dias.",
+      "errorFocus": "DAY_SEQUENCE_ERROR",
+      "misconceptions": {
+        "Domingo.": [
+          "DAY_SEQUENCE_ERROR"
+        ],
+        "Sábado.": [
+          "DAY_SEQUENCE_ERROR"
+        ],
+        "Sexta-feira.": [
+          "DAY_SEQUENCE_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-06",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "BEFORE_FRIDAY",
+      "statement": "Qual dia vem imediatamente antes de sexta-feira na sequência semanal?",
+      "options": [
+        "Sábado.",
+        "Quinta-feira.",
+        "Domingo.",
+        "Terça-feira."
+      ],
+      "correctAnswer": "Quinta-feira.",
+      "explanation": "Quinta-feira ocupa a posição anterior à sexta-feira.",
+      "hint": "Volte uma posição a partir de sexta-feira.",
+      "errorFocus": "DAY_SEQUENCE_ERROR",
+      "misconceptions": {
+        "Sábado.": [
+          "DAY_SEQUENCE_ERROR"
+        ],
+        "Domingo.": [
+          "DAY_SEQUENCE_ERROR"
+        ],
+        "Terça-feira.": [
+          "DAY_SEQUENCE_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-07",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "SEVEN_DAY_CYCLE",
+      "statement": "Uma atividade acontece hoje e se repete depois de sete dias. Que unidade ajuda a descrever esse intervalo?",
+      "options": [
+        "Uma manhã.",
+        "Um mês.",
+        "Uma semana.",
+        "Um ano."
+      ],
+      "correctAnswer": "Uma semana.",
+      "explanation": "Sete dias correspondem a uma semana.",
+      "hint": "Relacione a quantidade de dias à unidade adequada.",
+      "errorFocus": "CONFUSE_WEEK_WITH_MONTH",
+      "misconceptions": {
+        "Uma manhã.": [
+          "CONFUSE_WEEK_WITH_MONTH"
+        ],
+        "Um mês.": [
+          "CONFUSE_WEEK_WITH_MONTH"
+        ],
+        "Um ano.": [
+          "CONFUSE_WEEK_WITH_MONTH"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-08",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MONTH_CALENDAR",
+      "statement": "Um calendário mostra muitos dias agrupados sob o nome de abril. O que esse agrupamento representa?",
+      "options": [
+        "Uma tarde.",
+        "Uma semana.",
+        "Um ano.",
+        "Um mês."
+      ],
+      "correctAnswer": "Um mês.",
+      "explanation": "Abril é o nome de um mês que reúne vários dias no calendário.",
+      "hint": "Identifique o título que agrupa os dias.",
+      "errorFocus": "CONFUSE_MONTH_WITH_WEEK",
+      "misconceptions": {
+        "Uma tarde.": [
+          "CONFUSE_MONTH_WITH_WEEK"
+        ],
+        "Uma semana.": [
+          "CONFUSE_MONTH_WITH_WEEK"
+        ],
+        "Um ano.": [
+          "CONFUSE_MONTH_WITH_WEEK"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-09",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "AFTERNOON_ACTIVITY",
+      "statement": "A aula de arte ocorre depois do almoço e antes de escurecer. Qual período diário foi indicado?",
+      "options": [
+        "Tarde.",
+        "Manhã.",
+        "Noite.",
+        "Um ano."
+      ],
+      "correctAnswer": "Tarde.",
+      "explanation": "A situação descreve a tarde, entre a manhã e a noite.",
+      "hint": "Use as pistas de posição dentro do dia.",
+      "errorFocus": "MISLABEL_DAY_PERIOD",
+      "misconceptions": {
+        "Manhã.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Noite.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Um ano.": [
+          "MISLABEL_DAY_PERIOD"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-10",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "NIGHT_ACTIVITY",
+      "statement": "A família lê uma história quando já está escuro e se prepara para dormir. Qual período aparece?",
+      "options": [
+        "Manhã.",
+        "Noite.",
+        "Tarde.",
+        "Uma semana."
+      ],
+      "correctAnswer": "Noite.",
+      "explanation": "Escuro e preparação para dormir são pistas da noite.",
+      "hint": "Pense no fim do dia.",
+      "errorFocus": "MISLABEL_DAY_PERIOD",
+      "misconceptions": {
+        "Manhã.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Tarde.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Uma semana.": [
+          "MISLABEL_DAY_PERIOD"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-11",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "TOMORROW_FROM_TUESDAY",
+      "statement": "Se hoje é terça-feira, que dia será amanhã?",
+      "options": [
+        "Segunda-feira.",
+        "Domingo.",
+        "Quarta-feira.",
+        "Sábado."
+      ],
+      "correctAnswer": "Quarta-feira.",
+      "explanation": "Amanhã é o dia seguinte; depois de terça vem quarta-feira.",
+      "hint": "Avance apenas um dia.",
+      "errorFocus": "CONFUSE_TOMORROW",
+      "misconceptions": {
+        "Segunda-feira.": [
+          "CONFUSE_TOMORROW"
+        ],
+        "Domingo.": [
+          "CONFUSE_TOMORROW"
+        ],
+        "Sábado.": [
+          "CONFUSE_TOMORROW"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-12",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "YESTERDAY_FROM_THURSDAY",
+      "statement": "Se hoje é quinta-feira, que dia foi ontem?",
+      "options": [
+        "Sexta-feira.",
+        "Domingo.",
+        "Terça-feira.",
+        "Quarta-feira."
+      ],
+      "correctAnswer": "Quarta-feira.",
+      "explanation": "Ontem é o dia anterior; antes de quinta vem quarta-feira.",
+      "hint": "Volte apenas um dia.",
+      "errorFocus": "CONFUSE_YESTERDAY",
+      "misconceptions": {
+        "Sexta-feira.": [
+          "CONFUSE_YESTERDAY"
+        ],
+        "Domingo.": [
+          "CONFUSE_YESTERDAY"
+        ],
+        "Terça-feira.": [
+          "CONFUSE_YESTERDAY"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-13",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "MONTH_ORDER",
+      "statement": "No calendário, qual mês vem depois de março?",
+      "options": [
+        "Abril.",
+        "Janeiro.",
+        "Dezembro.",
+        "Fevereiro."
+      ],
+      "correctAnswer": "Abril.",
+      "explanation": "Abril vem imediatamente depois de março na sucessão dos meses.",
+      "hint": "Avance um mês, não um dia.",
+      "errorFocus": "MONTH_SEQUENCE_ERROR",
+      "misconceptions": {
+        "Janeiro.": [
+          "MONTH_SEQUENCE_ERROR"
+        ],
+        "Dezembro.": [
+          "MONTH_SEQUENCE_ERROR"
+        ],
+        "Fevereiro.": [
+          "MONTH_SEQUENCE_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-14",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "YEAR_SUCCESSION",
+      "statement": "Uma criança compara o calendário de 2025 com o seguinte. Qual ano vem depois de 2025?",
+      "options": [
+        "2024.",
+        "2026.",
+        "2025.",
+        "2035."
+      ],
+      "correctAnswer": "2026.",
+      "explanation": "A sucessão anual avança de 2025 para 2026.",
+      "hint": "Pense no próximo ano, não no anterior.",
+      "errorFocus": "YEAR_SEQUENCE_ERROR",
+      "misconceptions": {
+        "2024.": [
+          "YEAR_SEQUENCE_ERROR"
+        ],
+        "2025.": [
+          "YEAR_SEQUENCE_ERROR"
+        ],
+        "2035.": [
+          "YEAR_SEQUENCE_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-15",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "SCHOOL_WEEK",
+      "statement": "Uma turma planeja atividades de segunda a sexta. Qual escala está sendo usada principalmente?",
+      "options": [
+        "Períodos de uma única manhã.",
+        "Meses de um ano.",
+        "Dias de uma semana.",
+        "Séculos."
+      ],
+      "correctAnswer": "Dias de uma semana.",
+      "explanation": "A proposta organiza dias que pertencem a uma semana escolar.",
+      "hint": "Veja se a sequência cobre vários dias próximos.",
+      "errorFocus": "CONFUSE_WEEK_WITH_DAY_PART",
+      "misconceptions": {
+        "Períodos de uma única manhã.": [
+          "CONFUSE_WEEK_WITH_DAY_PART"
+        ],
+        "Meses de um ano.": [
+          "CONFUSE_WEEK_WITH_DAY_PART"
+        ],
+        "Séculos.": [
+          "CONFUSE_WEEK_WITH_DAY_PART"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-16",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DAY_VS_MONTH",
+      "statement": "Qual afirmação compara corretamente dia e mês?",
+      "options": [
+        "Um dia sempre reúne doze meses.",
+        "Um mês é menor que uma manhã.",
+        "Dia e mês são exatamente a mesma unidade.",
+        "Um mês reúne vários dias."
+      ],
+      "correctAnswer": "Um mês reúne vários dias.",
+      "explanation": "O mês é uma escala mais ampla que agrupa dias.",
+      "hint": "Compare o tamanho das unidades do calendário.",
+      "errorFocus": "REVERSE_TIME_SCALE",
+      "misconceptions": {
+        "Um dia sempre reúne doze meses.": [
+          "REVERSE_TIME_SCALE"
+        ],
+        "Um mês é menor que uma manhã.": [
+          "REVERSE_TIME_SCALE"
+        ],
+        "Dia e mês são exatamente a mesma unidade.": [
+          "REVERSE_TIME_SCALE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-17",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "DAILY_ROUTINE_CARDS",
+      "statement": "A turma recebe cartões de acordar, almoçar e dormir. Como organizá-los em uma rotina diária comum?",
+      "options": [
+        "Acordar pela manhã, almoçar à tarde e dormir à noite.",
+        "Dormir pela manhã, acordar à noite e almoçar antes de acordar.",
+        "Almoçar à noite, dormir à tarde e acordar depois.",
+        "Acordar depois de dormir e colocar todos no mesmo período sem sequência."
+      ],
+      "correctAnswer": "Acordar pela manhã, almoçar à tarde e dormir à noite.",
+      "explanation": "A organização usa períodos do dia e a ordem da rotina apresentada.",
+      "hint": "Combine cada ação com seu período e depois ordene.",
+      "errorFocus": "IGNORE_DAY_SEQUENCE",
+      "misconceptions": {
+        "Dormir pela manhã, acordar à noite e almoçar antes de acordar.": [
+          "IGNORE_DAY_SEQUENCE"
+        ],
+        "Almoçar à noite, dormir à tarde e acordar depois.": [
+          "IGNORE_DAY_SEQUENCE"
+        ],
+        "Acordar depois de dormir e colocar todos no mesmo período sem sequência.": [
+          "IGNORE_DAY_SEQUENCE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-18",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TWO_WEEK_CALENDARS",
+      "statement": "Dois calendários mostram a mesma semana começando na segunda-feira, mas com atividades diferentes. O que permanece igual?",
+      "options": [
+        "O nome das atividades.",
+        "A sucessão dos dias da semana.",
+        "O mês inteiro.",
+        "O horário de cada pessoa."
+      ],
+      "correctAnswer": "A sucessão dos dias da semana.",
+      "explanation": "As tarefas podem mudar, mas a unidade semana continua com sua sucessão de dias.",
+      "hint": "Separe a estrutura do calendário do conteúdo das atividades.",
+      "errorFocus": "CONFUSE_EVENTS_WITH_TIME_SCALE",
+      "misconceptions": {
+        "O nome das atividades.": [
+          "CONFUSE_EVENTS_WITH_TIME_SCALE"
+        ],
+        "O mês inteiro.": [
+          "CONFUSE_EVENTS_WITH_TIME_SCALE"
+        ],
+        "O horário de cada pessoa.": [
+          "CONFUSE_EVENTS_WITH_TIME_SCALE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-19",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MONTH_BOUNDARY",
+      "statement": "Uma sequência mostra 30 de abril e depois 1º de maio. O que aconteceu?",
+      "options": [
+        "Começou outra semana no mesmo dia sem mudar o mês.",
+        "O dia voltou para 1º de abril.",
+        "Começou outro mês depois do último dia mostrado de abril.",
+        "Passou um ano inteiro."
+      ],
+      "correctAnswer": "Começou outro mês depois do último dia mostrado de abril.",
+      "explanation": "A sequência atravessa a passagem de um mês para outro.",
+      "hint": "Observe os nomes dos meses antes e depois.",
+      "errorFocus": "MISS_MONTH_TRANSITION",
+      "misconceptions": {
+        "Começou outra semana no mesmo dia sem mudar o mês.": [
+          "MISS_MONTH_TRANSITION"
+        ],
+        "O dia voltou para 1º de abril.": [
+          "MISS_MONTH_TRANSITION"
+        ],
+        "Passou um ano inteiro.": [
+          "MISS_MONTH_TRANSITION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-20",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "CALENDAR_CARDS",
+      "statement": "Os cartões são “quarta-feira”, “sexta-feira” e “quinta-feira”. Qual ordem respeita a sucessão?",
+      "options": [
+        "Sexta-feira, quarta-feira e quinta-feira.",
+        "Quinta-feira, sexta-feira e quarta-feira.",
+        "Quarta-feira, sexta-feira e quinta-feira.",
+        "Quarta-feira, quinta-feira e sexta-feira."
+      ],
+      "correctAnswer": "Quarta-feira, quinta-feira e sexta-feira.",
+      "explanation": "A sequência correta coloca quinta entre quarta e sexta.",
+      "hint": "Procure o cartão que completa o intervalo.",
+      "errorFocus": "DAY_SEQUENCE_ERROR",
+      "misconceptions": {
+        "Sexta-feira, quarta-feira e quinta-feira.": [
+          "DAY_SEQUENCE_ERROR"
+        ],
+        "Quinta-feira, sexta-feira e quarta-feira.": [
+          "DAY_SEQUENCE_ERROR"
+        ],
+        "Quarta-feira, sexta-feira e quinta-feira.": [
+          "DAY_SEQUENCE_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-21",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "SCHOOL_EVENT_MONTH",
+      "statement": "Um cartaz diz que uma feira acontecerá em outubro. O que essa informação identifica?",
+      "options": [
+        "O mês em que a feira acontecerá.",
+        "O período diário exato da feira.",
+        "O nome de todos os dias do ano.",
+        "A duração obrigatória de um ano."
+      ],
+      "correctAnswer": "O mês em que a feira acontecerá.",
+      "explanation": "O nome outubro localiza o evento em um mês, mas não informa sozinho o dia ou o horário.",
+      "hint": "Não confunda mês com dia e período diário.",
+      "errorFocus": "OVERREAD_MONTH_INFORMATION",
+      "misconceptions": {
+        "O período diário exato da feira.": [
+          "OVERREAD_MONTH_INFORMATION"
+        ],
+        "O nome de todos os dias do ano.": [
+          "OVERREAD_MONTH_INFORMATION"
+        ],
+        "A duração obrigatória de um ano.": [
+          "OVERREAD_MONTH_INFORMATION"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-22",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DAY_PARTS_AND_DAYS",
+      "statement": "Qual diferença está correta entre “noite” e “terça-feira”?",
+      "options": [
+        "Noite é um mês e terça-feira é uma estação.",
+        "Noite é um período do dia; terça-feira é um dia da semana.",
+        "As duas palavras nomeiam o mesmo período.",
+        "Terça-feira é uma parte menor da noite."
+      ],
+      "correctAnswer": "Noite é um período do dia; terça-feira é um dia da semana.",
+      "explanation": "As palavras pertencem a escalas diferentes: parte do dia e dia da semana.",
+      "hint": "Classifique cada palavra pela escala que nomeia.",
+      "errorFocus": "MIX_SCALES",
+      "misconceptions": {
+        "Noite é um mês e terça-feira é uma estação.": [
+          "MIX_SCALES"
+        ],
+        "As duas palavras nomeiam o mesmo período.": [
+          "MIX_SCALES"
+        ],
+        "Terça-feira é uma parte menor da noite.": [
+          "MIX_SCALES"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-23",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "PLAN",
+      "contextFamily": "YEAR_TIMELINE",
+      "statement": "Uma turma cria uma linha do tempo com “ano passado”, “este ano” e “ano que vem”. Qual ordem é adequada?",
+      "options": [
+        "Ano que vem, ano passado e este ano.",
+        "Este ano, ano que vem e ano passado.",
+        "Ano passado, este ano e ano que vem.",
+        "Ano passado, ano que vem e este ano sem considerar o presente."
+      ],
+      "correctAnswer": "Ano passado, este ano e ano que vem.",
+      "explanation": "A linha do tempo parte do passado, passa pelo presente e segue para o futuro próximo.",
+      "hint": "Use o presente como referência central.",
+      "errorFocus": "REVERSE_YEAR_SEQUENCE",
+      "misconceptions": {
+        "Ano que vem, ano passado e este ano.": [
+          "REVERSE_YEAR_SEQUENCE"
+        ],
+        "Este ano, ano que vem e ano passado.": [
+          "REVERSE_YEAR_SEQUENCE"
+        ],
+        "Ano passado, ano que vem e este ano sem considerar o presente.": [
+          "REVERSE_YEAR_SEQUENCE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-24",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CALENDAR_LOOKUP",
+      "statement": "Para descobrir em qual dia da semana cai uma data, qual recurso ajuda?",
+      "options": [
+        "Escolher um período do dia ao acaso.",
+        "Contar apenas os meses sem olhar os dias.",
+        "Usar o nome de um ano como se fosse um dia.",
+        "Consultar um calendário organizado."
+      ],
+      "correctAnswer": "Consultar um calendário organizado.",
+      "explanation": "Um calendário relaciona datas e dias da semana de modo organizado.",
+      "hint": "Escolha o recurso que mostra a relação entre as unidades.",
+      "errorFocus": "USE_WRONG_CALENDAR_SCALE",
+      "misconceptions": {
+        "Escolher um período do dia ao acaso.": [
+          "USE_WRONG_CALENDAR_SCALE"
+        ],
+        "Contar apenas os meses sem olhar os dias.": [
+          "USE_WRONG_CALENDAR_SCALE"
+        ],
+        "Usar o nome de um ano como se fosse um dia.": [
+          "USE_WRONG_CALENDAR_SCALE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-25",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PERIOD_VS_SEQUENCE",
+      "statement": "Qual frase usa corretamente as duas ideias de tempo?",
+      "options": [
+        "A manhã é um período do dia, e a semana reúne dias em sucessão.",
+        "A manhã reúne doze meses, e a semana é parte da noite.",
+        "A semana é um instante dentro da manhã, e o mês é um gesto.",
+        "A noite é um ano, e a tarde é uma semana."
+      ],
+      "correctAnswer": "A manhã é um período do dia, e a semana reúne dias em sucessão.",
+      "explanation": "A resposta distingue período diário e unidade que organiza vários dias.",
+      "hint": "Verifique a escala de cada termo.",
+      "errorFocus": "MIX_SCALES",
+      "misconceptions": {
+        "A manhã reúne doze meses, e a semana é parte da noite.": [
+          "MIX_SCALES"
+        ],
+        "A semana é um instante dentro da manhã, e o mês é um gesto.": [
+          "MIX_SCALES"
+        ],
+        "A noite é um ano, e a tarde é uma semana.": [
+          "MIX_SCALES"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-26",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TWELVE_MONTHS",
+      "statement": "Por que os nomes dos meses ajudam a acompanhar um ano?",
+      "options": [
+        "Porque cada mês é um período de uma única manhã.",
+        "Porque os meses organizam a sucessão de partes do ano.",
+        "Porque mês e dia significam exatamente a mesma coisa.",
+        "Porque o nome de um mês informa sozinho o horário de um evento."
+      ],
+      "correctAnswer": "Porque os meses organizam a sucessão de partes do ano.",
+      "explanation": "Meses são unidades do calendário que organizam a passagem do ano.",
+      "hint": "Pense na relação entre mês e ano.",
+      "errorFocus": "CONFUSE_MONTH_ROLE",
+      "misconceptions": {
+        "Porque cada mês é um período de uma única manhã.": [
+          "CONFUSE_MONTH_ROLE"
+        ],
+        "Porque mês e dia significam exatamente a mesma coisa.": [
+          "CONFUSE_MONTH_ROLE"
+        ],
+        "Porque o nome de um mês informa sozinho o horário de um evento.": [
+          "CONFUSE_MONTH_ROLE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-27",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "WEEKEND_BOUNDARY",
+      "statement": "Se uma atividade ocorre no domingo e a próxima ocorre na segunda-feira seguinte, o que mudou?",
+      "options": [
+        "Passou um mês necessariamente.",
+        "Começou uma noite dentro da mesma hora.",
+        "Começou outra semana na sucessão apresentada.",
+        "O ano terminou obrigatoriamente."
+      ],
+      "correctAnswer": "Começou outra semana na sucessão apresentada.",
+      "explanation": "A sequência de dias passou do domingo para a segunda-feira, iniciando outra semana.",
+      "hint": "Observe a sucessão semanal, não invente uma mudança maior.",
+      "errorFocus": "OVERSTATE_TIME_JUMP",
+      "misconceptions": {
+        "Passou um mês necessariamente.": [
+          "OVERSTATE_TIME_JUMP"
+        ],
+        "Começou uma noite dentro da mesma hora.": [
+          "OVERSTATE_TIME_JUMP"
+        ],
+        "O ano terminou obrigatoriamente.": [
+          "OVERSTATE_TIME_JUMP"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-28",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "EVIDENCE_LIMITS_TIME",
+      "statement": "Um cartão diz apenas “à tarde”. O que ainda falta para localizar completamente uma atividade no calendário?",
+      "options": [
+        "O nome de uma cor.",
+        "O nome de todos os anos futuros.",
+        "Uma característica física da pessoa.",
+        "A data ou o dia em que ela acontece."
+      ],
+      "correctAnswer": "A data ou o dia em que ela acontece.",
+      "explanation": "O período diário não informa sozinho o dia do calendário.",
+      "hint": "Separe parte do dia de data e dia da semana.",
+      "errorFocus": "TREAT_PERIOD_AS_DATE",
+      "misconceptions": {
+        "O nome de uma cor.": [
+          "TREAT_PERIOD_AS_DATE"
+        ],
+        "O nome de todos os anos futuros.": [
+          "TREAT_PERIOD_AS_DATE"
+        ],
+        "Uma característica física da pessoa.": [
+          "TREAT_PERIOD_AS_DATE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-29",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MONTH_AND_YEAR",
+      "statement": "Qual afirmação explica a relação entre mês e ano sem dizer que são iguais?",
+      "options": [
+        "Um ano é organizado por uma sucessão de meses.",
+        "Um ano é menor que um mês.",
+        "Um mês contém todos os anos.",
+        "Mês e ano são apenas nomes para a mesma duração."
+      ],
+      "correctAnswer": "Um ano é organizado por uma sucessão de meses.",
+      "explanation": "O ano é uma escala maior que pode ser acompanhada por seus meses.",
+      "hint": "Procure a unidade que organiza a outra.",
+      "errorFocus": "REVERSE_MONTH_YEAR",
+      "misconceptions": {
+        "Um ano é menor que um mês.": [
+          "REVERSE_MONTH_YEAR"
+        ],
+        "Um mês contém todos os anos.": [
+          "REVERSE_MONTH_YEAR"
+        ],
+        "Mês e ano são apenas nomes para a mesma duração.": [
+          "REVERSE_MONTH_YEAR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-30",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TIME_SCALE_CHOICE",
+      "statement": "Para planejar uma apresentação que acontecerá daqui a três semanas, qual informação é mais adequada?",
+      "options": [
+        "Escolher somente manhã ou noite.",
+        "Usar a sequência de semanas e consultar os dias do calendário.",
+        "Usar o nome de um mês sem verificar os dias.",
+        "Contar como se três semanas fossem três anos."
+      ],
+      "correctAnswer": "Usar a sequência de semanas e consultar os dias do calendário.",
+      "explanation": "O planejamento exige uma unidade de semanas e a conferência dos dias concretos.",
+      "hint": "Escolha a escala indicada e depois localize a data.",
+      "errorFocus": "CHOOSE_WRONG_SCALE",
+      "misconceptions": {
+        "Escolher somente manhã ou noite.": [
+          "CHOOSE_WRONG_SCALE"
+        ],
+        "Usar o nome de um mês sem verificar os dias.": [
+          "CHOOSE_WRONG_SCALE"
+        ],
+        "Contar como se três semanas fossem três anos.": [
+          "CHOOSE_WRONG_SCALE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-31",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_MORNING",
+      "statement": "Qual palavra nomeia um período do dia em que muitas rotinas começam?",
+      "options": [
+        "Semana.",
+        "Mês.",
+        "Manhã.",
+        "Ano."
+      ],
+      "correctAnswer": "Manhã.",
+      "explanation": "Manhã é um dos períodos diários.",
+      "hint": "Escolha entre as palavras da escala diária.",
+      "errorFocus": "MISLABEL_DAY_PERIOD",
+      "misconceptions": {
+        "Semana.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Mês.": [
+          "MISLABEL_DAY_PERIOD"
+        ],
+        "Ano.": [
+          "MISLABEL_DAY_PERIOD"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-32",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_AFTERNOON",
+      "statement": "Qual palavra completa a sequência “manhã, ___, noite”?",
+      "options": [
+        "Semana.",
+        "Ano.",
+        "Abril.",
+        "Tarde."
+      ],
+      "correctAnswer": "Tarde.",
+      "explanation": "Tarde fica entre manhã e noite na sequência de períodos diários.",
+      "hint": "Complete a sequência do mesmo dia.",
+      "errorFocus": "REVERSE_DAY_PARTS",
+      "misconceptions": {
+        "Semana.": [
+          "REVERSE_DAY_PARTS"
+        ],
+        "Ano.": [
+          "REVERSE_DAY_PARTS"
+        ],
+        "Abril.": [
+          "REVERSE_DAY_PARTS"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-33",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "REVIEW_TOMORROW",
+      "statement": "Se hoje é sábado, qual é o dia seguinte?",
+      "options": [
+        "Domingo.",
+        "Sexta-feira.",
+        "Quinta-feira.",
+        "Terça-feira."
+      ],
+      "correctAnswer": "Domingo.",
+      "explanation": "Domingo vem depois de sábado na sucessão semanal.",
+      "hint": "Amanhã é apenas um passo adiante.",
+      "errorFocus": "CONFUSE_TOMORROW",
+      "misconceptions": {
+        "Sexta-feira.": [
+          "CONFUSE_TOMORROW"
+        ],
+        "Quinta-feira.": [
+          "CONFUSE_TOMORROW"
+        ],
+        "Terça-feira.": [
+          "CONFUSE_TOMORROW"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-34",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "REVIEW_YESTERDAY",
+      "statement": "Se hoje é segunda-feira, qual foi o dia anterior?",
+      "options": [
+        "Terça-feira.",
+        "Domingo.",
+        "Quarta-feira.",
+        "Sábado."
+      ],
+      "correctAnswer": "Domingo.",
+      "explanation": "Domingo vem antes de segunda-feira na sucessão semanal.",
+      "hint": "Ontem é apenas um passo para trás.",
+      "errorFocus": "CONFUSE_YESTERDAY",
+      "misconceptions": {
+        "Terça-feira.": [
+          "CONFUSE_YESTERDAY"
+        ],
+        "Quarta-feira.": [
+          "CONFUSE_YESTERDAY"
+        ],
+        "Sábado.": [
+          "CONFUSE_YESTERDAY"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-35",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_WEEK",
+      "statement": "Qual unidade é formada pela sucessão de dias?",
+      "options": [
+        "Tarde.",
+        "Mês.",
+        "Semana.",
+        "Noite."
+      ],
+      "correctAnswer": "Semana.",
+      "explanation": "A semana organiza uma sucessão de dias.",
+      "hint": "Compare a resposta com a unidade que reúne dias.",
+      "errorFocus": "CONFUSE_WEEK_WITH_DAY_PART",
+      "misconceptions": {
+        "Tarde.": [
+          "CONFUSE_WEEK_WITH_DAY_PART"
+        ],
+        "Mês.": [
+          "CONFUSE_WEEK_WITH_DAY_PART"
+        ],
+        "Noite.": [
+          "CONFUSE_WEEK_WITH_DAY_PART"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-36",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_MONTH",
+      "statement": "Qual palavra nomeia uma unidade do calendário maior que uma semana e menor que um ano?",
+      "options": [
+        "Manhã.",
+        "Noite.",
+        "Dia.",
+        "Mês."
+      ],
+      "correctAnswer": "Mês.",
+      "explanation": "O mês reúne muitos dias e faz parte da organização do ano.",
+      "hint": "Pense nas unidades entre semana e ano.",
+      "errorFocus": "CONFUSE_MONTH_SCALE",
+      "misconceptions": {
+        "Manhã.": [
+          "CONFUSE_MONTH_SCALE"
+        ],
+        "Noite.": [
+          "CONFUSE_MONTH_SCALE"
+        ],
+        "Dia.": [
+          "CONFUSE_MONTH_SCALE"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-37",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "REVIEW_MONTH_ORDER",
+      "statement": "Qual mês vem depois de junho?",
+      "options": [
+        "Julho.",
+        "Maio.",
+        "Abril.",
+        "Dezembro."
+      ],
+      "correctAnswer": "Julho.",
+      "explanation": "Julho é o mês seguinte a junho.",
+      "hint": "Avance um lugar na sequência anual.",
+      "errorFocus": "MONTH_SEQUENCE_ERROR",
+      "misconceptions": {
+        "Maio.": [
+          "MONTH_SEQUENCE_ERROR"
+        ],
+        "Abril.": [
+          "MONTH_SEQUENCE_ERROR"
+        ],
+        "Dezembro.": [
+          "MONTH_SEQUENCE_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-38",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SEQUENCE",
+      "contextFamily": "REVIEW_YEAR_ORDER",
+      "statement": "Qual ano vem antes de 2030?",
+      "options": [
+        "2031.",
+        "2029.",
+        "2030.",
+        "2020."
+      ],
+      "correctAnswer": "2029.",
+      "explanation": "A sucessão imediatamente anterior a 2030 é 2029.",
+      "hint": "Volte um ano na linha do tempo.",
+      "errorFocus": "YEAR_SEQUENCE_ERROR",
+      "misconceptions": {
+        "2031.": [
+          "YEAR_SEQUENCE_ERROR"
+        ],
+        "2030.": [
+          "YEAR_SEQUENCE_ERROR"
+        ],
+        "2020.": [
+          "YEAR_SEQUENCE_ERROR"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-39",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVIEW_CALENDAR_LIMIT",
+      "statement": "Um calendário mostra que uma reunião será na sexta-feira, mas não mostra o horário. O que podemos afirmar?",
+      "options": [
+        "A reunião será necessariamente à noite.",
+        "A reunião durará um ano.",
+        "O dia da semana está indicado, mas o período diário ainda não.",
+        "A reunião acontecerá em todos os meses."
+      ],
+      "correctAnswer": "O dia da semana está indicado, mas o período diário ainda não.",
+      "explanation": "A informação permite localizar o dia da semana, não inventar horário ou duração.",
+      "hint": "Use somente a evidência disponível no calendário.",
+      "errorFocus": "INFER_UNSTATED_TIME",
+      "misconceptions": {
+        "A reunião será necessariamente à noite.": [
+          "INFER_UNSTATED_TIME"
+        ],
+        "A reunião durará um ano.": [
+          "INFER_UNSTATED_TIME"
+        ],
+        "A reunião acontecerá em todos os meses.": [
+          "INFER_UNSTATED_TIME"
+        ]
+      }
+    },
+    {
+      "id": "v1-science-time-scales-fi-40",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_ALL_SCALES",
+      "statement": "Qual opção apresenta uma sequência coerente de escalas, da menor indicada para a maior?",
+      "options": [
+        "Ano, mês, semana, dia, manhã.",
+        "Semana, manhã, ano, dia, mês.",
+        "Mês, ano, manhã, semana, dia.",
+        "Manhã, dia, semana, mês, ano."
+      ],
+      "correctAnswer": "Manhã, dia, semana, mês, ano.",
+      "explanation": "A sequência vai de um período dentro do dia para unidades cada vez mais amplas do calendário.",
+      "hint": "Compare as unidades antes de ordená-las.",
+      "errorFocus": "REVERSE_TIME_SCALE",
+      "misconceptions": {
+        "Ano, mês, semana, dia, manhã.": [
+          "REVERSE_TIME_SCALE"
+        ],
+        "Semana, manhã, ano, dia, mês.": [
+          "REVERSE_TIME_SCALE"
+        ],
+        "Mês, ano, manhã, semana, dia.": [
+          "REVERSE_TIME_SCALE"
+        ]
+      }
+    }
+  ]
+}
