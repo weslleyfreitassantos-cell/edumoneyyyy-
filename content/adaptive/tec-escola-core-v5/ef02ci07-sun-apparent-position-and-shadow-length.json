@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02ci07-sun-apparent-position-and-shadow-length",
+  "canonicalSkillCode": "AUTHORING_EF02CI07_RELATE_SUN_POSITION_AND_SHADOW",
+  "subject": "SCIENCE",
+  "domain": "TERRA E UNIVERSO",
+  "topic": "posição aparente do Sol e tamanho das sombras ao longo do dia",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI07",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever as posições do Sol em diversos horários do dia e associá-las ao tamanho da sombra projetada.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "O Sol aparente e as sombras",
+    "objective": "Descrever posições aparentes do Sol em horários registrados e relacioná-las ao comprimento da sombra de um objeto fixo, usando observação indireta e segura.",
+    "summary": "Ao longo do dia, a posição aparente do Sol no céu muda. A sombra de um objeto fixo também muda de direção e comprimento; em registros de uma mesma observação, quando o Sol aparece mais alto, a sombra costuma ser menor, e quando aparece mais baixo, costuma ser maior. Os resultados dependem do local, da data e da configuração da observação. Nunca se deve olhar diretamente para o Sol. A atividade usa sombras no chão, diagramas ou dados preparados pelo educador.",
+    "explanation": "Compare registros identificados por horário e feitos com o mesmo objeto no mesmo local. Observe a posição aparente do Sol representada no diagrama e o comprimento da sombra. Use régua desenhada, escala ou medidas informadas para descrever a relação. Não conclua que um único conjunto representa todas as datas e lugares. Para observar, olhe para o chão ou para um diagrama de projeção, mantenha os olhos longe do Sol e siga orientação adulta; não use lentes, binóculos ou câmeras para olhar o Sol.",
+    "workedExample": "Um poste fixo tem sombra de 120 cm às 8h e de 45 cm ao meio-dia num registro do mesmo dia. O diagrama mostra o Sol aparentemente mais alto ao meio-dia. Nesse registro, a sombra do meio-dia é menor; isso não significa que todo local terá exatamente as mesmas medidas.",
+    "commonMistake": "Olhar diretamente para o Sol, comparar sombras de objetos diferentes sem controle ou generalizar medidas de um dia para todos os lugares e estações.",
+    "priorKnowledge": [
+      "Reconhecer horários do dia e comparar comprimentos simples.",
+      "Ler diagramas com objeto, sombra e legenda."
+    ],
+    "keyConcepts": [
+      "posição aparente",
+      "Sol",
+      "sombra",
+      "comprimento",
+      "horário",
+      "objeto fixo",
+      "observação indireta",
+      "segurança"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "SUN_OBSERVATION_SAFETY",
+        "action": "Interrompa qualquer proposta de olhar para o Sol; use apenas sombra no chão, esquema ou dado preparado."
+      },
+      {
+        "errorFocus": "CONTROL_OBJECT_AND_PLACE",
+        "action": "Compare o mesmo objeto no mesmo local e leia os horários indicados."
+      },
+      {
+        "errorFocus": "DATA_LIMITS",
+        "action": "Registre a relação observada sem transformar medidas de uma data e local em regra universal."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+      "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+      "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci07-shadow-record-cards",
+        "title": "Cartões de sombras por horário",
+        "instructions": "Cartões apresentam o mesmo objeto, local e data, com posições aparentes e sombras registradas em horários distintos.\n1. Leia data, lugar e horário dos cartões.\n2. Compare o comprimento das sombras e a posição representada do Sol.\n3. Registre a relação observada e um limite da comparação.",
+        "steps": [
+          "Leia data, lugar e horário dos cartões.",
+          "Compare o comprimento das sombras e a posição representada do Sol.",
+          "Registre a relação observada e um limite da comparação."
+        ],
+        "evidence": "Descrição apoiada nas medidas e contextualizada por horário e objeto.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma sombra com apoio.",
+            "developing": "compara dois comprimentos.",
+            "proficient": "relaciona sombra e posição aparente com contexto e segurança."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ci07-safe-shadow-diagram",
+        "title": "Modelo seguro de projeção",
+        "instructions": "Um modelo de sala usa uma fonte luminosa didática e um objeto fixo para estudar projeções, sem observar o Sol diretamente.\n1. Observe o objeto e a sombra projetada no modelo.\n2. Mude a posição da fonte somente sob orientação do educador.\n3. Desenhe como o comprimento da sombra mudou.",
+        "steps": [
+          "Observe o objeto e a sombra projetada no modelo.",
+          "Mude a posição da fonte somente sob orientação do educador.",
+          "Desenhe como o comprimento da sombra mudou."
+        ],
+        "evidence": "Diagrama que representa uma relação entre posição da fonte e sombra no modelo.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta a sombra.",
+            "developing": "compara comprimentos no modelo.",
+            "proficient": "descreve a relação como resultado do modelo, sem generalizar além dele."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-01",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-02",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-03",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-04",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-05",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-06",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-07",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-09",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-10",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-11",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-12",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-13",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-14",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-15",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-17",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-18",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-19",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-20",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-21",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-22",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-23",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-25",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-26",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-27",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-28",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-29",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-30",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-31",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-33",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-34",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-35",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-36",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-37",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-38",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-39",
+          "v1-ef02ci07-sun-apparent-position-and-shadow-length-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI07",
+        "descriptor": "Descrever as posições do Sol em diversos horários do dia e associá-las ao tamanho da sombra projetada.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-01",
+      "statement": "Um diagrama registra sombra longa de um poste às 8h. O que se pode afirmar?",
+      "prompt": "Um diagrama registra sombra longa de um poste às 8h. O que se pode afirmar?",
+      "options": [
+        "A sombra estava longa naquele registro da manhã.",
+        "Toda sombra é longa às 8h",
+        "O poste mudou de tamanho",
+        "O dado vale para todos os lugares"
+      ],
+      "correctAnswer": "A sombra estava longa naquele registro da manhã.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Toda sombra é longa às 8h": [
+          "BOUNDED_SHADOW_OBSERVATION"
+        ],
+        "O poste mudou de tamanho": [
+          "BOUNDED_SHADOW_OBSERVATION"
+        ],
+        "O dado vale para todos os lugares": [
+          "BOUNDED_SHADOW_OBSERVATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOMBRA_DE_MANHA",
+      "explanation": "A conclusão se limita ao registro apresentado.",
+      "hint": "Leia o horário e observe a sombra.",
+      "errorFocus": "BOUNDED_SHADOW_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A conclusão se limita ao registro apresentado.",
+        "incorrect": "A conclusão se limita ao registro apresentado.",
+        "hint": "Leia o horário e observe a sombra.",
+        "errorFocus": "BOUNDED_SHADOW_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-02",
+      "statement": "Num desenho do meio do dia, o Sol aparece mais alto e a sombra do mesmo objeto é menor. Qual relação está mostrada?",
+      "prompt": "Num desenho do meio do dia, o Sol aparece mais alto e a sombra do mesmo objeto é menor. Qual relação está mostrada?",
+      "options": [
+        "Sol mais alto e sombra maior",
+        "Nesse registro, a posição mais alta coincide com sombra menor.",
+        "A sombra não depende da posição",
+        "O objeto desapareceu"
+      ],
+      "correctAnswer": "Nesse registro, a posição mais alta coincide com sombra menor.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sol mais alto e sombra maior": [
+          "POSITION_SHADOW_RELATION"
+        ],
+        "A sombra não depende da posição": [
+          "POSITION_SHADOW_RELATION"
+        ],
+        "O objeto desapareceu": [
+          "POSITION_SHADOW_RELATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "SOL_APARENTE_NO_ALTO",
+      "explanation": "O desenho relaciona posição aparente alta a sombra menor.",
+      "hint": "Compare as duas partes do diagrama.",
+      "errorFocus": "POSITION_SHADOW_RELATION",
+      "feedback": {
+        "correct": "Boa observação: O desenho relaciona posição aparente alta a sombra menor.",
+        "incorrect": "O desenho relaciona posição aparente alta a sombra menor.",
+        "hint": "Compare as duas partes do diagrama.",
+        "errorFocus": "POSITION_SHADOW_RELATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-03",
+      "statement": "O mesmo poste tem sombra de 100 cm às 8h e 40 cm às 12h. Qual sombra é maior?",
+      "prompt": "O mesmo poste tem sombra de 100 cm às 8h e 40 cm às 12h. Qual sombra é maior?",
+      "options": [
+        "A das 12h",
+        "Têm o mesmo comprimento",
+        "A das 8h.",
+        "Nenhuma foi medida"
+      ],
+      "correctAnswer": "A das 8h.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A das 12h": [
+          "COMPARE_SHADOW_LENGTH"
+        ],
+        "Têm o mesmo comprimento": [
+          "COMPARE_SHADOW_LENGTH"
+        ],
+        "Nenhuma foi medida": [
+          "COMPARE_SHADOW_LENGTH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SOMBRA_8H_E_12H",
+      "explanation": "100 cm é maior que 40 cm.",
+      "hint": "Compare as medidas informadas.",
+      "errorFocus": "COMPARE_SHADOW_LENGTH",
+      "feedback": {
+        "correct": "Boa observação: 100 cm é maior que 40 cm.",
+        "incorrect": "100 cm é maior que 40 cm.",
+        "hint": "Compare as medidas informadas.",
+        "errorFocus": "COMPARE_SHADOW_LENGTH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-04",
+      "statement": "Qual é a forma segura de estudar a sombra do Sol?",
+      "prompt": "Qual é a forma segura de estudar a sombra do Sol?",
+      "options": [
+        "Olhar diretamente por alguns segundos",
+        "Usar binóculos para ampliar",
+        "Olhar por uma lente escura",
+        "Observar a sombra no chão ou um diagrama, sem olhar diretamente para o Sol."
+      ],
+      "correctAnswer": "Observar a sombra no chão ou um diagrama, sem olhar diretamente para o Sol.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Olhar diretamente por alguns segundos": [
+          "NEVER_LOOK_AT_SUN"
+        ],
+        "Usar binóculos para ampliar": [
+          "NEVER_LOOK_AT_SUN"
+        ],
+        "Olhar por uma lente escura": [
+          "NEVER_LOOK_AT_SUN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OLHAR_PARA_O_SOL",
+      "explanation": "Sombras e diagramas permitem observação indireta segura.",
+      "hint": "Proteja os olhos e use a sombra.",
+      "errorFocus": "NEVER_LOOK_AT_SUN",
+      "feedback": {
+        "correct": "Boa observação: Sombras e diagramas permitem observação indireta segura.",
+        "incorrect": "Sombras e diagramas permitem observação indireta segura.",
+        "hint": "Proteja os olhos e use a sombra.",
+        "errorFocus": "NEVER_LOOK_AT_SUN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-05",
+      "statement": "Para comparar sombras em horários diferentes, o objeto deve permanecer...",
+      "prompt": "Para comparar sombras em horários diferentes, o objeto deve permanecer...",
+      "options": [
+        "o mesmo e no mesmo local.",
+        "trocado a cada medida",
+        "em movimento constante",
+        "escondido do registro"
+      ],
+      "correctAnswer": "o mesmo e no mesmo local.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "trocado a cada medida": [
+          "CONTROL_OBJECT"
+        ],
+        "em movimento constante": [
+          "CONTROL_OBJECT"
+        ],
+        "escondido do registro": [
+          "CONTROL_OBJECT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "OBJETO_FIXO",
+      "explanation": "Manter o objeto permite comparar suas sombras.",
+      "hint": "Confira se as outras condições se mantêm.",
+      "errorFocus": "CONTROL_OBJECT",
+      "feedback": {
+        "correct": "Boa observação: Manter o objeto permite comparar suas sombras.",
+        "incorrect": "Manter o objeto permite comparar suas sombras.",
+        "hint": "Confira se as outras condições se mantêm.",
+        "errorFocus": "CONTROL_OBJECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-06",
+      "statement": "Uma tabela marca sombra de 80 cm pela manhã e 30 cm mais tarde. O que mudou?",
+      "prompt": "Uma tabela marca sombra de 80 cm pela manhã e 30 cm mais tarde. O que mudou?",
+      "options": [
+        "O objeto ficou mais alto",
+        "O comprimento registrado ficou menor.",
+        "O horário desapareceu",
+        "A medida aumentou para 90 cm"
+      ],
+      "correctAnswer": "O comprimento registrado ficou menor.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O objeto ficou mais alto": [
+          "SHADOW_MEASURE_CHANGE"
+        ],
+        "O horário desapareceu": [
+          "SHADOW_MEASURE_CHANGE"
+        ],
+        "A medida aumentou para 90 cm": [
+          "SHADOW_MEASURE_CHANGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "TABELA_DE_COMPRIMENTOS",
+      "explanation": "30 cm é menor que 80 cm.",
+      "hint": "Compare os valores da tabela.",
+      "errorFocus": "SHADOW_MEASURE_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: 30 cm é menor que 80 cm.",
+        "incorrect": "30 cm é menor que 80 cm.",
+        "hint": "Compare os valores da tabela.",
+        "errorFocus": "SHADOW_MEASURE_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-07",
+      "statement": "O que significa dizer que o Sol está em posição aparente no desenho?",
+      "prompt": "O que significa dizer que o Sol está em posição aparente no desenho?",
+      "options": [
+        "Que o Sol mudou de lugar em torno da Terra diariamente",
+        "Que o desenho é uma fotografia exata",
+        "É a posição em que parece estar no céu para quem observa da Terra.",
+        "Que devemos olhar diretamente para ele"
+      ],
+      "correctAnswer": "É a posição em que parece estar no céu para quem observa da Terra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que o Sol mudou de lugar em torno da Terra diariamente": [
+          "APPARENT_POSITION"
+        ],
+        "Que o desenho é uma fotografia exata": [
+          "APPARENT_POSITION"
+        ],
+        "Que devemos olhar diretamente para ele": [
+          "APPARENT_POSITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "POSICAO_APARENTE",
+      "explanation": "O termo descreve como sua posição é percebida no céu.",
+      "hint": "Leia a palavra “aparente”.",
+      "errorFocus": "APPARENT_POSITION",
+      "feedback": {
+        "correct": "Boa observação: O termo descreve como sua posição é percebida no céu.",
+        "incorrect": "O termo descreve como sua posição é percebida no céu.",
+        "hint": "Leia a palavra “aparente”.",
+        "errorFocus": "APPARENT_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-08",
+      "statement": "Uma criança quer medir uma sombra. Para onde deve dirigir a atenção?",
+      "prompt": "Uma criança quer medir uma sombra. Para onde deve dirigir a atenção?",
+      "options": [
+        "Diretamente ao Sol",
+        "Para o Sol com binóculos",
+        "Para uma lente apontada ao céu",
+        "Para a sombra projetada no chão, com orientação segura."
+      ],
+      "correctAnswer": "Para a sombra projetada no chão, com orientação segura.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Diretamente ao Sol": [
+          "SAFE_SHADOW_MEASUREMENT"
+        ],
+        "Para o Sol com binóculos": [
+          "SAFE_SHADOW_MEASUREMENT"
+        ],
+        "Para uma lente apontada ao céu": [
+          "SAFE_SHADOW_MEASUREMENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SOMBRA_NO_CHao",
+      "explanation": "A medida é feita na sombra, sem mirar o Sol.",
+      "hint": "Observe o chão, não o Sol.",
+      "errorFocus": "SAFE_SHADOW_MEASUREMENT",
+      "feedback": {
+        "correct": "Boa observação: A medida é feita na sombra, sem mirar o Sol.",
+        "incorrect": "A medida é feita na sombra, sem mirar o Sol.",
+        "hint": "Observe o chão, não o Sol.",
+        "errorFocus": "SAFE_SHADOW_MEASUREMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-09",
+      "statement": "Num registro do mesmo objeto, a sombra mede 90 cm às 9h e 85 cm às 15h. Qual é maior?",
+      "prompt": "Num registro do mesmo objeto, a sombra mede 90 cm às 9h e 85 cm às 15h. Qual é maior?",
+      "options": [
+        "A sombra das 9h.",
+        "A das 15h",
+        "São iguais",
+        "Não há medidas"
+      ],
+      "correctAnswer": "A sombra das 9h.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A das 15h": [
+          "COMPARE_TWO_SHADOWS"
+        ],
+        "São iguais": [
+          "COMPARE_TWO_SHADOWS"
+        ],
+        "Não há medidas": [
+          "COMPARE_TWO_SHADOWS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SOMBRA_9H_E_15H",
+      "explanation": "90 cm supera 85 cm.",
+      "hint": "Compare os dois comprimentos.",
+      "errorFocus": "COMPARE_TWO_SHADOWS",
+      "feedback": {
+        "correct": "Boa observação: 90 cm supera 85 cm.",
+        "incorrect": "90 cm supera 85 cm.",
+        "hint": "Compare os dois comprimentos.",
+        "errorFocus": "COMPARE_TWO_SHADOWS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-10",
+      "statement": "Um diagrama mostra uma seta da base do objeto até a ponta da sombra. O que ela representa?",
+      "prompt": "Um diagrama mostra uma seta da base do objeto até a ponta da sombra. O que ela representa?",
+      "options": [
+        "A altura do objeto",
+        "A direção da sombra projetada.",
+        "A distância até o Sol",
+        "O horário da noite"
+      ],
+      "correctAnswer": "A direção da sombra projetada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A altura do objeto": [
+          "SHADOW_DIRECTION"
+        ],
+        "A distância até o Sol": [
+          "SHADOW_DIRECTION"
+        ],
+        "O horário da noite": [
+          "SHADOW_DIRECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIRECAO_DA_SOMBRA",
+      "explanation": "A seta marca a direção da projeção no desenho.",
+      "hint": "Observe a seta no chão.",
+      "errorFocus": "SHADOW_DIRECTION",
+      "feedback": {
+        "correct": "Boa observação: A seta marca a direção da projeção no desenho.",
+        "incorrect": "A seta marca a direção da projeção no desenho.",
+        "hint": "Observe a seta no chão.",
+        "errorFocus": "SHADOW_DIRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-11",
+      "statement": "Em um conjunto de dados, quando o Sol aparece mais baixo, a sombra do objeto fixo fica mais longa. O que o registro sugere?",
+      "prompt": "Em um conjunto de dados, quando o Sol aparece mais baixo, a sombra do objeto fixo fica mais longa. O que o registro sugere?",
+      "options": [
+        "O objeto fica menor",
+        "A sombra não pode ser medida",
+        "Uma relação entre posição aparente mais baixa e sombra mais longa naquele conjunto.",
+        "A relação vale igual em qualquer situação"
+      ],
+      "correctAnswer": "Uma relação entre posição aparente mais baixa e sombra mais longa naquele conjunto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O objeto fica menor": [
+          "LOWER_POSITION_LONGER_SHADOW"
+        ],
+        "A sombra não pode ser medida": [
+          "LOWER_POSITION_LONGER_SHADOW"
+        ],
+        "A relação vale igual em qualquer situação": [
+          "LOWER_POSITION_LONGER_SHADOW"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "SOL_MAIS_BAIXO_E_SOMBRA",
+      "explanation": "A conclusão corresponde aos dados contextualizados.",
+      "hint": "Use a expressão “neste registro”.",
+      "errorFocus": "LOWER_POSITION_LONGER_SHADOW",
+      "feedback": {
+        "correct": "Boa observação: A conclusão corresponde aos dados contextualizados.",
+        "incorrect": "A conclusão corresponde aos dados contextualizados.",
+        "hint": "Use a expressão “neste registro”.",
+        "errorFocus": "LOWER_POSITION_LONGER_SHADOW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-12",
+      "statement": "Por que usar o mesmo objeto em duas medidas de sombra?",
+      "prompt": "Por que usar o mesmo objeto em duas medidas de sombra?",
+      "options": [
+        "Para mudar o horário",
+        "Para impedir qualquer sombra",
+        "Para olhar o Sol",
+        "Para comparar mudanças sem trocar o objeto observado."
+      ],
+      "correctAnswer": "Para comparar mudanças sem trocar o objeto observado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para mudar o horário": [
+          "CONTROLLED_COMPARISON"
+        ],
+        "Para impedir qualquer sombra": [
+          "CONTROLLED_COMPARISON"
+        ],
+        "Para olhar o Sol": [
+          "CONTROLLED_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MESMO_OBJETO",
+      "explanation": "O objeto fixo reduz uma diferença na comparação.",
+      "hint": "Mantenha a referência igual.",
+      "errorFocus": "CONTROLLED_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: O objeto fixo reduz uma diferença na comparação.",
+        "incorrect": "O objeto fixo reduz uma diferença na comparação.",
+        "hint": "Mantenha a referência igual.",
+        "errorFocus": "CONTROLLED_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-13",
+      "statement": "Uma sombra diminuiu de 120 cm para 50 cm entre dois horários. Quantos centímetros diminuiu?",
+      "prompt": "Uma sombra diminuiu de 120 cm para 50 cm entre dois horários. Quantos centímetros diminuiu?",
+      "options": [
+        "70 cm.",
+        "60 cm",
+        "80 cm",
+        "170 cm"
+      ],
+      "correctAnswer": "70 cm.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "60 cm": [
+          "SHADOW_DIFFERENCE"
+        ],
+        "80 cm": [
+          "SHADOW_DIFFERENCE"
+        ],
+        "170 cm": [
+          "SHADOW_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MEDIDAS_120_E_50",
+      "explanation": "120 menos 50 é 70.",
+      "hint": "Calcule a diferença entre as medidas.",
+      "errorFocus": "SHADOW_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: 120 menos 50 é 70.",
+        "incorrect": "120 menos 50 é 70.",
+        "hint": "Calcule a diferença entre as medidas.",
+        "errorFocus": "SHADOW_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-14",
+      "statement": "Uma pessoa compara sombra de poste às 9h em duas datas e locais diferentes. Qual cuidado é necessário?",
+      "prompt": "Uma pessoa compara sombra de poste às 9h em duas datas e locais diferentes. Qual cuidado é necessário?",
+      "options": [
+        "Dizer que as condições são idênticas",
+        "Considerar que data e local também mudam e limitam a comparação.",
+        "Ignorar as legendas",
+        "Olhar diretamente para o Sol"
+      ],
+      "correctAnswer": "Considerar que data e local também mudam e limitam a comparação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dizer que as condições são idênticas": [
+          "DATE_PLACE_CONTROL"
+        ],
+        "Ignorar as legendas": [
+          "DATE_PLACE_CONTROL"
+        ],
+        "Olhar diretamente para o Sol": [
+          "DATE_PLACE_CONTROL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DADOS_DE_DIAS_DIFERENTES",
+      "explanation": "Local e data podem influenciar os registros observados.",
+      "hint": "Leia todas as condições.",
+      "errorFocus": "DATE_PLACE_CONTROL",
+      "feedback": {
+        "correct": "Boa observação: Local e data podem influenciar os registros observados.",
+        "incorrect": "Local e data podem influenciar os registros observados.",
+        "hint": "Leia todas as condições.",
+        "errorFocus": "DATE_PLACE_CONTROL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-15",
+      "statement": "Um diagrama mostra uma sombra curta do objeto. O que pode ser medido?",
+      "prompt": "Um diagrama mostra uma sombra curta do objeto. O que pode ser medido?",
+      "options": [
+        "A distância real até o Sol",
+        "A temperatura da imagem",
+        "O comprimento da sombra representada.",
+        "A idade do objeto"
+      ],
+      "correctAnswer": "O comprimento da sombra representada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A distância real até o Sol": [
+          "MEASURE_REPRESENTED_SHADOW"
+        ],
+        "A temperatura da imagem": [
+          "MEASURE_REPRESENTED_SHADOW"
+        ],
+        "A idade do objeto": [
+          "MEASURE_REPRESENTED_SHADOW"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOMBRA_CURTA_NO_DIAGRAMA",
+      "explanation": "A escala do diagrama pode indicar o comprimento desenhado.",
+      "hint": "Observe a escala ou medida.",
+      "errorFocus": "MEASURE_REPRESENTED_SHADOW",
+      "feedback": {
+        "correct": "Boa observação: A escala do diagrama pode indicar o comprimento desenhado.",
+        "incorrect": "A escala do diagrama pode indicar o comprimento desenhado.",
+        "hint": "Observe a escala ou medida.",
+        "errorFocus": "MEASURE_REPRESENTED_SHADOW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-16",
+      "statement": "Por que anotar sombras no chão é uma opção segura?",
+      "prompt": "Por que anotar sombras no chão é uma opção segura?",
+      "options": [
+        "Porque o Sol não existe",
+        "Porque sombras não mudam",
+        "Porque toda observação é perigosa",
+        "Porque permite estudar a projeção sem olhar para o Sol."
+      ],
+      "correctAnswer": "Porque permite estudar a projeção sem olhar para o Sol.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque o Sol não existe": [
+          "INDIRECT_OBSERVATION"
+        ],
+        "Porque sombras não mudam": [
+          "INDIRECT_OBSERVATION"
+        ],
+        "Porque toda observação é perigosa": [
+          "INDIRECT_OBSERVATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REGISTRO_SEM_OBSERVAR_SOL",
+      "explanation": "A sombra é uma evidência observável sem mirar o Sol.",
+      "hint": "Pense em observação indireta.",
+      "errorFocus": "INDIRECT_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: A sombra é uma evidência observável sem mirar o Sol.",
+        "incorrect": "A sombra é uma evidência observável sem mirar o Sol.",
+        "hint": "Pense em observação indireta.",
+        "errorFocus": "INDIRECT_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-17",
+      "statement": "Uma ficha mostra sombra de 110 cm às 8h, 45 cm às 12h e 105 cm às 16h. Qual foi a menor?",
+      "prompt": "Uma ficha mostra sombra de 110 cm às 8h, 45 cm às 12h e 105 cm às 16h. Qual foi a menor?",
+      "options": [
+        "A sombra registrada às 12h.",
+        "A das 8h",
+        "A das 16h",
+        "Todas são iguais"
+      ],
+      "correctAnswer": "A sombra registrada às 12h.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A das 8h": [
+          "FIND_MINIMUM_SHADOW"
+        ],
+        "A das 16h": [
+          "FIND_MINIMUM_SHADOW"
+        ],
+        "Todas são iguais": [
+          "FIND_MINIMUM_SHADOW"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TRES_HORARIOS",
+      "explanation": "45 cm é o menor comprimento da tabela.",
+      "hint": "Compare os três valores.",
+      "errorFocus": "FIND_MINIMUM_SHADOW",
+      "feedback": {
+        "correct": "Boa observação: 45 cm é o menor comprimento da tabela.",
+        "incorrect": "45 cm é o menor comprimento da tabela.",
+        "hint": "Compare os três valores.",
+        "errorFocus": "FIND_MINIMUM_SHADOW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-18",
+      "statement": "Em dois desenhos do mesmo objeto, o Sol aparece mais alto num e a sombra fica menor. O que associar?",
+      "prompt": "Em dois desenhos do mesmo objeto, o Sol aparece mais alto num e a sombra fica menor. O que associar?",
+      "options": [
+        "Sombra menor significa objeto menor",
+        "A posição aparente mais alta está associada à sombra menor nesses desenhos.",
+        "O Sol está dentro do objeto",
+        "A associação não pode ser descrita"
+      ],
+      "correctAnswer": "A posição aparente mais alta está associada à sombra menor nesses desenhos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sombra menor significa objeto menor": [
+          "LINK_POSITION_TO_SHADOW"
+        ],
+        "O Sol está dentro do objeto": [
+          "LINK_POSITION_TO_SHADOW"
+        ],
+        "A associação não pode ser descrita": [
+          "LINK_POSITION_TO_SHADOW"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "POSICAO_DO_SOL_E_COMPRIMENTO",
+      "explanation": "Os desenhos fornecem uma comparação do mesmo objeto.",
+      "hint": "Relacione posição e comprimento.",
+      "errorFocus": "LINK_POSITION_TO_SHADOW",
+      "feedback": {
+        "correct": "Boa observação: Os desenhos fornecem uma comparação do mesmo objeto.",
+        "incorrect": "Os desenhos fornecem uma comparação do mesmo objeto.",
+        "hint": "Relacione posição e comprimento.",
+        "errorFocus": "LINK_POSITION_TO_SHADOW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-19",
+      "statement": "Uma turma mede uma sombra num dia. Pode afirmar o mesmo comprimento para todos os lugares e datas?",
+      "prompt": "Uma turma mede uma sombra num dia. Pode afirmar o mesmo comprimento para todos os lugares e datas?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se o objeto for uma árvore",
+        "Não; a medida pertence ao local e à data observados.",
+        "Não, sombras nunca podem ser medidas"
+      ],
+      "correctAnswer": "Não; a medida pertence ao local e à data observados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "NO_UNIVERSAL_MEASURE"
+        ],
+        "Sim, se o objeto for uma árvore": [
+          "NO_UNIVERSAL_MEASURE"
+        ],
+        "Não, sombras nunca podem ser medidas": [
+          "NO_UNIVERSAL_MEASURE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONCLUSAO_UNIVERSAL",
+      "explanation": "Uma observação situada não define todos os contextos.",
+      "hint": "Considere local e data.",
+      "errorFocus": "NO_UNIVERSAL_MEASURE",
+      "feedback": {
+        "correct": "Boa observação: Uma observação situada não define todos os contextos.",
+        "incorrect": "Uma observação situada não define todos os contextos.",
+        "hint": "Considere local e data.",
+        "errorFocus": "NO_UNIVERSAL_MEASURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-20",
+      "statement": "Para acompanhar a ponta de uma sombra ao longo do tempo, o que pode ajudar?",
+      "prompt": "Para acompanhar a ponta de uma sombra ao longo do tempo, o que pode ajudar?",
+      "options": [
+        "Olhar para o Sol",
+        "Mover o objeto sem anotar",
+        "Apagar os horários",
+        "Registrar a posição no chão em horários anotados, com supervisão."
+      ],
+      "correctAnswer": "Registrar a posição no chão em horários anotados, com supervisão.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Olhar para o Sol": [
+          "SHADOW_TRACKING"
+        ],
+        "Mover o objeto sem anotar": [
+          "SHADOW_TRACKING"
+        ],
+        "Apagar os horários": [
+          "SHADOW_TRACKING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MARCA_NO_CHao",
+      "explanation": "Marcas e horários documentam a mudança observada.",
+      "hint": "Registre sem mirar o Sol.",
+      "errorFocus": "SHADOW_TRACKING",
+      "feedback": {
+        "correct": "Boa observação: Marcas e horários documentam a mudança observada.",
+        "incorrect": "Marcas e horários documentam a mudança observada.",
+        "hint": "Registre sem mirar o Sol.",
+        "errorFocus": "SHADOW_TRACKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-21",
+      "statement": "Duas sombras pertencem a objetos de alturas diferentes. O que limita a comparação direta?",
+      "prompt": "Duas sombras pertencem a objetos de alturas diferentes. O que limita a comparação direta?",
+      "options": [
+        "A altura do objeto também varia entre os casos.",
+        "O nome dos objetos",
+        "A cor do chão",
+        "A ordem alfabética"
+      ],
+      "correctAnswer": "A altura do objeto também varia entre os casos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O nome dos objetos": [
+          "CONTROL_OBJECT_HEIGHT"
+        ],
+        "A cor do chão": [
+          "CONTROL_OBJECT_HEIGHT"
+        ],
+        "A ordem alfabética": [
+          "CONTROL_OBJECT_HEIGHT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "OBJETOS_DE_ALTURAS_DIFERENTES",
+      "explanation": "Objetos distintos podem produzir sombras diferentes por mais de uma razão.",
+      "hint": "Compare os objetos usados.",
+      "errorFocus": "CONTROL_OBJECT_HEIGHT",
+      "feedback": {
+        "correct": "Boa observação: Objetos distintos podem produzir sombras diferentes por mais de uma razão.",
+        "incorrect": "Objetos distintos podem produzir sombras diferentes por mais de uma razão.",
+        "hint": "Compare os objetos usados.",
+        "errorFocus": "CONTROL_OBJECT_HEIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-22",
+      "statement": "Um esquema simplificado representa Sol, objeto e sombra. Como usá-lo?",
+      "prompt": "Um esquema simplificado representa Sol, objeto e sombra. Como usá-lo?",
+      "options": [
+        "Como medida exata de qualquer dia",
+        "Como modelo para discutir a relação, observando suas legendas e limites.",
+        "Como autorização para olhar o Sol",
+        "Como prova de todas as distâncias"
+      ],
+      "correctAnswer": "Como modelo para discutir a relação, observando suas legendas e limites.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como medida exata de qualquer dia": [
+          "MODEL_LIMITS"
+        ],
+        "Como autorização para olhar o Sol": [
+          "MODEL_LIMITS"
+        ],
+        "Como prova de todas as distâncias": [
+          "MODEL_LIMITS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DIAGRAMA_E_REALIDADE",
+      "explanation": "Diagramas ajudam a explicar relações, mas simplificam a realidade.",
+      "hint": "Leia a legenda e o contexto.",
+      "errorFocus": "MODEL_LIMITS",
+      "feedback": {
+        "correct": "Boa observação: Diagramas ajudam a explicar relações, mas simplificam a realidade.",
+        "incorrect": "Diagramas ajudam a explicar relações, mas simplificam a realidade.",
+        "hint": "Leia a legenda e o contexto.",
+        "errorFocus": "MODEL_LIMITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-23",
+      "statement": "Alguém sugere usar binóculos para ver melhor o Sol. Qual resposta é segura?",
+      "prompt": "Alguém sugere usar binóculos para ver melhor o Sol. Qual resposta é segura?",
+      "options": [
+        "Olhar por alguns segundos",
+        "Usar uma lente escura comum",
+        "Não fazer isso; estudar a sombra ou usar material apropriado preparado pelo educador.",
+        "Apontar a câmera sem proteção"
+      ],
+      "correctAnswer": "Não fazer isso; estudar a sombra ou usar material apropriado preparado pelo educador.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Olhar por alguns segundos": [
+          "NO_OPTICAL_SUN_VIEWING"
+        ],
+        "Usar uma lente escura comum": [
+          "NO_OPTICAL_SUN_VIEWING"
+        ],
+        "Apontar a câmera sem proteção": [
+          "NO_OPTICAL_SUN_VIEWING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CUIDADO_COM_LENTE",
+      "explanation": "Instrumentos ópticos podem causar lesões ao observar o Sol.",
+      "hint": "Escolha observação indireta.",
+      "errorFocus": "NO_OPTICAL_SUN_VIEWING",
+      "feedback": {
+        "correct": "Boa observação: Instrumentos ópticos podem causar lesões ao observar o Sol.",
+        "incorrect": "Instrumentos ópticos podem causar lesões ao observar o Sol.",
+        "hint": "Escolha observação indireta.",
+        "errorFocus": "NO_OPTICAL_SUN_VIEWING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-24",
+      "statement": "Por que anotar horário e local junto da sombra?",
+      "prompt": "Por que anotar horário e local junto da sombra?",
+      "options": [
+        "Para mudar o comprimento",
+        "Para dispensar a medida",
+        "Para afirmar que todos os locais são iguais",
+        "Para interpretar e comparar a observação no contexto correto."
+      ],
+      "correctAnswer": "Para interpretar e comparar a observação no contexto correto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para mudar o comprimento": [
+          "CONTEXTUAL_SHADOW_DATA"
+        ],
+        "Para dispensar a medida": [
+          "CONTEXTUAL_SHADOW_DATA"
+        ],
+        "Para afirmar que todos os locais são iguais": [
+          "CONTEXTUAL_SHADOW_DATA"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REGISTRO_CONTEXTUAL",
+      "explanation": "Horário e local situam o registro.",
+      "hint": "Mantenha as informações de contexto.",
+      "errorFocus": "CONTEXTUAL_SHADOW_DATA",
+      "feedback": {
+        "correct": "Boa observação: Horário e local situam o registro.",
+        "incorrect": "Horário e local situam o registro.",
+        "hint": "Mantenha as informações de contexto.",
+        "errorFocus": "CONTEXTUAL_SHADOW_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-25",
+      "statement": "Uma tabela do mesmo dia marca sombra de 130 cm pela manhã e 40 cm perto do meio-dia. Qual é maior?",
+      "prompt": "Uma tabela do mesmo dia marca sombra de 130 cm pela manhã e 40 cm perto do meio-dia. Qual é maior?",
+      "options": [
+        "A da manhã.",
+        "A do meio-dia",
+        "São iguais",
+        "Não há dado"
+      ],
+      "correctAnswer": "A da manhã.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A do meio-dia": [
+          "SHADOW_LENGTH_REVIEW"
+        ],
+        "São iguais": [
+          "SHADOW_LENGTH_REVIEW"
+        ],
+        "Não há dado": [
+          "SHADOW_LENGTH_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SOMBRA_LONGA_PELA_MANHA",
+      "explanation": "130 cm é maior que 40 cm.",
+      "hint": "Compare as medidas.",
+      "errorFocus": "SHADOW_LENGTH_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 130 cm é maior que 40 cm.",
+        "incorrect": "130 cm é maior que 40 cm.",
+        "hint": "Compare as medidas.",
+        "errorFocus": "SHADOW_LENGTH_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-26",
+      "statement": "Qual frase descreve uma observação segura?",
+      "prompt": "Qual frase descreve uma observação segura?",
+      "options": [
+        "Observar o Sol por uma lente",
+        "Comparar sombras sem olhar diretamente para o Sol.",
+        "Olhar fixamente ao meio-dia",
+        "Usar binóculos sem filtro"
+      ],
+      "correctAnswer": "Comparar sombras sem olhar diretamente para o Sol.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Observar o Sol por uma lente": [
+          "SUN_SAFETY_REVIEW"
+        ],
+        "Olhar fixamente ao meio-dia": [
+          "SUN_SAFETY_REVIEW"
+        ],
+        "Usar binóculos sem filtro": [
+          "SUN_SAFETY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SOL_APARENTE_E_SEGURANCA",
+      "explanation": "A sombra pode ser estudada indiretamente.",
+      "hint": "Escolha a ação que protege os olhos.",
+      "errorFocus": "SUN_SAFETY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A sombra pode ser estudada indiretamente.",
+        "incorrect": "A sombra pode ser estudada indiretamente.",
+        "hint": "Escolha a ação que protege os olhos.",
+        "errorFocus": "SUN_SAFETY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-27",
+      "statement": "Para estudar mudança de sombra ao longo de um dia, por que manter local e objeto?",
+      "prompt": "Para estudar mudança de sombra ao longo de um dia, por que manter local e objeto?",
+      "options": [
+        "Para impedir a mudança",
+        "Para fazer o Sol parar",
+        "Ajuda a comparar os horários com menos variáveis diferentes.",
+        "Para dispensar registros"
+      ],
+      "correctAnswer": "Ajuda a comparar os horários com menos variáveis diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para impedir a mudança": [
+          "CONTROL_VARIABLES_REVIEW"
+        ],
+        "Para fazer o Sol parar": [
+          "CONTROL_VARIABLES_REVIEW"
+        ],
+        "Para dispensar registros": [
+          "CONTROL_VARIABLES_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MESMO_LOCAL_E_DATA",
+      "explanation": "Condições mantidas tornam a comparação mais clara.",
+      "hint": "Pense no que deve ficar igual.",
+      "errorFocus": "CONTROL_VARIABLES_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Condições mantidas tornam a comparação mais clara.",
+        "incorrect": "Condições mantidas tornam a comparação mais clara.",
+        "hint": "Pense no que deve ficar igual.",
+        "errorFocus": "CONTROL_VARIABLES_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-28",
+      "statement": "Uma sombra mede 65 cm no desenho em escala. O que o valor representa?",
+      "prompt": "Uma sombra mede 65 cm no desenho em escala. O que o valor representa?",
+      "options": [
+        "A altura do Sol em quilômetros",
+        "O tamanho de todos os objetos",
+        "A distância até outra cidade",
+        "O comprimento indicado para aquela sombra e registro."
+      ],
+      "correctAnswer": "O comprimento indicado para aquela sombra e registro.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A altura do Sol em quilômetros": [
+          "SHADOW_UNIT_REVIEW"
+        ],
+        "O tamanho de todos os objetos": [
+          "SHADOW_UNIT_REVIEW"
+        ],
+        "A distância até outra cidade": [
+          "SHADOW_UNIT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "COMPRIMENTO_EM_CENTIMETROS",
+      "explanation": "O valor descreve a medida identificada no registro.",
+      "hint": "Leia a legenda da unidade.",
+      "errorFocus": "SHADOW_UNIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O valor descreve a medida identificada no registro.",
+        "incorrect": "O valor descreve a medida identificada no registro.",
+        "hint": "Leia a legenda da unidade.",
+        "errorFocus": "SHADOW_UNIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-29",
+      "statement": "Num par de diagramas do mesmo objeto, qual desenho tem sombra menor?",
+      "prompt": "Num par de diagramas do mesmo objeto, qual desenho tem sombra menor?",
+      "options": [
+        "O que representa o Sol aparentemente mais alto, segundo os dados.",
+        "O desenho com Sol mais baixo sempre",
+        "Os dois obrigatoriamente",
+        "Nenhum desenho pode ser comparado"
+      ],
+      "correctAnswer": "O que representa o Sol aparentemente mais alto, segundo os dados.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O desenho com Sol mais baixo sempre": [
+          "HIGHER_SUN_SHORTER_SHADOW_REVIEW"
+        ],
+        "Os dois obrigatoriamente": [
+          "HIGHER_SUN_SHORTER_SHADOW_REVIEW"
+        ],
+        "Nenhum desenho pode ser comparado": [
+          "HIGHER_SUN_SHORTER_SHADOW_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "POSICAO_MAIS_ALTA",
+      "explanation": "Os diagramas apresentados associam posição mais alta a sombra menor.",
+      "hint": "Use a relação mostrada nos diagramas.",
+      "errorFocus": "HIGHER_SUN_SHORTER_SHADOW_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os diagramas apresentados associam posição mais alta a sombra menor.",
+        "incorrect": "Os diagramas apresentados associam posição mais alta a sombra menor.",
+        "hint": "Use a relação mostrada nos diagramas.",
+        "errorFocus": "HIGHER_SUN_SHORTER_SHADOW_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-30",
+      "statement": "Uma tabela de outra cidade tem medidas diferentes. Isso invalida a observação?",
+      "prompt": "Uma tabela de outra cidade tem medidas diferentes. Isso invalida a observação?",
+      "options": [
+        "Sim, toda medida diferente é falsa",
+        "Não; pode refletir outro local ou contexto e deve ser descrito como tal.",
+        "Sim, sombras nunca variam",
+        "Não, todos os locais são iguais"
+      ],
+      "correctAnswer": "Não; pode refletir outro local ou contexto e deve ser descrito como tal.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, toda medida diferente é falsa": [
+          "LOCAL_VARIATION_REVIEW"
+        ],
+        "Sim, sombras nunca variam": [
+          "LOCAL_VARIATION_REVIEW"
+        ],
+        "Não, todos os locais são iguais": [
+          "LOCAL_VARIATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MEDICAO_EM_LOCAL_DIFERENTE",
+      "explanation": "Diferenças podem ser estudadas com contexto.",
+      "hint": "Leia a cidade e o horário.",
+      "errorFocus": "LOCAL_VARIATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Diferenças podem ser estudadas com contexto.",
+        "incorrect": "Diferenças podem ser estudadas com contexto.",
+        "hint": "Leia a cidade e o horário.",
+        "errorFocus": "LOCAL_VARIATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-31",
+      "statement": "Qual registro ajuda a comparar a sombra em horários distintos?",
+      "prompt": "Qual registro ajuda a comparar a sombra em horários distintos?",
+      "options": [
+        "Uma imagem sem legenda",
+        "Um palpite sobre o Sol",
+        "Desenhos ou medidas identificados por horário.",
+        "Um objeto movido sem anotação"
+      ],
+      "correctAnswer": "Desenhos ou medidas identificados por horário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma imagem sem legenda": [
+          "TIME_SERIES_REVIEW"
+        ],
+        "Um palpite sobre o Sol": [
+          "TIME_SERIES_REVIEW"
+        ],
+        "Um objeto movido sem anotação": [
+          "TIME_SERIES_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DESENHO_DE_PROJECAO",
+      "explanation": "Horários identificados permitem comparação temporal.",
+      "hint": "Anote quando foi observado.",
+      "errorFocus": "TIME_SERIES_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Horários identificados permitem comparação temporal.",
+        "incorrect": "Horários identificados permitem comparação temporal.",
+        "hint": "Anote quando foi observado.",
+        "errorFocus": "TIME_SERIES_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-32",
+      "statement": "Uma conclusão cuidadosa sobre sombras informa a relação observada e...",
+      "prompt": "Uma conclusão cuidadosa sobre sombras informa a relação observada e...",
+      "options": [
+        "uma regra para todos os dias",
+        "uma medida inventada",
+        "que se deve olhar diretamente ao Sol",
+        "o local, horário e objeto a que ela se refere."
+      ],
+      "correctAnswer": "o local, horário e objeto a que ela se refere.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma regra para todos os dias": [
+          "CONTEXTUAL_CONCLUSION_REVIEW"
+        ],
+        "uma medida inventada": [
+          "CONTEXTUAL_CONCLUSION_REVIEW"
+        ],
+        "que se deve olhar diretamente ao Sol": [
+          "CONTEXTUAL_CONCLUSION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RELACAO_E_LIMITES",
+      "explanation": "Contexto delimita o alcance da conclusão.",
+      "hint": "Reúna observação e contexto.",
+      "errorFocus": "CONTEXTUAL_CONCLUSION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Contexto delimita o alcance da conclusão.",
+        "incorrect": "Contexto delimita o alcance da conclusão.",
+        "hint": "Reúna observação e contexto.",
+        "errorFocus": "CONTEXTUAL_CONCLUSION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-33",
+      "statement": "Uma sombra projetada é...",
+      "prompt": "Uma sombra projetada é...",
+      "options": [
+        "uma região escura formada quando um objeto bloqueia luz.",
+        "uma posição do alfabeto",
+        "uma medida de temperatura",
+        "um tipo de nuvem"
+      ],
+      "correctAnswer": "uma região escura formada quando um objeto bloqueia luz.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "uma posição do alfabeto": [
+          "SHADOW_REVIEW"
+        ],
+        "uma medida de temperatura": [
+          "SHADOW_REVIEW"
+        ],
+        "um tipo de nuvem": [
+          "SHADOW_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_SOMBRA",
+      "explanation": "O objeto bloqueia parte da luz e projeta uma sombra.",
+      "hint": "Lembre-se do objeto e da luz.",
+      "errorFocus": "SHADOW_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O objeto bloqueia parte da luz e projeta uma sombra.",
+        "incorrect": "O objeto bloqueia parte da luz e projeta uma sombra.",
+        "hint": "Lembre-se do objeto e da luz.",
+        "errorFocus": "SHADOW_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-34",
+      "statement": "Para comparar uma sombra ao longo do dia, os registros precisam indicar...",
+      "prompt": "Para comparar uma sombra ao longo do dia, os registros precisam indicar...",
+      "options": [
+        "apenas a cor da roupa",
+        "os horários observados.",
+        "o nome de toda a turma",
+        "a ordem das letras"
+      ],
+      "correctAnswer": "os horários observados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "apenas a cor da roupa": [
+          "TIME_LABEL_REVIEW"
+        ],
+        "o nome de toda a turma": [
+          "TIME_LABEL_REVIEW"
+        ],
+        "a ordem das letras": [
+          "TIME_LABEL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_HORARIOS",
+      "explanation": "Horários situam cada observação.",
+      "hint": "Confira a legenda.",
+      "errorFocus": "TIME_LABEL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Horários situam cada observação.",
+        "incorrect": "Horários situam cada observação.",
+        "hint": "Confira a legenda.",
+        "errorFocus": "TIME_LABEL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-35",
+      "statement": "80 cm e 35 cm: qual sombra é mais longa?",
+      "prompt": "80 cm e 35 cm: qual sombra é mais longa?",
+      "options": [
+        "35 cm",
+        "São iguais",
+        "80 cm.",
+        "Nenhuma"
+      ],
+      "correctAnswer": "80 cm.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "35 cm": [
+          "LENGTH_COMPARISON_REVIEW"
+        ],
+        "São iguais": [
+          "LENGTH_COMPARISON_REVIEW"
+        ],
+        "Nenhuma": [
+          "LENGTH_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_COMPRIMENTO",
+      "explanation": "80 é maior que 35.",
+      "hint": "Compare os comprimentos.",
+      "errorFocus": "LENGTH_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: 80 é maior que 35.",
+        "incorrect": "80 é maior que 35.",
+        "hint": "Compare os comprimentos.",
+        "errorFocus": "LENGTH_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-36",
+      "statement": "O diagrama mostra o Sol aparentemente mais baixo. O que pode variar no registro?",
+      "prompt": "O diagrama mostra o Sol aparentemente mais baixo. O que pode variar no registro?",
+      "options": [
+        "O nome da letra",
+        "A quantidade de páginas",
+        "A cor do cartão",
+        "A direção ou o comprimento da sombra do objeto."
+      ],
+      "correctAnswer": "A direção ou o comprimento da sombra do objeto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O nome da letra": [
+          "APPARENT_POSITION_REVIEW"
+        ],
+        "A quantidade de páginas": [
+          "APPARENT_POSITION_REVIEW"
+        ],
+        "A cor do cartão": [
+          "APPARENT_POSITION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_POSICAO_APARENTE",
+      "explanation": "Posição aparente e sombra podem ser relacionadas.",
+      "hint": "Observe a projeção no chão.",
+      "errorFocus": "APPARENT_POSITION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Posição aparente e sombra podem ser relacionadas.",
+        "incorrect": "Posição aparente e sombra podem ser relacionadas.",
+        "hint": "Observe a projeção no chão.",
+        "errorFocus": "APPARENT_POSITION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-37",
+      "statement": "O que nunca se deve fazer para esta atividade?",
+      "prompt": "O que nunca se deve fazer para esta atividade?",
+      "options": [
+        "Olhar diretamente para o Sol, inclusive com instrumentos ópticos comuns.",
+        "Medir a sombra no chão",
+        "Ler um diagrama",
+        "Usar dados preparados"
+      ],
+      "correctAnswer": "Olhar diretamente para o Sol, inclusive com instrumentos ópticos comuns.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Medir a sombra no chão": [
+          "SUN_SAFETY_SUMMARY"
+        ],
+        "Ler um diagrama": [
+          "SUN_SAFETY_SUMMARY"
+        ],
+        "Usar dados preparados": [
+          "SUN_SAFETY_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_SEGURANCA",
+      "explanation": "Olhar ao Sol pode causar lesão ocular.",
+      "hint": "Prefira sombra e esquema.",
+      "errorFocus": "SUN_SAFETY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Olhar ao Sol pode causar lesão ocular.",
+        "incorrect": "Olhar ao Sol pode causar lesão ocular.",
+        "hint": "Prefira sombra e esquema.",
+        "errorFocus": "SUN_SAFETY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-38",
+      "statement": "Se o objeto muda entre as medidas, o que pode ficar difícil?",
+      "prompt": "Se o objeto muda entre as medidas, o que pode ficar difícil?",
+      "options": [
+        "Ler números",
+        "Saber se a diferença veio do horário ou do próprio objeto.",
+        "Usar uma legenda",
+        "Reconhecer a data"
+      ],
+      "correctAnswer": "Saber se a diferença veio do horário ou do próprio objeto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ler números": [
+          "CONTROLLED_OBSERVATION_REVIEW"
+        ],
+        "Usar uma legenda": [
+          "CONTROLLED_OBSERVATION_REVIEW"
+        ],
+        "Reconhecer a data": [
+          "CONTROLLED_OBSERVATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_CONTROLE",
+      "explanation": "Vários fatores mudando dificultam interpretar a comparação.",
+      "hint": "Mantenha o objeto igual.",
+      "errorFocus": "CONTROLLED_OBSERVATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Vários fatores mudando dificultam interpretar a comparação.",
+        "incorrect": "Vários fatores mudando dificultam interpretar a comparação.",
+        "hint": "Mantenha o objeto igual.",
+        "errorFocus": "CONTROLLED_OBSERVATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-39",
+      "statement": "Como descrever uma relação vista num diagrama?",
+      "prompt": "Como descrever uma relação vista num diagrama?",
+      "options": [
+        "Inventar o tamanho real do Sol",
+        "Ignorar a escala",
+        "Citar a posição aparente e o comprimento representado da sombra.",
+        "Generalizar para todo lugar"
+      ],
+      "correctAnswer": "Citar a posição aparente e o comprimento representado da sombra.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Inventar o tamanho real do Sol": [
+          "DIAGRAM_EVIDENCE_REVIEW"
+        ],
+        "Ignorar a escala": [
+          "DIAGRAM_EVIDENCE_REVIEW"
+        ],
+        "Generalizar para todo lugar": [
+          "DIAGRAM_EVIDENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_DIAGRAMA",
+      "explanation": "A descrição deve usar as evidências apresentadas.",
+      "hint": "Leia as legendas.",
+      "errorFocus": "DIAGRAM_EVIDENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A descrição deve usar as evidências apresentadas.",
+        "incorrect": "A descrição deve usar as evidências apresentadas.",
+        "hint": "Leia as legendas.",
+        "errorFocus": "DIAGRAM_EVIDENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci07-sun-apparent-position-and-shadow-length-40",
+      "statement": "Estudar Sol e sombra com segurança envolve horários, objeto fixo e...",
+      "prompt": "Estudar Sol e sombra com segurança envolve horários, objeto fixo e...",
+      "options": [
+        "uso de binóculos",
+        "medidas sem contexto",
+        "conclusões universais",
+        "observação indireta sem olhar para o Sol."
+      ],
+      "correctAnswer": "observação indireta sem olhar para o Sol.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uso de binóculos": [
+          "SUN_SHADOW_SUMMARY"
+        ],
+        "medidas sem contexto": [
+          "SUN_SHADOW_SUMMARY"
+        ],
+        "conclusões universais": [
+          "SUN_SHADOW_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_SOL_E_SOMBRA",
+      "explanation": "Registros contextualizados e observação indireta são essenciais.",
+      "hint": "Reúna segurança e comparação.",
+      "errorFocus": "SUN_SHADOW_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Registros contextualizados e observação indireta são essenciais.",
+        "incorrect": "Registros contextualizados e observação indireta são essenciais.",
+        "hint": "Reúna segurança e comparação.",
+        "errorFocus": "SUN_SHADOW_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas ampliados, sombras contrastantes e medidas em escala claramente marcadas.",
+          "Permitir comparar apontando, usando cartões de comprimento, fala ou comunicação alternativa.",
+          "Realizar observação indireta de sombras com supervisão; nunca direcionar o olhar ao Sol."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

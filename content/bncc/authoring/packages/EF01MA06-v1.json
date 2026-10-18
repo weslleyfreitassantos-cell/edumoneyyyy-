@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef01ma06-basic-addition-facts-and-problems",
+  "officialCode": "EF01MA06",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef01ma06-basic-addition-facts-and-problems.json",
+  "canonicalSkillCode": "AUTHORING_EF01MA06_ADDITION_FACTS_AND_STRATEGIES",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "fatos básicos da adição e procedimentos de cálculo em problemas",
+  "officialDescriptor": "Construir fatos básicos da adição e utilizá-los em procedimentos de cálculo para resolver problemas.",
+  "officialSource": { "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 281 },
+  "lesson": {
+    "title": "Juntar quantidades e pensar estratégias",
+    "objective": "Construir fatos básicos da adição e escolher estratégias como contar, decompor ou usar materiais para resolver problemas cotidianos.",
+    "summary": "A adição pode representar juntar quantidades ou acrescentar elementos. Fatos como 5 + 3 = 8 podem ser construídos com objetos, desenhos, dedos, decomposição ou conhecimento de combinações conhecidas. Estratégias diferentes podem chegar ao mesmo resultado. Problemas devem ser lidos para identificar as quantidades e o que se pergunta. Não é necessário responder rapidamente; explicar ou representar o raciocínio também demonstra aprendizagem.",
+    "explanation": "Represente cada quantidade com objetos, marcas ou números. Para 7 + 5, pode-se começar no 7 e contar mais cinco passos, ou decompor 5 em 3 e 2 para chegar primeiro a 10 e depois a 12. A estratégia precisa corresponder à situação descrita. Verifique se a pergunta pede o total juntado. Use objetos seguros, desenhos ou reta numérica e aceite diferentes registros corretos; velocidade não é critério de entendimento.",
+    "workedExample": "Há 6 lápis numa caixa e 4 noutra. Juntando as quantidades, 6 + 4 = 10 lápis. É possível contar todos, formar dez ou desenhar os grupos e conferir o resultado.",
+    "commonMistake": "Somar números sem compreender a situação, contar um objeto duas vezes ou achar que existe uma única estratégia correta.",
+    "priorKnowledge": ["Contar pequenas quantidades com apoio.", "Reconhecer numerais e representar conjuntos simples."],
+    "keyConcepts": ["adição", "juntar", "acrescentar", "parcela", "total", "estratégia", "contagem", "decomposição"],
+    "remediations": [
+      { "errorFocus": "MODEL_BOTH_ADDENDS", "action": "Represente cada parcela separadamente antes de juntá-las e contar o total uma única vez." },
+      { "errorFocus": "STRATEGY_CHOICE", "action": "Compare contagem, decomposição e reta numérica; aceite qualquer procedimento válido e verificável." },
+      { "errorFocus": "WORD_PROBLEM_MEANING", "action": "Releia o enunciado e identifique se a situação junta ou acrescenta quantidades." }
+    ],
+    "accessibilitySupports": ["Disponibilizar objetos de contagem, quadros de dez, numerais ampliados e reta numérica.", "Permitir registrar por fala, desenho, manipulação, apontamento ou comunicação alternativa.", "Oferecer tempo sem cobrança de velocidade e apresentar um problema por vez."],
+    "authenticActivities": [
+      { "id": "ma06-make-ten", "title": "Formar dez de jeitos diferentes", "context": "Cartões e objetos representam pequenas somas em jogos cooperativos.", "steps": ["Escolha duas quantidades e represente cada uma.", "Junte ou decomponha para encontrar o total.", "Mostre o resultado por numeral, desenho ou explicação."], "evidence": "Estratégia de adição representada e resultado conferido.", "rubric": ["Inicial: conta quantidades com ajuda.", "Em desenvolvimento: resolve fatos simples com material.", "Consolidado: escolhe e explica uma estratégia coerente."] },
+      { "id": "ma06-classroom-problem-cards", "title": "Problemas de juntar", "context": "Cartões fictícios descrevem coleções e situações de acréscimo acessíveis.", "steps": ["Identifique as quantidades e a pergunta.", "Escolha uma representação ou estratégia.", "Registre a soma e confira se responde ao problema."], "evidence": "Soma correspondente à situação e estratégia reconhecível.", "rubric": ["Inicial: identifica uma quantidade com apoio.", "Em desenvolvimento: junta quantidades com representação.", "Consolidado: resolve e verifica problemas de adição com estratégia própria."] }
+    ],
+    "estimatedMinutes": 45
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","RECALL","TRES_MAIS_DOIS","Quanto é 3 + 2?","5.",["4","6","3"],"BASIC_ADD_3_2","Juntar três e duas unidades resulta em cinco.","Conte mais duas a partir de três."],
+      ["EASY","APPLY","QUATRO_BOLAS_E_UMA","Uma criança tem 4 bolas e recebe mais 1. Quantas tem agora?","5.",["3","4","6"],"ADD_ONE","Quatro mais uma unidade é cinco.","Acrescente uma à quantidade inicial."],
+      ["MEDIUM","COUNT","CINCO_MAIS_TRES","Qual é o total de 5 + 3?","8.",["7","6","9"],"COUNT_ON_5_3","Contar três após cinco chega a oito.","Comece em cinco e avance três."],
+      ["EASY","IDENTIFY","SOMA_DOS_DOIS_GRUPOS","Um grupo tem 2 cartões e outro tem 3. Qual expressão representa juntar?","2 + 3.",["2 − 3","2 = 3","3 − 2"],"REPRESENT_ADDITION","O sinal de adição representa juntar as quantidades.","Procure a operação de juntar."],
+      ["MEDIUM","APPLY","SEIS_MAIS_QUATRO","Uma caixa tem 6 peças e recebe 4. Qual é o total?","10.",["9","8","11"],"MAKE_TEN_6_4","Seis mais quatro formam dez.","Complete dez a partir de seis."],
+      ["EASY","RECALL","UM_MAIS_SETE","Quanto é 1 + 7?","8.",["6","7","9"],"COMMUTATIVE_FACT_1_7","Uma unidade junto de sete resulta em oito.","Conte uma unidade além de sete."],
+      ["MEDIUM","DISTINGUISH","PARCELAS_E_TOTAL","Em 4 + 3 = 7, qual número é o total?","7.",["4","3","1"],"IDENTIFY_SUM","O resultado da adição é sete.","Veja o número depois do sinal de igual."],
+      ["MEDIUM","EVALUATE","ESTRATEGIA_COM_OBJETOS","Para resolver 3 + 4, qual estratégia ajuda?","Representar três e quatro objetos e juntá-los.",["Esconder uma quantidade","Contar o mesmo objeto duas vezes","Escolher sem verificar"],"MODEL_ADDITION","Representar as parcelas permite conferir o total.","Mostre os dois grupos primeiro."]
+    ],
+    "PRACTICE": [
+      ["EASY","RECALL","DOIS_MAIS_SEIS","Quanto é 2 + 6?","8.",["7","6","9"],"ADD_FACT_2_6","Duas e seis unidades somam oito.","Conte a partir de seis."],
+      ["MEDIUM","APPLY","CADERNOS_5_E_2","Há 5 cadernos numa pilha e 2 noutra. Quantos ao todo?","7.",["6","8","5"],"JOIN_COLLECTIONS","Cinco mais dois é sete.","Junte as duas pilhas."],
+      ["EASY","COUNT","NOVE_MAIS_UM","Quanto falta adicionar a 9 para formar 10?","1.",["2","3","9"],"MAKE_TEN_9_1","Uma unidade após nove forma dez.","Pense no próximo número."],
+      ["MEDIUM","IDENTIFY","SOMA_DE_FIGURAS","Um desenho mostra 4 círculos e 4 quadrados. Qual soma encontra o total de figuras?","4 + 4.",["4 − 4","4 = 4","8 − 4"],"WRITE_ADDITION_FROM_MODEL","O desenho mostra dois grupos de quatro para juntar.","Conte cada grupo e una-os."],
+      ["MEDIUM","APPLY","SETE_MAIS_DOIS","Um jogo marca 7 pontos e depois mais 2. Qual o novo total?","9.",["8","7","10"],"ADD_ON_7_2","Sete mais dois resulta em nove.","Avance dois números depois de sete."],
+      ["HARD","ANALYZE","DECOMPOSICAO_8_MAIS_5","Para calcular 8 + 5 formando dez primeiro, como decompor o 5?","2 e 3.",["1 e 4","5 e 5","3 e 4"],"MAKE_TEN_DECOMPOSITION","Dois completam oito até dez, restam três; o total é treze.","Pergunte quanto falta para oito chegar a dez."],
+      ["MEDIUM","COMPARE","TRES_MAIS_QUATRO_E_QUATRO_MAIS_TRES","3 + 4 e 4 + 3 têm o mesmo total?","Sim, ambos totalizam 7.",["Não, 3 + 4 é maior","Não, 4 + 3 é maior","Ambos totalizam 8"],"ADDITION_ORDER_FACT","Trocar a ordem das parcelas mantém o total nesses exemplos.","Represente os mesmos grupos."],
+      ["MEDIUM","JUSTIFY","CONFERIR_SOMA","Depois de calcular 6 + 2 = 8, como conferir?","Representar seis e acrescentar duas unidades para contar oito.",["Apagar os números","Contar seis duas vezes","Mudar o total sem verificar"],"VERIFY_ADDITION","Uma representação permite conferir o resultado.","Use objetos ou marcas."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","APPLY","LIVROS_NA_MESA","Há 8 livros na mesa e chegam mais 3. Quantos ficam?","11.",["10","9","12"],"WORD_PROBLEM_ADD_8_3","Oito mais três resulta em onze.","Conte três a partir de oito."],
+      ["HARD","ANALYZE","DEZ_E_QUATRO","Um quadro mostra 10 marcas e mais 4. Qual expressão e total correspondem?","10 + 4 = 14.",["10 − 4 = 6","4 + 4 = 8","10 + 2 = 12"],"REPRESENT_AND_SOLVE","Juntar dez e quatro dá quatorze.","Leia os dois grupos."],
+      ["MEDIUM","COMPARE","NOVE_MAIS_TRES_E_SETE_MAIS_CINCO","Qual soma tem maior resultado: 9 + 3 ou 7 + 5?","Têm o mesmo resultado: 12.",["9 + 3 é maior","7 + 5 é maior","Ambas resultam em 10"],"COMPARE_SUMS","As duas somas totalizam doze.","Calcule cada expressão."],
+      ["MEDIUM","DISTINGUISH","ACRESCENTAR_A_UMA_COLECAO","Uma coleção tem 6 itens e recebe mais 5. Que operação representa a situação?","Adição: 6 + 5.",["Subtração: 6 − 5","Multiplicação: 6 × 5","Igualdade: 6 = 5"],"OPERATION_FROM_CONTEXT","A situação acrescenta elementos à coleção.","Identifique se a quantidade aumenta ou diminui."],
+      ["HARD","EVALUATE","ESTRATEGIAS_EQUIVALENTES","Para 6 + 7, uma pessoa conta tudo e outra completa dez. As duas estratégias podem ser válidas?","Sim, se representam as parcelas e chegam ao total correto.",["Não, só uma estratégia existe","Não, completar dez muda a soma","Sim, sem conferir o total"],"MULTIPLE_VALID_STRATEGIES","Estratégias diferentes podem resolver a mesma adição.","Confira se ambas preservam as quantidades."],
+      ["MEDIUM","APPLY","FIGURAS_NO_CARTAZ","Um cartaz tem 7 estrelas azuis e 6 verdes. Quantas estrelas há?","13.",["12","11","14"],"ADD_TWO_GROUPS_7_6","Sete mais seis são treze.","Junte as duas quantidades."],
+      ["HARD","ANALYZE","PROBLEMA_COM_PERGUNTA","Uma caixa tinha 5 lápis; foram colocados mais 4. O que a pergunta “quantos agora?” solicita?","O total após acrescentar os quatro lápis.",["Quantos foram retirados","A cor dos lápis","O tamanho da caixa"],"INTERPRET_ADD_CONTEXT","A pergunta pede a quantidade final após adicionar.","Localize o que mudou na situação."],
+      ["MEDIUM","JUSTIFY","SEM_PRESSA_NO_CALCULO","Por que conferir uma soma com desenho pode ajudar?","O desenho mostra as parcelas e permite verificar o total.",["Porque desenhos substituem todos os números","Porque evita entender o problema","Porque velocidade é o objetivo"],"VISUAL_VERIFICATION","A representação torna os grupos visíveis para conferência.","Compare o desenho com a expressão."]
+    ],
+    "LOCK_IN": [
+      ["MEDIUM","RECALL","QUATRO_MAIS_CINCO","Quanto é 4 + 5?","9.",["8","7","10"],"ADD_FACT_4_5_REVIEW","Quatro mais cinco totaliza nove.","Conte cinco a partir de quatro."],
+      ["MEDIUM","APPLY","DEZ_MAIS_SEIS","Qual é o resultado de 10 + 6?","16.",["15","14","17"],"ADD_TEN_REVIEW","Dez mais seis formam dezesseis.","Acrescente seis a dez."],
+      ["HARD","ANALYZE","COMPLETAR_8_ATE_12","Qual número deve ser somado a 8 para obter 12?","4.",["3","5","2"],"MISSING_ADDEND","Oito mais quatro é doze.","Conte a distância de oito até doze."],
+      ["MEDIUM","IDENTIFY","EXPRESSAO_DE_JUNTAR","Qual expressão representa juntar 3 e 6?","3 + 6.",["6 − 3","3 = 6","3 − 6"],"ADDITION_SYMBOL_REVIEW","O sinal + representa juntar quantidades.","Procure o sinal da adição."],
+      ["MEDIUM","EVALUATE","USAR_QUADRO_DE_DEZ","Como um quadro de dez pode apoiar 7 + 3?","Preencher três espaços restantes para formar dez.",["Retirar sete espaços","Ignorar os três","Contar o quadro duas vezes"],"TEN_FRAME_STRATEGY","Três completam os espaços que faltam após sete.","Observe quantos espaços estão vazios."],
+      ["HARD","COMPARE","RESULTADO_5_MAIS_8","Qual frase é correta sobre 5 + 8 e 8 + 5?","As duas somas resultam em 13.",["5 + 8 é menor","8 + 5 é maior","Ambas resultam em 12"],"ORDER_INVARIANCE_REVIEW","A ordem das parcelas pode ser trocada sem mudar o total.","Calcule os dois lados."],
+      ["MEDIUM","APPLY","MARCADOR_11_E_MAIS_2","Um marcador mostra 11 e recebe 2 pontos. Qual total?","13.",["12","14","9"],"ADD_ON_TWO_REVIEW","Onze mais dois é treze.","Avance duas unidades."],
+      ["HARD","JUSTIFY","EXPLICAR_ESTRATEGIA","Uma explicação completa para 9 + 4 pode dizer...","como as quantidades foram juntadas e como o total foi conferido.",["somente “porque sim”","que o resultado foi escolhido ao acaso","que contar é sempre proibido"],"EXPLAIN_ADDITION_REVIEW","A justificativa descreve procedimento e conferência.","Conte como chegou ao total."]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","DOIS_MAIS_DOIS","Quanto é 2 + 2?","4.",["3","5","2"],"ADD_FACT_REVIEW","Juntar dois e dois resulta em quatro.","Conte os grupos."],
+      ["MEDIUM","APPLY","SEIS_MAIS_TRES","Uma cesta tem 6 frutas e recebe 3. Qual o total?","9.",["8","7","10"],"WORD_PROBLEM_REVIEW","Seis mais três totalizam nove.","Acrescente três à quantidade inicial."],
+      ["MEDIUM","IDENTIFY","PARCELAS_DE_4_MAIS_7","Na expressão 4 + 7, quais são as parcelas?","4 e 7.",["11 apenas","4 e 11","7 e 11"],"ADDENDS_REVIEW","As parcelas são os números que estão sendo somados.","Observe os termos antes do resultado."],
+      ["MEDIUM","COMPARE","DUAS_ESTRATEGIAS","Contar e usar uma reta numérica podem resolver a mesma soma?","Sim, se cada estratégia representar corretamente as quantidades.",["Não, só objetos servem","Não, retas não mostram números","Sim, sem verificar"],"STRATEGY_CHOICE_REVIEW","Estratégias diferentes podem ser válidas e conferidas.","Confira o raciocínio."],
+      ["MEDIUM","DISTINGUISH","ADIÇÃO_E_RETIRADA","Uma situação acrescenta 2 objetos a 5. Qual operação combina?","Adição.",["Subtração","Comparação de cor","Leitura de legenda"],"OPERATION_MEANING_REVIEW","Acrescentar aumenta a quantidade.","Observe se objetos chegam ou saem."],
+      ["HARD","ANALYZE","FATO_8_MAIS_2","Qual fato básico forma dez?","8 + 2 = 10.",["8 + 1 = 10","8 + 3 = 10","8 + 2 = 9"],"MAKE_TEN_REVIEW","Duas unidades completam oito até dez.","Conte o que falta para dez."],
+      ["MEDIUM","EVALUATE","SEM_VELOCIDADE","Uma criança usa objetos para chegar ao total correto. O que isso demonstra?","Uma estratégia de cálculo representada e conferível.",["Que ela não aprendeu porque demorou","Que só a resposta rápida vale","Que objetos não podem ajudar"],"PROCESS_OVER_SPEED","A estratégia e o resultado são evidências de aprendizagem.","Valorize o raciocínio, não a rapidez."],
+      ["HARD","JUSTIFY","SINTese_DE_ADICAO","Resolver uma situação de adição envolve compreender quantidades, escolher estratégia e...","conferir se o resultado responde à pergunta.",["ignorar o enunciado","somar sem representar","responder o mais rápido possível"],"ADDITION_PROBLEM_SUMMARY","A conferência relaciona o cálculo ao problema.","Reúna leitura, cálculo e verificação."]
+    ]
+  }
+}

@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01er05-welcome-feelings-memories-and-knowledge",
+  "canonicalSkillCode": "AUTHORING_EF01ER05_WELCOME_PERSONAL_EXPERIENCES",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "acolhimento de sentimentos, lembranças, memórias e saberes",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01ER05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e acolher sentimentos, lembranças, memórias e saberes de cada um.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 445
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Escutar com respeito",
+    "objective": "Reconhecer que pessoas podem ter sentimentos, memórias e saberes diferentes e praticar escuta respeitosa sem exigir revelações pessoais.",
+    "summary": "Sentimentos e lembranças pertencem a cada pessoa e podem ser diferentes. Acolher significa escutar sem ridicularizar, comparar ou pressionar alguém a contar algo. Histórias fictícias e exemplos escolhidos pelo educador permitem conversar sobre diferentes formas de expressão e saberes. Estudantes podem passar a vez, responder sobre personagens ou conversar com um adulto de confiança quando algo lhes causar preocupação. A atividade não diagnostica emoções nem substitui apoio profissional.",
+    "explanation": "Leia uma cena fictícia e observe como a personagem expressa uma emoção ou compartilha um saber. Nomeie apenas o que a história informa; não adivinhe tudo o que a personagem pensa. Uma resposta acolhedora pode ouvir, agradecer e perguntar se ela gostaria de falar mais, respeitando um “não”. Saberes familiares e comunitários podem variar; não há motivo para classificar uma pessoa como melhor por saber algo diferente. Ninguém precisa contar memórias privadas para participar.",
+    "workedExample": "Uma personagem diz que sente saudade de uma brincadeira. Podemos reconhecer o sentimento que ela nomeou e perguntar se quer falar mais. Se preferir não continuar, respeitamos sua escolha e seguimos com a história fictícia.",
+    "commonMistake": "Pressionar alguém a contar uma lembrança, dizer que um sentimento é errado ou afirmar que sabemos exatamente o que outra pessoa sente.",
+    "priorKnowledge": [
+      "Reconhecer informações explícitas em histórias curtas.",
+      "Praticar turnos de fala e escuta em conversa mediada."
+    ],
+    "keyConcepts": [
+      "sentimento",
+      "lembrança",
+      "memória",
+      "saber",
+      "escuta",
+      "acolhimento",
+      "privacidade",
+      "respeito"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "NO_FORCED_DISCLOSURE",
+        "action": "Retome a opção de usar uma personagem fictícia ou passar a vez sem explicar o motivo."
+      },
+      {
+        "errorFocus": "NAME_NOT_DIAGNOSE",
+        "action": "Use apenas o sentimento nomeado pela personagem; não faça diagnóstico nem adivinhe intenções."
+      },
+      {
+        "errorFocus": "RESPECTFUL_LISTENING",
+        "action": "Modele ouvir, agradecer e perguntar se a pessoa deseja continuar, aceitando qualquer resposta."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+      "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+      "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er05-fictional-feeling-cards",
+        "title": "Cartas de histórias inventadas",
+        "instructions": "Personagens fictícias expressam sentimentos e saberes em situações cotidianas seguras.\n1. Leia uma carta sem pedir relatos pessoais.\n2. Identifique o que a personagem nomeou ou mostrou.\n3. Escolha uma resposta que escute e respeite seus limites.",
+        "steps": [
+          "Leia uma carta sem pedir relatos pessoais.",
+          "Identifique o que a personagem nomeou ou mostrou.",
+          "Escolha uma resposta que escute e respeite seus limites."
+        ],
+        "evidence": "Interpretação baseada na história e resposta não coercitiva.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma informação com apoio.",
+            "developing": "identifica sentimento nomeado.",
+            "proficient": "acolhe a fala sem pressionar ou generalizar."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er05-listening-agreements",
+        "title": "Combinados de escuta",
+        "instructions": "Cenários fictícios ajudam a turma a criar regras de conversa segura.\n1. Leia uma situação fictícia.\n2. Compare uma resposta acolhedora e uma que pressiona.\n3. Registre um combinado que proteja a escolha de falar ou não.",
+        "steps": [
+          "Leia uma situação fictícia.",
+          "Compare uma resposta acolhedora e uma que pressiona.",
+          "Registre um combinado que proteja a escolha de falar ou não."
+        ],
+        "evidence": "Combinado que prevê escuta, respeito e opção de não compartilhar.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe uma resposta gentil com apoio.",
+            "developing": "explica por que pressão pode incomodar.",
+            "proficient": "propõe um combinado que respeita limites e diferenças."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-01",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-02",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-03",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-04",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-05",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-06",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-07",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-09",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-10",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-11",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-12",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-13",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-14",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-15",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-17",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-18",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-19",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-20",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-21",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-22",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-23",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-25",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-26",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-27",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-28",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-29",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-30",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-31",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-33",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-34",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-35",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-36",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-37",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-38",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-39",
+          "v1-ef01er05-welcome-feelings-memories-and-knowledge-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01ER05",
+        "descriptor": "Identificar e acolher sentimentos, lembranças, memórias e saberes de cada um.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 445
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-01",
+      "statement": "Uma personagem diz: “Sinto saudade do meu brinquedo”. O que ela nomeou?",
+      "prompt": "Uma personagem diz: “Sinto saudade do meu brinquedo”. O que ela nomeou?",
+      "options": [
+        "Saudade.",
+        "Raiva",
+        "Fome",
+        "Sono"
+      ],
+      "correctAnswer": "Saudade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Raiva": [
+          "NAMED_FEELING"
+        ],
+        "Fome": [
+          "NAMED_FEELING"
+        ],
+        "Sono": [
+          "NAMED_FEELING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PERSONAGEM_COM_SAUDADE",
+      "explanation": "A personagem usou explicitamente a palavra saudade.",
+      "hint": "Use a palavra da história.",
+      "errorFocus": "NAMED_FEELING",
+      "feedback": {
+        "correct": "Boa observação: A personagem usou explicitamente a palavra saudade.",
+        "incorrect": "A personagem usou explicitamente a palavra saudade.",
+        "hint": "Use a palavra da história.",
+        "errorFocus": "NAMED_FEELING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-02",
+      "statement": "Um personagem prefere ficar quieto por um momento. Qual resposta acolhe?",
+      "prompt": "Um personagem prefere ficar quieto por um momento. Qual resposta acolhe?",
+      "options": [
+        "Mandar que fale",
+        "Perguntar se ele quer companhia e respeitar a resposta.",
+        "Rir dele",
+        "Contar a todos sem perguntar"
+      ],
+      "correctAnswer": "Perguntar se ele quer companhia e respeitar a resposta.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mandar que fale": [
+          "RESPECT_CHOICE"
+        ],
+        "Rir dele": [
+          "RESPECT_CHOICE"
+        ],
+        "Contar a todos sem perguntar": [
+          "RESPECT_CHOICE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AMIGO_QUE_PREFERE_SILENCIO",
+      "explanation": "Perguntar e respeitar a resposta preserva autonomia.",
+      "hint": "Ofereça escolha sem pressionar.",
+      "errorFocus": "RESPECT_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: Perguntar e respeitar a resposta preserva autonomia.",
+        "incorrect": "Perguntar e respeitar a resposta preserva autonomia.",
+        "hint": "Ofereça escolha sem pressionar.",
+        "errorFocus": "RESPECT_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-03",
+      "statement": "Uma história não informa como a personagem se sente. O que fazer?",
+      "prompt": "Uma história não informa como a personagem se sente. O que fazer?",
+      "options": [
+        "Escolher um sentimento como certeza",
+        "Dizer que todos sentem o mesmo",
+        "Não adivinhar; buscar mais informação ou deixar em aberto.",
+        "Criticar a personagem"
+      ],
+      "correctAnswer": "Não adivinhar; buscar mais informação ou deixar em aberto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolher um sentimento como certeza": [
+          "NO_EMOTION_GUESSING"
+        ],
+        "Dizer que todos sentem o mesmo": [
+          "NO_EMOTION_GUESSING"
+        ],
+        "Criticar a personagem": [
+          "NO_EMOTION_GUESSING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SENTIMENTO_NOMEADO",
+      "explanation": "A história não fornece evidência suficiente para afirmar um sentimento.",
+      "hint": "Diferencie informação e suposição.",
+      "errorFocus": "NO_EMOTION_GUESSING",
+      "feedback": {
+        "correct": "Boa observação: A história não fornece evidência suficiente para afirmar um sentimento.",
+        "incorrect": "A história não fornece evidência suficiente para afirmar um sentimento.",
+        "hint": "Diferencie informação e suposição.",
+        "errorFocus": "NO_EMOTION_GUESSING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-04",
+      "statement": "Numa roda, uma criança não quer contar uma lembrança. O que é adequado?",
+      "prompt": "Numa roda, uma criança não quer contar uma lembrança. O que é adequado?",
+      "options": [
+        "Exigir que conte",
+        "Perguntar detalhes diante de todos",
+        "Tirar sua vez em outra atividade",
+        "Permitir que passe a vez sem explicar o motivo."
+      ],
+      "correctAnswer": "Permitir que passe a vez sem explicar o motivo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que conte": [
+          "NO_FORCED_SHARING"
+        ],
+        "Perguntar detalhes diante de todos": [
+          "NO_FORCED_SHARING"
+        ],
+        "Tirar sua vez em outra atividade": [
+          "NO_FORCED_SHARING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PASSAR_A_VEZ",
+      "explanation": "Ninguém precisa compartilhar memórias privadas.",
+      "hint": "Respeite a escolha de não falar.",
+      "errorFocus": "NO_FORCED_SHARING",
+      "feedback": {
+        "correct": "Boa observação: Ninguém precisa compartilhar memórias privadas.",
+        "incorrect": "Ninguém precisa compartilhar memórias privadas.",
+        "hint": "Respeite a escolha de não falar.",
+        "errorFocus": "NO_FORCED_SHARING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-05",
+      "statement": "Uma personagem mostra como regar uma horta. O que ela compartilha?",
+      "prompt": "Uma personagem mostra como regar uma horta. O que ela compartilha?",
+      "options": [
+        "Um saber sobre cuidado de plantas.",
+        "Uma emoção que não foi dita",
+        "Uma regra para todas as famílias",
+        "Uma lembrança obrigatória"
+      ],
+      "correctAnswer": "Um saber sobre cuidado de plantas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma emoção que não foi dita": [
+          "IDENTIFY_KNOWLEDGE"
+        ],
+        "Uma regra para todas as famílias": [
+          "IDENTIFY_KNOWLEDGE"
+        ],
+        "Uma lembrança obrigatória": [
+          "IDENTIFY_KNOWLEDGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SABER_DE_PLANTIO",
+      "explanation": "A cena descreve um conhecimento prático.",
+      "hint": "Observe o que a personagem ensina.",
+      "errorFocus": "IDENTIFY_KNOWLEDGE",
+      "feedback": {
+        "correct": "Boa observação: A cena descreve um conhecimento prático.",
+        "incorrect": "A cena descreve um conhecimento prático.",
+        "hint": "Observe o que a personagem ensina.",
+        "errorFocus": "IDENTIFY_KNOWLEDGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-06",
+      "statement": "Duas pessoas lembram uma festa de modos diferentes. Qual atitude é respeitosa?",
+      "prompt": "Duas pessoas lembram uma festa de modos diferentes. Qual atitude é respeitosa?",
+      "options": [
+        "Escolher uma lembrança como única verdade",
+        "Escutar cada relato sem dizer que um precisa ser igual ao outro.",
+        "Rir de uma pessoa",
+        "Dizer que uma memória é proibida"
+      ],
+      "correctAnswer": "Escutar cada relato sem dizer que um precisa ser igual ao outro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher uma lembrança como única verdade": [
+          "MEMORY_DIVERSITY"
+        ],
+        "Rir de uma pessoa": [
+          "MEMORY_DIVERSITY"
+        ],
+        "Dizer que uma memória é proibida": [
+          "MEMORY_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MEMORIA_DIFERENTE",
+      "explanation": "Memórias podem diferir e devem ser escutadas com respeito.",
+      "hint": "Evite transformar diferença em disputa.",
+      "errorFocus": "MEMORY_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: Memórias podem diferir e devem ser escutadas com respeito.",
+        "incorrect": "Memórias podem diferir e devem ser escutadas com respeito.",
+        "hint": "Evite transformar diferença em disputa.",
+        "errorFocus": "MEMORY_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-07",
+      "statement": "Qual frase acolhe um sentimento sem dizer que ele é errado?",
+      "prompt": "Qual frase acolhe um sentimento sem dizer que ele é errado?",
+      "options": [
+        "“Ela não deveria sentir isso.”",
+        "“Isso é bobagem.”",
+        "“Entendo que essa personagem disse estar triste.”",
+        "“Todo mundo sente igual.”"
+      ],
+      "correctAnswer": "“Entendo que essa personagem disse estar triste.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Ela não deveria sentir isso.”": [
+          "VALIDATE_WITHOUT_JUDGING"
+        ],
+        "“Isso é bobagem.”": [
+          "VALIDATE_WITHOUT_JUDGING"
+        ],
+        "“Todo mundo sente igual.”": [
+          "VALIDATE_WITHOUT_JUDGING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EMOCAO_E_JULGAMENTO",
+      "explanation": "A frase reconhece o sentimento informado sem desqualificá-lo.",
+      "hint": "Escolha uma resposta respeitosa.",
+      "errorFocus": "VALIDATE_WITHOUT_JUDGING",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece o sentimento informado sem desqualificá-lo.",
+        "incorrect": "A frase reconhece o sentimento informado sem desqualificá-lo.",
+        "hint": "Escolha uma resposta respeitosa.",
+        "errorFocus": "VALIDATE_WITHOUT_JUDGING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-08",
+      "statement": "Uma história deixa uma criança fictícia preocupada. O que pode ajudá-la?",
+      "prompt": "Uma história deixa uma criança fictícia preocupada. O que pode ajudá-la?",
+      "options": [
+        "Guardar tudo sem apoio",
+        "Ser pressionada a contar à turma",
+        "Receber um diagnóstico de colegas",
+        "Conversar com um adulto de confiança, se desejar."
+      ],
+      "correctAnswer": "Conversar com um adulto de confiança, se desejar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Guardar tudo sem apoio": [
+          "SEEK_TRUSTED_SUPPORT"
+        ],
+        "Ser pressionada a contar à turma": [
+          "SEEK_TRUSTED_SUPPORT"
+        ],
+        "Receber um diagnóstico de colegas": [
+          "SEEK_TRUSTED_SUPPORT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ADULTO_DE_CONFIANCA",
+      "explanation": "Um adulto de confiança pode oferecer apoio adequado.",
+      "hint": "Pense em uma pessoa responsável e segura.",
+      "errorFocus": "SEEK_TRUSTED_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: Um adulto de confiança pode oferecer apoio adequado.",
+        "incorrect": "Um adulto de confiança pode oferecer apoio adequado.",
+        "hint": "Pense em uma pessoa responsável e segura.",
+        "errorFocus": "SEEK_TRUSTED_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-09",
+      "statement": "Um personagem diz que ficou feliz ao reencontrar um amigo. Qual sentimento ele nomeou?",
+      "prompt": "Um personagem diz que ficou feliz ao reencontrar um amigo. Qual sentimento ele nomeou?",
+      "options": [
+        "Alegria.",
+        "Medo",
+        "Sono",
+        "Fome"
+      ],
+      "correctAnswer": "Alegria.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Medo": [
+          "NAMED_JOY"
+        ],
+        "Sono": [
+          "NAMED_JOY"
+        ],
+        "Fome": [
+          "NAMED_JOY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_ALEGRIA",
+      "explanation": "A história informa que ele ficou feliz.",
+      "hint": "Use a informação apresentada.",
+      "errorFocus": "NAMED_JOY",
+      "feedback": {
+        "correct": "Boa observação: A história informa que ele ficou feliz.",
+        "incorrect": "A história informa que ele ficou feliz.",
+        "hint": "Use a informação apresentada.",
+        "errorFocus": "NAMED_JOY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-10",
+      "statement": "Uma colega começa a contar uma lembrança. Como demonstrar cuidado?",
+      "prompt": "Uma colega começa a contar uma lembrança. Como demonstrar cuidado?",
+      "options": [
+        "Exigir todos os detalhes",
+        "Escutar e perguntar se ela gostaria de continuar.",
+        "Interromper com piadas",
+        "Gravar sem pedir"
+      ],
+      "correctAnswer": "Escutar e perguntar se ela gostaria de continuar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Exigir todos os detalhes": [
+          "CONSENT_TO_CONTINUE"
+        ],
+        "Interromper com piadas": [
+          "CONSENT_TO_CONTINUE"
+        ],
+        "Gravar sem pedir": [
+          "CONSENT_TO_CONTINUE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PEDIR_PERMISSAO_PARA_OUVIR",
+      "explanation": "Perguntar respeita a escolha da pessoa.",
+      "hint": "Dê espaço para decidir.",
+      "errorFocus": "CONSENT_TO_CONTINUE",
+      "feedback": {
+        "correct": "Boa observação: Perguntar respeita a escolha da pessoa.",
+        "incorrect": "Perguntar respeita a escolha da pessoa.",
+        "hint": "Dê espaço para decidir.",
+        "errorFocus": "CONSENT_TO_CONTINUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-11",
+      "statement": "Uma personagem sabe fazer uma dobradura que outra não conhece. Isso significa que uma é melhor?",
+      "prompt": "Uma personagem sabe fazer uma dobradura que outra não conhece. Isso significa que uma é melhor?",
+      "options": [
+        "Sim, uma pessoa vale mais",
+        "Sim, só um saber importa",
+        "Não; são saberes diferentes que podem ser compartilhados.",
+        "Não, ninguém pode aprender"
+      ],
+      "correctAnswer": "Não; são saberes diferentes que podem ser compartilhados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, uma pessoa vale mais": [
+          "NO_KNOWLEDGE_HIERARCHY"
+        ],
+        "Sim, só um saber importa": [
+          "NO_KNOWLEDGE_HIERARCHY"
+        ],
+        "Não, ninguém pode aprender": [
+          "NO_KNOWLEDGE_HIERARCHY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SABER_DIFERENTE",
+      "explanation": "Saberes diferentes não determinam o valor de uma pessoa.",
+      "hint": "Compare conhecimentos, não pessoas.",
+      "errorFocus": "NO_KNOWLEDGE_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: Saberes diferentes não determinam o valor de uma pessoa.",
+        "incorrect": "Saberes diferentes não determinam o valor de uma pessoa.",
+        "hint": "Compare conhecimentos, não pessoas.",
+        "errorFocus": "NO_KNOWLEDGE_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-12",
+      "statement": "Uma personagem fictícia chora após perder um jogo. Qual resposta é acolhedora?",
+      "prompt": "Uma personagem fictícia chora após perder um jogo. Qual resposta é acolhedora?",
+      "options": [
+        "Mandar parar imediatamente",
+        "Dizer que chorar é errado",
+        "Fazer uma foto para compartilhar",
+        "Perguntar se precisa de um momento ou de ajuda."
+      ],
+      "correctAnswer": "Perguntar se precisa de um momento ou de ajuda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mandar parar imediatamente": [
+          "SUPPORT_WITH_CHOICE"
+        ],
+        "Dizer que chorar é errado": [
+          "SUPPORT_WITH_CHOICE"
+        ],
+        "Fazer uma foto para compartilhar": [
+          "SUPPORT_WITH_CHOICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RESPOSTA_A_CHORO_FICTICIO",
+      "explanation": "Oferecer opções respeita a personagem.",
+      "hint": "Pergunte sem impor.",
+      "errorFocus": "SUPPORT_WITH_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: Oferecer opções respeita a personagem.",
+        "incorrect": "Oferecer opções respeita a personagem.",
+        "hint": "Pergunte sem impor.",
+        "errorFocus": "SUPPORT_WITH_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-13",
+      "statement": "Uma personagem olha uma foto e conta que aprendeu a andar de bicicleta. O que compartilhou?",
+      "prompt": "Uma personagem olha uma foto e conta que aprendeu a andar de bicicleta. O que compartilhou?",
+      "options": [
+        "Uma lembrança sobre seu crescimento.",
+        "Uma regra de trânsito apenas",
+        "Um sentimento que não nomeou",
+        "Uma memória de toda a turma"
+      ],
+      "correctAnswer": "Uma lembrança sobre seu crescimento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma regra de trânsito apenas": [
+          "IDENTIFY_MEMORY"
+        ],
+        "Um sentimento que não nomeou": [
+          "IDENTIFY_MEMORY"
+        ],
+        "Uma memória de toda a turma": [
+          "IDENTIFY_MEMORY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FOTO_DE_INFANCIA_FICTICIA",
+      "explanation": "A narrativa apresenta uma lembrança pessoal da personagem.",
+      "hint": "Localize o que ela recorda.",
+      "errorFocus": "IDENTIFY_MEMORY",
+      "feedback": {
+        "correct": "Boa observação: A narrativa apresenta uma lembrança pessoal da personagem.",
+        "incorrect": "A narrativa apresenta uma lembrança pessoal da personagem.",
+        "hint": "Localize o que ela recorda.",
+        "errorFocus": "IDENTIFY_MEMORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-14",
+      "statement": "Um personagem diz “estou triste hoje”. O que não se pode concluir apenas com essa fala?",
+      "prompt": "Um personagem diz “estou triste hoje”. O que não se pode concluir apenas com essa fala?",
+      "options": [
+        "Que ele nomeou tristeza",
+        "Um diagnóstico ou que ele se sente assim sempre.",
+        "Que a fala vale para hoje",
+        "Que ele pode querer apoio"
+      ],
+      "correctAnswer": "Um diagnóstico ou que ele se sente assim sempre.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que ele nomeou tristeza": [
+          "NO_DIAGNOSIS_FROM_SINGLE_FEELING"
+        ],
+        "Que a fala vale para hoje": [
+          "NO_DIAGNOSIS_FROM_SINGLE_FEELING"
+        ],
+        "Que ele pode querer apoio": [
+          "NO_DIAGNOSIS_FROM_SINGLE_FEELING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PALAVRA_TRISTE_NAO_DIAGNOSTICO",
+      "explanation": "Uma fala pontual não é diagnóstico nem regra permanente.",
+      "hint": "Limite a conclusão à fala.",
+      "errorFocus": "NO_DIAGNOSIS_FROM_SINGLE_FEELING",
+      "feedback": {
+        "correct": "Boa observação: Uma fala pontual não é diagnóstico nem regra permanente.",
+        "incorrect": "Uma fala pontual não é diagnóstico nem regra permanente.",
+        "hint": "Limite a conclusão à fala.",
+        "errorFocus": "NO_DIAGNOSIS_FROM_SINGLE_FEELING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-15",
+      "statement": "Uma criança prefere não falar sobre a história. Que alternativa de participação pode ser oferecida?",
+      "prompt": "Uma criança prefere não falar sobre a história. Que alternativa de participação pode ser oferecida?",
+      "options": [
+        "Obrigá-la a falar",
+        "Retirá-la sem opção",
+        "Desenhar ou apontar uma resposta, se quiser.",
+        "Pedir que conte algo íntimo"
+      ],
+      "correctAnswer": "Desenhar ou apontar uma resposta, se quiser.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Obrigá-la a falar": [
+          "ALTERNATIVE_RESPONSE"
+        ],
+        "Retirá-la sem opção": [
+          "ALTERNATIVE_RESPONSE"
+        ],
+        "Pedir que conte algo íntimo": [
+          "ALTERNATIVE_RESPONSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "OPCAO_DE_DESENHAR",
+      "explanation": "Desenho ou apontamento pode permitir participação sem exposição.",
+      "hint": "Ofereça uma escolha acessível.",
+      "errorFocus": "ALTERNATIVE_RESPONSE",
+      "feedback": {
+        "correct": "Boa observação: Desenho ou apontamento pode permitir participação sem exposição.",
+        "incorrect": "Desenho ou apontamento pode permitir participação sem exposição.",
+        "hint": "Ofereça uma escolha acessível.",
+        "errorFocus": "ALTERNATIVE_RESPONSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-16",
+      "statement": "Por que não comparar qual lembrança é mais importante?",
+      "prompt": "Por que não comparar qual lembrança é mais importante?",
+      "options": [
+        "Porque ninguém tem lembranças",
+        "Porque toda memória é igual",
+        "Porque só adultos lembram",
+        "Porque o valor de uma memória pertence à pessoa que a compartilha."
+      ],
+      "correctAnswer": "Porque o valor de uma memória pertence à pessoa que a compartilha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque ninguém tem lembranças": [
+          "MEMORY_RESPECT"
+        ],
+        "Porque toda memória é igual": [
+          "MEMORY_RESPECT"
+        ],
+        "Porque só adultos lembram": [
+          "MEMORY_RESPECT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "OUVIR_SEM_COMPARAR",
+      "explanation": "Comparar lembranças pode desrespeitar experiências individuais.",
+      "hint": "Considere a pessoa que viveu a memória.",
+      "errorFocus": "MEMORY_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: Comparar lembranças pode desrespeitar experiências individuais.",
+        "incorrect": "Comparar lembranças pode desrespeitar experiências individuais.",
+        "hint": "Considere a pessoa que viveu a memória.",
+        "errorFocus": "MEMORY_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-17",
+      "statement": "Uma pessoa responde “prefiro não contar”. O que fazer?",
+      "prompt": "Uma pessoa responde “prefiro não contar”. O que fazer?",
+      "options": [
+        "Agradecer e mudar de assunto, respeitando o limite.",
+        "Perguntar repetidamente",
+        "Exigir um motivo",
+        "Contar por ela"
+      ],
+      "correctAnswer": "Agradecer e mudar de assunto, respeitando o limite.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Perguntar repetidamente": [
+          "HONOR_BOUNDARY"
+        ],
+        "Exigir um motivo": [
+          "HONOR_BOUNDARY"
+        ],
+        "Contar por ela": [
+          "HONOR_BOUNDARY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COLEGA_DIZ_NAO",
+      "explanation": "A resposta deve respeitar o limite comunicado.",
+      "hint": "Aceite o “não”.",
+      "errorFocus": "HONOR_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: A resposta deve respeitar o limite comunicado.",
+        "incorrect": "A resposta deve respeitar o limite comunicado.",
+        "hint": "Aceite o “não”.",
+        "errorFocus": "HONOR_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-18",
+      "statement": "Duas pessoas ensinam maneiras diferentes de cuidar de um jardim. O que comparar?",
+      "prompt": "Duas pessoas ensinam maneiras diferentes de cuidar de um jardim. O que comparar?",
+      "options": [
+        "Quem tem mais valor",
+        "As orientações de cada relato e seus contextos.",
+        "Qual pessoa merece falar",
+        "Qual relato deve ser apagado"
+      ],
+      "correctAnswer": "As orientações de cada relato e seus contextos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quem tem mais valor": [
+          "CONTEXTUALIZE_KNOWLEDGE"
+        ],
+        "Qual pessoa merece falar": [
+          "CONTEXTUALIZE_KNOWLEDGE"
+        ],
+        "Qual relato deve ser apagado": [
+          "CONTEXTUALIZE_KNOWLEDGE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "RELATOS_DE_SABERES",
+      "explanation": "Saberes podem ter contextos diferentes e ser analisados sem hierarquia.",
+      "hint": "Compare as ideias, não a dignidade.",
+      "errorFocus": "CONTEXTUALIZE_KNOWLEDGE",
+      "feedback": {
+        "correct": "Boa observação: Saberes podem ter contextos diferentes e ser analisados sem hierarquia.",
+        "incorrect": "Saberes podem ter contextos diferentes e ser analisados sem hierarquia.",
+        "hint": "Compare as ideias, não a dignidade.",
+        "errorFocus": "CONTEXTUALIZE_KNOWLEDGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-19",
+      "statement": "Uma personagem ficou animada ontem e quieta hoje. Qual leitura é possível?",
+      "prompt": "Uma personagem ficou animada ontem e quieta hoje. Qual leitura é possível?",
+      "options": [
+        "Ela sempre estará quieta",
+        "A personagem está fingindo",
+        "Os estados descritos podem variar com o momento.",
+        "Todos devem sentir igual"
+      ],
+      "correctAnswer": "Os estados descritos podem variar com o momento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ela sempre estará quieta": [
+          "FEELING_CONTEXT"
+        ],
+        "A personagem está fingindo": [
+          "FEELING_CONTEXT"
+        ],
+        "Todos devem sentir igual": [
+          "FEELING_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SENTIMENTO_MUDA",
+      "explanation": "A narrativa registra momentos diferentes, sem provar um estado permanente.",
+      "hint": "Observe as datas ou momentos.",
+      "errorFocus": "FEELING_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A narrativa registra momentos diferentes, sem provar um estado permanente.",
+        "incorrect": "A narrativa registra momentos diferentes, sem provar um estado permanente.",
+        "hint": "Observe as datas ou momentos.",
+        "errorFocus": "FEELING_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-20",
+      "statement": "Um assunto deixa alguém desconfortável numa atividade. Qual opção respeitosa?",
+      "prompt": "Um assunto deixa alguém desconfortável numa atividade. Qual opção respeitosa?",
+      "options": [
+        "Exigir explicação pública",
+        "Insistir em detalhes",
+        "Fazer votação sobre a memória",
+        "Oferecer uma atividade fictícia alternativa ou a possibilidade de passar."
+      ],
+      "correctAnswer": "Oferecer uma atividade fictícia alternativa ou a possibilidade de passar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir explicação pública": [
+          "SAFE_ALTERNATIVE"
+        ],
+        "Insistir em detalhes": [
+          "SAFE_ALTERNATIVE"
+        ],
+        "Fazer votação sobre a memória": [
+          "SAFE_ALTERNATIVE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CONVERSA_PRIVADA",
+      "explanation": "Uma alternativa preserva participação e privacidade.",
+      "hint": "Retire a pressão de compartilhar.",
+      "errorFocus": "SAFE_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: Uma alternativa preserva participação e privacidade.",
+        "incorrect": "Uma alternativa preserva participação e privacidade.",
+        "hint": "Retire a pressão de compartilhar.",
+        "errorFocus": "SAFE_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-21",
+      "statement": "Uma criança fictícia conta algo que a deixa insegura. Qual orientação é apropriada?",
+      "prompt": "Uma criança fictícia conta algo que a deixa insegura. Qual orientação é apropriada?",
+      "options": [
+        "Procurar um adulto de confiança que possa ajudar.",
+        "Prometer guardar qualquer situação sem exceção",
+        "Resolver sozinho sem apoio",
+        "Pedir opinião de toda a turma"
+      ],
+      "correctAnswer": "Procurar um adulto de confiança que possa ajudar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Prometer guardar qualquer situação sem exceção": [
+          "TRUSTED_ADULT_SUPPORT"
+        ],
+        "Resolver sozinho sem apoio": [
+          "TRUSTED_ADULT_SUPPORT"
+        ],
+        "Pedir opinião de toda a turma": [
+          "TRUSTED_ADULT_SUPPORT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEGREDO_QUE_PREOCUPA",
+      "explanation": "Adultos responsáveis podem ajudar em situações preocupantes.",
+      "hint": "Pense em segurança e apoio.",
+      "errorFocus": "TRUSTED_ADULT_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: Adultos responsáveis podem ajudar em situações preocupantes.",
+        "incorrect": "Adultos responsáveis podem ajudar em situações preocupantes.",
+        "hint": "Pense em segurança e apoio.",
+        "errorFocus": "TRUSTED_ADULT_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-22",
+      "statement": "A personagem recorda uma brincadeira de uma ocasião específica. Isso é...",
+      "prompt": "A personagem recorda uma brincadeira de uma ocasião específica. Isso é...",
+      "options": [
+        "a memória de todas as pessoas",
+        "uma lembrança dela sobre aquele momento.",
+        "uma regra para todos",
+        "uma previsão do futuro"
+      ],
+      "correctAnswer": "uma lembrança dela sobre aquele momento.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a memória de todas as pessoas": [
+          "PERSONAL_MEMORY_SCOPE"
+        ],
+        "uma regra para todos": [
+          "PERSONAL_MEMORY_SCOPE"
+        ],
+        "uma previsão do futuro": [
+          "PERSONAL_MEMORY_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LEMBRANCA_DE_BRINCADEIRA",
+      "explanation": "A lembrança está ligada à personagem e ocasião narradas.",
+      "hint": "Use o sujeito e o momento da história.",
+      "errorFocus": "PERSONAL_MEMORY_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A lembrança está ligada à personagem e ocasião narradas.",
+        "incorrect": "A lembrança está ligada à personagem e ocasião narradas.",
+        "hint": "Use o sujeito e o momento da história.",
+        "errorFocus": "PERSONAL_MEMORY_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-23",
+      "statement": "Durante uma conversa, duas pessoas querem falar. Qual prática acolhe ambas?",
+      "prompt": "Durante uma conversa, duas pessoas querem falar. Qual prática acolhe ambas?",
+      "options": [
+        "Escolher uma para sempre",
+        "Aumentar o volume da voz",
+        "Organizar turnos e escutar sem interromper ou ridicularizar.",
+        "Ignorar a segunda pessoa"
+      ],
+      "correctAnswer": "Organizar turnos e escutar sem interromper ou ridicularizar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolher uma para sempre": [
+          "SHARED_LISTENING"
+        ],
+        "Aumentar o volume da voz": [
+          "SHARED_LISTENING"
+        ],
+        "Ignorar a segunda pessoa": [
+          "SHARED_LISTENING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ESCUTA_E_TURNO",
+      "explanation": "Turnos apoiam escuta e participação de todos.",
+      "hint": "Crie espaço para cada fala.",
+      "errorFocus": "SHARED_LISTENING",
+      "feedback": {
+        "correct": "Boa observação: Turnos apoiam escuta e participação de todos.",
+        "incorrect": "Turnos apoiam escuta e participação de todos.",
+        "hint": "Crie espaço para cada fala.",
+        "errorFocus": "SHARED_LISTENING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-24",
+      "statement": "Por que uma pessoa pode escolher ficar em silêncio?",
+      "prompt": "Por que uma pessoa pode escolher ficar em silêncio?",
+      "options": [
+        "Porque silêncio prova tristeza",
+        "Porque ninguém pode conversar",
+        "Porque a turma decide por ela",
+        "Ela tem direito de escolher o que deseja compartilhar."
+      ],
+      "correctAnswer": "Ela tem direito de escolher o que deseja compartilhar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque silêncio prova tristeza": [
+          "RIGHT_TO_DECLINE"
+        ],
+        "Porque ninguém pode conversar": [
+          "RIGHT_TO_DECLINE"
+        ],
+        "Porque a turma decide por ela": [
+          "RIGHT_TO_DECLINE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RESPEITAR_SILENCIO",
+      "explanation": "A escolha de não compartilhar deve ser respeitada.",
+      "hint": "Considere autonomia e privacidade.",
+      "errorFocus": "RIGHT_TO_DECLINE",
+      "feedback": {
+        "correct": "Boa observação: A escolha de não compartilhar deve ser respeitada.",
+        "incorrect": "A escolha de não compartilhar deve ser respeitada.",
+        "hint": "Considere autonomia e privacidade.",
+        "errorFocus": "RIGHT_TO_DECLINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-25",
+      "statement": "A personagem diz “estou com medo”. Qual sentimento está explicitamente nomeado?",
+      "prompt": "A personagem diz “estou com medo”. Qual sentimento está explicitamente nomeado?",
+      "options": [
+        "Medo.",
+        "Raiva",
+        "Alegria",
+        "Surpresa"
+      ],
+      "correctAnswer": "Medo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Raiva": [
+          "EXPLICIT_EMOTION_REVIEW"
+        ],
+        "Alegria": [
+          "EXPLICIT_EMOTION_REVIEW"
+        ],
+        "Surpresa": [
+          "EXPLICIT_EMOTION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SENTIMENTO_EXPLICITO",
+      "explanation": "A palavra medo aparece na fala.",
+      "hint": "Leia a fala da personagem.",
+      "errorFocus": "EXPLICIT_EMOTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A palavra medo aparece na fala.",
+        "incorrect": "A palavra medo aparece na fala.",
+        "hint": "Leia a fala da personagem.",
+        "errorFocus": "EXPLICIT_EMOTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-26",
+      "statement": "Qual resposta respeita uma lembrança compartilhada?",
+      "prompt": "Qual resposta respeita uma lembrança compartilhada?",
+      "options": [
+        "“Conte tudo agora.”",
+        "“Obrigado por contar; quer continuar ou prefere parar?”",
+        "“Sua lembrança é boba.”",
+        "“Vou contar para todos.”"
+      ],
+      "correctAnswer": "“Obrigado por contar; quer continuar ou prefere parar?”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Conte tudo agora.”": [
+          "CONSENTFUL_LISTENING_REVIEW"
+        ],
+        "“Sua lembrança é boba.”": [
+          "CONSENTFUL_LISTENING_REVIEW"
+        ],
+        "“Vou contar para todos.”": [
+          "CONSENTFUL_LISTENING_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RESPOSTA_QUE_ACOLHE",
+      "explanation": "A pergunta oferece escolha e agradece a confiança.",
+      "hint": "Procure respeito ao limite.",
+      "errorFocus": "CONSENTFUL_LISTENING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A pergunta oferece escolha e agradece a confiança.",
+        "incorrect": "A pergunta oferece escolha e agradece a confiança.",
+        "hint": "Procure respeito ao limite.",
+        "errorFocus": "CONSENTFUL_LISTENING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-27",
+      "statement": "Uma pessoa conhece uma receita. O que não se deve presumir?",
+      "prompt": "Uma pessoa conhece uma receita. O que não se deve presumir?",
+      "options": [
+        "Que ela compartilhou um saber",
+        "Que a receita tem um contexto",
+        "Que todas as pessoas de sua família conhecem a mesma receita.",
+        "Que outras pessoas podem saber diferente"
+      ],
+      "correctAnswer": "Que todas as pessoas de sua família conhecem a mesma receita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que ela compartilhou um saber": [
+          "KNOWLEDGE_GENERALIZATION_REVIEW"
+        ],
+        "Que a receita tem um contexto": [
+          "KNOWLEDGE_GENERALIZATION_REVIEW"
+        ],
+        "Que outras pessoas podem saber diferente": [
+          "KNOWLEDGE_GENERALIZATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NAO_GENERALIZAR_SABER",
+      "explanation": "Um saber compartilhado não representa automaticamente todos.",
+      "hint": "Evite generalizar além da fonte.",
+      "errorFocus": "KNOWLEDGE_GENERALIZATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Um saber compartilhado não representa automaticamente todos.",
+        "incorrect": "Um saber compartilhado não representa automaticamente todos.",
+        "hint": "Evite generalizar além da fonte.",
+        "errorFocus": "KNOWLEDGE_GENERALIZATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-28",
+      "statement": "Qual opção protege a privacidade durante uma roda de memórias?",
+      "prompt": "Qual opção protege a privacidade durante uma roda de memórias?",
+      "options": [
+        "Fazer perguntas íntimas",
+        "Exigir um relato",
+        "Comparar a família de cada um",
+        "Permitir passar a vez sem justificativa."
+      ],
+      "correctAnswer": "Permitir passar a vez sem justificativa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Fazer perguntas íntimas": [
+          "PRIVACY_REVIEW"
+        ],
+        "Exigir um relato": [
+          "PRIVACY_REVIEW"
+        ],
+        "Comparar a família de cada um": [
+          "PRIVACY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PASSAR_A_VEZ_REVISADO",
+      "explanation": "A participação pode ocorrer sem exposição pessoal.",
+      "hint": "Escolha sem pressão.",
+      "errorFocus": "PRIVACY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A participação pode ocorrer sem exposição pessoal.",
+        "incorrect": "A participação pode ocorrer sem exposição pessoal.",
+        "hint": "Escolha sem pressão.",
+        "errorFocus": "PRIVACY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-29",
+      "statement": "Uma personagem está triste numa cena. O que é apropriado afirmar?",
+      "prompt": "Uma personagem está triste numa cena. O que é apropriado afirmar?",
+      "options": [
+        "A história mostra tristeza naquele momento.",
+        "Ela tem um transtorno",
+        "Ela estará triste para sempre",
+        "Todos os colegas sentem igual"
+      ],
+      "correctAnswer": "A história mostra tristeza naquele momento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ela tem um transtorno": [
+          "NO_DIAGNOSIS_REVIEW"
+        ],
+        "Ela estará triste para sempre": [
+          "NO_DIAGNOSIS_REVIEW"
+        ],
+        "Todos os colegas sentem igual": [
+          "NO_DIAGNOSIS_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NAO_DIAGNOSTICAR",
+      "explanation": "A evidência sustenta apenas o sentimento indicado na cena.",
+      "hint": "Limite-se ao que a fonte mostra.",
+      "errorFocus": "NO_DIAGNOSIS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A evidência sustenta apenas o sentimento indicado na cena.",
+        "incorrect": "A evidência sustenta apenas o sentimento indicado na cena.",
+        "hint": "Limite-se ao que a fonte mostra.",
+        "errorFocus": "NO_DIAGNOSIS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-30",
+      "statement": "Duas pessoas recordam um dia de formas distintas. Como acolher?",
+      "prompt": "Duas pessoas recordam um dia de formas distintas. Como acolher?",
+      "options": [
+        "Zombar de uma lembrança",
+        "Escutar cada perspectiva sem escolher quem merece ser ouvido.",
+        "Apagar uma perspectiva",
+        "Dizer que só uma pessoa pode lembrar"
+      ],
+      "correctAnswer": "Escutar cada perspectiva sem escolher quem merece ser ouvido.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Zombar de uma lembrança": [
+          "MULTIPLE_PERSPECTIVES_REVIEW"
+        ],
+        "Apagar uma perspectiva": [
+          "MULTIPLE_PERSPECTIVES_REVIEW"
+        ],
+        "Dizer que só uma pessoa pode lembrar": [
+          "MULTIPLE_PERSPECTIVES_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MEMORIAS_DIFERENTES_REVISADO",
+      "explanation": "Perspectivas diferentes podem ser ouvidas com respeito.",
+      "hint": "Abra espaço para ambas.",
+      "errorFocus": "MULTIPLE_PERSPECTIVES_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Perspectivas diferentes podem ser ouvidas com respeito.",
+        "incorrect": "Perspectivas diferentes podem ser ouvidas com respeito.",
+        "hint": "Abra espaço para ambas.",
+        "errorFocus": "MULTIPLE_PERSPECTIVES_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-31",
+      "statement": "Uma personagem fictícia se sente insegura. Qual caminho pode ajudar?",
+      "prompt": "Uma personagem fictícia se sente insegura. Qual caminho pode ajudar?",
+      "options": [
+        "Ser diagnosticada pelos colegas",
+        "Ser pressionada a falar em público",
+        "Conversar com um adulto de confiança.",
+        "Ficar sem apoio"
+      ],
+      "correctAnswer": "Conversar com um adulto de confiança.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ser diagnosticada pelos colegas": [
+          "SAFE_SUPPORT_REVIEW"
+        ],
+        "Ser pressionada a falar em público": [
+          "SAFE_SUPPORT_REVIEW"
+        ],
+        "Ficar sem apoio": [
+          "SAFE_SUPPORT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PEDIR_AJUDA",
+      "explanation": "Um adulto responsável pode orientar e apoiar.",
+      "hint": "Escolha alguém de confiança.",
+      "errorFocus": "SAFE_SUPPORT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Um adulto responsável pode orientar e apoiar.",
+        "incorrect": "Um adulto responsável pode orientar e apoiar.",
+        "hint": "Escolha alguém de confiança.",
+        "errorFocus": "SAFE_SUPPORT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-32",
+      "statement": "Acolher sentimentos e memórias combina escuta com...",
+      "prompt": "Acolher sentimentos e memórias combina escuta com...",
+      "options": [
+        "pressão para revelar tudo",
+        "comparação de experiências",
+        "diagnóstico por colegas",
+        "respeito à privacidade e à escolha de cada pessoa."
+      ],
+      "correctAnswer": "respeito à privacidade e à escolha de cada pessoa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "pressão para revelar tudo": [
+          "WELCOME_AND_PRIVACY_SUMMARY"
+        ],
+        "comparação de experiências": [
+          "WELCOME_AND_PRIVACY_SUMMARY"
+        ],
+        "diagnóstico por colegas": [
+          "WELCOME_AND_PRIVACY_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ACOLHIMENTO",
+      "explanation": "Acolhimento respeita limites pessoais.",
+      "hint": "Reúna escuta e autonomia.",
+      "errorFocus": "WELCOME_AND_PRIVACY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Acolhimento respeita limites pessoais.",
+        "incorrect": "Acolhimento respeita limites pessoais.",
+        "hint": "Reúna escuta e autonomia.",
+        "errorFocus": "WELCOME_AND_PRIVACY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-33",
+      "statement": "Se uma personagem nomeia um sentimento, uma boa resposta é...",
+      "prompt": "Se uma personagem nomeia um sentimento, uma boa resposta é...",
+      "options": [
+        "reconhecer o que ela disse com respeito.",
+        "dizer que está errada",
+        "rir dela",
+        "adivinhar outros sentimentos"
+      ],
+      "correctAnswer": "reconhecer o que ela disse com respeito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "dizer que está errada": [
+          "FEELING_REVIEW"
+        ],
+        "rir dela": [
+          "FEELING_REVIEW"
+        ],
+        "adivinhar outros sentimentos": [
+          "FEELING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_SENTIMENTO",
+      "explanation": "Escuta começa pela informação compartilhada.",
+      "hint": "Use as palavras dela.",
+      "errorFocus": "FEELING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Escuta começa pela informação compartilhada.",
+        "incorrect": "Escuta começa pela informação compartilhada.",
+        "hint": "Use as palavras dela.",
+        "errorFocus": "FEELING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-34",
+      "statement": "Uma recordação contada por alguém é...",
+      "prompt": "Uma recordação contada por alguém é...",
+      "options": [
+        "a lembrança de todos",
+        "uma memória daquela pessoa.",
+        "uma regra universal",
+        "uma história obrigatória"
+      ],
+      "correctAnswer": "uma memória daquela pessoa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a lembrança de todos": [
+          "MEMORY_REVIEW"
+        ],
+        "uma regra universal": [
+          "MEMORY_REVIEW"
+        ],
+        "uma história obrigatória": [
+          "MEMORY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_MEMORIA",
+      "explanation": "A fonte é uma lembrança individual.",
+      "hint": "Observe quem recorda.",
+      "errorFocus": "MEMORY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A fonte é uma lembrança individual.",
+        "incorrect": "A fonte é uma lembrança individual.",
+        "hint": "Observe quem recorda.",
+        "errorFocus": "MEMORY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-35",
+      "statement": "Saberes diferentes devem ser...",
+      "prompt": "Saberes diferentes devem ser...",
+      "options": [
+        "usados para classificar valor",
+        "tratados como iguais em todo contexto",
+        "escutados e comparados sem hierarquizar pessoas.",
+        "escondidos da turma"
+      ],
+      "correctAnswer": "escutados e comparados sem hierarquizar pessoas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "usados para classificar valor": [
+          "KNOWLEDGE_REVIEW"
+        ],
+        "tratados como iguais em todo contexto": [
+          "KNOWLEDGE_REVIEW"
+        ],
+        "escondidos da turma": [
+          "KNOWLEDGE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_SABER",
+      "explanation": "Comparar ideias não significa avaliar dignidade.",
+      "hint": "Separe pessoa e conhecimento.",
+      "errorFocus": "KNOWLEDGE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Comparar ideias não significa avaliar dignidade.",
+        "incorrect": "Comparar ideias não significa avaliar dignidade.",
+        "hint": "Separe pessoa e conhecimento.",
+        "errorFocus": "KNOWLEDGE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-36",
+      "statement": "Uma pessoa não quer continuar um relato. O que fazer?",
+      "prompt": "Uma pessoa não quer continuar um relato. O que fazer?",
+      "options": [
+        "Pedir detalhes várias vezes",
+        "Contar por ela",
+        "Fazer piada",
+        "Respeitar sua decisão e não insistir."
+      ],
+      "correctAnswer": "Respeitar sua decisão e não insistir.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir detalhes várias vezes": [
+          "BOUNDARY_REVIEW"
+        ],
+        "Contar por ela": [
+          "BOUNDARY_REVIEW"
+        ],
+        "Fazer piada": [
+          "BOUNDARY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_LIMITE",
+      "explanation": "Respeitar o limite mantém a conversa segura.",
+      "hint": "Aceite a escolha.",
+      "errorFocus": "BOUNDARY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Respeitar o limite mantém a conversa segura.",
+        "incorrect": "Respeitar o limite mantém a conversa segura.",
+        "hint": "Aceite a escolha.",
+        "errorFocus": "BOUNDARY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-37",
+      "statement": "Qual atividade protege quem prefere não compartilhar experiências pessoais?",
+      "prompt": "Qual atividade protege quem prefere não compartilhar experiências pessoais?",
+      "options": [
+        "Conversar sobre histórias inventadas.",
+        "Exigir memórias familiares",
+        "Fotografar relatos",
+        "Comparar histórias íntimas"
+      ],
+      "correctAnswer": "Conversar sobre histórias inventadas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Exigir memórias familiares": [
+          "PRIVACY_SAFE_ACTIVITY_REVIEW"
+        ],
+        "Fotografar relatos": [
+          "PRIVACY_SAFE_ACTIVITY_REVIEW"
+        ],
+        "Comparar histórias íntimas": [
+          "PRIVACY_SAFE_ACTIVITY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Ficção permite participação sem exposição pessoal.",
+      "hint": "Escolha exemplos fictícios.",
+      "errorFocus": "PRIVACY_SAFE_ACTIVITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Ficção permite participação sem exposição pessoal.",
+        "incorrect": "Ficção permite participação sem exposição pessoal.",
+        "hint": "Escolha exemplos fictícios.",
+        "errorFocus": "PRIVACY_SAFE_ACTIVITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-38",
+      "statement": "Uma única fala permite diagnosticar uma pessoa?",
+      "prompt": "Uma única fala permite diagnosticar uma pessoa?",
+      "options": [
+        "Sim, sempre",
+        "Não; não é possível fazer diagnóstico por uma fala isolada.",
+        "Sim, se colegas concordarem",
+        "Não, porque sentimentos não existem"
+      ],
+      "correctAnswer": "Não; não é possível fazer diagnóstico por uma fala isolada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, sempre": [
+          "NO_DIAGNOSIS_SUMMARY"
+        ],
+        "Sim, se colegas concordarem": [
+          "NO_DIAGNOSIS_SUMMARY"
+        ],
+        "Não, porque sentimentos não existem": [
+          "NO_DIAGNOSIS_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_EVIDENCIA_EMOCIONAL",
+      "explanation": "A atividade reconhece sentimentos, não realiza diagnóstico.",
+      "hint": "Pense no limite da evidência.",
+      "errorFocus": "NO_DIAGNOSIS_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A atividade reconhece sentimentos, não realiza diagnóstico.",
+        "incorrect": "A atividade reconhece sentimentos, não realiza diagnóstico.",
+        "hint": "Pense no limite da evidência.",
+        "errorFocus": "NO_DIAGNOSIS_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-39",
+      "statement": "Quando um relato fictício aponta preocupação, o que pode ser oferecido?",
+      "prompt": "Quando um relato fictício aponta preocupação, o que pode ser oferecido?",
+      "options": [
+        "Pressão pública",
+        "Julgamento dos colegas",
+        "Apoio de um adulto de confiança.",
+        "Segredo absoluto sem avaliar segurança"
+      ],
+      "correctAnswer": "Apoio de um adulto de confiança.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pressão pública": [
+          "TRUSTED_SUPPORT_REVIEW"
+        ],
+        "Julgamento dos colegas": [
+          "TRUSTED_SUPPORT_REVIEW"
+        ],
+        "Segredo absoluto sem avaliar segurança": [
+          "TRUSTED_SUPPORT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAO_DE_APOIO",
+      "explanation": "Apoio responsável ajuda a lidar com preocupação.",
+      "hint": "Considere segurança.",
+      "errorFocus": "TRUSTED_SUPPORT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Apoio responsável ajuda a lidar com preocupação.",
+        "incorrect": "Apoio responsável ajuda a lidar com preocupação.",
+        "hint": "Considere segurança.",
+        "errorFocus": "TRUSTED_SUPPORT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er05-welcome-feelings-memories-and-knowledge-40",
+      "statement": "Uma conversa acolhedora permite falar, escutar e também...",
+      "prompt": "Uma conversa acolhedora permite falar, escutar e também...",
+      "options": [
+        "obrigar todos a contar",
+        "comparar sofrimentos",
+        "adivinhar sentimentos",
+        "escolher não compartilhar uma memória."
+      ],
+      "correctAnswer": "escolher não compartilhar uma memória.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "obrigar todos a contar": [
+          "LISTENING_AND_CHOICE_SUMMARY"
+        ],
+        "comparar sofrimentos": [
+          "LISTENING_AND_CHOICE_SUMMARY"
+        ],
+        "adivinhar sentimentos": [
+          "LISTENING_AND_CHOICE_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ESCUTA",
+      "explanation": "A escolha de falar ou não deve ser respeitada.",
+      "hint": "Lembre-se da opção de passar a vez.",
+      "errorFocus": "LISTENING_AND_CHOICE_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A escolha de falar ou não deve ser respeitada.",
+        "incorrect": "A escolha de falar ou não deve ser respeitada.",
+        "hint": "Lembre-se da opção de passar a vez.",
+        "errorFocus": "LISTENING_AND_CHOICE_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões visuais de emoções com descrições e alternativas de alto contraste.",
+          "Permitir responder por apontamento, desenho, fala, Libras, comunicação alternativa ou passar a vez.",
+          "Trabalhar com personagens fictícios e não solicitar relatos pessoais, familiares ou traumáticos."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

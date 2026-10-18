@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01hi06-family-and-school-histories-and-roles",
+  "canonicalSkillCode": "AUTHORING_EF01HI06_HISTORIES_AND_SOCIAL_ROLES",
+  "subject": "HISTORY",
+  "domain": "MUNDO PESSOAL: EU, MEU GRUPO SOCIAL E MEU TEMPO",
+  "topic": "histórias da família e da escola e papéis de diferentes sujeitos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Conhecer as histórias da família e da escola e identificar o papel desempenhado por diferentes sujeitos em diferentes espaços.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Histórias e pessoas da escola",
+    "objective": "Conhecer histórias apresentadas por fontes familiares ou escolares e identificar diferentes papéis em seus espaços, respeitando diversidade familiar e privacidade.",
+    "summary": "Famílias e escolas têm histórias construídas por diferentes pessoas. Em casa, pessoas podem cuidar, ensinar, trabalhar, organizar e compartilhar saberes de muitas maneiras; não existe um único formato familiar. Na escola, estudantes, docentes, profissionais e comunidade podem desempenhar papéis diversos em espaços diferentes. Relatos e registros têm contextos e limites. Ninguém precisa expor informações privadas de família para participar; exemplos fictícios e a história coletiva da escola são alternativas válidas.",
+    "explanation": "Use uma fonte autorizada, como uma linha do tempo da escola, um relato voluntário ou um documento público. Identifique quem produziu a fonte, o que ela conta e em que espaço ocorre a ação. Uma pessoa pode exercer mais de um papel, e famílias podem ser organizadas de formas diversas. Não presuma quem mora com cada estudante, nem que todas as famílias tenham as mesmas experiências. Compare histórias com respeito e permita usar personagens fictícias se alguém preferir não compartilhar.",
+    "workedExample": "Uma placa antiga mostra que a escola funcionava em outro prédio. Um relato autorizado conta que diferentes profissionais ajudaram na mudança. Podemos registrar a mudança de espaço e os papéis descritos sem inventar a história de cada família da turma.",
+    "commonMistake": "Pressupor um único tipo de família, expor informações pessoais ou confundir o papel de uma pessoa na escola com uma regra para todas as escolas.",
+    "priorKnowledge": [
+      "Reconhecer espaços conhecidos da escola.",
+      "Identificar pessoas e ações descritas em relatos simples."
+    ],
+    "keyConcepts": [
+      "história",
+      "fonte",
+      "família",
+      "escola",
+      "papel social",
+      "espaço",
+      "memória",
+      "privacidade",
+      "diversidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "FAMILY_DIVERSITY",
+        "action": "Use exemplos plurais e fictícios; não peça que estudantes definam ou exponham sua estrutura familiar."
+      },
+      {
+        "errorFocus": "ROLE_AND_SPACE",
+        "action": "Relacione a pessoa, a ação e o espaço usando apenas as informações da fonte."
+      },
+      {
+        "errorFocus": "PRIVACY_SAFE_HISTORY",
+        "action": "Troque relatos pessoais por fontes públicas da escola ou personagens inventadas quando necessário."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+      "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+      "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi06-school-history-timeline",
+        "title": "Linha do tempo da escola",
+        "instructions": "Registros públicos ou autorizados mostram mudanças da escola e pessoas envolvidas.\n1. Observe uma fonte e identifique data ou espaço.\n2. Registre uma mudança descrita.\n3. Relacione um papel citado à ação e ao espaço correspondente.",
+        "steps": [
+          "Observe uma fonte e identifique data ou espaço.",
+          "Registre uma mudança descrita.",
+          "Relacione um papel citado à ação e ao espaço correspondente."
+        ],
+        "evidence": "Linha do tempo com informação da fonte e papel social contextualizado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um espaço com apoio.",
+            "developing": "relata uma mudança da fonte.",
+            "proficient": "relaciona pessoas, ações e espaços sem generalizar."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi06-fictional-family-stories",
+        "title": "Histórias inventadas, muitos cuidados",
+        "instructions": "Narrativas fictícias apresentam famílias e formas de cuidado diversas sem pedir relatos reais.\n1. Leia uma história fictícia.\n2. Identifique quem realiza uma ação de cuidado ou ensino.\n3. Compare com outra história sem declarar um formato como regra.",
+        "steps": [
+          "Leia uma história fictícia.",
+          "Identifique quem realiza uma ação de cuidado ou ensino.",
+          "Compare com outra história sem declarar um formato como regra."
+        ],
+        "evidence": "Registro de papéis diversos com linguagem respeitosa e contextualizada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma pessoa na história.",
+            "developing": "identifica um papel ou ação.",
+            "proficient": "compara exemplos respeitando diversidade e privacidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01hi06-family-and-school-histories-and-roles-01",
+          "v1-ef01hi06-family-and-school-histories-and-roles-02",
+          "v1-ef01hi06-family-and-school-histories-and-roles-03",
+          "v1-ef01hi06-family-and-school-histories-and-roles-04",
+          "v1-ef01hi06-family-and-school-histories-and-roles-05",
+          "v1-ef01hi06-family-and-school-histories-and-roles-06",
+          "v1-ef01hi06-family-and-school-histories-and-roles-07",
+          "v1-ef01hi06-family-and-school-histories-and-roles-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01hi06-family-and-school-histories-and-roles-09",
+          "v1-ef01hi06-family-and-school-histories-and-roles-10",
+          "v1-ef01hi06-family-and-school-histories-and-roles-11",
+          "v1-ef01hi06-family-and-school-histories-and-roles-12",
+          "v1-ef01hi06-family-and-school-histories-and-roles-13",
+          "v1-ef01hi06-family-and-school-histories-and-roles-14",
+          "v1-ef01hi06-family-and-school-histories-and-roles-15",
+          "v1-ef01hi06-family-and-school-histories-and-roles-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01hi06-family-and-school-histories-and-roles-17",
+          "v1-ef01hi06-family-and-school-histories-and-roles-18",
+          "v1-ef01hi06-family-and-school-histories-and-roles-19",
+          "v1-ef01hi06-family-and-school-histories-and-roles-20",
+          "v1-ef01hi06-family-and-school-histories-and-roles-21",
+          "v1-ef01hi06-family-and-school-histories-and-roles-22",
+          "v1-ef01hi06-family-and-school-histories-and-roles-23",
+          "v1-ef01hi06-family-and-school-histories-and-roles-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01hi06-family-and-school-histories-and-roles-25",
+          "v1-ef01hi06-family-and-school-histories-and-roles-26",
+          "v1-ef01hi06-family-and-school-histories-and-roles-27",
+          "v1-ef01hi06-family-and-school-histories-and-roles-28",
+          "v1-ef01hi06-family-and-school-histories-and-roles-29",
+          "v1-ef01hi06-family-and-school-histories-and-roles-30",
+          "v1-ef01hi06-family-and-school-histories-and-roles-31",
+          "v1-ef01hi06-family-and-school-histories-and-roles-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01hi06-family-and-school-histories-and-roles-33",
+          "v1-ef01hi06-family-and-school-histories-and-roles-34",
+          "v1-ef01hi06-family-and-school-histories-and-roles-35",
+          "v1-ef01hi06-family-and-school-histories-and-roles-36",
+          "v1-ef01hi06-family-and-school-histories-and-roles-37",
+          "v1-ef01hi06-family-and-school-histories-and-roles-38",
+          "v1-ef01hi06-family-and-school-histories-and-roles-39",
+          "v1-ef01hi06-family-and-school-histories-and-roles-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI06",
+        "descriptor": "Conhecer as histórias da família e da escola e identificar o papel desempenhado por diferentes sujeitos em diferentes espaços.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-01",
+      "statement": "Uma fonte mostra uma professora ensinando na sala. Qual papel aparece?",
+      "prompt": "Uma fonte mostra uma professora ensinando na sala. Qual papel aparece?",
+      "options": [
+        "Ensinar uma turma.",
+        "Consertar o telhado",
+        "Dirigir o ônibus",
+        "Preparar a merenda"
+      ],
+      "correctAnswer": "Ensinar uma turma.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Consertar o telhado": [
+          "ROLE_FROM_SOURCE"
+        ],
+        "Dirigir o ônibus": [
+          "ROLE_FROM_SOURCE"
+        ],
+        "Preparar a merenda": [
+          "ROLE_FROM_SOURCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PROFESSORA_NA_SALA",
+      "explanation": "A fonte apresenta a professora ensinando.",
+      "hint": "Use a ação mostrada.",
+      "errorFocus": "ROLE_FROM_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte apresenta a professora ensinando.",
+        "incorrect": "A fonte apresenta a professora ensinando.",
+        "hint": "Use a ação mostrada.",
+        "errorFocus": "ROLE_FROM_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-02",
+      "statement": "Um funcionário organiza livros na biblioteca da escola. Que espaço aparece?",
+      "prompt": "Um funcionário organiza livros na biblioteca da escola. Que espaço aparece?",
+      "options": [
+        "Cozinha de uma casa",
+        "Biblioteca escolar.",
+        "Praça do bairro",
+        "Quadra de outro clube"
+      ],
+      "correctAnswer": "Biblioteca escolar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Cozinha de uma casa": [
+          "ROLE_AND_SPACE"
+        ],
+        "Praça do bairro": [
+          "ROLE_AND_SPACE"
+        ],
+        "Quadra de outro clube": [
+          "ROLE_AND_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FUNCIONARIO_DA_BIBLIOTECA",
+      "explanation": "A ação ocorre na biblioteca da escola.",
+      "hint": "Localize o espaço descrito.",
+      "errorFocus": "ROLE_AND_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A ação ocorre na biblioteca da escola.",
+        "incorrect": "A ação ocorre na biblioteca da escola.",
+        "hint": "Localize o espaço descrito.",
+        "errorFocus": "ROLE_AND_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-03",
+      "statement": "Qual afirmação respeita a diversidade familiar?",
+      "prompt": "Qual afirmação respeita a diversidade familiar?",
+      "options": [
+        "Todas têm a mesma composição",
+        "Toda criança mora com as mesmas pessoas",
+        "Famílias podem ter diferentes formas de organização.",
+        "Existe um único formato correto"
+      ],
+      "correctAnswer": "Famílias podem ter diferentes formas de organização.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas têm a mesma composição": [
+          "FAMILY_DIVERSITY"
+        ],
+        "Toda criança mora com as mesmas pessoas": [
+          "FAMILY_DIVERSITY"
+        ],
+        "Existe um único formato correto": [
+          "FAMILY_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FAMILIAS_DIVERSAS",
+      "explanation": "Famílias podem ser organizadas de maneiras diversas.",
+      "hint": "Evite uma regra universal.",
+      "errorFocus": "FAMILY_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: Famílias podem ser organizadas de maneiras diversas.",
+        "incorrect": "Famílias podem ser organizadas de maneiras diversas.",
+        "hint": "Evite uma regra universal.",
+        "errorFocus": "FAMILY_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-04",
+      "statement": "Uma placa informa que a escola abriu em 1998. O que ela registra?",
+      "prompt": "Uma placa informa que a escola abriu em 1998. O que ela registra?",
+      "options": [
+        "A história de todas as famílias",
+        "Uma previsão do tempo",
+        "Uma regra de brincadeira",
+        "Uma informação sobre a história da escola."
+      ],
+      "correctAnswer": "Uma informação sobre a história da escola.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A história de todas as famílias": [
+          "SCHOOL_HISTORY_SOURCE"
+        ],
+        "Uma previsão do tempo": [
+          "SCHOOL_HISTORY_SOURCE"
+        ],
+        "Uma regra de brincadeira": [
+          "SCHOOL_HISTORY_SOURCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "PLACA_ANTIGA_DA_ESCOLA",
+      "explanation": "A placa fornece uma data da instituição.",
+      "hint": "Leia a informação da placa.",
+      "errorFocus": "SCHOOL_HISTORY_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A placa fornece uma data da instituição.",
+        "incorrect": "A placa fornece uma data da instituição.",
+        "hint": "Leia a informação da placa.",
+        "errorFocus": "SCHOOL_HISTORY_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-05",
+      "statement": "Duas histórias fictícias mostram pessoas diferentes cuidando de crianças. O que se pode comparar?",
+      "prompt": "Duas histórias fictícias mostram pessoas diferentes cuidando de crianças. O que se pode comparar?",
+      "options": [
+        "As ações de cuidado apresentadas em cada história.",
+        "Qual família é melhor",
+        "Quem merece existir",
+        "Qual estudante tem família igual"
+      ],
+      "correctAnswer": "As ações de cuidado apresentadas em cada história.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual família é melhor": [
+          "COMPARE_ROLES_RESPECTFULLY"
+        ],
+        "Quem merece existir": [
+          "COMPARE_ROLES_RESPECTFULLY"
+        ],
+        "Qual estudante tem família igual": [
+          "COMPARE_ROLES_RESPECTFULLY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CUIDADO_EM_DUAS_HISTORIAS",
+      "explanation": "As ações podem ser comparadas sem julgar famílias.",
+      "hint": "Foque nas histórias, não nos colegas.",
+      "errorFocus": "COMPARE_ROLES_RESPECTFULLY",
+      "feedback": {
+        "correct": "Boa observação: As ações podem ser comparadas sem julgar famílias.",
+        "incorrect": "As ações podem ser comparadas sem julgar famílias.",
+        "hint": "Foque nas histórias, não nos colegas.",
+        "errorFocus": "COMPARE_ROLES_RESPECTFULLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-06",
+      "statement": "Uma estudante prefere não contar uma memória familiar. Qual opção é adequada?",
+      "prompt": "Uma estudante prefere não contar uma memória familiar. Qual opção é adequada?",
+      "options": [
+        "Exigir que conte",
+        "Usar a história da escola ou um exemplo fictício.",
+        "Perguntar nomes pessoais diante da turma",
+        "Dar nota menor"
+      ],
+      "correctAnswer": "Usar a história da escola ou um exemplo fictício.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Exigir que conte": [
+          "NO_FORCED_FAMILY_DISCLOSURE"
+        ],
+        "Perguntar nomes pessoais diante da turma": [
+          "NO_FORCED_FAMILY_DISCLOSURE"
+        ],
+        "Dar nota menor": [
+          "NO_FORCED_FAMILY_DISCLOSURE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELATO_VOLUNTARIO",
+      "explanation": "Alternativas preservam privacidade e participação.",
+      "hint": "Escolha uma fonte não pessoal.",
+      "errorFocus": "NO_FORCED_FAMILY_DISCLOSURE",
+      "feedback": {
+        "correct": "Boa observação: Alternativas preservam privacidade e participação.",
+        "incorrect": "Alternativas preservam privacidade e participação.",
+        "hint": "Escolha uma fonte não pessoal.",
+        "errorFocus": "NO_FORCED_FAMILY_DISCLOSURE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-07",
+      "statement": "Um registro mostra estudantes cuidando de materiais no pátio. O que fazem?",
+      "prompt": "Um registro mostra estudantes cuidando de materiais no pátio. O que fazem?",
+      "options": [
+        "Definem todas as regras da cidade",
+        "Trabalham em toda escola",
+        "Participam de uma tarefa naquele espaço escolar.",
+        "Substituem todos os profissionais"
+      ],
+      "correctAnswer": "Participam de uma tarefa naquele espaço escolar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Definem todas as regras da cidade": [
+          "BOUNDED_STUDENT_ROLE"
+        ],
+        "Trabalham em toda escola": [
+          "BOUNDED_STUDENT_ROLE"
+        ],
+        "Substituem todos os profissionais": [
+          "BOUNDED_STUDENT_ROLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ESTUDANTE_NO_PATIO",
+      "explanation": "O registro mostra uma ação específica no pátio.",
+      "hint": "Limite a resposta à fonte.",
+      "errorFocus": "BOUNDED_STUDENT_ROLE",
+      "feedback": {
+        "correct": "Boa observação: O registro mostra uma ação específica no pátio.",
+        "incorrect": "O registro mostra uma ação específica no pátio.",
+        "hint": "Limite a resposta à fonte.",
+        "errorFocus": "BOUNDED_STUDENT_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-08",
+      "statement": "Uma fotografia antiga sem legenda mostra um prédio. O que ainda falta para contar seu contexto?",
+      "prompt": "Uma fotografia antiga sem legenda mostra um prédio. O que ainda falta para contar seu contexto?",
+      "options": [
+        "Uma opinião sobre famílias",
+        "A cor favorita do fotógrafo",
+        "Uma regra de matemática",
+        "Informações como data, local ou autoria."
+      ],
+      "correctAnswer": "Informações como data, local ou autoria.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma opinião sobre famílias": [
+          "SOURCE_CONTEXT"
+        ],
+        "A cor favorita do fotógrafo": [
+          "SOURCE_CONTEXT"
+        ],
+        "Uma regra de matemática": [
+          "SOURCE_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FONTE_DE_ESCOLA",
+      "explanation": "Legenda e autoria ajudam a contextualizar uma fonte.",
+      "hint": "Pense nos dados que situam a imagem.",
+      "errorFocus": "SOURCE_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Legenda e autoria ajudam a contextualizar uma fonte.",
+        "incorrect": "Legenda e autoria ajudam a contextualizar uma fonte.",
+        "hint": "Pense nos dados que situam a imagem.",
+        "errorFocus": "SOURCE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-09",
+      "statement": "Uma cozinheira prepara refeições na escola. Qual papel está descrito?",
+      "prompt": "Uma cozinheira prepara refeições na escola. Qual papel está descrito?",
+      "options": [
+        "Preparar refeições naquele espaço.",
+        "Ensinar em toda escola",
+        "Construir uma rua",
+        "Organizar uma biblioteca pública"
+      ],
+      "correctAnswer": "Preparar refeições naquele espaço.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ensinar em toda escola": [
+          "SCHOOL_ROLE"
+        ],
+        "Construir uma rua": [
+          "SCHOOL_ROLE"
+        ],
+        "Organizar uma biblioteca pública": [
+          "SCHOOL_ROLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "COZINHEIRA_ESCOLAR",
+      "explanation": "A fonte apresenta sua atividade na escola.",
+      "hint": "Observe a ação descrita.",
+      "errorFocus": "SCHOOL_ROLE",
+      "feedback": {
+        "correct": "Boa observação: A fonte apresenta sua atividade na escola.",
+        "incorrect": "A fonte apresenta sua atividade na escola.",
+        "hint": "Observe a ação descrita.",
+        "errorFocus": "SCHOOL_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-10",
+      "statement": "Um relato conta que a escola mudou de prédio. O que ele informa?",
+      "prompt": "Um relato conta que a escola mudou de prédio. O que ele informa?",
+      "options": [
+        "Que todas as famílias mudaram",
+        "Uma mudança na história da escola.",
+        "Que cada escola tem a mesma história",
+        "Que o prédio nunca existiu"
+      ],
+      "correctAnswer": "Uma mudança na história da escola.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que todas as famílias mudaram": [
+          "INSTITUTIONAL_CHANGE"
+        ],
+        "Que cada escola tem a mesma história": [
+          "INSTITUTIONAL_CHANGE"
+        ],
+        "Que o prédio nunca existiu": [
+          "INSTITUTIONAL_CHANGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "RELATO_DE_MUDANCA_DE_PREDIO",
+      "explanation": "O relato descreve uma mudança específica da escola.",
+      "hint": "Considere o sujeito do relato.",
+      "errorFocus": "INSTITUTIONAL_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: O relato descreve uma mudança específica da escola.",
+        "incorrect": "O relato descreve uma mudança específica da escola.",
+        "hint": "Considere o sujeito do relato.",
+        "errorFocus": "INSTITUTIONAL_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-11",
+      "statement": "Uma personagem fictícia vive com duas cuidadoras. O que podemos afirmar?",
+      "prompt": "Uma personagem fictícia vive com duas cuidadoras. O que podemos afirmar?",
+      "options": [
+        "Todas as famílias têm duas cuidadoras",
+        "A personagem não tem outros parentes",
+        "A história apresenta essas cuidadoras para a personagem.",
+        "Toda criança vive assim"
+      ],
+      "correctAnswer": "A história apresenta essas cuidadoras para a personagem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as famílias têm duas cuidadoras": [
+          "FICTIONAL_FAMILY_SCOPE"
+        ],
+        "A personagem não tem outros parentes": [
+          "FICTIONAL_FAMILY_SCOPE"
+        ],
+        "Toda criança vive assim": [
+          "FICTIONAL_FAMILY_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FAMILIA_DE_PERSONAGEM",
+      "explanation": "A informação vale para a personagem descrita.",
+      "hint": "Não transforme personagem em regra.",
+      "errorFocus": "FICTIONAL_FAMILY_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A informação vale para a personagem descrita.",
+        "incorrect": "A informação vale para a personagem descrita.",
+        "hint": "Não transforme personagem em regra.",
+        "errorFocus": "FICTIONAL_FAMILY_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-12",
+      "statement": "Uma pessoa organiza livros e outra cuida do jardim escolar. O que varia?",
+      "prompt": "Uma pessoa organiza livros e outra cuida do jardim escolar. O que varia?",
+      "options": [
+        "O valor das pessoas",
+        "A história de todas as escolas",
+        "A importância de estudar",
+        "As ações e os espaços de trabalho apresentados."
+      ],
+      "correctAnswer": "As ações e os espaços de trabalho apresentados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O valor das pessoas": [
+          "ROLE_VARIATION"
+        ],
+        "A história de todas as escolas": [
+          "ROLE_VARIATION"
+        ],
+        "A importância de estudar": [
+          "ROLE_VARIATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PROFISSIONAIS_EM_ESPACOS",
+      "explanation": "As fontes indicam papéis em espaços distintos.",
+      "hint": "Compare a ação e o local.",
+      "errorFocus": "ROLE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: As fontes indicam papéis em espaços distintos.",
+        "incorrect": "As fontes indicam papéis em espaços distintos.",
+        "hint": "Compare a ação e o local.",
+        "errorFocus": "ROLE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-13",
+      "statement": "Um álbum autorizado mostra uma turma de anos anteriores. Como usá-lo com cuidado?",
+      "prompt": "Um álbum autorizado mostra uma turma de anos anteriores. Como usá-lo com cuidado?",
+      "options": [
+        "Descrever o registro sem expor dados ou identificar pessoas sem necessidade.",
+        "Publicar nomes privados",
+        "Inventar histórias pessoais",
+        "Comparar aparência dos estudantes"
+      ],
+      "correctAnswer": "Descrever o registro sem expor dados ou identificar pessoas sem necessidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Publicar nomes privados": [
+          "PRIVACY_IN_HISTORY_SOURCE"
+        ],
+        "Inventar histórias pessoais": [
+          "PRIVACY_IN_HISTORY_SOURCE"
+        ],
+        "Comparar aparência dos estudantes": [
+          "PRIVACY_IN_HISTORY_SOURCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ALBUM_ESCOLAR_AUTORIZADO",
+      "explanation": "A fonte deve ser tratada respeitando privacidade.",
+      "hint": "Use somente informações pertinentes.",
+      "errorFocus": "PRIVACY_IN_HISTORY_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte deve ser tratada respeitando privacidade.",
+        "incorrect": "A fonte deve ser tratada respeitando privacidade.",
+        "hint": "Use somente informações pertinentes.",
+        "errorFocus": "PRIVACY_IN_HISTORY_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-14",
+      "statement": "Uma história diz que avó e vizinha ajudam uma personagem. O que isso mostra?",
+      "prompt": "Uma história diz que avó e vizinha ajudam uma personagem. O que isso mostra?",
+      "options": [
+        "Só avós podem cuidar",
+        "Pessoas diferentes podem participar do cuidado naquela história.",
+        "Todas as famílias precisam de vizinhas",
+        "Uma única pessoa deve cuidar"
+      ],
+      "correctAnswer": "Pessoas diferentes podem participar do cuidado naquela história.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Só avós podem cuidar": [
+          "MULTIPLE_CARE_ROLES"
+        ],
+        "Todas as famílias precisam de vizinhas": [
+          "MULTIPLE_CARE_ROLES"
+        ],
+        "Uma única pessoa deve cuidar": [
+          "MULTIPLE_CARE_ROLES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PAPEIS_DE_CUIDADO",
+      "explanation": "O relato apresenta uma rede de cuidado específica.",
+      "hint": "Considere todos os sujeitos citados.",
+      "errorFocus": "MULTIPLE_CARE_ROLES",
+      "feedback": {
+        "correct": "Boa observação: O relato apresenta uma rede de cuidado específica.",
+        "incorrect": "O relato apresenta uma rede de cuidado específica.",
+        "hint": "Considere todos os sujeitos citados.",
+        "errorFocus": "MULTIPLE_CARE_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-15",
+      "statement": "Uma ata fictícia mostra a direção organizando uma reunião escolar. Que papel aparece?",
+      "prompt": "Uma ata fictícia mostra a direção organizando uma reunião escolar. Que papel aparece?",
+      "options": [
+        "Ensinar todas as matérias",
+        "Cuidar de toda família",
+        "Organizar uma reunião naquele contexto.",
+        "Construir todas as casas"
+      ],
+      "correctAnswer": "Organizar uma reunião naquele contexto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ensinar todas as matérias": [
+          "ROLE_CONTEXT"
+        ],
+        "Cuidar de toda família": [
+          "ROLE_CONTEXT"
+        ],
+        "Construir todas as casas": [
+          "ROLE_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DIRETOR_EM_REUNIAO",
+      "explanation": "A ata informa uma ação específica da direção.",
+      "hint": "Use o verbo da fonte.",
+      "errorFocus": "ROLE_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A ata informa uma ação específica da direção.",
+        "incorrect": "A ata informa uma ação específica da direção.",
+        "hint": "Use o verbo da fonte.",
+        "errorFocus": "ROLE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-16",
+      "statement": "Por que a história da escola pode ser estudada sem pedir detalhes privados da família?",
+      "prompt": "Por que a história da escola pode ser estudada sem pedir detalhes privados da família?",
+      "options": [
+        "Famílias não têm história",
+        "Somente pessoas públicas têm memórias",
+        "Privacidade impede qualquer aprendizagem",
+        "Registros escolares e histórias fictícias também fornecem fontes para investigação."
+      ],
+      "correctAnswer": "Registros escolares e histórias fictícias também fornecem fontes para investigação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Famílias não têm história": [
+          "ALTERNATIVE_HISTORY_SOURCES"
+        ],
+        "Somente pessoas públicas têm memórias": [
+          "ALTERNATIVE_HISTORY_SOURCES"
+        ],
+        "Privacidade impede qualquer aprendizagem": [
+          "ALTERNATIVE_HISTORY_SOURCES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "HISTORIA_SEM_EXPOSICAO",
+      "explanation": "Há fontes coletivas e fictícias adequadas à atividade.",
+      "hint": "Pense em outras fontes disponíveis.",
+      "errorFocus": "ALTERNATIVE_HISTORY_SOURCES",
+      "feedback": {
+        "correct": "Boa observação: Há fontes coletivas e fictícias adequadas à atividade.",
+        "incorrect": "Há fontes coletivas e fictícias adequadas à atividade.",
+        "hint": "Pense em outras fontes disponíveis.",
+        "errorFocus": "ALTERNATIVE_HISTORY_SOURCES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-17",
+      "statement": "Um mapa marca biblioteca, pátio e secretaria. Como relacionar papéis a espaços?",
+      "prompt": "Um mapa marca biblioteca, pátio e secretaria. Como relacionar papéis a espaços?",
+      "options": [
+        "Usar a fonte para identificar ações associadas a cada local.",
+        "Supor que todas as pessoas fazem tudo",
+        "Adivinhar a vida familiar dos funcionários",
+        "Escolher um espaço como superior"
+      ],
+      "correctAnswer": "Usar a fonte para identificar ações associadas a cada local.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Supor que todas as pessoas fazem tudo": [
+          "SPACE_ROLE_LINK"
+        ],
+        "Adivinhar a vida familiar dos funcionários": [
+          "SPACE_ROLE_LINK"
+        ],
+        "Escolher um espaço como superior": [
+          "SPACE_ROLE_LINK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAPA_DE_ESPACOS_ESCOLARES",
+      "explanation": "O mapa e os relatos podem situar ações em espaços.",
+      "hint": "Use a informação do lugar.",
+      "errorFocus": "SPACE_ROLE_LINK",
+      "feedback": {
+        "correct": "Boa observação: O mapa e os relatos podem situar ações em espaços.",
+        "incorrect": "O mapa e os relatos podem situar ações em espaços.",
+        "hint": "Use a informação do lugar.",
+        "errorFocus": "SPACE_ROLE_LINK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-18",
+      "statement": "Uma foto de família privada foi encontrada sem autorização. O que é melhor para a atividade?",
+      "prompt": "Uma foto de família privada foi encontrada sem autorização. O que é melhor para a atividade?",
+      "options": [
+        "Projetá-la para todos",
+        "Escolher outra fonte pública, fictícia ou autorizada.",
+        "Publicar nomes",
+        "Pedir que a turma adivinhe parentescos"
+      ],
+      "correctAnswer": "Escolher outra fonte pública, fictícia ou autorizada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Projetá-la para todos": [
+          "CONSENT_FOR_HISTORY_SOURCE"
+        ],
+        "Publicar nomes": [
+          "CONSENT_FOR_HISTORY_SOURCE"
+        ],
+        "Pedir que a turma adivinhe parentescos": [
+          "CONSENT_FOR_HISTORY_SOURCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FOTO_SEM_AUTORIZACAO",
+      "explanation": "Uma fonte privada não deve ser exposta sem autorização.",
+      "hint": "Proteja a privacidade.",
+      "errorFocus": "CONSENT_FOR_HISTORY_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte privada não deve ser exposta sem autorização.",
+        "incorrect": "Uma fonte privada não deve ser exposta sem autorização.",
+        "hint": "Proteja a privacidade.",
+        "errorFocus": "CONSENT_FOR_HISTORY_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-19",
+      "statement": "Dois profissionais contam tarefas diferentes na escola. Qual comparação é adequada?",
+      "prompt": "Dois profissionais contam tarefas diferentes na escola. Qual comparação é adequada?",
+      "options": [
+        "Decidir quem vale mais",
+        "Dizer que todos fazem a mesma coisa",
+        "Comparar as tarefas citadas e os espaços em que ocorrem.",
+        "Generalizar suas tarefas para todas as escolas"
+      ],
+      "correctAnswer": "Comparar as tarefas citadas e os espaços em que ocorrem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Decidir quem vale mais": [
+          "COMPARE_WORK_ROLES"
+        ],
+        "Dizer que todos fazem a mesma coisa": [
+          "COMPARE_WORK_ROLES"
+        ],
+        "Generalizar suas tarefas para todas as escolas": [
+          "COMPARE_WORK_ROLES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELATO_DE_DOIS_PROFISSIONAIS",
+      "explanation": "As atividades e espaços podem ser comparados com base nos relatos.",
+      "hint": "Não hierarquize pessoas.",
+      "errorFocus": "COMPARE_WORK_ROLES",
+      "feedback": {
+        "correct": "Boa observação: As atividades e espaços podem ser comparados com base nos relatos.",
+        "incorrect": "As atividades e espaços podem ser comparados com base nos relatos.",
+        "hint": "Não hierarquize pessoas.",
+        "errorFocus": "COMPARE_WORK_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-20",
+      "statement": "Uma personagem fictícia conta uma mudança de cidade. Isso descreve a história de quem?",
+      "prompt": "Uma personagem fictícia conta uma mudança de cidade. Isso descreve a história de quem?",
+      "options": [
+        "De toda a turma",
+        "De todas as famílias",
+        "Da escola inteira",
+        "Da personagem na narrativa."
+      ],
+      "correctAnswer": "Da personagem na narrativa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "De toda a turma": [
+          "NARRATIVE_SCOPE"
+        ],
+        "De todas as famílias": [
+          "NARRATIVE_SCOPE"
+        ],
+        "Da escola inteira": [
+          "NARRATIVE_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "HISTORIA_DE_PERSONAGEM_E_TURMA",
+      "explanation": "A história é atribuída à personagem fictícia.",
+      "hint": "Identifique o sujeito da narrativa.",
+      "errorFocus": "NARRATIVE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A história é atribuída à personagem fictícia.",
+        "incorrect": "A história é atribuída à personagem fictícia.",
+        "hint": "Identifique o sujeito da narrativa.",
+        "errorFocus": "NARRATIVE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-21",
+      "statement": "Uma linha do tempo registra inauguração e reforma da escola. Que sujeitos podem aparecer nas fontes?",
+      "prompt": "Uma linha do tempo registra inauguração e reforma da escola. Que sujeitos podem aparecer nas fontes?",
+      "options": [
+        "Pessoas com papéis diferentes envolvidos nas ações registradas.",
+        "Apenas estudantes",
+        "Somente uma família",
+        "Ninguém, pois fontes não têm autores"
+      ],
+      "correctAnswer": "Pessoas com papéis diferentes envolvidos nas ações registradas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Apenas estudantes": [
+          "MULTIPLE_HISTORICAL_ACTORS"
+        ],
+        "Somente uma família": [
+          "MULTIPLE_HISTORICAL_ACTORS"
+        ],
+        "Ninguém, pois fontes não têm autores": [
+          "MULTIPLE_HISTORICAL_ACTORS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LINHA_DO_TEMPO_ESCOLAR",
+      "explanation": "Histórias institucionais podem envolver diferentes sujeitos.",
+      "hint": "Leia as fontes e seus participantes.",
+      "errorFocus": "MULTIPLE_HISTORICAL_ACTORS",
+      "feedback": {
+        "correct": "Boa observação: Histórias institucionais podem envolver diferentes sujeitos.",
+        "incorrect": "Histórias institucionais podem envolver diferentes sujeitos.",
+        "hint": "Leia as fontes e seus participantes.",
+        "errorFocus": "MULTIPLE_HISTORICAL_ACTORS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-22",
+      "statement": "Qual pergunta evita pressupor a estrutura familiar de estudantes?",
+      "prompt": "Qual pergunta evita pressupor a estrutura familiar de estudantes?",
+      "options": [
+        "“Com quem exatamente você mora?”",
+        "“Que fontes fictícias ou públicas podemos comparar?”",
+        "“Qual parente é seu responsável?”",
+        "“Por que sua família é diferente?”"
+      ],
+      "correctAnswer": "“Que fontes fictícias ou públicas podemos comparar?”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Com quem exatamente você mora?”": [
+          "NONASSUMPTIVE_QUESTION"
+        ],
+        "“Qual parente é seu responsável?”": [
+          "NONASSUMPTIVE_QUESTION"
+        ],
+        "“Por que sua família é diferente?”": [
+          "NONASSUMPTIVE_QUESTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PERGUNTA_SOBRE_FAMILIA",
+      "explanation": "A pergunta permite investigar sem expor dados pessoais.",
+      "hint": "Escolha uma pergunta sem exigir relato íntimo.",
+      "errorFocus": "NONASSUMPTIVE_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta permite investigar sem expor dados pessoais.",
+        "incorrect": "A pergunta permite investigar sem expor dados pessoais.",
+        "hint": "Escolha uma pergunta sem exigir relato íntimo.",
+        "errorFocus": "NONASSUMPTIVE_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-23",
+      "statement": "Um documento antigo cita uma biblioteca em outra sala. O que pode ser estudado?",
+      "prompt": "Um documento antigo cita uma biblioteca em outra sala. O que pode ser estudado?",
+      "options": [
+        "Que todos os funcionários mudaram de papel",
+        "Que todas as escolas têm a mesma história",
+        "A mudança de espaço indicada entre os registros.",
+        "Que uma sala vale mais"
+      ],
+      "correctAnswer": "A mudança de espaço indicada entre os registros.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todos os funcionários mudaram de papel": [
+          "SPATIAL_CHANGE_EVIDENCE"
+        ],
+        "Que todas as escolas têm a mesma história": [
+          "SPATIAL_CHANGE_EVIDENCE"
+        ],
+        "Que uma sala vale mais": [
+          "SPATIAL_CHANGE_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MUDANCA_DE_FUNCAO",
+      "explanation": "Os documentos permitem comparar a localização da biblioteca.",
+      "hint": "Use a evidência dos registros.",
+      "errorFocus": "SPATIAL_CHANGE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Os documentos permitem comparar a localização da biblioteca.",
+        "incorrect": "Os documentos permitem comparar a localização da biblioteca.",
+        "hint": "Use a evidência dos registros.",
+        "errorFocus": "SPATIAL_CHANGE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-24",
+      "statement": "Por que identificar diferentes sujeitos numa história escolar?",
+      "prompt": "Por que identificar diferentes sujeitos numa história escolar?",
+      "options": [
+        "Para classificar quem é mais importante",
+        "Para excluir pessoas sem cargo",
+        "Para falar por todas as escolas",
+        "Para perceber quem participou das ações e em quais espaços."
+      ],
+      "correctAnswer": "Para perceber quem participou das ações e em quais espaços.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para classificar quem é mais importante": [
+          "HISTORICAL_ACTORS_PURPOSE"
+        ],
+        "Para excluir pessoas sem cargo": [
+          "HISTORICAL_ACTORS_PURPOSE"
+        ],
+        "Para falar por todas as escolas": [
+          "HISTORICAL_ACTORS_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "DIFERENTES_SUJEITOS",
+      "explanation": "Identificar sujeitos esclarece ações e contextos.",
+      "hint": "Relacione pessoas, ações e lugares.",
+      "errorFocus": "HISTORICAL_ACTORS_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Identificar sujeitos esclarece ações e contextos.",
+        "incorrect": "Identificar sujeitos esclarece ações e contextos.",
+        "hint": "Relacione pessoas, ações e lugares.",
+        "errorFocus": "HISTORICAL_ACTORS_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-25",
+      "statement": "Uma fonte mostra uma bibliotecária organizando empréstimos. Qual papel aparece?",
+      "prompt": "Uma fonte mostra uma bibliotecária organizando empréstimos. Qual papel aparece?",
+      "options": [
+        "Organizar empréstimos na biblioteca escolar.",
+        "Construir moradias",
+        "Cuidar de todas as famílias",
+        "Ensinar fora da escola sempre"
+      ],
+      "correctAnswer": "Organizar empréstimos na biblioteca escolar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Construir moradias": [
+          "ROLE_IN_SPACE_REVIEW"
+        ],
+        "Cuidar de todas as famílias": [
+          "ROLE_IN_SPACE_REVIEW"
+        ],
+        "Ensinar fora da escola sempre": [
+          "ROLE_IN_SPACE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PAPEL_DE_BIBLIOTECARIA",
+      "explanation": "A fonte liga a ação à biblioteca.",
+      "hint": "Observe a ação e o espaço.",
+      "errorFocus": "ROLE_IN_SPACE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A fonte liga a ação à biblioteca.",
+        "incorrect": "A fonte liga a ação à biblioteca.",
+        "hint": "Observe a ação e o espaço.",
+        "errorFocus": "ROLE_IN_SPACE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-26",
+      "statement": "Existe uma única forma correta de família?",
+      "prompt": "Existe uma única forma correta de família?",
+      "options": [
+        "Sim, todas são idênticas",
+        "Não; há diferentes formas de organização familiar.",
+        "Sim, somente um modelo existe",
+        "Não, porque família não tem história"
+      ],
+      "correctAnswer": "Não; há diferentes formas de organização familiar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, todas são idênticas": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "Sim, somente um modelo existe": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "Não, porque família não tem história": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FAMILIA_NAO_UNICA",
+      "explanation": "A diversidade familiar deve ser reconhecida sem hierarquia.",
+      "hint": "Evite um modelo universal.",
+      "errorFocus": "FAMILY_DIVERSITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A diversidade familiar deve ser reconhecida sem hierarquia.",
+        "incorrect": "A diversidade familiar deve ser reconhecida sem hierarquia.",
+        "hint": "Evite um modelo universal.",
+        "errorFocus": "FAMILY_DIVERSITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-27",
+      "statement": "Um documento escolar tem data e autoria. O que esses dados ajudam a fazer?",
+      "prompt": "Um documento escolar tem data e autoria. O que esses dados ajudam a fazer?",
+      "options": [
+        "Provar todas as histórias familiares",
+        "Apagar o contexto",
+        "Situar quando e por quem a fonte foi produzida.",
+        "Definir um papel para toda escola"
+      ],
+      "correctAnswer": "Situar quando e por quem a fonte foi produzida.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Provar todas as histórias familiares": [
+          "SOURCE_METADATA_REVIEW"
+        ],
+        "Apagar o contexto": [
+          "SOURCE_METADATA_REVIEW"
+        ],
+        "Definir um papel para toda escola": [
+          "SOURCE_METADATA_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "READ",
+      "contextFamily": "DOCUMENTO_COM_DATA",
+      "explanation": "Data e autoria contextualizam o documento.",
+      "hint": "Leia as informações da fonte.",
+      "errorFocus": "SOURCE_METADATA_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Data e autoria contextualizam o documento.",
+        "incorrect": "Data e autoria contextualizam o documento.",
+        "hint": "Leia as informações da fonte.",
+        "errorFocus": "SOURCE_METADATA_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-28",
+      "statement": "Qual opção mantém a atividade inclusiva para quem não quer falar da família?",
+      "prompt": "Qual opção mantém a atividade inclusiva para quem não quer falar da família?",
+      "options": [
+        "Exigir uma história privada",
+        "Avaliar a estrutura familiar",
+        "Pedir fotografias pessoais",
+        "Usar narrativa fictícia ou fonte da escola."
+      ],
+      "correctAnswer": "Usar narrativa fictícia ou fonte da escola.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir uma história privada": [
+          "OPT_OUT_REVIEW"
+        ],
+        "Avaliar a estrutura familiar": [
+          "OPT_OUT_REVIEW"
+        ],
+        "Pedir fotografias pessoais": [
+          "OPT_OUT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEM_RELATO_PESSOAL",
+      "explanation": "Fontes alternativas preservam a participação.",
+      "hint": "Escolha uma opção sem exposição.",
+      "errorFocus": "OPT_OUT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Fontes alternativas preservam a participação.",
+        "incorrect": "Fontes alternativas preservam a participação.",
+        "hint": "Escolha uma opção sem exposição.",
+        "errorFocus": "OPT_OUT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-29",
+      "statement": "Duas fontes mostram a escola em tempos diferentes. O que comparar?",
+      "prompt": "Duas fontes mostram a escola em tempos diferentes. O que comparar?",
+      "options": [
+        "Espaços, atividades ou pessoas mencionados nas fontes.",
+        "Qual estudante é melhor",
+        "A vida privada das famílias",
+        "Qual época merece existir"
+      ],
+      "correctAnswer": "Espaços, atividades ou pessoas mencionados nas fontes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual estudante é melhor": [
+          "SCHOOL_HISTORY_COMPARISON_REVIEW"
+        ],
+        "A vida privada das famílias": [
+          "SCHOOL_HISTORY_COMPARISON_REVIEW"
+        ],
+        "Qual época merece existir": [
+          "SCHOOL_HISTORY_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ESCOLA_ONTEM_E_HOJE",
+      "explanation": "As fontes permitem comparar características históricas.",
+      "hint": "Foque nas fontes.",
+      "errorFocus": "SCHOOL_HISTORY_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As fontes permitem comparar características históricas.",
+        "incorrect": "As fontes permitem comparar características históricas.",
+        "hint": "Foque nas fontes.",
+        "errorFocus": "SCHOOL_HISTORY_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-30",
+      "statement": "Um funcionário desempenha uma tarefa na escola A. O que não se deve presumir?",
+      "prompt": "Um funcionário desempenha uma tarefa na escola A. O que não se deve presumir?",
+      "options": [
+        "Que a fonte mostra aquela tarefa",
+        "Que toda escola organiza a mesma tarefa do mesmo jeito.",
+        "Que o espaço tem contexto",
+        "Que o papel pode ser identificado"
+      ],
+      "correctAnswer": "Que toda escola organiza a mesma tarefa do mesmo jeito.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que a fonte mostra aquela tarefa": [
+          "NO_ROLE_GENERALIZATION_REVIEW"
+        ],
+        "Que o espaço tem contexto": [
+          "NO_ROLE_GENERALIZATION_REVIEW"
+        ],
+        "Que o papel pode ser identificado": [
+          "NO_ROLE_GENERALIZATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PAPEL_NAO_UNIVERSAL",
+      "explanation": "Uma fonte local não define todas as escolas.",
+      "hint": "Limite a conclusão.",
+      "errorFocus": "NO_ROLE_GENERALIZATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte local não define todas as escolas.",
+        "incorrect": "Uma fonte local não define todas as escolas.",
+        "hint": "Limite a conclusão.",
+        "errorFocus": "NO_ROLE_GENERALIZATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-31",
+      "statement": "Alguém compartilha uma memória escolar. Como acolher?",
+      "prompt": "Alguém compartilha uma memória escolar. Como acolher?",
+      "options": [
+        "Repetir a história sem permissão",
+        "Comparar com piadas",
+        "Escutar sem ridicularizar e sem divulgar detalhes privados.",
+        "Exigir mais informações"
+      ],
+      "correctAnswer": "Escutar sem ridicularizar e sem divulgar detalhes privados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Repetir a história sem permissão": [
+          "MEMORY_PRIVACY_REVIEW"
+        ],
+        "Comparar com piadas": [
+          "MEMORY_PRIVACY_REVIEW"
+        ],
+        "Exigir mais informações": [
+          "MEMORY_PRIVACY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RESPEITO_A_RECORDE",
+      "explanation": "Escuta respeitosa protege a pessoa que compartilha.",
+      "hint": "Respeite o limite do relato.",
+      "errorFocus": "MEMORY_PRIVACY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Escuta respeitosa protege a pessoa que compartilha.",
+        "incorrect": "Escuta respeitosa protege a pessoa que compartilha.",
+        "hint": "Respeite o limite do relato.",
+        "errorFocus": "MEMORY_PRIVACY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-32",
+      "statement": "Estudar histórias da família e da escola requer fontes, contexto e...",
+      "prompt": "Estudar histórias da família e da escola requer fontes, contexto e...",
+      "options": [
+        "um único modelo familiar",
+        "exposição obrigatória",
+        "generalizações sem evidência",
+        "respeito aos diferentes sujeitos e à privacidade."
+      ],
+      "correctAnswer": "respeito aos diferentes sujeitos e à privacidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "um único modelo familiar": [
+          "HISTORY_ROLES_SUMMARY"
+        ],
+        "exposição obrigatória": [
+          "HISTORY_ROLES_SUMMARY"
+        ],
+        "generalizações sem evidência": [
+          "HISTORY_ROLES_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_HISTORIA_E_PAPEIS",
+      "explanation": "Contextualização e respeito orientam a investigação.",
+      "hint": "Reúna evidência e cuidado.",
+      "errorFocus": "HISTORY_ROLES_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Contextualização e respeito orientam a investigação.",
+        "incorrect": "Contextualização e respeito orientam a investigação.",
+        "hint": "Reúna evidência e cuidado.",
+        "errorFocus": "HISTORY_ROLES_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-33",
+      "statement": "Um papel social numa fonte está ligado a...",
+      "prompt": "Um papel social numa fonte está ligado a...",
+      "options": [
+        "uma ação ou participação descrita em determinado espaço.",
+        "um julgamento de valor",
+        "uma regra de todas as famílias",
+        "uma informação sempre privada"
+      ],
+      "correctAnswer": "uma ação ou participação descrita em determinado espaço.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "um julgamento de valor": [
+          "ROLE_REVIEW"
+        ],
+        "uma regra de todas as famílias": [
+          "ROLE_REVIEW"
+        ],
+        "uma informação sempre privada": [
+          "ROLE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_PAPEL",
+      "explanation": "Papéis são identificados pelas ações e contexto.",
+      "hint": "Lembre-se da fonte.",
+      "errorFocus": "ROLE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Papéis são identificados pelas ações e contexto.",
+        "incorrect": "Papéis são identificados pelas ações e contexto.",
+        "hint": "Lembre-se da fonte.",
+        "errorFocus": "ROLE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-34",
+      "statement": "Uma placa antiga da escola pode ser...",
+      "prompt": "Uma placa antiga da escola pode ser...",
+      "options": [
+        "uma memória de toda família",
+        "uma fonte sobre a história da instituição.",
+        "uma previsão",
+        "uma brincadeira"
+      ],
+      "correctAnswer": "uma fonte sobre a história da instituição.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma memória de toda família": [
+          "SCHOOL_SOURCE_REVIEW"
+        ],
+        "uma previsão": [
+          "SCHOOL_SOURCE_REVIEW"
+        ],
+        "uma brincadeira": [
+          "SCHOOL_SOURCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_HISTORIA_ESCOLAR",
+      "explanation": "O registro informa parte da história escolar.",
+      "hint": "Consulte o documento.",
+      "errorFocus": "SCHOOL_SOURCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O registro informa parte da história escolar.",
+        "incorrect": "O registro informa parte da história escolar.",
+        "hint": "Consulte o documento.",
+        "errorFocus": "SCHOOL_SOURCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-35",
+      "statement": "Uma história fictícia sobre uma família vale como regra para todas?",
+      "prompt": "Uma história fictícia sobre uma família vale como regra para todas?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se for curta",
+        "Não; descreve aquela narrativa.",
+        "Não, narrativas não têm personagens"
+      ],
+      "correctAnswer": "Não; descreve aquela narrativa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "FAMILY_SCOPE_REVIEW"
+        ],
+        "Sim, se for curta": [
+          "FAMILY_SCOPE_REVIEW"
+        ],
+        "Não, narrativas não têm personagens": [
+          "FAMILY_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_DIVERSIDADE",
+      "explanation": "Uma narrativa não representa automaticamente todas as famílias.",
+      "hint": "Identifique o alcance.",
+      "errorFocus": "FAMILY_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma narrativa não representa automaticamente todas as famílias.",
+        "incorrect": "Uma narrativa não representa automaticamente todas as famílias.",
+        "hint": "Identifique o alcance.",
+        "errorFocus": "FAMILY_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-36",
+      "statement": "Como estudar memórias sem exigir exposição?",
+      "prompt": "Como estudar memórias sem exigir exposição?",
+      "options": [
+        "Pedir endereço",
+        "Exigir fotos",
+        "Divulgar relatos",
+        "Permitir passar a vez e usar fontes públicas ou fictícias."
+      ],
+      "correctAnswer": "Permitir passar a vez e usar fontes públicas ou fictícias.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir endereço": [
+          "PRIVACY_REVIEW"
+        ],
+        "Exigir fotos": [
+          "PRIVACY_REVIEW"
+        ],
+        "Divulgar relatos": [
+          "PRIVACY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Alternativas protegem dados e participação.",
+      "hint": "Escolha uma fonte segura.",
+      "errorFocus": "PRIVACY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Alternativas protegem dados e participação.",
+        "incorrect": "Alternativas protegem dados e participação.",
+        "hint": "Escolha uma fonte segura.",
+        "errorFocus": "PRIVACY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-37",
+      "statement": "Duas fontes citam sujeitos diferentes. O que investigar?",
+      "prompt": "Duas fontes citam sujeitos diferentes. O que investigar?",
+      "options": [
+        "As ações e espaços associados a cada sujeito.",
+        "Quem tem mais valor",
+        "Qual pessoa deve ser apagada",
+        "Que todas fizeram a mesma coisa"
+      ],
+      "correctAnswer": "As ações e espaços associados a cada sujeito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Quem tem mais valor": [
+          "ACTOR_COMPARISON_REVIEW"
+        ],
+        "Qual pessoa deve ser apagada": [
+          "ACTOR_COMPARISON_REVIEW"
+        ],
+        "Que todas fizeram a mesma coisa": [
+          "ACTOR_COMPARISON_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_SUJEITOS",
+      "explanation": "As fontes podem mostrar papéis diversos.",
+      "hint": "Relacione pessoa e ação.",
+      "errorFocus": "ACTOR_COMPARISON_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As fontes podem mostrar papéis diversos.",
+        "incorrect": "As fontes podem mostrar papéis diversos.",
+        "hint": "Relacione pessoa e ação.",
+        "errorFocus": "ACTOR_COMPARISON_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-38",
+      "statement": "Uma foto sem data não informa exatamente quando foi feita. O que fazer?",
+      "prompt": "Uma foto sem data não informa exatamente quando foi feita. O que fazer?",
+      "options": [
+        "Inventar a data",
+        "Reconhecer esse limite e buscar outra fonte contextualizada.",
+        "Afirmar que foi ontem",
+        "Dizer que fotos não servem"
+      ],
+      "correctAnswer": "Reconhecer esse limite e buscar outra fonte contextualizada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Inventar a data": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Afirmar que foi ontem": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Dizer que fotos não servem": [
+          "SOURCE_LIMIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_LEGENDA",
+      "explanation": "Não se deve inventar dados ausentes.",
+      "hint": "Nomeie o que falta.",
+      "errorFocus": "SOURCE_LIMIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Não se deve inventar dados ausentes.",
+        "incorrect": "Não se deve inventar dados ausentes.",
+        "hint": "Nomeie o que falta.",
+        "errorFocus": "SOURCE_LIMIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-39",
+      "statement": "Qual atitude respeita diferentes famílias?",
+      "prompt": "Qual atitude respeita diferentes famílias?",
+      "options": [
+        "Comparar colegas",
+        "Declarar um modelo correto",
+        "Não presumir uma composição única nem pedir detalhes privados.",
+        "Exigir relatos pessoais"
+      ],
+      "correctAnswer": "Não presumir uma composição única nem pedir detalhes privados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Comparar colegas": [
+          "FAMILY_RESPECT_REVIEW"
+        ],
+        "Declarar um modelo correto": [
+          "FAMILY_RESPECT_REVIEW"
+        ],
+        "Exigir relatos pessoais": [
+          "FAMILY_RESPECT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_FAMILIA",
+      "explanation": "Respeito inclui diversidade e privacidade.",
+      "hint": "Evite pressupostos.",
+      "errorFocus": "FAMILY_RESPECT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Respeito inclui diversidade e privacidade.",
+        "incorrect": "Respeito inclui diversidade e privacidade.",
+        "hint": "Evite pressupostos.",
+        "errorFocus": "FAMILY_RESPECT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi06-family-and-school-histories-and-roles-40",
+      "statement": "Conhecer histórias e papéis ajuda a compreender...",
+      "prompt": "Conhecer histórias e papéis ajuda a compreender...",
+      "options": [
+        "uma regra universal para todos",
+        "quem vale mais",
+        "informações que a fonte não mostra",
+        "ações de diferentes pessoas nos espaços descritos."
+      ],
+      "correctAnswer": "ações de diferentes pessoas nos espaços descritos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma regra universal para todos": [
+          "HISTORICAL_CONTEXT_SUMMARY"
+        ],
+        "quem vale mais": [
+          "HISTORICAL_CONTEXT_SUMMARY"
+        ],
+        "informações que a fonte não mostra": [
+          "HISTORICAL_CONTEXT_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_HISTORIAS",
+      "explanation": "Histórias contextualizam sujeitos e espaços.",
+      "hint": "Reúna os elementos da fonte.",
+      "errorFocus": "HISTORICAL_CONTEXT_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Histórias contextualizam sujeitos e espaços.",
+        "incorrect": "Histórias contextualizam sujeitos e espaços.",
+        "hint": "Reúna os elementos da fonte.",
+        "errorFocus": "HISTORICAL_CONTEXT_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer linha do tempo visual, relatos lidos em voz alta e cartões com papéis e espaços.",
+          "Permitir responder por apontamento, desenho, fala, Libras ou comunicação alternativa.",
+          "Não exigir árvore genealógica, nomes, fotografias ou relatos privados de família."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
