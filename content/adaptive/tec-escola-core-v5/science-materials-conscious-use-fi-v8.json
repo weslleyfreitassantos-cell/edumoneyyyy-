@@ -210,7 +210,36 @@
         "use": "Contexto de autoria; não representa aprovação de mapeamento canônico nem revisão pedagógica humana."
       }
     ],
-    "copyrightNote": "Questões, exemplos e atividades são autorais. A fonte oficial orienta o contexto; a revisão do texto-fonte, o mapeamento canônico e a aprovação pedagógica permanecem pendentes."
+    "copyrightNote": "Questões, exemplos e atividades são autorais. A fonte oficial orienta o contexto; a revisão do texto-fonte, o mapeamento canônico e a aprovação pedagógica permanecem pendentes.",
+    "authenticActivities": [
+      {
+        "id": "materials-origin-use-destination-map",
+        "title": "Mapa de material, uso e destino",
+        "instructions": "Em pequenos grupos, escolha dois objetos seguros do cotidiano escolar. Observe de que material parecem ser feitos, compare uma propriedade ligada ao uso e consulte um adulto sobre a orientação local para reutilização ou descarte. Registre a comparação por desenho, tabela, fala gravada sem dados pessoais ou texto curto.",
+        "evidence": "Registro multimodal com dois objetos, uma propriedade observada, uma hipótese sobre a origem, uma decisão de redução, reutilização, reparo ou encaminhamento e uma conclusão limitada ao contexto.",
+        "privacyGuard": "Não fotografar pessoas, documentos ou resíduos perigosos; não registrar nomes, endereços ou informações de coleta individual.",
+        "rubric": [
+          {
+            "criterion": "Comparação com critério",
+            "emerging": "Lista objetos sem indicar uma propriedade.",
+            "developing": "Relaciona uma propriedade ao uso com apoio.",
+            "proficient": "Compara propriedades relevantes e explica o vínculo com a função."
+          },
+          {
+            "criterion": "Origem e destino",
+            "emerging": "Trata o objeto pronto como se fosse retirado diretamente da natureza.",
+            "developing": "Distingue origem e destino com orientação.",
+            "proficient": "Registra origem como hipótese contextual e consulta regras locais antes de decidir."
+          },
+          {
+            "criterion": "Consumo consciente e segurança",
+            "emerging": "Propõe descarte ou reutilização sem verificar segurança.",
+            "developing": "Escolhe uma alternativa segura após mediação.",
+            "proficient": "Considera reduzir, reutilizar, reparar e encaminhar conforme condição do objeto e orientação local."
+          }
+        ]
+      }
+    ]
   },
   "questions": [
     {

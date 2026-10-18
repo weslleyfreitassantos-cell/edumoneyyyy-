@@ -113,7 +113,7 @@ function buildCompletionQueue() {
     const verifiedSource = sourceByCode.get(record.officialCode);
     const requirements = requirementsFor(record, sizingByCode);
     const technicalCandidate = evidence.find((item) => !item.active
-      && item.publicationStatus === 'STAGING'
+      && ['STAGING', 'STAGING_INACTIVE'].includes(item.publicationStatus)
       && item.pedagogicalReviewStatus === 'PEDAGOGICAL_REVIEW_PENDING'
       && item.officialMappingStatus === 'NOT_CLAIMED');
     const technicalComplete = Boolean(technicalCandidate

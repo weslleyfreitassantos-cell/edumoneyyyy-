@@ -27,19 +27,19 @@
   "summary": {
     "totalTasks": 1721,
     "byState": {
-      "BLOCKED_CANONICAL_REVIEW": 502,
+      "BLOCKED_CANONICAL_REVIEW": 500,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
       "BLOCKED_SOURCE": 1160,
-      "CONTENT_TECHNICALLY_COMPLETE": 12
+      "CONTENT_TECHNICALLY_COMPLETE": 14
     },
     "byQueueState": {
       "BLOCKED_CANONICAL_REVIEW": 514,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
       "BLOCKED_SOURCE": 1160
     },
-    "contentTechnicallyComplete": 12,
+    "contentTechnicallyComplete": 14,
     "canonicalMappingVerified": 0,
-    "readyForPedagogicalReview": 12,
+    "readyForPedagogicalReview": 14,
     "humanPedagogicalApproved": 0,
     "publicationAuthorized": 0
   },
@@ -207,7 +207,7 @@
       "componentCode": "CI",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -232,7 +232,7 @@
             "contentId": "v8-science-materials-conscious-use-fi",
             "questionCount": 40,
             "lessonCount": 1,
-            "activityCount": 0,
+            "activityCount": 1,
             "assessmentCount": 1,
             "active": false,
             "publicationStatus": "STAGING_INACTIVE",
@@ -242,8 +242,8 @@
         ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -262,7 +262,7 @@
       "componentCode": "CI",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -281,11 +281,24 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01CI02_MEC_P335_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/v1-science-body-parts-fi.json",
+            "contentId": "v1-science-body-parts-fi",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 1,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED"
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -72197,5 +72210,5 @@
       }
     }
   ],
-  "queueHash": "82eb36f45be22ec6347fdda317c748190d4f8b2cb24435e7156bf8355899ae6c"
+  "queueHash": "006b7fd1b7837aef3268266d35fa6354964160ac0c25b8dbd3c4a8ebfa248cd5"
 }
