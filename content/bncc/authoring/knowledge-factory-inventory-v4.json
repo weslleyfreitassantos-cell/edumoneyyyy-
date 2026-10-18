@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "4bc706392841f89415baa99454db85f25a7416b3c5569257ae290ded082db1bb",
+    "v5QuestionFirstPacks": "38b3da243e3a1f2c29dcb3e96cca0584a904c28c82cfb3237df8f47faa7c1b8e",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 7571,
+    "v5QuestionTotal": 7731,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -361,14 +361,38 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef06co01-classifying-information-and-data-types.json",
+        "skillCode": "AUTHORING_EF06CO01_CLASSIFYING_INFORMATION_AND_DATA_TYPES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "science-heat-transfer-materials-ef07.json",
         "skillCode": "AUTHORING_EF07CI03_HEAT_TRANSFER_MATERIALS_AND_SOLUTIONS",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef07co04-graph-structures-and-basic-properties.json",
+        "skillCode": "AUTHORING_EF07CO04_GRAPH_STRUCTURES_AND_BASIC_PROPERTIES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef08co06-internet-structure-and-operation.json",
+        "skillCode": "AUTHORING_EF08CO06_INTERNET_STRUCTURE_AND_OPERATION",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "ef09ci03-models-of-matter-and-atom-history.json",
         "skillCode": "AUTHORING_EF09CI03_MODELS_OF_MATTER_AND_ATOM_HISTORY",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef09co04-understanding-malware-and-cyberattacks-safely.json",
+        "skillCode": "AUTHORING_EF09CO04_UNDERSTANDING_MALWARE_AND_CYBERATTACKS_SAFELY",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -19033,5 +19057,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "442a2b1fa755196ebcfc41975d990a8cdbe88ad5a8ef20954ca48ae09a33e372"
+  "inventoryHash": "4712f181e5c18af4c17ca518fd7735f08ccc4f7aa5b9f9903c50bd3262eb8ffd"
 }

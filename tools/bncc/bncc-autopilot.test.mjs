@@ -52,7 +52,7 @@ describe('BNCC autopilot', () => {
 
   it('discovers source-verified declarative authoring packages and validates their complete paths', () => {
     const specs = discoverAuthoredCurriculumSpecs();
-    expect([...specs.keys()]).toEqual(['EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01ER01', 'EF01GE01', 'EF01GE02', 'EF01HI01', 'EF01HI02', 'EF01LP01', 'EF01LP02', 'EF01LP07', 'EF01MA01', 'EF01MA02', 'EF02CI01', 'EF02CI02', 'EF02CI03', 'EF02GE01', 'EF06CI05', 'EF07CI03', 'EF09CI03', 'EM13LGG101']);
+    expect([...specs.keys()]).toEqual(['EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01ER01', 'EF01GE01', 'EF01GE02', 'EF01HI01', 'EF01HI02', 'EF01LP01', 'EF01LP02', 'EF01LP07', 'EF01MA01', 'EF01MA02', 'EF02CI01', 'EF02CI02', 'EF02CI03', 'EF02GE01', 'EF06CI05', 'EF06CO01', 'EF07CI03', 'EF07CO04', 'EF08CO06', 'EF09CI03', 'EF09CO04', 'EM13LGG101']);
     for (const officialCode of specs.keys()) {
       const pack = buildAuthoredCurriculumPack(officialCode);
       const validation = validateAuthoredCurriculumPack(pack);
@@ -63,7 +63,7 @@ describe('BNCC autopilot', () => {
       expect(pack.publicationStatus).toBe('STAGING_INACTIVE');
       expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
       expect(validation.rubric.humanReview.status).toBe('PEDAGOGICAL_REVIEW_PENDING');
-      if (['EF01ER01', 'EF01GE02', 'EF01HI02', 'EF01LP07', 'EF01MA02', 'EF02CI03', 'EF02GE01', 'EF09CI03', 'EM13LGG101'].includes(officialCode)) {
+      if (['EF01ER01', 'EF01GE02', 'EF01HI02', 'EF01LP07', 'EF01MA02', 'EF02CI03', 'EF02GE01', 'EF06CO01', 'EF07CO04', 'EF08CO06', 'EF09CI03', 'EF09CO04', 'EM13LGG101'].includes(officialCode)) {
         expect(new Set(pack.questions.map((question) => question.contextFamily)).size, `${officialCode} context diversity`).toBe(40);
         expect(new Set(pack.questions.map((question) => question.statement)).size, `${officialCode} statement diversity`).toBe(40);
         expect(Object.values(validation.answerPositionCounts), `${officialCode} answer positions`).toEqual([10, 10, 10, 10]);
