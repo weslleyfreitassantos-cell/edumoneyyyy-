@@ -1,0 +1,2077 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01er02-names-identify-and-differentiate",
+  "canonicalSkillCode": "AUTHORING_EF01ER02_RECOGNIZE_NAMES_AS_IDENTIFIERS",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "nomes como elementos que identificam e diferenciam pessoas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01ER02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer que o seu nome e o das demais pessoas os identificam e os diferenciam.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 445
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Nomes contam quem é quem",
+    "objective": "Reconhecer, em situações fictícias e seguras, que nomes ajudam a identificar e diferenciar pessoas, respeitando como cada pessoa deseja ser chamada sem exigir que estudantes revelem dados pessoais.",
+    "summary": "Um nome ajuda a identificar uma pessoa e a distingui-la de outras. Histórias, listas e cartões podem usar personagens inventados para mostrar essa função. Pessoas podem ter nomes iguais, apelidos ou formas de tratamento diferentes; devemos perguntar e respeitar como alguém prefere ser chamado. A atividade não precisa recolher nomes reais, documentos, origem familiar ou outras informações privadas.",
+    "explanation": "Observe os nomes apresentados em uma narrativa ou cartão fictício. Se duas personagens aparecem juntas, o nome escrito pode ajudar a saber de quem cada ação fala. Um nome identifica, mas não descreve tudo sobre a pessoa, não determina suas qualidades e não permite concluir como sua família vive. Algumas pessoas compartilham o mesmo nome; por isso, o contexto também ajuda. Na turma, use exemplos inventados e não peça que ninguém escreva ou exponha seu nome real. Se alguém indicar uma forma de tratamento, escute e use-a com respeito.",
+    "workedExample": "Em uma história inventada, Lia empresta um livro a Ravi. A legenda “Ravi devolve o livro a Lia” usa os nomes para identificar quem recebe e quem devolve. Os nomes ajudam a distinguir as personagens nessa cena; não revelam outras informações sobre elas.",
+    "commonMistake": "Achar que um nome revela a personalidade, a origem ou a história familiar de alguém, ou tratar apelidos como autorização para desrespeitar a forma de tratamento escolhida.",
+    "priorKnowledge": [
+      "Reconhecer que uma história tem personagens e ações.",
+      "Distinguir uma palavra escrita de um desenho ou símbolo em materiais familiares."
+    ],
+    "keyConcepts": [
+      "nome",
+      "identificação",
+      "diferença",
+      "personagem",
+      "contexto",
+      "respeito",
+      "privacidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "NAME_IDENTIFIES_NOT_DESCRIBES",
+        "action": "Retome dois cartões fictícios e peça que a criança ligue cada nome à personagem indicada, separando identificação de características pessoais."
+      },
+      {
+        "errorFocus": "NAME_IS_NOT_UNIQUE",
+        "action": "Mostre personagens fictícias com o mesmo nome e use outra pista da história, explicando que nomes iguais não tornam pessoas iguais."
+      },
+      {
+        "errorFocus": "REAL_NAME_DISCLOSURE",
+        "action": "Substitua qualquer exemplo pessoal por personagens inventadas e permita resposta apontada, sem solicitar justificativa."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+      "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+      "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er02-fictional-character-cards",
+        "title": "Cartões de personagens inventadas",
+        "instructions": "Cartões fictícios mostram personagens e pequenas ações, sem usar nomes de estudantes.\n1. Leia os nomes e as ações de dois cartões.\n2. Associe cada ação à personagem indicada na legenda.\n3. Explique como o nome ajuda a distinguir quem fez cada ação.",
+        "steps": [
+          "Leia os nomes e as ações de dois cartões.",
+          "Associe cada ação à personagem indicada na legenda.",
+          "Explique como o nome ajuda a distinguir quem fez cada ação."
+        ],
+        "evidence": "Associação correta entre nome fictício, personagem e ação, com explicação de que o nome identifica naquela história.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "associa um cartão com modelagem.",
+            "developing": "identifica personagens por seus nomes em uma narrativa curta.",
+            "proficient": "explica a função de identificação sem inferir características não informadas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er02-story-labels",
+        "title": "Legendas que identificam",
+        "instructions": "Uma sequência ilustrada fictícia precisa de legendas com nomes de personagens.\n1. Observe cada cena e os nomes fictícios disponíveis.\n2. Escolha a legenda que identifica corretamente a personagem da ação.\n3. Revise se a legenda se limita ao que a cena mostra.",
+        "steps": [
+          "Observe cada cena e os nomes fictícios disponíveis.",
+          "Escolha a legenda que identifica corretamente a personagem da ação.",
+          "Revise se a legenda se limita ao que a cena mostra."
+        ],
+        "evidence": "Legenda que identifica a personagem e a ação sem incluir dados pessoais ou julgamentos.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "seleciona uma legenda com ajuda.",
+            "developing": "relaciona nome e personagem usando uma pista visual.",
+            "proficient": "escolhe e justifica a legenda com evidência da cena."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01er02-names-identify-and-differentiate-01",
+          "v1-ef01er02-names-identify-and-differentiate-02",
+          "v1-ef01er02-names-identify-and-differentiate-03",
+          "v1-ef01er02-names-identify-and-differentiate-04",
+          "v1-ef01er02-names-identify-and-differentiate-05",
+          "v1-ef01er02-names-identify-and-differentiate-06",
+          "v1-ef01er02-names-identify-and-differentiate-07",
+          "v1-ef01er02-names-identify-and-differentiate-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01er02-names-identify-and-differentiate-09",
+          "v1-ef01er02-names-identify-and-differentiate-10",
+          "v1-ef01er02-names-identify-and-differentiate-11",
+          "v1-ef01er02-names-identify-and-differentiate-12",
+          "v1-ef01er02-names-identify-and-differentiate-13",
+          "v1-ef01er02-names-identify-and-differentiate-14",
+          "v1-ef01er02-names-identify-and-differentiate-15",
+          "v1-ef01er02-names-identify-and-differentiate-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01er02-names-identify-and-differentiate-17",
+          "v1-ef01er02-names-identify-and-differentiate-18",
+          "v1-ef01er02-names-identify-and-differentiate-19",
+          "v1-ef01er02-names-identify-and-differentiate-20",
+          "v1-ef01er02-names-identify-and-differentiate-21",
+          "v1-ef01er02-names-identify-and-differentiate-22",
+          "v1-ef01er02-names-identify-and-differentiate-23",
+          "v1-ef01er02-names-identify-and-differentiate-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01er02-names-identify-and-differentiate-25",
+          "v1-ef01er02-names-identify-and-differentiate-26",
+          "v1-ef01er02-names-identify-and-differentiate-27",
+          "v1-ef01er02-names-identify-and-differentiate-28",
+          "v1-ef01er02-names-identify-and-differentiate-29",
+          "v1-ef01er02-names-identify-and-differentiate-30",
+          "v1-ef01er02-names-identify-and-differentiate-31",
+          "v1-ef01er02-names-identify-and-differentiate-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01er02-names-identify-and-differentiate-33",
+          "v1-ef01er02-names-identify-and-differentiate-34",
+          "v1-ef01er02-names-identify-and-differentiate-35",
+          "v1-ef01er02-names-identify-and-differentiate-36",
+          "v1-ef01er02-names-identify-and-differentiate-37",
+          "v1-ef01er02-names-identify-and-differentiate-38",
+          "v1-ef01er02-names-identify-and-differentiate-39",
+          "v1-ef01er02-names-identify-and-differentiate-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01ER02",
+        "descriptor": "Reconhecer que o seu nome e o das demais pessoas os identificam e os diferenciam.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 445
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-01",
+      "statement": "Em uma história inventada, Lia leva um livro. Que informação o nome Lia ajuda a identificar?",
+      "prompt": "Em uma história inventada, Lia leva um livro. Que informação o nome Lia ajuda a identificar?",
+      "options": [
+        "A personagem que leva o livro.",
+        "A personalidade da personagem",
+        "O endereço da personagem",
+        "O nome de todas as pessoas da história"
+      ],
+      "correctAnswer": "A personagem que leva o livro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A personalidade da personagem": [
+          "NAME_IDENTIFIES_CHARACTER"
+        ],
+        "O endereço da personagem": [
+          "NAME_IDENTIFIES_CHARACTER"
+        ],
+        "O nome de todas as pessoas da história": [
+          "NAME_IDENTIFIES_CHARACTER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_LIA",
+      "explanation": "O nome Lia identifica a personagem indicada na história.",
+      "hint": "Veja a quem a frase atribui a ação.",
+      "errorFocus": "NAME_IDENTIFIES_CHARACTER",
+      "feedback": {
+        "correct": "Boa observação: O nome Lia identifica a personagem indicada na história.",
+        "incorrect": "O nome Lia identifica a personagem indicada na história.",
+        "hint": "Veja a quem a frase atribui a ação.",
+        "errorFocus": "NAME_IDENTIFIES_CHARACTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-02",
+      "statement": "A legenda diz: “Ravi rega a planta”. Quem realiza a ação?",
+      "prompt": "A legenda diz: “Ravi rega a planta”. Quem realiza a ação?",
+      "options": [
+        "A planta",
+        "Ravi.",
+        "A pessoa que escreveu a legenda",
+        "Todas as personagens"
+      ],
+      "correctAnswer": "Ravi.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A planta": [
+          "NAME_ACTION_LINK"
+        ],
+        "A pessoa que escreveu a legenda": [
+          "NAME_ACTION_LINK"
+        ],
+        "Todas as personagens": [
+          "NAME_ACTION_LINK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CENA_DE_RAVI",
+      "explanation": "A legenda relaciona o nome Ravi à ação de regar.",
+      "hint": "Procure o nome ligado ao verbo rega.",
+      "errorFocus": "NAME_ACTION_LINK",
+      "feedback": {
+        "correct": "Boa observação: A legenda relaciona o nome Ravi à ação de regar.",
+        "incorrect": "A legenda relaciona o nome Ravi à ação de regar.",
+        "hint": "Procure o nome ligado ao verbo rega.",
+        "errorFocus": "NAME_ACTION_LINK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-03",
+      "statement": "Dois cartões mostram personagens diferentes chamadas Bia e Caio. O que os nomes ajudam a fazer?",
+      "prompt": "Dois cartões mostram personagens diferentes chamadas Bia e Caio. O que os nomes ajudam a fazer?",
+      "options": [
+        "Descobrir quem é mais gentil",
+        "Saber onde cada pessoa mora",
+        "Distinguir qual personagem aparece em cada cartão.",
+        "Escolher qual personagem vale mais"
+      ],
+      "correctAnswer": "Distinguir qual personagem aparece em cada cartão.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Descobrir quem é mais gentil": [
+          "NAMES_DISTINGUISH"
+        ],
+        "Saber onde cada pessoa mora": [
+          "NAMES_DISTINGUISH"
+        ],
+        "Escolher qual personagem vale mais": [
+          "NAMES_DISTINGUISH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DOIS_CARTOES_FICTICIOS",
+      "explanation": "Os nomes ajudam a saber de qual personagem cada cartão fala.",
+      "hint": "Pense em como localizar cada personagem.",
+      "errorFocus": "NAMES_DISTINGUISH",
+      "feedback": {
+        "correct": "Boa observação: Os nomes ajudam a saber de qual personagem cada cartão fala.",
+        "incorrect": "Os nomes ajudam a saber de qual personagem cada cartão fala.",
+        "hint": "Pense em como localizar cada personagem.",
+        "errorFocus": "NAMES_DISTINGUISH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-04",
+      "statement": "Uma lista fictícia tem os nomes Davi, Iara e Joana. O que ela permite reconhecer?",
+      "prompt": "Uma lista fictícia tem os nomes Davi, Iara e Joana. O que ela permite reconhecer?",
+      "options": [
+        "A idade real de cada personagem",
+        "Todas as qualidades de cada uma",
+        "A composição das famílias",
+        "Quais personagens são citadas na história."
+      ],
+      "correctAnswer": "Quais personagens são citadas na história.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A idade real de cada personagem": [
+          "NAME_LIST_SCOPE"
+        ],
+        "Todas as qualidades de cada uma": [
+          "NAME_LIST_SCOPE"
+        ],
+        "A composição das famílias": [
+          "NAME_LIST_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "LISTA_DE_PERSONAGENS",
+      "explanation": "A lista identifica personagens, mas não informa características que não foram registradas.",
+      "hint": "Use somente o que a lista apresenta.",
+      "errorFocus": "NAME_LIST_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A lista identifica personagens, mas não informa características que não foram registradas.",
+        "incorrect": "A lista identifica personagens, mas não informa características que não foram registradas.",
+        "hint": "Use somente o que a lista apresenta.",
+        "errorFocus": "NAME_LIST_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-05",
+      "statement": "“Nina entrega o livro a Tito.” Para que servem os dois nomes nesta frase?",
+      "prompt": "“Nina entrega o livro a Tito.” Para que servem os dois nomes nesta frase?",
+      "options": [
+        "Para identificar quem entrega e quem recebe o livro.",
+        "Para explicar por que gostam de livros",
+        "Para informar o endereço da biblioteca",
+        "Para mostrar que têm a mesma idade"
+      ],
+      "correctAnswer": "Para identificar quem entrega e quem recebe o livro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para explicar por que gostam de livros": [
+          "NAMES_IDENTIFY_ROLES"
+        ],
+        "Para informar o endereço da biblioteca": [
+          "NAMES_IDENTIFY_ROLES"
+        ],
+        "Para mostrar que têm a mesma idade": [
+          "NAMES_IDENTIFY_ROLES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "LEGENDA_DA_BIBLIOTECA",
+      "explanation": "Os nomes indicam a quem cada ação da frase se refere.",
+      "hint": "Associe cada nome ao verbo e à ação.",
+      "errorFocus": "NAMES_IDENTIFY_ROLES",
+      "feedback": {
+        "correct": "Boa observação: Os nomes indicam a quem cada ação da frase se refere.",
+        "incorrect": "Os nomes indicam a quem cada ação da frase se refere.",
+        "hint": "Associe cada nome ao verbo e à ação.",
+        "errorFocus": "NAMES_IDENTIFY_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-06",
+      "statement": "Dois personagens fictícios se chamam Leo. O que podemos concluir?",
+      "prompt": "Dois personagens fictícios se chamam Leo. O que podemos concluir?",
+      "options": [
+        "Eles são a mesma pessoa",
+        "Eles têm o mesmo nome, mas continuam sendo personagens diferentes.",
+        "Eles têm a mesma personalidade",
+        "Um dos nomes deve ser apagado"
+      ],
+      "correctAnswer": "Eles têm o mesmo nome, mas continuam sendo personagens diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Eles são a mesma pessoa": [
+          "SAME_NAME_DIFFERENT_PEOPLE"
+        ],
+        "Eles têm a mesma personalidade": [
+          "SAME_NAME_DIFFERENT_PEOPLE"
+        ],
+        "Um dos nomes deve ser apagado": [
+          "SAME_NAME_DIFFERENT_PEOPLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NOMES_IGUAIS",
+      "explanation": "Nomes iguais não tornam as pessoas iguais.",
+      "hint": "Compare o nome com as outras pistas da história.",
+      "errorFocus": "SAME_NAME_DIFFERENT_PEOPLE",
+      "feedback": {
+        "correct": "Boa observação: Nomes iguais não tornam as pessoas iguais.",
+        "incorrect": "Nomes iguais não tornam as pessoas iguais.",
+        "hint": "Compare o nome com as outras pistas da história.",
+        "errorFocus": "SAME_NAME_DIFFERENT_PEOPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-07",
+      "statement": "Uma personagem diz que prefere ser chamada de Ana. Qual resposta demonstra respeito?",
+      "prompt": "Uma personagem diz que prefere ser chamada de Ana. Qual resposta demonstra respeito?",
+      "options": [
+        "Inventar um apelido sem perguntar",
+        "Continuar usando um nome que ela não prefere",
+        "Usar Ana ao falar com ela.",
+        "Fazer a turma votar no nome dela"
+      ],
+      "correctAnswer": "Usar Ana ao falar com ela.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Inventar um apelido sem perguntar": [
+          "RESPECT_PREFERRED_NAME"
+        ],
+        "Continuar usando um nome que ela não prefere": [
+          "RESPECT_PREFERRED_NAME"
+        ],
+        "Fazer a turma votar no nome dela": [
+          "RESPECT_PREFERRED_NAME"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "APELIDO_RESPEITOSO",
+      "explanation": "Escutar e usar a forma de tratamento indicada demonstra respeito.",
+      "hint": "Escolha a atitude que considera o pedido da personagem.",
+      "errorFocus": "RESPECT_PREFERRED_NAME",
+      "feedback": {
+        "correct": "Boa observação: Escutar e usar a forma de tratamento indicada demonstra respeito.",
+        "incorrect": "Escutar e usar a forma de tratamento indicada demonstra respeito.",
+        "hint": "Escolha a atitude que considera o pedido da personagem.",
+        "errorFocus": "RESPECT_PREFERRED_NAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-08",
+      "statement": "Uma atividade pede exemplos de nomes, mas ninguém quer contar o próprio nome. Como a turma pode continuar?",
+      "prompt": "Uma atividade pede exemplos de nomes, mas ninguém quer contar o próprio nome. Como a turma pode continuar?",
+      "options": [
+        "Exigindo que todos contem seus nomes",
+        "Cancelando a participação de quem prefere não contar",
+        "Escrevendo nomes reais em um mural público",
+        "Usando nomes de personagens inventadas."
+      ],
+      "correctAnswer": "Usando nomes de personagens inventadas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigindo que todos contem seus nomes": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Cancelando a participação de quem prefere não contar": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Escrevendo nomes reais em um mural público": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ATIVIDADE_SEM_DADOS",
+      "explanation": "Personagens inventadas permitem praticar sem expor dados pessoais.",
+      "hint": "Procure uma opção que preserve a aprendizagem e a privacidade.",
+      "errorFocus": "PRIVACY_SAFE_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: Personagens inventadas permitem praticar sem expor dados pessoais.",
+        "incorrect": "Personagens inventadas permitem praticar sem expor dados pessoais.",
+        "hint": "Procure uma opção que preserve a aprendizagem e a privacidade.",
+        "errorFocus": "PRIVACY_SAFE_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-09",
+      "statement": "Na história, Omar segura a pipa e Bela observa. Qual nome identifica quem segura a pipa?",
+      "prompt": "Na história, Omar segura a pipa e Bela observa. Qual nome identifica quem segura a pipa?",
+      "options": [
+        "Omar.",
+        "Bela",
+        "Pipa",
+        "Observa"
+      ],
+      "correctAnswer": "Omar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Bela": [
+          "NAME_ACTION_LINK"
+        ],
+        "Pipa": [
+          "NAME_ACTION_LINK"
+        ],
+        "Observa": [
+          "NAME_ACTION_LINK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HISTORIA_DA_PIPA",
+      "explanation": "A frase associa Omar à ação de segurar a pipa.",
+      "hint": "Localize quem segura.",
+      "errorFocus": "NAME_ACTION_LINK",
+      "feedback": {
+        "correct": "Boa observação: A frase associa Omar à ação de segurar a pipa.",
+        "incorrect": "A frase associa Omar à ação de segurar a pipa.",
+        "hint": "Localize quem segura.",
+        "errorFocus": "NAME_ACTION_LINK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-10",
+      "statement": "Duas personagens emprestam livros e cada ficha tem um nome. Para que serve a etiqueta?",
+      "prompt": "Duas personagens emprestam livros e cada ficha tem um nome. Para que serve a etiqueta?",
+      "options": [
+        "Para revelar o que a personagem pensa",
+        "Para indicar de qual personagem é cada ficha.",
+        "Para ordenar pessoas por importância",
+        "Para mostrar a casa de cada personagem"
+      ],
+      "correctAnswer": "Para indicar de qual personagem é cada ficha.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Para revelar o que a personagem pensa": [
+          "LABEL_IDENTIFICATION"
+        ],
+        "Para ordenar pessoas por importância": [
+          "LABEL_IDENTIFICATION"
+        ],
+        "Para mostrar a casa de cada personagem": [
+          "LABEL_IDENTIFICATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "ETIQUETAS_DE_LIVROS_FICTICIOS",
+      "explanation": "A etiqueta identifica a ficha na atividade.",
+      "hint": "Pense em como encontrar a ficha certa.",
+      "errorFocus": "LABEL_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta identifica a ficha na atividade.",
+        "incorrect": "A etiqueta identifica a ficha na atividade.",
+        "hint": "Pense em como encontrar a ficha certa.",
+        "errorFocus": "LABEL_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-11",
+      "statement": "Uma narrativa tem Maria que pinta e Maria que canta. O que ajuda a diferenciá-las além do nome igual?",
+      "prompt": "Uma narrativa tem Maria que pinta e Maria que canta. O que ajuda a diferenciá-las além do nome igual?",
+      "options": [
+        "A ideia de que uma vale mais",
+        "Um endereço inventado sem aparecer na história",
+        "As ações descritas na narrativa.",
+        "Uma característica que não foi contada"
+      ],
+      "correctAnswer": "As ações descritas na narrativa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A ideia de que uma vale mais": [
+          "CONTEXT_WITH_SHARED_NAME"
+        ],
+        "Um endereço inventado sem aparecer na história": [
+          "CONTEXT_WITH_SHARED_NAME"
+        ],
+        "Uma característica que não foi contada": [
+          "CONTEXT_WITH_SHARED_NAME"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_MARIAS",
+      "explanation": "O contexto da ação distingue as personagens com o mesmo nome.",
+      "hint": "Use as pistas escritas junto a cada Maria.",
+      "errorFocus": "CONTEXT_WITH_SHARED_NAME",
+      "feedback": {
+        "correct": "Boa observação: O contexto da ação distingue as personagens com o mesmo nome.",
+        "incorrect": "O contexto da ação distingue as personagens com o mesmo nome.",
+        "hint": "Use as pistas escritas junto a cada Maria.",
+        "errorFocus": "CONTEXT_WITH_SHARED_NAME"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-12",
+      "statement": "Um cartaz de teatro escolar inventado lista personagens pelo nome. O que a lista informa?",
+      "prompt": "Um cartaz de teatro escolar inventado lista personagens pelo nome. O que a lista informa?",
+      "options": [
+        "O nome verdadeiro dos estudantes atores",
+        "Como cada personagem se comporta em toda situação",
+        "A história familiar de cada personagem",
+        "Quais personagens fazem parte da peça."
+      ],
+      "correctAnswer": "Quais personagens fazem parte da peça.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O nome verdadeiro dos estudantes atores": [
+          "FICTIONAL_LIST_SCOPE"
+        ],
+        "Como cada personagem se comporta em toda situação": [
+          "FICTIONAL_LIST_SCOPE"
+        ],
+        "A história familiar de cada personagem": [
+          "FICTIONAL_LIST_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CARTAZ_DE_TEATRO_FICTICIO",
+      "explanation": "O cartaz identifica personagens da peça, não dados reais de estudantes.",
+      "hint": "Separe personagem fictícia de pessoa real.",
+      "errorFocus": "FICTIONAL_LIST_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O cartaz identifica personagens da peça, não dados reais de estudantes.",
+        "incorrect": "O cartaz identifica personagens da peça, não dados reais de estudantes.",
+        "hint": "Separe personagem fictícia de pessoa real.",
+        "errorFocus": "FICTIONAL_LIST_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-13",
+      "statement": "Uma legenda diz “A menina pega a bola”, mas a história usa o nome Jo. Qual revisão ajuda a identificar a personagem?",
+      "prompt": "Uma legenda diz “A menina pega a bola”, mas a história usa o nome Jo. Qual revisão ajuda a identificar a personagem?",
+      "options": [
+        "“Jo pega a bola.”",
+        "“A menina é sempre rápida.”",
+        "“A bola pertence a Jo.”",
+        "“Toda pessoa gosta de jogar.”"
+      ],
+      "correctAnswer": "“Jo pega a bola.”",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“A menina é sempre rápida.”": [
+          "PRECISE_NAME_REFERENCE"
+        ],
+        "“A bola pertence a Jo.”": [
+          "PRECISE_NAME_REFERENCE"
+        ],
+        "“Toda pessoa gosta de jogar.”": [
+          "PRECISE_NAME_REFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_LEGENDA",
+      "explanation": "Usar o nome da personagem torna claro de quem fala a legenda.",
+      "hint": "Troque apenas a referência genérica pelo nome informado.",
+      "errorFocus": "PRECISE_NAME_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Usar o nome da personagem torna claro de quem fala a legenda.",
+        "incorrect": "Usar o nome da personagem torna claro de quem fala a legenda.",
+        "hint": "Troque apenas a referência genérica pelo nome informado.",
+        "errorFocus": "PRECISE_NAME_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-14",
+      "statement": "O cartão apresenta o nome fictício Luan, mas não descreve seu jeito. O que não podemos concluir?",
+      "prompt": "O cartão apresenta o nome fictício Luan, mas não descreve seu jeito. O que não podemos concluir?",
+      "options": [
+        "Que o cartão identifica uma personagem chamada Luan",
+        "Como Luan é em todas as situações.",
+        "Que existe um nome escrito",
+        "Que o cartão pode ser lido"
+      ],
+      "correctAnswer": "Como Luan é em todas as situações.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que o cartão identifica uma personagem chamada Luan": [
+          "NO_TRAIT_INFERENCE"
+        ],
+        "Que existe um nome escrito": [
+          "NO_TRAIT_INFERENCE"
+        ],
+        "Que o cartão pode ser lido": [
+          "NO_TRAIT_INFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAO_DE_NOME_E_QUALIDADE",
+      "explanation": "Um nome sozinho não informa a personalidade da personagem.",
+      "hint": "Veja se o cartão descreve alguma qualidade.",
+      "errorFocus": "NO_TRAIT_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Um nome sozinho não informa a personalidade da personagem.",
+        "incorrect": "Um nome sozinho não informa a personalidade da personagem.",
+        "hint": "Veja se o cartão descreve alguma qualidade.",
+        "errorFocus": "NO_TRAIT_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-15",
+      "statement": "Uma personagem pede para não ser chamada por um apelido. O que deve fazer quem conversa com ela?",
+      "prompt": "Uma personagem pede para não ser chamada por um apelido. O que deve fazer quem conversa com ela?",
+      "options": [
+        "Usar o apelido para fazer graça",
+        "Pedir que outras pessoas escolham por ela",
+        "Respeitar o pedido e usar o nome indicado.",
+        "Divulgar o pedido em um cartaz"
+      ],
+      "correctAnswer": "Respeitar o pedido e usar o nome indicado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Usar o apelido para fazer graça": [
+          "RESPECT_NAME_REQUEST"
+        ],
+        "Pedir que outras pessoas escolham por ela": [
+          "RESPECT_NAME_REQUEST"
+        ],
+        "Divulgar o pedido em um cartaz": [
+          "RESPECT_NAME_REQUEST"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCOLHA_DE_TRATAMENTO",
+      "explanation": "A forma de tratamento deve ser respeitada sem expor a personagem.",
+      "hint": "Considere o pedido diretamente feito pela personagem.",
+      "errorFocus": "RESPECT_NAME_REQUEST",
+      "feedback": {
+        "correct": "Boa observação: A forma de tratamento deve ser respeitada sem expor a personagem.",
+        "incorrect": "A forma de tratamento deve ser respeitada sem expor a personagem.",
+        "hint": "Considere o pedido diretamente feito pela personagem.",
+        "errorFocus": "RESPECT_NAME_REQUEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-16",
+      "statement": "Para combinar personagem e fala, qual material protege melhor a privacidade dos estudantes?",
+      "prompt": "Para combinar personagem e fala, qual material protege melhor a privacidade dos estudantes?",
+      "options": [
+        "Uma lista pública de nomes da turma",
+        "Fotos de documentos pessoais",
+        "Uma tabela com endereços reais",
+        "Cartões com nomes e situações fictícias."
+      ],
+      "correctAnswer": "Cartões com nomes e situações fictícias.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma lista pública de nomes da turma": [
+          "SAFE_CLASSROOM_MATERIAL"
+        ],
+        "Fotos de documentos pessoais": [
+          "SAFE_CLASSROOM_MATERIAL"
+        ],
+        "Uma tabela com endereços reais": [
+          "SAFE_CLASSROOM_MATERIAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "JOGO_DE_PARES_SEGURO",
+      "explanation": "Materiais fictícios permitem realizar o jogo sem coletar dados reais.",
+      "hint": "Escolha um material que não identifique estudantes reais.",
+      "errorFocus": "SAFE_CLASSROOM_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: Materiais fictícios permitem realizar o jogo sem coletar dados reais.",
+        "incorrect": "Materiais fictícios permitem realizar o jogo sem coletar dados reais.",
+        "hint": "Escolha um material que não identifique estudantes reais.",
+        "errorFocus": "SAFE_CLASSROOM_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-17",
+      "statement": "O roteiro diz que Cora planta sementes e Nilo as rega. Como os nomes ajudam na leitura?",
+      "prompt": "O roteiro diz que Cora planta sementes e Nilo as rega. Como os nomes ajudam na leitura?",
+      "options": [
+        "Mostram qual personagem realiza cada ação.",
+        "Explicam quem é mais responsável",
+        "Revelam a idade das personagens",
+        "Provam que só Cora gosta de plantas"
+      ],
+      "correctAnswer": "Mostram qual personagem realiza cada ação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Explicam quem é mais responsável": [
+          "NAMES_MAP_ACTIONS"
+        ],
+        "Revelam a idade das personagens": [
+          "NAMES_MAP_ACTIONS"
+        ],
+        "Provam que só Cora gosta de plantas": [
+          "NAMES_MAP_ACTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ROTEIRO_DA_HORTA",
+      "explanation": "Os nomes permitem acompanhar quem faz o quê no roteiro.",
+      "hint": "Associe cada nome ao verbo da frase.",
+      "errorFocus": "NAMES_MAP_ACTIONS",
+      "feedback": {
+        "correct": "Boa observação: Os nomes permitem acompanhar quem faz o quê no roteiro.",
+        "incorrect": "Os nomes permitem acompanhar quem faz o quê no roteiro.",
+        "hint": "Associe cada nome ao verbo da frase.",
+        "errorFocus": "NAMES_MAP_ACTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-18",
+      "statement": "Dois cartões mostram personagens chamadas Sam; uma lê e outra desenha. O que distingue as fichas?",
+      "prompt": "Dois cartões mostram personagens chamadas Sam; uma lê e outra desenha. O que distingue as fichas?",
+      "options": [
+        "A suposição de que têm personalidades opostas",
+        "As ações e as pistas de cada cartão.",
+        "A ideia de que um nome é mais importante",
+        "Um dado privado que não aparece"
+      ],
+      "correctAnswer": "As ações e as pistas de cada cartão.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A suposição de que têm personalidades opostas": [
+          "SHARED_NAME_CONTEXT"
+        ],
+        "A ideia de que um nome é mais importante": [
+          "SHARED_NAME_CONTEXT"
+        ],
+        "Um dado privado que não aparece": [
+          "SHARED_NAME_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_CARTOES_DE_SAM",
+      "explanation": "Com nomes iguais, outras pistas do contexto ajudam a distinguir as personagens.",
+      "hint": "Compare o que cada cartão mostra.",
+      "errorFocus": "SHARED_NAME_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Com nomes iguais, outras pistas do contexto ajudam a distinguir as personagens.",
+        "incorrect": "Com nomes iguais, outras pistas do contexto ajudam a distinguir as personagens.",
+        "hint": "Compare o que cada cartão mostra.",
+        "errorFocus": "SHARED_NAME_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-19",
+      "statement": "Uma criança diz que alguém com certo nome deve ser corajoso. Qual avaliação é adequada?",
+      "prompt": "Uma criança diz que alguém com certo nome deve ser corajoso. Qual avaliação é adequada?",
+      "options": [
+        "A afirmação é sempre verdadeira",
+        "O nome define todas as atitudes",
+        "O nome identifica a pessoa, mas não prova essa qualidade.",
+        "A qualidade pode ser escolhida pelo grupo"
+      ],
+      "correctAnswer": "O nome identifica a pessoa, mas não prova essa qualidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A afirmação é sempre verdadeira": [
+          "NAME_NOT_PERSONALITY"
+        ],
+        "O nome define todas as atitudes": [
+          "NAME_NOT_PERSONALITY"
+        ],
+        "A qualidade pode ser escolhida pelo grupo": [
+          "NAME_NOT_PERSONALITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NOME_NAO_DEFINE_QUALIDADE",
+      "explanation": "Não se deve inferir personalidade a partir de um nome.",
+      "hint": "Diferencie identificação de julgamento.",
+      "errorFocus": "NAME_NOT_PERSONALITY",
+      "feedback": {
+        "correct": "Boa observação: Não se deve inferir personalidade a partir de um nome.",
+        "incorrect": "Não se deve inferir personalidade a partir de um nome.",
+        "hint": "Diferencie identificação de julgamento.",
+        "errorFocus": "NAME_NOT_PERSONALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-20",
+      "statement": "Uma biblioteca de faz de conta precisa identificar a personagem que pegou cada livro. O que incluir na ficha?",
+      "prompt": "Uma biblioteca de faz de conta precisa identificar a personagem que pegou cada livro. O que incluir na ficha?",
+      "options": [
+        "O endereço real de um estudante",
+        "Uma foto de documento",
+        "Uma nota sobre a família da personagem",
+        "Um nome fictício associado ao livro emprestado."
+      ],
+      "correctAnswer": "Um nome fictício associado ao livro emprestado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O endereço real de um estudante": [
+          "MINIMAL_FICTIONAL_DATA"
+        ],
+        "Uma foto de documento": [
+          "MINIMAL_FICTIONAL_DATA"
+        ],
+        "Uma nota sobre a família da personagem": [
+          "MINIMAL_FICTIONAL_DATA"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FICHA_DE_EMPRESTIMO_FICTICIA",
+      "explanation": "Um nome fictício atende à tarefa sem coletar informações desnecessárias.",
+      "hint": "Use apenas a informação necessária à história.",
+      "errorFocus": "MINIMAL_FICTIONAL_DATA",
+      "feedback": {
+        "correct": "Boa observação: Um nome fictício atende à tarefa sem coletar informações desnecessárias.",
+        "incorrect": "Um nome fictício atende à tarefa sem coletar informações desnecessárias.",
+        "hint": "Use apenas a informação necessária à história.",
+        "errorFocus": "MINIMAL_FICTIONAL_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-21",
+      "statement": "Na narrativa, “Bento agradece a Imani”. Quem recebe o agradecimento?",
+      "prompt": "Na narrativa, “Bento agradece a Imani”. Quem recebe o agradecimento?",
+      "options": [
+        "Imani.",
+        "Bento",
+        "A pessoa narradora",
+        "Todas as pessoas leitoras"
+      ],
+      "correctAnswer": "Imani.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Bento": [
+          "ROLE_FROM_NAME_CONTEXT"
+        ],
+        "A pessoa narradora": [
+          "ROLE_FROM_NAME_CONTEXT"
+        ],
+        "Todas as pessoas leitoras": [
+          "ROLE_FROM_NAME_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FALA_DE_PERSONAGEM",
+      "explanation": "A frase mostra Bento agradecendo a Imani.",
+      "hint": "Observe quem aparece depois da palavra a.",
+      "errorFocus": "ROLE_FROM_NAME_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A frase mostra Bento agradecendo a Imani.",
+        "incorrect": "A frase mostra Bento agradecendo a Imani.",
+        "hint": "Observe quem aparece depois da palavra a.",
+        "errorFocus": "ROLE_FROM_NAME_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-22",
+      "statement": "Uma legenda usa o apelido que a personagem não prefere. Que revisão é mais respeitosa?",
+      "prompt": "Uma legenda usa o apelido que a personagem não prefere. Que revisão é mais respeitosa?",
+      "options": [
+        "Manter o apelido porque é engraçado",
+        "Substituir pelo nome ou forma de tratamento que a personagem indicou.",
+        "Perguntar à plateia qual nome prefere",
+        "Apagar a personagem da história"
+      ],
+      "correctAnswer": "Substituir pelo nome ou forma de tratamento que a personagem indicou.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Manter o apelido porque é engraçado": [
+          "RESPECT_SELF_IDENTIFICATION"
+        ],
+        "Perguntar à plateia qual nome prefere": [
+          "RESPECT_SELF_IDENTIFICATION"
+        ],
+        "Apagar a personagem da história": [
+          "RESPECT_SELF_IDENTIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CORRECAO_DE_CHAMADA",
+      "explanation": "A revisão considera a forma de tratamento que a personagem pediu.",
+      "hint": "Use o pedido da própria personagem como pista.",
+      "errorFocus": "RESPECT_SELF_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A revisão considera a forma de tratamento que a personagem pediu.",
+        "incorrect": "A revisão considera a forma de tratamento que a personagem pediu.",
+        "hint": "Use o pedido da própria personagem como pista.",
+        "errorFocus": "RESPECT_SELF_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-23",
+      "statement": "Uma ficha apresenta o nome Tainá e a ação “organiza os pincéis”. O que ajuda a saber de quem é a ação?",
+      "prompt": "Uma ficha apresenta o nome Tainá e a ação “organiza os pincéis”. O que ajuda a saber de quem é a ação?",
+      "options": [
+        "Uma conclusão sobre sua origem",
+        "Uma característica inventada pelo leitor",
+        "O nome junto da ação descrita.",
+        "Uma comparação de valor entre personagens"
+      ],
+      "correctAnswer": "O nome junto da ação descrita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma conclusão sobre sua origem": [
+          "NAME_PLUS_CONTEXT"
+        ],
+        "Uma característica inventada pelo leitor": [
+          "NAME_PLUS_CONTEXT"
+        ],
+        "Uma comparação de valor entre personagens": [
+          "NAME_PLUS_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "NOME_E_OUTRAS_PISTAS",
+      "explanation": "A ficha identifica a personagem pelo nome e pelo contexto da ação.",
+      "hint": "Use as informações escritas na ficha.",
+      "errorFocus": "NAME_PLUS_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A ficha identifica a personagem pelo nome e pelo contexto da ação.",
+        "incorrect": "A ficha identifica a personagem pelo nome e pelo contexto da ação.",
+        "hint": "Use as informações escritas na ficha.",
+        "errorFocus": "NAME_PLUS_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-24",
+      "statement": "A turma quer expor nomes reais em um painel aberto. Qual alternativa mantém o objetivo de aprendizagem?",
+      "prompt": "A turma quer expor nomes reais em um painel aberto. Qual alternativa mantém o objetivo de aprendizagem?",
+      "options": [
+        "Publicar uma lista de nomes e fotos dos estudantes",
+        "Pedir nomes completos em voz alta",
+        "Fotografar documentos para organizar as fichas",
+        "Criar um painel de personagens fictícias com nomes inventados."
+      ],
+      "correctAnswer": "Criar um painel de personagens fictícias com nomes inventados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Publicar uma lista de nomes e fotos dos estudantes": [
+          "PUBLIC_DISPLAY_PRIVACY"
+        ],
+        "Pedir nomes completos em voz alta": [
+          "PUBLIC_DISPLAY_PRIVACY"
+        ],
+        "Fotografar documentos para organizar as fichas": [
+          "PUBLIC_DISPLAY_PRIVACY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PAINEL_DE_IDENTIFICACAO",
+      "explanation": "O painel fictício ensina identificação sem expor dados pessoais.",
+      "hint": "Mantenha a atividade e retire dados reais.",
+      "errorFocus": "PUBLIC_DISPLAY_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: O painel fictício ensina identificação sem expor dados pessoais.",
+        "incorrect": "O painel fictício ensina identificação sem expor dados pessoais.",
+        "hint": "Mantenha a atividade e retire dados reais.",
+        "errorFocus": "PUBLIC_DISPLAY_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-25",
+      "statement": "Na história, Eva monta a barraca e Ivo organiza as frutas. O que os nomes esclarecem?",
+      "prompt": "Na história, Eva monta a barraca e Ivo organiza as frutas. O que os nomes esclarecem?",
+      "options": [
+        "Quem realiza cada ação da sequência.",
+        "Qual personagem merece ganhar",
+        "A origem das frutas",
+        "A idade exata de cada personagem"
+      ],
+      "correctAnswer": "Quem realiza cada ação da sequência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual personagem merece ganhar": [
+          "NAMES_TRACK_CHARACTERS"
+        ],
+        "A origem das frutas": [
+          "NAMES_TRACK_CHARACTERS"
+        ],
+        "A idade exata de cada personagem": [
+          "NAMES_TRACK_CHARACTERS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SEQUENCIA_DA_FEIRA",
+      "explanation": "Os nomes ajudam a acompanhar as ações de personagens diferentes.",
+      "hint": "Leia cada nome junto ao verbo.",
+      "errorFocus": "NAMES_TRACK_CHARACTERS",
+      "feedback": {
+        "correct": "Boa observação: Os nomes ajudam a acompanhar as ações de personagens diferentes.",
+        "incorrect": "Os nomes ajudam a acompanhar as ações de personagens diferentes.",
+        "hint": "Leia cada nome junto ao verbo.",
+        "errorFocus": "NAMES_TRACK_CHARACTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-26",
+      "statement": "Dois cartões usam o nome Ana. Como localizar a Ana que toca tambor?",
+      "prompt": "Dois cartões usam o nome Ana. Como localizar a Ana que toca tambor?",
+      "options": [
+        "Escolhendo uma Ana ao acaso",
+        "Usando a ação descrita no cartão.",
+        "Concluindo que as duas tocam tambor",
+        "Inventando uma característica"
+      ],
+      "correctAnswer": "Usando a ação descrita no cartão.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolhendo uma Ana ao acaso": [
+          "CONTEXT_DISAMBIGUATES"
+        ],
+        "Concluindo que as duas tocam tambor": [
+          "CONTEXT_DISAMBIGUATES"
+        ],
+        "Inventando uma característica": [
+          "CONTEXT_DISAMBIGUATES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DOIS_CARTOES_DE_ANA",
+      "explanation": "A ação escrita diferencia os cartões quando o nome se repete.",
+      "hint": "Procure a pista sobre o tambor.",
+      "errorFocus": "CONTEXT_DISAMBIGUATES",
+      "feedback": {
+        "correct": "Boa observação: A ação escrita diferencia os cartões quando o nome se repete.",
+        "incorrect": "A ação escrita diferencia os cartões quando o nome se repete.",
+        "hint": "Procure a pista sobre o tambor.",
+        "errorFocus": "CONTEXT_DISAMBIGUATES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-27",
+      "statement": "Uma ficha traz apenas o nome Zeca. Qual informação ela identifica e qual não informa?",
+      "prompt": "Uma ficha traz apenas o nome Zeca. Qual informação ela identifica e qual não informa?",
+      "options": [
+        "Informa sua personalidade e seu endereço",
+        "Mostra que todas as pessoas se chamam Zeca",
+        "Identifica uma personagem chamada Zeca, mas não descreve seu jeito.",
+        "Prova que Zeca é um estudante real"
+      ],
+      "correctAnswer": "Identifica uma personagem chamada Zeca, mas não descreve seu jeito.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Informa sua personalidade e seu endereço": [
+          "IDENTIFICATION_LIMIT"
+        ],
+        "Mostra que todas as pessoas se chamam Zeca": [
+          "IDENTIFICATION_LIMIT"
+        ],
+        "Prova que Zeca é um estudante real": [
+          "IDENTIFICATION_LIMIT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FICHA_DE_PERSONAGEM_INCOMPLETA",
+      "explanation": "O nome identifica no material, mas não fornece atributos ausentes.",
+      "hint": "Separe o que está escrito do que não está.",
+      "errorFocus": "IDENTIFICATION_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: O nome identifica no material, mas não fornece atributos ausentes.",
+        "incorrect": "O nome identifica no material, mas não fornece atributos ausentes.",
+        "hint": "Separe o que está escrito do que não está.",
+        "errorFocus": "IDENTIFICATION_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-28",
+      "statement": "Um convite de faz de conta precisa dizer quem contará uma história. Qual frase é clara?",
+      "prompt": "Um convite de faz de conta precisa dizer quem contará uma história. Qual frase é clara?",
+      "options": [
+        "“Alguém contará algo de sua casa.”",
+        "“A pessoa mais importante falará.”",
+        "“Todos devem revelar um nome verdadeiro.”",
+        "“A personagem Rui contará a história.”"
+      ],
+      "correctAnswer": "“A personagem Rui contará a história.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Alguém contará algo de sua casa.”": [
+          "CLEAR_FICTIONAL_REFERENCE"
+        ],
+        "“A pessoa mais importante falará.”": [
+          "CLEAR_FICTIONAL_REFERENCE"
+        ],
+        "“Todos devem revelar um nome verdadeiro.”": [
+          "CLEAR_FICTIONAL_REFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CONVITE_FICTICIO",
+      "explanation": "O nome fictício identifica o personagem anunciado.",
+      "hint": "Prefira uma frase específica e segura.",
+      "errorFocus": "CLEAR_FICTIONAL_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: O nome fictício identifica o personagem anunciado.",
+        "incorrect": "O nome fictício identifica o personagem anunciado.",
+        "hint": "Prefira uma frase específica e segura.",
+        "errorFocus": "CLEAR_FICTIONAL_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-29",
+      "statement": "Por que é importante usar a forma de tratamento que alguém pediu?",
+      "prompt": "Por que é importante usar a forma de tratamento que alguém pediu?",
+      "options": [
+        "Porque reconhecer e respeitar como a pessoa quer ser chamada favorece uma convivência respeitosa.",
+        "Porque o nome conta toda a vida da pessoa",
+        "Porque nomes iguais devem ser proibidos",
+        "Porque o grupo pode escolher por ela"
+      ],
+      "correctAnswer": "Porque reconhecer e respeitar como a pessoa quer ser chamada favorece uma convivência respeitosa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque o nome conta toda a vida da pessoa": [
+          "RESPECTFUL_ADDRESS"
+        ],
+        "Porque nomes iguais devem ser proibidos": [
+          "RESPECTFUL_ADDRESS"
+        ],
+        "Porque o grupo pode escolher por ela": [
+          "RESPECTFUL_ADDRESS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RESPEITO_AO_NOME",
+      "explanation": "Escutar a forma de tratamento é uma atitude de respeito.",
+      "hint": "Pense na convivência, não em uma regra sobre nomes.",
+      "errorFocus": "RESPECTFUL_ADDRESS",
+      "feedback": {
+        "correct": "Boa observação: Escutar a forma de tratamento é uma atitude de respeito.",
+        "incorrect": "Escutar a forma de tratamento é uma atitude de respeito.",
+        "hint": "Pense na convivência, não em uma regra sobre nomes.",
+        "errorFocus": "RESPECTFUL_ADDRESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-30",
+      "statement": "“O nome identifica uma personagem e também revela tudo sobre ela.” Qual parte precisa ser corrigida?",
+      "prompt": "“O nome identifica uma personagem e também revela tudo sobre ela.” Qual parte precisa ser corrigida?",
+      "options": [
+        "O nome pode aparecer numa história",
+        "O nome ajuda a identificar, mas não revela tudo sobre a personagem.",
+        "Personagens podem ter nomes",
+        "Uma legenda pode identificar uma ação"
+      ],
+      "correctAnswer": "O nome ajuda a identificar, mas não revela tudo sobre a personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome pode aparecer numa história": [
+          "NAME_SCOPE"
+        ],
+        "Personagens podem ter nomes": [
+          "NAME_SCOPE"
+        ],
+        "Uma legenda pode identificar uma ação": [
+          "NAME_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AFIRMACAO_SOBRE_NOME",
+      "explanation": "O nome não substitui outras evidências sobre uma pessoa.",
+      "hint": "Mantenha a função de identificar e retire a generalização.",
+      "errorFocus": "NAME_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O nome não substitui outras evidências sobre uma pessoa.",
+        "incorrect": "O nome não substitui outras evidências sobre uma pessoa.",
+        "hint": "Mantenha a função de identificar e retire a generalização.",
+        "errorFocus": "NAME_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-31",
+      "statement": "Qual legenda identifica melhor quem levou o mapa: “alguém levou” ou “Mila levou”?",
+      "prompt": "Qual legenda identifica melhor quem levou o mapa: “alguém levou” ou “Mila levou”?",
+      "options": [
+        "“Alguém levou”, sempre que a personagem tem nome",
+        "As duas legendas identificam personagens diferentes",
+        "“Mila levou”, se esse nome aparece na história.",
+        "Nenhuma legenda pode usar nomes fictícios"
+      ],
+      "correctAnswer": "“Mila levou”, se esse nome aparece na história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Alguém levou”, sempre que a personagem tem nome": [
+          "SPECIFIC_REFERENCE"
+        ],
+        "As duas legendas identificam personagens diferentes": [
+          "SPECIFIC_REFERENCE"
+        ],
+        "Nenhuma legenda pode usar nomes fictícios": [
+          "SPECIFIC_REFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LEGENDA_COM_E_SEM_NOME",
+      "explanation": "O nome informado torna a referência mais específica na narrativa.",
+      "hint": "Confira qual versão usa a pista disponível.",
+      "errorFocus": "SPECIFIC_REFERENCE",
+      "feedback": {
+        "correct": "Boa observação: O nome informado torna a referência mais específica na narrativa.",
+        "incorrect": "O nome informado torna a referência mais específica na narrativa.",
+        "hint": "Confira qual versão usa a pista disponível.",
+        "errorFocus": "SPECIFIC_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-32",
+      "statement": "Uma roda quer praticar nomes que identificam personagens. Qual regra de participação é adequada?",
+      "prompt": "Uma roda quer praticar nomes que identificam personagens. Qual regra de participação é adequada?",
+      "options": [
+        "Cada pessoa deve dizer seu nome completo",
+        "Só participa quem mostra uma foto pessoal",
+        "Os nomes devem ficar expostos depois da aula",
+        "Todos podem usar personagens inventadas e ninguém precisa contar dados próprios."
+      ],
+      "correctAnswer": "Todos podem usar personagens inventadas e ninguém precisa contar dados próprios.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Cada pessoa deve dizer seu nome completo": [
+          "PRIVACY_IN_PARTICIPATION"
+        ],
+        "Só participa quem mostra uma foto pessoal": [
+          "PRIVACY_IN_PARTICIPATION"
+        ],
+        "Os nomes devem ficar expostos depois da aula": [
+          "PRIVACY_IN_PARTICIPATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RODA_DE_HISTORIAS_SEM_EXPOSICAO",
+      "explanation": "A atividade fictícia protege a privacidade e mantém a participação aberta.",
+      "hint": "Escolha a regra que permite participar sem revelar dados.",
+      "errorFocus": "PRIVACY_IN_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: A atividade fictícia protege a privacidade e mantém a participação aberta.",
+        "incorrect": "A atividade fictícia protege a privacidade e mantém a participação aberta.",
+        "hint": "Escolha a regra que permite participar sem revelar dados.",
+        "errorFocus": "PRIVACY_IN_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-33",
+      "statement": "Qual é uma função de um nome em uma história?",
+      "prompt": "Qual é uma função de um nome em uma história?",
+      "options": [
+        "Ajudar a identificar de qual personagem se fala.",
+        "Contar todas as qualidades da pessoa",
+        "Informar sempre o endereço",
+        "Determinar quem é melhor"
+      ],
+      "correctAnswer": "Ajudar a identificar de qual personagem se fala.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Contar todas as qualidades da pessoa": [
+          "NAME_IDENTIFICATION_REVIEW"
+        ],
+        "Informar sempre o endereço": [
+          "NAME_IDENTIFICATION_REVIEW"
+        ],
+        "Determinar quem é melhor": [
+          "NAME_IDENTIFICATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CARTAO_DE_REVISAO_NOME",
+      "explanation": "O nome identifica a personagem no contexto apresentado.",
+      "hint": "Lembre-se de como as legendas apontam personagens.",
+      "errorFocus": "NAME_IDENTIFICATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O nome identifica a personagem no contexto apresentado.",
+        "incorrect": "O nome identifica a personagem no contexto apresentado.",
+        "hint": "Lembre-se de como as legendas apontam personagens.",
+        "errorFocus": "NAME_IDENTIFICATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-34",
+      "statement": "“Luca abre a janela.” Qual é o nome associado à ação?",
+      "prompt": "“Luca abre a janela.” Qual é o nome associado à ação?",
+      "options": [
+        "Janela",
+        "Luca.",
+        "Abre",
+        "Nenhuma personagem"
+      ],
+      "correctAnswer": "Luca.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Janela": [
+          "NAME_ACTION_REVIEW"
+        ],
+        "Abre": [
+          "NAME_ACTION_REVIEW"
+        ],
+        "Nenhuma personagem": [
+          "NAME_ACTION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LEGENDA_DE_REVISAO",
+      "explanation": "A frase relaciona Luca a abrir a janela.",
+      "hint": "Procure quem realiza a ação.",
+      "errorFocus": "NAME_ACTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A frase relaciona Luca a abrir a janela.",
+        "incorrect": "A frase relaciona Luca a abrir a janela.",
+        "hint": "Procure quem realiza a ação.",
+        "errorFocus": "NAME_ACTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-35",
+      "statement": "Duas personagens se chamam Beto. O que pode diferenciá-las na história?",
+      "prompt": "Duas personagens se chamam Beto. O que pode diferenciá-las na história?",
+      "options": [
+        "O julgamento de que uma é melhor",
+        "Uma informação privada presumida",
+        "As ações ou outras pistas do contexto.",
+        "A retirada de um dos nomes"
+      ],
+      "correctAnswer": "As ações ou outras pistas do contexto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O julgamento de que uma é melhor": [
+          "CONTEXT_REVIEW"
+        ],
+        "Uma informação privada presumida": [
+          "CONTEXT_REVIEW"
+        ],
+        "A retirada de um dos nomes": [
+          "CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NOMES_REPETIDOS_REVISAO",
+      "explanation": "O contexto permite distinguir personagens com nomes iguais.",
+      "hint": "Use as pistas que acompanham cada personagem.",
+      "errorFocus": "CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O contexto permite distinguir personagens com nomes iguais.",
+        "incorrect": "O contexto permite distinguir personagens com nomes iguais.",
+        "hint": "Use as pistas que acompanham cada personagem.",
+        "errorFocus": "CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-36",
+      "statement": "Uma personagem pede que usem seu nome escolhido. Qual atitude é respeitosa?",
+      "prompt": "Uma personagem pede que usem seu nome escolhido. Qual atitude é respeitosa?",
+      "options": [
+        "Ignorar o pedido",
+        "Criar um apelido sem perguntar",
+        "Expor o pedido para a turma rir",
+        "Usar o nome que ela indicou."
+      ],
+      "correctAnswer": "Usar o nome que ela indicou.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ignorar o pedido": [
+          "RESPECT_REQUEST_REVIEW"
+        ],
+        "Criar um apelido sem perguntar": [
+          "RESPECT_REQUEST_REVIEW"
+        ],
+        "Expor o pedido para a turma rir": [
+          "RESPECT_REQUEST_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FORMA_DE_TRATAMENTO_REVISAO",
+      "explanation": "Respeitar o pedido demonstra atenção e consideração.",
+      "hint": "Considere o que a personagem solicitou.",
+      "errorFocus": "RESPECT_REQUEST_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Respeitar o pedido demonstra atenção e consideração.",
+        "incorrect": "Respeitar o pedido demonstra atenção e consideração.",
+        "hint": "Considere o que a personagem solicitou.",
+        "errorFocus": "RESPECT_REQUEST_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-37",
+      "statement": "Uma ficha contém o nome Iara, sem outras informações. O que sabemos?",
+      "prompt": "Uma ficha contém o nome Iara, sem outras informações. O que sabemos?",
+      "options": [
+        "Que a ficha identifica uma personagem chamada Iara.",
+        "Como Iara age em todas as situações",
+        "Onde Iara mora",
+        "Quem são seus familiares"
+      ],
+      "correctAnswer": "Que a ficha identifica uma personagem chamada Iara.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como Iara age em todas as situações": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Onde Iara mora": [
+          "SOURCE_LIMIT_REVIEW"
+        ],
+        "Quem são seus familiares": [
+          "SOURCE_LIMIT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FICHA_SEM_DESCRICAO_REVISAO",
+      "explanation": "Só é possível afirmar o que a ficha informa.",
+      "hint": "Não acrescente dados que não aparecem.",
+      "errorFocus": "SOURCE_LIMIT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Só é possível afirmar o que a ficha informa.",
+        "incorrect": "Só é possível afirmar o que a ficha informa.",
+        "hint": "Não acrescente dados que não aparecem.",
+        "errorFocus": "SOURCE_LIMIT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-38",
+      "statement": "Um exercício pede relacionar nomes e ações, mas deve evitar dados reais. Qual recurso usar?",
+      "prompt": "Um exercício pede relacionar nomes e ações, mas deve evitar dados reais. Qual recurso usar?",
+      "options": [
+        "Uma lista pública dos nomes completos",
+        "Uma história com personagens e nomes inventados.",
+        "Fotos de documentos da turma",
+        "Uma tabela de endereços"
+      ],
+      "correctAnswer": "Uma história com personagens e nomes inventados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma lista pública dos nomes completos": [
+          "FICTIONAL_MATERIAL_REVIEW"
+        ],
+        "Fotos de documentos da turma": [
+          "FICTIONAL_MATERIAL_REVIEW"
+        ],
+        "Uma tabela de endereços": [
+          "FICTIONAL_MATERIAL_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NOVA_ATIVIDADE_REVISAO",
+      "explanation": "Personagens inventadas atendem ao objetivo sem expor estudantes.",
+      "hint": "Escolha material seguro para a turma.",
+      "errorFocus": "FICTIONAL_MATERIAL_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Personagens inventadas atendem ao objetivo sem expor estudantes.",
+        "incorrect": "Personagens inventadas atendem ao objetivo sem expor estudantes.",
+        "hint": "Escolha material seguro para a turma.",
+        "errorFocus": "FICTIONAL_MATERIAL_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-39",
+      "statement": "Em uma narrativa, Lila desenha e Nuno lê. Que informação os nomes ajudam a organizar?",
+      "prompt": "Em uma narrativa, Lila desenha e Nuno lê. Que informação os nomes ajudam a organizar?",
+      "options": [
+        "Quem é mais inteligente",
+        "O que suas famílias fazem",
+        "Qual personagem faz cada atividade.",
+        "Qual personagem deve liderar sempre"
+      ],
+      "correctAnswer": "Qual personagem faz cada atividade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quem é mais inteligente": [
+          "NAMES_ORGANIZE_ACTIONS_REVIEW"
+        ],
+        "O que suas famílias fazem": [
+          "NAMES_ORGANIZE_ACTIONS_REVIEW"
+        ],
+        "Qual personagem deve liderar sempre": [
+          "NAMES_ORGANIZE_ACTIONS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_NOMES_REVISAO",
+      "explanation": "Os nomes ligam cada atividade à personagem correspondente.",
+      "hint": "Associe nome e ação.",
+      "errorFocus": "NAMES_ORGANIZE_ACTIONS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os nomes ligam cada atividade à personagem correspondente.",
+        "incorrect": "Os nomes ligam cada atividade à personagem correspondente.",
+        "hint": "Associe nome e ação.",
+        "errorFocus": "NAMES_ORGANIZE_ACTIONS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er02-names-identify-and-differentiate-40",
+      "statement": "Complete a ideia: nomes ajudam a identificar pessoas; por isso, na convivência devemos...",
+      "prompt": "Complete a ideia: nomes ajudam a identificar pessoas; por isso, na convivência devemos...",
+      "options": [
+        "julgar a personalidade pelo nome",
+        "exigir que todos revelem seus dados",
+        "tratar nomes iguais como uma só pessoa",
+        "usar com respeito a forma de tratamento indicada e não inferir toda a vida pelo nome."
+      ],
+      "correctAnswer": "usar com respeito a forma de tratamento indicada e não inferir toda a vida pelo nome.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "julgar a personalidade pelo nome": [
+          "IDENTIFICATION_AND_RESPECT_REVIEW"
+        ],
+        "exigir que todos revelem seus dados": [
+          "IDENTIFICATION_AND_RESPECT_REVIEW"
+        ],
+        "tratar nomes iguais como uma só pessoa": [
+          "IDENTIFICATION_AND_RESPECT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_NOME_E_RESPEITO",
+      "explanation": "Identificação e respeito não autorizam julgamentos nem exposição de dados.",
+      "hint": "Combine a função do nome com uma atitude respeitosa.",
+      "errorFocus": "IDENTIFICATION_AND_RESPECT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Identificação e respeito não autorizam julgamentos nem exposição de dados.",
+        "incorrect": "Identificação e respeito não autorizam julgamentos nem exposição de dados.",
+        "hint": "Combine a função do nome com uma atitude respeitosa.",
+        "errorFocus": "IDENTIFICATION_AND_RESPECT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar cartões com fonte ampliada, alto contraste, leitura em voz alta e símbolos consistentes para cada personagem.",
+          "Permitir apontar, organizar cartões, responder oralmente, por escrita emergente ou comunicação alternativa.",
+          "Usar somente personagens e nomes fictícios nos exemplos; não publicar listas de nomes reais nem pedir informações familiares."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

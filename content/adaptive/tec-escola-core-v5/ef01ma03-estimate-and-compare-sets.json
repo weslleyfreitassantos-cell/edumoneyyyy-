@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ma03-estimate-and-compare-sets",
+  "canonicalSkillCode": "AUTHORING_EF01MA03_ESTIMATE_AND_COMPARE_QUANTITIES",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "estimativa, comparação e correspondência entre quantidades de até aproximadamente vinte objetos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Estimar e comparar quantidades de objetos de dois conjuntos (em torno de 20 elementos), por estimativa e/ou por correspondência (um a um, dois a dois) para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Contar, parear e comparar conjuntos",
+    "objective": "Estimar e comparar quantidades de dois conjuntos pequenos usando contagem ou correspondência um a um e dois a dois para indicar onde há mais, menos ou a mesma quantidade.",
+    "summary": "Para comparar dois conjuntos, podemos primeiro estimar e depois conferir contando ou formando pares. Se cada objeto de um conjunto encontra exatamente um do outro, os conjuntos têm a mesma quantidade. Se sobram objetos de um lado, esse lado tem mais; o outro tem menos. Agrupar em pares também ajuda quando há uma quantidade par. Usamos exemplos com até cerca de vinte objetos e materiais seguros, sem transformar rapidez em competição.",
+    "explanation": "Observe dois grupos de objetos. Uma estimativa é uma previsão informada pelo que você vê; confira-a contando ou pareando. Para a correspondência um a um, coloque um objeto de cada grupo em cada par. Se todos formam pares sem sobrar nenhum, há a mesma quantidade. Se sobram objetos em um grupo, ele tem mais. Também é possível contar cada grupo e comparar os números. Ao usar pares de objetos de cada lado, mantenha os grupos organizados e confira se cada objeto foi contado uma só vez. A quantidade não depende do tamanho ou da cor dos objetos.",
+    "workedExample": "Há 7 fichas azuis e 5 fichas amarelas. Ao fazer pares, cada ficha amarela encontra uma azul e sobram 2 azuis. Portanto, há mais fichas azuis e menos amarelas. Contar 7 e 5 confirma a comparação.",
+    "commonMistake": "Comparar pelo tamanho dos objetos ou pela área que ocupam, sem contar nem parear, ou concluir que grupos são iguais quando ainda há objetos sem par.",
+    "priorKnowledge": [
+      "Contar pequenos grupos de objetos com apoio.",
+      "Reconhecer que cada objeto deve ser contado apenas uma vez."
+    ],
+    "keyConcepts": [
+      "conjunto",
+      "quantidade",
+      "estimativa",
+      "contagem",
+      "correspondência um a um",
+      "pares",
+      "mais",
+      "menos",
+      "mesma quantidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ONE_TO_ONE_PAIRING",
+        "action": "Organize os dois grupos em fileiras e mova um objeto de cada grupo para formar pares, marcando qualquer sobra antes de decidir."
+      },
+      {
+        "errorFocus": "SIZE_IS_NOT_QUANTITY",
+        "action": "Compare objetos grandes e pequenos em grupos separados usando contagem ou pareamento, enfatizando que tamanho não altera o número de objetos."
+      },
+      {
+        "errorFocus": "ESTIMATE_THEN_VERIFY",
+        "action": "Peça uma previsão simples, conte os grupos com apoio e compare a previsão ao resultado, sem classificar a velocidade da resposta."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+      "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+      "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ma03-pair-the-supplies",
+        "title": "Pares de materiais escolares",
+        "instructions": "Dois conjuntos pequenos de materiais de sala são representados por fichas ou objetos seguros.\n1. Estime qual conjunto parece ter mais ou se parecem iguais.\n2. Faça correspondência um a um ou dois a dois entre os objetos.\n3. Conte ou observe sobras e relate mais, menos ou a mesma quantidade.",
+        "steps": [
+          "Estime qual conjunto parece ter mais ou se parecem iguais.",
+          "Faça correspondência um a um ou dois a dois entre os objetos.",
+          "Conte ou observe sobras e relate mais, menos ou a mesma quantidade."
+        ],
+        "evidence": "Comparação com estimativa e confirmação por contagem ou correspondência, incluindo a identificação de sobra ou igualdade.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "percebe diferenças com modelagem.",
+            "developing": "forma alguns pares e identifica sobras com apoio.",
+            "proficient": "compara corretamente e explica a evidência da contagem ou correspondência."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ma03-market-baskets",
+        "title": "Cestas de uma feira fictícia",
+        "instructions": "Cestas desenhadas de uma feira imaginária contêm de 1 a 20 frutas de brinquedo ou figuras.\n1. Observe duas cestas e faça uma estimativa.\n2. Pareie as figuras uma a uma ou conte cada cesta.\n3. Registre qual tem mais, qual tem menos ou se há a mesma quantidade.",
+        "steps": [
+          "Observe duas cestas e faça uma estimativa.",
+          "Pareie as figuras uma a uma ou conte cada cesta.",
+          "Registre qual tem mais, qual tem menos ou se há a mesma quantidade."
+        ],
+        "evidence": "Registro acessível da comparação entre duas quantidades de até vinte itens e da estratégia usada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe um conjunto após demonstração.",
+            "developing": "conta ou pareia com orientação.",
+            "proficient": "informa a relação correta e usa contagem ou pareamento para justificá-la."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ma03-estimate-and-compare-sets-01",
+          "v1-ef01ma03-estimate-and-compare-sets-02",
+          "v1-ef01ma03-estimate-and-compare-sets-03",
+          "v1-ef01ma03-estimate-and-compare-sets-04",
+          "v1-ef01ma03-estimate-and-compare-sets-05",
+          "v1-ef01ma03-estimate-and-compare-sets-06",
+          "v1-ef01ma03-estimate-and-compare-sets-07",
+          "v1-ef01ma03-estimate-and-compare-sets-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ma03-estimate-and-compare-sets-09",
+          "v1-ef01ma03-estimate-and-compare-sets-10",
+          "v1-ef01ma03-estimate-and-compare-sets-11",
+          "v1-ef01ma03-estimate-and-compare-sets-12",
+          "v1-ef01ma03-estimate-and-compare-sets-13",
+          "v1-ef01ma03-estimate-and-compare-sets-14",
+          "v1-ef01ma03-estimate-and-compare-sets-15",
+          "v1-ef01ma03-estimate-and-compare-sets-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ma03-estimate-and-compare-sets-17",
+          "v1-ef01ma03-estimate-and-compare-sets-18",
+          "v1-ef01ma03-estimate-and-compare-sets-19",
+          "v1-ef01ma03-estimate-and-compare-sets-20",
+          "v1-ef01ma03-estimate-and-compare-sets-21",
+          "v1-ef01ma03-estimate-and-compare-sets-22",
+          "v1-ef01ma03-estimate-and-compare-sets-23",
+          "v1-ef01ma03-estimate-and-compare-sets-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ma03-estimate-and-compare-sets-25",
+          "v1-ef01ma03-estimate-and-compare-sets-26",
+          "v1-ef01ma03-estimate-and-compare-sets-27",
+          "v1-ef01ma03-estimate-and-compare-sets-28",
+          "v1-ef01ma03-estimate-and-compare-sets-29",
+          "v1-ef01ma03-estimate-and-compare-sets-30",
+          "v1-ef01ma03-estimate-and-compare-sets-31",
+          "v1-ef01ma03-estimate-and-compare-sets-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ma03-estimate-and-compare-sets-33",
+          "v1-ef01ma03-estimate-and-compare-sets-34",
+          "v1-ef01ma03-estimate-and-compare-sets-35",
+          "v1-ef01ma03-estimate-and-compare-sets-36",
+          "v1-ef01ma03-estimate-and-compare-sets-37",
+          "v1-ef01ma03-estimate-and-compare-sets-38",
+          "v1-ef01ma03-estimate-and-compare-sets-39",
+          "v1-ef01ma03-estimate-and-compare-sets-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA03",
+        "descriptor": "Estimar e comparar quantidades de objetos de dois conjuntos (em torno de 20 elementos), por estimativa e/ou por correspondência (um a um, dois a dois) para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-01",
+      "statement": "Há 4 fichas azuis e 2 amarelas. Qual conjunto tem mais fichas?",
+      "prompt": "Há 4 fichas azuis e 2 amarelas. Qual conjunto tem mais fichas?",
+      "options": [
+        "O conjunto azul.",
+        "O conjunto amarelo",
+        "Os dois têm a mesma quantidade",
+        "Não é possível comparar grupos contados"
+      ],
+      "correctAnswer": "O conjunto azul.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O conjunto amarelo": [
+          "COMPARE_COUNTS_4_2"
+        ],
+        "Os dois têm a mesma quantidade": [
+          "COMPARE_COUNTS_4_2"
+        ],
+        "Não é possível comparar grupos contados": [
+          "COMPARE_COUNTS_4_2"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FICHAS_AZUIS_E_AMARELAS",
+      "explanation": "Quatro é maior que dois, então há mais fichas azuis.",
+      "hint": "Compare os números 4 e 2.",
+      "errorFocus": "COMPARE_COUNTS_4_2",
+      "feedback": {
+        "correct": "Boa observação: Quatro é maior que dois, então há mais fichas azuis.",
+        "incorrect": "Quatro é maior que dois, então há mais fichas azuis.",
+        "hint": "Compare os números 4 e 2.",
+        "errorFocus": "COMPARE_COUNTS_4_2"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-02",
+      "statement": "Há 3 lápis e 3 giz de cera. Como as quantidades se comparam?",
+      "prompt": "Há 3 lápis e 3 giz de cera. Como as quantidades se comparam?",
+      "options": [
+        "Há mais lápis",
+        "Têm a mesma quantidade.",
+        "Há mais giz de cera",
+        "Não há objetos"
+      ],
+      "correctAnswer": "Têm a mesma quantidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Há mais lápis": [
+          "EQUAL_COUNTS_3"
+        ],
+        "Há mais giz de cera": [
+          "EQUAL_COUNTS_3"
+        ],
+        "Não há objetos": [
+          "EQUAL_COUNTS_3"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TRES_LAPIS_E_TRES_GIZ",
+      "explanation": "Os dois conjuntos têm três objetos.",
+      "hint": "Conte cada grupo.",
+      "errorFocus": "EQUAL_COUNTS_3",
+      "feedback": {
+        "correct": "Boa observação: Os dois conjuntos têm três objetos.",
+        "incorrect": "Os dois conjuntos têm três objetos.",
+        "hint": "Conte cada grupo.",
+        "errorFocus": "EQUAL_COUNTS_3"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-03",
+      "statement": "Um grupo tem 5 tampas e outro tem 7. Qual tem menos?",
+      "prompt": "Um grupo tem 5 tampas e outro tem 7. Qual tem menos?",
+      "options": [
+        "O grupo com 7 tampas",
+        "Os dois têm a mesma quantidade",
+        "O grupo com 5 tampas.",
+        "O grupo com objetos maiores"
+      ],
+      "correctAnswer": "O grupo com 5 tampas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O grupo com 7 tampas": [
+          "LESSER_SET_5_7"
+        ],
+        "Os dois têm a mesma quantidade": [
+          "LESSER_SET_5_7"
+        ],
+        "O grupo com objetos maiores": [
+          "LESSER_SET_5_7"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CINCO_TAMPAS_E_SETE_TAMPAS",
+      "explanation": "Cinco é menor que sete.",
+      "hint": "Identifique o menor número.",
+      "errorFocus": "LESSER_SET_5_7",
+      "feedback": {
+        "correct": "Boa observação: Cinco é menor que sete.",
+        "incorrect": "Cinco é menor que sete.",
+        "hint": "Identifique o menor número.",
+        "errorFocus": "LESSER_SET_5_7"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-04",
+      "statement": "Há 6 copos e 6 pratos. Se cada copo combina com um prato, o que isso mostra?",
+      "prompt": "Há 6 copos e 6 pratos. Se cada copo combina com um prato, o que isso mostra?",
+      "options": [
+        "Há copos sobrando",
+        "Há pratos sobrando",
+        "Há mais copos",
+        "Os conjuntos têm a mesma quantidade."
+      ],
+      "correctAnswer": "Os conjuntos têm a mesma quantidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Há copos sobrando": [
+          "ONE_TO_ONE_EQUALITY_6"
+        ],
+        "Há pratos sobrando": [
+          "ONE_TO_ONE_EQUALITY_6"
+        ],
+        "Há mais copos": [
+          "ONE_TO_ONE_EQUALITY_6"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PARES_DE_COPOS",
+      "explanation": "Cada objeto de um conjunto encontrou um correspondente.",
+      "hint": "Veja se algum item ficou sem par.",
+      "errorFocus": "ONE_TO_ONE_EQUALITY_6",
+      "feedback": {
+        "correct": "Boa observação: Cada objeto de um conjunto encontrou um correspondente.",
+        "incorrect": "Cada objeto de um conjunto encontrou um correspondente.",
+        "hint": "Veja se algum item ficou sem par.",
+        "errorFocus": "ONE_TO_ONE_EQUALITY_6"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-05",
+      "statement": "Uma bandeja tem 7 bolas pequenas e outra tem 4. Qual estimativa é confirmada pela contagem?",
+      "prompt": "Uma bandeja tem 7 bolas pequenas e outra tem 4. Qual estimativa é confirmada pela contagem?",
+      "options": [
+        "A bandeja com 7 bolas tem mais.",
+        "A bandeja com 4 tem mais",
+        "As bandejas têm o mesmo número",
+        "Bolas menores sempre são menos"
+      ],
+      "correctAnswer": "A bandeja com 7 bolas tem mais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A bandeja com 4 tem mais": [
+          "ESTIMATE_VERIFY_7_4"
+        ],
+        "As bandejas têm o mesmo número": [
+          "ESTIMATE_VERIFY_7_4"
+        ],
+        "Bolas menores sempre são menos": [
+          "ESTIMATE_VERIFY_7_4"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ESTIMATE",
+      "contextFamily": "BANDEJA_DE_SETE_BOLAS",
+      "explanation": "A contagem confirma que sete é mais do que quatro.",
+      "hint": "Confira os totais indicados.",
+      "errorFocus": "ESTIMATE_VERIFY_7_4",
+      "feedback": {
+        "correct": "Boa observação: A contagem confirma que sete é mais do que quatro.",
+        "incorrect": "A contagem confirma que sete é mais do que quatro.",
+        "hint": "Confira os totais indicados.",
+        "errorFocus": "ESTIMATE_VERIFY_7_4"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-06",
+      "statement": "Há 8 livros e 5 marcadores. Ao formar pares, o que sobra?",
+      "prompt": "Há 8 livros e 5 marcadores. Ao formar pares, o que sobra?",
+      "options": [
+        "Três marcadores ficam sem livro",
+        "Três livros ficam sem marcador correspondente.",
+        "Nada sobra",
+        "Oito marcadores ficam sem livro"
+      ],
+      "correctAnswer": "Três livros ficam sem marcador correspondente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Três marcadores ficam sem livro": [
+          "PAIRING_REMAINDER_8_5"
+        ],
+        "Nada sobra": [
+          "PAIRING_REMAINDER_8_5"
+        ],
+        "Oito marcadores ficam sem livro": [
+          "PAIRING_REMAINDER_8_5"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PARES_DE_LIVROS_E_MARCADORES",
+      "explanation": "Cinco pares podem ser formados e sobram três livros.",
+      "hint": "Faça cinco pares e conte o que restou.",
+      "errorFocus": "PAIRING_REMAINDER_8_5",
+      "feedback": {
+        "correct": "Boa observação: Cinco pares podem ser formados e sobram três livros.",
+        "incorrect": "Cinco pares podem ser formados e sobram três livros.",
+        "hint": "Faça cinco pares e conte o que restou.",
+        "errorFocus": "PAIRING_REMAINDER_8_5"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-07",
+      "statement": "Um grupo tem 4 bolas grandes e outro 5 bolas pequenas. O que determina qual grupo tem mais objetos?",
+      "prompt": "Um grupo tem 4 bolas grandes e outro 5 bolas pequenas. O que determina qual grupo tem mais objetos?",
+      "options": [
+        "A área ocupada pelas bolas",
+        "A cor das bolas",
+        "A contagem dos objetos, não o tamanho deles.",
+        "O peso de cada bola"
+      ],
+      "correctAnswer": "A contagem dos objetos, não o tamanho deles.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A área ocupada pelas bolas": [
+          "SIZE_NOT_COUNT"
+        ],
+        "A cor das bolas": [
+          "SIZE_NOT_COUNT"
+        ],
+        "O peso de cada bola": [
+          "SIZE_NOT_COUNT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "BOLAS_GRANDES_E_PEQUENAS",
+      "explanation": "O grupo com cinco objetos tem mais, mesmo que sejam menores.",
+      "hint": "Compare quantos objetos há em cada grupo.",
+      "errorFocus": "SIZE_NOT_COUNT",
+      "feedback": {
+        "correct": "Boa observação: O grupo com cinco objetos tem mais, mesmo que sejam menores.",
+        "incorrect": "O grupo com cinco objetos tem mais, mesmo que sejam menores.",
+        "hint": "Compare quantos objetos há em cada grupo.",
+        "errorFocus": "SIZE_NOT_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-08",
+      "statement": "Antes de contar dois grupos com até 20 peças, o que significa estimar?",
+      "prompt": "Antes de contar dois grupos com até 20 peças, o que significa estimar?",
+      "options": [
+        "Adivinhar sem observar",
+        "Contar o mais rápido possível",
+        "Escolher sempre o grupo maior",
+        "Fazer uma previsão que pode ser conferida depois."
+      ],
+      "correctAnswer": "Fazer uma previsão que pode ser conferida depois.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Adivinhar sem observar": [
+          "ESTIMATION_MEANING"
+        ],
+        "Contar o mais rápido possível": [
+          "ESTIMATION_MEANING"
+        ],
+        "Escolher sempre o grupo maior": [
+          "ESTIMATION_MEANING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESTIMATIVA_SEM_CORRIDA",
+      "explanation": "Estimativa é uma previsão informada, que pode ser comparada com a contagem.",
+      "hint": "Pense no que fazemos antes de conferir.",
+      "errorFocus": "ESTIMATION_MEANING",
+      "feedback": {
+        "correct": "Boa observação: Estimativa é uma previsão informada, que pode ser comparada com a contagem.",
+        "incorrect": "Estimativa é uma previsão informada, que pode ser comparada com a contagem.",
+        "hint": "Pense no que fazemos antes de conferir.",
+        "errorFocus": "ESTIMATION_MEANING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-09",
+      "statement": "Há 6 figuras de sol e 4 de lua. Qual conjunto tem menos?",
+      "prompt": "Há 6 figuras de sol e 4 de lua. Qual conjunto tem menos?",
+      "options": [
+        "As figuras de lua.",
+        "As figuras de sol",
+        "Os conjuntos têm a mesma quantidade",
+        "Nenhum tem figuras"
+      ],
+      "correctAnswer": "As figuras de lua.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "As figuras de sol": [
+          "LESSER_SET_6_4"
+        ],
+        "Os conjuntos têm a mesma quantidade": [
+          "LESSER_SET_6_4"
+        ],
+        "Nenhum tem figuras": [
+          "LESSER_SET_6_4"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SEIS_FIGURAS_DE_SOL_E_QUATRO_DE_LUA",
+      "explanation": "Quatro é menor do que seis.",
+      "hint": "Compare 4 e 6.",
+      "errorFocus": "LESSER_SET_6_4",
+      "feedback": {
+        "correct": "Boa observação: Quatro é menor do que seis.",
+        "incorrect": "Quatro é menor do que seis.",
+        "hint": "Compare 4 e 6.",
+        "errorFocus": "LESSER_SET_6_4"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-10",
+      "statement": "Há 9 blocos e 9 peças de encaixe. Qual afirmação está correta?",
+      "prompt": "Há 9 blocos e 9 peças de encaixe. Qual afirmação está correta?",
+      "options": [
+        "Há mais blocos",
+        "Os conjuntos têm a mesma quantidade.",
+        "Há mais peças de encaixe",
+        "Há menos blocos"
+      ],
+      "correctAnswer": "Os conjuntos têm a mesma quantidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Há mais blocos": [
+          "EQUAL_COUNTS_9"
+        ],
+        "Há mais peças de encaixe": [
+          "EQUAL_COUNTS_9"
+        ],
+        "Há menos blocos": [
+          "EQUAL_COUNTS_9"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "NOVE_BLOCOS_E_NOVE_PEAS",
+      "explanation": "Os dois grupos têm nove objetos.",
+      "hint": "Compare os totais.",
+      "errorFocus": "EQUAL_COUNTS_9",
+      "feedback": {
+        "correct": "Boa observação: Os dois grupos têm nove objetos.",
+        "incorrect": "Os dois grupos têm nove objetos.",
+        "hint": "Compare os totais.",
+        "errorFocus": "EQUAL_COUNTS_9"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-11",
+      "statement": "Ao parear 7 botões e 5 cartões, quantos botões sobram?",
+      "prompt": "Ao parear 7 botões e 5 cartões, quantos botões sobram?",
+      "options": [
+        "Dois cartões",
+        "Nenhum objeto",
+        "Dois botões.",
+        "Cinco botões"
+      ],
+      "correctAnswer": "Dois botões.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dois cartões": [
+          "PAIRING_REMAINDER_7_5"
+        ],
+        "Nenhum objeto": [
+          "PAIRING_REMAINDER_7_5"
+        ],
+        "Cinco botões": [
+          "PAIRING_REMAINDER_7_5"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PARES_DE_SETE_E_CINCO",
+      "explanation": "Cinco pares são formados e sobram dois botões.",
+      "hint": "Faça cinco pares e conte os botões livres.",
+      "errorFocus": "PAIRING_REMAINDER_7_5",
+      "feedback": {
+        "correct": "Boa observação: Cinco pares são formados e sobram dois botões.",
+        "incorrect": "Cinco pares são formados e sobram dois botões.",
+        "hint": "Faça cinco pares e conte os botões livres.",
+        "errorFocus": "PAIRING_REMAINDER_7_5"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-12",
+      "statement": "Um desenho mostra 12 folhas e outro 10. Qual grupo tem mais?",
+      "prompt": "Um desenho mostra 12 folhas e outro 10. Qual grupo tem mais?",
+      "options": [
+        "O grupo com 10 folhas",
+        "Os dois grupos são iguais",
+        "O que tem folhas maiores",
+        "O grupo com 12 folhas."
+      ],
+      "correctAnswer": "O grupo com 12 folhas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O grupo com 10 folhas": [
+          "COMPARE_COUNTS_12_10"
+        ],
+        "Os dois grupos são iguais": [
+          "COMPARE_COUNTS_12_10"
+        ],
+        "O que tem folhas maiores": [
+          "COMPARE_COUNTS_12_10"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOZE_FOLHAS_E_DEZ_FOLHAS",
+      "explanation": "Doze é maior que dez.",
+      "hint": "Compare os numerais 12 e 10.",
+      "errorFocus": "COMPARE_COUNTS_12_10",
+      "feedback": {
+        "correct": "Boa observação: Doze é maior que dez.",
+        "incorrect": "Doze é maior que dez.",
+        "hint": "Compare os numerais 12 e 10.",
+        "errorFocus": "COMPARE_COUNTS_12_10"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-13",
+      "statement": "Uma cesta tem 3 maçãs e outra tem 8 peras de brinquedo. Qual estimativa será confirmada pela contagem?",
+      "prompt": "Uma cesta tem 3 maçãs e outra tem 8 peras de brinquedo. Qual estimativa será confirmada pela contagem?",
+      "options": [
+        "A cesta com peras tem mais itens.",
+        "A cesta com maçãs tem mais",
+        "As cestas têm a mesma quantidade",
+        "O tipo de fruta decide a quantidade"
+      ],
+      "correctAnswer": "A cesta com peras tem mais itens.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cesta com maçãs tem mais": [
+          "ESTIMATE_VERIFY_3_8"
+        ],
+        "As cestas têm a mesma quantidade": [
+          "ESTIMATE_VERIFY_3_8"
+        ],
+        "O tipo de fruta decide a quantidade": [
+          "ESTIMATE_VERIFY_3_8"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ESTIMATE",
+      "contextFamily": "CESTA_DE_FRUTAS",
+      "explanation": "A contagem mostra oito itens contra três.",
+      "hint": "Separe o nome da fruta da quantidade.",
+      "errorFocus": "ESTIMATE_VERIFY_3_8",
+      "feedback": {
+        "correct": "Boa observação: A contagem mostra oito itens contra três.",
+        "incorrect": "A contagem mostra oito itens contra três.",
+        "hint": "Separe o nome da fruta da quantidade.",
+        "errorFocus": "ESTIMATE_VERIFY_3_8"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-14",
+      "statement": "Dez fichas são organizadas em pares completos. Quantos pares se formam?",
+      "prompt": "Dez fichas são organizadas em pares completos. Quantos pares se formam?",
+      "options": [
+        "Dez pares",
+        "Cinco pares.",
+        "Quatro pares",
+        "Dois pares"
+      ],
+      "correctAnswer": "Cinco pares.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dez pares": [
+          "GROUP_BY_TWO_10"
+        ],
+        "Quatro pares": [
+          "GROUP_BY_TWO_10"
+        ],
+        "Dois pares": [
+          "GROUP_BY_TWO_10"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "DEZ_FICHAS_EM_PARES",
+      "explanation": "Dez objetos formam cinco grupos de dois.",
+      "hint": "Conte dois, quatro, seis, oito, dez.",
+      "errorFocus": "GROUP_BY_TWO_10",
+      "feedback": {
+        "correct": "Boa observação: Dez objetos formam cinco grupos de dois.",
+        "incorrect": "Dez objetos formam cinco grupos de dois.",
+        "hint": "Conte dois, quatro, seis, oito, dez.",
+        "errorFocus": "GROUP_BY_TWO_10"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-15",
+      "statement": "Há 6 pratos e 8 colheres. Pareando um de cada, qual objeto fica sobrando?",
+      "prompt": "Há 6 pratos e 8 colheres. Pareando um de cada, qual objeto fica sobrando?",
+      "options": [
+        "Dois pratos",
+        "Nenhum objeto",
+        "Duas colheres.",
+        "Seis pratos"
+      ],
+      "correctAnswer": "Duas colheres.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dois pratos": [
+          "PAIRING_REMAINDER_8_6"
+        ],
+        "Nenhum objeto": [
+          "PAIRING_REMAINDER_8_6"
+        ],
+        "Seis pratos": [
+          "PAIRING_REMAINDER_8_6"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONJUNTO_COM_SOBRA",
+      "explanation": "Seis pares são formados e sobram duas colheres.",
+      "hint": "Depois de seis pares, veja qual grupo ainda tem itens.",
+      "errorFocus": "PAIRING_REMAINDER_8_6",
+      "feedback": {
+        "correct": "Boa observação: Seis pares são formados e sobram duas colheres.",
+        "incorrect": "Seis pares são formados e sobram duas colheres.",
+        "hint": "Depois de seis pares, veja qual grupo ainda tem itens.",
+        "errorFocus": "PAIRING_REMAINDER_8_6"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-16",
+      "statement": "Uma pilha ocupa mais espaço porque os cartões são maiores, mas tem 4 cartões; outra tem 6 pequenos. Qual tem mais cartões?",
+      "prompt": "Uma pilha ocupa mais espaço porque os cartões são maiores, mas tem 4 cartões; outra tem 6 pequenos. Qual tem mais cartões?",
+      "options": [
+        "A pilha com 4 cartões",
+        "As duas têm a mesma quantidade",
+        "A pilha que ocupa mais espaço",
+        "A pilha com 6 cartões."
+      ],
+      "correctAnswer": "A pilha com 6 cartões.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A pilha com 4 cartões": [
+          "AREA_NOT_QUANTITY"
+        ],
+        "As duas têm a mesma quantidade": [
+          "AREA_NOT_QUANTITY"
+        ],
+        "A pilha que ocupa mais espaço": [
+          "AREA_NOT_QUANTITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PILHA_ALTA_DE_CARTOES",
+      "explanation": "A quantidade depende do número de cartões, não do espaço ocupado.",
+      "hint": "Use os totais contados.",
+      "errorFocus": "AREA_NOT_QUANTITY",
+      "feedback": {
+        "correct": "Boa observação: A quantidade depende do número de cartões, não do espaço ocupado.",
+        "incorrect": "A quantidade depende do número de cartões, não do espaço ocupado.",
+        "hint": "Use os totais contados.",
+        "errorFocus": "AREA_NOT_QUANTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-17",
+      "statement": "Um kit tem 11 papéis e outro tem 9 lápis. Qual conjunto tem menos objetos?",
+      "prompt": "Um kit tem 11 papéis e outro tem 9 lápis. Qual conjunto tem menos objetos?",
+      "options": [
+        "O conjunto de 9 lápis.",
+        "O conjunto de 11 papéis",
+        "Os dois têm a mesma quantidade",
+        "O conjunto com objetos compridos"
+      ],
+      "correctAnswer": "O conjunto de 9 lápis.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O conjunto de 11 papéis": [
+          "COMPARE_COUNTS_11_9"
+        ],
+        "Os dois têm a mesma quantidade": [
+          "COMPARE_COUNTS_11_9"
+        ],
+        "O conjunto com objetos compridos": [
+          "COMPARE_COUNTS_11_9"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "KIT_DE_ARTE",
+      "explanation": "Nove é menor do que onze.",
+      "hint": "Compare 9 e 11, sem comparar os tamanhos.",
+      "errorFocus": "COMPARE_COUNTS_11_9",
+      "feedback": {
+        "correct": "Boa observação: Nove é menor do que onze.",
+        "incorrect": "Nove é menor do que onze.",
+        "hint": "Compare 9 e 11, sem comparar os tamanhos.",
+        "errorFocus": "COMPARE_COUNTS_11_9"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-18",
+      "statement": "Uma fileira tem 8 sementes e outra tem 8. O que acontece ao pareá-las uma a uma?",
+      "prompt": "Uma fileira tem 8 sementes e outra tem 8. O que acontece ao pareá-las uma a uma?",
+      "options": [
+        "Sobram sementes na primeira",
+        "Cada semente pode formar um par e as quantidades são iguais.",
+        "Sobram sementes na segunda",
+        "A primeira tem mais"
+      ],
+      "correctAnswer": "Cada semente pode formar um par e as quantidades são iguais.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sobram sementes na primeira": [
+          "PAIRING_EQUALITY_8"
+        ],
+        "Sobram sementes na segunda": [
+          "PAIRING_EQUALITY_8"
+        ],
+        "A primeira tem mais": [
+          "PAIRING_EQUALITY_8"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_FILEIRAS_DE_SEMENTES",
+      "explanation": "O mesmo total permite formar pares sem sobras.",
+      "hint": "Confira se todas encontram um par.",
+      "errorFocus": "PAIRING_EQUALITY_8",
+      "feedback": {
+        "correct": "Boa observação: O mesmo total permite formar pares sem sobras.",
+        "incorrect": "O mesmo total permite formar pares sem sobras.",
+        "hint": "Confira se todas encontram um par.",
+        "errorFocus": "PAIRING_EQUALITY_8"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-19",
+      "statement": "Uma pessoa estima que 15 fichas são mais que 12 e depois confere contando. A conclusão está correta?",
+      "prompt": "Uma pessoa estima que 15 fichas são mais que 12 e depois confere contando. A conclusão está correta?",
+      "options": [
+        "Não, 12 é maior do que 15",
+        "Não, os grupos são iguais",
+        "Sim, 15 é maior do que 12.",
+        "Só o tamanho das fichas importa"
+      ],
+      "correctAnswer": "Sim, 15 é maior do que 12.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Não, 12 é maior do que 15": [
+          "ESTIMATE_AND_CONFIRM_15_12"
+        ],
+        "Não, os grupos são iguais": [
+          "ESTIMATE_AND_CONFIRM_15_12"
+        ],
+        "Só o tamanho das fichas importa": [
+          "ESTIMATE_AND_CONFIRM_15_12"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESTIMATIVA_DE_DOZE_E_QUINZE",
+      "explanation": "A contagem confirma a estimativa: quinze é maior que doze.",
+      "hint": "Compare os números depois de contar.",
+      "errorFocus": "ESTIMATE_AND_CONFIRM_15_12",
+      "feedback": {
+        "correct": "Boa observação: A contagem confirma a estimativa: quinze é maior que doze.",
+        "incorrect": "A contagem confirma a estimativa: quinze é maior que doze.",
+        "hint": "Compare os números depois de contar.",
+        "errorFocus": "ESTIMATE_AND_CONFIRM_15_12"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-20",
+      "statement": "Há 14 cartões para 10 estudantes, com um cartão para cada estudante primeiro. Quantos cartões ficam sem par nessa distribuição?",
+      "prompt": "Há 14 cartões para 10 estudantes, com um cartão para cada estudante primeiro. Quantos cartões ficam sem par nessa distribuição?",
+      "options": [
+        "Quatro estudantes",
+        "Dez cartões",
+        "Nenhum cartão",
+        "Quatro cartões."
+      ],
+      "correctAnswer": "Quatro cartões.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Quatro estudantes": [
+          "ONE_TO_ONE_REMAINDER_14_10"
+        ],
+        "Dez cartões": [
+          "ONE_TO_ONE_REMAINDER_14_10"
+        ],
+        "Nenhum cartão": [
+          "ONE_TO_ONE_REMAINDER_14_10"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DISTRIBUICAO_DE_CARTOES",
+      "explanation": "Dez cartões formam dez pares e quatro ficam sobrando.",
+      "hint": "Separe dez cartões e conte o restante.",
+      "errorFocus": "ONE_TO_ONE_REMAINDER_14_10",
+      "feedback": {
+        "correct": "Boa observação: Dez cartões formam dez pares e quatro ficam sobrando.",
+        "incorrect": "Dez cartões formam dez pares e quatro ficam sobrando.",
+        "hint": "Separe dez cartões e conte o restante.",
+        "errorFocus": "ONE_TO_ONE_REMAINDER_14_10"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-21",
+      "statement": "Uma bandeja tem 13 laranjas de brinquedo e outra 16. Qual tem menos?",
+      "prompt": "Uma bandeja tem 13 laranjas de brinquedo e outra 16. Qual tem menos?",
+      "options": [
+        "A bandeja com 13.",
+        "A bandeja com 16",
+        "As duas têm a mesma quantidade",
+        "A bandeja com frutas maiores"
+      ],
+      "correctAnswer": "A bandeja com 13.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A bandeja com 16": [
+          "COMPARE_COUNTS_13_16"
+        ],
+        "As duas têm a mesma quantidade": [
+          "COMPARE_COUNTS_13_16"
+        ],
+        "A bandeja com frutas maiores": [
+          "COMPARE_COUNTS_13_16"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BANDEJAS_DE_LARANJAS",
+      "explanation": "Treze é menor do que dezesseis.",
+      "hint": "Compare 13 com 16.",
+      "errorFocus": "COMPARE_COUNTS_13_16",
+      "feedback": {
+        "correct": "Boa observação: Treze é menor do que dezesseis.",
+        "incorrect": "Treze é menor do que dezesseis.",
+        "hint": "Compare 13 com 16.",
+        "errorFocus": "COMPARE_COUNTS_13_16"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-22",
+      "statement": "Por que parear um objeto de cada grupo ajuda a comparar?",
+      "prompt": "Por que parear um objeto de cada grupo ajuda a comparar?",
+      "options": [
+        "Porque muda a cor dos objetos",
+        "Porque mostra se há correspondentes para todos ou se sobra algum objeto.",
+        "Porque torna todos os grupos iguais",
+        "Porque evita observar os conjuntos"
+      ],
+      "correctAnswer": "Porque mostra se há correspondentes para todos ou se sobra algum objeto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque muda a cor dos objetos": [
+          "PAIRING_JUSTIFICATION"
+        ],
+        "Porque torna todos os grupos iguais": [
+          "PAIRING_JUSTIFICATION"
+        ],
+        "Porque evita observar os conjuntos": [
+          "PAIRING_JUSTIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RELATO_DE_PAREAMENTO",
+      "explanation": "A correspondência evidencia igualdade ou sobra entre quantidades.",
+      "hint": "Pense no que a sobra nos conta.",
+      "errorFocus": "PAIRING_JUSTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A correspondência evidencia igualdade ou sobra entre quantidades.",
+        "incorrect": "A correspondência evidencia igualdade ou sobra entre quantidades.",
+        "hint": "Pense no que a sobra nos conta.",
+        "errorFocus": "PAIRING_JUSTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-23",
+      "statement": "Catorze fichas são separadas em grupos de dois. Quantos pares completos aparecem?",
+      "prompt": "Catorze fichas são separadas em grupos de dois. Quantos pares completos aparecem?",
+      "options": [
+        "Seis pares",
+        "Oito pares",
+        "Sete pares.",
+        "Catorze pares"
+      ],
+      "correctAnswer": "Sete pares.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Seis pares": [
+          "GROUP_BY_TWO_14"
+        ],
+        "Oito pares": [
+          "GROUP_BY_TWO_14"
+        ],
+        "Catorze pares": [
+          "GROUP_BY_TWO_14"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "GRUPOS_DE_DOIS_COM_CATORZE",
+      "explanation": "Sete grupos de dois formam catorze fichas.",
+      "hint": "Conte os pares: 2, 4, 6, 8, 10, 12, 14.",
+      "errorFocus": "GROUP_BY_TWO_14",
+      "feedback": {
+        "correct": "Boa observação: Sete grupos de dois formam catorze fichas.",
+        "incorrect": "Sete grupos de dois formam catorze fichas.",
+        "hint": "Conte os pares: 2, 4, 6, 8, 10, 12, 14.",
+        "errorFocus": "GROUP_BY_TWO_14"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-24",
+      "statement": "Um grupo tem 10 tampas pequenas e outro tem 7 tampas grandes. Qual comparação é correta?",
+      "prompt": "Um grupo tem 10 tampas pequenas e outro tem 7 tampas grandes. Qual comparação é correta?",
+      "options": [
+        "Há mais tampas grandes por serem maiores",
+        "Os grupos são iguais",
+        "Não podemos comparar tamanhos diferentes",
+        "Há mais tampas pequenas, pois 10 é maior que 7."
+      ],
+      "correctAnswer": "Há mais tampas pequenas, pois 10 é maior que 7.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Há mais tampas grandes por serem maiores": [
+          "COUNT_INDEPENDENT_OF_SIZE"
+        ],
+        "Os grupos são iguais": [
+          "COUNT_INDEPENDENT_OF_SIZE"
+        ],
+        "Não podemos comparar tamanhos diferentes": [
+          "COUNT_INDEPENDENT_OF_SIZE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "QUANTIDADE_E_TAMANHO",
+      "explanation": "A contagem permite comparar quantidades mesmo com objetos de tamanhos diferentes.",
+      "hint": "Compare o número de tampas em cada grupo.",
+      "errorFocus": "COUNT_INDEPENDENT_OF_SIZE",
+      "feedback": {
+        "correct": "Boa observação: A contagem permite comparar quantidades mesmo com objetos de tamanhos diferentes.",
+        "incorrect": "A contagem permite comparar quantidades mesmo com objetos de tamanhos diferentes.",
+        "hint": "Compare o número de tampas em cada grupo.",
+        "errorFocus": "COUNT_INDEPENDENT_OF_SIZE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-25",
+      "statement": "Um conjunto tem 17 fichas e outro 15. Qual tem mais?",
+      "prompt": "Um conjunto tem 17 fichas e outro 15. Qual tem mais?",
+      "options": [
+        "O conjunto com 17 fichas.",
+        "O conjunto com 15 fichas",
+        "Os dois têm a mesma quantidade",
+        "O conjunto com fichas maiores"
+      ],
+      "correctAnswer": "O conjunto com 17 fichas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O conjunto com 15 fichas": [
+          "COMPARE_COUNTS_17_15"
+        ],
+        "Os dois têm a mesma quantidade": [
+          "COMPARE_COUNTS_17_15"
+        ],
+        "O conjunto com fichas maiores": [
+          "COMPARE_COUNTS_17_15"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "DEZESSETE_E_QUINZE_FICHAS",
+      "explanation": "Dezessete é maior do que quinze.",
+      "hint": "Compare 17 e 15.",
+      "errorFocus": "COMPARE_COUNTS_17_15",
+      "feedback": {
+        "correct": "Boa observação: Dezessete é maior do que quinze.",
+        "incorrect": "Dezessete é maior do que quinze.",
+        "hint": "Compare 17 e 15.",
+        "errorFocus": "COMPARE_COUNTS_17_15"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-26",
+      "statement": "Doze objetos formam pares completos de dois. Quantos pares há?",
+      "prompt": "Doze objetos formam pares completos de dois. Quantos pares há?",
+      "options": [
+        "Cinco pares",
+        "Seis pares.",
+        "Sete pares",
+        "Doze pares"
+      ],
+      "correctAnswer": "Seis pares.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Cinco pares": [
+          "GROUP_BY_TWO_12"
+        ],
+        "Sete pares": [
+          "GROUP_BY_TWO_12"
+        ],
+        "Doze pares": [
+          "GROUP_BY_TWO_12"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DOZE_OBJETOS_EM_PARES",
+      "explanation": "Seis grupos de dois correspondem a doze objetos.",
+      "hint": "Conte de dois em dois até doze.",
+      "errorFocus": "GROUP_BY_TWO_12",
+      "feedback": {
+        "correct": "Boa observação: Seis grupos de dois correspondem a doze objetos.",
+        "incorrect": "Seis grupos de dois correspondem a doze objetos.",
+        "hint": "Conte de dois em dois até doze.",
+        "errorFocus": "GROUP_BY_TWO_12"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-27",
+      "statement": "Um grupo tem 19 botões e outro tem 18. Se parearmos um a um, o que ocorre?",
+      "prompt": "Um grupo tem 19 botões e outro tem 18. Se parearmos um a um, o que ocorre?",
+      "options": [
+        "Sobra um no grupo de 18",
+        "Não sobra nenhum",
+        "Sobra um botão no grupo de 19.",
+        "Sobram dois no grupo de 18"
+      ],
+      "correctAnswer": "Sobra um botão no grupo de 19.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sobra um no grupo de 18": [
+          "PAIRING_REMAINDER_19_18"
+        ],
+        "Não sobra nenhum": [
+          "PAIRING_REMAINDER_19_18"
+        ],
+        "Sobram dois no grupo de 18": [
+          "PAIRING_REMAINDER_19_18"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DEZENOVE_E_DEZOITO",
+      "explanation": "Dezoito pares podem ser feitos e fica um botão no primeiro grupo.",
+      "hint": "Forme pares até acabar o conjunto menor.",
+      "errorFocus": "PAIRING_REMAINDER_19_18",
+      "feedback": {
+        "correct": "Boa observação: Dezoito pares podem ser feitos e fica um botão no primeiro grupo.",
+        "incorrect": "Dezoito pares podem ser feitos e fica um botão no primeiro grupo.",
+        "hint": "Forme pares até acabar o conjunto menor.",
+        "errorFocus": "PAIRING_REMAINDER_19_18"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-28",
+      "statement": "Uma estimativa sugere que 9 cartões são mais que 6. Como confirmar?",
+      "prompt": "Uma estimativa sugere que 9 cartões são mais que 6. Como confirmar?",
+      "options": [
+        "Olhar apenas qual pilha é mais alta",
+        "Escolher sem conferir",
+        "Comparar a cor dos cartões",
+        "Contar ou parear os cartões dos dois conjuntos."
+      ],
+      "correctAnswer": "Contar ou parear os cartões dos dois conjuntos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Olhar apenas qual pilha é mais alta": [
+          "VERIFY_ESTIMATE_METHOD"
+        ],
+        "Escolher sem conferir": [
+          "VERIFY_ESTIMATE_METHOD"
+        ],
+        "Comparar a cor dos cartões": [
+          "VERIFY_ESTIMATE_METHOD"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESTIMATIVA_DE_SEIS_E_NOVE",
+      "explanation": "Contagem e correspondência verificam a estimativa.",
+      "hint": "Use uma estratégia de comparação.",
+      "errorFocus": "VERIFY_ESTIMATE_METHOD",
+      "feedback": {
+        "correct": "Boa observação: Contagem e correspondência verificam a estimativa.",
+        "incorrect": "Contagem e correspondência verificam a estimativa.",
+        "hint": "Use uma estratégia de comparação.",
+        "errorFocus": "VERIFY_ESTIMATE_METHOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-29",
+      "statement": "Há 5 copos e 5 guardanapos. Como justificar que há a mesma quantidade?",
+      "prompt": "Há 5 copos e 5 guardanapos. Como justificar que há a mesma quantidade?",
+      "options": [
+        "Contando cinco em cada grupo ou pareando sem sobras.",
+        "Porque os copos parecem maiores",
+        "Porque os objetos têm cores parecidas",
+        "Porque estão na mesma mesa"
+      ],
+      "correctAnswer": "Contando cinco em cada grupo ou pareando sem sobras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque os copos parecem maiores": [
+          "EQUALITY_EVIDENCE"
+        ],
+        "Porque os objetos têm cores parecidas": [
+          "EQUALITY_EVIDENCE"
+        ],
+        "Porque estão na mesma mesa": [
+          "EQUALITY_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "MESMA_QUANTIDADE_DE_COPOS",
+      "explanation": "Contagem ou correspondência sem sobras mostra igualdade.",
+      "hint": "Diga qual evidência confirma a comparação.",
+      "errorFocus": "EQUALITY_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Contagem ou correspondência sem sobras mostra igualdade.",
+        "incorrect": "Contagem ou correspondência sem sobras mostra igualdade.",
+        "hint": "Diga qual evidência confirma a comparação.",
+        "errorFocus": "EQUALITY_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-30",
+      "statement": "Uma pessoa diz que a fileira mais alta sempre tem mais objetos. Como avaliar?",
+      "prompt": "Uma pessoa diz que a fileira mais alta sempre tem mais objetos. Como avaliar?",
+      "options": [
+        "A conclusão é sempre correta",
+        "A altura sozinha não prova a quantidade; é preciso contar ou parear.",
+        "Objetos altos valem por dois",
+        "A cor determina a quantidade"
+      ],
+      "correctAnswer": "A altura sozinha não prova a quantidade; é preciso contar ou parear.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A conclusão é sempre correta": [
+          "VISUAL_DENSITY_ERROR"
+        ],
+        "Objetos altos valem por dois": [
+          "VISUAL_DENSITY_ERROR"
+        ],
+        "A cor determina a quantidade": [
+          "VISUAL_DENSITY_ERROR"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONCLUSAO_POR_ALTURA",
+      "explanation": "A disposição e o tamanho podem enganar; contagem ou pareamento confirmam.",
+      "hint": "Pense numa fileira espaçada e noutra apertada.",
+      "errorFocus": "VISUAL_DENSITY_ERROR",
+      "feedback": {
+        "correct": "Boa observação: A disposição e o tamanho podem enganar; contagem ou pareamento confirmam.",
+        "incorrect": "A disposição e o tamanho podem enganar; contagem ou pareamento confirmam.",
+        "hint": "Pense numa fileira espaçada e noutra apertada.",
+        "errorFocus": "VISUAL_DENSITY_ERROR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-31",
+      "statement": "Há 13 cadernos e 13 livros. O que indica uma correspondência um a um completa?",
+      "prompt": "Há 13 cadernos e 13 livros. O que indica uma correspondência um a um completa?",
+      "options": [
+        "Há um caderno sobrando",
+        "Há um livro sobrando",
+        "Os dois conjuntos têm a mesma quantidade.",
+        "Há mais livros"
+      ],
+      "correctAnswer": "Os dois conjuntos têm a mesma quantidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Há um caderno sobrando": [
+          "PAIRING_EQUALITY_13"
+        ],
+        "Há um livro sobrando": [
+          "PAIRING_EQUALITY_13"
+        ],
+        "Há mais livros": [
+          "PAIRING_EQUALITY_13"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "TREZE_E_TREZE_MATERIAIS",
+      "explanation": "Uma correspondência completa sem sobras demonstra igualdade.",
+      "hint": "Veja se cada item encontra exatamente um par.",
+      "errorFocus": "PAIRING_EQUALITY_13",
+      "feedback": {
+        "correct": "Boa observação: Uma correspondência completa sem sobras demonstra igualdade.",
+        "incorrect": "Uma correspondência completa sem sobras demonstra igualdade.",
+        "hint": "Veja se cada item encontra exatamente um par.",
+        "errorFocus": "PAIRING_EQUALITY_13"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-32",
+      "statement": "Qual registro descreve corretamente 8 peças vermelhas e 12 azuis?",
+      "prompt": "Qual registro descreve corretamente 8 peças vermelhas e 12 azuis?",
+      "options": [
+        "Há mais vermelhas",
+        "As quantidades são iguais",
+        "Há menos azuis",
+        "Há mais peças azuis e menos vermelhas."
+      ],
+      "correctAnswer": "Há mais peças azuis e menos vermelhas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Há mais vermelhas": [
+          "MORE_LESS_LANGUAGE_8_12"
+        ],
+        "As quantidades são iguais": [
+          "MORE_LESS_LANGUAGE_8_12"
+        ],
+        "Há menos azuis": [
+          "MORE_LESS_LANGUAGE_8_12"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGISTRO_DE_COMPARACAO",
+      "explanation": "Doze é maior que oito; por isso, o grupo azul tem mais.",
+      "hint": "Relacione cada número à cor do grupo.",
+      "errorFocus": "MORE_LESS_LANGUAGE_8_12",
+      "feedback": {
+        "correct": "Boa observação: Doze é maior que oito; por isso, o grupo azul tem mais.",
+        "incorrect": "Doze é maior que oito; por isso, o grupo azul tem mais.",
+        "hint": "Relacione cada número à cor do grupo.",
+        "errorFocus": "MORE_LESS_LANGUAGE_8_12"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-33",
+      "statement": "Se um conjunto tem 7 objetos e outro 5, qual tem menos?",
+      "prompt": "Se um conjunto tem 7 objetos e outro 5, qual tem menos?",
+      "options": [
+        "O conjunto com 5.",
+        "O conjunto com 7",
+        "Os dois têm a mesma quantidade",
+        "O conjunto com objetos maiores"
+      ],
+      "correctAnswer": "O conjunto com 5.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O conjunto com 7": [
+          "LESS_REVIEW_7_5"
+        ],
+        "Os dois têm a mesma quantidade": [
+          "LESS_REVIEW_7_5"
+        ],
+        "O conjunto com objetos maiores": [
+          "LESS_REVIEW_7_5"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_MAIS_E_MENOS",
+      "explanation": "Cinco é menor do que sete.",
+      "hint": "Compare os totais.",
+      "errorFocus": "LESS_REVIEW_7_5",
+      "feedback": {
+        "correct": "Boa observação: Cinco é menor do que sete.",
+        "incorrect": "Cinco é menor do que sete.",
+        "hint": "Compare os totais.",
+        "errorFocus": "LESS_REVIEW_7_5"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-34",
+      "statement": "Dois grupos têm 6 objetos cada. Como descrevê-los?",
+      "prompt": "Dois grupos têm 6 objetos cada. Como descrevê-los?",
+      "options": [
+        "O primeiro tem mais",
+        "Têm a mesma quantidade.",
+        "O segundo tem menos",
+        "Nenhum tem objetos"
+      ],
+      "correctAnswer": "Têm a mesma quantidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O primeiro tem mais": [
+          "EQUALITY_REVIEW_6"
+        ],
+        "O segundo tem menos": [
+          "EQUALITY_REVIEW_6"
+        ],
+        "Nenhum tem objetos": [
+          "EQUALITY_REVIEW_6"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_QUANTIDADES_IGUAIS",
+      "explanation": "Os dois totais são seis.",
+      "hint": "Confira o número em cada grupo.",
+      "errorFocus": "EQUALITY_REVIEW_6",
+      "feedback": {
+        "correct": "Boa observação: Os dois totais são seis.",
+        "incorrect": "Os dois totais são seis.",
+        "hint": "Confira o número em cada grupo.",
+        "errorFocus": "EQUALITY_REVIEW_6"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-35",
+      "statement": "Ao parear dois conjuntos, o que significa encontrar objetos sem par em um deles?",
+      "prompt": "Ao parear dois conjuntos, o que significa encontrar objetos sem par em um deles?",
+      "options": [
+        "Esse conjunto tem menos",
+        "Os grupos são iguais",
+        "Esse conjunto tem mais objetos.",
+        "O pareamento não ajuda"
+      ],
+      "correctAnswer": "Esse conjunto tem mais objetos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Esse conjunto tem menos": [
+          "REMAINDER_MEANING_REVIEW"
+        ],
+        "Os grupos são iguais": [
+          "REMAINDER_MEANING_REVIEW"
+        ],
+        "O pareamento não ajuda": [
+          "REMAINDER_MEANING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_PAREAMENTO",
+      "explanation": "A sobra indica que um conjunto tem mais do que o outro.",
+      "hint": "Veja de que lado estão os objetos restantes.",
+      "errorFocus": "REMAINDER_MEANING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A sobra indica que um conjunto tem mais do que o outro.",
+        "incorrect": "A sobra indica que um conjunto tem mais do que o outro.",
+        "hint": "Veja de que lado estão os objetos restantes.",
+        "errorFocus": "REMAINDER_MEANING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-36",
+      "statement": "Qual conjunto tem mais: 13 peças ou 11 peças?",
+      "prompt": "Qual conjunto tem mais: 13 peças ou 11 peças?",
+      "options": [
+        "O conjunto com 11 peças",
+        "Os dois têm a mesma quantidade",
+        "O conjunto com peças maiores",
+        "O conjunto com 13 peças."
+      ],
+      "correctAnswer": "O conjunto com 13 peças.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O conjunto com 11 peças": [
+          "COMPARE_REVIEW_13_11"
+        ],
+        "Os dois têm a mesma quantidade": [
+          "COMPARE_REVIEW_13_11"
+        ],
+        "O conjunto com peças maiores": [
+          "COMPARE_REVIEW_13_11"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_TREZE_E_ONZE",
+      "explanation": "Treze é maior que onze.",
+      "hint": "Compare os numerais.",
+      "errorFocus": "COMPARE_REVIEW_13_11",
+      "feedback": {
+        "correct": "Boa observação: Treze é maior que onze.",
+        "incorrect": "Treze é maior que onze.",
+        "hint": "Compare os numerais.",
+        "errorFocus": "COMPARE_REVIEW_13_11"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-37",
+      "statement": "Um conjunto tem menos objetos, mas cada objeto é maior. Qual estratégia compara a quantidade?",
+      "prompt": "Um conjunto tem menos objetos, mas cada objeto é maior. Qual estratégia compara a quantidade?",
+      "options": [
+        "Contar os objetos ou fazer correspondência entre eles.",
+        "Comparar o espaço ocupado",
+        "Escolher o objeto mais pesado",
+        "Observar apenas a cor"
+      ],
+      "correctAnswer": "Contar os objetos ou fazer correspondência entre eles.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Comparar o espaço ocupado": [
+          "SIZE_ERROR_REVIEW"
+        ],
+        "Escolher o objeto mais pesado": [
+          "SIZE_ERROR_REVIEW"
+        ],
+        "Observar apenas a cor": [
+          "SIZE_ERROR_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_TAMANHO",
+      "explanation": "A quantidade é comparada pelo número ou por correspondência, não pelo tamanho.",
+      "hint": "Escolha uma estratégia que considere cada item.",
+      "errorFocus": "SIZE_ERROR_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A quantidade é comparada pelo número ou por correspondência, não pelo tamanho.",
+        "incorrect": "A quantidade é comparada pelo número ou por correspondência, não pelo tamanho.",
+        "hint": "Escolha uma estratégia que considere cada item.",
+        "errorFocus": "SIZE_ERROR_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-38",
+      "statement": "Dezesseis itens organizados em pares formam quantos pares completos?",
+      "prompt": "Dezesseis itens organizados em pares formam quantos pares completos?",
+      "options": [
+        "Sete pares",
+        "Oito pares.",
+        "Nove pares",
+        "Dezesseis pares"
+      ],
+      "correctAnswer": "Oito pares.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sete pares": [
+          "GROUP_BY_TWO_REVIEW_16"
+        ],
+        "Nove pares": [
+          "GROUP_BY_TWO_REVIEW_16"
+        ],
+        "Dezesseis pares": [
+          "GROUP_BY_TWO_REVIEW_16"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_PARES_DE_DEZ",
+      "explanation": "Oito grupos de dois totalizam dezesseis.",
+      "hint": "Conte os pares de dois em dois.",
+      "errorFocus": "GROUP_BY_TWO_REVIEW_16",
+      "feedback": {
+        "correct": "Boa observação: Oito grupos de dois totalizam dezesseis.",
+        "incorrect": "Oito grupos de dois totalizam dezesseis.",
+        "hint": "Conte os pares de dois em dois.",
+        "errorFocus": "GROUP_BY_TWO_REVIEW_16"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-39",
+      "statement": "Depois de estimar qual grupo tem mais, que passo ajuda a verificar?",
+      "prompt": "Depois de estimar qual grupo tem mais, que passo ajuda a verificar?",
+      "options": [
+        "Mudar os objetos de cor",
+        "Escolher sem observar",
+        "Contar ou parear os dois grupos.",
+        "Medir o tamanho de um objeto"
+      ],
+      "correctAnswer": "Contar ou parear os dois grupos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Mudar os objetos de cor": [
+          "ESTIMATE_VERIFY_REVIEW"
+        ],
+        "Escolher sem observar": [
+          "ESTIMATE_VERIFY_REVIEW"
+        ],
+        "Medir o tamanho de um objeto": [
+          "ESTIMATE_VERIFY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ESTIMATIVA",
+      "explanation": "Contar ou parear confirma ou ajusta a previsão.",
+      "hint": "Use uma forma de conferir a quantidade.",
+      "errorFocus": "ESTIMATE_VERIFY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Contar ou parear confirma ou ajusta a previsão.",
+        "incorrect": "Contar ou parear confirma ou ajusta a previsão.",
+        "hint": "Use uma forma de conferir a quantidade.",
+        "errorFocus": "ESTIMATE_VERIFY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ma03-estimate-and-compare-sets-40",
+      "statement": "Como explicar que um conjunto tem mais do que outro?",
+      "prompt": "Como explicar que um conjunto tem mais do que outro?",
+      "options": [
+        "Dizer que os objetos são maiores",
+        "Escolher o conjunto mais colorido",
+        "Adivinhar sem comparar",
+        "Mostrar uma contagem maior ou objetos que sobram ao parear um a um."
+      ],
+      "correctAnswer": "Mostrar uma contagem maior ou objetos que sobram ao parear um a um.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dizer que os objetos são maiores": [
+          "COMPARISON_EVIDENCE_REVIEW"
+        ],
+        "Escolher o conjunto mais colorido": [
+          "COMPARISON_EVIDENCE_REVIEW"
+        ],
+        "Adivinhar sem comparar": [
+          "COMPARISON_EVIDENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_COMPARACAO",
+      "explanation": "Contagem e correspondência são evidências de quantidade.",
+      "hint": "Use o número ou a sobra como evidência.",
+      "errorFocus": "COMPARISON_EVIDENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Contagem e correspondência são evidências de quantidade.",
+        "incorrect": "Contagem e correspondência são evidências de quantidade.",
+        "hint": "Use o número ou a sobra como evidência.",
+        "errorFocus": "COMPARISON_EVIDENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar objetos grandes, contrastantes e fáceis de manipular, numerais ampliados e grupos organizados em linhas ou bandejas.",
+          "Permitir contagem por apontamento, movimento, comunicação alternativa ou apoio de colega, sem exigir rapidez motora.",
+          "Oferecer representações táteis, figuras descritas e agrupamentos visuais em pares; garantir que diferenças de tamanho não confundam a quantidade."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
