@@ -1,0 +1,1673 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-portuguese-graphic-signs-fi",
+  "canonicalSkillCode": "AUTHORING_EF01LP04_GRAPHIC_SIGNS",
+  "subject": "PORTUGUESE",
+  "domain": "ALFABETIZAÇÃO",
+  "topic": "distinção entre letras do alfabeto e outros sinais gráficos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Distinguir as letras do alfabeto de outros sinais gráficos.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 101
+    },
+    "note": "Descritor oficial usado como contexto de autoria; vínculo canônico, revisão pedagógica e publicação permanecem pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Letras, números e outros sinais",
+    "objective": "Distinguir letras do alfabeto de números, pontuação, símbolos e outros sinais gráficos em situações reais de leitura e escrita.",
+    "summary": "Textos misturam letras, números, pontuação e símbolos. Reconhecer suas funções ajuda a ler e produzir mensagens com mais autonomia.",
+    "explanation": "## Observar a função do sinal\nLetras formam palavras; números registram quantidades, datas ou ordens; pontuação organiza a leitura; símbolos podem comunicar informações específicas. O mesmo suporte pode reunir todos eles.\n\n## Comparar sem decorar isoladamente\nUse placas, calendários, embalagens, listas e telas. Pergunte onde o sinal aparece e o que ele ajuda a comunicar. Evite tratar a forma visual como a única pista.\n\n## Acesso e participação\nOfereça cartões ampliados, versões táteis, alto contraste, leitura oral e símbolos de comunicação. A criança pode classificar, apontar ou justificar oralmente.",
+    "workedExample": "Em um cartão “Sala 1: 08h”, peça que a criança separe letras, algarismos e sinais. Depois, converse sobre o que mudaria se o algarismo fosse trocado por uma letra.",
+    "commonMistake": "Chamar todo símbolo de letra ou ensinar a classificação apenas por aparência, sem relacionar o sinal à função no texto.",
+    "tips": [
+      "Use exemplos reais e variados da escola.",
+      "Nomeie o sinal e pergunte o que ele comunica.",
+      "Compare letras parecidas com números sem constranger.",
+      "Permita resposta por classificação, apontar, voz ou comunicação alternativa."
+    ],
+    "priorKnowledge": [
+      "Reconhecer alguns nomes, palavras e marcas gráficas do cotidiano.",
+      "Participar de situações de contagem e leitura de sinais na sala."
+    ],
+    "keyConcepts": [
+      "letra",
+      "alfabeto",
+      "número",
+      "pontuação",
+      "símbolo",
+      "função social",
+      "classificação",
+      "acessibilidade"
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-portuguese-graphic-signs-fi-01",
+          "v1-portuguese-graphic-signs-fi-02",
+          "v1-portuguese-graphic-signs-fi-03",
+          "v1-portuguese-graphic-signs-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-portuguese-graphic-signs-fi-05",
+          "v1-portuguese-graphic-signs-fi-06",
+          "v1-portuguese-graphic-signs-fi-07",
+          "v1-portuguese-graphic-signs-fi-08",
+          "v1-portuguese-graphic-signs-fi-09",
+          "v1-portuguese-graphic-signs-fi-10",
+          "v1-portuguese-graphic-signs-fi-11",
+          "v1-portuguese-graphic-signs-fi-12",
+          "v1-portuguese-graphic-signs-fi-13",
+          "v1-portuguese-graphic-signs-fi-14",
+          "v1-portuguese-graphic-signs-fi-15",
+          "v1-portuguese-graphic-signs-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-portuguese-graphic-signs-fi-17",
+          "v1-portuguese-graphic-signs-fi-18",
+          "v1-portuguese-graphic-signs-fi-19",
+          "v1-portuguese-graphic-signs-fi-20",
+          "v1-portuguese-graphic-signs-fi-21",
+          "v1-portuguese-graphic-signs-fi-22",
+          "v1-portuguese-graphic-signs-fi-23",
+          "v1-portuguese-graphic-signs-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-portuguese-graphic-signs-fi-25",
+          "v1-portuguese-graphic-signs-fi-26",
+          "v1-portuguese-graphic-signs-fi-27",
+          "v1-portuguese-graphic-signs-fi-28",
+          "v1-portuguese-graphic-signs-fi-29",
+          "v1-portuguese-graphic-signs-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-portuguese-graphic-signs-fi-31",
+          "v1-portuguese-graphic-signs-fi-32",
+          "v1-portuguese-graphic-signs-fi-33",
+          "v1-portuguese-graphic-signs-fi-34",
+          "v1-portuguese-graphic-signs-fi-35",
+          "v1-portuguese-graphic-signs-fi-36",
+          "v1-portuguese-graphic-signs-fi-37",
+          "v1-portuguese-graphic-signs-fi-38",
+          "v1-portuguese-graphic-signs-fi-39",
+          "v1-portuguese-graphic-signs-fi-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "CLASSIFY_BY_FUNCTION",
+        "text": "Pergunte o que o sinal comunica no texto antes de decidir sua categoria."
+      },
+      {
+        "trigger": "LETTER_DIGIT_CONTRAST",
+        "text": "Compare a forma e a função de letras e algarismos no mesmo suporte."
+      },
+      {
+        "trigger": "PUNCTUATION_ROLE",
+        "text": "Pontuação não é letra: ela organiza pausas, perguntas ou outras relações na leitura."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "LETTER_DIGIT_CONFUSION",
+        "action": "Monte pares de cartões em contextos reais, como “O” e “0”, e leia a mensagem completa."
+      },
+      {
+        "errorFocus": "SYMBOL_WITHOUT_CONTEXT",
+        "action": "Retome o símbolo no suporte original e pergunte qual informação ele acrescenta."
+      },
+      {
+        "errorFocus": "OVERGENERALIZE_SHAPE",
+        "action": "Mostre sinais com formas diferentes que têm a mesma função e formas parecidas com funções diferentes."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "title": "Caça aos sinais da escola",
+        "context": "Fotografar ou reproduzir placas, calendários, rótulos e avisos da escola.",
+        "steps": [
+          "Coletar exemplos.",
+          "Classificar letras, números e outros sinais.",
+          "Explicar a função de cada grupo.",
+          "Criar uma legenda acessível."
+        ],
+        "evidence": "Painel classificado com justificativas.",
+        "rubric": [
+          "Inicial: agrupa com modelo.",
+          "Em desenvolvimento: distingue dois grupos.",
+          "Consolidado: justifica a função de sinais em contextos diferentes."
+        ]
+      },
+      {
+        "title": "Mensagem com instruções",
+        "context": "Interpretar uma ficha com nome, número da sala, horário e ícones.",
+        "steps": [
+          "Localizar cada tipo de sinal.",
+          "Ler a função no contexto.",
+          "Recriar a ficha com apoio.",
+          "Conferir se a mensagem ficou compreensível."
+        ],
+        "evidence": "Ficha recriada e explicação da escolha.",
+        "rubric": [
+          "Inicial: localiza sinais com apoio.",
+          "Em desenvolvimento: classifica letras e números.",
+          "Consolidado: relaciona sinal, função e mensagem."
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP04",
+        "descriptor": "Distinguir as letras do alfabeto de outros sinais gráficos.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 101
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral criado para demonstração; o descritor oficial é referenciado como fonte de contexto e não é reproduzido como conteúdo de exercício."
+  },
+  "questions": [
+    {
+      "id": "v1-portuguese-graphic-signs-fi-01",
+      "statement": "No cartão aparecem “A”, “3” e “?”. Qual deles é uma letra?",
+      "prompt": "No cartão aparecem “A”, “3” e “?”. Qual deles é uma letra?",
+      "options": [
+        "A",
+        "3",
+        "?",
+        "Nenhum."
+      ],
+      "correctAnswer": "A",
+      "answerPosition": "A",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAO_LETRA_A",
+      "explanation": "A é uma letra do alfabeto; o algarismo e o ponto de interrogação são outros sinais gráficos.",
+      "hint": "Nomeie cada marca e pense se ela pertence ao alfabeto.",
+      "errorFocus": "LETTER_VS_OTHER_SIGN",
+      "feedback": {
+        "correct": "Boa análise: A é uma letra do alfabeto; o algarismo e o ponto de interrogação são outros sinais gráficos.",
+        "incorrect": "A é uma letra do alfabeto; o algarismo e o ponto de interrogação são outros sinais gráficos.",
+        "hint": "Nomeie cada marca e pense se ela pertence ao alfabeto.",
+        "errorFocus": "LETTER_VS_OTHER_SIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-02",
+      "statement": "Na placa “SALA 1”, quais marcas são letras?",
+      "prompt": "Na placa “SALA 1”, quais marcas são letras?",
+      "options": [
+        "Somente 1.",
+        "S, A, L e A.",
+        "Apenas o espaço.",
+        "Nenhuma marca."
+      ],
+      "correctAnswer": "S, A, L e A.",
+      "answerPosition": "B",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PLACA_SALA",
+      "explanation": "As quatro letras formam a palavra; 1 é um algarismo.",
+      "hint": "Separe as marcas que formam a palavra da marca que indica um número.",
+      "errorFocus": "LETTER_SET",
+      "feedback": {
+        "correct": "Boa análise: As quatro letras formam a palavra; 1 é um algarismo.",
+        "incorrect": "As quatro letras formam a palavra; 1 é um algarismo.",
+        "hint": "Separe as marcas que formam a palavra da marca que indica um número.",
+        "errorFocus": "LETTER_SET"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-03",
+      "statement": "Uma folha tem o desenho de uma casa e a letra “C”. O que diferencia a letra do desenho?",
+      "prompt": "Uma folha tem o desenho de uma casa e a letra “C”. O que diferencia a letra do desenho?",
+      "options": [
+        "A letra precisa ser colorida.",
+        "O desenho sempre tem som.",
+        "A letra é um sinal do alfabeto que pode participar da escrita de palavras.",
+        "Não há diferença."
+      ],
+      "correctAnswer": "A letra é um sinal do alfabeto que pode participar da escrita de palavras.",
+      "answerPosition": "C",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESENHO_E_LETRA",
+      "explanation": "A letra integra um sistema de escrita; o desenho representa uma imagem por outra via.",
+      "hint": "Pergunte qual marca pode aparecer dentro de muitas palavras.",
+      "errorFocus": "LETTER_FUNCTION",
+      "feedback": {
+        "correct": "Boa análise: A letra integra um sistema de escrita; o desenho representa uma imagem por outra via.",
+        "incorrect": "A letra integra um sistema de escrita; o desenho representa uma imagem por outra via.",
+        "hint": "Pergunte qual marca pode aparecer dentro de muitas palavras.",
+        "errorFocus": "LETTER_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-04",
+      "statement": "Na frase “Oi!”, qual sinal não é letra?",
+      "prompt": "Na frase “Oi!”, qual sinal não é letra?",
+      "options": [
+        "O",
+        "i",
+        "Todas são letras.",
+        "O ponto de exclamação."
+      ],
+      "correctAnswer": "O ponto de exclamação.",
+      "answerPosition": "D",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PONTUACAO",
+      "explanation": "O ponto de exclamação é um sinal gráfico que não pertence ao conjunto das letras.",
+      "hint": "Observe a marca depois da palavra.",
+      "errorFocus": "PUNCTUATION_SIGN",
+      "feedback": {
+        "correct": "Boa análise: O ponto de exclamação é um sinal gráfico que não pertence ao conjunto das letras.",
+        "incorrect": "O ponto de exclamação é um sinal gráfico que não pertence ao conjunto das letras.",
+        "hint": "Observe a marca depois da palavra.",
+        "errorFocus": "PUNCTUATION_SIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-05",
+      "statement": "Na etiqueta “BOLA”, qual conjunto contém somente letras?",
+      "prompt": "Na etiqueta “BOLA”, qual conjunto contém somente letras?",
+      "options": [
+        "B, O, L e A.",
+        "B, O, 2 e A.",
+        "B, desenho, L e A.",
+        "B, O, ! e A."
+      ],
+      "correctAnswer": "B, O, L e A.",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ETIQUETA_1",
+      "explanation": "As quatro marcas escolhidas são letras e compõem a palavra apresentada.",
+      "hint": "Confira cada marca com um alfabeto de referência.",
+      "errorFocus": "ALL_LETTERS",
+      "feedback": {
+        "correct": "Boa análise: As quatro marcas escolhidas são letras e compõem a palavra apresentada.",
+        "incorrect": "As quatro marcas escolhidas são letras e compõem a palavra apresentada.",
+        "hint": "Confira cada marca com um alfabeto de referência.",
+        "errorFocus": "ALL_LETTERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-06",
+      "statement": "Qual marca da sequência “M 5 N” não é letra?",
+      "prompt": "Qual marca da sequência “M 5 N” não é letra?",
+      "options": [
+        "M",
+        "5",
+        "N",
+        "Todas."
+      ],
+      "correctAnswer": "5",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ETIQUETA_2",
+      "explanation": "5 é um algarismo; M e N são letras do alfabeto.",
+      "hint": "Nomeie M e N e compare a marca central com números.",
+      "errorFocus": "DIGIT_NOT_LETTER",
+      "feedback": {
+        "correct": "Boa análise: 5 é um algarismo; M e N são letras do alfabeto.",
+        "incorrect": "5 é um algarismo; M e N são letras do alfabeto.",
+        "hint": "Nomeie M e N e compare a marca central com números.",
+        "errorFocus": "DIGIT_NOT_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-07",
+      "statement": "No calendário, “JUNHO” aparece ao lado de “6”. O que é 6?",
+      "prompt": "No calendário, “JUNHO” aparece ao lado de “6”. O que é 6?",
+      "options": [
+        "Uma letra.",
+        "Um desenho.",
+        "Um algarismo.",
+        "Um ponto final."
+      ],
+      "correctAnswer": "Um algarismo.",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CALENDARIO",
+      "explanation": "O algarismo 6 representa quantidade ou ordem no calendário, não uma letra.",
+      "hint": "Pense em como chamamos os sinais usados para escrever números.",
+      "errorFocus": "NUMBER_SIGN",
+      "feedback": {
+        "correct": "Boa análise: O algarismo 6 representa quantidade ou ordem no calendário, não uma letra.",
+        "incorrect": "O algarismo 6 representa quantidade ou ordem no calendário, não uma letra.",
+        "hint": "Pense em como chamamos os sinais usados para escrever números.",
+        "errorFocus": "NUMBER_SIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-08",
+      "statement": "Na placa “ATENÇÃO!”, qual marca não é letra?",
+      "prompt": "Na placa “ATENÇÃO!”, qual marca não é letra?",
+      "options": [
+        "A",
+        "T",
+        "Ç",
+        "O ponto de exclamação."
+      ],
+      "correctAnswer": "O ponto de exclamação.",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PLACA_ATENCAO",
+      "explanation": "O ponto de exclamação aparece depois da palavra e tem função gráfica própria.",
+      "hint": "Localize a marca que está fora da sequência de letras.",
+      "errorFocus": "PUNCTUATION_IN_WORD",
+      "feedback": {
+        "correct": "Boa análise: O ponto de exclamação aparece depois da palavra e tem função gráfica própria.",
+        "incorrect": "O ponto de exclamação aparece depois da palavra e tem função gráfica própria.",
+        "hint": "Localize a marca que está fora da sequência de letras.",
+        "errorFocus": "PUNCTUATION_IN_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-09",
+      "statement": "Em um jogo, o cartão mostra a letra “P” e o cartão mostra um desenho de peixe. Qual é a letra?",
+      "prompt": "Em um jogo, o cartão mostra a letra “P” e o cartão mostra um desenho de peixe. Qual é a letra?",
+      "options": [
+        "P",
+        "O desenho do peixe.",
+        "Os dois são letras.",
+        "Nenhum dos dois."
+      ],
+      "correctAnswer": "P",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "JOGO_MEMORIA",
+      "explanation": "P é uma letra; o peixe é uma imagem que pode lembrar o som ou o significado, mas não é letra.",
+      "hint": "Procure a marca que pertence ao alfabeto.",
+      "errorFocus": "LETTER_VS_IMAGE",
+      "feedback": {
+        "correct": "Boa análise: P é uma letra; o peixe é uma imagem que pode lembrar o som ou o significado, mas não é letra.",
+        "incorrect": "P é uma letra; o peixe é uma imagem que pode lembrar o som ou o significado, mas não é letra.",
+        "hint": "Procure a marca que pertence ao alfabeto.",
+        "errorFocus": "LETTER_VS_IMAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-10",
+      "statement": "Na etiqueta “ANA”, qual marca é uma letra mesmo que apareça em tamanho pequeno?",
+      "prompt": "Na etiqueta “ANA”, qual marca é uma letra mesmo que apareça em tamanho pequeno?",
+      "options": [
+        "A etiqueta inteira como um desenho.",
+        "A",
+        "O espaço ao redor.",
+        "Nenhuma."
+      ],
+      "correctAnswer": "A",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NOME_ETIQUETA",
+      "explanation": "O tamanho ou o estilo não muda o fato de A ser uma letra.",
+      "hint": "A forma pode mudar, mas pergunte se a marca pertence ao alfabeto.",
+      "errorFocus": "LETTER_SIZE",
+      "feedback": {
+        "correct": "Boa análise: O tamanho ou o estilo não muda o fato de A ser uma letra.",
+        "incorrect": "O tamanho ou o estilo não muda o fato de A ser uma letra.",
+        "hint": "A forma pode mudar, mas pergunte se a marca pertence ao alfabeto.",
+        "errorFocus": "LETTER_SIZE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-11",
+      "statement": "Na caixa há “L” e um símbolo de estrela. Qual é o símbolo gráfico que não é letra?",
+      "prompt": "Na caixa há “L” e um símbolo de estrela. Qual é o símbolo gráfico que não é letra?",
+      "options": [
+        "L",
+        "Os dois são letras.",
+        "A estrela.",
+        "Nenhum."
+      ],
+      "correctAnswer": "A estrela.",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CAIXA_BRINQUEDO",
+      "explanation": "A estrela é um símbolo; L é uma letra do alfabeto.",
+      "hint": "Compare a marca com uma sequência de letras conhecida.",
+      "errorFocus": "SYMBOL_NOT_LETTER",
+      "feedback": {
+        "correct": "Boa análise: A estrela é um símbolo; L é uma letra do alfabeto.",
+        "incorrect": "A estrela é um símbolo; L é uma letra do alfabeto.",
+        "hint": "Compare a marca com uma sequência de letras conhecida.",
+        "errorFocus": "SYMBOL_NOT_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-12",
+      "statement": "Na porta “B”, ao lado do número “2”, qual marca pertence ao alfabeto?",
+      "prompt": "Na porta “B”, ao lado do número “2”, qual marca pertence ao alfabeto?",
+      "options": [
+        "2",
+        "As duas.",
+        "Nenhuma.",
+        "B"
+      ],
+      "correctAnswer": "B",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PORTA_NUMERO",
+      "explanation": "B é letra e 2 é algarismo; ambos podem aparecer em uma placa, mas têm funções diferentes.",
+      "hint": "Diga o nome da letra e do algarismo.",
+      "errorFocus": "LETTER_AND_DIGIT",
+      "feedback": {
+        "correct": "Boa análise: B é letra e 2 é algarismo; ambos podem aparecer em uma placa, mas têm funções diferentes.",
+        "incorrect": "B é letra e 2 é algarismo; ambos podem aparecer em uma placa, mas têm funções diferentes.",
+        "hint": "Diga o nome da letra e do algarismo.",
+        "errorFocus": "LETTER_AND_DIGIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-13",
+      "statement": "Qual sequência contém apenas sinais que não são letras?",
+      "prompt": "Qual sequência contém apenas sinais que não são letras?",
+      "options": [
+        "2, ?, !",
+        "A, B, C",
+        "A, 2, C",
+        "B, desenho, D"
+      ],
+      "correctAnswer": "2, ?, !",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LISTA_SINAIS",
+      "explanation": "A sequência reúne algarismo, interrogação e exclamação, que são sinais gráficos não alfabéticos.",
+      "hint": "Procure o grupo sem nenhuma marca do alfabeto.",
+      "errorFocus": "NONLETTER_GROUP",
+      "feedback": {
+        "correct": "Boa análise: A sequência reúne algarismo, interrogação e exclamação, que são sinais gráficos não alfabéticos.",
+        "incorrect": "A sequência reúne algarismo, interrogação e exclamação, que são sinais gráficos não alfabéticos.",
+        "hint": "Procure o grupo sem nenhuma marca do alfabeto.",
+        "errorFocus": "NONLETTER_GROUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-14",
+      "statement": "A e a têm formatos diferentes. Como classificá-las?",
+      "prompt": "A e a têm formatos diferentes. Como classificá-las?",
+      "options": [
+        "Uma é letra e outra é número.",
+        "São duas formas de uma mesma letra.",
+        "As duas são desenhos.",
+        "Nenhuma é letra."
+      ],
+      "correctAnswer": "São duas formas de uma mesma letra.",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MAIUSCULA_MINUSCULA",
+      "explanation": "Maiúscula e minúscula podem representar a mesma letra em formatos diferentes.",
+      "hint": "Observe o nome da letra, não apenas o tamanho ou a forma.",
+      "errorFocus": "LETTER_VARIANT",
+      "feedback": {
+        "correct": "Boa análise: Maiúscula e minúscula podem representar a mesma letra em formatos diferentes.",
+        "incorrect": "Maiúscula e minúscula podem representar a mesma letra em formatos diferentes.",
+        "hint": "Observe o nome da letra, não apenas o tamanho ou a forma.",
+        "errorFocus": "LETTER_VARIANT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-15",
+      "statement": "Na palavra “CAFÉ”, qual marca é um sinal adicional e não uma letra?",
+      "prompt": "Na palavra “CAFÉ”, qual marca é um sinal adicional e não uma letra?",
+      "options": [
+        "C",
+        "F",
+        "O acento agudo.",
+        "É"
+      ],
+      "correctAnswer": "O acento agudo.",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ACENTO",
+      "explanation": "O acento é uma marca gráfica que acompanha a letra; não é uma letra separada.",
+      "hint": "Veja se a marca pode ser nomeada como letra do alfabeto.",
+      "errorFocus": "DIACRITIC_NOT_LETTER",
+      "feedback": {
+        "correct": "Boa análise: O acento é uma marca gráfica que acompanha a letra; não é uma letra separada.",
+        "incorrect": "O acento é uma marca gráfica que acompanha a letra; não é uma letra separada.",
+        "hint": "Veja se a marca pode ser nomeada como letra do alfabeto.",
+        "errorFocus": "DIACRITIC_NOT_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-16",
+      "statement": "Na expressão “(BOLA)”, quais marcas não são letras?",
+      "prompt": "Na expressão “(BOLA)”, quais marcas não são letras?",
+      "options": [
+        "B, O, L e A.",
+        "Apenas O.",
+        "Nenhuma marca.",
+        "Os parênteses."
+      ],
+      "correctAnswer": "Os parênteses.",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PARENTESES",
+      "explanation": "Os parênteses organizam a escrita, enquanto BOLA é formado por letras.",
+      "hint": "Observe o que envolve a palavra.",
+      "errorFocus": "PARENTHESIS_SIGN",
+      "feedback": {
+        "correct": "Boa análise: Os parênteses organizam a escrita, enquanto BOLA é formado por letras.",
+        "incorrect": "Os parênteses organizam a escrita, enquanto BOLA é formado por letras.",
+        "hint": "Observe o que envolve a palavra.",
+        "errorFocus": "PARENTHESIS_SIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-17",
+      "statement": "Para montar a palavra “SOL” com cartões, quais cartões devem ser escolhidos?",
+      "prompt": "Para montar a palavra “SOL” com cartões, quais cartões devem ser escolhidos?",
+      "options": [
+        "S, O e L.",
+        "S, 0 e L.",
+        "S, desenho de sol e L.",
+        "3, O e !"
+      ],
+      "correctAnswer": "S, O e L.",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SELECIONAR_LETRAS",
+      "explanation": "A palavra é montada com letras; o algarismo, a imagem e a pontuação não substituem esses cartões nesta tarefa.",
+      "hint": "Escolha somente cartões nomeados como letras.",
+      "errorFocus": "SELECT_ALPHABETIC_SIGNS",
+      "feedback": {
+        "correct": "Boa análise: A palavra é montada com letras; o algarismo, a imagem e a pontuação não substituem esses cartões nesta tarefa.",
+        "incorrect": "A palavra é montada com letras; o algarismo, a imagem e a pontuação não substituem esses cartões nesta tarefa.",
+        "hint": "Escolha somente cartões nomeados como letras.",
+        "errorFocus": "SELECT_ALPHABETIC_SIGNS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-18",
+      "statement": "Ao organizar uma caixa de letras e sinais, onde colocar “?”",
+      "prompt": "Ao organizar uma caixa de letras e sinais, onde colocar “?”",
+      "options": [
+        "Na caixa das letras.",
+        "Na caixa de outros sinais gráficos.",
+        "Na caixa dos números.",
+        "Na caixa dos desenhos de animais."
+      ],
+      "correctAnswer": "Na caixa de outros sinais gráficos.",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ORGANIZAR_MATERIAIS",
+      "explanation": "O ponto de interrogação é pontuação e não pertence ao alfabeto.",
+      "hint": "Pense no uso da marca em uma pergunta.",
+      "errorFocus": "CLASSIFY_QUESTION_MARK",
+      "feedback": {
+        "correct": "Boa análise: O ponto de interrogação é pontuação e não pertence ao alfabeto.",
+        "incorrect": "O ponto de interrogação é pontuação e não pertence ao alfabeto.",
+        "hint": "Pense no uso da marca em uma pergunta.",
+        "errorFocus": "CLASSIFY_QUESTION_MARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-19",
+      "statement": "Uma criança usa letras móveis grandes e com alto contraste. Qual princípio deve orientar a escolha?",
+      "prompt": "Uma criança usa letras móveis grandes e com alto contraste. Qual princípio deve orientar a escolha?",
+      "options": [
+        "Exigir um único tamanho para todos.",
+        "Retirar letras difíceis sem conversar.",
+        "Garantir que as marcas sejam reconhecíveis e permitir diferentes formas de manipulação.",
+        "Usar somente imagens."
+      ],
+      "correctAnswer": "Garantir que as marcas sejam reconhecíveis e permitir diferentes formas de manipulação.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ALFABETO_VISUAL",
+      "explanation": "Acessibilidade muda o acesso ao material, não o conceito de letra versus outro sinal.",
+      "hint": "Pergunte o que torna as letras visíveis e manipuláveis para a criança.",
+      "errorFocus": "ACCESSIBLE_LETTER_MATERIAL",
+      "feedback": {
+        "correct": "Boa análise: Acessibilidade muda o acesso ao material, não o conceito de letra versus outro sinal.",
+        "incorrect": "Acessibilidade muda o acesso ao material, não o conceito de letra versus outro sinal.",
+        "hint": "Pergunte o que torna as letras visíveis e manipuláveis para a criança.",
+        "errorFocus": "ACCESSIBLE_LETTER_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-20",
+      "statement": "No aviso “CUIDADO!”, qual conjunto representa as letras da palavra?",
+      "prompt": "No aviso “CUIDADO!”, qual conjunto representa as letras da palavra?",
+      "options": [
+        "C, U, I, D, A, D, O e !.",
+        "Apenas !.",
+        "O desenho de atenção e !.",
+        "C, U, I, D, A, D e O."
+      ],
+      "correctAnswer": "C, U, I, D, A, D e O.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SINAL_EM_AVISO",
+      "explanation": "O ponto de exclamação faz parte do aviso, mas não da sequência de letras da palavra.",
+      "hint": "Leia apenas as marcas que formam o nome CUIDADO.",
+      "errorFocus": "EXCLUDE_PUNCTUATION",
+      "feedback": {
+        "correct": "Boa análise: O ponto de exclamação faz parte do aviso, mas não da sequência de letras da palavra.",
+        "incorrect": "O ponto de exclamação faz parte do aviso, mas não da sequência de letras da palavra.",
+        "hint": "Leia apenas as marcas que formam o nome CUIDADO.",
+        "errorFocus": "EXCLUDE_PUNCTUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-21",
+      "statement": "Uma placa traz “M” em caixa alta e outra traz “m” em caixa baixa. O que se pode afirmar?",
+      "prompt": "Uma placa traz “M” em caixa alta e outra traz “m” em caixa baixa. O que se pode afirmar?",
+      "options": [
+        "As duas são formas da letra M.",
+        "Uma é letra e outra é desenho.",
+        "M é um número.",
+        "m não pertence ao alfabeto."
+      ],
+      "correctAnswer": "As duas são formas da letra M.",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FORMAS_DA_LETRA",
+      "explanation": "O formato pode variar sem deixar de ser uma letra do alfabeto.",
+      "hint": "Nomeie as duas formas e compare seus usos.",
+      "errorFocus": "UPPER_LOWER_SAME_LETTER",
+      "feedback": {
+        "correct": "Boa análise: O formato pode variar sem deixar de ser uma letra do alfabeto.",
+        "incorrect": "O formato pode variar sem deixar de ser uma letra do alfabeto.",
+        "hint": "Nomeie as duas formas e compare seus usos.",
+        "errorFocus": "UPPER_LOWER_SAME_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-22",
+      "statement": "Em um aplicativo escolar, o ícone de casa aparece ao lado da letra “H”. Qual é a letra?",
+      "prompt": "Em um aplicativo escolar, o ícone de casa aparece ao lado da letra “H”. Qual é a letra?",
+      "options": [
+        "O ícone de casa.",
+        "H",
+        "Os dois são letras.",
+        "Nenhum."
+      ],
+      "correctAnswer": "H",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LEGENDA_E_ICONE",
+      "explanation": "O ícone representa uma função visual; H é a marca alfabética.",
+      "hint": "Use o alfabeto para conferir qual marca tem nome de letra.",
+      "errorFocus": "ICON_NOT_LETTER",
+      "feedback": {
+        "correct": "Boa análise: O ícone representa uma função visual; H é a marca alfabética.",
+        "incorrect": "O ícone representa uma função visual; H é a marca alfabética.",
+        "hint": "Use o alfabeto para conferir qual marca tem nome de letra.",
+        "errorFocus": "ICON_NOT_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-23",
+      "statement": "Por que uma lista pode ter letras, números e pontuação juntos?",
+      "prompt": "Por que uma lista pode ter letras, números e pontuação juntos?",
+      "options": [
+        "Porque todos são letras.",
+        "Porque números e pontuação não comunicam nada.",
+        "Porque cada tipo de sinal cumpre uma função diferente na organização da informação.",
+        "Porque uma lista deve ser só desenho."
+      ],
+      "correctAnswer": "Porque cada tipo de sinal cumpre uma função diferente na organização da informação.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "USO_SOCIAL_DOS_SINAIS",
+      "explanation": "Textos reais combinam diferentes sinais; distinguir não significa dizer que os outros sinais não têm função.",
+      "hint": "Pense no papel de cada marca no texto.",
+      "errorFocus": "FUNCTIONS_OF_SIGNS",
+      "feedback": {
+        "correct": "Boa análise: Textos reais combinam diferentes sinais; distinguir não significa dizer que os outros sinais não têm função.",
+        "incorrect": "Textos reais combinam diferentes sinais; distinguir não significa dizer que os outros sinais não têm função.",
+        "hint": "Pense no papel de cada marca no texto.",
+        "errorFocus": "FUNCTIONS_OF_SIGNS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-24",
+      "statement": "Uma criança identifica letras pelo tato em cartões em relevo. Como participar da classificação?",
+      "prompt": "Uma criança identifica letras pelo tato em cartões em relevo. Como participar da classificação?",
+      "options": [
+        "Ficar sem acesso à atividade.",
+        "Classificar só pela cor.",
+        "Tratar todos os cartões como imagens.",
+        "Explorar o cartão, nomear a letra quando possível e separar de números e símbolos."
+      ],
+      "correctAnswer": "Explorar o cartão, nomear a letra quando possível e separar de números e símbolos.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEITURA_TATIL",
+      "explanation": "A distinção entre letras e outros sinais pode ser realizada por diferentes canais sensoriais.",
+      "hint": "Use o canal acessível para reconhecer a marca e sua função.",
+      "errorFocus": "MULTIMODAL_ACCESS",
+      "feedback": {
+        "correct": "Boa análise: A distinção entre letras e outros sinais pode ser realizada por diferentes canais sensoriais.",
+        "incorrect": "A distinção entre letras e outros sinais pode ser realizada por diferentes canais sensoriais.",
+        "hint": "Use o canal acessível para reconhecer a marca e sua função.",
+        "errorFocus": "MULTIMODAL_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-25",
+      "statement": "Qual regra ajuda a separar letras de outros sinais gráficos?",
+      "prompt": "Qual regra ajuda a separar letras de outros sinais gráficos?",
+      "options": [
+        "Letras pertencem ao alfabeto e podem participar da escrita de palavras.",
+        "Todo sinal redondo é letra.",
+        "Todo número é letra.",
+        "Somente desenhos formam palavras."
+      ],
+      "correctAnswer": "Letras pertencem ao alfabeto e podem participar da escrita de palavras.",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REGRA_CLASSIFICACAO",
+      "explanation": "A pertença ao alfabeto é um critério mais seguro do que tamanho, cor ou formato isolado.",
+      "hint": "Use o alfabeto como referência.",
+      "errorFocus": "ALPHABET_CRITERION",
+      "feedback": {
+        "correct": "Boa análise: A pertença ao alfabeto é um critério mais seguro do que tamanho, cor ou formato isolado.",
+        "incorrect": "A pertença ao alfabeto é um critério mais seguro do que tamanho, cor ou formato isolado.",
+        "hint": "Use o alfabeto como referência.",
+        "errorFocus": "ALPHABET_CRITERION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-26",
+      "statement": "Qual comparação está correta?",
+      "prompt": "Qual comparação está correta?",
+      "options": [
+        "A e 4 são a mesma letra.",
+        "A letra A pode formar palavras; o número 4 indica uma quantidade ou ordem.",
+        "4 forma palavras como letra.",
+        "A indica sempre quantidade."
+      ],
+      "correctAnswer": "A letra A pode formar palavras; o número 4 indica uma quantidade ou ordem.",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LETRA_E_NUMERO",
+      "explanation": "Letras e algarismos podem aparecer juntos, mas representam funções diferentes na escrita.",
+      "hint": "Compare o que cada marca costuma representar.",
+      "errorFocus": "LETTER_DIGIT_FUNCTION",
+      "feedback": {
+        "correct": "Boa análise: Letras e algarismos podem aparecer juntos, mas representam funções diferentes na escrita.",
+        "incorrect": "Letras e algarismos podem aparecer juntos, mas representam funções diferentes na escrita.",
+        "hint": "Compare o que cada marca costuma representar.",
+        "errorFocus": "LETTER_DIGIT_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-27",
+      "statement": "Qual frase distingue letra e pontuação?",
+      "prompt": "Qual frase distingue letra e pontuação?",
+      "options": [
+        "O ponto é uma letra pequena.",
+        "A letra só aparece em desenhos.",
+        "A letra participa da palavra; o ponto pode marcar uma pausa ou o fim.",
+        "Pontuação e letras são sempre iguais."
+      ],
+      "correctAnswer": "A letra participa da palavra; o ponto pode marcar uma pausa ou o fim.",
+      "answerPosition": "C",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LETRA_E_PONTUACAO",
+      "explanation": "A distinção considera o papel de cada marca na escrita.",
+      "hint": "Observe onde o ponto aparece em relação à palavra.",
+      "errorFocus": "LETTER_PUNCTUATION_FUNCTION",
+      "feedback": {
+        "correct": "Boa análise: A distinção considera o papel de cada marca na escrita.",
+        "incorrect": "A distinção considera o papel de cada marca na escrita.",
+        "hint": "Observe onde o ponto aparece em relação à palavra.",
+        "errorFocus": "LETTER_PUNCTUATION_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-28",
+      "statement": "Por que não basta olhar se uma marca parece um círculo para chamá-la de letra?",
+      "prompt": "Por que não basta olhar se uma marca parece um círculo para chamá-la de letra?",
+      "options": [
+        "Porque letras nunca têm formas curvas.",
+        "Porque todo círculo é número.",
+        "Porque formas não podem ser comparadas.",
+        "Porque é preciso relacionar a forma à referência e à função no sistema de escrita."
+      ],
+      "correctAnswer": "Porque é preciso relacionar a forma à referência e à função no sistema de escrita.",
+      "answerPosition": "D",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "FORMA_E_FUNCAO",
+      "explanation": "Uma forma isolada pode lembrar diferentes sinais; a referência alfabética orienta a classificação.",
+      "hint": "Combine observação da forma com nome e função.",
+      "errorFocus": "FORM_NOT_SUFFICIENT",
+      "feedback": {
+        "correct": "Boa análise: Uma forma isolada pode lembrar diferentes sinais; a referência alfabética orienta a classificação.",
+        "incorrect": "Uma forma isolada pode lembrar diferentes sinais; a referência alfabética orienta a classificação.",
+        "hint": "Combine observação da forma com nome e função.",
+        "errorFocus": "FORM_NOT_SUFFICIENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-29",
+      "statement": "Em grupo, qual justificativa mostra uma classificação bem feita?",
+      "prompt": "Em grupo, qual justificativa mostra uma classificação bem feita?",
+      "options": [
+        "“Colocamos X com as letras porque ele aparece no alfabeto; colocamos ? com os outros sinais.”",
+        "“Escolhemos pela cor.”",
+        "“Tudo é letra porque está no papel.”",
+        "“Separámos sem conversar.”"
+      ],
+      "correctAnswer": "“Colocamos X com as letras porque ele aparece no alfabeto; colocamos ? com os outros sinais.”",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CLASSIFICACAO_COLABORATIVA",
+      "explanation": "A justificativa explicita o critério utilizado para classificar as marcas.",
+      "hint": "Diga qual regra do alfabeto foi usada.",
+      "errorFocus": "JUSTIFY_CLASSIFICATION",
+      "feedback": {
+        "correct": "Boa análise: A justificativa explicita o critério utilizado para classificar as marcas.",
+        "incorrect": "A justificativa explicita o critério utilizado para classificar as marcas.",
+        "hint": "Diga qual regra do alfabeto foi usada.",
+        "errorFocus": "JUSTIFY_CLASSIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-30",
+      "statement": "O que uma atividade com um único cartão não mostra sozinha?",
+      "prompt": "O que uma atividade com um único cartão não mostra sozinha?",
+      "options": [
+        "Mostra qual marca está no cartão.",
+        "Não mostra toda a aprendizagem da criança sobre todos os sinais gráficos.",
+        "Pode permitir uma comparação local.",
+        "Pode ser ponto de partida para conversa."
+      ],
+      "correctAnswer": "Não mostra toda a aprendizagem da criança sobre todos os sinais gráficos.",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LIMITES_DA_CLASSIFICACAO",
+      "explanation": "Uma amostra ajuda a observar uma classificação específica, mas não substitui outras situações e mediação.",
+      "hint": "Diferencie o que foi observado agora do que ainda precisa ser explorado.",
+      "errorFocus": "LIMIT_SINGLE_SAMPLE",
+      "feedback": {
+        "correct": "Boa análise: Uma amostra ajuda a observar uma classificação específica, mas não substitui outras situações e mediação.",
+        "incorrect": "Uma amostra ajuda a observar uma classificação específica, mas não substitui outras situações e mediação.",
+        "hint": "Diferencie o que foi observado agora do que ainda precisa ser explorado.",
+        "errorFocus": "LIMIT_SINGLE_SAMPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-31",
+      "statement": "Qual é a letra na sequência “B, 2, !”?",
+      "prompt": "Qual é a letra na sequência “B, 2, !”?",
+      "options": [
+        "2",
+        "!",
+        "B",
+        "Todas."
+      ],
+      "correctAnswer": "B",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_LETRA_B",
+      "explanation": "B pertence ao alfabeto; 2 e ! são outros sinais gráficos.",
+      "hint": "Confira cada marca no alfabeto.",
+      "errorFocus": "REVIEW_LETTER",
+      "feedback": {
+        "correct": "Boa análise: B pertence ao alfabeto; 2 e ! são outros sinais gráficos.",
+        "incorrect": "B pertence ao alfabeto; 2 e ! são outros sinais gráficos.",
+        "hint": "Confira cada marca no alfabeto.",
+        "errorFocus": "REVIEW_LETTER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-32",
+      "statement": "Na placa “A 7”, qual marca é um algarismo?",
+      "prompt": "Na placa “A 7”, qual marca é um algarismo?",
+      "options": [
+        "A",
+        "O espaço.",
+        "Nenhuma.",
+        "7"
+      ],
+      "correctAnswer": "7",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_NUMERO",
+      "explanation": "7 é usado para representar um número; A é letra.",
+      "hint": "Nomeie a marca que indica número.",
+      "errorFocus": "REVIEW_DIGIT",
+      "feedback": {
+        "correct": "Boa análise: 7 é usado para representar um número; A é letra.",
+        "incorrect": "7 é usado para representar um número; A é letra.",
+        "hint": "Nomeie a marca que indica número.",
+        "errorFocus": "REVIEW_DIGIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-33",
+      "statement": "Na frase “Vá.”, qual marca não é letra?",
+      "prompt": "Na frase “Vá.”, qual marca não é letra?",
+      "options": [
+        "O ponto final.",
+        "V",
+        "á",
+        "Nenhuma."
+      ],
+      "correctAnswer": "O ponto final.",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_PONTO",
+      "explanation": "O ponto final é um sinal de pontuação.",
+      "hint": "Procure a marca que encerra a frase.",
+      "errorFocus": "REVIEW_PUNCTUATION",
+      "feedback": {
+        "correct": "Boa análise: O ponto final é um sinal de pontuação.",
+        "incorrect": "O ponto final é um sinal de pontuação.",
+        "hint": "Procure a marca que encerra a frase.",
+        "errorFocus": "REVIEW_PUNCTUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-34",
+      "statement": "A e a devem ser classificadas como:",
+      "prompt": "A e a devem ser classificadas como:",
+      "options": [
+        "Uma letra e um número.",
+        "Duas formas da mesma letra.",
+        "Dois desenhos.",
+        "Dois sinais de pontuação."
+      ],
+      "correctAnswer": "Duas formas da mesma letra.",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_A_a",
+      "explanation": "Maiúscula e minúscula são formas da mesma letra.",
+      "hint": "Pense no nome que as duas formas recebem.",
+      "errorFocus": "REVIEW_CASE_VARIANT",
+      "feedback": {
+        "correct": "Boa análise: Maiúscula e minúscula são formas da mesma letra.",
+        "incorrect": "Maiúscula e minúscula são formas da mesma letra.",
+        "hint": "Pense no nome que as duas formas recebem.",
+        "errorFocus": "REVIEW_CASE_VARIANT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-35",
+      "statement": "Em “C ❤️”, qual marca é um ícone?",
+      "prompt": "Em “C ❤️”, qual marca é um ícone?",
+      "options": [
+        "C",
+        "As duas são letras.",
+        "O coração.",
+        "Nenhuma."
+      ],
+      "correctAnswer": "O coração.",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_ICONE",
+      "explanation": "O coração comunica visualmente; C é a letra.",
+      "hint": "Separe imagem e marca do alfabeto.",
+      "errorFocus": "REVIEW_ICON",
+      "feedback": {
+        "correct": "Boa análise: O coração comunica visualmente; C é a letra.",
+        "incorrect": "O coração comunica visualmente; C é a letra.",
+        "hint": "Separe imagem e marca do alfabeto.",
+        "errorFocus": "REVIEW_ICON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-36",
+      "statement": "Na palavra “CAFÉ”, qual marca acompanha a letra e não é uma letra separada?",
+      "prompt": "Na palavra “CAFÉ”, qual marca acompanha a letra e não é uma letra separada?",
+      "options": [
+        "C",
+        "F",
+        "É",
+        "O acento agudo."
+      ],
+      "correctAnswer": "O acento agudo.",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_ACENTO",
+      "explanation": "O acento é uma marca que acompanha a letra.",
+      "hint": "Procure a marca pequena sobre a vogal.",
+      "errorFocus": "REVIEW_DIACRITIC",
+      "feedback": {
+        "correct": "Boa análise: O acento é uma marca que acompanha a letra.",
+        "incorrect": "O acento é uma marca que acompanha a letra.",
+        "hint": "Procure a marca pequena sobre a vogal.",
+        "errorFocus": "REVIEW_DIACRITIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-37",
+      "statement": "Qual grupo contém letras e outro sinal gráfico?",
+      "prompt": "Qual grupo contém letras e outro sinal gráfico?",
+      "options": [
+        "A, 3 e ?",
+        "A, B e C",
+        "2, 4 e !",
+        "Desenho, ícone e seta"
+      ],
+      "correctAnswer": "A, 3 e ?",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_SINAIS",
+      "explanation": "O primeiro grupo mistura letra, algarismo e pontuação.",
+      "hint": "Observe que tipos de marcas aparecem juntos.",
+      "errorFocus": "REVIEW_MIXED_SIGNS",
+      "feedback": {
+        "correct": "Boa análise: O primeiro grupo mistura letra, algarismo e pontuação.",
+        "incorrect": "O primeiro grupo mistura letra, algarismo e pontuação.",
+        "hint": "Observe que tipos de marcas aparecem juntos.",
+        "errorFocus": "REVIEW_MIXED_SIGNS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-38",
+      "statement": "Para confirmar se “R” é letra, qual recurso ajuda?",
+      "prompt": "Para confirmar se “R” é letra, qual recurso ajuda?",
+      "options": [
+        "Uma régua.",
+        "Um alfabeto de referência.",
+        "Uma figura sem escrita.",
+        "Um calendário sem números."
+      ],
+      "correctAnswer": "Um alfabeto de referência.",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_ALFABETO",
+      "explanation": "O alfabeto permite confirmar a pertença de R ao sistema de letras.",
+      "hint": "Consulte uma referência que nomeie as letras.",
+      "errorFocus": "REVIEW_REFERENCE",
+      "feedback": {
+        "correct": "Boa análise: O alfabeto permite confirmar a pertença de R ao sistema de letras.",
+        "incorrect": "O alfabeto permite confirmar a pertença de R ao sistema de letras.",
+        "hint": "Consulte uma referência que nomeie as letras.",
+        "errorFocus": "REVIEW_REFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-39",
+      "statement": "Qual resposta mostra que a criança compreendeu a distinção?",
+      "prompt": "Qual resposta mostra que a criança compreendeu a distinção?",
+      "options": [
+        "“Tudo no cartaz é letra.”",
+        "“A marca maior é sempre letra.”",
+        "“A seta orienta o caminho, mas não é uma letra; L pertence ao alfabeto.”",
+        "“Só desenhos são sinais.”"
+      ],
+      "correctAnswer": "“A seta orienta o caminho, mas não é uma letra; L pertence ao alfabeto.”",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_ACESSO",
+      "explanation": "A resposta relaciona o tipo de sinal à função, não apenas à aparência.",
+      "hint": "Explique por que cada marca foi classificada.",
+      "errorFocus": "REVIEW_EXPLANATION",
+      "feedback": {
+        "correct": "Boa análise: A resposta relaciona o tipo de sinal à função, não apenas à aparência.",
+        "incorrect": "A resposta relaciona o tipo de sinal à função, não apenas à aparência.",
+        "hint": "Explique por que cada marca foi classificada.",
+        "errorFocus": "REVIEW_EXPLANATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-graphic-signs-fi-40",
+      "statement": "Qual conclusão é adequada depois de classificar cartões?",
+      "prompt": "Qual conclusão é adequada depois de classificar cartões?",
+      "options": [
+        "“A criança já domina toda a escrita.”",
+        "“Um cartão prova tudo.”",
+        "“A cor decide a categoria.”",
+        "“Nestes cartões, separamos letras, algarismos, pontuação e imagens usando seus nomes e funções.”"
+      ],
+      "correctAnswer": "“Nestes cartões, separamos letras, algarismos, pontuação e imagens usando seus nomes e funções.”",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_CONCLUSAO",
+      "explanation": "A conclusão registra o critério e limita a afirmação à atividade realizada.",
+      "hint": "Fale do conjunto observado e do critério usado.",
+      "errorFocus": "REVIEW_LIMITS",
+      "feedback": {
+        "correct": "Boa análise: A conclusão registra o critério e limita a afirmação à atividade realizada.",
+        "incorrect": "A conclusão registra o critério e limita a afirmação à atividade realizada.",
+        "hint": "Fale do conjunto observado e do critério usado.",
+        "errorFocus": "REVIEW_LIMITS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

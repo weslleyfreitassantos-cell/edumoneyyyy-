@@ -27,19 +27,19 @@
   "summary": {
     "totalTasks": 1721,
     "byState": {
-      "BLOCKED_CANONICAL_REVIEW": 498,
+      "BLOCKED_CANONICAL_REVIEW": 494,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
       "BLOCKED_SOURCE": 1160,
-      "CONTENT_TECHNICALLY_COMPLETE": 16
+      "CONTENT_TECHNICALLY_COMPLETE": 20
     },
     "byQueueState": {
       "BLOCKED_CANONICAL_REVIEW": 514,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
       "BLOCKED_SOURCE": 1160
     },
-    "contentTechnicallyComplete": 16,
+    "contentTechnicallyComplete": 20,
     "canonicalMappingVerified": 0,
-    "readyForPedagogicalReview": 16,
+    "readyForPedagogicalReview": 20,
     "humanPedagogicalApproved": 0,
     "publicationAuthorized": 0
   },
@@ -1939,7 +1939,7 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -1958,11 +1958,24 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01LP03_MEC_P101_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/v1-portuguese-conventional-writing-fi.json",
+            "contentId": "v1-portuguese-conventional-writing-fi",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 2,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED"
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -1981,7 +1994,7 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -2000,11 +2013,24 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01LP04_MEC_P101_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/v1-portuguese-graphic-signs-fi.json",
+            "contentId": "v1-portuguese-graphic-signs-fi",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 2,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED"
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -2023,7 +2049,7 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -2042,11 +2068,24 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01LP05_MEC_P101_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/v1-portuguese-sound-writing-fi.json",
+            "contentId": "v1-portuguese-sound-writing-fi",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 2,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED"
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -2065,7 +2104,7 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "blockers": [
@@ -2084,11 +2123,24 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01LP06_MEC_P101_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/v1-portuguese-syllable-segmentation-fi.json",
+            "contentId": "v1-portuguese-syllable-segmentation-fi",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 2,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED"
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -72236,5 +72288,5 @@
       }
     }
   ],
-  "queueHash": "8ee241cb7660f152c274fccc137663635d43f18c72ac9885186a33def5eeb25f"
+  "queueHash": "1eece7ae9c195d5d9e2e70c35c102d7266a7bd0b64d5273eefc310bd28840351"
 }

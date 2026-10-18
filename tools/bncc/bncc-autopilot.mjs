@@ -155,7 +155,17 @@ function createInitialState(queue) {
     metrics: {
       cycles: 0,
       completedTasks: completed.length,
+      contentCompleteBaseline: completed.length,
+      learningPathsCompleted: completed.length,
+      learningPathsCompletedDelta: 0,
+      realContentPackagesCreated: 0,
+      realContentPackagesValidated: 0,
+      briefsCreated: 0,
+      briefsConvertedToPackages: 0,
+      tasksWithoutAuthoringProvider: 0,
+      technicalContentGapsReduced: 0,
       partialTasks: 0,
+      awaitingAuthoringTasks: 0,
       blockedTasks: 0,
       failedTasks: 0,
       pendingTasks: queue.tasks.length - completed.length,
@@ -186,6 +196,34 @@ function saveState(state) {
 }
 
 function reconcileStateWithQueue(queue, state) {
+  state.metrics = state.metrics ?? {};
+  if (!Number.isInteger(state.metrics.contentCompleteBaseline)) state.metrics.contentCompleteBaseline = state.metrics.completedTasks ?? 0;
+  state.taskRecords = state.taskRecords ?? {};
+  state.blockedTasks = state.blockedTasks ?? [];
+  for (const task of queue.tasks) {
+    const record = state.taskRecords[task.taskId];
+    if (
+      record
+      && record.lastAction === 'AUTHORING_CONTEXT_BRIEF_CREATED'
+      && !getAuthoringProducer(task)
+      && !task.evidence?.stagedPackages?.length
+    ) {
+      record.status = 'AWAITING_CONTENT_AUTHORING';
+      record.lastAction = 'AUTHORING_CONTEXT_BRIEF_CREATED';
+      record.updatedAt = record.updatedAt ?? now();
+    }
+  }
+  state.blockedTasks = state.blockedTasks.filter((blocked) => {
+    const task = queue.tasks.find((candidate) => candidate.taskId === blocked.taskId);
+    const producer = task ? getAuthoringProducer(task) : null;
+    if (!task || task.state !== 'CONTENT_TECHNICALLY_COMPLETE' || !producer || !task.evidence?.stagedPackages?.length) return true;
+    try {
+      const packageData = readJson(task.evidence.stagedPackages[0].file);
+      return !validateExistingPackage(task, packageData).valid;
+    } catch {
+      return true;
+    }
+  });
   const completedTasks = queue.tasks.filter((task) => task.state === 'CONTENT_TECHNICALLY_COMPLETE');
   for (const task of completedTasks) {
     const record = state.taskRecords[task.taskId] ?? { taskId: task.taskId, attempts: 0 };
@@ -200,10 +238,19 @@ function reconcileStateWithQueue(queue, state) {
   }
   state.queueHash = queue.queueHash;
   state.metrics.completedTasks = completedTasks.length;
+  state.metrics.learningPathsCompleted = completedTasks.length;
+  state.metrics.learningPathsCompletedDelta = completedTasks.length - state.metrics.contentCompleteBaseline;
+  state.metrics.technicalContentGapsReduced = Math.max(0, state.metrics.learningPathsCompletedDelta);
   state.metrics.pendingTasks = queue.tasks.length - completedTasks.length;
   state.metrics.partialTasks = Object.values(state.taskRecords).filter((record) => record.status === 'CONTENT_PARTIAL').length;
+  state.metrics.awaitingAuthoringTasks = Object.values(state.taskRecords).filter((record) => record.status === 'AWAITING_CONTENT_AUTHORING').length;
   state.metrics.failedTasks = Object.values(state.taskRecords).filter((record) => record.status === 'FAILED_RECOVERABLE').length;
   state.metrics.blockedTasks = state.blockedTasks.length;
+  state.metrics.realContentPackagesCreated = Object.values(state.taskRecords).filter((record) => record.lastAction === 'CONTENT_PACKAGE_CREATED').length;
+  state.metrics.realContentPackagesValidated = Object.values(state.taskRecords).filter((record) => ['CONTENT_PACKAGE_CREATED', 'EXISTING_PACKAGE_VALIDATED'].includes(record.lastAction)).length;
+  state.metrics.briefsCreated = Object.values(state.taskRecords).filter((record) => record.lastAction === 'AUTHORING_CONTEXT_BRIEF_CREATED').length;
+  state.metrics.briefsConvertedToPackages = Object.values(state.taskRecords).filter((record) => record.briefConverted === true).length;
+  state.metrics.tasksWithoutAuthoringProvider = queue.tasks.filter((task) => hasSafeAuthoringCandidate(task) && !getAuthoringProducer(task) && !task.evidence?.stagedPackages?.length).length;
   const completedIds = new Set(completedTasks.map((task) => task.taskId));
   state.lastCompletedTask = completedIds.has(state.lastCompletedTask)
     ? state.lastCompletedTask
@@ -228,6 +275,15 @@ function queueSummary(queue, state) {
     blockedTasks: state.metrics.blockedTasks,
     partialTasks: state.metrics.partialTasks,
     failedTasks: state.metrics.failedTasks,
+    realContentPackagesCreated: state.metrics.realContentPackagesCreated,
+    realContentPackagesValidated: state.metrics.realContentPackagesValidated,
+    learningPathsCompleted: state.metrics.learningPathsCompleted,
+    learningPathsCompletedDelta: state.metrics.learningPathsCompletedDelta,
+    briefsCreated: state.metrics.briefsCreated,
+    briefsConvertedToPackages: state.metrics.briefsConvertedToPackages,
+    tasksWithoutAuthoringProvider: state.metrics.tasksWithoutAuthoringProvider,
+    technicalContentGapsReduced: state.metrics.technicalContentGapsReduced,
+    awaitingAuthoringTasks: state.metrics.awaitingAuthoringTasks,
     lastCompletedTask: state.lastCompletedTask,
     nextTask: state.nextTask,
     runStatus: state.runStatus,
@@ -278,19 +334,31 @@ function reconcileMetrics(queue) {
 }
 
 function hasSafeAuthoringCandidate(task) {
-  return task.evidence.source === 'VERIFIED' && task.state !== 'CONTENT_TECHNICALLY_COMPLETE';
+  return task.evidence?.source === 'VERIFIED'
+    && task.state !== 'CONTENT_TECHNICALLY_COMPLETE'
+    && (
+      task.officialCode === 'EF01CI01'
+      || Boolean(getAuthoringProducer(task))
+      || Boolean(task.evidence?.stagedPackages?.length)
+    );
 }
 
 function selectNextTask(queue, state) {
-  const blocked = new Set(state.blockedTasks.map((item) => item.taskId));
+  const blocked = new Set((state.blockedTasks ?? []).map((item) => item.taskId));
   const taskRecords = state.taskRecords ?? {};
   return queue.tasks.find((task) => {
     const record = taskRecords[task.taskId];
+    const producer = getAuthoringProducer(task);
+    const producerNeedsExecution = task.state === 'CONTENT_TECHNICALLY_COMPLETE'
+      && producer?.executionRequired === true
+      && record?.lastAction !== 'CONTENT_PACKAGE_CREATED';
     return hasSafeAuthoringCandidate(task)
-      && !blocked.has(task.taskId)
-      && (!['CONTENT_PARTIAL', 'BLOCKED_REVIEW'].includes(record?.status)
-        || Boolean(getAuthoringProducer(task))
-        || Boolean(task.evidence.stagedPackages?.length));
+      || producerNeedsExecution
+      ? !blocked.has(task.taskId)
+        && (!['CONTENT_PARTIAL', 'BLOCKED_REVIEW', 'AWAITING_CONTENT_AUTHORING'].includes(record?.status)
+          || Boolean(producer)
+          || Boolean(task.evidence?.stagedPackages?.length))
+      : false;
   }) ?? null;
 }
 
@@ -380,9 +448,19 @@ function writeAuthoringBrief(task) {
     checkpointHash: taskHash(task),
   };
   const relativePath = `content/bncc/authoring/tasks/${task.taskId}.json`;
+  if (fs.existsSync(absolute(relativePath))) {
+    try {
+      const existing = readJson(relativePath);
+      if (existing.taskId === task.taskId && existing.officialCode === task.officialCode && existing.relation === 'AUTHORING_CONTEXT_ONLY') {
+        return { kind: 'AUTHORING_CONTEXT_BRIEF_ALREADY_PRESENT', path: relativePath, created: false, validation: { valid: true, errors: [] } };
+      }
+    } catch {
+      // An invalid historical brief is replaced below with the canonical context-only record.
+    }
+  }
   fs.mkdirSync(path.dirname(absolute(relativePath)), { recursive: true });
   writeJsonAtomic(relativePath, brief);
-  return { kind: 'AUTHORING_CONTEXT_BRIEF_CREATED', path: relativePath, validation: { valid: true, errors: [] } };
+  return { kind: 'AUTHORING_CONTEXT_BRIEF_CREATED', path: relativePath, created: true, validation: { valid: true, errors: [] } };
 }
 
 function processTask(task, state, options) {
@@ -427,20 +505,23 @@ function processTask(task, state, options) {
   const refreshedQueue = refreshQueue();
   const refreshedTask = refreshedQueue.tasks.find((candidate) => candidate.taskId === task.taskId);
   const technicallyComplete = refreshedTask?.state === 'CONTENT_TECHNICALLY_COMPLETE';
-  record.status = technicallyComplete ? 'CONTENT_TECHNICALLY_COMPLETE' : (outcome.kind === 'EXISTING_PACKAGE_REVIEW_BLOCKED' ? 'BLOCKED_REVIEW' : 'CONTENT_PARTIAL');
+  record.status = technicallyComplete
+    ? 'CONTENT_TECHNICALLY_COMPLETE'
+    : (['AUTHORING_CONTEXT_BRIEF_CREATED', 'AUTHORING_CONTEXT_BRIEF_ALREADY_PRESENT'].includes(outcome.kind)
+      ? 'AWAITING_CONTENT_AUTHORING'
+      : (outcome.kind === 'EXISTING_PACKAGE_REVIEW_BLOCKED' ? 'BLOCKED_REVIEW' : 'CONTENT_PARTIAL'));
   record.lastAction = outcome.kind;
   record.lastPath = outcome.path ?? null;
   record.lastValidation = outcome.validation ?? null;
+  record.briefConverted = Boolean(outcome.briefConverted);
   record.updatedAt = now();
   record.checkpointHash = hash({ taskId: task.taskId, status: record.status, queueHash: refreshedQueue.queueHash, outcome });
-  if (record.status === 'CONTENT_TECHNICALLY_COMPLETE') state.metrics.completedTasks += 1;
-  else if (record.status === 'CONTENT_PARTIAL') state.metrics.partialTasks += 1;
-  else { state.metrics.blockedTasks += 1; state.blockedTasks.push({ taskId: task.taskId, reason: 'REVIEW_REQUIRED', attempts: record.attempts, at: now() }); }
+  if (record.status === 'BLOCKED_REVIEW') state.blockedTasks.push({ taskId: task.taskId, reason: 'REVIEW_REQUIRED', attempts: record.attempts, at: now() });
   state.queueHash = refreshedQueue.queueHash;
   state.lastCompletedTask = record.status === 'CONTENT_TECHNICALLY_COMPLETE' ? task.taskId : state.lastCompletedTask;
   state.nextTask = selectNextTask(refreshedQueue, state)?.taskId ?? null;
   state.currentTask = null;
-  state.metrics.pendingTasks = refreshedQueue.tasks.length - refreshedQueue.tasks.filter((candidate) => candidate.state === 'CONTENT_TECHNICALLY_COMPLETE').length;
+  reconcileStateWithQueue(refreshedQueue, state);
   state.checkpoints.push({ taskId: task.taskId, status: record.status, checkpointHash: record.checkpointHash, at: now(), queueHash: refreshedQueue.queueHash });
   saveState(state);
   appendLog({ event: 'task_processed', taskId: task.taskId, status: record.status, action: outcome.kind, queueHash: refreshedQueue.queueHash });

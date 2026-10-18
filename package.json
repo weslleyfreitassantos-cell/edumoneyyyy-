@@ -204,6 +204,8 @@
     "bncc:autopilot": "node tools/bncc/bncc-autopilot.mjs",
     "bncc:autopilot:build:ef01ci04": "node tools/bncc/build-ef01ci04-authoring-pack.mjs",
     "bncc:autopilot:build:ef01ci05": "node tools/bncc/build-ef01ci05-authoring-pack.mjs",
+    "bncc:autopilot:build:ef01lp-real": "node tools/bncc/build-ef01lp-real-authoring-packs.mjs",
+    "bncc:autopilot:validate:ef01lp-real": "node tools/bncc/build-ef01lp-real-authoring-packs.mjs --check",
     "check": "npm run routing:guard && npm run bncc:validate-knowledge-factory && npm run bncc:validate-knowledge-factory:v2 && npm run bncc:validate-knowledge-factory:v3 && npm run bncc:validate-knowledge-factory:v4 && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

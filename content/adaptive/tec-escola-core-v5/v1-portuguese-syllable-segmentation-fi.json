@@ -1,0 +1,1673 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-portuguese-syllable-segmentation-fi",
+  "canonicalSkillCode": "AUTHORING_EF01LP06_SYLLABLE_SEGMENTATION",
+  "subject": "PORTUGUESE",
+  "domain": "ALFABETIZAÇÃO",
+  "topic": "segmentação oral de palavras em sílabas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 4,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 10
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP06",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Segmentar oralmente palavras em sílabas.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 101
+    },
+    "note": "Descritor oficial usado como contexto de autoria; vínculo canônico, revisão pedagógica e publicação permanecem pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Ouvir e marcar partes das palavras",
+    "objective": "Segmentar oralmente palavras em sílabas usando palmas, gestos, fichas, blocos, áudio ou outros suportes acessíveis, distinguindo partes faladas de letras isoladas.",
+    "summary": "Falar devagar, marcar cada parte e comparar palavras torna a estrutura sonora observável antes de exigir uma representação escrita.",
+    "explanation": "## Partes faladas\nSílaba é uma unidade oral que pode ser marcada em uma palavra. Em BO-LA usamos duas marcas; isso não significa separar B-O-L-A, pois letras e sílabas são unidades diferentes.\n\n## Explorar com movimento\nPalmas, passos, fichas, blocos, batidas e recursos digitais podem representar cada parte. Depois de segmentar, a turma pode comparar quantidades, localizar a primeira ou a última parte e juntar as partes novamente.\n\n## Acessibilidade e evidência\nA resposta não precisa depender de fala oral perfeita. Cartões, olhar, gestos, áudio e comunicação alternativa podem mostrar a segmentação. Registre o que foi feito e o apoio usado.",
+    "workedExample": "Mostre a imagem de uma boneca, diga BONECA e modele BO-NE-CA com três fichas. Em seguida, peça que a criança escolha entre duas, três ou quatro fichas e explique sua escolha por fala, gesto ou apontar.",
+    "commonMistake": "Contar letras como se fossem sílabas, dividir palavras ao acaso ou exigir soletração oral quando o objetivo é segmentação silábica.",
+    "tips": [
+      "Fale devagar e marque uma unidade de cada vez.",
+      "Use diferentes canais de resposta e tempo de processamento.",
+      "Compare duas palavras apenas depois de segmentar ambas.",
+      "Descreva a evidência sem rotular a criança."
+    ],
+    "priorKnowledge": [
+      "Escutar e repetir palavras conhecidas.",
+      "Participar de brincadeiras de ritmo, palmas, passos ou imitação."
+    ],
+    "keyConcepts": [
+      "sílaba",
+      "parte falada",
+      "segmentação oral",
+      "ritmo",
+      "fusão",
+      "comparação",
+      "letra",
+      "acessibilidade"
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-portuguese-syllable-segmentation-fi-01",
+          "v1-portuguese-syllable-segmentation-fi-02",
+          "v1-portuguese-syllable-segmentation-fi-03",
+          "v1-portuguese-syllable-segmentation-fi-04"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-portuguese-syllable-segmentation-fi-05",
+          "v1-portuguese-syllable-segmentation-fi-06",
+          "v1-portuguese-syllable-segmentation-fi-07",
+          "v1-portuguese-syllable-segmentation-fi-08",
+          "v1-portuguese-syllable-segmentation-fi-09",
+          "v1-portuguese-syllable-segmentation-fi-10",
+          "v1-portuguese-syllable-segmentation-fi-11",
+          "v1-portuguese-syllable-segmentation-fi-12",
+          "v1-portuguese-syllable-segmentation-fi-13",
+          "v1-portuguese-syllable-segmentation-fi-14",
+          "v1-portuguese-syllable-segmentation-fi-15",
+          "v1-portuguese-syllable-segmentation-fi-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-portuguese-syllable-segmentation-fi-17",
+          "v1-portuguese-syllable-segmentation-fi-18",
+          "v1-portuguese-syllable-segmentation-fi-19",
+          "v1-portuguese-syllable-segmentation-fi-20",
+          "v1-portuguese-syllable-segmentation-fi-21",
+          "v1-portuguese-syllable-segmentation-fi-22",
+          "v1-portuguese-syllable-segmentation-fi-23",
+          "v1-portuguese-syllable-segmentation-fi-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-portuguese-syllable-segmentation-fi-25",
+          "v1-portuguese-syllable-segmentation-fi-26",
+          "v1-portuguese-syllable-segmentation-fi-27",
+          "v1-portuguese-syllable-segmentation-fi-28",
+          "v1-portuguese-syllable-segmentation-fi-29",
+          "v1-portuguese-syllable-segmentation-fi-30"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-portuguese-syllable-segmentation-fi-31",
+          "v1-portuguese-syllable-segmentation-fi-32",
+          "v1-portuguese-syllable-segmentation-fi-33",
+          "v1-portuguese-syllable-segmentation-fi-34",
+          "v1-portuguese-syllable-segmentation-fi-35",
+          "v1-portuguese-syllable-segmentation-fi-36",
+          "v1-portuguese-syllable-segmentation-fi-37",
+          "v1-portuguese-syllable-segmentation-fi-38",
+          "v1-portuguese-syllable-segmentation-fi-39",
+          "v1-portuguese-syllable-segmentation-fi-40"
+        ]
+      }
+    ],
+    "microExplanations": [
+      {
+        "trigger": "DISTINGUISH_LETTERS_SYLLABLES",
+        "text": "Sublinhe que BO-LA tem duas partes faladas, enquanto B-O-L-A nomeia quatro letras."
+      },
+      {
+        "trigger": "BLEND_SYLLABLES",
+        "text": "Fale cada parte e depois una-as na mesma ordem para reconhecer a palavra inteira."
+      },
+      {
+        "trigger": "OBSERVATION_NOT_LABEL",
+        "text": "Registre a quantidade marcada e o apoio usado, sem transformar uma tentativa em rótulo."
+      }
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COUNT_ORAL_SYLLABLES",
+        "action": "Use palavras familiares, uma ficha grande por parte e modelo oral repetido."
+      },
+      {
+        "errorFocus": "DISTINGUISH_SYLLABLE_SPELLING",
+        "action": "Compare explicitamente palmas de BO-LA com o nome das letras B-O-L-A."
+      },
+      {
+        "errorFocus": "REMEDIATE_SEGMENTATION",
+        "action": "Modele, faça junto, reduza a ajuda e depois peça nova tentativa."
+      }
+    ],
+    "authenticActivities": [
+      {
+        "title": "Ritmo das palavras da rotina",
+        "context": "Segmentar nomes de materiais, dias, alimentos e personagens usados pela turma.",
+        "steps": [
+          "Escolher uma palavra da rotina.",
+          "Ouvir e repetir.",
+          "Marcar partes com movimento ou fichas.",
+          "Comparar com outra palavra."
+        ],
+        "evidence": "Mapa de marcas e registro multimodal da justificativa.",
+        "rubric": [
+          "Inicial: acompanha um modelo.",
+          "Em desenvolvimento: marca partes de palavras conhecidas.",
+          "Consolidado: compara e explica quantidades com apoio reduzido."
+        ]
+      },
+      {
+        "title": "Jogo das partes escondidas",
+        "context": "Reconstruir palavras a partir de cartões silábicos e áudio.",
+        "steps": [
+          "Ouvir as partes.",
+          "Ordenar os cartões.",
+          "Juntar a palavra.",
+          "Conferir com imagem e áudio."
+        ],
+        "evidence": "Sequência montada e estratégia usada.",
+        "rubric": [
+          "Inicial: ordena com modelo.",
+          "Em desenvolvimento: junta duas ou três partes.",
+          "Consolidado: usa a estratégia em palavra nova e revisa."
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP06",
+        "descriptor": "Segmentar oralmente palavras em sílabas.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 101
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral criado para demonstração; o descritor oficial é referenciado como fonte de contexto e não é reproduzido como conteúdo de exercício."
+  },
+  "questions": [
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-01",
+      "statement": "Ao falar “SAPO”, quantos pedaços de fala podemos marcar com palmas?",
+      "prompt": "Ao falar “SAPO”, quantos pedaços de fala podemos marcar com palmas?",
+      "options": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "answerPosition": "A",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LISTEN",
+      "contextFamily": "PALMA_SAPO",
+      "explanation": "SA-PO pode ser pronunciada em dois pedaços de fala, acompanhando duas palmas.",
+      "hint": "Fale SA-PO devagar e marque cada pedaço.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: SA-PO pode ser pronunciada em dois pedaços de fala, acompanhando duas palmas.",
+        "incorrect": "SA-PO pode ser pronunciada em dois pedaços de fala, acompanhando duas palmas.",
+        "hint": "Fale SA-PO devagar e marque cada pedaço.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-02",
+      "statement": "A palavra “BOLA” pode ser falada em quantos pedaços?",
+      "prompt": "A palavra “BOLA” pode ser falada em quantos pedaços?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "answerPosition": "B",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LISTEN",
+      "contextFamily": "PALMA_BOLA",
+      "explanation": "BO-LA tem dois pedaços sonoros na pronúncia trabalhada nesta atividade.",
+      "hint": "Diga BO-LA e conte as batidas.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: BO-LA tem dois pedaços sonoros na pronúncia trabalhada nesta atividade.",
+        "incorrect": "BO-LA tem dois pedaços sonoros na pronúncia trabalhada nesta atividade.",
+        "hint": "Diga BO-LA e conte as batidas.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-03",
+      "statement": "Ao falar “JANELA”, quantas palmas combinam com os pedaços da palavra?",
+      "prompt": "Ao falar “JANELA”, quantas palmas combinam com os pedaços da palavra?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "C",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LISTEN",
+      "contextFamily": "PALMA_JANELA",
+      "explanation": "JA-NE-LA pode ser marcada com três palmas.",
+      "hint": "Separe a fala em JA, NE e LA.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: JA-NE-LA pode ser marcada com três palmas.",
+        "incorrect": "JA-NE-LA pode ser marcada com três palmas.",
+        "hint": "Separe a fala em JA, NE e LA.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-04",
+      "statement": "Quantos pedaços de fala ouvimos em “BANANA”?",
+      "prompt": "Quantos pedaços de fala ouvimos em “BANANA”?",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "3"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "D",
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "LISTEN",
+      "contextFamily": "PALMA_BANANA",
+      "explanation": "BA-NA-NA tem três partes sonoras na pronúncia apresentada.",
+      "hint": "Fale BA-NA-NA sem correr e conte.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: BA-NA-NA tem três partes sonoras na pronúncia apresentada.",
+        "incorrect": "BA-NA-NA tem três partes sonoras na pronúncia apresentada.",
+        "hint": "Fale BA-NA-NA sem correr e conte.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-05",
+      "statement": "Qual sequência de blocos representa “SAPO” quando cada bloco vale um pedaço falado?",
+      "prompt": "Qual sequência de blocos representa “SAPO” quando cada bloco vale um pedaço falado?",
+      "options": [
+        "2 blocos: SA | PO.",
+        "1 bloco: SAPO.",
+        "3 blocos: S | A | PO.",
+        "4 blocos: S | A | P | O."
+      ],
+      "correctAnswer": "2 blocos: SA | PO.",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "SAPO_BLOCOS",
+      "explanation": "A representação oral em blocos acompanha os dois pedaços da palavra, sem separar cada letra.",
+      "hint": "Use um bloco para SA e outro para PO.",
+      "errorFocus": "MODEL_SYLLABLE_BLOCKS",
+      "feedback": {
+        "correct": "Boa análise: A representação oral em blocos acompanha os dois pedaços da palavra, sem separar cada letra.",
+        "incorrect": "A representação oral em blocos acompanha os dois pedaços da palavra, sem separar cada letra.",
+        "hint": "Use um bloco para SA e outro para PO.",
+        "errorFocus": "MODEL_SYLLABLE_BLOCKS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-06",
+      "statement": "Quantas batidas de tambor fazemos para “CASA”?",
+      "prompt": "Quantas batidas de tambor fazemos para “CASA”?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "CASA_TAMBOR",
+      "explanation": "CA-SA pode ser acompanhada por duas batidas.",
+      "hint": "Bata uma vez em CA e outra em SA.",
+      "errorFocus": "COUNT_ORAL_BEATS",
+      "feedback": {
+        "correct": "Boa análise: CA-SA pode ser acompanhada por duas batidas.",
+        "incorrect": "CA-SA pode ser acompanhada por duas batidas.",
+        "hint": "Bata uma vez em CA e outra em SA.",
+        "errorFocus": "COUNT_ORAL_BEATS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-07",
+      "statement": "Ao caminhar um passo por pedaço, quantos passos combinam com “GATO”?",
+      "prompt": "Ao caminhar um passo por pedaço, quantos passos combinam com “GATO”?",
+      "options": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "GATO_PASSOS",
+      "explanation": "GA-TO tem dois pedaços de fala e pode ser marcada por dois passos.",
+      "hint": "Fale GA-TO e caminhe duas vezes.",
+      "errorFocus": "COUNT_ORAL_BEATS",
+      "feedback": {
+        "correct": "Boa análise: GA-TO tem dois pedaços de fala e pode ser marcada por dois passos.",
+        "incorrect": "GA-TO tem dois pedaços de fala e pode ser marcada por dois passos.",
+        "hint": "Fale GA-TO e caminhe duas vezes.",
+        "errorFocus": "COUNT_ORAL_BEATS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-08",
+      "statement": "Para representar “MALA” com uma ficha por sílaba, quantas fichas usar?",
+      "prompt": "Para representar “MALA” com uma ficha por sílaba, quantas fichas usar?",
+      "options": [
+        "1",
+        "3",
+        "4",
+        "2"
+      ],
+      "correctAnswer": "2",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "MALA_FICHAS",
+      "explanation": "MA-LA corresponde a duas fichas sonoras.",
+      "hint": "Diga MA e LA, movendo uma ficha a cada parte.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: MA-LA corresponde a duas fichas sonoras.",
+        "incorrect": "MA-LA corresponde a duas fichas sonoras.",
+        "hint": "Diga MA e LA, movendo uma ficha a cada parte.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-09",
+      "statement": "Quantas palmas marcam “PIPOCA”?",
+      "prompt": "Quantas palmas marcam “PIPOCA”?",
+      "options": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "PIPOCA_PALMAS",
+      "explanation": "PI-PO-CA tem três pedaços falados.",
+      "hint": "Acompanhe cada parte com uma palma.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: PI-PO-CA tem três pedaços falados.",
+        "incorrect": "PI-PO-CA tem três pedaços falados.",
+        "hint": "Acompanhe cada parte com uma palma.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-10",
+      "statement": "A palavra “CAVALO” pode ser dividida oralmente em quantas partes?",
+      "prompt": "A palavra “CAVALO” pode ser dividida oralmente em quantas partes?",
+      "options": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "CAVALO_PALMAS",
+      "explanation": "CA-VA-LO apresenta três pedaços sonoros.",
+      "hint": "Fale CA-VA-LO e conte as partes, não as letras.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: CA-VA-LO apresenta três pedaços sonoros.",
+        "incorrect": "CA-VA-LO apresenta três pedaços sonoros.",
+        "hint": "Fale CA-VA-LO e conte as partes, não as letras.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-11",
+      "statement": "Quantas fichas representam as partes faladas de “TOMATE”?",
+      "prompt": "Quantas fichas representam as partes faladas de “TOMATE”?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "TOMATE_FICHAS",
+      "explanation": "TO-MA-TE pode ser organizada em três fichas.",
+      "hint": "Mova uma ficha para TO, uma para MA e uma para TE.",
+      "errorFocus": "COUNT_ORAL_SYLLABLES",
+      "feedback": {
+        "correct": "Boa análise: TO-MA-TE pode ser organizada em três fichas.",
+        "incorrect": "TO-MA-TE pode ser organizada em três fichas.",
+        "hint": "Mova uma ficha para TO, uma para MA e uma para TE.",
+        "errorFocus": "COUNT_ORAL_SYLLABLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-12",
+      "statement": "Quantas batidas acompanham “BONECA”?",
+      "prompt": "Quantas batidas acompanham “BONECA”?",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "3"
+      ],
+      "correctAnswer": "3",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "BONECA_TAMBOR",
+      "explanation": "BO-NE-CA pode ser marcada com três batidas.",
+      "hint": "Repita a palavra devagar e mantenha uma batida por parte.",
+      "errorFocus": "COUNT_ORAL_BEATS",
+      "feedback": {
+        "correct": "Boa análise: BO-NE-CA pode ser marcada com três batidas.",
+        "incorrect": "BO-NE-CA pode ser marcada com três batidas.",
+        "hint": "Repita a palavra devagar e mantenha uma batida por parte.",
+        "errorFocus": "COUNT_ORAL_BEATS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-13",
+      "statement": "No jogo do eco, qual repetição mostra duas partes para “LIVRO”?",
+      "prompt": "No jogo do eco, qual repetição mostra duas partes para “LIVRO”?",
+      "options": [
+        "LI | VRO.",
+        "L | I | V | R | O.",
+        "LIV | RO | O.",
+        "LIVRO sem nenhuma pausa."
+      ],
+      "correctAnswer": "LI | VRO.",
+      "answerPosition": "A",
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "LIVRO_ECO",
+      "explanation": "A divisão oral trabalhada é LI-VRO, sem transformar cada letra em uma sílaba.",
+      "hint": "Ouça a palavra e repita em duas partes naturais.",
+      "errorFocus": "SEGMENT_AT_ORAL_LEVEL",
+      "feedback": {
+        "correct": "Boa análise: A divisão oral trabalhada é LI-VRO, sem transformar cada letra em uma sílaba.",
+        "incorrect": "A divisão oral trabalhada é LI-VRO, sem transformar cada letra em uma sílaba.",
+        "hint": "Ouça a palavra e repita em duas partes naturais.",
+        "errorFocus": "SEGMENT_AT_ORAL_LEVEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-14",
+      "statement": "Qual palavra tem mais partes faladas: “BOLA” ou “BONECA”?",
+      "prompt": "Qual palavra tem mais partes faladas: “BOLA” ou “BONECA”?",
+      "options": [
+        "BOLA tem 3 e BONECA tem 2.",
+        "BONECA tem 3 partes; BOLA tem 2.",
+        "As duas têm 1 parte.",
+        "As duas têm 4 partes."
+      ],
+      "correctAnswer": "BONECA tem 3 partes; BOLA tem 2.",
+      "answerPosition": "B",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BOLA_BONECA",
+      "explanation": "Comparar quantidades exige segmentar as duas palavras antes de decidir.",
+      "hint": "Marque BO-LA e depois BO-NE-CA.",
+      "errorFocus": "COMPARE_COUNTS",
+      "feedback": {
+        "correct": "Boa análise: Comparar quantidades exige segmentar as duas palavras antes de decidir.",
+        "incorrect": "Comparar quantidades exige segmentar as duas palavras antes de decidir.",
+        "hint": "Marque BO-LA e depois BO-NE-CA.",
+        "errorFocus": "COMPARE_COUNTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-15",
+      "statement": "Qual palavra tem mais pedaços: “SAPO” ou “JANELA”?",
+      "prompt": "Qual palavra tem mais pedaços: “SAPO” ou “JANELA”?",
+      "options": [
+        "SAPO tem 3; JANELA tem 2.",
+        "As duas têm 2.",
+        "JANELA tem 3; SAPO tem 2.",
+        "As duas têm 4."
+      ],
+      "correctAnswer": "JANELA tem 3; SAPO tem 2.",
+      "answerPosition": "C",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SAPO_JANELA",
+      "explanation": "JA-NE-LA tem uma parte a mais que SA-PO.",
+      "hint": "Faça as palmas das duas palavras e compare.",
+      "errorFocus": "COMPARE_COUNTS",
+      "feedback": {
+        "correct": "Boa análise: JA-NE-LA tem uma parte a mais que SA-PO.",
+        "incorrect": "JA-NE-LA tem uma parte a mais que SA-PO.",
+        "hint": "Faça as palmas das duas palavras e compare.",
+        "errorFocus": "COMPARE_COUNTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-16",
+      "statement": "Qual é o primeiro pedaço falado de “CAVALO”?",
+      "prompt": "Qual é o primeiro pedaço falado de “CAVALO”?",
+      "options": [
+        "VA.",
+        "LO.",
+        "CAV.",
+        "CA."
+      ],
+      "correctAnswer": "CA.",
+      "answerPosition": "D",
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PRIMEIRA_SILABA",
+      "explanation": "A palavra CA-VA-LO começa com CA.",
+      "hint": "Diga somente o começo antes de continuar.",
+      "errorFocus": "IDENTIFY_SYLLABLE_POSITION",
+      "feedback": {
+        "correct": "Boa análise: A palavra CA-VA-LO começa com CA.",
+        "incorrect": "A palavra CA-VA-LO começa com CA.",
+        "hint": "Diga somente o começo antes de continuar.",
+        "errorFocus": "IDENTIFY_SYLLABLE_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-17",
+      "statement": "Na chamada, a turma quer comparar “SEGUNDA” e “SEXTA” pelo número de partes faladas. O que fazer?",
+      "prompt": "Na chamada, a turma quer comparar “SEGUNDA” e “SEXTA” pelo número de partes faladas. O que fazer?",
+      "options": [
+        "Segmentar as duas palavras e comparar as quantidades, sem contar letras.",
+        "Comparar o tamanho visual das palavras.",
+        "Escolher a mais comprida no papel.",
+        "Contar sinais de pontuação."
+      ],
+      "correctAnswer": "Segmentar as duas palavras e comparar as quantidades, sem contar letras.",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ROTINA_CALENDARIO",
+      "explanation": "A comparação oral é válida quando cada palavra é falada e marcada antes de comparar.",
+      "hint": "Faça SEGUN-DA e SEX-TA com movimentos.",
+      "errorFocus": "TRANSFER_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa análise: A comparação oral é válida quando cada palavra é falada e marcada antes de comparar.",
+        "incorrect": "A comparação oral é válida quando cada palavra é falada e marcada antes de comparar.",
+        "hint": "Faça SEGUN-DA e SEX-TA com movimentos.",
+        "errorFocus": "TRANSFER_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-18",
+      "statement": "Em uma música, cada batida acompanha uma parte de “BORBOLETA”. Quantas batidas usar?",
+      "prompt": "Em uma música, cada batida acompanha uma parte de “BORBOLETA”. Quantas batidas usar?",
+      "options": [
+        "2 batidas: BORBO-LETA.",
+        "4 batidas: BOR-BO-LE-TA.",
+        "3 batidas: BOR-BOLE-TA.",
+        "5 batidas: B-O-R-B-O."
+      ],
+      "correctAnswer": "4 batidas: BOR-BO-LE-TA.",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MUSICA_RITMO",
+      "explanation": "BOR-BO-LE-TA apresenta quatro partes na segmentação oral convencional da atividade.",
+      "hint": "Fale as quatro partes com ritmo constante.",
+      "errorFocus": "TRANSFER_RHYTHM",
+      "feedback": {
+        "correct": "Boa análise: BOR-BO-LE-TA apresenta quatro partes na segmentação oral convencional da atividade.",
+        "incorrect": "BOR-BO-LE-TA apresenta quatro partes na segmentação oral convencional da atividade.",
+        "hint": "Fale as quatro partes com ritmo constante.",
+        "errorFocus": "TRANSFER_RHYTHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-19",
+      "statement": "O jogo dá as partes CA-CHOR-RO. Qual palavra deve ser adivinhada?",
+      "prompt": "O jogo dá as partes CA-CHOR-RO. Qual palavra deve ser adivinhada?",
+      "options": [
+        "CARRO.",
+        "CASA.",
+        "CACHORRO.",
+        "CAVALO."
+      ],
+      "correctAnswer": "CACHORRO.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "JOGO_ADIVINHA",
+      "explanation": "Reunir as partes CA-CHOR-RO leva à palavra CACHORRO.",
+      "hint": "Junte as três partes sem mudar a ordem.",
+      "errorFocus": "RECOMBINE_CONTEXT",
+      "feedback": {
+        "correct": "Boa análise: Reunir as partes CA-CHOR-RO leva à palavra CACHORRO.",
+        "incorrect": "Reunir as partes CA-CHOR-RO leva à palavra CACHORRO.",
+        "hint": "Junte as três partes sem mudar a ordem.",
+        "errorFocus": "RECOMBINE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-20",
+      "statement": "Uma criança usa cartões para escolher a palavra “BONECA”. Como participar da segmentação?",
+      "prompt": "Uma criança usa cartões para escolher a palavra “BONECA”. Como participar da segmentação?",
+      "options": [
+        "Avaliar apenas quem fala oralmente.",
+        "Retirar o cartão da atividade.",
+        "Exigir que cada letra seja soletrada.",
+        "Escolher o cartão e marcar BO-NE-CA com gestos, fichas, olhar ou áudio."
+      ],
+      "correctAnswer": "Escolher o cartão e marcar BO-NE-CA com gestos, fichas, olhar ou áudio.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMUNICACAO_ALTERNATIVA",
+      "explanation": "Acessibilidade permite demonstrar a consciência das partes por diferentes canais de comunicação.",
+      "hint": "Ofereça blocos, gestos, áudio e tempo de resposta.",
+      "errorFocus": "ACCESSIBLE_ORAL_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa análise: Acessibilidade permite demonstrar a consciência das partes por diferentes canais de comunicação.",
+        "incorrect": "Acessibilidade permite demonstrar a consciência das partes por diferentes canais de comunicação.",
+        "hint": "Ofereça blocos, gestos, áudio e tempo de resposta.",
+        "errorFocus": "ACCESSIBLE_ORAL_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-21",
+      "statement": "Ao ouvir “MACACO” numa história, por que usar MA-CA-CO em vez de M-A-C-A-C-O?",
+      "prompt": "Ao ouvir “MACACO” numa história, por que usar MA-CA-CO em vez de M-A-C-A-C-O?",
+      "options": [
+        "Porque a atividade trabalha partes faladas, que não são iguais a letras isoladas.",
+        "Porque letras não existem.",
+        "Porque toda palavra tem três letras.",
+        "Porque desenhos formam sílabas."
+      ],
+      "correctAnswer": "Porque a atividade trabalha partes faladas, que não são iguais a letras isoladas.",
+      "answerPosition": "A",
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "HISTORIA_ILUSTRADA",
+      "explanation": "A escolha mostra a diferença entre segmentação silábica oral e identificação de letras.",
+      "hint": "Pergunte o que pode ser marcado com palmas na fala.",
+      "errorFocus": "EXPLAIN_UNIT_LEVEL",
+      "feedback": {
+        "correct": "Boa análise: A escolha mostra a diferença entre segmentação silábica oral e identificação de letras.",
+        "incorrect": "A escolha mostra a diferença entre segmentação silábica oral e identificação de letras.",
+        "hint": "Pergunte o que pode ser marcado com palmas na fala.",
+        "errorFocus": "EXPLAIN_UNIT_LEVEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-22",
+      "statement": "“PÉ” e “PIPOCA” recebem uma palma por parte. Como justificar a diferença?",
+      "prompt": "“PÉ” e “PIPOCA” recebem uma palma por parte. Como justificar a diferença?",
+      "options": [
+        "As duas têm 3 porque têm vogais.",
+        "PÉ tem 1 parte e PIPOCA tem 3, porque as falas se organizam em quantidades diferentes.",
+        "PÉ tem 3 porque é curto no papel.",
+        "PIPOCA tem 1 porque é um objeto."
+      ],
+      "correctAnswer": "PÉ tem 1 parte e PIPOCA tem 3, porque as falas se organizam em quantidades diferentes.",
+      "answerPosition": "B",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMPARAR_RITMOS",
+      "explanation": "A justificativa usa a segmentação oral, não o tamanho visual ou o significado das palavras.",
+      "hint": "Marque as partes de cada palavra antes de explicar.",
+      "errorFocus": "JUSTIFY_SYLLABLE_COUNT",
+      "feedback": {
+        "correct": "Boa análise: A justificativa usa a segmentação oral, não o tamanho visual ou o significado das palavras.",
+        "incorrect": "A justificativa usa a segmentação oral, não o tamanho visual ou o significado das palavras.",
+        "hint": "Marque as partes de cada palavra antes de explicar.",
+        "errorFocus": "JUSTIFY_SYLLABLE_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-23",
+      "statement": "Uma criança contou quatro palmas para “CASA”. Qual intervenção ajuda?",
+      "prompt": "Uma criança contou quatro palmas para “CASA”. Qual intervenção ajuda?",
+      "options": [
+        "Dizer apenas que está errado.",
+        "Contar o desenho da casa.",
+        "Falar CA-SA novamente, juntar as letras em partes faladas e conferir duas palmas.",
+        "Pedir para contar as letras como sílabas."
+      ],
+      "correctAnswer": "Falar CA-SA novamente, juntar as letras em partes faladas e conferir duas palmas.",
+      "answerPosition": "C",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_RESPOSTA",
+      "explanation": "A intervenção oferece um procedimento de revisão e evita confundir letras com sílabas.",
+      "hint": "Modele CA e SA com duas fichas ou palmas.",
+      "errorFocus": "REMEDIATE_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa análise: A intervenção oferece um procedimento de revisão e evita confundir letras com sílabas.",
+        "incorrect": "A intervenção oferece um procedimento de revisão e evita confundir letras com sílabas.",
+        "hint": "Modele CA e SA com duas fichas ou palmas.",
+        "errorFocus": "REMEDIATE_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-24",
+      "statement": "Ao encontrar “GIRASSOL”, como explorar a segmentação sem dar a resposta?",
+      "prompt": "Ao encontrar “GIRASSOL”, como explorar a segmentação sem dar a resposta?",
+      "options": [
+        "Soletrar toda a palavra imediatamente.",
+        "Contar letras sem pronunciar.",
+        "Pedir para copiar sem ouvir.",
+        "Convidar a criança a falar GI-RAS-SOL, marcar as partes e explicar sua escolha."
+      ],
+      "correctAnswer": "Convidar a criança a falar GI-RAS-SOL, marcar as partes e explicar sua escolha.",
+      "answerPosition": "D",
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PALAVRA_NOVA",
+      "explanation": "A orientação preserva a descoberta e torna o raciocínio auditivo visível.",
+      "hint": "Peça que a criança fale devagar e marque cada parte.",
+      "errorFocus": "GUIDED_DISCOVERY",
+      "feedback": {
+        "correct": "Boa análise: A orientação preserva a descoberta e torna o raciocínio auditivo visível.",
+        "incorrect": "A orientação preserva a descoberta e torna o raciocínio auditivo visível.",
+        "hint": "Peça que a criança fale devagar e marque cada parte.",
+        "errorFocus": "GUIDED_DISCOVERY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-25",
+      "statement": "Nesta atividade, o que chamamos de sílaba?",
+      "prompt": "Nesta atividade, o que chamamos de sílaba?",
+      "options": [
+        "Uma parte falada de uma palavra que pode ser marcada oralmente.",
+        "Uma letra isolada sempre.",
+        "Um desenho que acompanha a palavra.",
+        "O número de objetos nomeados."
+      ],
+      "correctAnswer": "Uma parte falada de uma palavra que pode ser marcada oralmente.",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "DEFINICAO_SILABA",
+      "explanation": "A definição é operacional e adequada ao objetivo de segmentar oralmente palavras.",
+      "hint": "Pense no que uma palma acompanha quando falamos.",
+      "errorFocus": "DEFINE_SYLLABLE",
+      "feedback": {
+        "correct": "Boa análise: A definição é operacional e adequada ao objetivo de segmentar oralmente palavras.",
+        "incorrect": "A definição é operacional e adequada ao objetivo de segmentar oralmente palavras.",
+        "hint": "Pense no que uma palma acompanha quando falamos.",
+        "errorFocus": "DEFINE_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-26",
+      "statement": "Qual procedimento não corresponde a segmentar “MALA” em sílabas?",
+      "prompt": "Qual procedimento não corresponde a segmentar “MALA” em sílabas?",
+      "options": [
+        "Marcar MA-LA.",
+        "Separar M-A-L-A, pois isso soletra letras em vez de marcar MA-LA.",
+        "Falar MA e depois LA.",
+        "Usar duas fichas, uma por parte."
+      ],
+      "correctAnswer": "Separar M-A-L-A, pois isso soletra letras em vez de marcar MA-LA.",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NAO_SOLETRAR",
+      "explanation": "Soletrar é diferente de dividir a palavra em partes faladas.",
+      "hint": "Compare M-A-L-A com MA-LA.",
+      "errorFocus": "DISTINGUISH_SYLLABLE_SPELLING",
+      "feedback": {
+        "correct": "Boa análise: Soletrar é diferente de dividir a palavra em partes faladas.",
+        "incorrect": "Soletrar é diferente de dividir a palavra em partes faladas.",
+        "hint": "Compare M-A-L-A com MA-LA.",
+        "errorFocus": "DISTINGUISH_SYLLABLE_SPELLING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-27",
+      "statement": "“GATO” e “MALA” têm a mesma quantidade de partes. O que isso significa?",
+      "prompt": "“GATO” e “MALA” têm a mesma quantidade de partes. O que isso significa?",
+      "options": [
+        "As palavras têm o mesmo significado.",
+        "As letras são todas iguais.",
+        "Cada uma pode ser segmentada em duas partes faladas, mesmo sendo palavras diferentes.",
+        "As duas têm uma parte."
+      ],
+      "correctAnswer": "Cada uma pode ser segmentada em duas partes faladas, mesmo sendo palavras diferentes.",
+      "answerPosition": "C",
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MESMO_NUMERO",
+      "explanation": "Quantidade de sílabas não torna as palavras iguais em significado ou escrita.",
+      "hint": "Marque GA-TO e MA-LA separadamente.",
+      "errorFocus": "EQUAL_COUNT_NOT_EQUAL_WORD",
+      "feedback": {
+        "correct": "Boa análise: Quantidade de sílabas não torna as palavras iguais em significado ou escrita.",
+        "incorrect": "Quantidade de sílabas não torna as palavras iguais em significado ou escrita.",
+        "hint": "Marque GA-TO e MA-LA separadamente.",
+        "errorFocus": "EQUAL_COUNT_NOT_EQUAL_WORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-28",
+      "statement": "Por que uma criança pode segmentar uma palavra mesmo sem saber escrever todas as letras?",
+      "prompt": "Por que uma criança pode segmentar uma palavra mesmo sem saber escrever todas as letras?",
+      "options": [
+        "Porque escrever e falar são exatamente a mesma ação.",
+        "Porque letras não têm função.",
+        "Porque toda palavra é um desenho.",
+        "Porque segmentar oralmente depende de ouvir e marcar partes da fala, não de escrever a palavra inteira."
+      ],
+      "correctAnswer": "Porque segmentar oralmente depende de ouvir e marcar partes da fala, não de escrever a palavra inteira.",
+      "answerPosition": "D",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CONTAR_SEM_LETRAS",
+      "explanation": "A habilidade pode ser observada por fala, movimento, fichas, olhar ou comunicação alternativa.",
+      "hint": "Separe o que a criança ouve do que consegue registrar no papel.",
+      "errorFocus": "ORAL_SKILL_INDEPENDENT_OF_SPELLING",
+      "feedback": {
+        "correct": "Boa análise: A habilidade pode ser observada por fala, movimento, fichas, olhar ou comunicação alternativa.",
+        "incorrect": "A habilidade pode ser observada por fala, movimento, fichas, olhar ou comunicação alternativa.",
+        "hint": "Separe o que a criança ouve do que consegue registrar no papel.",
+        "errorFocus": "ORAL_SKILL_INDEPENDENT_OF_SPELLING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-29",
+      "statement": "Qual registro ajuda a avaliar a segmentação sem rotular a criança?",
+      "prompt": "Qual registro ajuda a avaliar a segmentação sem rotular a criança?",
+      "options": [
+        "“Marcou três palmas para CA-VA-LO e precisou de apoio para manter o ritmo.”",
+        "“É fraca em palavras.”",
+        "“Nunca aprenderá sílabas.”",
+        "“Errou porque não prestou atenção.”"
+      ],
+      "correctAnswer": "“Marcou três palmas para CA-VA-LO e precisou de apoio para manter o ritmo.”",
+      "answerPosition": "A",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "EVIDENCIA_OBSERVAVEL",
+      "explanation": "O registro descreve uma ação observável e o apoio necessário, sem transformar uma amostra em rótulo.",
+      "hint": "Anote o que foi feito e qual suporte ajudou.",
+      "errorFocus": "OBSERVATION_NOT_LABEL",
+      "feedback": {
+        "correct": "Boa análise: O registro descreve uma ação observável e o apoio necessário, sem transformar uma amostra em rótulo.",
+        "incorrect": "O registro descreve uma ação observável e o apoio necessário, sem transformar uma amostra em rótulo.",
+        "hint": "Anote o que foi feito e qual suporte ajudou.",
+        "errorFocus": "OBSERVATION_NOT_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-30",
+      "statement": "Qual feedback favorece a revisão de “PIPOCA” sem constranger?",
+      "prompt": "Qual feedback favorece a revisão de “PIPOCA” sem constranger?",
+      "options": [
+        "“Você não sabe dividir palavras.”",
+        "“Vamos falar PI-PO-CA e conferir se cada palma acompanha uma parte.”",
+        "“Conte as letras e pronto.”",
+        "“Não tente de novo.”"
+      ],
+      "correctAnswer": "“Vamos falar PI-PO-CA e conferir se cada palma acompanha uma parte.”",
+      "answerPosition": "B",
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FEEDBACK_ACOLHEDOR",
+      "explanation": "O feedback oferece uma estratégia clara, acolhedora e relacionada ao objetivo da atividade.",
+      "hint": "Convide para repetir, marcar e conferir.",
+      "errorFocus": "FEEDBACK_WITH_MODEL",
+      "feedback": {
+        "correct": "Boa análise: O feedback oferece uma estratégia clara, acolhedora e relacionada ao objetivo da atividade.",
+        "incorrect": "O feedback oferece uma estratégia clara, acolhedora e relacionada ao objetivo da atividade.",
+        "hint": "Convide para repetir, marcar e conferir.",
+        "errorFocus": "FEEDBACK_WITH_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-31",
+      "statement": "Quantas partes faladas há em “CASA”?",
+      "prompt": "Quantas partes faladas há em “CASA”?",
+      "options": [
+        "1",
+        "3",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "REVISAO_CASA",
+      "explanation": "CA-SA pode ser marcada com duas palmas.",
+      "hint": "Fale CA-SA e conte.",
+      "errorFocus": "REVIEW_COUNT",
+      "feedback": {
+        "correct": "Boa análise: CA-SA pode ser marcada com duas palmas.",
+        "incorrect": "CA-SA pode ser marcada com duas palmas.",
+        "hint": "Fale CA-SA e conte.",
+        "errorFocus": "REVIEW_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-32",
+      "statement": "Qual divisão oral corresponde a “BONECA”?",
+      "prompt": "Qual divisão oral corresponde a “BONECA”?",
+      "options": [
+        "B-O-N-E-C-A.",
+        "BONE-CA.",
+        "BO-NECA-CA.",
+        "BO-NE-CA."
+      ],
+      "correctAnswer": "BO-NE-CA.",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SEGMENT",
+      "contextFamily": "REVISAO_BONECA",
+      "explanation": "A palavra se organiza em três partes faladas: BO, NE e CA.",
+      "hint": "Use uma ficha para cada parte.",
+      "errorFocus": "REVIEW_SEGMENTATION",
+      "feedback": {
+        "correct": "Boa análise: A palavra se organiza em três partes faladas: BO, NE e CA.",
+        "incorrect": "A palavra se organiza em três partes faladas: BO, NE e CA.",
+        "hint": "Use uma ficha para cada parte.",
+        "errorFocus": "REVIEW_SEGMENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-33",
+      "statement": "Qual tem mais partes: “GATO” ou “JANELA”?",
+      "prompt": "Qual tem mais partes: “GATO” ou “JANELA”?",
+      "options": [
+        "JANELA.",
+        "GATO.",
+        "As duas têm a mesma quantidade.",
+        "Nenhuma tem partes."
+      ],
+      "correctAnswer": "JANELA.",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_GATO_JANELA",
+      "explanation": "GATO tem duas partes e JANELA tem três.",
+      "hint": "Faça duas palmas e depois três.",
+      "errorFocus": "REVIEW_COMPARE_COUNTS",
+      "feedback": {
+        "correct": "Boa análise: GATO tem duas partes e JANELA tem três.",
+        "incorrect": "GATO tem duas partes e JANELA tem três.",
+        "hint": "Faça duas palmas e depois três.",
+        "errorFocus": "REVIEW_COMPARE_COUNTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-34",
+      "statement": "Qual é a parte do meio de “PIPOCA”?",
+      "prompt": "Qual é a parte do meio de “PIPOCA”?",
+      "options": [
+        "PI.",
+        "PO.",
+        "CA.",
+        "PIP."
+      ],
+      "correctAnswer": "PO.",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_PIPOCA_MEIO",
+      "explanation": "PI-PO-CA tem PO no meio.",
+      "hint": "Diga as três partes na ordem.",
+      "errorFocus": "REVIEW_MEDIAL_SYLLABLE",
+      "feedback": {
+        "correct": "Boa análise: PI-PO-CA tem PO no meio.",
+        "incorrect": "PI-PO-CA tem PO no meio.",
+        "hint": "Diga as três partes na ordem.",
+        "errorFocus": "REVIEW_MEDIAL_SYLLABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-35",
+      "statement": "O que é diferente em contar letras e contar sílabas?",
+      "prompt": "O que é diferente em contar letras e contar sílabas?",
+      "options": [
+        "São sempre a mesma coisa.",
+        "Sílabas são desenhos.",
+        "Letras são sinais escritos; sílabas são partes faladas.",
+        "Letras só aparecem em músicas."
+      ],
+      "correctAnswer": "Letras são sinais escritos; sílabas são partes faladas.",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_LETRA_SILABA",
+      "explanation": "A revisão reforça que a atividade observa unidades diferentes.",
+      "hint": "Compare B-O-L-A com BO-LA.",
+      "errorFocus": "REVIEW_UNIT_DISTINCTION",
+      "feedback": {
+        "correct": "Boa análise: A revisão reforça que a atividade observa unidades diferentes.",
+        "incorrect": "A revisão reforça que a atividade observa unidades diferentes.",
+        "hint": "Compare B-O-L-A com BO-LA.",
+        "errorFocus": "REVIEW_UNIT_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-36",
+      "statement": "Que palavra resulta de CA + SA?",
+      "prompt": "Que palavra resulta de CA + SA?",
+      "options": [
+        "CAVALO.",
+        "CANA.",
+        "CAMA.",
+        "CASA."
+      ],
+      "correctAnswer": "CASA.",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RECOMBINE",
+      "contextFamily": "REVISAO_CA_SA",
+      "explanation": "A junção das duas partes forma CASA.",
+      "hint": "Una as partes sem trocar a ordem.",
+      "errorFocus": "REVIEW_BLEND",
+      "feedback": {
+        "correct": "Boa análise: A junção das duas partes forma CASA.",
+        "incorrect": "A junção das duas partes forma CASA.",
+        "hint": "Una as partes sem trocar a ordem.",
+        "errorFocus": "REVIEW_BLEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-37",
+      "statement": "Como segmentar “MARINA”?",
+      "prompt": "Como segmentar “MARINA”?",
+      "options": [
+        "MA-RI-NA, com três marcas.",
+        "M-A-R-I-N-A, com seis marcas.",
+        "MAR-INA, com duas marcas.",
+        "MARINA sem falar."
+      ],
+      "correctAnswer": "MA-RI-NA, com três marcas.",
+      "answerPosition": "A",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_NOME",
+      "explanation": "A segmentação oral proposta é MA-RI-NA.",
+      "hint": "Fale devagar e marque cada parte.",
+      "errorFocus": "REVIEW_APPLY",
+      "feedback": {
+        "correct": "Boa análise: A segmentação oral proposta é MA-RI-NA.",
+        "incorrect": "A segmentação oral proposta é MA-RI-NA.",
+        "hint": "Fale devagar e marque cada parte.",
+        "errorFocus": "REVIEW_APPLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-38",
+      "statement": "Qual opção mantém a participação de quem não usa fala oral?",
+      "prompt": "Qual opção mantém a participação de quem não usa fala oral?",
+      "options": [
+        "Impedir a resposta.",
+        "Marcar as partes com fichas, gestos, apontar, olhar ou áudio.",
+        "Exigir soletração oral.",
+        "Avaliar somente a escrita."
+      ],
+      "correctAnswer": "Marcar as partes com fichas, gestos, apontar, olhar ou áudio.",
+      "answerPosition": "B",
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ACCESS",
+      "contextFamily": "REVISAO_ACESSIBILIDADE",
+      "explanation": "A forma de resposta pode mudar sem abandonar o objetivo de segmentar palavras.",
+      "hint": "Ofereça mais de um canal de resposta.",
+      "errorFocus": "REVIEW_ACCESS",
+      "feedback": {
+        "correct": "Boa análise: A forma de resposta pode mudar sem abandonar o objetivo de segmentar palavras.",
+        "incorrect": "A forma de resposta pode mudar sem abandonar o objetivo de segmentar palavras.",
+        "hint": "Ofereça mais de um canal de resposta.",
+        "errorFocus": "REVIEW_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-39",
+      "statement": "Qual observação é baseada em evidência?",
+      "prompt": "Qual observação é baseada em evidência?",
+      "options": [
+        "“A criança é ruim em leitura.”",
+        "“Ela nunca aprenderá.”",
+        "“A criança marcou duas palmas para BO-LA após ouvir o modelo.”",
+        "“Ela não gosta de palavras.”"
+      ],
+      "correctAnswer": "“A criança marcou duas palmas para BO-LA após ouvir o modelo.”",
+      "answerPosition": "C",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAO_EVIDENCIA",
+      "explanation": "A observação descreve o comportamento e o suporte, sem concluir além da situação.",
+      "hint": "Registre o que foi ouvido e feito.",
+      "errorFocus": "REVIEW_EVIDENCE",
+      "feedback": {
+        "correct": "Boa análise: A observação descreve o comportamento e o suporte, sem concluir além da situação.",
+        "incorrect": "A observação descreve o comportamento e o suporte, sem concluir além da situação.",
+        "hint": "Registre o que foi ouvido e feito.",
+        "errorFocus": "REVIEW_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-portuguese-syllable-segmentation-fi-40",
+      "statement": "O que fazer quando não sabemos quantas partes há em uma palavra nova?",
+      "prompt": "O que fazer quando não sabemos quantas partes há em uma palavra nova?",
+      "options": [
+        "Contar as letras sem falar.",
+        "Escolher um número ao acaso.",
+        "Desistir da palavra.",
+        "Falar devagar, marcar as partes e conferir a hipótese com outra pronúncia ou modelo."
+      ],
+      "correctAnswer": "Falar devagar, marcar as partes e conferir a hipótese com outra pronúncia ou modelo.",
+      "answerPosition": "D",
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVISAO_PROCEDIMENTO",
+      "explanation": "A estratégia permite investigar a palavra e ajustar a segmentação com apoio.",
+      "hint": "Use voz, movimento e repetição para conferir.",
+      "errorFocus": "REVIEW_STRATEGY",
+      "feedback": {
+        "correct": "Boa análise: A estratégia permite investigar a palavra e ajustar a segmentação com apoio.",
+        "incorrect": "A estratégia permite investigar a palavra e ajustar a segmentação com apoio.",
+        "hint": "Use voz, movimento e repetição para conferir.",
+        "errorFocus": "REVIEW_STRATEGY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "LEITURA_ORAL",
+          "ALTO_CONTRASTE",
+          "TEMPO_FLEXIVEL",
+          "RESPOSTA_MULTIMODAL"
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

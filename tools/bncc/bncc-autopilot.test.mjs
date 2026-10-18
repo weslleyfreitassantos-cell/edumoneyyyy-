@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { buildPack, validatePack } from './build-ef01ci02-authoring-pack.mjs';
 import { buildEf01Ci04Pack, validateEf01Ci04Pack } from './build-ef01ci04-authoring-pack.mjs';
 import { buildEf01Ci05Pack, validateEf01Ci05Pack } from './build-ef01ci05-authoring-pack.mjs';
+import { buildPack as buildEf01LpPack, validatePack as validateEf01LpPack, listDefinitions } from './build-ef01lp-real-authoring-packs.mjs';
 import { getAuthoringProducer, listAuthoringProducers } from './bncc-authoring-producers.mjs';
 import { createInitialState, determineRunStatus, parseOptions, selectNextTask, validateExistingPackage } from './bncc-autopilot.mjs';
 
@@ -44,7 +45,21 @@ describe('BNCC autopilot', () => {
     }
     expect(getAuthoringProducer({ officialCode: 'EF01CI04' })?.id).toBe('science-human-diversity-v1');
     expect(getAuthoringProducer({ officialCode: 'EI01CG01' })).toBeNull();
-    expect(listAuthoringProducers().map((producer) => producer.officialCode)).toEqual(['EF01CI02', 'EF01CI04', 'EF01CI05']);
+    expect(listAuthoringProducers().map((producer) => producer.officialCode)).toEqual(['EF01CI02', 'EF01CI04', 'EF01CI05', 'EF01LP03', 'EF01LP04', 'EF01LP05', 'EF01LP06']);
+  });
+
+  it('builds the first real Portuguese authoring set without opening publication gates', () => {
+    expect(listDefinitions()).toEqual(['EF01LP03', 'EF01LP04', 'EF01LP05', 'EF01LP06']);
+    for (const officialCode of listDefinitions()) {
+      const pack = buildEf01LpPack(officialCode);
+      expect(validateEf01LpPack(pack).valid).toBe(true);
+      expect(pack.questions).toHaveLength(40);
+      expect(pack.lesson.authenticActivities.length).toBeGreaterThanOrEqual(2);
+      expect(pack.active).toBe(false);
+      expect(pack.publicationStatus).toBe('STAGING_INACTIVE');
+      expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
+      expect(pack.sourceContext.relation).toBe('AUTHORING_CONTEXT_ONLY');
+    }
   });
 
   it('resumes partial tasks when a producer can upgrade them and skips brief-only tasks', () => {
@@ -64,6 +79,17 @@ describe('BNCC autopilot', () => {
     state.taskRecords.BNCC_EF01CI03 = { taskId: 'BNCC_EF01CI03', status: 'CONTENT_PARTIAL' };
     state.blockedTasks = [{ taskId: 'BNCC_EF01CI02', reason: 'TEST', attempts: 1 }];
     expect(selectNextTask(queue, state)?.taskId).toBe('BNCC_EF01CI04');
+  });
+
+  it('does not select a verified task that only has a context brief', () => {
+    const queue = {
+      tasks: [
+        { taskId: 'BNCC_EF01CI03', officialCode: 'EF01CI03', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
+        { taskId: 'BNCC_EF01LP03', officialCode: 'EF01LP03', state: 'BLOCKED_CANONICAL_REVIEW', evidence: { source: 'VERIFIED' } },
+      ],
+    };
+    const state = { taskRecords: { BNCC_EF01CI03: { taskId: 'BNCC_EF01CI03', status: 'AWAITING_CONTENT_AUTHORING' } }, blockedTasks: [] };
+    expect(selectNextTask(queue, state)?.taskId).toBe('BNCC_EF01LP03');
   });
 
   it('reports resumable budget exhaustion separately from terminal campaign states', () => {
