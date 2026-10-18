@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "6e2d559303d36fe3cc365c092076ef0ac2c79977567f7ea00db2065b9c0e0ecd",
+    "v5QuestionFirstPacks": "e429607c466405ce628d0d02e9ded85b9034510026b6a3cfa944adbdbad6a468",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 7051,
+    "v5QuestionTotal": 7211,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -229,8 +229,20 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "mathematics-number-uses-ef01.json",
+        "skillCode": "AUTHORING_EF01MA01_NUMBER_QUANTITY_ORDER_CODE",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "science-daily-objects-materials-history-ef02.json",
         "skillCode": "AUTHORING_EF02CI01_DAILY_OBJECTS_MATERIALS_AND_HISTORY",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "science-material-properties-design-ef02.json",
+        "skillCode": "AUTHORING_EF02CI02_SELECT_MATERIALS_BY_PROPERTIES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -298,6 +310,18 @@
         "file": "v14-history-work-leisure-change.json",
         "skillCode": "AUTHORING_EF03HI12_HISTORY_WORK_LEISURE_CHANGE",
         "questionCount": 45,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "science-cells-structure-function-ef06.json",
+        "skillCode": "AUTHORING_EF06CI05_CELL_AS_STRUCTURAL_AND_FUNCTIONAL_UNIT",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "science-heat-transfer-materials-ef07.json",
+        "skillCode": "AUTHORING_EF07CI03_HEAT_TRANSFER_MATERIALS_AND_SOLUTIONS",
+        "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
@@ -18955,5 +18979,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "afb6144face3fa9ae0aa0a26bbe11d018d4e92d183625bdb15a8d94f209907af"
+  "inventoryHash": "ecce2e8e13e8e40d08a5a6f5389fa98d9596b8672de7906a62059dc75cef38fa"
 }
