@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01hi04-environments-habits-and-rules",
+  "canonicalSkillCode": "AUTHORING_EF01HI04_COMPARE_ENVIRONMENTS_AND_RULES",
+  "subject": "HISTORY",
+  "domain": "MUNDO PESSOAL: EU, MEU GRUPO SOCIAL E MEU TEMPO",
+  "topic": "diferenças entre ambientes doméstico, escolar e comunitário e suas regras",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar as diferenças entre os variados ambientes em que vive (doméstico, escolar e da comunidade), reconhecendo as especificidades dos hábitos e das regras que os regem.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Lugares diferentes, combinados próprios",
+    "objective": "Identificar diferenças entre ambientes domésticos, escolares e comunitários e relacioná-las a hábitos e regras apresentados em narrativas fictícias, sem exigir relatos sobre a vida privada dos estudantes.",
+    "summary": "Ambientes domésticos, escolares e comunitários podem ter usos, hábitos e regras diferentes. Uma casa é organizada por quem vive nela; a escola tem acordos para aprendizagem e segurança; espaços comunitários, como biblioteca ou praça, têm combinados para uso compartilhado. Famílias e comunidades não são todas iguais, e uma história não representa todas. É possível comparar exemplos fictícios e respeitar a privacidade de cada pessoa.",
+    "explanation": "Observe cada cena e identifique o lugar, a atividade e a regra ou hábito descrito. Uma personagem pode guardar seus materiais num espaço doméstico, seguir um turno de fala na sala de aula e respeitar a organização de uma biblioteca comunitária. Uma mesma ação pode ter motivos diferentes conforme o ambiente. Não conclua que todas as casas têm os mesmos hábitos nem peça que estudantes revelem regras privadas de casa. Compare apenas as informações fornecidas, reconhecendo que regras servem a objetivos e podem variar conforme o grupo e o espaço.",
+    "workedExample": "Numa narrativa inventada, Ravi guarda seus materiais pessoais ao terminar uma atividade doméstica, espera sua vez de falar na escola e devolve um livro à biblioteca do bairro. Os hábitos e regras mudam conforme o lugar e a atividade; a história não estabelece como todas as famílias ou bibliotecas funcionam.",
+    "commonMistake": "Supor que todas as famílias têm os mesmos hábitos ou julgar um ambiente como correto ou incorreto sem considerar seu uso e as informações apresentadas.",
+    "priorKnowledge": [
+      "Reconhecer casa, escola e espaços comunitários em imagens ou narrativas.",
+      "Identificar regras simples relacionadas a uma atividade."
+    ],
+    "keyConcepts": [
+      "ambiente doméstico",
+      "ambiente escolar",
+      "comunidade",
+      "hábito",
+      "regra",
+      "contexto",
+      "privacidade",
+      "convivência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "ENVIRONMENT_CONTEXT",
+        "action": "Separe cartões por lugar e destaque uma pista da atividade para diferenciar ambiente doméstico, escolar ou comunitário."
+      },
+      {
+        "errorFocus": "FAMILY_PRIVACY_AND_DIVERSITY",
+        "action": "Troque qualquer pergunta pessoal por uma narrativa fictícia e descreva o exemplo sem generalizar sobre famílias."
+      },
+      {
+        "errorFocus": "RULE_PURPOSE_BY_SPACE",
+        "action": "Relacione cada regra ao uso do espaço e converse sobre sua finalidade, sem classificar grupos ou ambientes como superiores."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+      "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+      "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi04-environment-story-sort",
+        "title": "Histórias em diferentes ambientes",
+        "instructions": "Cartões fictícios apresentam uma personagem em ambientes domésticos, escolares e comunitários.\n1. Leia ou observe cada cena e localize o ambiente.\n2. Associe uma atividade e um hábito ou regra apresentados.\n3. Compare dois ambientes e diga por que o combinado pode ser diferente.",
+        "steps": [
+          "Leia ou observe cada cena e localize o ambiente.",
+          "Associe uma atividade e um hábito ou regra apresentados.",
+          "Compare dois ambientes e diga por que o combinado pode ser diferente."
+        ],
+        "evidence": "Organização de cenas por ambiente com comparação baseada em informações explícitas e sem exigir relatos pessoais.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um ambiente com apoio visual.",
+            "developing": "associa regra e atividade em dois ambientes.",
+            "proficient": "compara ambientes e explica diferenças sem generalizar sobre famílias ou comunidades."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi04-fictional-place-map",
+        "title": "Mapa de lugares e combinados",
+        "instructions": "Um mapa ilustrado fictício inclui casa de personagem, escola e biblioteca comunitária, cada uma com atividades diferentes.\n1. Escolha dois lugares do mapa.\n2. Registre uma atividade e um combinado mostrado em cada lugar.\n3. Explique uma diferença e indique que o mapa apresenta apenas um exemplo fictício.",
+        "steps": [
+          "Escolha dois lugares do mapa.",
+          "Registre uma atividade e um combinado mostrado em cada lugar.",
+          "Explique uma diferença e indique que o mapa apresenta apenas um exemplo fictício."
+        ],
+        "evidence": "Mapa ou relato que liga ambiente, hábito e regra e delimita a conclusão às cenas representadas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta um lugar com ajuda.",
+            "developing": "registra uma atividade e uma regra.",
+            "proficient": "compara dois contextos com evidência e reconhece a diversidade de hábitos."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01hi04-environments-habits-and-rules-01",
+          "v1-ef01hi04-environments-habits-and-rules-02",
+          "v1-ef01hi04-environments-habits-and-rules-03",
+          "v1-ef01hi04-environments-habits-and-rules-04",
+          "v1-ef01hi04-environments-habits-and-rules-05",
+          "v1-ef01hi04-environments-habits-and-rules-06",
+          "v1-ef01hi04-environments-habits-and-rules-07",
+          "v1-ef01hi04-environments-habits-and-rules-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01hi04-environments-habits-and-rules-09",
+          "v1-ef01hi04-environments-habits-and-rules-10",
+          "v1-ef01hi04-environments-habits-and-rules-11",
+          "v1-ef01hi04-environments-habits-and-rules-12",
+          "v1-ef01hi04-environments-habits-and-rules-13",
+          "v1-ef01hi04-environments-habits-and-rules-14",
+          "v1-ef01hi04-environments-habits-and-rules-15",
+          "v1-ef01hi04-environments-habits-and-rules-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01hi04-environments-habits-and-rules-17",
+          "v1-ef01hi04-environments-habits-and-rules-18",
+          "v1-ef01hi04-environments-habits-and-rules-19",
+          "v1-ef01hi04-environments-habits-and-rules-20",
+          "v1-ef01hi04-environments-habits-and-rules-21",
+          "v1-ef01hi04-environments-habits-and-rules-22",
+          "v1-ef01hi04-environments-habits-and-rules-23",
+          "v1-ef01hi04-environments-habits-and-rules-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01hi04-environments-habits-and-rules-25",
+          "v1-ef01hi04-environments-habits-and-rules-26",
+          "v1-ef01hi04-environments-habits-and-rules-27",
+          "v1-ef01hi04-environments-habits-and-rules-28",
+          "v1-ef01hi04-environments-habits-and-rules-29",
+          "v1-ef01hi04-environments-habits-and-rules-30",
+          "v1-ef01hi04-environments-habits-and-rules-31",
+          "v1-ef01hi04-environments-habits-and-rules-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01hi04-environments-habits-and-rules-33",
+          "v1-ef01hi04-environments-habits-and-rules-34",
+          "v1-ef01hi04-environments-habits-and-rules-35",
+          "v1-ef01hi04-environments-habits-and-rules-36",
+          "v1-ef01hi04-environments-habits-and-rules-37",
+          "v1-ef01hi04-environments-habits-and-rules-38",
+          "v1-ef01hi04-environments-habits-and-rules-39",
+          "v1-ef01hi04-environments-habits-and-rules-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI04",
+        "descriptor": "Identificar as diferenças entre os variados ambientes em que vive (doméstico, escolar e da comunidade), reconhecendo as especificidades dos hábitos e das regras que os regem.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-01",
+      "statement": "Uma personagem devolve um livro à biblioteca comunitária. Em que ambiente ocorre a cena?",
+      "prompt": "Uma personagem devolve um livro à biblioteca comunitária. Em que ambiente ocorre a cena?",
+      "options": [
+        "Num espaço da comunidade.",
+        "Num quarto privado que não aparece",
+        "Numa aula de matemática",
+        "Em todos os ambientes ao mesmo tempo"
+      ],
+      "correctAnswer": "Num espaço da comunidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Num quarto privado que não aparece": [
+          "COMMUNITY_ENVIRONMENT"
+        ],
+        "Numa aula de matemática": [
+          "COMMUNITY_ENVIRONMENT"
+        ],
+        "Em todos os ambientes ao mesmo tempo": [
+          "COMMUNITY_ENVIRONMENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIVRO_NA_BIBLIOTECA",
+      "explanation": "A biblioteca do bairro é apresentada como espaço comunitário.",
+      "hint": "Observe o nome do lugar.",
+      "errorFocus": "COMMUNITY_ENVIRONMENT",
+      "feedback": {
+        "correct": "Boa observação: A biblioteca do bairro é apresentada como espaço comunitário.",
+        "incorrect": "A biblioteca do bairro é apresentada como espaço comunitário.",
+        "hint": "Observe o nome do lugar.",
+        "errorFocus": "COMMUNITY_ENVIRONMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-02",
+      "statement": "Uma personagem organiza materiais de uma atividade escolar após a aula. Que ambiente aparece?",
+      "prompt": "Uma personagem organiza materiais de uma atividade escolar após a aula. Que ambiente aparece?",
+      "options": [
+        "Uma praça durante uma feira",
+        "A escola.",
+        "Uma casa sem relação com a cena",
+        "Um ônibus comunitário"
+      ],
+      "correctAnswer": "A escola.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma praça durante uma feira": [
+          "SCHOOL_ENVIRONMENT"
+        ],
+        "Uma casa sem relação com a cena": [
+          "SCHOOL_ENVIRONMENT"
+        ],
+        "Um ônibus comunitário": [
+          "SCHOOL_ENVIRONMENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "MATERIAIS_DE_ESTUDO",
+      "explanation": "A atividade de aula situa a cena na escola.",
+      "hint": "Procure a pista de aprendizagem.",
+      "errorFocus": "SCHOOL_ENVIRONMENT",
+      "feedback": {
+        "correct": "Boa observação: A atividade de aula situa a cena na escola.",
+        "incorrect": "A atividade de aula situa a cena na escola.",
+        "hint": "Procure a pista de aprendizagem.",
+        "errorFocus": "SCHOOL_ENVIRONMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-03",
+      "statement": "Uma narrativa mostra um combinado doméstico, um da sala de aula e um da biblioteca. O que pode mudar?",
+      "prompt": "Uma narrativa mostra um combinado doméstico, um da sala de aula e um da biblioteca. O que pode mudar?",
+      "options": [
+        "A necessidade de respeitar as pessoas",
+        "O fato de serem cenas fictícias",
+        "Os hábitos e as regras conforme o uso de cada ambiente.",
+        "A existência de atividades"
+      ],
+      "correctAnswer": "Os hábitos e as regras conforme o uso de cada ambiente.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A necessidade de respeitar as pessoas": [
+          "RULES_VARY_BY_CONTEXT"
+        ],
+        "O fato de serem cenas fictícias": [
+          "RULES_VARY_BY_CONTEXT"
+        ],
+        "A existência de atividades": [
+          "RULES_VARY_BY_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TRES_CENAS_DE_ROTINA",
+      "explanation": "Lugares e atividades distintos podem ter combinados diferentes.",
+      "hint": "Compare o propósito de cada lugar.",
+      "errorFocus": "RULES_VARY_BY_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Lugares e atividades distintos podem ter combinados diferentes.",
+        "incorrect": "Lugares e atividades distintos podem ter combinados diferentes.",
+        "hint": "Compare o propósito de cada lugar.",
+        "errorFocus": "RULES_VARY_BY_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-04",
+      "statement": "Uma história fictícia diz que uma personagem guarda seus brinquedos ao terminar. O que essa informação mostra?",
+      "prompt": "Uma história fictícia diz que uma personagem guarda seus brinquedos ao terminar. O que essa informação mostra?",
+      "options": [
+        "Uma regra igual em todas as casas",
+        "Uma obrigação de todas as crianças",
+        "Uma prática que ocorre na escola",
+        "Um hábito descrito para aquela personagem no ambiente doméstico."
+      ],
+      "correctAnswer": "Um hábito descrito para aquela personagem no ambiente doméstico.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma regra igual em todas as casas": [
+          "DOMESTIC_HABIT_SCOPE"
+        ],
+        "Uma obrigação de todas as crianças": [
+          "DOMESTIC_HABIT_SCOPE"
+        ],
+        "Uma prática que ocorre na escola": [
+          "DOMESTIC_HABIT_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ROTINA_DE_PERSONAGEM_EM_CASA",
+      "explanation": "A história apresenta um hábito específico, sem torná-lo universal.",
+      "hint": "Use “naquela história” para limitar a resposta.",
+      "errorFocus": "DOMESTIC_HABIT_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A história apresenta um hábito específico, sem torná-lo universal.",
+        "incorrect": "A história apresenta um hábito específico, sem torná-lo universal.",
+        "hint": "Use “naquela história” para limitar a resposta.",
+        "errorFocus": "DOMESTIC_HABIT_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-05",
+      "statement": "Uma turma combina esperar o turno para falar. Qual finalidade escolar esse hábito pode apoiar?",
+      "prompt": "Uma turma combina esperar o turno para falar. Qual finalidade escolar esse hábito pode apoiar?",
+      "options": [
+        "A escuta e a participação na atividade coletiva.",
+        "A proibição de todas as ideias",
+        "A comparação de famílias",
+        "A escolha de um endereço"
+      ],
+      "correctAnswer": "A escuta e a participação na atividade coletiva.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A proibição de todas as ideias": [
+          "SCHOOL_RULE_PURPOSE"
+        ],
+        "A comparação de famílias": [
+          "SCHOOL_RULE_PURPOSE"
+        ],
+        "A escolha de um endereço": [
+          "SCHOOL_RULE_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "REGRA_DE_SALA",
+      "explanation": "Esperar o turno pode ajudar o grupo a ouvir diferentes contribuições.",
+      "hint": "Relacione o turno à conversa da turma.",
+      "errorFocus": "SCHOOL_RULE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Esperar o turno pode ajudar o grupo a ouvir diferentes contribuições.",
+        "incorrect": "Esperar o turno pode ajudar o grupo a ouvir diferentes contribuições.",
+        "hint": "Relacione o turno à conversa da turma.",
+        "errorFocus": "SCHOOL_RULE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-06",
+      "statement": "Uma personagem fala baixo na biblioteca e conversa com pessoas de cuidado em casa. O que distingue as cenas?",
+      "prompt": "Uma personagem fala baixo na biblioteca e conversa com pessoas de cuidado em casa. O que distingue as cenas?",
+      "options": [
+        "Que respeito não importa em casa",
+        "O ambiente e os combinados próprios de cada lugar.",
+        "Que todas as casas são silenciosas",
+        "Que bibliotecas são ambientes domésticos"
+      ],
+      "correctAnswer": "O ambiente e os combinados próprios de cada lugar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que respeito não importa em casa": [
+          "ENVIRONMENT_SPECIFIC_HABIT"
+        ],
+        "Que todas as casas são silenciosas": [
+          "ENVIRONMENT_SPECIFIC_HABIT"
+        ],
+        "Que bibliotecas são ambientes domésticos": [
+          "ENVIRONMENT_SPECIFIC_HABIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CASA_E_BIBLIOTECA",
+      "explanation": "As cenas mostram regras diferentes ligadas ao contexto.",
+      "hint": "Compare onde cada ação acontece.",
+      "errorFocus": "ENVIRONMENT_SPECIFIC_HABIT",
+      "feedback": {
+        "correct": "Boa observação: As cenas mostram regras diferentes ligadas ao contexto.",
+        "incorrect": "As cenas mostram regras diferentes ligadas ao contexto.",
+        "hint": "Compare onde cada ação acontece.",
+        "errorFocus": "ENVIRONMENT_SPECIFIC_HABIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-07",
+      "statement": "Uma atividade pede que estudantes contem uma regra privada de casa. Qual alternativa preserva a aprendizagem e a privacidade?",
+      "prompt": "Uma atividade pede que estudantes contem uma regra privada de casa. Qual alternativa preserva a aprendizagem e a privacidade?",
+      "options": [
+        "Exigir que cada pessoa responda",
+        "Pedir uma foto do ambiente doméstico",
+        "Comparar regras de personagens fictícias.",
+        "Avaliar quem tem a regra mais rígida"
+      ],
+      "correctAnswer": "Comparar regras de personagens fictícias.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Exigir que cada pessoa responda": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Pedir uma foto do ambiente doméstico": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Avaliar quem tem a regra mais rígida": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PERGUNTA_PESSOAL_DE_CASA",
+      "explanation": "Personagens inventadas permitem comparar contextos sem exigir revelação pessoal.",
+      "hint": "Escolha uma alternativa sem dados domésticos reais.",
+      "errorFocus": "PRIVACY_SAFE_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: Personagens inventadas permitem comparar contextos sem exigir revelação pessoal.",
+        "incorrect": "Personagens inventadas permitem comparar contextos sem exigir revelação pessoal.",
+        "hint": "Escolha uma alternativa sem dados domésticos reais.",
+        "errorFocus": "PRIVACY_SAFE_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-08",
+      "statement": "Uma personagem visita uma praça do bairro. Qual hábito pode apoiar o uso coletivo?",
+      "prompt": "Uma personagem visita uma praça do bairro. Qual hábito pode apoiar o uso coletivo?",
+      "options": [
+        "Afirmar que só uma família pode usar a praça",
+        "Levar para casa o equipamento público",
+        "Bloquear a passagem",
+        "Respeitar os combinados do espaço e cuidar do que é compartilhado."
+      ],
+      "correctAnswer": "Respeitar os combinados do espaço e cuidar do que é compartilhado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Afirmar que só uma família pode usar a praça": [
+          "COMMUNITY_SHARED_SPACE"
+        ],
+        "Levar para casa o equipamento público": [
+          "COMMUNITY_SHARED_SPACE"
+        ],
+        "Bloquear a passagem": [
+          "COMMUNITY_SHARED_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "USO_DE_PRACA",
+      "explanation": "Cuidar do espaço compartilhado favorece convivência comunitária.",
+      "hint": "Pense em quem mais utiliza a praça.",
+      "errorFocus": "COMMUNITY_SHARED_SPACE",
+      "feedback": {
+        "correct": "Boa observação: Cuidar do espaço compartilhado favorece convivência comunitária.",
+        "incorrect": "Cuidar do espaço compartilhado favorece convivência comunitária.",
+        "hint": "Pense em quem mais utiliza a praça.",
+        "errorFocus": "COMMUNITY_SHARED_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-09",
+      "statement": "Um conto mostra pessoas de cuidado organizando uma refeição em casa. Que ambiente aparece?",
+      "prompt": "Um conto mostra pessoas de cuidado organizando uma refeição em casa. Que ambiente aparece?",
+      "options": [
+        "O doméstico.",
+        "O escolar",
+        "O espaço de uma biblioteca",
+        "Uma praça pública"
+      ],
+      "correctAnswer": "O doméstico.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O escolar": [
+          "DOMESTIC_ENVIRONMENT"
+        ],
+        "O espaço de uma biblioteca": [
+          "DOMESTIC_ENVIRONMENT"
+        ],
+        "Uma praça pública": [
+          "DOMESTIC_ENVIRONMENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CENA_DE_JANTAR_FICTICIA",
+      "explanation": "A refeição doméstica situa a cena em casa.",
+      "hint": "Observe o local descrito.",
+      "errorFocus": "DOMESTIC_ENVIRONMENT",
+      "feedback": {
+        "correct": "Boa observação: A refeição doméstica situa a cena em casa.",
+        "incorrect": "A refeição doméstica situa a cena em casa.",
+        "hint": "Observe o local descrito.",
+        "errorFocus": "DOMESTIC_ENVIRONMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-10",
+      "statement": "Na sala, uma personagem compartilha lápis; na biblioteca, devolve um livro. O que as regras têm em comum?",
+      "prompt": "Na sala, uma personagem compartilha lápis; na biblioteca, devolve um livro. O que as regras têm em comum?",
+      "options": [
+        "As duas atividades ocorrem no mesmo lugar",
+        "Cuidam de materiais usados por outras pessoas.",
+        "A personagem está em casa nas duas cenas",
+        "Nenhuma envolve cuidado"
+      ],
+      "correctAnswer": "Cuidam de materiais usados por outras pessoas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As duas atividades ocorrem no mesmo lugar": [
+          "SHARED_RESOURCE_PURPOSE"
+        ],
+        "A personagem está em casa nas duas cenas": [
+          "SHARED_RESOURCE_PURPOSE"
+        ],
+        "Nenhuma envolve cuidado": [
+          "SHARED_RESOURCE_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MATERIAL_DA_SALA_E_LIVRO",
+      "explanation": "As ações diferem, mas ambas cuidam de materiais compartilhados.",
+      "hint": "Compare a finalidade, não o local.",
+      "errorFocus": "SHARED_RESOURCE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: As ações diferem, mas ambas cuidam de materiais compartilhados.",
+        "incorrect": "As ações diferem, mas ambas cuidam de materiais compartilhados.",
+        "hint": "Compare a finalidade, não o local.",
+        "errorFocus": "SHARED_RESOURCE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-11",
+      "statement": "Uma placa orienta visitantes a entrar pela recepção da escola. Que tipo de informação apresenta?",
+      "prompt": "Uma placa orienta visitantes a entrar pela recepção da escola. Que tipo de informação apresenta?",
+      "options": [
+        "Uma rotina de todas as casas",
+        "Uma preferência individual",
+        "Uma regra de uso do ambiente escolar.",
+        "Uma regra da biblioteca do bairro"
+      ],
+      "correctAnswer": "Uma regra de uso do ambiente escolar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma rotina de todas as casas": [
+          "SCHOOL_RULE_IDENTIFICATION"
+        ],
+        "Uma preferência individual": [
+          "SCHOOL_RULE_IDENTIFICATION"
+        ],
+        "Uma regra da biblioteca do bairro": [
+          "SCHOOL_RULE_IDENTIFICATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ENTRADA_DA_ESCOLA",
+      "explanation": "A placa descreve como usar a entrada da escola.",
+      "hint": "Observe onde está a placa.",
+      "errorFocus": "SCHOOL_RULE_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A placa descreve como usar a entrada da escola.",
+        "incorrect": "A placa descreve como usar a entrada da escola.",
+        "hint": "Observe onde está a placa.",
+        "errorFocus": "SCHOOL_RULE_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-12",
+      "statement": "Uma ficha informa que a biblioteca fecha em certo horário. O que essa regra organiza?",
+      "prompt": "Uma ficha informa que a biblioteca fecha em certo horário. O que essa regra organiza?",
+      "options": [
+        "O horário de todas as casas",
+        "A rotina escolar de toda pessoa",
+        "A preferência de cada leitor",
+        "O uso do espaço comunitário ao longo do dia."
+      ],
+      "correctAnswer": "O uso do espaço comunitário ao longo do dia.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "O horário de todas as casas": [
+          "COMMUNITY_RULE_PURPOSE"
+        ],
+        "A rotina escolar de toda pessoa": [
+          "COMMUNITY_RULE_PURPOSE"
+        ],
+        "A preferência de cada leitor": [
+          "COMMUNITY_RULE_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ROTINA_DE_BIBLIOTECA",
+      "explanation": "O horário organiza quando visitantes podem usar aquele espaço.",
+      "hint": "Relacione a regra ao funcionamento do local.",
+      "errorFocus": "COMMUNITY_RULE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: O horário organiza quando visitantes podem usar aquele espaço.",
+        "incorrect": "O horário organiza quando visitantes podem usar aquele espaço.",
+        "hint": "Relacione a regra ao funcionamento do local.",
+        "errorFocus": "COMMUNITY_RULE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-13",
+      "statement": "Uma personagem costuma ler antes de dormir e a escola combina guardar livros após a aula. Qual é um hábito individual descrito?",
+      "prompt": "Uma personagem costuma ler antes de dormir e a escola combina guardar livros após a aula. Qual é um hábito individual descrito?",
+      "options": [
+        "Ler antes de dormir.",
+        "Guardar os livros por acordo da escola",
+        "A regra de entrada da biblioteca",
+        "Todas as atividades escolares"
+      ],
+      "correctAnswer": "Ler antes de dormir.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Guardar os livros por acordo da escola": [
+          "HABIT_VS_RULE"
+        ],
+        "A regra de entrada da biblioteca": [
+          "HABIT_VS_RULE"
+        ],
+        "Todas as atividades escolares": [
+          "HABIT_VS_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "HABITO_E_REGRA",
+      "explanation": "Ler antes de dormir é uma rotina da personagem; guardar livros é um acordo escolar.",
+      "hint": "Procure a ação apresentada como costume da personagem.",
+      "errorFocus": "HABIT_VS_RULE",
+      "feedback": {
+        "correct": "Boa observação: Ler antes de dormir é uma rotina da personagem; guardar livros é um acordo escolar.",
+        "incorrect": "Ler antes de dormir é uma rotina da personagem; guardar livros é um acordo escolar.",
+        "hint": "Procure a ação apresentada como costume da personagem.",
+        "errorFocus": "HABIT_VS_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-14",
+      "statement": "Duas narrativas mostram rotinas domésticas diferentes. Qual conclusão é cuidadosa?",
+      "prompt": "Duas narrativas mostram rotinas domésticas diferentes. Qual conclusão é cuidadosa?",
+      "options": [
+        "Uma rotina deve valer para todas",
+        "Cada história apresenta hábitos próprios; famílias podem se organizar de modos variados.",
+        "Uma narrativa é a única correta",
+        "As famílias devem ser comparadas em público"
+      ],
+      "correctAnswer": "Cada história apresenta hábitos próprios; famílias podem se organizar de modos variados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma rotina deve valer para todas": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "Uma narrativa é a única correta": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ],
+        "As famílias devem ser comparadas em público": [
+          "FAMILY_DIVERSITY_REVIEW"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FAMILIA_COM_DIFERENTES_REGRAS",
+      "explanation": "As histórias não autorizam uma regra universal sobre famílias.",
+      "hint": "Limite a conclusão às narrativas.",
+      "errorFocus": "FAMILY_DIVERSITY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: As histórias não autorizam uma regra universal sobre famílias.",
+        "incorrect": "As histórias não autorizam uma regra universal sobre famílias.",
+        "hint": "Limite a conclusão às narrativas.",
+        "errorFocus": "FAMILY_DIVERSITY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-15",
+      "statement": "Uma personagem leva um livro da escola à biblioteca. O que deve observar?",
+      "prompt": "Uma personagem leva um livro da escola à biblioteca. O que deve observar?",
+      "options": [
+        "Que todos os lugares têm regras idênticas",
+        "Que a regra doméstica vale em qualquer lugar",
+        "Os combinados do local onde está usando ou devolvendo o livro.",
+        "Que pode ignorar o uso compartilhado"
+      ],
+      "correctAnswer": "Os combinados do local onde está usando ou devolvendo o livro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todos os lugares têm regras idênticas": [
+          "RULES_BY_CURRENT_CONTEXT"
+        ],
+        "Que a regra doméstica vale em qualquer lugar": [
+          "RULES_BY_CURRENT_CONTEXT"
+        ],
+        "Que pode ignorar o uso compartilhado": [
+          "RULES_BY_CURRENT_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MUDANCA_DE_AMBIENTE",
+      "explanation": "A personagem considera o espaço e a atividade do momento.",
+      "hint": "Observe onde a ação ocorre agora.",
+      "errorFocus": "RULES_BY_CURRENT_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A personagem considera o espaço e a atividade do momento.",
+        "incorrect": "A personagem considera o espaço e a atividade do momento.",
+        "hint": "Observe onde a ação ocorre agora.",
+        "errorFocus": "RULES_BY_CURRENT_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-16",
+      "statement": "Uma cena mostra guardar brinquedos em casa e outra guardar jogos na sala. Qual análise é possível?",
+      "prompt": "Uma cena mostra guardar brinquedos em casa e outra guardar jogos na sala. Qual análise é possível?",
+      "options": [
+        "As duas casas têm exatamente a mesma rotina",
+        "A escola e a casa são o mesmo lugar",
+        "Guardar é obrigatório em toda situação",
+        "A ação de guardar aparece nos dois ambientes, com objetos e combinados diferentes."
+      ],
+      "correctAnswer": "A ação de guardar aparece nos dois ambientes, com objetos e combinados diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "As duas casas têm exatamente a mesma rotina": [
+          "COMPARE_HABIT_WITH_CONTEXT"
+        ],
+        "A escola e a casa são o mesmo lugar": [
+          "COMPARE_HABIT_WITH_CONTEXT"
+        ],
+        "Guardar é obrigatório em toda situação": [
+          "COMPARE_HABIT_WITH_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CENAS_DE_CUIDADO",
+      "explanation": "A ação se repete, mas o contexto e os materiais podem mudar.",
+      "hint": "Identifique semelhança e diferença separadamente.",
+      "errorFocus": "COMPARE_HABIT_WITH_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A ação se repete, mas o contexto e os materiais podem mudar.",
+        "incorrect": "A ação se repete, mas o contexto e os materiais podem mudar.",
+        "hint": "Identifique semelhança e diferença separadamente.",
+        "errorFocus": "COMPARE_HABIT_WITH_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-17",
+      "statement": "Uma personagem visita um centro cultural pela primeira vez. Como aprender os combinados do lugar?",
+      "prompt": "Uma personagem visita um centro cultural pela primeira vez. Como aprender os combinados do lugar?",
+      "options": [
+        "Observar a sinalização e perguntar a um adulto responsável pelo espaço.",
+        "Supor que as regras de casa valem todas ali",
+        "Ignorar os avisos",
+        "Mudar os objetos sem consultar"
+      ],
+      "correctAnswer": "Observar a sinalização e perguntar a um adulto responsável pelo espaço.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Supor que as regras de casa valem todas ali": [
+          "LEARN_LOCAL_RULES"
+        ],
+        "Ignorar os avisos": [
+          "LEARN_LOCAL_RULES"
+        ],
+        "Mudar os objetos sem consultar": [
+          "LEARN_LOCAL_RULES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NOVO_ESPACO_COMUNITARIO",
+      "explanation": "Sinalização e orientação ajudam a compreender regras próprias do ambiente.",
+      "hint": "Escolha uma forma respeitosa de conhecer o local.",
+      "errorFocus": "LEARN_LOCAL_RULES",
+      "feedback": {
+        "correct": "Boa observação: Sinalização e orientação ajudam a compreender regras próprias do ambiente.",
+        "incorrect": "Sinalização e orientação ajudam a compreender regras próprias do ambiente.",
+        "hint": "Escolha uma forma respeitosa de conhecer o local.",
+        "errorFocus": "LEARN_LOCAL_RULES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-18",
+      "statement": "Duas bibliotecas fictícias têm horários diferentes. O que isso permite afirmar?",
+      "prompt": "Duas bibliotecas fictícias têm horários diferentes. O que isso permite afirmar?",
+      "options": [
+        "Uma delas não é uma biblioteca",
+        "Os lugares podem organizar o uso de modos diferentes.",
+        "Todas as bibliotecas devem ter o mesmo horário",
+        "Uma família usa as duas do mesmo modo"
+      ],
+      "correctAnswer": "Os lugares podem organizar o uso de modos diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma delas não é uma biblioteca": [
+          "COMMUNITY_RULE_VARIATION"
+        ],
+        "Todas as bibliotecas devem ter o mesmo horário": [
+          "COMMUNITY_RULE_VARIATION"
+        ],
+        "Uma família usa as duas do mesmo modo": [
+          "COMMUNITY_RULE_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_BIBLIOTECAS_FICTICIAS",
+      "explanation": "Os exemplos mostram regras locais distintas sem definir uma única regra universal.",
+      "hint": "Fale sobre as bibliotecas apresentadas.",
+      "errorFocus": "COMMUNITY_RULE_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: Os exemplos mostram regras locais distintas sem definir uma única regra universal.",
+        "incorrect": "Os exemplos mostram regras locais distintas sem definir uma única regra universal.",
+        "hint": "Fale sobre as bibliotecas apresentadas.",
+        "errorFocus": "COMMUNITY_RULE_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-19",
+      "statement": "Uma personagem diz que o costume da sua casa precisa valer na escola toda. Qual avaliação é equilibrada?",
+      "prompt": "Uma personagem diz que o costume da sua casa precisa valer na escola toda. Qual avaliação é equilibrada?",
+      "options": [
+        "Toda rotina de casa deve controlar a escola",
+        "A escola não precisa de combinados",
+        "Os costumes domésticos podem ser diferentes; na escola, o grupo combina regras próprias para o uso coletivo.",
+        "Uma rotina doméstica é errada"
+      ],
+      "correctAnswer": "Os costumes domésticos podem ser diferentes; na escola, o grupo combina regras próprias para o uso coletivo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Toda rotina de casa deve controlar a escola": [
+          "DOMESTIC_SCHOOL_BOUNDARY"
+        ],
+        "A escola não precisa de combinados": [
+          "DOMESTIC_SCHOOL_BOUNDARY"
+        ],
+        "Uma rotina doméstica é errada": [
+          "DOMESTIC_SCHOOL_BOUNDARY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_DE_CASA_COMO_REGRA_GERAL",
+      "explanation": "Cada ambiente pode ter regras próprias relacionadas a seu uso.",
+      "hint": "Diferencie os contextos sem julgar famílias.",
+      "errorFocus": "DOMESTIC_SCHOOL_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: Cada ambiente pode ter regras próprias relacionadas a seu uso.",
+        "incorrect": "Cada ambiente pode ter regras próprias relacionadas a seu uso.",
+        "hint": "Diferencie os contextos sem julgar famílias.",
+        "errorFocus": "DOMESTIC_SCHOOL_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-20",
+      "statement": "Uma turma faz uma atividade numa praça pública. Qual preparação é adequada?",
+      "prompt": "Uma turma faz uma atividade numa praça pública. Qual preparação é adequada?",
+      "options": [
+        "Deixar materiais bloqueando passagem",
+        "Retirar plantas para levar à escola",
+        "Ignorar outras pessoas que usam a praça",
+        "Conhecer os combinados do local com o educador e cuidar do espaço compartilhado."
+      ],
+      "correctAnswer": "Conhecer os combinados do local com o educador e cuidar do espaço compartilhado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Deixar materiais bloqueando passagem": [
+          "COMMUNITY_SPACE_CARE"
+        ],
+        "Retirar plantas para levar à escola": [
+          "COMMUNITY_SPACE_CARE"
+        ],
+        "Ignorar outras pessoas que usam a praça": [
+          "COMMUNITY_SPACE_CARE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ATIVIDADE_EM_PRACA",
+      "explanation": "A atividade respeita regras locais e os demais usuários.",
+      "hint": "Pense no uso coletivo do lugar.",
+      "errorFocus": "COMMUNITY_SPACE_CARE",
+      "feedback": {
+        "correct": "Boa observação: A atividade respeita regras locais e os demais usuários.",
+        "incorrect": "A atividade respeita regras locais e os demais usuários.",
+        "hint": "Pense no uso coletivo do lugar.",
+        "errorFocus": "COMMUNITY_SPACE_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-21",
+      "statement": "Uma personagem lê em silêncio durante um período combinado na sala. O que a regra está relacionada?",
+      "prompt": "Uma personagem lê em silêncio durante um período combinado na sala. O que a regra está relacionada?",
+      "options": [
+        "À atividade e ao momento de leitura escolar.",
+        "A todas as conversas em qualquer ambiente",
+        "Aos hábitos privados da personagem",
+        "À rotina de todas as famílias"
+      ],
+      "correctAnswer": "À atividade e ao momento de leitura escolar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A todas as conversas em qualquer ambiente": [
+          "RULE_ACTIVITY_SCOPE"
+        ],
+        "Aos hábitos privados da personagem": [
+          "RULE_ACTIVITY_SCOPE"
+        ],
+        "À rotina de todas as famílias": [
+          "RULE_ACTIVITY_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ROTINA_DE_LEITURA_ESCOLAR",
+      "explanation": "A regra se aplica ao período e atividade mostrados.",
+      "hint": "Observe quando e onde a leitura ocorre.",
+      "errorFocus": "RULE_ACTIVITY_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A regra se aplica ao período e atividade mostrados.",
+        "incorrect": "A regra se aplica ao período e atividade mostrados.",
+        "hint": "Observe quando e onde a leitura ocorre.",
+        "errorFocus": "RULE_ACTIVITY_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-22",
+      "statement": "Por que é importante comparar hábitos sem chamar uma família de melhor?",
+      "prompt": "Por que é importante comparar hábitos sem chamar uma família de melhor?",
+      "options": [
+        "Porque todas as famílias têm a mesma rotina",
+        "Porque hábitos variam entre famílias e a comparação deve descrever, não hierarquizar pessoas.",
+        "Porque só uma rotina pode ser correta",
+        "Porque regras nunca podem ser discutidas"
+      ],
+      "correctAnswer": "Porque hábitos variam entre famílias e a comparação deve descrever, não hierarquizar pessoas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque todas as famílias têm a mesma rotina": [
+          "NONJUDGMENTAL_COMPARISON"
+        ],
+        "Porque só uma rotina pode ser correta": [
+          "NONJUDGMENTAL_COMPARISON"
+        ],
+        "Porque regras nunca podem ser discutidas": [
+          "NONJUDGMENTAL_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "COMPARAR_SEM_JULGAR",
+      "explanation": "Diferenças de rotina não são uma medida do valor de uma família.",
+      "hint": "Separe descrição de julgamento.",
+      "errorFocus": "NONJUDGMENTAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Diferenças de rotina não são uma medida do valor de uma família.",
+        "incorrect": "Diferenças de rotina não são uma medida do valor de uma família.",
+        "hint": "Separe descrição de julgamento.",
+        "errorFocus": "NONJUDGMENTAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-23",
+      "statement": "Uma escola combina devolver a bandeja após a refeição. Que tipo de regra é?",
+      "prompt": "Uma escola combina devolver a bandeja após a refeição. Que tipo de regra é?",
+      "options": [
+        "Um costume obrigatório em todas as casas",
+        "Uma regra de biblioteca",
+        "Uma regra escolar ligada ao uso do refeitório.",
+        "Uma preferência pessoal"
+      ],
+      "correctAnswer": "Uma regra escolar ligada ao uso do refeitório.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um costume obrigatório em todas as casas": [
+          "SCHOOL_CONTEXT_RULE"
+        ],
+        "Uma regra de biblioteca": [
+          "SCHOOL_CONTEXT_RULE"
+        ],
+        "Uma preferência pessoal": [
+          "SCHOOL_CONTEXT_RULE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "REGRA_DE_REFEITORIO",
+      "explanation": "O refeitório e a bandeja situam a regra na escola.",
+      "hint": "Relacione lugar e objeto da regra.",
+      "errorFocus": "SCHOOL_CONTEXT_RULE",
+      "feedback": {
+        "correct": "Boa observação: O refeitório e a bandeja situam a regra na escola.",
+        "incorrect": "O refeitório e a bandeja situam a regra na escola.",
+        "hint": "Relacione lugar e objeto da regra.",
+        "errorFocus": "SCHOOL_CONTEXT_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-24",
+      "statement": "Uma personagem usa voz baixa na biblioteca e conversa com sua família em casa. Qual diferença é sustentada?",
+      "prompt": "Uma personagem usa voz baixa na biblioteca e conversa com sua família em casa. Qual diferença é sustentada?",
+      "options": [
+        "A personagem não respeita ninguém",
+        "Todas as bibliotecas exigem silêncio absoluto",
+        "As famílias não podem conversar",
+        "Os hábitos de comunicação aparecem em ambientes e situações diferentes."
+      ],
+      "correctAnswer": "Os hábitos de comunicação aparecem em ambientes e situações diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A personagem não respeita ninguém": [
+          "CONTEXTUAL_HABIT_ANALYSIS"
+        ],
+        "Todas as bibliotecas exigem silêncio absoluto": [
+          "CONTEXTUAL_HABIT_ANALYSIS"
+        ],
+        "As famílias não podem conversar": [
+          "CONTEXTUAL_HABIT_ANALYSIS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "AMBIENTES_E_HABITOS",
+      "explanation": "As cenas mostram comportamentos distintos em situações específicas.",
+      "hint": "Descreva o que ocorre em cada ambiente.",
+      "errorFocus": "CONTEXTUAL_HABIT_ANALYSIS",
+      "feedback": {
+        "correct": "Boa observação: As cenas mostram comportamentos distintos em situações específicas.",
+        "incorrect": "As cenas mostram comportamentos distintos em situações específicas.",
+        "hint": "Descreva o que ocorre em cada ambiente.",
+        "errorFocus": "CONTEXTUAL_HABIT_ANALYSIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-25",
+      "statement": "Um cartão mostra casa, outro sala de aula e outro praça do bairro. O que ajuda a classificar cada cena?",
+      "prompt": "Um cartão mostra casa, outro sala de aula e outro praça do bairro. O que ajuda a classificar cada cena?",
+      "options": [
+        "As atividades e pistas de lugar mostradas.",
+        "A composição familiar presumida",
+        "Uma regra única para os três locais",
+        "A preferência do leitor"
+      ],
+      "correctAnswer": "As atividades e pistas de lugar mostradas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A composição familiar presumida": [
+          "PLACE_AND_ACTIVITY_EVIDENCE"
+        ],
+        "Uma regra única para os três locais": [
+          "PLACE_AND_ACTIVITY_EVIDENCE"
+        ],
+        "A preferência do leitor": [
+          "PLACE_AND_ACTIVITY_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TRES_CARTOES_DE_AMBIENTE",
+      "explanation": "Lugar e atividade são pistas para classificar o ambiente.",
+      "hint": "Use detalhes que aparecem nos cartões.",
+      "errorFocus": "PLACE_AND_ACTIVITY_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Lugar e atividade são pistas para classificar o ambiente.",
+        "incorrect": "Lugar e atividade são pistas para classificar o ambiente.",
+        "hint": "Use detalhes que aparecem nos cartões.",
+        "errorFocus": "PLACE_AND_ACTIVITY_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-26",
+      "statement": "Uma personagem gosta de ler cedo; sua turma combina guardar materiais depois da aula. Qual item é acordo escolar?",
+      "prompt": "Uma personagem gosta de ler cedo; sua turma combina guardar materiais depois da aula. Qual item é acordo escolar?",
+      "options": [
+        "Ler cedo como preferência da personagem",
+        "Guardar materiais depois da aula.",
+        "Escolher uma história em casa",
+        "Descansar num horário pessoal"
+      ],
+      "correctAnswer": "Guardar materiais depois da aula.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ler cedo como preferência da personagem": [
+          "SCHOOL_AGREEMENT_DISTINCTION"
+        ],
+        "Escolher uma história em casa": [
+          "SCHOOL_AGREEMENT_DISTINCTION"
+        ],
+        "Descansar num horário pessoal": [
+          "SCHOOL_AGREEMENT_DISTINCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "COSTUME_E_COMBINADO_ESCOLAR",
+      "explanation": "Guardar materiais é descrito como combinado da turma.",
+      "hint": "Procure a ação feita por acordo do grupo.",
+      "errorFocus": "SCHOOL_AGREEMENT_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Guardar materiais é descrito como combinado da turma.",
+        "incorrect": "Guardar materiais é descrito como combinado da turma.",
+        "hint": "Procure a ação feita por acordo do grupo.",
+        "errorFocus": "SCHOOL_AGREEMENT_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-27",
+      "statement": "Uma biblioteca pede que visitantes devolvam os livros. Qual finalidade é plausível?",
+      "prompt": "Uma biblioteca pede que visitantes devolvam os livros. Qual finalidade é plausível?",
+      "options": [
+        "Impedir toda leitura",
+        "Transformar a biblioteca em casa",
+        "Permitir que outras pessoas encontrem e usem os livros.",
+        "Definir a rotina de cada família"
+      ],
+      "correctAnswer": "Permitir que outras pessoas encontrem e usem os livros.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Impedir toda leitura": [
+          "COMMUNITY_RULE_PURPOSE_ANALYSIS"
+        ],
+        "Transformar a biblioteca em casa": [
+          "COMMUNITY_RULE_PURPOSE_ANALYSIS"
+        ],
+        "Definir a rotina de cada família": [
+          "COMMUNITY_RULE_PURPOSE_ANALYSIS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGRAS_COM_FINALIDADE",
+      "explanation": "Devolver livros apoia o uso compartilhado da coleção.",
+      "hint": "Pense em quem usará o livro depois.",
+      "errorFocus": "COMMUNITY_RULE_PURPOSE_ANALYSIS",
+      "feedback": {
+        "correct": "Boa observação: Devolver livros apoia o uso compartilhado da coleção.",
+        "incorrect": "Devolver livros apoia o uso compartilhado da coleção.",
+        "hint": "Pense em quem usará o livro depois.",
+        "errorFocus": "COMMUNITY_RULE_PURPOSE_ANALYSIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-28",
+      "statement": "Uma nova atividade ocorre no pátio. Qual regra pode precisar ser combinada?",
+      "prompt": "Uma nova atividade ocorre no pátio. Qual regra pode precisar ser combinada?",
+      "options": [
+        "Como todas as casas organizam refeições",
+        "Qual pessoa pode usar a praça",
+        "O que cada estudante faz em casa",
+        "Como circular e compartilhar o espaço com segurança."
+      ],
+      "correctAnswer": "Como circular e compartilhar o espaço com segurança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Como todas as casas organizam refeições": [
+          "SCHOOL_SPACE_RULE_APPLICATION"
+        ],
+        "Qual pessoa pode usar a praça": [
+          "SCHOOL_SPACE_RULE_APPLICATION"
+        ],
+        "O que cada estudante faz em casa": [
+          "SCHOOL_SPACE_RULE_APPLICATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "NOVO_COMBINADO_ESCOLAR",
+      "explanation": "O pátio é um espaço escolar compartilhado, por isso circulação pode ser combinada.",
+      "hint": "Relacione a regra ao pátio.",
+      "errorFocus": "SCHOOL_SPACE_RULE_APPLICATION",
+      "feedback": {
+        "correct": "Boa observação: O pátio é um espaço escolar compartilhado, por isso circulação pode ser combinada.",
+        "incorrect": "O pátio é um espaço escolar compartilhado, por isso circulação pode ser combinada.",
+        "hint": "Relacione a regra ao pátio.",
+        "errorFocus": "SCHOOL_SPACE_RULE_APPLICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-29",
+      "statement": "Por que não devemos exigir que todos contem suas rotinas domésticas?",
+      "prompt": "Por que não devemos exigir que todos contem suas rotinas domésticas?",
+      "options": [
+        "Porque são informações privadas e as famílias têm experiências variadas.",
+        "Porque a escola não pode usar histórias",
+        "Porque todas as rotinas são iguais",
+        "Porque ninguém tem hábitos"
+      ],
+      "correctAnswer": "Porque são informações privadas e as famílias têm experiências variadas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque a escola não pode usar histórias": [
+          "DOMESTIC_PRIVACY_JUSTIFICATION"
+        ],
+        "Porque todas as rotinas são iguais": [
+          "DOMESTIC_PRIVACY_JUSTIFICATION"
+        ],
+        "Porque ninguém tem hábitos": [
+          "DOMESTIC_PRIVACY_JUSTIFICATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "RESPEITAR_ROTINAS_DIVERSAS",
+      "explanation": "A privacidade protege estudantes e reconhece a diversidade familiar.",
+      "hint": "Considere privacidade e diferenças.",
+      "errorFocus": "DOMESTIC_PRIVACY_JUSTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A privacidade protege estudantes e reconhece a diversidade familiar.",
+        "incorrect": "A privacidade protege estudantes e reconhece a diversidade familiar.",
+        "hint": "Considere privacidade e diferenças.",
+        "errorFocus": "DOMESTIC_PRIVACY_JUSTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-30",
+      "statement": "Um cartaz manda correr no corredor durante a troca de salas. O que revisar?",
+      "prompt": "Um cartaz manda correr no corredor durante a troca de salas. O que revisar?",
+      "options": [
+        "O uso das salas de aula",
+        "A regra, para apoiar circulação segura no corredor.",
+        "A preferência por livros",
+        "A rotina doméstica"
+      ],
+      "correctAnswer": "A regra, para apoiar circulação segura no corredor.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O uso das salas de aula": [
+          "CONTEXTUAL_SAFETY_REVIEW"
+        ],
+        "A preferência por livros": [
+          "CONTEXTUAL_SAFETY_REVIEW"
+        ],
+        "A rotina doméstica": [
+          "CONTEXTUAL_SAFETY_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_DE_AMBIENTE_INADEQUADA",
+      "explanation": "Correr pode não ser adequado à circulação compartilhada do corredor.",
+      "hint": "Pense na finalidade do espaço.",
+      "errorFocus": "CONTEXTUAL_SAFETY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Correr pode não ser adequado à circulação compartilhada do corredor.",
+        "incorrect": "Correr pode não ser adequado à circulação compartilhada do corredor.",
+        "hint": "Pense na finalidade do espaço.",
+        "errorFocus": "CONTEXTUAL_SAFETY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-31",
+      "statement": "Uma personagem visita a casa de outra e pergunta quais combinados seguir. O que isso demonstra?",
+      "prompt": "Uma personagem visita a casa de outra e pergunta quais combinados seguir. O que isso demonstra?",
+      "options": [
+        "Que uma casa representa todas as outras",
+        "Que a visita pode ignorar os anfitriões",
+        "Que pode haver regras diferentes em cada ambiente doméstico.",
+        "Que regras não precisam ser respeitadas"
+      ],
+      "correctAnswer": "Que pode haver regras diferentes em cada ambiente doméstico.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que uma casa representa todas as outras": [
+          "VISIT_CONTEXT_RESPECT"
+        ],
+        "Que a visita pode ignorar os anfitriões": [
+          "VISIT_CONTEXT_RESPECT"
+        ],
+        "Que regras não precisam ser respeitadas": [
+          "VISIT_CONTEXT_RESPECT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "HABITO_DE_VISITA",
+      "explanation": "Perguntar reconhece que costumes podem variar entre ambientes.",
+      "hint": "Observe a atitude da personagem visitante.",
+      "errorFocus": "VISIT_CONTEXT_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: Perguntar reconhece que costumes podem variar entre ambientes.",
+        "incorrect": "Perguntar reconhece que costumes podem variar entre ambientes.",
+        "hint": "Observe a atitude da personagem visitante.",
+        "errorFocus": "VISIT_CONTEXT_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-32",
+      "statement": "Uma boa comparação entre casa, escola e comunidade deve...",
+      "prompt": "Uma boa comparação entre casa, escola e comunidade deve...",
+      "options": [
+        "exigir detalhes privados de casa",
+        "afirmar que todos os lugares são iguais",
+        "julgar qual família é melhor",
+        "identificar pistas de cada lugar e explicar hábitos ou regras sem generalizar."
+      ],
+      "correctAnswer": "identificar pistas de cada lugar e explicar hábitos ou regras sem generalizar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "exigir detalhes privados de casa": [
+          "CONTEXTUAL_COMPARISON_SUMMARY"
+        ],
+        "afirmar que todos os lugares são iguais": [
+          "CONTEXTUAL_COMPARISON_SUMMARY"
+        ],
+        "julgar qual família é melhor": [
+          "CONTEXTUAL_COMPARISON_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SINTese_DE_AMBIENTE",
+      "explanation": "A comparação usa evidências e respeita privacidade e diversidade.",
+      "hint": "Combine evidência e cuidado com a conclusão.",
+      "errorFocus": "CONTEXTUAL_COMPARISON_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A comparação usa evidências e respeita privacidade e diversidade.",
+        "incorrect": "A comparação usa evidências e respeita privacidade e diversidade.",
+        "hint": "Combine evidência e cuidado com a conclusão.",
+        "errorFocus": "CONTEXTUAL_COMPARISON_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-33",
+      "statement": "Quais são três ambientes que podem aparecer numa comparação?",
+      "prompt": "Quais são três ambientes que podem aparecer numa comparação?",
+      "options": [
+        "Doméstico, escolar e comunitário.",
+        "Somente casa",
+        "Apenas lugares privados",
+        "Três salas iguais"
+      ],
+      "correctAnswer": "Doméstico, escolar e comunitário.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente casa": [
+          "ENVIRONMENT_TYPES_REVIEW"
+        ],
+        "Apenas lugares privados": [
+          "ENVIRONMENT_TYPES_REVIEW"
+        ],
+        "Três salas iguais": [
+          "ENVIRONMENT_TYPES_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_TRES_AMBIENTES",
+      "explanation": "Os exemplos incluem ambientes domésticos, escolares e da comunidade.",
+      "hint": "Lembre-se dos três grupos de lugares.",
+      "errorFocus": "ENVIRONMENT_TYPES_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Os exemplos incluem ambientes domésticos, escolares e da comunidade.",
+        "incorrect": "Os exemplos incluem ambientes domésticos, escolares e da comunidade.",
+        "hint": "Lembre-se dos três grupos de lugares.",
+        "errorFocus": "ENVIRONMENT_TYPES_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-34",
+      "statement": "Devolver um livro a uma biblioteca do bairro relaciona-se a qual ambiente?",
+      "prompt": "Devolver um livro a uma biblioteca do bairro relaciona-se a qual ambiente?",
+      "options": [
+        "Doméstico",
+        "Comunitário.",
+        "Escolar exclusivamente",
+        "Nenhum ambiente"
+      ],
+      "correctAnswer": "Comunitário.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Doméstico": [
+          "COMMUNITY_ENVIRONMENT_REVIEW"
+        ],
+        "Escolar exclusivamente": [
+          "COMMUNITY_ENVIRONMENT_REVIEW"
+        ],
+        "Nenhum ambiente": [
+          "COMMUNITY_ENVIRONMENT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_BIBLIOTECA",
+      "explanation": "A biblioteca do bairro é um espaço comunitário.",
+      "hint": "Observe quem pode usar a biblioteca.",
+      "errorFocus": "COMMUNITY_ENVIRONMENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A biblioteca do bairro é um espaço comunitário.",
+        "incorrect": "A biblioteca do bairro é um espaço comunitário.",
+        "hint": "Observe quem pode usar a biblioteca.",
+        "errorFocus": "COMMUNITY_ENVIRONMENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-35",
+      "statement": "Uma personagem costuma organizar seus materiais antes de estudar. Essa informação pode ser descrita como...",
+      "prompt": "Uma personagem costuma organizar seus materiais antes de estudar. Essa informação pode ser descrita como...",
+      "options": [
+        "uma regra universal para todas as casas",
+        "um fato sobre todas as escolas",
+        "um hábito da personagem naquela história.",
+        "uma proibição comunitária"
+      ],
+      "correctAnswer": "um hábito da personagem naquela história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "uma regra universal para todas as casas": [
+          "HABIT_SCOPE_REVIEW"
+        ],
+        "um fato sobre todas as escolas": [
+          "HABIT_SCOPE_REVIEW"
+        ],
+        "uma proibição comunitária": [
+          "HABIT_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_HABITO",
+      "explanation": "O costume foi apresentado para uma personagem específica.",
+      "hint": "Limite a frase ao exemplo.",
+      "errorFocus": "HABIT_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O costume foi apresentado para uma personagem específica.",
+        "incorrect": "O costume foi apresentado para uma personagem específica.",
+        "hint": "Limite a frase ao exemplo.",
+        "errorFocus": "HABIT_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-36",
+      "statement": "Por que regras de sala e de praça podem ser diferentes?",
+      "prompt": "Por que regras de sala e de praça podem ser diferentes?",
+      "options": [
+        "Porque respeito não vale na praça",
+        "Porque só a sala é compartilhada",
+        "Porque as famílias definem todos os espaços",
+        "Porque as atividades e os usos dos espaços não são iguais."
+      ],
+      "correctAnswer": "Porque as atividades e os usos dos espaços não são iguais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque respeito não vale na praça": [
+          "RULE_CONTEXT_REVIEW"
+        ],
+        "Porque só a sala é compartilhada": [
+          "RULE_CONTEXT_REVIEW"
+        ],
+        "Porque as famílias definem todos os espaços": [
+          "RULE_CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_REGRAS",
+      "explanation": "Regras atendem aos usos e necessidades de cada ambiente.",
+      "hint": "Compare o que acontece em cada lugar.",
+      "errorFocus": "RULE_CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Regras atendem aos usos e necessidades de cada ambiente.",
+        "incorrect": "Regras atendem aos usos e necessidades de cada ambiente.",
+        "hint": "Compare o que acontece em cada lugar.",
+        "errorFocus": "RULE_CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-37",
+      "statement": "Uma pergunta pede endereço e fotos da casa para comparar hábitos. O que fazer?",
+      "prompt": "Uma pergunta pede endereço e fotos da casa para comparar hábitos. O que fazer?",
+      "options": [
+        "Usar exemplos fictícios ou públicos sem coletar esses dados pessoais.",
+        "Publicar os endereços",
+        "Exigir fotos de todas as casas",
+        "Comparar quem tem a casa maior"
+      ],
+      "correctAnswer": "Usar exemplos fictícios ou públicos sem coletar esses dados pessoais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Publicar os endereços": [
+          "PRIVACY_REVIEW"
+        ],
+        "Exigir fotos de todas as casas": [
+          "PRIVACY_REVIEW"
+        ],
+        "Comparar quem tem a casa maior": [
+          "PRIVACY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "A aprendizagem pode ocorrer sem expor endereço ou ambiente doméstico real.",
+      "hint": "Escolha uma opção que mantenha a comparação segura.",
+      "errorFocus": "PRIVACY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A aprendizagem pode ocorrer sem expor endereço ou ambiente doméstico real.",
+        "incorrect": "A aprendizagem pode ocorrer sem expor endereço ou ambiente doméstico real.",
+        "hint": "Escolha uma opção que mantenha a comparação segura.",
+        "errorFocus": "PRIVACY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-38",
+      "statement": "Como explicar uma regra de convivência de um espaço?",
+      "prompt": "Como explicar uma regra de convivência de um espaço?",
+      "options": [
+        "Dizendo que vale para todo lugar sem motivo",
+        "Relacionando a ação combinada ao uso e à finalidade daquele lugar.",
+        "Atribuindo a regra a uma família específica",
+        "Comparando quem obedece melhor"
+      ],
+      "correctAnswer": "Relacionando a ação combinada ao uso e à finalidade daquele lugar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dizendo que vale para todo lugar sem motivo": [
+          "RULE_PURPOSE_REVIEW"
+        ],
+        "Atribuindo a regra a uma família específica": [
+          "RULE_PURPOSE_REVIEW"
+        ],
+        "Comparando quem obedece melhor": [
+          "RULE_PURPOSE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_FINALIDADE",
+      "explanation": "A finalidade liga o combinado ao ambiente e à atividade.",
+      "hint": "Relacione ação, lugar e motivo.",
+      "errorFocus": "RULE_PURPOSE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A finalidade liga o combinado ao ambiente e à atividade.",
+        "incorrect": "A finalidade liga o combinado ao ambiente e à atividade.",
+        "hint": "Relacione ação, lugar e motivo.",
+        "errorFocus": "RULE_PURPOSE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-39",
+      "statement": "Ao visitar um espaço comunitário novo, qual atitude é adequada?",
+      "prompt": "Ao visitar um espaço comunitário novo, qual atitude é adequada?",
+      "options": [
+        "Ignorar os combinados",
+        "Mudar objetos sem autorização",
+        "Observar a sinalização e pedir orientação quando necessário.",
+        "Impedir outras pessoas de entrar"
+      ],
+      "correctAnswer": "Observar a sinalização e pedir orientação quando necessário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ignorar os combinados": [
+          "NEW_ENVIRONMENT_REVIEW"
+        ],
+        "Mudar objetos sem autorização": [
+          "NEW_ENVIRONMENT_REVIEW"
+        ],
+        "Impedir outras pessoas de entrar": [
+          "NEW_ENVIRONMENT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_VISITA",
+      "explanation": "Sinalização e orientação ajudam a conhecer regras locais.",
+      "hint": "Escolha a atitude de respeito ao espaço.",
+      "errorFocus": "NEW_ENVIRONMENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Sinalização e orientação ajudam a conhecer regras locais.",
+        "incorrect": "Sinalização e orientação ajudam a conhecer regras locais.",
+        "hint": "Escolha a atitude de respeito ao espaço.",
+        "errorFocus": "NEW_ENVIRONMENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi04-environments-habits-and-rules-40",
+      "statement": "Por que uma história de casa não representa todas as casas?",
+      "prompt": "Por que uma história de casa não representa todas as casas?",
+      "options": [
+        "Porque histórias não podem falar de ambientes",
+        "Porque todas as famílias vivem igual",
+        "Porque regras são sempre privadas",
+        "Porque famílias e hábitos são diversos, e cada narrativa apresenta apenas um exemplo."
+      ],
+      "correctAnswer": "Porque famílias e hábitos são diversos, e cada narrativa apresenta apenas um exemplo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque histórias não podem falar de ambientes": [
+          "FAMILY_DIVERSITY_SUMMARY"
+        ],
+        "Porque todas as famílias vivem igual": [
+          "FAMILY_DIVERSITY_SUMMARY"
+        ],
+        "Porque regras são sempre privadas": [
+          "FAMILY_DIVERSITY_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_DIVERSIDADE",
+      "explanation": "Cada narrativa tem escopo limitado e famílias são variadas.",
+      "hint": "Combine limite da fonte e diversidade.",
+      "errorFocus": "FAMILY_DIVERSITY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Cada narrativa tem escopo limitado e famílias são variadas.",
+        "incorrect": "Cada narrativa tem escopo limitado e famílias são variadas.",
+        "hint": "Combine limite da fonte e diversidade.",
+        "errorFocus": "FAMILY_DIVERSITY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cenários ilustrados ou descritos, pictogramas, fonte ampliada e vocabulário simples para os três ambientes.",
+          "Permitir comparar por cartões, desenho, fala, apontamento ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Manter exemplos fictícios e não pedir endereço, fotografia, rotina doméstica ou nomes de familiares dos estudantes."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

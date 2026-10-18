@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01er03-respect-individual-characteristics",
+  "canonicalSkillCode": "AUTHORING_EF01ER03_RECOGNIZE_AND_RESPECT_CHARACTERISTICS",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "respeito às características físicas e subjetivas de cada pessoa",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01ER03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer e respeitar as características físicas e subjetivas de cada um.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 445
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Cada pessoa tem seu jeito",
+    "objective": "Reconhecer e respeitar características observáveis e preferências de personagens fictícias sem classificar pessoas, fazer comentários sobre corpos ou exigir que estudantes revelem informações pessoais.",
+    "summary": "As pessoas têm características físicas e subjetivas. Algumas podem ser observadas em uma cena, como usar óculos, mover-se com uma cadeira de rodas ou ter cabelo curto; outras são preferências ou modos de se expressar, como gostar de desenhar ou preferir silêncio para ler. Nenhuma característica torna alguém melhor ou pior. Usamos exemplos fictícios, evitamos apelidos e comentários invasivos e respeitamos limites, acessibilidade e escolhas de cada pessoa.",
+    "explanation": "Observe uma narrativa ou cartão fictício e descreva apenas a característica que a fonte apresenta. Uma personagem pode usar um aparelho de apoio e gostar de jogos de estratégia; outra pode não querer participar de uma atividade barulhenta. A característica física não informa tudo sobre a pessoa, e uma preferência não representa todas as pessoas com uma característica parecida. Para conviver, escute o que a pessoa diz, peça consentimento antes de ajudar ou tocar em dispositivos de apoio e adapte a atividade para que diferentes pessoas possam participar. Não avalie aparências nem peça que colegas contem algo íntimo.",
+    "workedExample": "Uma história fictícia mostra Alex usando aparelho auditivo e escolhendo uma mesa perto de quem conduz a leitura. Podemos descrever o aparelho e a escolha de lugar porque a história os apresenta. Não devemos concluir que Alex gosta de toda atividade silenciosa nem tocar no aparelho sem consentimento.",
+    "commonMistake": "Transformar uma característica em estereótipo, elogiar ou criticar corpos sem convite, ou presumir que alguém quer ajuda por usar um recurso de acessibilidade.",
+    "priorKnowledge": [
+      "Reconhecer personagens e informações explícitas em histórias curtas.",
+      "Distinguir uma descrição observável de uma opinião ou julgamento."
+    ],
+    "keyConcepts": [
+      "característica física",
+      "característica subjetiva",
+      "preferência",
+      "diferença",
+      "respeito",
+      "consentimento",
+      "acessibilidade",
+      "não julgamento"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "CHARACTERISTIC_NOT_STEREOTYPE",
+        "action": "Volte ao cartão fictício e separe a característica informada de qualquer conclusão sobre personalidade, habilidade ou preferência não descrita."
+      },
+      {
+        "errorFocus": "BODY_RANKING",
+        "action": "Reescreva julgamentos sobre aparência como descrição neutra da fonte ou retire o comentário se ele não contribuir à atividade."
+      },
+      {
+        "errorFocus": "CONSENT_BEFORE_HELP",
+        "action": "Modele a pergunta “Você gostaria de ajuda?” e aguarde a resposta antes de tocar em uma pessoa ou em seu recurso de apoio."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+      "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+      "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er03-fictional-character-observation",
+        "title": "Retratos de personagens inventadas",
+        "instructions": "Cartões fictícios apresentam características e preferências variadas com linguagem respeitosa e neutra.\n1. Escolha um cartão e destaque uma informação que a história realmente apresenta.\n2. Separe uma descrição de uma suposição ou julgamento.\n3. Proponha uma forma de participação respeitosa e acessível para aquela cena.",
+        "steps": [
+          "Escolha um cartão e destaque uma informação que a história realmente apresenta.",
+          "Separe uma descrição de uma suposição ou julgamento.",
+          "Proponha uma forma de participação respeitosa e acessível para aquela cena."
+        ],
+        "evidence": "Descrição baseada na fonte, sem estereótipo, acompanhada de uma ação respeitosa ou acessível.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta uma característica com apoio.",
+            "developing": "descreve informação explícita e identifica uma suposição.",
+            "proficient": "descreve sem julgar e propõe participação que respeita consentimento e diferenças."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er03-respectful-classroom-agreements",
+        "title": "Combinados de respeito",
+        "instructions": "A turma usa cenários inventados para formular combinados de convivência sem expor características pessoais de estudantes.\n1. Leia um cenário fictício de convivência.\n2. Identifique uma atitude que respeita a característica ou preferência descrita.\n3. Transforme a atitude num combinado claro que valha para todos sem apagar diferenças.",
+        "steps": [
+          "Leia um cenário fictício de convivência.",
+          "Identifique uma atitude que respeita a característica ou preferência descrita.",
+          "Transforme a atitude num combinado claro que valha para todos sem apagar diferenças."
+        ],
+        "evidence": "Combinado que reduz julgamento, respeita limites pessoais e mantém alternativas de participação.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe uma atitude respeitosa com ajuda.",
+            "developing": "explica por que uma atitude evita constrangimento.",
+            "proficient": "propõe combinado inclusivo e respeitoso com a autonomia de cada pessoa."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01er03-respect-individual-characteristics-01",
+          "v1-ef01er03-respect-individual-characteristics-02",
+          "v1-ef01er03-respect-individual-characteristics-03",
+          "v1-ef01er03-respect-individual-characteristics-04",
+          "v1-ef01er03-respect-individual-characteristics-05",
+          "v1-ef01er03-respect-individual-characteristics-06",
+          "v1-ef01er03-respect-individual-characteristics-07",
+          "v1-ef01er03-respect-individual-characteristics-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01er03-respect-individual-characteristics-09",
+          "v1-ef01er03-respect-individual-characteristics-10",
+          "v1-ef01er03-respect-individual-characteristics-11",
+          "v1-ef01er03-respect-individual-characteristics-12",
+          "v1-ef01er03-respect-individual-characteristics-13",
+          "v1-ef01er03-respect-individual-characteristics-14",
+          "v1-ef01er03-respect-individual-characteristics-15",
+          "v1-ef01er03-respect-individual-characteristics-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01er03-respect-individual-characteristics-17",
+          "v1-ef01er03-respect-individual-characteristics-18",
+          "v1-ef01er03-respect-individual-characteristics-19",
+          "v1-ef01er03-respect-individual-characteristics-20",
+          "v1-ef01er03-respect-individual-characteristics-21",
+          "v1-ef01er03-respect-individual-characteristics-22",
+          "v1-ef01er03-respect-individual-characteristics-23",
+          "v1-ef01er03-respect-individual-characteristics-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01er03-respect-individual-characteristics-25",
+          "v1-ef01er03-respect-individual-characteristics-26",
+          "v1-ef01er03-respect-individual-characteristics-27",
+          "v1-ef01er03-respect-individual-characteristics-28",
+          "v1-ef01er03-respect-individual-characteristics-29",
+          "v1-ef01er03-respect-individual-characteristics-30",
+          "v1-ef01er03-respect-individual-characteristics-31",
+          "v1-ef01er03-respect-individual-characteristics-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01er03-respect-individual-characteristics-33",
+          "v1-ef01er03-respect-individual-characteristics-34",
+          "v1-ef01er03-respect-individual-characteristics-35",
+          "v1-ef01er03-respect-individual-characteristics-36",
+          "v1-ef01er03-respect-individual-characteristics-37",
+          "v1-ef01er03-respect-individual-characteristics-38",
+          "v1-ef01er03-respect-individual-characteristics-39",
+          "v1-ef01er03-respect-individual-characteristics-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01ER03",
+        "descriptor": "Reconhecer e respeitar as características físicas e subjetivas de cada um.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 445
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-01",
+      "statement": "Uma personagem fictícia usa óculos. O que é possível descrever?",
+      "prompt": "Uma personagem fictícia usa óculos. O que é possível descrever?",
+      "options": [
+        "A personagem usa óculos na cena.",
+        "Ela é mais inteligente",
+        "Ela gosta de estudar mais que todos",
+        "Ela quer que toquem nos óculos"
+      ],
+      "correctAnswer": "A personagem usa óculos na cena.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ela é mais inteligente": [
+          "OBSERVABLE_TRAIT_ONLY"
+        ],
+        "Ela gosta de estudar mais que todos": [
+          "OBSERVABLE_TRAIT_ONLY"
+        ],
+        "Ela quer que toquem nos óculos": [
+          "OBSERVABLE_TRAIT_ONLY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_JO_USA_OCULOS",
+      "explanation": "O cartão mostra os óculos, mas não informa inteligência ou consentimento.",
+      "hint": "Diga apenas o que aparece na cena.",
+      "errorFocus": "OBSERVABLE_TRAIT_ONLY",
+      "feedback": {
+        "correct": "Boa observação: O cartão mostra os óculos, mas não informa inteligência ou consentimento.",
+        "incorrect": "O cartão mostra os óculos, mas não informa inteligência ou consentimento.",
+        "hint": "Diga apenas o que aparece na cena.",
+        "errorFocus": "OBSERVABLE_TRAIT_ONLY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-02",
+      "statement": "A história diz que Caio prefere ler em lugar tranquilo. Isso é uma característica de quê?",
+      "prompt": "A história diz que Caio prefere ler em lugar tranquilo. Isso é uma característica de quê?",
+      "options": [
+        "Uma regra para todas as pessoas",
+        "Uma preferência apresentada para o personagem.",
+        "Uma característica física de todos os leitores",
+        "Uma prova de que ele não gosta dos colegas"
+      ],
+      "correctAnswer": "Uma preferência apresentada para o personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma regra para todas as pessoas": [
+          "PREFERENCE_NOT_GENERALIZATION"
+        ],
+        "Uma característica física de todos os leitores": [
+          "PREFERENCE_NOT_GENERALIZATION"
+        ],
+        "Uma prova de que ele não gosta dos colegas": [
+          "PREFERENCE_NOT_GENERALIZATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PREFERENCIA_DE_LEITURA",
+      "explanation": "A narrativa informa uma preferência específica de Caio.",
+      "hint": "Use o nome do personagem, não todas as pessoas.",
+      "errorFocus": "PREFERENCE_NOT_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A narrativa informa uma preferência específica de Caio.",
+        "incorrect": "A narrativa informa uma preferência específica de Caio.",
+        "hint": "Use o nome do personagem, não todas as pessoas.",
+        "errorFocus": "PREFERENCE_NOT_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-03",
+      "statement": "Uma colega fictícia usa cadeira de rodas. Qual atitude demonstra respeito?",
+      "prompt": "Uma colega fictícia usa cadeira de rodas. Qual atitude demonstra respeito?",
+      "options": [
+        "Empurrar a cadeira sem pedir",
+        "Bloquear o caminho para conversar",
+        "Perguntar antes de ajudar e manter o caminho acessível.",
+        "Falar com outra pessoa em vez de falar com ela"
+      ],
+      "correctAnswer": "Perguntar antes de ajudar e manter o caminho acessível.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Empurrar a cadeira sem pedir": [
+          "CONSENT_AND_ACCESS"
+        ],
+        "Bloquear o caminho para conversar": [
+          "CONSENT_AND_ACCESS"
+        ],
+        "Falar com outra pessoa em vez de falar com ela": [
+          "CONSENT_AND_ACCESS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "APARELHO_DE_APOIO",
+      "explanation": "Perguntar respeita a autonomia e deixar a passagem livre apoia o acesso.",
+      "hint": "Escolha uma ação que respeite a pessoa e o caminho.",
+      "errorFocus": "CONSENT_AND_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Perguntar respeita a autonomia e deixar a passagem livre apoia o acesso.",
+        "incorrect": "Perguntar respeita a autonomia e deixar a passagem livre apoia o acesso.",
+        "hint": "Escolha uma ação que respeite a pessoa e o caminho.",
+        "errorFocus": "CONSENT_AND_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-04",
+      "statement": "Uma personagem escolhe desenhar no tempo livre. O que a cena mostra?",
+      "prompt": "Uma personagem escolhe desenhar no tempo livre. O que a cena mostra?",
+      "options": [
+        "Que todas as crianças preferem desenhar",
+        "Que desenhar é melhor que brincar",
+        "Que a personagem não pode fazer outra atividade",
+        "Uma preferência daquela personagem."
+      ],
+      "correctAnswer": "Uma preferência daquela personagem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que todas as crianças preferem desenhar": [
+          "INDIVIDUAL_PREFERENCE"
+        ],
+        "Que desenhar é melhor que brincar": [
+          "INDIVIDUAL_PREFERENCE"
+        ],
+        "Que a personagem não pode fazer outra atividade": [
+          "INDIVIDUAL_PREFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "GOSTO_DE_DESENHAR",
+      "explanation": "A cena apresenta uma escolha individual, não uma regra universal.",
+      "hint": "Limite a resposta ao que a personagem escolheu.",
+      "errorFocus": "INDIVIDUAL_PREFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A cena apresenta uma escolha individual, não uma regra universal.",
+        "incorrect": "A cena apresenta uma escolha individual, não uma regra universal.",
+        "hint": "Limite a resposta ao que a personagem escolheu.",
+        "errorFocus": "INDIVIDUAL_PREFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-05",
+      "statement": "Uma personagem gosta de música alta e outra prefere conversar num lugar calmo. Qual descrição é respeitosa?",
+      "prompt": "Uma personagem gosta de música alta e outra prefere conversar num lugar calmo. Qual descrição é respeitosa?",
+      "options": [
+        "Elas têm preferências diferentes que podem ser consideradas na atividade.",
+        "Uma preferência é correta e a outra errada",
+        "A segunda personagem não gosta de pessoas",
+        "Todos devem escolher a mesma coisa"
+      ],
+      "correctAnswer": "Elas têm preferências diferentes que podem ser consideradas na atividade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma preferência é correta e a outra errada": [
+          "PREFERENCE_DIVERSITY"
+        ],
+        "A segunda personagem não gosta de pessoas": [
+          "PREFERENCE_DIVERSITY"
+        ],
+        "Todos devem escolher a mesma coisa": [
+          "PREFERENCE_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_PERSONAGENS_DIFERENTES",
+      "explanation": "Preferências variam e podem ser acomodadas sem hierarquia.",
+      "hint": "Compare sem escolher uma preferência vencedora.",
+      "errorFocus": "PREFERENCE_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: Preferências variam e podem ser acomodadas sem hierarquia.",
+        "incorrect": "Preferências variam e podem ser acomodadas sem hierarquia.",
+        "hint": "Compare sem escolher uma preferência vencedora.",
+        "errorFocus": "PREFERENCE_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-06",
+      "statement": "Um cartão diz que a personagem veste casaco amarelo. Que tipo de informação é essa?",
+      "prompt": "Um cartão diz que a personagem veste casaco amarelo. Que tipo de informação é essa?",
+      "options": [
+        "Uma medida de inteligência",
+        "Uma característica visível da cena.",
+        "Uma regra de comportamento",
+        "Uma preferência que não foi informada"
+      ],
+      "correctAnswer": "Uma característica visível da cena.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma medida de inteligência": [
+          "SOURCE_BASED_DESCRIPTION"
+        ],
+        "Uma regra de comportamento": [
+          "SOURCE_BASED_DESCRIPTION"
+        ],
+        "Uma preferência que não foi informada": [
+          "SOURCE_BASED_DESCRIPTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "COR_DO_CASACO",
+      "explanation": "A cor da roupa aparece diretamente no cartão.",
+      "hint": "Observe o que pode ser visto.",
+      "errorFocus": "SOURCE_BASED_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A cor da roupa aparece diretamente no cartão.",
+        "incorrect": "A cor da roupa aparece diretamente no cartão.",
+        "hint": "Observe o que pode ser visto.",
+        "errorFocus": "SOURCE_BASED_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-07",
+      "statement": "Uma personagem pede mais espaço para se movimentar. Qual resposta é respeitosa?",
+      "prompt": "Uma personagem pede mais espaço para se movimentar. Qual resposta é respeitosa?",
+      "options": [
+        "Dizer que ela atrapalha",
+        "Ignorar o pedido",
+        "Ajustar a disposição e perguntar se o caminho ficou adequado.",
+        "Fazer piada sobre seu jeito de andar"
+      ],
+      "correctAnswer": "Ajustar a disposição e perguntar se o caminho ficou adequado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer que ela atrapalha": [
+          "RESPECTFUL_ACCESS"
+        ],
+        "Ignorar o pedido": [
+          "RESPECTFUL_ACCESS"
+        ],
+        "Fazer piada sobre seu jeito de andar": [
+          "RESPECTFUL_ACCESS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PEDIDO_DE_ESPACO",
+      "explanation": "Atender ao pedido e confirmar a adequação favorece acesso e autonomia.",
+      "hint": "Considere o pedido diretamente expresso.",
+      "errorFocus": "RESPECTFUL_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Atender ao pedido e confirmar a adequação favorece acesso e autonomia.",
+        "incorrect": "Atender ao pedido e confirmar a adequação favorece acesso e autonomia.",
+        "hint": "Considere o pedido diretamente expresso.",
+        "errorFocus": "RESPECTFUL_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-08",
+      "statement": "A atividade pede falar sobre características das pessoas. Qual alternativa protege a privacidade?",
+      "prompt": "A atividade pede falar sobre características das pessoas. Qual alternativa protege a privacidade?",
+      "options": [
+        "Exigir que cada estudante conte algo íntimo",
+        "Avaliar corpos dos colegas",
+        "Fotografar a turma para comparar",
+        "Analisar personagens inventadas e suas descrições."
+      ],
+      "correctAnswer": "Analisar personagens inventadas e suas descrições.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que cada estudante conte algo íntimo": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Avaliar corpos dos colegas": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ],
+        "Fotografar a turma para comparar": [
+          "PRIVACY_SAFE_ALTERNATIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SEM_REVELACAO_PESSOAL",
+      "explanation": "Personagens fictícias permitem aprendizagem sem expor estudantes.",
+      "hint": "Escolha uma atividade sem avaliar colegas reais.",
+      "errorFocus": "PRIVACY_SAFE_ALTERNATIVE",
+      "feedback": {
+        "correct": "Boa observação: Personagens fictícias permitem aprendizagem sem expor estudantes.",
+        "incorrect": "Personagens fictícias permitem aprendizagem sem expor estudantes.",
+        "hint": "Escolha uma atividade sem avaliar colegas reais.",
+        "errorFocus": "PRIVACY_SAFE_ALTERNATIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-09",
+      "statement": "Uma ilustração autorizada mostra uma personagem com cabelo curto. O que podemos registrar?",
+      "prompt": "Uma ilustração autorizada mostra uma personagem com cabelo curto. O que podemos registrar?",
+      "options": [
+        "O cabelo da personagem aparece curto na ilustração.",
+        "A personagem é corajosa",
+        "Ela quer mudar o cabelo",
+        "Todas as pessoas com cabelo curto agem igual"
+      ],
+      "correctAnswer": "O cabelo da personagem aparece curto na ilustração.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A personagem é corajosa": [
+          "PHYSICAL_TRAIT_WITHOUT_INFERENCE"
+        ],
+        "Ela quer mudar o cabelo": [
+          "PHYSICAL_TRAIT_WITHOUT_INFERENCE"
+        ],
+        "Todas as pessoas com cabelo curto agem igual": [
+          "PHYSICAL_TRAIT_WITHOUT_INFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PERSONAGEM_COM_CABELO_CURTO",
+      "explanation": "A imagem mostra uma característica, mas não informa coragem ou preferência.",
+      "hint": "Descreva sem inventar traços pessoais.",
+      "errorFocus": "PHYSICAL_TRAIT_WITHOUT_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A imagem mostra uma característica, mas não informa coragem ou preferência.",
+        "incorrect": "A imagem mostra uma característica, mas não informa coragem ou preferência.",
+        "hint": "Descreva sem inventar traços pessoais.",
+        "errorFocus": "PHYSICAL_TRAIT_WITHOUT_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-10",
+      "statement": "O cartão diz que Ivo prefere um jogo de tabuleiro. Qual afirmação é adequada?",
+      "prompt": "O cartão diz que Ivo prefere um jogo de tabuleiro. Qual afirmação é adequada?",
+      "options": [
+        "Todos os colegas devem preferi-lo",
+        "Ivo prefere esse jogo no cenário apresentado.",
+        "Ivo sempre escolhe o mesmo jogo",
+        "Quem não escolhe o jogo não é amigo"
+      ],
+      "correctAnswer": "Ivo prefere esse jogo no cenário apresentado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos os colegas devem preferi-lo": [
+          "PREFERENCE_SCOPE"
+        ],
+        "Ivo sempre escolhe o mesmo jogo": [
+          "PREFERENCE_SCOPE"
+        ],
+        "Quem não escolhe o jogo não é amigo": [
+          "PREFERENCE_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CARTAO_DE_PREFERENCIA_DE_JOGO",
+      "explanation": "A preferência descrita pertence ao personagem e à situação apresentada.",
+      "hint": "Mantenha a conclusão no cartão.",
+      "errorFocus": "PREFERENCE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A preferência descrita pertence ao personagem e à situação apresentada.",
+        "incorrect": "A preferência descrita pertence ao personagem e à situação apresentada.",
+        "hint": "Mantenha a conclusão no cartão.",
+        "errorFocus": "PREFERENCE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-11",
+      "statement": "Uma personagem usa um recurso de apoio para escrever. O que alguém deve fazer antes de movê-lo?",
+      "prompt": "Uma personagem usa um recurso de apoio para escrever. O que alguém deve fazer antes de movê-lo?",
+      "options": [
+        "Pegar o recurso para testar",
+        "Mudar o recurso de lugar sem avisar",
+        "Perguntar à personagem e esperar sua autorização.",
+        "Pedir autorização a outra pessoa sem falar com ela"
+      ],
+      "correctAnswer": "Perguntar à personagem e esperar sua autorização.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pegar o recurso para testar": [
+          "CONSENT_FOR_DEVICE"
+        ],
+        "Mudar o recurso de lugar sem avisar": [
+          "CONSENT_FOR_DEVICE"
+        ],
+        "Pedir autorização a outra pessoa sem falar com ela": [
+          "CONSENT_FOR_DEVICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "AJUDA_COM_MATERIAL_DE_APOIO",
+      "explanation": "Recursos de apoio são pessoais; a pessoa usuária deve ser consultada.",
+      "hint": "Fale diretamente com quem usa o recurso.",
+      "errorFocus": "CONSENT_FOR_DEVICE",
+      "feedback": {
+        "correct": "Boa observação: Recursos de apoio são pessoais; a pessoa usuária deve ser consultada.",
+        "incorrect": "Recursos de apoio são pessoais; a pessoa usuária deve ser consultada.",
+        "hint": "Fale diretamente com quem usa o recurso.",
+        "errorFocus": "CONSENT_FOR_DEVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-12",
+      "statement": "Uma personagem termina uma tarefa rapidamente e outra precisa de mais tempo. Como organizar a atividade?",
+      "prompt": "Uma personagem termina uma tarefa rapidamente e outra precisa de mais tempo. Como organizar a atividade?",
+      "options": [
+        "Premiar apenas quem termina primeiro",
+        "Apressar quem precisa de mais tempo",
+        "Retirar a participação de quem termina depois",
+        "Oferecer tempo e apoio adequados sem comparar o valor das pessoas."
+      ],
+      "correctAnswer": "Oferecer tempo e apoio adequados sem comparar o valor das pessoas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Premiar apenas quem termina primeiro": [
+          "PACE_DIFFERENCE"
+        ],
+        "Apressar quem precisa de mais tempo": [
+          "PACE_DIFFERENCE"
+        ],
+        "Retirar a participação de quem termina depois": [
+          "PACE_DIFFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PERSONAGENS_COM_RITMOS_DIFERENTES",
+      "explanation": "Ritmos diferentes podem ser acomodados sem transformar velocidade em valor pessoal.",
+      "hint": "Pense em acesso e tempo suficiente.",
+      "errorFocus": "PACE_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Ritmos diferentes podem ser acomodados sem transformar velocidade em valor pessoal.",
+        "incorrect": "Ritmos diferentes podem ser acomodados sem transformar velocidade em valor pessoal.",
+        "hint": "Pense em acesso e tempo suficiente.",
+        "errorFocus": "PACE_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-13",
+      "statement": "Um personagem escolhe ouvir sons suaves. Essa informação descreve principalmente...",
+      "prompt": "Um personagem escolhe ouvir sons suaves. Essa informação descreve principalmente...",
+      "options": [
+        "Uma preferência pessoal.",
+        "Uma característica física universal",
+        "Uma obrigação escolar",
+        "Uma medida de habilidade"
+      ],
+      "correctAnswer": "Uma preferência pessoal.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma característica física universal": [
+          "SUBJECTIVE_PREFERENCE"
+        ],
+        "Uma obrigação escolar": [
+          "SUBJECTIVE_PREFERENCE"
+        ],
+        "Uma medida de habilidade": [
+          "SUBJECTIVE_PREFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTAO_DE_GOSTO_MUSICAL",
+      "explanation": "Escolher um tipo de som é uma preferência descrita na história.",
+      "hint": "É algo que o personagem prefere, não uma regra.",
+      "errorFocus": "SUBJECTIVE_PREFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Escolher um tipo de som é uma preferência descrita na história.",
+        "incorrect": "Escolher um tipo de som é uma preferência descrita na história.",
+        "hint": "É algo que o personagem prefere, não uma regra.",
+        "errorFocus": "SUBJECTIVE_PREFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-14",
+      "statement": "Um estudante fictício faz um comentário sobre o corpo de outra pessoa sem convite. Qual revisão melhora a convivência?",
+      "prompt": "Um estudante fictício faz um comentário sobre o corpo de outra pessoa sem convite. Qual revisão melhora a convivência?",
+      "options": [
+        "Repetir o comentário para a turma",
+        "Retirar o comentário e falar da atividade ou perguntar com respeito se for necessário.",
+        "Comparar os corpos em público",
+        "Transformar o comentário em apelido"
+      ],
+      "correctAnswer": "Retirar o comentário e falar da atividade ou perguntar com respeito se for necessário.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Repetir o comentário para a turma": [
+          "BODY_COMMENT_BOUNDARY"
+        ],
+        "Comparar os corpos em público": [
+          "BODY_COMMENT_BOUNDARY"
+        ],
+        "Transformar o comentário em apelido": [
+          "BODY_COMMENT_BOUNDARY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COMENTARIO_SOBRE_CORPO",
+      "explanation": "Comentários invasivos podem constranger; a atividade não precisa avaliar corpos.",
+      "hint": "Remova a comparação sobre aparência.",
+      "errorFocus": "BODY_COMMENT_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: Comentários invasivos podem constranger; a atividade não precisa avaliar corpos.",
+        "incorrect": "Comentários invasivos podem constranger; a atividade não precisa avaliar corpos.",
+        "hint": "Remova a comparação sobre aparência.",
+        "errorFocus": "BODY_COMMENT_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-15",
+      "statement": "Uma personagem prefere observar a apresentação antes de participar. O que a história indica?",
+      "prompt": "Uma personagem prefere observar a apresentação antes de participar. O que a história indica?",
+      "options": [
+        "Ela nunca participará",
+        "Ela não gosta de ninguém",
+        "Ela escolheu uma forma de participação naquele momento.",
+        "Todas as pessoas devem apenas observar"
+      ],
+      "correctAnswer": "Ela escolheu uma forma de participação naquele momento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ela nunca participará": [
+          "PARTICIPATION_CHOICE"
+        ],
+        "Ela não gosta de ninguém": [
+          "PARTICIPATION_CHOICE"
+        ],
+        "Todas as pessoas devem apenas observar": [
+          "PARTICIPATION_CHOICE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ESCOLHA_DE_PARTICIPACAO",
+      "explanation": "Observar pode ser uma escolha de participação no contexto descrito.",
+      "hint": "Não transforme uma escolha momentânea em regra permanente.",
+      "errorFocus": "PARTICIPATION_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: Observar pode ser uma escolha de participação no contexto descrito.",
+        "incorrect": "Observar pode ser uma escolha de participação no contexto descrito.",
+        "hint": "Não transforme uma escolha momentânea em regra permanente.",
+        "errorFocus": "PARTICIPATION_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-16",
+      "statement": "Qual frase descreve sem julgar: “Nara usa aparelho auditivo” ou “Nara ouve mal e não consegue”?",
+      "prompt": "Qual frase descreve sem julgar: “Nara usa aparelho auditivo” ou “Nara ouve mal e não consegue”?",
+      "options": [
+        "“Nara não consegue.”",
+        "As duas frases fazem o mesmo julgamento",
+        "Nenhuma pode descrever uma cena fictícia",
+        "“Nara usa aparelho auditivo.”"
+      ],
+      "correctAnswer": "“Nara usa aparelho auditivo.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Nara não consegue.”": [
+          "NEUTRAL_DESCRIPTION"
+        ],
+        "As duas frases fazem o mesmo julgamento": [
+          "NEUTRAL_DESCRIPTION"
+        ],
+        "Nenhuma pode descrever uma cena fictícia": [
+          "NEUTRAL_DESCRIPTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DESCRICAO_E_JULGAMENTO",
+      "explanation": "A primeira frase registra uma característica informada sem presumir habilidades.",
+      "hint": "Escolha a frase mais neutra e verificável.",
+      "errorFocus": "NEUTRAL_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A primeira frase registra uma característica informada sem presumir habilidades.",
+        "incorrect": "A primeira frase registra uma característica informada sem presumir habilidades.",
+        "hint": "Escolha a frase mais neutra e verificável.",
+        "errorFocus": "NEUTRAL_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-17",
+      "statement": "Uma sala tem leitura em voz alta e outra tarefa silenciosa. Como incluir personagem que prefere menos ruído?",
+      "prompt": "Uma sala tem leitura em voz alta e outra tarefa silenciosa. Como incluir personagem que prefere menos ruído?",
+      "options": [
+        "Oferecer uma opção de local mais tranquilo e confirmar se atende à personagem.",
+        "Obrigá-la a usar fones sem perguntar",
+        "Excluir a personagem da leitura",
+        "Dizer que sua preferência é exagero"
+      ],
+      "correctAnswer": "Oferecer uma opção de local mais tranquilo e confirmar se atende à personagem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Obrigá-la a usar fones sem perguntar": [
+          "ENVIRONMENTAL_ADAPTATION"
+        ],
+        "Excluir a personagem da leitura": [
+          "ENVIRONMENTAL_ADAPTATION"
+        ],
+        "Dizer que sua preferência é exagero": [
+          "ENVIRONMENTAL_ADAPTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ATIVIDADE_COM_SONS_VARIADOS",
+      "explanation": "Uma alternativa e uma pergunta respeitam a necessidade expressa.",
+      "hint": "Ajuste o ambiente sem retirar a escolha.",
+      "errorFocus": "ENVIRONMENTAL_ADAPTATION",
+      "feedback": {
+        "correct": "Boa observação: Uma alternativa e uma pergunta respeitam a necessidade expressa.",
+        "incorrect": "Uma alternativa e uma pergunta respeitam a necessidade expressa.",
+        "hint": "Ajuste o ambiente sem retirar a escolha.",
+        "errorFocus": "ENVIRONMENTAL_ADAPTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-18",
+      "statement": "Dois personagens desenham de modos diferentes. O que é uma comparação respeitosa?",
+      "prompt": "Dois personagens desenham de modos diferentes. O que é uma comparação respeitosa?",
+      "options": [
+        "Escolher o desenho de maior valor humano",
+        "Descrever diferenças nas produções sem dizer que uma pessoa é melhor.",
+        "Concluir que um estilo define a personalidade",
+        "Zombar de quem usa menos cores"
+      ],
+      "correctAnswer": "Descrever diferenças nas produções sem dizer que uma pessoa é melhor.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher o desenho de maior valor humano": [
+          "CREATIVE_DIFFERENCE_WITHOUT_RANK"
+        ],
+        "Concluir que um estilo define a personalidade": [
+          "CREATIVE_DIFFERENCE_WITHOUT_RANK"
+        ],
+        "Zombar de quem usa menos cores": [
+          "CREATIVE_DIFFERENCE_WITHOUT_RANK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_ESTILOS_DE_DESENHO",
+      "explanation": "Estilos podem ser diferentes sem hierarquia entre as pessoas.",
+      "hint": "Compare as produções, não o valor dos autores.",
+      "errorFocus": "CREATIVE_DIFFERENCE_WITHOUT_RANK",
+      "feedback": {
+        "correct": "Boa observação: Estilos podem ser diferentes sem hierarquia entre as pessoas.",
+        "incorrect": "Estilos podem ser diferentes sem hierarquia entre as pessoas.",
+        "hint": "Compare as produções, não o valor dos autores.",
+        "errorFocus": "CREATIVE_DIFFERENCE_WITHOUT_RANK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-19",
+      "statement": "Uma criança supõe que uma personagem não gosta de esporte porque usa óculos. O que falta para essa conclusão?",
+      "prompt": "Uma criança supõe que uma personagem não gosta de esporte porque usa óculos. O que falta para essa conclusão?",
+      "options": [
+        "Uma comparação de altura",
+        "Uma regra sobre óculos",
+        "Uma fala ou evidência da personagem; óculos não indicam essa preferência.",
+        "Uma votação da turma"
+      ],
+      "correctAnswer": "Uma fala ou evidência da personagem; óculos não indicam essa preferência.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma comparação de altura": [
+          "NO_PREFERENCE_INFERENCE_FROM_BODY"
+        ],
+        "Uma regra sobre óculos": [
+          "NO_PREFERENCE_INFERENCE_FROM_BODY"
+        ],
+        "Uma votação da turma": [
+          "NO_PREFERENCE_INFERENCE_FROM_BODY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SUPOSICAO_POR_APARENCIA",
+      "explanation": "A aparência não revela automaticamente gostos ou habilidades.",
+      "hint": "Pergunte se a história informa a preferência.",
+      "errorFocus": "NO_PREFERENCE_INFERENCE_FROM_BODY",
+      "feedback": {
+        "correct": "Boa observação: A aparência não revela automaticamente gostos ou habilidades.",
+        "incorrect": "A aparência não revela automaticamente gostos ou habilidades.",
+        "hint": "Pergunte se a história informa a preferência.",
+        "errorFocus": "NO_PREFERENCE_INFERENCE_FROM_BODY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-20",
+      "statement": "Uma brincadeira exige alcançar cartões no alto. Como torná-la acessível?",
+      "prompt": "Uma brincadeira exige alcançar cartões no alto. Como torná-la acessível?",
+      "options": [
+        "Exigir que todos alcancem do mesmo jeito",
+        "Retirar quem precisa de adaptação",
+        "Mover o recurso de apoio sem consentimento",
+        "Colocar cartões em alturas alcançáveis e oferecer formas variadas de participação."
+      ],
+      "correctAnswer": "Colocar cartões em alturas alcançáveis e oferecer formas variadas de participação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que todos alcancem do mesmo jeito": [
+          "ACCESSIBLE_ACTIVITY_DESIGN"
+        ],
+        "Retirar quem precisa de adaptação": [
+          "ACCESSIBLE_ACTIVITY_DESIGN"
+        ],
+        "Mover o recurso de apoio sem consentimento": [
+          "ACCESSIBLE_ACTIVITY_DESIGN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CONVITE_ACESSIVEL",
+      "explanation": "Ajustar materiais permite participação sem supor uma única forma de movimento.",
+      "hint": "Adapte o ambiente, não desvalorize a pessoa.",
+      "errorFocus": "ACCESSIBLE_ACTIVITY_DESIGN",
+      "feedback": {
+        "correct": "Boa observação: Ajustar materiais permite participação sem supor uma única forma de movimento.",
+        "incorrect": "Ajustar materiais permite participação sem supor uma única forma de movimento.",
+        "hint": "Adapte o ambiente, não desvalorize a pessoa.",
+        "errorFocus": "ACCESSIBLE_ACTIVITY_DESIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-21",
+      "statement": "Uma personagem não quer aparecer numa foto da atividade. Qual atitude respeita essa escolha?",
+      "prompt": "Uma personagem não quer aparecer numa foto da atividade. Qual atitude respeita essa escolha?",
+      "options": [
+        "Não fotografá-la e oferecer outra forma de participar.",
+        "Fotografá-la sem avisar",
+        "Pressioná-la até aceitar",
+        "Publicar a imagem sem consentimento"
+      ],
+      "correctAnswer": "Não fotografá-la e oferecer outra forma de participar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Fotografá-la sem avisar": [
+          "IMAGE_CONSENT"
+        ],
+        "Pressioná-la até aceitar": [
+          "IMAGE_CONSENT"
+        ],
+        "Publicar a imagem sem consentimento": [
+          "IMAGE_CONSENT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PERSONAGEM_QUE_NAO_QUER_FOTO",
+      "explanation": "A escolha de não ser fotografada deve ser respeitada.",
+      "hint": "Considere a resposta da personagem.",
+      "errorFocus": "IMAGE_CONSENT",
+      "feedback": {
+        "correct": "Boa observação: A escolha de não ser fotografada deve ser respeitada.",
+        "incorrect": "A escolha de não ser fotografada deve ser respeitada.",
+        "hint": "Considere a resposta da personagem.",
+        "errorFocus": "IMAGE_CONSENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-22",
+      "statement": "Por que uma característica física não deve ser usada para adivinhar a personalidade?",
+      "prompt": "Por que uma característica física não deve ser usada para adivinhar a personalidade?",
+      "options": [
+        "Porque características não podem ser observadas",
+        "Porque a característica não fornece evidência suficiente sobre como a pessoa pensa ou age.",
+        "Porque todas as pessoas pensam igual",
+        "Porque a aparência determina as preferências"
+      ],
+      "correctAnswer": "Porque a característica não fornece evidência suficiente sobre como a pessoa pensa ou age.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque características não podem ser observadas": [
+          "TRAIT_NOT_PERSONALITY"
+        ],
+        "Porque todas as pessoas pensam igual": [
+          "TRAIT_NOT_PERSONALITY"
+        ],
+        "Porque a aparência determina as preferências": [
+          "TRAIT_NOT_PERSONALITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CARACTERISTICA_E_IDENTIDADE",
+      "explanation": "Uma característica corporal não determina pensamentos nem personalidade.",
+      "hint": "Separe observação física de inferência.",
+      "errorFocus": "TRAIT_NOT_PERSONALITY",
+      "feedback": {
+        "correct": "Boa observação: Uma característica corporal não determina pensamentos nem personalidade.",
+        "incorrect": "Uma característica corporal não determina pensamentos nem personalidade.",
+        "hint": "Separe observação física de inferência.",
+        "errorFocus": "TRAIT_NOT_PERSONALITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-23",
+      "statement": "A narrativa diz que uma personagem prefere silêncio ao estudar. Como classificar essa informação?",
+      "prompt": "A narrativa diz que uma personagem prefere silêncio ao estudar. Como classificar essa informação?",
+      "options": [
+        "Como regra para todos os estudantes",
+        "Como aparência física",
+        "Como uma preferência subjetiva apresentada na história.",
+        "Como prova de que ela não conversa nunca"
+      ],
+      "correctAnswer": "Como uma preferência subjetiva apresentada na história.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Como regra para todos os estudantes": [
+          "SUBJECTIVE_TRAIT_SCOPE"
+        ],
+        "Como aparência física": [
+          "SUBJECTIVE_TRAIT_SCOPE"
+        ],
+        "Como prova de que ela não conversa nunca": [
+          "SUBJECTIVE_TRAIT_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PERSONAGEM_QUE_GOSTA_DE_SILENCIO",
+      "explanation": "A preferência vale para o personagem e o contexto descrito.",
+      "hint": "Use o que a narrativa diz.",
+      "errorFocus": "SUBJECTIVE_TRAIT_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A preferência vale para o personagem e o contexto descrito.",
+        "incorrect": "A preferência vale para o personagem e o contexto descrito.",
+        "hint": "Use o que a narrativa diz.",
+        "errorFocus": "SUBJECTIVE_TRAIT_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-24",
+      "statement": "Alguém segura o braço de uma personagem para guiá-la sem perguntar. Qual alternativa é melhor?",
+      "prompt": "Alguém segura o braço de uma personagem para guiá-la sem perguntar. Qual alternativa é melhor?",
+      "options": [
+        "Continuar porque a intenção é boa",
+        "Chamar outras pessoas para segurá-la",
+        "Decidir sem consultar a personagem",
+        "Perguntar se ela deseja ajuda e respeitar a resposta."
+      ],
+      "correctAnswer": "Perguntar se ela deseja ajuda e respeitar a resposta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Continuar porque a intenção é boa": [
+          "CONSENT_BEFORE_TOUCH"
+        ],
+        "Chamar outras pessoas para segurá-la": [
+          "CONSENT_BEFORE_TOUCH"
+        ],
+        "Decidir sem consultar a personagem": [
+          "CONSENT_BEFORE_TOUCH"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "AJUDA_SEM_CONSENTIMENTO",
+      "explanation": "A intenção não substitui consentimento; é necessário perguntar e ouvir.",
+      "hint": "Escolha a atitude que respeita autonomia.",
+      "errorFocus": "CONSENT_BEFORE_TOUCH",
+      "feedback": {
+        "correct": "Boa observação: A intenção não substitui consentimento; é necessário perguntar e ouvir.",
+        "incorrect": "A intenção não substitui consentimento; é necessário perguntar e ouvir.",
+        "hint": "Escolha a atitude que respeita autonomia.",
+        "errorFocus": "CONSENT_BEFORE_TOUCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-25",
+      "statement": "Um cartão descreve uma personagem como alta e outro registra que ela gosta de montar quebra-cabeças. O que é subjetivo?",
+      "prompt": "Um cartão descreve uma personagem como alta e outro registra que ela gosta de montar quebra-cabeças. O que é subjetivo?",
+      "options": [
+        "A preferência por montar quebra-cabeças.",
+        "A altura descrita",
+        "O fato de existir um cartão",
+        "A cor impressa"
+      ],
+      "correctAnswer": "A preferência por montar quebra-cabeças.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A altura descrita": [
+          "PHYSICAL_VS_SUBJECTIVE"
+        ],
+        "O fato de existir um cartão": [
+          "PHYSICAL_VS_SUBJECTIVE"
+        ],
+        "A cor impressa": [
+          "PHYSICAL_VS_SUBJECTIVE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTOES_DE_CARACTERISTICAS",
+      "explanation": "Altura é física; gosto por uma atividade é preferência subjetiva.",
+      "hint": "Separe corpo observável de gosto.",
+      "errorFocus": "PHYSICAL_VS_SUBJECTIVE",
+      "feedback": {
+        "correct": "Boa observação: Altura é física; gosto por uma atividade é preferência subjetiva.",
+        "incorrect": "Altura é física; gosto por uma atividade é preferência subjetiva.",
+        "hint": "Separe corpo observável de gosto.",
+        "errorFocus": "PHYSICAL_VS_SUBJECTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-26",
+      "statement": "Uma personagem usa bengala para caminhar. O que não devemos fazer?",
+      "prompt": "Uma personagem usa bengala para caminhar. O que não devemos fazer?",
+      "options": [
+        "Manter o caminho livre",
+        "Pegar na bengala sem pedir autorização.",
+        "Falar diretamente com a personagem",
+        "Perguntar se precisa de ajuda"
+      ],
+      "correctAnswer": "Pegar na bengala sem pedir autorização.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Manter o caminho livre": [
+          "MOBILITY_AID_AUTONOMY"
+        ],
+        "Falar diretamente com a personagem": [
+          "MOBILITY_AID_AUTONOMY"
+        ],
+        "Perguntar se precisa de ajuda": [
+          "MOBILITY_AID_AUTONOMY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "USO_DE_BENGALA",
+      "explanation": "A bengala é um recurso pessoal; não deve ser movida sem consentimento.",
+      "hint": "Escolha a ação que evita tocar no recurso.",
+      "errorFocus": "MOBILITY_AID_AUTONOMY",
+      "feedback": {
+        "correct": "Boa observação: A bengala é um recurso pessoal; não deve ser movida sem consentimento.",
+        "incorrect": "A bengala é um recurso pessoal; não deve ser movida sem consentimento.",
+        "hint": "Escolha a ação que evita tocar no recurso.",
+        "errorFocus": "MOBILITY_AID_AUTONOMY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-27",
+      "statement": "Duas personagens têm a mesma deficiência e preferências diferentes. O que isso mostra?",
+      "prompt": "Duas personagens têm a mesma deficiência e preferências diferentes. O que isso mostra?",
+      "options": [
+        "Toda pessoa com deficiência pensa igual",
+        "Uma das preferências é inválida",
+        "Uma característica compartilhada não torna as preferências iguais.",
+        "As personagens não podem escolher"
+      ],
+      "correctAnswer": "Uma característica compartilhada não torna as preferências iguais.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Toda pessoa com deficiência pensa igual": [
+          "INDIVIDUALITY_WITHIN_GROUP"
+        ],
+        "Uma das preferências é inválida": [
+          "INDIVIDUALITY_WITHIN_GROUP"
+        ],
+        "As personagens não podem escolher": [
+          "INDIVIDUALITY_WITHIN_GROUP"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DOIS_PERSONAGENS_COM_DEFICIENCIA",
+      "explanation": "Pessoas com uma característica em comum continuam tendo preferências individuais.",
+      "hint": "Compare as escolhas, não generalize.",
+      "errorFocus": "INDIVIDUALITY_WITHIN_GROUP",
+      "feedback": {
+        "correct": "Boa observação: Pessoas com uma característica em comum continuam tendo preferências individuais.",
+        "incorrect": "Pessoas com uma característica em comum continuam tendo preferências individuais.",
+        "hint": "Compare as escolhas, não generalize.",
+        "errorFocus": "INDIVIDUALITY_WITHIN_GROUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-28",
+      "statement": "Uma pessoa precisa de mais espaço para usar seu material. Qual ajuste é adequado?",
+      "prompt": "Uma pessoa precisa de mais espaço para usar seu material. Qual ajuste é adequado?",
+      "options": [
+        "Remover o material sem consultar",
+        "Pedir que a pessoa não participe",
+        "Dizer que todos devem usar o mesmo espaço",
+        "Organizar a mesa com espaço suficiente e perguntar se funciona."
+      ],
+      "correctAnswer": "Organizar a mesa com espaço suficiente e perguntar se funciona.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Remover o material sem consultar": [
+          "SPACE_ADAPTATION"
+        ],
+        "Pedir que a pessoa não participe": [
+          "SPACE_ADAPTATION"
+        ],
+        "Dizer que todos devem usar o mesmo espaço": [
+          "SPACE_ADAPTATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MESA_DE_PARTICIPACAO",
+      "explanation": "Ajustar o espaço pode apoiar participação e autonomia.",
+      "hint": "Considere o pedido informado.",
+      "errorFocus": "SPACE_ADAPTATION",
+      "feedback": {
+        "correct": "Boa observação: Ajustar o espaço pode apoiar participação e autonomia.",
+        "incorrect": "Ajustar o espaço pode apoiar participação e autonomia.",
+        "hint": "Considere o pedido informado.",
+        "errorFocus": "SPACE_ADAPTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-29",
+      "statement": "Por que é melhor perguntar à pessoa como prefere participar?",
+      "prompt": "Por que é melhor perguntar à pessoa como prefere participar?",
+      "options": [
+        "Porque a própria pessoa pode indicar suas escolhas e limites.",
+        "Porque outras pessoas sempre sabem melhor",
+        "Porque a escolha não importa",
+        "Porque uma característica determina uma única forma de participar"
+      ],
+      "correctAnswer": "Porque a própria pessoa pode indicar suas escolhas e limites.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Porque outras pessoas sempre sabem melhor": [
+          "ASK_AND_LISTEN"
+        ],
+        "Porque a escolha não importa": [
+          "ASK_AND_LISTEN"
+        ],
+        "Porque uma característica determina uma única forma de participar": [
+          "ASK_AND_LISTEN"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LINGUAGEM_RESPEITOSA",
+      "explanation": "Perguntar e escutar evita presumir necessidades ou preferências.",
+      "hint": "Pense em autonomia.",
+      "errorFocus": "ASK_AND_LISTEN",
+      "feedback": {
+        "correct": "Boa observação: Perguntar e escutar evita presumir necessidades ou preferências.",
+        "incorrect": "Perguntar e escutar evita presumir necessidades ou preferências.",
+        "hint": "Pense em autonomia.",
+        "errorFocus": "ASK_AND_LISTEN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-30",
+      "statement": "Uma atividade pede votar no corpo mais bonito entre personagens. Qual mudança é respeitosa?",
+      "prompt": "Uma atividade pede votar no corpo mais bonito entre personagens. Qual mudança é respeitosa?",
+      "options": [
+        "Manter a votação anônima",
+        "Comparar as estratégias ou ações fictícias sem classificar corpos.",
+        "Pedir que cada pessoa explique seu corpo",
+        "Escolher uma aparência vencedora"
+      ],
+      "correctAnswer": "Comparar as estratégias ou ações fictícias sem classificar corpos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Manter a votação anônima": [
+          "NO_BODY_RANKING"
+        ],
+        "Pedir que cada pessoa explique seu corpo": [
+          "NO_BODY_RANKING"
+        ],
+        "Escolher uma aparência vencedora": [
+          "NO_BODY_RANKING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RANKING_DE_APARENCIA",
+      "explanation": "Aprendizagem não exige classificar aparências ou corpos.",
+      "hint": "Mude o foco para ações, não corpos.",
+      "errorFocus": "NO_BODY_RANKING",
+      "feedback": {
+        "correct": "Boa observação: Aprendizagem não exige classificar aparências ou corpos.",
+        "incorrect": "Aprendizagem não exige classificar aparências ou corpos.",
+        "hint": "Mude o foco para ações, não corpos.",
+        "errorFocus": "NO_BODY_RANKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-31",
+      "statement": "Uma personagem prefere observar antes de entrar numa brincadeira. O que podemos afirmar?",
+      "prompt": "Uma personagem prefere observar antes de entrar numa brincadeira. O que podemos afirmar?",
+      "options": [
+        "Ela nunca brinca",
+        "Todas as pessoas precisam esperar",
+        "Ela prefere observar primeiro naquele momento.",
+        "Ela não consegue participar"
+      ],
+      "correctAnswer": "Ela prefere observar primeiro naquele momento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ela nunca brinca": [
+          "TEMPORARY_CHOICE_SCOPE"
+        ],
+        "Todas as pessoas precisam esperar": [
+          "TEMPORARY_CHOICE_SCOPE"
+        ],
+        "Ela não consegue participar": [
+          "TEMPORARY_CHOICE_SCOPE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PERSONAGEM_COM_PREFERECIA_DE_TEMPO",
+      "explanation": "A narrativa registra uma escolha naquele momento, não uma limitação permanente.",
+      "hint": "Use a informação no tempo em que foi apresentada.",
+      "errorFocus": "TEMPORARY_CHOICE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa registra uma escolha naquele momento, não uma limitação permanente.",
+        "incorrect": "A narrativa registra uma escolha naquele momento, não uma limitação permanente.",
+        "hint": "Use a informação no tempo em que foi apresentada.",
+        "errorFocus": "TEMPORARY_CHOICE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-32",
+      "statement": "Qual combinado ajuda a turma a respeitar características e preferências?",
+      "prompt": "Qual combinado ajuda a turma a respeitar características e preferências?",
+      "options": [
+        "Dar apelidos sobre o corpo",
+        "Exigir relatos pessoais",
+        "Pressupor o que alguém consegue fazer",
+        "Não fazer comentários invasivos e perguntar antes de ajudar ou tocar em recursos pessoais."
+      ],
+      "correctAnswer": "Não fazer comentários invasivos e perguntar antes de ajudar ou tocar em recursos pessoais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dar apelidos sobre o corpo": [
+          "RESPECTFUL_CLASSROOM_AGREEMENT"
+        ],
+        "Exigir relatos pessoais": [
+          "RESPECTFUL_CLASSROOM_AGREEMENT"
+        ],
+        "Pressupor o que alguém consegue fazer": [
+          "RESPECTFUL_CLASSROOM_AGREEMENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COMBINADO_DE_RESPEITO",
+      "explanation": "O combinado protege privacidade, consentimento e autonomia.",
+      "hint": "Escolha regras que evitem invasão e suposições.",
+      "errorFocus": "RESPECTFUL_CLASSROOM_AGREEMENT",
+      "feedback": {
+        "correct": "Boa observação: O combinado protege privacidade, consentimento e autonomia.",
+        "incorrect": "O combinado protege privacidade, consentimento e autonomia.",
+        "hint": "Escolha regras que evitem invasão e suposições.",
+        "errorFocus": "RESPECTFUL_CLASSROOM_AGREEMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-33",
+      "statement": "Uma característica física deve ser usada para julgar o valor de alguém?",
+      "prompt": "Uma característica física deve ser usada para julgar o valor de alguém?",
+      "options": [
+        "Não; características não tornam pessoas melhores ou piores.",
+        "Sim, se a turma votar",
+        "Sim, porque aparência revela tudo",
+        "Não, mas só algumas pessoas merecem respeito"
+      ],
+      "correctAnswer": "Não; características não tornam pessoas melhores ou piores.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sim, se a turma votar": [
+          "NO_PERSON_RANKING_REVIEW"
+        ],
+        "Sim, porque aparência revela tudo": [
+          "NO_PERSON_RANKING_REVIEW"
+        ],
+        "Não, mas só algumas pessoas merecem respeito": [
+          "NO_PERSON_RANKING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_CARACTERISTICAS",
+      "explanation": "Respeito não depende das características físicas de uma pessoa.",
+      "hint": "Lembre-se de que diferença não é hierarquia.",
+      "errorFocus": "NO_PERSON_RANKING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Respeito não depende das características físicas de uma pessoa.",
+        "incorrect": "Respeito não depende das características físicas de uma pessoa.",
+        "hint": "Lembre-se de que diferença não é hierarquia.",
+        "errorFocus": "NO_PERSON_RANKING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-34",
+      "statement": "Uma personagem escolhe desenhar. O que essa escolha indica?",
+      "prompt": "Uma personagem escolhe desenhar. O que essa escolha indica?",
+      "options": [
+        "Uma regra para todas as pessoas",
+        "Uma preferência daquela personagem na situação descrita.",
+        "Uma característica física",
+        "Uma obrigação de desenhar sempre"
+      ],
+      "correctAnswer": "Uma preferência daquela personagem na situação descrita.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma regra para todas as pessoas": [
+          "PREFERENCE_SCOPE_REVIEW"
+        ],
+        "Uma característica física": [
+          "PREFERENCE_SCOPE_REVIEW"
+        ],
+        "Uma obrigação de desenhar sempre": [
+          "PREFERENCE_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_PREFERENCIA",
+      "explanation": "A escolha informa uma preferência situada.",
+      "hint": "Limite a resposta à personagem.",
+      "errorFocus": "PREFERENCE_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A escolha informa uma preferência situada.",
+        "incorrect": "A escolha informa uma preferência situada.",
+        "hint": "Limite a resposta à personagem.",
+        "errorFocus": "PREFERENCE_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-35",
+      "statement": "Qual frase é uma descrição observável: “usa óculos” ou “é muito estudioso”?",
+      "prompt": "Qual frase é uma descrição observável: “usa óculos” ou “é muito estudioso”?",
+      "options": [
+        "“É muito estudioso.”",
+        "As duas são observações físicas",
+        "“Usa óculos.”",
+        "Nenhuma pode ser observada"
+      ],
+      "correctAnswer": "“Usa óculos.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“É muito estudioso.”": [
+          "OBSERVATION_VS_INFERENCE_REVIEW"
+        ],
+        "As duas são observações físicas": [
+          "OBSERVATION_VS_INFERENCE_REVIEW"
+        ],
+        "Nenhuma pode ser observada": [
+          "OBSERVATION_VS_INFERENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_DESCRICAO",
+      "explanation": "Usar óculos pode ser visto; ser estudioso é uma avaliação não informada pela aparência.",
+      "hint": "Escolha o que se observa diretamente.",
+      "errorFocus": "OBSERVATION_VS_INFERENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Usar óculos pode ser visto; ser estudioso é uma avaliação não informada pela aparência.",
+        "incorrect": "Usar óculos pode ser visto; ser estudioso é uma avaliação não informada pela aparência.",
+        "hint": "Escolha o que se observa diretamente.",
+        "errorFocus": "OBSERVATION_VS_INFERENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-36",
+      "statement": "Antes de ajudar uma personagem a se mover, o que fazer?",
+      "prompt": "Antes de ajudar uma personagem a se mover, o que fazer?",
+      "options": [
+        "Tocá-la sem avisar",
+        "Mover seu recurso de apoio",
+        "Pedir autorização a outra pessoa sem falar com ela",
+        "Perguntar se ela deseja ajuda e respeitar a resposta."
+      ],
+      "correctAnswer": "Perguntar se ela deseja ajuda e respeitar a resposta.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Tocá-la sem avisar": [
+          "CONSENT_REVIEW"
+        ],
+        "Mover seu recurso de apoio": [
+          "CONSENT_REVIEW"
+        ],
+        "Pedir autorização a outra pessoa sem falar com ela": [
+          "CONSENT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_CONSENTIMENTO",
+      "explanation": "Perguntar protege autonomia e consentimento.",
+      "hint": "Fale com a própria pessoa.",
+      "errorFocus": "CONSENT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Perguntar protege autonomia e consentimento.",
+        "incorrect": "Perguntar protege autonomia e consentimento.",
+        "hint": "Fale com a própria pessoa.",
+        "errorFocus": "CONSENT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-37",
+      "statement": "Qual atitude apoia diferentes modos de participar?",
+      "prompt": "Qual atitude apoia diferentes modos de participar?",
+      "options": [
+        "Oferecer opções acessíveis sem exigir que todos façam a tarefa do mesmo jeito.",
+        "Remover quem precisa de apoio",
+        "Comparar a velocidade de todos",
+        "Ignorar pedidos de adaptação"
+      ],
+      "correctAnswer": "Oferecer opções acessíveis sem exigir que todos façam a tarefa do mesmo jeito.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Remover quem precisa de apoio": [
+          "ACCESSIBLE_PARTICIPATION_REVIEW"
+        ],
+        "Comparar a velocidade de todos": [
+          "ACCESSIBLE_PARTICIPATION_REVIEW"
+        ],
+        "Ignorar pedidos de adaptação": [
+          "ACCESSIBLE_PARTICIPATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_ACESSIBILIDADE",
+      "explanation": "Opções acessíveis favorecem participação respeitando diferenças.",
+      "hint": "Escolha uma atitude que amplia possibilidades.",
+      "errorFocus": "ACCESSIBLE_PARTICIPATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Opções acessíveis favorecem participação respeitando diferenças.",
+        "incorrect": "Opções acessíveis favorecem participação respeitando diferenças.",
+        "hint": "Escolha uma atitude que amplia possibilidades.",
+        "errorFocus": "ACCESSIBLE_PARTICIPATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-38",
+      "statement": "Uma pessoa supõe o gosto de alguém pela aparência. Qual é o problema?",
+      "prompt": "Uma pessoa supõe o gosto de alguém pela aparência. Qual é o problema?",
+      "options": [
+        "Preferências não existem",
+        "A aparência não prova uma preferência ou personalidade.",
+        "A aparência sempre está errada",
+        "A pessoa deve provar seu gosto"
+      ],
+      "correctAnswer": "A aparência não prova uma preferência ou personalidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Preferências não existem": [
+          "NO_STEREOTYPE_INFERENCE_REVIEW"
+        ],
+        "A aparência sempre está errada": [
+          "NO_STEREOTYPE_INFERENCE_REVIEW"
+        ],
+        "A pessoa deve provar seu gosto": [
+          "NO_STEREOTYPE_INFERENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_ESTEREOTIPO",
+      "explanation": "Suposições sobre gostos não são sustentadas por uma característica física.",
+      "hint": "Pergunte se a fonte informa essa preferência.",
+      "errorFocus": "NO_STEREOTYPE_INFERENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Suposições sobre gostos não são sustentadas por uma característica física.",
+        "incorrect": "Suposições sobre gostos não são sustentadas por uma característica física.",
+        "hint": "Pergunte se a fonte informa essa preferência.",
+        "errorFocus": "NO_STEREOTYPE_INFERENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-39",
+      "statement": "Duas personagens escolhem atividades diferentes. Como descrevê-las?",
+      "prompt": "Duas personagens escolhem atividades diferentes. Como descrevê-las?",
+      "options": [
+        "Uma é melhor que a outra",
+        "Elas precisam trocar de gosto",
+        "Como preferências diferentes, sem declarar uma superior.",
+        "Toda pessoa deve escolher uma delas"
+      ],
+      "correctAnswer": "Como preferências diferentes, sem declarar uma superior.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma é melhor que a outra": [
+          "RESPECTFUL_DIFFERENCE_REVIEW"
+        ],
+        "Elas precisam trocar de gosto": [
+          "RESPECTFUL_DIFFERENCE_REVIEW"
+        ],
+        "Toda pessoa deve escolher uma delas": [
+          "RESPECTFUL_DIFFERENCE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_DIFERENCAS",
+      "explanation": "Diferenças podem ser reconhecidas sem hierarquizar.",
+      "hint": "Compare sem dar nota às pessoas.",
+      "errorFocus": "RESPECTFUL_DIFFERENCE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Diferenças podem ser reconhecidas sem hierarquizar.",
+        "incorrect": "Diferenças podem ser reconhecidas sem hierarquizar.",
+        "hint": "Compare sem dar nota às pessoas.",
+        "errorFocus": "RESPECTFUL_DIFFERENCE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01er03-respect-individual-characteristics-40",
+      "statement": "Complete: respeitar características inclui descrever com cuidado, evitar estereótipos e...",
+      "prompt": "Complete: respeitar características inclui descrever com cuidado, evitar estereótipos e...",
+      "options": [
+        "expor informações pessoais",
+        "classificar corpos",
+        "presumir o que alguém deseja",
+        "escutar escolhas, respeitar consentimento e oferecer participação acessível."
+      ],
+      "correctAnswer": "escutar escolhas, respeitar consentimento e oferecer participação acessível.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "expor informações pessoais": [
+          "RESPECT_AND_AUTONOMY_SUMMARY"
+        ],
+        "classificar corpos": [
+          "RESPECT_AND_AUTONOMY_SUMMARY"
+        ],
+        "presumir o que alguém deseja": [
+          "RESPECT_AND_AUTONOMY_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_RESPEITO",
+      "explanation": "Respeito combina linguagem cuidadosa, autonomia e acesso.",
+      "hint": "Reúna consentimento e participação acessível.",
+      "errorFocus": "RESPECT_AND_AUTONOMY_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Respeito combina linguagem cuidadosa, autonomia e acesso.",
+        "incorrect": "Respeito combina linguagem cuidadosa, autonomia e acesso.",
+        "hint": "Reúna consentimento e participação acessível.",
+        "errorFocus": "RESPECT_AND_AUTONOMY_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar descrições neutras, ilustrações diversas e alternativas de alto contraste, texto ampliado, Libras e comunicação alternativa.",
+          "Permitir observar, apontar, desenhar ou responder sem falar sobre o próprio corpo ou experiências pessoais.",
+          "Ensinar consentimento e respeito aos recursos de acessibilidade; não tocar, mover ou fotografar pessoas ou seus dispositivos sem autorização."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

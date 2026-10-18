@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "bfcc45a4d6d02732d422b64cdf7ba59045b69798a3582eb6585f5a6116b83d39",
+    "v5QuestionFirstPacks": "cd14cc23588de0a48c0371d030e913aa780c203818c142d0e556f18741ce9595",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 7971,
+    "v5QuestionTotal": 8211,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -193,6 +193,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01er03-respect-individual-characteristics.json",
+        "skillCode": "AUTHORING_EF01ER03_RECOGNIZE_AND_RESPECT_CHARACTERISTICS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "v1-geography-lived-places-fi.json",
         "skillCode": "AUTHORING_EF01GE01_OBSERVE_AND_COMPARE_LIVED_PLACES",
         "questionCount": 40,
@@ -211,6 +217,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01ge04-rules-for-shared-spaces.json",
+        "skillCode": "AUTHORING_EF01GE04_DISCUSS_AND_CREATE_COEXISTENCE_RULES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "v1-history-growth-memories-fi.json",
         "skillCode": "AUTHORING_EF01HI01_GROWTH_THROUGH_MEMORIES",
         "questionCount": 40,
@@ -225,6 +237,12 @@
       {
         "file": "ef01hi03-roles-and-responsibilities.json",
         "skillCode": "AUTHORING_EF01HI03_DESCRIBE_ROLES_IN_CONTEXTS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01hi04-environments-habits-and-rules.json",
+        "skillCode": "AUTHORING_EF01HI04_COMPARE_ENVIRONMENTS_AND_RULES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -277,6 +295,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01lp09-compare-initial-syllable-sounds.json",
+        "skillCode": "AUTHORING_EF01LP09_COMPARE_INITIAL_SYLLABLES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "mathematics-number-uses-ef01.json",
         "skillCode": "AUTHORING_EF01MA01_NUMBER_QUANTITY_ORDER_CODE",
         "questionCount": 40,
@@ -291,6 +315,12 @@
       {
         "file": "ef01ma03-estimate-and-compare-sets.json",
         "skillCode": "AUTHORING_EF01MA03_ESTIMATE_AND_COMPARE_QUANTITIES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma04-count-collections-up-to-100.json",
+        "skillCode": "AUTHORING_EF01MA04_COUNT_AND_RECORD_COLLECTIONS",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -315,6 +345,12 @@
       {
         "file": "ef02ci04-living-things-and-environments.json",
         "skillCode": "AUTHORING_EF02CI04_DESCRIBE_TRAITS_AND_ENVIRONMENTS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02ci05-water-light-and-plant-life.json",
+        "skillCode": "AUTHORING_EF02CI05_INVESTIGATE_WATER_AND_LIGHT",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -19093,5 +19129,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "6179b1fa1ad2b313c24d70726856a8a474e44acf6e730684ece8ce21db9260bc"
+  "inventoryHash": "2febb8a5a12cf37f8cb3ec1eea91e5164d4f6d1cc6bfac9d20ce5e9adf6896ee"
 }

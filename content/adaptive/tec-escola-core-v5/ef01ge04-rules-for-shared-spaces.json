@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ge04-co-create-rules-for-shared-spaces",
+  "canonicalSkillCode": "AUTHORING_EF01GE04_DISCUSS_AND_CREATE_COEXISTENCE_RULES",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "elaboração coletiva de regras de convivência em diferentes espaços",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE04",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Discutir e elaborar, coletivamente, regras de convívio em diferentes espaços (sala de aula, escola etc.).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Combinados para compartilhar espaços",
+    "objective": "Discutir e elaborar combinados coletivos para diferentes espaços escolares e comunitários, explicando como favorecem segurança, acesso e respeito sem discriminar pessoas.",
+    "summary": "Regras de convivência ajudam pessoas a compartilhar espaços. Uma regra útil explica uma ação clara e considera quem usa o lugar. Em uma sala, podemos combinar como ouvir e compartilhar materiais; num corredor, manter passagem livre; numa biblioteca, cuidar dos livros e respeitar diferentes formas de leitura. As regras podem variar conforme o espaço e ser revistas coletivamente quando não ajudam todos a participar. Um combinado não deve humilhar nem excluir alguém.",
+    "explanation": "Observe o espaço e pense em quem o utiliza, quais atividades ocorrem e que cuidado é necessário. Conversem e criem uma regra simples, positiva e possível de seguir. Por exemplo, “deixamos o caminho livre para que todos possam circular” explica o que fazer e por quê. Compare combinados para sala, pátio e biblioteca: alguns cuidados mudam, outros, como respeito e acesso, continuam importantes. A turma deve ouvir diferentes ideias, registrar o acordo de forma acessível e revisar a regra se ela não funcionar para todos. Regras são construídas coletivamente e não devem impor uma forma única de aprender, mover-se ou comunicar-se.",
+    "workedExample": "Para o corredor, a turma fictícia propõe: “Caminhamos sem bloquear a passagem e damos espaço para quem precisa circular.” A regra descreve uma ação concreta, apoia a segurança e mantém o acesso para diferentes pessoas.",
+    "commonMistake": "Criar uma regra vaga ou punitiva, ou tratar uma necessidade de acessibilidade como exceção que reduz o direito de alguém participar.",
+    "priorKnowledge": [
+      "Reconhecer diferentes espaços da escola e atividades realizadas neles.",
+      "Participar de conversas em grupo com apoio para escutar e compartilhar ideias."
+    ],
+    "keyConcepts": [
+      "espaço compartilhado",
+      "regra",
+      "combinado",
+      "convivência",
+      "participação coletiva",
+      "segurança",
+      "acessibilidade",
+      "revisão"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "RULE_NOT_ACTIONABLE",
+        "action": "Reescreva o combinado começando com uma ação observável, como “deixamos”, “guardamos” ou “esperamos”, e indique o espaço a que se aplica."
+      },
+      {
+        "errorFocus": "RULE_EXCLUDES_PARTICIPANT",
+        "action": "Teste a regra com cenários de diferentes modos de comunicação, movimento e aprendizagem; revise qualquer frase que exclua alguém."
+      },
+      {
+        "errorFocus": "SPACE_SPECIFIC_RULE",
+        "action": "Compare o objetivo de uma regra na sala, no corredor e na biblioteca e adapte a ação ao uso de cada espaço."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+      "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+      "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge04-space-rule-council",
+        "title": "Conselho de combinados",
+        "instructions": "A turma analisa cenários fictícios de sala, biblioteca e pátio e cria regras coletivas para cada lugar.\n1. Escolha um espaço e identifique as atividades que acontecem nele.\n2. Ouça propostas de combinados usando turnos acessíveis de participação.\n3. Registre uma regra clara e confira se ela ajuda diferentes pessoas a usar o espaço.",
+        "steps": [
+          "Escolha um espaço e identifique as atividades que acontecem nele.",
+          "Ouça propostas de combinados usando turnos acessíveis de participação.",
+          "Registre uma regra clara e confira se ela ajuda diferentes pessoas a usar o espaço."
+        ],
+        "evidence": "Conjunto de regras específicas e inclusivas com justificativa ligada ao uso do espaço.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um espaço e uma necessidade com apoio.",
+            "developing": "propõe uma ação de convivência para um lugar.",
+            "proficient": "contribui para regra coletiva clara e acessível e explica sua finalidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge04-rule-test-walkthrough",
+        "title": "Teste de combinados no mapa",
+        "instructions": "Um mapa ilustrado da escola apresenta entradas, corredores, sala e biblioteca para testar regras sem interromper atividades reais.\n1. Escolha uma rota e uma atividade mostrada no mapa.\n2. Leia um combinado e veja se a ação funciona nessa situação.\n3. Sugira uma revisão se a regra bloquear acesso ou não explicar o que fazer.",
+        "steps": [
+          "Escolha uma rota e uma atividade mostrada no mapa.",
+          "Leia um combinado e veja se a ação funciona nessa situação.",
+          "Sugira uma revisão se a regra bloquear acesso ou não explicar o que fazer."
+        ],
+        "evidence": "Regra revisada com base numa situação concreta e na participação de usuários diferentes.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta uma regra relacionada ao mapa.",
+            "developing": "identifica se a regra é clara para uma situação.",
+            "proficient": "propõe ajuste que mantém segurança, acesso e participação coletiva."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-01",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-02",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-03",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-04",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-05",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-06",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-07",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-09",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-10",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-11",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-12",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-13",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-14",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-15",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-17",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-18",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-19",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-20",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-21",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-22",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-23",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-25",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-26",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-27",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-28",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-29",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-30",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-31",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-33",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-34",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-35",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-36",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-37",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-38",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-39",
+          "v1-ef01ge04-co-create-rules-for-shared-spaces-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE04",
+        "descriptor": "Discutir e elaborar, coletivamente, regras de convívio em diferentes espaços (sala de aula, escola etc.).",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-01",
+      "statement": "A turma usa os mesmos lápis de cor. Qual combinado ajuda a compartilhar?",
+      "prompt": "A turma usa os mesmos lápis de cor. Qual combinado ajuda a compartilhar?",
+      "options": [
+        "Usamos os lápis por turnos e os devolvemos ao lugar combinado.",
+        "Escondemos os lápis",
+        "Só uma pessoa pode usar para sempre",
+        "Pegamos sem perguntar e não devolvemos"
+      ],
+      "correctAnswer": "Usamos os lápis por turnos e os devolvemos ao lugar combinado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escondemos os lápis": [
+          "SHARED_MATERIAL_RULE"
+        ],
+        "Só uma pessoa pode usar para sempre": [
+          "SHARED_MATERIAL_RULE"
+        ],
+        "Pegamos sem perguntar e não devolvemos": [
+          "SHARED_MATERIAL_RULE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SALA_DE_AULA_COMPARTILHADA",
+      "explanation": "A regra explica como compartilhar e guardar o material.",
+      "hint": "Escolha uma ação que todos possam seguir.",
+      "errorFocus": "SHARED_MATERIAL_RULE",
+      "feedback": {
+        "correct": "Boa observação: A regra explica como compartilhar e guardar o material.",
+        "incorrect": "A regra explica como compartilhar e guardar o material.",
+        "hint": "Escolha uma ação que todos possam seguir.",
+        "errorFocus": "SHARED_MATERIAL_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-02",
+      "statement": "Qual combinado ajuda a manter o corredor seguro e acessível?",
+      "prompt": "Qual combinado ajuda a manter o corredor seguro e acessível?",
+      "options": [
+        "Deixamos mochilas no meio do caminho",
+        "Mantemos a passagem livre para as pessoas circularem.",
+        "Corremos empurrando os colegas",
+        "Bloqueamos a entrada"
+      ],
+      "correctAnswer": "Mantemos a passagem livre para as pessoas circularem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Deixamos mochilas no meio do caminho": [
+          "KEEP_ROUTE_CLEAR"
+        ],
+        "Corremos empurrando os colegas": [
+          "KEEP_ROUTE_CLEAR"
+        ],
+        "Bloqueamos a entrada": [
+          "KEEP_ROUTE_CLEAR"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CORREDOR_DA_ESCOLA",
+      "explanation": "Uma passagem livre apoia circulação e segurança.",
+      "hint": "Pense em como deixar espaço para caminhar.",
+      "errorFocus": "KEEP_ROUTE_CLEAR",
+      "feedback": {
+        "correct": "Boa observação: Uma passagem livre apoia circulação e segurança.",
+        "incorrect": "Uma passagem livre apoia circulação e segurança.",
+        "hint": "Pense em como deixar espaço para caminhar.",
+        "errorFocus": "KEEP_ROUTE_CLEAR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-03",
+      "statement": "A biblioteca pede cuidado com livros; no pátio, a turma combina usar os brinquedos com segurança. O que muda?",
+      "prompt": "A biblioteca pede cuidado com livros; no pátio, a turma combina usar os brinquedos com segurança. O que muda?",
+      "options": [
+        "O respeito deixa de ser importante",
+        "As regras são idênticas em todo lugar",
+        "A ação da regra muda conforme o espaço e sua atividade.",
+        "Só o pátio precisa de combinados"
+      ],
+      "correctAnswer": "A ação da regra muda conforme o espaço e sua atividade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O respeito deixa de ser importante": [
+          "RULES_BY_SPACE"
+        ],
+        "As regras são idênticas em todo lugar": [
+          "RULES_BY_SPACE"
+        ],
+        "Só o pátio precisa de combinados": [
+          "RULES_BY_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "BIBLIOTECA_E_PATIO",
+      "explanation": "Atividades diferentes pedem cuidados específicos em cada lugar.",
+      "hint": "Relacione a regra ao que acontece no espaço.",
+      "errorFocus": "RULES_BY_SPACE",
+      "feedback": {
+        "correct": "Boa observação: Atividades diferentes pedem cuidados específicos em cada lugar.",
+        "incorrect": "Atividades diferentes pedem cuidados específicos em cada lugar.",
+        "hint": "Relacione a regra ao que acontece no espaço.",
+        "errorFocus": "RULES_BY_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-04",
+      "statement": "Uma regra diz: “Só fala quem escreve rápido”. Ela é inclusiva?",
+      "prompt": "Uma regra diz: “Só fala quem escreve rápido”. Ela é inclusiva?",
+      "options": [
+        "Sim, porque todos escrevem igual",
+        "Sim, porque rapidez é a única forma de conversar",
+        "Não, mas só porque a sala está vazia",
+        "Não; exclui pessoas que precisam de outros modos ou tempos para participar."
+      ],
+      "correctAnswer": "Não; exclui pessoas que precisam de outros modos ou tempos para participar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, porque todos escrevem igual": [
+          "RULE_EXCLUDES_PARTICIPANTS"
+        ],
+        "Sim, porque rapidez é a única forma de conversar": [
+          "RULE_EXCLUDES_PARTICIPANTS"
+        ],
+        "Não, mas só porque a sala está vazia": [
+          "RULE_EXCLUDES_PARTICIPANTS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_DE_ESCUTA",
+      "explanation": "Uma regra de conversa deve permitir diferentes modos e ritmos de participação.",
+      "hint": "Veja quem fica sem poder contribuir.",
+      "errorFocus": "RULE_EXCLUDES_PARTICIPANTS",
+      "feedback": {
+        "correct": "Boa observação: Uma regra de conversa deve permitir diferentes modos e ritmos de participação.",
+        "incorrect": "Uma regra de conversa deve permitir diferentes modos e ritmos de participação.",
+        "hint": "Veja quem fica sem poder contribuir.",
+        "errorFocus": "RULE_EXCLUDES_PARTICIPANTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-05",
+      "statement": "Numa conversa da turma, qual combinado ajuda várias pessoas a contribuir?",
+      "prompt": "Numa conversa da turma, qual combinado ajuda várias pessoas a contribuir?",
+      "options": [
+        "Usamos turnos e também aceitamos fala, gesto ou comunicação alternativa.",
+        "Falamos todos ao mesmo tempo",
+        "Só respondemos por escrito",
+        "Interrompemos quem precisa de mais tempo"
+      ],
+      "correctAnswer": "Usamos turnos e também aceitamos fala, gesto ou comunicação alternativa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Falamos todos ao mesmo tempo": [
+          "ACCESSIBLE_DISCUSSION_RULE"
+        ],
+        "Só respondemos por escrito": [
+          "ACCESSIBLE_DISCUSSION_RULE"
+        ],
+        "Interrompemos quem precisa de mais tempo": [
+          "ACCESSIBLE_DISCUSSION_RULE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TURNO_DE_FALA",
+      "explanation": "Turnos e formas variadas tornam a conversa mais acessível.",
+      "hint": "Escolha um combinado com mais de uma forma de resposta.",
+      "errorFocus": "ACCESSIBLE_DISCUSSION_RULE",
+      "feedback": {
+        "correct": "Boa observação: Turnos e formas variadas tornam a conversa mais acessível.",
+        "incorrect": "Turnos e formas variadas tornam a conversa mais acessível.",
+        "hint": "Escolha um combinado com mais de uma forma de resposta.",
+        "errorFocus": "ACCESSIBLE_DISCUSSION_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-06",
+      "statement": "Uma turma usa uma bola no pátio. Qual regra pode ajudar a evitar acidentes?",
+      "prompt": "Uma turma usa uma bola no pátio. Qual regra pode ajudar a evitar acidentes?",
+      "options": [
+        "Jogamos a bola em qualquer direção",
+        "Combinamos uma área de jogo e cuidamos para não atingir quem passa.",
+        "Usamos a bola no corredor cheio",
+        "Impedimos que todos circulem"
+      ],
+      "correctAnswer": "Combinamos uma área de jogo e cuidamos para não atingir quem passa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Jogamos a bola em qualquer direção": [
+          "SAFE_SHARED_PLAY"
+        ],
+        "Usamos a bola no corredor cheio": [
+          "SAFE_SHARED_PLAY"
+        ],
+        "Impedimos que todos circulem": [
+          "SAFE_SHARED_PLAY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PATIO_COM_BOLA",
+      "explanation": "Uma área definida e cuidado com a passagem apoiam segurança.",
+      "hint": "Pense nos jogadores e em quem está passando.",
+      "errorFocus": "SAFE_SHARED_PLAY",
+      "feedback": {
+        "correct": "Boa observação: Uma área definida e cuidado com a passagem apoiam segurança.",
+        "incorrect": "Uma área definida e cuidado com a passagem apoiam segurança.",
+        "hint": "Pense nos jogadores e em quem está passando.",
+        "errorFocus": "SAFE_SHARED_PLAY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-07",
+      "statement": "“Comportem-se bem” é uma regra difícil de seguir. Que revisão a torna mais clara?",
+      "prompt": "“Comportem-se bem” é uma regra difícil de seguir. Que revisão a torna mais clara?",
+      "options": [
+        "“Sejam perfeitos.”",
+        "“Ninguém pode conversar nunca.”",
+        "“Guardamos os materiais depois de usá-los.”",
+        "“Apenas algumas pessoas podem participar.”"
+      ],
+      "correctAnswer": "“Guardamos os materiais depois de usá-los.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“Sejam perfeitos.”": [
+          "ACTIONABLE_RULE_LANGUAGE"
+        ],
+        "“Ninguém pode conversar nunca.”": [
+          "ACTIONABLE_RULE_LANGUAGE"
+        ],
+        "“Apenas algumas pessoas podem participar.”": [
+          "ACTIONABLE_RULE_LANGUAGE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGRA_VAGA",
+      "explanation": "A regra revisada descreve uma ação observável.",
+      "hint": "Escreva o que cada pessoa pode fazer.",
+      "errorFocus": "ACTIONABLE_RULE_LANGUAGE",
+      "feedback": {
+        "correct": "Boa observação: A regra revisada descreve uma ação observável.",
+        "incorrect": "A regra revisada descreve uma ação observável.",
+        "hint": "Escreva o que cada pessoa pode fazer.",
+        "errorFocus": "ACTIONABLE_RULE_LANGUAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-08",
+      "statement": "Qual processo ajuda a elaborar um combinado coletivo?",
+      "prompt": "Qual processo ajuda a elaborar um combinado coletivo?",
+      "options": [
+        "Uma pessoa decidir sem ouvir ninguém",
+        "Copiar uma regra sem olhar o espaço",
+        "Punir quem oferece uma ideia diferente",
+        "Ouvir ideias, discutir o objetivo e registrar uma regra acordada."
+      ],
+      "correctAnswer": "Ouvir ideias, discutir o objetivo e registrar uma regra acordada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma pessoa decidir sem ouvir ninguém": [
+          "COLLECTIVE_RULE_MAKING"
+        ],
+        "Copiar uma regra sem olhar o espaço": [
+          "COLLECTIVE_RULE_MAKING"
+        ],
+        "Punir quem oferece uma ideia diferente": [
+          "COLLECTIVE_RULE_MAKING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CRIACAO_COLETIVA",
+      "explanation": "A elaboração coletiva inclui escuta, discussão e acordo.",
+      "hint": "Escolha um processo que inclua a turma.",
+      "errorFocus": "COLLECTIVE_RULE_MAKING",
+      "feedback": {
+        "correct": "Boa observação: A elaboração coletiva inclui escuta, discussão e acordo.",
+        "incorrect": "A elaboração coletiva inclui escuta, discussão e acordo.",
+        "hint": "Escolha um processo que inclua a turma.",
+        "errorFocus": "COLLECTIVE_RULE_MAKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-09",
+      "statement": "Qual ação combina com o uso compartilhado de livros na biblioteca?",
+      "prompt": "Qual ação combina com o uso compartilhado de livros na biblioteca?",
+      "options": [
+        "Manusear com cuidado e devolver ao local combinado.",
+        "Rabiscá-los sem permissão",
+        "Escondê-los para uso exclusivo",
+        "Deixá-los no chão da passagem"
+      ],
+      "correctAnswer": "Manusear com cuidado e devolver ao local combinado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Rabiscá-los sem permissão": [
+          "LIBRARY_CARE_RULE"
+        ],
+        "Escondê-los para uso exclusivo": [
+          "LIBRARY_CARE_RULE"
+        ],
+        "Deixá-los no chão da passagem": [
+          "LIBRARY_CARE_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LIVROS_DA_BIBLIOTECA",
+      "explanation": "Cuidar e devolver os livros permite que outras pessoas também os usem.",
+      "hint": "Pense em quem usará o livro depois.",
+      "errorFocus": "LIBRARY_CARE_RULE",
+      "feedback": {
+        "correct": "Boa observação: Cuidar e devolver os livros permite que outras pessoas também os usem.",
+        "incorrect": "Cuidar e devolver os livros permite que outras pessoas também os usem.",
+        "hint": "Pense em quem usará o livro depois.",
+        "errorFocus": "LIBRARY_CARE_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-10",
+      "statement": "Na sala, a turma combina guardar materiais; no corredor, manter a passagem livre. Por que as regras diferem?",
+      "prompt": "Na sala, a turma combina guardar materiais; no corredor, manter a passagem livre. Por que as regras diferem?",
+      "options": [
+        "Porque o respeito só vale na sala",
+        "Cada espaço tem atividades e necessidades de convivência próprias.",
+        "Porque corredores não são usados por pessoas",
+        "Porque uma regra deve impedir circulação"
+      ],
+      "correctAnswer": "Cada espaço tem atividades e necessidades de convivência próprias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque o respeito só vale na sala": [
+          "SPACE_SPECIFIC_RULES"
+        ],
+        "Porque corredores não são usados por pessoas": [
+          "SPACE_SPECIFIC_RULES"
+        ],
+        "Porque uma regra deve impedir circulação": [
+          "SPACE_SPECIFIC_RULES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SALA_E_CORREDOR",
+      "explanation": "As regras respondem aos usos de cada lugar.",
+      "hint": "Compare o que as pessoas fazem em cada espaço.",
+      "errorFocus": "SPACE_SPECIFIC_RULES",
+      "feedback": {
+        "correct": "Boa observação: As regras respondem aos usos de cada lugar.",
+        "incorrect": "As regras respondem aos usos de cada lugar.",
+        "hint": "Compare o que as pessoas fazem em cada espaço.",
+        "errorFocus": "SPACE_SPECIFIC_RULES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-11",
+      "statement": "Uma regra permite usar o pátio somente a quem corre rápido. Qual problema ela tem?",
+      "prompt": "Uma regra permite usar o pátio somente a quem corre rápido. Qual problema ela tem?",
+      "options": [
+        "É específica demais sobre o horário",
+        "Não menciona a cor da bola",
+        "Exclui pessoas que preferem ou precisam participar de outro modo.",
+        "Permite muitos modos de participação"
+      ],
+      "correctAnswer": "Exclui pessoas que preferem ou precisam participar de outro modo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "É específica demais sobre o horário": [
+          "NONDISCRIMINATORY_RULE"
+        ],
+        "Não menciona a cor da bola": [
+          "NONDISCRIMINATORY_RULE"
+        ],
+        "Permite muitos modos de participação": [
+          "NONDISCRIMINATORY_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_SEM_DISCRIMINACAO",
+      "explanation": "Uma regra não deve limitar participação por habilidade ou modo de movimento.",
+      "hint": "Identifique quem fica de fora.",
+      "errorFocus": "NONDISCRIMINATORY_RULE",
+      "feedback": {
+        "correct": "Boa observação: Uma regra não deve limitar participação por habilidade ou modo de movimento.",
+        "incorrect": "Uma regra não deve limitar participação por habilidade ou modo de movimento.",
+        "hint": "Identifique quem fica de fora.",
+        "errorFocus": "NONDISCRIMINATORY_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-12",
+      "statement": "Qual combinado ajuda as pessoas a circular numa fila?",
+      "prompt": "Qual combinado ajuda as pessoas a circular numa fila?",
+      "options": [
+        "Empurramos para chegar primeiro",
+        "Bloqueamos a porta",
+        "Guardamos lugar sem conversar",
+        "Deixamos espaço e aguardamos nossa vez sem empurrar."
+      ],
+      "correctAnswer": "Deixamos espaço e aguardamos nossa vez sem empurrar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Empurramos para chegar primeiro": [
+          "SAFE_QUEUE_RULE"
+        ],
+        "Bloqueamos a porta": [
+          "SAFE_QUEUE_RULE"
+        ],
+        "Guardamos lugar sem conversar": [
+          "SAFE_QUEUE_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FILA_DO_REFEITORIO",
+      "explanation": "Esperar a vez e manter espaço apoia segurança e convivência.",
+      "hint": "Escolha uma regra que organize o fluxo.",
+      "errorFocus": "SAFE_QUEUE_RULE",
+      "feedback": {
+        "correct": "Boa observação: Esperar a vez e manter espaço apoia segurança e convivência.",
+        "incorrect": "Esperar a vez e manter espaço apoia segurança e convivência.",
+        "hint": "Escolha uma regra que organize o fluxo.",
+        "errorFocus": "SAFE_QUEUE_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-13",
+      "statement": "Uma sala tem canto de leitura e mesa de conversa. Qual regra apoia os dois usos?",
+      "prompt": "Uma sala tem canto de leitura e mesa de conversa. Qual regra apoia os dois usos?",
+      "options": [
+        "Respeitamos os combinados de cada área e mantemos volume adequado.",
+        "Proibimos toda conversa",
+        "Mandamos leitores sair",
+        "Dizemos que um uso é superior"
+      ],
+      "correctAnswer": "Respeitamos os combinados de cada área e mantemos volume adequado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Proibimos toda conversa": [
+          "COEXISTING_ACTIVITY_RULE"
+        ],
+        "Mandamos leitores sair": [
+          "COEXISTING_ACTIVITY_RULE"
+        ],
+        "Dizemos que um uso é superior": [
+          "COEXISTING_ACTIVITY_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAPA_DE_SILENCIO_E_CONVERSA",
+      "explanation": "A regra permite usos diferentes com cuidado compartilhado.",
+      "hint": "Considere as duas atividades no espaço.",
+      "errorFocus": "COEXISTING_ACTIVITY_RULE",
+      "feedback": {
+        "correct": "Boa observação: A regra permite usos diferentes com cuidado compartilhado.",
+        "incorrect": "A regra permite usos diferentes com cuidado compartilhado.",
+        "hint": "Considere as duas atividades no espaço.",
+        "errorFocus": "COEXISTING_ACTIVITY_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-14",
+      "statement": "Uma pessoa prefere contribuir sem falar em voz alta. Como a conversa coletiva pode incluí-la?",
+      "prompt": "Uma pessoa prefere contribuir sem falar em voz alta. Como a conversa coletiva pode incluí-la?",
+      "options": [
+        "Exigindo fala imediata",
+        "Aceitando uma ideia escrita, apontada ou comunicada de outro modo.",
+        "Ignorando o cartão",
+        "Escolhendo por ela sem ler a ideia"
+      ],
+      "correctAnswer": "Aceitando uma ideia escrita, apontada ou comunicada de outro modo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Exigindo fala imediata": [
+          "MULTIMODAL_CONTRIBUTION"
+        ],
+        "Ignorando o cartão": [
+          "MULTIMODAL_CONTRIBUTION"
+        ],
+        "Escolhendo por ela sem ler a ideia": [
+          "MULTIMODAL_CONTRIBUTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "IDEIA_EM_CARTAO",
+      "explanation": "Formas alternativas de contribuição apoiam participação coletiva.",
+      "hint": "Mantenha a pessoa como autora da ideia.",
+      "errorFocus": "MULTIMODAL_CONTRIBUTION",
+      "feedback": {
+        "correct": "Boa observação: Formas alternativas de contribuição apoiam participação coletiva.",
+        "incorrect": "Formas alternativas de contribuição apoiam participação coletiva.",
+        "hint": "Mantenha a pessoa como autora da ideia.",
+        "errorFocus": "MULTIMODAL_CONTRIBUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-15",
+      "statement": "Um combinado impede usar a entrada principal, embora seja a única rota acessível do mapa. O que fazer?",
+      "prompt": "Um combinado impede usar a entrada principal, embora seja a única rota acessível do mapa. O que fazer?",
+      "options": [
+        "Manter a regra mesmo bloqueando o acesso",
+        "Pedir que alguém não participe",
+        "Revisar o combinado para manter essa rota livre.",
+        "Usar a entrada para guardar materiais"
+      ],
+      "correctAnswer": "Revisar o combinado para manter essa rota livre.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Manter a regra mesmo bloqueando o acesso": [
+          "ACCESS_ROUTE_PRIORITY"
+        ],
+        "Pedir que alguém não participe": [
+          "ACCESS_ROUTE_PRIORITY"
+        ],
+        "Usar a entrada para guardar materiais": [
+          "ACCESS_ROUTE_PRIORITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_QUE_PRECISA_REVISAO",
+      "explanation": "Regras devem preservar segurança e acesso ao espaço.",
+      "hint": "Verifique o efeito real da regra no mapa.",
+      "errorFocus": "ACCESS_ROUTE_PRIORITY",
+      "feedback": {
+        "correct": "Boa observação: Regras devem preservar segurança e acesso ao espaço.",
+        "incorrect": "Regras devem preservar segurança e acesso ao espaço.",
+        "hint": "Verifique o efeito real da regra no mapa.",
+        "errorFocus": "ACCESS_ROUTE_PRIORITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-16",
+      "statement": "Por que é útil explicar a finalidade de um combinado?",
+      "prompt": "Por que é útil explicar a finalidade de um combinado?",
+      "options": [
+        "Para evitar que alguém faça perguntas",
+        "Para punir mais facilmente",
+        "Para mostrar que a regra nunca pode mudar",
+        "Ajuda a entender como a regra contribui para cuidado, acesso ou convivência."
+      ],
+      "correctAnswer": "Ajuda a entender como a regra contribui para cuidado, acesso ou convivência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para evitar que alguém faça perguntas": [
+          "PURPOSE_OF_RULE"
+        ],
+        "Para punir mais facilmente": [
+          "PURPOSE_OF_RULE"
+        ],
+        "Para mostrar que a regra nunca pode mudar": [
+          "PURPOSE_OF_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REGRA_E_FINALIDADE",
+      "explanation": "Conhecer o objetivo ajuda a turma a seguir e revisar a regra.",
+      "hint": "Relacione a ação ao motivo do combinado.",
+      "errorFocus": "PURPOSE_OF_RULE",
+      "feedback": {
+        "correct": "Boa observação: Conhecer o objetivo ajuda a turma a seguir e revisar a regra.",
+        "incorrect": "Conhecer o objetivo ajuda a turma a seguir e revisar a regra.",
+        "hint": "Relacione a ação ao motivo do combinado.",
+        "errorFocus": "PURPOSE_OF_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-17",
+      "statement": "A escola organiza uma exposição temporária no pátio. Como criar um combinado adequado?",
+      "prompt": "A escola organiza uma exposição temporária no pátio. Como criar um combinado adequado?",
+      "options": [
+        "Discutir como circular, observar os trabalhos e manter passagem acessível.",
+        "Proibir a entrada de qualquer visitante",
+        "Permitir tocar em todos os materiais",
+        "Bloquear a rota para expor mais objetos"
+      ],
+      "correctAnswer": "Discutir como circular, observar os trabalhos e manter passagem acessível.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Proibir a entrada de qualquer visitante": [
+          "ADAPT_RULE_TO_NEW_SPACE"
+        ],
+        "Permitir tocar em todos os materiais": [
+          "ADAPT_RULE_TO_NEW_SPACE"
+        ],
+        "Bloquear a rota para expor mais objetos": [
+          "ADAPT_RULE_TO_NEW_SPACE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "NOVO_ESPACO_DE_EXPOSICAO",
+      "explanation": "O combinado considera atividade, circulação e acesso no novo espaço.",
+      "hint": "Pense no que os visitantes farão no pátio.",
+      "errorFocus": "ADAPT_RULE_TO_NEW_SPACE",
+      "feedback": {
+        "correct": "Boa observação: O combinado considera atividade, circulação e acesso no novo espaço.",
+        "incorrect": "O combinado considera atividade, circulação e acesso no novo espaço.",
+        "hint": "Pense no que os visitantes farão no pátio.",
+        "errorFocus": "ADAPT_RULE_TO_NEW_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-18",
+      "statement": "Um canto tem jogo de tabuleiro e outro leitura. Qual regra pode permanecer nos dois?",
+      "prompt": "Um canto tem jogo de tabuleiro e outro leitura. Qual regra pode permanecer nos dois?",
+      "options": [
+        "Falar alto em qualquer lugar",
+        "Respeitar a participação das outras pessoas e guardar o material usado.",
+        "Impedir que alguém escolha uma área",
+        "Usar somente uma atividade"
+      ],
+      "correctAnswer": "Respeitar a participação das outras pessoas e guardar o material usado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Falar alto em qualquer lugar": [
+          "SHARED_RULE_ACROSS_SPACES"
+        ],
+        "Impedir que alguém escolha uma área": [
+          "SHARED_RULE_ACROSS_SPACES"
+        ],
+        "Usar somente uma atividade": [
+          "SHARED_RULE_ACROSS_SPACES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REGRAS_DE_JOGO_E_LEITURA",
+      "explanation": "Respeito e cuidado com materiais podem servir em mais de um espaço.",
+      "hint": "Encontre um cuidado que se aplica às duas áreas.",
+      "errorFocus": "SHARED_RULE_ACROSS_SPACES",
+      "feedback": {
+        "correct": "Boa observação: Respeito e cuidado com materiais podem servir em mais de um espaço.",
+        "incorrect": "Respeito e cuidado com materiais podem servir em mais de um espaço.",
+        "hint": "Encontre um cuidado que se aplica às duas áreas.",
+        "errorFocus": "SHARED_RULE_ACROSS_SPACES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-19",
+      "statement": "Uma pessoa adulta anuncia uma regra sem ouvir a turma. Como tornar o processo mais coletivo?",
+      "prompt": "Uma pessoa adulta anuncia uma regra sem ouvir a turma. Como tornar o processo mais coletivo?",
+      "options": [
+        "Ignorar toda preocupação de segurança",
+        "Pedir que a turma copie sem discutir",
+        "Explicar o motivo, ouvir propostas e combinar uma regra segura com os participantes.",
+        "Punir quem apresenta uma alternativa"
+      ],
+      "correctAnswer": "Explicar o motivo, ouvir propostas e combinar uma regra segura com os participantes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ignorar toda preocupação de segurança": [
+          "COLLECTIVE_PROCESS_WITH_SAFETY"
+        ],
+        "Pedir que a turma copie sem discutir": [
+          "COLLECTIVE_PROCESS_WITH_SAFETY"
+        ],
+        "Punir quem apresenta uma alternativa": [
+          "COLLECTIVE_PROCESS_WITH_SAFETY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_IMPOSTA_SEM_CONVERSA",
+      "explanation": "A discussão pode ser coletiva sem abrir mão de segurança.",
+      "hint": "Inclua escuta e objetivo da regra.",
+      "errorFocus": "COLLECTIVE_PROCESS_WITH_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: A discussão pode ser coletiva sem abrir mão de segurança.",
+        "incorrect": "A discussão pode ser coletiva sem abrir mão de segurança.",
+        "hint": "Inclua escuta e objetivo da regra.",
+        "errorFocus": "COLLECTIVE_PROCESS_WITH_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-20",
+      "statement": "Uma turma visita uma biblioteca comunitária. Qual atitude se ajusta ao espaço?",
+      "prompt": "Uma turma visita uma biblioteca comunitária. Qual atitude se ajusta ao espaço?",
+      "options": [
+        "Mudar as regras do local sem conversar",
+        "Esconder livros",
+        "Bloquear as entradas",
+        "Falar com respeito e seguir os combinados do local, preservando acesso a todos."
+      ],
+      "correctAnswer": "Falar com respeito e seguir os combinados do local, preservando acesso a todos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mudar as regras do local sem conversar": [
+          "RESPECT_LOCAL_AGREEMENTS"
+        ],
+        "Esconder livros": [
+          "RESPECT_LOCAL_AGREEMENTS"
+        ],
+        "Bloquear as entradas": [
+          "RESPECT_LOCAL_AGREEMENTS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "VISITA_A_BIBLIOTECA",
+      "explanation": "Combinados do espaço ajudam visitantes a conviver e cuidar dos materiais.",
+      "hint": "Considere que outras pessoas também usam o local.",
+      "errorFocus": "RESPECT_LOCAL_AGREEMENTS",
+      "feedback": {
+        "correct": "Boa observação: Combinados do espaço ajudam visitantes a conviver e cuidar dos materiais.",
+        "incorrect": "Combinados do espaço ajudam visitantes a conviver e cuidar dos materiais.",
+        "hint": "Considere que outras pessoas também usam o local.",
+        "errorFocus": "RESPECT_LOCAL_AGREEMENTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-21",
+      "statement": "Um símbolo mostra uma rota que deve permanecer livre. Qual finalidade provável do combinado?",
+      "prompt": "Um símbolo mostra uma rota que deve permanecer livre. Qual finalidade provável do combinado?",
+      "options": [
+        "Permitir circulação segura e acessível.",
+        "Impedir que pessoas entrem",
+        "Reservar o caminho para objetos",
+        "Esconder a sala"
+      ],
+      "correctAnswer": "Permitir circulação segura e acessível.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Impedir que pessoas entrem": [
+          "ROUTE_RULE_PURPOSE"
+        ],
+        "Reservar o caminho para objetos": [
+          "ROUTE_RULE_PURPOSE"
+        ],
+        "Esconder a sala": [
+          "ROUTE_RULE_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "SINAL_DE_CAMINHO_LIVRE",
+      "explanation": "Manter uma rota livre apoia circulação.",
+      "hint": "Relacione o símbolo ao movimento das pessoas.",
+      "errorFocus": "ROUTE_RULE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Manter uma rota livre apoia circulação.",
+        "incorrect": "Manter uma rota livre apoia circulação.",
+        "hint": "Relacione o símbolo ao movimento das pessoas.",
+        "errorFocus": "ROUTE_RULE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-22",
+      "statement": "Uma regra coletiva não funciona para usuários diferentes. Por que revisá-la?",
+      "prompt": "Uma regra coletiva não funciona para usuários diferentes. Por que revisá-la?",
+      "options": [
+        "Porque regras não têm objetivo",
+        "Para que continue atendendo ao espaço e permita participação segura e respeitosa.",
+        "Para excluir quem apontou o problema",
+        "Para criar uma punição maior"
+      ],
+      "correctAnswer": "Para que continue atendendo ao espaço e permita participação segura e respeitosa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque regras não têm objetivo": [
+          "RULE_REVIEW_AND_INCLUSION"
+        ],
+        "Para excluir quem apontou o problema": [
+          "RULE_REVIEW_AND_INCLUSION"
+        ],
+        "Para criar uma punição maior": [
+          "RULE_REVIEW_AND_INCLUSION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAR_REGRA_QUE_NAO_FUNCIONA",
+      "explanation": "Revisar é parte do cuidado coletivo quando a regra cria barreiras.",
+      "hint": "Pense em como melhorar o uso para todos.",
+      "errorFocus": "RULE_REVIEW_AND_INCLUSION",
+      "feedback": {
+        "correct": "Boa observação: Revisar é parte do cuidado coletivo quando a regra cria barreiras.",
+        "incorrect": "Revisar é parte do cuidado coletivo quando a regra cria barreiras.",
+        "hint": "Pense em como melhorar o uso para todos.",
+        "errorFocus": "RULE_REVIEW_AND_INCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-23",
+      "statement": "“Usamos a área marcada para o jogo e deixamos a rota de passagem livre.” Que qualidades tem essa regra?",
+      "prompt": "“Usamos a área marcada para o jogo e deixamos a rota de passagem livre.” Que qualidades tem essa regra?",
+      "options": [
+        "É vaga e impede todo movimento",
+        "Escolhe um grupo como dono do pátio",
+        "É concreta e considera jogo, circulação e segurança.",
+        "Não explica nenhuma ação"
+      ],
+      "correctAnswer": "É concreta e considera jogo, circulação e segurança.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "É vaga e impede todo movimento": [
+          "CLEAR_AND_ACCESSIBLE_RULE"
+        ],
+        "Escolhe um grupo como dono do pátio": [
+          "CLEAR_AND_ACCESSIBLE_RULE"
+        ],
+        "Não explica nenhuma ação": [
+          "CLEAR_AND_ACCESSIBLE_RULE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "COMBINADO_DO_PATIO",
+      "explanation": "A regra indica onde jogar e como preservar a circulação.",
+      "hint": "Observe as ações descritas.",
+      "errorFocus": "CLEAR_AND_ACCESSIBLE_RULE",
+      "feedback": {
+        "correct": "Boa observação: A regra indica onde jogar e como preservar a circulação.",
+        "incorrect": "A regra indica onde jogar e como preservar a circulação.",
+        "hint": "Observe as ações descritas.",
+        "errorFocus": "CLEAR_AND_ACCESSIBLE_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-24",
+      "statement": "Uma turma vota numa regra, mas uma pessoa não consegue usar o meio de votação proposto. O que precisa mudar?",
+      "prompt": "Uma turma vota numa regra, mas uma pessoa não consegue usar o meio de votação proposto. O que precisa mudar?",
+      "options": [
+        "Manter a votação inacessível",
+        "Escolher sem consultá-la",
+        "Cancelar sua participação",
+        "Oferecer um modo acessível para essa pessoa expressar sua escolha."
+      ],
+      "correctAnswer": "Oferecer um modo acessível para essa pessoa expressar sua escolha.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Manter a votação inacessível": [
+          "ACCESSIBLE_COLLECTIVE_DECISION"
+        ],
+        "Escolher sem consultá-la": [
+          "ACCESSIBLE_COLLECTIVE_DECISION"
+        ],
+        "Cancelar sua participação": [
+          "ACCESSIBLE_COLLECTIVE_DECISION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "VOTACAO_E_ESCUTA",
+      "explanation": "Decisão coletiva precisa permitir diferentes formas de participação.",
+      "hint": "Ajuste o processo para incluir a voz da pessoa.",
+      "errorFocus": "ACCESSIBLE_COLLECTIVE_DECISION",
+      "feedback": {
+        "correct": "Boa observação: Decisão coletiva precisa permitir diferentes formas de participação.",
+        "incorrect": "Decisão coletiva precisa permitir diferentes formas de participação.",
+        "hint": "Ajuste o processo para incluir a voz da pessoa.",
+        "errorFocus": "ACCESSIBLE_COLLECTIVE_DECISION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-25",
+      "statement": "Uma turma combina devolver os materiais após a atividade. Em que tipo de situação essa regra ajuda?",
+      "prompt": "Uma turma combina devolver os materiais após a atividade. Em que tipo de situação essa regra ajuda?",
+      "options": [
+        "No uso compartilhado de materiais da sala.",
+        "Na escolha de um endereço residencial",
+        "Em qualquer atividade sem materiais",
+        "Na proibição de participar"
+      ],
+      "correctAnswer": "No uso compartilhado de materiais da sala.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Na escolha de um endereço residencial": [
+          "RULE_CONTEXT_MATCH"
+        ],
+        "Em qualquer atividade sem materiais": [
+          "RULE_CONTEXT_MATCH"
+        ],
+        "Na proibição de participar": [
+          "RULE_CONTEXT_MATCH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "COMBINADO_DE_MATERIAIS",
+      "explanation": "A regra se aplica ao uso coletivo dos materiais.",
+      "hint": "Relacione devolver com o lugar onde o material é usado.",
+      "errorFocus": "RULE_CONTEXT_MATCH",
+      "feedback": {
+        "correct": "Boa observação: A regra se aplica ao uso coletivo dos materiais.",
+        "incorrect": "A regra se aplica ao uso coletivo dos materiais.",
+        "hint": "Relacione devolver com o lugar onde o material é usado.",
+        "errorFocus": "RULE_CONTEXT_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-26",
+      "statement": "Qual frase é mais clara: “sejam bons” ou “deixamos o caminho de entrada livre”?",
+      "prompt": "Qual frase é mais clara: “sejam bons” ou “deixamos o caminho de entrada livre”?",
+      "options": [
+        "“Sejam bons.”",
+        "“Deixamos o caminho de entrada livre.”",
+        "As frases descrevem a mesma ação",
+        "Nenhuma frase pode ser seguida"
+      ],
+      "correctAnswer": "“Deixamos o caminho de entrada livre.”",
+      "answerPosition": "B",
+      "misconceptions": {
+        "“Sejam bons.”": [
+          "ACTIONABLE_RULE_REVIEW"
+        ],
+        "As frases descrevem a mesma ação": [
+          "ACTIONABLE_RULE_REVIEW"
+        ],
+        "Nenhuma frase pode ser seguida": [
+          "ACTIONABLE_RULE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REGRAS_CLARAS_E_VAGAS",
+      "explanation": "A segunda frase descreve uma ação que pode ser observada.",
+      "hint": "Procure a frase que diz o que fazer.",
+      "errorFocus": "ACTIONABLE_RULE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A segunda frase descreve uma ação que pode ser observada.",
+        "incorrect": "A segunda frase descreve uma ação que pode ser observada.",
+        "hint": "Procure a frase que diz o que fazer.",
+        "errorFocus": "ACTIONABLE_RULE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-27",
+      "statement": "Na sala, a turma guarda jogos; na biblioteca, devolve livros. O que as regras compartilham?",
+      "prompt": "Na sala, a turma guarda jogos; na biblioteca, devolve livros. O que as regras compartilham?",
+      "options": [
+        "Uma única atividade nos dois espaços",
+        "A proibição de usar materiais",
+        "Cuidado com materiais que outras pessoas também usam.",
+        "A mesma organização física"
+      ],
+      "correctAnswer": "Cuidado com materiais que outras pessoas também usam.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma única atividade nos dois espaços": [
+          "COMMON_PURPOSE_OF_RULES"
+        ],
+        "A proibição de usar materiais": [
+          "COMMON_PURPOSE_OF_RULES"
+        ],
+        "A mesma organização física": [
+          "COMMON_PURPOSE_OF_RULES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "COMBINADOS_EM_DOIS_LUGARES",
+      "explanation": "As ações mudam, mas ambas cuidam de recursos compartilhados.",
+      "hint": "Compare a finalidade de cada ação.",
+      "errorFocus": "COMMON_PURPOSE_OF_RULES",
+      "feedback": {
+        "correct": "Boa observação: As ações mudam, mas ambas cuidam de recursos compartilhados.",
+        "incorrect": "As ações mudam, mas ambas cuidam de recursos compartilhados.",
+        "hint": "Compare a finalidade de cada ação.",
+        "errorFocus": "COMMON_PURPOSE_OF_RULES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-28",
+      "statement": "Uma assembleia de turma precisa ouvir várias ideias. Qual combinado é útil?",
+      "prompt": "Uma assembleia de turma precisa ouvir várias ideias. Qual combinado é útil?",
+      "options": [
+        "Interromper quem fala devagar",
+        "Permitir apenas respostas orais",
+        "Encerrar antes de ouvir a turma",
+        "Esperar o turno e aceitar contribuições em formatos acessíveis."
+      ],
+      "correctAnswer": "Esperar o turno e aceitar contribuições em formatos acessíveis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Interromper quem fala devagar": [
+          "ACCESSIBLE_TURN_TAKING"
+        ],
+        "Permitir apenas respostas orais": [
+          "ACCESSIBLE_TURN_TAKING"
+        ],
+        "Encerrar antes de ouvir a turma": [
+          "ACCESSIBLE_TURN_TAKING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REUNIAO_COM_TURNOS",
+      "explanation": "Turnos e formatos variados apoiam a escuta coletiva.",
+      "hint": "Escolha uma regra que inclua diferentes pessoas.",
+      "errorFocus": "ACCESSIBLE_TURN_TAKING",
+      "feedback": {
+        "correct": "Boa observação: Turnos e formatos variados apoiam a escuta coletiva.",
+        "incorrect": "Turnos e formatos variados apoiam a escuta coletiva.",
+        "hint": "Escolha uma regra que inclua diferentes pessoas.",
+        "errorFocus": "ACCESSIBLE_TURN_TAKING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-29",
+      "statement": "Por que é importante manter uma rota de circulação sem objetos?",
+      "prompt": "Por que é importante manter uma rota de circulação sem objetos?",
+      "options": [
+        "Para apoiar passagem segura e acesso de quem usa o espaço.",
+        "Para guardar mais objetos no corredor",
+        "Para impedir que alguém use a sala",
+        "Para definir quem pode circular"
+      ],
+      "correctAnswer": "Para apoiar passagem segura e acesso de quem usa o espaço.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para guardar mais objetos no corredor": [
+          "ACCESS_PURPOSE"
+        ],
+        "Para impedir que alguém use a sala": [
+          "ACCESS_PURPOSE"
+        ],
+        "Para definir quem pode circular": [
+          "ACCESS_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ROTA_LIVRE",
+      "explanation": "A rota livre serve à segurança e à circulação.",
+      "hint": "Relacione a regra à finalidade do caminho.",
+      "errorFocus": "ACCESS_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A rota livre serve à segurança e à circulação.",
+        "incorrect": "A rota livre serve à segurança e à circulação.",
+        "hint": "Relacione a regra à finalidade do caminho.",
+        "errorFocus": "ACCESS_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-30",
+      "statement": "“Quem esquecer o material não participa nunca mais.” Como revisar esse combinado?",
+      "prompt": "“Quem esquecer o material não participa nunca mais.” Como revisar esse combinado?",
+      "options": [
+        "Manter a punição para sempre",
+        "Criar uma orientação de cuidado e uma forma de resolver esquecimentos sem excluir a pessoa.",
+        "Impedir que a turma use materiais",
+        "Expor o nome da pessoa"
+      ],
+      "correctAnswer": "Criar uma orientação de cuidado e uma forma de resolver esquecimentos sem excluir a pessoa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Manter a punição para sempre": [
+          "NON_EXCLUSION_RULE"
+        ],
+        "Impedir que a turma use materiais": [
+          "NON_EXCLUSION_RULE"
+        ],
+        "Expor o nome da pessoa": [
+          "NON_EXCLUSION_RULE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_PUNITIVA",
+      "explanation": "Uma regra educativa deve orientar o cuidado sem humilhar ou excluir.",
+      "hint": "Substitua a punição por uma ação de apoio.",
+      "errorFocus": "NON_EXCLUSION_RULE",
+      "feedback": {
+        "correct": "Boa observação: Uma regra educativa deve orientar o cuidado sem humilhar ou excluir.",
+        "incorrect": "Uma regra educativa deve orientar o cuidado sem humilhar ou excluir.",
+        "hint": "Substitua a punição por uma ação de apoio.",
+        "errorFocus": "NON_EXCLUSION_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-31",
+      "statement": "Um cartaz diz “ouvimos ideias diferentes sem interromper”. Qual objetivo ele apoia?",
+      "prompt": "Um cartaz diz “ouvimos ideias diferentes sem interromper”. Qual objetivo ele apoia?",
+      "options": [
+        "Impedir ideias diferentes",
+        "Escolher uma voz como única",
+        "Conversa respeitosa e participação de mais pessoas.",
+        "Acelerar a reunião sem ouvir"
+      ],
+      "correctAnswer": "Conversa respeitosa e participação de mais pessoas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Impedir ideias diferentes": [
+          "DISCUSSION_PURPOSE"
+        ],
+        "Escolher uma voz como única": [
+          "DISCUSSION_PURPOSE"
+        ],
+        "Acelerar a reunião sem ouvir": [
+          "DISCUSSION_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "COMBINADO_DE_ESCUTA",
+      "explanation": "Ouvir sem interromper favorece troca e participação.",
+      "hint": "Pense no efeito de esperar a vez.",
+      "errorFocus": "DISCUSSION_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Ouvir sem interromper favorece troca e participação.",
+        "incorrect": "Ouvir sem interromper favorece troca e participação.",
+        "hint": "Pense no efeito de esperar a vez.",
+        "errorFocus": "DISCUSSION_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-32",
+      "statement": "A turma cria um clube de desenho numa sala compartilhada. Qual regra deve ser construída em conjunto?",
+      "prompt": "A turma cria um clube de desenho numa sala compartilhada. Qual regra deve ser construída em conjunto?",
+      "options": [
+        "Quem pode participar com base na aparência",
+        "Como impedir toda conversa",
+        "Quem será dono permanente dos materiais",
+        "Como organizar materiais, turnos e circulação para todos usarem a sala."
+      ],
+      "correctAnswer": "Como organizar materiais, turnos e circulação para todos usarem a sala.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Quem pode participar com base na aparência": [
+          "CO_CREATE_FOR_SHARED_USE"
+        ],
+        "Como impedir toda conversa": [
+          "CO_CREATE_FOR_SHARED_USE"
+        ],
+        "Quem será dono permanente dos materiais": [
+          "CO_CREATE_FOR_SHARED_USE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGRA_DO_NOVO_CLUBE",
+      "explanation": "A regra trata de organização comum e participação inclusiva.",
+      "hint": "Inclua quem usa a sala e os materiais.",
+      "errorFocus": "CO_CREATE_FOR_SHARED_USE",
+      "feedback": {
+        "correct": "Boa observação: A regra trata de organização comum e participação inclusiva.",
+        "incorrect": "A regra trata de organização comum e participação inclusiva.",
+        "hint": "Inclua quem usa a sala e os materiais.",
+        "errorFocus": "CO_CREATE_FOR_SHARED_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-33",
+      "statement": "Para que servem combinados em espaços compartilhados?",
+      "prompt": "Para que servem combinados em espaços compartilhados?",
+      "options": [
+        "Para apoiar cuidado, segurança, acesso e convivência.",
+        "Para excluir quem é diferente",
+        "Para impedir qualquer escolha",
+        "Para que uma pessoa controle todos"
+      ],
+      "correctAnswer": "Para apoiar cuidado, segurança, acesso e convivência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Para excluir quem é diferente": [
+          "RULE_PURPOSE_REVIEW"
+        ],
+        "Para impedir qualquer escolha": [
+          "RULE_PURPOSE_REVIEW"
+        ],
+        "Para que uma pessoa controle todos": [
+          "RULE_PURPOSE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_COMBINADO",
+      "explanation": "Regras de convivência ajudam pessoas a compartilhar espaços.",
+      "hint": "Lembre-se dos objetivos coletivos.",
+      "errorFocus": "RULE_PURPOSE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Regras de convivência ajudam pessoas a compartilhar espaços.",
+        "incorrect": "Regras de convivência ajudam pessoas a compartilhar espaços.",
+        "hint": "Lembre-se dos objetivos coletivos.",
+        "errorFocus": "RULE_PURPOSE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-34",
+      "statement": "Qual ação mantém um caminho acessível?",
+      "prompt": "Qual ação mantém um caminho acessível?",
+      "options": [
+        "Colocar mochilas no meio",
+        "Deixar a passagem livre de objetos.",
+        "Empilhar caixas na entrada",
+        "Fechar a rota"
+      ],
+      "correctAnswer": "Deixar a passagem livre de objetos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Colocar mochilas no meio": [
+          "KEEP_ACCESS_CLEAR_REVIEW"
+        ],
+        "Empilhar caixas na entrada": [
+          "KEEP_ACCESS_CLEAR_REVIEW"
+        ],
+        "Fechar a rota": [
+          "KEEP_ACCESS_CLEAR_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DA_PASSAGEM",
+      "explanation": "Uma passagem sem obstáculos permite circulação.",
+      "hint": "Pense no que pode bloquear o caminho.",
+      "errorFocus": "KEEP_ACCESS_CLEAR_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma passagem sem obstáculos permite circulação.",
+        "incorrect": "Uma passagem sem obstáculos permite circulação.",
+        "hint": "Pense no que pode bloquear o caminho.",
+        "errorFocus": "KEEP_ACCESS_CLEAR_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-35",
+      "statement": "Por que a regra da biblioteca pode mencionar livros e a do pátio pode mencionar brincadeiras?",
+      "prompt": "Por que a regra da biblioteca pode mencionar livros e a do pátio pode mencionar brincadeiras?",
+      "options": [
+        "Porque respeito só vale na biblioteca",
+        "Porque o pátio não tem atividades",
+        "Porque os usos e materiais mudam conforme o espaço.",
+        "Porque regras nunca se relacionam ao lugar"
+      ],
+      "correctAnswer": "Porque os usos e materiais mudam conforme o espaço.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque respeito só vale na biblioteca": [
+          "SPACE_SPECIFIC_REVIEW"
+        ],
+        "Porque o pátio não tem atividades": [
+          "SPACE_SPECIFIC_REVIEW"
+        ],
+        "Porque regras nunca se relacionam ao lugar": [
+          "SPACE_SPECIFIC_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_ESPAÇO",
+      "explanation": "Regras adequadas consideram o que acontece em cada lugar.",
+      "hint": "Observe a atividade de cada espaço.",
+      "errorFocus": "SPACE_SPECIFIC_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Regras adequadas consideram o que acontece em cada lugar.",
+        "incorrect": "Regras adequadas consideram o que acontece em cada lugar.",
+        "hint": "Observe a atividade de cada espaço.",
+        "errorFocus": "SPACE_SPECIFIC_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-36",
+      "statement": "Uma regra deixa de fora quem não pode responder oralmente. O que fazer?",
+      "prompt": "Uma regra deixa de fora quem não pode responder oralmente. O que fazer?",
+      "options": [
+        "Manter a exclusão",
+        "Escolher por essa pessoa sem perguntar",
+        "Encerrar a discussão",
+        "Adicionar modos de participação como escrita, gesto ou comunicação alternativa."
+      ],
+      "correctAnswer": "Adicionar modos de participação como escrita, gesto ou comunicação alternativa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Manter a exclusão": [
+          "INCLUSIVE_RULE_REVIEW"
+        ],
+        "Escolher por essa pessoa sem perguntar": [
+          "INCLUSIVE_RULE_REVIEW"
+        ],
+        "Encerrar a discussão": [
+          "INCLUSIVE_RULE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_INCLUSAO",
+      "explanation": "A regra deve permitir diferentes modos de contribuição.",
+      "hint": "Revise o processo para incluir a voz da pessoa.",
+      "errorFocus": "INCLUSIVE_RULE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A regra deve permitir diferentes modos de contribuição.",
+        "incorrect": "A regra deve permitir diferentes modos de contribuição.",
+        "hint": "Revise o processo para incluir a voz da pessoa.",
+        "errorFocus": "INCLUSIVE_RULE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-37",
+      "statement": "Que passo faz parte da criação coletiva de regras?",
+      "prompt": "Que passo faz parte da criação coletiva de regras?",
+      "options": [
+        "Ouvir propostas, discutir a finalidade e registrar um acordo.",
+        "Decidir sem ouvir usuários",
+        "Punir quem sugere outra ideia",
+        "Copiar sem observar o espaço"
+      ],
+      "correctAnswer": "Ouvir propostas, discutir a finalidade e registrar um acordo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Decidir sem ouvir usuários": [
+          "COLLECTIVE_AUTHORING_REVIEW"
+        ],
+        "Punir quem sugere outra ideia": [
+          "COLLECTIVE_AUTHORING_REVIEW"
+        ],
+        "Copiar sem observar o espaço": [
+          "COLLECTIVE_AUTHORING_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ELABORACAO",
+      "explanation": "A participação envolve escuta e discussão do objetivo.",
+      "hint": "Escolha o processo que inclui as pessoas.",
+      "errorFocus": "COLLECTIVE_AUTHORING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A participação envolve escuta e discussão do objetivo.",
+        "incorrect": "A participação envolve escuta e discussão do objetivo.",
+        "hint": "Escolha o processo que inclui as pessoas.",
+        "errorFocus": "COLLECTIVE_AUTHORING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-38",
+      "statement": "O que torna uma regra mais fácil de seguir?",
+      "prompt": "O que torna uma regra mais fácil de seguir?",
+      "options": [
+        "Uma frase vaga sem verbo",
+        "Uma ação concreta ligada ao espaço e à finalidade.",
+        "Uma ameaça sem explicação",
+        "Uma regra que ninguém conhece"
+      ],
+      "correctAnswer": "Uma ação concreta ligada ao espaço e à finalidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma frase vaga sem verbo": [
+          "CLEAR_RULE_REVIEW"
+        ],
+        "Uma ameaça sem explicação": [
+          "CLEAR_RULE_REVIEW"
+        ],
+        "Uma regra que ninguém conhece": [
+          "CLEAR_RULE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_REGRA_CLARA",
+      "explanation": "Ação clara e contexto tornam o combinado compreensível.",
+      "hint": "Procure o que a pessoa pode fazer.",
+      "errorFocus": "CLEAR_RULE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Ação clara e contexto tornam o combinado compreensível.",
+        "incorrect": "Ação clara e contexto tornam o combinado compreensível.",
+        "hint": "Procure o que a pessoa pode fazer.",
+        "errorFocus": "CLEAR_RULE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-39",
+      "statement": "Por que devemos testar um combinado com diferentes usuários do espaço?",
+      "prompt": "Por que devemos testar um combinado com diferentes usuários do espaço?",
+      "options": [
+        "Para escolher quem fica de fora",
+        "Para impedir revisões",
+        "Para perceber se a regra é segura, acessível e possível para as pessoas que o usam.",
+        "Para deixar a regra mais longa"
+      ],
+      "correctAnswer": "Para perceber se a regra é segura, acessível e possível para as pessoas que o usam.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para escolher quem fica de fora": [
+          "TEST_FOR_ACCESS_REVIEW"
+        ],
+        "Para impedir revisões": [
+          "TEST_FOR_ACCESS_REVIEW"
+        ],
+        "Para deixar a regra mais longa": [
+          "TEST_FOR_ACCESS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "REVISAO_DE_ACESSO",
+      "explanation": "Testar identifica barreiras antes de tornar o combinado definitivo.",
+      "hint": "Considere os diferentes modos de usar o lugar.",
+      "errorFocus": "TEST_FOR_ACCESS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Testar identifica barreiras antes de tornar o combinado definitivo.",
+        "incorrect": "Testar identifica barreiras antes de tornar o combinado definitivo.",
+        "hint": "Considere os diferentes modos de usar o lugar.",
+        "errorFocus": "TEST_FOR_ACCESS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge04-co-create-rules-for-shared-spaces-40",
+      "statement": "Qual síntese descreve um bom combinado?",
+      "prompt": "Qual síntese descreve um bom combinado?",
+      "options": [
+        "É imposto e exclui quem precisa de apoio",
+        "É igual para todos os espaços sem considerar usos",
+        "É uma punição sem objetivo",
+        "É construído com participação, indica ações claras e respeita acesso, segurança e diferenças."
+      ],
+      "correctAnswer": "É construído com participação, indica ações claras e respeita acesso, segurança e diferenças.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "É imposto e exclui quem precisa de apoio": [
+          "CO_CREATED_INCLUSIVE_RULE_SUMMARY"
+        ],
+        "É igual para todos os espaços sem considerar usos": [
+          "CO_CREATED_INCLUSIVE_RULE_SUMMARY"
+        ],
+        "É uma punição sem objetivo": [
+          "CO_CREATED_INCLUSIVE_RULE_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SINTese_DE_CONVIVENCIA",
+      "explanation": "A síntese combina participação, clareza e inclusão.",
+      "hint": "Reúna os principais critérios da lição.",
+      "errorFocus": "CO_CREATED_INCLUSIVE_RULE_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A síntese combina participação, clareza e inclusão.",
+        "incorrect": "A síntese combina participação, clareza e inclusão.",
+        "hint": "Reúna os principais critérios da lição.",
+        "errorFocus": "CO_CREATED_INCLUSIVE_RULE_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar cartões visuais de ações, turnos de fala, pictogramas e registros ampliados dos combinados.",
+          "Permitir contribuir por fala, desenho, apontamento, Libras ou comunicação alternativa, com tempo de resposta suficiente.",
+          "Revisar regras para garantir circulação acessível, participação sem discriminação e alternativas a uma única forma de comunicação."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
