@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories",
+  "canonicalSkillCode": "AUTHORING_EF01GE08_CREATE_MAPS_FROM_ROUTES_AND_STORIES",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "mapas mentais e desenhos baseados em itinerários, contos, histórias e brincadeiras",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE08",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Criar mapas mentais e desenhos com base em itinerários, contos literários, histórias inventadas e brincadeiras.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Desenhar caminhos e lugares de histórias",
+    "objective": "Representar em desenho ou mapa mental elementos e trajetos de histórias, brincadeiras e percursos fictícios usando referências espaciais compreensíveis.",
+    "summary": "Mapas mentais e desenhos podem representar lugares, caminhos e relações espaciais de formas variadas. Uma história pode inspirar o mapa de um reino imaginário, e uma brincadeira pode levar à representação de seus pontos de parada. Símbolos, legendas, marcos e setas ajudam quem lê a compreender o desenho. Um mapa de atividade não precisa ser uma planta exata nem reproduzir distâncias reais. Para proteger a privacidade, a proposta usa itinerários fictícios ou materiais públicos e nunca pede endereços, rotas de casa ou localização em tempo real de estudantes.",
+    "explanation": "Escolha uma história, brincadeira ou percurso fictício que tenha marcos identificáveis. Desenhe os lugares ou objetos principais, organize-os em relação uns aos outros e crie símbolos com legenda. Uma seta pode indicar o caminho de uma personagem da ponte até a praça; a legenda explica o que cada símbolo representa. Confira se outra pessoa consegue acompanhar a sequência. Não é necessário desenhar o próprio trajeto diário ou fornecer endereço para criar uma representação espacial.",
+    "workedExample": "Num conto inventado, uma personagem sai da cabana, passa por uma árvore e chega ao lago. Um mapa mental pode mostrar cabana → árvore → lago e usar a legenda para identificar cada desenho. Ele representa a sequência do conto, não um lugar real medido.",
+    "commonMistake": "Confundir um mapa de história com um registro preciso de um lugar real, ou desenhar referências sem explicar o que os símbolos significam.",
+    "priorKnowledge": [
+      "Reconhecer lugares e marcos em imagens ou narrativas.",
+      "Organizar uma sequência simples de ações ou deslocamentos."
+    ],
+    "keyConcepts": [
+      "mapa mental",
+      "desenho",
+      "itinerário",
+      "marco",
+      "símbolo",
+      "legenda",
+      "trajeto",
+      "referência espacial"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MAP_ROUTE_SEQUENCE",
+        "action": "Ordene cartões dos marcos do percurso antes de desenhá-los e conectá-los."
+      },
+      {
+        "errorFocus": "SYMBOL_AND_LEGEND",
+        "action": "Associe cada símbolo a uma palavra ou descrição curta numa legenda visível."
+      },
+      {
+        "errorFocus": "LOCATION_PRIVACY",
+        "action": "Troque qualquer percurso pessoal por rota fictícia ou história inventada, sem registrar endereços."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+      "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+      "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge08-story-route-map",
+        "title": "Mapa do percurso de uma personagem",
+        "instructions": "Uma história inventada descreve três marcos pelos quais uma personagem passa.\n1. Identifique os marcos na narrativa.\n2. Organize-os na sequência do percurso.\n3. Desenhe um mapa com símbolos e legenda.",
+        "steps": [
+          "Identifique os marcos na narrativa.",
+          "Organize-os na sequência do percurso.",
+          "Desenhe um mapa com símbolos e legenda."
+        ],
+        "evidence": "Mapa mental que representa a rota fictícia e explica seus símbolos.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um marco com apoio.",
+            "developing": "organiza o percurso.",
+            "proficient": "representa a sequência com símbolos compreensíveis e legenda."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge08-playground-game-map",
+        "title": "Mapa de uma brincadeira inventada",
+        "instructions": "Um jogo fictício usa pontos de parada, uma ponte de peças e uma área de chegada.\n1. Leia ou escute as instruções do jogo.\n2. Desenhe os pontos de referência.\n3. Acrescente setas e uma legenda para outro grupo seguir.",
+        "steps": [
+          "Leia ou escute as instruções do jogo.",
+          "Desenhe os pontos de referência.",
+          "Acrescente setas e uma legenda para outro grupo seguir."
+        ],
+        "evidence": "Desenho que comunica os espaços e a sequência da brincadeira.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "representa um lugar.",
+            "developing": "conecta pontos do jogo.",
+            "proficient": "comunica a rota com marcos, setas e legenda."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-01",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-02",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-03",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-04",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-05",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-06",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-07",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-09",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-10",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-11",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-12",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-13",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-14",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-15",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-17",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-18",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-19",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-20",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-21",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-22",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-23",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-25",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-26",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-27",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-28",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-29",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-30",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-31",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-33",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-34",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-35",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-36",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-37",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-38",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-39",
+          "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE08",
+        "descriptor": "Criar mapas mentais e desenhos com base em itinerários, contos literários, histórias inventadas e brincadeiras.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-01",
+      "statement": "Num conto, a personagem passa pela ponte antes da cabana. O que um mapa pode representar?",
+      "prompt": "Num conto, a personagem passa pela ponte antes da cabana. O que um mapa pode representar?",
+      "options": [
+        "A sequência ponte e cabana do conto.",
+        "O endereço real de quem lê",
+        "O caminho de todos os moradores",
+        "Uma medida exata sem dados"
+      ],
+      "correctAnswer": "A sequência ponte e cabana do conto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O endereço real de quem lê": [
+          "REPRESENT_STORY_ROUTE"
+        ],
+        "O caminho de todos os moradores": [
+          "REPRESENT_STORY_ROUTE"
+        ],
+        "Uma medida exata sem dados": [
+          "REPRESENT_STORY_ROUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CONTO_DA_CABANA",
+      "explanation": "A narrativa informa a ordem dos marcos.",
+      "hint": "Use os lugares citados na história.",
+      "errorFocus": "REPRESENT_STORY_ROUTE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa informa a ordem dos marcos.",
+        "incorrect": "A narrativa informa a ordem dos marcos.",
+        "hint": "Use os lugares citados na história.",
+        "errorFocus": "REPRESENT_STORY_ROUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-02",
+      "statement": "Num desenho, uma estrela representa a praça. Onde se explica esse símbolo?",
+      "prompt": "Num desenho, uma estrela representa a praça. Onde se explica esse símbolo?",
+      "options": [
+        "No endereço de uma criança",
+        "Na legenda do mapa.",
+        "No fim de outra história",
+        "Na escala de temperatura"
+      ],
+      "correctAnswer": "Na legenda do mapa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "No endereço de uma criança": [
+          "USE_MAP_LEGEND"
+        ],
+        "No fim de outra história": [
+          "USE_MAP_LEGEND"
+        ],
+        "Na escala de temperatura": [
+          "USE_MAP_LEGEND"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LEGENDA_DA_PRACA",
+      "explanation": "A legenda associa símbolos e significados.",
+      "hint": "Procure a chave dos símbolos.",
+      "errorFocus": "USE_MAP_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: A legenda associa símbolos e significados.",
+        "incorrect": "A legenda associa símbolos e significados.",
+        "hint": "Procure a chave dos símbolos.",
+        "errorFocus": "USE_MAP_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-03",
+      "statement": "Uma brincadeira diz: início na árvore, depois a ponte, por fim o lago. Qual sequência deve aparecer?",
+      "prompt": "Uma brincadeira diz: início na árvore, depois a ponte, por fim o lago. Qual sequência deve aparecer?",
+      "options": [
+        "Lago, árvore, ponte",
+        "Ponte, lago, árvore",
+        "Árvore, ponte, lago.",
+        "Árvore, lago, ponte"
+      ],
+      "correctAnswer": "Árvore, ponte, lago.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Lago, árvore, ponte": [
+          "SEQUENCE_ROUTE_MARCOS"
+        ],
+        "Ponte, lago, árvore": [
+          "SEQUENCE_ROUTE_MARCOS"
+        ],
+        "Árvore, lago, ponte": [
+          "SEQUENCE_ROUTE_MARCOS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "ROTA_DA_BONECA",
+      "explanation": "A instrução apresenta essa ordem.",
+      "hint": "Siga as palavras “depois” e “por fim”.",
+      "errorFocus": "SEQUENCE_ROUTE_MARCOS",
+      "feedback": {
+        "correct": "Boa observação: A instrução apresenta essa ordem.",
+        "incorrect": "A instrução apresenta essa ordem.",
+        "hint": "Siga as palavras “depois” e “por fim”.",
+        "errorFocus": "SEQUENCE_ROUTE_MARCOS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-04",
+      "statement": "Um mapa de um reino inventado representa...",
+      "prompt": "Um mapa de um reino inventado representa...",
+      "options": [
+        "a localização exata de casas reais",
+        "a rota privada de cada estudante",
+        "uma medição de toda a cidade",
+        "lugares e caminhos da história imaginada."
+      ],
+      "correctAnswer": "lugares e caminhos da história imaginada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "a localização exata de casas reais": [
+          "DISTINGUISH_FICTIONAL_MAP"
+        ],
+        "a rota privada de cada estudante": [
+          "DISTINGUISH_FICTIONAL_MAP"
+        ],
+        "uma medição de toda a cidade": [
+          "DISTINGUISH_FICTIONAL_MAP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MAPA_FICTICIO",
+      "explanation": "O mapa é baseado numa história inventada.",
+      "hint": "Considere de onde veio o percurso.",
+      "errorFocus": "DISTINGUISH_FICTIONAL_MAP",
+      "feedback": {
+        "correct": "Boa observação: O mapa é baseado numa história inventada.",
+        "incorrect": "O mapa é baseado numa história inventada.",
+        "hint": "Considere de onde veio o percurso.",
+        "errorFocus": "DISTINGUISH_FICTIONAL_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-05",
+      "statement": "Um mapa usa círculos, mas não diz o que representam. O que melhoraria a leitura?",
+      "prompt": "Um mapa usa círculos, mas não diz o que representam. O que melhoraria a leitura?",
+      "options": [
+        "Adicionar uma legenda que explique os círculos.",
+        "Apagar todos os lugares",
+        "Adicionar um endereço pessoal",
+        "Misturar os símbolos sem explicação"
+      ],
+      "correctAnswer": "Adicionar uma legenda que explique os círculos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Apagar todos os lugares": [
+          "IMPROVE_MAP_CLARITY"
+        ],
+        "Adicionar um endereço pessoal": [
+          "IMPROVE_MAP_CLARITY"
+        ],
+        "Misturar os símbolos sem explicação": [
+          "IMPROVE_MAP_CLARITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SIMBOLO_SEM_LEGENDA",
+      "explanation": "A legenda esclarece o significado dos símbolos.",
+      "hint": "Explique cada marca.",
+      "errorFocus": "IMPROVE_MAP_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: A legenda esclarece o significado dos símbolos.",
+        "incorrect": "A legenda esclarece o significado dos símbolos.",
+        "hint": "Explique cada marca.",
+        "errorFocus": "IMPROVE_MAP_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-06",
+      "statement": "Para desenhar uma rota na aula com segurança, qual base é adequada?",
+      "prompt": "Para desenhar uma rota na aula com segurança, qual base é adequada?",
+      "options": [
+        "O endereço residencial de cada colega",
+        "Um caminho fictício descrito num conto.",
+        "A localização ao vivo da turma",
+        "Fotos de casas sem autorização"
+      ],
+      "correctAnswer": "Um caminho fictício descrito num conto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O endereço residencial de cada colega": [
+          "SAFE_ROUTE_SOURCE"
+        ],
+        "A localização ao vivo da turma": [
+          "SAFE_ROUTE_SOURCE"
+        ],
+        "Fotos de casas sem autorização": [
+          "SAFE_ROUTE_SOURCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRIVACIDADE_DO_ITINERARIO",
+      "explanation": "A rota inventada evita divulgar localização pessoal.",
+      "hint": "Escolha um trajeto não pessoal.",
+      "errorFocus": "SAFE_ROUTE_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A rota inventada evita divulgar localização pessoal.",
+        "incorrect": "A rota inventada evita divulgar localização pessoal.",
+        "hint": "Escolha um trajeto não pessoal.",
+        "errorFocus": "SAFE_ROUTE_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-07",
+      "statement": "Num mapa de jogo, para que servem setas ao longo do trajeto?",
+      "prompt": "Num mapa de jogo, para que servem setas ao longo do trajeto?",
+      "options": [
+        "Para mostrar a idade da personagem",
+        "Para substituir todos os marcos",
+        "Para indicar a direção ou sequência do caminho.",
+        "Para indicar o valor de cada objeto"
+      ],
+      "correctAnswer": "Para indicar a direção ou sequência do caminho.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para mostrar a idade da personagem": [
+          "ARROWS_SHOW_ROUTE"
+        ],
+        "Para substituir todos os marcos": [
+          "ARROWS_SHOW_ROUTE"
+        ],
+        "Para indicar o valor de cada objeto": [
+          "ARROWS_SHOW_ROUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SETAS_DO_CAMINHO",
+      "explanation": "As setas ajudam a acompanhar a rota.",
+      "hint": "Siga o desenho do caminho.",
+      "errorFocus": "ARROWS_SHOW_ROUTE",
+      "feedback": {
+        "correct": "Boa observação: As setas ajudam a acompanhar a rota.",
+        "incorrect": "As setas ajudam a acompanhar a rota.",
+        "hint": "Siga o desenho do caminho.",
+        "errorFocus": "ARROWS_SHOW_ROUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-08",
+      "statement": "Dois mapas mostram interpretações diferentes do mesmo conto. O que pode ser comparado?",
+      "prompt": "Dois mapas mostram interpretações diferentes do mesmo conto. O que pode ser comparado?",
+      "options": [
+        "Qual estudante mora no lugar",
+        "Qual mapa revela endereço real",
+        "Qual história é a única permitida",
+        "Os marcos e a forma como cada mapa os organizou."
+      ],
+      "correctAnswer": "Os marcos e a forma como cada mapa os organizou.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual estudante mora no lugar": [
+          "COMPARE_MAP_REPRESENTATIONS"
+        ],
+        "Qual mapa revela endereço real": [
+          "COMPARE_MAP_REPRESENTATIONS"
+        ],
+        "Qual história é a única permitida": [
+          "COMPARE_MAP_REPRESENTATIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_MAPAS_DE_HISTORIA",
+      "explanation": "Mapas podem organizar os elementos de modos variados.",
+      "hint": "Compare as representações, não a vida pessoal.",
+      "errorFocus": "COMPARE_MAP_REPRESENTATIONS",
+      "feedback": {
+        "correct": "Boa observação: Mapas podem organizar os elementos de modos variados.",
+        "incorrect": "Mapas podem organizar os elementos de modos variados.",
+        "hint": "Compare as representações, não a vida pessoal.",
+        "errorFocus": "COMPARE_MAP_REPRESENTATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-09",
+      "statement": "Uma história diz: robô sai da oficina, passa pelo jardim e chega à torre. Qual marco vem depois da oficina?",
+      "prompt": "Uma história diz: robô sai da oficina, passa pelo jardim e chega à torre. Qual marco vem depois da oficina?",
+      "options": [
+        "Jardim.",
+        "Torre",
+        "Lago",
+        "Oficina"
+      ],
+      "correctAnswer": "Jardim.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Torre": [
+          "FOLLOW_STORY_ITINERARY"
+        ],
+        "Lago": [
+          "FOLLOW_STORY_ITINERARY"
+        ],
+        "Oficina": [
+          "FOLLOW_STORY_ITINERARY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "PASSEIO_DO_ROBO",
+      "explanation": "A narrativa coloca o jardim em seguida.",
+      "hint": "Leia a próxima ação.",
+      "errorFocus": "FOLLOW_STORY_ITINERARY",
+      "feedback": {
+        "correct": "Boa observação: A narrativa coloca o jardim em seguida.",
+        "incorrect": "A narrativa coloca o jardim em seguida.",
+        "hint": "Leia a próxima ação.",
+        "errorFocus": "FOLLOW_STORY_ITINERARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-10",
+      "statement": "Um desenho mostra biblioteca, ponte e jardim. O que pode ajudar alguém a seguir o percurso?",
+      "prompt": "Um desenho mostra biblioteca, ponte e jardim. O que pode ajudar alguém a seguir o percurso?",
+      "options": [
+        "Apagar a legenda",
+        "Conectar os marcos na ordem descrita e usar setas.",
+        "Adicionar nomes de moradores",
+        "Esconder a direção"
+      ],
+      "correctAnswer": "Conectar os marcos na ordem descrita e usar setas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apagar a legenda": [
+          "CONNECT_ROUTE_LANDMARKS"
+        ],
+        "Adicionar nomes de moradores": [
+          "CONNECT_ROUTE_LANDMARKS"
+        ],
+        "Esconder a direção": [
+          "CONNECT_ROUTE_LANDMARKS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_COM_MARCOS",
+      "explanation": "A sequência e as setas ajudam a acompanhar o trajeto.",
+      "hint": "Organize os marcos.",
+      "errorFocus": "CONNECT_ROUTE_LANDMARKS",
+      "feedback": {
+        "correct": "Boa observação: A sequência e as setas ajudam a acompanhar o trajeto.",
+        "incorrect": "A sequência e as setas ajudam a acompanhar o trajeto.",
+        "hint": "Organize os marcos.",
+        "errorFocus": "CONNECT_ROUTE_LANDMARKS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-11",
+      "statement": "Uma brincadeira usa uma casa de papel e um círculo como chegada. O que o círculo pode representar?",
+      "prompt": "Uma brincadeira usa uma casa de papel e um círculo como chegada. O que o círculo pode representar?",
+      "options": [
+        "A moradia real do estudante",
+        "Uma regra universal",
+        "O ponto de chegada, se isso estiver indicado na legenda.",
+        "Uma distância medida"
+      ],
+      "correctAnswer": "O ponto de chegada, se isso estiver indicado na legenda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A moradia real do estudante": [
+          "MAP_GAME_SYMBOL"
+        ],
+        "Uma regra universal": [
+          "MAP_GAME_SYMBOL"
+        ],
+        "Uma distância medida": [
+          "MAP_GAME_SYMBOL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MAPA_DE_BRINCADEIRA",
+      "explanation": "O significado depende da legenda da brincadeira.",
+      "hint": "Consulte o combinado do mapa.",
+      "errorFocus": "MAP_GAME_SYMBOL",
+      "feedback": {
+        "correct": "Boa observação: O significado depende da legenda da brincadeira.",
+        "incorrect": "O significado depende da legenda da brincadeira.",
+        "hint": "Consulte o combinado do mapa.",
+        "errorFocus": "MAP_GAME_SYMBOL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-12",
+      "statement": "Um mapa tem todos os lugares do conto, mas não mostra qual vem primeiro. O que incluir?",
+      "prompt": "Um mapa tem todos os lugares do conto, mas não mostra qual vem primeiro. O que incluir?",
+      "options": [
+        "Uma lista de endereços",
+        "Mais personagens sem relação",
+        "Dados privados da turma",
+        "Uma sequência ou setas baseada no itinerário narrado."
+      ],
+      "correctAnswer": "Uma sequência ou setas baseada no itinerário narrado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma lista de endereços": [
+          "SHOW_STORY_SEQUENCE"
+        ],
+        "Mais personagens sem relação": [
+          "SHOW_STORY_SEQUENCE"
+        ],
+        "Dados privados da turma": [
+          "SHOW_STORY_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MAPA_SEM_SEQUENCIA",
+      "explanation": "A sequência torna o percurso compreensível.",
+      "hint": "Retome a ordem do conto.",
+      "errorFocus": "SHOW_STORY_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A sequência torna o percurso compreensível.",
+        "incorrect": "A sequência torna o percurso compreensível.",
+        "hint": "Retome a ordem do conto.",
+        "errorFocus": "SHOW_STORY_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-13",
+      "statement": "Um mapa mental usa desenhos grandes para lugares importantes. Isso significa que...",
+      "prompt": "Um mapa mental usa desenhos grandes para lugares importantes. Isso significa que...",
+      "options": [
+        "ele destaca ideias da história e não precisa medir distâncias reais.",
+        "é necessariamente incorreto",
+        "mostra a escala exata",
+        "representa todos os locais reais"
+      ],
+      "correctAnswer": "ele destaca ideias da história e não precisa medir distâncias reais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "é necessariamente incorreto": [
+          "MENTAL_MAP_NOT_TO_SCALE"
+        ],
+        "mostra a escala exata": [
+          "MENTAL_MAP_NOT_TO_SCALE"
+        ],
+        "representa todos os locais reais": [
+          "MENTAL_MAP_NOT_TO_SCALE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DESENHO_E_PLANTA_EXATA",
+      "explanation": "Mapas mentais podem destacar relações sem escala precisa.",
+      "hint": "Pense no objetivo da representação.",
+      "errorFocus": "MENTAL_MAP_NOT_TO_SCALE",
+      "feedback": {
+        "correct": "Boa observação: Mapas mentais podem destacar relações sem escala precisa.",
+        "incorrect": "Mapas mentais podem destacar relações sem escala precisa.",
+        "hint": "Pense no objetivo da representação.",
+        "errorFocus": "MENTAL_MAP_NOT_TO_SCALE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-14",
+      "statement": "Uma rota inventada passa por duas pontes diferentes. Como distingui-las no mapa?",
+      "prompt": "Uma rota inventada passa por duas pontes diferentes. Como distingui-las no mapa?",
+      "options": [
+        "Apagar uma ponte",
+        "Usar símbolos ou nomes distintos e explicar na legenda.",
+        "Usar o mesmo símbolo sem explicação",
+        "Colocar um endereço de estudante"
+      ],
+      "correctAnswer": "Usar símbolos ou nomes distintos e explicar na legenda.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Apagar uma ponte": [
+          "DISTINGUISH_SIMILAR_LANDMARKS"
+        ],
+        "Usar o mesmo símbolo sem explicação": [
+          "DISTINGUISH_SIMILAR_LANDMARKS"
+        ],
+        "Colocar um endereço de estudante": [
+          "DISTINGUISH_SIMILAR_LANDMARKS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ROTA_COM_DUAS_PONTES",
+      "explanation": "Símbolos identificados evitam confusão entre marcos.",
+      "hint": "Dê uma pista para cada ponte.",
+      "errorFocus": "DISTINGUISH_SIMILAR_LANDMARKS",
+      "feedback": {
+        "correct": "Boa observação: Símbolos identificados evitam confusão entre marcos.",
+        "incorrect": "Símbolos identificados evitam confusão entre marcos.",
+        "hint": "Dê uma pista para cada ponte.",
+        "errorFocus": "DISTINGUISH_SIMILAR_LANDMARKS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-15",
+      "statement": "Um conto mostra o pássaro saindo do ninho até uma árvore. Que dois lugares podem aparecer?",
+      "prompt": "Um conto mostra o pássaro saindo do ninho até uma árvore. Que dois lugares podem aparecer?",
+      "options": [
+        "Casa e endereço",
+        "Sala e estacionamento real",
+        "Ninho e árvore.",
+        "Dois lugares não citados"
+      ],
+      "correctAnswer": "Ninho e árvore.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Casa e endereço": [
+          "MAP_NARRATIVE_PLACES"
+        ],
+        "Sala e estacionamento real": [
+          "MAP_NARRATIVE_PLACES"
+        ],
+        "Dois lugares não citados": [
+          "MAP_NARRATIVE_PLACES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "HISTORIA_DO_PASSARO",
+      "explanation": "Esses lugares são citados no conto.",
+      "hint": "Use os marcos nomeados.",
+      "errorFocus": "MAP_NARRATIVE_PLACES",
+      "feedback": {
+        "correct": "Boa observação: Esses lugares são citados no conto.",
+        "incorrect": "Esses lugares são citados no conto.",
+        "hint": "Use os marcos nomeados.",
+        "errorFocus": "MAP_NARRATIVE_PLACES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-16",
+      "statement": "Como tornar um mapa de brincadeira mais acessível?",
+      "prompt": "Como tornar um mapa de brincadeira mais acessível?",
+      "options": [
+        "Esconder a legenda",
+        "Usar apenas marcas minúsculas",
+        "Remover os marcos",
+        "Usar símbolos grandes e descrever o trajeto oralmente."
+      ],
+      "correctAnswer": "Usar símbolos grandes e descrever o trajeto oralmente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Esconder a legenda": [
+          "ACCESSIBLE_ROUTE_MAP"
+        ],
+        "Usar apenas marcas minúsculas": [
+          "ACCESSIBLE_ROUTE_MAP"
+        ],
+        "Remover os marcos": [
+          "ACCESSIBLE_ROUTE_MAP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ROTA_ACESSIVEL",
+      "explanation": "Símbolos grandes e descrição ampliam o acesso.",
+      "hint": "Pense em diferentes formas de leitura.",
+      "errorFocus": "ACCESSIBLE_ROUTE_MAP",
+      "feedback": {
+        "correct": "Boa observação: Símbolos grandes e descrição ampliam o acesso.",
+        "incorrect": "Símbolos grandes e descrição ampliam o acesso.",
+        "hint": "Pense em diferentes formas de leitura.",
+        "errorFocus": "ACCESSIBLE_ROUTE_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-17",
+      "statement": "Uma história inventada inclui colina, árvore e baú. O que um mapa pode mostrar?",
+      "prompt": "Uma história inventada inclui colina, árvore e baú. O que um mapa pode mostrar?",
+      "options": [
+        "A posição e a sequência desses marcos na história.",
+        "A localização de um tesouro real",
+        "O endereço de leitores",
+        "A rota de todos os moradores"
+      ],
+      "correctAnswer": "A posição e a sequência desses marcos na história.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A localização de um tesouro real": [
+          "TRANSFER_MAP_FROM_STORY"
+        ],
+        "O endereço de leitores": [
+          "TRANSFER_MAP_FROM_STORY"
+        ],
+        "A rota de todos os moradores": [
+          "TRANSFER_MAP_FROM_STORY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "CONTO_DO_TESOURO",
+      "explanation": "O mapa representa os elementos da narrativa.",
+      "hint": "Desenhe os marcos do conto.",
+      "errorFocus": "TRANSFER_MAP_FROM_STORY",
+      "feedback": {
+        "correct": "Boa observação: O mapa representa os elementos da narrativa.",
+        "incorrect": "O mapa representa os elementos da narrativa.",
+        "hint": "Desenhe os marcos do conto.",
+        "errorFocus": "TRANSFER_MAP_FROM_STORY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-18",
+      "statement": "Uma seta liga o ponto A ao ponto B num mapa fictício. O que ela indica?",
+      "prompt": "Uma seta liga o ponto A ao ponto B num mapa fictício. O que ela indica?",
+      "options": [
+        "A distância exata sem escala",
+        "Uma direção ou ligação entre os pontos.",
+        "O nome de uma família",
+        "O tempo da história"
+      ],
+      "correctAnswer": "Uma direção ou ligação entre os pontos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A distância exata sem escala": [
+          "READ_MAP_CONNECTION"
+        ],
+        "O nome de uma família": [
+          "READ_MAP_CONNECTION"
+        ],
+        "O tempo da história": [
+          "READ_MAP_CONNECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MAPA_DE_PONTOS",
+      "explanation": "A seta indica ligação ou direção no desenho.",
+      "hint": "Acompanhe a ponta da seta.",
+      "errorFocus": "READ_MAP_CONNECTION",
+      "feedback": {
+        "correct": "Boa observação: A seta indica ligação ou direção no desenho.",
+        "incorrect": "A seta indica ligação ou direção no desenho.",
+        "hint": "Acompanhe a ponta da seta.",
+        "errorFocus": "READ_MAP_CONNECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-19",
+      "statement": "Um tabuleiro inventado tem início, ponte e chegada. Como representar o percurso?",
+      "prompt": "Um tabuleiro inventado tem início, ponte e chegada. Como representar o percurso?",
+      "options": [
+        "Escrever os endereços dos jogadores",
+        "Apagar o início",
+        "Desenhar os pontos na ordem e conectá-los.",
+        "Misturar os pontos sem indicação"
+      ],
+      "correctAnswer": "Desenhar os pontos na ordem e conectá-los.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escrever os endereços dos jogadores": [
+          "MAP_GAME_ROUTE"
+        ],
+        "Apagar o início": [
+          "MAP_GAME_ROUTE"
+        ],
+        "Misturar os pontos sem indicação": [
+          "MAP_GAME_ROUTE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "BRINCADEIRA_DE_TABULEIRO",
+      "explanation": "A ordem conecta início, marcos e chegada.",
+      "hint": "Siga as instruções do jogo.",
+      "errorFocus": "MAP_GAME_ROUTE",
+      "feedback": {
+        "correct": "Boa observação: A ordem conecta início, marcos e chegada.",
+        "incorrect": "A ordem conecta início, marcos e chegada.",
+        "hint": "Siga as instruções do jogo.",
+        "errorFocus": "MAP_GAME_ROUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-20",
+      "statement": "Uma legenda diz que quadrado é escola fictícia e triângulo é árvore. Qual uso está correto?",
+      "prompt": "Uma legenda diz que quadrado é escola fictícia e triângulo é árvore. Qual uso está correto?",
+      "options": [
+        "Adivinhar sem consultar",
+        "Trocar significados sem avisar",
+        "Concluir que é uma escola real",
+        "Ler cada símbolo conforme a legenda."
+      ],
+      "correctAnswer": "Ler cada símbolo conforme a legenda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Adivinhar sem consultar": [
+          "INTERPRET_MAP_LEGEND"
+        ],
+        "Trocar significados sem avisar": [
+          "INTERPRET_MAP_LEGEND"
+        ],
+        "Concluir que é uma escola real": [
+          "INTERPRET_MAP_LEGEND"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LEGENDA_DE_SIMBOLOS",
+      "explanation": "A legenda define os símbolos daquele mapa.",
+      "hint": "Use as combinações indicadas.",
+      "errorFocus": "INTERPRET_MAP_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: A legenda define os símbolos daquele mapa.",
+        "incorrect": "A legenda define os símbolos daquele mapa.",
+        "hint": "Use as combinações indicadas.",
+        "errorFocus": "INTERPRET_MAP_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-21",
+      "statement": "Duas crianças desenham mapas diferentes de uma brincadeira. Como comparar?",
+      "prompt": "Duas crianças desenham mapas diferentes de uma brincadeira. Como comparar?",
+      "options": [
+        "Verificar quais marcos e relações cada desenho representa.",
+        "Descobrir quem mora mais perto",
+        "Classificar uma criança como errada sem critério",
+        "Exigir a localização pessoal"
+      ],
+      "correctAnswer": "Verificar quais marcos e relações cada desenho representa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Descobrir quem mora mais perto": [
+          "ANALYZE_MAP_CHOICES"
+        ],
+        "Classificar uma criança como errada sem critério": [
+          "ANALYZE_MAP_CHOICES"
+        ],
+        "Exigir a localização pessoal": [
+          "ANALYZE_MAP_CHOICES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MAPAS_COM_PERSPECTIVAS",
+      "explanation": "Representações podem destacar relações diferentes.",
+      "hint": "Compare elementos e propósito.",
+      "errorFocus": "ANALYZE_MAP_CHOICES",
+      "feedback": {
+        "correct": "Boa observação: Representações podem destacar relações diferentes.",
+        "incorrect": "Representações podem destacar relações diferentes.",
+        "hint": "Compare elementos e propósito.",
+        "errorFocus": "ANALYZE_MAP_CHOICES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-22",
+      "statement": "Uma rota fictícia de personagem pode ser usada sem revelar...",
+      "prompt": "Uma rota fictícia de personagem pode ser usada sem revelar...",
+      "options": [
+        "a ordem do conto",
+        "o endereço ou trajeto pessoal de estudantes.",
+        "os símbolos do desenho",
+        "os lugares inventados"
+      ],
+      "correctAnswer": "o endereço ou trajeto pessoal de estudantes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a ordem do conto": [
+          "PROTECT_ROUTE_PRIVACY"
+        ],
+        "os símbolos do desenho": [
+          "PROTECT_ROUTE_PRIVACY"
+        ],
+        "os lugares inventados": [
+          "PROTECT_ROUTE_PRIVACY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ROTA_PUBLICA_E_PRIVADA",
+      "explanation": "A atividade usa espaços imaginários.",
+      "hint": "Mantenha dados pessoais fora do mapa.",
+      "errorFocus": "PROTECT_ROUTE_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: A atividade usa espaços imaginários.",
+        "incorrect": "A atividade usa espaços imaginários.",
+        "hint": "Mantenha dados pessoais fora do mapa.",
+        "errorFocus": "PROTECT_ROUTE_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-23",
+      "statement": "No conto, a personagem vai do rio à clareira e depois à caverna. Qual é o último marco?",
+      "prompt": "No conto, a personagem vai do rio à clareira e depois à caverna. Qual é o último marco?",
+      "options": [
+        "Rio",
+        "Clareira",
+        "Caverna.",
+        "Ponte"
+      ],
+      "correctAnswer": "Caverna.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Rio": [
+          "TRANSFER_ORDER_LANDMARKS"
+        ],
+        "Clareira": [
+          "TRANSFER_ORDER_LANDMARKS"
+        ],
+        "Ponte": [
+          "TRANSFER_ORDER_LANDMARKS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "MAPA_DA_FLORESTA_FICTICIA",
+      "explanation": "A caverna vem depois da clareira.",
+      "hint": "Leia o último trecho.",
+      "errorFocus": "TRANSFER_ORDER_LANDMARKS",
+      "feedback": {
+        "correct": "Boa observação: A caverna vem depois da clareira.",
+        "incorrect": "A caverna vem depois da clareira.",
+        "hint": "Leia o último trecho.",
+        "errorFocus": "TRANSFER_ORDER_LANDMARKS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-24",
+      "statement": "O que ajuda outra pessoa a compreender um mapa mental?",
+      "prompt": "O que ajuda outra pessoa a compreender um mapa mental?",
+      "options": [
+        "Símbolos sem significado",
+        "Endereços privados",
+        "Desenhos sem relação com a história",
+        "Marcos identificados, sequência clara e legenda dos símbolos."
+      ],
+      "correctAnswer": "Marcos identificados, sequência clara e legenda dos símbolos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Símbolos sem significado": [
+          "JUSTIFY_MAP_READABILITY"
+        ],
+        "Endereços privados": [
+          "JUSTIFY_MAP_READABILITY"
+        ],
+        "Desenhos sem relação com a história": [
+          "JUSTIFY_MAP_READABILITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "MAPA_COMUNICAVEL",
+      "explanation": "A representação deve comunicar seus elementos e relações.",
+      "hint": "Pense em quem vai ler o mapa.",
+      "errorFocus": "JUSTIFY_MAP_READABILITY",
+      "feedback": {
+        "correct": "Boa observação: A representação deve comunicar seus elementos e relações.",
+        "incorrect": "A representação deve comunicar seus elementos e relações.",
+        "hint": "Pense em quem vai ler o mapa.",
+        "errorFocus": "JUSTIFY_MAP_READABILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-25",
+      "statement": "Uma legenda de mapa serve para...",
+      "prompt": "Uma legenda de mapa serve para...",
+      "options": [
+        "explicar o significado dos símbolos.",
+        "medir a idade das personagens",
+        "mostrar endereços privados",
+        "substituir todos os marcos"
+      ],
+      "correctAnswer": "explicar o significado dos símbolos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "medir a idade das personagens": [
+          "RECALL_MAP_LEGEND"
+        ],
+        "mostrar endereços privados": [
+          "RECALL_MAP_LEGEND"
+        ],
+        "substituir todos os marcos": [
+          "RECALL_MAP_LEGEND"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "FUNCAO_DA_LEGENDA",
+      "explanation": "A legenda associa marcas e lugares ou ideias.",
+      "hint": "Lembre da chave de símbolos.",
+      "errorFocus": "RECALL_MAP_LEGEND",
+      "feedback": {
+        "correct": "Boa observação: A legenda associa marcas e lugares ou ideias.",
+        "incorrect": "A legenda associa marcas e lugares ou ideias.",
+        "hint": "Lembre da chave de símbolos.",
+        "errorFocus": "RECALL_MAP_LEGEND"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-26",
+      "statement": "Uma ponte citada num conto pode aparecer no mapa como...",
+      "prompt": "Uma ponte citada num conto pode aparecer no mapa como...",
+      "options": [
+        "um dado pessoal",
+        "um marco do percurso da personagem.",
+        "uma medida de temperatura",
+        "um símbolo sem contexto"
+      ],
+      "correctAnswer": "um marco do percurso da personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um dado pessoal": [
+          "RECALL_LANDMARK"
+        ],
+        "uma medida de temperatura": [
+          "RECALL_LANDMARK"
+        ],
+        "um símbolo sem contexto": [
+          "RECALL_LANDMARK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MARCO_DA_HISTORIA",
+      "explanation": "A ponte é um lugar citado na rota.",
+      "hint": "Use um elemento da história.",
+      "errorFocus": "RECALL_LANDMARK",
+      "feedback": {
+        "correct": "Boa observação: A ponte é um lugar citado na rota.",
+        "incorrect": "A ponte é um lugar citado na rota.",
+        "hint": "Use um elemento da história.",
+        "errorFocus": "RECALL_LANDMARK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-27",
+      "statement": "Um mapa mental de uma brincadeira precisa sempre ter medidas exatas?",
+      "prompt": "Um mapa mental de uma brincadeira precisa sempre ter medidas exatas?",
+      "options": [
+        "Sim, deve ser uma planta oficial",
+        "Sim, precisa mostrar endereços reais",
+        "Não; pode destacar lugares e relações importantes.",
+        "Não, não pode ter símbolos"
+      ],
+      "correctAnswer": "Não; pode destacar lugares e relações importantes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, deve ser uma planta oficial": [
+          "RECALL_MENTAL_MAP_PURPOSE"
+        ],
+        "Sim, precisa mostrar endereços reais": [
+          "RECALL_MENTAL_MAP_PURPOSE"
+        ],
+        "Não, não pode ter símbolos": [
+          "RECALL_MENTAL_MAP_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MAPA_MENTAL",
+      "explanation": "A representação pode ser esquemática.",
+      "hint": "Considere seu propósito.",
+      "errorFocus": "RECALL_MENTAL_MAP_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A representação pode ser esquemática.",
+        "incorrect": "A representação pode ser esquemática.",
+        "hint": "Considere seu propósito.",
+        "errorFocus": "RECALL_MENTAL_MAP_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-28",
+      "statement": "Para indicar qual lugar vem depois em um itinerário, pode-se usar...",
+      "prompt": "Para indicar qual lugar vem depois em um itinerário, pode-se usar...",
+      "options": [
+        "uma lista de senhas",
+        "cores sem legenda",
+        "fotografias de casas privadas",
+        "setas conectando os marcos na ordem."
+      ],
+      "correctAnswer": "setas conectando os marcos na ordem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma lista de senhas": [
+          "RECALL_ROUTE_ARROWS"
+        ],
+        "cores sem legenda": [
+          "RECALL_ROUTE_ARROWS"
+        ],
+        "fotografias de casas privadas": [
+          "RECALL_ROUTE_ARROWS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SEQUENCIA_COM_SETAS",
+      "explanation": "As setas ajudam a comunicar a ordem do trajeto.",
+      "hint": "Siga a direção do caminho.",
+      "errorFocus": "RECALL_ROUTE_ARROWS",
+      "feedback": {
+        "correct": "Boa observação: As setas ajudam a comunicar a ordem do trajeto.",
+        "incorrect": "As setas ajudam a comunicar a ordem do trajeto.",
+        "hint": "Siga a direção do caminho.",
+        "errorFocus": "RECALL_ROUTE_ARROWS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-29",
+      "statement": "Que percurso é apropriado para mapear na atividade?",
+      "prompt": "Que percurso é apropriado para mapear na atividade?",
+      "options": [
+        "O trajeto de uma história inventada.",
+        "A rota residencial de todos os alunos",
+        "A localização ao vivo da turma",
+        "O endereço particular de um colega"
+      ],
+      "correctAnswer": "O trajeto de uma história inventada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A rota residencial de todos os alunos": [
+          "RECALL_PRIVACY_SAFE_ROUTE"
+        ],
+        "A localização ao vivo da turma": [
+          "RECALL_PRIVACY_SAFE_ROUTE"
+        ],
+        "O endereço particular de um colega": [
+          "RECALL_PRIVACY_SAFE_ROUTE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FONTE_SEGURA_DE_MAPA",
+      "explanation": "A ficção preserva a privacidade.",
+      "hint": "Escolha uma rota imaginada.",
+      "errorFocus": "RECALL_PRIVACY_SAFE_ROUTE",
+      "feedback": {
+        "correct": "Boa observação: A ficção preserva a privacidade.",
+        "incorrect": "A ficção preserva a privacidade.",
+        "hint": "Escolha uma rota imaginada.",
+        "errorFocus": "RECALL_PRIVACY_SAFE_ROUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-30",
+      "statement": "Um desenho de história com lugares conectados pode funcionar como...",
+      "prompt": "Um desenho de história com lugares conectados pode funcionar como...",
+      "options": [
+        "um documento de endereço real",
+        "uma representação espacial da narrativa.",
+        "uma medição exata sem escala",
+        "uma prova de que o conto aconteceu"
+      ],
+      "correctAnswer": "uma representação espacial da narrativa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um documento de endereço real": [
+          "RECALL_SPATIAL_REPRESENTATION"
+        ],
+        "uma medição exata sem escala": [
+          "RECALL_SPATIAL_REPRESENTATION"
+        ],
+        "uma prova de que o conto aconteceu": [
+          "RECALL_SPATIAL_REPRESENTATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DESENHO_E_MAPA",
+      "explanation": "O desenho organiza lugares e relações.",
+      "hint": "Observe os lugares conectados.",
+      "errorFocus": "RECALL_SPATIAL_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: O desenho organiza lugares e relações.",
+        "incorrect": "O desenho organiza lugares e relações.",
+        "hint": "Observe os lugares conectados.",
+        "errorFocus": "RECALL_SPATIAL_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-31",
+      "statement": "Dois símbolos iguais aparecem na legenda com significados diferentes sem aviso. Qual problema pode ocorrer?",
+      "prompt": "Dois símbolos iguais aparecem na legenda com significados diferentes sem aviso. Qual problema pode ocorrer?",
+      "options": [
+        "O mapa fica automaticamente em escala",
+        "A história muda de autor",
+        "Quem lê pode confundir os lugares representados.",
+        "A rota se torna uma medição"
+      ],
+      "correctAnswer": "Quem lê pode confundir os lugares representados.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O mapa fica automaticamente em escala": [
+          "RECALL_SYMBOL_CLARITY"
+        ],
+        "A história muda de autor": [
+          "RECALL_SYMBOL_CLARITY"
+        ],
+        "A rota se torna uma medição": [
+          "RECALL_SYMBOL_CLARITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SIMBOLO_REPETIDO",
+      "explanation": "Significados claros evitam confusão.",
+      "hint": "Pense em quem interpreta o mapa.",
+      "errorFocus": "RECALL_SYMBOL_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: Significados claros evitam confusão.",
+        "incorrect": "Significados claros evitam confusão.",
+        "hint": "Pense em quem interpreta o mapa.",
+        "errorFocus": "RECALL_SYMBOL_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-32",
+      "statement": "Criar mapa a partir de uma história envolve...",
+      "prompt": "Criar mapa a partir de uma história envolve...",
+      "options": [
+        "revelar endereços da turma",
+        "medir todo lugar real",
+        "fazer todos os desenhos iguais",
+        "representar lugares e caminhos com referências e símbolos compreensíveis."
+      ],
+      "correctAnswer": "representar lugares e caminhos com referências e símbolos compreensíveis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "revelar endereços da turma": [
+          "MAP_CREATION_SUMMARY"
+        ],
+        "medir todo lugar real": [
+          "MAP_CREATION_SUMMARY"
+        ],
+        "fazer todos os desenhos iguais": [
+          "MAP_CREATION_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_MAPA",
+      "explanation": "Mapas comunicam referências e relações.",
+      "hint": "Reúna caminho, marcos e legenda.",
+      "errorFocus": "MAP_CREATION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Mapas comunicam referências e relações.",
+        "incorrect": "Mapas comunicam referências e relações.",
+        "hint": "Reúna caminho, marcos e legenda.",
+        "errorFocus": "MAP_CREATION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-33",
+      "statement": "Árvore, ponte e lago podem ser...",
+      "prompt": "Árvore, ponte e lago podem ser...",
+      "options": [
+        "marcos de um itinerário fictício.",
+        "dados de temperatura",
+        "nomes obrigatórios de ruas",
+        "sílabas de uma frase"
+      ],
+      "correctAnswer": "marcos de um itinerário fictício.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "dados de temperatura": [
+          "REVIEW_LANDMARKS"
+        ],
+        "nomes obrigatórios de ruas": [
+          "REVIEW_LANDMARKS"
+        ],
+        "sílabas de uma frase": [
+          "REVIEW_LANDMARKS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_MARCO",
+      "explanation": "Esses lugares podem compor uma rota de história.",
+      "hint": "Pense nos pontos do caminho.",
+      "errorFocus": "REVIEW_LANDMARKS",
+      "feedback": {
+        "correct": "Boa observação: Esses lugares podem compor uma rota de história.",
+        "incorrect": "Esses lugares podem compor uma rota de história.",
+        "hint": "Pense nos pontos do caminho.",
+        "errorFocus": "REVIEW_LANDMARKS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-34",
+      "statement": "Uma seta num mapa de brincadeira pode mostrar...",
+      "prompt": "Uma seta num mapa de brincadeira pode mostrar...",
+      "options": [
+        "a renda de uma família",
+        "a direção do percurso.",
+        "a idade de um lugar",
+        "uma palavra escrita"
+      ],
+      "correctAnswer": "a direção do percurso.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a renda de uma família": [
+          "REVIEW_ROUTE_DIRECTION"
+        ],
+        "a idade de um lugar": [
+          "REVIEW_ROUTE_DIRECTION"
+        ],
+        "uma palavra escrita": [
+          "REVIEW_ROUTE_DIRECTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_SETA",
+      "explanation": "A seta representa direção.",
+      "hint": "Observe para onde aponta.",
+      "errorFocus": "REVIEW_ROUTE_DIRECTION",
+      "feedback": {
+        "correct": "Boa observação: A seta representa direção.",
+        "incorrect": "A seta representa direção.",
+        "hint": "Observe para onde aponta.",
+        "errorFocus": "REVIEW_ROUTE_DIRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-35",
+      "statement": "O desenho usa um círculo para indicar o lago. O que registrar na legenda?",
+      "prompt": "O desenho usa um círculo para indicar o lago. O que registrar na legenda?",
+      "options": [
+        "Círculo = endereço",
+        "Círculo = qualquer lugar sem explicação",
+        "Círculo = lago.",
+        "Círculo = tempo"
+      ],
+      "correctAnswer": "Círculo = lago.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Círculo = endereço": [
+          "REVIEW_SYMBOL_KEY"
+        ],
+        "Círculo = qualquer lugar sem explicação": [
+          "REVIEW_SYMBOL_KEY"
+        ],
+        "Círculo = tempo": [
+          "REVIEW_SYMBOL_KEY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_LEGENDA",
+      "explanation": "A legenda esclarece o símbolo.",
+      "hint": "Associe marca e significado.",
+      "errorFocus": "REVIEW_SYMBOL_KEY",
+      "feedback": {
+        "correct": "Boa observação: A legenda esclarece o símbolo.",
+        "incorrect": "A legenda esclarece o símbolo.",
+        "hint": "Associe marca e significado.",
+        "errorFocus": "REVIEW_SYMBOL_KEY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-36",
+      "statement": "O que não se deve solicitar para criar um mapa de uma história?",
+      "prompt": "O que não se deve solicitar para criar um mapa de uma história?",
+      "options": [
+        "Os marcos fictícios",
+        "A ordem narrada",
+        "Uma legenda de símbolos",
+        "O endereço real de estudantes."
+      ],
+      "correctAnswer": "O endereço real de estudantes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Os marcos fictícios": [
+          "REVIEW_LOCATION_PRIVACY"
+        ],
+        "A ordem narrada": [
+          "REVIEW_LOCATION_PRIVACY"
+        ],
+        "Uma legenda de símbolos": [
+          "REVIEW_LOCATION_PRIVACY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Endereços pessoais são desnecessários.",
+      "hint": "Proteja a localização pessoal.",
+      "errorFocus": "REVIEW_LOCATION_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Endereços pessoais são desnecessários.",
+        "incorrect": "Endereços pessoais são desnecessários.",
+        "hint": "Proteja a localização pessoal.",
+        "errorFocus": "REVIEW_LOCATION_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-37",
+      "statement": "Dois mapas do mesmo conto podem ser comparados observando...",
+      "prompt": "Dois mapas do mesmo conto podem ser comparados observando...",
+      "options": [
+        "quais lugares e relações cada um mostra.",
+        "qual criança mora mais longe",
+        "qual casa pertence a cada leitor",
+        "qual endereço é verdadeiro"
+      ],
+      "correctAnswer": "quais lugares e relações cada um mostra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "qual criança mora mais longe": [
+          "REVIEW_REPRESENTATION_COMPARISON"
+        ],
+        "qual casa pertence a cada leitor": [
+          "REVIEW_REPRESENTATION_COMPARISON"
+        ],
+        "qual endereço é verdadeiro": [
+          "REVIEW_REPRESENTATION_COMPARISON"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_MAPAS",
+      "explanation": "A comparação trata dos elementos representados.",
+      "hint": "Volte ao propósito do mapa.",
+      "errorFocus": "REVIEW_REPRESENTATION_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação trata dos elementos representados.",
+        "incorrect": "A comparação trata dos elementos representados.",
+        "hint": "Volte ao propósito do mapa.",
+        "errorFocus": "REVIEW_REPRESENTATION_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-38",
+      "statement": "Um mapa tem os lugares corretos, mas a rota está sem ordem. O que falta?",
+      "prompt": "Um mapa tem os lugares corretos, mas a rota está sem ordem. O que falta?",
+      "options": [
+        "Uma senha pessoal",
+        "Setas ou uma sequência que conecte os marcos.",
+        "Uma lista de famílias",
+        "Um desenho sem legenda"
+      ],
+      "correctAnswer": "Setas ou uma sequência que conecte os marcos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma senha pessoal": [
+          "REVIEW_ROUTE_SEQUENCE"
+        ],
+        "Uma lista de famílias": [
+          "REVIEW_ROUTE_SEQUENCE"
+        ],
+        "Um desenho sem legenda": [
+          "REVIEW_ROUTE_SEQUENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_SEQUENCIA",
+      "explanation": "A ordem precisa estar comunicada.",
+      "hint": "Indique o que vem primeiro e depois.",
+      "errorFocus": "REVIEW_ROUTE_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A ordem precisa estar comunicada.",
+        "incorrect": "A ordem precisa estar comunicada.",
+        "hint": "Indique o que vem primeiro e depois.",
+        "errorFocus": "REVIEW_ROUTE_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-39",
+      "statement": "Qual apoio torna um mapa acessível a mais pessoas?",
+      "prompt": "Qual apoio torna um mapa acessível a mais pessoas?",
+      "options": [
+        "Legenda escondida",
+        "Traços muito pequenos",
+        "Símbolos grandes e uma descrição oral do caminho.",
+        "Retirar os pontos de referência"
+      ],
+      "correctAnswer": "Símbolos grandes e uma descrição oral do caminho.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Legenda escondida": [
+          "REVIEW_ACCESSIBILITY"
+        ],
+        "Traços muito pequenos": [
+          "REVIEW_ACCESSIBILITY"
+        ],
+        "Retirar os pontos de referência": [
+          "REVIEW_ACCESSIBILITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ACESSO",
+      "explanation": "Diferentes formatos apoiam a leitura.",
+      "hint": "Pense em contraste e descrição.",
+      "errorFocus": "REVIEW_ACCESSIBILITY",
+      "feedback": {
+        "correct": "Boa observação: Diferentes formatos apoiam a leitura.",
+        "incorrect": "Diferentes formatos apoiam a leitura.",
+        "hint": "Pense em contraste e descrição.",
+        "errorFocus": "REVIEW_ACCESSIBILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge08-create-maps-and-drawings-from-routes-and-stories-40",
+      "statement": "Um mapa mental baseado em conto deve mostrar principalmente...",
+      "prompt": "Um mapa mental baseado em conto deve mostrar principalmente...",
+      "options": [
+        "endereços reais da turma",
+        "medidas oficiais de uma cidade",
+        "dados que o conto não apresenta",
+        "elementos e relações espaciais da narrativa."
+      ],
+      "correctAnswer": "elementos e relações espaciais da narrativa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "endereços reais da turma": [
+          "REVIEW_MAP_PURPOSE"
+        ],
+        "medidas oficiais de uma cidade": [
+          "REVIEW_MAP_PURPOSE"
+        ],
+        "dados que o conto não apresenta": [
+          "REVIEW_MAP_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_REPRESENTACAO",
+      "explanation": "A representação se baseia na fonte escolhida.",
+      "hint": "Limite o desenho à história.",
+      "errorFocus": "REVIEW_MAP_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A representação se baseia na fonte escolhida.",
+        "incorrect": "A representação se baseia na fonte escolhida.",
+        "hint": "Limite o desenho à história.",
+        "errorFocus": "REVIEW_MAP_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer modelos táteis, símbolos ampliados, setas com texturas e descrição oral das rotas.",
+          "Permitir apontar, ordenar cartões, construir com peças ou responder por comunicação alternativa.",
+          "Usar somente trajetos fictícios ou fontes públicas; não solicitar endereço nem localização de estudantes."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

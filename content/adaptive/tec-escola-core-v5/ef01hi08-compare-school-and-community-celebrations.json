@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01hi08-compare-school-and-community-celebrations",
+  "canonicalSkillCode": "AUTHORING_EF01HI08_DISTINGUISH_CELEBRATION_CONTEXTS",
+  "subject": "HISTORY",
+  "domain": "MUNDO PESSOAL: EU, MEU GRUPO SOCIAL E MEU TEMPO",
+  "topic": "significados de comemorações escolares e distinção de celebrações familiares ou comunitárias",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01HI08",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer o significado das comemorações e festas escolares, diferenciando-as das datas festivas comemoradas no âmbito familiar ou da comunidade.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 409
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Comemorações e seus contextos",
+    "objective": "Reconhecer propósitos de comemorações escolares e distingui-las de celebrações familiares ou comunitárias a partir de fontes respeitosas e situadas.",
+    "summary": "Escolas, famílias e comunidades podem organizar celebrações com propósitos e costumes diversos. Uma atividade escolar pode acolher, marcar um projeto ou celebrar uma conquista coletiva; uma festa familiar ou comunitária pode reunir pessoas por diferentes motivos. Nenhuma fonte representa todas as famílias, e práticas religiosas ou culturais não devem ser presumidas, hierarquizadas ou exigidas. As atividades usam calendários fictícios, relatos públicos autorizados e exemplos variados. Estudantes podem participar de modo alternativo ou passar a vez sem explicar crenças ou costumes privados.",
+    "explanation": "Leia a fonte e observe quem organiza a comemoração, onde acontece e qual significado ela apresenta. Uma mostra de trabalhos organizada pela escola é uma comemoração escolar; uma reunião descrita por uma personagem em sua família pertence ao contexto familiar daquela narrativa. Uma festa comunitária pode envolver moradores ou grupos locais. As categorias dependem da fonte e podem se relacionar, mas não são intercambiáveis. Descreva o exemplo sem dizer que todas as pessoas comemoram a mesma data ou da mesma maneira.",
+    "workedExample": "Um calendário fictício informa que a escola organizou uma feira para compartilhar projetos da turma. Um segundo relato autorizado diz que uma personagem participou de uma celebração no bairro. Podemos identificar propósitos e organizadores distintos sem supor que toda família ou comunidade faça igual.",
+    "commonMistake": "Tratar uma comemoração como universal, presumir crenças ou costumes de estudantes, ou declarar uma celebração superior a outra.",
+    "priorKnowledge": [
+      "Reconhecer informações sobre quem, onde e por que em relatos curtos.",
+      "Perceber que grupos podem organizar atividades em contextos diferentes."
+    ],
+    "keyConcepts": [
+      "comemoração",
+      "festa escolar",
+      "família",
+      "comunidade",
+      "propósito",
+      "organização",
+      "cultura",
+      "contexto"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "DISTINGUISH_CELEBRATION_CONTEXT",
+        "action": "Identifique quem organizou e onde a fonte situa o evento antes de classificá-lo."
+      },
+      {
+        "errorFocus": "NO_UNIVERSAL_CELEBRATION_ASSUMPTION",
+        "action": "Use expressões como “nesta fonte” e evite generalizar costumes a todas as famílias."
+      },
+      {
+        "errorFocus": "CULTURAL_AND_RELIGIOUS_RESPECT",
+        "action": "Não infira crenças, não ranqueie tradições e ofereça participação alternativa sem exposição."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+      "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+      "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi08-fictional-celebration-calendar",
+        "title": "Calendário de comemorações fictícias",
+        "instructions": "Um calendário inventado apresenta uma mostra escolar, uma reunião familiar de personagem e uma festa comunitária descrita em fonte pública.\n1. Localize quem organiza cada evento.\n2. Leia o propósito indicado na fonte.\n3. Organize cartões por contexto e explique uma diferença.",
+        "steps": [
+          "Localize quem organiza cada evento.",
+          "Leia o propósito indicado na fonte.",
+          "Organize cartões por contexto e explique uma diferença."
+        ],
+        "evidence": "Classificação de eventos apoiada por organizador e propósito apresentados.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um evento.",
+            "developing": "reconhece seu contexto.",
+            "proficient": "distingue contextos com base em fontes e evita generalizações culturais."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi08-purpose-and-place-cards",
+        "title": "Quem organiza e por quê?",
+        "instructions": "Cartões de histórias apresentam celebrações em escola, família e espaços comunitários com diferentes propósitos.\n1. Leia ou escute cada cartão.\n2. Destaque organizador, local e significado.\n3. Compare dois eventos sem hierarquizá-los.",
+        "steps": [
+          "Leia ou escute cada cartão.",
+          "Destaque organizador, local e significado.",
+          "Compare dois eventos sem hierarquizá-los."
+        ],
+        "evidence": "Quadro com organizador, contexto e propósito de cada exemplo.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma informação.",
+            "developing": "relaciona evento e organizador.",
+            "proficient": "compara propósitos respeitando diversidade e privacidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01hi08-compare-school-and-community-celebrations-01",
+          "v1-ef01hi08-compare-school-and-community-celebrations-02",
+          "v1-ef01hi08-compare-school-and-community-celebrations-03",
+          "v1-ef01hi08-compare-school-and-community-celebrations-04",
+          "v1-ef01hi08-compare-school-and-community-celebrations-05",
+          "v1-ef01hi08-compare-school-and-community-celebrations-06",
+          "v1-ef01hi08-compare-school-and-community-celebrations-07",
+          "v1-ef01hi08-compare-school-and-community-celebrations-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01hi08-compare-school-and-community-celebrations-09",
+          "v1-ef01hi08-compare-school-and-community-celebrations-10",
+          "v1-ef01hi08-compare-school-and-community-celebrations-11",
+          "v1-ef01hi08-compare-school-and-community-celebrations-12",
+          "v1-ef01hi08-compare-school-and-community-celebrations-13",
+          "v1-ef01hi08-compare-school-and-community-celebrations-14",
+          "v1-ef01hi08-compare-school-and-community-celebrations-15",
+          "v1-ef01hi08-compare-school-and-community-celebrations-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01hi08-compare-school-and-community-celebrations-17",
+          "v1-ef01hi08-compare-school-and-community-celebrations-18",
+          "v1-ef01hi08-compare-school-and-community-celebrations-19",
+          "v1-ef01hi08-compare-school-and-community-celebrations-20",
+          "v1-ef01hi08-compare-school-and-community-celebrations-21",
+          "v1-ef01hi08-compare-school-and-community-celebrations-22",
+          "v1-ef01hi08-compare-school-and-community-celebrations-23",
+          "v1-ef01hi08-compare-school-and-community-celebrations-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01hi08-compare-school-and-community-celebrations-25",
+          "v1-ef01hi08-compare-school-and-community-celebrations-26",
+          "v1-ef01hi08-compare-school-and-community-celebrations-27",
+          "v1-ef01hi08-compare-school-and-community-celebrations-28",
+          "v1-ef01hi08-compare-school-and-community-celebrations-29",
+          "v1-ef01hi08-compare-school-and-community-celebrations-30",
+          "v1-ef01hi08-compare-school-and-community-celebrations-31",
+          "v1-ef01hi08-compare-school-and-community-celebrations-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01hi08-compare-school-and-community-celebrations-33",
+          "v1-ef01hi08-compare-school-and-community-celebrations-34",
+          "v1-ef01hi08-compare-school-and-community-celebrations-35",
+          "v1-ef01hi08-compare-school-and-community-celebrations-36",
+          "v1-ef01hi08-compare-school-and-community-celebrations-37",
+          "v1-ef01hi08-compare-school-and-community-celebrations-38",
+          "v1-ef01hi08-compare-school-and-community-celebrations-39",
+          "v1-ef01hi08-compare-school-and-community-celebrations-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01HI08",
+        "descriptor": "Reconhecer o significado das comemorações e festas escolares, diferenciando-as das datas festivas comemoradas no âmbito familiar ou da comunidade.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 409
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-01",
+      "statement": "Um calendário diz que a escola organizou uma mostra de desenhos da turma. Que contexto a fonte indica?",
+      "prompt": "Um calendário diz que a escola organizou uma mostra de desenhos da turma. Que contexto a fonte indica?",
+      "options": [
+        "Uma comemoração escolar.",
+        "Uma festa de toda família",
+        "Uma data de todos os bairros",
+        "Uma prática obrigatória de cada estudante"
+      ],
+      "correctAnswer": "Uma comemoração escolar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma festa de toda família": [
+          "IDENTIFY_SCHOOL_EVENT"
+        ],
+        "Uma data de todos os bairros": [
+          "IDENTIFY_SCHOOL_EVENT"
+        ],
+        "Uma prática obrigatória de cada estudante": [
+          "IDENTIFY_SCHOOL_EVENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MOSTRA_DA_ESCOLA",
+      "explanation": "A escola aparece como organizadora.",
+      "hint": "Observe quem organizou.",
+      "errorFocus": "IDENTIFY_SCHOOL_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A escola aparece como organizadora.",
+        "incorrect": "A escola aparece como organizadora.",
+        "hint": "Observe quem organizou.",
+        "errorFocus": "IDENTIFY_SCHOOL_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-02",
+      "statement": "Uma história conta que uma personagem participou de um almoço organizado por sua família. Como classificar esse exemplo?",
+      "prompt": "Uma história conta que uma personagem participou de um almoço organizado por sua família. Como classificar esse exemplo?",
+      "options": [
+        "Uma festa escolar",
+        "Uma comemoração no contexto familiar da personagem.",
+        "Uma data universal",
+        "Uma atividade obrigatória da comunidade"
+      ],
+      "correctAnswer": "Uma comemoração no contexto familiar da personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma festa escolar": [
+          "IDENTIFY_FAMILY_CONTEXT"
+        ],
+        "Uma data universal": [
+          "IDENTIFY_FAMILY_CONTEXT"
+        ],
+        "Uma atividade obrigatória da comunidade": [
+          "IDENTIFY_FAMILY_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REUNIAO_DA_PERSONAGEM",
+      "explanation": "A família da personagem organiza o almoço.",
+      "hint": "Use o contexto da narrativa.",
+      "errorFocus": "IDENTIFY_FAMILY_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A família da personagem organiza o almoço.",
+        "incorrect": "A família da personagem organiza o almoço.",
+        "hint": "Use o contexto da narrativa.",
+        "errorFocus": "IDENTIFY_FAMILY_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-03",
+      "statement": "Uma fonte pública descreve uma festa organizada por moradores do bairro. Qual contexto aparece?",
+      "prompt": "Uma fonte pública descreve uma festa organizada por moradores do bairro. Qual contexto aparece?",
+      "options": [
+        "Escolar apenas",
+        "Familiar de todos",
+        "Comunitário.",
+        "Pessoal e obrigatório"
+      ],
+      "correctAnswer": "Comunitário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolar apenas": [
+          "IDENTIFY_COMMUNITY_EVENT"
+        ],
+        "Familiar de todos": [
+          "IDENTIFY_COMMUNITY_EVENT"
+        ],
+        "Pessoal e obrigatório": [
+          "IDENTIFY_COMMUNITY_EVENT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FESTA_DO_BAIRRO",
+      "explanation": "Moradores organizam o evento comunitário descrito.",
+      "hint": "Veja quem participa da organização.",
+      "errorFocus": "IDENTIFY_COMMUNITY_EVENT",
+      "feedback": {
+        "correct": "Boa observação: Moradores organizam o evento comunitário descrito.",
+        "incorrect": "Moradores organizam o evento comunitário descrito.",
+        "hint": "Veja quem participa da organização.",
+        "errorFocus": "IDENTIFY_COMMUNITY_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-04",
+      "statement": "A escola realiza uma atividade para compartilhar projetos dos estudantes. Que propósito é indicado?",
+      "prompt": "A escola realiza uma atividade para compartilhar projetos dos estudantes. Que propósito é indicado?",
+      "options": [
+        "Definir o que toda família comemora",
+        "Escolher uma crença para a turma",
+        "Substituir todas as festas locais",
+        "Apresentar trabalhos da comunidade escolar."
+      ],
+      "correctAnswer": "Apresentar trabalhos da comunidade escolar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Definir o que toda família comemora": [
+          "READ_SCHOOL_CELEBRATION_PURPOSE"
+        ],
+        "Escolher uma crença para a turma": [
+          "READ_SCHOOL_CELEBRATION_PURPOSE"
+        ],
+        "Substituir todas as festas locais": [
+          "READ_SCHOOL_CELEBRATION_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "PROJETO_COMPARTILHADO",
+      "explanation": "A fonte relaciona o evento aos projetos escolares.",
+      "hint": "Leia o motivo apresentado.",
+      "errorFocus": "READ_SCHOOL_CELEBRATION_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A fonte relaciona o evento aos projetos escolares.",
+        "incorrect": "A fonte relaciona o evento aos projetos escolares.",
+        "hint": "Leia o motivo apresentado.",
+        "errorFocus": "READ_SCHOOL_CELEBRATION_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-05",
+      "statement": "Qual afirmação respeita a diversidade de celebrações?",
+      "prompt": "Qual afirmação respeita a diversidade de celebrações?",
+      "options": [
+        "Pessoas e grupos podem celebrar de modos diferentes ou não celebrar uma data.",
+        "Todas as famílias comemoram igual",
+        "Toda criança deve contar seus costumes",
+        "Uma tradição vale mais que as outras"
+      ],
+      "correctAnswer": "Pessoas e grupos podem celebrar de modos diferentes ou não celebrar uma data.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as famílias comemoram igual": [
+          "RESPECT_CELEBRATION_DIVERSITY"
+        ],
+        "Toda criança deve contar seus costumes": [
+          "RESPECT_CELEBRATION_DIVERSITY"
+        ],
+        "Uma tradição vale mais que as outras": [
+          "RESPECT_CELEBRATION_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIVERSIDADE_DE_COSTUMES",
+      "explanation": "A afirmação reconhece escolhas e diferenças.",
+      "hint": "Evite generalizar ou impor.",
+      "errorFocus": "RESPECT_CELEBRATION_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: A afirmação reconhece escolhas e diferenças.",
+        "incorrect": "A afirmação reconhece escolhas e diferenças.",
+        "hint": "Evite generalizar ou impor.",
+        "errorFocus": "RESPECT_CELEBRATION_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-06",
+      "statement": "Uma festa aparece no calendário da escola e é organizada pela equipe escolar. Qual evidência ajuda a identificá-la como escolar?",
+      "prompt": "Uma festa aparece no calendário da escola e é organizada pela equipe escolar. Qual evidência ajuda a identificá-la como escolar?",
+      "options": [
+        "A crença de cada estudante",
+        "O calendário e a organização da escola.",
+        "O endereço de uma família",
+        "A presença de uma comida específica"
+      ],
+      "correctAnswer": "O calendário e a organização da escola.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A crença de cada estudante": [
+          "USE_SOURCE_ORGANIZER_EVIDENCE"
+        ],
+        "O endereço de uma família": [
+          "USE_SOURCE_ORGANIZER_EVIDENCE"
+        ],
+        "A presença de uma comida específica": [
+          "USE_SOURCE_ORGANIZER_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CALENDARIO_ESCOLAR",
+      "explanation": "A fonte informa o organizador escolar.",
+      "hint": "Use os dados da fonte.",
+      "errorFocus": "USE_SOURCE_ORGANIZER_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte informa o organizador escolar.",
+        "incorrect": "A fonte informa o organizador escolar.",
+        "hint": "Use os dados da fonte.",
+        "errorFocus": "USE_SOURCE_ORGANIZER_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-07",
+      "statement": "Uma criança não quer falar de uma data familiar. O que a aula pode oferecer?",
+      "prompt": "Uma criança não quer falar de uma data familiar. O que a aula pode oferecer?",
+      "options": [
+        "Insistir para explicar o motivo",
+        "Pedir que a turma adivinhe a crença",
+        "Analisar uma história fictícia ou escolher outra forma de participação.",
+        "Registrar detalhes privados"
+      ],
+      "correctAnswer": "Analisar uma história fictícia ou escolher outra forma de participação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Insistir para explicar o motivo": [
+          "RESPECT_OPT_OUT_CELEBRATION"
+        ],
+        "Pedir que a turma adivinhe a crença": [
+          "RESPECT_OPT_OUT_CELEBRATION"
+        ],
+        "Registrar detalhes privados": [
+          "RESPECT_OPT_OUT_CELEBRATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ALTERNATIVA_DE_PARTICIPACAO",
+      "explanation": "A alternativa protege a privacidade e a autonomia.",
+      "hint": "Ofereça uma escolha segura.",
+      "errorFocus": "RESPECT_OPT_OUT_CELEBRATION",
+      "feedback": {
+        "correct": "Boa observação: A alternativa protege a privacidade e a autonomia.",
+        "incorrect": "A alternativa protege a privacidade e a autonomia.",
+        "hint": "Ofereça uma escolha segura.",
+        "errorFocus": "RESPECT_OPT_OUT_CELEBRATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-08",
+      "statement": "Uma mostra escolar e uma festa do bairro têm organizadores diferentes. O que pode ser comparado?",
+      "prompt": "Uma mostra escolar e uma festa do bairro têm organizadores diferentes. O que pode ser comparado?",
+      "options": [
+        "Qual grupo é mais importante",
+        "Qual estudante tem a melhor família",
+        "Qual tradição deve desaparecer",
+        "Seus propósitos e contextos conforme as fontes."
+      ],
+      "correctAnswer": "Seus propósitos e contextos conforme as fontes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual grupo é mais importante": [
+          "COMPARE_WITHOUT_HIERARCHY"
+        ],
+        "Qual estudante tem a melhor família": [
+          "COMPARE_WITHOUT_HIERARCHY"
+        ],
+        "Qual tradição deve desaparecer": [
+          "COMPARE_WITHOUT_HIERARCHY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ESCOLA_E_BAIRRO",
+      "explanation": "A comparação trata de contexto e propósito.",
+      "hint": "Compare informações, não o valor dos grupos.",
+      "errorFocus": "COMPARE_WITHOUT_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: A comparação trata de contexto e propósito.",
+        "incorrect": "A comparação trata de contexto e propósito.",
+        "hint": "Compare informações, não o valor dos grupos.",
+        "errorFocus": "COMPARE_WITHOUT_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-09",
+      "statement": "Uma escola organiza uma feira para compartilhar leituras. Que tipo de atividade está descrita?",
+      "prompt": "Uma escola organiza uma feira para compartilhar leituras. Que tipo de atividade está descrita?",
+      "options": [
+        "Uma comemoração ou atividade escolar.",
+        "Uma regra para todas as famílias",
+        "Uma celebração comunitária obrigatória",
+        "Uma prática privada de cada estudante"
+      ],
+      "correctAnswer": "Uma comemoração ou atividade escolar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma regra para todas as famílias": [
+          "CLASSIFY_SCHOOL_READING_EVENT"
+        ],
+        "Uma celebração comunitária obrigatória": [
+          "CLASSIFY_SCHOOL_READING_EVENT"
+        ],
+        "Uma prática privada de cada estudante": [
+          "CLASSIFY_SCHOOL_READING_EVENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FEIRA_DE_LEITURA",
+      "explanation": "A escola organiza a feira de leitura.",
+      "hint": "Identifique o organizador.",
+      "errorFocus": "CLASSIFY_SCHOOL_READING_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A escola organiza a feira de leitura.",
+        "incorrect": "A escola organiza a feira de leitura.",
+        "hint": "Identifique o organizador.",
+        "errorFocus": "CLASSIFY_SCHOOL_READING_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-10",
+      "statement": "Uma personagem inventada participa de uma celebração em casa com seus parentes. Onde a fonte situa a comemoração?",
+      "prompt": "Uma personagem inventada participa de uma celebração em casa com seus parentes. Onde a fonte situa a comemoração?",
+      "options": [
+        "Na escola de todas as crianças",
+        "No contexto familiar da personagem.",
+        "Em todo o bairro",
+        "Num calendário universal"
+      ],
+      "correctAnswer": "No contexto familiar da personagem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Na escola de todas as crianças": [
+          "CLASSIFY_FAMILY_STORY_EVENT"
+        ],
+        "Em todo o bairro": [
+          "CLASSIFY_FAMILY_STORY_EVENT"
+        ],
+        "Num calendário universal": [
+          "CLASSIFY_FAMILY_STORY_EVENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FESTA_DE_PERSONAGEM",
+      "explanation": "A narrativa localiza o evento em casa com parentes.",
+      "hint": "Use o lugar descrito.",
+      "errorFocus": "CLASSIFY_FAMILY_STORY_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A narrativa localiza o evento em casa com parentes.",
+        "incorrect": "A narrativa localiza o evento em casa com parentes.",
+        "hint": "Use o lugar descrito.",
+        "errorFocus": "CLASSIFY_FAMILY_STORY_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-11",
+      "statement": "A turma comemora o fim de um projeto feito em aula. Qual significado aparece?",
+      "prompt": "A turma comemora o fim de um projeto feito em aula. Qual significado aparece?",
+      "options": [
+        "Definir uma tradição para todas as casas",
+        "Comparar religiões",
+        "Reconhecer uma atividade coletiva da escola.",
+        "Obrigar participação em festas privadas"
+      ],
+      "correctAnswer": "Reconhecer uma atividade coletiva da escola.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Definir uma tradição para todas as casas": [
+          "INTERPRET_SCHOOL_CELEBRATION"
+        ],
+        "Comparar religiões": [
+          "INTERPRET_SCHOOL_CELEBRATION"
+        ],
+        "Obrigar participação em festas privadas": [
+          "INTERPRET_SCHOOL_CELEBRATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "DIA_DO_PROJETO",
+      "explanation": "A fonte relaciona a atividade a um projeto escolar.",
+      "hint": "Leia o motivo do evento.",
+      "errorFocus": "INTERPRET_SCHOOL_CELEBRATION",
+      "feedback": {
+        "correct": "Boa observação: A fonte relaciona a atividade a um projeto escolar.",
+        "incorrect": "A fonte relaciona a atividade a um projeto escolar.",
+        "hint": "Leia o motivo do evento.",
+        "errorFocus": "INTERPRET_SCHOOL_CELEBRATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-12",
+      "statement": "Uma atividade traz exemplos de festas diferentes. Qual prática é respeitosa?",
+      "prompt": "Uma atividade traz exemplos de festas diferentes. Qual prática é respeitosa?",
+      "options": [
+        "Pedir que todos revelem suas práticas",
+        "Escolher a tradição mais correta",
+        "Afirmar que todos celebram igual",
+        "Descrever cada fonte sem exigir relatos pessoais nem hierarquizar costumes."
+      ],
+      "correctAnswer": "Descrever cada fonte sem exigir relatos pessoais nem hierarquizar costumes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir que todos revelem suas práticas": [
+          "RESPECTFUL_CULTURAL_COMPARISON"
+        ],
+        "Escolher a tradição mais correta": [
+          "RESPECTFUL_CULTURAL_COMPARISON"
+        ],
+        "Afirmar que todos celebram igual": [
+          "RESPECTFUL_CULTURAL_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEM_PRESSAO_CULTURAL",
+      "explanation": "A comparação pode ser feita com fontes sem exposição pessoal.",
+      "hint": "Mantenha a conversa inclusiva.",
+      "errorFocus": "RESPECTFUL_CULTURAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A comparação pode ser feita com fontes sem exposição pessoal.",
+        "incorrect": "A comparação pode ser feita com fontes sem exposição pessoal.",
+        "hint": "Mantenha a conversa inclusiva.",
+        "errorFocus": "RESPECTFUL_CULTURAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-13",
+      "statement": "Um evento foi organizado pela escola; outro, por uma associação do bairro. O que diferencia os contextos?",
+      "prompt": "Um evento foi organizado pela escola; outro, por uma associação do bairro. O que diferencia os contextos?",
+      "options": [
+        "Quem organiza e onde a fonte situa cada evento.",
+        "O valor das pessoas presentes",
+        "A crença de todas as crianças",
+        "A qualidade de uma família"
+      ],
+      "correctAnswer": "Quem organiza e onde a fonte situa cada evento.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O valor das pessoas presentes": [
+          "COMPARE_EVENT_CONTEXTS"
+        ],
+        "A crença de todas as crianças": [
+          "COMPARE_EVENT_CONTEXTS"
+        ],
+        "A qualidade de uma família": [
+          "COMPARE_EVENT_CONTEXTS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_ORGANIZADORES",
+      "explanation": "Organizador e local são pistas de contexto.",
+      "hint": "Procure essas informações.",
+      "errorFocus": "COMPARE_EVENT_CONTEXTS",
+      "feedback": {
+        "correct": "Boa observação: Organizador e local são pistas de contexto.",
+        "incorrect": "Organizador e local são pistas de contexto.",
+        "hint": "Procure essas informações.",
+        "errorFocus": "COMPARE_EVENT_CONTEXTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-14",
+      "statement": "Uma feira ocorre no pátio escolar e recebe famílias e moradores. Qual leitura é cuidadosa?",
+      "prompt": "Uma feira ocorre no pátio escolar e recebe famílias e moradores. Qual leitura é cuidadosa?",
+      "options": [
+        "Deixa de ser escolar por receber visitantes",
+        "É um evento organizado pela escola com participação de outros grupos.",
+        "Representa todas as festas familiares",
+        "Prova que todas as pessoas celebram juntas"
+      ],
+      "correctAnswer": "É um evento organizado pela escola com participação de outros grupos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Deixa de ser escolar por receber visitantes": [
+          "ANALYZE_SHARED_EVENT"
+        ],
+        "Representa todas as festas familiares": [
+          "ANALYZE_SHARED_EVENT"
+        ],
+        "Prova que todas as pessoas celebram juntas": [
+          "ANALYZE_SHARED_EVENT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "EVENTO_COM_DOIS_GRUPOS",
+      "explanation": "A organização e os participantes podem ser descritos separadamente.",
+      "hint": "Considere organizador e público.",
+      "errorFocus": "ANALYZE_SHARED_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A organização e os participantes podem ser descritos separadamente.",
+        "incorrect": "A organização e os participantes podem ser descritos separadamente.",
+        "hint": "Considere organizador e público.",
+        "errorFocus": "ANALYZE_SHARED_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-15",
+      "statement": "Um conto descreve moradores organizando uma feira de troca de livros. Que contexto é destacado?",
+      "prompt": "Um conto descreve moradores organizando uma feira de troca de livros. Que contexto é destacado?",
+      "options": [
+        "Escolar apenas",
+        "Uma obrigação familiar",
+        "Comunitário.",
+        "Uma crença universal"
+      ],
+      "correctAnswer": "Comunitário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolar apenas": [
+          "IDENTIFY_COMMUNITY_PURPOSE"
+        ],
+        "Uma obrigação familiar": [
+          "IDENTIFY_COMMUNITY_PURPOSE"
+        ],
+        "Uma crença universal": [
+          "IDENTIFY_COMMUNITY_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FESTA_COMUNITARIA_FICTICIA",
+      "explanation": "Moradores organizam a atividade comunitária fictícia.",
+      "hint": "Leia quem preparou a feira.",
+      "errorFocus": "IDENTIFY_COMMUNITY_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Moradores organizam a atividade comunitária fictícia.",
+        "incorrect": "Moradores organizam a atividade comunitária fictícia.",
+        "hint": "Leia quem preparou a feira.",
+        "errorFocus": "IDENTIFY_COMMUNITY_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-16",
+      "statement": "Como montar um calendário escolar inclusivo de exemplos?",
+      "prompt": "Como montar um calendário escolar inclusivo de exemplos?",
+      "options": [
+        "Registrar todas as datas privadas dos alunos",
+        "Exigir que todos compartilhem uma tradição",
+        "Apagar exemplos culturais diversos",
+        "Incluir fontes variadas sem presumir que toda família participe das mesmas datas."
+      ],
+      "correctAnswer": "Incluir fontes variadas sem presumir que toda família participe das mesmas datas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Registrar todas as datas privadas dos alunos": [
+          "BUILD_INCLUSIVE_CALENDAR"
+        ],
+        "Exigir que todos compartilhem uma tradição": [
+          "BUILD_INCLUSIVE_CALENDAR"
+        ],
+        "Apagar exemplos culturais diversos": [
+          "BUILD_INCLUSIVE_CALENDAR"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CALENDARIO_INCLUSIVO",
+      "explanation": "Fontes variadas e não presumidas respeitam diferenças.",
+      "hint": "Planeje com diversidade e escolha.",
+      "errorFocus": "BUILD_INCLUSIVE_CALENDAR",
+      "feedback": {
+        "correct": "Boa observação: Fontes variadas e não presumidas respeitam diferenças.",
+        "incorrect": "Fontes variadas e não presumidas respeitam diferenças.",
+        "hint": "Planeje com diversidade e escolha.",
+        "errorFocus": "BUILD_INCLUSIVE_CALENDAR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-17",
+      "statement": "Uma biblioteca escolar faz uma celebração de leitura organizada pela equipe. Qual contexto é mais diretamente indicado?",
+      "prompt": "Uma biblioteca escolar faz uma celebração de leitura organizada pela equipe. Qual contexto é mais diretamente indicado?",
+      "options": [
+        "Escolar, pois a escola organizou a atividade.",
+        "Familiar de todos",
+        "Uma data de toda a cidade",
+        "Uma prática religiosa"
+      ],
+      "correctAnswer": "Escolar, pois a escola organizou a atividade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Familiar de todos": [
+          "TRANSFER_EVENT_CLASSIFICATION"
+        ],
+        "Uma data de toda a cidade": [
+          "TRANSFER_EVENT_CLASSIFICATION"
+        ],
+        "Uma prática religiosa": [
+          "TRANSFER_EVENT_CLASSIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARTAO_DA_BIBLIOTECA",
+      "explanation": "A informação principal é o organizador escolar.",
+      "hint": "Baseie-se na fonte.",
+      "errorFocus": "TRANSFER_EVENT_CLASSIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A informação principal é o organizador escolar.",
+        "incorrect": "A informação principal é o organizador escolar.",
+        "hint": "Baseie-se na fonte.",
+        "errorFocus": "TRANSFER_EVENT_CLASSIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-18",
+      "statement": "Um relato autorizado descreve vizinhos realizando um encontro na praça. Que grupo organizador aparece?",
+      "prompt": "Um relato autorizado descreve vizinhos realizando um encontro na praça. Que grupo organizador aparece?",
+      "options": [
+        "A equipe escolar necessariamente",
+        "Moradores da comunidade.",
+        "Todas as famílias do país",
+        "A turma inteira"
+      ],
+      "correctAnswer": "Moradores da comunidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A equipe escolar necessariamente": [
+          "TRANSFER_COMMUNITY_SOURCE"
+        ],
+        "Todas as famílias do país": [
+          "TRANSFER_COMMUNITY_SOURCE"
+        ],
+        "A turma inteira": [
+          "TRANSFER_COMMUNITY_SOURCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "RELATO_DE_VIZINHOS",
+      "explanation": "O relato cita vizinhos como organizadores.",
+      "hint": "Veja quem participa.",
+      "errorFocus": "TRANSFER_COMMUNITY_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: O relato cita vizinhos como organizadores.",
+        "incorrect": "O relato cita vizinhos como organizadores.",
+        "hint": "Veja quem participa.",
+        "errorFocus": "TRANSFER_COMMUNITY_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-19",
+      "statement": "Dois eventos ocorrem em lugares diferentes, um na escola e outro na praça do bairro. O que observar além do lugar?",
+      "prompt": "Dois eventos ocorrem em lugares diferentes, um na escola e outro na praça do bairro. O que observar além do lugar?",
+      "options": [
+        "A renda dos participantes",
+        "A crença de cada pessoa",
+        "Quem organizou e qual propósito foi descrito.",
+        "Qual local é superior"
+      ],
+      "correctAnswer": "Quem organizou e qual propósito foi descrito.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A renda dos participantes": [
+          "COMPARE_PLACE_AND_PURPOSE"
+        ],
+        "A crença de cada pessoa": [
+          "COMPARE_PLACE_AND_PURPOSE"
+        ],
+        "Qual local é superior": [
+          "COMPARE_PLACE_AND_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CELEBRACOES_EM_LUGARES",
+      "explanation": "Lugar, organizador e motivo ajudam a interpretar o contexto.",
+      "hint": "Leia os detalhes da fonte.",
+      "errorFocus": "COMPARE_PLACE_AND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Lugar, organizador e motivo ajudam a interpretar o contexto.",
+        "incorrect": "Lugar, organizador e motivo ajudam a interpretar o contexto.",
+        "hint": "Leia os detalhes da fonte.",
+        "errorFocus": "COMPARE_PLACE_AND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-20",
+      "statement": "Uma fonte mostra uma família celebrando com música. Qual conclusão é adequada?",
+      "prompt": "Uma fonte mostra uma família celebrando com música. Qual conclusão é adequada?",
+      "options": [
+        "Todas as famílias usam música",
+        "Toda criança gosta dessa comemoração",
+        "A prática é obrigatória na comunidade",
+        "Essa família usou música naquela celebração descrita."
+      ],
+      "correctAnswer": "Essa família usou música naquela celebração descrita.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as famílias usam música": [
+          "LIMIT_CELEBRATION_CLAIM"
+        ],
+        "Toda criança gosta dessa comemoração": [
+          "LIMIT_CELEBRATION_CLAIM"
+        ],
+        "A prática é obrigatória na comunidade": [
+          "LIMIT_CELEBRATION_CLAIM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "GENERALIZACAO_DE_COSTUME",
+      "explanation": "O relato sustenta uma conclusão específica.",
+      "hint": "Use “essa família” e “nessa fonte”.",
+      "errorFocus": "LIMIT_CELEBRATION_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: O relato sustenta uma conclusão específica.",
+        "incorrect": "O relato sustenta uma conclusão específica.",
+        "hint": "Use “essa família” e “nessa fonte”.",
+        "errorFocus": "LIMIT_CELEBRATION_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-21",
+      "statement": "Um cartaz diz: “Encontro para mostrar trabalhos e agradecer a colaboração da turma”. Que significado escolar pode ser reconhecido?",
+      "prompt": "Um cartaz diz: “Encontro para mostrar trabalhos e agradecer a colaboração da turma”. Que significado escolar pode ser reconhecido?",
+      "options": [
+        "Compartilhar produções e reconhecer colaboração.",
+        "Definir os costumes familiares dos alunos",
+        "Representar todas as festas da cidade",
+        "Escolher uma crença comum"
+      ],
+      "correctAnswer": "Compartilhar produções e reconhecer colaboração.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Definir os costumes familiares dos alunos": [
+          "INTERPRET_EVENT_MEANING"
+        ],
+        "Representar todas as festas da cidade": [
+          "INTERPRET_EVENT_MEANING"
+        ],
+        "Escolher uma crença comum": [
+          "INTERPRET_EVENT_MEANING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PROPOSITO_DE_FESTA_ESCOLAR",
+      "explanation": "O cartaz apresenta objetivos explícitos.",
+      "hint": "Use as palavras do cartaz.",
+      "errorFocus": "INTERPRET_EVENT_MEANING",
+      "feedback": {
+        "correct": "Boa observação: O cartaz apresenta objetivos explícitos.",
+        "incorrect": "O cartaz apresenta objetivos explícitos.",
+        "hint": "Use as palavras do cartaz.",
+        "errorFocus": "INTERPRET_EVENT_MEANING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-22",
+      "statement": "Uma comemoração inclui uma prática que alguém prefere não realizar. Qual resposta inclusiva?",
+      "prompt": "Uma comemoração inclui uma prática que alguém prefere não realizar. Qual resposta inclusiva?",
+      "options": [
+        "Obrigar participação igual",
+        "Oferecer outra maneira de participar ou observar, sem pedir justificativa pessoal.",
+        "Perguntar publicamente por que recusou",
+        "Excluir a pessoa do grupo"
+      ],
+      "correctAnswer": "Oferecer outra maneira de participar ou observar, sem pedir justificativa pessoal.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Obrigar participação igual": [
+          "OFFER_CELEBRATION_CHOICE"
+        ],
+        "Perguntar publicamente por que recusou": [
+          "OFFER_CELEBRATION_CHOICE"
+        ],
+        "Excluir a pessoa do grupo": [
+          "OFFER_CELEBRATION_CHOICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PARTICIPACAO_ALTERNATIVA",
+      "explanation": "Participação alternativa respeita autonomia.",
+      "hint": "Permita escolha sem exposição.",
+      "errorFocus": "OFFER_CELEBRATION_CHOICE",
+      "feedback": {
+        "correct": "Boa observação: Participação alternativa respeita autonomia.",
+        "incorrect": "Participação alternativa respeita autonomia.",
+        "hint": "Permita escolha sem exposição.",
+        "errorFocus": "OFFER_CELEBRATION_CHOICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-23",
+      "statement": "Um texto público descreve uma festa anual de uma comunidade local. O que ele permite estudar?",
+      "prompt": "Um texto público descreve uma festa anual de uma comunidade local. O que ele permite estudar?",
+      "options": [
+        "O costume de cada família da turma",
+        "Todas as comemorações do país",
+        "O exemplo comunitário descrito no texto.",
+        "As preferências privadas dos estudantes"
+      ],
+      "correctAnswer": "O exemplo comunitário descrito no texto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O costume de cada família da turma": [
+          "BOUND_PUBLIC_SOURCE"
+        ],
+        "Todas as comemorações do país": [
+          "BOUND_PUBLIC_SOURCE"
+        ],
+        "As preferências privadas dos estudantes": [
+          "BOUND_PUBLIC_SOURCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FONTE_PUBLICA",
+      "explanation": "A fonte permite estudar seu exemplo, não universalizar.",
+      "hint": "Limite a resposta ao texto.",
+      "errorFocus": "BOUND_PUBLIC_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte permite estudar seu exemplo, não universalizar.",
+        "incorrect": "A fonte permite estudar seu exemplo, não universalizar.",
+        "hint": "Limite a resposta ao texto.",
+        "errorFocus": "BOUND_PUBLIC_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-24",
+      "statement": "Por que distinguir celebrações escolares, familiares e comunitárias?",
+      "prompt": "Por que distinguir celebrações escolares, familiares e comunitárias?",
+      "options": [
+        "Para classificar grupos por importância",
+        "Para exigir que todos participem",
+        "Para provar que as datas são universais",
+        "Para compreender quem organiza e o significado em cada contexto."
+      ],
+      "correctAnswer": "Para compreender quem organiza e o significado em cada contexto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para classificar grupos por importância": [
+          "JUSTIFY_CONTEXT_DISTINCTION"
+        ],
+        "Para exigir que todos participem": [
+          "JUSTIFY_CONTEXT_DISTINCTION"
+        ],
+        "Para provar que as datas são universais": [
+          "JUSTIFY_CONTEXT_DISTINCTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "DIFERENCIAR_CONTEXTOS",
+      "explanation": "Os contextos ajudam a interpretar os eventos sem hierarquia.",
+      "hint": "Reúna organizador, lugar e propósito.",
+      "errorFocus": "JUSTIFY_CONTEXT_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Os contextos ajudam a interpretar os eventos sem hierarquia.",
+        "incorrect": "Os contextos ajudam a interpretar os eventos sem hierarquia.",
+        "hint": "Reúna organizador, lugar e propósito.",
+        "errorFocus": "JUSTIFY_CONTEXT_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-25",
+      "statement": "Uma festa planejada pela escola para a comunidade escolar é identificada pelo...",
+      "prompt": "Uma festa planejada pela escola para a comunidade escolar é identificada pelo...",
+      "options": [
+        "contexto e organização escolares descritos.",
+        "costume de todas as famílias",
+        "endereço de cada estudante",
+        "tipo de roupa usada"
+      ],
+      "correctAnswer": "contexto e organização escolares descritos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "costume de todas as famílias": [
+          "RECALL_SCHOOL_CONTEXT"
+        ],
+        "endereço de cada estudante": [
+          "RECALL_SCHOOL_CONTEXT"
+        ],
+        "tipo de roupa usada": [
+          "RECALL_SCHOOL_CONTEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "ORGANIZADOR_ESCOLAR",
+      "explanation": "A organização pela escola é a pista relevante.",
+      "hint": "Observe quem planejou.",
+      "errorFocus": "RECALL_SCHOOL_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A organização pela escola é a pista relevante.",
+        "incorrect": "A organização pela escola é a pista relevante.",
+        "hint": "Observe quem planejou.",
+        "errorFocus": "RECALL_SCHOOL_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-26",
+      "statement": "Uma história situa um almoço comemorativo entre parentes em casa. Esse exemplo é...",
+      "prompt": "Uma história situa um almoço comemorativo entre parentes em casa. Esse exemplo é...",
+      "options": [
+        "uma data universal",
+        "familiar na narrativa apresentada.",
+        "uma festa escolar",
+        "uma obrigação comunitária"
+      ],
+      "correctAnswer": "familiar na narrativa apresentada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma data universal": [
+          "RECALL_FAMILY_EVENT"
+        ],
+        "uma festa escolar": [
+          "RECALL_FAMILY_EVENT"
+        ],
+        "uma obrigação comunitária": [
+          "RECALL_FAMILY_EVENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "EVENTO_FAMILIAR",
+      "explanation": "A fonte indica parentes e casa.",
+      "hint": "Use o contexto da história.",
+      "errorFocus": "RECALL_FAMILY_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A fonte indica parentes e casa.",
+        "incorrect": "A fonte indica parentes e casa.",
+        "hint": "Use o contexto da história.",
+        "errorFocus": "RECALL_FAMILY_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-27",
+      "statement": "Uma atividade é organizada por moradores numa praça local. Que contexto aparece?",
+      "prompt": "Uma atividade é organizada por moradores numa praça local. Que contexto aparece?",
+      "options": [
+        "Escolar necessariamente",
+        "Privado de uma família específica",
+        "Comunitário.",
+        "Universal"
+      ],
+      "correctAnswer": "Comunitário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolar necessariamente": [
+          "RECALL_COMMUNITY_CONTEXT"
+        ],
+        "Privado de uma família específica": [
+          "RECALL_COMMUNITY_CONTEXT"
+        ],
+        "Universal": [
+          "RECALL_COMMUNITY_CONTEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "EVENTO_COMUNITARIO",
+      "explanation": "A fonte identifica moradores como organizadores.",
+      "hint": "Leia quem organizou.",
+      "errorFocus": "RECALL_COMMUNITY_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A fonte identifica moradores como organizadores.",
+        "incorrect": "A fonte identifica moradores como organizadores.",
+        "hint": "Leia quem organizou.",
+        "errorFocus": "RECALL_COMMUNITY_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-28",
+      "statement": "Qual frase evita impor uma comemoração?",
+      "prompt": "Qual frase evita impor uma comemoração?",
+      "options": [
+        "Todos devem fazer a mesma festa",
+        "Uma tradição é melhor para todos",
+        "Toda família tem o mesmo costume",
+        "As pessoas podem escolher celebrar de modos diferentes ou não celebrar."
+      ],
+      "correctAnswer": "As pessoas podem escolher celebrar de modos diferentes ou não celebrar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todos devem fazer a mesma festa": [
+          "RECALL_CULTURAL_AUTONOMY"
+        ],
+        "Uma tradição é melhor para todos": [
+          "RECALL_CULTURAL_AUTONOMY"
+        ],
+        "Toda família tem o mesmo costume": [
+          "RECALL_CULTURAL_AUTONOMY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "COSTUMES_DIVERSOS",
+      "explanation": "A frase reconhece diversidade e escolha.",
+      "hint": "Escolha a alternativa sem imposição.",
+      "errorFocus": "RECALL_CULTURAL_AUTONOMY",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece diversidade e escolha.",
+        "incorrect": "A frase reconhece diversidade e escolha.",
+        "hint": "Escolha a alternativa sem imposição.",
+        "errorFocus": "RECALL_CULTURAL_AUTONOMY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-29",
+      "statement": "Uma aula não quer solicitar experiências privadas. Que material pode usar?",
+      "prompt": "Uma aula não quer solicitar experiências privadas. Que material pode usar?",
+      "options": [
+        "Um calendário fictício de personagens.",
+        "Uma lista de crenças dos estudantes",
+        "Fotos de casas sem consentimento",
+        "Relatos familiares obrigatórios"
+      ],
+      "correctAnswer": "Um calendário fictício de personagens.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma lista de crenças dos estudantes": [
+          "RECALL_PRIVACY_SAFE_SOURCE"
+        ],
+        "Fotos de casas sem consentimento": [
+          "RECALL_PRIVACY_SAFE_SOURCE"
+        ],
+        "Relatos familiares obrigatórios": [
+          "RECALL_PRIVACY_SAFE_SOURCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FONTE_FICTICIA",
+      "explanation": "O calendário inventado protege a privacidade.",
+      "hint": "Prefira personagens fictícias.",
+      "errorFocus": "RECALL_PRIVACY_SAFE_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: O calendário inventado protege a privacidade.",
+        "incorrect": "O calendário inventado protege a privacidade.",
+        "hint": "Prefira personagens fictícias.",
+        "errorFocus": "RECALL_PRIVACY_SAFE_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-30",
+      "statement": "Uma festa escolar celebra um projeto e uma feira comunitária reúne moradores. O que muda?",
+      "prompt": "Uma festa escolar celebra um projeto e uma feira comunitária reúne moradores. O que muda?",
+      "options": [
+        "O valor de cada pessoa",
+        "Os propósitos e os grupos organizadores descritos.",
+        "A necessidade de revelar costumes",
+        "A validade de uma celebração"
+      ],
+      "correctAnswer": "Os propósitos e os grupos organizadores descritos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O valor de cada pessoa": [
+          "RECALL_PURPOSE_COMPARISON"
+        ],
+        "A necessidade de revelar costumes": [
+          "RECALL_PURPOSE_COMPARISON"
+        ],
+        "A validade de uma celebração": [
+          "RECALL_PURPOSE_COMPARISON"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PROPÓSITOS",
+      "explanation": "As fontes apresentam objetivos distintos.",
+      "hint": "Compare o motivo informado.",
+      "errorFocus": "RECALL_PURPOSE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As fontes apresentam objetivos distintos.",
+        "incorrect": "As fontes apresentam objetivos distintos.",
+        "hint": "Compare o motivo informado.",
+        "errorFocus": "RECALL_PURPOSE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-31",
+      "statement": "Uma data aparece num calendário escolar, mas uma família também a comemora em casa. Como descrever?",
+      "prompt": "Uma data aparece num calendário escolar, mas uma família também a comemora em casa. Como descrever?",
+      "options": [
+        "Existe uma única classificação para todos",
+        "A escola define toda prática familiar",
+        "A data pode aparecer em contextos diferentes conforme as fontes.",
+        "A família representa a comunidade inteira"
+      ],
+      "correctAnswer": "A data pode aparecer em contextos diferentes conforme as fontes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Existe uma única classificação para todos": [
+          "RECALL_MULTIPLE_CONTEXTS"
+        ],
+        "A escola define toda prática familiar": [
+          "RECALL_MULTIPLE_CONTEXTS"
+        ],
+        "A família representa a comunidade inteira": [
+          "RECALL_MULTIPLE_CONTEXTS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DATA_E_CONTEXTO",
+      "explanation": "Um evento pode ser descrito em mais de um contexto.",
+      "hint": "Considere cada fonte separadamente.",
+      "errorFocus": "RECALL_MULTIPLE_CONTEXTS",
+      "feedback": {
+        "correct": "Boa observação: Um evento pode ser descrito em mais de um contexto.",
+        "incorrect": "Um evento pode ser descrito em mais de um contexto.",
+        "hint": "Considere cada fonte separadamente.",
+        "errorFocus": "RECALL_MULTIPLE_CONTEXTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-32",
+      "statement": "Estudar festas com respeito envolve...",
+      "prompt": "Estudar festas com respeito envolve...",
+      "options": [
+        "exigir relatos pessoais",
+        "hierarquizar tradições",
+        "classificar crenças",
+        "identificar organizadores e significados sem presumir costumes universais."
+      ],
+      "correctAnswer": "identificar organizadores e significados sem presumir costumes universais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "exigir relatos pessoais": [
+          "CELEBRATION_CONTEXT_SUMMARY"
+        ],
+        "hierarquizar tradições": [
+          "CELEBRATION_CONTEXT_SUMMARY"
+        ],
+        "classificar crenças": [
+          "CELEBRATION_CONTEXT_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_COMEMORACOES",
+      "explanation": "O foco é reconhecer contextos e significados em fontes.",
+      "hint": "Pense em evidência e respeito.",
+      "errorFocus": "CELEBRATION_CONTEXT_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: O foco é reconhecer contextos e significados em fontes.",
+        "incorrect": "O foco é reconhecer contextos e significados em fontes.",
+        "hint": "Pense em evidência e respeito.",
+        "errorFocus": "CELEBRATION_CONTEXT_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-33",
+      "statement": "Uma mostra organizada pela equipe da escola pertence ao contexto...",
+      "prompt": "Uma mostra organizada pela equipe da escola pertence ao contexto...",
+      "options": [
+        "escolar.",
+        "familiar de todos",
+        "universal",
+        "privado obrigatório"
+      ],
+      "correctAnswer": "escolar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "familiar de todos": [
+          "REVIEW_SCHOOL_EVENT"
+        ],
+        "universal": [
+          "REVIEW_SCHOOL_EVENT"
+        ],
+        "privado obrigatório": [
+          "REVIEW_SCHOOL_EVENT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_ESCOLAR",
+      "explanation": "A escola organiza a mostra.",
+      "hint": "Observe o organizador.",
+      "errorFocus": "REVIEW_SCHOOL_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A escola organiza a mostra.",
+        "incorrect": "A escola organiza a mostra.",
+        "hint": "Observe o organizador.",
+        "errorFocus": "REVIEW_SCHOOL_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-34",
+      "statement": "Um encontro organizado por moradores é um exemplo...",
+      "prompt": "Um encontro organizado por moradores é um exemplo...",
+      "options": [
+        "escolar sempre",
+        "comunitário naquela fonte.",
+        "familiar para toda criança",
+        "universal"
+      ],
+      "correctAnswer": "comunitário naquela fonte.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "escolar sempre": [
+          "REVIEW_COMMUNITY_EVENT"
+        ],
+        "familiar para toda criança": [
+          "REVIEW_COMMUNITY_EVENT"
+        ],
+        "universal": [
+          "REVIEW_COMMUNITY_EVENT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_COMUNITARIA",
+      "explanation": "A fonte situa os moradores como organizadores.",
+      "hint": "Leia quem participou.",
+      "errorFocus": "REVIEW_COMMUNITY_EVENT",
+      "feedback": {
+        "correct": "Boa observação: A fonte situa os moradores como organizadores.",
+        "incorrect": "A fonte situa os moradores como organizadores.",
+        "hint": "Leia quem participou.",
+        "errorFocus": "REVIEW_COMMUNITY_EVENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-35",
+      "statement": "Uma personagem comemora com parentes numa narrativa. Isso descreve...",
+      "prompt": "Uma personagem comemora com parentes numa narrativa. Isso descreve...",
+      "options": [
+        "todas as casas",
+        "uma regra escolar",
+        "o contexto familiar daquela personagem.",
+        "toda comunidade"
+      ],
+      "correctAnswer": "o contexto familiar daquela personagem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "todas as casas": [
+          "REVIEW_FAMILY_CONTEXT"
+        ],
+        "uma regra escolar": [
+          "REVIEW_FAMILY_CONTEXT"
+        ],
+        "toda comunidade": [
+          "REVIEW_FAMILY_CONTEXT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_FAMILIAR",
+      "explanation": "A conclusão é limitada à personagem.",
+      "hint": "Use a fonte específica.",
+      "errorFocus": "REVIEW_FAMILY_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A conclusão é limitada à personagem.",
+        "incorrect": "A conclusão é limitada à personagem.",
+        "hint": "Use a fonte específica.",
+        "errorFocus": "REVIEW_FAMILY_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-36",
+      "statement": "Qual atitude é respeitosa ao estudar costumes?",
+      "prompt": "Qual atitude é respeitosa ao estudar costumes?",
+      "options": [
+        "Exigir que todos relatem práticas",
+        "Escolher um costume superior",
+        "Fazer piada das diferenças",
+        "Não presumir que todas as pessoas celebrem da mesma forma."
+      ],
+      "correctAnswer": "Não presumir que todas as pessoas celebrem da mesma forma.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que todos relatem práticas": [
+          "REVIEW_RESPECT"
+        ],
+        "Escolher um costume superior": [
+          "REVIEW_RESPECT"
+        ],
+        "Fazer piada das diferenças": [
+          "REVIEW_RESPECT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DIVERSIDADE",
+      "explanation": "A atitude evita generalizações e pressão.",
+      "hint": "Respeite escolhas diferentes.",
+      "errorFocus": "REVIEW_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: A atitude evita generalizações e pressão.",
+        "incorrect": "A atitude evita generalizações e pressão.",
+        "hint": "Respeite escolhas diferentes.",
+        "errorFocus": "REVIEW_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-37",
+      "statement": "Como apoiar quem prefere não contar uma tradição familiar?",
+      "prompt": "Como apoiar quem prefere não contar uma tradição familiar?",
+      "options": [
+        "Permitir resposta sobre uma personagem fictícia.",
+        "Insistir na história pessoal",
+        "Pedir que colegas contem por ela",
+        "Registrar seu silêncio"
+      ],
+      "correctAnswer": "Permitir resposta sobre uma personagem fictícia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Insistir na história pessoal": [
+          "REVIEW_OPT_OUT"
+        ],
+        "Pedir que colegas contem por ela": [
+          "REVIEW_OPT_OUT"
+        ],
+        "Registrar seu silêncio": [
+          "REVIEW_OPT_OUT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_PRIVACIDADE",
+      "explanation": "A alternativa protege a autonomia.",
+      "hint": "Ofereça outro exemplo.",
+      "errorFocus": "REVIEW_OPT_OUT",
+      "feedback": {
+        "correct": "Boa observação: A alternativa protege a autonomia.",
+        "incorrect": "A alternativa protege a autonomia.",
+        "hint": "Ofereça outro exemplo.",
+        "errorFocus": "REVIEW_OPT_OUT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-38",
+      "statement": "Duas comemorações podem ser comparadas observando...",
+      "prompt": "Duas comemorações podem ser comparadas observando...",
+      "options": [
+        "qual grupo tem mais valor",
+        "quem organiza, onde ocorrem e seus propósitos descritos.",
+        "qual família é normal",
+        "a crença privada de cada pessoa"
+      ],
+      "correctAnswer": "quem organiza, onde ocorrem e seus propósitos descritos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "qual grupo tem mais valor": [
+          "REVIEW_CONTEXTUAL_COMPARISON"
+        ],
+        "qual família é normal": [
+          "REVIEW_CONTEXTUAL_COMPARISON"
+        ],
+        "a crença privada de cada pessoa": [
+          "REVIEW_CONTEXTUAL_COMPARISON"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_ORGANIZADOR",
+      "explanation": "As fontes fornecem pistas de contexto e significado.",
+      "hint": "Compare evidências.",
+      "errorFocus": "REVIEW_CONTEXTUAL_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As fontes fornecem pistas de contexto e significado.",
+        "incorrect": "As fontes fornecem pistas de contexto e significado.",
+        "hint": "Compare evidências.",
+        "errorFocus": "REVIEW_CONTEXTUAL_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-39",
+      "statement": "Um cartaz explica o motivo de uma feira escolar. Para conhecer seu significado, devemos...",
+      "prompt": "Um cartaz explica o motivo de uma feira escolar. Para conhecer seu significado, devemos...",
+      "options": [
+        "adivinhar a crença dos alunos",
+        "generalizar para todas as escolas",
+        "ler o propósito apresentado no cartaz.",
+        "perguntar dados privados"
+      ],
+      "correctAnswer": "ler o propósito apresentado no cartaz.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "adivinhar a crença dos alunos": [
+          "REVIEW_EVENT_PURPOSE"
+        ],
+        "generalizar para todas as escolas": [
+          "REVIEW_EVENT_PURPOSE"
+        ],
+        "perguntar dados privados": [
+          "REVIEW_EVENT_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_SIGNIFICADO",
+      "explanation": "A fonte explica o propósito da atividade.",
+      "hint": "Use o texto do cartaz.",
+      "errorFocus": "REVIEW_EVENT_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A fonte explica o propósito da atividade.",
+        "incorrect": "A fonte explica o propósito da atividade.",
+        "hint": "Use o texto do cartaz.",
+        "errorFocus": "REVIEW_EVENT_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01hi08-compare-school-and-community-celebrations-40",
+      "statement": "Diferenciar contextos de comemoração ajuda a...",
+      "prompt": "Diferenciar contextos de comemoração ajuda a...",
+      "options": [
+        "definir uma tradição obrigatória",
+        "ranquear grupos",
+        "supor uma prática universal",
+        "entender a organização e os significados indicados em cada fonte."
+      ],
+      "correctAnswer": "entender a organização e os significados indicados em cada fonte.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "definir uma tradição obrigatória": [
+          "REVIEW_CONTEXT_SUMMARY"
+        ],
+        "ranquear grupos": [
+          "REVIEW_CONTEXT_SUMMARY"
+        ],
+        "supor uma prática universal": [
+          "REVIEW_CONTEXT_SUMMARY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_CONTEXTOS",
+      "explanation": "A distinção histórica se apoia nos contextos apresentados.",
+      "hint": "Reúna organizador e significado.",
+      "errorFocus": "REVIEW_CONTEXT_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A distinção histórica se apoia nos contextos apresentados.",
+        "incorrect": "A distinção histórica se apoia nos contextos apresentados.",
+        "hint": "Reúna organizador e significado.",
+        "errorFocus": "REVIEW_CONTEXT_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar calendários fictícios com pictogramas, leitura oral e descrição de imagens.",
+          "Permitir apontar, organizar cartões, desenhar ou responder por comunicação alternativa.",
+          "Não exigir que estudantes revelem crenças, datas ou práticas familiares; oferecer opção de analisar personagens fictícias."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

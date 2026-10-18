@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02co01-create-and-compare-object-models",
+  "canonicalSkillCode": "AUTHORING_EF02CO01_CREATE_COMPARE_OBJECT_MODELS",
+  "subject": "COMPUTING",
+  "domain": "MUNDO DIGITAL",
+  "topic": "criação e comparação de modelos identificando padrões e atributos essenciais",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CO01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Criar e comparar modelos (representações) de objetos, identificando padrões e atributos essenciais.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 20
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Modelos que mostram o que importa",
+    "objective": "Criar e comparar representações simples de objetos, identificando padrões e escolhendo atributos importantes para a finalidade do modelo.",
+    "summary": "Um modelo ou representação mostra alguns aspectos de um objeto e pode deixar outros de fora. Um desenho de cadeira pode destacar assento e apoio para explicar sua função; cor ou decoração podem variar sem alterar essa representação básica. Comparar modelos ajuda a reconhecer padrões e diferenças relevantes para uma pergunta. Atributos essenciais dependem da finalidade: um mapa de formas pode destacar contorno, enquanto uma representação de uso pode destacar partes funcionais. Modelos podem ser desenhados, construídos com peças ou descritos oralmente; não precisam copiar todos os detalhes do objeto real.",
+    "explanation": "Defina para que o modelo será usado. Se a tarefa é representar uma ponte para atravessar uma personagem de jogo, comprimento e apoio podem ser importantes; a cor pode não ser. Crie uma representação com esses atributos e compare-a com outra. Procure padrões compartilhados e diferenças relacionadas à finalidade. Diga o que o modelo representa e o que ele simplifica. Uma descrição tátil, oral ou com cartões também pode ser um modelo, e uma representação simples não é automaticamente errada por omitir detalhes que não importam à tarefa.",
+    "workedExample": "Dois modelos de uma caneca têm cores diferentes, mas ambos mostram recipiente e alça. Se a finalidade é representar como segurar a caneca, a alça é relevante; a diferença de cor não muda esse atributo funcional.",
+    "commonMistake": "Achar que um modelo precisa copiar cada detalhe ou que um atributo é essencial sem considerar a finalidade da representação.",
+    "priorKnowledge": [
+      "Observar características de objetos e agrupá-los por algum critério.",
+      "Reconhecer representações como desenhos, maquetes ou descrições."
+    ],
+    "keyConcepts": [
+      "modelo",
+      "representação",
+      "objeto",
+      "atributo",
+      "padrão",
+      "finalidade",
+      "comparação",
+      "simplificação"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "MODEL_PURPOSE_AND_ESSENTIAL_ATTRIBUTE",
+        "action": "Diga primeiro o que o modelo precisa comunicar e selecione atributos que apoiem essa finalidade."
+      },
+      {
+        "errorFocus": "IDENTIFY_PATTERN_ACROSS_MODELS",
+        "action": "Compare cartões lado a lado e marque uma característica presente em ambos."
+      },
+      {
+        "errorFocus": "MODEL_IS_A_REPRESENTATION",
+        "action": "Nomeie o que o modelo representa e quais detalhes foram simplificados ou omitidos."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+      "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+      "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co01-purposeful-object-models",
+        "title": "Modelos para uma finalidade",
+        "instructions": "A turma representa objetos fictícios para responder a perguntas sobre uso, forma ou organização.\n1. Escolha um objeto e uma finalidade de representação.\n2. Selecione atributos que ajudem nessa finalidade.\n3. Crie um modelo e compare com outra versão.",
+        "steps": [
+          "Escolha um objeto e uma finalidade de representação.",
+          "Selecione atributos que ajudem nessa finalidade.",
+          "Crie um modelo e compare com outra versão."
+        ],
+        "evidence": "Modelo acompanhado de explicação sobre finalidade e atributos escolhidos.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um objeto.",
+            "developing": "representa uma característica.",
+            "proficient": "relaciona atributos à finalidade e identifica padrões entre modelos."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co01-pattern-and-attribute-gallery",
+        "title": "Galeria de padrões e atributos",
+        "instructions": "Modelos de brinquedos, mobiliários e construções fictícias aparecem em cartões táteis e visuais.\n1. Observe dois modelos da mesma categoria.\n2. Registre uma semelhança e uma diferença.\n3. Decida quais atributos são importantes para a pergunta proposta.",
+        "steps": [
+          "Observe dois modelos da mesma categoria.",
+          "Registre uma semelhança e uma diferença.",
+          "Decida quais atributos são importantes para a pergunta proposta."
+        ],
+        "evidence": "Quadro comparativo que nomeia padrão, diferença e finalidade.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta um detalhe.",
+            "developing": "compara modelos.",
+            "proficient": "identifica um padrão e justifica um atributo essencial para a finalidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02co01-create-and-compare-object-models-01",
+          "v1-ef02co01-create-and-compare-object-models-02",
+          "v1-ef02co01-create-and-compare-object-models-03",
+          "v1-ef02co01-create-and-compare-object-models-04",
+          "v1-ef02co01-create-and-compare-object-models-05",
+          "v1-ef02co01-create-and-compare-object-models-06",
+          "v1-ef02co01-create-and-compare-object-models-07",
+          "v1-ef02co01-create-and-compare-object-models-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02co01-create-and-compare-object-models-09",
+          "v1-ef02co01-create-and-compare-object-models-10",
+          "v1-ef02co01-create-and-compare-object-models-11",
+          "v1-ef02co01-create-and-compare-object-models-12",
+          "v1-ef02co01-create-and-compare-object-models-13",
+          "v1-ef02co01-create-and-compare-object-models-14",
+          "v1-ef02co01-create-and-compare-object-models-15",
+          "v1-ef02co01-create-and-compare-object-models-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02co01-create-and-compare-object-models-17",
+          "v1-ef02co01-create-and-compare-object-models-18",
+          "v1-ef02co01-create-and-compare-object-models-19",
+          "v1-ef02co01-create-and-compare-object-models-20",
+          "v1-ef02co01-create-and-compare-object-models-21",
+          "v1-ef02co01-create-and-compare-object-models-22",
+          "v1-ef02co01-create-and-compare-object-models-23",
+          "v1-ef02co01-create-and-compare-object-models-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02co01-create-and-compare-object-models-25",
+          "v1-ef02co01-create-and-compare-object-models-26",
+          "v1-ef02co01-create-and-compare-object-models-27",
+          "v1-ef02co01-create-and-compare-object-models-28",
+          "v1-ef02co01-create-and-compare-object-models-29",
+          "v1-ef02co01-create-and-compare-object-models-30",
+          "v1-ef02co01-create-and-compare-object-models-31",
+          "v1-ef02co01-create-and-compare-object-models-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02co01-create-and-compare-object-models-33",
+          "v1-ef02co01-create-and-compare-object-models-34",
+          "v1-ef02co01-create-and-compare-object-models-35",
+          "v1-ef02co01-create-and-compare-object-models-36",
+          "v1-ef02co01-create-and-compare-object-models-37",
+          "v1-ef02co01-create-and-compare-object-models-38",
+          "v1-ef02co01-create-and-compare-object-models-39",
+          "v1-ef02co01-create-and-compare-object-models-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CO01",
+        "descriptor": "Criar e comparar modelos (representações) de objetos, identificando padrões e atributos essenciais.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 20
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-01",
+      "statement": "Um desenho de cadeira mostra assento e pernas. O que ele é?",
+      "prompt": "Um desenho de cadeira mostra assento e pernas. O que ele é?",
+      "options": [
+        "Um modelo que representa algumas características de uma cadeira.",
+        "A própria cadeira real",
+        "Uma lista de endereços",
+        "Um objeto sem finalidade"
+      ],
+      "correctAnswer": "Um modelo que representa algumas características de uma cadeira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A própria cadeira real": [
+          "IDENTIFY_OBJECT_MODEL"
+        ],
+        "Uma lista de endereços": [
+          "IDENTIFY_OBJECT_MODEL"
+        ],
+        "Um objeto sem finalidade": [
+          "IDENTIFY_OBJECT_MODEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MODELO_DE_CADEIRA",
+      "explanation": "O desenho representa o objeto sem ser o próprio objeto.",
+      "hint": "Observe o que o desenho mostra.",
+      "errorFocus": "IDENTIFY_OBJECT_MODEL",
+      "feedback": {
+        "correct": "Boa observação: O desenho representa o objeto sem ser o próprio objeto.",
+        "incorrect": "O desenho representa o objeto sem ser o próprio objeto.",
+        "hint": "Observe o que o desenho mostra.",
+        "errorFocus": "IDENTIFY_OBJECT_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-02",
+      "statement": "Dois modelos de caneca têm cores diferentes e ambos mostram uma alça. Qual atributo aparece nos dois?",
+      "prompt": "Dois modelos de caneca têm cores diferentes e ambos mostram uma alça. Qual atributo aparece nos dois?",
+      "options": [
+        "A mesma cor",
+        "A alça.",
+        "O mesmo tamanho exato",
+        "O mesmo material real"
+      ],
+      "correctAnswer": "A alça.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A mesma cor": [
+          "FIND_SHARED_ATTRIBUTE"
+        ],
+        "O mesmo tamanho exato": [
+          "FIND_SHARED_ATTRIBUTE"
+        ],
+        "O mesmo material real": [
+          "FIND_SHARED_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_CANECAS",
+      "explanation": "Os modelos mostram alças, apesar das cores diferentes.",
+      "hint": "Procure uma característica comum.",
+      "errorFocus": "FIND_SHARED_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: Os modelos mostram alças, apesar das cores diferentes.",
+        "incorrect": "Os modelos mostram alças, apesar das cores diferentes.",
+        "hint": "Procure uma característica comum.",
+        "errorFocus": "FIND_SHARED_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-03",
+      "statement": "Se o objetivo é mostrar como segurar uma caneca, qual atributo pode ser importante?",
+      "prompt": "Se o objetivo é mostrar como segurar uma caneca, qual atributo pode ser importante?",
+      "options": [
+        "A cor do fundo da imagem",
+        "O nome de quem desenhou",
+        "A alça representada.",
+        "Uma decoração distante"
+      ],
+      "correctAnswer": "A alça representada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do fundo da imagem": [
+          "SELECT_ESSENTIAL_ATTRIBUTE_BY_PURPOSE"
+        ],
+        "O nome de quem desenhou": [
+          "SELECT_ESSENTIAL_ATTRIBUTE_BY_PURPOSE"
+        ],
+        "Uma decoração distante": [
+          "SELECT_ESSENTIAL_ATTRIBUTE_BY_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MODELO_PARA_SEGURAR",
+      "explanation": "A alça ajuda a explicar como segurar o objeto.",
+      "hint": "Considere a finalidade do modelo.",
+      "errorFocus": "SELECT_ESSENTIAL_ATTRIBUTE_BY_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A alça ajuda a explicar como segurar o objeto.",
+        "incorrect": "A alça ajuda a explicar como segurar o objeto.",
+        "hint": "Considere a finalidade do modelo.",
+        "errorFocus": "SELECT_ESSENTIAL_ATTRIBUTE_BY_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-04",
+      "statement": "Uma maquete de ponte é...",
+      "prompt": "Uma maquete de ponte é...",
+      "options": [
+        "a ponte real em tamanho completo",
+        "um padrão de som",
+        "uma regra de convivência",
+        "uma representação da ponte, não a ponte real."
+      ],
+      "correctAnswer": "uma representação da ponte, não a ponte real.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "a ponte real em tamanho completo": [
+          "DISTINGUISH_MODEL_FROM_OBJECT"
+        ],
+        "um padrão de som": [
+          "DISTINGUISH_MODEL_FROM_OBJECT"
+        ],
+        "uma regra de convivência": [
+          "DISTINGUISH_MODEL_FROM_OBJECT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MODELO_E_OBJETO",
+      "explanation": "A maquete representa o objeto em outra forma ou escala.",
+      "hint": "Pense no que a maquete representa.",
+      "errorFocus": "DISTINGUISH_MODEL_FROM_OBJECT",
+      "feedback": {
+        "correct": "Boa observação: A maquete representa o objeto em outra forma ou escala.",
+        "incorrect": "A maquete representa o objeto em outra forma ou escala.",
+        "hint": "Pense no que a maquete representa.",
+        "errorFocus": "DISTINGUISH_MODEL_FROM_OBJECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-05",
+      "statement": "Dois modelos de torre usam base larga e partes menores acima. Que padrão pode ser observado?",
+      "prompt": "Dois modelos de torre usam base larga e partes menores acima. Que padrão pode ser observado?",
+      "options": [
+        "A base larga aparece nos dois modelos.",
+        "Os modelos têm cores idênticas",
+        "Toda torre real é igual",
+        "A altura foi medida exatamente"
+      ],
+      "correctAnswer": "A base larga aparece nos dois modelos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os modelos têm cores idênticas": [
+          "IDENTIFY_SHARED_PATTERN"
+        ],
+        "Toda torre real é igual": [
+          "IDENTIFY_SHARED_PATTERN"
+        ],
+        "A altura foi medida exatamente": [
+          "IDENTIFY_SHARED_PATTERN"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PADRAO_EM_BLOCOS",
+      "explanation": "A descrição aponta uma característica comum.",
+      "hint": "Compare a estrutura dos modelos.",
+      "errorFocus": "IDENTIFY_SHARED_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A descrição aponta uma característica comum.",
+        "incorrect": "A descrição aponta uma característica comum.",
+        "hint": "Compare a estrutura dos modelos.",
+        "errorFocus": "IDENTIFY_SHARED_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-06",
+      "statement": "Uma personagem precisa atravessar uma ponte num jogo. Qual atributo do modelo é relevante?",
+      "prompt": "Uma personagem precisa atravessar uma ponte num jogo. Qual atributo do modelo é relevante?",
+      "options": [
+        "A cor preferida da personagem",
+        "Uma parte de apoio que conecte os dois lados.",
+        "Um enfeite sem relação com a travessia",
+        "O nome do construtor real"
+      ],
+      "correctAnswer": "Uma parte de apoio que conecte os dois lados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A cor preferida da personagem": [
+          "CHOOSE_ATTRIBUTE_FOR_FUNCTION"
+        ],
+        "Um enfeite sem relação com a travessia": [
+          "CHOOSE_ATTRIBUTE_FOR_FUNCTION"
+        ],
+        "O nome do construtor real": [
+          "CHOOSE_ATTRIBUTE_FOR_FUNCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MODELO_DE_PONTE",
+      "explanation": "A conexão entre lados apoia a função descrita.",
+      "hint": "Relacione atributo e finalidade.",
+      "errorFocus": "CHOOSE_ATTRIBUTE_FOR_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A conexão entre lados apoia a função descrita.",
+        "incorrect": "A conexão entre lados apoia a função descrita.",
+        "hint": "Relacione atributo e finalidade.",
+        "errorFocus": "CHOOSE_ATTRIBUTE_FOR_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-07",
+      "statement": "Um cartão mostra um carrinho com rodas desenhadas. Que atributo está representado?",
+      "prompt": "Um cartão mostra um carrinho com rodas desenhadas. Que atributo está representado?",
+      "options": [
+        "Uma ponte",
+        "Uma alça",
+        "Rodas.",
+        "Uma janela"
+      ],
+      "correctAnswer": "Rodas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma ponte": [
+          "READ_MODEL_ATTRIBUTE"
+        ],
+        "Uma alça": [
+          "READ_MODEL_ATTRIBUTE"
+        ],
+        "Uma janela": [
+          "READ_MODEL_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "CARTAO_DE_BRINQUEDO",
+      "explanation": "O desenho inclui rodas.",
+      "hint": "Nomeie o detalhe visível.",
+      "errorFocus": "READ_MODEL_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: O desenho inclui rodas.",
+        "incorrect": "O desenho inclui rodas.",
+        "hint": "Nomeie o detalhe visível.",
+        "errorFocus": "READ_MODEL_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-08",
+      "statement": "Dois modelos de caixa têm formatos diferentes. O que se pode comparar?",
+      "prompt": "Dois modelos de caixa têm formatos diferentes. O que se pode comparar?",
+      "options": [
+        "Qual caixa é melhor em tudo",
+        "Quem tem uma caixa em casa",
+        "O valor de cada pessoa",
+        "Atributos como formato, tampa ou finalidade representada."
+      ],
+      "correctAnswer": "Atributos como formato, tampa ou finalidade representada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual caixa é melhor em tudo": [
+          "COMPARE_MODEL_ATTRIBUTES"
+        ],
+        "Quem tem uma caixa em casa": [
+          "COMPARE_MODEL_ATTRIBUTES"
+        ],
+        "O valor de cada pessoa": [
+          "COMPARE_MODEL_ATTRIBUTES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MODELOS_DE_CAIXA",
+      "explanation": "Comparar atributos não exige julgar pessoas.",
+      "hint": "Observe as representações.",
+      "errorFocus": "COMPARE_MODEL_ATTRIBUTES",
+      "feedback": {
+        "correct": "Boa observação: Comparar atributos não exige julgar pessoas.",
+        "incorrect": "Comparar atributos não exige julgar pessoas.",
+        "hint": "Observe as representações.",
+        "errorFocus": "COMPARE_MODEL_ATTRIBUTES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-09",
+      "statement": "Um desenho mostra cabo e cobertura de um guarda-chuva. O que a representação destaca?",
+      "prompt": "Um desenho mostra cabo e cobertura de um guarda-chuva. O que a representação destaca?",
+      "options": [
+        "Partes do objeto.",
+        "A previsão do tempo real",
+        "O endereço do usuário",
+        "O som da chuva"
+      ],
+      "correctAnswer": "Partes do objeto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A previsão do tempo real": [
+          "IDENTIFY_REPRESENTED_PARTS"
+        ],
+        "O endereço do usuário": [
+          "IDENTIFY_REPRESENTED_PARTS"
+        ],
+        "O som da chuva": [
+          "IDENTIFY_REPRESENTED_PARTS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MODELO_DE_GUARDA_CHUVA",
+      "explanation": "Cabo e cobertura são partes mostradas.",
+      "hint": "Observe os detalhes desenhados.",
+      "errorFocus": "IDENTIFY_REPRESENTED_PARTS",
+      "feedback": {
+        "correct": "Boa observação: Cabo e cobertura são partes mostradas.",
+        "incorrect": "Cabo e cobertura são partes mostradas.",
+        "hint": "Observe os detalhes desenhados.",
+        "errorFocus": "IDENTIFY_REPRESENTED_PARTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-10",
+      "statement": "Dois modelos de barco usam formatos diferentes, mas ambos flutuam na história fictícia. Qual finalidade comum aparece?",
+      "prompt": "Dois modelos de barco usam formatos diferentes, mas ambos flutuam na história fictícia. Qual finalidade comum aparece?",
+      "options": [
+        "Ter a mesma cor",
+        "Representar um barco que flutua na situação descrita.",
+        "Copiar todos os barcos reais",
+        "Indicar o nome de uma pessoa"
+      ],
+      "correctAnswer": "Representar um barco que flutua na situação descrita.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ter a mesma cor": [
+          "COMPARE_MODEL_FUNCTION"
+        ],
+        "Copiar todos os barcos reais": [
+          "COMPARE_MODEL_FUNCTION"
+        ],
+        "Indicar o nome de uma pessoa": [
+          "COMPARE_MODEL_FUNCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_BARCOS_DE_PAPEL",
+      "explanation": "A situação informa a função comum dos modelos.",
+      "hint": "Busque o propósito compartilhado.",
+      "errorFocus": "COMPARE_MODEL_FUNCTION",
+      "feedback": {
+        "correct": "Boa observação: A situação informa a função comum dos modelos.",
+        "incorrect": "A situação informa a função comum dos modelos.",
+        "hint": "Busque o propósito compartilhado.",
+        "errorFocus": "COMPARE_MODEL_FUNCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-11",
+      "statement": "Para um modelo explicar que uma porta abre, qual atributo é mais relevante?",
+      "prompt": "Para um modelo explicar que uma porta abre, qual atributo é mais relevante?",
+      "options": [
+        "A cor do papel de fundo",
+        "O tamanho do título",
+        "A parte que representa a abertura da porta.",
+        "Um desenho de nuvem"
+      ],
+      "correctAnswer": "A parte que representa a abertura da porta.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do papel de fundo": [
+          "SELECT_FUNCTIONAL_ATTRIBUTE"
+        ],
+        "O tamanho do título": [
+          "SELECT_FUNCTIONAL_ATTRIBUTE"
+        ],
+        "Um desenho de nuvem": [
+          "SELECT_FUNCTIONAL_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DETALHE_ESSENCIAL",
+      "explanation": "A abertura se relaciona à finalidade.",
+      "hint": "Escolha o detalhe ligado à ação.",
+      "errorFocus": "SELECT_FUNCTIONAL_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A abertura se relaciona à finalidade.",
+        "incorrect": "A abertura se relaciona à finalidade.",
+        "hint": "Escolha o detalhe ligado à ação.",
+        "errorFocus": "SELECT_FUNCTIONAL_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-12",
+      "statement": "Um modelo simples de cadeira não informa sua cor. Ele ainda pode representar a cadeira?",
+      "prompt": "Um modelo simples de cadeira não informa sua cor. Ele ainda pode representar a cadeira?",
+      "options": [
+        "Não, todo detalhe é obrigatório",
+        "Sim, mas só se for uma cadeira real",
+        "Não, porque modelos não podem simplificar",
+        "Sim, se a cor não for necessária para a finalidade escolhida."
+      ],
+      "correctAnswer": "Sim, se a cor não for necessária para a finalidade escolhida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Não, todo detalhe é obrigatório": [
+          "MODEL_SIMPLIFICATION"
+        ],
+        "Sim, mas só se for uma cadeira real": [
+          "MODEL_SIMPLIFICATION"
+        ],
+        "Não, porque modelos não podem simplificar": [
+          "MODEL_SIMPLIFICATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OMITIR_COR",
+      "explanation": "Modelos podem omitir detalhes não essenciais à tarefa.",
+      "hint": "Considere o objetivo.",
+      "errorFocus": "MODEL_SIMPLIFICATION",
+      "feedback": {
+        "correct": "Boa observação: Modelos podem omitir detalhes não essenciais à tarefa.",
+        "incorrect": "Modelos podem omitir detalhes não essenciais à tarefa.",
+        "hint": "Considere o objetivo.",
+        "errorFocus": "MODEL_SIMPLIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-13",
+      "statement": "Para comparar modelos de recipientes quanto à forma, qual par de atributos observar?",
+      "prompt": "Para comparar modelos de recipientes quanto à forma, qual par de atributos observar?",
+      "options": [
+        "Formato e presença de abertura.",
+        "Nome de quem usa e endereço",
+        "Cor da sala e dia da semana",
+        "Tamanho da turma e clima"
+      ],
+      "correctAnswer": "Formato e presença de abertura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Nome de quem usa e endereço": [
+          "COMPARE_RELEVANT_FORM_ATTRIBUTES"
+        ],
+        "Cor da sala e dia da semana": [
+          "COMPARE_RELEVANT_FORM_ATTRIBUTES"
+        ],
+        "Tamanho da turma e clima": [
+          "COMPARE_RELEVANT_FORM_ATTRIBUTES"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ATRIBUTOS_DE_MATERIAL",
+      "explanation": "Forma e abertura descrevem o recipiente.",
+      "hint": "Escolha características do objeto.",
+      "errorFocus": "COMPARE_RELEVANT_FORM_ATTRIBUTES",
+      "feedback": {
+        "correct": "Boa observação: Forma e abertura descrevem o recipiente.",
+        "incorrect": "Forma e abertura descrevem o recipiente.",
+        "hint": "Escolha características do objeto.",
+        "errorFocus": "COMPARE_RELEVANT_FORM_ATTRIBUTES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-14",
+      "statement": "Três modelos de carrinho têm duas rodas representadas cada. Que padrão aparece?",
+      "prompt": "Três modelos de carrinho têm duas rodas representadas cada. Que padrão aparece?",
+      "options": [
+        "Todos são feitos do mesmo material real",
+        "Cada modelo mostra duas rodas.",
+        "Todos têm a mesma velocidade",
+        "Cada um pertence à mesma pessoa"
+      ],
+      "correctAnswer": "Cada modelo mostra duas rodas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos são feitos do mesmo material real": [
+          "ANALYZE_REPEATED_ATTRIBUTE"
+        ],
+        "Todos têm a mesma velocidade": [
+          "ANALYZE_REPEATED_ATTRIBUTE"
+        ],
+        "Cada um pertence à mesma pessoa": [
+          "ANALYZE_REPEATED_ATTRIBUTE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PADRAO_DE_RODAS",
+      "explanation": "A quantidade de rodas se repete nos modelos.",
+      "hint": "Observe o que aparece em cada um.",
+      "errorFocus": "ANALYZE_REPEATED_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A quantidade de rodas se repete nos modelos.",
+        "incorrect": "A quantidade de rodas se repete nos modelos.",
+        "hint": "Observe o que aparece em cada um.",
+        "errorFocus": "ANALYZE_REPEATED_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-15",
+      "statement": "Para criar um modelo simples de mesa, qual conjunto pode representá-la?",
+      "prompt": "Para criar um modelo simples de mesa, qual conjunto pode representá-la?",
+      "options": [
+        "Uma roda e um cabo",
+        "Uma cobertura e uma alça",
+        "Uma superfície apoiada por pernas.",
+        "Uma janela e um telhado"
+      ],
+      "correctAnswer": "Uma superfície apoiada por pernas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma roda e um cabo": [
+          "CREATE_BASIC_OBJECT_MODEL"
+        ],
+        "Uma cobertura e uma alça": [
+          "CREATE_BASIC_OBJECT_MODEL"
+        ],
+        "Uma janela e um telhado": [
+          "CREATE_BASIC_OBJECT_MODEL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "DESENHO_DE_MESA",
+      "explanation": "Superfície e apoio são atributos identificáveis da mesa.",
+      "hint": "Pense nas partes da mesa.",
+      "errorFocus": "CREATE_BASIC_OBJECT_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Superfície e apoio são atributos identificáveis da mesa.",
+        "incorrect": "Superfície e apoio são atributos identificáveis da mesa.",
+        "hint": "Pense nas partes da mesa.",
+        "errorFocus": "CREATE_BASIC_OBJECT_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-16",
+      "statement": "Uma pessoa prefere explorar o modelo pelo tato. Que alternativa pode ajudar?",
+      "prompt": "Uma pessoa prefere explorar o modelo pelo tato. Que alternativa pode ajudar?",
+      "options": [
+        "Retirar todas as referências",
+        "Exigir uma pintura detalhada",
+        "Usar apenas uma imagem sem descrição",
+        "Construir a forma com peças táteis e nomear seus atributos."
+      ],
+      "correctAnswer": "Construir a forma com peças táteis e nomear seus atributos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Retirar todas as referências": [
+          "ACCESSIBLE_MODEL_REPRESENTATION"
+        ],
+        "Exigir uma pintura detalhada": [
+          "ACCESSIBLE_MODEL_REPRESENTATION"
+        ],
+        "Usar apenas uma imagem sem descrição": [
+          "ACCESSIBLE_MODEL_REPRESENTATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MODELO_TATIL",
+      "explanation": "Peças táteis e descrição comunicam características.",
+      "hint": "Use mais de uma forma de representar.",
+      "errorFocus": "ACCESSIBLE_MODEL_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: Peças táteis e descrição comunicam características.",
+        "incorrect": "Peças táteis e descrição comunicam características.",
+        "hint": "Use mais de uma forma de representar.",
+        "errorFocus": "ACCESSIBLE_MODEL_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-17",
+      "statement": "Dois modelos de abrigo têm cobertura e apoio, mas cores diferentes. Qual padrão funcional aparece?",
+      "prompt": "Dois modelos de abrigo têm cobertura e apoio, mas cores diferentes. Qual padrão funcional aparece?",
+      "options": [
+        "Ambos representam cobertura apoiada por uma estrutura.",
+        "Ambos têm a mesma cor",
+        "Todos os abrigos reais são iguais",
+        "A cor define a função"
+      ],
+      "correctAnswer": "Ambos representam cobertura apoiada por uma estrutura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ambos têm a mesma cor": [
+          "TRANSFER_COMPARE_STRUCTURAL_PATTERN"
+        ],
+        "Todos os abrigos reais são iguais": [
+          "TRANSFER_COMPARE_STRUCTURAL_PATTERN"
+        ],
+        "A cor define a função": [
+          "TRANSFER_COMPARE_STRUCTURAL_PATTERN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MODELOS_DE_ABRIGO_FICTICIO",
+      "explanation": "Cobertura e apoio aparecem nos dois modelos.",
+      "hint": "Compare os atributos estruturais.",
+      "errorFocus": "TRANSFER_COMPARE_STRUCTURAL_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: Cobertura e apoio aparecem nos dois modelos.",
+        "incorrect": "Cobertura e apoio aparecem nos dois modelos.",
+        "hint": "Compare os atributos estruturais.",
+        "errorFocus": "TRANSFER_COMPARE_STRUCTURAL_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-18",
+      "statement": "Um esquema de bicicleta mostra rodas, guidão e assento. O que esses itens são?",
+      "prompt": "Um esquema de bicicleta mostra rodas, guidão e assento. O que esses itens são?",
+      "options": [
+        "Uma história completa",
+        "Atributos ou partes representadas no modelo.",
+        "Uma medida de distância",
+        "Um padrão de letras"
+      ],
+      "correctAnswer": "Atributos ou partes representadas no modelo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma história completa": [
+          "TRANSFER_IDENTIFY_MODEL_PARTS"
+        ],
+        "Uma medida de distância": [
+          "TRANSFER_IDENTIFY_MODEL_PARTS"
+        ],
+        "Um padrão de letras": [
+          "TRANSFER_IDENTIFY_MODEL_PARTS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MAPA_DE_OBJETO",
+      "explanation": "O esquema representa partes da bicicleta.",
+      "hint": "Nomeie os elementos desenhados.",
+      "errorFocus": "TRANSFER_IDENTIFY_MODEL_PARTS",
+      "feedback": {
+        "correct": "Boa observação: O esquema representa partes da bicicleta.",
+        "incorrect": "O esquema representa partes da bicicleta.",
+        "hint": "Nomeie os elementos desenhados.",
+        "errorFocus": "TRANSFER_IDENTIFY_MODEL_PARTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-19",
+      "statement": "Para modelar um organizador de livros, qual característica ajuda a explicar seu uso?",
+      "prompt": "Para modelar um organizador de livros, qual característica ajuda a explicar seu uso?",
+      "options": [
+        "A cor da parede ao lado",
+        "O nome de quem o desenhou",
+        "Divisórias que separam os livros.",
+        "Uma estrela distante"
+      ],
+      "correctAnswer": "Divisórias que separam os livros.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor da parede ao lado": [
+          "TRANSFER_PURPOSE_RELEVANT_ATTRIBUTE"
+        ],
+        "O nome de quem o desenhou": [
+          "TRANSFER_PURPOSE_RELEVANT_ATTRIBUTE"
+        ],
+        "Uma estrela distante": [
+          "TRANSFER_PURPOSE_RELEVANT_ATTRIBUTE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "FINALIDADE_DE_ORGANIZADOR",
+      "explanation": "Divisórias se relacionam à organização dos livros.",
+      "hint": "Relacione característica e uso.",
+      "errorFocus": "TRANSFER_PURPOSE_RELEVANT_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: Divisórias se relacionam à organização dos livros.",
+        "incorrect": "Divisórias se relacionam à organização dos livros.",
+        "hint": "Relacione característica e uso.",
+        "errorFocus": "TRANSFER_PURPOSE_RELEVANT_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-20",
+      "statement": "Um modelo deixa de ser útil porque não mostra todos os detalhes do objeto?",
+      "prompt": "Um modelo deixa de ser útil porque não mostra todos os detalhes do objeto?",
+      "options": [
+        "Sim, porque qualquer simplificação é erro",
+        "Sim, se a cor estiver ausente",
+        "Não, modelos nunca precisam comunicar",
+        "Não; pode ser útil ao mostrar os atributos importantes à finalidade."
+      ],
+      "correctAnswer": "Não; pode ser útil ao mostrar os atributos importantes à finalidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, porque qualquer simplificação é erro": [
+          "TRANSFER_MODEL_SIMPLIFICATION"
+        ],
+        "Sim, se a cor estiver ausente": [
+          "TRANSFER_MODEL_SIMPLIFICATION"
+        ],
+        "Não, modelos nunca precisam comunicar": [
+          "TRANSFER_MODEL_SIMPLIFICATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "MODELO_E_COPIA",
+      "explanation": "A utilidade depende da finalidade e dos atributos representados.",
+      "hint": "Considere a pergunta que o modelo responde.",
+      "errorFocus": "TRANSFER_MODEL_SIMPLIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A utilidade depende da finalidade e dos atributos representados.",
+        "incorrect": "A utilidade depende da finalidade e dos atributos representados.",
+        "hint": "Considere a pergunta que o modelo responde.",
+        "errorFocus": "TRANSFER_MODEL_SIMPLIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-21",
+      "statement": "Três modelos mostram recipiente, abertura e base, mas têm tamanhos diferentes. Qual conclusão cabe?",
+      "prompt": "Três modelos mostram recipiente, abertura e base, mas têm tamanhos diferentes. Qual conclusão cabe?",
+      "options": [
+        "Os atributos descritos se repetem, enquanto o tamanho varia.",
+        "Todos têm tamanho idêntico",
+        "São objetos reais e não modelos",
+        "A abertura não pode ser comparada"
+      ],
+      "correctAnswer": "Os atributos descritos se repetem, enquanto o tamanho varia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todos têm tamanho idêntico": [
+          "TRANSFER_PATTERN_AND_VARIATION"
+        ],
+        "São objetos reais e não modelos": [
+          "TRANSFER_PATTERN_AND_VARIATION"
+        ],
+        "A abertura não pode ser comparada": [
+          "TRANSFER_PATTERN_AND_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PADRAO_DE_RECIPIENTES",
+      "explanation": "A descrição aponta semelhanças e uma diferença.",
+      "hint": "Separe o que repete do que muda.",
+      "errorFocus": "TRANSFER_PATTERN_AND_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A descrição aponta semelhanças e uma diferença.",
+        "incorrect": "A descrição aponta semelhanças e uma diferença.",
+        "hint": "Separe o que repete do que muda.",
+        "errorFocus": "TRANSFER_PATTERN_AND_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-22",
+      "statement": "Qual representação pode comunicar um banco para uma pessoa que vai sentar?",
+      "prompt": "Qual representação pode comunicar um banco para uma pessoa que vai sentar?",
+      "options": [
+        "Um desenho apenas de nuvens",
+        "Uma superfície de assento com apoio representado.",
+        "Uma lista de cores sem objeto",
+        "Um mapa sem banco ou legenda"
+      ],
+      "correctAnswer": "Uma superfície de assento com apoio representado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um desenho apenas de nuvens": [
+          "TRANSFER_CREATE_PURPOSEFUL_MODEL"
+        ],
+        "Uma lista de cores sem objeto": [
+          "TRANSFER_CREATE_PURPOSEFUL_MODEL"
+        ],
+        "Um mapa sem banco ou legenda": [
+          "TRANSFER_CREATE_PURPOSEFUL_MODEL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "REPRESENTAR_UM_BANCO",
+      "explanation": "Assento e apoio se relacionam ao uso indicado.",
+      "hint": "Inclua o que ajuda a explicar a função.",
+      "errorFocus": "TRANSFER_CREATE_PURPOSEFUL_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Assento e apoio se relacionam ao uso indicado.",
+        "incorrect": "Assento e apoio se relacionam ao uso indicado.",
+        "hint": "Inclua o que ajuda a explicar a função.",
+        "errorFocus": "TRANSFER_CREATE_PURPOSEFUL_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-23",
+      "statement": "Uma estudante descreve um modelo sem desenhá-lo. Essa descrição pode ser uma representação?",
+      "prompt": "Uma estudante descreve um modelo sem desenhá-lo. Essa descrição pode ser uma representação?",
+      "options": [
+        "Não, modelos são sempre desenhos",
+        "Não, só objetos reais representam",
+        "Sim, se comunicar atributos do objeto.",
+        "Sim, mas deve incluir endereço"
+      ],
+      "correctAnswer": "Sim, se comunicar atributos do objeto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Não, modelos são sempre desenhos": [
+          "TRANSFER_MULTIMODAL_MODEL"
+        ],
+        "Não, só objetos reais representam": [
+          "TRANSFER_MULTIMODAL_MODEL"
+        ],
+        "Sim, mas deve incluir endereço": [
+          "TRANSFER_MULTIMODAL_MODEL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DESCRICAO_ORAL_DE_MODELO",
+      "explanation": "Representações podem assumir diferentes formatos.",
+      "hint": "Pense no que comunica o modelo.",
+      "errorFocus": "TRANSFER_MULTIMODAL_MODEL",
+      "feedback": {
+        "correct": "Boa observação: Representações podem assumir diferentes formatos.",
+        "incorrect": "Representações podem assumir diferentes formatos.",
+        "hint": "Pense no que comunica o modelo.",
+        "errorFocus": "TRANSFER_MULTIMODAL_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-24",
+      "statement": "Por que a finalidade ajuda a escolher atributos essenciais?",
+      "prompt": "Por que a finalidade ajuda a escolher atributos essenciais?",
+      "options": [
+        "Porque obriga a copiar cada detalhe",
+        "Porque define a cor favorita de todos",
+        "Porque impede comparar modelos",
+        "Porque ela indica quais características o modelo precisa comunicar."
+      ],
+      "correctAnswer": "Porque ela indica quais características o modelo precisa comunicar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque obriga a copiar cada detalhe": [
+          "JUSTIFY_ATTRIBUTE_RELEVANCE"
+        ],
+        "Porque define a cor favorita de todos": [
+          "JUSTIFY_ATTRIBUTE_RELEVANCE"
+        ],
+        "Porque impede comparar modelos": [
+          "JUSTIFY_ATTRIBUTE_RELEVANCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "ESCOLHA_DE_ATRIBUTOS",
+      "explanation": "Atributos são relevantes em relação ao propósito.",
+      "hint": "Relacione propósito e característica.",
+      "errorFocus": "JUSTIFY_ATTRIBUTE_RELEVANCE",
+      "feedback": {
+        "correct": "Boa observação: Atributos são relevantes em relação ao propósito.",
+        "incorrect": "Atributos são relevantes em relação ao propósito.",
+        "hint": "Relacione propósito e característica.",
+        "errorFocus": "JUSTIFY_ATTRIBUTE_RELEVANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-25",
+      "statement": "Um modelo é...",
+      "prompt": "Um modelo é...",
+      "options": [
+        "uma representação que mostra alguns aspectos de algo.",
+        "sempre o próprio objeto real",
+        "uma lista de pessoas",
+        "uma medida de temperatura"
+      ],
+      "correctAnswer": "uma representação que mostra alguns aspectos de algo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "sempre o próprio objeto real": [
+          "RECALL_MODEL_DEFINITION"
+        ],
+        "uma lista de pessoas": [
+          "RECALL_MODEL_DEFINITION"
+        ],
+        "uma medida de temperatura": [
+          "RECALL_MODEL_DEFINITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "O_QUE_E_MODELO",
+      "explanation": "Modelos representam objetos ou ideias.",
+      "hint": "Pense em desenho ou maquete.",
+      "errorFocus": "RECALL_MODEL_DEFINITION",
+      "feedback": {
+        "correct": "Boa observação: Modelos representam objetos ou ideias.",
+        "incorrect": "Modelos representam objetos ou ideias.",
+        "hint": "Pense em desenho ou maquete.",
+        "errorFocus": "RECALL_MODEL_DEFINITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-26",
+      "statement": "Se uma característica aparece em vários modelos, podemos chamá-la de...",
+      "prompt": "Se uma característica aparece em vários modelos, podemos chamá-la de...",
+      "options": [
+        "um endereço",
+        "um padrão observado.",
+        "uma finalidade obrigatória",
+        "um detalhe escondido"
+      ],
+      "correctAnswer": "um padrão observado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um endereço": [
+          "RECALL_PATTERN"
+        ],
+        "uma finalidade obrigatória": [
+          "RECALL_PATTERN"
+        ],
+        "um detalhe escondido": [
+          "RECALL_PATTERN"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PADRAO_REPETIDO",
+      "explanation": "A repetição é um padrão.",
+      "hint": "Observe o que se repete.",
+      "errorFocus": "RECALL_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A repetição é um padrão.",
+        "incorrect": "A repetição é um padrão.",
+        "hint": "Observe o que se repete.",
+        "errorFocus": "RECALL_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-27",
+      "statement": "Um atributo essencial para uma tarefa é...",
+      "prompt": "Um atributo essencial para uma tarefa é...",
+      "options": [
+        "qualquer detalhe, sem relação com a tarefa",
+        "um endereço privado",
+        "uma característica importante para o propósito escolhido.",
+        "sempre a cor"
+      ],
+      "correctAnswer": "uma característica importante para o propósito escolhido.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "qualquer detalhe, sem relação com a tarefa": [
+          "RECALL_ESSENTIAL_ATTRIBUTE"
+        ],
+        "um endereço privado": [
+          "RECALL_ESSENTIAL_ATTRIBUTE"
+        ],
+        "sempre a cor": [
+          "RECALL_ESSENTIAL_ATTRIBUTE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ATRIBUTO_ESSENCIAL",
+      "explanation": "A relevância depende da finalidade.",
+      "hint": "Relacione característica e propósito.",
+      "errorFocus": "RECALL_ESSENTIAL_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: A relevância depende da finalidade.",
+        "incorrect": "A relevância depende da finalidade.",
+        "hint": "Relacione característica e propósito.",
+        "errorFocus": "RECALL_ESSENTIAL_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-28",
+      "statement": "Um modelo de ponte não mostra sua cor. Isso pode ser aceitável quando...",
+      "prompt": "Um modelo de ponte não mostra sua cor. Isso pode ser aceitável quando...",
+      "options": [
+        "modelos nunca podem simplificar",
+        "a ponte precisa ser real",
+        "todas as cores são iguais",
+        "a cor não é necessária para a finalidade do modelo."
+      ],
+      "correctAnswer": "a cor não é necessária para a finalidade do modelo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "modelos nunca podem simplificar": [
+          "RECALL_MODEL_ABSTRACTION"
+        ],
+        "a ponte precisa ser real": [
+          "RECALL_MODEL_ABSTRACTION"
+        ],
+        "todas as cores são iguais": [
+          "RECALL_MODEL_ABSTRACTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OMISSAO_DE_DETALHE",
+      "explanation": "Modelos podem omitir detalhes não essenciais.",
+      "hint": "Considere o objetivo.",
+      "errorFocus": "RECALL_MODEL_ABSTRACTION",
+      "feedback": {
+        "correct": "Boa observação: Modelos podem omitir detalhes não essenciais.",
+        "incorrect": "Modelos podem omitir detalhes não essenciais.",
+        "hint": "Considere o objetivo.",
+        "errorFocus": "RECALL_MODEL_ABSTRACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-29",
+      "statement": "Como começar a comparar dois modelos da mesma categoria?",
+      "prompt": "Como começar a comparar dois modelos da mesma categoria?",
+      "options": [
+        "Identificar uma característica que aparece em ambos.",
+        "Descobrir o dono real",
+        "Classificar quem desenhou",
+        "Exigir que sejam idênticos"
+      ],
+      "correctAnswer": "Identificar uma característica que aparece em ambos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Descobrir o dono real": [
+          "RECALL_COMPARE_MODELS"
+        ],
+        "Classificar quem desenhou": [
+          "RECALL_COMPARE_MODELS"
+        ],
+        "Exigir que sejam idênticos": [
+          "RECALL_COMPARE_MODELS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SEMELHANCA_DE_MODELOS",
+      "explanation": "A comparação procura semelhanças e diferenças.",
+      "hint": "Observe atributos comuns.",
+      "errorFocus": "RECALL_COMPARE_MODELS",
+      "feedback": {
+        "correct": "Boa observação: A comparação procura semelhanças e diferenças.",
+        "incorrect": "A comparação procura semelhanças e diferenças.",
+        "hint": "Observe atributos comuns.",
+        "errorFocus": "RECALL_COMPARE_MODELS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-30",
+      "statement": "Qual forma pode representar um objeto além de desenho?",
+      "prompt": "Qual forma pode representar um objeto além de desenho?",
+      "options": [
+        "Somente um endereço",
+        "Uma construção tátil ou descrição oral.",
+        "Uma senha",
+        "Uma lista de aniversários"
+      ],
+      "correctAnswer": "Uma construção tátil ou descrição oral.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente um endereço": [
+          "RECALL_MULTIPLE_REPRESENTATIONS"
+        ],
+        "Uma senha": [
+          "RECALL_MULTIPLE_REPRESENTATIONS"
+        ],
+        "Uma lista de aniversários": [
+          "RECALL_MULTIPLE_REPRESENTATIONS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REPRESENTACAO_ACESSIVEL",
+      "explanation": "Modelos podem ser construídos ou descritos.",
+      "hint": "Pense em outros formatos.",
+      "errorFocus": "RECALL_MULTIPLE_REPRESENTATIONS",
+      "feedback": {
+        "correct": "Boa observação: Modelos podem ser construídos ou descritos.",
+        "incorrect": "Modelos podem ser construídos ou descritos.",
+        "hint": "Pense em outros formatos.",
+        "errorFocus": "RECALL_MULTIPLE_REPRESENTATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-31",
+      "statement": "Dois modelos de cadeira têm cores diferentes e o mesmo tipo de apoio. O que varia?",
+      "prompt": "Dois modelos de cadeira têm cores diferentes e o mesmo tipo de apoio. O que varia?",
+      "options": [
+        "O apoio varia e a cor se repete",
+        "Nada varia",
+        "A cor; o apoio se repete.",
+        "Os modelos deixam de ser cadeiras"
+      ],
+      "correctAnswer": "A cor; o apoio se repete.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O apoio varia e a cor se repete": [
+          "RECALL_MODEL_ATTRIBUTE_COMPARISON"
+        ],
+        "Nada varia": [
+          "RECALL_MODEL_ATTRIBUTE_COMPARISON"
+        ],
+        "Os modelos deixam de ser cadeiras": [
+          "RECALL_MODEL_ATTRIBUTE_COMPARISON"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DIFERENCA_RELEVANTE",
+      "explanation": "A descrição destaca a diferença de cor e semelhança de apoio.",
+      "hint": "Separe atributos.",
+      "errorFocus": "RECALL_MODEL_ATTRIBUTE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A descrição destaca a diferença de cor e semelhança de apoio.",
+        "incorrect": "A descrição destaca a diferença de cor e semelhança de apoio.",
+        "hint": "Separe atributos.",
+        "errorFocus": "RECALL_MODEL_ATTRIBUTE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-32",
+      "statement": "Criar e comparar modelos envolve...",
+      "prompt": "Criar e comparar modelos envolve...",
+      "options": [
+        "copiar tudo sem finalidade",
+        "avaliar habilidade artística",
+        "revelar dados pessoais",
+        "representar objetos e identificar padrões e atributos relevantes ao propósito."
+      ],
+      "correctAnswer": "representar objetos e identificar padrões e atributos relevantes ao propósito.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "copiar tudo sem finalidade": [
+          "MODEL_COMPARISON_SUMMARY"
+        ],
+        "avaliar habilidade artística": [
+          "MODEL_COMPARISON_SUMMARY"
+        ],
+        "revelar dados pessoais": [
+          "MODEL_COMPARISON_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_MODELOS",
+      "explanation": "A habilidade trata de modelos, padrões e atributos essenciais.",
+      "hint": "Reúna representação e finalidade.",
+      "errorFocus": "MODEL_COMPARISON_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A habilidade trata de modelos, padrões e atributos essenciais.",
+        "incorrect": "A habilidade trata de modelos, padrões e atributos essenciais.",
+        "hint": "Reúna representação e finalidade.",
+        "errorFocus": "MODEL_COMPARISON_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-33",
+      "statement": "Um desenho simplificado de objeto pode ser...",
+      "prompt": "Um desenho simplificado de objeto pode ser...",
+      "options": [
+        "um modelo.",
+        "necessariamente um objeto real",
+        "uma senha",
+        "um itinerário pessoal"
+      ],
+      "correctAnswer": "um modelo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "necessariamente um objeto real": [
+          "REVIEW_MODEL"
+        ],
+        "uma senha": [
+          "REVIEW_MODEL"
+        ],
+        "um itinerário pessoal": [
+          "REVIEW_MODEL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_REPRESENTACAO",
+      "explanation": "O desenho representa características do objeto.",
+      "hint": "Lembre o que um modelo faz.",
+      "errorFocus": "REVIEW_MODEL",
+      "feedback": {
+        "correct": "Boa observação: O desenho representa características do objeto.",
+        "incorrect": "O desenho representa características do objeto.",
+        "hint": "Lembre o que um modelo faz.",
+        "errorFocus": "REVIEW_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-34",
+      "statement": "Rodas num modelo de carrinho são...",
+      "prompt": "Rodas num modelo de carrinho são...",
+      "options": [
+        "uma finalidade",
+        "partes ou atributos representados.",
+        "uma legenda de mapa",
+        "uma data de festa"
+      ],
+      "correctAnswer": "partes ou atributos representados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma finalidade": [
+          "REVIEW_ATTRIBUTE"
+        ],
+        "uma legenda de mapa": [
+          "REVIEW_ATTRIBUTE"
+        ],
+        "uma data de festa": [
+          "REVIEW_ATTRIBUTE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_ATRIBUTO",
+      "explanation": "Rodas descrevem o objeto representado.",
+      "hint": "Nomeie a característica.",
+      "errorFocus": "REVIEW_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: Rodas descrevem o objeto representado.",
+        "incorrect": "Rodas descrevem o objeto representado.",
+        "hint": "Nomeie a característica.",
+        "errorFocus": "REVIEW_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-35",
+      "statement": "Uma alça aparece em dois modelos de caneca. Isso é...",
+      "prompt": "Uma alça aparece em dois modelos de caneca. Isso é...",
+      "options": [
+        "uma diferença de material real",
+        "um endereço",
+        "uma semelhança entre eles.",
+        "um som medial"
+      ],
+      "correctAnswer": "uma semelhança entre eles.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "uma diferença de material real": [
+          "REVIEW_SHARED_PATTERN"
+        ],
+        "um endereço": [
+          "REVIEW_SHARED_PATTERN"
+        ],
+        "um som medial": [
+          "REVIEW_SHARED_PATTERN"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_PADRAO",
+      "explanation": "A alça é comum aos dois modelos.",
+      "hint": "Veja o elemento repetido.",
+      "errorFocus": "REVIEW_SHARED_PATTERN",
+      "feedback": {
+        "correct": "Boa observação: A alça é comum aos dois modelos.",
+        "incorrect": "A alça é comum aos dois modelos.",
+        "hint": "Veja o elemento repetido.",
+        "errorFocus": "REVIEW_SHARED_PATTERN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-36",
+      "statement": "Para decidir se um detalhe é importante, considere...",
+      "prompt": "Para decidir se um detalhe é importante, considere...",
+      "options": [
+        "a cor preferida de todos",
+        "o nome de quem construiu",
+        "o tamanho da folha",
+        "a finalidade do modelo."
+      ],
+      "correctAnswer": "a finalidade do modelo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "a cor preferida de todos": [
+          "REVIEW_ATTRIBUTE_PURPOSE"
+        ],
+        "o nome de quem construiu": [
+          "REVIEW_ATTRIBUTE_PURPOSE"
+        ],
+        "o tamanho da folha": [
+          "REVIEW_ATTRIBUTE_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_FINALIDADE",
+      "explanation": "A tarefa define quais atributos importam.",
+      "hint": "Pergunte o que o modelo precisa mostrar.",
+      "errorFocus": "REVIEW_ATTRIBUTE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A tarefa define quais atributos importam.",
+        "incorrect": "A tarefa define quais atributos importam.",
+        "hint": "Pergunte o que o modelo precisa mostrar.",
+        "errorFocus": "REVIEW_ATTRIBUTE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-37",
+      "statement": "Um modelo que omite detalhes ainda pode comunicar bem?",
+      "prompt": "Um modelo que omite detalhes ainda pode comunicar bem?",
+      "options": [
+        "Sim, se preserva atributos importantes à finalidade.",
+        "Não, precisa copiar tudo",
+        "Não, deve ter todas as cores",
+        "Sim, mesmo sem representar nada"
+      ],
+      "correctAnswer": "Sim, se preserva atributos importantes à finalidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Não, precisa copiar tudo": [
+          "REVIEW_SIMPLIFIED_MODEL"
+        ],
+        "Não, deve ter todas as cores": [
+          "REVIEW_SIMPLIFIED_MODEL"
+        ],
+        "Sim, mesmo sem representar nada": [
+          "REVIEW_SIMPLIFIED_MODEL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_SIMPLIFICACAO",
+      "explanation": "O essencial depende do propósito.",
+      "hint": "Considere a função da representação.",
+      "errorFocus": "REVIEW_SIMPLIFIED_MODEL",
+      "feedback": {
+        "correct": "Boa observação: O essencial depende do propósito.",
+        "incorrect": "O essencial depende do propósito.",
+        "hint": "Considere a função da representação.",
+        "errorFocus": "REVIEW_SIMPLIFIED_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-38",
+      "statement": "Dois modelos compartilham forma e função, mas usam símbolos diferentes. O que pode ser descrito?",
+      "prompt": "Dois modelos compartilham forma e função, mas usam símbolos diferentes. O que pode ser descrito?",
+      "options": [
+        "Os modelos são exatamente iguais",
+        "Forma e função se repetem; a representação visual varia.",
+        "A finalidade não pode ser comparada",
+        "Os símbolos são objetos reais"
+      ],
+      "correctAnswer": "Forma e função se repetem; a representação visual varia.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os modelos são exatamente iguais": [
+          "REVIEW_PATTERN_AND_DIFFERENCE"
+        ],
+        "A finalidade não pode ser comparada": [
+          "REVIEW_PATTERN_AND_DIFFERENCE"
+        ],
+        "Os símbolos são objetos reais": [
+          "REVIEW_PATTERN_AND_DIFFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_VARIACOES",
+      "explanation": "A análise separa padrão e variação.",
+      "hint": "Compare cada atributo.",
+      "errorFocus": "REVIEW_PATTERN_AND_DIFFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A análise separa padrão e variação.",
+        "incorrect": "A análise separa padrão e variação.",
+        "hint": "Compare cada atributo.",
+        "errorFocus": "REVIEW_PATTERN_AND_DIFFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-39",
+      "statement": "Como alguém pode comparar modelos sem depender só da visão?",
+      "prompt": "Como alguém pode comparar modelos sem depender só da visão?",
+      "options": [
+        "Retirar atributos dos modelos",
+        "Impedir participação",
+        "Explorar versões táteis ou descrições acessíveis.",
+        "Usar letras minúsculas sem descrição"
+      ],
+      "correctAnswer": "Explorar versões táteis ou descrições acessíveis.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Retirar atributos dos modelos": [
+          "REVIEW_ACCESSIBLE_MODELS"
+        ],
+        "Impedir participação": [
+          "REVIEW_ACCESSIBLE_MODELS"
+        ],
+        "Usar letras minúsculas sem descrição": [
+          "REVIEW_ACCESSIBLE_MODELS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_TATO",
+      "explanation": "Outros formatos podem comunicar atributos.",
+      "hint": "Ofereça formas diferentes de explorar.",
+      "errorFocus": "REVIEW_ACCESSIBLE_MODELS",
+      "feedback": {
+        "correct": "Boa observação: Outros formatos podem comunicar atributos.",
+        "incorrect": "Outros formatos podem comunicar atributos.",
+        "hint": "Ofereça formas diferentes de explorar.",
+        "errorFocus": "REVIEW_ACCESSIBLE_MODELS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co01-create-and-compare-object-models-40",
+      "statement": "Uma característica é essencial quando...",
+      "prompt": "Uma característica é essencial quando...",
+      "options": [
+        "aparece em qualquer desenho",
+        "é sempre uma cor",
+        "foi escolhida sem propósito",
+        "contribui para representar o objeto conforme a finalidade escolhida."
+      ],
+      "correctAnswer": "contribui para representar o objeto conforme a finalidade escolhida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "aparece em qualquer desenho": [
+          "REVIEW_ESSENTIAL_ATTRIBUTE"
+        ],
+        "é sempre uma cor": [
+          "REVIEW_ESSENTIAL_ATTRIBUTE"
+        ],
+        "foi escolhida sem propósito": [
+          "REVIEW_ESSENTIAL_ATTRIBUTE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ATRIBUTOS",
+      "explanation": "Essencialidade depende da finalidade e do atributo.",
+      "hint": "Relacione o que mostra ao porquê.",
+      "errorFocus": "REVIEW_ESSENTIAL_ATTRIBUTE",
+      "feedback": {
+        "correct": "Boa observação: Essencialidade depende da finalidade e do atributo.",
+        "incorrect": "Essencialidade depende da finalidade e do atributo.",
+        "hint": "Relacione o que mostra ao porquê.",
+        "errorFocus": "REVIEW_ESSENTIAL_ATTRIBUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer objetos reais, modelos táteis, descrições orais, pictogramas e peças de encaixe.",
+          "Permitir criar modelos com desenho, construção, seleção de cartões ou comunicação alternativa.",
+          "Avaliar a relação entre finalidade e atributos, não habilidade de desenho ou destreza manual."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

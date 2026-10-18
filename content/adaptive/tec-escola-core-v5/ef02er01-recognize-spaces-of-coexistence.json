@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02er01-recognize-spaces-of-coexistence",
+  "canonicalSkillCode": "AUTHORING_EF02ER01_RECOGNIZE_SHARED_SPACES",
+  "subject": "RELIGIOUS_EDUCATION",
+  "domain": "IDENTIDADES E ALTERIDADES",
+  "topic": "reconhecimento de diferentes espaços de convivência",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02ER01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer os diferentes espaços de convivência.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 447
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Lugares onde convivemos",
+    "objective": "Reconhecer diferentes espaços de convivência e descrever formas de interação respeitosa em exemplos fictícios e cotidianos.",
+    "summary": "Pessoas convivem em diferentes espaços, como escola, casa, biblioteca, praça, centro cultural, quadra, associação comunitária ou locais de celebração e práticas religiosas. Cada espaço pode ter regras, finalidades e formas de participação próprias. Nem todas as pessoas frequentam os mesmos lugares, e nenhum espaço define por si só a identidade ou crença de alguém. A turma pode estudar cartões fictícios e imagens públicas sem solicitar endereços, rotinas privadas, religião ou informações familiares. Respeitar limites, acessibilidade e regras locais é parte da convivência.",
+    "explanation": "Observe uma imagem ou narrativa e identifique o espaço apresentado. Pergunte o que as pessoas fazem ali, quem organizou a atividade e quais regras ajudam a conviver com segurança. Uma biblioteca pode ser usada para leitura; uma praça pode receber brincadeiras e encontros; uma escola pode reunir estudantes para aprender. Locais usados por grupos para celebrações também são espaços de convivência, mas a presença num lugar não permite adivinhar a crença de uma pessoa. Descreva os exemplos sem afirmar que todos frequentam os mesmos espaços.",
+    "workedExample": "Uma história fictícia mostra crianças participando de uma oficina numa biblioteca comunitária. Podemos reconhecer a biblioteca como espaço de convivência e dizer que, naquela atividade, as pessoas leram e criaram juntas. Não precisamos concluir que toda criança frequenta uma biblioteca.",
+    "commonMistake": "Supor que todos usam os mesmos espaços, inferir crenças pela presença num local ou desconsiderar regras e limites de espaços compartilhados.",
+    "priorKnowledge": [
+      "Reconhecer lugares familiares e atividades que ocorrem neles.",
+      "Praticar escuta, respeito e regras simples de convivência."
+    ],
+    "keyConcepts": [
+      "espaço de convivência",
+      "escola",
+      "comunidade",
+      "participação",
+      "respeito",
+      "regra",
+      "diversidade",
+      "acessibilidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "IDENTIFY_SHARED_SPACE_PURPOSE",
+        "action": "Relacione o nome do lugar a uma atividade descrita na fonte, sem presumir que todos a realizem."
+      },
+      {
+        "errorFocus": "NO_BELIEF_INFERENCE_FROM_PLACE",
+        "action": "Descreva o espaço e a atividade observada, sem adivinhar crenças ou identidades pessoais."
+      },
+      {
+        "errorFocus": "RESPECT_SHARED_SPACE_RULES",
+        "action": "Leia as regras do cenário e escolha uma ação que respeite pessoas, limites e acessibilidade."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+      "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+      "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+    ],
+    "authenticActivities": [
+      {
+        "id": "er01-shared-spaces-card-sort",
+        "title": "Cartões de espaços de convivência",
+        "instructions": "Cartões fictícios mostram atividades em escola, biblioteca, praça, casa e espaços comunitários diversos.\n1. Identifique o espaço em cada cartão.\n2. Relacione o espaço à atividade apresentada.\n3. Converse sobre uma regra de respeito ou acessibilidade.",
+        "steps": [
+          "Identifique o espaço em cada cartão.",
+          "Relacione o espaço à atividade apresentada.",
+          "Converse sobre uma regra de respeito ou acessibilidade."
+        ],
+        "evidence": "Classificação de espaços com atividade e regra associadas à fonte.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um lugar com apoio.",
+            "developing": "relaciona lugar e atividade.",
+            "proficient": "reconhece espaços diversos e explica convivência sem generalizar sobre pessoas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "er01-community-access-map",
+        "title": "Mapa de espaços compartilhados",
+        "instructions": "Um mapa esquemático fictício identifica lugares públicos e atividades comunitárias possíveis.\n1. Leia a legenda dos lugares.\n2. Escolha um espaço e identifique sua finalidade no cartão.\n3. Sugira uma regra ou apoio para participação respeitosa.",
+        "steps": [
+          "Leia a legenda dos lugares.",
+          "Escolha um espaço e identifique sua finalidade no cartão.",
+          "Sugira uma regra ou apoio para participação respeitosa."
+        ],
+        "evidence": "Mapa anotado com espaço, atividade e consideração de acesso ou respeito.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza um símbolo.",
+            "developing": "identifica uma atividade.",
+            "proficient": "descreve uso possível e considera regras e acessibilidade."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02er01-recognize-spaces-of-coexistence-01",
+          "v1-ef02er01-recognize-spaces-of-coexistence-02",
+          "v1-ef02er01-recognize-spaces-of-coexistence-03",
+          "v1-ef02er01-recognize-spaces-of-coexistence-04",
+          "v1-ef02er01-recognize-spaces-of-coexistence-05",
+          "v1-ef02er01-recognize-spaces-of-coexistence-06",
+          "v1-ef02er01-recognize-spaces-of-coexistence-07",
+          "v1-ef02er01-recognize-spaces-of-coexistence-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02er01-recognize-spaces-of-coexistence-09",
+          "v1-ef02er01-recognize-spaces-of-coexistence-10",
+          "v1-ef02er01-recognize-spaces-of-coexistence-11",
+          "v1-ef02er01-recognize-spaces-of-coexistence-12",
+          "v1-ef02er01-recognize-spaces-of-coexistence-13",
+          "v1-ef02er01-recognize-spaces-of-coexistence-14",
+          "v1-ef02er01-recognize-spaces-of-coexistence-15",
+          "v1-ef02er01-recognize-spaces-of-coexistence-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02er01-recognize-spaces-of-coexistence-17",
+          "v1-ef02er01-recognize-spaces-of-coexistence-18",
+          "v1-ef02er01-recognize-spaces-of-coexistence-19",
+          "v1-ef02er01-recognize-spaces-of-coexistence-20",
+          "v1-ef02er01-recognize-spaces-of-coexistence-21",
+          "v1-ef02er01-recognize-spaces-of-coexistence-22",
+          "v1-ef02er01-recognize-spaces-of-coexistence-23",
+          "v1-ef02er01-recognize-spaces-of-coexistence-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02er01-recognize-spaces-of-coexistence-25",
+          "v1-ef02er01-recognize-spaces-of-coexistence-26",
+          "v1-ef02er01-recognize-spaces-of-coexistence-27",
+          "v1-ef02er01-recognize-spaces-of-coexistence-28",
+          "v1-ef02er01-recognize-spaces-of-coexistence-29",
+          "v1-ef02er01-recognize-spaces-of-coexistence-30",
+          "v1-ef02er01-recognize-spaces-of-coexistence-31",
+          "v1-ef02er01-recognize-spaces-of-coexistence-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02er01-recognize-spaces-of-coexistence-33",
+          "v1-ef02er01-recognize-spaces-of-coexistence-34",
+          "v1-ef02er01-recognize-spaces-of-coexistence-35",
+          "v1-ef02er01-recognize-spaces-of-coexistence-36",
+          "v1-ef02er01-recognize-spaces-of-coexistence-37",
+          "v1-ef02er01-recognize-spaces-of-coexistence-38",
+          "v1-ef02er01-recognize-spaces-of-coexistence-39",
+          "v1-ef02er01-recognize-spaces-of-coexistence-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02ER01",
+        "descriptor": "Reconhecer os diferentes espaços de convivência.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 447
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-01",
+      "statement": "Uma história mostra um grupo lendo numa biblioteca. Que espaço de convivência aparece?",
+      "prompt": "Uma história mostra um grupo lendo numa biblioteca. Que espaço de convivência aparece?",
+      "options": [
+        "Biblioteca.",
+        "Ponto de ônibus",
+        "Oficina",
+        "Horta"
+      ],
+      "correctAnswer": "Biblioteca.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ponto de ônibus": [
+          "IDENTIFY_LIBRARY_SPACE"
+        ],
+        "Oficina": [
+          "IDENTIFY_LIBRARY_SPACE"
+        ],
+        "Horta": [
+          "IDENTIFY_LIBRARY_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "LEITURA_NA_BIBLIOTECA",
+      "explanation": "A narrativa informa que o grupo está na biblioteca.",
+      "hint": "Leia o nome do lugar.",
+      "errorFocus": "IDENTIFY_LIBRARY_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa informa que o grupo está na biblioteca.",
+        "incorrect": "A narrativa informa que o grupo está na biblioteca.",
+        "hint": "Leia o nome do lugar.",
+        "errorFocus": "IDENTIFY_LIBRARY_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-02",
+      "statement": "Uma personagem brinca com colegas numa praça. Que atividade a fonte apresenta nesse espaço?",
+      "prompt": "Uma personagem brinca com colegas numa praça. Que atividade a fonte apresenta nesse espaço?",
+      "options": [
+        "Uma aula numa sala privada",
+        "Brincadeira e encontro com colegas.",
+        "Uma consulta médica",
+        "Uma atividade sem pessoas"
+      ],
+      "correctAnswer": "Brincadeira e encontro com colegas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma aula numa sala privada": [
+          "MATCH_SPACE_AND_ACTIVITY"
+        ],
+        "Uma consulta médica": [
+          "MATCH_SPACE_AND_ACTIVITY"
+        ],
+        "Uma atividade sem pessoas": [
+          "MATCH_SPACE_AND_ACTIVITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "BRINCADEIRA_NA_PRACA",
+      "explanation": "A história descreve uma brincadeira na praça.",
+      "hint": "Relacione lugar e ação.",
+      "errorFocus": "MATCH_SPACE_AND_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A história descreve uma brincadeira na praça.",
+        "incorrect": "A história descreve uma brincadeira na praça.",
+        "hint": "Relacione lugar e ação.",
+        "errorFocus": "MATCH_SPACE_AND_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-03",
+      "statement": "Um cartão fictício mostra pessoas reunidas num espaço de celebração. O que podemos reconhecer?",
+      "prompt": "Um cartão fictício mostra pessoas reunidas num espaço de celebração. O que podemos reconhecer?",
+      "options": [
+        "A crença de cada pessoa presente",
+        "Que todos frequentam o lugar",
+        "Um espaço onde aquele grupo se reúne.",
+        "Uma regra para todas as famílias"
+      ],
+      "correctAnswer": "Um espaço onde aquele grupo se reúne.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A crença de cada pessoa presente": [
+          "DESCRIBE_SPACE_WITHOUT_INFERENCE"
+        ],
+        "Que todos frequentam o lugar": [
+          "DESCRIBE_SPACE_WITHOUT_INFERENCE"
+        ],
+        "Uma regra para todas as famílias": [
+          "DESCRIBE_SPACE_WITHOUT_INFERENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCAL_DE_CELEBRACAO",
+      "explanation": "A fonte permite reconhecer o local, não as crenças individuais.",
+      "hint": "Descreva o que está explícito.",
+      "errorFocus": "DESCRIBE_SPACE_WITHOUT_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: A fonte permite reconhecer o local, não as crenças individuais.",
+        "incorrect": "A fonte permite reconhecer o local, não as crenças individuais.",
+        "hint": "Descreva o que está explícito.",
+        "errorFocus": "DESCRIBE_SPACE_WITHOUT_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-04",
+      "statement": "Estudantes se encontram numa escola para uma atividade de leitura. Qual espaço é esse?",
+      "prompt": "Estudantes se encontram numa escola para uma atividade de leitura. Qual espaço é esse?",
+      "options": [
+        "Praia",
+        "Mercado",
+        "Terminal",
+        "Escola."
+      ],
+      "correctAnswer": "Escola.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Praia": [
+          "IDENTIFY_SCHOOL_SPACE"
+        ],
+        "Mercado": [
+          "IDENTIFY_SCHOOL_SPACE"
+        ],
+        "Terminal": [
+          "IDENTIFY_SCHOOL_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "APRENDER_NA_ESCOLA",
+      "explanation": "A atividade acontece na escola.",
+      "hint": "Observe onde o grupo está.",
+      "errorFocus": "IDENTIFY_SCHOOL_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A atividade acontece na escola.",
+        "incorrect": "A atividade acontece na escola.",
+        "hint": "Observe onde o grupo está.",
+        "errorFocus": "IDENTIFY_SCHOOL_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-05",
+      "statement": "Numa quadra compartilhada, qual atitude favorece a convivência?",
+      "prompt": "Numa quadra compartilhada, qual atitude favorece a convivência?",
+      "options": [
+        "Esperar a vez e respeitar as regras combinadas.",
+        "Impedir que outras pessoas participem",
+        "Ignorar os limites de segurança",
+        "Tomar todo o espaço para si"
+      ],
+      "correctAnswer": "Esperar a vez e respeitar as regras combinadas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Impedir que outras pessoas participem": [
+          "RESPECT_SHARED_SPACE_RULES"
+        ],
+        "Ignorar os limites de segurança": [
+          "RESPECT_SHARED_SPACE_RULES"
+        ],
+        "Tomar todo o espaço para si": [
+          "RESPECT_SHARED_SPACE_RULES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_DA_QUADRA",
+      "explanation": "Regras e turnos ajudam pessoas a usar o espaço juntas.",
+      "hint": "Escolha uma ação respeitosa.",
+      "errorFocus": "RESPECT_SHARED_SPACE_RULES",
+      "feedback": {
+        "correct": "Boa observação: Regras e turnos ajudam pessoas a usar o espaço juntas.",
+        "incorrect": "Regras e turnos ajudam pessoas a usar o espaço juntas.",
+        "hint": "Escolha uma ação respeitosa.",
+        "errorFocus": "RESPECT_SHARED_SPACE_RULES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-06",
+      "statement": "Uma casa e uma biblioteca podem ser espaços de convivência?",
+      "prompt": "Uma casa e uma biblioteca podem ser espaços de convivência?",
+      "options": [
+        "Não, só a escola permite convivência",
+        "Sim; pessoas podem interagir em ambos, com finalidades e regras diferentes.",
+        "Sim, mas todos usam do mesmo modo",
+        "Não, porque têm nomes diferentes"
+      ],
+      "correctAnswer": "Sim; pessoas podem interagir em ambos, com finalidades e regras diferentes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Não, só a escola permite convivência": [
+          "COMPARE_DIVERSE_SHARED_SPACES"
+        ],
+        "Sim, mas todos usam do mesmo modo": [
+          "COMPARE_DIVERSE_SHARED_SPACES"
+        ],
+        "Não, porque têm nomes diferentes": [
+          "COMPARE_DIVERSE_SHARED_SPACES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CASA_E_BIBLIOTECA",
+      "explanation": "A convivência acontece em diferentes espaços.",
+      "hint": "Considere as pessoas e as atividades.",
+      "errorFocus": "COMPARE_DIVERSE_SHARED_SPACES",
+      "feedback": {
+        "correct": "Boa observação: A convivência acontece em diferentes espaços.",
+        "incorrect": "A convivência acontece em diferentes espaços.",
+        "hint": "Considere as pessoas e as atividades.",
+        "errorFocus": "COMPARE_DIVERSE_SHARED_SPACES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-07",
+      "statement": "Um mapa marca uma praça e uma escola. O que os símbolos identificam?",
+      "prompt": "Um mapa marca uma praça e uma escola. O que os símbolos identificam?",
+      "options": [
+        "Endereços privados de estudantes",
+        "A crença dos moradores",
+        "Espaços indicados na legenda.",
+        "A rotina de cada família"
+      ],
+      "correctAnswer": "Espaços indicados na legenda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Endereços privados de estudantes": [
+          "READ_SHARED_SPACE_MAP"
+        ],
+        "A crença dos moradores": [
+          "READ_SHARED_SPACE_MAP"
+        ],
+        "A rotina de cada família": [
+          "READ_SHARED_SPACE_MAP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "MAPA_DA_COMUNIDADE",
+      "explanation": "A legenda nomeia os espaços do mapa fictício.",
+      "hint": "Consulte a legenda.",
+      "errorFocus": "READ_SHARED_SPACE_MAP",
+      "feedback": {
+        "correct": "Boa observação: A legenda nomeia os espaços do mapa fictício.",
+        "incorrect": "A legenda nomeia os espaços do mapa fictício.",
+        "hint": "Consulte a legenda.",
+        "errorFocus": "READ_SHARED_SPACE_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-08",
+      "statement": "Como estudar espaços de convivência sem expor rotinas pessoais?",
+      "prompt": "Como estudar espaços de convivência sem expor rotinas pessoais?",
+      "options": [
+        "Pedir endereços de colegas",
+        "Mapear a rotina de cada família",
+        "Publicar locais frequentados por estudantes",
+        "Usar exemplos fictícios ou imagens públicas autorizadas."
+      ],
+      "correctAnswer": "Usar exemplos fictícios ou imagens públicas autorizadas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Pedir endereços de colegas": [
+          "SAFE_SPACE_STUDY"
+        ],
+        "Mapear a rotina de cada família": [
+          "SAFE_SPACE_STUDY"
+        ],
+        "Publicar locais frequentados por estudantes": [
+          "SAFE_SPACE_STUDY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRIVACIDADE_DOS_LUGARES",
+      "explanation": "Fontes fictícias e públicas protegem a privacidade.",
+      "hint": "Escolha uma fonte segura.",
+      "errorFocus": "SAFE_SPACE_STUDY",
+      "feedback": {
+        "correct": "Boa observação: Fontes fictícias e públicas protegem a privacidade.",
+        "incorrect": "Fontes fictícias e públicas protegem a privacidade.",
+        "hint": "Escolha uma fonte segura.",
+        "errorFocus": "SAFE_SPACE_STUDY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-09",
+      "statement": "Uma narrativa descreve uma oficina de música num centro cultural. Qual lugar aparece?",
+      "prompt": "Uma narrativa descreve uma oficina de música num centro cultural. Qual lugar aparece?",
+      "options": [
+        "Centro cultural.",
+        "Biblioteca escolar",
+        "Estação de trem",
+        "Consultório"
+      ],
+      "correctAnswer": "Centro cultural.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Biblioteca escolar": [
+          "IDENTIFY_CULTURAL_SPACE"
+        ],
+        "Estação de trem": [
+          "IDENTIFY_CULTURAL_SPACE"
+        ],
+        "Consultório": [
+          "IDENTIFY_CULTURAL_SPACE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CENTRO_CULTURAL",
+      "explanation": "O cartão nomeia o centro cultural.",
+      "hint": "Leia o lugar indicado.",
+      "errorFocus": "IDENTIFY_CULTURAL_SPACE",
+      "feedback": {
+        "correct": "Boa observação: O cartão nomeia o centro cultural.",
+        "incorrect": "O cartão nomeia o centro cultural.",
+        "hint": "Leia o lugar indicado.",
+        "errorFocus": "IDENTIFY_CULTURAL_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-10",
+      "statement": "Moradores cuidam juntos de uma horta comunitária. O que a situação mostra?",
+      "prompt": "Moradores cuidam juntos de uma horta comunitária. O que a situação mostra?",
+      "options": [
+        "Um espaço usado por uma única pessoa sempre",
+        "Um espaço comunitário de atividade compartilhada.",
+        "Um local que define a identidade de todos",
+        "Uma regra de frequência obrigatória"
+      ],
+      "correctAnswer": "Um espaço comunitário de atividade compartilhada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Um espaço usado por uma única pessoa sempre": [
+          "MATCH_ACTIVITY_TO_COMMUNITY_SPACE"
+        ],
+        "Um local que define a identidade de todos": [
+          "MATCH_ACTIVITY_TO_COMMUNITY_SPACE"
+        ],
+        "Uma regra de frequência obrigatória": [
+          "MATCH_ACTIVITY_TO_COMMUNITY_SPACE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "HORTA_COMUNITARIA",
+      "explanation": "A horta é cuidada coletivamente no cenário.",
+      "hint": "Observe quem participa da atividade.",
+      "errorFocus": "MATCH_ACTIVITY_TO_COMMUNITY_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A horta é cuidada coletivamente no cenário.",
+        "incorrect": "A horta é cuidada coletivamente no cenário.",
+        "hint": "Observe quem participa da atividade.",
+        "errorFocus": "MATCH_ACTIVITY_TO_COMMUNITY_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-11",
+      "statement": "Uma pessoa aparece numa biblioteca. Podemos concluir que ela gosta de todos os livros?",
+      "prompt": "Uma pessoa aparece numa biblioteca. Podemos concluir que ela gosta de todos os livros?",
+      "options": [
+        "Sim, toda pessoa na biblioteca gosta de tudo",
+        "Sim, a presença prova sua identidade",
+        "Não; a imagem não informa todas as preferências da pessoa.",
+        "Não, ninguém pode usar bibliotecas"
+      ],
+      "correctAnswer": "Não; a imagem não informa todas as preferências da pessoa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, toda pessoa na biblioteca gosta de tudo": [
+          "AVOID_IDENTITY_INFERENCE"
+        ],
+        "Sim, a presença prova sua identidade": [
+          "AVOID_IDENTITY_INFERENCE"
+        ],
+        "Não, ninguém pode usar bibliotecas": [
+          "AVOID_IDENTITY_INFERENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ESPAÇO_E_IDENTIDADE",
+      "explanation": "Estar num local não revela todas as preferências.",
+      "hint": "Limite a conclusão à fonte.",
+      "errorFocus": "AVOID_IDENTITY_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Estar num local não revela todas as preferências.",
+        "incorrect": "Estar num local não revela todas as preferências.",
+        "hint": "Limite a conclusão à fonte.",
+        "errorFocus": "AVOID_IDENTITY_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-12",
+      "statement": "O que pode ajudar mais pessoas a participar de uma atividade na praça?",
+      "prompt": "O que pode ajudar mais pessoas a participar de uma atividade na praça?",
+      "options": [
+        "Bloquear a entrada",
+        "Retirar lugares de descanso",
+        "Proibir comunicação alternativa",
+        "Considerar caminhos acessíveis e diferentes formas de participação."
+      ],
+      "correctAnswer": "Considerar caminhos acessíveis e diferentes formas de participação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Bloquear a entrada": [
+          "ACCESSIBLE_SHARED_SPACE"
+        ],
+        "Retirar lugares de descanso": [
+          "ACCESSIBLE_SHARED_SPACE"
+        ],
+        "Proibir comunicação alternativa": [
+          "ACCESSIBLE_SHARED_SPACE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ACESSIBILIDADE_DA_PRAÇA",
+      "explanation": "Acessibilidade favorece participação de pessoas diversas.",
+      "hint": "Pense em remover barreiras.",
+      "errorFocus": "ACCESSIBLE_SHARED_SPACE",
+      "feedback": {
+        "correct": "Boa observação: Acessibilidade favorece participação de pessoas diversas.",
+        "incorrect": "Acessibilidade favorece participação de pessoas diversas.",
+        "hint": "Pense em remover barreiras.",
+        "errorFocus": "ACCESSIBLE_SHARED_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-13",
+      "statement": "Uma aula ocorre na sala e depois a turma conversa no pátio. O que mudou?",
+      "prompt": "Uma aula ocorre na sala e depois a turma conversa no pátio. O que mudou?",
+      "options": [
+        "O espaço onde o grupo está reunido.",
+        "A identidade de cada estudante",
+        "A família de todos",
+        "A necessidade de respeito"
+      ],
+      "correctAnswer": "O espaço onde o grupo está reunido.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A identidade de cada estudante": [
+          "COMPARE_SPACE_CONTEXT"
+        ],
+        "A família de todos": [
+          "COMPARE_SPACE_CONTEXT"
+        ],
+        "A necessidade de respeito": [
+          "COMPARE_SPACE_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SALA_E_PATIO",
+      "explanation": "A narrativa apresenta dois locais diferentes.",
+      "hint": "Compare os lugares citados.",
+      "errorFocus": "COMPARE_SPACE_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A narrativa apresenta dois locais diferentes.",
+        "incorrect": "A narrativa apresenta dois locais diferentes.",
+        "hint": "Compare os lugares citados.",
+        "errorFocus": "COMPARE_SPACE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-14",
+      "statement": "Uma biblioteca pede que visitantes mantenham o corredor livre. Qual motivo combina com convivência?",
+      "prompt": "Uma biblioteca pede que visitantes mantenham o corredor livre. Qual motivo combina com convivência?",
+      "options": [
+        "Impedir a leitura de todos",
+        "Permitir circulação segura de diferentes pessoas.",
+        "Definir quem pode ter livros em casa",
+        "Adivinhar a rotina dos visitantes"
+      ],
+      "correctAnswer": "Permitir circulação segura de diferentes pessoas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Impedir a leitura de todos": [
+          "ANALYZE_SHARED_SPACE_RULE"
+        ],
+        "Definir quem pode ter livros em casa": [
+          "ANALYZE_SHARED_SPACE_RULE"
+        ],
+        "Adivinhar a rotina dos visitantes": [
+          "ANALYZE_SHARED_SPACE_RULE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REGRAS_DE_BIBLIOTECA",
+      "explanation": "Manter passagem livre apoia acesso e segurança.",
+      "hint": "Relacione a regra ao uso do espaço.",
+      "errorFocus": "ANALYZE_SHARED_SPACE_RULE",
+      "feedback": {
+        "correct": "Boa observação: Manter passagem livre apoia acesso e segurança.",
+        "incorrect": "Manter passagem livre apoia acesso e segurança.",
+        "hint": "Relacione a regra ao uso do espaço.",
+        "errorFocus": "ANALYZE_SHARED_SPACE_RULE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-15",
+      "statement": "Uma equipe fictícia combina um jogo numa quadra. Que tipo de atividade está descrita?",
+      "prompt": "Uma equipe fictícia combina um jogo numa quadra. Que tipo de atividade está descrita?",
+      "options": [
+        "Uma tarefa individual sem espaço",
+        "Uma comemoração privada de todas as famílias",
+        "Atividade compartilhada num espaço de convivência.",
+        "Uma viagem de ônibus"
+      ],
+      "correctAnswer": "Atividade compartilhada num espaço de convivência.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma tarefa individual sem espaço": [
+          "IDENTIFY_SHARED_ACTIVITY"
+        ],
+        "Uma comemoração privada de todas as famílias": [
+          "IDENTIFY_SHARED_ACTIVITY"
+        ],
+        "Uma viagem de ônibus": [
+          "IDENTIFY_SHARED_ACTIVITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ENCONTRO_NA_QUADRA",
+      "explanation": "A equipe usa a quadra para jogar em conjunto.",
+      "hint": "Veja o que o grupo faz.",
+      "errorFocus": "IDENTIFY_SHARED_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A equipe usa a quadra para jogar em conjunto.",
+        "incorrect": "A equipe usa a quadra para jogar em conjunto.",
+        "hint": "Veja o que o grupo faz.",
+        "errorFocus": "IDENTIFY_SHARED_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-16",
+      "statement": "Um cartão informa que uma sala está reservada para uma atividade. Como agir?",
+      "prompt": "Um cartão informa que uma sala está reservada para uma atividade. Como agir?",
+      "options": [
+        "Entrar sem autorização",
+        "Retirar a placa",
+        "Exigir que todos mudem a atividade",
+        "Respeitar a sinalização e procurar outro espaço disponível."
+      ],
+      "correctAnswer": "Respeitar a sinalização e procurar outro espaço disponível.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Entrar sem autorização": [
+          "RESPECT_SPACE_BOUNDARY"
+        ],
+        "Retirar a placa": [
+          "RESPECT_SPACE_BOUNDARY"
+        ],
+        "Exigir que todos mudem a atividade": [
+          "RESPECT_SPACE_BOUNDARY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RESPEITO_AO_LIMITE",
+      "explanation": "Sinalizações ajudam a organizar o uso do espaço.",
+      "hint": "Siga a regra indicada.",
+      "errorFocus": "RESPECT_SPACE_BOUNDARY",
+      "feedback": {
+        "correct": "Boa observação: Sinalizações ajudam a organizar o uso do espaço.",
+        "incorrect": "Sinalizações ajudam a organizar o uso do espaço.",
+        "hint": "Siga a regra indicada.",
+        "errorFocus": "RESPECT_SPACE_BOUNDARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-17",
+      "statement": "Uma associação reúne pessoas para planejar uma atividade local. Que espaço ou grupo de convivência aparece?",
+      "prompt": "Uma associação reúne pessoas para planejar uma atividade local. Que espaço ou grupo de convivência aparece?",
+      "options": [
+        "Um espaço de encontro comunitário.",
+        "Um endereço residencial de estudante",
+        "Uma sala de aula necessariamente",
+        "Um local sem interação"
+      ],
+      "correctAnswer": "Um espaço de encontro comunitário.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um endereço residencial de estudante": [
+          "TRANSFER_COMMUNITY_GATHERING"
+        ],
+        "Uma sala de aula necessariamente": [
+          "TRANSFER_COMMUNITY_GATHERING"
+        ],
+        "Um local sem interação": [
+          "TRANSFER_COMMUNITY_GATHERING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ASSOCIACAO_DE_BAIRRO",
+      "explanation": "A associação organiza encontro entre pessoas.",
+      "hint": "Observe o propósito do grupo.",
+      "errorFocus": "TRANSFER_COMMUNITY_GATHERING",
+      "feedback": {
+        "correct": "Boa observação: A associação organiza encontro entre pessoas.",
+        "incorrect": "A associação organiza encontro entre pessoas.",
+        "hint": "Observe o propósito do grupo.",
+        "errorFocus": "TRANSFER_COMMUNITY_GATHERING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-18",
+      "statement": "Uma família fictícia passeia num parque público. O que se pode dizer?",
+      "prompt": "Uma família fictícia passeia num parque público. O que se pode dizer?",
+      "options": [
+        "Todas as famílias passeiam ali",
+        "Na história, o parque é um espaço de convivência e passeio.",
+        "O parque revela a religião da família",
+        "Todo estudante frequenta o parque"
+      ],
+      "correctAnswer": "Na história, o parque é um espaço de convivência e passeio.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as famílias passeiam ali": [
+          "TRANSFER_LIMITED_SPACE_DESCRIPTION"
+        ],
+        "O parque revela a religião da família": [
+          "TRANSFER_LIMITED_SPACE_DESCRIPTION"
+        ],
+        "Todo estudante frequenta o parque": [
+          "TRANSFER_LIMITED_SPACE_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "PARQUE_E_CAMINHADA",
+      "explanation": "A conclusão descreve o exemplo da narrativa.",
+      "hint": "Use “na história”.",
+      "errorFocus": "TRANSFER_LIMITED_SPACE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A conclusão descreve o exemplo da narrativa.",
+        "incorrect": "A conclusão descreve o exemplo da narrativa.",
+        "hint": "Use “na história”.",
+        "errorFocus": "TRANSFER_LIMITED_SPACE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-19",
+      "statement": "Uma praça e uma biblioteca recebem atividades diferentes. O que comparar?",
+      "prompt": "Uma praça e uma biblioteca recebem atividades diferentes. O que comparar?",
+      "options": [
+        "Qual lugar é superior",
+        "Quem tem mais direitos pessoais",
+        "As finalidades e atividades apresentadas em cada fonte.",
+        "A crença de quem visita"
+      ],
+      "correctAnswer": "As finalidades e atividades apresentadas em cada fonte.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Qual lugar é superior": [
+          "TRANSFER_COMPARE_SPACE_PURPOSE"
+        ],
+        "Quem tem mais direitos pessoais": [
+          "TRANSFER_COMPARE_SPACE_PURPOSE"
+        ],
+        "A crença de quem visita": [
+          "TRANSFER_COMPARE_SPACE_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_ESPACOS_PUBLICOS",
+      "explanation": "Diferentes espaços podem ter usos distintos.",
+      "hint": "Compare o que acontece em cada lugar.",
+      "errorFocus": "TRANSFER_COMPARE_SPACE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Diferentes espaços podem ter usos distintos.",
+        "incorrect": "Diferentes espaços podem ter usos distintos.",
+        "hint": "Compare o que acontece em cada lugar.",
+        "errorFocus": "TRANSFER_COMPARE_SPACE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-20",
+      "statement": "Um grupo usa um espaço para uma prática cultural. Qual conclusão respeitosa?",
+      "prompt": "Um grupo usa um espaço para uma prática cultural. Qual conclusão respeitosa?",
+      "options": [
+        "Todas as pessoas da região participam",
+        "O local define a crença de cada visitante",
+        "A prática é obrigatória para a turma",
+        "O espaço é usado por aquele grupo nessa atividade descrita."
+      ],
+      "correctAnswer": "O espaço é usado por aquele grupo nessa atividade descrita.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Todas as pessoas da região participam": [
+          "TRANSFER_RESPECT_CULTURAL_SPACE"
+        ],
+        "O local define a crença de cada visitante": [
+          "TRANSFER_RESPECT_CULTURAL_SPACE"
+        ],
+        "A prática é obrigatória para a turma": [
+          "TRANSFER_RESPECT_CULTURAL_SPACE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LUGAR_DE_PRATICA_CULTURAL",
+      "explanation": "A fonte descreve um grupo e uma ocasião específicos.",
+      "hint": "Evite generalizar identidades.",
+      "errorFocus": "TRANSFER_RESPECT_CULTURAL_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A fonte descreve um grupo e uma ocasião específicos.",
+        "incorrect": "A fonte descreve um grupo e uma ocasião específicos.",
+        "hint": "Evite generalizar identidades.",
+        "errorFocus": "TRANSFER_RESPECT_CULTURAL_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-21",
+      "statement": "Um mapa fictício mostra biblioteca, praça e centro cultural, mas uma rota tem escadas sem alternativa. O que sugerir?",
+      "prompt": "Um mapa fictício mostra biblioteca, praça e centro cultural, mas uma rota tem escadas sem alternativa. O que sugerir?",
+      "options": [
+        "Indicar uma rota acessível ou outra forma de participação.",
+        "Excluir pessoas que não usam escadas",
+        "Apagar todos os espaços",
+        "Exigir dados médicos de visitantes"
+      ],
+      "correctAnswer": "Indicar uma rota acessível ou outra forma de participação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Excluir pessoas que não usam escadas": [
+          "ANALYZE_ACCESSIBILITY_BARRIER"
+        ],
+        "Apagar todos os espaços": [
+          "ANALYZE_ACCESSIBILITY_BARRIER"
+        ],
+        "Exigir dados médicos de visitantes": [
+          "ANALYZE_ACCESSIBILITY_BARRIER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ROTAS_ACESSIVEIS",
+      "explanation": "Uma alternativa reduz barreiras sem expor pessoas.",
+      "hint": "Pense em acesso e autonomia.",
+      "errorFocus": "ANALYZE_ACCESSIBILITY_BARRIER",
+      "feedback": {
+        "correct": "Boa observação: Uma alternativa reduz barreiras sem expor pessoas.",
+        "incorrect": "Uma alternativa reduz barreiras sem expor pessoas.",
+        "hint": "Pense em acesso e autonomia.",
+        "errorFocus": "ANALYZE_ACCESSIBILITY_BARRIER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-22",
+      "statement": "Num espaço compartilhado, duas atividades precisam usar o mesmo local. O que pode ajudar?",
+      "prompt": "Num espaço compartilhado, duas atividades precisam usar o mesmo local. O que pode ajudar?",
+      "options": [
+        "Uma pessoa ocupar o lugar sempre",
+        "Combinar horários e regras de uso com respeito às pessoas.",
+        "Ignorar os acordos",
+        "Publicar rotinas privadas"
+      ],
+      "correctAnswer": "Combinar horários e regras de uso com respeito às pessoas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma pessoa ocupar o lugar sempre": [
+          "TRANSFER_SHARED_USE_NEGOTIATION"
+        ],
+        "Ignorar os acordos": [
+          "TRANSFER_SHARED_USE_NEGOTIATION"
+        ],
+        "Publicar rotinas privadas": [
+          "TRANSFER_SHARED_USE_NEGOTIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CONVIVENCIA_COM_REGRAS",
+      "explanation": "Acordos ajudam a organizar a convivência.",
+      "hint": "Escolha diálogo e regras claras.",
+      "errorFocus": "TRANSFER_SHARED_USE_NEGOTIATION",
+      "feedback": {
+        "correct": "Boa observação: Acordos ajudam a organizar a convivência.",
+        "incorrect": "Acordos ajudam a organizar a convivência.",
+        "hint": "Escolha diálogo e regras claras.",
+        "errorFocus": "TRANSFER_SHARED_USE_NEGOTIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-23",
+      "statement": "Uma praça aberta ao público costuma ser diferente de uma residência porque...",
+      "prompt": "Uma praça aberta ao público costuma ser diferente de uma residência porque...",
+      "options": [
+        "não pode ter convivência",
+        "revela quem mora em cada casa",
+        "é um espaço compartilhado com regras de uso público.",
+        "todas as pessoas usam igual"
+      ],
+      "correctAnswer": "é um espaço compartilhado com regras de uso público.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "não pode ter convivência": [
+          "TRANSFER_PUBLIC_SPACE"
+        ],
+        "revela quem mora em cada casa": [
+          "TRANSFER_PUBLIC_SPACE"
+        ],
+        "todas as pessoas usam igual": [
+          "TRANSFER_PUBLIC_SPACE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ESPACO_PRIVADO_E_PUBLICO",
+      "explanation": "A praça é apresentada como espaço público compartilhado.",
+      "hint": "Considere quem pode usar e quais regras existem.",
+      "errorFocus": "TRANSFER_PUBLIC_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A praça é apresentada como espaço público compartilhado.",
+        "incorrect": "A praça é apresentada como espaço público compartilhado.",
+        "hint": "Considere quem pode usar e quais regras existem.",
+        "errorFocus": "TRANSFER_PUBLIC_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-24",
+      "statement": "Por que reconhecer espaços diferentes sem dizer que todos os frequentam?",
+      "prompt": "Por que reconhecer espaços diferentes sem dizer que todos os frequentam?",
+      "options": [
+        "Porque só existe um lugar de convivência",
+        "Porque todo espaço tem o mesmo propósito",
+        "Porque as fontes não podem ser comparadas",
+        "Porque pessoas têm experiências e possibilidades de participação diversas."
+      ],
+      "correctAnswer": "Porque pessoas têm experiências e possibilidades de participação diversas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque só existe um lugar de convivência": [
+          "JUSTIFY_DIVERSE_SPACE_ACCESS"
+        ],
+        "Porque todo espaço tem o mesmo propósito": [
+          "JUSTIFY_DIVERSE_SPACE_ACCESS"
+        ],
+        "Porque as fontes não podem ser comparadas": [
+          "JUSTIFY_DIVERSE_SPACE_ACCESS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "DIVERSIDADE_DE_ESPACOS",
+      "explanation": "Reconhecer diversidade evita generalizar experiências.",
+      "hint": "Pense em acesso e contextos distintos.",
+      "errorFocus": "JUSTIFY_DIVERSE_SPACE_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Reconhecer diversidade evita generalizar experiências.",
+        "incorrect": "Reconhecer diversidade evita generalizar experiências.",
+        "hint": "Pense em acesso e contextos distintos.",
+        "errorFocus": "JUSTIFY_DIVERSE_SPACE_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-25",
+      "statement": "Espaços de convivência são lugares onde...",
+      "prompt": "Espaços de convivência são lugares onde...",
+      "options": [
+        "pessoas podem se encontrar e participar de atividades.",
+        "ninguém pode interagir",
+        "todas as pessoas fazem o mesmo",
+        "só há uma finalidade possível"
+      ],
+      "correctAnswer": "pessoas podem se encontrar e participar de atividades.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "ninguém pode interagir": [
+          "RECALL_SHARED_SPACE"
+        ],
+        "todas as pessoas fazem o mesmo": [
+          "RECALL_SHARED_SPACE"
+        ],
+        "só há uma finalidade possível": [
+          "RECALL_SHARED_SPACE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CONCEITO_DE_CONVIVENCIA",
+      "explanation": "A convivência envolve interação em espaços diversos.",
+      "hint": "Lembre dos exemplos da aula.",
+      "errorFocus": "RECALL_SHARED_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A convivência envolve interação em espaços diversos.",
+        "incorrect": "A convivência envolve interação em espaços diversos.",
+        "hint": "Lembre dos exemplos da aula.",
+        "errorFocus": "RECALL_SHARED_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-26",
+      "statement": "Uma turma realiza uma atividade na escola. A escola é...",
+      "prompt": "Uma turma realiza uma atividade na escola. A escola é...",
+      "options": [
+        "um objeto do mapa",
+        "um espaço de convivência naquele contexto.",
+        "uma prática privada de cada família",
+        "uma rua"
+      ],
+      "correctAnswer": "um espaço de convivência naquele contexto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um objeto do mapa": [
+          "RECALL_SCHOOL_AS_SHARED_SPACE"
+        ],
+        "uma prática privada de cada família": [
+          "RECALL_SCHOOL_AS_SHARED_SPACE"
+        ],
+        "uma rua": [
+          "RECALL_SCHOOL_AS_SHARED_SPACE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ESCOLA_COMO_ESPACO",
+      "explanation": "A turma se reúne para uma atividade escolar.",
+      "hint": "Nomeie o lugar do grupo.",
+      "errorFocus": "RECALL_SCHOOL_AS_SHARED_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A turma se reúne para uma atividade escolar.",
+        "incorrect": "A turma se reúne para uma atividade escolar.",
+        "hint": "Nomeie o lugar do grupo.",
+        "errorFocus": "RECALL_SCHOOL_AS_SHARED_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-27",
+      "statement": "Ver alguém num local de celebração permite saber sua crença pessoal?",
+      "prompt": "Ver alguém num local de celebração permite saber sua crença pessoal?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se houver outras pessoas",
+        "Não; a presença no local não informa todas as crenças da pessoa.",
+        "Não, porque locais não existem"
+      ],
+      "correctAnswer": "Não; a presença no local não informa todas as crenças da pessoa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "RECALL_NO_BELIEF_INFERENCE"
+        ],
+        "Sim, se houver outras pessoas": [
+          "RECALL_NO_BELIEF_INFERENCE"
+        ],
+        "Não, porque locais não existem": [
+          "RECALL_NO_BELIEF_INFERENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCAL_E_CRENCA",
+      "explanation": "Não se deve inferir identidade por uma única observação.",
+      "hint": "Respeite o limite da fonte.",
+      "errorFocus": "RECALL_NO_BELIEF_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Não se deve inferir identidade por uma única observação.",
+        "incorrect": "Não se deve inferir identidade por uma única observação.",
+        "hint": "Respeite o limite da fonte.",
+        "errorFocus": "RECALL_NO_BELIEF_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-28",
+      "statement": "Regras claras num espaço compartilhado ajudam a...",
+      "prompt": "Regras claras num espaço compartilhado ajudam a...",
+      "options": [
+        "impedir toda participação",
+        "definir quem é melhor",
+        "expor informações familiares",
+        "organizar o uso com respeito e segurança."
+      ],
+      "correctAnswer": "organizar o uso com respeito e segurança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "impedir toda participação": [
+          "RECALL_SHARED_SPACE_RULES"
+        ],
+        "definir quem é melhor": [
+          "RECALL_SHARED_SPACE_RULES"
+        ],
+        "expor informações familiares": [
+          "RECALL_SHARED_SPACE_RULES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRAS_COMPARTILHADAS",
+      "explanation": "Regras apoiam uma convivência segura.",
+      "hint": "Pense no uso coletivo.",
+      "errorFocus": "RECALL_SHARED_SPACE_RULES",
+      "feedback": {
+        "correct": "Boa observação: Regras apoiam uma convivência segura.",
+        "incorrect": "Regras apoiam uma convivência segura.",
+        "hint": "Pense no uso coletivo.",
+        "errorFocus": "RECALL_SHARED_SPACE_RULES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-29",
+      "statement": "Que recurso pode ser usado para estudar lugares sem mapear a rotina da turma?",
+      "prompt": "Que recurso pode ser usado para estudar lugares sem mapear a rotina da turma?",
+      "options": [
+        "Um mapa esquemático fictício.",
+        "Localização ao vivo dos estudantes",
+        "Endereços residenciais",
+        "Lista de locais frequentados por cada criança"
+      ],
+      "correctAnswer": "Um mapa esquemático fictício.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Localização ao vivo dos estudantes": [
+          "RECALL_PRIVACY_SAFE_MAP"
+        ],
+        "Endereços residenciais": [
+          "RECALL_PRIVACY_SAFE_MAP"
+        ],
+        "Lista de locais frequentados por cada criança": [
+          "RECALL_PRIVACY_SAFE_MAP"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FONTE_SEGURA",
+      "explanation": "Um mapa fictício não expõe rotinas pessoais.",
+      "hint": "Escolha um exemplo inventado.",
+      "errorFocus": "RECALL_PRIVACY_SAFE_MAP",
+      "feedback": {
+        "correct": "Boa observação: Um mapa fictício não expõe rotinas pessoais.",
+        "incorrect": "Um mapa fictício não expõe rotinas pessoais.",
+        "hint": "Escolha um exemplo inventado.",
+        "errorFocus": "RECALL_PRIVACY_SAFE_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-30",
+      "statement": "Uma biblioteca e uma quadra podem apoiar atividades diferentes?",
+      "prompt": "Uma biblioteca e uma quadra podem apoiar atividades diferentes?",
+      "options": [
+        "Não, todo espaço tem o mesmo uso",
+        "Sim; as finalidades dependem do espaço e da atividade apresentada.",
+        "Sim, mas todas as pessoas devem frequentá-los",
+        "Não, convivência só acontece em casa"
+      ],
+      "correctAnswer": "Sim; as finalidades dependem do espaço e da atividade apresentada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Não, todo espaço tem o mesmo uso": [
+          "RECALL_SPACE_PURPOSE"
+        ],
+        "Sim, mas todas as pessoas devem frequentá-los": [
+          "RECALL_SPACE_PURPOSE"
+        ],
+        "Não, convivência só acontece em casa": [
+          "RECALL_SPACE_PURPOSE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FINALIDADES_DIFERENTES",
+      "explanation": "Espaços distintos podem acolher atividades variadas.",
+      "hint": "Compare os usos descritos.",
+      "errorFocus": "RECALL_SPACE_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Espaços distintos podem acolher atividades variadas.",
+        "incorrect": "Espaços distintos podem acolher atividades variadas.",
+        "hint": "Compare os usos descritos.",
+        "errorFocus": "RECALL_SPACE_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-31",
+      "statement": "Um lugar tem degraus e não oferece outra entrada. O que pode limitar?",
+      "prompt": "Um lugar tem degraus e não oferece outra entrada. O que pode limitar?",
+      "options": [
+        "A existência do espaço",
+        "A leitura de qualquer cartão",
+        "A participação de pessoas que precisam de uma rota acessível.",
+        "As regras de toda comunidade"
+      ],
+      "correctAnswer": "A participação de pessoas que precisam de uma rota acessível.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A existência do espaço": [
+          "RECALL_ACCESSIBILITY"
+        ],
+        "A leitura de qualquer cartão": [
+          "RECALL_ACCESSIBILITY"
+        ],
+        "As regras de toda comunidade": [
+          "RECALL_ACCESSIBILITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ACESSO_AOS_ESPACOS",
+      "explanation": "Barreiras físicas podem restringir participação.",
+      "hint": "Observe quem pode acessar.",
+      "errorFocus": "RECALL_ACCESSIBILITY",
+      "feedback": {
+        "correct": "Boa observação: Barreiras físicas podem restringir participação.",
+        "incorrect": "Barreiras físicas podem restringir participação.",
+        "hint": "Observe quem pode acessar.",
+        "errorFocus": "RECALL_ACCESSIBILITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-32",
+      "statement": "Reconhecer espaços de convivência envolve...",
+      "prompt": "Reconhecer espaços de convivência envolve...",
+      "options": [
+        "supor que todos frequentam os mesmos lugares",
+        "adivinhar crenças",
+        "exigir relatos de rotina",
+        "identificar lugares, usos e formas respeitosas de participação."
+      ],
+      "correctAnswer": "identificar lugares, usos e formas respeitosas de participação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "supor que todos frequentam os mesmos lugares": [
+          "SHARED_SPACES_SUMMARY"
+        ],
+        "adivinhar crenças": [
+          "SHARED_SPACES_SUMMARY"
+        ],
+        "exigir relatos de rotina": [
+          "SHARED_SPACES_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ESPACOS",
+      "explanation": "O reconhecimento parte de lugares e atividades descritos.",
+      "hint": "Reúna espaço, uso e respeito.",
+      "errorFocus": "SHARED_SPACES_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: O reconhecimento parte de lugares e atividades descritos.",
+        "incorrect": "O reconhecimento parte de lugares e atividades descritos.",
+        "hint": "Reúna espaço, uso e respeito.",
+        "errorFocus": "SHARED_SPACES_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-33",
+      "statement": "Uma biblioteca pode ser um espaço de...",
+      "prompt": "Uma biblioteca pode ser um espaço de...",
+      "options": [
+        "convivência, leitura e encontro.",
+        "medição de temperatura",
+        "endereço de todos",
+        "somente trânsito"
+      ],
+      "correctAnswer": "convivência, leitura e encontro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "medição de temperatura": [
+          "REVIEW_LIBRARY_SPACE"
+        ],
+        "endereço de todos": [
+          "REVIEW_LIBRARY_SPACE"
+        ],
+        "somente trânsito": [
+          "REVIEW_LIBRARY_SPACE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_BIBLIOTECA",
+      "explanation": "Pessoas podem usar a biblioteca para atividades compartilhadas.",
+      "hint": "Lembre do cartão de leitura.",
+      "errorFocus": "REVIEW_LIBRARY_SPACE",
+      "feedback": {
+        "correct": "Boa observação: Pessoas podem usar a biblioteca para atividades compartilhadas.",
+        "incorrect": "Pessoas podem usar a biblioteca para atividades compartilhadas.",
+        "hint": "Lembre do cartão de leitura.",
+        "errorFocus": "REVIEW_LIBRARY_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-34",
+      "statement": "Uma praça aparece num mapa comunitário. O que ela representa?",
+      "prompt": "Uma praça aparece num mapa comunitário. O que ela representa?",
+      "options": [
+        "A crença de cada morador",
+        "Um espaço compartilhado indicado na legenda.",
+        "A casa de toda a turma",
+        "Uma regra universal"
+      ],
+      "correctAnswer": "Um espaço compartilhado indicado na legenda.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A crença de cada morador": [
+          "REVIEW_PUBLIC_SPACE"
+        ],
+        "A casa de toda a turma": [
+          "REVIEW_PUBLIC_SPACE"
+        ],
+        "Uma regra universal": [
+          "REVIEW_PUBLIC_SPACE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_PRAÇA",
+      "explanation": "A legenda identifica a praça como espaço comunitário.",
+      "hint": "Consulte o mapa.",
+      "errorFocus": "REVIEW_PUBLIC_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A legenda identifica a praça como espaço comunitário.",
+        "incorrect": "A legenda identifica a praça como espaço comunitário.",
+        "hint": "Consulte o mapa.",
+        "errorFocus": "REVIEW_PUBLIC_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-35",
+      "statement": "Uma pessoa participa de atividade num centro cultural. Podemos dizer que todas as pessoas como ela fazem o mesmo?",
+      "prompt": "Uma pessoa participa de atividade num centro cultural. Podemos dizer que todas as pessoas como ela fazem o mesmo?",
+      "options": [
+        "Sim, a imagem representa todos",
+        "Sim, o espaço define identidade",
+        "Não; a fonte descreve aquela pessoa e atividade.",
+        "Não, centros culturais não existem"
+      ],
+      "correctAnswer": "Não; a fonte descreve aquela pessoa e atividade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, a imagem representa todos": [
+          "REVIEW_NO_GENERALIZATION"
+        ],
+        "Sim, o espaço define identidade": [
+          "REVIEW_NO_GENERALIZATION"
+        ],
+        "Não, centros culturais não existem": [
+          "REVIEW_NO_GENERALIZATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_IDENTIDADE",
+      "explanation": "Um exemplo não define todas as pessoas.",
+      "hint": "Limite a conclusão à fonte.",
+      "errorFocus": "REVIEW_NO_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Um exemplo não define todas as pessoas.",
+        "incorrect": "Um exemplo não define todas as pessoas.",
+        "hint": "Limite a conclusão à fonte.",
+        "errorFocus": "REVIEW_NO_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-36",
+      "statement": "Qual ação respeita um espaço compartilhado?",
+      "prompt": "Qual ação respeita um espaço compartilhado?",
+      "options": [
+        "Bloquear a passagem",
+        "Ignorar acordos",
+        "Tomar o espaço para si",
+        "Seguir a sinalização e considerar outras pessoas."
+      ],
+      "correctAnswer": "Seguir a sinalização e considerar outras pessoas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Bloquear a passagem": [
+          "REVIEW_SHARED_RESPECT"
+        ],
+        "Ignorar acordos": [
+          "REVIEW_SHARED_RESPECT"
+        ],
+        "Tomar o espaço para si": [
+          "REVIEW_SHARED_RESPECT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_REGRA",
+      "explanation": "A sinalização ajuda a convivência.",
+      "hint": "Escolha uma ação coletiva.",
+      "errorFocus": "REVIEW_SHARED_RESPECT",
+      "feedback": {
+        "correct": "Boa observação: A sinalização ajuda a convivência.",
+        "incorrect": "A sinalização ajuda a convivência.",
+        "hint": "Escolha uma ação coletiva.",
+        "errorFocus": "REVIEW_SHARED_RESPECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-37",
+      "statement": "Uma atividade acontece numa sala com degrau. Que ajuste pode apoiar participação?",
+      "prompt": "Uma atividade acontece numa sala com degrau. Que ajuste pode apoiar participação?",
+      "options": [
+        "Oferecer rota acessível ou alternativa equivalente.",
+        "Impedir a entrada",
+        "Solicitar diagnóstico em público",
+        "Cancelar a atividade para todos"
+      ],
+      "correctAnswer": "Oferecer rota acessível ou alternativa equivalente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Impedir a entrada": [
+          "REVIEW_ACCESSIBLE_PARTICIPATION"
+        ],
+        "Solicitar diagnóstico em público": [
+          "REVIEW_ACCESSIBLE_PARTICIPATION"
+        ],
+        "Cancelar a atividade para todos": [
+          "REVIEW_ACCESSIBLE_PARTICIPATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_ACESSIBILIDADE",
+      "explanation": "Alternativas podem remover barreiras e preservar a participação.",
+      "hint": "Pense em acesso digno.",
+      "errorFocus": "REVIEW_ACCESSIBLE_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: Alternativas podem remover barreiras e preservar a participação.",
+        "incorrect": "Alternativas podem remover barreiras e preservar a participação.",
+        "hint": "Pense em acesso digno.",
+        "errorFocus": "REVIEW_ACCESSIBLE_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-38",
+      "statement": "Uma escola e uma praça recebem grupos em situações diferentes. Como descrevê-las?",
+      "prompt": "Uma escola e uma praça recebem grupos em situações diferentes. Como descrevê-las?",
+      "options": [
+        "Como lugares idênticos",
+        "Como espaços distintos com atividades e regras próprias.",
+        "Como prova de crença dos participantes",
+        "Como locais que todos frequentam"
+      ],
+      "correctAnswer": "Como espaços distintos com atividades e regras próprias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como lugares idênticos": [
+          "REVIEW_CONTEXTUAL_SPACE_COMPARISON"
+        ],
+        "Como prova de crença dos participantes": [
+          "REVIEW_CONTEXTUAL_SPACE_COMPARISON"
+        ],
+        "Como locais que todos frequentam": [
+          "REVIEW_CONTEXTUAL_SPACE_COMPARISON"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_ESPACOS",
+      "explanation": "As fontes indicam usos diferentes.",
+      "hint": "Compare contexto e atividade.",
+      "errorFocus": "REVIEW_CONTEXTUAL_SPACE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As fontes indicam usos diferentes.",
+        "incorrect": "As fontes indicam usos diferentes.",
+        "hint": "Compare contexto e atividade.",
+        "errorFocus": "REVIEW_CONTEXTUAL_SPACE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-39",
+      "statement": "Um cartão fictício mostra pessoas conversando num centro comunitário. O que ele permite identificar?",
+      "prompt": "Um cartão fictício mostra pessoas conversando num centro comunitário. O que ele permite identificar?",
+      "options": [
+        "A rotina privada de cada pessoa",
+        "A religião de todos",
+        "Um local de convivência e uma interação descrita.",
+        "O endereço real do grupo"
+      ],
+      "correctAnswer": "Um local de convivência e uma interação descrita.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A rotina privada de cada pessoa": [
+          "REVIEW_SOURCE_LIMIT"
+        ],
+        "A religião de todos": [
+          "REVIEW_SOURCE_LIMIT"
+        ],
+        "O endereço real do grupo": [
+          "REVIEW_SOURCE_LIMIT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_FONTE",
+      "explanation": "O cartão descreve local e atividade, não dados privados.",
+      "hint": "Use somente o que aparece.",
+      "errorFocus": "REVIEW_SOURCE_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: O cartão descreve local e atividade, não dados privados.",
+        "incorrect": "O cartão descreve local e atividade, não dados privados.",
+        "hint": "Use somente o que aparece.",
+        "errorFocus": "REVIEW_SOURCE_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02er01-recognize-spaces-of-coexistence-40",
+      "statement": "Por que não devemos presumir que todos frequentam os mesmos espaços?",
+      "prompt": "Por que não devemos presumir que todos frequentam os mesmos espaços?",
+      "options": [
+        "Porque só há um espaço possível",
+        "Porque regras são sempre iguais",
+        "Porque espaços não têm atividades",
+        "Porque experiências, escolhas e acessos podem variar entre pessoas."
+      ],
+      "correctAnswer": "Porque experiências, escolhas e acessos podem variar entre pessoas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque só há um espaço possível": [
+          "REVIEW_DIVERSE_EXPERIENCE"
+        ],
+        "Porque regras são sempre iguais": [
+          "REVIEW_DIVERSE_EXPERIENCE"
+        ],
+        "Porque espaços não têm atividades": [
+          "REVIEW_DIVERSE_EXPERIENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_RESPEITO",
+      "explanation": "A diversidade de experiências limita generalizações.",
+      "hint": "Considere escolhas e acesso.",
+      "errorFocus": "REVIEW_DIVERSE_EXPERIENCE",
+      "feedback": {
+        "correct": "Boa observação: A diversidade de experiências limita generalizações.",
+        "incorrect": "A diversidade de experiências limita generalizações.",
+        "hint": "Considere escolhas e acesso.",
+        "errorFocus": "REVIEW_DIVERSE_EXPERIENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar fotos públicas descritas, mapas táteis simples, pictogramas e leitura oral dos cartões.",
+          "Permitir apontar, classificar imagens, desenhar ou responder por comunicação alternativa.",
+          "Usar apenas exemplos fictícios ou públicos; não solicitar endereço, rotina, crença ou frequência pessoal."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
