@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "bacb878de49b997358ab93246c50fe75ef6c4d5c12a9ac6331f827ead559176a",
+    "v5QuestionFirstPacks": "ba9079dcb29b405f75514d4707f17b716b8eae4a0953f79b0434d7d52bc83864",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 9171,
+    "v5QuestionTotal": 9411,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -265,6 +265,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01ge09-simple-maps-spatial-references.json",
+        "skillCode": "AUTHORING_EF01GE09_SIMPLE_MAPS_SPATIAL_REFERENCES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "v1-history-growth-memories-fi.json",
         "skillCode": "AUTHORING_EF01HI01_GROWTH_THROUGH_MEMORIES",
         "questionCount": 40,
@@ -391,6 +397,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01lp14-punctuation-and-intonation.json",
+        "skillCode": "AUTHORING_EF01LP14_IDENTIFY_PUNCTUATION_EFFECTS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "mathematics-number-uses-ef01.json",
         "skillCode": "AUTHORING_EF01MA01_NUMBER_QUANTITY_ORDER_CODE",
         "questionCount": 40,
@@ -435,6 +447,12 @@
       {
         "file": "ef01ma08-solve-addition-and-subtraction-stories.json",
         "skillCode": "AUTHORING_EF01MA08_SOLVE_AND_CREATE_ADDITION_SUBTRACTION_PROBLEMS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma09-sort-and-order-by-attributes.json",
+        "skillCode": "AUTHORING_EF01MA09_SORT_OBJECTS_BY_ATTRIBUTES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -493,14 +511,32 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef02co02-create-and-simulate-repeated-algorithms.json",
+        "skillCode": "AUTHORING_EF02CO02_CREATE_SIMULATE_ITERATION_ALGORITHMS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "ef02er01-recognize-spaces-of-coexistence.json",
         "skillCode": "AUTHORING_EF02ER01_RECOGNIZE_SHARED_SPACES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef02er02-diverse-customs-beliefs-and-ways-of-living.json",
+        "skillCode": "AUTHORING_EF02ER02_IDENTIFY_DIVERSE_WAYS_OF_LIVING",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "ef02ge01-community-migration-stories.json",
         "skillCode": "AUTHORING_EF02GE01_COMMUNITY_MIGRATION_HISTORY",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02hi01-social-spaces-and-group-motives.json",
+        "skillCode": "AUTHORING_EF02HI01_SOCIAL_SPACES_AND_GROUPS",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -19273,5 +19309,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "bc318722a290badd13b73a1c3368545e7360ace38b0efb33c96905a573afae11"
+  "inventoryHash": "3b415502384f1508900c5e771b5d8711b2ac51f74395f1500fcd80dfbac9b506"
 }

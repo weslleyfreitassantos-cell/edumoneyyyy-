@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02co02-create-and-simulate-repeated-algorithms",
+  "canonicalSkillCode": "AUTHORING_EF02CO02_CREATE_SIMULATE_ITERATION_ALGORITHMS",
+  "subject": "COMPUTING",
+  "domain": "MUNDO DIGITAL",
+  "topic": "algoritmos em linguagem oral, escrita ou pictográfica com repetições simples definidas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CO02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, construídos como sequências com repetições simples (iterações definidas) com base em instruções preestabelecidas ou criadas, analisando como a precisão da instrução impacta na execução do algoritmo.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 20
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Instruções claras e repetições",
+    "objective": "Criar e simular algoritmos curtos em linguagem oral, escrita ou pictográfica, usando repetições com quantidade definida e observando como a precisão afeta a execução.",
+    "summary": "Um algoritmo é uma sequência de instruções que descreve como realizar uma tarefa. Uma repetição definida diz quantas vezes uma sequência deve acontecer, como “repita duas vezes: avance um quadrado”. Instruções precisas nomeiam a ação, a quantidade e a ordem; palavras vagas podem levar pessoas diferentes a executar passos distintos. Cartões, desenhos e jogos de percurso em papel permitem simular algoritmos sem exigir dispositivos. O grupo pode pausar, revisar e testar a sequência com uma peça, sempre num tabuleiro fictício e seguro.",
+    "explanation": "Leia cada instrução na ordem. Se o cartão diz “repita 3 vezes: bata uma palma”, a ação acontece exatamente três vezes. Para um percurso, “avance um quadrado” é mais claro do que “vá um pouco”. Marque cada repetição para não esquecer nenhuma. Depois compare o resultado com o objetivo. Se a instrução não informa direção, quantidade ou ponto de início quando isso é necessário, revise-a para que outra pessoa consiga reproduzir a tarefa. Uma representação pode ser falada, escrita ou pictográfica.",
+    "workedExample": "Num tabuleiro fictício, uma peça começa na casa A. O algoritmo diz “repita 2 vezes: avance uma casa”. A peça passa por duas casas e termina na casa C. A quantidade e a ação estão explícitas.",
+    "commonMistake": "Executar uma repetição a mais ou a menos, ou usar uma instrução vaga sem indicar ação, quantidade ou ordem necessária.",
+    "priorKnowledge": [
+      "Seguir sequências curtas de ações em jogos ou rotinas.",
+      "Reconhecer símbolos e instruções em cartões pictográficos."
+    ],
+    "keyConcepts": [
+      "algoritmo",
+      "instrução",
+      "sequência",
+      "repetição",
+      "iteração definida",
+      "precisão",
+      "simulação",
+      "depuração"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COUNT_DEFINED_REPETITIONS",
+        "action": "Use fichas de contagem para marcar cada repetição concluída e compare com a quantidade pedida."
+      },
+      {
+        "errorFocus": "PRECISE_ACTION_AND_ORDER",
+        "action": "Reescreva instruções vagas com verbo, quantidade, ordem e direção quando necessários."
+      },
+      {
+        "errorFocus": "SIMULATE_AND_DEBUG_SEQUENCE",
+        "action": "Execute passo a passo num tabuleiro de papel, localize a divergência e ajuste a instrução."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+      "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+      "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co02-repeat-card-simulation",
+        "title": "Simular cartões de repetição",
+        "instructions": "Um tabuleiro de papel e cartões mostram sequências simples com número definido de repetições.\n1. Leia a sequência e localize a quantidade de repetições.\n2. Mova uma peça ou acompanhe símbolos a cada execução.\n3. Compare a posição final ao objetivo e revise se necessário.",
+        "steps": [
+          "Leia a sequência e localize a quantidade de repetições.",
+          "Mova uma peça ou acompanhe símbolos a cada execução.",
+          "Compare a posição final ao objetivo e revise se necessário."
+        ],
+        "evidence": "Registro das instruções, contagem de execuções e posição alcançada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "segue um passo com apoio.",
+            "developing": "conta repetições definidas.",
+            "proficient": "simula a sequência e explica como precisão afetou o resultado."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co02-write-clear-instructions",
+        "title": "Escrever instruções reproduzíveis",
+        "instructions": "Duplas criam uma sequência pictográfica para organizar três cartões numa ordem combinada.\n1. Defina o resultado esperado.\n2. Escreva ou desenhe ações numa ordem precisa.\n3. Peça a outra dupla para simular e revise instruções ambíguas.",
+        "steps": [
+          "Defina o resultado esperado.",
+          "Escreva ou desenhe ações numa ordem precisa.",
+          "Peça a outra dupla para simular e revise instruções ambíguas."
+        ],
+        "evidence": "Algoritmo revisado após teste por outra dupla.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "propõe uma ação.",
+            "developing": "organiza ações em sequência.",
+            "proficient": "especifica repetição e ajusta ambiguidades observadas no teste."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-01",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-02",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-03",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-04",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-05",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-06",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-07",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-09",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-10",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-11",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-12",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-13",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-14",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-15",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-17",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-18",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-19",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-20",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-21",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-22",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-23",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-25",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-26",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-27",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-28",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-29",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-30",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-31",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-33",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-34",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-35",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-36",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-37",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-38",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-39",
+          "v1-ef02co02-create-and-simulate-repeated-algorithms-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CO02",
+        "descriptor": "Criar e simular algoritmos representados em linguagem oral, escrita ou pictográfica, construídos como sequências com repetições simples (iterações definidas) com base em instruções preestabelecidas ou criadas, analisando como a precisão da instrução impacta na execução do algoritmo.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 20
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-01",
+      "statement": "Uma instrução diz “repita 3 vezes: bata uma palma”. Quantas palmas são feitas?",
+      "prompt": "Uma instrução diz “repita 3 vezes: bata uma palma”. Quantas palmas são feitas?",
+      "options": [
+        "Três palmas.",
+        "Uma palma",
+        "Duas palmas",
+        "Quatro palmas"
+      ],
+      "correctAnswer": "Três palmas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma palma": [
+          "COUNT_DEFINED_REPEAT"
+        ],
+        "Duas palmas": [
+          "COUNT_DEFINED_REPEAT"
+        ],
+        "Quatro palmas": [
+          "COUNT_DEFINED_REPEAT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SIMULATE",
+      "contextFamily": "PALMAS_TRES_VEZES",
+      "explanation": "A instrução define três execuções.",
+      "hint": "Conte cada repetição.",
+      "errorFocus": "COUNT_DEFINED_REPEAT",
+      "feedback": {
+        "correct": "Boa observação: A instrução define três execuções.",
+        "incorrect": "A instrução define três execuções.",
+        "hint": "Conte cada repetição.",
+        "errorFocus": "COUNT_DEFINED_REPEAT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-02",
+      "statement": "Um cartão diz “avance uma casa”. Qual ação está especificada?",
+      "prompt": "Um cartão diz “avance uma casa”. Qual ação está especificada?",
+      "options": [
+        "Pular três casas",
+        "Avançar uma casa.",
+        "Virar à esquerda",
+        "Escolher qualquer movimento"
+      ],
+      "correctAnswer": "Avançar uma casa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Pular três casas": [
+          "READ_ACTION_AND_AMOUNT"
+        ],
+        "Virar à esquerda": [
+          "READ_ACTION_AND_AMOUNT"
+        ],
+        "Escolher qualquer movimento": [
+          "READ_ACTION_AND_AMOUNT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_DE_AVANCO",
+      "explanation": "O cartão informa ação e quantidade.",
+      "hint": "Leia o verbo e o número.",
+      "errorFocus": "READ_ACTION_AND_AMOUNT",
+      "feedback": {
+        "correct": "Boa observação: O cartão informa ação e quantidade.",
+        "incorrect": "O cartão informa ação e quantidade.",
+        "hint": "Leia o verbo e o número.",
+        "errorFocus": "READ_ACTION_AND_AMOUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-03",
+      "statement": "“Vá um pouco para a frente” pode causar interpretações diferentes. O que falta?",
+      "prompt": "“Vá um pouco para a frente” pode causar interpretações diferentes. O que falta?",
+      "options": [
+        "Uma cor para a peça",
+        "Um nome de personagem",
+        "Uma quantidade ou distância definida.",
+        "Uma repetição sem número"
+      ],
+      "correctAnswer": "Uma quantidade ou distância definida.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma cor para a peça": [
+          "IMPROVE_INSTRUCTION_PRECISION"
+        ],
+        "Um nome de personagem": [
+          "IMPROVE_INSTRUCTION_PRECISION"
+        ],
+        "Uma repetição sem número": [
+          "IMPROVE_INSTRUCTION_PRECISION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "INSTRUCAO_VAGA",
+      "explanation": "“Um pouco” não define quanto avançar.",
+      "hint": "Substitua o termo vago por uma medida clara.",
+      "errorFocus": "IMPROVE_INSTRUCTION_PRECISION",
+      "feedback": {
+        "correct": "Boa observação: “Um pouco” não define quanto avançar.",
+        "incorrect": "“Um pouco” não define quanto avançar.",
+        "hint": "Substitua o termo vago por uma medida clara.",
+        "errorFocus": "IMPROVE_INSTRUCTION_PRECISION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-04",
+      "statement": "Um algoritmo apresenta os passos primeiro, depois e por fim. O que essa ordem comunica?",
+      "prompt": "Um algoritmo apresenta os passos primeiro, depois e por fim. O que essa ordem comunica?",
+      "options": [
+        "A cor da folha",
+        "A quantidade de pessoas",
+        "Uma lista sem ordem",
+        "A sequência de ações a executar."
+      ],
+      "correctAnswer": "A sequência de ações a executar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor da folha": [
+          "IDENTIFY_SEQUENCE_ORDER"
+        ],
+        "A quantidade de pessoas": [
+          "IDENTIFY_SEQUENCE_ORDER"
+        ],
+        "Uma lista sem ordem": [
+          "IDENTIFY_SEQUENCE_ORDER"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SEQUENCIA_DE_CARTOES",
+      "explanation": "As palavras mostram a ordem dos passos.",
+      "hint": "Observe os marcadores de sequência.",
+      "errorFocus": "IDENTIFY_SEQUENCE_ORDER",
+      "feedback": {
+        "correct": "Boa observação: As palavras mostram a ordem dos passos.",
+        "incorrect": "As palavras mostram a ordem dos passos.",
+        "hint": "Observe os marcadores de sequência.",
+        "errorFocus": "IDENTIFY_SEQUENCE_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-05",
+      "statement": "Uma peça começa em A e avança uma casa duas vezes. Quantas casas percorre?",
+      "prompt": "Uma peça começa em A e avança uma casa duas vezes. Quantas casas percorre?",
+      "options": [
+        "Duas casas.",
+        "Uma casa",
+        "Três casas",
+        "Quatro casas"
+      ],
+      "correctAnswer": "Duas casas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma casa": [
+          "SIMULATE_REPEATED_MOVE"
+        ],
+        "Três casas": [
+          "SIMULATE_REPEATED_MOVE"
+        ],
+        "Quatro casas": [
+          "SIMULATE_REPEATED_MOVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SIMULATE",
+      "contextFamily": "DUAS_CASAS",
+      "explanation": "Cada execução avança uma casa; duas execuções somam duas.",
+      "hint": "Marque uma casa por repetição.",
+      "errorFocus": "SIMULATE_REPEATED_MOVE",
+      "feedback": {
+        "correct": "Boa observação: Cada execução avança uma casa; duas execuções somam duas.",
+        "incorrect": "Cada execução avança uma casa; duas execuções somam duas.",
+        "hint": "Marque uma casa por repetição.",
+        "errorFocus": "SIMULATE_REPEATED_MOVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-06",
+      "statement": "Uma sequência falada e outra com pictogramas podem representar algoritmos?",
+      "prompt": "Uma sequência falada e outra com pictogramas podem representar algoritmos?",
+      "options": [
+        "Não, só código de computador é algoritmo",
+        "Sim, se comunicam as instruções e a ordem.",
+        "Não, pictogramas não informam ações",
+        "Sim, mas precisam ser idênticas visualmente"
+      ],
+      "correctAnswer": "Sim, se comunicam as instruções e a ordem.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Não, só código de computador é algoritmo": [
+          "ACCEPT_ALGORITHM_REPRESENTATIONS"
+        ],
+        "Não, pictogramas não informam ações": [
+          "ACCEPT_ALGORITHM_REPRESENTATIONS"
+        ],
+        "Sim, mas precisam ser idênticas visualmente": [
+          "ACCEPT_ALGORITHM_REPRESENTATIONS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ORAL_E_PICTOGRAFICO",
+      "explanation": "A habilidade admite linguagens oral, escrita ou pictográfica.",
+      "hint": "Considere se a instrução é compreensível.",
+      "errorFocus": "ACCEPT_ALGORITHM_REPRESENTATIONS",
+      "feedback": {
+        "correct": "Boa observação: A habilidade admite linguagens oral, escrita ou pictográfica.",
+        "incorrect": "A habilidade admite linguagens oral, escrita ou pictográfica.",
+        "hint": "Considere se a instrução é compreensível.",
+        "errorFocus": "ACCEPT_ALGORITHM_REPRESENTATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-07",
+      "statement": "“Repita duas vezes: toque o tambor uma vez.” Quantos toques ocorrem?",
+      "prompt": "“Repita duas vezes: toque o tambor uma vez.” Quantos toques ocorrem?",
+      "options": [
+        "Um toque",
+        "Três toques",
+        "Dois toques.",
+        "Quatro toques"
+      ],
+      "correctAnswer": "Dois toques.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um toque": [
+          "COUNT_REPEATED_ACTION"
+        ],
+        "Três toques": [
+          "COUNT_REPEATED_ACTION"
+        ],
+        "Quatro toques": [
+          "COUNT_REPEATED_ACTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REPETIR_SOM",
+      "explanation": "Cada repetição contém um toque.",
+      "hint": "Faça um toque em cada rodada.",
+      "errorFocus": "COUNT_REPEATED_ACTION",
+      "feedback": {
+        "correct": "Boa observação: Cada repetição contém um toque.",
+        "incorrect": "Cada repetição contém um toque.",
+        "hint": "Faça um toque em cada rodada.",
+        "errorFocus": "COUNT_REPEATED_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-08",
+      "statement": "Qual recurso permite simular um percurso sem dispositivo?",
+      "prompt": "Qual recurso permite simular um percurso sem dispositivo?",
+      "options": [
+        "Uma senha pessoal",
+        "Um endereço real",
+        "Um aplicativo obrigatório",
+        "Um tabuleiro de papel e uma peça móvel."
+      ],
+      "correctAnswer": "Um tabuleiro de papel e uma peça móvel.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma senha pessoal": [
+          "UNPLUGGED_ALGORITHM_SIMULATION"
+        ],
+        "Um endereço real": [
+          "UNPLUGGED_ALGORITHM_SIMULATION"
+        ],
+        "Um aplicativo obrigatório": [
+          "UNPLUGGED_ALGORITHM_SIMULATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TABULEIRO_DE_PAPEL",
+      "explanation": "Peças e tabuleiro permitem acompanhar os passos.",
+      "hint": "Escolha materiais simples.",
+      "errorFocus": "UNPLUGGED_ALGORITHM_SIMULATION",
+      "feedback": {
+        "correct": "Boa observação: Peças e tabuleiro permitem acompanhar os passos.",
+        "incorrect": "Peças e tabuleiro permitem acompanhar os passos.",
+        "hint": "Escolha materiais simples.",
+        "errorFocus": "UNPLUGGED_ALGORITHM_SIMULATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-09",
+      "statement": "Uma sequência pede “desenhe um círculo, repita 2 vezes”. Quantos círculos serão desenhados?",
+      "prompt": "Uma sequência pede “desenhe um círculo, repita 2 vezes”. Quantos círculos serão desenhados?",
+      "options": [
+        "Dois círculos.",
+        "Um círculo",
+        "Três círculos",
+        "Quatro círculos"
+      ],
+      "correctAnswer": "Dois círculos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um círculo": [
+          "PRACTICE_REPEAT_COUNT"
+        ],
+        "Três círculos": [
+          "PRACTICE_REPEAT_COUNT"
+        ],
+        "Quatro círculos": [
+          "PRACTICE_REPEAT_COUNT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SIMULATE",
+      "contextFamily": "DESENHAR_DOIS_CIRCULOS",
+      "explanation": "A ação é executada duas vezes.",
+      "hint": "Conte as execuções.",
+      "errorFocus": "PRACTICE_REPEAT_COUNT",
+      "feedback": {
+        "correct": "Boa observação: A ação é executada duas vezes.",
+        "incorrect": "A ação é executada duas vezes.",
+        "hint": "Conte as execuções.",
+        "errorFocus": "PRACTICE_REPEAT_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-10",
+      "statement": "Um robô de papel recebe: avance, vire, pare. Qual ação acontece depois de avançar?",
+      "prompt": "Um robô de papel recebe: avance, vire, pare. Qual ação acontece depois de avançar?",
+      "options": [
+        "Pare",
+        "Vire.",
+        "Avance novamente",
+        "Apague o tabuleiro"
+      ],
+      "correctAnswer": "Vire.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Pare": [
+          "FOLLOW_INSTRUCTION_ORDER"
+        ],
+        "Avance novamente": [
+          "FOLLOW_INSTRUCTION_ORDER"
+        ],
+        "Apague o tabuleiro": [
+          "FOLLOW_INSTRUCTION_ORDER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ORDER",
+      "contextFamily": "SEQUENCIA_DE_SETAS",
+      "explanation": "A segunda ação da lista é virar.",
+      "hint": "Siga a ordem escrita.",
+      "errorFocus": "FOLLOW_INSTRUCTION_ORDER",
+      "feedback": {
+        "correct": "Boa observação: A segunda ação da lista é virar.",
+        "incorrect": "A segunda ação da lista é virar.",
+        "hint": "Siga a ordem escrita.",
+        "errorFocus": "FOLLOW_INSTRUCTION_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-11",
+      "statement": "O cartão mostra “repita 4 vezes”. O que o número informa?",
+      "prompt": "O cartão mostra “repita 4 vezes”. O que o número informa?",
+      "options": [
+        "A cor do cartão",
+        "A quantidade de participantes",
+        "Quantas vezes executar a sequência indicada.",
+        "O tamanho do tabuleiro"
+      ],
+      "correctAnswer": "Quantas vezes executar a sequência indicada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do cartão": [
+          "INTERPRET_REPEAT_COUNT"
+        ],
+        "A quantidade de participantes": [
+          "INTERPRET_REPEAT_COUNT"
+        ],
+        "O tamanho do tabuleiro": [
+          "INTERPRET_REPEAT_COUNT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CARTAO_REPETE_QUATRO",
+      "explanation": "Quatro define o número de iterações.",
+      "hint": "Leia o número do cartão.",
+      "errorFocus": "INTERPRET_REPEAT_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Quatro define o número de iterações.",
+        "incorrect": "Quatro define o número de iterações.",
+        "hint": "Leia o número do cartão.",
+        "errorFocus": "INTERPRET_REPEAT_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-12",
+      "statement": "Uma instrução diz “vire para um lado” num percurso. Como torná-la mais precisa?",
+      "prompt": "Uma instrução diz “vire para um lado” num percurso. Como torná-la mais precisa?",
+      "options": [
+        "Trocar por “vá um pouco”",
+        "Retirar o verbo",
+        "Não informar a direção",
+        "Indicar qual lado, como direita ou esquerda."
+      ],
+      "correctAnswer": "Indicar qual lado, como direita ou esquerda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Trocar por “vá um pouco”": [
+          "SPECIFY_DIRECTION"
+        ],
+        "Retirar o verbo": [
+          "SPECIFY_DIRECTION"
+        ],
+        "Não informar a direção": [
+          "SPECIFY_DIRECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "VIRE_PARA_LADO",
+      "explanation": "A direção precisa ser nomeada quando altera o resultado.",
+      "hint": "Escolha uma direção clara.",
+      "errorFocus": "SPECIFY_DIRECTION",
+      "feedback": {
+        "correct": "Boa observação: A direção precisa ser nomeada quando altera o resultado.",
+        "incorrect": "A direção precisa ser nomeada quando altera o resultado.",
+        "hint": "Escolha uma direção clara.",
+        "errorFocus": "SPECIFY_DIRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-13",
+      "statement": "Um cartão diz “repita 2 vezes: avance uma casa e pare”. Quantos avanços ocorrem?",
+      "prompt": "Um cartão diz “repita 2 vezes: avance uma casa e pare”. Quantos avanços ocorrem?",
+      "options": [
+        "Dois avanços.",
+        "Um avanço",
+        "Três avanços",
+        "Quatro avanços"
+      ],
+      "correctAnswer": "Dois avanços.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um avanço": [
+          "SIMULATE_REPEAT_BLOCK"
+        ],
+        "Três avanços": [
+          "SIMULATE_REPEAT_BLOCK"
+        ],
+        "Quatro avanços": [
+          "SIMULATE_REPEAT_BLOCK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SIMULATE",
+      "contextFamily": "REPETIR_SEQUENCIA_DE_DOIS_PASSOS",
+      "explanation": "O bloco completo se repete duas vezes.",
+      "hint": "Conte o bloco inteiro em cada rodada.",
+      "errorFocus": "SIMULATE_REPEAT_BLOCK",
+      "feedback": {
+        "correct": "Boa observação: O bloco completo se repete duas vezes.",
+        "incorrect": "O bloco completo se repete duas vezes.",
+        "hint": "Conte o bloco inteiro em cada rodada.",
+        "errorFocus": "SIMULATE_REPEAT_BLOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-14",
+      "statement": "Uma instrução pede mover uma peça “até perto do círculo”, mas a meta é parar sobre o círculo. Qual problema existe?",
+      "prompt": "Uma instrução pede mover uma peça “até perto do círculo”, mas a meta é parar sobre o círculo. Qual problema existe?",
+      "options": [
+        "A sequência tem números demais",
+        "A instrução não define com precisão a posição final.",
+        "O círculo é uma instrução oral",
+        "A peça precisa de uma cor"
+      ],
+      "correctAnswer": "A instrução não define com precisão a posição final.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A sequência tem números demais": [
+          "ANALYZE_AMBIGUOUS_DESTINATION"
+        ],
+        "O círculo é uma instrução oral": [
+          "ANALYZE_AMBIGUOUS_DESTINATION"
+        ],
+        "A peça precisa de uma cor": [
+          "ANALYZE_AMBIGUOUS_DESTINATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PRECISAO_MUDA_RESULTADO",
+      "explanation": "“Perto” não garante que a peça termine sobre o alvo.",
+      "hint": "Compare o texto ao objetivo.",
+      "errorFocus": "ANALYZE_AMBIGUOUS_DESTINATION",
+      "feedback": {
+        "correct": "Boa observação: “Perto” não garante que a peça termine sobre o alvo.",
+        "incorrect": "“Perto” não garante que a peça termine sobre o alvo.",
+        "hint": "Compare o texto ao objetivo.",
+        "errorFocus": "ANALYZE_AMBIGUOUS_DESTINATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-15",
+      "statement": "Um símbolo de pé indica avançar e um número 3 aparece ao lado. O que pode significar?",
+      "prompt": "Um símbolo de pé indica avançar e um número 3 aparece ao lado. O que pode significar?",
+      "options": [
+        "Parar sempre",
+        "Apagar o símbolo",
+        "Avançar três vezes ou três unidades, conforme a legenda.",
+        "Contar três cores"
+      ],
+      "correctAnswer": "Avançar três vezes ou três unidades, conforme a legenda.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Parar sempre": [
+          "READ_PICTOGRAPHIC_INSTRUCTION"
+        ],
+        "Apagar o símbolo": [
+          "READ_PICTOGRAPHIC_INSTRUCTION"
+        ],
+        "Contar três cores": [
+          "READ_PICTOGRAPHIC_INSTRUCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTAO_PICTOGRAFICO",
+      "explanation": "A legenda deve esclarecer o sentido do símbolo e número.",
+      "hint": "Consulte a legenda do cartão.",
+      "errorFocus": "READ_PICTOGRAPHIC_INSTRUCTION",
+      "feedback": {
+        "correct": "Boa observação: A legenda deve esclarecer o sentido do símbolo e número.",
+        "incorrect": "A legenda deve esclarecer o sentido do símbolo e número.",
+        "hint": "Consulte a legenda do cartão.",
+        "errorFocus": "READ_PICTOGRAPHIC_INSTRUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-16",
+      "statement": "Qual instrução é mais reproduzível?",
+      "prompt": "Qual instrução é mais reproduzível?",
+      "options": [
+        "“Faça sons por um tempo.”",
+        "“Faça alguma coisa.”",
+        "“Continue até cansar.”",
+        "“Bata duas palmas e depois toque a mesa uma vez.”"
+      ],
+      "correctAnswer": "“Bata duas palmas e depois toque a mesa uma vez.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Faça sons por um tempo.”": [
+          "CREATE_PRECISE_SEQUENCE"
+        ],
+        "“Faça alguma coisa.”": [
+          "CREATE_PRECISE_SEQUENCE"
+        ],
+        "“Continue até cansar.”": [
+          "CREATE_PRECISE_SEQUENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CREATE",
+      "contextFamily": "CRIAR_SEQUENCIA_DE_PALMAS",
+      "explanation": "A instrução nomeia ações, quantidade e ordem.",
+      "hint": "Escolha ações contáveis.",
+      "errorFocus": "CREATE_PRECISE_SEQUENCE",
+      "feedback": {
+        "correct": "Boa observação: A instrução nomeia ações, quantidade e ordem.",
+        "incorrect": "A instrução nomeia ações, quantidade e ordem.",
+        "hint": "Escolha ações contáveis.",
+        "errorFocus": "CREATE_PRECISE_SEQUENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-17",
+      "statement": "Uma peça começa na casa 1. O algoritmo manda avançar uma casa, repetindo 3 vezes. Onde termina?",
+      "prompt": "Uma peça começa na casa 1. O algoritmo manda avançar uma casa, repetindo 3 vezes. Onde termina?",
+      "options": [
+        "Na casa 4.",
+        "Na casa 2",
+        "Na casa 3",
+        "Na casa 5"
+      ],
+      "correctAnswer": "Na casa 4.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Na casa 2": [
+          "TRANSFER_SIMULATE_ITERATION"
+        ],
+        "Na casa 3": [
+          "TRANSFER_SIMULATE_ITERATION"
+        ],
+        "Na casa 5": [
+          "TRANSFER_SIMULATE_ITERATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SIMULATE",
+      "contextFamily": "TRES_PASSOS_DE_PECA",
+      "explanation": "Três avanços a partir da casa 1 chegam à casa 4.",
+      "hint": "Conte cada casa percorrida.",
+      "errorFocus": "TRANSFER_SIMULATE_ITERATION",
+      "feedback": {
+        "correct": "Boa observação: Três avanços a partir da casa 1 chegam à casa 4.",
+        "incorrect": "Três avanços a partir da casa 1 chegam à casa 4.",
+        "hint": "Conte cada casa percorrida.",
+        "errorFocus": "TRANSFER_SIMULATE_ITERATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-18",
+      "statement": "Qual palavra indica que a sequência deve terminar?",
+      "prompt": "Qual palavra indica que a sequência deve terminar?",
+      "options": [
+        "Avance",
+        "Pare.",
+        "Repita",
+        "Desenhe"
+      ],
+      "correctAnswer": "Pare.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Avance": [
+          "TRANSFER_IDENTIFY_STOP"
+        ],
+        "Repita": [
+          "TRANSFER_IDENTIFY_STOP"
+        ],
+        "Desenhe": [
+          "TRANSFER_IDENTIFY_STOP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "INSTRUCAO_DE_PARADA",
+      "explanation": "“Pare” instrui encerrar o movimento.",
+      "hint": "Procure a ação final.",
+      "errorFocus": "TRANSFER_IDENTIFY_STOP",
+      "feedback": {
+        "correct": "Boa observação: “Pare” instrui encerrar o movimento.",
+        "incorrect": "“Pare” instrui encerrar o movimento.",
+        "hint": "Procure a ação final.",
+        "errorFocus": "TRANSFER_IDENTIFY_STOP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-19",
+      "statement": "“Repita várias vezes” é uma repetição definida?",
+      "prompt": "“Repita várias vezes” é uma repetição definida?",
+      "options": [
+        "Sim, significa exatamente duas",
+        "Sim, sempre significa cinco",
+        "Não; não informa uma quantidade exata.",
+        "Não, pois algoritmos não repetem ações"
+      ],
+      "correctAnswer": "Não; não informa uma quantidade exata.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, significa exatamente duas": [
+          "TRANSFER_DEFINED_ITERATION"
+        ],
+        "Sim, sempre significa cinco": [
+          "TRANSFER_DEFINED_ITERATION"
+        ],
+        "Não, pois algoritmos não repetem ações": [
+          "TRANSFER_DEFINED_ITERATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONTAGEM_INDEFINIDA",
+      "explanation": "A quantidade precisa estar explícita para ser definida.",
+      "hint": "Pergunte quantas vezes.",
+      "errorFocus": "TRANSFER_DEFINED_ITERATION",
+      "feedback": {
+        "correct": "Boa observação: A quantidade precisa estar explícita para ser definida.",
+        "incorrect": "A quantidade precisa estar explícita para ser definida.",
+        "hint": "Pergunte quantas vezes.",
+        "errorFocus": "TRANSFER_DEFINED_ITERATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-20",
+      "statement": "Uma dupla quer que colegas coloquem três cartões em ordem. O que as instruções devem indicar?",
+      "prompt": "Uma dupla quer que colegas coloquem três cartões em ordem. O que as instruções devem indicar?",
+      "options": [
+        "Somente a cor do papel",
+        "Uma rotina privada",
+        "A opinião sobre cada colega",
+        "Qual cartão escolher e em que sequência colocá-los."
+      ],
+      "correctAnswer": "Qual cartão escolher e em que sequência colocá-los.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente a cor do papel": [
+          "TRANSFER_PRECISE_ORDERING"
+        ],
+        "Uma rotina privada": [
+          "TRANSFER_PRECISE_ORDERING"
+        ],
+        "A opinião sobre cada colega": [
+          "TRANSFER_PRECISE_ORDERING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTOES_EM_ORDEM",
+      "explanation": "Instruções de ordem precisam identificar as ações e sequência.",
+      "hint": "Nomeie cada passo.",
+      "errorFocus": "TRANSFER_PRECISE_ORDERING",
+      "feedback": {
+        "correct": "Boa observação: Instruções de ordem precisam identificar as ações e sequência.",
+        "incorrect": "Instruções de ordem precisam identificar as ações e sequência.",
+        "hint": "Nomeie cada passo.",
+        "errorFocus": "TRANSFER_PRECISE_ORDERING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-21",
+      "statement": "A peça terminou uma casa antes do alvo após duas repetições. O que investigar primeiro?",
+      "prompt": "A peça terminou uma casa antes do alvo após duas repetições. O que investigar primeiro?",
+      "options": [
+        "Se a quantidade de avanços e as instruções foram interpretadas corretamente.",
+        "A cor do tabuleiro",
+        "O nome da peça",
+        "A idade de quem simulou"
+      ],
+      "correctAnswer": "Se a quantidade de avanços e as instruções foram interpretadas corretamente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A cor do tabuleiro": [
+          "TRANSFER_DEBUG_ALGORITHM"
+        ],
+        "O nome da peça": [
+          "TRANSFER_DEBUG_ALGORITHM"
+        ],
+        "A idade de quem simulou": [
+          "TRANSFER_DEBUG_ALGORITHM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAR_RESULTADO",
+      "explanation": "A divergência pode indicar instrução ou contagem a revisar.",
+      "hint": "Revise cada passo e repetição.",
+      "errorFocus": "TRANSFER_DEBUG_ALGORITHM",
+      "feedback": {
+        "correct": "Boa observação: A divergência pode indicar instrução ou contagem a revisar.",
+        "incorrect": "A divergência pode indicar instrução ou contagem a revisar.",
+        "hint": "Revise cada passo e repetição.",
+        "errorFocus": "TRANSFER_DEBUG_ALGORITHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-22",
+      "statement": "Uma instrução escrita e uma sequência de figuras podem orientar a mesma tarefa?",
+      "prompt": "Uma instrução escrita e uma sequência de figuras podem orientar a mesma tarefa?",
+      "options": [
+        "Não, só figuras podem repetir",
+        "Sim, se ambas indicarem ações na mesma ordem com clareza.",
+        "Não, a escrita nunca descreve passos",
+        "Sim, mesmo que uma esteja ambígua"
+      ],
+      "correctAnswer": "Sim, se ambas indicarem ações na mesma ordem com clareza.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Não, só figuras podem repetir": [
+          "TRANSFER_COMPARE_REPRESENTATIONS"
+        ],
+        "Não, a escrita nunca descreve passos": [
+          "TRANSFER_COMPARE_REPRESENTATIONS"
+        ],
+        "Sim, mesmo que uma esteja ambígua": [
+          "TRANSFER_COMPARE_REPRESENTATIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DUAS_FORMAS_DE_INSTRUCAO",
+      "explanation": "Representações diferentes podem comunicar algoritmos equivalentes.",
+      "hint": "Confira se ambas são precisas.",
+      "errorFocus": "TRANSFER_COMPARE_REPRESENTATIONS",
+      "feedback": {
+        "correct": "Boa observação: Representações diferentes podem comunicar algoritmos equivalentes.",
+        "incorrect": "Representações diferentes podem comunicar algoritmos equivalentes.",
+        "hint": "Confira se ambas são precisas.",
+        "errorFocus": "TRANSFER_COMPARE_REPRESENTATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-23",
+      "statement": "“Repita 3 vezes: toque uma vez no cartão.” Quantos toques acontecem?",
+      "prompt": "“Repita 3 vezes: toque uma vez no cartão.” Quantos toques acontecem?",
+      "options": [
+        "Um toque",
+        "Dois toques",
+        "Três toques.",
+        "Seis toques"
+      ],
+      "correctAnswer": "Três toques.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um toque": [
+          "TRANSFER_COUNT_ACTIONS"
+        ],
+        "Dois toques": [
+          "TRANSFER_COUNT_ACTIONS"
+        ],
+        "Seis toques": [
+          "TRANSFER_COUNT_ACTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "SIMULATE",
+      "contextFamily": "TOCAR_TRES_VEZES",
+      "explanation": "Cada repetição contém um toque.",
+      "hint": "Um por rodada.",
+      "errorFocus": "TRANSFER_COUNT_ACTIONS",
+      "feedback": {
+        "correct": "Boa observação: Cada repetição contém um toque.",
+        "incorrect": "Cada repetição contém um toque.",
+        "hint": "Um por rodada.",
+        "errorFocus": "TRANSFER_COUNT_ACTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-24",
+      "statement": "Por que instruções precisas ajudam outra pessoa a executar um algoritmo?",
+      "prompt": "Por que instruções precisas ajudam outra pessoa a executar um algoritmo?",
+      "options": [
+        "Porque impedem qualquer revisão",
+        "Porque tornam todos os desenhos iguais",
+        "Porque dispensam o objetivo",
+        "Porque deixam claras a ação, a quantidade e a ordem necessárias."
+      ],
+      "correctAnswer": "Porque deixam claras a ação, a quantidade e a ordem necessárias.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque impedem qualquer revisão": [
+          "JUSTIFY_INSTRUCTION_PRECISION"
+        ],
+        "Porque tornam todos os desenhos iguais": [
+          "JUSTIFY_INSTRUCTION_PRECISION"
+        ],
+        "Porque dispensam o objetivo": [
+          "JUSTIFY_INSTRUCTION_PRECISION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "PRECISAO_E_REPRODUCAO",
+      "explanation": "A clareza ajuda a reproduzir a sequência.",
+      "hint": "Pense no que alguém precisa saber para executar.",
+      "errorFocus": "JUSTIFY_INSTRUCTION_PRECISION",
+      "feedback": {
+        "correct": "Boa observação: A clareza ajuda a reproduzir a sequência.",
+        "incorrect": "A clareza ajuda a reproduzir a sequência.",
+        "hint": "Pense no que alguém precisa saber para executar.",
+        "errorFocus": "JUSTIFY_INSTRUCTION_PRECISION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-25",
+      "statement": "Um algoritmo pode ser entendido como...",
+      "prompt": "Um algoritmo pode ser entendido como...",
+      "options": [
+        "uma sequência de instruções para realizar uma tarefa.",
+        "um objeto sem função",
+        "uma cor",
+        "um endereço"
+      ],
+      "correctAnswer": "uma sequência de instruções para realizar uma tarefa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "um objeto sem função": [
+          "RECALL_ALGORITHM"
+        ],
+        "uma cor": [
+          "RECALL_ALGORITHM"
+        ],
+        "um endereço": [
+          "RECALL_ALGORITHM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "DEFINICAO_DE_ALGORITMO",
+      "explanation": "Algoritmos organizam ações em sequência.",
+      "hint": "Lembre dos passos do jogo.",
+      "errorFocus": "RECALL_ALGORITHM",
+      "feedback": {
+        "correct": "Boa observação: Algoritmos organizam ações em sequência.",
+        "incorrect": "Algoritmos organizam ações em sequência.",
+        "hint": "Lembre dos passos do jogo.",
+        "errorFocus": "RECALL_ALGORITHM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-26",
+      "statement": "“Repita 2 vezes” informa...",
+      "prompt": "“Repita 2 vezes” informa...",
+      "options": [
+        "uma quantidade desconhecida",
+        "uma quantidade definida de repetições.",
+        "uma cor de fundo",
+        "uma ação sem ordem"
+      ],
+      "correctAnswer": "uma quantidade definida de repetições.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma quantidade desconhecida": [
+          "RECALL_DEFINED_REPEAT"
+        ],
+        "uma cor de fundo": [
+          "RECALL_DEFINED_REPEAT"
+        ],
+        "uma ação sem ordem": [
+          "RECALL_DEFINED_REPEAT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "ITERACAO_DEFINIDA",
+      "explanation": "O número 2 define quantas rodadas executar.",
+      "hint": "Leia o numeral.",
+      "errorFocus": "RECALL_DEFINED_REPEAT",
+      "feedback": {
+        "correct": "Boa observação: O número 2 define quantas rodadas executar.",
+        "incorrect": "O número 2 define quantas rodadas executar.",
+        "hint": "Leia o numeral.",
+        "errorFocus": "RECALL_DEFINED_REPEAT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-27",
+      "statement": "Qual detalhe pode tornar “avance” mais preciso num tabuleiro?",
+      "prompt": "Qual detalhe pode tornar “avance” mais preciso num tabuleiro?",
+      "options": [
+        "A cor favorita do leitor",
+        "O tamanho do título",
+        "Indicar quantas casas e em qual direção.",
+        "Uma opinião sobre o jogo"
+      ],
+      "correctAnswer": "Indicar quantas casas e em qual direção.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor favorita do leitor": [
+          "RECALL_PRECISION_ELEMENTS"
+        ],
+        "O tamanho do título": [
+          "RECALL_PRECISION_ELEMENTS"
+        ],
+        "Uma opinião sobre o jogo": [
+          "RECALL_PRECISION_ELEMENTS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INSTRUCAO_PRECISA",
+      "explanation": "Quantidade e direção esclarecem o movimento.",
+      "hint": "Pense no que falta para executar.",
+      "errorFocus": "RECALL_PRECISION_ELEMENTS",
+      "feedback": {
+        "correct": "Boa observação: Quantidade e direção esclarecem o movimento.",
+        "incorrect": "Quantidade e direção esclarecem o movimento.",
+        "hint": "Pense no que falta para executar.",
+        "errorFocus": "RECALL_PRECISION_ELEMENTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-28",
+      "statement": "Se a lista diz primeiro desenhar e depois colorir, o que fazer antes?",
+      "prompt": "Se a lista diz primeiro desenhar e depois colorir, o que fazer antes?",
+      "options": [
+        "Colorir",
+        "Parar antes de começar",
+        "Trocar a ordem",
+        "Desenhar."
+      ],
+      "correctAnswer": "Desenhar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Colorir": [
+          "RECALL_ORDER"
+        ],
+        "Parar antes de começar": [
+          "RECALL_ORDER"
+        ],
+        "Trocar a ordem": [
+          "RECALL_ORDER"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SEGUIR_SEQUENCIA",
+      "explanation": "“Primeiro” indica a ação inicial.",
+      "hint": "Siga os marcadores de ordem.",
+      "errorFocus": "RECALL_ORDER",
+      "feedback": {
+        "correct": "Boa observação: “Primeiro” indica a ação inicial.",
+        "incorrect": "“Primeiro” indica a ação inicial.",
+        "hint": "Siga os marcadores de ordem.",
+        "errorFocus": "RECALL_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-29",
+      "statement": "Qual pode ser uma forma de representar instruções?",
+      "prompt": "Qual pode ser uma forma de representar instruções?",
+      "options": [
+        "Palavras, símbolos ou figuras.",
+        "Somente um dispositivo conectado",
+        "Somente endereço",
+        "Uma cor sem significado"
+      ],
+      "correctAnswer": "Palavras, símbolos ou figuras.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente um dispositivo conectado": [
+          "RECALL_ALGORITHM_REPRESENTATIONS"
+        ],
+        "Somente endereço": [
+          "RECALL_ALGORITHM_REPRESENTATIONS"
+        ],
+        "Uma cor sem significado": [
+          "RECALL_ALGORITHM_REPRESENTATIONS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FORMAS_DE_REPRESENTACAO",
+      "explanation": "A instrução pode ser oral, escrita ou pictográfica.",
+      "hint": "Pense em palavras e imagens.",
+      "errorFocus": "RECALL_ALGORITHM_REPRESENTATIONS",
+      "feedback": {
+        "correct": "Boa observação: A instrução pode ser oral, escrita ou pictográfica.",
+        "incorrect": "A instrução pode ser oral, escrita ou pictográfica.",
+        "hint": "Pense em palavras e imagens.",
+        "errorFocus": "RECALL_ALGORITHM_REPRESENTATIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-30",
+      "statement": "“Mova um pouco” é menos claro que “avance duas casas” porque...",
+      "prompt": "“Mova um pouco” é menos claro que “avance duas casas” porque...",
+      "options": [
+        "usa palavras demais",
+        "não define uma quantidade precisa.",
+        "tem um número",
+        "é impossível falar"
+      ],
+      "correctAnswer": "não define uma quantidade precisa.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "usa palavras demais": [
+          "RECALL_AMBIGUITY"
+        ],
+        "tem um número": [
+          "RECALL_AMBIGUITY"
+        ],
+        "é impossível falar": [
+          "RECALL_AMBIGUITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "VAGUE_E_CLEAR",
+      "explanation": "Duas casas especifica o movimento.",
+      "hint": "Compare a precisão.",
+      "errorFocus": "RECALL_AMBIGUITY",
+      "feedback": {
+        "correct": "Boa observação: Duas casas especifica o movimento.",
+        "incorrect": "Duas casas especifica o movimento.",
+        "hint": "Compare a precisão.",
+        "errorFocus": "RECALL_AMBIGUITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-31",
+      "statement": "Se um bloco contém dois passos e se repete três vezes, o que se repete?",
+      "prompt": "Se um bloco contém dois passos e se repete três vezes, o que se repete?",
+      "options": [
+        "Só o primeiro passo",
+        "A cor do bloco",
+        "A sequência completa de dois passos, três vezes.",
+        "A quantidade de participantes"
+      ],
+      "correctAnswer": "A sequência completa de dois passos, três vezes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Só o primeiro passo": [
+          "RECALL_REPEAT_BLOCK"
+        ],
+        "A cor do bloco": [
+          "RECALL_REPEAT_BLOCK"
+        ],
+        "A quantidade de participantes": [
+          "RECALL_REPEAT_BLOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REPITIR_BLOCO",
+      "explanation": "A instrução de repetição vale para o bloco indicado.",
+      "hint": "Leia o que vem depois dos dois-pontos.",
+      "errorFocus": "RECALL_REPEAT_BLOCK",
+      "feedback": {
+        "correct": "Boa observação: A instrução de repetição vale para o bloco indicado.",
+        "incorrect": "A instrução de repetição vale para o bloco indicado.",
+        "hint": "Leia o que vem depois dos dois-pontos.",
+        "errorFocus": "RECALL_REPEAT_BLOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-32",
+      "statement": "Simular um algoritmo ajuda a...",
+      "prompt": "Simular um algoritmo ajuda a...",
+      "options": [
+        "esconder erros",
+        "evitar ler as instruções",
+        "substituir a ordem por adivinhação",
+        "verificar como instruções e repetições produzem um resultado."
+      ],
+      "correctAnswer": "verificar como instruções e repetições produzem um resultado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "esconder erros": [
+          "ALGORITHM_SIMULATION_SUMMARY"
+        ],
+        "evitar ler as instruções": [
+          "ALGORITHM_SIMULATION_SUMMARY"
+        ],
+        "substituir a ordem por adivinhação": [
+          "ALGORITHM_SIMULATION_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_ALGORITMO",
+      "explanation": "A simulação permite acompanhar passos e resultados.",
+      "hint": "Relacione instrução e execução.",
+      "errorFocus": "ALGORITHM_SIMULATION_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A simulação permite acompanhar passos e resultados.",
+        "incorrect": "A simulação permite acompanhar passos e resultados.",
+        "hint": "Relacione instrução e execução.",
+        "errorFocus": "ALGORITHM_SIMULATION_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-33",
+      "statement": "“Repita quatro vezes” pede...",
+      "prompt": "“Repita quatro vezes” pede...",
+      "options": [
+        "quatro execuções da ação ou bloco indicado.",
+        "uma execução",
+        "duas execuções",
+        "quantas vezes a pessoa quiser"
+      ],
+      "correctAnswer": "quatro execuções da ação ou bloco indicado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "uma execução": [
+          "REVIEW_REPEAT_COUNT"
+        ],
+        "duas execuções": [
+          "REVIEW_REPEAT_COUNT"
+        ],
+        "quantas vezes a pessoa quiser": [
+          "REVIEW_REPEAT_COUNT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_REPETICAO",
+      "explanation": "O número especifica quatro repetições.",
+      "hint": "Conte as rodadas.",
+      "errorFocus": "REVIEW_REPEAT_COUNT",
+      "feedback": {
+        "correct": "Boa observação: O número especifica quatro repetições.",
+        "incorrect": "O número especifica quatro repetições.",
+        "hint": "Conte as rodadas.",
+        "errorFocus": "REVIEW_REPEAT_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-34",
+      "statement": "A palavra “depois” ajuda a entender...",
+      "prompt": "A palavra “depois” ajuda a entender...",
+      "options": [
+        "a cor do cartão",
+        "a ordem das instruções.",
+        "a altura da peça",
+        "a forma do tabuleiro"
+      ],
+      "correctAnswer": "a ordem das instruções.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a cor do cartão": [
+          "REVIEW_SEQUENCE_MARKER"
+        ],
+        "a altura da peça": [
+          "REVIEW_SEQUENCE_MARKER"
+        ],
+        "a forma do tabuleiro": [
+          "REVIEW_SEQUENCE_MARKER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_ORDEM",
+      "explanation": "“Depois” indica sequência temporal.",
+      "hint": "Observe as palavras de ordem.",
+      "errorFocus": "REVIEW_SEQUENCE_MARKER",
+      "feedback": {
+        "correct": "Boa observação: “Depois” indica sequência temporal.",
+        "incorrect": "“Depois” indica sequência temporal.",
+        "hint": "Observe as palavras de ordem.",
+        "errorFocus": "REVIEW_SEQUENCE_MARKER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-35",
+      "statement": "Como melhorar “vire para um lado”?",
+      "prompt": "Como melhorar “vire para um lado”?",
+      "options": [
+        "Dizer “vire de qualquer jeito.”",
+        "Remover a ação",
+        "Dizer “vire à esquerda” ou “vire à direita”.",
+        "Acrescentar uma cor sem explicar"
+      ],
+      "correctAnswer": "Dizer “vire à esquerda” ou “vire à direita”.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer “vire de qualquer jeito.”": [
+          "REVIEW_SPECIFY_DIRECTION"
+        ],
+        "Remover a ação": [
+          "REVIEW_SPECIFY_DIRECTION"
+        ],
+        "Acrescentar uma cor sem explicar": [
+          "REVIEW_SPECIFY_DIRECTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_DIRECAO",
+      "explanation": "Nomear o lado reduz ambiguidade.",
+      "hint": "Escolha a direção.",
+      "errorFocus": "REVIEW_SPECIFY_DIRECTION",
+      "feedback": {
+        "correct": "Boa observação: Nomear o lado reduz ambiguidade.",
+        "incorrect": "Nomear o lado reduz ambiguidade.",
+        "hint": "Escolha a direção.",
+        "errorFocus": "REVIEW_SPECIFY_DIRECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-36",
+      "statement": "Uma sequência de pictogramas pode representar um algoritmo quando...",
+      "prompt": "Uma sequência de pictogramas pode representar um algoritmo quando...",
+      "options": [
+        "não há legenda ou significado",
+        "as figuras são decorativas",
+        "a sequência está escondida",
+        "os símbolos e a ordem das ações ficam compreensíveis."
+      ],
+      "correctAnswer": "os símbolos e a ordem das ações ficam compreensíveis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "não há legenda ou significado": [
+          "REVIEW_PICTOGRAPHIC_CLARITY"
+        ],
+        "as figuras são decorativas": [
+          "REVIEW_PICTOGRAPHIC_CLARITY"
+        ],
+        "a sequência está escondida": [
+          "REVIEW_PICTOGRAPHIC_CLARITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_REPRESENTACAO",
+      "explanation": "Representações devem comunicar ações e sequência.",
+      "hint": "Confira se outra pessoa entende.",
+      "errorFocus": "REVIEW_PICTOGRAPHIC_CLARITY",
+      "feedback": {
+        "correct": "Boa observação: Representações devem comunicar ações e sequência.",
+        "incorrect": "Representações devem comunicar ações e sequência.",
+        "hint": "Confira se outra pessoa entende.",
+        "errorFocus": "REVIEW_PICTOGRAPHIC_CLARITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-37",
+      "statement": "Qual recurso é suficiente para testar passos num percurso simples?",
+      "prompt": "Qual recurso é suficiente para testar passos num percurso simples?",
+      "options": [
+        "Tabuleiro de papel e peça.",
+        "Um dispositivo conectado obrigatório",
+        "Uma conta pessoal",
+        "Um mapa de residências"
+      ],
+      "correctAnswer": "Tabuleiro de papel e peça.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um dispositivo conectado obrigatório": [
+          "REVIEW_UNPLUGGED_SIMULATION"
+        ],
+        "Uma conta pessoal": [
+          "REVIEW_UNPLUGGED_SIMULATION"
+        ],
+        "Um mapa de residências": [
+          "REVIEW_UNPLUGGED_SIMULATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_SIMULACAO",
+      "explanation": "A simulação pode ser desplugada.",
+      "hint": "Escolha materiais seguros.",
+      "errorFocus": "REVIEW_UNPLUGGED_SIMULATION",
+      "feedback": {
+        "correct": "Boa observação: A simulação pode ser desplugada.",
+        "incorrect": "A simulação pode ser desplugada.",
+        "hint": "Escolha materiais seguros.",
+        "errorFocus": "REVIEW_UNPLUGGED_SIMULATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-38",
+      "statement": "Um resultado difere do objetivo. O que a dupla pode fazer?",
+      "prompt": "Um resultado difere do objetivo. O que a dupla pode fazer?",
+      "options": [
+        "Mudar o objetivo sem avisar",
+        "Rever instruções e executar cada passo novamente.",
+        "Culpar quem simulou",
+        "Ignorar a quantidade de repetições"
+      ],
+      "correctAnswer": "Rever instruções e executar cada passo novamente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mudar o objetivo sem avisar": [
+          "REVIEW_DEBUGGING"
+        ],
+        "Culpar quem simulou": [
+          "REVIEW_DEBUGGING"
+        ],
+        "Ignorar a quantidade de repetições": [
+          "REVIEW_DEBUGGING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_ERRO",
+      "explanation": "Revisar passos ajuda a localizar a divergência.",
+      "hint": "Confira a sequência passo a passo.",
+      "errorFocus": "REVIEW_DEBUGGING",
+      "feedback": {
+        "correct": "Boa observação: Revisar passos ajuda a localizar a divergência.",
+        "incorrect": "Revisar passos ajuda a localizar a divergência.",
+        "hint": "Confira a sequência passo a passo.",
+        "errorFocus": "REVIEW_DEBUGGING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-39",
+      "statement": "No comando “repita 5 vezes”, qual é a quantidade?",
+      "prompt": "No comando “repita 5 vezes”, qual é a quantidade?",
+      "options": [
+        "Quatro",
+        "Seis",
+        "Cinco.",
+        "Uma"
+      ],
+      "correctAnswer": "Cinco.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quatro": [
+          "REVIEW_DEFINED_ITERATION"
+        ],
+        "Seis": [
+          "REVIEW_DEFINED_ITERATION"
+        ],
+        "Uma": [
+          "REVIEW_DEFINED_ITERATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_QUANTIDADE",
+      "explanation": "O numeral 5 dá a quantidade de execuções.",
+      "hint": "Leia o número.",
+      "errorFocus": "REVIEW_DEFINED_ITERATION",
+      "feedback": {
+        "correct": "Boa observação: O numeral 5 dá a quantidade de execuções.",
+        "incorrect": "O numeral 5 dá a quantidade de execuções.",
+        "hint": "Leia o número.",
+        "errorFocus": "REVIEW_DEFINED_ITERATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02co02-create-and-simulate-repeated-algorithms-40",
+      "statement": "A precisão da instrução importa porque...",
+      "prompt": "A precisão da instrução importa porque...",
+      "options": [
+        "as palavras deixam de ter significado",
+        "repetições não podem ser simuladas",
+        "a cor determina o algoritmo",
+        "pode mudar como a tarefa é executada e onde termina."
+      ],
+      "correctAnswer": "pode mudar como a tarefa é executada e onde termina.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "as palavras deixam de ter significado": [
+          "REVIEW_PRECISION_EFFECT"
+        ],
+        "repetições não podem ser simuladas": [
+          "REVIEW_PRECISION_EFFECT"
+        ],
+        "a cor determina o algoritmo": [
+          "REVIEW_PRECISION_EFFECT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_PRECISAO",
+      "explanation": "Instruções diferentes podem levar a resultados diferentes.",
+      "hint": "Relacione clareza e resultado.",
+      "errorFocus": "REVIEW_PRECISION_EFFECT",
+      "feedback": {
+        "correct": "Boa observação: Instruções diferentes podem levar a resultados diferentes.",
+        "incorrect": "Instruções diferentes podem levar a resultados diferentes.",
+        "hint": "Relacione clareza e resultado.",
+        "errorFocus": "REVIEW_PRECISION_EFFECT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer instruções orais, escritas e pictográficas com símbolos ampliados e alto contraste.",
+          "Permitir simular com peças táteis, apontar passos ou usar comunicação alternativa.",
+          "Usar tabuleiro de papel fictício, sem movimento físico obrigatório ou dispositivo conectado."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

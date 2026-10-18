@@ -5733,8 +5733,8 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-18"
     },
     {
       "verificationId": "BNCC_EF02CO03_MEC_P020_V1",
@@ -7527,8 +7527,8 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-18"
     },
     {
       "verificationId": "BNCC_EF01GE10_MEC_P373_V1",
@@ -8079,8 +8079,8 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-18"
     },
     {
       "verificationId": "BNCC_EF01LP15_MEC_P103_V1",
@@ -11115,8 +11115,8 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-17"
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-18"
     },
     {
       "verificationId": "BNCC_EF01MA10_MEC_P281_V1",
@@ -11460,8 +11460,8 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-17"
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-18"
     },
     {
       "verificationId": "BNCC_EF02ER03_MEC_P447_V1",
@@ -11851,8 +11851,8 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-17"
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-18"
     },
     {
       "verificationId": "BNCC_EF02HI02_MEC_P411_V1",

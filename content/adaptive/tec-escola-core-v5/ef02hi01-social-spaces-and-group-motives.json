@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02hi01-recognize-social-spaces-and-group-motives",
+  "canonicalSkillCode": "AUTHORING_EF02HI01_SOCIAL_SPACES_AND_GROUPS",
+  "subject": "HISTORY",
+  "domain": "A COMUNIDADE E SEUS REGISTROS",
+  "topic": "espaços de sociabilidade e motivos de aproximação e separação em grupos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02HI01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer espaços de sociabilidade e identificar os motivos que aproximam e separam as pessoas em diferentes grupos sociais ou de parentesco.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 411
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Grupos, encontros e espaços de convivência",
+    "objective": "Reconhecer espaços de sociabilidade e identificar, em fontes fictícias, motivos que aproximam ou afastam pessoas de grupos sociais ou de parentesco sem classificar famílias ou expor relações pessoais.",
+    "summary": "Pessoas se encontram em diferentes espaços, como escola, biblioteca, praça, associação, equipe de jogo ou ambientes familiares. Interesses compartilhados, tarefas, cuidado, vizinhança, parentesco ou projetos podem aproximar pessoas. Horários diferentes, mudanças, limites pessoais ou objetivos distintos podem fazer com que participem menos de um grupo em certo momento. Isso não mede o valor de ninguém nem determina que uma relação seja permanente. As atividades usam personagens e grupos fictícios; estudantes não precisam desenhar sua família, revelar conflitos, identificar parentes ou contar experiências privadas.",
+    "explanation": "Leia a fonte e identifique o espaço onde as pessoas interagem e o grupo descrito. Depois procure a razão explicitada para o encontro, como construir algo em equipe ou compartilhar uma atividade. Se a história diz que uma personagem não pode ir ao encontro por causa de outro compromisso, descreva esse motivo sem concluir que ela foi rejeitada. Pessoas podem pertencer a vários grupos, e as relações mudam com o tempo. Use apenas evidências da narrativa e evite rótulos como família normal, grupo melhor ou pessoa excluída sem base.",
+    "workedExample": "Uma história inventada mostra três crianças encontrando-se na biblioteca para montar um clube de leitura. O interesse por histórias as aproxima. Em outro dia, uma delas não comparece porque tem um compromisso. Podemos identificar o motivo de cada situação sem supor que o grupo deixou de acolhê-la.",
+    "commonMistake": "Interpretar ausência como rejeição sem evidência, reduzir grupos de parentesco a um único modelo ou exigir que estudantes revelem conflitos e vínculos pessoais.",
+    "priorKnowledge": [
+      "Reconhecer lugares e atividades em histórias curtas.",
+      "Identificar informações explícitas sobre participantes e motivos."
+    ],
+    "keyConcepts": [
+      "espaço de sociabilidade",
+      "grupo social",
+      "parentesco",
+      "aproximação",
+      "participação",
+      "motivo",
+      "mudança",
+      "privacidade"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "IDENTIFY_EXPLICIT_GROUP_MOTIVE",
+        "action": "Sublinhe a razão que a fonte informa para o encontro ou para a ausência, sem inventar explicações."
+      },
+      {
+        "errorFocus": "AVOID_REJECTION_ASSUMPTION",
+        "action": "Diferencie falta de participação numa ocasião de rejeição, procurando evidências explícitas."
+      },
+      {
+        "errorFocus": "FAMILY_DIVERSITY_AND_PRIVACY",
+        "action": "Use personagens fictícias e reconheça grupos diversos sem pedir relatos familiares pessoais."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+      "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+      "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "hi01-fictional-group-motive-map",
+        "title": "Mapa de grupos e motivos",
+        "instructions": "Cartões descrevem personagens fictícias encontrando-se em clubes, equipes, espaços comunitários e grupos familiares inventados.\n1. Identifique o espaço e o grupo da história.\n2. Localize o motivo apresentado para aproximar ou afastar participantes.\n3. Registre uma conclusão limitada à fonte.",
+        "steps": [
+          "Identifique o espaço e o grupo da história.",
+          "Localize o motivo apresentado para aproximar ou afastar participantes.",
+          "Registre uma conclusão limitada à fonte."
+        ],
+        "evidence": "Mapa que relaciona espaço, grupo e motivo com referência à narrativa.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um espaço.",
+            "developing": "identifica participantes ou atividade.",
+            "proficient": "explica um motivo explícito sem inferir relações pessoais."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "hi01-participation-over-time",
+        "title": "Participação em momentos diferentes",
+        "instructions": "Uma sequência de cenas mostra como personagens fictícias participam de grupos em dias diferentes.\n1. Ordene as cenas no tempo.\n2. Observe quem participa em cada momento.\n3. Explique uma mudança com base no motivo descrito.",
+        "steps": [
+          "Ordene as cenas no tempo.",
+          "Observe quem participa em cada momento.",
+          "Explique uma mudança com base no motivo descrito."
+        ],
+        "evidence": "Linha do tempo de participação com motivo apoiado pela fonte.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "localiza uma cena.",
+            "developing": "compara participação em dois momentos.",
+            "proficient": "identifica motivo sem confundir ausência com rejeição automática."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-01",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-02",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-03",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-04",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-05",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-06",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-07",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-09",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-10",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-11",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-12",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-13",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-14",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-15",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-17",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-18",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-19",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-20",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-21",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-22",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-23",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-25",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-26",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-27",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-28",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-29",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-30",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-31",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-33",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-34",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-35",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-36",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-37",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-38",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-39",
+          "v1-ef02hi01-recognize-social-spaces-and-group-motives-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02HI01",
+        "descriptor": "Reconhecer espaços de sociabilidade e identificar os motivos que aproximam e separam as pessoas em diferentes grupos sociais ou de parentesco.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 411
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-01",
+      "statement": "Personagens se encontram na biblioteca para ler histórias. Que espaço de sociabilidade aparece?",
+      "prompt": "Personagens se encontram na biblioteca para ler histórias. Que espaço de sociabilidade aparece?",
+      "options": [
+        "Biblioteca.",
+        "Oficina sem pessoas",
+        "Quarto privado de outra personagem",
+        "Estrada sem encontro"
+      ],
+      "correctAnswer": "Biblioteca.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Oficina sem pessoas": [
+          "IDENTIFY_SOCIAL_SPACE"
+        ],
+        "Quarto privado de outra personagem": [
+          "IDENTIFY_SOCIAL_SPACE"
+        ],
+        "Estrada sem encontro": [
+          "IDENTIFY_SOCIAL_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CLUBE_DE_LEITURA",
+      "explanation": "A narrativa situa o encontro na biblioteca.",
+      "hint": "Localize onde ocorre.",
+      "errorFocus": "IDENTIFY_SOCIAL_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa situa o encontro na biblioteca.",
+        "incorrect": "A narrativa situa o encontro na biblioteca.",
+        "hint": "Localize onde ocorre.",
+        "errorFocus": "IDENTIFY_SOCIAL_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-02",
+      "statement": "O que aproxima as personagens do clube de leitura?",
+      "prompt": "O que aproxima as personagens do clube de leitura?",
+      "options": [
+        "Uma competição de endereços",
+        "O interesse compartilhado por histórias.",
+        "Uma regra sobre famílias",
+        "Uma ausência sem explicação"
+      ],
+      "correctAnswer": "O interesse compartilhado por histórias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma competição de endereços": [
+          "IDENTIFY_GROUP_MOTIVE"
+        ],
+        "Uma regra sobre famílias": [
+          "IDENTIFY_GROUP_MOTIVE"
+        ],
+        "Uma ausência sem explicação": [
+          "IDENTIFY_GROUP_MOTIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "INTERESSE_COMPARTILHADO",
+      "explanation": "A história informa que elas gostam de ler juntas.",
+      "hint": "Procure o motivo do encontro.",
+      "errorFocus": "IDENTIFY_GROUP_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: A história informa que elas gostam de ler juntas.",
+        "incorrect": "A história informa que elas gostam de ler juntas.",
+        "hint": "Procure o motivo do encontro.",
+        "errorFocus": "IDENTIFY_GROUP_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-03",
+      "statement": "Uma personagem não foi ao clube porque tinha outro compromisso. O que a fonte permite concluir?",
+      "prompt": "Uma personagem não foi ao clube porque tinha outro compromisso. O que a fonte permite concluir?",
+      "options": [
+        "O grupo a rejeitou",
+        "Ela nunca voltará",
+        "Ela não participou daquele encontro por causa do compromisso.",
+        "Toda pessoa com compromisso fica excluída"
+      ],
+      "correctAnswer": "Ela não participou daquele encontro por causa do compromisso.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O grupo a rejeitou": [
+          "DO_NOT_INFER_REJECTION"
+        ],
+        "Ela nunca voltará": [
+          "DO_NOT_INFER_REJECTION"
+        ],
+        "Toda pessoa com compromisso fica excluída": [
+          "DO_NOT_INFER_REJECTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "AUSENCIA_POR_COMPROMISSO",
+      "explanation": "O motivo informado é um compromisso naquele dia.",
+      "hint": "Use somente a explicação da história.",
+      "errorFocus": "DO_NOT_INFER_REJECTION",
+      "feedback": {
+        "correct": "Boa observação: O motivo informado é um compromisso naquele dia.",
+        "incorrect": "O motivo informado é um compromisso naquele dia.",
+        "hint": "Use somente a explicação da história.",
+        "errorFocus": "DO_NOT_INFER_REJECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-04",
+      "statement": "Uma equipe fictícia se reúne na quadra para treinar. O que é a equipe nesse cenário?",
+      "prompt": "Uma equipe fictícia se reúne na quadra para treinar. O que é a equipe nesse cenário?",
+      "options": [
+        "Uma família de todos os colegas",
+        "Um objeto do jogo",
+        "Uma rua",
+        "Um grupo social reunido numa quadra."
+      ],
+      "correctAnswer": "Um grupo social reunido numa quadra.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma família de todos os colegas": [
+          "IDENTIFY_GROUP_AND_SPACE"
+        ],
+        "Um objeto do jogo": [
+          "IDENTIFY_GROUP_AND_SPACE"
+        ],
+        "Uma rua": [
+          "IDENTIFY_GROUP_AND_SPACE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "EQUIPE_DE_JOGO",
+      "explanation": "A narrativa apresenta equipe e local.",
+      "hint": "Nomeie o grupo e o espaço.",
+      "errorFocus": "IDENTIFY_GROUP_AND_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A narrativa apresenta equipe e local.",
+        "incorrect": "A narrativa apresenta equipe e local.",
+        "hint": "Nomeie o grupo e o espaço.",
+        "errorFocus": "IDENTIFY_GROUP_AND_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-05",
+      "statement": "Uma criança da história convive com avó, primos e uma tia responsável. Qual descrição é adequada?",
+      "prompt": "Uma criança da história convive com avó, primos e uma tia responsável. Qual descrição é adequada?",
+      "options": [
+        "A história apresenta um grupo de parentesco com esses familiares.",
+        "É um arranjo incompleto",
+        "Toda criança vive assim",
+        "Só um tipo de família é válido"
+      ],
+      "correctAnswer": "A história apresenta um grupo de parentesco com esses familiares.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "É um arranjo incompleto": [
+          "RESPECT_KINSHIP_DIVERSITY"
+        ],
+        "Toda criança vive assim": [
+          "RESPECT_KINSHIP_DIVERSITY"
+        ],
+        "Só um tipo de família é válido": [
+          "RESPECT_KINSHIP_DIVERSITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIVERSIDADE_DE_PARENTESCO",
+      "explanation": "A descrição limita-se à composição da personagem.",
+      "hint": "Descreva sem julgar.",
+      "errorFocus": "RESPECT_KINSHIP_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: A descrição limita-se à composição da personagem.",
+        "incorrect": "A descrição limita-se à composição da personagem.",
+        "hint": "Descreva sem julgar.",
+        "errorFocus": "RESPECT_KINSHIP_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-06",
+      "statement": "Duas pessoas participam de grupos diferentes por terem horários distintos. O que o exemplo mostra?",
+      "prompt": "Duas pessoas participam de grupos diferentes por terem horários distintos. O que o exemplo mostra?",
+      "options": [
+        "Uma pessoa vale menos",
+        "Horários podem influenciar a participação em atividades.",
+        "Toda diferença é rejeição",
+        "Grupos não podem mudar"
+      ],
+      "correctAnswer": "Horários podem influenciar a participação em atividades.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma pessoa vale menos": [
+          "IDENTIFY_SCHEDULE_MOTIVE"
+        ],
+        "Toda diferença é rejeição": [
+          "IDENTIFY_SCHEDULE_MOTIVE"
+        ],
+        "Grupos não podem mudar": [
+          "IDENTIFY_SCHEDULE_MOTIVE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "APROXIMACAO_E_SEPARACAO",
+      "explanation": "A história informa horários diferentes.",
+      "hint": "Use o motivo explícito.",
+      "errorFocus": "IDENTIFY_SCHEDULE_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: A história informa horários diferentes.",
+        "incorrect": "A história informa horários diferentes.",
+        "hint": "Use o motivo explícito.",
+        "errorFocus": "IDENTIFY_SCHEDULE_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-07",
+      "statement": "Um cartão mostra vizinhos conversando na praça. Que interação aparece?",
+      "prompt": "Um cartão mostra vizinhos conversando na praça. Que interação aparece?",
+      "options": [
+        "Uma atividade solitária em casa",
+        "Uma aula obrigatória",
+        "Um encontro entre pessoas da vizinhança.",
+        "Uma disputa familiar"
+      ],
+      "correctAnswer": "Um encontro entre pessoas da vizinhança.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma atividade solitária em casa": [
+          "READ_SOCIAL_INTERACTION"
+        ],
+        "Uma aula obrigatória": [
+          "READ_SOCIAL_INTERACTION"
+        ],
+        "Uma disputa familiar": [
+          "READ_SOCIAL_INTERACTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "ENCONTRO_NA_PRACA",
+      "explanation": "O cartão apresenta vizinhos conversando.",
+      "hint": "Observe quem interage.",
+      "errorFocus": "READ_SOCIAL_INTERACTION",
+      "feedback": {
+        "correct": "Boa observação: O cartão apresenta vizinhos conversando.",
+        "incorrect": "O cartão apresenta vizinhos conversando.",
+        "hint": "Observe quem interage.",
+        "errorFocus": "READ_SOCIAL_INTERACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-08",
+      "statement": "Como estudar grupos sem pedir que colegas contem conflitos familiares?",
+      "prompt": "Como estudar grupos sem pedir que colegas contem conflitos familiares?",
+      "options": [
+        "Exigir uma genealogia da turma",
+        "Pedir nomes de parentes em público",
+        "Adivinhar relações pessoais",
+        "Analisar histórias fictícias de personagens."
+      ],
+      "correctAnswer": "Analisar histórias fictícias de personagens.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir uma genealogia da turma": [
+          "PROTECT_GROUP_PRIVACY"
+        ],
+        "Pedir nomes de parentes em público": [
+          "PROTECT_GROUP_PRIVACY"
+        ],
+        "Adivinhar relações pessoais": [
+          "PROTECT_GROUP_PRIVACY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PRIVACIDADE_DOS_GRUPOS",
+      "explanation": "Personagens inventadas permitem analisar sem exposição.",
+      "hint": "Escolha uma fonte fictícia.",
+      "errorFocus": "PROTECT_GROUP_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: Personagens inventadas permitem analisar sem exposição.",
+        "incorrect": "Personagens inventadas permitem analisar sem exposição.",
+        "hint": "Escolha uma fonte fictícia.",
+        "errorFocus": "PROTECT_GROUP_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-09",
+      "statement": "Um grupo fictício se encontra num centro cultural para pintar juntos. Qual espaço aparece?",
+      "prompt": "Um grupo fictício se encontra num centro cultural para pintar juntos. Qual espaço aparece?",
+      "options": [
+        "Centro cultural.",
+        "Terminal de carga",
+        "Quarto privado",
+        "Rua sem participantes"
+      ],
+      "correctAnswer": "Centro cultural.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Terminal de carga": [
+          "PRACTICE_IDENTIFY_SPACE"
+        ],
+        "Quarto privado": [
+          "PRACTICE_IDENTIFY_SPACE"
+        ],
+        "Rua sem participantes": [
+          "PRACTICE_IDENTIFY_SPACE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "OFICINA_DE_ARTE",
+      "explanation": "O encontro ocorre no centro cultural.",
+      "hint": "Leia o local descrito.",
+      "errorFocus": "PRACTICE_IDENTIFY_SPACE",
+      "feedback": {
+        "correct": "Boa observação: O encontro ocorre no centro cultural.",
+        "incorrect": "O encontro ocorre no centro cultural.",
+        "hint": "Leia o local descrito.",
+        "errorFocus": "PRACTICE_IDENTIFY_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-10",
+      "statement": "Quatro personagens organizam livros numa atividade de grupo. O que pode aproximá-las?",
+      "prompt": "Quatro personagens organizam livros numa atividade de grupo. O que pode aproximá-las?",
+      "options": [
+        "Uma crença presumida",
+        "A tarefa compartilhada de organizar livros.",
+        "A ausência de uma pessoa",
+        "O endereço de cada um"
+      ],
+      "correctAnswer": "A tarefa compartilhada de organizar livros.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma crença presumida": [
+          "PRACTICE_SHARED_TASK"
+        ],
+        "A ausência de uma pessoa": [
+          "PRACTICE_SHARED_TASK"
+        ],
+        "O endereço de cada um": [
+          "PRACTICE_SHARED_TASK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "TAREFA_COMPARTILHADA",
+      "explanation": "A atividade comum é o motivo indicado.",
+      "hint": "Observe o que fazem juntas.",
+      "errorFocus": "PRACTICE_SHARED_TASK",
+      "feedback": {
+        "correct": "Boa observação: A atividade comum é o motivo indicado.",
+        "incorrect": "A atividade comum é o motivo indicado.",
+        "hint": "Observe o que fazem juntas.",
+        "errorFocus": "PRACTICE_SHARED_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-11",
+      "statement": "Uma história apresenta primos brincando num parque. Que relação está explicitada?",
+      "prompt": "Uma história apresenta primos brincando num parque. Que relação está explicitada?",
+      "options": [
+        "Que todos os primos moram juntos",
+        "Que toda família tem a mesma composição",
+        "Parentesco entre primos e encontro no parque.",
+        "Que o parque é privado"
+      ],
+      "correctAnswer": "Parentesco entre primos e encontro no parque.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todos os primos moram juntos": [
+          "PRACTICE_DESCRIBE_KINSHIP"
+        ],
+        "Que toda família tem a mesma composição": [
+          "PRACTICE_DESCRIBE_KINSHIP"
+        ],
+        "Que o parque é privado": [
+          "PRACTICE_DESCRIBE_KINSHIP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "PARENTESCO_E_GRUPO",
+      "explanation": "A fonte informa primos e local do encontro.",
+      "hint": "Não acrescente detalhes não citados.",
+      "errorFocus": "PRACTICE_DESCRIBE_KINSHIP",
+      "feedback": {
+        "correct": "Boa observação: A fonte informa primos e local do encontro.",
+        "incorrect": "A fonte informa primos e local do encontro.",
+        "hint": "Não acrescente detalhes não citados.",
+        "errorFocus": "PRACTICE_DESCRIBE_KINSHIP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-12",
+      "statement": "Uma personagem participa de um grupo em alguns dias e falta em outro. Qual conclusão cuidadosa?",
+      "prompt": "Uma personagem participa de um grupo em alguns dias e falta em outro. Qual conclusão cuidadosa?",
+      "options": [
+        "Ela foi excluída para sempre",
+        "O grupo deixou de existir",
+        "Ela não gosta de ninguém",
+        "A participação variou entre as ocasiões descritas."
+      ],
+      "correctAnswer": "A participação variou entre as ocasiões descritas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ela foi excluída para sempre": [
+          "PRACTICE_LIMIT_PARTICIPATION_CLAIM"
+        ],
+        "O grupo deixou de existir": [
+          "PRACTICE_LIMIT_PARTICIPATION_CLAIM"
+        ],
+        "Ela não gosta de ninguém": [
+          "PRACTICE_LIMIT_PARTICIPATION_CLAIM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MUDANCA_DE_PARTICIPACAO",
+      "explanation": "A fonte mostra presença diferente, sem explicar rejeição.",
+      "hint": "Descreva os momentos mostrados.",
+      "errorFocus": "PRACTICE_LIMIT_PARTICIPATION_CLAIM",
+      "feedback": {
+        "correct": "Boa observação: A fonte mostra presença diferente, sem explicar rejeição.",
+        "incorrect": "A fonte mostra presença diferente, sem explicar rejeição.",
+        "hint": "Descreva os momentos mostrados.",
+        "errorFocus": "PRACTICE_LIMIT_PARTICIPATION_CLAIM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-13",
+      "statement": "Uma equipe de ciências se reúne por causa de um projeto. Que motivo aproxima seus integrantes?",
+      "prompt": "Uma equipe de ciências se reúne por causa de um projeto. Que motivo aproxima seus integrantes?",
+      "options": [
+        "Trabalhar no mesmo projeto.",
+        "Ter as mesmas famílias",
+        "Morar na mesma casa necessariamente",
+        "Concordar em tudo"
+      ],
+      "correctAnswer": "Trabalhar no mesmo projeto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ter as mesmas famílias": [
+          "PRACTICE_PROJECT_MOTIVE"
+        ],
+        "Morar na mesma casa necessariamente": [
+          "PRACTICE_PROJECT_MOTIVE"
+        ],
+        "Concordar em tudo": [
+          "PRACTICE_PROJECT_MOTIVE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "GRUPO_DE_PROJETO",
+      "explanation": "O projeto é o objetivo compartilhado.",
+      "hint": "Leia o propósito do encontro.",
+      "errorFocus": "PRACTICE_PROJECT_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: O projeto é o objetivo compartilhado.",
+        "incorrect": "O projeto é o objetivo compartilhado.",
+        "hint": "Leia o propósito do encontro.",
+        "errorFocus": "PRACTICE_PROJECT_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-14",
+      "statement": "Uma pessoa muda de horário e deixa de comparecer à atividade semanal. O que a fonte informa?",
+      "prompt": "Uma pessoa muda de horário e deixa de comparecer à atividade semanal. O que a fonte informa?",
+      "options": [
+        "Todos deixaram de gostar dela",
+        "A mudança de horário afetou sua participação.",
+        "A pessoa foi expulsa",
+        "A mudança define sua identidade"
+      ],
+      "correctAnswer": "A mudança de horário afetou sua participação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todos deixaram de gostar dela": [
+          "PRACTICE_CAUSE_WITHOUT_STIGMA"
+        ],
+        "A pessoa foi expulsa": [
+          "PRACTICE_CAUSE_WITHOUT_STIGMA"
+        ],
+        "A mudança define sua identidade": [
+          "PRACTICE_CAUSE_WITHOUT_STIGMA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MOTIVO_DE_AFASTAMENTO",
+      "explanation": "O texto relaciona horário e presença.",
+      "hint": "Limite a explicação ao que está escrito.",
+      "errorFocus": "PRACTICE_CAUSE_WITHOUT_STIGMA",
+      "feedback": {
+        "correct": "Boa observação: O texto relaciona horário e presença.",
+        "incorrect": "O texto relaciona horário e presença.",
+        "hint": "Limite a explicação ao que está escrito.",
+        "errorFocus": "PRACTICE_CAUSE_WITHOUT_STIGMA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-15",
+      "statement": "Moradores se encontram para cuidar de uma horta comunitária. Qual grupo aparece?",
+      "prompt": "Moradores se encontram para cuidar de uma horta comunitária. Qual grupo aparece?",
+      "options": [
+        "Uma família única",
+        "Uma turma de aula necessariamente",
+        "Um grupo de moradores reunido por uma atividade.",
+        "Um grupo sem interação"
+      ],
+      "correctAnswer": "Um grupo de moradores reunido por uma atividade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma família única": [
+          "PRACTICE_IDENTIFY_COMMUNITY_GROUP"
+        ],
+        "Uma turma de aula necessariamente": [
+          "PRACTICE_IDENTIFY_COMMUNITY_GROUP"
+        ],
+        "Um grupo sem interação": [
+          "PRACTICE_IDENTIFY_COMMUNITY_GROUP"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ASSOCIACAO_DE_HORTA",
+      "explanation": "A atividade reúne pessoas da vizinhança.",
+      "hint": "Observe a relação e a tarefa.",
+      "errorFocus": "PRACTICE_IDENTIFY_COMMUNITY_GROUP",
+      "feedback": {
+        "correct": "Boa observação: A atividade reúne pessoas da vizinhança.",
+        "incorrect": "A atividade reúne pessoas da vizinhança.",
+        "hint": "Observe a relação e a tarefa.",
+        "errorFocus": "PRACTICE_IDENTIFY_COMMUNITY_GROUP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-16",
+      "statement": "Como registrar que alguém não foi a um encontro?",
+      "prompt": "Como registrar que alguém não foi a um encontro?",
+      "options": [
+        "“Foi rejeitada por todos”, sem evidência",
+        "“Não pertence a nenhum grupo”, sem fonte",
+        "“É uma pessoa ruim”",
+        "“A personagem não participou daquela ocasião”, se isso é o que a fonte informa."
+      ],
+      "correctAnswer": "“A personagem não participou daquela ocasião”, se isso é o que a fonte informa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Foi rejeitada por todos”, sem evidência": [
+          "PRACTICE_NEUTRAL_DESCRIPTION"
+        ],
+        "“Não pertence a nenhum grupo”, sem fonte": [
+          "PRACTICE_NEUTRAL_DESCRIPTION"
+        ],
+        "“É uma pessoa ruim”": [
+          "PRACTICE_NEUTRAL_DESCRIPTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LINGUAGEM_SEM_ROTULO",
+      "explanation": "A frase descreve a ausência sem inventar um motivo.",
+      "hint": "Use linguagem factual.",
+      "errorFocus": "PRACTICE_NEUTRAL_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A frase descreve a ausência sem inventar um motivo.",
+        "incorrect": "A frase descreve a ausência sem inventar um motivo.",
+        "hint": "Use linguagem factual.",
+        "errorFocus": "PRACTICE_NEUTRAL_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-17",
+      "statement": "Uma narrativa mostra vizinhos planejando uma feira no salão comunitário. O que pode ser identificado?",
+      "prompt": "Uma narrativa mostra vizinhos planejando uma feira no salão comunitário. O que pode ser identificado?",
+      "options": [
+        "O espaço comunitário e o motivo de planejar a feira.",
+        "A renda de cada família",
+        "A crença de todos os moradores",
+        "A rotina privada dos participantes"
+      ],
+      "correctAnswer": "O espaço comunitário e o motivo de planejar a feira.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A renda de cada família": [
+          "TRANSFER_SPACE_AND_MOTIVE"
+        ],
+        "A crença de todos os moradores": [
+          "TRANSFER_SPACE_AND_MOTIVE"
+        ],
+        "A rotina privada dos participantes": [
+          "TRANSFER_SPACE_AND_MOTIVE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ENCONTRO_DE_VIZINHOS",
+      "explanation": "O encontro e a tarefa estão explícitos.",
+      "hint": "Use as informações da narrativa.",
+      "errorFocus": "TRANSFER_SPACE_AND_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: O encontro e a tarefa estão explícitos.",
+        "incorrect": "O encontro e a tarefa estão explícitos.",
+        "hint": "Use as informações da narrativa.",
+        "errorFocus": "TRANSFER_SPACE_AND_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-18",
+      "statement": "Personagens se reúnem para ensaiar uma canção. O que aproxima o grupo?",
+      "prompt": "Personagens se reúnem para ensaiar uma canção. O que aproxima o grupo?",
+      "options": [
+        "O nome de uma rua",
+        "O ensaio compartilhado.",
+        "A ausência de uma pessoa",
+        "Uma relação de parentesco não citada"
+      ],
+      "correctAnswer": "O ensaio compartilhado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome de uma rua": [
+          "TRANSFER_SHARED_INTEREST"
+        ],
+        "A ausência de uma pessoa": [
+          "TRANSFER_SHARED_INTEREST"
+        ],
+        "Uma relação de parentesco não citada": [
+          "TRANSFER_SHARED_INTEREST"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "GRUPO_DE_MUSICA",
+      "explanation": "A atividade musical é o motivo dado.",
+      "hint": "Observe a ação coletiva.",
+      "errorFocus": "TRANSFER_SHARED_INTEREST",
+      "feedback": {
+        "correct": "Boa observação: A atividade musical é o motivo dado.",
+        "incorrect": "A atividade musical é o motivo dado.",
+        "hint": "Observe a ação coletiva.",
+        "errorFocus": "TRANSFER_SHARED_INTEREST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-19",
+      "statement": "Dois amigos não participam juntos num dia porque têm compromissos diferentes. Isso prova que romperam a amizade?",
+      "prompt": "Dois amigos não participam juntos num dia porque têm compromissos diferentes. Isso prova que romperam a amizade?",
+      "options": [
+        "Sim, qualquer ausência prova rompimento",
+        "Sim, horários definem amizade",
+        "Não; a fonte informa compromissos distintos naquela ocasião.",
+        "Não, pois compromissos nunca existem"
+      ],
+      "correctAnswer": "Não; a fonte informa compromissos distintos naquela ocasião.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, qualquer ausência prova rompimento": [
+          "TRANSFER_AVOID_RELATIONSHIP_INFERENCE"
+        ],
+        "Sim, horários definem amizade": [
+          "TRANSFER_AVOID_RELATIONSHIP_INFERENCE"
+        ],
+        "Não, pois compromissos nunca existem": [
+          "TRANSFER_AVOID_RELATIONSHIP_INFERENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SEPARACAO_POR_TAREFAS",
+      "explanation": "Uma ausência contextual não prova término de relação.",
+      "hint": "Não vá além da evidência.",
+      "errorFocus": "TRANSFER_AVOID_RELATIONSHIP_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Uma ausência contextual não prova término de relação.",
+        "incorrect": "Uma ausência contextual não prova término de relação.",
+        "hint": "Não vá além da evidência.",
+        "errorFocus": "TRANSFER_AVOID_RELATIONSHIP_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-20",
+      "statement": "Uma personagem participa de clube, equipe e grupo familiar. O que isso mostra?",
+      "prompt": "Uma personagem participa de clube, equipe e grupo familiar. O que isso mostra?",
+      "options": [
+        "Só pode pertencer a um grupo",
+        "Um grupo vale mais que os demais",
+        "Todos os grupos são iguais",
+        "Uma pessoa pode pertencer a diferentes grupos."
+      ],
+      "correctAnswer": "Uma pessoa pode pertencer a diferentes grupos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Só pode pertencer a um grupo": [
+          "TRANSFER_MULTIPLE_BELONGING"
+        ],
+        "Um grupo vale mais que os demais": [
+          "TRANSFER_MULTIPLE_BELONGING"
+        ],
+        "Todos os grupos são iguais": [
+          "TRANSFER_MULTIPLE_BELONGING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "GRUPOS_MULTIPLOS",
+      "explanation": "A história apresenta participação em vários grupos.",
+      "hint": "Considere cada contexto.",
+      "errorFocus": "TRANSFER_MULTIPLE_BELONGING",
+      "feedback": {
+        "correct": "Boa observação: A história apresenta participação em vários grupos.",
+        "incorrect": "A história apresenta participação em vários grupos.",
+        "hint": "Considere cada contexto.",
+        "errorFocus": "TRANSFER_MULTIPLE_BELONGING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-21",
+      "statement": "Um grupo se encontra por um projeto e também porque seus integrantes gostam de criar. O que aproxima as pessoas?",
+      "prompt": "Um grupo se encontra por um projeto e também porque seus integrantes gostam de criar. O que aproxima as pessoas?",
+      "options": [
+        "O projeto e o interesse compartilhado descritos.",
+        "Um motivo inventado sobre suas famílias",
+        "Uma regra universal",
+        "Uma diferença de idade apenas"
+      ],
+      "correctAnswer": "O projeto e o interesse compartilhado descritos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um motivo inventado sobre suas famílias": [
+          "TRANSFER_MULTIPLE_GROUP_MOTIVES"
+        ],
+        "Uma regra universal": [
+          "TRANSFER_MULTIPLE_GROUP_MOTIVES"
+        ],
+        "Uma diferença de idade apenas": [
+          "TRANSFER_MULTIPLE_GROUP_MOTIVES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MOTIVOS_MISTOS",
+      "explanation": "A narrativa informa dois motivos de aproximação.",
+      "hint": "Use as razões dadas.",
+      "errorFocus": "TRANSFER_MULTIPLE_GROUP_MOTIVES",
+      "feedback": {
+        "correct": "Boa observação: A narrativa informa dois motivos de aproximação.",
+        "incorrect": "A narrativa informa dois motivos de aproximação.",
+        "hint": "Use as razões dadas.",
+        "errorFocus": "TRANSFER_MULTIPLE_GROUP_MOTIVES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-22",
+      "statement": "Um mapa fictício mostra biblioteca, quadra e praça com grupos em cada local. O que registrar?",
+      "prompt": "Um mapa fictício mostra biblioteca, quadra e praça com grupos em cada local. O que registrar?",
+      "options": [
+        "Endereços de casas",
+        "Espaço, grupo e atividade conforme a fonte.",
+        "Conflitos privados de estudantes",
+        "Qual grupo é superior"
+      ],
+      "correctAnswer": "Espaço, grupo e atividade conforme a fonte.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Endereços de casas": [
+          "TRANSFER_MAP_SOCIAL_SPACES"
+        ],
+        "Conflitos privados de estudantes": [
+          "TRANSFER_MAP_SOCIAL_SPACES"
+        ],
+        "Qual grupo é superior": [
+          "TRANSFER_MAP_SOCIAL_SPACES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_DE_SOCIALIZACAO",
+      "explanation": "A representação pode relacionar lugar e interação.",
+      "hint": "Registre dados públicos da história.",
+      "errorFocus": "TRANSFER_MAP_SOCIAL_SPACES",
+      "feedback": {
+        "correct": "Boa observação: A representação pode relacionar lugar e interação.",
+        "incorrect": "A representação pode relacionar lugar e interação.",
+        "hint": "Registre dados públicos da história.",
+        "errorFocus": "TRANSFER_MAP_SOCIAL_SPACES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-23",
+      "statement": "Uma narrativa chama duas personagens de irmãs. O que está explícito?",
+      "prompt": "Uma narrativa chama duas personagens de irmãs. O que está explícito?",
+      "options": [
+        "Que todas as irmãs moram juntas",
+        "Que toda família tem duas crianças",
+        "Uma relação de parentesco entre elas.",
+        "Que elas participam do mesmo clube"
+      ],
+      "correctAnswer": "Uma relação de parentesco entre elas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que todas as irmãs moram juntas": [
+          "TRANSFER_EXPLICIT_KINSHIP"
+        ],
+        "Que toda família tem duas crianças": [
+          "TRANSFER_EXPLICIT_KINSHIP"
+        ],
+        "Que elas participam do mesmo clube": [
+          "TRANSFER_EXPLICIT_KINSHIP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "GRUPO_DE_PARENTESCO",
+      "explanation": "A fonte informa que são irmãs.",
+      "hint": "Repita apenas a relação indicada.",
+      "errorFocus": "TRANSFER_EXPLICIT_KINSHIP",
+      "feedback": {
+        "correct": "Boa observação: A fonte informa que são irmãs.",
+        "incorrect": "A fonte informa que são irmãs.",
+        "hint": "Repita apenas a relação indicada.",
+        "errorFocus": "TRANSFER_EXPLICIT_KINSHIP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-24",
+      "statement": "Por que identificar o motivo de um encontro usando a fonte?",
+      "prompt": "Por que identificar o motivo de um encontro usando a fonte?",
+      "options": [
+        "Para classificar famílias",
+        "Para adivinhar conflitos",
+        "Para exigir relatos da turma",
+        "Para explicar a aproximação sem inventar razões pessoais."
+      ],
+      "correctAnswer": "Para explicar a aproximação sem inventar razões pessoais.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para classificar famílias": [
+          "JUSTIFY_SOURCE_BASED_MOTIVE"
+        ],
+        "Para adivinhar conflitos": [
+          "JUSTIFY_SOURCE_BASED_MOTIVE"
+        ],
+        "Para exigir relatos da turma": [
+          "JUSTIFY_SOURCE_BASED_MOTIVE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "MOTIVO_EVIDENCIA",
+      "explanation": "Evidências sustentam conclusões contextualizadas.",
+      "hint": "Conecte motivo e narrativa.",
+      "errorFocus": "JUSTIFY_SOURCE_BASED_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: Evidências sustentam conclusões contextualizadas.",
+        "incorrect": "Evidências sustentam conclusões contextualizadas.",
+        "hint": "Conecte motivo e narrativa.",
+        "errorFocus": "JUSTIFY_SOURCE_BASED_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-25",
+      "statement": "Uma biblioteca onde pessoas se encontram pode ser...",
+      "prompt": "Uma biblioteca onde pessoas se encontram pode ser...",
+      "options": [
+        "um espaço de sociabilidade.",
+        "um atributo de forma",
+        "uma medida",
+        "uma instrução de algoritmo"
+      ],
+      "correctAnswer": "um espaço de sociabilidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "um atributo de forma": [
+          "RECALL_SOCIAL_SPACE"
+        ],
+        "uma medida": [
+          "RECALL_SOCIAL_SPACE"
+        ],
+        "uma instrução de algoritmo": [
+          "RECALL_SOCIAL_SPACE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "ESPACO_DE_SOCIALIZACAO",
+      "explanation": "Pessoas podem interagir na biblioteca.",
+      "hint": "Lembre dos lugares de encontro.",
+      "errorFocus": "RECALL_SOCIAL_SPACE",
+      "feedback": {
+        "correct": "Boa observação: Pessoas podem interagir na biblioteca.",
+        "incorrect": "Pessoas podem interagir na biblioteca.",
+        "hint": "Lembre dos lugares de encontro.",
+        "errorFocus": "RECALL_SOCIAL_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-26",
+      "statement": "Um grupo se reúne para construir um mural. O motivo é...",
+      "prompt": "Um grupo se reúne para construir um mural. O motivo é...",
+      "options": [
+        "um endereço pessoal",
+        "a tarefa compartilhada.",
+        "uma cor favorita presumida",
+        "uma ausência sem explicação"
+      ],
+      "correctAnswer": "a tarefa compartilhada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "um endereço pessoal": [
+          "RECALL_SHARED_MOTIVE"
+        ],
+        "uma cor favorita presumida": [
+          "RECALL_SHARED_MOTIVE"
+        ],
+        "uma ausência sem explicação": [
+          "RECALL_SHARED_MOTIVE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MOTIVO_COMPARTILHADO",
+      "explanation": "O mural é a atividade comum.",
+      "hint": "Observe o objetivo do grupo.",
+      "errorFocus": "RECALL_SHARED_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: O mural é a atividade comum.",
+        "incorrect": "O mural é a atividade comum.",
+        "hint": "Observe o objetivo do grupo.",
+        "errorFocus": "RECALL_SHARED_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-27",
+      "statement": "Faltar a um encontro prova automaticamente rejeição?",
+      "prompt": "Faltar a um encontro prova automaticamente rejeição?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se a pessoa tem outro compromisso",
+        "Não; a fonte precisa informar o motivo.",
+        "Não, ninguém falta"
+      ],
+      "correctAnswer": "Não; a fonte precisa informar o motivo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "RECALL_NO_AUTOMATIC_REJECTION"
+        ],
+        "Sim, se a pessoa tem outro compromisso": [
+          "RECALL_NO_AUTOMATIC_REJECTION"
+        ],
+        "Não, ninguém falta": [
+          "RECALL_NO_AUTOMATIC_REJECTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "AUSENCIA_NAO_E_REJEICAO",
+      "explanation": "Ausência pode ter diferentes motivos.",
+      "hint": "Procure evidência antes de concluir.",
+      "errorFocus": "RECALL_NO_AUTOMATIC_REJECTION",
+      "feedback": {
+        "correct": "Boa observação: Ausência pode ter diferentes motivos.",
+        "incorrect": "Ausência pode ter diferentes motivos.",
+        "hint": "Procure evidência antes de concluir.",
+        "errorFocus": "RECALL_NO_AUTOMATIC_REJECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-28",
+      "statement": "Qual descrição respeita grupos de parentesco diversos?",
+      "prompt": "Qual descrição respeita grupos de parentesco diversos?",
+      "options": [
+        "“Só um arranjo é família.”",
+        "“Esse grupo é incompleto.”",
+        "“Toda criança mora igual.”",
+        "“A história apresenta estas pessoas como parentes e responsáveis.”"
+      ],
+      "correctAnswer": "“A história apresenta estas pessoas como parentes e responsáveis.”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Só um arranjo é família.”": [
+          "RECALL_KINSHIP_DIVERSITY"
+        ],
+        "“Esse grupo é incompleto.”": [
+          "RECALL_KINSHIP_DIVERSITY"
+        ],
+        "“Toda criança mora igual.”": [
+          "RECALL_KINSHIP_DIVERSITY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIVERSIDADE_FAMILIAR",
+      "explanation": "A frase relata sem hierarquizar.",
+      "hint": "Descreva sem rótulos.",
+      "errorFocus": "RECALL_KINSHIP_DIVERSITY",
+      "feedback": {
+        "correct": "Boa observação: A frase relata sem hierarquizar.",
+        "incorrect": "A frase relata sem hierarquizar.",
+        "hint": "Descreva sem rótulos.",
+        "errorFocus": "RECALL_KINSHIP_DIVERSITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-29",
+      "statement": "Como analisar motivos sem pedir histórias pessoais?",
+      "prompt": "Como analisar motivos sem pedir histórias pessoais?",
+      "options": [
+        "Usar personagens fictícias e observar as razões descritas.",
+        "Exigir relatos de conflito",
+        "Publicar parentescos da turma",
+        "Adivinhar relações"
+      ],
+      "correctAnswer": "Usar personagens fictícias e observar as razões descritas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Exigir relatos de conflito": [
+          "RECALL_PRIVACY_SAFE_SOURCE"
+        ],
+        "Publicar parentescos da turma": [
+          "RECALL_PRIVACY_SAFE_SOURCE"
+        ],
+        "Adivinhar relações": [
+          "RECALL_PRIVACY_SAFE_SOURCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FONTE_FICTICIA_DE_GRUPO",
+      "explanation": "A ficção preserva privacidade.",
+      "hint": "Escolha uma história inventada.",
+      "errorFocus": "RECALL_PRIVACY_SAFE_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A ficção preserva privacidade.",
+        "incorrect": "A ficção preserva privacidade.",
+        "hint": "Escolha uma história inventada.",
+        "errorFocus": "RECALL_PRIVACY_SAFE_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-30",
+      "statement": "O que pode aproximar pessoas num grupo?",
+      "prompt": "O que pode aproximar pessoas num grupo?",
+      "options": [
+        "Uma classificação de valor",
+        "Interesse, tarefa ou cuidado compartilhado descrito na fonte.",
+        "Um estereótipo",
+        "Um endereço exposto"
+      ],
+      "correctAnswer": "Interesse, tarefa ou cuidado compartilhado descrito na fonte.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma classificação de valor": [
+          "RECALL_GROUP_MOTIVES"
+        ],
+        "Um estereótipo": [
+          "RECALL_GROUP_MOTIVES"
+        ],
+        "Um endereço exposto": [
+          "RECALL_GROUP_MOTIVES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "APROXIMAR_E_SEPARAR",
+      "explanation": "Motivos podem ser diferentes e explícitos.",
+      "hint": "Pense no que fazem juntas.",
+      "errorFocus": "RECALL_GROUP_MOTIVES",
+      "feedback": {
+        "correct": "Boa observação: Motivos podem ser diferentes e explícitos.",
+        "incorrect": "Motivos podem ser diferentes e explícitos.",
+        "hint": "Pense no que fazem juntas.",
+        "errorFocus": "RECALL_GROUP_MOTIVES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-31",
+      "statement": "Uma personagem participa menos após mudar de horário. O que mudou na história?",
+      "prompt": "Uma personagem participa menos após mudar de horário. O que mudou na história?",
+      "options": [
+        "Seu valor como pessoa",
+        "A identidade de todos os integrantes",
+        "A participação daquela personagem nas ocasiões descritas.",
+        "A existência de todos os grupos"
+      ],
+      "correctAnswer": "A participação daquela personagem nas ocasiões descritas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Seu valor como pessoa": [
+          "RECALL_PARTICIPATION_CHANGE"
+        ],
+        "A identidade de todos os integrantes": [
+          "RECALL_PARTICIPATION_CHANGE"
+        ],
+        "A existência de todos os grupos": [
+          "RECALL_PARTICIPATION_CHANGE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MUDANCA_NO_TEMPO",
+      "explanation": "A fonte descreve variação na participação.",
+      "hint": "Compare os momentos.",
+      "errorFocus": "RECALL_PARTICIPATION_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: A fonte descreve variação na participação.",
+        "incorrect": "A fonte descreve variação na participação.",
+        "hint": "Compare os momentos.",
+        "errorFocus": "RECALL_PARTICIPATION_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-32",
+      "statement": "Estudar grupos com cuidado envolve...",
+      "prompt": "Estudar grupos com cuidado envolve...",
+      "options": [
+        "exigir genealogias",
+        "julgar famílias",
+        "supor rejeição por qualquer ausência",
+        "reconhecer espaços e motivos sem inferir relações privadas sem evidência."
+      ],
+      "correctAnswer": "reconhecer espaços e motivos sem inferir relações privadas sem evidência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "exigir genealogias": [
+          "SOCIAL_GROUPS_SUMMARY"
+        ],
+        "julgar famílias": [
+          "SOCIAL_GROUPS_SUMMARY"
+        ],
+        "supor rejeição por qualquer ausência": [
+          "SOCIAL_GROUPS_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_GRUPOS",
+      "explanation": "A análise usa fontes e protege privacidade.",
+      "hint": "Reúna espaço, motivo e evidência.",
+      "errorFocus": "SOCIAL_GROUPS_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: A análise usa fontes e protege privacidade.",
+        "incorrect": "A análise usa fontes e protege privacidade.",
+        "hint": "Reúna espaço, motivo e evidência.",
+        "errorFocus": "SOCIAL_GROUPS_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-33",
+      "statement": "Uma equipe se reúne na quadra. Qual é o espaço de encontro?",
+      "prompt": "Uma equipe se reúne na quadra. Qual é o espaço de encontro?",
+      "options": [
+        "Quadra.",
+        "Uma casa não mencionada",
+        "Um livro",
+        "Uma cor"
+      ],
+      "correctAnswer": "Quadra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma casa não mencionada": [
+          "REVIEW_SOCIAL_SPACE"
+        ],
+        "Um livro": [
+          "REVIEW_SOCIAL_SPACE"
+        ],
+        "Uma cor": [
+          "REVIEW_SOCIAL_SPACE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_ESPACO",
+      "explanation": "O grupo está na quadra.",
+      "hint": "Localize o lugar.",
+      "errorFocus": "REVIEW_SOCIAL_SPACE",
+      "feedback": {
+        "correct": "Boa observação: O grupo está na quadra.",
+        "incorrect": "O grupo está na quadra.",
+        "hint": "Localize o lugar.",
+        "errorFocus": "REVIEW_SOCIAL_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-34",
+      "statement": "Um grupo monta uma exposição. O que aproxima participantes?",
+      "prompt": "Um grupo monta uma exposição. O que aproxima participantes?",
+      "options": [
+        "O endereço de cada um",
+        "A atividade de preparar a exposição.",
+        "Uma crença presumida",
+        "Uma pessoa ausente"
+      ],
+      "correctAnswer": "A atividade de preparar a exposição.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O endereço de cada um": [
+          "REVIEW_GROUP_MOTIVE"
+        ],
+        "Uma crença presumida": [
+          "REVIEW_GROUP_MOTIVE"
+        ],
+        "Uma pessoa ausente": [
+          "REVIEW_GROUP_MOTIVE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "REVISAO_DE_MOTIVO",
+      "explanation": "A tarefa é compartilhada.",
+      "hint": "Observe o propósito comum.",
+      "errorFocus": "REVIEW_GROUP_MOTIVE",
+      "feedback": {
+        "correct": "Boa observação: A tarefa é compartilhada.",
+        "incorrect": "A tarefa é compartilhada.",
+        "hint": "Observe o propósito comum.",
+        "errorFocus": "REVIEW_GROUP_MOTIVE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-35",
+      "statement": "Uma personagem faltou por ter consulta marcada. Qual afirmação é fiel?",
+      "prompt": "Uma personagem faltou por ter consulta marcada. Qual afirmação é fiel?",
+      "options": [
+        "Foi excluída para sempre",
+        "Não pertence a nenhum grupo",
+        "Não participou daquela ocasião por causa do compromisso informado.",
+        "Todos a rejeitaram"
+      ],
+      "correctAnswer": "Não participou daquela ocasião por causa do compromisso informado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Foi excluída para sempre": [
+          "REVIEW_SOURCE_BASED_ABSENCE"
+        ],
+        "Não pertence a nenhum grupo": [
+          "REVIEW_SOURCE_BASED_ABSENCE"
+        ],
+        "Todos a rejeitaram": [
+          "REVIEW_SOURCE_BASED_ABSENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_AUSENCIA",
+      "explanation": "O motivo explícito é um compromisso.",
+      "hint": "Evite inferir além do relato.",
+      "errorFocus": "REVIEW_SOURCE_BASED_ABSENCE",
+      "feedback": {
+        "correct": "Boa observação: O motivo explícito é um compromisso.",
+        "incorrect": "O motivo explícito é um compromisso.",
+        "hint": "Evite inferir além do relato.",
+        "errorFocus": "REVIEW_SOURCE_BASED_ABSENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-36",
+      "statement": "Qual pergunta é apropriada ao estudar grupos fictícios?",
+      "prompt": "Qual pergunta é apropriada ao estudar grupos fictícios?",
+      "options": [
+        "Qual conflito privado existe na sua família?",
+        "Quem da turma mora com cada parente?",
+        "Qual pessoa é mais querida?",
+        "Que atividade aproxima as personagens na história?"
+      ],
+      "correctAnswer": "Que atividade aproxima as personagens na história?",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Qual conflito privado existe na sua família?": [
+          "REVIEW_PRIVACY_SAFE_QUESTION"
+        ],
+        "Quem da turma mora com cada parente?": [
+          "REVIEW_PRIVACY_SAFE_QUESTION"
+        ],
+        "Qual pessoa é mais querida?": [
+          "REVIEW_PRIVACY_SAFE_QUESTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "A pergunta foca a fonte fictícia.",
+      "hint": "Pergunte sobre a narrativa.",
+      "errorFocus": "REVIEW_PRIVACY_SAFE_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: A pergunta foca a fonte fictícia.",
+        "incorrect": "A pergunta foca a fonte fictícia.",
+        "hint": "Pergunte sobre a narrativa.",
+        "errorFocus": "REVIEW_PRIVACY_SAFE_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-37",
+      "statement": "Uma história identifica avô e neta. Como registrar a relação?",
+      "prompt": "Uma história identifica avô e neta. Como registrar a relação?",
+      "options": [
+        "Como parentesco explicitado naquela narrativa.",
+        "Como o único tipo de família",
+        "Como uma regra para todos",
+        "Como informação de todos os colegas"
+      ],
+      "correctAnswer": "Como parentesco explicitado naquela narrativa.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Como o único tipo de família": [
+          "REVIEW_KINSHIP_CONTEXT"
+        ],
+        "Como uma regra para todos": [
+          "REVIEW_KINSHIP_CONTEXT"
+        ],
+        "Como informação de todos os colegas": [
+          "REVIEW_KINSHIP_CONTEXT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_PARENTESCO",
+      "explanation": "A fonte descreve aquela relação.",
+      "hint": "Limite a conclusão ao caso.",
+      "errorFocus": "REVIEW_KINSHIP_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A fonte descreve aquela relação.",
+        "incorrect": "A fonte descreve aquela relação.",
+        "hint": "Limite a conclusão ao caso.",
+        "errorFocus": "REVIEW_KINSHIP_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-38",
+      "statement": "Uma personagem participa de clube e equipe esportiva. O que isso evidencia?",
+      "prompt": "Uma personagem participa de clube e equipe esportiva. O que isso evidencia?",
+      "options": [
+        "É obrigada a escolher um só",
+        "Pode participar de grupos diferentes por motivos distintos.",
+        "Os grupos são idênticos",
+        "Um grupo é superior"
+      ],
+      "correctAnswer": "Pode participar de grupos diferentes por motivos distintos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "É obrigada a escolher um só": [
+          "REVIEW_MULTIPLE_GROUPS"
+        ],
+        "Os grupos são idênticos": [
+          "REVIEW_MULTIPLE_GROUPS"
+        ],
+        "Um grupo é superior": [
+          "REVIEW_MULTIPLE_GROUPS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_GRUPOS_MULTIPLOS",
+      "explanation": "A narrativa apresenta dois espaços e atividades.",
+      "hint": "Considere cada grupo separado.",
+      "errorFocus": "REVIEW_MULTIPLE_GROUPS",
+      "feedback": {
+        "correct": "Boa observação: A narrativa apresenta dois espaços e atividades.",
+        "incorrect": "A narrativa apresenta dois espaços e atividades.",
+        "hint": "Considere cada grupo separado.",
+        "errorFocus": "REVIEW_MULTIPLE_GROUPS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-39",
+      "statement": "Um grupo compartilha cuidado de uma horta. Qual motivo de aproximação aparece?",
+      "prompt": "Um grupo compartilha cuidado de uma horta. Qual motivo de aproximação aparece?",
+      "options": [
+        "Uma regra de parentesco",
+        "Uma ausência",
+        "A tarefa de cuidar da horta juntos.",
+        "Um endereço privado"
+      ],
+      "correctAnswer": "A tarefa de cuidar da horta juntos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma regra de parentesco": [
+          "REVIEW_SHARED_CARE"
+        ],
+        "Uma ausência": [
+          "REVIEW_SHARED_CARE"
+        ],
+        "Um endereço privado": [
+          "REVIEW_SHARED_CARE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_MOTIVO_DE_APROXIMACAO",
+      "explanation": "O cuidado da horta é atividade comum.",
+      "hint": "Leia o que fazem em conjunto.",
+      "errorFocus": "REVIEW_SHARED_CARE",
+      "feedback": {
+        "correct": "Boa observação: O cuidado da horta é atividade comum.",
+        "incorrect": "O cuidado da horta é atividade comum.",
+        "hint": "Leia o que fazem em conjunto.",
+        "errorFocus": "REVIEW_SHARED_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02hi01-recognize-social-spaces-and-group-motives-40",
+      "statement": "Por que separar evidência de suposição ao estudar grupos?",
+      "prompt": "Por que separar evidência de suposição ao estudar grupos?",
+      "options": [
+        "Para inventar histórias pessoais",
+        "Para classificar pessoas",
+        "Para ignorar contextos",
+        "Para não atribuir motivos ou conflitos que a fonte não informa."
+      ],
+      "correctAnswer": "Para não atribuir motivos ou conflitos que a fonte não informa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para inventar histórias pessoais": [
+          "REVIEW_EVIDENCE_AND_INFERENCE"
+        ],
+        "Para classificar pessoas": [
+          "REVIEW_EVIDENCE_AND_INFERENCE"
+        ],
+        "Para ignorar contextos": [
+          "REVIEW_EVIDENCE_AND_INFERENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_EVIDENCIA",
+      "explanation": "Evidências sustentam conclusões sem exposição.",
+      "hint": "Diferencie o que se sabe do que se imagina.",
+      "errorFocus": "REVIEW_EVIDENCE_AND_INFERENCE",
+      "feedback": {
+        "correct": "Boa observação: Evidências sustentam conclusões sem exposição.",
+        "incorrect": "Evidências sustentam conclusões sem exposição.",
+        "hint": "Diferencie o que se sabe do que se imagina.",
+        "errorFocus": "REVIEW_EVIDENCE_AND_INFERENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar narrativas fictícias curtas com personagens identificadas por símbolos e leitura oral.",
+          "Permitir organizar cartões de espaço, grupo e motivo por apontar ou comunicação alternativa.",
+          "Não solicitar genealogias, conflitos, nomes de parentes ou divulgação de experiências privadas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
