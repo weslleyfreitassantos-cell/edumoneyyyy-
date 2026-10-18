@@ -36,9 +36,9 @@
     "descriptor": "Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.",
     "officialSource": {
       "id": "BNCC_COMPUTACAO_2022",
-      "documentVersion": "Complemento à BNCC: Computação na Educação Básica, 2022",
-      "url": "https://basenacionalcomum.mec.gov.br/images/historico/anexo_parecer_cneceb_n_2_2022_bncc_computacao.pdf",
-      "page": 16
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 20
     },
     "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
   },
@@ -220,9 +220,9 @@
         "descriptor": "Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.",
         "officialSource": {
           "id": "BNCC_COMPUTACAO_2022",
-          "documentVersion": "Complemento à BNCC: Computação na Educação Básica, 2022",
-          "url": "https://basenacionalcomum.mec.gov.br/images/historico/anexo_parecer_cneceb_n_2_2022_bncc_computacao.pdf",
-          "page": 16
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 20
         },
         "checkedAt": "2026-10-18",
         "relation": "AUTHORING_CONTEXT_ONLY"

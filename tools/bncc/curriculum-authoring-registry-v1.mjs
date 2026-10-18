@@ -208,7 +208,7 @@ export function writeAuthoredCurriculumPacks({ checkOnly = false, officialCodes 
     if (!outputPath.startsWith(`${path.resolve(ROOT, 'content/adaptive/tec-escola-core-v5')}${path.sep}`)) throw new Error(`OUTPUT_PATH_OUTSIDE_STAGING:${spec.officialCode}`);
     const serialized = `${JSON.stringify(pack, null, 2)}\n`;
     if (checkOnly) {
-      if (!fs.existsSync(outputPath) || fs.readFileSync(outputPath, 'utf8') !== serialized) throw new Error(`${spec.officialCode}_AUTHORED_PACKAGE_STALE`);
+      if (!fs.existsSync(outputPath) || fs.readFileSync(outputPath, 'utf8').replace(/\r\n/g, '\n') !== serialized) throw new Error(`${spec.officialCode}_AUTHORED_PACKAGE_STALE`);
     } else {
       fs.mkdirSync(path.dirname(outputPath), { recursive: true });
       fs.writeFileSync(outputPath, serialized, 'utf8');

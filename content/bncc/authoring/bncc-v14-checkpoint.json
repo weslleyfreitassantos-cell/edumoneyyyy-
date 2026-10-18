@@ -3,7 +3,7 @@
   "campaignId": "TECESCOLA_BNCC_AUTONOMOUS_COMPLETION_ENGINE_V14",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
   "head": "WORKTREE",
-  "recordedAt": "2026-10-17",
+  "recordedAt": "2026-10-18",
   "lastOperation": {
     "type": "GLOBAL_COMPLETION_QUEUE_AND_V14_STAGED_HISTORY_CONTENT",
     "status": "PARTIAL_TECHNICAL_PROGRESS",
@@ -21,19 +21,27 @@
   "summary": {
     "totalTasks": 1721,
     "byState": {
-      "BLOCKED_CANONICAL_REVIEW": 494,
-      "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
-      "BLOCKED_SOURCE": 1160,
-      "CONTENT_TECHNICALLY_COMPLETE": 20
+      "BLOCKED_CANONICAL_REVIEW": 408,
+      "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 46,
+      "BLOCKED_SOURCE": 1151,
+      "CONTENT_TECHNICALLY_COMPLETE": 116
     },
     "byQueueState": {
-      "BLOCKED_CANONICAL_REVIEW": 514,
+      "BLOCKED_CANONICAL_REVIEW": 523,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 47,
-      "BLOCKED_SOURCE": 1160
+      "BLOCKED_SOURCE": 1151
     },
-    "contentTechnicallyComplete": 20,
+    "byExecutionClassification": {
+      "COMPLETE_OR_REPAIR_STAGED_PACKAGE": 115,
+      "HUMAN_REVIEW_REQUIRED": 47,
+      "NO_REGISTERED_PRODUCER": 408,
+      "SOURCE_VERIFICATION_REQUIRED": 1151
+    },
+    "contentTechnicallyComplete": 116,
+    "legacyCountBasedTechnicalComplete": 116,
+    "automatedScreenIncomplete": 0,
     "canonicalMappingVerified": 0,
-    "readyForPedagogicalReview": 20,
+    "readyForPedagogicalReview": 116,
     "humanPedagogicalApproved": 0,
     "publicationAuthorized": 0
   },
@@ -50,6 +58,6 @@
     "publicationAuthorizationDefault": false,
     "productionWrites": "NONE"
   },
-  "nextTarget": "EI01CG01",
-  "checkpointHash": "e3ed520f83fdcc1fcbff37d1258ef81e20da339e87be6824a26f071bb8f4954a"
+  "nextTarget": "EF01LP19",
+  "checkpointHash": "5948a7883f7400f4c1fe870d54ef57d3fe2bcb2457d1308345a3bc1f9b82d9b3"
 }

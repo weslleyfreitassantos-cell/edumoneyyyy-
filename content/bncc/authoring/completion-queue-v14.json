@@ -28,10 +28,10 @@
   "summary": {
     "totalTasks": 1721,
     "byState": {
-      "BLOCKED_CANONICAL_REVIEW": 411,
+      "BLOCKED_CANONICAL_REVIEW": 408,
       "BLOCKED_HUMAN_PEDAGOGICAL_REVIEW": 46,
       "BLOCKED_SOURCE": 1151,
-      "CONTENT_TECHNICALLY_COMPLETE": 113
+      "CONTENT_TECHNICALLY_COMPLETE": 116
     },
     "byQueueState": {
       "BLOCKED_CANONICAL_REVIEW": 523,
@@ -39,16 +39,16 @@
       "BLOCKED_SOURCE": 1151
     },
     "byExecutionClassification": {
-      "COMPLETE_OR_REPAIR_STAGED_PACKAGE": 112,
+      "COMPLETE_OR_REPAIR_STAGED_PACKAGE": 115,
       "HUMAN_REVIEW_REQUIRED": 47,
-      "NO_REGISTERED_PRODUCER": 411,
+      "NO_REGISTERED_PRODUCER": 408,
       "SOURCE_VERIFICATION_REQUIRED": 1151
     },
-    "contentTechnicallyComplete": 113,
-    "legacyCountBasedTechnicalComplete": 113,
+    "contentTechnicallyComplete": 116,
+    "legacyCountBasedTechnicalComplete": 116,
     "automatedScreenIncomplete": 0,
     "canonicalMappingVerified": 0,
-    "readyForPedagogicalReview": 113,
+    "readyForPedagogicalReview": 116,
     "humanPedagogicalApproved": 0,
     "publicationAuthorized": 0
   },
@@ -12110,10 +12110,10 @@
       "componentCode": "LP",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
-      "executionClassification": "NO_REGISTERED_PRODUCER",
+      "executionClassification": "COMPLETE_OR_REPAIR_STAGED_PACKAGE",
       "blockers": [
         "BLOCKED_CANONICAL_REVIEW"
       ],
@@ -12130,13 +12130,168 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01LP18_MEC_P105_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/ef01lp18-record-shared-verses.json",
+            "contentId": "bncc-ef01lp18-record-everyday-versified-texts-v1",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 2,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED",
+            "legacyCountBasedComplete": true,
+            "qualityRubric": {
+              "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+              "mode": "OBJECTIVE_LEARNING_PATH",
+              "status": "AUTOMATED_SCREEN_PASS",
+              "structuralValidationStatus": "STRUCTURAL_VALIDATION_PASS",
+              "automatedQualityScreenStatus": "AUTOMATED_QUALITY_SCREEN_PASS",
+              "contentTechnicalPreparationStatus": "CONTENT_TECHNICALLY_PREPARED",
+              "humanPedagogicalApprovalStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING",
+              "checks": [
+                {
+                  "id": "official-source-and-descriptor",
+                  "pass": true
+                },
+                {
+                  "id": "concept-coverage-and-progressive-explanation",
+                  "pass": true
+                },
+                {
+                  "id": "prerequisites-declared",
+                  "pass": true
+                },
+                {
+                  "id": "progression-maps-assessments",
+                  "pass": true
+                },
+                {
+                  "id": "authentic-practice-and-observable-evidence",
+                  "pass": true
+                },
+                {
+                  "id": "assessment-coverage-and-answer-feedback",
+                  "pass": true
+                },
+                {
+                  "id": "question-statement-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "question-context-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "answer-position-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "targeted-remediation",
+                  "pass": true
+                },
+                {
+                  "id": "accessibility-supports",
+                  "pass": true
+                },
+                {
+                  "id": "inactive-staging-governance",
+                  "pass": true
+                }
+              ],
+              "incomplete": [],
+              "humanReview": {
+                "status": "PEDAGOGICAL_REVIEW_PENDING",
+                "requiredJudgments": [
+                  "CONCEPTUAL_ACCURACY_AND_SCOPE",
+                  "AGE_AND_CONTEXT_SUITABILITY",
+                  "INCLUSION_AND_NON_STIGMATIZING_LANGUAGE",
+                  "ASSESSMENT_VALIDITY",
+                  "OFFICIAL_MAPPING_AND_PUBLICATION_APPROVAL"
+                ],
+                "automatedApprovalClaimed": false
+              }
+            }
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
-        "legacyCountBasedStatus": "LEGACY_COUNT_SCREEN_INCOMPLETE",
-        "qualityRubric": null,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
+        "legacyCountBasedStatus": "LEGACY_COUNT_SCREEN_PASS",
+        "qualityRubric": {
+          "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+          "mode": "OBJECTIVE_LEARNING_PATH",
+          "status": "AUTOMATED_SCREEN_PASS",
+          "structuralValidationStatus": "STRUCTURAL_VALIDATION_PASS",
+          "automatedQualityScreenStatus": "AUTOMATED_QUALITY_SCREEN_PASS",
+          "contentTechnicalPreparationStatus": "CONTENT_TECHNICALLY_PREPARED",
+          "humanPedagogicalApprovalStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING",
+          "checks": [
+            {
+              "id": "official-source-and-descriptor",
+              "pass": true
+            },
+            {
+              "id": "concept-coverage-and-progressive-explanation",
+              "pass": true
+            },
+            {
+              "id": "prerequisites-declared",
+              "pass": true
+            },
+            {
+              "id": "progression-maps-assessments",
+              "pass": true
+            },
+            {
+              "id": "authentic-practice-and-observable-evidence",
+              "pass": true
+            },
+            {
+              "id": "assessment-coverage-and-answer-feedback",
+              "pass": true
+            },
+            {
+              "id": "question-statement-diversity",
+              "pass": true
+            },
+            {
+              "id": "question-context-diversity",
+              "pass": true
+            },
+            {
+              "id": "answer-position-diversity",
+              "pass": true
+            },
+            {
+              "id": "targeted-remediation",
+              "pass": true
+            },
+            {
+              "id": "accessibility-supports",
+              "pass": true
+            },
+            {
+              "id": "inactive-staging-governance",
+              "pass": true
+            }
+          ],
+          "incomplete": [],
+          "humanReview": {
+            "status": "PEDAGOGICAL_REVIEW_PENDING",
+            "requiredJudgments": [
+              "CONCEPTUAL_ACCURACY_AND_SCOPE",
+              "AGE_AND_CONTEXT_SUITABILITY",
+              "INCLUSION_AND_NON_STIGMATIZING_LANGUAGE",
+              "ASSESSMENT_VALIDITY",
+              "OFFICIAL_MAPPING_AND_PUBLICATION_APPROVAL"
+            ],
+            "automatedApprovalClaimed": false
+          }
+        },
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -14915,10 +15070,10 @@
       "componentCode": "MA",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
-      "executionClassification": "NO_REGISTERED_PRODUCER",
+      "executionClassification": "COMPLETE_OR_REPAIR_STAGED_PACKAGE",
       "blockers": [
         "BLOCKED_CANONICAL_REVIEW"
       ],
@@ -14935,13 +15090,168 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF01MA13_MEC_P281_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/ef01ma13-spatial-shapes-in-familiar-objects.json",
+            "contentId": "bncc-ef01ma13-relate-spatial-solids-to-objects-v1",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 2,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED",
+            "legacyCountBasedComplete": true,
+            "qualityRubric": {
+              "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+              "mode": "OBJECTIVE_LEARNING_PATH",
+              "status": "AUTOMATED_SCREEN_PASS",
+              "structuralValidationStatus": "STRUCTURAL_VALIDATION_PASS",
+              "automatedQualityScreenStatus": "AUTOMATED_QUALITY_SCREEN_PASS",
+              "contentTechnicalPreparationStatus": "CONTENT_TECHNICALLY_PREPARED",
+              "humanPedagogicalApprovalStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING",
+              "checks": [
+                {
+                  "id": "official-source-and-descriptor",
+                  "pass": true
+                },
+                {
+                  "id": "concept-coverage-and-progressive-explanation",
+                  "pass": true
+                },
+                {
+                  "id": "prerequisites-declared",
+                  "pass": true
+                },
+                {
+                  "id": "progression-maps-assessments",
+                  "pass": true
+                },
+                {
+                  "id": "authentic-practice-and-observable-evidence",
+                  "pass": true
+                },
+                {
+                  "id": "assessment-coverage-and-answer-feedback",
+                  "pass": true
+                },
+                {
+                  "id": "question-statement-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "question-context-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "answer-position-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "targeted-remediation",
+                  "pass": true
+                },
+                {
+                  "id": "accessibility-supports",
+                  "pass": true
+                },
+                {
+                  "id": "inactive-staging-governance",
+                  "pass": true
+                }
+              ],
+              "incomplete": [],
+              "humanReview": {
+                "status": "PEDAGOGICAL_REVIEW_PENDING",
+                "requiredJudgments": [
+                  "CONCEPTUAL_ACCURACY_AND_SCOPE",
+                  "AGE_AND_CONTEXT_SUITABILITY",
+                  "INCLUSION_AND_NON_STIGMATIZING_LANGUAGE",
+                  "ASSESSMENT_VALIDITY",
+                  "OFFICIAL_MAPPING_AND_PUBLICATION_APPROVAL"
+                ],
+                "automatedApprovalClaimed": false
+              }
+            }
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
-        "legacyCountBasedStatus": "LEGACY_COUNT_SCREEN_INCOMPLETE",
-        "qualityRubric": null,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
+        "legacyCountBasedStatus": "LEGACY_COUNT_SCREEN_PASS",
+        "qualityRubric": {
+          "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+          "mode": "OBJECTIVE_LEARNING_PATH",
+          "status": "AUTOMATED_SCREEN_PASS",
+          "structuralValidationStatus": "STRUCTURAL_VALIDATION_PASS",
+          "automatedQualityScreenStatus": "AUTOMATED_QUALITY_SCREEN_PASS",
+          "contentTechnicalPreparationStatus": "CONTENT_TECHNICALLY_PREPARED",
+          "humanPedagogicalApprovalStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING",
+          "checks": [
+            {
+              "id": "official-source-and-descriptor",
+              "pass": true
+            },
+            {
+              "id": "concept-coverage-and-progressive-explanation",
+              "pass": true
+            },
+            {
+              "id": "prerequisites-declared",
+              "pass": true
+            },
+            {
+              "id": "progression-maps-assessments",
+              "pass": true
+            },
+            {
+              "id": "authentic-practice-and-observable-evidence",
+              "pass": true
+            },
+            {
+              "id": "assessment-coverage-and-answer-feedback",
+              "pass": true
+            },
+            {
+              "id": "question-statement-diversity",
+              "pass": true
+            },
+            {
+              "id": "question-context-diversity",
+              "pass": true
+            },
+            {
+              "id": "answer-position-diversity",
+              "pass": true
+            },
+            {
+              "id": "targeted-remediation",
+              "pass": true
+            },
+            {
+              "id": "accessibility-supports",
+              "pass": true
+            },
+            {
+              "id": "inactive-staging-governance",
+              "pass": true
+            }
+          ],
+          "incomplete": [],
+          "humanReview": {
+            "status": "PEDAGOGICAL_REVIEW_PENDING",
+            "requiredJudgments": [
+              "CONCEPTUAL_ACCURACY_AND_SCOPE",
+              "AGE_AND_CONTEXT_SUITABILITY",
+              "INCLUSION_AND_NON_STIGMATIZING_LANGUAGE",
+              "ASSESSMENT_VALIDITY",
+              "OFFICIAL_MAPPING_AND_PUBLICATION_APPROVAL"
+            ],
+            "automatedApprovalClaimed": false
+          }
+        },
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -17583,7 +17893,7 @@
       },
       "evidence": {
         "source": "VERIFIED",
-        "sourceVerificationId": "BNCC_EF02CO04_MEC_P016_V1",
+        "sourceVerificationId": "BNCC_EF02CO04_MEC_P020_V1",
         "catalogDescriptorPresent": true,
         "stagedPackages": [
           {
@@ -17765,10 +18075,10 @@
       "componentCode": "CO",
       "kind": "SKILL",
       "priorityScore": 55,
-      "state": "BLOCKED_CANONICAL_REVIEW",
+      "state": "CONTENT_TECHNICALLY_COMPLETE",
       "queueState": "BLOCKED_CANONICAL_REVIEW",
       "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
-      "executionClassification": "NO_REGISTERED_PRODUCER",
+      "executionClassification": "COMPLETE_OR_REPAIR_STAGED_PACKAGE",
       "blockers": [
         "BLOCKED_CANONICAL_REVIEW"
       ],
@@ -17785,13 +18095,168 @@
         "source": "VERIFIED",
         "sourceVerificationId": "BNCC_EF02CO05_MEC_P020_V1",
         "catalogDescriptorPresent": true,
-        "stagedPackages": []
+        "stagedPackages": [
+          {
+            "file": "content/adaptive/tec-escola-core-v5/ef02co05-computing-technology-everyday-uses.json",
+            "contentId": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1",
+            "questionCount": 40,
+            "lessonCount": 1,
+            "activityCount": 2,
+            "assessmentCount": 1,
+            "active": false,
+            "publicationStatus": "STAGING_INACTIVE",
+            "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+            "officialMappingStatus": "NOT_CLAIMED",
+            "legacyCountBasedComplete": true,
+            "qualityRubric": {
+              "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+              "mode": "OBJECTIVE_LEARNING_PATH",
+              "status": "AUTOMATED_SCREEN_PASS",
+              "structuralValidationStatus": "STRUCTURAL_VALIDATION_PASS",
+              "automatedQualityScreenStatus": "AUTOMATED_QUALITY_SCREEN_PASS",
+              "contentTechnicalPreparationStatus": "CONTENT_TECHNICALLY_PREPARED",
+              "humanPedagogicalApprovalStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING",
+              "checks": [
+                {
+                  "id": "official-source-and-descriptor",
+                  "pass": true
+                },
+                {
+                  "id": "concept-coverage-and-progressive-explanation",
+                  "pass": true
+                },
+                {
+                  "id": "prerequisites-declared",
+                  "pass": true
+                },
+                {
+                  "id": "progression-maps-assessments",
+                  "pass": true
+                },
+                {
+                  "id": "authentic-practice-and-observable-evidence",
+                  "pass": true
+                },
+                {
+                  "id": "assessment-coverage-and-answer-feedback",
+                  "pass": true
+                },
+                {
+                  "id": "question-statement-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "question-context-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "answer-position-diversity",
+                  "pass": true
+                },
+                {
+                  "id": "targeted-remediation",
+                  "pass": true
+                },
+                {
+                  "id": "accessibility-supports",
+                  "pass": true
+                },
+                {
+                  "id": "inactive-staging-governance",
+                  "pass": true
+                }
+              ],
+              "incomplete": [],
+              "humanReview": {
+                "status": "PEDAGOGICAL_REVIEW_PENDING",
+                "requiredJudgments": [
+                  "CONCEPTUAL_ACCURACY_AND_SCOPE",
+                  "AGE_AND_CONTEXT_SUITABILITY",
+                  "INCLUSION_AND_NON_STIGMATIZING_LANGUAGE",
+                  "ASSESSMENT_VALIDITY",
+                  "OFFICIAL_MAPPING_AND_PUBLICATION_APPROVAL"
+                ],
+                "automatedApprovalClaimed": false
+              }
+            }
+          }
+        ]
       },
       "technicalCompleteness": {
-        "status": "CONTENT_INCOMPLETE_OR_NOT_STARTED",
-        "readyForPedagogicalReview": false,
-        "legacyCountBasedStatus": "LEGACY_COUNT_SCREEN_INCOMPLETE",
-        "qualityRubric": null,
+        "status": "CONTENT_TECHNICALLY_COMPLETE",
+        "readyForPedagogicalReview": true,
+        "legacyCountBasedStatus": "LEGACY_COUNT_SCREEN_PASS",
+        "qualityRubric": {
+          "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+          "mode": "OBJECTIVE_LEARNING_PATH",
+          "status": "AUTOMATED_SCREEN_PASS",
+          "structuralValidationStatus": "STRUCTURAL_VALIDATION_PASS",
+          "automatedQualityScreenStatus": "AUTOMATED_QUALITY_SCREEN_PASS",
+          "contentTechnicalPreparationStatus": "CONTENT_TECHNICALLY_PREPARED",
+          "humanPedagogicalApprovalStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING",
+          "checks": [
+            {
+              "id": "official-source-and-descriptor",
+              "pass": true
+            },
+            {
+              "id": "concept-coverage-and-progressive-explanation",
+              "pass": true
+            },
+            {
+              "id": "prerequisites-declared",
+              "pass": true
+            },
+            {
+              "id": "progression-maps-assessments",
+              "pass": true
+            },
+            {
+              "id": "authentic-practice-and-observable-evidence",
+              "pass": true
+            },
+            {
+              "id": "assessment-coverage-and-answer-feedback",
+              "pass": true
+            },
+            {
+              "id": "question-statement-diversity",
+              "pass": true
+            },
+            {
+              "id": "question-context-diversity",
+              "pass": true
+            },
+            {
+              "id": "answer-position-diversity",
+              "pass": true
+            },
+            {
+              "id": "targeted-remediation",
+              "pass": true
+            },
+            {
+              "id": "accessibility-supports",
+              "pass": true
+            },
+            {
+              "id": "inactive-staging-governance",
+              "pass": true
+            }
+          ],
+          "incomplete": [],
+          "humanReview": {
+            "status": "PEDAGOGICAL_REVIEW_PENDING",
+            "requiredJudgments": [
+              "CONCEPTUAL_ACCURACY_AND_SCOPE",
+              "AGE_AND_CONTEXT_SUITABILITY",
+              "INCLUSION_AND_NON_STIGMATIZING_LANGUAGE",
+              "ASSESSMENT_VALIDITY",
+              "OFFICIAL_MAPPING_AND_PUBLICATION_APPROVAL"
+            ],
+            "automatedApprovalClaimed": false
+          }
+        },
         "canonicalMappingVerified": false,
         "humanPedagogicalApproved": false,
         "publicationAuthorized": false
@@ -94373,5 +94838,5 @@
       }
     }
   ],
-  "queueHash": "9b25cb9b9e8d80618b69de9b787f52be83487a31c4bf33a1eab23a0aff817fdb"
+  "queueHash": "3dea84cdbc93693f1844f40edef1b99df614eb0941670aa3bf6b4144e6d2b3a7"
 }

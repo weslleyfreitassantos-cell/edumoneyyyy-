@@ -41,14 +41,14 @@
     "priorLegacyPackagesFailingStrictRubric": 16,
     "priorRubricVersion": "tec-escola.bncc.technical-completeness.v1",
     "currentRubricVersion": "tec-escola.bncc.technical-completeness.v2",
-    "contentTechnicallyPrepared": 113,
-    "legacyCountScreenComplete": 113,
+    "contentTechnicallyPrepared": 116,
+    "legacyCountScreenComplete": 116,
     "legacyCountOnlyNotPrepared": 0,
-    "contentMissingAgainstQueue": 1608,
+    "contentMissingAgainstQueue": 1605,
     "sourceVerifiedTasks": 570,
-    "verifiedTasksWithoutRegisteredProducer": 411,
+    "verifiedTasksWithoutRegisteredProducer": 408,
     "queueNodes": 1721,
-    "queueHash": "9b25cb9b9e8d80618b69de9b787f52be83487a31c4bf33a1eab23a0aff817fdb",
+    "queueHash": "5901a15a0971f60b468999e80478595987f3aa6cbda4aced032de82d17548ff6",
     "humanPedagogicalApproved": 0,
     "canonicalMappingVerified": 0,
     "publicationAuthorized": 0
@@ -85,13 +85,13 @@
     "curriculumPackageRubricV2": "PASS",
     "legacyPackageRecovery": "16_OF_16_PASS",
     "earlyChildhoodObservationMode": "7_OF_7_PASS_NO_QUIZ_REQUIRED",
-    "completionQueueV14": "PASS_1721_TASKS_113_TECHNICALLY_PREPARED",
+    "completionQueueV14": "PASS_1721_TASKS_116_TECHNICALLY_PREPARED",
     "highSchoolEvidenceRecovery": "EM13CHS103_AUTOMATED_SCREEN_PASS"
   },
   "nextAuthorableBatch": [
-    "EF01LP18",
-    "EF01MA13",
-    "EF02CO05",
+    "EF01LP19",
+    "EF01MA14",
+    "EF02CO06",
     "EF02ER04",
     "EF02GE02",
     "EF02HI03"
@@ -104,8 +104,8 @@
   "reconciliation": {
     "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
     "sourceOfCurrentCounts": "content/bncc/authoring/completion-queue-v14.json",
-    "queueHash": "9b25cb9b9e8d80618b69de9b787f52be83487a31c4bf33a1eab23a0aff817fdb",
-    "reconciledAt": "2026-10-18T20:17:40.540Z",
+    "queueHash": "5901a15a0971f60b468999e80478595987f3aa6cbda4aced032de82d17548ff6",
+    "reconciledAt": "2026-10-18T20:24:46.302Z",
     "priorRubricMetricsRetainedAsHistory": true,
     "historicalMetricVersion": "tec-escola.bncc.technical-completeness.v1"
   },

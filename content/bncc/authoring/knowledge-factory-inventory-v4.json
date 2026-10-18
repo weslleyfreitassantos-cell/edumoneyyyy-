@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "ba9079dcb29b405f75514d4707f17b716b8eae4a0953f79b0434d7d52bc83864",
+    "v5QuestionFirstPacks": "27a10bed8b078941a8b8e97641be4a2dd37b293d29e2b6a9c1984442e24fd928",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 9411,
+    "v5QuestionTotal": 10011,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -655,8 +655,98 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef02co04-hardware-and-software.json",
+        "skillCode": "COMPUTING_DISTINGUISH_HARDWARE_AND_SOFTWARE",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02co03-machine-specific-instructions.json",
+        "skillCode": "COMPUTING_IDENTIFY_MACHINE_SPECIFIC_INSTRUCTION_SETS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02co05-computing-technology-everyday-uses.json",
+        "skillCode": "COMPUTING_RECOGNIZE_CHARACTERISTICS_AND_USES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ge11-seasonal-clothing-and-food.json",
+        "skillCode": "GEOGRAPHY_ASSOCIATE_COMMUNITY_CHANGES_WITH_TEMPERATURE_AND_HUMIDITY",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ge10-nature-rhythms-in-lived-places.json",
+        "skillCode": "GEOGRAPHY_DESCRIBE_NATURE_RHYTHMS_IN_LIVED_PLACES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02hi02-social-practices-and-roles.json",
+        "skillCode": "HISTORY_IDENTIFY_PRACTICES_AND_SOCIAL_ROLES_IN_COMMUNITIES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "humanities-evidence-arguments-hs-v8.json",
         "skillCode": "HUMANITIES_EVIDENCE_ARGUMENTS_HS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma12-location-and-paths-from-reference.json",
+        "skillCode": "MATHEMATICS_DESCRIBE_LOCATION_FROM_GIVEN_REFERENCE",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma11-location-relative-to-self.json",
+        "skillCode": "MATHEMATICS_DESCRIBE_LOCATION_RELATIVE_TO_OWN_POSITION",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma10-describe-missing-sequence-elements.json",
+        "skillCode": "MATHEMATICS_DESCRIBE_MISSING_RECURSIVE_SEQUENCE_ELEMENTS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma13-spatial-shapes-in-familiar-objects.json",
+        "skillCode": "MATHEMATICS_RELATE_SPATIAL_SOLIDS_TO_FAMILIAR_OBJECTS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01lp15-synonyms-and-antonyms.json",
+        "skillCode": "PORTUGUESE_GROUP_WORDS_BY_APPROXIMATE_AND_OPPOSITE_MEANING",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01lp17-plan-produce-daily-texts.json",
+        "skillCode": "PORTUGUESE_PLAN_AND_PRODUCE_DAILY_LIFE_GENRES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01lp16-read-rhymes-and-tongue-twisters.json",
+        "skillCode": "PORTUGUESE_READ_AND_UNDERSTAND_DAILY_LIFE_VERSE_GENRES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01lp18-record-shared-verses.json",
+        "skillCode": "PORTUGUESE_RECORD_SHARED_EVERYDAY_VERSE_GENRES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02er03-records-of-memories.json",
+        "skillCode": "RELIGIOUS_EDUCATION_IDENTIFY_RECORDS_OF_PERSONAL_FAMILY_AND_SCHOOL_MEMORIES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -19309,5 +19399,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "3b415502384f1508900c5e771b5d8711b2ac51f74395f1500fcd80dfbac9b506"
+  "inventoryHash": "5f75b98b812765206a38e5a05afb892440baab1f03a02d6f6c111dbae5a0db1b"
 }

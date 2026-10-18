@@ -1,0 +1,2035 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef01lp18-record-everyday-versified-texts-v1",
+  "canonicalSkillCode": "PORTUGUESE_RECORD_SHARED_EVERYDAY_VERSE_GENRES",
+  "subject": "PORTUGUESE",
+  "domain": "CAMPO DA VIDA COTIDIANA · ESCRITA COMPARTILHADA",
+  "topic": "registro colaborativo de textos versificados autorais com situação e finalidade definidas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 39,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01LP18",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 105
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Registrar textos versificados em colaboração",
+    "objective": "Participar do registro compartilhado de textos curtos autorais, relacionando a produção à situação comunicativa, ao tema e à finalidade.",
+    "summary": "Cantigas, quadrinhas, parlendas e trava-línguas podem ser registrados para uma brincadeira, uma roda de leitura ou outra situação cotidiana. O grupo combina o assunto e para quem o texto será feito, depois registra as ideias com ajuda do professor. O registro pode reunir palavras, desenhos e contribuições ditadas; crianças em diferentes etapas de escrita podem participar sem precisar produzir sozinhas um texto convencional.",
+    "explanation": "Escolha uma situação simples e fictícia, como convidar colegas para uma brincadeira de palavras. Combine um tema e pense para quem o texto será registrado. O grupo pode criar versos originais, repetir uma expressão, experimentar sons e escolher como registrar: professor como escriba, letras móveis, desenho, fala, cartões ou escrita emergente. Depois releia e pergunte se o texto combina com a situação e a finalidade. Não é necessário usar letras de músicas conhecidas, expor histórias pessoais ou publicar voz, imagem ou nome de estudantes.",
+    "workedExample": "Para uma roda de leitura, a turma cria: ‘Pipa de papel quer passear / quando o vento vem brincar’. As crianças sugerem palavras e o professor registra as linhas. Em seguida, o grupo identifica que o tema é uma pipa imaginada e decide guardar o texto no mural interno da turma.",
+    "commonMistake": "Achar que registrar um texto significa copiar um modelo pronto, sem considerar por que o grupo o está produzindo ou quem vai recebê-lo.",
+    "priorKnowledge": [
+      "Acompanhar textos curtos lidos em voz alta ou por imagens.",
+      "Compartilhar ideias e perceber repetição, ritmo ou sons parecidos."
+    ],
+    "keyConcepts": [
+      "registro",
+      "colaboração",
+      "situação comunicativa",
+      "tema",
+      "finalidade",
+      "texto versificado",
+      "releitura"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COPYING_WITHOUT_COMMUNICATIVE_SITUATION",
+        "action": "Antes do registro, escolha cartões para ‘quem participa’, ‘sobre o quê’ e ‘para quê’; retome essas escolhas ao reler o texto."
+      },
+      {
+        "errorFocus": "ONLY_CONVENTIONAL_WRITING_COUNTS",
+        "action": "Convide a criança a ditar, desenhar, selecionar palavras, usar símbolos ou compor com letras móveis."
+      },
+      {
+        "errorFocus": "COPYRIGHTED_TEXT_AS_REQUIRED_EXAMPLE",
+        "action": "Crie versos novos com o grupo; trate textos conhecidos apenas em situações autorizadas e nunca exija cópia de letras protegidas."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+      "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+    ],
+    "authenticActivities": [
+      {
+        "id": "lp18-class-verse-record",
+        "title": "Versos que a turma inventou",
+        "instructions": "A turma cria um texto curto para uma roda de palavras com tema imaginário.\n1. Definam em grupo o tema, os leitores e a finalidade.\n2. Sugiram palavras e montem versos com mediação do professor.\n3. Registrem as linhas de forma coletiva e releiam para verificar se combinam com a situação.",
+        "steps": [
+          "Definam em grupo o tema, os leitores e a finalidade.",
+          "Sugiram palavras e montem versos com mediação do professor.",
+          "Registrem as linhas de forma coletiva e releiam para verificar se combinam com a situação."
+        ],
+        "evidence": "Participação no registro e capacidade de relacionar uma escolha do texto ao tema ou à finalidade.",
+        "privacyGuard": "Usar tema fictício e não gravar nem publicar nomes, vozes ou imagens de estudantes.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "contribui com uma palavra, gesto, desenho ou escolha de cartão.",
+            "developing": "relaciona uma ideia ao tema ou à situação.",
+            "proficient": "participa do registro e explica como o texto atende à finalidade combinada."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "lp18-shared-rhythm-lines",
+        "title": "Linhas com ritmo compartilhado",
+        "instructions": "Pequenos grupos inventam duas ou mais linhas para uma brincadeira de ritmo sem melodia protegida.\n1. Escolham palavras sobre objetos imaginários ou formas.\n2. Experimentem repetição ou sons finais parecidos.\n3. Registrem com apoio e conversem sobre onde o texto pode ser usado.",
+        "steps": [
+          "Escolham palavras sobre objetos imaginários ou formas.",
+          "Experimentem repetição ou sons finais parecidos.",
+          "Registrem com apoio e conversem sobre onde o texto pode ser usado."
+        ],
+        "evidence": "Texto original registrado colaborativamente e explicado em relação a uma situação cotidiana.",
+        "privacyGuard": "Não utilizar letras comerciais; publicar somente em mural restrito da atividade se houver autorização institucional.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "participa de uma escolha de palavra ou som.",
+            "developing": "contribui para registrar uma linha com apoio.",
+            "proficient": "relaciona tema e finalidade à forma de registro escolhida."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-01",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-02",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-03",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-04",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-05",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-06",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-07",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-09",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-10",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-11",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-12",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-13",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-14",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-15",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-17",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-18",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-19",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-20",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-21",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-22",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-23",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-25",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-26",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-27",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-28",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-29",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-30",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-31",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-33",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-34",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-35",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-36",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-37",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-38",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-39",
+          "bncc-ef01lp18-record-everyday-versified-texts-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01LP18",
+        "descriptor": "Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 105
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-01",
+      "statement": "Uma turma inventa versos para lembrar o começo de uma brincadeira. O que significa registrar esse texto?",
+      "prompt": "Uma turma inventa versos para lembrar o começo de uma brincadeira. O que significa registrar esse texto?",
+      "options": [
+        "Guardar as ideias do grupo por escrito, desenho, ditado ou outra forma combinada.",
+        "Copiar uma letra famosa inteira",
+        "Apagar as ideias das crianças",
+        "Escrever sem saber para que servirá"
+      ],
+      "correctAnswer": "Guardar as ideias do grupo por escrito, desenho, ditado ou outra forma combinada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Copiar uma letra famosa inteira": [
+          "RECORDING_CAN_USE_MULTIPLE_MODES"
+        ],
+        "Apagar as ideias das crianças": [
+          "RECORDING_CAN_USE_MULTIPLE_MODES"
+        ],
+        "Escrever sem saber para que servirá": [
+          "RECORDING_CAN_USE_MULTIPLE_MODES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REGISTRAR_VERSO",
+      "explanation": "O registro pode usar diferentes formas e ser feito em colaboração.",
+      "hint": "Pense em como guardar as palavras inventadas pelo grupo.",
+      "errorFocus": "RECORDING_CAN_USE_MULTIPLE_MODES",
+      "feedback": {
+        "correct": "Boa observação: O registro pode usar diferentes formas e ser feito em colaboração.",
+        "incorrect": "O registro pode usar diferentes formas e ser feito em colaboração.",
+        "hint": "Pense em como guardar as palavras inventadas pelo grupo.",
+        "errorFocus": "RECORDING_CAN_USE_MULTIPLE_MODES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-02",
+      "statement": "Texto autoral: ‘Nuvem pequena vai passear / sobre o morro quer descansar’. Qual tema aparece?",
+      "prompt": "Texto autoral: ‘Nuvem pequena vai passear / sobre o morro quer descansar’. Qual tema aparece?",
+      "options": [
+        "Uma receita de pão",
+        "Uma nuvem imaginada que passeia.",
+        "Uma lista de livros",
+        "Uma regra de trânsito"
+      ],
+      "correctAnswer": "Uma nuvem imaginada que passeia.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma receita de pão": [
+          "THEME_FROM_ORIGINAL_TEXT"
+        ],
+        "Uma lista de livros": [
+          "THEME_FROM_ORIGINAL_TEXT"
+        ],
+        "Uma regra de trânsito": [
+          "THEME_FROM_ORIGINAL_TEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TEMA_DOS_VERSOS",
+      "explanation": "As palavras indicam uma nuvem em uma cena inventada.",
+      "hint": "Procure quem faz a ação nos versos.",
+      "errorFocus": "THEME_FROM_ORIGINAL_TEXT",
+      "feedback": {
+        "correct": "Boa observação: As palavras indicam uma nuvem em uma cena inventada.",
+        "incorrect": "As palavras indicam uma nuvem em uma cena inventada.",
+        "hint": "Procure quem faz a ação nos versos.",
+        "errorFocus": "THEME_FROM_ORIGINAL_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-03",
+      "statement": "O professor escreve no quadro as palavras que os colegas sugerem. Isso é",
+      "prompt": "O professor escreve no quadro as palavras que os colegas sugerem. Isso é",
+      "options": [
+        "uma prova de que os alunos não participaram",
+        "uma atividade sem texto",
+        "um modo de registro colaborativo com ajuda do professor.",
+        "uma cópia individual obrigatória"
+      ],
+      "correctAnswer": "um modo de registro colaborativo com ajuda do professor.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "uma prova de que os alunos não participaram": [
+          "TEACHER_AS_SCRIBE_SUPPORTS_COLLABORATION"
+        ],
+        "uma atividade sem texto": [
+          "TEACHER_AS_SCRIBE_SUPPORTS_COLLABORATION"
+        ],
+        "uma cópia individual obrigatória": [
+          "TEACHER_AS_SCRIBE_SUPPORTS_COLLABORATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESCRIBA_COLETIVO",
+      "explanation": "A mediação docente permite que o grupo registre suas ideias.",
+      "hint": "Observe que as palavras foram sugeridas pelos colegas.",
+      "errorFocus": "TEACHER_AS_SCRIBE_SUPPORTS_COLLABORATION",
+      "feedback": {
+        "correct": "Boa observação: A mediação docente permite que o grupo registre suas ideias.",
+        "incorrect": "A mediação docente permite que o grupo registre suas ideias.",
+        "hint": "Observe que as palavras foram sugeridas pelos colegas.",
+        "errorFocus": "TEACHER_AS_SCRIBE_SUPPORTS_COLLABORATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-04",
+      "statement": "Um grupo cria linhas curtas para uma roda de palavras. Qual finalidade combina?",
+      "prompt": "Um grupo cria linhas curtas para uma roda de palavras. Qual finalidade combina?",
+      "options": [
+        "Esconder o tema",
+        "Registrar a senha de alguém",
+        "Substituir todos os textos da escola",
+        "Usar os versos na atividade combinada pelo grupo."
+      ],
+      "correctAnswer": "Usar os versos na atividade combinada pelo grupo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Esconder o tema": [
+          "TEXT_PURPOSE_FROM_SITUATION"
+        ],
+        "Registrar a senha de alguém": [
+          "TEXT_PURPOSE_FROM_SITUATION"
+        ],
+        "Substituir todos os textos da escola": [
+          "TEXT_PURPOSE_FROM_SITUATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FINALIDADE_RODA",
+      "explanation": "A situação ajuda a compreender para que o texto foi criado.",
+      "hint": "Volte à atividade que o grupo planejou.",
+      "errorFocus": "TEXT_PURPOSE_FROM_SITUATION",
+      "feedback": {
+        "correct": "Boa observação: A situação ajuda a compreender para que o texto foi criado.",
+        "incorrect": "A situação ajuda a compreender para que o texto foi criado.",
+        "hint": "Volte à atividade que o grupo planejou.",
+        "errorFocus": "TEXT_PURPOSE_FROM_SITUATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-05",
+      "statement": "Qual opção é um exemplo de texto criado para a atividade, sem copiar uma letra conhecida?",
+      "prompt": "Qual opção é um exemplo de texto criado para a atividade, sem copiar uma letra conhecida?",
+      "options": [
+        "‘O sapo de papel pulou no quintal de faz de conta.’",
+        "Uma letra comercial copiada inteira",
+        "Uma senha escrita no caderno",
+        "Uma lista de endereços reais"
+      ],
+      "correctAnswer": "‘O sapo de papel pulou no quintal de faz de conta.’",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma letra comercial copiada inteira": [
+          "ORIGINAL_TEXT_CREATION"
+        ],
+        "Uma senha escrita no caderno": [
+          "ORIGINAL_TEXT_CREATION"
+        ],
+        "Uma lista de endereços reais": [
+          "ORIGINAL_TEXT_CREATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "VERSOS_AUTORAIS",
+      "explanation": "A frase é autoral e pode apoiar a prática de registro.",
+      "hint": "Escolha a linha inventada para o exercício.",
+      "errorFocus": "ORIGINAL_TEXT_CREATION",
+      "feedback": {
+        "correct": "Boa observação: A frase é autoral e pode apoiar a prática de registro.",
+        "incorrect": "A frase é autoral e pode apoiar a prática de registro.",
+        "hint": "Escolha a linha inventada para o exercício.",
+        "errorFocus": "ORIGINAL_TEXT_CREATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-06",
+      "statement": "Como uma criança pode contribuir para um registro compartilhado?",
+      "prompt": "Como uma criança pode contribuir para um registro compartilhado?",
+      "options": [
+        "Somente escrevendo perfeitamente sozinha",
+        "Sugerindo palavras, desenhando, ditando ou escolhendo cartões.",
+        "Apenas observando sem escolha",
+        "Apagando as ideias do grupo"
+      ],
+      "correctAnswer": "Sugerindo palavras, desenhando, ditando ou escolhendo cartões.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente escrevendo perfeitamente sozinha": [
+          "PARTICIPATION_WITH_SUPPORT"
+        ],
+        "Apenas observando sem escolha": [
+          "PARTICIPATION_WITH_SUPPORT"
+        ],
+        "Apagando as ideias do grupo": [
+          "PARTICIPATION_WITH_SUPPORT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "COLABORAR",
+      "explanation": "A colaboração acolhe diferentes modos de contribuição.",
+      "hint": "Pense em fala, desenho e cartões.",
+      "errorFocus": "PARTICIPATION_WITH_SUPPORT",
+      "feedback": {
+        "correct": "Boa observação: A colaboração acolhe diferentes modos de contribuição.",
+        "incorrect": "A colaboração acolhe diferentes modos de contribuição.",
+        "hint": "Pense em fala, desenho e cartões.",
+        "errorFocus": "PARTICIPATION_WITH_SUPPORT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-07",
+      "statement": "Antes de registrar um texto cotidiano, ajuda combinar",
+      "prompt": "Antes de registrar um texto cotidiano, ajuda combinar",
+      "options": [
+        "a senha de quem escreve",
+        "um endereço residencial",
+        "quem poderá ler ou usar o texto.",
+        "uma informação sem relação"
+      ],
+      "correctAnswer": "quem poderá ler ou usar o texto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "a senha de quem escreve": [
+          "AUDIENCE_CONSIDERATION"
+        ],
+        "um endereço residencial": [
+          "AUDIENCE_CONSIDERATION"
+        ],
+        "uma informação sem relação": [
+          "AUDIENCE_CONSIDERATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "QUEM_RECEBE",
+      "explanation": "A situação comunicativa inclui os possíveis leitores ou participantes.",
+      "hint": "Pergunte para quem o texto será feito.",
+      "errorFocus": "AUDIENCE_CONSIDERATION",
+      "feedback": {
+        "correct": "Boa observação: A situação comunicativa inclui os possíveis leitores ou participantes.",
+        "incorrect": "A situação comunicativa inclui os possíveis leitores ou participantes.",
+        "hint": "Pergunte para quem o texto será feito.",
+        "errorFocus": "AUDIENCE_CONSIDERATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-08",
+      "statement": "Depois de registrar versos, por que o grupo pode reler o texto?",
+      "prompt": "Depois de registrar versos, por que o grupo pode reler o texto?",
+      "options": [
+        "Para trocar todas as ideias sem conversar",
+        "Para impedir que alguém leia",
+        "Para esconder a finalidade",
+        "Para conferir se ele combina com a situação e o tema."
+      ],
+      "correctAnswer": "Para conferir se ele combina com a situação e o tema.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para trocar todas as ideias sem conversar": [
+          "REVIEW_TEXT_IN_CONTEXT"
+        ],
+        "Para impedir que alguém leia": [
+          "REVIEW_TEXT_IN_CONTEXT"
+        ],
+        "Para esconder a finalidade": [
+          "REVIEW_TEXT_IN_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RELEITURA",
+      "explanation": "Releitura ajuda a verificar se o texto atende ao que foi combinado.",
+      "hint": "Pense no propósito dos versos.",
+      "errorFocus": "REVIEW_TEXT_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Releitura ajuda a verificar se o texto atende ao que foi combinado.",
+        "incorrect": "Releitura ajuda a verificar se o texto atende ao que foi combinado.",
+        "hint": "Pense no propósito dos versos.",
+        "errorFocus": "REVIEW_TEXT_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-09",
+      "statement": "O grupo escolheu criar uma parlenda autoral sobre formas. Que palavra combina com o tema?",
+      "prompt": "O grupo escolheu criar uma parlenda autoral sobre formas. Que palavra combina com o tema?",
+      "options": [
+        "Triângulo.",
+        "Chave de casa",
+        "Número de telefone",
+        "Senha pessoal"
+      ],
+      "correctAnswer": "Triângulo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Chave de casa": [
+          "WORD_SELECTION_MATCHES_TOPIC"
+        ],
+        "Número de telefone": [
+          "WORD_SELECTION_MATCHES_TOPIC"
+        ],
+        "Senha pessoal": [
+          "WORD_SELECTION_MATCHES_TOPIC"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESCOLHA_DE_PALAVRAS",
+      "explanation": "Triângulo nomeia uma forma que pode aparecer no texto inventado.",
+      "hint": "Procure uma palavra ligada ao tema definido.",
+      "errorFocus": "WORD_SELECTION_MATCHES_TOPIC",
+      "feedback": {
+        "correct": "Boa observação: Triângulo nomeia uma forma que pode aparecer no texto inventado.",
+        "incorrect": "Triângulo nomeia uma forma que pode aparecer no texto inventado.",
+        "hint": "Procure uma palavra ligada ao tema definido.",
+        "errorFocus": "WORD_SELECTION_MATCHES_TOPIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-10",
+      "statement": "Uma criança desenha uma cena enquanto o professor registra as palavras sugeridas. O desenho pode",
+      "prompt": "Uma criança desenha uma cena enquanto o professor registra as palavras sugeridas. O desenho pode",
+      "options": [
+        "anular a participação",
+        "contribuir para o registro compartilhado.",
+        "substituir a situação comunicativa",
+        "ser considerado sempre um erro"
+      ],
+      "correctAnswer": "contribuir para o registro compartilhado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "anular a participação": [
+          "DRAWING_AS_CONTRIBUTION"
+        ],
+        "substituir a situação comunicativa": [
+          "DRAWING_AS_CONTRIBUTION"
+        ],
+        "ser considerado sempre um erro": [
+          "DRAWING_AS_CONTRIBUTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REGISTRO_DESENHO",
+      "explanation": "Desenho pode apoiar a expressão e o registro das ideias.",
+      "hint": "Considere diferentes formas de participar.",
+      "errorFocus": "DRAWING_AS_CONTRIBUTION",
+      "feedback": {
+        "correct": "Boa observação: Desenho pode apoiar a expressão e o registro das ideias.",
+        "incorrect": "Desenho pode apoiar a expressão e o registro das ideias.",
+        "hint": "Considere diferentes formas de participar.",
+        "errorFocus": "DRAWING_AS_CONTRIBUTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-11",
+      "statement": "Um texto curto é criado para convidar colegas a brincar com rimas. O que indica a situação comunicativa?",
+      "prompt": "Um texto curto é criado para convidar colegas a brincar com rimas. O que indica a situação comunicativa?",
+      "options": [
+        "A cor do papel apenas",
+        "O número de letras apenas",
+        "Quem participa e para que o texto será usado.",
+        "O nome de quem desenhou"
+      ],
+      "correctAnswer": "Quem participa e para que o texto será usado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do papel apenas": [
+          "SITUATION_INCLUDES_PARTICIPANTS_AND_PURPOSE"
+        ],
+        "O número de letras apenas": [
+          "SITUATION_INCLUDES_PARTICIPANTS_AND_PURPOSE"
+        ],
+        "O nome de quem desenhou": [
+          "SITUATION_INCLUDES_PARTICIPANTS_AND_PURPOSE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SITUACAO_COMUNICATIVA",
+      "explanation": "A situação comunica contexto, participantes e finalidade.",
+      "hint": "Pergunte quem usará os versos e em qual atividade.",
+      "errorFocus": "SITUATION_INCLUDES_PARTICIPANTS_AND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A situação comunica contexto, participantes e finalidade.",
+        "incorrect": "A situação comunica contexto, participantes e finalidade.",
+        "hint": "Pergunte quem usará os versos e em qual atividade.",
+        "errorFocus": "SITUATION_INCLUDES_PARTICIPANTS_AND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-12",
+      "statement": "Registrar um verso e recitá-lo são ações",
+      "prompt": "Registrar um verso e recitá-lo são ações",
+      "options": [
+        "sempre idênticas",
+        "impossíveis de combinar",
+        "sem relação com textos",
+        "diferentes que podem acontecer na mesma atividade."
+      ],
+      "correctAnswer": "diferentes que podem acontecer na mesma atividade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "sempre idênticas": [
+          "DISTINGUISH_RECORDING_FROM_ORAL_USE"
+        ],
+        "impossíveis de combinar": [
+          "DISTINGUISH_RECORDING_FROM_ORAL_USE"
+        ],
+        "sem relação com textos": [
+          "DISTINGUISH_RECORDING_FROM_ORAL_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REGISTRAR_OU_RECITAR",
+      "explanation": "O texto pode ser registrado e depois usado oralmente, se a turma quiser.",
+      "hint": "Uma ação guarda o texto; outra pode apresentá-lo.",
+      "errorFocus": "DISTINGUISH_RECORDING_FROM_ORAL_USE",
+      "feedback": {
+        "correct": "Boa observação: O texto pode ser registrado e depois usado oralmente, se a turma quiser.",
+        "incorrect": "O texto pode ser registrado e depois usado oralmente, se a turma quiser.",
+        "hint": "Uma ação guarda o texto; outra pode apresentá-lo.",
+        "errorFocus": "DISTINGUISH_RECORDING_FROM_ORAL_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-13",
+      "statement": "A turma cria versos sobre uma pipa para usar numa brincadeira inventada. Qual é a finalidade?",
+      "prompt": "A turma cria versos sobre uma pipa para usar numa brincadeira inventada. Qual é a finalidade?",
+      "options": [
+        "Apoiar a brincadeira combinada.",
+        "Dar um resultado de exame",
+        "Marcar uma senha",
+        "Esconder como se brinca"
+      ],
+      "correctAnswer": "Apoiar a brincadeira combinada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Dar um resultado de exame": [
+          "PURPOSE_MATCHES_ACTIVITY"
+        ],
+        "Marcar uma senha": [
+          "PURPOSE_MATCHES_ACTIVITY"
+        ],
+        "Esconder como se brinca": [
+          "PURPOSE_MATCHES_ACTIVITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TEMA_E_FINALIDADE",
+      "explanation": "O texto foi produzido para apoiar a situação escolhida.",
+      "hint": "Volte à brincadeira imaginada pelo grupo.",
+      "errorFocus": "PURPOSE_MATCHES_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: O texto foi produzido para apoiar a situação escolhida.",
+        "incorrect": "O texto foi produzido para apoiar a situação escolhida.",
+        "hint": "Volte à brincadeira imaginada pelo grupo.",
+        "errorFocus": "PURPOSE_MATCHES_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-14",
+      "statement": "Por que a ajuda do professor pode ser importante ao registrar textos com crianças do 1º ano?",
+      "prompt": "Por que a ajuda do professor pode ser importante ao registrar textos com crianças do 1º ano?",
+      "options": [
+        "Porque só o professor pode ter ideias",
+        "Pode organizar as ideias e apoiar o registro coletivo.",
+        "Porque crianças não devem falar",
+        "Porque o texto precisa ser copiado sem escolhas"
+      ],
+      "correctAnswer": "Pode organizar as ideias e apoiar o registro coletivo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque só o professor pode ter ideias": [
+          "MEDIATION_SUPPORTS_AUTHORING"
+        ],
+        "Porque crianças não devem falar": [
+          "MEDIATION_SUPPORTS_AUTHORING"
+        ],
+        "Porque o texto precisa ser copiado sem escolhas": [
+          "MEDIATION_SUPPORTS_AUTHORING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "PROFESSOR_MEDIADOR",
+      "explanation": "A mediação ajuda a registrar contribuições sem retirar a participação dos alunos.",
+      "hint": "Pense em como o professor apoia o grupo.",
+      "errorFocus": "MEDIATION_SUPPORTS_AUTHORING",
+      "feedback": {
+        "correct": "Boa observação: A mediação ajuda a registrar contribuições sem retirar a participação dos alunos.",
+        "incorrect": "A mediação ajuda a registrar contribuições sem retirar a participação dos alunos.",
+        "hint": "Pense em como o professor apoia o grupo.",
+        "errorFocus": "MEDIATION_SUPPORTS_AUTHORING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-15",
+      "statement": "O registro tem palavras, mas o grupo não sabe sobre o que é. Qual passo ajuda?",
+      "prompt": "O registro tem palavras, mas o grupo não sabe sobre o que é. Qual passo ajuda?",
+      "options": [
+        "Adicionar nomes pessoais aleatórios",
+        "Apagar quem participou",
+        "Retomar a situação e escolher um tema com o grupo.",
+        "Publicar sem conversar"
+      ],
+      "correctAnswer": "Retomar a situação e escolher um tema com o grupo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Adicionar nomes pessoais aleatórios": [
+          "RECONNECT_RECORD_TO_TOPIC"
+        ],
+        "Apagar quem participou": [
+          "RECONNECT_RECORD_TO_TOPIC"
+        ],
+        "Publicar sem conversar": [
+          "RECONNECT_RECORD_TO_TOPIC"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TEXTO_SEM_TEMA",
+      "explanation": "Tema e finalidade ajudam a orientar as escolhas do texto.",
+      "hint": "Converse sobre o que o grupo quer dizer.",
+      "errorFocus": "RECONNECT_RECORD_TO_TOPIC",
+      "feedback": {
+        "correct": "Boa observação: Tema e finalidade ajudam a orientar as escolhas do texto.",
+        "incorrect": "Tema e finalidade ajudam a orientar as escolhas do texto.",
+        "hint": "Converse sobre o que o grupo quer dizer.",
+        "errorFocus": "RECONNECT_RECORD_TO_TOPIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-16",
+      "statement": "Qual prática permite que mais crianças contribuam?",
+      "prompt": "Qual prática permite que mais crianças contribuam?",
+      "options": [
+        "Exigir apenas escrita convencional",
+        "Exigir que todos recitem sozinhos",
+        "Ignorar respostas por apontamento",
+        "Aceitar fala, gesto, desenho, cartões e escrita emergente."
+      ],
+      "correctAnswer": "Aceitar fala, gesto, desenho, cartões e escrita emergente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir apenas escrita convencional": [
+          "ACCESSIBLE_COLLABORATIVE_REGISTRATION"
+        ],
+        "Exigir que todos recitem sozinhos": [
+          "ACCESSIBLE_COLLABORATIVE_REGISTRATION"
+        ],
+        "Ignorar respostas por apontamento": [
+          "ACCESSIBLE_COLLABORATIVE_REGISTRATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PRODUCAO_ACESSIVEL",
+      "explanation": "Diferentes modos de participação apoiam a colaboração.",
+      "hint": "Procure várias formas de mostrar uma ideia.",
+      "errorFocus": "ACCESSIBLE_COLLABORATIVE_REGISTRATION",
+      "feedback": {
+        "correct": "Boa observação: Diferentes modos de participação apoiam a colaboração.",
+        "incorrect": "Diferentes modos de participação apoiam a colaboração.",
+        "hint": "Procure várias formas de mostrar uma ideia.",
+        "errorFocus": "ACCESSIBLE_COLLABORATIVE_REGISTRATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-17",
+      "statement": "O grupo quer criar duas linhas autorais para iniciar uma brincadeira de palavras. Qual planejamento é adequado?",
+      "prompt": "O grupo quer criar duas linhas autorais para iniciar uma brincadeira de palavras. Qual planejamento é adequado?",
+      "options": [
+        "Definir participantes, tema e finalidade antes de registrar as linhas.",
+        "Copiar um texto conhecido sem verificar uso",
+        "Registrar dados pessoais dos colegas",
+        "Evitar escolher um assunto"
+      ],
+      "correctAnswer": "Definir participantes, tema e finalidade antes de registrar as linhas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Copiar um texto conhecido sem verificar uso": [
+          "PLAN_BEFORE_RECORDING"
+        ],
+        "Registrar dados pessoais dos colegas": [
+          "PLAN_BEFORE_RECORDING"
+        ],
+        "Evitar escolher um assunto": [
+          "PLAN_BEFORE_RECORDING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "VERSO_PARA_CONVITE",
+      "explanation": "A situação e a finalidade ajudam a guiar o registro.",
+      "hint": "Comece pelo motivo e pelos leitores.",
+      "errorFocus": "PLAN_BEFORE_RECORDING",
+      "feedback": {
+        "correct": "Boa observação: A situação e a finalidade ajudam a guiar o registro.",
+        "incorrect": "A situação e a finalidade ajudam a guiar o registro.",
+        "hint": "Comece pelo motivo e pelos leitores.",
+        "errorFocus": "PLAN_BEFORE_RECORDING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-18",
+      "statement": "Em ‘Bola de algodão vai passear / pelo caminho de imaginar’, o que ajuda a identificar o tema?",
+      "prompt": "Em ‘Bola de algodão vai passear / pelo caminho de imaginar’, o que ajuda a identificar o tema?",
+      "options": [
+        "A cor do caderno",
+        "As palavras bola, passeio e caminho.",
+        "Uma informação que não aparece",
+        "O nome de quem escreve"
+      ],
+      "correctAnswer": "As palavras bola, passeio e caminho.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A cor do caderno": [
+          "TEXTUAL_EVIDENCE_FOR_TOPIC"
+        ],
+        "Uma informação que não aparece": [
+          "TEXTUAL_EVIDENCE_FOR_TOPIC"
+        ],
+        "O nome de quem escreve": [
+          "TEXTUAL_EVIDENCE_FOR_TOPIC"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "SOM_E_SENTIDO",
+      "explanation": "O tema pode ser reconhecido por pistas do próprio texto.",
+      "hint": "Aponte palavras que contam a cena.",
+      "errorFocus": "TEXTUAL_EVIDENCE_FOR_TOPIC",
+      "feedback": {
+        "correct": "Boa observação: O tema pode ser reconhecido por pistas do próprio texto.",
+        "incorrect": "O tema pode ser reconhecido por pistas do próprio texto.",
+        "hint": "Aponte palavras que contam a cena.",
+        "errorFocus": "TEXTUAL_EVIDENCE_FOR_TOPIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-19",
+      "statement": "O grupo quer guardar um verso para outra turma ler. Que cuidado é pertinente?",
+      "prompt": "O grupo quer guardar um verso para outra turma ler. Que cuidado é pertinente?",
+      "options": [
+        "Incluir dados privados",
+        "Trocar o tema sem avisar",
+        "Conferir junto se as palavras registradas comunicam a ideia planejada.",
+        "Apagar a finalidade"
+      ],
+      "correctAnswer": "Conferir junto se as palavras registradas comunicam a ideia planejada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Incluir dados privados": [
+          "REVIEW_FOR_INTENDED_READERS"
+        ],
+        "Trocar o tema sem avisar": [
+          "REVIEW_FOR_INTENDED_READERS"
+        ],
+        "Apagar a finalidade": [
+          "REVIEW_FOR_INTENDED_READERS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REGISTRO_PARA_LEITORES",
+      "explanation": "Releitura verifica se o registro faz sentido para quem vai recebê-lo.",
+      "hint": "Faça de conta que você é a outra turma.",
+      "errorFocus": "REVIEW_FOR_INTENDED_READERS",
+      "feedback": {
+        "correct": "Boa observação: Releitura verifica se o registro faz sentido para quem vai recebê-lo.",
+        "incorrect": "Releitura verifica se o registro faz sentido para quem vai recebê-lo.",
+        "hint": "Faça de conta que você é a outra turma.",
+        "errorFocus": "REVIEW_FOR_INTENDED_READERS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-20",
+      "statement": "Por que é útil criar versos originais para este exercício?",
+      "prompt": "Por que é útil criar versos originais para este exercício?",
+      "options": [
+        "Porque textos conhecidos não podem ser lidos",
+        "Porque autoria não importa",
+        "Porque todo verso precisa ser publicado",
+        "Para praticar a composição sem depender de copiar letras de outras pessoas."
+      ],
+      "correctAnswer": "Para praticar a composição sem depender de copiar letras de outras pessoas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque textos conhecidos não podem ser lidos": [
+          "ORIGINALITY_AND_SOURCE_CARE"
+        ],
+        "Porque autoria não importa": [
+          "ORIGINALITY_AND_SOURCE_CARE"
+        ],
+        "Porque todo verso precisa ser publicado": [
+          "ORIGINALITY_AND_SOURCE_CARE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "AUTORAL_E_FONTE",
+      "explanation": "O exercício pode trabalhar composição autoral sem reproduzir obras protegidas.",
+      "hint": "Pense em inventar novas palavras e cenas.",
+      "errorFocus": "ORIGINALITY_AND_SOURCE_CARE",
+      "feedback": {
+        "correct": "Boa observação: O exercício pode trabalhar composição autoral sem reproduzir obras protegidas.",
+        "incorrect": "O exercício pode trabalhar composição autoral sem reproduzir obras protegidas.",
+        "hint": "Pense em inventar novas palavras e cenas.",
+        "errorFocus": "ORIGINALITY_AND_SOURCE_CARE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-21",
+      "statement": "Uma criança seleciona cartões de palavras e o professor os organiza numa linha. Isso é",
+      "prompt": "Uma criança seleciona cartões de palavras e o professor os organiza numa linha. Isso é",
+      "options": [
+        "uma contribuição ao registro em colaboração.",
+        "um uso incorreto de linguagem",
+        "uma recusa obrigatória",
+        "uma publicação pública"
+      ],
+      "correctAnswer": "uma contribuição ao registro em colaboração.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "um uso incorreto de linguagem": [
+          "ALTERNATIVE_MODE_IN_SHARED_WRITING"
+        ],
+        "uma recusa obrigatória": [
+          "ALTERNATIVE_MODE_IN_SHARED_WRITING"
+        ],
+        "uma publicação pública": [
+          "ALTERNATIVE_MODE_IN_SHARED_WRITING"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REGISTRAR_COM_CARTOES",
+      "explanation": "Cartões podem apoiar a construção coletiva do texto.",
+      "hint": "Observe como as escolhas da criança entram na linha.",
+      "errorFocus": "ALTERNATIVE_MODE_IN_SHARED_WRITING",
+      "feedback": {
+        "correct": "Boa observação: Cartões podem apoiar a construção coletiva do texto.",
+        "incorrect": "Cartões podem apoiar a construção coletiva do texto.",
+        "hint": "Observe como as escolhas da criança entram na linha.",
+        "errorFocus": "ALTERNATIVE_MODE_IN_SHARED_WRITING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-22",
+      "statement": "O mesmo verso pode ser registrado para uma roda de leitura ou para um mural da turma. O que pode mudar?",
+      "prompt": "O mesmo verso pode ser registrado para uma roda de leitura ou para um mural da turma. O que pode mudar?",
+      "options": [
+        "As palavras deixam de ter sentido",
+        "O público e a forma de apresentar podem mudar conforme a finalidade.",
+        "O texto deixa de ser registro",
+        "A criança perde o direito de contribuir"
+      ],
+      "correctAnswer": "O público e a forma de apresentar podem mudar conforme a finalidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As palavras deixam de ter sentido": [
+          "AUDIENCE_AND_MEDIUM_VARY_BY_PURPOSE"
+        ],
+        "O texto deixa de ser registro": [
+          "AUDIENCE_AND_MEDIUM_VARY_BY_PURPOSE"
+        ],
+        "A criança perde o direito de contribuir": [
+          "AUDIENCE_AND_MEDIUM_VARY_BY_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FINALIDADE_MUDA",
+      "explanation": "A situação de circulação orienta como o texto é registrado e apresentado.",
+      "hint": "Compare quem lerá em cada situação.",
+      "errorFocus": "AUDIENCE_AND_MEDIUM_VARY_BY_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A situação de circulação orienta como o texto é registrado e apresentado.",
+        "incorrect": "A situação de circulação orienta como o texto é registrado e apresentado.",
+        "hint": "Compare quem lerá em cada situação.",
+        "errorFocus": "AUDIENCE_AND_MEDIUM_VARY_BY_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-23",
+      "statement": "Qual conversa ajuda o grupo a revisar o texto?",
+      "prompt": "Qual conversa ajuda o grupo a revisar o texto?",
+      "options": [
+        "‘Quem escreveu mais depressa?’",
+        "‘Como escondemos a ideia?’",
+        "‘O verso mostra nosso tema e funciona para a atividade que escolhemos?’",
+        "‘Qual dado pessoal falta?’"
+      ],
+      "correctAnswer": "‘O verso mostra nosso tema e funciona para a atividade que escolhemos?’",
+      "answerPosition": "C",
+      "misconceptions": {
+        "‘Quem escreveu mais depressa?’": [
+          "REVISION_QUESTIONS_PURPOSE"
+        ],
+        "‘Como escondemos a ideia?’": [
+          "REVISION_QUESTIONS_PURPOSE"
+        ],
+        "‘Qual dado pessoal falta?’": [
+          "REVISION_QUESTIONS_PURPOSE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "RELEITURA_GRUPO",
+      "explanation": "A pergunta verifica tema e finalidade de maneira colaborativa.",
+      "hint": "Pergunte se o texto atende ao plano do grupo.",
+      "errorFocus": "REVISION_QUESTIONS_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A pergunta verifica tema e finalidade de maneira colaborativa.",
+        "incorrect": "A pergunta verifica tema e finalidade de maneira colaborativa.",
+        "hint": "Pergunte se o texto atende ao plano do grupo.",
+        "errorFocus": "REVISION_QUESTIONS_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-24",
+      "statement": "Uma criança dita uma palavra, outra aponta uma imagem e o professor escreve. Qual conclusão é adequada?",
+      "prompt": "Uma criança dita uma palavra, outra aponta uma imagem e o professor escreve. Qual conclusão é adequada?",
+      "options": [
+        "Somente quem escreveu letras participou",
+        "A imagem impede o registro",
+        "O professor deve apagar as contribuições",
+        "O grupo está registrando ideias por diferentes formas de participação."
+      ],
+      "correctAnswer": "O grupo está registrando ideias por diferentes formas de participação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente quem escreveu letras participou": [
+          "MULTIMODAL_COLLABORATION"
+        ],
+        "A imagem impede o registro": [
+          "MULTIMODAL_COLLABORATION"
+        ],
+        "O professor deve apagar as contribuições": [
+          "MULTIMODAL_COLLABORATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "CONTRIBUICOES_VARIADAS",
+      "explanation": "A produção compartilhada pode combinar fala, imagem e escrita mediada.",
+      "hint": "Veja quantas formas de contribuição aparecem.",
+      "errorFocus": "MULTIMODAL_COLLABORATION",
+      "feedback": {
+        "correct": "Boa observação: A produção compartilhada pode combinar fala, imagem e escrita mediada.",
+        "incorrect": "A produção compartilhada pode combinar fala, imagem e escrita mediada.",
+        "hint": "Veja quantas formas de contribuição aparecem.",
+        "errorFocus": "MULTIMODAL_COLLABORATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-25",
+      "statement": "O que caracteriza um registro colaborativo?",
+      "prompt": "O que caracteriza um registro colaborativo?",
+      "options": [
+        "As ideias são construídas ou registradas com participação do grupo e ajuda docente.",
+        "Uma cópia individual sem conversa",
+        "Uma lista de senhas",
+        "Um texto sem tema"
+      ],
+      "correctAnswer": "As ideias são construídas ou registradas com participação do grupo e ajuda docente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma cópia individual sem conversa": [
+          "COLLABORATIVE_RECORDING"
+        ],
+        "Uma lista de senhas": [
+          "COLLABORATIVE_RECORDING"
+        ],
+        "Um texto sem tema": [
+          "COLLABORATIVE_RECORDING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REGISTRO_COLABORATIVO",
+      "explanation": "A colaboração inclui colegas e mediação do professor.",
+      "hint": "Pense em quem participa e como.",
+      "errorFocus": "COLLABORATIVE_RECORDING",
+      "feedback": {
+        "correct": "Boa observação: A colaboração inclui colegas e mediação do professor.",
+        "incorrect": "A colaboração inclui colegas e mediação do professor.",
+        "hint": "Pense em quem participa e como.",
+        "errorFocus": "COLLABORATIVE_RECORDING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-26",
+      "statement": "Uma quadrinha autoral criada para uma brincadeira pode pertencer a",
+      "prompt": "Uma quadrinha autoral criada para uma brincadeira pode pertencer a",
+      "options": [
+        "uma ficha médica real",
+        "um gênero do campo da vida cotidiana.",
+        "uma senha de acesso",
+        "uma lista privada de endereços"
+      ],
+      "correctAnswer": "um gênero do campo da vida cotidiana.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma ficha médica real": [
+          "EVERYDAY_TEXT_GENRE"
+        ],
+        "uma senha de acesso": [
+          "EVERYDAY_TEXT_GENRE"
+        ],
+        "uma lista privada de endereços": [
+          "EVERYDAY_TEXT_GENRE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TEXTO_DE_COTIDIANO",
+      "explanation": "A habilidade inclui quadras, quadrinhas e outros textos cotidianos.",
+      "hint": "Considere para que o texto é usado.",
+      "errorFocus": "EVERYDAY_TEXT_GENRE",
+      "feedback": {
+        "correct": "Boa observação: A habilidade inclui quadras, quadrinhas e outros textos cotidianos.",
+        "incorrect": "A habilidade inclui quadras, quadrinhas e outros textos cotidianos.",
+        "hint": "Considere para que o texto é usado.",
+        "errorFocus": "EVERYDAY_TEXT_GENRE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-27",
+      "statement": "Por que tema e finalidade devem ser considerados ao registrar versos?",
+      "prompt": "Por que tema e finalidade devem ser considerados ao registrar versos?",
+      "options": [
+        "Para escolher uma senha",
+        "Para impedir a colaboração",
+        "Eles ajudam a orientar o que será dito e como o texto será usado.",
+        "Para esconder os leitores"
+      ],
+      "correctAnswer": "Eles ajudam a orientar o que será dito e como o texto será usado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Para escolher uma senha": [
+          "TOPIC_PURPOSE_GUIDE_TEXT"
+        ],
+        "Para impedir a colaboração": [
+          "TOPIC_PURPOSE_GUIDE_TEXT"
+        ],
+        "Para esconder os leitores": [
+          "TOPIC_PURPOSE_GUIDE_TEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "TEMA_E_FINALIDADE",
+      "explanation": "Tema e finalidade fazem parte da situação comunicativa.",
+      "hint": "Pense no assunto e no uso planejado.",
+      "errorFocus": "TOPIC_PURPOSE_GUIDE_TEXT",
+      "feedback": {
+        "correct": "Boa observação: Tema e finalidade fazem parte da situação comunicativa.",
+        "incorrect": "Tema e finalidade fazem parte da situação comunicativa.",
+        "hint": "Pense no assunto e no uso planejado.",
+        "errorFocus": "TOPIC_PURPOSE_GUIDE_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-28",
+      "statement": "Uma criança dita palavras e o professor as registra. A criança",
+      "prompt": "Uma criança dita palavras e o professor as registra. A criança",
+      "options": [
+        "não participa do registro",
+        "precisa recomeçar sozinha",
+        "não pode revisar",
+        "contribui para o texto, mesmo sem escrever todas as palavras."
+      ],
+      "correctAnswer": "contribui para o texto, mesmo sem escrever todas as palavras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "não participa do registro": [
+          "DICTATION_IS_VALID_PARTICIPATION"
+        ],
+        "precisa recomeçar sozinha": [
+          "DICTATION_IS_VALID_PARTICIPATION"
+        ],
+        "não pode revisar": [
+          "DICTATION_IS_VALID_PARTICIPATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FALA_E_ESCRITA",
+      "explanation": "O registro mediado permite participação por fala.",
+      "hint": "Observe quem escolheu as palavras.",
+      "errorFocus": "DICTATION_IS_VALID_PARTICIPATION",
+      "feedback": {
+        "correct": "Boa observação: O registro mediado permite participação por fala.",
+        "incorrect": "O registro mediado permite participação por fala.",
+        "hint": "Observe quem escolheu as palavras.",
+        "errorFocus": "DICTATION_IS_VALID_PARTICIPATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-29",
+      "statement": "Qual opção demonstra criação autoral para a atividade?",
+      "prompt": "Qual opção demonstra criação autoral para a atividade?",
+      "options": [
+        "Inventar versos com o grupo sobre um objeto imaginário.",
+        "Copiar uma música inteira sem autorização",
+        "Repetir um texto sem saber seu tema",
+        "Escrever números de telefone"
+      ],
+      "correctAnswer": "Inventar versos com o grupo sobre um objeto imaginário.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Copiar uma música inteira sem autorização": [
+          "CREATE_ORIGINAL_TEXT"
+        ],
+        "Repetir um texto sem saber seu tema": [
+          "CREATE_ORIGINAL_TEXT"
+        ],
+        "Escrever números de telefone": [
+          "CREATE_ORIGINAL_TEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "COPIA_E_AUTORIA",
+      "explanation": "A produção original permite relacionar escolhas ao tema e à finalidade.",
+      "hint": "Escolha o texto inventado pelo grupo.",
+      "errorFocus": "CREATE_ORIGINAL_TEXT",
+      "feedback": {
+        "correct": "Boa observação: A produção original permite relacionar escolhas ao tema e à finalidade.",
+        "incorrect": "A produção original permite relacionar escolhas ao tema e à finalidade.",
+        "hint": "Escolha o texto inventado pelo grupo.",
+        "errorFocus": "CREATE_ORIGINAL_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-30",
+      "statement": "Ao reler o registro em grupo, o que pode ser conferido?",
+      "prompt": "Ao reler o registro em grupo, o que pode ser conferido?",
+      "options": [
+        "Quem tem a letra mais bonita",
+        "Se o texto representa as ideias combinadas e serve à situação.",
+        "Quem deve ser excluído",
+        "Qual senha será usada"
+      ],
+      "correctAnswer": "Se o texto representa as ideias combinadas e serve à situação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Quem tem a letra mais bonita": [
+          "REVIEW_COMMUNICATIVE_FIT"
+        ],
+        "Quem deve ser excluído": [
+          "REVIEW_COMMUNICATIVE_FIT"
+        ],
+        "Qual senha será usada": [
+          "REVIEW_COMMUNICATIVE_FIT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RELER_COM_COLEGAS",
+      "explanation": "A releitura pode avaliar a adequação do texto ao seu propósito.",
+      "hint": "Pense no que o grupo planejou.",
+      "errorFocus": "REVIEW_COMMUNICATIVE_FIT",
+      "feedback": {
+        "correct": "Boa observação: A releitura pode avaliar a adequação do texto ao seu propósito.",
+        "incorrect": "A releitura pode avaliar a adequação do texto ao seu propósito.",
+        "hint": "Pense no que o grupo planejou.",
+        "errorFocus": "REVIEW_COMMUNICATIVE_FIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-31",
+      "statement": "Como fazer a apresentação sem exigir que cada criança fale sozinha diante de todos?",
+      "prompt": "Como fazer a apresentação sem exigir que cada criança fale sozinha diante de todos?",
+      "options": [
+        "Obrigar uma recitação individual",
+        "Retirar do grupo quem não fala em público",
+        "Permitir leitura coletiva, apontamento, desenho ou participação por cartões.",
+        "Publicar a gravação sem autorização"
+      ],
+      "correctAnswer": "Permitir leitura coletiva, apontamento, desenho ou participação por cartões.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Obrigar uma recitação individual": [
+          "NONCOERCIVE_PRESENTATION"
+        ],
+        "Retirar do grupo quem não fala em público": [
+          "NONCOERCIVE_PRESENTATION"
+        ],
+        "Publicar a gravação sem autorização": [
+          "NONCOERCIVE_PRESENTATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "PARTICIPACAO_SEM_EXPOSICAO",
+      "explanation": "Diferentes modos de participação respeitam acessibilidade e privacidade.",
+      "hint": "Pense em opções para a turma apresentar em conjunto.",
+      "errorFocus": "NONCOERCIVE_PRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: Diferentes modos de participação respeitam acessibilidade e privacidade.",
+        "incorrect": "Diferentes modos de participação respeitam acessibilidade e privacidade.",
+        "hint": "Pense em opções para a turma apresentar em conjunto.",
+        "errorFocus": "NONCOERCIVE_PRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-32",
+      "statement": "Antes de colocar um texto no mural, qual decisão a turma deve tomar?",
+      "prompt": "Antes de colocar um texto no mural, qual decisão a turma deve tomar?",
+      "options": [
+        "Se deve incluir nomes completos",
+        "Se é possível divulgar dados privados",
+        "Se precisa abandonar o tema",
+        "Se o mural é adequado ao público e à finalidade combinada."
+      ],
+      "correctAnswer": "Se o mural é adequado ao público e à finalidade combinada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Se deve incluir nomes completos": [
+          "CIRCULATION_REQUIRES_CONTEXT"
+        ],
+        "Se é possível divulgar dados privados": [
+          "CIRCULATION_REQUIRES_CONTEXT"
+        ],
+        "Se precisa abandonar o tema": [
+          "CIRCULATION_REQUIRES_CONTEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "FINALIDADE_DE_CIRCULACAO",
+      "explanation": "A circulação do texto deve seguir a situação definida e proteger privacidade.",
+      "hint": "Considere quem verá o mural.",
+      "errorFocus": "CIRCULATION_REQUIRES_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A circulação do texto deve seguir a situação definida e proteger privacidade.",
+        "incorrect": "A circulação do texto deve seguir a situação definida e proteger privacidade.",
+        "hint": "Considere quem verá o mural.",
+        "errorFocus": "CIRCULATION_REQUIRES_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-33",
+      "statement": "Qual situação mostra colaboração?",
+      "prompt": "Qual situação mostra colaboração?",
+      "options": [
+        "Colegas sugerem versos e o professor ajuda a registrá-los.",
+        "Uma criança recebe uma cópia pronta sem conversar",
+        "Todos os palpites são apagados",
+        "O grupo não sabe para que escreve"
+      ],
+      "correctAnswer": "Colegas sugerem versos e o professor ajuda a registrá-los.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma criança recebe uma cópia pronta sem conversar": [
+          "IDENTIFY_COLLABORATIVE_SCENARIO"
+        ],
+        "Todos os palpites são apagados": [
+          "IDENTIFY_COLLABORATIVE_SCENARIO"
+        ],
+        "O grupo não sabe para que escreve": [
+          "IDENTIFY_COLLABORATIVE_SCENARIO"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REGISTRO_E_PARTICIPACAO",
+      "explanation": "A participação e o apoio docente caracterizam o registro compartilhado.",
+      "hint": "Procure ideias construídas em conjunto.",
+      "errorFocus": "IDENTIFY_COLLABORATIVE_SCENARIO",
+      "feedback": {
+        "correct": "Boa observação: A participação e o apoio docente caracterizam o registro compartilhado.",
+        "incorrect": "A participação e o apoio docente caracterizam o registro compartilhado.",
+        "hint": "Procure ideias construídas em conjunto.",
+        "errorFocus": "IDENTIFY_COLLABORATIVE_SCENARIO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-34",
+      "statement": "Uma quadrinha autoral será usada em uma brincadeira combinada. O que ajuda a verificar sua adequação?",
+      "prompt": "Uma quadrinha autoral será usada em uma brincadeira combinada. O que ajuda a verificar sua adequação?",
+      "options": [
+        "Contar quantas senhas aparecem",
+        "Reler e conversar sobre tema, participantes e finalidade.",
+        "Adicionar informação privada",
+        "Trocar o uso sem comunicar"
+      ],
+      "correctAnswer": "Reler e conversar sobre tema, participantes e finalidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Contar quantas senhas aparecem": [
+          "CHECK_SITUATION_TOPIC_PURPOSE"
+        ],
+        "Adicionar informação privada": [
+          "CHECK_SITUATION_TOPIC_PURPOSE"
+        ],
+        "Trocar o uso sem comunicar": [
+          "CHECK_SITUATION_TOPIC_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TEXTO_PARA_BRINCADEIRA",
+      "explanation": "A adequação depende da situação e do uso planejado.",
+      "hint": "Reveja os acordos do grupo.",
+      "errorFocus": "CHECK_SITUATION_TOPIC_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A adequação depende da situação e do uso planejado.",
+        "incorrect": "A adequação depende da situação e do uso planejado.",
+        "hint": "Reveja os acordos do grupo.",
+        "errorFocus": "CHECK_SITUATION_TOPIC_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-35",
+      "statement": "O grupo quer guardar palavras inventadas para poder relê-las depois. Isso é",
+      "prompt": "O grupo quer guardar palavras inventadas para poder relê-las depois. Isso é",
+      "options": [
+        "uma prova de informática",
+        "uma rota de transporte",
+        "uma finalidade possível para o registro.",
+        "um resultado de avaliação oficial"
+      ],
+      "correctAnswer": "uma finalidade possível para o registro.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "uma prova de informática": [
+          "RECORDING_PRESERVES_TEXT"
+        ],
+        "uma rota de transporte": [
+          "RECORDING_PRESERVES_TEXT"
+        ],
+        "um resultado de avaliação oficial": [
+          "RECORDING_PRESERVES_TEXT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REGISTRAR_PALAVRAS",
+      "explanation": "Registrar pode permitir revisitar o texto e compartilhá-lo no contexto escolhido.",
+      "hint": "Pense no que guardar as palavras permite.",
+      "errorFocus": "RECORDING_PRESERVES_TEXT",
+      "feedback": {
+        "correct": "Boa observação: Registrar pode permitir revisitar o texto e compartilhá-lo no contexto escolhido.",
+        "incorrect": "Registrar pode permitir revisitar o texto e compartilhá-lo no contexto escolhido.",
+        "hint": "Pense no que guardar as palavras permite.",
+        "errorFocus": "RECORDING_PRESERVES_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-36",
+      "statement": "Por que não se deve exigir que toda criança escreva convencionalmente sozinha nessa proposta?",
+      "prompt": "Por que não se deve exigir que toda criança escreva convencionalmente sozinha nessa proposta?",
+      "options": [
+        "Porque escrita não é importante",
+        "Porque ninguém deve escrever",
+        "Porque o tema precisa ser secreto",
+        "Porque a habilidade prevê colaboração e ajuda do professor."
+      ],
+      "correctAnswer": "Porque a habilidade prevê colaboração e ajuda do professor.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque escrita não é importante": [
+          "RESPECT_GRADE_AND_MEDIATION"
+        ],
+        "Porque ninguém deve escrever": [
+          "RESPECT_GRADE_AND_MEDIATION"
+        ],
+        "Porque o tema precisa ser secreto": [
+          "RESPECT_GRADE_AND_MEDIATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ESCRITA_EMERGENTE",
+      "explanation": "A produção compartilhada acolhe diferentes etapas e modos de participação.",
+      "hint": "Volte à expressão ‘em colaboração’.",
+      "errorFocus": "RESPECT_GRADE_AND_MEDIATION",
+      "feedback": {
+        "correct": "Boa observação: A produção compartilhada acolhe diferentes etapas e modos de participação.",
+        "incorrect": "A produção compartilhada acolhe diferentes etapas e modos de participação.",
+        "hint": "Volte à expressão ‘em colaboração’.",
+        "errorFocus": "RESPECT_GRADE_AND_MEDIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-37",
+      "statement": "Texto autoral: ‘Roda de papel vai girar / com formas para combinar’. Qual tema é mais apoiado pelas palavras?",
+      "prompt": "Texto autoral: ‘Roda de papel vai girar / com formas para combinar’. Qual tema é mais apoiado pelas palavras?",
+      "options": [
+        "Uma roda imaginária com formas.",
+        "Uma receita de fruta",
+        "Um calendário de férias",
+        "Uma notícia sobre chuva"
+      ],
+      "correctAnswer": "Uma roda imaginária com formas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma receita de fruta": [
+          "INFER_TOPIC_FROM_WORDS"
+        ],
+        "Um calendário de férias": [
+          "INFER_TOPIC_FROM_WORDS"
+        ],
+        "Uma notícia sobre chuva": [
+          "INFER_TOPIC_FROM_WORDS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "VERSO_E_TEMA",
+      "explanation": "As palavras ‘roda’ e ‘formas’ sustentam a leitura do tema.",
+      "hint": "Use as pistas explícitas dos versos.",
+      "errorFocus": "INFER_TOPIC_FROM_WORDS",
+      "feedback": {
+        "correct": "Boa observação: As palavras ‘roda’ e ‘formas’ sustentam a leitura do tema.",
+        "incorrect": "As palavras ‘roda’ e ‘formas’ sustentam a leitura do tema.",
+        "hint": "Use as pistas explícitas dos versos.",
+        "errorFocus": "INFER_TOPIC_FROM_WORDS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-38",
+      "statement": "Um texto coletivo será colocado no mural interno da turma. Qual cuidado combina?",
+      "prompt": "Um texto coletivo será colocado no mural interno da turma. Qual cuidado combina?",
+      "options": [
+        "Adicionar nomes completos sem permissão",
+        "Verificar se a exposição é adequada e evitar dados pessoais.",
+        "Incluir senha de acesso",
+        "Expor uma história familiar identificável"
+      ],
+      "correctAnswer": "Verificar se a exposição é adequada e evitar dados pessoais.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Adicionar nomes completos sem permissão": [
+          "PRIVACY_IN_TEXT_CIRCULATION"
+        ],
+        "Incluir senha de acesso": [
+          "PRIVACY_IN_TEXT_CIRCULATION"
+        ],
+        "Expor uma história familiar identificável": [
+          "PRIVACY_IN_TEXT_CIRCULATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MURAL_RESTRITO",
+      "explanation": "A finalidade de compartilhar não elimina o cuidado com privacidade.",
+      "hint": "Compartilhe o texto sem expor pessoas.",
+      "errorFocus": "PRIVACY_IN_TEXT_CIRCULATION",
+      "feedback": {
+        "correct": "Boa observação: A finalidade de compartilhar não elimina o cuidado com privacidade.",
+        "incorrect": "A finalidade de compartilhar não elimina o cuidado com privacidade.",
+        "hint": "Compartilhe o texto sem expor pessoas.",
+        "errorFocus": "PRIVACY_IN_TEXT_CIRCULATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-39",
+      "statement": "Uma criança não quer recitar em público, mas aponta cartões com as palavras do verso. Como o grupo pode agir?",
+      "prompt": "Uma criança não quer recitar em público, mas aponta cartões com as palavras do verso. Como o grupo pode agir?",
+      "options": [
+        "Excluir sua participação",
+        "Obrigá-la a recitar",
+        "Aceitar essa forma de contribuição ao registro compartilhado.",
+        "Publicar sua imagem sem autorização"
+      ],
+      "correctAnswer": "Aceitar essa forma de contribuição ao registro compartilhado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Excluir sua participação": [
+          "RESPECT_PREFERRED_PARTICIPATION_MODE"
+        ],
+        "Obrigá-la a recitar": [
+          "RESPECT_PREFERRED_PARTICIPATION_MODE"
+        ],
+        "Publicar sua imagem sem autorização": [
+          "RESPECT_PREFERRED_PARTICIPATION_MODE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "ESCOLHER_FORMAS",
+      "explanation": "A aprendizagem pode ser demonstrada por diferentes formas acessíveis.",
+      "hint": "Reconheça a contribuição já oferecida.",
+      "errorFocus": "RESPECT_PREFERRED_PARTICIPATION_MODE",
+      "feedback": {
+        "correct": "Boa observação: A aprendizagem pode ser demonstrada por diferentes formas acessíveis.",
+        "incorrect": "A aprendizagem pode ser demonstrada por diferentes formas acessíveis.",
+        "hint": "Reconheça a contribuição já oferecida.",
+        "errorFocus": "RESPECT_PREFERRED_PARTICIPATION_MODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef01lp18-record-everyday-versified-texts-v1-40",
+      "statement": "Qual alternativa ajuda a respeitar autoria e manter a atividade centrada no aprendizado?",
+      "prompt": "Qual alternativa ajuda a respeitar autoria e manter a atividade centrada no aprendizado?",
+      "options": [
+        "Copiar uma letra comercial inteira",
+        "Publicar gravações de todos sem permissão",
+        "Repetir palavras sem saber por que",
+        "Criar versos novos em conjunto e conversar sobre o tema e a finalidade."
+      ],
+      "correctAnswer": "Criar versos novos em conjunto e conversar sobre o tema e a finalidade.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Copiar uma letra comercial inteira": [
+          "ORIGINAL_CREATION_AND_PURPOSE"
+        ],
+        "Publicar gravações de todos sem permissão": [
+          "ORIGINAL_CREATION_AND_PURPOSE"
+        ],
+        "Repetir palavras sem saber por que": [
+          "ORIGINAL_CREATION_AND_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "TEXTO_ORIGINAL",
+      "explanation": "Versos autorais atendem à prática sem depender de reproduzir obras protegidas.",
+      "hint": "Escolha uma produção feita pelo próprio grupo.",
+      "errorFocus": "ORIGINAL_CREATION_AND_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Versos autorais atendem à prática sem depender de reproduzir obras protegidas.",
+        "incorrect": "Versos autorais atendem à prática sem depender de reproduzir obras protegidas.",
+        "hint": "Escolha uma produção feita pelo próprio grupo.",
+        "errorFocus": "ORIGINAL_CREATION_AND_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer leitura oral, símbolos, cartões de palavras, alto contraste, espaçamento ampliado e tempo adicional.",
+          "Aceitar participação por fala, gesto, apontamento, desenho, letras móveis ou comunicação alternativa; não exigir recitação individual em público."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

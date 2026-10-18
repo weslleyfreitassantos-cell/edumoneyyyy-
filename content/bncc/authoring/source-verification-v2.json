@@ -5760,52 +5760,6 @@
       "evidenceCheckedAt": "2026-10-16"
     },
     {
-      "verificationId": "BNCC_EF02CO04_MEC_P020_V1",
-      "officialCode": "EF02CO04",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "CO",
-      "gradeOrRange": "02",
-      "descriptor": "Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.",
-      "officialSource": {
-        "id": "BNCC_COMPUTACAO_2022",
-        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
-        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
-        "page": 20
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
-    },
-    {
-      "verificationId": "BNCC_EF02CO05_MEC_P020_V1",
-      "officialCode": "EF02CO05",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "CO",
-      "gradeOrRange": "02",
-      "descriptor": "Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.",
-      "officialSource": {
-        "id": "BNCC_COMPUTACAO_2022",
-        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
-        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
-        "page": 20
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 20 do complemento de Computação; a ocorrência foi conferida na publicação oficial do MEC/CNE.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
-    },
-    {
       "verificationId": "BNCC_EF02CO06_MEC_P020_V1",
       "officialCode": "EF02CO06",
       "stage": "ENSINO_FUNDAMENTAL",
@@ -7554,29 +7508,6 @@
       "evidenceCheckedAt": "2026-10-16"
     },
     {
-      "verificationId": "BNCC_EF01GE11_MEC_P373_V1",
-      "officialCode": "EF01GE11",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "GE",
-      "gradeOrRange": "01",
-      "descriptor": "Associar mudanças de vestuário e hábitos alimentares em sua comunidade ao longo do ano, decorrentes da variação de temperatura e umidade no ambiente.",
-      "officialSource": {
-        "id": "BNCC_EI_EF_2018",
-        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-        "page": 373
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 373 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
-    },
-    {
       "verificationId": "BNCC_EF01HI01_MEC_P409_V1",
       "officialCode": "EF01HI01",
       "stage": "ENSINO_FUNDAMENTAL",
@@ -8098,75 +8029,6 @@
       },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
-    },
-    {
-      "verificationId": "BNCC_EF01LP16_MEC_P105_V1",
-      "officialCode": "EF01LP16",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "LP",
-      "gradeOrRange": "01",
-      "descriptor": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
-      "officialSource": {
-        "id": "BNCC_EI_EF_2018",
-        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-        "page": 105
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
-    },
-    {
-      "verificationId": "BNCC_EF01LP17_MEC_P105_V1",
-      "officialCode": "EF01LP17",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "LP",
-      "gradeOrRange": "01",
-      "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
-      "officialSource": {
-        "id": "BNCC_EI_EF_2018",
-        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-        "page": 105
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-16"
-    },
-    {
-      "verificationId": "BNCC_EF01LP18_MEC_P105_V1",
-      "officialCode": "EF01LP18",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "LP",
-      "gradeOrRange": "01",
-      "descriptor": "Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": {
-        "id": "BNCC_EI_EF_2018",
-        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-        "page": 105
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
@@ -11142,75 +11004,6 @@
       "evidenceCheckedAt": "2026-10-17"
     },
     {
-      "verificationId": "BNCC_EF01MA11_MEC_P281_V1",
-      "officialCode": "EF01MA11",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "MA",
-      "gradeOrRange": "01",
-      "descriptor": "Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.",
-      "officialSource": {
-        "id": "BNCC_EI_EF_2018",
-        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-        "page": 281
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 281 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-17"
-    },
-    {
-      "verificationId": "BNCC_EF01MA12_MEC_P281_V1",
-      "officialCode": "EF01MA12",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "MA",
-      "gradeOrRange": "01",
-      "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
-      "officialSource": {
-        "id": "BNCC_EI_EF_2018",
-        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-        "page": 281
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 281 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-17"
-    },
-    {
-      "verificationId": "BNCC_EF01MA13_MEC_P281_V1",
-      "officialCode": "EF01MA13",
-      "stage": "ENSINO_FUNDAMENTAL",
-      "kind": "SKILL",
-      "componentCode": "MA",
-      "gradeOrRange": "01",
-      "descriptor": "Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico.",
-      "officialSource": {
-        "id": "BNCC_EI_EF_2018",
-        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-        "page": 281
-      },
-      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
-      "sourcePageNote": "O catálogo local registra a habilidade na página 281 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
-      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
-      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-      "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
-      "evidenceCheckedAt": "2026-10-17"
-    },
-    {
       "verificationId": "BNCC_EF01MA14_MEC_P281_V1",
       "officialCode": "EF01MA14",
       "stage": "ENSINO_FUNDAMENTAL",
@@ -13448,7 +13241,7 @@
       "kind": "SKILL",
       "componentCode": "MA",
       "gradeOrRange": "01",
-      "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, embaixo, é necessário explicitar-se o referencial, visualizando e descrevendo caminhos entre dois pontos.",
+      "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
@@ -13465,7 +13258,7 @@
       "evidenceCheckedAt": "2026-10-18"
     },
     {
-      "verificationId": "BNCC_EF02CO04_MEC_P016_V1",
+      "verificationId": "BNCC_EF02CO04_MEC_P020_V1",
       "officialCode": "EF02CO04",
       "stage": "ENSINO_FUNDAMENTAL",
       "kind": "SKILL",
@@ -13474,12 +13267,81 @@
       "descriptor": "Diferenciar componentes físicos (hardware) e programas que fornecem as instruções (software) para o hardware.",
       "officialSource": {
         "id": "BNCC_COMPUTACAO_2022",
-        "documentVersion": "Complemento à BNCC: Computação na Educação Básica, 2022",
-        "url": "https://basenacionalcomum.mec.gov.br/images/historico/anexo_parecer_cneceb_n_2_2022_bncc_computacao.pdf",
-        "page": 16
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
       },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
-      "sourcePageNote": "Código e descritor conferidos na página física 16 do complemento oficial de Computação publicado no portal BNCC/MEC.",
+      "sourcePageNote": "Código e descritor conferidos na página 20 do complemento oficial de Computação publicado pelo MEC/CNE.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_PACKAGE_PREPARED_STAGING_INACTIVE",
+      "evidenceCheckedAt": "2026-10-18"
+    },
+    {
+      "verificationId": "BNCC_EF01LP18_MEC_P105_V1",
+      "officialCode": "EF01LP18",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "LP",
+      "gradeOrRange": "01",
+      "descriptor": "Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "Código e descritor conferidos na página física 105 do PDF oficial do MEC; registro autoral usa textos originais e produção mediada.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_PACKAGE_PREPARED_STAGING_INACTIVE",
+      "evidenceCheckedAt": "2026-10-18"
+    },
+    {
+      "verificationId": "BNCC_EF01MA13_MEC_P281_V1",
+      "officialCode": "EF01MA13",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "MA",
+      "gradeOrRange": "01",
+      "descriptor": "Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 281
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
+      "sourcePageNote": "Código e descritor conferidos no PDF oficial do MEC; os exemplos com objetos cotidianos não afirmam equivalência perfeita entre sólido geométrico e objeto real.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_PACKAGE_PREPARED_STAGING_INACTIVE",
+      "evidenceCheckedAt": "2026-10-18"
+    },
+    {
+      "verificationId": "BNCC_EF02CO05_MEC_P020_V1",
+      "officialCode": "EF02CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "componentCode": "CO",
+      "gradeOrRange": "02",
+      "descriptor": "Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+        "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+        "page": 20
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "Código e descritor conferidos na página 20 da publicação oficial do MEC/CNE, em continuidade ao registro de fonte já verificado.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",

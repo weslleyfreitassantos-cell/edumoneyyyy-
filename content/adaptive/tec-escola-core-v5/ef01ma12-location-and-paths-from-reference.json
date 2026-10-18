@@ -33,7 +33,7 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "mappingStatus": "CANONICAL_GAP",
     "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-    "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, embaixo, é necessário explicitar-se o referencial, visualizando e descrevendo caminhos entre dois pontos.",
+    "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
     "officialSource": {
       "id": "BNCC_EI_EF_2018",
       "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
@@ -218,7 +218,7 @@
     "sourceDossier": [
       {
         "officialCode": "EF01MA12",
-        "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, embaixo, é necessário explicitar-se o referencial, visualizando e descrevendo caminhos entre dois pontos.",
+        "descriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
         "officialSource": {
           "id": "BNCC_EI_EF_2018",
           "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",

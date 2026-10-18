@@ -1,0 +1,2035 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1",
+  "canonicalSkillCode": "COMPUTING_RECOGNIZE_CHARACTERISTICS_AND_USES",
+  "subject": "COMPUTING",
+  "domain": "CULTURA DIGITAL · TECNOLOGIAS COMPUTACIONAIS NO COTIDIANO",
+  "topic": "características e usos de tecnologias computacionais dentro e fora da escola",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CO05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.",
+    "officialSource": {
+      "id": "BNCC_COMPUTACAO_2022",
+      "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+      "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+      "page": 20
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Tecnologias computacionais em diferentes situações",
+    "objective": "Reconhecer características observáveis e usos de tecnologias computacionais em situações cotidianas da escola e de outros ambientes.",
+    "summary": "Tecnologias computacionais aparecem em dispositivos que podem apoiar diferentes tarefas, como desenhar, calcular, registrar informações, criar textos, ouvir áudio ou comunicar-se. Um mesmo dispositivo pode ter vários usos, e aparelhos diferentes podem apoiar tarefas parecidas. Nem toda atividade depende de internet, conta ou aparelho próprio: exemplos podem ser estudados por cartões, imagens e situações fictícias. Observar para que uma tecnologia serve em certo contexto ajuda a descrevê-la sem supor que todas as pessoas têm o mesmo acesso.",
+    "explanation": "Observe um dispositivo computacional em uma imagem ou exemplo seguro e descreva características visíveis, como tela, teclas, câmera, alto-falante ou forma de interação. Depois converse sobre um uso situado: um computador pode apoiar a escrita de um texto na escola; uma calculadora pode ajudar numa conta; um tablet pode mostrar um desenho; um aparelho de áudio pode tocar uma gravação. A função depende do programa, do aparelho e da situação. Não é necessário acessar contas, conectar-se à internet ou revelar como cada família usa tecnologia. Compare também opções sem dispositivo quando a tarefa puder ser feita de outra maneira.",
+    "workedExample": "Um grupo precisa organizar cartões por número. Uma calculadora pode apoiar uma contagem em algumas situações; cartões de papel também podem servir. A calculadora é uma tecnologia computacional com características próprias, mas não é necessária para toda tarefa.",
+    "commonMistake": "Afirmar que toda tecnologia computacional precisa de internet ou que todas as pessoas têm acesso ao mesmo tipo de dispositivo.",
+    "priorKnowledge": [
+      "Reconhecer alguns dispositivos computacionais por imagens ou experiências compartilhadas voluntariamente.",
+      "Observar que ferramentas diferentes podem apoiar tarefas diferentes."
+    ],
+    "keyConcepts": [
+      "tecnologia computacional",
+      "dispositivo",
+      "característica",
+      "uso",
+      "contexto",
+      "escola",
+      "cotidiano"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "TECHNOLOGY_REQUIRES_INTERNET",
+        "action": "Compare uma calculadora sem conexão e um aparelho que acessa serviços online; destaque que a conexão não define todas as tecnologias computacionais."
+      },
+      {
+        "errorFocus": "ONE_DEVICE_ONE_USE",
+        "action": "Liste usos diferentes de um mesmo dispositivo e compare com outro aparelho que pode apoiar a mesma tarefa."
+      },
+      {
+        "errorFocus": "ASSUMED_UNIVERSAL_ACCESS",
+        "action": "Use situações fictícias e alternativas em papel; não peça que estudantes informem quais aparelhos existem em casa."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+      "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+    ],
+    "authenticActivities": [
+      {
+        "id": "co05-device-use-cards",
+        "title": "O que esta tecnologia pode apoiar?",
+        "instructions": "A turma relaciona cartões genéricos de dispositivos a tarefas escolares e cotidianas fictícias.\n1. Observem uma característica visível do dispositivo ilustrado.\n2. Escolham uma tarefa que ele poderia apoiar.\n3. Compare com outra forma de realizar a mesma tarefa, com ou sem tecnologia.",
+        "steps": [
+          "Observem uma característica visível do dispositivo ilustrado.",
+          "Escolham uma tarefa que ele poderia apoiar.",
+          "Compare com outra forma de realizar a mesma tarefa, com ou sem tecnologia."
+        ],
+        "evidence": "Descrição de uma característica e de um uso em contexto, reconhecendo que pode haver alternativas.",
+        "privacyGuard": "Não perguntar quais aparelhos, contas ou redes estão disponíveis em casa; usar exemplos fictícios.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um dispositivo por imagem.",
+            "developing": "associa o dispositivo a uma tarefa possível.",
+            "proficient": "explica um uso contextual e compara uma alternativa."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "co05-school-everyday-map",
+        "title": "Mapa de usos possíveis",
+        "instructions": "Pequenos grupos organizam cartões de tecnologias em dois cenários fictícios: escola e comunidade.\n1. Escolham um cartão de dispositivo.\n2. Descrevam uma característica observável e um uso possível em cada cenário.\n3. Indiquem uma alternativa sem dispositivo quando for pertinente.",
+        "steps": [
+          "Escolham um cartão de dispositivo.",
+          "Descrevam uma característica observável e um uso possível em cada cenário.",
+          "Indiquem uma alternativa sem dispositivo quando for pertinente."
+        ],
+        "evidence": "Relação entre tecnologia, característica e uso em situações distintas sem generalizar o acesso.",
+        "privacyGuard": "Os cenários são inventados; não coletar histórias familiares, imagens ou informações de acesso pessoal.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica um dispositivo ou uso com ajuda.",
+            "developing": "relaciona um uso ao cenário.",
+            "proficient": "compara usos e reconhece que tarefas podem ter alternativas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-01",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-02",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-03",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-04",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-05",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-06",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-07",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-09",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-10",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-11",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-12",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-13",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-14",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-15",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-17",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-18",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-19",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-20",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-21",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-22",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-23",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-25",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-26",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-27",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-28",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-29",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-30",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-31",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-33",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-34",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-35",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-36",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-37",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-38",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-39",
+          "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CO05",
+        "descriptor": "Reconhecer as características e usos das tecnologias computacionais no cotidiano dentro e fora da escola.",
+        "officialSource": {
+          "id": "BNCC_COMPUTACAO_2022",
+          "documentVersion": "Computação na Educação Básica - Complemento à BNCC, 2022",
+          "url": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
+          "page": 20
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-01",
+      "statement": "Uma calculadora computacional pode apoiar",
+      "prompt": "Uma calculadora computacional pode apoiar",
+      "options": [
+        "algumas tarefas de cálculo.",
+        "o crescimento de uma planta sem observação",
+        "a cor do céu em qualquer situação",
+        "a escolha de uma senha pessoal"
+      ],
+      "correctAnswer": "algumas tarefas de cálculo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "o crescimento de uma planta sem observação": [
+          "DEVICE_USE_IN_CONTEXT"
+        ],
+        "a cor do céu em qualquer situação": [
+          "DEVICE_USE_IN_CONTEXT"
+        ],
+        "a escolha de uma senha pessoal": [
+          "DEVICE_USE_IN_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CALCULADORA_TAREFA",
+      "explanation": "A calculadora é uma tecnologia computacional que pode apoiar cálculos.",
+      "hint": "Pense no tipo de tarefa que ela ajuda a realizar.",
+      "errorFocus": "DEVICE_USE_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A calculadora é uma tecnologia computacional que pode apoiar cálculos.",
+        "incorrect": "A calculadora é uma tecnologia computacional que pode apoiar cálculos.",
+        "hint": "Pense no tipo de tarefa que ela ajuda a realizar.",
+        "errorFocus": "DEVICE_USE_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-02",
+      "statement": "Na escola, um computador pode ser usado para",
+      "prompt": "Na escola, um computador pode ser usado para",
+      "options": [
+        "substituir todas as conversas",
+        "escrever ou organizar um texto, quando disponível.",
+        "medir o vento sem instrumento",
+        "garantir que todo texto esteja correto"
+      ],
+      "correctAnswer": "escrever ou organizar um texto, quando disponível.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "substituir todas as conversas": [
+          "COMPUTER_USE_FOR_TEXT"
+        ],
+        "medir o vento sem instrumento": [
+          "COMPUTER_USE_FOR_TEXT"
+        ],
+        "garantir que todo texto esteja correto": [
+          "COMPUTER_USE_FOR_TEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "COMPUTADOR_TEXTO",
+      "explanation": "O computador pode apoiar a produção e organização de textos.",
+      "hint": "Escolha um uso possível, não obrigatório.",
+      "errorFocus": "COMPUTER_USE_FOR_TEXT",
+      "feedback": {
+        "correct": "Boa observação: O computador pode apoiar a produção e organização de textos.",
+        "incorrect": "O computador pode apoiar a produção e organização de textos.",
+        "hint": "Escolha um uso possível, não obrigatório.",
+        "errorFocus": "COMPUTER_USE_FOR_TEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-03",
+      "statement": "Qual característica pode ser observada em alguns tablets?",
+      "prompt": "Qual característica pode ser observada em alguns tablets?",
+      "options": [
+        "Uma roda de bicicleta",
+        "Uma alavanca de poço",
+        "Uma tela sensível ao toque.",
+        "Uma folha de árvore"
+      ],
+      "correctAnswer": "Uma tela sensível ao toque.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma roda de bicicleta": [
+          "OBSERVABLE_DEVICE_CHARACTERISTIC"
+        ],
+        "Uma alavanca de poço": [
+          "OBSERVABLE_DEVICE_CHARACTERISTIC"
+        ],
+        "Uma folha de árvore": [
+          "OBSERVABLE_DEVICE_CHARACTERISTIC"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "DISPOSITIVO_IMAGEM",
+      "explanation": "A tela é uma característica de alguns dispositivos computacionais.",
+      "hint": "Pense em uma parte visível do aparelho.",
+      "errorFocus": "OBSERVABLE_DEVICE_CHARACTERISTIC",
+      "feedback": {
+        "correct": "Boa observação: A tela é uma característica de alguns dispositivos computacionais.",
+        "incorrect": "A tela é uma característica de alguns dispositivos computacionais.",
+        "hint": "Pense em uma parte visível do aparelho.",
+        "errorFocus": "OBSERVABLE_DEVICE_CHARACTERISTIC"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-04",
+      "statement": "Para desenhar uma figura, que alternativa pode existir além de um aplicativo?",
+      "prompt": "Para desenhar uma figura, que alternativa pode existir além de um aplicativo?",
+      "options": [
+        "Compartilhar uma senha",
+        "Desmontar um aparelho",
+        "Usar um endereço real",
+        "Desenhar com papel e lápis."
+      ],
+      "correctAnswer": "Desenhar com papel e lápis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Compartilhar uma senha": [
+          "TECHNOLOGY_HAS_ALTERNATIVES"
+        ],
+        "Desmontar um aparelho": [
+          "TECHNOLOGY_HAS_ALTERNATIVES"
+        ],
+        "Usar um endereço real": [
+          "TECHNOLOGY_HAS_ALTERNATIVES"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "MESMA_TAREFA_ALTERNATIVA",
+      "explanation": "A tarefa pode ser realizada com ou sem tecnologia computacional.",
+      "hint": "Pense em materiais comuns de desenho.",
+      "errorFocus": "TECHNOLOGY_HAS_ALTERNATIVES",
+      "feedback": {
+        "correct": "Boa observação: A tarefa pode ser realizada com ou sem tecnologia computacional.",
+        "incorrect": "A tarefa pode ser realizada com ou sem tecnologia computacional.",
+        "hint": "Pense em materiais comuns de desenho.",
+        "errorFocus": "TECHNOLOGY_HAS_ALTERNATIVES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-05",
+      "statement": "Para entender o uso de uma tecnologia, ajuda perguntar",
+      "prompt": "Para entender o uso de uma tecnologia, ajuda perguntar",
+      "options": [
+        "que tarefa ela apoia naquela situação.",
+        "qual é a senha de alguém",
+        "quem tem o aparelho mais caro",
+        "qual pessoa precisa ser exposta"
+      ],
+      "correctAnswer": "que tarefa ela apoia naquela situação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "qual é a senha de alguém": [
+          "CONTEXTUALIZE_TECHNOLOGY_USE"
+        ],
+        "quem tem o aparelho mais caro": [
+          "CONTEXTUALIZE_TECHNOLOGY_USE"
+        ],
+        "qual pessoa precisa ser exposta": [
+          "CONTEXTUALIZE_TECHNOLOGY_USE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "USO_CONTEXTUAL",
+      "explanation": "O uso depende do contexto e da tarefa.",
+      "hint": "Relacione dispositivo e atividade.",
+      "errorFocus": "CONTEXTUALIZE_TECHNOLOGY_USE",
+      "feedback": {
+        "correct": "Boa observação: O uso depende do contexto e da tarefa.",
+        "incorrect": "O uso depende do contexto e da tarefa.",
+        "hint": "Relacione dispositivo e atividade.",
+        "errorFocus": "CONTEXTUALIZE_TECHNOLOGY_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-06",
+      "statement": "Um dispositivo de áudio pode apoiar",
+      "prompt": "Um dispositivo de áudio pode apoiar",
+      "options": [
+        "a escrita automática de qualquer resposta correta",
+        "a reprodução de uma gravação.",
+        "a troca do clima",
+        "a localização de todas as pessoas"
+      ],
+      "correctAnswer": "a reprodução de uma gravação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "a escrita automática de qualquer resposta correta": [
+          "AUDIO_DEVICE_POSSIBLE_USE"
+        ],
+        "a troca do clima": [
+          "AUDIO_DEVICE_POSSIBLE_USE"
+        ],
+        "a localização de todas as pessoas": [
+          "AUDIO_DEVICE_POSSIBLE_USE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "AUDIO_GRAVACAO",
+      "explanation": "Algumas tecnologias computacionais permitem reproduzir áudio.",
+      "hint": "Pense no que um aparelho de áudio pode fazer.",
+      "errorFocus": "AUDIO_DEVICE_POSSIBLE_USE",
+      "feedback": {
+        "correct": "Boa observação: Algumas tecnologias computacionais permitem reproduzir áudio.",
+        "incorrect": "Algumas tecnologias computacionais permitem reproduzir áudio.",
+        "hint": "Pense no que um aparelho de áudio pode fazer.",
+        "errorFocus": "AUDIO_DEVICE_POSSIBLE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-07",
+      "statement": "Todas as tecnologias computacionais precisam estar conectadas à internet para serem usadas?",
+      "prompt": "Todas as tecnologias computacionais precisam estar conectadas à internet para serem usadas?",
+      "options": [
+        "Sim, toda tecnologia depende sempre de rede",
+        "Sim, até papel e lápis precisam de internet",
+        "Não; algumas, como uma calculadora, podem funcionar sem internet.",
+        "Não, porque programas não existem"
+      ],
+      "correctAnswer": "Não; algumas, como uma calculadora, podem funcionar sem internet.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, toda tecnologia depende sempre de rede": [
+          "COMPUTING_DEVICE_NOT_ALWAYS_ONLINE"
+        ],
+        "Sim, até papel e lápis precisam de internet": [
+          "COMPUTING_DEVICE_NOT_ALWAYS_ONLINE"
+        ],
+        "Não, porque programas não existem": [
+          "COMPUTING_DEVICE_NOT_ALWAYS_ONLINE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "INTERNET_NAO_SEMPRE",
+      "explanation": "Conexão não é requisito de todos os usos computacionais.",
+      "hint": "Lembre de um dispositivo que pode operar offline.",
+      "errorFocus": "COMPUTING_DEVICE_NOT_ALWAYS_ONLINE",
+      "feedback": {
+        "correct": "Boa observação: Conexão não é requisito de todos os usos computacionais.",
+        "incorrect": "Conexão não é requisito de todos os usos computacionais.",
+        "hint": "Lembre de um dispositivo que pode operar offline.",
+        "errorFocus": "COMPUTING_DEVICE_NOT_ALWAYS_ONLINE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-08",
+      "statement": "A habilidade considera usos de tecnologia computacional",
+      "prompt": "A habilidade considera usos de tecnologia computacional",
+      "options": [
+        "somente em um laboratório",
+        "apenas em casa",
+        "em nenhum ambiente",
+        "dentro e fora da escola."
+      ],
+      "correctAnswer": "dentro e fora da escola.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "somente em um laboratório": [
+          "BOTH_CONTEXTS"
+        ],
+        "apenas em casa": [
+          "BOTH_CONTEXTS"
+        ],
+        "em nenhum ambiente": [
+          "BOTH_CONTEXTS"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ESCOLA_E_COTIDIANO",
+      "explanation": "O descritor menciona cotidiano dentro e fora da escola.",
+      "hint": "Pense nos dois contextos citados.",
+      "errorFocus": "BOTH_CONTEXTS",
+      "feedback": {
+        "correct": "Boa observação: O descritor menciona cotidiano dentro e fora da escola.",
+        "incorrect": "O descritor menciona cotidiano dentro e fora da escola.",
+        "hint": "Pense nos dois contextos citados.",
+        "errorFocus": "BOTH_CONTEXTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-09",
+      "statement": "Um tablet com aplicativo de desenho pode apoiar",
+      "prompt": "Um tablet com aplicativo de desenho pode apoiar",
+      "options": [
+        "a criação de uma imagem.",
+        "a germinação direta de uma semente",
+        "a mudança da estação",
+        "a medição do peso sem sensor ou instrumento"
+      ],
+      "correctAnswer": "a criação de uma imagem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "a germinação direta de uma semente": [
+          "TABLET_CREATIVE_USE"
+        ],
+        "a mudança da estação": [
+          "TABLET_CREATIVE_USE"
+        ],
+        "a medição do peso sem sensor ou instrumento": [
+          "TABLET_CREATIVE_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TABLET_DESENHO",
+      "explanation": "Um aplicativo de desenho pode apoiar a criação de imagens.",
+      "hint": "Observe qual tarefa combina com o aplicativo.",
+      "errorFocus": "TABLET_CREATIVE_USE",
+      "feedback": {
+        "correct": "Boa observação: Um aplicativo de desenho pode apoiar a criação de imagens.",
+        "incorrect": "Um aplicativo de desenho pode apoiar a criação de imagens.",
+        "hint": "Observe qual tarefa combina com o aplicativo.",
+        "errorFocus": "TABLET_CREATIVE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-10",
+      "statement": "Um computador e um tablet podem apoiar a escrita porque",
+      "prompt": "Um computador e um tablet podem apoiar a escrita porque",
+      "options": [
+        "são sempre o mesmo aparelho",
+        "ambos podem executar programas para produzir textos.",
+        "não têm componentes físicos",
+        "só servem para jogos"
+      ],
+      "correctAnswer": "ambos podem executar programas para produzir textos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "são sempre o mesmo aparelho": [
+          "DIFFERENT_DEVICES_SIMILAR_USE"
+        ],
+        "não têm componentes físicos": [
+          "DIFFERENT_DEVICES_SIMILAR_USE"
+        ],
+        "só servem para jogos": [
+          "DIFFERENT_DEVICES_SIMILAR_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DISPOSITIVOS_FUNCAO",
+      "explanation": "Aparelhos diferentes podem apoiar tarefas parecidas.",
+      "hint": "Compare a tarefa, não o formato do dispositivo.",
+      "errorFocus": "DIFFERENT_DEVICES_SIMILAR_USE",
+      "feedback": {
+        "correct": "Boa observação: Aparelhos diferentes podem apoiar tarefas parecidas.",
+        "incorrect": "Aparelhos diferentes podem apoiar tarefas parecidas.",
+        "hint": "Compare a tarefa, não o formato do dispositivo.",
+        "errorFocus": "DIFFERENT_DEVICES_SIMILAR_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-11",
+      "statement": "A câmera de um dispositivo pode apoiar",
+      "prompt": "A câmera de um dispositivo pode apoiar",
+      "options": [
+        "a leitura automática de sentimentos",
+        "a garantia de que uma imagem pode ser divulgada",
+        "o registro de uma imagem, quando isso for apropriado.",
+        "o armazenamento infinito"
+      ],
+      "correctAnswer": "o registro de uma imagem, quando isso for apropriado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "a leitura automática de sentimentos": [
+          "CAMERA_POSSIBLE_USE_WITH_CONTEXT"
+        ],
+        "a garantia de que uma imagem pode ser divulgada": [
+          "CAMERA_POSSIBLE_USE_WITH_CONTEXT"
+        ],
+        "o armazenamento infinito": [
+          "CAMERA_POSSIBLE_USE_WITH_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CAMERA_DIGITAL",
+      "explanation": "Uma câmera pode registrar imagens, respeitando o contexto e a autorização.",
+      "hint": "Pense no uso básico da câmera.",
+      "errorFocus": "CAMERA_POSSIBLE_USE_WITH_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Uma câmera pode registrar imagens, respeitando o contexto e a autorização.",
+        "incorrect": "Uma câmera pode registrar imagens, respeitando o contexto e a autorização.",
+        "hint": "Pense no uso básico da câmera.",
+        "errorFocus": "CAMERA_POSSIBLE_USE_WITH_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-12",
+      "statement": "Uma calculadora usada numa atividade escolar é exemplo de",
+      "prompt": "Uma calculadora usada numa atividade escolar é exemplo de",
+      "options": [
+        "uma roupa",
+        "um alimento",
+        "um tipo de animal",
+        "tecnologia computacional em contexto escolar."
+      ],
+      "correctAnswer": "tecnologia computacional em contexto escolar.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma roupa": [
+          "COMPUTING_TECHNOLOGY_EXAMPLE"
+        ],
+        "um alimento": [
+          "COMPUTING_TECHNOLOGY_EXAMPLE"
+        ],
+        "um tipo de animal": [
+          "COMPUTING_TECHNOLOGY_EXAMPLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TECNOLOGIA_COTIDIANA",
+      "explanation": "A calculadora é um dispositivo computacional que pode ser usado na escola.",
+      "hint": "Escolha o aparelho da lista.",
+      "errorFocus": "COMPUTING_TECHNOLOGY_EXAMPLE",
+      "feedback": {
+        "correct": "Boa observação: A calculadora é um dispositivo computacional que pode ser usado na escola.",
+        "incorrect": "A calculadora é um dispositivo computacional que pode ser usado na escola.",
+        "hint": "Escolha o aparelho da lista.",
+        "errorFocus": "COMPUTING_TECHNOLOGY_EXAMPLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-13",
+      "statement": "Qual alternativa combina uma característica e um uso?",
+      "prompt": "Qual alternativa combina uma característica e um uso?",
+      "options": [
+        "Um computador tem teclado e pode apoiar a digitação de um texto.",
+        "Uma mesa tem quatro pernas e sempre envia mensagens",
+        "Um caderno tem páginas e precisa de senha",
+        "Uma planta tem folhas e executa aplicativos"
+      ],
+      "correctAnswer": "Um computador tem teclado e pode apoiar a digitação de um texto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma mesa tem quatro pernas e sempre envia mensagens": [
+          "LINK_FEATURE_TO_CONTEXTUAL_USE"
+        ],
+        "Um caderno tem páginas e precisa de senha": [
+          "LINK_FEATURE_TO_CONTEXTUAL_USE"
+        ],
+        "Uma planta tem folhas e executa aplicativos": [
+          "LINK_FEATURE_TO_CONTEXTUAL_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "USO_E_CARACTERISTICA",
+      "explanation": "A resposta associa característica do dispositivo e uso plausível.",
+      "hint": "Procure uma parte do aparelho e uma tarefa relacionada.",
+      "errorFocus": "LINK_FEATURE_TO_CONTEXTUAL_USE",
+      "feedback": {
+        "correct": "Boa observação: A resposta associa característica do dispositivo e uso plausível.",
+        "incorrect": "A resposta associa característica do dispositivo e uso plausível.",
+        "hint": "Procure uma parte do aparelho e uma tarefa relacionada.",
+        "errorFocus": "LINK_FEATURE_TO_CONTEXTUAL_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-14",
+      "statement": "Como a turma pode estudar usos de tecnologias sem que cada estudante tenha um aparelho?",
+      "prompt": "Como a turma pode estudar usos de tecnologias sem que cada estudante tenha um aparelho?",
+      "options": [
+        "Exigindo que todos tragam dispositivos de casa",
+        "Com cartões, imagens e situações fictícias.",
+        "Compartilhando contas pessoais",
+        "Pedindo senhas para demonstração"
+      ],
+      "correctAnswer": "Com cartões, imagens e situações fictícias.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Exigindo que todos tragam dispositivos de casa": [
+          "EQUITABLE_UNPLUGGED_ACCESS"
+        ],
+        "Compartilhando contas pessoais": [
+          "EQUITABLE_UNPLUGGED_ACCESS"
+        ],
+        "Pedindo senhas para demonstração": [
+          "EQUITABLE_UNPLUGGED_ACCESS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "SEM_APARELHO_PROPRIO",
+      "explanation": "Aprender sobre usos não deve depender de aparelho pessoal.",
+      "hint": "Pense em materiais compartilhados e offline.",
+      "errorFocus": "EQUITABLE_UNPLUGGED_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Aprender sobre usos não deve depender de aparelho pessoal.",
+        "incorrect": "Aprender sobre usos não deve depender de aparelho pessoal.",
+        "hint": "Pense em materiais compartilhados e offline.",
+        "errorFocus": "EQUITABLE_UNPLUGGED_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-15",
+      "statement": "A turma quer organizar uma lista de materiais. Qual comparação é adequada?",
+      "prompt": "A turma quer organizar uma lista de materiais. Qual comparação é adequada?",
+      "options": [
+        "A lista só pode existir na internet",
+        "Cartões não podem organizar itens",
+        "Pode usar um editor de texto ou cartões de papel, conforme a situação.",
+        "Um aparelho decide sozinho o que comprar"
+      ],
+      "correctAnswer": "Pode usar um editor de texto ou cartões de papel, conforme a situação.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A lista só pode existir na internet": [
+          "COMPARE_DIGITAL_AND_NON_DIGITAL_METHODS"
+        ],
+        "Cartões não podem organizar itens": [
+          "COMPARE_DIGITAL_AND_NON_DIGITAL_METHODS"
+        ],
+        "Um aparelho decide sozinho o que comprar": [
+          "COMPARE_DIGITAL_AND_NON_DIGITAL_METHODS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MESMA_TAREFA_DOIS_CAMINHOS",
+      "explanation": "Tecnologia pode apoiar uma tarefa, mas pode haver outras formas.",
+      "hint": "Considere mais de um modo de organizar.",
+      "errorFocus": "COMPARE_DIGITAL_AND_NON_DIGITAL_METHODS",
+      "feedback": {
+        "correct": "Boa observação: Tecnologia pode apoiar uma tarefa, mas pode haver outras formas.",
+        "incorrect": "Tecnologia pode apoiar uma tarefa, mas pode haver outras formas.",
+        "hint": "Considere mais de um modo de organizar.",
+        "errorFocus": "COMPARE_DIGITAL_AND_NON_DIGITAL_METHODS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-16",
+      "statement": "Por que o uso de um dispositivo pode variar entre situações?",
+      "prompt": "Por que o uso de um dispositivo pode variar entre situações?",
+      "options": [
+        "A cor do dispositivo muda automaticamente sua função",
+        "Todo dispositivo tem apenas um uso",
+        "O contexto nunca importa",
+        "A tarefa e o contexto podem ser diferentes."
+      ],
+      "correctAnswer": "A tarefa e o contexto podem ser diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A cor do dispositivo muda automaticamente sua função": [
+          "CONTEXT_SHAPES_USE"
+        ],
+        "Todo dispositivo tem apenas um uso": [
+          "CONTEXT_SHAPES_USE"
+        ],
+        "O contexto nunca importa": [
+          "CONTEXT_SHAPES_USE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "USO_DEPENDE_DO_CONTEXTO",
+      "explanation": "As tecnologias podem apoiar tarefas distintas conforme o cenário.",
+      "hint": "Compare escola, casa ou comunidade fictícias.",
+      "errorFocus": "CONTEXT_SHAPES_USE",
+      "feedback": {
+        "correct": "Boa observação: As tecnologias podem apoiar tarefas distintas conforme o cenário.",
+        "incorrect": "As tecnologias podem apoiar tarefas distintas conforme o cenário.",
+        "hint": "Compare escola, casa ou comunidade fictícias.",
+        "errorFocus": "CONTEXT_SHAPES_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-17",
+      "statement": "Um grupo precisa fazer um cartaz para uma atividade. Que opção descreve um uso possível de tecnologia?",
+      "prompt": "Um grupo precisa fazer um cartaz para uma atividade. Que opção descreve um uso possível de tecnologia?",
+      "options": [
+        "Usar um programa para organizar palavras e imagens, se estiver disponível.",
+        "Publicar dados pessoais sem permissão",
+        "Substituir a conversa do grupo por uma senha",
+        "Garantir que o cartaz não precise ser revisado"
+      ],
+      "correctAnswer": "Usar um programa para organizar palavras e imagens, se estiver disponível.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Publicar dados pessoais sem permissão": [
+          "SOFTWARE_SUPPORTS_CREATION_NOT_GUARANTEE"
+        ],
+        "Substituir a conversa do grupo por uma senha": [
+          "SOFTWARE_SUPPORTS_CREATION_NOT_GUARANTEE"
+        ],
+        "Garantir que o cartaz não precise ser revisado": [
+          "SOFTWARE_SUPPORTS_CREATION_NOT_GUARANTEE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CARTAZ_DIGITAL_OU_PAPEL",
+      "explanation": "Um programa pode apoiar a criação, mas o grupo ainda planeja e revisa.",
+      "hint": "Pense em uma ferramenta de produção.",
+      "errorFocus": "SOFTWARE_SUPPORTS_CREATION_NOT_GUARANTEE",
+      "feedback": {
+        "correct": "Boa observação: Um programa pode apoiar a criação, mas o grupo ainda planeja e revisa.",
+        "incorrect": "Um programa pode apoiar a criação, mas o grupo ainda planeja e revisa.",
+        "hint": "Pense em uma ferramenta de produção.",
+        "errorFocus": "SOFTWARE_SUPPORTS_CREATION_NOT_GUARANTEE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-18",
+      "statement": "Um aparelho pequeno tem teclas e mostra resultados de contas. Qual uso é mais provável?",
+      "prompt": "Um aparelho pequeno tem teclas e mostra resultados de contas. Qual uso é mais provável?",
+      "options": [
+        "Regar uma planta sem contato",
+        "Apoiar cálculos simples.",
+        "Transformar um desenho em alimento",
+        "Identificar automaticamente todos os animais"
+      ],
+      "correctAnswer": "Apoiar cálculos simples.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Regar uma planta sem contato": [
+          "INFER_USE_FROM_CHARACTERISTICS"
+        ],
+        "Transformar um desenho em alimento": [
+          "INFER_USE_FROM_CHARACTERISTICS"
+        ],
+        "Identificar automaticamente todos os animais": [
+          "INFER_USE_FROM_CHARACTERISTICS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FUNCAO_DO_DISPOSITIVO",
+      "explanation": "Teclas e visor podem ser pistas de uma calculadora.",
+      "hint": "Use as características visíveis como pistas.",
+      "errorFocus": "INFER_USE_FROM_CHARACTERISTICS",
+      "feedback": {
+        "correct": "Boa observação: Teclas e visor podem ser pistas de uma calculadora.",
+        "incorrect": "Teclas e visor podem ser pistas de uma calculadora.",
+        "hint": "Use as características visíveis como pistas.",
+        "errorFocus": "INFER_USE_FROM_CHARACTERISTICS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-19",
+      "statement": "Um aparelho de áudio pode ser usado numa sala de aula e em outro espaço. O que pode permanecer igual?",
+      "prompt": "Um aparelho de áudio pode ser usado numa sala de aula e em outro espaço. O que pode permanecer igual?",
+      "options": [
+        "Todas as pessoas ouvirão do mesmo modo",
+        "O aparelho terá sempre a mesma finalidade",
+        "A possibilidade de reproduzir áudio, embora o contexto e a finalidade mudem.",
+        "A escola e qualquer outro espaço são idênticos"
+      ],
+      "correctAnswer": "A possibilidade de reproduzir áudio, embora o contexto e a finalidade mudem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as pessoas ouvirão do mesmo modo": [
+          "DEVICE_CAPABILITY_AND_CONTEXT"
+        ],
+        "O aparelho terá sempre a mesma finalidade": [
+          "DEVICE_CAPABILITY_AND_CONTEXT"
+        ],
+        "A escola e qualquer outro espaço são idênticos": [
+          "DEVICE_CAPABILITY_AND_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "AUDIO_EM_DOIS_AMBIENTES",
+      "explanation": "Uma característica pode permanecer enquanto a situação de uso muda.",
+      "hint": "Separe a função do contexto.",
+      "errorFocus": "DEVICE_CAPABILITY_AND_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Uma característica pode permanecer enquanto a situação de uso muda.",
+        "incorrect": "Uma característica pode permanecer enquanto a situação de uso muda.",
+        "hint": "Separe a função do contexto.",
+        "errorFocus": "DEVICE_CAPABILITY_AND_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-20",
+      "statement": "Por que não devemos afirmar que toda criança usa computador em casa?",
+      "prompt": "Por que não devemos afirmar que toda criança usa computador em casa?",
+      "options": [
+        "Porque computadores só existem na escola",
+        "Porque ninguém pode usar tecnologia",
+        "Porque casa é sempre igual",
+        "As pessoas podem ter acessos e situações diferentes."
+      ],
+      "correctAnswer": "As pessoas podem ter acessos e situações diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque computadores só existem na escola": [
+          "AVOID_UNIVERSAL_ACCESS_ASSUMPTION"
+        ],
+        "Porque ninguém pode usar tecnologia": [
+          "AVOID_UNIVERSAL_ACCESS_ASSUMPTION"
+        ],
+        "Porque casa é sempre igual": [
+          "AVOID_UNIVERSAL_ACCESS_ASSUMPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ACESSO_DIFERENTE",
+      "explanation": "Não se deve presumir que todos têm os mesmos dispositivos ou condições.",
+      "hint": "Considere que as famílias vivem realidades diferentes.",
+      "errorFocus": "AVOID_UNIVERSAL_ACCESS_ASSUMPTION",
+      "feedback": {
+        "correct": "Boa observação: Não se deve presumir que todos têm os mesmos dispositivos ou condições.",
+        "incorrect": "Não se deve presumir que todos têm os mesmos dispositivos ou condições.",
+        "hint": "Considere que as famílias vivem realidades diferentes.",
+        "errorFocus": "AVOID_UNIVERSAL_ACCESS_ASSUMPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-21",
+      "statement": "Um grupo quer ampliar uma imagem para observá-la. Qual tecnologia pode ajudar, se disponível?",
+      "prompt": "Um grupo quer ampliar uma imagem para observá-la. Qual tecnologia pode ajudar, se disponível?",
+      "options": [
+        "Uma tela ou programa que permita ampliar a imagem.",
+        "Um lápis que muda o tamanho do papel sozinho",
+        "Uma caixa fechada sem visor",
+        "Um endereço residencial"
+      ],
+      "correctAnswer": "Uma tela ou programa que permita ampliar a imagem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Um lápis que muda o tamanho do papel sozinho": [
+          "DIGITAL_TOOL_FOR_VISUAL_ACCESS"
+        ],
+        "Uma caixa fechada sem visor": [
+          "DIGITAL_TOOL_FOR_VISUAL_ACCESS"
+        ],
+        "Um endereço residencial": [
+          "DIGITAL_TOOL_FOR_VISUAL_ACCESS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TECNOLOGIA_E_TAREFA",
+      "explanation": "Algumas ferramentas permitem ampliar conteúdo visual.",
+      "hint": "Pense em uma função de visualização.",
+      "errorFocus": "DIGITAL_TOOL_FOR_VISUAL_ACCESS",
+      "feedback": {
+        "correct": "Boa observação: Algumas ferramentas permitem ampliar conteúdo visual.",
+        "incorrect": "Algumas ferramentas permitem ampliar conteúdo visual.",
+        "hint": "Pense em uma função de visualização.",
+        "errorFocus": "DIGITAL_TOOL_FOR_VISUAL_ACCESS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-22",
+      "statement": "A turma resolve uma conta sem calculadora. O que isso mostra?",
+      "prompt": "A turma resolve uma conta sem calculadora. O que isso mostra?",
+      "options": [
+        "Que tecnologia nunca é útil",
+        "Que uma tarefa pode ter mais de um modo de realização.",
+        "Que contas não podem ser feitas em aparelhos",
+        "Que papel é um programa"
+      ],
+      "correctAnswer": "Que uma tarefa pode ter mais de um modo de realização.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que tecnologia nunca é útil": [
+          "MULTIPLE_PATHS_TO_TASK"
+        ],
+        "Que contas não podem ser feitas em aparelhos": [
+          "MULTIPLE_PATHS_TO_TASK"
+        ],
+        "Que papel é um programa": [
+          "MULTIPLE_PATHS_TO_TASK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CALCULADORA_PAPEL",
+      "explanation": "Tecnologia pode apoiar atividades, sem ser a única possibilidade.",
+      "hint": "Pense no que o grupo conseguiu fazer.",
+      "errorFocus": "MULTIPLE_PATHS_TO_TASK",
+      "feedback": {
+        "correct": "Boa observação: Tecnologia pode apoiar atividades, sem ser a única possibilidade.",
+        "incorrect": "Tecnologia pode apoiar atividades, sem ser a única possibilidade.",
+        "hint": "Pense no que o grupo conseguiu fazer.",
+        "errorFocus": "MULTIPLE_PATHS_TO_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-23",
+      "statement": "Um computador pode ser usado para escrever, desenhar e organizar informações. O que isso indica?",
+      "prompt": "Um computador pode ser usado para escrever, desenhar e organizar informações. O que isso indica?",
+      "options": [
+        "O computador muda de forma a cada tarefa",
+        "O aparelho não tem características",
+        "Um mesmo dispositivo pode apoiar tarefas diferentes.",
+        "Cada tarefa exige uma pessoa diferente como aparelho"
+      ],
+      "correctAnswer": "Um mesmo dispositivo pode apoiar tarefas diferentes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O computador muda de forma a cada tarefa": [
+          "MULTIPLE_USES_PER_DEVICE"
+        ],
+        "O aparelho não tem características": [
+          "MULTIPLE_USES_PER_DEVICE"
+        ],
+        "Cada tarefa exige uma pessoa diferente como aparelho": [
+          "MULTIPLE_USES_PER_DEVICE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DISPOSITIVO_MULTIPLOS_USOS",
+      "explanation": "Tecnologias computacionais podem ter usos variados.",
+      "hint": "Considere os programas e tarefas diferentes.",
+      "errorFocus": "MULTIPLE_USES_PER_DEVICE",
+      "feedback": {
+        "correct": "Boa observação: Tecnologias computacionais podem ter usos variados.",
+        "incorrect": "Tecnologias computacionais podem ter usos variados.",
+        "hint": "Considere os programas e tarefas diferentes.",
+        "errorFocus": "MULTIPLE_USES_PER_DEVICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-24",
+      "statement": "Qual explicação reconhece tecnologia, uso e contexto sem generalizar?",
+      "prompt": "Qual explicação reconhece tecnologia, uso e contexto sem generalizar?",
+      "options": [
+        "‘Todo estudante sempre usa computador em casa.’",
+        "‘Um dispositivo serve apenas para uma coisa.’",
+        "‘É obrigatório compartilhar uma conta pessoal.’",
+        "‘Este computador pode apoiar a escrita da turma nesta atividade; também poderíamos planejar no papel.’"
+      ],
+      "correctAnswer": "‘Este computador pode apoiar a escrita da turma nesta atividade; também poderíamos planejar no papel.’",
+      "answerPosition": "D",
+      "misconceptions": {
+        "‘Todo estudante sempre usa computador em casa.’": [
+          "CONTEXTUAL_NONEXCLUSIVE_DESCRIPTION"
+        ],
+        "‘Um dispositivo serve apenas para uma coisa.’": [
+          "CONTEXTUAL_NONEXCLUSIVE_DESCRIPTION"
+        ],
+        "‘É obrigatório compartilhar uma conta pessoal.’": [
+          "CONTEXTUAL_NONEXCLUSIVE_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DESCRICAO_COMPLETA",
+      "explanation": "A resposta descreve um uso possível e reconhece alternativa e contexto.",
+      "hint": "Escolha a descrição sem generalização.",
+      "errorFocus": "CONTEXTUAL_NONEXCLUSIVE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A resposta descreve um uso possível e reconhece alternativa e contexto.",
+        "incorrect": "A resposta descreve um uso possível e reconhece alternativa e contexto.",
+        "hint": "Escolha a descrição sem generalização.",
+        "errorFocus": "CONTEXTUAL_NONEXCLUSIVE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-25",
+      "statement": "O que significa reconhecer um uso de tecnologia computacional?",
+      "prompt": "O que significa reconhecer um uso de tecnologia computacional?",
+      "options": [
+        "Relacionar uma característica ou dispositivo a uma tarefa em certo contexto.",
+        "Descobrir a senha de alguém",
+        "Saber o preço de todos os aparelhos",
+        "Usar internet em toda atividade"
+      ],
+      "correctAnswer": "Relacionar uma característica ou dispositivo a uma tarefa em certo contexto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Descobrir a senha de alguém": [
+          "RECOGNIZE_CONTEXTUAL_USE"
+        ],
+        "Saber o preço de todos os aparelhos": [
+          "RECOGNIZE_CONTEXTUAL_USE"
+        ],
+        "Usar internet em toda atividade": [
+          "RECOGNIZE_CONTEXTUAL_USE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TECNOLOGIA_E_USO",
+      "explanation": "A habilidade envolve características e usos no cotidiano.",
+      "hint": "Conecte aparelho, tarefa e situação.",
+      "errorFocus": "RECOGNIZE_CONTEXTUAL_USE",
+      "feedback": {
+        "correct": "Boa observação: A habilidade envolve características e usos no cotidiano.",
+        "incorrect": "A habilidade envolve características e usos no cotidiano.",
+        "hint": "Conecte aparelho, tarefa e situação.",
+        "errorFocus": "RECOGNIZE_CONTEXTUAL_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-26",
+      "statement": "O descritor considera tecnologias em quais contextos?",
+      "prompt": "O descritor considera tecnologias em quais contextos?",
+      "options": [
+        "Somente em casa",
+        "Dentro e fora da escola.",
+        "Somente em um laboratório",
+        "Apenas na internet"
+      ],
+      "correctAnswer": "Dentro e fora da escola.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Somente em casa": [
+          "CONTEXTS_IN_DESCRIPTOR"
+        ],
+        "Somente em um laboratório": [
+          "CONTEXTS_IN_DESCRIPTOR"
+        ],
+        "Apenas na internet": [
+          "CONTEXTS_IN_DESCRIPTOR"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "ESCOLA_FORA_ESCOLA",
+      "explanation": "O objetivo abrange usos cotidianos em diferentes ambientes.",
+      "hint": "Lembre os dois contextos.",
+      "errorFocus": "CONTEXTS_IN_DESCRIPTOR",
+      "feedback": {
+        "correct": "Boa observação: O objetivo abrange usos cotidianos em diferentes ambientes.",
+        "incorrect": "O objetivo abrange usos cotidianos em diferentes ambientes.",
+        "hint": "Lembre os dois contextos.",
+        "errorFocus": "CONTEXTS_IN_DESCRIPTOR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-27",
+      "statement": "Um programa de texto pode apoiar a turma a",
+      "prompt": "Um programa de texto pode apoiar a turma a",
+      "options": [
+        "garantir que toda informação seja verdadeira",
+        "substituir todas as ideias dos estudantes",
+        "organizar palavras e revisar um documento.",
+        "proteger automaticamente qualquer dado"
+      ],
+      "correctAnswer": "organizar palavras e revisar um documento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "garantir que toda informação seja verdadeira": [
+          "TEXT_PROGRAM_POSSIBLE_USE"
+        ],
+        "substituir todas as ideias dos estudantes": [
+          "TEXT_PROGRAM_POSSIBLE_USE"
+        ],
+        "proteger automaticamente qualquer dado": [
+          "TEXT_PROGRAM_POSSIBLE_USE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "EDITOR_TEXTO",
+      "explanation": "Programas podem apoiar a produção de textos, que ainda requer revisão.",
+      "hint": "Pense no que um editor permite fazer.",
+      "errorFocus": "TEXT_PROGRAM_POSSIBLE_USE",
+      "feedback": {
+        "correct": "Boa observação: Programas podem apoiar a produção de textos, que ainda requer revisão.",
+        "incorrect": "Programas podem apoiar a produção de textos, que ainda requer revisão.",
+        "hint": "Pense no que um editor permite fazer.",
+        "errorFocus": "TEXT_PROGRAM_POSSIBLE_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-28",
+      "statement": "Por que cartões de papel são uma boa alternativa para estudar funções de dispositivos?",
+      "prompt": "Por que cartões de papel são uma boa alternativa para estudar funções de dispositivos?",
+      "options": [
+        "Transformam papel em software",
+        "Exigem senhas",
+        "Impedem a conversa",
+        "Permitem classificar exemplos sem precisar de conexão ou aparelho pessoal."
+      ],
+      "correctAnswer": "Permitem classificar exemplos sem precisar de conexão ou aparelho pessoal.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Transformam papel em software": [
+          "OFFLINE_LEARNING_OPTION"
+        ],
+        "Exigem senhas": [
+          "OFFLINE_LEARNING_OPTION"
+        ],
+        "Impedem a conversa": [
+          "OFFLINE_LEARNING_OPTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "ALTERNATIVA_OFFLINE",
+      "explanation": "A aprendizagem pode ocorrer por imagens, cartões e situações fictícias.",
+      "hint": "Pense numa atividade acessível a toda a turma.",
+      "errorFocus": "OFFLINE_LEARNING_OPTION",
+      "feedback": {
+        "correct": "Boa observação: A aprendizagem pode ocorrer por imagens, cartões e situações fictícias.",
+        "incorrect": "A aprendizagem pode ocorrer por imagens, cartões e situações fictícias.",
+        "hint": "Pense numa atividade acessível a toda a turma.",
+        "errorFocus": "OFFLINE_LEARNING_OPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-29",
+      "statement": "Qual item descreve uma característica, não um uso?",
+      "prompt": "Qual item descreve uma característica, não um uso?",
+      "options": [
+        "Um aparelho tem uma tela e teclas.",
+        "O aparelho pode apoiar uma conta",
+        "O programa ajuda a organizar um texto",
+        "A câmera pode registrar uma imagem"
+      ],
+      "correctAnswer": "Um aparelho tem uma tela e teclas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O aparelho pode apoiar uma conta": [
+          "DISTINGUISH_CHARACTERISTIC_FROM_USE"
+        ],
+        "O programa ajuda a organizar um texto": [
+          "DISTINGUISH_CHARACTERISTIC_FROM_USE"
+        ],
+        "A câmera pode registrar uma imagem": [
+          "DISTINGUISH_CHARACTERISTIC_FROM_USE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARACTERISTICA_E_USO",
+      "explanation": "Tela e teclas são características; as outras opções descrevem usos.",
+      "hint": "Procure uma parte ou propriedade do dispositivo.",
+      "errorFocus": "DISTINGUISH_CHARACTERISTIC_FROM_USE",
+      "feedback": {
+        "correct": "Boa observação: Tela e teclas são características; as outras opções descrevem usos.",
+        "incorrect": "Tela e teclas são características; as outras opções descrevem usos.",
+        "hint": "Procure uma parte ou propriedade do dispositivo.",
+        "errorFocus": "DISTINGUISH_CHARACTERISTIC_FROM_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-30",
+      "statement": "Uma câmera pode registrar imagens. O que também precisa ser considerado?",
+      "prompt": "Uma câmera pode registrar imagens. O que também precisa ser considerado?",
+      "options": [
+        "Que toda imagem deve ser pública",
+        "O contexto e a autorização antes de compartilhar imagens de pessoas.",
+        "Que nenhum registro precisa de cuidado",
+        "Que o aparelho escolhe sozinho"
+      ],
+      "correctAnswer": "O contexto e a autorização antes de compartilhar imagens de pessoas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que toda imagem deve ser pública": [
+          "CONTEXT_AND_PRIVACY"
+        ],
+        "Que nenhum registro precisa de cuidado": [
+          "CONTEXT_AND_PRIVACY"
+        ],
+        "Que o aparelho escolhe sozinho": [
+          "CONTEXT_AND_PRIVACY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "USO_RESPONSAVEL",
+      "explanation": "O uso de uma tecnologia envolve atenção ao contexto e à privacidade.",
+      "hint": "Pense antes de divulgar uma imagem.",
+      "errorFocus": "CONTEXT_AND_PRIVACY",
+      "feedback": {
+        "correct": "Boa observação: O uso de uma tecnologia envolve atenção ao contexto e à privacidade.",
+        "incorrect": "O uso de uma tecnologia envolve atenção ao contexto e à privacidade.",
+        "hint": "Pense antes de divulgar uma imagem.",
+        "errorFocus": "CONTEXT_AND_PRIVACY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-31",
+      "statement": "Dois dispositivos diferentes podem apoiar a mesma tarefa?",
+      "prompt": "Dois dispositivos diferentes podem apoiar a mesma tarefa?",
+      "options": [
+        "Não, cada tarefa só tem um aparelho",
+        "Sim, mas apenas se tiverem a mesma cor",
+        "Sim, se suas funções ou programas permitirem.",
+        "Não, porque todos os dispositivos são iguais"
+      ],
+      "correctAnswer": "Sim, se suas funções ou programas permitirem.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Não, cada tarefa só tem um aparelho": [
+          "ALTERNATE_DEVICES_FOR_TASK"
+        ],
+        "Sim, mas apenas se tiverem a mesma cor": [
+          "ALTERNATE_DEVICES_FOR_TASK"
+        ],
+        "Não, porque todos os dispositivos são iguais": [
+          "ALTERNATE_DEVICES_FOR_TASK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DISPOSITIVOS_E_FUNCOES",
+      "explanation": "Tecnologias diferentes podem apoiar atividades parecidas.",
+      "hint": "Pense em mais de uma forma de produzir texto.",
+      "errorFocus": "ALTERNATE_DEVICES_FOR_TASK",
+      "feedback": {
+        "correct": "Boa observação: Tecnologias diferentes podem apoiar atividades parecidas.",
+        "incorrect": "Tecnologias diferentes podem apoiar atividades parecidas.",
+        "hint": "Pense em mais de uma forma de produzir texto.",
+        "errorFocus": "ALTERNATE_DEVICES_FOR_TASK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-32",
+      "statement": "Qual decisão respeita diferenças de acesso na turma?",
+      "prompt": "Qual decisão respeita diferenças de acesso na turma?",
+      "options": [
+        "Exigir que cada criança use seu próprio aparelho",
+        "Pedir contas e senhas",
+        "Avaliar quem tem o dispositivo mais novo",
+        "Usar exemplos compartilhados e oferecer atividade que não exige dispositivo pessoal."
+      ],
+      "correctAnswer": "Usar exemplos compartilhados e oferecer atividade que não exige dispositivo pessoal.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Exigir que cada criança use seu próprio aparelho": [
+          "EQUITABLE_TECHNOLOGY_LEARNING"
+        ],
+        "Pedir contas e senhas": [
+          "EQUITABLE_TECHNOLOGY_LEARNING"
+        ],
+        "Avaliar quem tem o dispositivo mais novo": [
+          "EQUITABLE_TECHNOLOGY_LEARNING"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "NAO_EXIGIR_ACESSO",
+      "explanation": "A atividade deve reconhecer que acesso individual pode variar.",
+      "hint": "Escolha a opção que funciona para a turma inteira.",
+      "errorFocus": "EQUITABLE_TECHNOLOGY_LEARNING",
+      "feedback": {
+        "correct": "Boa observação: A atividade deve reconhecer que acesso individual pode variar.",
+        "incorrect": "A atividade deve reconhecer que acesso individual pode variar.",
+        "hint": "Escolha a opção que funciona para a turma inteira.",
+        "errorFocus": "EQUITABLE_TECHNOLOGY_LEARNING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-33",
+      "statement": "Qual dispositivo pode apoiar o registro de uma imagem, se seu uso for adequado?",
+      "prompt": "Qual dispositivo pode apoiar o registro de uma imagem, se seu uso for adequado?",
+      "options": [
+        "Uma câmera digital.",
+        "Uma caixa de papel sem câmera",
+        "Uma colher",
+        "Um calendário de parede"
+      ],
+      "correctAnswer": "Uma câmera digital.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma caixa de papel sem câmera": [
+          "CAMERA_FOR_IMAGE_RECORDING"
+        ],
+        "Uma colher": [
+          "CAMERA_FOR_IMAGE_RECORDING"
+        ],
+        "Um calendário de parede": [
+          "CAMERA_FOR_IMAGE_RECORDING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TECNOLOGIA_PARA_REGISTRO",
+      "explanation": "Uma câmera é uma tecnologia computacional que pode registrar imagens.",
+      "hint": "Procure o dispositivo que captura imagens.",
+      "errorFocus": "CAMERA_FOR_IMAGE_RECORDING",
+      "feedback": {
+        "correct": "Boa observação: Uma câmera é uma tecnologia computacional que pode registrar imagens.",
+        "incorrect": "Uma câmera é uma tecnologia computacional que pode registrar imagens.",
+        "hint": "Procure o dispositivo que captura imagens.",
+        "errorFocus": "CAMERA_FOR_IMAGE_RECORDING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-34",
+      "statement": "Um programa de desenho é aberto num computador. O que podemos reconhecer?",
+      "prompt": "Um programa de desenho é aberto num computador. O que podemos reconhecer?",
+      "options": [
+        "O computador só pode desenhar",
+        "Um uso possível da tecnologia é criar ou editar imagens.",
+        "O programa sempre publica a imagem",
+        "A imagem não pode ser revisada"
+      ],
+      "correctAnswer": "Um uso possível da tecnologia é criar ou editar imagens.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O computador só pode desenhar": [
+          "SOFTWARE_USE_IS_CONTEXTUAL"
+        ],
+        "O programa sempre publica a imagem": [
+          "SOFTWARE_USE_IS_CONTEXTUAL"
+        ],
+        "A imagem não pode ser revisada": [
+          "SOFTWARE_USE_IS_CONTEXTUAL"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "PROPOSITO_DO_PROGRAMA",
+      "explanation": "O programa apoia uma tarefa sem determinar todo o contexto.",
+      "hint": "Considere a ação que o programa permite.",
+      "errorFocus": "SOFTWARE_USE_IS_CONTEXTUAL",
+      "feedback": {
+        "correct": "Boa observação: O programa apoia uma tarefa sem determinar todo o contexto.",
+        "incorrect": "O programa apoia uma tarefa sem determinar todo o contexto.",
+        "hint": "Considere a ação que o programa permite.",
+        "errorFocus": "SOFTWARE_USE_IS_CONTEXTUAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-35",
+      "statement": "Qual observação descreve uma característica de um dispositivo?",
+      "prompt": "Qual observação descreve uma característica de um dispositivo?",
+      "options": [
+        "‘Ele serve para todas as tarefas.’",
+        "‘Todos têm um desses em casa.’",
+        "‘Este aparelho tem uma tela pequena e botões.’",
+        "‘Ele garante respostas certas.’"
+      ],
+      "correctAnswer": "‘Este aparelho tem uma tela pequena e botões.’",
+      "answerPosition": "C",
+      "misconceptions": {
+        "‘Ele serve para todas as tarefas.’": [
+          "OBSERVABLE_FEATURE_DESCRIPTION"
+        ],
+        "‘Todos têm um desses em casa.’": [
+          "OBSERVABLE_FEATURE_DESCRIPTION"
+        ],
+        "‘Ele garante respostas certas.’": [
+          "OBSERVABLE_FEATURE_DESCRIPTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CARACTERISTICA_OBSERVAVEL",
+      "explanation": "A descrição nomeia características observáveis sem generalizar.",
+      "hint": "Escolha o que se pode observar no desenho.",
+      "errorFocus": "OBSERVABLE_FEATURE_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A descrição nomeia características observáveis sem generalizar.",
+        "incorrect": "A descrição nomeia características observáveis sem generalizar.",
+        "hint": "Escolha o que se pode observar no desenho.",
+        "errorFocus": "OBSERVABLE_FEATURE_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-36",
+      "statement": "Qual resposta compara uma tecnologia computacional com uma alternativa?",
+      "prompt": "Qual resposta compara uma tecnologia computacional com uma alternativa?",
+      "options": [
+        "‘Só existe uma forma correta.’",
+        "‘Todos devem ter a mesma conta.’",
+        "‘O aparelho escolhe o assunto.’",
+        "‘Podemos redigir no computador ou organizar ideias em cartões.’"
+      ],
+      "correctAnswer": "‘Podemos redigir no computador ou organizar ideias em cartões.’",
+      "answerPosition": "D",
+      "misconceptions": {
+        "‘Só existe uma forma correta.’": [
+          "COMPARE_METHODS"
+        ],
+        "‘Todos devem ter a mesma conta.’": [
+          "COMPARE_METHODS"
+        ],
+        "‘O aparelho escolhe o assunto.’": [
+          "COMPARE_METHODS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "USO_DIGITAL_E_PAPEL",
+      "explanation": "A resposta reconhece um uso digital e uma possibilidade sem dispositivo.",
+      "hint": "Procure duas formas de realizar a tarefa.",
+      "errorFocus": "COMPARE_METHODS",
+      "feedback": {
+        "correct": "Boa observação: A resposta reconhece um uso digital e uma possibilidade sem dispositivo.",
+        "incorrect": "A resposta reconhece um uso digital e uma possibilidade sem dispositivo.",
+        "hint": "Procure duas formas de realizar a tarefa.",
+        "errorFocus": "COMPARE_METHODS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-37",
+      "statement": "Durante uma atividade, uma calculadora está disponível para conferir uma conta. Qual é um uso contextual?",
+      "prompt": "Durante uma atividade, uma calculadora está disponível para conferir uma conta. Qual é um uso contextual?",
+      "options": [
+        "Apoiar a conferência daquele cálculo.",
+        "Substituir a aprendizagem de todas as ideias",
+        "Acessar informações privadas",
+        "Garantir que nenhuma conversa ocorra"
+      ],
+      "correctAnswer": "Apoiar a conferência daquele cálculo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Substituir a aprendizagem de todas as ideias": [
+          "CONTEXTUAL_CALCULATOR_USE"
+        ],
+        "Acessar informações privadas": [
+          "CONTEXTUAL_CALCULATOR_USE"
+        ],
+        "Garantir que nenhuma conversa ocorra": [
+          "CONTEXTUAL_CALCULATOR_USE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SITUACAO_ESCOLAR",
+      "explanation": "O uso está ligado a uma tarefa específica da escola.",
+      "hint": "Pense no objetivo da atividade.",
+      "errorFocus": "CONTEXTUAL_CALCULATOR_USE",
+      "feedback": {
+        "correct": "Boa observação: O uso está ligado a uma tarefa específica da escola.",
+        "incorrect": "O uso está ligado a uma tarefa específica da escola.",
+        "hint": "Pense no objetivo da atividade.",
+        "errorFocus": "CONTEXTUAL_CALCULATOR_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-38",
+      "statement": "Qual frase evita presumir o que todos possuem?",
+      "prompt": "Qual frase evita presumir o que todos possuem?",
+      "options": [
+        "‘Todo mundo tem tablet.’",
+        "‘Algumas pessoas podem usar um tablet para desenhar; outras podem usar papel.’",
+        "‘Ninguém desenha sem internet.’",
+        "‘Todos usam o mesmo aplicativo.’"
+      ],
+      "correctAnswer": "‘Algumas pessoas podem usar um tablet para desenhar; outras podem usar papel.’",
+      "answerPosition": "B",
+      "misconceptions": {
+        "‘Todo mundo tem tablet.’": [
+          "AVOID_ACCESS_GENERALIZATION"
+        ],
+        "‘Ninguém desenha sem internet.’": [
+          "AVOID_ACCESS_GENERALIZATION"
+        ],
+        "‘Todos usam o mesmo aplicativo.’": [
+          "AVOID_ACCESS_GENERALIZATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEM_SUPOSICAO",
+      "explanation": "A resposta reconhece opções e experiências diferentes.",
+      "hint": "Escolha a frase que não fala por todos.",
+      "errorFocus": "AVOID_ACCESS_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A resposta reconhece opções e experiências diferentes.",
+        "incorrect": "A resposta reconhece opções e experiências diferentes.",
+        "hint": "Escolha a frase que não fala por todos.",
+        "errorFocus": "AVOID_ACCESS_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-39",
+      "statement": "Um aparelho pode ser usado na escola para ouvir uma gravação e em outro ambiente para ouvir áudio autorizado. O que muda?",
+      "prompt": "Um aparelho pode ser usado na escola para ouvir uma gravação e em outro ambiente para ouvir áudio autorizado. O que muda?",
+      "options": [
+        "O aparelho deixa de ser tecnologia",
+        "A gravação vira hardware",
+        "O contexto e a finalidade; a capacidade de reproduzir áudio pode continuar.",
+        "O uso precisa ser sempre idêntico"
+      ],
+      "correctAnswer": "O contexto e a finalidade; a capacidade de reproduzir áudio pode continuar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O aparelho deixa de ser tecnologia": [
+          "CONTEXT_AND_FUNCTION_DISTINCTION"
+        ],
+        "A gravação vira hardware": [
+          "CONTEXT_AND_FUNCTION_DISTINCTION"
+        ],
+        "O uso precisa ser sempre idêntico": [
+          "CONTEXT_AND_FUNCTION_DISTINCTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "USO_EM_DOIS_AMBIENTES",
+      "explanation": "Uma característica pode atender a finalidades distintas em contextos diferentes.",
+      "hint": "Separe capacidade do aparelho e situação.",
+      "errorFocus": "CONTEXT_AND_FUNCTION_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Uma característica pode atender a finalidades distintas em contextos diferentes.",
+        "incorrect": "Uma característica pode atender a finalidades distintas em contextos diferentes.",
+        "hint": "Separe capacidade do aparelho e situação.",
+        "errorFocus": "CONTEXT_AND_FUNCTION_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "bncc-ef02co05-recognize-computing-technologies-and-uses-v1-40",
+      "statement": "Qual atividade ensina sobre tecnologias sem pedir uma conta pessoal?",
+      "prompt": "Qual atividade ensina sobre tecnologias sem pedir uma conta pessoal?",
+      "options": [
+        "Fazer login na conta de cada estudante",
+        "Compartilhar senhas",
+        "Publicar fotos pessoais",
+        "Classificar cartões de dispositivos e tarefas fictícias."
+      ],
+      "correctAnswer": "Classificar cartões de dispositivos e tarefas fictícias.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Fazer login na conta de cada estudante": [
+          "NO_PERSONAL_ACCOUNT_REQUIRED"
+        ],
+        "Compartilhar senhas": [
+          "NO_PERSONAL_ACCOUNT_REQUIRED"
+        ],
+        "Publicar fotos pessoais": [
+          "NO_PERSONAL_ACCOUNT_REQUIRED"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "REFLECT",
+      "contextFamily": "APRENDER_SEM_CONTA",
+      "explanation": "O reconhecimento conceitual pode ocorrer offline e sem dados privados.",
+      "hint": "Escolha a atividade com exemplos genéricos.",
+      "errorFocus": "NO_PERSONAL_ACCOUNT_REQUIRED",
+      "feedback": {
+        "correct": "Boa observação: O reconhecimento conceitual pode ocorrer offline e sem dados privados.",
+        "incorrect": "O reconhecimento conceitual pode ocorrer offline e sem dados privados.",
+        "hint": "Escolha a atividade com exemplos genéricos.",
+        "errorFocus": "NO_PERSONAL_ACCOUNT_REQUIRED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer cartões ilustrados, descrições orais, símbolos de função, alto contraste e modelos de papel.",
+          "Permitir classificação por fala, apontamento, desenho, pareamento ou comunicação alternativa; a atividade funciona sem dispositivo conectado."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

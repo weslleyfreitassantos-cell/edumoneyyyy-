@@ -7,7 +7,7 @@
   "subject": "MATHEMATICS",
   "domain": "GEOMETRIA · LOCALIZAÇÃO E DESCRIÇÃO DE CAMINHOS",
   "topic": "localização e trajetos usando um ponto de referência explicitamente nomeado",
-  "officialDescriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, embaixo, é necessário explicitar-se o referencial, visualizando e descrevendo caminhos entre dois pontos.",
+  "officialDescriptor": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
   "officialSource": { "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 281 },
   "lesson": {
     "title": "Descrever posições a partir de um ponto de referência",
