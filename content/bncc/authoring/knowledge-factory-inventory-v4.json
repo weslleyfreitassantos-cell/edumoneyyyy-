@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "b0681acc1de9e49c063621c729a9bb67b1ecbd1529045360d9ee02a14d50d93d",
+    "v5QuestionFirstPacks": "0d0b212f95d8bf0e6d3162641cd448dffe1dbe53fe6567c50318514ea2ea8299",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,7 +110,7 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 8691,
+    "v5QuestionTotal": 8931,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
@@ -211,6 +211,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01er06-recognize-expressions-in-different-spaces.json",
+        "skillCode": "AUTHORING_EF01ER06_RECOGNIZE_PERSONAL_EXPRESSIONS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "v1-geography-lived-places-fi.json",
         "skillCode": "AUTHORING_EF01GE01_OBSERVE_AND_COMPARE_LIVED_PLACES",
         "questionCount": 40,
@@ -247,6 +253,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01ge07-describe-community-work.json",
+        "skillCode": "AUTHORING_EF01GE07_COMMUNITY_WORK_ACTIVITIES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "v1-history-growth-memories-fi.json",
         "skillCode": "AUTHORING_EF01HI01_GROWTH_THROUGH_MEMORIES",
         "questionCount": 40,
@@ -279,6 +291,12 @@
       {
         "file": "ef01hi06-family-and-school-histories-and-roles.json",
         "skillCode": "AUTHORING_EF01HI06_HISTORIES_AND_SOCIAL_ROLES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01hi07-family-organization-change-and-continuity.json",
+        "skillCode": "AUTHORING_EF01HI07_FAMILY_ORGANIZATION_CHANGE_CONTINUITY",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -349,6 +367,12 @@
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
       {
+        "file": "ef01lp12-recognize-written-word-spacing.json",
+        "skillCode": "AUTHORING_EF01LP12_RECOGNIZE_WORD_SPACING",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
         "file": "mathematics-number-uses-ef01.json",
         "skillCode": "AUTHORING_EF01MA01_NUMBER_QUANTITY_ORDER_CODE",
         "questionCount": 40,
@@ -381,6 +405,12 @@
       {
         "file": "ef01ma06-basic-addition-facts-and-problems.json",
         "skillCode": "AUTHORING_EF01MA06_ADDITION_FACTS_AND_STRATEGIES",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef01ma07-compose-decompose-two-order-numbers.json",
+        "skillCode": "AUTHORING_EF01MA07_COMPOSE_DECOMPOSE_TWO_ORDERS",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -423,6 +453,12 @@
       {
         "file": "ef02ci07-sun-apparent-position-and-shadow-length.json",
         "skillCode": "AUTHORING_EF02CI07_RELATE_SUN_POSITION_AND_SHADOW",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "ef02ci08-compare-solar-radiation-surface-effects.json",
+        "skillCode": "AUTHORING_EF02CI08_COMPARE_SOLAR_SURFACE_EFFECTS",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -19201,5 +19237,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "9219c76ca78355a4f3a5d52133cb58423dd07a7233af87d586c5cf951089655d"
+  "inventoryHash": "5b3a01def7e669712e9efbfa8be934fc034db147bf9f0eab4366ecbac5eca612"
 }

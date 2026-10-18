@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef01ge07-describe-community-work",
+  "canonicalSkillCode": "AUTHORING_EF01GE07_COMMUNITY_WORK_ACTIVITIES",
+  "subject": "GEOGRAPHY",
+  "domain": "O SUJEITO E SEU LUGAR NO MUNDO",
+  "topic": "atividades de trabalho do cotidiano da comunidade",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01GE07",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Descrever atividades de trabalho relacionadas com o dia a dia da sua comunidade.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 373
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Trabalhos que participam do cotidiano",
+    "objective": "Descrever atividades de trabalho presentes no cotidiano comunitário e relacioná-las a ações e espaços, sem hierarquizar profissões ou presumir a situação das famílias.",
+    "summary": "Muitas pessoas realizam trabalhos que ajudam a organizar a vida cotidiana, como produzir alimentos, ensinar, cuidar, transportar, construir, reparar, criar e atender. Atividades acontecem em lugares diferentes e podem envolver cooperação. Comunidades têm ocupações variadas; nenhuma fonte isolada representa todos os trabalhos de um lugar. O objetivo é descrever ações e relações observáveis, sem classificar pessoas por renda, gênero ou prestígio e sem pedir que estudantes revelem ocupações familiares.",
+    "explanation": "Observe uma situação fictícia ou uma fonte autorizada e identifique a atividade, o que a pessoa faz e onde. Por exemplo, uma trabalhadora pode organizar livros numa biblioteca ou uma equipe pode cultivar alimentos. Descreva a contribuição apresentada sem dizer que uma ocupação é mais valiosa que outra. Trabalhos podem ser realizados por pessoas de diferentes gêneros e em diversos arranjos. Não suponha que toda pessoa de uma comunidade faça a mesma atividade.",
+    "workedExample": "Uma história mostra uma pessoa consertando uma bicicleta numa oficina do bairro. Podemos descrever a ação de reparar e o espaço da oficina, sem afirmar que todas as bicicletas são consertadas nesse lugar.",
+    "commonMistake": "Confundir atividade com estereótipo, presumir que uma ocupação pertence a um gênero ou tratar uma profissão como mais importante que todas as outras.",
+    "priorKnowledge": [
+      "Reconhecer lugares e ações do cotidiano comunitário.",
+      "Descrever o que aparece em uma imagem ou relato."
+    ],
+    "keyConcepts": [
+      "trabalho",
+      "atividade",
+      "comunidade",
+      "cooperação",
+      "serviço",
+      "produção",
+      "espaço",
+      "contribuição"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "WORK_ACTIVITY_DESCRIPTION",
+        "action": "Identifique verbo, tarefa e espaço descritos na fonte antes de nomear uma ocupação."
+      },
+      {
+        "errorFocus": "NO_OCCUPATIONAL_STEREOTYPE",
+        "action": "Use exemplos plurais e destaque que pessoas diversas podem realizar diferentes trabalhos."
+      },
+      {
+        "errorFocus": "NO_STATUS_HIERARCHY",
+        "action": "Compare ações e relações sem atribuir maior valor às pessoas por sua ocupação."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+      "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+      "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ge07-community-activity-map",
+        "title": "Mapa de atividades",
+        "instructions": "Um mapa fictício mostra espaços comunitários e atividades descritas em cartões.\n1. Associe cada atividade ao espaço apresentado.\n2. Descreva a ação com um verbo claro.\n3. Registre como diferentes tarefas participam do cotidiano.",
+        "steps": [
+          "Associe cada atividade ao espaço apresentado.",
+          "Descreva a ação com um verbo claro.",
+          "Registre como diferentes tarefas participam do cotidiano."
+        ],
+        "evidence": "Mapa com atividade e espaço ligados a informações das fontes.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece um espaço com apoio.",
+            "developing": "descreve uma tarefa.",
+            "proficient": "relaciona atividades e lugares sem hierarquizar pessoas."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ge07-work-cooperation-cards",
+        "title": "Cartas de cooperação",
+        "instructions": "Cenários fictícios mostram tarefas diferentes que colaboram numa feira ou escola.\n1. Leia as ações descritas.\n2. Identifique quem realiza cada tarefa e onde.\n3. Compare como as tarefas se relacionam no cenário.",
+        "steps": [
+          "Leia as ações descritas.",
+          "Identifique quem realiza cada tarefa e onde.",
+          "Compare como as tarefas se relacionam no cenário."
+        ],
+        "evidence": "Descrição de cooperação baseada nas ações da situação.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "aponta uma ação.",
+            "developing": "identifica tarefas distintas.",
+            "proficient": "explica uma relação entre tarefas com base na fonte."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef01ge07-describe-community-work-01",
+          "v1-ef01ge07-describe-community-work-02",
+          "v1-ef01ge07-describe-community-work-03",
+          "v1-ef01ge07-describe-community-work-04",
+          "v1-ef01ge07-describe-community-work-05",
+          "v1-ef01ge07-describe-community-work-06",
+          "v1-ef01ge07-describe-community-work-07",
+          "v1-ef01ge07-describe-community-work-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef01ge07-describe-community-work-09",
+          "v1-ef01ge07-describe-community-work-10",
+          "v1-ef01ge07-describe-community-work-11",
+          "v1-ef01ge07-describe-community-work-12",
+          "v1-ef01ge07-describe-community-work-13",
+          "v1-ef01ge07-describe-community-work-14",
+          "v1-ef01ge07-describe-community-work-15",
+          "v1-ef01ge07-describe-community-work-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef01ge07-describe-community-work-17",
+          "v1-ef01ge07-describe-community-work-18",
+          "v1-ef01ge07-describe-community-work-19",
+          "v1-ef01ge07-describe-community-work-20",
+          "v1-ef01ge07-describe-community-work-21",
+          "v1-ef01ge07-describe-community-work-22",
+          "v1-ef01ge07-describe-community-work-23",
+          "v1-ef01ge07-describe-community-work-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef01ge07-describe-community-work-25",
+          "v1-ef01ge07-describe-community-work-26",
+          "v1-ef01ge07-describe-community-work-27",
+          "v1-ef01ge07-describe-community-work-28",
+          "v1-ef01ge07-describe-community-work-29",
+          "v1-ef01ge07-describe-community-work-30",
+          "v1-ef01ge07-describe-community-work-31",
+          "v1-ef01ge07-describe-community-work-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef01ge07-describe-community-work-33",
+          "v1-ef01ge07-describe-community-work-34",
+          "v1-ef01ge07-describe-community-work-35",
+          "v1-ef01ge07-describe-community-work-36",
+          "v1-ef01ge07-describe-community-work-37",
+          "v1-ef01ge07-describe-community-work-38",
+          "v1-ef01ge07-describe-community-work-39",
+          "v1-ef01ge07-describe-community-work-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01GE07",
+        "descriptor": "Descrever atividades de trabalho relacionadas com o dia a dia da sua comunidade.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 373
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef01ge07-describe-community-work-01",
+      "statement": "Uma história mostra uma pessoa preparando pães numa padaria. Que atividade aparece?",
+      "prompt": "Uma história mostra uma pessoa preparando pães numa padaria. Que atividade aparece?",
+      "options": [
+        "Preparar alimentos.",
+        "Consertar bicicletas",
+        "Ensinar uma turma",
+        "Organizar livros"
+      ],
+      "correctAnswer": "Preparar alimentos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Consertar bicicletas": [
+          "WORK_ACTION"
+        ],
+        "Ensinar uma turma": [
+          "WORK_ACTION"
+        ],
+        "Organizar livros": [
+          "WORK_ACTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PADEIRO_NA_PADARIA",
+      "explanation": "A cena apresenta o preparo de pães.",
+      "hint": "Use o que a pessoa está fazendo.",
+      "errorFocus": "WORK_ACTION",
+      "feedback": {
+        "correct": "Boa observação: A cena apresenta o preparo de pães.",
+        "incorrect": "A cena apresenta o preparo de pães.",
+        "hint": "Use o que a pessoa está fazendo.",
+        "errorFocus": "WORK_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-02",
+      "statement": "Uma profissional organiza livros numa biblioteca. Qual espaço se relaciona à atividade?",
+      "prompt": "Uma profissional organiza livros numa biblioteca. Qual espaço se relaciona à atividade?",
+      "options": [
+        "Oficina mecânica",
+        "Biblioteca.",
+        "Horta",
+        "Ponto de ônibus"
+      ],
+      "correctAnswer": "Biblioteca.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Oficina mecânica": [
+          "WORKPLACE_MATCH"
+        ],
+        "Horta": [
+          "WORKPLACE_MATCH"
+        ],
+        "Ponto de ônibus": [
+          "WORKPLACE_MATCH"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "BIBLIOTECARIA_E_LIVROS",
+      "explanation": "Os livros são organizados na biblioteca descrita.",
+      "hint": "Relacione a ação ao lugar.",
+      "errorFocus": "WORKPLACE_MATCH",
+      "feedback": {
+        "correct": "Boa observação: Os livros são organizados na biblioteca descrita.",
+        "incorrect": "Os livros são organizados na biblioteca descrita.",
+        "hint": "Relacione a ação ao lugar.",
+        "errorFocus": "WORKPLACE_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-03",
+      "statement": "Uma pessoa planta verduras e outra dirige um ônibus. O que isso mostra?",
+      "prompt": "Uma pessoa planta verduras e outra dirige um ônibus. O que isso mostra?",
+      "options": [
+        "Um trabalho vale mais",
+        "Todas as pessoas fazem a mesma tarefa",
+        "Há atividades de trabalho diferentes na comunidade.",
+        "Só uma atividade é necessária"
+      ],
+      "correctAnswer": "Há atividades de trabalho diferentes na comunidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Um trabalho vale mais": [
+          "DIVERSE_WORK"
+        ],
+        "Todas as pessoas fazem a mesma tarefa": [
+          "DIVERSE_WORK"
+        ],
+        "Só uma atividade é necessária": [
+          "DIVERSE_WORK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TRABALHOS_DIFERENTES",
+      "explanation": "As situações descrevem tarefas distintas.",
+      "hint": "Compare as ações, não o valor das pessoas.",
+      "errorFocus": "DIVERSE_WORK",
+      "feedback": {
+        "correct": "Boa observação: As situações descrevem tarefas distintas.",
+        "incorrect": "As situações descrevem tarefas distintas.",
+        "hint": "Compare as ações, não o valor das pessoas.",
+        "errorFocus": "DIVERSE_WORK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-04",
+      "statement": "Uma docente lê uma história com estudantes. Que atividade está apresentada?",
+      "prompt": "Uma docente lê uma história com estudantes. Que atividade está apresentada?",
+      "options": [
+        "Reparar uma rua",
+        "Colher frutas",
+        "Atender passageiros",
+        "Ensinar e compartilhar uma leitura."
+      ],
+      "correctAnswer": "Ensinar e compartilhar uma leitura.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Reparar uma rua": [
+          "TEACHING_ACTIVITY"
+        ],
+        "Colher frutas": [
+          "TEACHING_ACTIVITY"
+        ],
+        "Atender passageiros": [
+          "TEACHING_ACTIVITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "PROFESSORA_EM_SALA",
+      "explanation": "A cena mostra uma prática de ensino.",
+      "hint": "Observe a ação da docente.",
+      "errorFocus": "TEACHING_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra uma prática de ensino.",
+        "incorrect": "A cena mostra uma prática de ensino.",
+        "hint": "Observe a ação da docente.",
+        "errorFocus": "TEACHING_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-05",
+      "statement": "Uma menina vê uma mulher consertando uma torneira. Qual conclusão é adequada?",
+      "prompt": "Uma menina vê uma mulher consertando uma torneira. Qual conclusão é adequada?",
+      "options": [
+        "Pessoas de diferentes gêneros podem realizar diferentes trabalhos.",
+        "Só homens podem consertar",
+        "A cena é impossível",
+        "Toda pessoa deve fazer esse trabalho"
+      ],
+      "correctAnswer": "Pessoas de diferentes gêneros podem realizar diferentes trabalhos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Só homens podem consertar": [
+          "NO_GENDER_STEREOTYPE"
+        ],
+        "A cena é impossível": [
+          "NO_GENDER_STEREOTYPE"
+        ],
+        "Toda pessoa deve fazer esse trabalho": [
+          "NO_GENDER_STEREOTYPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "OCUPACAO_SEM_GENERO",
+      "explanation": "A cena não sustenta restrições de gênero.",
+      "hint": "Evite estereótipos.",
+      "errorFocus": "NO_GENDER_STEREOTYPE",
+      "feedback": {
+        "correct": "Boa observação: A cena não sustenta restrições de gênero.",
+        "incorrect": "A cena não sustenta restrições de gênero.",
+        "hint": "Evite estereótipos.",
+        "errorFocus": "NO_GENDER_STEREOTYPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-06",
+      "statement": "Uma pessoa repara uma bicicleta numa oficina. Qual ação descreve o trabalho?",
+      "prompt": "Uma pessoa repara uma bicicleta numa oficina. Qual ação descreve o trabalho?",
+      "options": [
+        "Cultivar",
+        "Consertar ou reparar.",
+        "Ensinar",
+        "Coletar livros"
+      ],
+      "correctAnswer": "Consertar ou reparar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Cultivar": [
+          "REPAIR_ACTIVITY"
+        ],
+        "Ensinar": [
+          "REPAIR_ACTIVITY"
+        ],
+        "Coletar livros": [
+          "REPAIR_ACTIVITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "MECANICO_E_OFICINA",
+      "explanation": "A fonte mostra reparo de bicicleta.",
+      "hint": "Nomeie o verbo da cena.",
+      "errorFocus": "REPAIR_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A fonte mostra reparo de bicicleta.",
+        "incorrect": "A fonte mostra reparo de bicicleta.",
+        "hint": "Nomeie o verbo da cena.",
+        "errorFocus": "REPAIR_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-07",
+      "statement": "Um relato mostra uma agente orientando moradores sobre prevenção. Qual atividade aparece?",
+      "prompt": "Um relato mostra uma agente orientando moradores sobre prevenção. Qual atividade aparece?",
+      "options": [
+        "Construir brinquedos",
+        "Vender roupas",
+        "Orientar pessoas sobre cuidados de saúde.",
+        "Transportar mercadorias"
+      ],
+      "correctAnswer": "Orientar pessoas sobre cuidados de saúde.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Construir brinquedos": [
+          "COMMUNITY_CARE_WORK"
+        ],
+        "Vender roupas": [
+          "COMMUNITY_CARE_WORK"
+        ],
+        "Transportar mercadorias": [
+          "COMMUNITY_CARE_WORK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "AGENTE_DE_SAUDE",
+      "explanation": "O relato descreve uma orientação de saúde.",
+      "hint": "Use a ação informada.",
+      "errorFocus": "COMMUNITY_CARE_WORK",
+      "feedback": {
+        "correct": "Boa observação: O relato descreve uma orientação de saúde.",
+        "incorrect": "O relato descreve uma orientação de saúde.",
+        "hint": "Use a ação informada.",
+        "errorFocus": "COMMUNITY_CARE_WORK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-08",
+      "statement": "Um cartão diz que alguém trabalha numa oficina. O que a fonte permite descrever?",
+      "prompt": "Um cartão diz que alguém trabalha numa oficina. O que a fonte permite descrever?",
+      "options": [
+        "A renda da pessoa",
+        "Toda a vida familiar",
+        "O valor da ocupação",
+        "A atividade de reparo apresentada no cartão."
+      ],
+      "correctAnswer": "A atividade de reparo apresentada no cartão.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A renda da pessoa": [
+          "SOURCE_LIMIT_WORK"
+        ],
+        "Toda a vida familiar": [
+          "SOURCE_LIMIT_WORK"
+        ],
+        "O valor da ocupação": [
+          "SOURCE_LIMIT_WORK"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "TRABALHO_E_HOBBY",
+      "explanation": "A fonte informa uma atividade, não outros dados pessoais.",
+      "hint": "Limite-se ao cartão.",
+      "errorFocus": "SOURCE_LIMIT_WORK",
+      "feedback": {
+        "correct": "Boa observação: A fonte informa uma atividade, não outros dados pessoais.",
+        "incorrect": "A fonte informa uma atividade, não outros dados pessoais.",
+        "hint": "Limite-se ao cartão.",
+        "errorFocus": "SOURCE_LIMIT_WORK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-09",
+      "statement": "Uma motorista conduz um ônibus numa linha urbana. Que atividade realiza?",
+      "prompt": "Uma motorista conduz um ônibus numa linha urbana. Que atividade realiza?",
+      "options": [
+        "Transportar passageiros.",
+        "Organizar livros",
+        "Preparar refeições",
+        "Cultivar plantas"
+      ],
+      "correctAnswer": "Transportar passageiros.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Organizar livros": [
+          "TRANSPORT_ACTIVITY"
+        ],
+        "Preparar refeições": [
+          "TRANSPORT_ACTIVITY"
+        ],
+        "Cultivar plantas": [
+          "TRANSPORT_ACTIVITY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MOTORISTA_DE_ONIBUS",
+      "explanation": "A cena mostra deslocamento de passageiros.",
+      "hint": "Observe o veículo e a ação.",
+      "errorFocus": "TRANSPORT_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: A cena mostra deslocamento de passageiros.",
+        "incorrect": "A cena mostra deslocamento de passageiros.",
+        "hint": "Observe o veículo e a ação.",
+        "errorFocus": "TRANSPORT_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-10",
+      "statement": "Uma pessoa cultiva alimentos numa horta. Que ação descreve o trabalho?",
+      "prompt": "Uma pessoa cultiva alimentos numa horta. Que ação descreve o trabalho?",
+      "options": [
+        "Dirigir no trânsito",
+        "Plantar e cuidar do cultivo.",
+        "Ensinar leitura",
+        "Costurar roupas"
+      ],
+      "correctAnswer": "Plantar e cuidar do cultivo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dirigir no trânsito": [
+          "FOOD_PRODUCTION"
+        ],
+        "Ensinar leitura": [
+          "FOOD_PRODUCTION"
+        ],
+        "Costurar roupas": [
+          "FOOD_PRODUCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "AGRICULTORA_E_HORTA",
+      "explanation": "A horta é usada para cultivar alimentos.",
+      "hint": "Relacione a ação às plantas.",
+      "errorFocus": "FOOD_PRODUCTION",
+      "feedback": {
+        "correct": "Boa observação: A horta é usada para cultivar alimentos.",
+        "incorrect": "A horta é usada para cultivar alimentos.",
+        "hint": "Relacione a ação às plantas.",
+        "errorFocus": "FOOD_PRODUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-11",
+      "statement": "Uma equipe recolhe resíduos numa praça. Qual espaço aparece?",
+      "prompt": "Uma equipe recolhe resíduos numa praça. Qual espaço aparece?",
+      "options": [
+        "Sala de aula",
+        "Quarto privado",
+        "Praça pública.",
+        "Oficina"
+      ],
+      "correctAnswer": "Praça pública.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sala de aula": [
+          "COMMUNITY_SPACE"
+        ],
+        "Quarto privado": [
+          "COMMUNITY_SPACE"
+        ],
+        "Oficina": [
+          "COMMUNITY_SPACE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LIMPEZA_DE_PRACA",
+      "explanation": "A equipe realiza a atividade na praça.",
+      "hint": "Leia o local indicado.",
+      "errorFocus": "COMMUNITY_SPACE",
+      "feedback": {
+        "correct": "Boa observação: A equipe realiza a atividade na praça.",
+        "incorrect": "A equipe realiza a atividade na praça.",
+        "hint": "Leia o local indicado.",
+        "errorFocus": "COMMUNITY_SPACE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-12",
+      "statement": "Duas pessoas entregam correspondências em lugares diferentes. O que é semelhante?",
+      "prompt": "Duas pessoas entregam correspondências em lugares diferentes. O que é semelhante?",
+      "options": [
+        "Usam sempre o mesmo veículo",
+        "Trabalham no mesmo lugar",
+        "Têm a mesma história familiar",
+        "Ambas realizam entregas."
+      ],
+      "correctAnswer": "Ambas realizam entregas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Usam sempre o mesmo veículo": [
+          "COMMON_WORK_ACTION"
+        ],
+        "Trabalham no mesmo lugar": [
+          "COMMON_WORK_ACTION"
+        ],
+        "Têm a mesma história familiar": [
+          "COMMON_WORK_ACTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CARTEIRO_E_ENTREGADORA",
+      "explanation": "As fontes mostram uma ação comum.",
+      "hint": "Compare apenas o que está descrito.",
+      "errorFocus": "COMMON_WORK_ACTION",
+      "feedback": {
+        "correct": "Boa observação: As fontes mostram uma ação comum.",
+        "incorrect": "As fontes mostram uma ação comum.",
+        "hint": "Compare apenas o que está descrito.",
+        "errorFocus": "COMMON_WORK_ACTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-13",
+      "statement": "Qual frase descreve trabalhos sem hierarquizar as pessoas?",
+      "prompt": "Qual frase descreve trabalhos sem hierarquizar as pessoas?",
+      "options": [
+        "Diferentes tarefas podem contribuir para o cotidiano da comunidade.",
+        "Uma ocupação torna alguém melhor",
+        "Só uma tarefa é importante",
+        "Algumas pessoas não contribuem"
+      ],
+      "correctAnswer": "Diferentes tarefas podem contribuir para o cotidiano da comunidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma ocupação torna alguém melhor": [
+          "NO_WORK_HIERARCHY"
+        ],
+        "Só uma tarefa é importante": [
+          "NO_WORK_HIERARCHY"
+        ],
+        "Algumas pessoas não contribuem": [
+          "NO_WORK_HIERARCHY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "IMPORTANCIA_DAS_TAREFAS",
+      "explanation": "A frase reconhece contribuições sem classificar valor pessoal.",
+      "hint": "Escolha uma descrição respeitosa.",
+      "errorFocus": "NO_WORK_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece contribuições sem classificar valor pessoal.",
+        "incorrect": "A frase reconhece contribuições sem classificar valor pessoal.",
+        "hint": "Escolha uma descrição respeitosa.",
+        "errorFocus": "NO_WORK_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-14",
+      "statement": "Numa feira, uma pessoa cultiva verduras e outra organiza as bancas. Como as tarefas se relacionam?",
+      "prompt": "Numa feira, uma pessoa cultiva verduras e outra organiza as bancas. Como as tarefas se relacionam?",
+      "options": [
+        "Uma tarefa elimina a outra",
+        "Uma produz alimentos e outra ajuda a apresentá-los para a comunidade.",
+        "Ambas são idênticas",
+        "Nenhuma tem relação com a feira"
+      ],
+      "correctAnswer": "Uma produz alimentos e outra ajuda a apresentá-los para a comunidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma tarefa elimina a outra": [
+          "WORK_COOPERATION"
+        ],
+        "Ambas são idênticas": [
+          "WORK_COOPERATION"
+        ],
+        "Nenhuma tem relação com a feira": [
+          "WORK_COOPERATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "EQUIPE_DA_FEIRA",
+      "explanation": "O cenário mostra tarefas diferentes no mesmo contexto.",
+      "hint": "Relacione as ações descritas.",
+      "errorFocus": "WORK_COOPERATION",
+      "feedback": {
+        "correct": "Boa observação: O cenário mostra tarefas diferentes no mesmo contexto.",
+        "incorrect": "O cenário mostra tarefas diferentes no mesmo contexto.",
+        "hint": "Relacione as ações descritas.",
+        "errorFocus": "WORK_COOPERATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-15",
+      "statement": "Uma pessoa assenta tijolos numa obra. Qual atividade está descrita?",
+      "prompt": "Uma pessoa assenta tijolos numa obra. Qual atividade está descrita?",
+      "options": [
+        "Consertar um livro",
+        "Colher uma fruta",
+        "Construir uma estrutura.",
+        "Conduzir um ônibus"
+      ],
+      "correctAnswer": "Construir uma estrutura.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Consertar um livro": [
+          "CONSTRUCTION_WORK"
+        ],
+        "Colher uma fruta": [
+          "CONSTRUCTION_WORK"
+        ],
+        "Conduzir um ônibus": [
+          "CONSTRUCTION_WORK"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "PROFISSIONAL_DE_CONSTRUCAO",
+      "explanation": "A ação de assentar tijolos faz parte da construção.",
+      "hint": "Observe os materiais e a ação.",
+      "errorFocus": "CONSTRUCTION_WORK",
+      "feedback": {
+        "correct": "Boa observação: A ação de assentar tijolos faz parte da construção.",
+        "incorrect": "A ação de assentar tijolos faz parte da construção.",
+        "hint": "Observe os materiais e a ação.",
+        "errorFocus": "CONSTRUCTION_WORK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-16",
+      "statement": "Por que uma atividade escolar deve evitar perguntar a renda de trabalhadores da família?",
+      "prompt": "Por que uma atividade escolar deve evitar perguntar a renda de trabalhadores da família?",
+      "options": [
+        "Porque trabalhos não podem ser estudados",
+        "Porque renda define a atividade",
+        "Porque todos têm a mesma renda",
+        "Porque é informação privada e não é necessária para descrever a tarefa."
+      ],
+      "correctAnswer": "Porque é informação privada e não é necessária para descrever a tarefa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque trabalhos não podem ser estudados": [
+          "PRIVACY_IN_WORK_STUDY"
+        ],
+        "Porque renda define a atividade": [
+          "PRIVACY_IN_WORK_STUDY"
+        ],
+        "Porque todos têm a mesma renda": [
+          "PRIVACY_IN_WORK_STUDY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "NAO_PERGUNTAR_SOBRE_RENDA",
+      "explanation": "A descrição de uma atividade não exige expor renda familiar.",
+      "hint": "Pense no objetivo geográfico da aula.",
+      "errorFocus": "PRIVACY_IN_WORK_STUDY",
+      "feedback": {
+        "correct": "Boa observação: A descrição de uma atividade não exige expor renda familiar.",
+        "incorrect": "A descrição de uma atividade não exige expor renda familiar.",
+        "hint": "Pense no objetivo geográfico da aula.",
+        "errorFocus": "PRIVACY_IN_WORK_STUDY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-17",
+      "statement": "Uma pessoa organiza produtos no mercado e outra os cultiva. O que comparar?",
+      "prompt": "Uma pessoa organiza produtos no mercado e outra os cultiva. O que comparar?",
+      "options": [
+        "As diferentes tarefas relacionadas aos alimentos no cenário.",
+        "Qual pessoa é mais importante",
+        "Quem tem mais renda",
+        "Qual família merece respeito"
+      ],
+      "correctAnswer": "As diferentes tarefas relacionadas aos alimentos no cenário.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Qual pessoa é mais importante": [
+          "FOOD_WORK_CHAIN"
+        ],
+        "Quem tem mais renda": [
+          "FOOD_WORK_CHAIN"
+        ],
+        "Qual família merece respeito": [
+          "FOOD_WORK_CHAIN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TRABALHO_NO_MERCADO_E_HORTA",
+      "explanation": "A fonte mostra tarefas distintas ligadas a alimentos.",
+      "hint": "Compare as atividades.",
+      "errorFocus": "FOOD_WORK_CHAIN",
+      "feedback": {
+        "correct": "Boa observação: A fonte mostra tarefas distintas ligadas a alimentos.",
+        "incorrect": "A fonte mostra tarefas distintas ligadas a alimentos.",
+        "hint": "Compare as atividades.",
+        "errorFocus": "FOOD_WORK_CHAIN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-18",
+      "statement": "Um cartão mostra alguém cuidando de uma pessoa idosa. O que se pode descrever?",
+      "prompt": "Um cartão mostra alguém cuidando de uma pessoa idosa. O que se pode descrever?",
+      "options": [
+        "Que só familiares cuidam",
+        "Uma atividade de cuidado apresentada naquela situação.",
+        "Que todas as pessoas idosas precisam do mesmo cuidado",
+        "O valor pessoal de quem cuida"
+      ],
+      "correctAnswer": "Uma atividade de cuidado apresentada naquela situação.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que só familiares cuidam": [
+          "CARE_WORK_SCOPE"
+        ],
+        "Que todas as pessoas idosas precisam do mesmo cuidado": [
+          "CARE_WORK_SCOPE"
+        ],
+        "O valor pessoal de quem cuida": [
+          "CARE_WORK_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ATIVIDADES_DE_CUIDADO",
+      "explanation": "A fonte apresenta uma atividade específica sem regra universal.",
+      "hint": "Limite a descrição ao cartão.",
+      "errorFocus": "CARE_WORK_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A fonte apresenta uma atividade específica sem regra universal.",
+        "incorrect": "A fonte apresenta uma atividade específica sem regra universal.",
+        "hint": "Limite a descrição ao cartão.",
+        "errorFocus": "CARE_WORK_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-19",
+      "statement": "Uma artista pinta um mural numa praça. Que atividade está representada?",
+      "prompt": "Uma artista pinta um mural numa praça. Que atividade está representada?",
+      "options": [
+        "Consertar um telhado",
+        "Preparar refeições",
+        "Criar uma obra de arte em espaço comunitário.",
+        "Dirigir um ônibus"
+      ],
+      "correctAnswer": "Criar uma obra de arte em espaço comunitário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Consertar um telhado": [
+          "CREATIVE_WORK"
+        ],
+        "Preparar refeições": [
+          "CREATIVE_WORK"
+        ],
+        "Dirigir um ônibus": [
+          "CREATIVE_WORK"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ARTISTA_NA_COMUNIDADE",
+      "explanation": "A cena descreve produção artística.",
+      "hint": "Observe o que está sendo criado.",
+      "errorFocus": "CREATIVE_WORK",
+      "feedback": {
+        "correct": "Boa observação: A cena descreve produção artística.",
+        "incorrect": "A cena descreve produção artística.",
+        "hint": "Observe o que está sendo criado.",
+        "errorFocus": "CREATIVE_WORK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-20",
+      "statement": "Uma lista apresenta pessoas que ensinam, transportam e cuidam. O que ela mostra?",
+      "prompt": "Uma lista apresenta pessoas que ensinam, transportam e cuidam. O que ela mostra?",
+      "options": [
+        "Que todos fazem a mesma coisa",
+        "Que uma atividade é superior",
+        "Que só trabalhos pagos importam",
+        "Diversidade de atividades relacionadas ao cotidiano."
+      ],
+      "correctAnswer": "Diversidade de atividades relacionadas ao cotidiano.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que todos fazem a mesma coisa": [
+          "DIVERSE_ACTIVITIES"
+        ],
+        "Que uma atividade é superior": [
+          "DIVERSE_ACTIVITIES"
+        ],
+        "Que só trabalhos pagos importam": [
+          "DIVERSE_ACTIVITIES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TRABALHO_COMUNITARIO_PLURAL",
+      "explanation": "As tarefas listadas são variadas.",
+      "hint": "Leia cada ação.",
+      "errorFocus": "DIVERSE_ACTIVITIES",
+      "feedback": {
+        "correct": "Boa observação: As tarefas listadas são variadas.",
+        "incorrect": "As tarefas listadas são variadas.",
+        "hint": "Leia cada ação.",
+        "errorFocus": "DIVERSE_ACTIVITIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-21",
+      "statement": "Um relato descreve o trabalho de uma moradora. O que não se deve concluir?",
+      "prompt": "Um relato descreve o trabalho de uma moradora. O que não se deve concluir?",
+      "options": [
+        "Que todas as pessoas do bairro têm a mesma ocupação.",
+        "Que aquela moradora realiza a tarefa",
+        "Que o relato tem uma fonte",
+        "Que a atividade ocorre num contexto"
+      ],
+      "correctAnswer": "Que todas as pessoas do bairro têm a mesma ocupação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que aquela moradora realiza a tarefa": [
+          "NO_COMMUNITY_GENERALIZATION"
+        ],
+        "Que o relato tem uma fonte": [
+          "NO_COMMUNITY_GENERALIZATION"
+        ],
+        "Que a atividade ocorre num contexto": [
+          "NO_COMMUNITY_GENERALIZATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FONTE_DE_UMA_PESSOA",
+      "explanation": "Uma fonte individual não representa todo o bairro.",
+      "hint": "Considere o alcance do relato.",
+      "errorFocus": "NO_COMMUNITY_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte individual não representa todo o bairro.",
+        "incorrect": "Uma fonte individual não representa todo o bairro.",
+        "hint": "Considere o alcance do relato.",
+        "errorFocus": "NO_COMMUNITY_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-22",
+      "statement": "Um mapa marca escola, mercado e posto de saúde. Como usá-lo para estudar trabalho?",
+      "prompt": "Um mapa marca escola, mercado e posto de saúde. Como usá-lo para estudar trabalho?",
+      "options": [
+        "Inferir a renda de cada pessoa",
+        "Relacionar atividades descritas aos espaços indicados.",
+        "Adivinhar histórias familiares",
+        "Dizer que todos trabalham no mesmo local"
+      ],
+      "correctAnswer": "Relacionar atividades descritas aos espaços indicados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Inferir a renda de cada pessoa": [
+          "WORKPLACE_MAP"
+        ],
+        "Adivinhar histórias familiares": [
+          "WORKPLACE_MAP"
+        ],
+        "Dizer que todos trabalham no mesmo local": [
+          "WORKPLACE_MAP"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MAPA_DE_SERVICOS",
+      "explanation": "O mapa localiza espaços para contextualizar as atividades.",
+      "hint": "Use as informações cartográficas.",
+      "errorFocus": "WORKPLACE_MAP",
+      "feedback": {
+        "correct": "Boa observação: O mapa localiza espaços para contextualizar as atividades.",
+        "incorrect": "O mapa localiza espaços para contextualizar as atividades.",
+        "hint": "Use as informações cartográficas.",
+        "errorFocus": "WORKPLACE_MAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-23",
+      "statement": "Uma escola organiza uma feira. Quais atividades podem cooperar?",
+      "prompt": "Uma escola organiza uma feira. Quais atividades podem cooperar?",
+      "options": [
+        "Somente uma tarefa pode existir",
+        "As atividades precisam ser idênticas",
+        "Preparar materiais, organizar bancas e apoiar visitantes, conforme o cenário.",
+        "Nenhuma tarefa depende de organização"
+      ],
+      "correctAnswer": "Preparar materiais, organizar bancas e apoiar visitantes, conforme o cenário.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Somente uma tarefa pode existir": [
+          "COOPERATION_IN_CONTEXT"
+        ],
+        "As atividades precisam ser idênticas": [
+          "COOPERATION_IN_CONTEXT"
+        ],
+        "Nenhuma tarefa depende de organização": [
+          "COOPERATION_IN_CONTEXT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "TRABALHOS_QUE_COOPERAM",
+      "explanation": "O cenário reúne tarefas complementares.",
+      "hint": "Use os papéis apresentados.",
+      "errorFocus": "COOPERATION_IN_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O cenário reúne tarefas complementares.",
+        "incorrect": "O cenário reúne tarefas complementares.",
+        "hint": "Use os papéis apresentados.",
+        "errorFocus": "COOPERATION_IN_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-24",
+      "statement": "Como descrever uma ocupação com respeito?",
+      "prompt": "Como descrever uma ocupação com respeito?",
+      "options": [
+        "Associá-la a um gênero obrigatório",
+        "Classificá-la por prestígio",
+        "Presumir renda",
+        "Nomear a atividade e o contexto sem julgar a pessoa."
+      ],
+      "correctAnswer": "Nomear a atividade e o contexto sem julgar a pessoa.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Associá-la a um gênero obrigatório": [
+          "RESPECTFUL_WORK_DESCRIPTION"
+        ],
+        "Classificá-la por prestígio": [
+          "RESPECTFUL_WORK_DESCRIPTION"
+        ],
+        "Presumir renda": [
+          "RESPECTFUL_WORK_DESCRIPTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "DESCREVER_SEM_ESTEREOTIPAR",
+      "explanation": "A descrição pode ser factual e não estereotipada.",
+      "hint": "Foque na ação e no espaço.",
+      "errorFocus": "RESPECTFUL_WORK_DESCRIPTION",
+      "feedback": {
+        "correct": "Boa observação: A descrição pode ser factual e não estereotipada.",
+        "incorrect": "A descrição pode ser factual e não estereotipada.",
+        "hint": "Foque na ação e no espaço.",
+        "errorFocus": "RESPECTFUL_WORK_DESCRIPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-25",
+      "statement": "Uma pessoa transporta alimentos até um mercado. Que atividade realiza?",
+      "prompt": "Uma pessoa transporta alimentos até um mercado. Que atividade realiza?",
+      "options": [
+        "Transportar produtos.",
+        "Ensinar uma turma",
+        "Consertar um livro",
+        "Pintar um mural"
+      ],
+      "correctAnswer": "Transportar produtos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ensinar uma turma": [
+          "TRANSPORT_REVIEW"
+        ],
+        "Consertar um livro": [
+          "TRANSPORT_REVIEW"
+        ],
+        "Pintar um mural": [
+          "TRANSPORT_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ENTREGA_DE_ALIMENTOS",
+      "explanation": "A cena descreve transporte de alimentos.",
+      "hint": "Observe o movimento dos produtos.",
+      "errorFocus": "TRANSPORT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A cena descreve transporte de alimentos.",
+        "incorrect": "A cena descreve transporte de alimentos.",
+        "hint": "Observe o movimento dos produtos.",
+        "errorFocus": "TRANSPORT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-26",
+      "statement": "Uma bibliotecária organiza livros na biblioteca. Qual relação está correta?",
+      "prompt": "Uma bibliotecária organiza livros na biblioteca. Qual relação está correta?",
+      "options": [
+        "A ação ocorre numa horta",
+        "A atividade ocorre no espaço de biblioteca descrito.",
+        "O espaço é uma oficina",
+        "A fonte não informa lugar"
+      ],
+      "correctAnswer": "A atividade ocorre no espaço de biblioteca descrito.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A ação ocorre numa horta": [
+          "ROLE_SPACE_REVIEW"
+        ],
+        "O espaço é uma oficina": [
+          "ROLE_SPACE_REVIEW"
+        ],
+        "A fonte não informa lugar": [
+          "ROLE_SPACE_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "MATCH",
+      "contextFamily": "TRABALHO_E_ESPACO",
+      "explanation": "A descrição relaciona livros e biblioteca.",
+      "hint": "Leia a cena.",
+      "errorFocus": "ROLE_SPACE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A descrição relaciona livros e biblioteca.",
+        "incorrect": "A descrição relaciona livros e biblioteca.",
+        "hint": "Leia a cena.",
+        "errorFocus": "ROLE_SPACE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-27",
+      "statement": "Dizer que uma profissão vale mais que outra é necessário para descrevê-las?",
+      "prompt": "Dizer que uma profissão vale mais que outra é necessário para descrevê-las?",
+      "options": [
+        "Sim, sempre",
+        "Sim, pelo salário",
+        "Não; podemos descrever tarefas sem hierarquia pessoal.",
+        "Não, porque nenhuma tarefa existe"
+      ],
+      "correctAnswer": "Não; podemos descrever tarefas sem hierarquia pessoal.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sim, sempre": [
+          "NO_STATUS_RANKING_REVIEW"
+        ],
+        "Sim, pelo salário": [
+          "NO_STATUS_RANKING_REVIEW"
+        ],
+        "Não, porque nenhuma tarefa existe": [
+          "NO_STATUS_RANKING_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "NAO_HIERARQUIZAR",
+      "explanation": "A atividade geográfica não exige classificar valor das pessoas.",
+      "hint": "Separe descrição de julgamento.",
+      "errorFocus": "NO_STATUS_RANKING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A atividade geográfica não exige classificar valor das pessoas.",
+        "incorrect": "A atividade geográfica não exige classificar valor das pessoas.",
+        "hint": "Separe descrição de julgamento.",
+        "errorFocus": "NO_STATUS_RANKING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-28",
+      "statement": "Uma ilustração mostra homens e mulheres em ocupações variadas. Qual conclusão é adequada?",
+      "prompt": "Uma ilustração mostra homens e mulheres em ocupações variadas. Qual conclusão é adequada?",
+      "options": [
+        "Cada ocupação pertence a um gênero",
+        "A imagem define todas as comunidades",
+        "Só uma pessoa pode realizar trabalho",
+        "Pessoas diversas podem realizar trabalhos diferentes."
+      ],
+      "correctAnswer": "Pessoas diversas podem realizar trabalhos diferentes.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Cada ocupação pertence a um gênero": [
+          "GENDER_INCLUSION_REVIEW"
+        ],
+        "A imagem define todas as comunidades": [
+          "GENDER_INCLUSION_REVIEW"
+        ],
+        "Só uma pessoa pode realizar trabalho": [
+          "GENDER_INCLUSION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "DIFERENTES_GENEROS",
+      "explanation": "O trabalho não deve ser atribuído por estereótipo de gênero.",
+      "hint": "Leia o que a imagem mostra.",
+      "errorFocus": "GENDER_INCLUSION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O trabalho não deve ser atribuído por estereótipo de gênero.",
+        "incorrect": "O trabalho não deve ser atribuído por estereótipo de gênero.",
+        "hint": "Leia o que a imagem mostra.",
+        "errorFocus": "GENDER_INCLUSION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-29",
+      "statement": "Uma pessoa conserta uma janela numa oficina. Qual verbo descreve sua tarefa?",
+      "prompt": "Uma pessoa conserta uma janela numa oficina. Qual verbo descreve sua tarefa?",
+      "options": [
+        "Reparar.",
+        "Ensinar",
+        "Cultivar",
+        "Transportar"
+      ],
+      "correctAnswer": "Reparar.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ensinar": [
+          "WORK_VERB_REVIEW"
+        ],
+        "Cultivar": [
+          "WORK_VERB_REVIEW"
+        ],
+        "Transportar": [
+          "WORK_VERB_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ATIVIDADE_DE_REPARO",
+      "explanation": "A tarefa consiste em consertar a janela.",
+      "hint": "Use um verbo de ação.",
+      "errorFocus": "WORK_VERB_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A tarefa consiste em consertar a janela.",
+        "incorrect": "A tarefa consiste em consertar a janela.",
+        "hint": "Use um verbo de ação.",
+        "errorFocus": "WORK_VERB_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-30",
+      "statement": "Por que uma atividade de trabalho pode ser estudada em relação à comunidade?",
+      "prompt": "Por que uma atividade de trabalho pode ser estudada em relação à comunidade?",
+      "options": [
+        "Porque define o valor de uma pessoa",
+        "Ela pode participar de serviços e necessidades do cotidiano descrito.",
+        "Porque todo bairro tem exatamente as mesmas ocupações",
+        "Porque elimina outras tarefas"
+      ],
+      "correctAnswer": "Ela pode participar de serviços e necessidades do cotidiano descrito.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque define o valor de uma pessoa": [
+          "COMMUNITY_RELATION_REVIEW"
+        ],
+        "Porque todo bairro tem exatamente as mesmas ocupações": [
+          "COMMUNITY_RELATION_REVIEW"
+        ],
+        "Porque elimina outras tarefas": [
+          "COMMUNITY_RELATION_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "ATIVIDADE_E_COMUNIDADE",
+      "explanation": "O contexto ajuda a compreender relações com o cotidiano.",
+      "hint": "Pense no serviço ou produção.",
+      "errorFocus": "COMMUNITY_RELATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O contexto ajuda a compreender relações com o cotidiano.",
+        "incorrect": "O contexto ajuda a compreender relações com o cotidiano.",
+        "hint": "Pense no serviço ou produção.",
+        "errorFocus": "COMMUNITY_RELATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-31",
+      "statement": "Uma pessoa ajuda crianças a aprender a ler. Qual atividade aparece?",
+      "prompt": "Uma pessoa ajuda crianças a aprender a ler. Qual atividade aparece?",
+      "options": [
+        "Cultivo",
+        "Transporte",
+        "Ensino.",
+        "Reparo"
+      ],
+      "correctAnswer": "Ensino.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Cultivo": [
+          "TEACHING_REVIEW"
+        ],
+        "Transporte": [
+          "TEACHING_REVIEW"
+        ],
+        "Reparo": [
+          "TEACHING_REVIEW"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TRABALHO_DE_ENSINO",
+      "explanation": "A situação descreve ensinar leitura.",
+      "hint": "Nomeie a ação.",
+      "errorFocus": "TEACHING_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A situação descreve ensinar leitura.",
+        "incorrect": "A situação descreve ensinar leitura.",
+        "hint": "Nomeie a ação.",
+        "errorFocus": "TEACHING_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-32",
+      "statement": "Descrever trabalhos da comunidade envolve ações, espaços e...",
+      "prompt": "Descrever trabalhos da comunidade envolve ações, espaços e...",
+      "options": [
+        "estereótipos",
+        "julgamentos de renda",
+        "regras universais",
+        "respeito à diversidade de pessoas e atividades."
+      ],
+      "correctAnswer": "respeito à diversidade de pessoas e atividades.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "estereótipos": [
+          "COMMUNITY_WORK_SUMMARY"
+        ],
+        "julgamentos de renda": [
+          "COMMUNITY_WORK_SUMMARY"
+        ],
+        "regras universais": [
+          "COMMUNITY_WORK_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_TRABALHO",
+      "explanation": "Uma descrição contextualizada evita hierarquias e estereótipos.",
+      "hint": "Reúna tarefa e contexto.",
+      "errorFocus": "COMMUNITY_WORK_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Uma descrição contextualizada evita hierarquias e estereótipos.",
+        "incorrect": "Uma descrição contextualizada evita hierarquias e estereótipos.",
+        "hint": "Reúna tarefa e contexto.",
+        "errorFocus": "COMMUNITY_WORK_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-33",
+      "statement": "Uma pessoa que organiza livros numa biblioteca realiza uma atividade de...",
+      "prompt": "Uma pessoa que organiza livros numa biblioteca realiza uma atividade de...",
+      "options": [
+        "organização e atendimento naquele espaço.",
+        "cultivo",
+        "construção de estrada",
+        "transporte aéreo"
+      ],
+      "correctAnswer": "organização e atendimento naquele espaço.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "cultivo": [
+          "WORK_ACTION_REVIEW"
+        ],
+        "construção de estrada": [
+          "WORK_ACTION_REVIEW"
+        ],
+        "transporte aéreo": [
+          "WORK_ACTION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_ATIVIDADE",
+      "explanation": "A tarefa descrita é organizar livros.",
+      "hint": "Lembre-se da ação.",
+      "errorFocus": "WORK_ACTION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A tarefa descrita é organizar livros.",
+        "incorrect": "A tarefa descrita é organizar livros.",
+        "hint": "Lembre-se da ação.",
+        "errorFocus": "WORK_ACTION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-34",
+      "statement": "Um trabalhador dirige ônibus numa linha. Que espaço ou rede aparece?",
+      "prompt": "Um trabalhador dirige ônibus numa linha. Que espaço ou rede aparece?",
+      "options": [
+        "Horta",
+        "Transporte comunitário.",
+        "Biblioteca",
+        "Sala de artes"
+      ],
+      "correctAnswer": "Transporte comunitário.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Horta": [
+          "TRANSPORT_CONTEXT_REVIEW"
+        ],
+        "Biblioteca": [
+          "TRANSPORT_CONTEXT_REVIEW"
+        ],
+        "Sala de artes": [
+          "TRANSPORT_CONTEXT_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_ESPACO",
+      "explanation": "A atividade está ligada ao deslocamento de pessoas.",
+      "hint": "Observe o veículo.",
+      "errorFocus": "TRANSPORT_CONTEXT_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A atividade está ligada ao deslocamento de pessoas.",
+        "incorrect": "A atividade está ligada ao deslocamento de pessoas.",
+        "hint": "Observe o veículo.",
+        "errorFocus": "TRANSPORT_CONTEXT_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-35",
+      "statement": "Duas pessoas realizam tarefas diferentes. O que pode ser comparado?",
+      "prompt": "Duas pessoas realizam tarefas diferentes. O que pode ser comparado?",
+      "options": [
+        "Quem vale mais",
+        "Qual família é melhor",
+        "Ações, espaços ou relações descritas nas fontes.",
+        "A renda de estudantes"
+      ],
+      "correctAnswer": "Ações, espaços ou relações descritas nas fontes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Quem vale mais": [
+          "COMPARE_TASKS_REVIEW"
+        ],
+        "Qual família é melhor": [
+          "COMPARE_TASKS_REVIEW"
+        ],
+        "A renda de estudantes": [
+          "COMPARE_TASKS_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_TAREFAS",
+      "explanation": "A comparação trata de atividades observáveis.",
+      "hint": "Foque no que as fontes mostram.",
+      "errorFocus": "COMPARE_TASKS_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A comparação trata de atividades observáveis.",
+        "incorrect": "A comparação trata de atividades observáveis.",
+        "hint": "Foque no que as fontes mostram.",
+        "errorFocus": "COMPARE_TASKS_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-36",
+      "statement": "Um relato de um trabalhador representa todas as pessoas do bairro?",
+      "prompt": "Um relato de um trabalhador representa todas as pessoas do bairro?",
+      "options": [
+        "Sim, sempre",
+        "Sim, se for adulto",
+        "Não, relatos não têm valor",
+        "Não; ele descreve sua experiência ou atividade específica."
+      ],
+      "correctAnswer": "Não; ele descreve sua experiência ou atividade específica.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, sempre": [
+          "SOURCE_SCOPE_REVIEW"
+        ],
+        "Sim, se for adulto": [
+          "SOURCE_SCOPE_REVIEW"
+        ],
+        "Não, relatos não têm valor": [
+          "SOURCE_SCOPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_GENERALIZACAO",
+      "explanation": "Uma fonte individual tem limites de representação.",
+      "hint": "Considere quem contou.",
+      "errorFocus": "SOURCE_SCOPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Uma fonte individual tem limites de representação.",
+        "incorrect": "Uma fonte individual tem limites de representação.",
+        "hint": "Considere quem contou.",
+        "errorFocus": "SOURCE_SCOPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-37",
+      "statement": "Qual frase evita estereótipo sobre ocupações?",
+      "prompt": "Qual frase evita estereótipo sobre ocupações?",
+      "options": [
+        "Pessoas de diferentes gêneros podem realizar diversas tarefas.",
+        "Só homens dirigem",
+        "Só mulheres cuidam",
+        "Uma profissão define a personalidade"
+      ],
+      "correctAnswer": "Pessoas de diferentes gêneros podem realizar diversas tarefas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Só homens dirigem": [
+          "NO_OCCUPATIONAL_STEREOTYPE_REVIEW"
+        ],
+        "Só mulheres cuidam": [
+          "NO_OCCUPATIONAL_STEREOTYPE_REVIEW"
+        ],
+        "Uma profissão define a personalidade": [
+          "NO_OCCUPATIONAL_STEREOTYPE_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_ESTEREOTIPO",
+      "explanation": "A frase reconhece diversidade de pessoas e trabalhos.",
+      "hint": "Escolha uma afirmação inclusiva.",
+      "errorFocus": "NO_OCCUPATIONAL_STEREOTYPE_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: A frase reconhece diversidade de pessoas e trabalhos.",
+        "incorrect": "A frase reconhece diversidade de pessoas e trabalhos.",
+        "hint": "Escolha uma afirmação inclusiva.",
+        "errorFocus": "NO_OCCUPATIONAL_STEREOTYPE_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-38",
+      "statement": "Duas tarefas ajudam a organizar uma feira. O que a relação pode mostrar?",
+      "prompt": "Duas tarefas ajudam a organizar uma feira. O que a relação pode mostrar?",
+      "options": [
+        "Uma tarefa deve apagar a outra",
+        "Atividades diferentes podem cooperar num contexto comum.",
+        "As pessoas são idênticas",
+        "Nenhuma organização é necessária"
+      ],
+      "correctAnswer": "Atividades diferentes podem cooperar num contexto comum.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma tarefa deve apagar a outra": [
+          "WORK_COOPERATION_REVIEW"
+        ],
+        "As pessoas são idênticas": [
+          "WORK_COOPERATION_REVIEW"
+        ],
+        "Nenhuma organização é necessária": [
+          "WORK_COOPERATION_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_COOPERACAO",
+      "explanation": "O cenário permite observar cooperação.",
+      "hint": "Relacione as ações.",
+      "errorFocus": "WORK_COOPERATION_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O cenário permite observar cooperação.",
+        "incorrect": "O cenário permite observar cooperação.",
+        "hint": "Relacione as ações.",
+        "errorFocus": "WORK_COOPERATION_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-39",
+      "statement": "Como investigar trabalho sem perguntar sobre renda familiar?",
+      "prompt": "Como investigar trabalho sem perguntar sobre renda familiar?",
+      "options": [
+        "Pedir salário de cada família",
+        "Publicar documentos privados",
+        "Usar fontes públicas e descrever tarefas comunitárias.",
+        "Comparar bens dos colegas"
+      ],
+      "correctAnswer": "Usar fontes públicas e descrever tarefas comunitárias.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Pedir salário de cada família": [
+          "PRIVACY_REVIEW"
+        ],
+        "Publicar documentos privados": [
+          "PRIVACY_REVIEW"
+        ],
+        "Comparar bens dos colegas": [
+          "PRIVACY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_PRIVACIDADE",
+      "explanation": "Descrever atividade não exige dados econômicos pessoais.",
+      "hint": "Escolha fontes públicas.",
+      "errorFocus": "PRIVACY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: Descrever atividade não exige dados econômicos pessoais.",
+        "incorrect": "Descrever atividade não exige dados econômicos pessoais.",
+        "hint": "Escolha fontes públicas.",
+        "errorFocus": "PRIVACY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef01ge07-describe-community-work-40",
+      "statement": "Estudar atividades de trabalho ajuda a descrever...",
+      "prompt": "Estudar atividades de trabalho ajuda a descrever...",
+      "options": [
+        "quem merece mais respeito",
+        "a renda de cada família",
+        "uma ocupação única para todos",
+        "como diferentes tarefas se relacionam ao cotidiano comunitário."
+      ],
+      "correctAnswer": "como diferentes tarefas se relacionam ao cotidiano comunitário.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "quem merece mais respeito": [
+          "COMMUNITY_WORK_SUMMARY_REVIEW"
+        ],
+        "a renda de cada família": [
+          "COMMUNITY_WORK_SUMMARY_REVIEW"
+        ],
+        "uma ocupação única para todos": [
+          "COMMUNITY_WORK_SUMMARY_REVIEW"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_COMUNIDADE",
+      "explanation": "O foco é descrever atividades e seus contextos.",
+      "hint": "Retome o objetivo da aula.",
+      "errorFocus": "COMMUNITY_WORK_SUMMARY_REVIEW",
+      "feedback": {
+        "correct": "Boa observação: O foco é descrever atividades e seus contextos.",
+        "incorrect": "O foco é descrever atividades e seus contextos.",
+        "hint": "Retome o objetivo da aula.",
+        "errorFocus": "COMMUNITY_WORK_SUMMARY_REVIEW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar imagens descritas, cartões de ações e espaços com linguagem simples.",
+          "Permitir classificar, apontar, desenhar ou responder por comunicação alternativa.",
+          "Usar situações fictícias ou fontes públicas, sem exigir relatos sobre trabalho familiar."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "tec-escola.bncc.authored-curriculum-package.v1",
+  "contentId": "v1-ef01lp12-recognize-written-word-spacing",
+  "officialCode": "EF01LP12",
+  "outputPath": "content/adaptive/tec-escola-core-v5/ef01lp12-recognize-written-word-spacing.json",
+  "canonicalSkillCode": "AUTHORING_EF01LP12_RECOGNIZE_WORD_SPACING",
+  "subject": "PORTUGUESE_LANGUAGE",
+  "domain": "ANÁLISE LINGUÍSTICA/SEMIÓTICA",
+  "topic": "separação de palavras na escrita por espaços em branco",
+  "officialDescriptor": "Reconhecer a separação das palavras, na escrita, por espaços em branco.",
+  "officialSource": { "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+  "lesson": {
+    "title": "Palavras com espaços na escrita",
+    "objective": "Reconhecer limites entre palavras escritas em frases curtas, distinguindo espaços entre palavras de letras e sílabas dentro delas.",
+    "summary": "Na escrita convencional, espaços em branco ajudam a mostrar onde termina uma palavra e começa outra. Em “O gato dorme”, há três palavras separadas por espaços; dentro de “gato”, as letras não são separadas por espaços. A quantidade de letras ou sílabas não é a quantidade de palavras. Cartões, frases de rotina escolar e textos curtos podem tornar esses limites visíveis. A leitura é acessível com fonte ampliada, espaçamento visual e apoio oral, sem penalizar caligrafia ou velocidade.",
+    "explanation": "Leia uma frase curta e observe os espaços entre os grupos de letras. Cada grupo separado por espaço corresponde a uma palavra escrita. Em “A menina canta”, os espaços ficam entre A/menina e menina/canta. Não coloque espaços dentro de uma palavra para separar sílabas, e não junte palavras vizinhas. Pontuação pode aparecer junto de uma palavra, mas não cria por si só uma nova palavra.",
+    "workedExample": "Na frase “Bia pula corda”, os espaços separam Bia, pula e corda. São três palavras. Em “corda”, c-o-r-d-a são letras da mesma palavra, não cinco palavras.",
+    "commonMistake": "Contar letras ou sílabas como palavras, ou juntar duas palavras distintas sem espaço.",
+    "priorKnowledge": ["Reconhecer palavras familiares em frases curtas.", "Observar letras e espaços em materiais impressos ou digitais."],
+    "keyConcepts": ["palavra escrita", "espaço em branco", "limite entre palavras", "letra", "frase", "segmentação", "leitura", "revisão"],
+    "remediations": [
+      { "errorFocus": "WORD_BOUNDARY_SPACING", "action": "Cubra a frase com uma régua e revele um grupo de letras por vez, marcando cada espaço entre palavras." },
+      { "errorFocus": "WORD_VS_LETTER_OR_SYLLABLE", "action": "Compare uma palavra completa com suas letras ou partes sonoras, mantendo estas últimas sem espaço na escrita convencional." },
+      { "errorFocus": "READABLE_SENTENCE_SEGMENTATION", "action": "Reorganize cartões de palavras e releia a frase para verificar os limites." }
+    ],
+    "accessibilitySupports": ["Usar cartões com fonte ampliada, alto contraste e espaços visuais destacados.", "Permitir apontar, ordenar cartões, responder oralmente ou usar comunicação alternativa.", "Oferecer frases curtas lidas em voz alta e tempo flexível, sem avaliar velocidade ou caligrafia."],
+    "authenticActivities": [
+      { "id": "lp12-word-card-sentences", "title": "Frases com cartões de palavras", "context": "Cartões separados mostram palavras de frases curtas usadas numa rotina fictícia de sala.", "steps": ["Leia ou escute a frase-modelo.", "Organize um cartão para cada palavra com espaços entre eles.", "Releia apontando cada palavra escrita."], "evidence": "Frase montada com limites entre palavras reconhecíveis.", "rubric": ["Inicial: identifica letras ou cartões com apoio.", "Em desenvolvimento: separa a maioria das palavras.", "Consolidado: reconhece e revisa espaços entre palavras sem confundi-los com letras ou sílabas."] },
+      { "id": "lp12-space-detective", "title": "Detetives dos espaços", "context": "Frases curtas impressas apresentam separações convencionais e exemplos deliberados de palavras unidas.", "steps": ["Observe os grupos de letras.", "Marque onde uma palavra termina e outra começa.", "Explique uma revisão usando a leitura da frase."], "evidence": "Marcação dos limites das palavras com explicação baseada no texto.", "rubric": ["Inicial: localiza um espaço com apoio.", "Em desenvolvimento: corrige uma junção entre palavras.", "Consolidado: reconhece limites e distingue palavra de letra ou sílaba."] }
+    ],
+    "estimatedMinutes": 35
+  },
+  "assessments": {
+    "PROBE": [
+      ["EASY","IDENTIFY","FRASE_O_GATO_DORME","Na frase “O gato dorme”, o que o espaço entre “O” e “gato” indica?","O limite entre duas palavras.",["Uma letra nova","Uma sílaba de gato","O fim da frase"],"SPACE_MARKS_WORD_BOUNDARY","O espaço separa “O” de “gato”.","Observe os grupos de letras."],
+      ["EASY","COUNT","FRASE_BIA_PULA_CORDA","Quantas palavras há em “Bia pula corda”?","Três palavras.",["Duas palavras","Quatro palavras","Dez palavras"],"COUNT_WORDS_BY_SPACES","Os espaços dividem a frase em Bia, pula e corda.","Conte os grupos separados."],
+      ["MEDIUM","DISTINGUISH","LETRAS_DE_GATO","Em “gato”, as letras g-a-t-o formam quantas palavras escritas?","Uma palavra.",["Quatro palavras","Duas palavras","Nenhuma palavra"],"WORD_VS_LETTERS","As letras pertencem ao mesmo grupo sem espaço interno.","Não conte cada letra como palavra."],
+      ["EASY","IDENTIFY","FRASE_SOL_BRILHA","Na frase “O sol brilha”, qual trecho é uma palavra?","brilha.",["O sol","sol brilha","O sol brilha"],"IDENTIFY_ONE_WRITTEN_WORD","“brilha” é um grupo de letras entre espaços.","Escolha um único grupo."],
+      ["MEDIUM","EVALUATE","PALAVRAS_JUNTAS","A frase “Ana canta” foi escrita como “Anacanta”. O que falta para separar as palavras?","Um espaço entre “Ana” e “canta”.",["Uma letra dentro de Ana","Uma sílaba entre cada letra","Um ponto no meio da palavra"],"REPAIR_MISSING_WORD_SPACE","O exemplo junta duas palavras distintas.","Marque o limite entre elas."],
+      ["MEDIUM","READ","CARTAO_DE_FRASE","Um cartão mostra “A bola rola”. Quantas separações entre palavras aparecem?","Duas separações.",["Uma separação","Três separações","Cinco separações"],"COUNT_INTERWORD_SPACES","Três palavras formam dois limites entre palavras.","Conte os espaços visíveis."],
+      ["EASY","DISTINGUISH","SILABAS_DA_PALAVRA","Ao escrever “casa”, devemos colocar espaço entre ca e sa?","Não; “casa” permanece uma palavra escrita.",["Sim, sempre","Sim, entre todas as letras","Não, pois cada letra é uma frase"],"WORD_VS_SYLLABLE_SPACING","Partes sonoras não são separadas por espaços dentro da palavra convencional.","Pense no limite da palavra inteira."],
+      ["MEDIUM","APPLY","LEITURA_ACESSIVEL","Qual recurso pode ajudar a perceber palavras numa frase impressa?","Destacar visualmente os espaços entre grupos de letras.",["Apagar os espaços","Juntar todas as letras","Esconder o texto sem leitura oral"],"ACCESSIBLE_WORD_BOUNDARIES","O destaque ajuda a localizar os limites escritos.","Torne os espaços visíveis." ]
+    ],
+    "PRACTICE": [
+      ["EASY","COUNT","FRASE_LIA_LE_A","Na frase “Lia lê a”, quantas palavras aparecem?","Três palavras.",["Uma palavra","Duas palavras","Cinco palavras"],"COUNT_SHORT_WORDS","Lia, lê e a são três grupos separados.","Conte cada grupo."],
+      ["MEDIUM","REPAIR","FRASE_JOAO_BRINCA","Um texto diz “Joãobrinca no pátio”. Qual revisão separa as primeiras duas palavras?","João brinca no pátio.",["Joã o brinca no pátio.","Joãob rinca no pátio.","João-brinca no pátio."],"REPAIR_JOINED_WORDS","João e brinca são palavras diferentes.","Insira o espaço entre as palavras."],
+      ["EASY","IDENTIFY","FRASE_A_MALA","Em “A mala cabe”, qual palavra vem entre os espaços após “A” e antes de “cabe”?","mala.",["A mala","cabe","A"],"IDENTIFY_MIDDLE_WORD","“mala” está entre os outros dois grupos.","Localize o grupo do meio."],
+      ["MEDIUM","DISTINGUISH","PALAVRA_COM_PONTUACAO","Em “Vem, Beto!”, qual sinal aparece junto da palavra “Vem”?","A vírgula.",["Um espaço dentro de Vem","Uma nova letra no meio","Um espaço que divide Vem em duas palavras"],"PUNCTUATION_NOT_WORD_BOUNDARY","A vírgula aparece junto da palavra e não a divide em duas.","Observe o sinal ao lado da palavra."],
+      ["MEDIUM","EVALUATE","FRASE_COM_ESPACAMENTO","Qual escrita separa corretamente as palavras de “O pato nada”?","O pato nada.",["Opatonada.","Opa ton ada.","O p a t o n a d a."],"SELECT_CONVENTIONAL_SPACING","Há espaços entre palavras, não dentro delas.","Mantenha cada palavra unida."],
+      ["HARD","ANALYZE","LETRAS_E_PALAVRAS","A frase “Mila sorri” tem duas palavras. Quantas letras há em “Mila”?","Quatro letras.",["Uma letra","Duas letras","Duas palavras"],"SEPARATE_WORD_AND_LETTER_COUNTS","A pergunta solicita letras de uma única palavra.","Conte M, i, l e a."],
+      ["EASY","IDENTIFY","FRASE_VOVO_CHEGOU","Na frase “Vovó chegou cedo”, qual grupo é uma palavra?","cedo.",["chegou cedo","Vovó chegou","Vovó chegou cedo"],"IDENTIFY_WORD_IN_SENTENCE","“cedo” é um grupo separado por espaços.","Escolha apenas um grupo."],
+      ["MEDIUM","APPLY","CARTOES_MISTURADOS","Os cartões “hoje”, “chove” e “muito” formam “Hoje chove muito”. O que deve ficar entre os cartões?","Um espaço entre cada palavra.",["Um espaço entre cada letra","Nenhum espaço","Uma sílaba entre as palavras"],"ASSEMBLE_WORD_CARDS","Os cartões representam palavras completas.","Separe os cartões, não as letras."]
+    ],
+    "TRANSFER": [
+      ["MEDIUM","REPAIR","BILHETE_DA_TURMA","Um bilhete diz “A turma lê”. Qual formato mostra corretamente as palavras?","A turma lê.",["Aturmalê.","A tur ma lê.","At urma lê."],"TRANSFER_WORD_SPACING","A escrita convencional separa as três palavras.","Mantenha cada palavra inteira."],
+      ["EASY","IDENTIFY","LEGENDA_DO_DESENHO","Uma legenda diz “Meu peixe nada”. Qual é a segunda palavra?","peixe.",["Meu","nada","Meu peixe"],"FIND_WORD_POSITION","peixe aparece entre Meu e nada.","Conte os grupos da esquerda para a direita."],
+      ["MEDIUM","DISTINGUISH","PALAVRA_LONGA","Em “borboleta voa”, “borboleta” tem muitas letras. Quantas palavras ela representa?","Uma palavra.",["Oito palavras","Duas palavras","Nenhuma palavra"],"LONG_WORD_STILL_ONE_WORD","O tamanho em letras não muda o limite da palavra.","Conte o grupo entre os espaços."],
+      ["MEDIUM","EVALUATE","REVISAR_TEXTO_CURTO","Uma criança escreveu “Osolaparece”. Qual revisão preserva as palavras da frase?","O sol aparece.",["O s ol aparece.","Os olaparece.","Osol aparece."],"REVISE_JOINED_PHRASE","A frase tem três palavras separadas.","Leia em voz alta e marque os limites."],
+      ["HARD","ANALYZE","ESPACO_E_PONTUACAO","Em “Nina desenha.”, quantas palavras há antes do ponto final?","Duas palavras.",["Uma palavra","Três palavras","O ponto é uma palavra"],"WORD_COUNT_WITH_PUNCTUATION","Nina e desenha são separadas; o ponto final não é palavra.","Não conte o sinal como palavra."],
+      ["MEDIUM","APPLY","FRASE_COM_CARTOES_VISUAIS","Uma estudante prefere apontar em vez de escrever. Como pode mostrar os limites entre palavras?","Colocar cartões separados, um para cada palavra.",["Separar cada letra em um cartão","Juntar todos os cartões","Apagar as palavras curtas"],"ACCESSIBLE_SEGMENTATION_RESPONSE","Cartões inteiros permitem demonstrar a separação.","Use um cartão por palavra."],
+      ["EASY","COUNT","FRASE_PIPA_SOBE_ALTO","Em “A pipa sobe alto”, quantas palavras estão separadas por espaços?","Quatro palavras.",["Duas palavras","Três palavras","Cinco palavras"],"COUNT_FOUR_WORDS","A, pipa, sobe e alto formam quatro grupos.","Conte os grupos escritos."],
+      ["HARD","JUSTIFY","EXPLICAR_ESPACOS","Por que escrever “Duda pinta” com um espaço entre as palavras ajuda o leitor?","Mostra onde uma palavra termina e a outra começa.",["Separa cada sílaba","Muda o tamanho das letras","Indica que cada letra é uma palavra"],"EXPLAIN_WORD_BOUNDARY_FUNCTION","Os espaços sinalizam limites entre palavras.","Pense em como o leitor reconhece cada grupo."]
+    ],
+    "LOCK_IN": [
+      ["EASY","RECALL","REGRA_DE_ESPACAMENTO","Na escrita convencional, espaços em branco separam...","palavras.",["cada letra de uma palavra","cada som falado","todas as sílabas"],"RECALL_SPACING_RULE","Espaços marcam limites entre palavras.","Lembre-se dos grupos de letras."],
+      ["EASY","COUNT","FRASE_CAI_CHUVA","Quantas palavras há em “Cai chuva”?","Duas palavras.",["Uma palavra","Três palavras","Quatro palavras"],"COUNT_TWO_WORDS","Cai e chuva estão separados por um espaço.","Conte os dois grupos."],
+      ["MEDIUM","DISTINGUISH","UMA_PALAVRA_MUITAS_LETRAS","“Elefante” aparece entre dois espaços. Isso indica...","uma palavra escrita.",["oito palavras","duas frases","uma letra apenas"],"DISTINGUISH_WORD_LENGTH","O grupo inteiro é uma palavra, apesar de ter várias letras.","Observe o grupo completo."],
+      ["MEDIUM","EVALUATE","CORRECAO_DE_ESPACO","Qual opção mantém “A lua brilha” legível e com separação adequada?","A lua brilha.",["Aluabr ilha.","A l u a b r i l h a.","Alua brilha."],"SELECT_READABLE_SEGMENTATION","As três palavras estão separadas sem espaços internos.","Confira cada limite."],
+      ["EASY","IDENTIFY","PALAVRA_FINAL","Em “Pedro corre rápido”, qual palavra aparece por último?","rápido.",["Pedro","corre","Pedro corre"],"IDENTIFY_FINAL_WORD","“rápido” é o último grupo separado.","Olhe o grupo depois do segundo espaço."],
+      ["MEDIUM","APPLY","PALAVRAS_EM_TIRA","Uma tira mostra as palavras “Eu”, “vejo” e “nuvens”. Como formar a frase escrita?","Eu vejo nuvens.",["Euv ejon uv ens.","Euvej nuvens.","E u v e j o nuvens."],"ASSEMBLE_SPACED_SENTENCE","Cada palavra permanece unida e recebe espaço da próxima.","Use um espaço entre os cartões."],
+      ["HARD","ANALYZE","CONTAR_LETRAS_SEPARADAMENTE","Em “Luna pula”, quantas palavras há e quantas letras tem “Luna”?","Duas palavras; “Luna” tem quatro letras.",["Quatro palavras; duas letras","Uma palavra; quatro letras","Duas palavras; oito letras em “Luna”"],"DISTINGUISH_COUNTS","A frase tem dois grupos e a primeira palavra tem quatro letras.","Responda cada contagem separadamente."],
+      ["HARD","JUSTIFY","SINTese_SEGMENTACAO","Reconhecer espaços entre palavras ajuda a...","perceber os limites das palavras na frase escrita.",["separar letras em toda palavra","adivinhar a fala de alguém","contar sílabas como palavras"],"WORD_SPACING_SUMMARY","Os espaços tornam limites entre palavras visíveis.","Retome a função do espaço." ]
+    ],
+    "REVIEW": [
+      ["EASY","RECALL","REVISAO_DE_PALAVRAS","Em “Nina canta”, qual sinal separa Nina de canta?","Um espaço em branco.",["Uma letra","Uma sílaba","Um ponto final"],"REVIEW_INTERWORD_SPACE","O espaço marca o limite entre as duas palavras.","Observe o intervalo."],
+      ["EASY","IDENTIFY","REVISAO_DE_GRUPO","Em “O rio corre”, qual grupo é uma palavra?","rio.",["O rio","rio corre","O rio corre"],"REVIEW_WORD_GROUP","rio fica entre dois espaços.","Escolha um grupo só."],
+      ["MEDIUM","DISTINGUISH","REVISAO_DE_LETRAS","As letras de “lata” têm espaços entre si na escrita convencional?","Não; elas formam uma palavra unida.",["Sim, sempre","Só quando há quatro letras","Sim, se a frase for curta"],"REVIEW_LETTERS_WITHIN_WORD","Não se inserem espaços entre letras de uma palavra comum.","Pense na palavra inteira."],
+      ["MEDIUM","REPAIR","REVISAO_DE_JUNCAO","Como revisar “Betoestuda”?","Beto estuda.",["Be toestuda.","B e t o estuda.","Betoes tuda."],"REVIEW_JOINED_WORDS","A frase apresenta duas palavras que precisam de separação.","Leia e localize o limite."],
+      ["MEDIUM","EVALUATE","REVISAO_DE_PONTUACAO","Em “Vem, Ana!”, a vírgula deve ser contada como palavra?","Não; é um sinal junto à palavra.",["Sim, como duas palavras","Sim, como uma letra","Não, e deve ser colocada dentro de Ana"],"REVIEW_PUNCTUATION","Sinais de pontuação não são palavras.","Separe sinal e palavra."],
+      ["HARD","ANALYZE","REVISAO_DE_QUANTIDADE","“O menino ri” tem três palavras. Quantos espaços entre palavras são necessários?","Dois espaços.",["Um espaço","Três espaços","Cinco espaços"],"REVIEW_SPACE_COUNT","Três palavras em sequência precisam de dois limites entre elas.","Conte os intervalos entre grupos."],
+      ["MEDIUM","APPLY","REVISAO_DE_ACESSIBILIDADE","Uma criança usa letras ampliadas. O que pode ajudar a ver a separação?","Manter contraste e destacar os espaços entre palavras.",["Apagar os espaços","Diminuir todo o texto","Juntar as palavras"],"REVIEW_ACCESSIBLE_TEXT","Espaços visíveis apoiam o reconhecimento de limites.","Preserve intervalos claros."],
+      ["HARD","JUSTIFY","SINTese_DE_ESPACOS","Qual ideia resume a separação das palavras na escrita?","Espaços em branco indicam limites entre palavras.",["Cada letra precisa de um espaço","Toda sílaba é uma palavra","A pontuação substitui todos os espaços"],"REVIEW_WORD_BOUNDARY_SUMMARY","A habilidade foca os espaços entre palavras escritas.","Lembre da frase “O gato dorme”."]
+    ]
+  }
+}

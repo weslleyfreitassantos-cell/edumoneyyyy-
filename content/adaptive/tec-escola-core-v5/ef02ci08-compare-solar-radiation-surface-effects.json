@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-ef02ci08-compare-solar-radiation-surface-effects",
+  "canonicalSkillCode": "AUTHORING_EF02CI08_COMPARE_SOLAR_SURFACE_EFFECTS",
+  "subject": "SCIENCE",
+  "domain": "TERRA E UNIVERSO",
+  "topic": "efeitos de aquecimento e reflexão da radiação solar em diferentes superfícies",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 8,
+    "TRANSFER": 8,
+    "LOCK_IN": 8,
+    "REVIEW": 8
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI08",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Comparar o efeito da radiação solar (aquecimento e reflexão) em diferentes tipos de superfície (água, areia, solo, superfícies escura, clara e metálica etc.).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Luz do Sol e diferentes superfícies",
+    "objective": "Comparar, a partir de registros seguros e controlados, como a radiação solar pode estar relacionada ao aquecimento e à reflexão em diferentes superfícies.",
+    "summary": "Superfícies como água, areia, solo, materiais claros, escuros e metálicos podem interagir de modos diferentes com a radiação solar: parte da energia pode ser absorvida e contribuir para o aquecimento, e parte da luz pode ser refletida. Observações dependem do material, da cor, da quantidade de luz, do horário e de outras condições; uma medição não cria uma regra absoluta para todo objeto. Atividades usam dados previamente coletados por adulto ou simulações e nunca exigem olhar para o Sol nem tocar em materiais aquecidos.",
+    "explanation": "Compare registros feitos no mesmo intervalo e em condições semelhantes. Observe qual superfície apresentou maior variação de temperatura no conjunto de dados e quais observações descrevem luz refletida. Não conclua que toda superfície de uma cor ou material sempre terá o mesmo resultado: contexto e método influenciam. A turma pode usar tabelas, fotografias ou simulação preparada. Nunca olhe diretamente para o Sol, use lentes para observá-lo ou toque em itens aquecidos; o adulto mantém o controle de qualquer equipamento.",
+    "workedExample": "Num registro fictício, dois recipientes iguais ficaram pelo mesmo tempo em local iluminado, com acompanhamento adulto. A tabela mostra aumento de temperatura diferente para água e areia. Podemos comparar aquele registro, sem afirmar que toda água ou areia terá sempre a mesma temperatura.",
+    "commonMistake": "Transformar um resultado de um teste em regra universal, confundir luz refletida com ausência de aquecimento ou tocar em superfícies para comparar temperatura.",
+    "priorKnowledge": [
+      "Observar semelhanças e diferenças em materiais e superfícies.",
+      "Ler tabelas simples com apoio e reconhecer que uma comparação usa condições combinadas."
+    ],
+    "keyConcepts": [
+      "radiação solar",
+      "superfície",
+      "aquecimento",
+      "reflexão",
+      "absorção",
+      "comparação",
+      "registro",
+      "segurança"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "COMPARE_CONTROLLED_SURFACE_DATA",
+        "action": "Compare registros do mesmo intervalo e identifique quais condições foram mantidas iguais."
+      },
+      {
+        "errorFocus": "HEATING_VS_REFLECTION",
+        "action": "Separe evidências de variação de temperatura das observações sobre luz refletida."
+      },
+      {
+        "errorFocus": "SOLAR_OBSERVATION_SAFETY",
+        "action": "Use apenas dados, simulações ou materiais preparados por adulto; nunca olhe para o Sol nem toque em itens aquecidos."
+      }
+    ],
+    "accessibilitySupports": [
+      "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+      "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+      "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ci08-prepared-surface-data",
+        "title": "Leitura de registros de superfícies",
+        "instructions": "Uma tabela fictícia, preparada por adulto, registra medições de recipientes semelhantes com diferentes materiais.\n1. Leia quais superfícies aparecem na tabela.\n2. Compare as variações registradas no mesmo intervalo.\n3. Escreva uma conclusão limitada às condições do registro.",
+        "steps": [
+          "Leia quais superfícies aparecem na tabela.",
+          "Compare as variações registradas no mesmo intervalo.",
+          "Escreva uma conclusão limitada às condições do registro."
+        ],
+        "evidence": "Comparação que nomeia dados e condições sem generalizar.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "identifica uma superfície.",
+            "developing": "compara um dado da tabela.",
+            "proficient": "relaciona comparação a condições controladas e limita a conclusão."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ci08-reflection-photo-cards",
+        "title": "Cartões de luz refletida",
+        "instructions": "Fotografias e descrições preparadas mostram superfícies sob iluminação, sem observação direta do Sol.\n1. Observe as descrições de brilho e material.\n2. Separe observações sobre reflexão das medições de aquecimento.\n3. Registre uma hipótese cuidadosa para comparar dados seguros.",
+        "steps": [
+          "Observe as descrições de brilho e material.",
+          "Separe observações sobre reflexão das medições de aquecimento.",
+          "Registre uma hipótese cuidadosa para comparar dados seguros."
+        ],
+        "evidence": "Quadro com observações separadas de luz refletida e temperatura.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "reconhece uma superfície.",
+            "developing": "distingue brilho de temperatura.",
+            "proficient": "compara evidências sem propor exposição ou toque inseguro."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 40,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-01",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-02",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-03",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-04",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-05",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-06",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-07",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-09",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-10",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-11",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-12",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-13",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-14",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-15",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-16"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-17",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-18",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-19",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-20",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-21",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-22",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-23",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-24"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-25",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-26",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-27",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-28",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-29",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-30",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-31",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-32"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-33",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-34",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-35",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-36",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-37",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-38",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-39",
+          "v1-ef02ci08-compare-solar-radiation-surface-effects-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI08",
+        "descriptor": "Comparar o efeito da radiação solar (aquecimento e reflexão) em diferentes tipos de superfície (água, areia, solo, superfícies escura, clara e metálica etc.).",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-18",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-01",
+      "statement": "Uma tabela preparada compara areia e água após o mesmo intervalo de iluminação. O que podemos fazer?",
+      "prompt": "Uma tabela preparada compara areia e água após o mesmo intervalo de iluminação. O que podemos fazer?",
+      "options": [
+        "Comparar os valores registrados para cada superfície.",
+        "Olhar diretamente para o Sol",
+        "Tocar nos recipientes aquecidos",
+        "Concluir uma regra para todo lugar"
+      ],
+      "correctAnswer": "Comparar os valores registrados para cada superfície.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Olhar diretamente para o Sol": [
+          "COMPARE_RECORDED_SURFACE_DATA"
+        ],
+        "Tocar nos recipientes aquecidos": [
+          "COMPARE_RECORDED_SURFACE_DATA"
+        ],
+        "Concluir uma regra para todo lugar": [
+          "COMPARE_RECORDED_SURFACE_DATA"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TABELA_AREIA_E_AGUA",
+      "explanation": "A tabela permite comparar as medições daquele intervalo.",
+      "hint": "Use os dados preparados.",
+      "errorFocus": "COMPARE_RECORDED_SURFACE_DATA",
+      "feedback": {
+        "correct": "Boa observação: A tabela permite comparar as medições daquele intervalo.",
+        "incorrect": "A tabela permite comparar as medições daquele intervalo.",
+        "hint": "Use os dados preparados.",
+        "errorFocus": "COMPARE_RECORDED_SURFACE_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-02",
+      "statement": "Uma foto preparada mostra brilho refletido numa superfície metálica. O que essa observação trata?",
+      "prompt": "Uma foto preparada mostra brilho refletido numa superfície metálica. O que essa observação trata?",
+      "options": [
+        "Da quantidade de água dentro dela",
+        "De luz refletida na superfície.",
+        "Da temperatura exata sem medição",
+        "Da necessidade de tocar no metal"
+      ],
+      "correctAnswer": "De luz refletida na superfície.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Da quantidade de água dentro dela": [
+          "IDENTIFY_REFLECTED_LIGHT"
+        ],
+        "Da temperatura exata sem medição": [
+          "IDENTIFY_REFLECTED_LIGHT"
+        ],
+        "Da necessidade de tocar no metal": [
+          "IDENTIFY_REFLECTED_LIGHT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "BRILHO_NA_FOTO",
+      "explanation": "Brilho na imagem é uma observação sobre luz refletida.",
+      "hint": "Observe o que aparece na foto.",
+      "errorFocus": "IDENTIFY_REFLECTED_LIGHT",
+      "feedback": {
+        "correct": "Boa observação: Brilho na imagem é uma observação sobre luz refletida.",
+        "incorrect": "Brilho na imagem é uma observação sobre luz refletida.",
+        "hint": "Observe o que aparece na foto.",
+        "errorFocus": "IDENTIFY_REFLECTED_LIGHT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-03",
+      "statement": "Um registro mostra variações de temperatura diferentes para solo e areia nas mesmas condições. Qual conclusão é apropriada?",
+      "prompt": "Um registro mostra variações de temperatura diferentes para solo e areia nas mesmas condições. Qual conclusão é apropriada?",
+      "options": [
+        "Todo solo é sempre mais frio",
+        "Toda areia é sempre mais quente",
+        "Os valores diferiram nesse registro e nessas condições.",
+        "O material não pode ser comparado"
+      ],
+      "correctAnswer": "Os valores diferiram nesse registro e nessas condições.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todo solo é sempre mais frio": [
+          "BOUND_CONCLUSION_TO_DATA"
+        ],
+        "Toda areia é sempre mais quente": [
+          "BOUND_CONCLUSION_TO_DATA"
+        ],
+        "O material não pode ser comparado": [
+          "BOUND_CONCLUSION_TO_DATA"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REGISTRO_DE_SOLO_E_AREIA",
+      "explanation": "A conclusão se limita ao conjunto de dados apresentado.",
+      "hint": "Diga “neste registro”.",
+      "errorFocus": "BOUND_CONCLUSION_TO_DATA",
+      "feedback": {
+        "correct": "Boa observação: A conclusão se limita ao conjunto de dados apresentado.",
+        "incorrect": "A conclusão se limita ao conjunto de dados apresentado.",
+        "hint": "Diga “neste registro”.",
+        "errorFocus": "BOUND_CONCLUSION_TO_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-04",
+      "statement": "Uma ficha descreve uma superfície clara iluminada. Qual aspecto pode ser investigado com dados seguros?",
+      "prompt": "Uma ficha descreve uma superfície clara iluminada. Qual aspecto pode ser investigado com dados seguros?",
+      "options": [
+        "Se alguém consegue olhar para o Sol",
+        "A temperatura pelo toque da mão",
+        "A cor de todas as superfícies do mundo",
+        "A luz refletida e a variação de temperatura registradas."
+      ],
+      "correctAnswer": "A luz refletida e a variação de temperatura registradas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Se alguém consegue olhar para o Sol": [
+          "SAFE_SURFACE_INVESTIGATION"
+        ],
+        "A temperatura pelo toque da mão": [
+          "SAFE_SURFACE_INVESTIGATION"
+        ],
+        "A cor de todas as superfícies do mundo": [
+          "SAFE_SURFACE_INVESTIGATION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SUPERFICIE_CLARA",
+      "explanation": "Registros permitem investigar reflexão e aquecimento sem contato.",
+      "hint": "Escolha dados, não toque.",
+      "errorFocus": "SAFE_SURFACE_INVESTIGATION",
+      "feedback": {
+        "correct": "Boa observação: Registros permitem investigar reflexão e aquecimento sem contato.",
+        "incorrect": "Registros permitem investigar reflexão e aquecimento sem contato.",
+        "hint": "Escolha dados, não toque.",
+        "errorFocus": "SAFE_SURFACE_INVESTIGATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-05",
+      "statement": "Qual procedimento é seguro numa atividade sobre radiação solar?",
+      "prompt": "Qual procedimento é seguro numa atividade sobre radiação solar?",
+      "options": [
+        "Usar tabela ou simulação preparada por adulto.",
+        "Olhar para o Sol através de uma lente",
+        "Tocar em uma chapa aquecida",
+        "Deixar crianças manusearem recipientes quentes"
+      ],
+      "correctAnswer": "Usar tabela ou simulação preparada por adulto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Olhar para o Sol através de uma lente": [
+          "SAFE_SOLAR_METHOD"
+        ],
+        "Tocar em uma chapa aquecida": [
+          "SAFE_SOLAR_METHOD"
+        ],
+        "Deixar crianças manusearem recipientes quentes": [
+          "SAFE_SOLAR_METHOD"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "SEGURANCA_SOLAR",
+      "explanation": "Tabelas e simulações evitam exposição e queimaduras.",
+      "hint": "Escolha a alternativa sem olhar ou tocar.",
+      "errorFocus": "SAFE_SOLAR_METHOD",
+      "feedback": {
+        "correct": "Boa observação: Tabelas e simulações evitam exposição e queimaduras.",
+        "incorrect": "Tabelas e simulações evitam exposição e queimaduras.",
+        "hint": "Escolha a alternativa sem olhar ou tocar.",
+        "errorFocus": "SAFE_SOLAR_METHOD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-06",
+      "statement": "Por que comparar superfícies observadas durante o mesmo intervalo pode ajudar?",
+      "prompt": "Por que comparar superfícies observadas durante o mesmo intervalo pode ajudar?",
+      "options": [
+        "Porque garante que todos os materiais sejam idênticos",
+        "Porque mantém uma condição da comparação igual.",
+        "Porque elimina a necessidade de dados",
+        "Porque prova uma regra universal"
+      ],
+      "correctAnswer": "Porque mantém uma condição da comparação igual.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque garante que todos os materiais sejam idênticos": [
+          "CONTROLLED_COMPARISON_CONDITION"
+        ],
+        "Porque elimina a necessidade de dados": [
+          "CONTROLLED_COMPARISON_CONDITION"
+        ],
+        "Porque prova uma regra universal": [
+          "CONTROLLED_COMPARISON_CONDITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "READ",
+      "contextFamily": "MESMO_INTERVALO",
+      "explanation": "O intervalo igual ajuda a comparar esse aspecto do procedimento.",
+      "hint": "Pense no que foi mantido constante.",
+      "errorFocus": "CONTROLLED_COMPARISON_CONDITION",
+      "feedback": {
+        "correct": "Boa observação: O intervalo igual ajuda a comparar esse aspecto do procedimento.",
+        "incorrect": "O intervalo igual ajuda a comparar esse aspecto do procedimento.",
+        "hint": "Pense no que foi mantido constante.",
+        "errorFocus": "CONTROLLED_COMPARISON_CONDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-07",
+      "statement": "Uma tabela mostra aumento de temperatura e uma foto mostra brilho. São evidências de...",
+      "prompt": "Uma tabela mostra aumento de temperatura e uma foto mostra brilho. São evidências de...",
+      "options": [
+        "uma única medida igual",
+        "ausência de radiação",
+        "aspectos diferentes: aquecimento registrado e luz refletida observada.",
+        "uma regra sobre todas as cores"
+      ],
+      "correctAnswer": "aspectos diferentes: aquecimento registrado e luz refletida observada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "uma única medida igual": [
+          "SEPARATE_HEATING_REFLECTION"
+        ],
+        "ausência de radiação": [
+          "SEPARATE_HEATING_REFLECTION"
+        ],
+        "uma regra sobre todas as cores": [
+          "SEPARATE_HEATING_REFLECTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REFLEXAO_E_AQUECIMENTO",
+      "explanation": "Temperatura e brilho são observações distintas.",
+      "hint": "Separe os dois tipos de evidência.",
+      "errorFocus": "SEPARATE_HEATING_REFLECTION",
+      "feedback": {
+        "correct": "Boa observação: Temperatura e brilho são observações distintas.",
+        "incorrect": "Temperatura e brilho são observações distintas.",
+        "hint": "Separe os dois tipos de evidência.",
+        "errorFocus": "SEPARATE_HEATING_REFLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-08",
+      "statement": "Como comparar materiais sem manusear superfícies aquecidas?",
+      "prompt": "Como comparar materiais sem manusear superfícies aquecidas?",
+      "options": [
+        "Encostar na superfície",
+        "Aproximar o rosto do Sol",
+        "Aquecer objetos sem supervisão",
+        "Ler resultados de uma simulação ou registros feitos por adulto."
+      ],
+      "correctAnswer": "Ler resultados de uma simulação ou registros feitos por adulto.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Encostar na superfície": [
+          "USE_SAFE_DATA_SOURCE"
+        ],
+        "Aproximar o rosto do Sol": [
+          "USE_SAFE_DATA_SOURCE"
+        ],
+        "Aquecer objetos sem supervisão": [
+          "USE_SAFE_DATA_SOURCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SIMULACAO_DE_MATERIAIS",
+      "explanation": "A simulação oferece uma forma segura de comparar.",
+      "hint": "Use dados já preparados.",
+      "errorFocus": "USE_SAFE_DATA_SOURCE",
+      "feedback": {
+        "correct": "Boa observação: A simulação oferece uma forma segura de comparar.",
+        "incorrect": "A simulação oferece uma forma segura de comparar.",
+        "hint": "Use dados já preparados.",
+        "errorFocus": "USE_SAFE_DATA_SOURCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-09",
+      "statement": "Um cartão informa que uma amostra metálica refletiu luz no registro. O que foi observado?",
+      "prompt": "Um cartão informa que uma amostra metálica refletiu luz no registro. O que foi observado?",
+      "options": [
+        "Luz refletida pela amostra descrita.",
+        "Sua temperatura exata sem termômetro",
+        "Como todo metal se comporta",
+        "A cor da água próxima"
+      ],
+      "correctAnswer": "Luz refletida pela amostra descrita.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Sua temperatura exata sem termômetro": [
+          "READ_REFLECTION_EVIDENCE"
+        ],
+        "Como todo metal se comporta": [
+          "READ_REFLECTION_EVIDENCE"
+        ],
+        "A cor da água próxima": [
+          "READ_REFLECTION_EVIDENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "READ",
+      "contextFamily": "CARTAO_DE_METAL",
+      "explanation": "A informação relata reflexão na amostra específica.",
+      "hint": "Use o que o cartão informa.",
+      "errorFocus": "READ_REFLECTION_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A informação relata reflexão na amostra específica.",
+        "incorrect": "A informação relata reflexão na amostra específica.",
+        "hint": "Use o que o cartão informa.",
+        "errorFocus": "READ_REFLECTION_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-10",
+      "statement": "Dois recipientes semelhantes aparecem numa tabela com temperaturas antes e depois. O que comparar?",
+      "prompt": "Dois recipientes semelhantes aparecem numa tabela com temperaturas antes e depois. O que comparar?",
+      "options": [
+        "O peso de todas as amostras",
+        "A variação registrada para cada recipiente.",
+        "A sensação ao tocar",
+        "A temperatura de qualquer dia"
+      ],
+      "correctAnswer": "A variação registrada para cada recipiente.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O peso de todas as amostras": [
+          "COMPARE_TEMPERATURE_CHANGE"
+        ],
+        "A sensação ao tocar": [
+          "COMPARE_TEMPERATURE_CHANGE"
+        ],
+        "A temperatura de qualquer dia": [
+          "COMPARE_TEMPERATURE_CHANGE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "DOIS_RECIPIENTES",
+      "explanation": "Valores antes e depois permitem comparar variações registradas.",
+      "hint": "Compare os dados da tabela.",
+      "errorFocus": "COMPARE_TEMPERATURE_CHANGE",
+      "feedback": {
+        "correct": "Boa observação: Valores antes e depois permitem comparar variações registradas.",
+        "incorrect": "Valores antes e depois permitem comparar variações registradas.",
+        "hint": "Compare os dados da tabela.",
+        "errorFocus": "COMPARE_TEMPERATURE_CHANGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-11",
+      "statement": "Uma ficha apresenta observações de água sob iluminação. Qual superfície está sendo descrita?",
+      "prompt": "Uma ficha apresenta observações de água sob iluminação. Qual superfície está sendo descrita?",
+      "options": [
+        "Areia",
+        "Solo seco",
+        "Água.",
+        "Metal escuro"
+      ],
+      "correctAnswer": "Água.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Areia": [
+          "IDENTIFY_SURFACE_FROM_RECORD"
+        ],
+        "Solo seco": [
+          "IDENTIFY_SURFACE_FROM_RECORD"
+        ],
+        "Metal escuro": [
+          "IDENTIFY_SURFACE_FROM_RECORD"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FICHA_DA_AGUA",
+      "explanation": "A ficha nomeia água.",
+      "hint": "Leia o nome da superfície.",
+      "errorFocus": "IDENTIFY_SURFACE_FROM_RECORD",
+      "feedback": {
+        "correct": "Boa observação: A ficha nomeia água.",
+        "incorrect": "A ficha nomeia água.",
+        "hint": "Leia o nome da superfície.",
+        "errorFocus": "IDENTIFY_SURFACE_FROM_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-12",
+      "statement": "Uma criança prevê que duas superfícies terão temperaturas diferentes, antes de ler a tabela. Essa previsão é...",
+      "prompt": "Uma criança prevê que duas superfícies terão temperaturas diferentes, antes de ler a tabela. Essa previsão é...",
+      "options": [
+        "uma medição confirmada",
+        "uma regra universal",
+        "uma prova sem observação",
+        "uma hipótese a comparar com os dados."
+      ],
+      "correctAnswer": "uma hipótese a comparar com os dados.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "uma medição confirmada": [
+          "DISTINGUISH_PREDICTION_DATA"
+        ],
+        "uma regra universal": [
+          "DISTINGUISH_PREDICTION_DATA"
+        ],
+        "uma prova sem observação": [
+          "DISTINGUISH_PREDICTION_DATA"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "DADO_VS_HIPOTESE",
+      "explanation": "Uma previsão ainda precisa ser comparada às evidências.",
+      "hint": "Confira a tabela depois.",
+      "errorFocus": "DISTINGUISH_PREDICTION_DATA",
+      "feedback": {
+        "correct": "Boa observação: Uma previsão ainda precisa ser comparada às evidências.",
+        "incorrect": "Uma previsão ainda precisa ser comparada às evidências.",
+        "hint": "Confira a tabela depois.",
+        "errorFocus": "DISTINGUISH_PREDICTION_DATA"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-13",
+      "statement": "Duas amostras foram observadas em tempos diferentes. O que considerar ao compará-las?",
+      "prompt": "Duas amostras foram observadas em tempos diferentes. O que considerar ao compará-las?",
+      "options": [
+        "O tempo diferente pode influenciar a comparação.",
+        "Que os resultados são automaticamente iguais",
+        "Que não é necessário ler os registros",
+        "Que uma amostra representa todos os materiais"
+      ],
+      "correctAnswer": "O tempo diferente pode influenciar a comparação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que os resultados são automaticamente iguais": [
+          "NOTICE_COMPARISON_VARIABLE"
+        ],
+        "Que não é necessário ler os registros": [
+          "NOTICE_COMPARISON_VARIABLE"
+        ],
+        "Que uma amostra representa todos os materiais": [
+          "NOTICE_COMPARISON_VARIABLE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONDICOES_DIFERENTES",
+      "explanation": "Tempos diferentes são uma condição relevante.",
+      "hint": "Verifique o que não foi mantido igual.",
+      "errorFocus": "NOTICE_COMPARISON_VARIABLE",
+      "feedback": {
+        "correct": "Boa observação: Tempos diferentes são uma condição relevante.",
+        "incorrect": "Tempos diferentes são uma condição relevante.",
+        "hint": "Verifique o que não foi mantido igual.",
+        "errorFocus": "NOTICE_COMPARISON_VARIABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-14",
+      "statement": "Num conjunto específico, uma amostra escura teve aumento maior que uma clara. O que os dados sustentam?",
+      "prompt": "Num conjunto específico, uma amostra escura teve aumento maior que uma clara. O que os dados sustentam?",
+      "options": [
+        "Toda superfície escura sempre aquece mais",
+        "Nesse conjunto e nessas condições, a variação da amostra escura foi maior.",
+        "A cor é a única condição possível",
+        "A amostra clara nunca aquece"
+      ],
+      "correctAnswer": "Nesse conjunto e nessas condições, a variação da amostra escura foi maior.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda superfície escura sempre aquece mais": [
+          "LIMIT_COLOR_CONCLUSION"
+        ],
+        "A cor é a única condição possível": [
+          "LIMIT_COLOR_CONCLUSION"
+        ],
+        "A amostra clara nunca aquece": [
+          "LIMIT_COLOR_CONCLUSION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "DADOS_CLARO_E_ESCURO",
+      "explanation": "Os dados sustentam uma conclusão situada, não absoluta.",
+      "hint": "Inclua o limite do registro.",
+      "errorFocus": "LIMIT_COLOR_CONCLUSION",
+      "feedback": {
+        "correct": "Boa observação: Os dados sustentam uma conclusão situada, não absoluta.",
+        "incorrect": "Os dados sustentam uma conclusão situada, não absoluta.",
+        "hint": "Inclua o limite do registro.",
+        "errorFocus": "LIMIT_COLOR_CONCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-15",
+      "statement": "Uma estudante compara valores numa tabela com símbolos de termômetro. O que os símbolos ajudam a fazer?",
+      "prompt": "Uma estudante compara valores numa tabela com símbolos de termômetro. O que os símbolos ajudam a fazer?",
+      "options": [
+        "Tocar na superfície",
+        "Medir sem qualquer dado",
+        "Ler e comparar registros de temperatura.",
+        "Olhar para o Sol"
+      ],
+      "correctAnswer": "Ler e comparar registros de temperatura.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Tocar na superfície": [
+          "ACCESSIBLE_DATA_READING"
+        ],
+        "Medir sem qualquer dado": [
+          "ACCESSIBLE_DATA_READING"
+        ],
+        "Olhar para o Sol": [
+          "ACCESSIBLE_DATA_READING"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "ESCALA_VISUAL",
+      "explanation": "Os símbolos representam os dados de temperatura.",
+      "hint": "Use a legenda da tabela.",
+      "errorFocus": "ACCESSIBLE_DATA_READING",
+      "feedback": {
+        "correct": "Boa observação: Os símbolos representam os dados de temperatura.",
+        "incorrect": "Os símbolos representam os dados de temperatura.",
+        "hint": "Use a legenda da tabela.",
+        "errorFocus": "ACCESSIBLE_DATA_READING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-16",
+      "statement": "Por que não é preciso tocar numa superfície para comparar seu aquecimento?",
+      "prompt": "Por que não é preciso tocar numa superfície para comparar seu aquecimento?",
+      "options": [
+        "Porque nenhuma superfície aquece",
+        "Porque o toque mede tudo com precisão",
+        "Porque a cor informa a temperatura exata",
+        "Uma medição registrada por adulto pode fornecer os dados com segurança."
+      ],
+      "correctAnswer": "Uma medição registrada por adulto pode fornecer os dados com segurança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque nenhuma superfície aquece": [
+          "NO_TOUCH_REQUIRED"
+        ],
+        "Porque o toque mede tudo com precisão": [
+          "NO_TOUCH_REQUIRED"
+        ],
+        "Porque a cor informa a temperatura exata": [
+          "NO_TOUCH_REQUIRED"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "MATERIAL_SEM_TOQUE",
+      "explanation": "Registros seguros substituem contato com itens potencialmente quentes.",
+      "hint": "Confie em medições preparadas.",
+      "errorFocus": "NO_TOUCH_REQUIRED",
+      "feedback": {
+        "correct": "Boa observação: Registros seguros substituem contato com itens potencialmente quentes.",
+        "incorrect": "Registros seguros substituem contato com itens potencialmente quentes.",
+        "hint": "Confie em medições preparadas.",
+        "errorFocus": "NO_TOUCH_REQUIRED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-17",
+      "statement": "Uma tabela lista água, areia e solo, com valores medidos no mesmo período. Qual tarefa corresponde à comparação?",
+      "prompt": "Uma tabela lista água, areia e solo, com valores medidos no mesmo período. Qual tarefa corresponde à comparação?",
+      "options": [
+        "Identificar diferenças entre os valores registrados.",
+        "Tocar em cada material",
+        "Olhar para o Sol",
+        "Afirmar que o resultado vale para qualquer local"
+      ],
+      "correctAnswer": "Identificar diferenças entre os valores registrados.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Tocar em cada material": [
+          "TRANSFER_MULTI_SURFACE_COMPARISON"
+        ],
+        "Olhar para o Sol": [
+          "TRANSFER_MULTI_SURFACE_COMPARISON"
+        ],
+        "Afirmar que o resultado vale para qualquer local": [
+          "TRANSFER_MULTI_SURFACE_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TABELA_DE_TRES_MATERIAIS",
+      "explanation": "A tabela permite comparar os três registros.",
+      "hint": "Compare apenas os valores mostrados.",
+      "errorFocus": "TRANSFER_MULTI_SURFACE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A tabela permite comparar os três registros.",
+        "incorrect": "A tabela permite comparar os três registros.",
+        "hint": "Compare apenas os valores mostrados.",
+        "errorFocus": "TRANSFER_MULTI_SURFACE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-18",
+      "statement": "Uma imagem descrita indica uma superfície clara com brilho visível. Que fenômeno a descrição pode sugerir?",
+      "prompt": "Uma imagem descrita indica uma superfície clara com brilho visível. Que fenômeno a descrição pode sugerir?",
+      "options": [
+        "Uma temperatura exata",
+        "Reflexão de parte da luz.",
+        "Que não houve iluminação",
+        "Que toda superfície clara é fria"
+      ],
+      "correctAnswer": "Reflexão de parte da luz.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma temperatura exata": [
+          "TRANSFER_REFLECTION_FROM_IMAGE"
+        ],
+        "Que não houve iluminação": [
+          "TRANSFER_REFLECTION_FROM_IMAGE"
+        ],
+        "Que toda superfície clara é fria": [
+          "TRANSFER_REFLECTION_FROM_IMAGE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "IMAGEM_DE_SUPERFICIE_CLARA",
+      "explanation": "O brilho pode indicar luz refletida, sem informar temperatura exata.",
+      "hint": "Separe brilho de temperatura.",
+      "errorFocus": "TRANSFER_REFLECTION_FROM_IMAGE",
+      "feedback": {
+        "correct": "Boa observação: O brilho pode indicar luz refletida, sem informar temperatura exata.",
+        "incorrect": "O brilho pode indicar luz refletida, sem informar temperatura exata.",
+        "hint": "Separe brilho de temperatura.",
+        "errorFocus": "TRANSFER_REFLECTION_FROM_IMAGE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-19",
+      "statement": "Um teste escolar registrou uma chapa metálica e um pedaço de madeira. Qual conclusão é cuidadosa?",
+      "prompt": "Um teste escolar registrou uma chapa metálica e um pedaço de madeira. Qual conclusão é cuidadosa?",
+      "options": [
+        "Todo metal e toda madeira sempre têm o mesmo resultado",
+        "O teste vale para qualquer clima",
+        "Os resultados descrevem as amostras testadas no procedimento informado.",
+        "A madeira não recebe radiação"
+      ],
+      "correctAnswer": "Os resultados descrevem as amostras testadas no procedimento informado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todo metal e toda madeira sempre têm o mesmo resultado": [
+          "LIMIT_MATERIAL_GENERALIZATION"
+        ],
+        "O teste vale para qualquer clima": [
+          "LIMIT_MATERIAL_GENERALIZATION"
+        ],
+        "A madeira não recebe radiação": [
+          "LIMIT_MATERIAL_GENERALIZATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "CONCLUSAO_LIMITADA",
+      "explanation": "Uma amostra e um procedimento não representam todos os materiais.",
+      "hint": "Nomeie as amostras e condições.",
+      "errorFocus": "LIMIT_MATERIAL_GENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: Uma amostra e um procedimento não representam todos os materiais.",
+        "incorrect": "Uma amostra e um procedimento não representam todos os materiais.",
+        "hint": "Nomeie as amostras e condições.",
+        "errorFocus": "LIMIT_MATERIAL_GENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-20",
+      "statement": "Um gráfico usa barras para mostrar mudança de temperatura. Como localizar a maior mudança?",
+      "prompt": "Um gráfico usa barras para mostrar mudança de temperatura. Como localizar a maior mudança?",
+      "options": [
+        "Escolher a cor mais escura sem olhar valores",
+        "Tocar nos objetos representados",
+        "Olhar diretamente para a fonte de luz",
+        "Comparar a altura das barras conforme a legenda."
+      ],
+      "correctAnswer": "Comparar a altura das barras conforme a legenda.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Escolher a cor mais escura sem olhar valores": [
+          "READ_SURFACE_DATA_GRAPH"
+        ],
+        "Tocar nos objetos representados": [
+          "READ_SURFACE_DATA_GRAPH"
+        ],
+        "Olhar diretamente para a fonte de luz": [
+          "READ_SURFACE_DATA_GRAPH"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEITURA_DE_GRAFICO",
+      "explanation": "A legenda e as barras mostram os valores registrados.",
+      "hint": "Leia a escala e compare as barras.",
+      "errorFocus": "READ_SURFACE_DATA_GRAPH",
+      "feedback": {
+        "correct": "Boa observação: A legenda e as barras mostram os valores registrados.",
+        "incorrect": "A legenda e as barras mostram os valores registrados.",
+        "hint": "Leia a escala e compare as barras.",
+        "errorFocus": "READ_SURFACE_DATA_GRAPH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-21",
+      "statement": "Um registro compara duas amostras de cores diferentes, com recipientes iguais e mesmo intervalo. O que está sendo investigado?",
+      "prompt": "Um registro compara duas amostras de cores diferentes, com recipientes iguais e mesmo intervalo. O que está sendo investigado?",
+      "options": [
+        "Uma diferença associada às amostras coloridas nessas condições.",
+        "Uma lei válida para todo objeto",
+        "A temperatura pelo toque",
+        "A quantidade de água em cada oceano"
+      ],
+      "correctAnswer": "Uma diferença associada às amostras coloridas nessas condições.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma lei válida para todo objeto": [
+          "CONTROLLED_COLOR_COMPARISON"
+        ],
+        "A temperatura pelo toque": [
+          "CONTROLLED_COLOR_COMPARISON"
+        ],
+        "A quantidade de água em cada oceano": [
+          "CONTROLLED_COLOR_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "MESMO_MATERIAL_DUAS_CORES",
+      "explanation": "O registro compara amostras em condições especificadas.",
+      "hint": "Mantenha a conclusão no teste.",
+      "errorFocus": "CONTROLLED_COLOR_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: O registro compara amostras em condições especificadas.",
+        "incorrect": "O registro compara amostras em condições especificadas.",
+        "hint": "Mantenha a conclusão no teste.",
+        "errorFocus": "CONTROLLED_COLOR_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-22",
+      "statement": "Uma superfície parece brilhante numa fotografia. É possível saber sua temperatura exata apenas pela imagem?",
+      "prompt": "Uma superfície parece brilhante numa fotografia. É possível saber sua temperatura exata apenas pela imagem?",
+      "options": [
+        "Sim, sempre",
+        "Não; seria necessário um registro de temperatura apropriado.",
+        "Sim, se a foto for clara",
+        "Não, pois imagens nunca mostram superfícies"
+      ],
+      "correctAnswer": "Não; seria necessário um registro de temperatura apropriado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Sim, sempre": [
+          "IMAGE_NOT_TEMPERATURE_MEASUREMENT"
+        ],
+        "Sim, se a foto for clara": [
+          "IMAGE_NOT_TEMPERATURE_MEASUREMENT"
+        ],
+        "Não, pois imagens nunca mostram superfícies": [
+          "IMAGE_NOT_TEMPERATURE_MEASUREMENT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REFLEXAO_NAO_E_TEMPERATURA",
+      "explanation": "Brilho visual não fornece uma medida exata de temperatura.",
+      "hint": "Procure um valor medido.",
+      "errorFocus": "IMAGE_NOT_TEMPERATURE_MEASUREMENT",
+      "feedback": {
+        "correct": "Boa observação: Brilho visual não fornece uma medida exata de temperatura.",
+        "incorrect": "Brilho visual não fornece uma medida exata de temperatura.",
+        "hint": "Procure um valor medido.",
+        "errorFocus": "IMAGE_NOT_TEMPERATURE_MEASUREMENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-23",
+      "statement": "Uma turma quer comparar areia e água com segurança. O que pode usar?",
+      "prompt": "Uma turma quer comparar areia e água com segurança. O que pode usar?",
+      "options": [
+        "As mãos para sentir qual está quente",
+        "Uma lente para olhar o Sol",
+        "Uma tabela com medições preparadas e identificadas por adulto.",
+        "Recipientes aquecidos sem supervisão"
+      ],
+      "correctAnswer": "Uma tabela com medições preparadas e identificadas por adulto.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "As mãos para sentir qual está quente": [
+          "SAFE_TRANSFER_ACTIVITY"
+        ],
+        "Uma lente para olhar o Sol": [
+          "SAFE_TRANSFER_ACTIVITY"
+        ],
+        "Recipientes aquecidos sem supervisão": [
+          "SAFE_TRANSFER_ACTIVITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "DADOS_PREPARADOS_POR_ADULTO",
+      "explanation": "Dados identificados permitem uma comparação indireta.",
+      "hint": "Use a tabela segura.",
+      "errorFocus": "SAFE_TRANSFER_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: Dados identificados permitem uma comparação indireta.",
+        "incorrect": "Dados identificados permitem uma comparação indireta.",
+        "hint": "Use a tabela segura.",
+        "errorFocus": "SAFE_TRANSFER_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-24",
+      "statement": "Por que registrar o material, o intervalo e as condições de uma comparação?",
+      "prompt": "Por que registrar o material, o intervalo e as condições de uma comparação?",
+      "options": [
+        "Para evitar comparar qualquer dado",
+        "Para provar que uma amostra representa todas",
+        "Para dispensar medidas",
+        "Para entender o contexto e interpretar os resultados com cuidado."
+      ],
+      "correctAnswer": "Para entender o contexto e interpretar os resultados com cuidado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Para evitar comparar qualquer dado": [
+          "JUSTIFY_CONTEXTUAL_EVIDENCE"
+        ],
+        "Para provar que uma amostra representa todas": [
+          "JUSTIFY_CONTEXTUAL_EVIDENCE"
+        ],
+        "Para dispensar medidas": [
+          "JUSTIFY_CONTEXTUAL_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CONCLUSAO_CIENTIFICA_CAUTELosa",
+      "explanation": "Condições ajudam a avaliar o alcance da conclusão.",
+      "hint": "Considere como os dados foram obtidos.",
+      "errorFocus": "JUSTIFY_CONTEXTUAL_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Condições ajudam a avaliar o alcance da conclusão.",
+        "incorrect": "Condições ajudam a avaliar o alcance da conclusão.",
+        "hint": "Considere como os dados foram obtidos.",
+        "errorFocus": "JUSTIFY_CONTEXTUAL_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-25",
+      "statement": "Quais podem ser comparadas num estudo de efeitos da radiação solar?",
+      "prompt": "Quais podem ser comparadas num estudo de efeitos da radiação solar?",
+      "options": [
+        "Superfícies como água, areia, solo e materiais diferentes.",
+        "Somente nuvens e sons",
+        "Apenas objetos sem superfície",
+        "Somente materiais idênticos"
+      ],
+      "correctAnswer": "Superfícies como água, areia, solo e materiais diferentes.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Somente nuvens e sons": [
+          "RECALL_SURFACE_TYPES"
+        ],
+        "Apenas objetos sem superfície": [
+          "RECALL_SURFACE_TYPES"
+        ],
+        "Somente materiais idênticos": [
+          "RECALL_SURFACE_TYPES"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "SUPERFICIES_VARIADAS",
+      "explanation": "A habilidade envolve comparar tipos variados de superfície.",
+      "hint": "Pense nos exemplos da aula.",
+      "errorFocus": "RECALL_SURFACE_TYPES",
+      "feedback": {
+        "correct": "Boa observação: A habilidade envolve comparar tipos variados de superfície.",
+        "incorrect": "A habilidade envolve comparar tipos variados de superfície.",
+        "hint": "Pense nos exemplos da aula.",
+        "errorFocus": "RECALL_SURFACE_TYPES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-26",
+      "statement": "Luz refletida é...",
+      "prompt": "Luz refletida é...",
+      "options": [
+        "uma leitura de temperatura",
+        "parte da luz que retorna da superfície.",
+        "um tipo de sombra sem luz",
+        "uma medida de massa"
+      ],
+      "correctAnswer": "parte da luz que retorna da superfície.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "uma leitura de temperatura": [
+          "RECALL_REFLECTION"
+        ],
+        "um tipo de sombra sem luz": [
+          "RECALL_REFLECTION"
+        ],
+        "uma medida de massa": [
+          "RECALL_REFLECTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LUZ_REFLETIDA",
+      "explanation": "Reflexão descreve a luz que retorna de uma superfície.",
+      "hint": "Pense no brilho observado.",
+      "errorFocus": "RECALL_REFLECTION",
+      "feedback": {
+        "correct": "Boa observação: Reflexão descreve a luz que retorna de uma superfície.",
+        "incorrect": "Reflexão descreve a luz que retorna de uma superfície.",
+        "hint": "Pense no brilho observado.",
+        "errorFocus": "RECALL_REFLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-27",
+      "statement": "Qual evidência pode mostrar uma variação de aquecimento?",
+      "prompt": "Qual evidência pode mostrar uma variação de aquecimento?",
+      "options": [
+        "A cor do lápis usado",
+        "Um palpite sem observação",
+        "Uma medição de temperatura registrada antes e depois.",
+        "Um toque feito por criança"
+      ],
+      "correctAnswer": "Uma medição de temperatura registrada antes e depois.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A cor do lápis usado": [
+          "RECALL_HEATING_EVIDENCE"
+        ],
+        "Um palpite sem observação": [
+          "RECALL_HEATING_EVIDENCE"
+        ],
+        "Um toque feito por criança": [
+          "RECALL_HEATING_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REGISTRO_DE_AQUECIMENTO",
+      "explanation": "A comparação de medidas registra mudança de temperatura.",
+      "hint": "Use um registro apropriado.",
+      "errorFocus": "RECALL_HEATING_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A comparação de medidas registra mudança de temperatura.",
+        "incorrect": "A comparação de medidas registra mudança de temperatura.",
+        "hint": "Use um registro apropriado.",
+        "errorFocus": "RECALL_HEATING_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-28",
+      "statement": "Um resultado de uma amostra permite dizer que todas as superfícies iguais sempre se comportam do mesmo modo?",
+      "prompt": "Um resultado de uma amostra permite dizer que todas as superfícies iguais sempre se comportam do mesmo modo?",
+      "options": [
+        "Sim, qualquer registro vira regra",
+        "Sim, se a amostra for escura",
+        "Não, porque dados não podem ser comparados",
+        "Não; a conclusão deve considerar amostra e condições."
+      ],
+      "correctAnswer": "Não; a conclusão deve considerar amostra e condições.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Sim, qualquer registro vira regra": [
+          "RECALL_LIMITED_CONCLUSION"
+        ],
+        "Sim, se a amostra for escura": [
+          "RECALL_LIMITED_CONCLUSION"
+        ],
+        "Não, porque dados não podem ser comparados": [
+          "RECALL_LIMITED_CONCLUSION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REGRA_UNIVERSAL",
+      "explanation": "Conclusões precisam respeitar o alcance dos dados.",
+      "hint": "Considere o procedimento.",
+      "errorFocus": "RECALL_LIMITED_CONCLUSION",
+      "feedback": {
+        "correct": "Boa observação: Conclusões precisam respeitar o alcance dos dados.",
+        "incorrect": "Conclusões precisam respeitar o alcance dos dados.",
+        "hint": "Considere o procedimento.",
+        "errorFocus": "RECALL_LIMITED_CONCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-29",
+      "statement": "Qual opção protege os olhos durante estudo sobre o Sol?",
+      "prompt": "Qual opção protege os olhos durante estudo sobre o Sol?",
+      "options": [
+        "Usar dados preparados ou simulação, sem olhar diretamente para o Sol.",
+        "Olhar por alguns segundos",
+        "Usar uma lupa",
+        "Observar através de vidro comum"
+      ],
+      "correctAnswer": "Usar dados preparados ou simulação, sem olhar diretamente para o Sol.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Olhar por alguns segundos": [
+          "RECALL_SUN_EYE_SAFETY"
+        ],
+        "Usar uma lupa": [
+          "RECALL_SUN_EYE_SAFETY"
+        ],
+        "Observar através de vidro comum": [
+          "RECALL_SUN_EYE_SAFETY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SEGURANCA_DA_OBSERVACAO",
+      "explanation": "A observação direta do Sol não é segura.",
+      "hint": "Escolha uma atividade indireta.",
+      "errorFocus": "RECALL_SUN_EYE_SAFETY",
+      "feedback": {
+        "correct": "Boa observação: A observação direta do Sol não é segura.",
+        "incorrect": "A observação direta do Sol não é segura.",
+        "hint": "Escolha uma atividade indireta.",
+        "errorFocus": "RECALL_SUN_EYE_SAFETY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-30",
+      "statement": "Manter recipientes semelhantes pode ajudar a...",
+      "prompt": "Manter recipientes semelhantes pode ajudar a...",
+      "options": [
+        "garantir que todo resultado seja universal",
+        "comparar as superfícies reduzindo uma diferença do procedimento.",
+        "impedir que haja luz",
+        "substituir o registro de dados"
+      ],
+      "correctAnswer": "comparar as superfícies reduzindo uma diferença do procedimento.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "garantir que todo resultado seja universal": [
+          "RECALL_CONTROLLED_CONDITION"
+        ],
+        "impedir que haja luz": [
+          "RECALL_CONTROLLED_CONDITION"
+        ],
+        "substituir o registro de dados": [
+          "RECALL_CONTROLLED_CONDITION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "RECIPIENTES_IGUAIS",
+      "explanation": "Recipientes semelhantes apoiam uma comparação mais controlada.",
+      "hint": "Pense no que foi mantido parecido.",
+      "errorFocus": "RECALL_CONTROLLED_CONDITION",
+      "feedback": {
+        "correct": "Boa observação: Recipientes semelhantes apoiam uma comparação mais controlada.",
+        "incorrect": "Recipientes semelhantes apoiam uma comparação mais controlada.",
+        "hint": "Pense no que foi mantido parecido.",
+        "errorFocus": "RECALL_CONTROLLED_CONDITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-31",
+      "statement": "Uma amostra aqueceu no registro e também refletiu luz numa foto. Como organizar essas evidências?",
+      "prompt": "Uma amostra aqueceu no registro e também refletiu luz numa foto. Como organizar essas evidências?",
+      "options": [
+        "Tratá-las como a mesma medida",
+        "Ignorar o método",
+        "Registrar separadamente a variação de temperatura e a observação de reflexão.",
+        "Concluir que a amostra não recebeu energia"
+      ],
+      "correctAnswer": "Registrar separadamente a variação de temperatura e a observação de reflexão.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Tratá-las como a mesma medida": [
+          "RECALL_DISTINCT_EVIDENCE"
+        ],
+        "Ignorar o método": [
+          "RECALL_DISTINCT_EVIDENCE"
+        ],
+        "Concluir que a amostra não recebeu energia": [
+          "RECALL_DISTINCT_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "AQUECIMENTO_E_REFLEXAO",
+      "explanation": "Aquecimento e reflexão são aspectos relacionados, mas distintos.",
+      "hint": "Separe os tipos de observação.",
+      "errorFocus": "RECALL_DISTINCT_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Aquecimento e reflexão são aspectos relacionados, mas distintos.",
+        "incorrect": "Aquecimento e reflexão são aspectos relacionados, mas distintos.",
+        "hint": "Separe os tipos de observação.",
+        "errorFocus": "RECALL_DISTINCT_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-32",
+      "statement": "Uma comparação segura de superfícies deve combinar...",
+      "prompt": "Uma comparação segura de superfícies deve combinar...",
+      "options": [
+        "observação direta do Sol e toque",
+        "palpites sem registro",
+        "uma regra baseada numa única amostra",
+        "dados contextualizados, atenção ao aquecimento e cuidado com os olhos e o toque."
+      ],
+      "correctAnswer": "dados contextualizados, atenção ao aquecimento e cuidado com os olhos e o toque.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "observação direta do Sol e toque": [
+          "SURFACE_COMPARISON_SUMMARY"
+        ],
+        "palpites sem registro": [
+          "SURFACE_COMPARISON_SUMMARY"
+        ],
+        "uma regra baseada numa única amostra": [
+          "SURFACE_COMPARISON_SUMMARY"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_CI08",
+      "explanation": "Evidência e segurança orientam a atividade.",
+      "hint": "Reúna comparação e segurança.",
+      "errorFocus": "SURFACE_COMPARISON_SUMMARY",
+      "feedback": {
+        "correct": "Boa observação: Evidência e segurança orientam a atividade.",
+        "incorrect": "Evidência e segurança orientam a atividade.",
+        "hint": "Reúna comparação e segurança.",
+        "errorFocus": "SURFACE_COMPARISON_SUMMARY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-33",
+      "statement": "Areia, água e solo são exemplos de...",
+      "prompt": "Areia, água e solo são exemplos de...",
+      "options": [
+        "superfícies que podem ser comparadas.",
+        "instrumentos de medida",
+        "fontes de som",
+        "temperaturas fixas"
+      ],
+      "correctAnswer": "superfícies que podem ser comparadas.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "instrumentos de medida": [
+          "REVIEW_SURFACES"
+        ],
+        "fontes de som": [
+          "REVIEW_SURFACES"
+        ],
+        "temperaturas fixas": [
+          "REVIEW_SURFACES"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVISAO_DE_SUPERFICIE",
+      "explanation": "São exemplos de diferentes superfícies.",
+      "hint": "Lembre dos materiais estudados.",
+      "errorFocus": "REVIEW_SURFACES",
+      "feedback": {
+        "correct": "Boa observação: São exemplos de diferentes superfícies.",
+        "incorrect": "São exemplos de diferentes superfícies.",
+        "hint": "Lembre dos materiais estudados.",
+        "errorFocus": "REVIEW_SURFACES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-34",
+      "statement": "Uma tabela com valores antes e depois pode ajudar a comparar...",
+      "prompt": "Uma tabela com valores antes e depois pode ajudar a comparar...",
+      "options": [
+        "o brilho sem descrição",
+        "variações de temperatura registradas.",
+        "o peso de pessoas",
+        "a luz olhando para o Sol"
+      ],
+      "correctAnswer": "variações de temperatura registradas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "o brilho sem descrição": [
+          "REVIEW_TEMPERATURE_RECORD"
+        ],
+        "o peso de pessoas": [
+          "REVIEW_TEMPERATURE_RECORD"
+        ],
+        "a luz olhando para o Sol": [
+          "REVIEW_TEMPERATURE_RECORD"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVISAO_DE_DADO",
+      "explanation": "Os valores permitem calcular ou observar variações.",
+      "hint": "Leia as medidas.",
+      "errorFocus": "REVIEW_TEMPERATURE_RECORD",
+      "feedback": {
+        "correct": "Boa observação: Os valores permitem calcular ou observar variações.",
+        "incorrect": "Os valores permitem calcular ou observar variações.",
+        "hint": "Leia as medidas.",
+        "errorFocus": "REVIEW_TEMPERATURE_RECORD"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-35",
+      "statement": "Uma descrição de brilho numa superfície trata principalmente de...",
+      "prompt": "Uma descrição de brilho numa superfície trata principalmente de...",
+      "options": [
+        "temperatura exata",
+        "massa do material",
+        "luz refletida observada.",
+        "tempo de observação sem relógio"
+      ],
+      "correctAnswer": "luz refletida observada.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "temperatura exata": [
+          "REVIEW_REFLECTION_VS_HEAT"
+        ],
+        "massa do material": [
+          "REVIEW_REFLECTION_VS_HEAT"
+        ],
+        "tempo de observação sem relógio": [
+          "REVIEW_REFLECTION_VS_HEAT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVISAO_DE_REFLEXAO",
+      "explanation": "Brilho observado não equivale a medição de temperatura.",
+      "hint": "Separe luz de calor medido.",
+      "errorFocus": "REVIEW_REFLECTION_VS_HEAT",
+      "feedback": {
+        "correct": "Boa observação: Brilho observado não equivale a medição de temperatura.",
+        "incorrect": "Brilho observado não equivale a medição de temperatura.",
+        "hint": "Separe luz de calor medido.",
+        "errorFocus": "REVIEW_REFLECTION_VS_HEAT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-36",
+      "statement": "O que evitar numa atividade sobre radiação solar?",
+      "prompt": "O que evitar numa atividade sobre radiação solar?",
+      "options": [
+        "Ler uma tabela",
+        "Usar uma simulação",
+        "Comparar descrições preparadas",
+        "Olhar diretamente para o Sol ou tocar em superfícies aquecidas."
+      ],
+      "correctAnswer": "Olhar diretamente para o Sol ou tocar em superfícies aquecidas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ler uma tabela": [
+          "REVIEW_SAFE_PRACTICE"
+        ],
+        "Usar uma simulação": [
+          "REVIEW_SAFE_PRACTICE"
+        ],
+        "Comparar descrições preparadas": [
+          "REVIEW_SAFE_PRACTICE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVISAO_DE_SEGURANCA",
+      "explanation": "A exposição direta e o contato com itens quentes são riscos evitáveis.",
+      "hint": "Escolha a prática segura.",
+      "errorFocus": "REVIEW_SAFE_PRACTICE",
+      "feedback": {
+        "correct": "Boa observação: A exposição direta e o contato com itens quentes são riscos evitáveis.",
+        "incorrect": "A exposição direta e o contato com itens quentes são riscos evitáveis.",
+        "hint": "Escolha a prática segura.",
+        "errorFocus": "REVIEW_SAFE_PRACTICE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-37",
+      "statement": "Dois registros feitos por tempos diferentes devem ser interpretados...",
+      "prompt": "Dois registros feitos por tempos diferentes devem ser interpretados...",
+      "options": [
+        "considerando que o intervalo pode influenciar a comparação.",
+        "como resultados automaticamente iguais",
+        "sem consultar os dados",
+        "como uma prova de regra universal"
+      ],
+      "correctAnswer": "considerando que o intervalo pode influenciar a comparação.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "como resultados automaticamente iguais": [
+          "REVIEW_CONDITIONS"
+        ],
+        "sem consultar os dados": [
+          "REVIEW_CONDITIONS"
+        ],
+        "como uma prova de regra universal": [
+          "REVIEW_CONDITIONS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVISAO_DE_CONDICOES",
+      "explanation": "O intervalo é uma condição importante.",
+      "hint": "Verifique o método.",
+      "errorFocus": "REVIEW_CONDITIONS",
+      "feedback": {
+        "correct": "Boa observação: O intervalo é uma condição importante.",
+        "incorrect": "O intervalo é uma condição importante.",
+        "hint": "Verifique o método.",
+        "errorFocus": "REVIEW_CONDITIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-38",
+      "statement": "Uma tabela mostra que uma amostra teve maior variação neste teste. O que é correto dizer?",
+      "prompt": "Uma tabela mostra que uma amostra teve maior variação neste teste. O que é correto dizer?",
+      "options": [
+        "Todas as superfícies desse tipo são sempre iguais",
+        "A amostra teve maior variação neste teste, conforme os dados.",
+        "A tabela descreve todos os lugares",
+        "A medição pode ser ignorada"
+      ],
+      "correctAnswer": "A amostra teve maior variação neste teste, conforme os dados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as superfícies desse tipo são sempre iguais": [
+          "REVIEW_EVIDENCE_SCOPE"
+        ],
+        "A tabela descreve todos os lugares": [
+          "REVIEW_EVIDENCE_SCOPE"
+        ],
+        "A medição pode ser ignorada": [
+          "REVIEW_EVIDENCE_SCOPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "REVISAO_DE_CONCLUSAO",
+      "explanation": "A conclusão aponta o resultado e limita seu alcance.",
+      "hint": "Use “neste teste”.",
+      "errorFocus": "REVIEW_EVIDENCE_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão aponta o resultado e limita seu alcance.",
+        "incorrect": "A conclusão aponta o resultado e limita seu alcance.",
+        "hint": "Use “neste teste”.",
+        "errorFocus": "REVIEW_EVIDENCE_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-39",
+      "statement": "Como apresentar um resultado para colegas que não veem a tabela?",
+      "prompt": "Como apresentar um resultado para colegas que não veem a tabela?",
+      "options": [
+        "Dizer só “foi mais quente” sem indicar dados",
+        "Pedir que toquem no material",
+        "Descrever os valores, as superfícies e as condições registradas.",
+        "Olhar para o Sol juntos"
+      ],
+      "correctAnswer": "Descrever os valores, as superfícies e as condições registradas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Dizer só “foi mais quente” sem indicar dados": [
+          "REVIEW_ACCESSIBLE_REPORTING"
+        ],
+        "Pedir que toquem no material": [
+          "REVIEW_ACCESSIBLE_REPORTING"
+        ],
+        "Olhar para o Sol juntos": [
+          "REVIEW_ACCESSIBLE_REPORTING"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVISAO_DE_COMUNICACAO",
+      "explanation": "A descrição oral inclui dados e contexto sem exigir visão da tabela.",
+      "hint": "Explique o registro em palavras.",
+      "errorFocus": "REVIEW_ACCESSIBLE_REPORTING",
+      "feedback": {
+        "correct": "Boa observação: A descrição oral inclui dados e contexto sem exigir visão da tabela.",
+        "incorrect": "A descrição oral inclui dados e contexto sem exigir visão da tabela.",
+        "hint": "Explique o registro em palavras.",
+        "errorFocus": "REVIEW_ACCESSIBLE_REPORTING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-ef02ci08-compare-solar-radiation-surface-effects-40",
+      "statement": "Por que uma conclusão sobre superfície deve mencionar as condições do registro?",
+      "prompt": "Por que uma conclusão sobre superfície deve mencionar as condições do registro?",
+      "options": [
+        "Porque os materiais não podem ser comparados",
+        "Porque toda tabela está errada",
+        "Porque as condições substituem os dados",
+        "Porque resultados dependem do contexto e não devem virar regra universal sem evidência."
+      ],
+      "correctAnswer": "Porque resultados dependem do contexto e não devem virar regra universal sem evidência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque os materiais não podem ser comparados": [
+          "REVIEW_CONTEXTUAL_CONCLUSION"
+        ],
+        "Porque toda tabela está errada": [
+          "REVIEW_CONTEXTUAL_CONCLUSION"
+        ],
+        "Porque as condições substituem os dados": [
+          "REVIEW_CONTEXTUAL_CONCLUSION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SINTese_DE_EVIDENCIAS",
+      "explanation": "Contextualizar preserva uma interpretação cuidadosa dos dados.",
+      "hint": "Relacione método e conclusão.",
+      "errorFocus": "REVIEW_CONTEXTUAL_CONCLUSION",
+      "feedback": {
+        "correct": "Boa observação: Contextualizar preserva uma interpretação cuidadosa dos dados.",
+        "incorrect": "Contextualizar preserva uma interpretação cuidadosa dos dados.",
+        "hint": "Relacione método e conclusão.",
+        "errorFocus": "REVIEW_CONTEXTUAL_CONCLUSION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Oferecer tabelas ampliadas, símbolos táteis, descrições orais de imagens e escala visual de temperatura.",
+          "Permitir comparar cartões de dados por apontar, organizar, desenhar ou comunicação alternativa.",
+          "Usar exclusivamente registros e simulações seguras; não pedir observação direta do Sol ou contato com superfícies aquecidas."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
