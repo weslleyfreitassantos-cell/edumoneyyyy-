@@ -109,7 +109,7 @@ describe('updateResolvedPublicBrandingCache', () => {
         ) ?? '{}',
       ),
     ).toMatchObject({
-      version: 3,
+      version: 4,
       branding: readyBranding,
     });
     queryClient.clear();
@@ -120,7 +120,7 @@ describe('updateResolvedPublicBrandingCache', () => {
     localStorage.setItem(
       `tecescola:public-branding:${host}`,
       JSON.stringify({
-        version: 3,
+        version: 4,
         cachedAt: Date.now(),
         branding: staleBranding,
       }),

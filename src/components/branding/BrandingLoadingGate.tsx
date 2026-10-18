@@ -10,7 +10,11 @@ export default function BrandingLoadingGate({
 }) {
   const brandingQuery = useResolvedBranding();
 
-  if (brandingQuery.isLoading) {
+  const waitingForInitialResolution =
+    brandingQuery.isLoading ||
+    (brandingQuery.isFetching && !brandingQuery.isFetchedAfterMount);
+
+  if (waitingForInitialResolution) {
     return (
       <main className="grid min-h-dvh place-items-center bg-[#f3f6fb] dark:bg-slate-950">
         <div role="status" aria-label="Carregando identidade visual">

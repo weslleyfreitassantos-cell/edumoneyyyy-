@@ -49,6 +49,25 @@ describe('BrandingLoadingGate', () => {
     expect(screen.getByText('Conteúdo da escola')).toBeTruthy();
   });
 
+  it('mantém a bolinha enquanto revalida o cache antes do primeiro retorno da rede', () => {
+    mockedUseResolvedBranding.mockReturnValue({
+      isLoading: false,
+      isFetching: true,
+      isFetchedAfterMount: false,
+      isError: false,
+      data: { scope: 'INSTITUTION' },
+    } as never);
+
+    render(
+      <BrandingLoadingGate>
+        <div>Conteúdo da escola</div>
+      </BrandingLoadingGate>,
+    );
+
+    expect(screen.getByRole('status', { name: /identidade visual/i })).toBeTruthy();
+    expect(screen.queryByText('Conteúdo da escola')).toBeNull();
+  });
+
   it('mantem as rotas durante uma falha de revalidacao com branding anterior', () => {
     mockedUseResolvedBranding.mockReturnValue({
       isLoading: false,

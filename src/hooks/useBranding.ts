@@ -28,7 +28,9 @@ function getWindowHostname(): string {
 }
 
 const publicBrandingCachePrefix = 'tecescola:public-branding:';
-const publicBrandingCacheVersion = 3;
+// Invalidate entries created before the first-load gate started waiting for
+// the current hostname's branding and image assets.
+const publicBrandingCacheVersion = 4;
 export const PUBLIC_BRANDING_STALE_TIME = 60_000;
 
 interface PersistedPublicBranding {
@@ -91,7 +93,7 @@ function readPersistedPublicBranding(
 
     const entry = parsed as Partial<PersistedPublicBranding>;
     if (
-      (entry.version !== 2 && entry.version !== publicBrandingCacheVersion) ||
+      entry.version !== publicBrandingCacheVersion ||
       !isPublicBranding(entry.branding)
     ) {
       return null;
