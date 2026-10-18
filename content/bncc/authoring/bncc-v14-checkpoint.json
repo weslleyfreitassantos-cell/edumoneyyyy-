@@ -2,7 +2,7 @@
   "schemaVersion": "tec-escola.bncc.campaign-checkpoint.v14",
   "campaignId": "TECESCOLA_BNCC_AUTONOMOUS_COMPLETION_ENGINE_V14",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
-  "head": "f67c22e238f2",
+  "head": "caa21d1829f509866570d5b036171f5795530b7b",
   "recordedAt": "2026-10-17",
   "lastOperation": {
     "type": "GLOBAL_COMPLETION_QUEUE_AND_V14_STAGED_HISTORY_CONTENT",
@@ -51,5 +51,5 @@
     "productionWrites": "NONE"
   },
   "nextTarget": "EI01CG01",
-  "checkpointHash": "054161080674c95b52df991bd010bc63c716967672996a5f658a27fd3cb0ea50"
+  "checkpointHash": "3a9233698563c19ca67d1d0d1fb777f43a74dc4ed5c468a29515e28672ae740d"
 }
