@@ -250,7 +250,12 @@ function reconcileStateWithQueue(queue, state) {
   state.metrics.realContentPackagesValidated = Object.values(state.taskRecords).filter((record) => ['CONTENT_PACKAGE_CREATED', 'EXISTING_PACKAGE_VALIDATED'].includes(record.lastAction)).length;
   state.metrics.briefsCreated = Object.values(state.taskRecords).filter((record) => record.lastAction === 'AUTHORING_CONTEXT_BRIEF_CREATED').length;
   state.metrics.briefsConvertedToPackages = Object.values(state.taskRecords).filter((record) => record.briefConverted === true).length;
-  state.metrics.tasksWithoutAuthoringProvider = queue.tasks.filter((task) => hasSafeAuthoringCandidate(task) && !getAuthoringProducer(task) && !task.evidence?.stagedPackages?.length).length;
+  state.metrics.tasksWithoutAuthoringProvider = queue.tasks.filter((task) => (
+    task.evidence?.source === 'VERIFIED'
+    && task.state !== 'CONTENT_TECHNICALLY_COMPLETE'
+    && !getAuthoringProducer(task)
+    && !task.evidence?.stagedPackages?.length
+  )).length;
   const completedIds = new Set(completedTasks.map((task) => task.taskId));
   state.lastCompletedTask = completedIds.has(state.lastCompletedTask)
     ? state.lastCompletedTask
