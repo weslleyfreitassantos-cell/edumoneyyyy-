@@ -1,0 +1,2078 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-mathematics-numbers-quantity-order-code-ef01",
+  "canonicalSkillCode": "AUTHORING_EF01MA01_NUMBER_QUANTITY_ORDER_CODE",
+  "subject": "MATHEMATICS",
+  "domain": "NÚMEROS",
+  "topic": "números naturais como quantidade, ordem ou código de identificação",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 6
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF01MA01",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números não indicam contagem nem ordem, mas sim código de identificação.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 281
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "O que um número está dizendo?",
+    "objective": "Distinguir, em situações cotidianas simples, quando um número informa quantos há, indica uma posição ou apenas identifica algo, explicando a pista usada sem confundir código com quantidade.",
+    "summary": "Os numerais aparecem com funções diferentes. Em uma caixa com 5 blocos, 5 indica quantidade. Na fila, o cartão “3º” indica posição. No rótulo fictício “Sala 12”, 12 identifica a sala e não informa que existem doze salas ou doze pessoas. Para interpretar, observe a pergunta, as palavras próximas, a unidade e o uso do número. Um mesmo algarismo pode ter funções distintas em contextos diferentes.",
+    "explanation": "Quantidade responde a “quantos?” e pode ser conferida contando elementos. Ordem responde a “em que posição?” e costuma vir com palavras como primeiro, segundo ou marcas ordinais. Código serve para localizar ou identificar uma coisa, como o número impresso em uma linha de ônibus de brincadeira, armário escolar fictício ou etiqueta de material; o código não revela por si só quantos objetos existem nem sua posição. O contexto é essencial: o número 8 pode indicar oito lápis, a oitava etapa ou o código de uma equipe inventada. Ao justificar, diga qual função o número cumpre e qual evidência do contexto sustenta sua leitura.",
+    "workedExample": "Em um cartaz fictício, “Equipe 4 — 6 participantes — chegou em 2º lugar”, o 4 identifica a equipe, o 6 responde quantos participantes há e o 2º indica posição. O cartaz usa números diferentes para três funções; não se deve concluir que a equipe 4 tem quatro participantes.",
+    "commonMistake": "Tratar todo número impresso como contagem ou supor que o algarismo de um código informa a quantidade de itens identificados.",
+    "priorKnowledge": [
+      "Reconhecer numerais naturais em placas, jogos, coleções e materiais escolares.",
+      "Contar pequenos conjuntos um a um e compreender palavras usuais de posição, como primeiro e último."
+    ],
+    "keyConcepts": [
+      "número natural",
+      "quantidade",
+      "contagem",
+      "ordem",
+      "posição",
+      "código de identificação",
+      "contexto",
+      "justificativa"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "CODE_AS_QUANTITY",
+        "action": "Cubra o número e pergunte o que ainda é possível contar; depois revele o rótulo e verifique se ele identifica o objeto sem mudar a quantidade do conjunto."
+      },
+      {
+        "errorFocus": "ORDINAL_AS_CARDINAL",
+        "action": "Represente uma fila com objetos e associe “3º” a uma posição; compare com três objetos agrupados para distinguir lugar de quantidade."
+      },
+      {
+        "errorFocus": "NUMBER_WITHOUT_CONTEXT",
+        "action": "Leia a frase inteira e destaque palavras como quantos, lugar, número da sala ou etiqueta antes de decidir a função do numeral."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+      "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+      "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ef01ma01-sort-number-functions",
+        "title": "Separar cartões pelo que o número informa",
+        "instructions": "Cartões didáticos fictícios mostram pequenas coleções, lugares em uma fila de brinquedos e etiquetas inventadas de caixas, sem nomes nem dados pessoais.\n1. Observe cada cartão e leia a pergunta ou legenda que o acompanha.\n2. Agrupe os cartões em quantidade, posição ou identificação e aponte a pista usada.\n3. Escolha um cartão e explique como o mesmo algarismo poderia ter outra função em um contexto diferente.",
+        "steps": [
+          "Observe cada cartão e leia a pergunta ou legenda que o acompanha.",
+          "Agrupe os cartões em quantidade, posição ou identificação e aponte a pista usada.",
+          "Escolha um cartão e explique como o mesmo algarismo poderia ter outra função em um contexto diferente."
+        ],
+        "evidence": "Classificação explicada com ao menos um exemplo de cada função e justificativa baseada na legenda, na contagem ou na posição representada.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "agrupa alguns cartões, mas usa o algarismo isolado como única justificativa.",
+            "developing": "identifica duas funções e usa pistas do contexto com apoio.",
+            "proficient": "diferencia quantidade, posição e código em exemplos variados e justifica a interpretação pelo contexto."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ef01ma01-create-classroom-number-map",
+        "title": "Criar um mapa numérico da sala fictícia",
+        "instructions": "Em uma planta simples inventada, a turma marca uma coleção, uma posição de chegada e etiquetas de locais imaginários; não se registram dados de estudantes.\n1. Escolha uma situação que use número para contar, outra para marcar posição e outra para identificar um local fictício.\n2. Desenhe ou organize símbolos e escreva uma legenda clara para cada número.\n3. Troque o mapa com um colega e verifique se é possível descobrir a função de cada numeral pela legenda.",
+        "steps": [
+          "Escolha uma situação que use número para contar, outra para marcar posição e outra para identificar um local fictício.",
+          "Desenhe ou organize símbolos e escreva uma legenda clara para cada número.",
+          "Troque o mapa com um colega e verifique se é possível descobrir a função de cada numeral pela legenda."
+        ],
+        "evidence": "Mapa ou sequência de cartões com três usos distintos, legendas coerentes e explicação de que o código identifica sem expressar quantidade ou ordem.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "registra numerais sem indicar o que significam.",
+            "developing": "representa duas funções e completa a terceira com ajuda da legenda.",
+            "proficient": "representa e explica as três funções com legendas inequívocas e exemplos fictícios seguros."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-mathematics-numbers-quantity-order-code-ef01-01",
+          "v1-mathematics-numbers-quantity-order-code-ef01-02",
+          "v1-mathematics-numbers-quantity-order-code-ef01-03",
+          "v1-mathematics-numbers-quantity-order-code-ef01-04",
+          "v1-mathematics-numbers-quantity-order-code-ef01-05",
+          "v1-mathematics-numbers-quantity-order-code-ef01-06",
+          "v1-mathematics-numbers-quantity-order-code-ef01-07",
+          "v1-mathematics-numbers-quantity-order-code-ef01-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-mathematics-numbers-quantity-order-code-ef01-09",
+          "v1-mathematics-numbers-quantity-order-code-ef01-10",
+          "v1-mathematics-numbers-quantity-order-code-ef01-11",
+          "v1-mathematics-numbers-quantity-order-code-ef01-12",
+          "v1-mathematics-numbers-quantity-order-code-ef01-13",
+          "v1-mathematics-numbers-quantity-order-code-ef01-14",
+          "v1-mathematics-numbers-quantity-order-code-ef01-15",
+          "v1-mathematics-numbers-quantity-order-code-ef01-16",
+          "v1-mathematics-numbers-quantity-order-code-ef01-17",
+          "v1-mathematics-numbers-quantity-order-code-ef01-18",
+          "v1-mathematics-numbers-quantity-order-code-ef01-19",
+          "v1-mathematics-numbers-quantity-order-code-ef01-20"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-mathematics-numbers-quantity-order-code-ef01-21",
+          "v1-mathematics-numbers-quantity-order-code-ef01-22",
+          "v1-mathematics-numbers-quantity-order-code-ef01-23",
+          "v1-mathematics-numbers-quantity-order-code-ef01-24",
+          "v1-mathematics-numbers-quantity-order-code-ef01-25",
+          "v1-mathematics-numbers-quantity-order-code-ef01-26",
+          "v1-mathematics-numbers-quantity-order-code-ef01-27",
+          "v1-mathematics-numbers-quantity-order-code-ef01-28"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-mathematics-numbers-quantity-order-code-ef01-29",
+          "v1-mathematics-numbers-quantity-order-code-ef01-30",
+          "v1-mathematics-numbers-quantity-order-code-ef01-31",
+          "v1-mathematics-numbers-quantity-order-code-ef01-32",
+          "v1-mathematics-numbers-quantity-order-code-ef01-33",
+          "v1-mathematics-numbers-quantity-order-code-ef01-34"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-mathematics-numbers-quantity-order-code-ef01-35",
+          "v1-mathematics-numbers-quantity-order-code-ef01-36",
+          "v1-mathematics-numbers-quantity-order-code-ef01-37",
+          "v1-mathematics-numbers-quantity-order-code-ef01-38",
+          "v1-mathematics-numbers-quantity-order-code-ef01-39",
+          "v1-mathematics-numbers-quantity-order-code-ef01-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF01MA01",
+        "descriptor": "Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números não indicam contagem nem ordem, mas sim código de identificação.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 281
+        },
+        "checkedAt": "2026-10-17",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-01",
+      "statement": "Uma imagem mostra 5 blocos juntos e pergunta “quantos blocos há?”. O que o 5 informa?",
+      "prompt": "Uma imagem mostra 5 blocos juntos e pergunta “quantos blocos há?”. O que o 5 informa?",
+      "options": [
+        "A quantidade de blocos.",
+        "A posição do quinto bloco na fila",
+        "O código de uma caixa",
+        "O número de grupos sem contar"
+      ],
+      "correctAnswer": "A quantidade de blocos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "A posição do quinto bloco na fila": [
+          "QUANTITY_COUNT"
+        ],
+        "O código de uma caixa": [
+          "QUANTITY_COUNT"
+        ],
+        "O número de grupos sem contar": [
+          "QUANTITY_COUNT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "BLOCKS_ON_MAT",
+      "explanation": "A pergunta “quantos?” pede contar os elementos; 5 representa a quantidade mostrada.",
+      "hint": "Veja se a pergunta pede contar objetos.",
+      "errorFocus": "QUANTITY_COUNT",
+      "feedback": {
+        "correct": "Boa observação: A pergunta “quantos?” pede contar os elementos; 5 representa a quantidade mostrada.",
+        "incorrect": "A pergunta “quantos?” pede contar os elementos; 5 representa a quantidade mostrada.",
+        "hint": "Veja se a pergunta pede contar objetos.",
+        "errorFocus": "QUANTITY_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-02",
+      "statement": "Na brincadeira, uma placa diz “2º a chegar”. O 2º indica o quê?",
+      "prompt": "Na brincadeira, uma placa diz “2º a chegar”. O 2º indica o quê?",
+      "options": [
+        "Dois participantes na brincadeira",
+        "A posição de chegada.",
+        "O código do brinquedo",
+        "Duas voltas obrigatórias"
+      ],
+      "correctAnswer": "A posição de chegada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dois participantes na brincadeira": [
+          "ORDINAL_POSITION"
+        ],
+        "O código do brinquedo": [
+          "ORDINAL_POSITION"
+        ],
+        "Duas voltas obrigatórias": [
+          "ORDINAL_POSITION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TOY_PARADE_ORDER",
+      "explanation": "O símbolo ordinal “2º” marca lugar na sequência, não a quantidade de participantes.",
+      "hint": "Observe a expressão “a chegar”.",
+      "errorFocus": "ORDINAL_POSITION",
+      "feedback": {
+        "correct": "Boa observação: O símbolo ordinal “2º” marca lugar na sequência, não a quantidade de participantes.",
+        "incorrect": "O símbolo ordinal “2º” marca lugar na sequência, não a quantidade de participantes.",
+        "hint": "Observe a expressão “a chegar”.",
+        "errorFocus": "ORDINAL_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-03",
+      "statement": "Uma caixa vazia tem a etiqueta inventada “Caixa 7”. O que o 7 faz nessa etiqueta?",
+      "prompt": "Uma caixa vazia tem a etiqueta inventada “Caixa 7”. O que o 7 faz nessa etiqueta?",
+      "options": [
+        "Conta sete objetos dentro dela",
+        "Mostra que ela está em sétimo lugar",
+        "Identifica a caixa.",
+        "Informa sete tamanhos diferentes"
+      ],
+      "correctAnswer": "Identifica a caixa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Conta sete objetos dentro dela": [
+          "CODE_NOT_COUNT"
+        ],
+        "Mostra que ela está em sétimo lugar": [
+          "CODE_NOT_COUNT"
+        ],
+        "Informa sete tamanhos diferentes": [
+          "CODE_NOT_COUNT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FICTIONAL_BOX_LABEL",
+      "explanation": "A etiqueta distingue uma caixa; sem outra informação, não mostra quantos objetos há dentro.",
+      "hint": "Pense na função de uma etiqueta.",
+      "errorFocus": "CODE_NOT_COUNT",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta distingue uma caixa; sem outra informação, não mostra quantos objetos há dentro.",
+        "incorrect": "A etiqueta distingue uma caixa; sem outra informação, não mostra quantos objetos há dentro.",
+        "hint": "Pense na função de uma etiqueta.",
+        "errorFocus": "CODE_NOT_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-04",
+      "statement": "Um desenho tem 4 pontos para representar quatro livros emprestados. O número 4 representa…",
+      "prompt": "Um desenho tem 4 pontos para representar quatro livros emprestados. O número 4 representa…",
+      "options": [
+        "um código de biblioteca",
+        "a quarta posição de um livro",
+        "o nome da sala",
+        "quantidade de livros."
+      ],
+      "correctAnswer": "quantidade de livros.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "um código de biblioteca": [
+          "COUNTING_EVIDENCE"
+        ],
+        "a quarta posição de um livro": [
+          "COUNTING_EVIDENCE"
+        ],
+        "o nome da sala": [
+          "COUNTING_EVIDENCE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CLASSROOM_ATTENDANCE_DOTS",
+      "explanation": "Os pontos representam cada livro e são contados; 4 responde a quantos.",
+      "hint": "Conte os pontos representados.",
+      "errorFocus": "COUNTING_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Os pontos representam cada livro e são contados; 4 responde a quantos.",
+        "incorrect": "Os pontos representam cada livro e são contados; 4 responde a quantos.",
+        "hint": "Conte os pontos representados.",
+        "errorFocus": "COUNTING_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-05",
+      "statement": "Um ônibus de brinquedo traz “Linha 8” na placa. Sem contar ônibus, o que 8 pode fazer?",
+      "prompt": "Um ônibus de brinquedo traz “Linha 8” na placa. Sem contar ônibus, o que 8 pode fazer?",
+      "options": [
+        "Identificar a linha fictícia.",
+        "Informar que há oito ônibus",
+        "Indicar o oitavo passageiro",
+        "Mostrar oito paradas percorridas"
+      ],
+      "correctAnswer": "Identificar a linha fictícia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Informar que há oito ônibus": [
+          "ROUTE_CODE"
+        ],
+        "Indicar o oitavo passageiro": [
+          "ROUTE_CODE"
+        ],
+        "Mostrar oito paradas percorridas": [
+          "ROUTE_CODE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FICTIONAL_BUS_ROUTE",
+      "explanation": "O número na placa pode funcionar como código de identificação da linha.",
+      "hint": "A placa nomeia uma linha ou conta veículos?",
+      "errorFocus": "ROUTE_CODE",
+      "feedback": {
+        "correct": "Boa observação: O número na placa pode funcionar como código de identificação da linha.",
+        "incorrect": "O número na placa pode funcionar como código de identificação da linha.",
+        "hint": "A placa nomeia uma linha ou conta veículos?",
+        "errorFocus": "ROUTE_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-06",
+      "statement": "Três bonecos estão numa fila; uma seta aponta para o boneco marcado “3º”. O que esse marcador informa?",
+      "prompt": "Três bonecos estão numa fila; uma seta aponta para o boneco marcado “3º”. O que esse marcador informa?",
+      "options": [
+        "Que há três bonecos ao todo",
+        "Que ele ocupa a terceira posição.",
+        "Que o boneco tem código 3",
+        "Que existem três filas"
+      ],
+      "correctAnswer": "Que ele ocupa a terceira posição.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que há três bonecos ao todo": [
+          "POSITION_NOT_TOTAL"
+        ],
+        "Que o boneco tem código 3": [
+          "POSITION_NOT_TOTAL"
+        ],
+        "Que existem três filas": [
+          "POSITION_NOT_TOTAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "QUEUE_MARKER",
+      "explanation": "A marca ordinal está associada ao lugar do boneco na sequência.",
+      "hint": "Leia o indicador ordinal junto da fila.",
+      "errorFocus": "POSITION_NOT_TOTAL",
+      "feedback": {
+        "correct": "Boa observação: A marca ordinal está associada ao lugar do boneco na sequência.",
+        "incorrect": "A marca ordinal está associada ao lugar do boneco na sequência.",
+        "hint": "Leia o indicador ordinal junto da fila.",
+        "errorFocus": "POSITION_NOT_TOTAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-07",
+      "statement": "Em uma bandeja há 6 lápis de cor; a pergunta é “quantos?”. Qual função tem o numeral 6?",
+      "prompt": "Em uma bandeja há 6 lápis de cor; a pergunta é “quantos?”. Qual função tem o numeral 6?",
+      "options": [
+        "Identificar a bandeja",
+        "Marcar a sexta bandeja",
+        "Indicar a quantidade de lápis.",
+        "Indicar a cor número 6"
+      ],
+      "correctAnswer": "Indicar a quantidade de lápis.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Identificar a bandeja": [
+          "CARDINAL_CONTEXT"
+        ],
+        "Marcar a sexta bandeja": [
+          "CARDINAL_CONTEXT"
+        ],
+        "Indicar a cor número 6": [
+          "CARDINAL_CONTEXT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SIX_CRAYONS_TRAY",
+      "explanation": "O numeral responde à pergunta sobre a quantidade de lápis na bandeja.",
+      "hint": "A pergunta usa a palavra “quantos”.",
+      "errorFocus": "CARDINAL_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: O numeral responde à pergunta sobre a quantidade de lápis na bandeja.",
+        "incorrect": "O numeral responde à pergunta sobre a quantidade de lápis na bandeja.",
+        "hint": "A pergunta usa a palavra “quantos”.",
+        "errorFocus": "CARDINAL_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-08",
+      "statement": "Um cartão fictício mostra “Sala 12”. O que 12 informa no cartão?",
+      "prompt": "Um cartão fictício mostra “Sala 12”. O que 12 informa no cartão?",
+      "options": [
+        "Que doze alunos estão na sala",
+        "Que a sala é a décima segunda da fila",
+        "Que há doze carteiras",
+        "Qual sala está sendo identificada."
+      ],
+      "correctAnswer": "Qual sala está sendo identificada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Que doze alunos estão na sala": [
+          "ROOM_LABEL_CODE"
+        ],
+        "Que a sala é a décima segunda da fila": [
+          "ROOM_LABEL_CODE"
+        ],
+        "Que há doze carteiras": [
+          "ROOM_LABEL_CODE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "ROOM_CODE_CARD",
+      "explanation": "Em “Sala 12”, o numeral é uma identificação; outras informações seriam necessárias para contar pessoas ou carteiras.",
+      "hint": "Veja que palavra vem antes do numeral.",
+      "errorFocus": "ROOM_LABEL_CODE",
+      "feedback": {
+        "correct": "Boa observação: Em “Sala 12”, o numeral é uma identificação; outras informações seriam necessárias para contar pessoas ou carteiras.",
+        "incorrect": "Em “Sala 12”, o numeral é uma identificação; outras informações seriam necessárias para contar pessoas ou carteiras.",
+        "hint": "Veja que palavra vem antes do numeral.",
+        "errorFocus": "ROOM_LABEL_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-09",
+      "statement": "Um cartão de jogo mostra 10 conchas desenhadas e pergunta “quantas?”. O 10 é…",
+      "prompt": "Um cartão de jogo mostra 10 conchas desenhadas e pergunta “quantas?”. O 10 é…",
+      "options": [
+        "uma quantidade.",
+        "uma posição",
+        "um código de coleção",
+        "o número de jogadores"
+      ],
+      "correctAnswer": "uma quantidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "uma posição": [
+          "COUNT_CARDINAL"
+        ],
+        "um código de coleção": [
+          "COUNT_CARDINAL"
+        ],
+        "o número de jogadores": [
+          "COUNT_CARDINAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TEN_SHELLS_CARD",
+      "explanation": "A coleção ilustrada pode ser contada; 10 indica quantos elementos há.",
+      "hint": "Conte o que está desenhado.",
+      "errorFocus": "COUNT_CARDINAL",
+      "feedback": {
+        "correct": "Boa observação: A coleção ilustrada pode ser contada; 10 indica quantos elementos há.",
+        "incorrect": "A coleção ilustrada pode ser contada; 10 indica quantos elementos há.",
+        "hint": "Conte o que está desenhado.",
+        "errorFocus": "COUNT_CARDINAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-10",
+      "statement": "Uma ficha diz “1ª jogada”. O 1ª indica…",
+      "prompt": "Uma ficha diz “1ª jogada”. O 1ª indica…",
+      "options": [
+        "quantidade de fichas",
+        "ordem na sequência de jogadas.",
+        "código do jogo",
+        "quantidade de casas"
+      ],
+      "correctAnswer": "ordem na sequência de jogadas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "quantidade de fichas": [
+          "TURN_ORDINAL"
+        ],
+        "código do jogo": [
+          "TURN_ORDINAL"
+        ],
+        "quantidade de casas": [
+          "TURN_ORDINAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "FIRST_TURN_TOKEN",
+      "explanation": "O marcador ordinal mostra qual jogada ocorre primeiro.",
+      "hint": "Observe “jogada” e a marca ordinal.",
+      "errorFocus": "TURN_ORDINAL",
+      "feedback": {
+        "correct": "Boa observação: O marcador ordinal mostra qual jogada ocorre primeiro.",
+        "incorrect": "O marcador ordinal mostra qual jogada ocorre primeiro.",
+        "hint": "Observe “jogada” e a marca ordinal.",
+        "errorFocus": "TURN_ORDINAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-11",
+      "statement": "Uma caixa de quebra-cabeça tem etiqueta fictícia “P-4”. O que o 4 pode fazer?",
+      "prompt": "Uma caixa de quebra-cabeça tem etiqueta fictícia “P-4”. O que o 4 pode fazer?",
+      "options": [
+        "Contar quatro peças na caixa",
+        "Indicar que a caixa está em quarto lugar",
+        "Ajudar a identificar o modelo da caixa.",
+        "Informar o tamanho do quebra-cabeça"
+      ],
+      "correctAnswer": "Ajudar a identificar o modelo da caixa.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Contar quatro peças na caixa": [
+          "ALPHANUMERIC_CODE"
+        ],
+        "Indicar que a caixa está em quarto lugar": [
+          "ALPHANUMERIC_CODE"
+        ],
+        "Informar o tamanho do quebra-cabeça": [
+          "ALPHANUMERIC_CODE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "PUZZLE_BOX_ID",
+      "explanation": "A combinação da etiqueta funciona como código; ela não descreve a quantidade de peças.",
+      "hint": "Procure se o número está em uma etiqueta.",
+      "errorFocus": "ALPHANUMERIC_CODE",
+      "feedback": {
+        "correct": "Boa observação: A combinação da etiqueta funciona como código; ela não descreve a quantidade de peças.",
+        "incorrect": "A combinação da etiqueta funciona como código; ela não descreve a quantidade de peças.",
+        "hint": "Procure se o número está em uma etiqueta.",
+        "errorFocus": "ALPHANUMERIC_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-12",
+      "statement": "Um ritmo tem três batidas contadas em voz alta. O número 3 informa…",
+      "prompt": "Um ritmo tem três batidas contadas em voz alta. O número 3 informa…",
+      "options": [
+        "o código do tambor",
+        "a terceira pessoa da roda",
+        "três ritmos diferentes",
+        "quantas batidas foram contadas."
+      ],
+      "correctAnswer": "quantas batidas foram contadas.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "o código do tambor": [
+          "RHYTHM_COUNT"
+        ],
+        "a terceira pessoa da roda": [
+          "RHYTHM_COUNT"
+        ],
+        "três ritmos diferentes": [
+          "RHYTHM_COUNT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "THREE_DRUM_BEATS",
+      "explanation": "Cada batida é contada uma vez e o total é três.",
+      "hint": "Associe uma contagem a cada batida.",
+      "errorFocus": "RHYTHM_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Cada batida é contada uma vez e o total é três.",
+        "incorrect": "Cada batida é contada uma vez e o total é três.",
+        "hint": "Associe uma contagem a cada batida.",
+        "errorFocus": "RHYTHM_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-13",
+      "statement": "Um livro de brincadeira está marcado “4º na prateleira”, e há outros livros ao lado. O 4º indica…",
+      "prompt": "Um livro de brincadeira está marcado “4º na prateleira”, e há outros livros ao lado. O 4º indica…",
+      "options": [
+        "a posição do livro na ordem indicada.",
+        "que há quatro livros na prateleira",
+        "o código do livro",
+        "quatro páginas do livro"
+      ],
+      "correctAnswer": "a posição do livro na ordem indicada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "que há quatro livros na prateleira": [
+          "SHELF_ORDINAL"
+        ],
+        "o código do livro": [
+          "SHELF_ORDINAL"
+        ],
+        "quatro páginas do livro": [
+          "SHELF_ORDINAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "SHELF_POSITION",
+      "explanation": "O ordinal acompanha uma posição; para saber o total seria preciso contar todos os livros.",
+      "hint": "A expressão usa “na prateleira” com ordinal.",
+      "errorFocus": "SHELF_ORDINAL",
+      "feedback": {
+        "correct": "Boa observação: O ordinal acompanha uma posição; para saber o total seria preciso contar todos os livros.",
+        "incorrect": "O ordinal acompanha uma posição; para saber o total seria preciso contar todos os livros.",
+        "hint": "A expressão usa “na prateleira” com ordinal.",
+        "errorFocus": "SHELF_ORDINAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-14",
+      "statement": "No desenho de uma escola inventada, “Armário 5” aparece em uma porta. Qual leitura é adequada?",
+      "prompt": "No desenho de uma escola inventada, “Armário 5” aparece em uma porta. Qual leitura é adequada?",
+      "options": [
+        "O armário contém exatamente cinco itens",
+        "O 5 identifica aquele armário no desenho.",
+        "A porta é a quinta a ser aberta",
+        "Existem apenas cinco armários"
+      ],
+      "correctAnswer": "O 5 identifica aquele armário no desenho.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O armário contém exatamente cinco itens": [
+          "LOCKER_IDENTIFIER"
+        ],
+        "A porta é a quinta a ser aberta": [
+          "LOCKER_IDENTIFIER"
+        ],
+        "Existem apenas cinco armários": [
+          "LOCKER_IDENTIFIER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "FICTITIOUS_LOCKER",
+      "explanation": "O numeral do rótulo diferencia o armário, sem informar o conteúdo ou o total de armários.",
+      "hint": "A legenda nomeia um armário específico.",
+      "errorFocus": "LOCKER_IDENTIFIER",
+      "feedback": {
+        "correct": "Boa observação: O numeral do rótulo diferencia o armário, sem informar o conteúdo ou o total de armários.",
+        "incorrect": "O numeral do rótulo diferencia o armário, sem informar o conteúdo ou o total de armários.",
+        "hint": "A legenda nomeia um armário específico.",
+        "errorFocus": "LOCKER_IDENTIFIER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-15",
+      "statement": "Uma criança ganha 4 estrelas desenhadas num quadro de pontos. O 4 representa…",
+      "prompt": "Uma criança ganha 4 estrelas desenhadas num quadro de pontos. O 4 representa…",
+      "options": [
+        "a quarta criança",
+        "um código secreto",
+        "a quantidade de estrelas recebidas.",
+        "quatro rodadas restantes"
+      ],
+      "correctAnswer": "a quantidade de estrelas recebidas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "a quarta criança": [
+          "STAR_COUNT"
+        ],
+        "um código secreto": [
+          "STAR_COUNT"
+        ],
+        "quatro rodadas restantes": [
+          "STAR_COUNT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FOUR_STARS_SCORE",
+      "explanation": "As estrelas são elementos contáveis no quadro de pontos.",
+      "hint": "Conte os símbolos de estrela.",
+      "errorFocus": "STAR_COUNT",
+      "feedback": {
+        "correct": "Boa observação: As estrelas são elementos contáveis no quadro de pontos.",
+        "incorrect": "As estrelas são elementos contáveis no quadro de pontos.",
+        "hint": "Conte os símbolos de estrela.",
+        "errorFocus": "STAR_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-16",
+      "statement": "Em uma gincana fictícia, o crachá “Equipe 3” identifica um grupo. O número 3 é…",
+      "prompt": "Em uma gincana fictícia, o crachá “Equipe 3” identifica um grupo. O número 3 é…",
+      "options": [
+        "a quantidade de participantes",
+        "a posição final do grupo",
+        "o número de tarefas concluídas",
+        "um código de identificação do grupo."
+      ],
+      "correctAnswer": "um código de identificação do grupo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "a quantidade de participantes": [
+          "TEAM_CODE"
+        ],
+        "a posição final do grupo": [
+          "TEAM_CODE"
+        ],
+        "o número de tarefas concluídas": [
+          "TEAM_CODE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "TEAM_NUMBER_BADGE",
+      "explanation": "O crachá dá um nome numérico ao grupo; quantidade e posição exigem outros dados.",
+      "hint": "O rótulo identifica a equipe.",
+      "errorFocus": "TEAM_CODE",
+      "feedback": {
+        "correct": "Boa observação: O crachá dá um nome numérico ao grupo; quantidade e posição exigem outros dados.",
+        "incorrect": "O crachá dá um nome numérico ao grupo; quantidade e posição exigem outros dados.",
+        "hint": "O rótulo identifica a equipe.",
+        "errorFocus": "TEAM_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-17",
+      "statement": "Uma sequência tem desenhos de folhas e a legenda “2ª figura”. O número indica…",
+      "prompt": "Uma sequência tem desenhos de folhas e a legenda “2ª figura”. O número indica…",
+      "options": [
+        "a posição da figura na sequência.",
+        "duas folhas em cada desenho",
+        "o código da folha",
+        "o total de figuras"
+      ],
+      "correctAnswer": "a posição da figura na sequência.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "duas folhas em cada desenho": [
+          "SEQUENCE_POSITION"
+        ],
+        "o código da folha": [
+          "SEQUENCE_POSITION"
+        ],
+        "o total de figuras": [
+          "SEQUENCE_POSITION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SECOND_PICTURE_SEQUENCE",
+      "explanation": "A marca “2ª” informa qual lugar a figura ocupa.",
+      "hint": "Observe o símbolo ordinal.",
+      "errorFocus": "SEQUENCE_POSITION",
+      "feedback": {
+        "correct": "Boa observação: A marca “2ª” informa qual lugar a figura ocupa.",
+        "incorrect": "A marca “2ª” informa qual lugar a figura ocupa.",
+        "hint": "Observe o símbolo ordinal.",
+        "errorFocus": "SEQUENCE_POSITION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-18",
+      "statement": "Há 8 tampinhas em uma coleção e elas são contadas uma a uma. O que representa 8?",
+      "prompt": "Há 8 tampinhas em uma coleção e elas são contadas uma a uma. O que representa 8?",
+      "options": [
+        "O código da coleção",
+        "O total de tampinhas contadas.",
+        "A oitava tampinha",
+        "O número de cores"
+      ],
+      "correctAnswer": "O total de tampinhas contadas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O código da coleção": [
+          "COLLECTION_TOTAL"
+        ],
+        "A oitava tampinha": [
+          "COLLECTION_TOTAL"
+        ],
+        "O número de cores": [
+          "COLLECTION_TOTAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BOTTLE_CAPS_COLLECTION",
+      "explanation": "Contar cada elemento permite afirmar que a coleção tem oito tampinhas.",
+      "hint": "Oito responde a “quantas tampinhas?”.",
+      "errorFocus": "COLLECTION_TOTAL",
+      "feedback": {
+        "correct": "Boa observação: Contar cada elemento permite afirmar que a coleção tem oito tampinhas.",
+        "incorrect": "Contar cada elemento permite afirmar que a coleção tem oito tampinhas.",
+        "hint": "Oito responde a “quantas tampinhas?”.",
+        "errorFocus": "COLLECTION_TOTAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-19",
+      "statement": "O vagão de brinquedo traz a inscrição “Vagão 2”. Sem uma fila numerada, o 2 provavelmente…",
+      "prompt": "O vagão de brinquedo traz a inscrição “Vagão 2”. Sem uma fila numerada, o 2 provavelmente…",
+      "options": [
+        "conta dois passageiros",
+        "marca a segunda estação",
+        "identifica o vagão.",
+        "informa duas rodas"
+      ],
+      "correctAnswer": "identifica o vagão.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "conta dois passageiros": [
+          "TRAIN_CAR_CODE"
+        ],
+        "marca a segunda estação": [
+          "TRAIN_CAR_CODE"
+        ],
+        "informa duas rodas": [
+          "TRAIN_CAR_CODE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "FICTIONAL_TRAIN_CAR",
+      "explanation": "A inscrição do vagão pode ser um identificador e não mostra passageiros ou posição sem contexto adicional.",
+      "hint": "A inscrição está no próprio vagão.",
+      "errorFocus": "TRAIN_CAR_CODE",
+      "feedback": {
+        "correct": "Boa observação: A inscrição do vagão pode ser um identificador e não mostra passageiros ou posição sem contexto adicional.",
+        "incorrect": "A inscrição do vagão pode ser um identificador e não mostra passageiros ou posição sem contexto adicional.",
+        "hint": "A inscrição está no próprio vagão.",
+        "errorFocus": "TRAIN_CAR_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-20",
+      "statement": "Em uma corrida de bonecos, uma fita diz “3º lugar”. O que ela registra?",
+      "prompt": "Em uma corrida de bonecos, uma fita diz “3º lugar”. O que ela registra?",
+      "options": [
+        "Três bonecos participantes",
+        "O código do boneco",
+        "Três voltas realizadas",
+        "A posição alcançada na brincadeira."
+      ],
+      "correctAnswer": "A posição alcançada na brincadeira.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Três bonecos participantes": [
+          "RACE_PLACE_ORDINAL"
+        ],
+        "O código do boneco": [
+          "RACE_PLACE_ORDINAL"
+        ],
+        "Três voltas realizadas": [
+          "RACE_PLACE_ORDINAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "THIRD_PLACE_RIBBON",
+      "explanation": "“3º lugar” é uma posição, diferente do total de participantes ou voltas.",
+      "hint": "Leia a palavra “lugar”.",
+      "errorFocus": "RACE_PLACE_ORDINAL",
+      "feedback": {
+        "correct": "Boa observação: “3º lugar” é uma posição, diferente do total de participantes ou voltas.",
+        "incorrect": "“3º lugar” é uma posição, diferente do total de participantes ou voltas.",
+        "hint": "Leia a palavra “lugar”.",
+        "errorFocus": "RACE_PLACE_ORDINAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-21",
+      "statement": "Um cartaz fictício diz “5 bolas; caixa 5; 5º sorteio”. Como interpretar os três cincos?",
+      "prompt": "Um cartaz fictício diz “5 bolas; caixa 5; 5º sorteio”. Como interpretar os três cincos?",
+      "options": [
+        "O primeiro conta bolas, o segundo identifica a caixa e o terceiro indica ordem.",
+        "Os três sempre contam cinco objetos",
+        "O primeiro identifica uma equipe e os demais contam",
+        "Todos indicam posições na fila"
+      ],
+      "correctAnswer": "O primeiro conta bolas, o segundo identifica a caixa e o terceiro indica ordem.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Os três sempre contam cinco objetos": [
+          "SAME_DIGIT_DIFFERENT_FUNCTIONS"
+        ],
+        "O primeiro identifica uma equipe e os demais contam": [
+          "SAME_DIGIT_DIFFERENT_FUNCTIONS"
+        ],
+        "Todos indicam posições na fila": [
+          "SAME_DIGIT_DIFFERENT_FUNCTIONS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "POSTER_NUMBER_TRIO",
+      "explanation": "O algarismo é igual, mas as palavras e situações mostram quantidade, código e ordem.",
+      "hint": "Leia cada numeral em sua frase completa.",
+      "errorFocus": "SAME_DIGIT_DIFFERENT_FUNCTIONS",
+      "feedback": {
+        "correct": "Boa observação: O algarismo é igual, mas as palavras e situações mostram quantidade, código e ordem.",
+        "incorrect": "O algarismo é igual, mas as palavras e situações mostram quantidade, código e ordem.",
+        "hint": "Leia cada numeral em sua frase completa.",
+        "errorFocus": "SAME_DIGIT_DIFFERENT_FUNCTIONS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-22",
+      "statement": "Uma cadeira tem etiqueta inventada “C-6”. Qual afirmação pode ser feita com segurança?",
+      "prompt": "Uma cadeira tem etiqueta inventada “C-6”. Qual afirmação pode ser feita com segurança?",
+      "options": [
+        "Há seis crianças sentadas",
+        "O rótulo ajuda a identificar a cadeira.",
+        "A cadeira está em sexto lugar",
+        "Ela tem seis pernas"
+      ],
+      "correctAnswer": "O rótulo ajuda a identificar a cadeira.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Há seis crianças sentadas": [
+          "LABEL_EVIDENCE"
+        ],
+        "A cadeira está em sexto lugar": [
+          "LABEL_EVIDENCE"
+        ],
+        "Ela tem seis pernas": [
+          "LABEL_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CLASSROOM_CHAIR_LABEL",
+      "explanation": "A etiqueta sozinha identifica; não comprova quantidade de pessoas, posição nem partes da cadeira.",
+      "hint": "Use somente o que o rótulo mostra.",
+      "errorFocus": "LABEL_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta sozinha identifica; não comprova quantidade de pessoas, posição nem partes da cadeira.",
+        "incorrect": "A etiqueta sozinha identifica; não comprova quantidade de pessoas, posição nem partes da cadeira.",
+        "hint": "Use somente o que o rótulo mostra.",
+        "errorFocus": "LABEL_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-23",
+      "statement": "Um painel mostra “7 livros” e “Prateleira 7”. Por que os usos são diferentes?",
+      "prompt": "Um painel mostra “7 livros” e “Prateleira 7”. Por que os usos são diferentes?",
+      "options": [
+        "Ambos são códigos porque usam o algarismo 7",
+        "Ambos contam sete prateleiras",
+        "“7 livros” responde a quantos; “Prateleira 7” identifica um local.",
+        "O primeiro indica ordem e o segundo quantidade"
+      ],
+      "correctAnswer": "“7 livros” responde a quantos; “Prateleira 7” identifica um local.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ambos são códigos porque usam o algarismo 7": [
+          "COUNT_VS_LOCATION_CODE"
+        ],
+        "Ambos contam sete prateleiras": [
+          "COUNT_VS_LOCATION_CODE"
+        ],
+        "O primeiro indica ordem e o segundo quantidade": [
+          "COUNT_VS_LOCATION_CODE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "TWO_LINE_DISPLAY",
+      "explanation": "A palavra que acompanha cada numeral permite distinguir quantidade de código do local.",
+      "hint": "Compare as palavras depois do numeral.",
+      "errorFocus": "COUNT_VS_LOCATION_CODE",
+      "feedback": {
+        "correct": "Boa observação: A palavra que acompanha cada numeral permite distinguir quantidade de código do local.",
+        "incorrect": "A palavra que acompanha cada numeral permite distinguir quantidade de código do local.",
+        "hint": "Compare as palavras depois do numeral.",
+        "errorFocus": "COUNT_VS_LOCATION_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-24",
+      "statement": "Em um tabuleiro, uma ficha está na casa 6, e o jogador realiza sua 6ª jogada. O que muda?",
+      "prompt": "Em um tabuleiro, uma ficha está na casa 6, e o jogador realiza sua 6ª jogada. O que muda?",
+      "options": [
+        "Ambos necessariamente contam seis fichas",
+        "Casa 6 indica quantidade e 6ª jogada é um código",
+        "Os dois usos significam que há seis jogadores",
+        "Casa 6 pode identificar uma casa; 6ª jogada indica ordem."
+      ],
+      "correctAnswer": "Casa 6 pode identificar uma casa; 6ª jogada indica ordem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ambos necessariamente contam seis fichas": [
+          "BOARD_CODE_AND_ORDINAL"
+        ],
+        "Casa 6 indica quantidade e 6ª jogada é um código": [
+          "BOARD_CODE_AND_ORDINAL"
+        ],
+        "Os dois usos significam que há seis jogadores": [
+          "BOARD_CODE_AND_ORDINAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "GAME_BOARD_TURN",
+      "explanation": "O número pode identificar a casa e o ordinal marca a sequência de turnos.",
+      "hint": "Observe “casa” e “6ª jogada”.",
+      "errorFocus": "BOARD_CODE_AND_ORDINAL",
+      "feedback": {
+        "correct": "Boa observação: O número pode identificar a casa e o ordinal marca a sequência de turnos.",
+        "incorrect": "O número pode identificar a casa e o ordinal marca a sequência de turnos.",
+        "hint": "Observe “casa” e “6ª jogada”.",
+        "errorFocus": "BOARD_CODE_AND_ORDINAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-25",
+      "statement": "Uma ficha registra “9 peças no kit” e “Kit A9”. Qual leitura respeita os dados?",
+      "prompt": "Uma ficha registra “9 peças no kit” e “Kit A9”. Qual leitura respeita os dados?",
+      "options": [
+        "9 é quantidade de peças; A9 identifica o kit.",
+        "9 e A9 indicam duas quantidades",
+        "9 indica a posição do kit; A9 conta peças",
+        "A9 prova que há nove kits"
+      ],
+      "correctAnswer": "9 é quantidade de peças; A9 identifica o kit.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "9 e A9 indicam duas quantidades": [
+          "INVENTORY_VS_ID"
+        ],
+        "9 indica a posição do kit; A9 conta peças": [
+          "INVENTORY_VS_ID"
+        ],
+        "A9 prova que há nove kits": [
+          "INVENTORY_VS_ID"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "KIT_INVENTORY",
+      "explanation": "A primeira frase informa um total; o código alfanumérico nomeia o kit.",
+      "hint": "Diferencie a frase de inventário da etiqueta.",
+      "errorFocus": "INVENTORY_VS_ID",
+      "feedback": {
+        "correct": "Boa observação: A primeira frase informa um total; o código alfanumérico nomeia o kit.",
+        "incorrect": "A primeira frase informa um total; o código alfanumérico nomeia o kit.",
+        "hint": "Diferencie a frase de inventário da etiqueta.",
+        "errorFocus": "INVENTORY_VS_ID"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-26",
+      "statement": "Um papel mostra apenas o numeral 4, sem desenho nem legenda. O que podemos concluir?",
+      "prompt": "Um papel mostra apenas o numeral 4, sem desenho nem legenda. O que podemos concluir?",
+      "options": [
+        "Ele sempre representa quatro objetos",
+        "Não é possível saber sua função apenas pelo numeral.",
+        "Ele sempre marca o quarto lugar",
+        "Ele sempre é um código"
+      ],
+      "correctAnswer": "Não é possível saber sua função apenas pelo numeral.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ele sempre representa quatro objetos": [
+          "CONTEXT_NEEDED"
+        ],
+        "Ele sempre marca o quarto lugar": [
+          "CONTEXT_NEEDED"
+        ],
+        "Ele sempre é um código": [
+          "CONTEXT_NEEDED"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "NUMBER_WITHOUT_LABEL",
+      "explanation": "O mesmo numeral pode ter diferentes funções; o contexto orienta a interpretação.",
+      "hint": "Pergunte que informação está faltando.",
+      "errorFocus": "CONTEXT_NEEDED",
+      "feedback": {
+        "correct": "Boa observação: O mesmo numeral pode ter diferentes funções; o contexto orienta a interpretação.",
+        "incorrect": "O mesmo numeral pode ter diferentes funções; o contexto orienta a interpretação.",
+        "hint": "Pergunte que informação está faltando.",
+        "errorFocus": "CONTEXT_NEEDED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-27",
+      "statement": "Bilhetes fictícios trazem “12” para localizar cada bilhete, enquanto a placa informa “12 visitantes”. O que muda?",
+      "prompt": "Bilhetes fictícios trazem “12” para localizar cada bilhete, enquanto a placa informa “12 visitantes”. O que muda?",
+      "options": [
+        "Os dois números indicam posição",
+        "Os dois são códigos sem relação com quantidade",
+        "No bilhete 12 identifica; na placa, 12 conta visitantes.",
+        "O bilhete prova que há doze visitantes"
+      ],
+      "correctAnswer": "No bilhete 12 identifica; na placa, 12 conta visitantes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Os dois números indicam posição": [
+          "TICKET_CODE_VS_COUNT"
+        ],
+        "Os dois são códigos sem relação com quantidade": [
+          "TICKET_CODE_VS_COUNT"
+        ],
+        "O bilhete prova que há doze visitantes": [
+          "TICKET_CODE_VS_COUNT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "SCHOOL_FAIR_TICKETS",
+      "explanation": "Um número impresso no bilhete pode ser identificador, enquanto a frase da placa expressa quantidade.",
+      "hint": "Observe se o número está numa etiqueta ou numa contagem.",
+      "errorFocus": "TICKET_CODE_VS_COUNT",
+      "feedback": {
+        "correct": "Boa observação: Um número impresso no bilhete pode ser identificador, enquanto a frase da placa expressa quantidade.",
+        "incorrect": "Um número impresso no bilhete pode ser identificador, enquanto a frase da placa expressa quantidade.",
+        "hint": "Observe se o número está numa etiqueta ou numa contagem.",
+        "errorFocus": "TICKET_CODE_VS_COUNT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-28",
+      "statement": "Qual conjunto apresenta um exemplo de quantidade, um de ordem e um de código?",
+      "prompt": "Qual conjunto apresenta um exemplo de quantidade, um de ordem e um de código?",
+      "options": [
+        "Caixa 7; sete lápis; sete grupos",
+        "7º lápis; 7 salas; sétimo lugar",
+        "Sala 2; dois lápis; caixa com código 2, todos como quantidade",
+        "7 lápis; 2º na fila; Sala 7."
+      ],
+      "correctAnswer": "7 lápis; 2º na fila; Sala 7.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Caixa 7; sete lápis; sete grupos": [
+          "THREE_FUNCTIONS_DISTINCT"
+        ],
+        "7º lápis; 7 salas; sétimo lugar": [
+          "THREE_FUNCTIONS_DISTINCT"
+        ],
+        "Sala 2; dois lápis; caixa com código 2, todos como quantidade": [
+          "THREE_FUNCTIONS_DISTINCT"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "THREE_FUNCTIONS_CLASSROOM",
+      "explanation": "Os exemplos corretos representam respectivamente uma coleção contada, uma posição e uma identificação.",
+      "hint": "Confira a função de cada expressão, não só o algarismo.",
+      "errorFocus": "THREE_FUNCTIONS_DISTINCT",
+      "feedback": {
+        "correct": "Boa observação: Os exemplos corretos representam respectivamente uma coleção contada, uma posição e uma identificação.",
+        "incorrect": "Os exemplos corretos representam respectivamente uma coleção contada, uma posição e uma identificação.",
+        "hint": "Confira a função de cada expressão, não só o algarismo.",
+        "errorFocus": "THREE_FUNCTIONS_DISTINCT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-29",
+      "statement": "Qual frase relaciona corretamente quantidade, ordem e código?",
+      "prompt": "Qual frase relaciona corretamente quantidade, ordem e código?",
+      "options": [
+        "“4 bolas” conta; “4º” marca posição; “Sala 4” identifica.",
+        "“4 bolas” é código; “4º” conta; “Sala 4” marca ordem",
+        "As três frases sempre significam quatro objetos",
+        "“Sala 4” conta quatro salas e “4º” identifica um grupo"
+      ],
+      "correctAnswer": "“4 bolas” conta; “4º” marca posição; “Sala 4” identifica.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "“4 bolas” é código; “4º” conta; “Sala 4” marca ordem": [
+          "FUNCTIONS_LOCK_IN"
+        ],
+        "As três frases sempre significam quatro objetos": [
+          "FUNCTIONS_LOCK_IN"
+        ],
+        "“Sala 4” conta quatro salas e “4º” identifica um grupo": [
+          "FUNCTIONS_LOCK_IN"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_QUANTITY_ORDER_CODE",
+      "explanation": "As palavras e marcas ordinais mostram três funções distintas do número.",
+      "hint": "Leia o substantivo, a marca ordinal e a etiqueta.",
+      "errorFocus": "FUNCTIONS_LOCK_IN",
+      "feedback": {
+        "correct": "Boa observação: As palavras e marcas ordinais mostram três funções distintas do número.",
+        "incorrect": "As palavras e marcas ordinais mostram três funções distintas do número.",
+        "hint": "Leia o substantivo, a marca ordinal e a etiqueta.",
+        "errorFocus": "FUNCTIONS_LOCK_IN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-30",
+      "statement": "Uma etiqueta “Caixa 9” está numa caixa fechada. O que não se pode afirmar somente com ela?",
+      "prompt": "Uma etiqueta “Caixa 9” está numa caixa fechada. O que não se pode afirmar somente com ela?",
+      "options": [
+        "Que a etiqueta identifica a caixa",
+        "Que há exatamente nove objetos dentro.",
+        "Que o numeral aparece no rótulo",
+        "Que a caixa é chamada de Caixa 9"
+      ],
+      "correctAnswer": "Que há exatamente nove objetos dentro.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Que a etiqueta identifica a caixa": [
+          "NO_CONTENT_FROM_CODE"
+        ],
+        "Que o numeral aparece no rótulo": [
+          "NO_CONTENT_FROM_CODE"
+        ],
+        "Que a caixa é chamada de Caixa 9": [
+          "NO_CONTENT_FROM_CODE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_EMPTY_LABEL",
+      "explanation": "A etiqueta pode identificar o recipiente, mas não revela seu conteúdo.",
+      "hint": "Separe o nome do recipiente da contagem do conteúdo.",
+      "errorFocus": "NO_CONTENT_FROM_CODE",
+      "feedback": {
+        "correct": "Boa observação: A etiqueta pode identificar o recipiente, mas não revela seu conteúdo.",
+        "incorrect": "A etiqueta pode identificar o recipiente, mas não revela seu conteúdo.",
+        "hint": "Separe o nome do recipiente da contagem do conteúdo.",
+        "errorFocus": "NO_CONTENT_FROM_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-31",
+      "statement": "Uma placa diz “5º da fila”, mas a fila continua atrás. O que o 5º não informa por si só?",
+      "prompt": "Uma placa diz “5º da fila”, mas a fila continua atrás. O que o 5º não informa por si só?",
+      "options": [
+        "A posição da pessoa marcada",
+        "Que há alguém na quinta posição",
+        "O total de pessoas na fila.",
+        "A ordem indicada na placa"
+      ],
+      "correctAnswer": "O total de pessoas na fila.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A posição da pessoa marcada": [
+          "ORDINAL_NOT_TOTAL"
+        ],
+        "Que há alguém na quinta posição": [
+          "ORDINAL_NOT_TOTAL"
+        ],
+        "A ordem indicada na placa": [
+          "ORDINAL_NOT_TOTAL"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "LOCK_IN_ORDINAL_TOTAL",
+      "explanation": "O ordinal indica posição, não necessariamente quantas pessoas formam toda a fila.",
+      "hint": "A fila pode continuar depois da quinta posição.",
+      "errorFocus": "ORDINAL_NOT_TOTAL",
+      "feedback": {
+        "correct": "Boa observação: O ordinal indica posição, não necessariamente quantas pessoas formam toda a fila.",
+        "incorrect": "O ordinal indica posição, não necessariamente quantas pessoas formam toda a fila.",
+        "hint": "A fila pode continuar depois da quinta posição.",
+        "errorFocus": "ORDINAL_NOT_TOTAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-32",
+      "statement": "Um brinquedo tem código T3. Qual interpretação é mais cuidadosa?",
+      "prompt": "Um brinquedo tem código T3. Qual interpretação é mais cuidadosa?",
+      "options": [
+        "Há três brinquedos",
+        "O brinquedo está em terceiro lugar",
+        "Ele contém três peças",
+        "T3 identifica o modelo; o código não informa sozinho quantos brinquedos existem."
+      ],
+      "correctAnswer": "T3 identifica o modelo; o código não informa sozinho quantos brinquedos existem.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Há três brinquedos": [
+          "IDENTIFIER_LIMIT"
+        ],
+        "O brinquedo está em terceiro lugar": [
+          "IDENTIFIER_LIMIT"
+        ],
+        "Ele contém três peças": [
+          "IDENTIFIER_LIMIT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "LOCK_IN_CODE_AND_DIGIT",
+      "explanation": "O código localiza ou nomeia o modelo, mas não é uma contagem do estoque.",
+      "hint": "Pense no que um código consegue e não consegue dizer.",
+      "errorFocus": "IDENTIFIER_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: O código localiza ou nomeia o modelo, mas não é uma contagem do estoque.",
+        "incorrect": "O código localiza ou nomeia o modelo, mas não é uma contagem do estoque.",
+        "hint": "Pense no que um código consegue e não consegue dizer.",
+        "errorFocus": "IDENTIFIER_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-33",
+      "statement": "Um cartão mostra somente o número 8. Qual é a melhor próxima ação para saber sua função?",
+      "prompt": "Um cartão mostra somente o número 8. Qual é a melhor próxima ação para saber sua função?",
+      "options": [
+        "Procurar a legenda ou a situação em que o número foi usado.",
+        "Assumir que são oito objetos",
+        "Assumir que marca oitavo lugar",
+        "Tratar sempre como código"
+      ],
+      "correctAnswer": "Procurar a legenda ou a situação em que o número foi usado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Assumir que são oito objetos": [
+          "SEEK_CONTEXT"
+        ],
+        "Assumir que marca oitavo lugar": [
+          "SEEK_CONTEXT"
+        ],
+        "Tratar sempre como código": [
+          "SEEK_CONTEXT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_AMBIGUOUS_8",
+      "explanation": "Sem contexto, várias leituras são possíveis; a legenda ou situação permite decidir.",
+      "hint": "Busque a informação que acompanha o numeral.",
+      "errorFocus": "SEEK_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Sem contexto, várias leituras são possíveis; a legenda ou situação permite decidir.",
+        "incorrect": "Sem contexto, várias leituras são possíveis; a legenda ou situação permite decidir.",
+        "hint": "Busque a informação que acompanha o numeral.",
+        "errorFocus": "SEEK_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-34",
+      "statement": "Por que o algarismo 3 pode significar coisas diferentes em cartões distintos?",
+      "prompt": "Por que o algarismo 3 pode significar coisas diferentes em cartões distintos?",
+      "options": [
+        "Porque números mudam de valor sem motivo",
+        "Porque a função depende do contexto: contar, ordenar ou identificar.",
+        "Porque todo 3 é uma quantidade",
+        "Porque códigos só podem usar letras"
+      ],
+      "correctAnswer": "Porque a função depende do contexto: contar, ordenar ou identificar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque números mudam de valor sem motivo": [
+          "CONTEXT_CHANGES_ROLE"
+        ],
+        "Porque todo 3 é uma quantidade": [
+          "CONTEXT_CHANGES_ROLE"
+        ],
+        "Porque códigos só podem usar letras": [
+          "CONTEXT_CHANGES_ROLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_NUMBER_ROLES",
+      "explanation": "Um mesmo algarismo pode aparecer em contextos de quantidade, ordem ou identificação.",
+      "hint": "Lembre-se dos três usos estudados.",
+      "errorFocus": "CONTEXT_CHANGES_ROLE",
+      "feedback": {
+        "correct": "Boa observação: Um mesmo algarismo pode aparecer em contextos de quantidade, ordem ou identificação.",
+        "incorrect": "Um mesmo algarismo pode aparecer em contextos de quantidade, ordem ou identificação.",
+        "hint": "Lembre-se dos três usos estudados.",
+        "errorFocus": "CONTEXT_CHANGES_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-35",
+      "statement": "A pergunta “quantos livros há?” pede que função do número?",
+      "prompt": "A pergunta “quantos livros há?” pede que função do número?",
+      "options": [
+        "Ordem",
+        "Código",
+        "Quantidade.",
+        "Posição"
+      ],
+      "correctAnswer": "Quantidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Ordem": [
+          "REVIEW_QUANTITY"
+        ],
+        "Código": [
+          "REVIEW_QUANTITY"
+        ],
+        "Posição": [
+          "REVIEW_QUANTITY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_COUNT",
+      "explanation": "Contar livros responde a “quantos?”.",
+      "hint": "Pense em contar objetos.",
+      "errorFocus": "REVIEW_QUANTITY",
+      "feedback": {
+        "correct": "Boa observação: Contar livros responde a “quantos?”.",
+        "incorrect": "Contar livros responde a “quantos?”.",
+        "hint": "Pense em contar objetos.",
+        "errorFocus": "REVIEW_QUANTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-36",
+      "statement": "A expressão “primeiro lugar” indica o quê?",
+      "prompt": "A expressão “primeiro lugar” indica o quê?",
+      "options": [
+        "Quantidade de lugares",
+        "Código da pessoa",
+        "Total de participantes",
+        "Ordem ou posição."
+      ],
+      "correctAnswer": "Ordem ou posição.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Quantidade de lugares": [
+          "REVIEW_ORDER"
+        ],
+        "Código da pessoa": [
+          "REVIEW_ORDER"
+        ],
+        "Total de participantes": [
+          "REVIEW_ORDER"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_ORDINAL",
+      "explanation": "“Primeiro” indica posição numa sequência.",
+      "hint": "Observe a palavra “lugar”.",
+      "errorFocus": "REVIEW_ORDER",
+      "feedback": {
+        "correct": "Boa observação: “Primeiro” indica posição numa sequência.",
+        "incorrect": "“Primeiro” indica posição numa sequência.",
+        "hint": "Observe a palavra “lugar”.",
+        "errorFocus": "REVIEW_ORDER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-37",
+      "statement": "O número impresso em “Sala 3” pode servir para…",
+      "prompt": "O número impresso em “Sala 3” pode servir para…",
+      "options": [
+        "identificar a sala.",
+        "contar quantos alunos estão nela",
+        "marcar sua posição na fila",
+        "contar três carteiras"
+      ],
+      "correctAnswer": "identificar a sala.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "contar quantos alunos estão nela": [
+          "REVIEW_CODE"
+        ],
+        "marcar sua posição na fila": [
+          "REVIEW_CODE"
+        ],
+        "contar três carteiras": [
+          "REVIEW_CODE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_IDENTIFIER",
+      "explanation": "O numeral no nome da sala é um identificador.",
+      "hint": "Leia o rótulo inteiro.",
+      "errorFocus": "REVIEW_CODE",
+      "feedback": {
+        "correct": "Boa observação: O numeral no nome da sala é um identificador.",
+        "incorrect": "O numeral no nome da sala é um identificador.",
+        "hint": "Leia o rótulo inteiro.",
+        "errorFocus": "REVIEW_CODE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-38",
+      "statement": "Em “3 bolas” e “Equipe 3”, o que o algarismo 3 representa?",
+      "prompt": "Em “3 bolas” e “Equipe 3”, o que o algarismo 3 representa?",
+      "options": [
+        "Código nas duas",
+        "Quantidade de bolas na primeira frase e código da equipe na segunda.",
+        "Ordem nas duas",
+        "Quantidade nas duas"
+      ],
+      "correctAnswer": "Quantidade de bolas na primeira frase e código da equipe na segunda.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Código nas duas": [
+          "REVIEW_CONTEXT"
+        ],
+        "Ordem nas duas": [
+          "REVIEW_CONTEXT"
+        ],
+        "Quantidade nas duas": [
+          "REVIEW_CONTEXT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_SAME_DIGIT",
+      "explanation": "A função do número depende das palavras e da situação.",
+      "hint": "Compare “bolas” com “Equipe”.",
+      "errorFocus": "REVIEW_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A função do número depende das palavras e da situação.",
+        "incorrect": "A função do número depende das palavras e da situação.",
+        "hint": "Compare “bolas” com “Equipe”.",
+        "errorFocus": "REVIEW_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-39",
+      "statement": "Uma caixa chamada “Modelo 5” está fechada. Qual dado exige contagem?",
+      "prompt": "Uma caixa chamada “Modelo 5” está fechada. Qual dado exige contagem?",
+      "options": [
+        "O nome do modelo",
+        "O código no rótulo",
+        "Quantas peças estão dentro dela.",
+        "A palavra “Modelo”"
+      ],
+      "correctAnswer": "Quantas peças estão dentro dela.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O nome do modelo": [
+          "REVIEW_COUNT_EVIDENCE"
+        ],
+        "O código no rótulo": [
+          "REVIEW_COUNT_EVIDENCE"
+        ],
+        "A palavra “Modelo”": [
+          "REVIEW_COUNT_EVIDENCE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_LABEL_LIMIT",
+      "explanation": "Para saber a quantidade de peças, é preciso observar e contar; o código não basta.",
+      "hint": "Qual pergunta começa com “quantas”?",
+      "errorFocus": "REVIEW_COUNT_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Para saber a quantidade de peças, é preciso observar e contar; o código não basta.",
+        "incorrect": "Para saber a quantidade de peças, é preciso observar e contar; o código não basta.",
+        "hint": "Qual pergunta começa com “quantas”?",
+        "errorFocus": "REVIEW_COUNT_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-mathematics-numbers-quantity-order-code-ef01-40",
+      "statement": "Qual pergunta ajuda a decidir se um número indica quantidade, ordem ou código?",
+      "prompt": "Qual pergunta ajuda a decidir se um número indica quantidade, ordem ou código?",
+      "options": [
+        "“Qual algarismo aparece mais?”",
+        "“O número é grande ou pequeno?”",
+        "“Quantas vezes vejo a mesma cor?”",
+        "“O que este número informa nesta situação?”"
+      ],
+      "correctAnswer": "“O que este número informa nesta situação?”",
+      "answerPosition": "D",
+      "misconceptions": {
+        "“Qual algarismo aparece mais?”": [
+          "REVIEW_CONTEXT_QUESTION"
+        ],
+        "“O número é grande ou pequeno?”": [
+          "REVIEW_CONTEXT_QUESTION"
+        ],
+        "“Quantas vezes vejo a mesma cor?”": [
+          "REVIEW_CONTEXT_QUESTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_THREE_ROLES",
+      "explanation": "Analisar a situação e a legenda revela a função do numeral.",
+      "hint": "Use a pergunta que busca significado no contexto.",
+      "errorFocus": "REVIEW_CONTEXT_QUESTION",
+      "feedback": {
+        "correct": "Boa observação: Analisar a situação e a legenda revela a função do numeral.",
+        "incorrect": "Analisar a situação e a legenda revela a função do numeral.",
+        "hint": "Use a pergunta que busca significado no contexto.",
+        "errorFocus": "REVIEW_CONTEXT_QUESTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar cartões ampliados com numeral, palavra e pictograma; diferenciar quantidade, ordem e código também por padrões e rótulos, não apenas por cor.",
+          "Apresentar uma instrução por vez e permitir resposta oral, por apontamento, cartões, desenho, escrita emergente ou tecnologia assistiva.",
+          "Trabalhar com códigos inventados para objetos e espaços fictícios; nunca solicitar número de documento, telefone, matrícula ou outro dado pessoal real."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

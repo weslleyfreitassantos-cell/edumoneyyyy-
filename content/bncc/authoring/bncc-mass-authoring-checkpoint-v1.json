@@ -41,14 +41,14 @@
     "priorLegacyPackagesFailingStrictRubric": 16,
     "priorRubricVersion": "tec-escola.bncc.technical-completeness.v1",
     "currentRubricVersion": "tec-escola.bncc.technical-completeness.v2",
-    "contentTechnicallyPrepared": 41,
-    "legacyCountScreenComplete": 41,
+    "contentTechnicallyPrepared": 45,
+    "legacyCountScreenComplete": 45,
     "legacyCountOnlyNotPrepared": 0,
-    "contentMissingAgainstQueue": 1680,
+    "contentMissingAgainstQueue": 1676,
     "sourceVerifiedTasks": 568,
-    "verifiedTasksWithoutRegisteredProducer": 480,
+    "verifiedTasksWithoutRegisteredProducer": 476,
     "queueNodes": 1721,
-    "queueHash": "ad2277b1fff64c7e161498da314bc714d4ef69a52b217aa79210702c90298505",
+    "queueHash": "c9636e2740a36026ad51e4c7b912d2be31f8be039b04473480c908559e2ddeab",
     "humanPedagogicalApproved": 0,
     "canonicalMappingVerified": 0,
     "publicationAuthorized": 0
@@ -69,11 +69,11 @@
     "fullTestSuiteFilesSkipped": 11,
     "fullTestSuiteTimedOut": 21,
     "fullTestSuiteStaleExpectationFixedAfterRun": 1,
-    "focusedCampaignTests": "PASS_64_OF_64",
+    "focusedCampaignTests": "PASS_22_OF_22",
     "curriculumPackageRubricV2": "PASS",
     "legacyPackageRecovery": "16_OF_16_PASS",
     "earlyChildhoodObservationMode": "6_OF_6_PASS_NO_QUIZ_REQUIRED",
-    "completionQueueV14": "PASS_1721_TASKS_41_TECHNICALLY_PREPARED",
+    "completionQueueV14": "PASS_1721_TASKS_45_TECHNICALLY_PREPARED",
     "highSchoolEvidenceRecovery": "EM13CHS103_AUTOMATED_SCREEN_PASS"
   },
   "nextAuthorableBatch": [
@@ -81,8 +81,8 @@
     "EF01GE02",
     "EF01HI02",
     "EF01LP07",
-    "EF01MA01",
-    "EF02CI02"
+    "EF01MA02",
+    "EF02CI03"
   ],
   "executorActive": false,
   "supervisorActive": false,
@@ -92,8 +92,8 @@
   "reconciliation": {
     "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
     "sourceOfCurrentCounts": "content/bncc/authoring/completion-queue-v14.json",
-    "queueHash": "ad2277b1fff64c7e161498da314bc714d4ef69a52b217aa79210702c90298505",
-    "reconciledAt": "2026-10-18T14:33:25.920Z",
+    "queueHash": "c9636e2740a36026ad51e4c7b912d2be31f8be039b04473480c908559e2ddeab",
+    "reconciledAt": "2026-10-18T14:52:53.035Z",
     "priorRubricMetricsRetainedAsHistory": true,
     "historicalMetricVersion": "tec-escola.bncc.technical-completeness.v1"
   },

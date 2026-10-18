@@ -1,0 +1,2079 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v1-science-material-properties-and-design-ef02",
+  "canonicalSkillCode": "AUTHORING_EF02CI02_SELECT_MATERIALS_BY_PROPERTIES",
+  "subject": "SCIENCE",
+  "domain": "MATÉRIA E ENERGIA",
+  "topic": "seleção de materiais para objetos cotidianos considerando propriedades observáveis",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 6
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF02CI02",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Propor o uso de diferentes materiais para a construção de objetos de uso cotidiano, tendo em vista algumas propriedades desses materiais (flexibilidade, dureza, transparência etc.).",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 337
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Escolher materiais pelo que eles fazem",
+    "objective": "Comparar propriedades observáveis de materiais seguros e propor um material adequado a um objeto cotidiano, justificando a escolha pela função desejada e reconhecendo limites do teste.",
+    "summary": "Materiais diferentes podem ter propriedades diferentes. Alguns dobram com facilidade; outros mantêm mais a forma. Alguns deixam a luz passar, outros a bloqueiam ou a deixam passar parcialmente. A escolha depende da função do objeto: uma janela precisa deixar a luz passar, enquanto uma caixa de armazenamento pode precisar bloquear a visão do conteúdo. As propriedades não dizem que um material é melhor para tudo. Testes escolares devem ser seguros, usar amostras apropriadas e comparar condições semelhantes.",
+    "explanation": "Flexibilidade descreve o quanto um material pode se dobrar sem se partir nas condições observadas; dureza se relaciona à resistência a riscos ou deformações, sem transformar a comparação em uma competição de força; transparência indica quanto se consegue ver através do material. Há materiais transparentes, translúcidos e opacos. Um objeto é planejado para uma finalidade, então é importante escolher a propriedade que ajuda nessa finalidade: uma capa flexível pode acompanhar um caderno, uma superfície transparente pode funcionar como visor e um material mais rígido pode manter a forma de uma base. O mesmo material pode ser útil em uma aplicação e inadequado em outra. A observação permite uma conclusão limitada às amostras e ao procedimento usados, não uma regra absoluta sobre todos os produtos feitos daquele material.",
+    "workedExample": "Para criar uma janela de uma maquete, a turma compara um pedaço de papelão opaco, uma folha plástica transparente de uso escolar e um tecido translúcido. A folha transparente permite ver o cenário atrás dela e atende melhor ao objetivo do visor; isso não prova que toda folha plástica seja segura ou adequada para qualquer janela. A escolha precisa considerar também o tamanho, o uso e a segurança do objeto.",
+    "commonMistake": "Escolher um material apenas porque parece forte ou bonito, afirmar que uma propriedade serve para qualquer objeto ou testar materiais com ações perigosas, como quebrar vidro ou usar ferramentas cortantes.",
+    "priorKnowledge": [
+      "Reconhecer objetos de uso cotidiano e descrever para que são usados.",
+      "Observar e comparar características simples como dobrar, manter a forma e deixar a luz passar."
+    ],
+    "keyConcepts": [
+      "material",
+      "propriedade",
+      "flexibilidade",
+      "dureza",
+      "transparência",
+      "translúcido",
+      "opaco",
+      "função do objeto",
+      "teste seguro"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "PROPERTY_WITHOUT_PURPOSE",
+        "action": "Nomeie primeiro a função do objeto e depois selecione a propriedade observável que ajuda nessa função; compare duas opções com a mesma pergunta."
+      },
+      {
+        "errorFocus": "TRANSPARENT_EQUALS_ALL_LIGHT",
+        "action": "Use cartões de categorias transparente, translúcido e opaco com exemplos seguros; registre o que se consegue ver sem afirmar que toda luz se comporta igual."
+      },
+      {
+        "errorFocus": "ABSOLUTE_MATERIAL_RULE",
+        "action": "Reescreva afirmações absolutas usando a amostra e as condições observadas, como “este pedaço deixou ver o desenho neste teste”."
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+      "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+      "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ef02ci02-material-property-station",
+        "title": "Estação de observação de materiais seguros",
+        "instructions": "Amostras intactas de papel, tecido, papelão e folha plástica escolar são observadas sobre uma mesa; não se cortam, quebram nem submetem a força excessiva.\n1. Observe cada amostra e registre se ela dobra com facilidade e se permite ver uma figura através dela.\n2. Relacione cada propriedade a uma finalidade possível de objeto cotidiano.\n3. Escolha uma combinação e explique o que o teste permite concluir e o que ainda seria necessário testar.",
+        "steps": [
+          "Observe cada amostra e registre se ela dobra com facilidade e se permite ver uma figura através dela.",
+          "Relacione cada propriedade a uma finalidade possível de objeto cotidiano.",
+          "Escolha uma combinação e explique o que o teste permite concluir e o que ainda seria necessário testar."
+        ],
+        "evidence": "Tabela de observação que descreve as amostras, associa uma propriedade a uma função e limita a conclusão ao procedimento realizado.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe um material sem mencionar propriedade observada.",
+            "developing": "relaciona uma propriedade à finalidade com apoio da tabela.",
+            "proficient": "compara evidências, justifica uma escolha coerente e reconhece os limites do teste seguro."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ef02ci02-design-object-card",
+        "title": "Projetar um objeto em cartão",
+        "instructions": "Um desafio ilustrado pede desenhar um estojo, visor ou base de maquete usando fichas fictícias de materiais; a atividade não exige ferramentas de corte nem construção com peças perigosas.\n1. Escolha uma finalidade e destaque a propriedade mais importante para o objeto funcionar.\n2. Selecione materiais nas fichas e desenhe onde cada um seria usado.\n3. Explique a escolha com uma observação ou previsão testável e cite um cuidado de segurança.",
+        "steps": [
+          "Escolha uma finalidade e destaque a propriedade mais importante para o objeto funcionar.",
+          "Selecione materiais nas fichas e desenhe onde cada um seria usado.",
+          "Explique a escolha com uma observação ou previsão testável e cite um cuidado de segurança."
+        ],
+        "evidence": "Desenho anotado que combina finalidade e propriedade, compara ao menos duas opções e descreve uma previsão ou teste seguro.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "apresenta um desenho sem explicar a escolha do material.",
+            "developing": "associa uma propriedade à função com ajuda das fichas.",
+            "proficient": "justifica a combinação de materiais com evidência ou previsão clara e mantém o projeto seguro."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 45,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v1-science-material-properties-and-design-ef02-01",
+          "v1-science-material-properties-and-design-ef02-02",
+          "v1-science-material-properties-and-design-ef02-03",
+          "v1-science-material-properties-and-design-ef02-04",
+          "v1-science-material-properties-and-design-ef02-05",
+          "v1-science-material-properties-and-design-ef02-06",
+          "v1-science-material-properties-and-design-ef02-07",
+          "v1-science-material-properties-and-design-ef02-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v1-science-material-properties-and-design-ef02-09",
+          "v1-science-material-properties-and-design-ef02-10",
+          "v1-science-material-properties-and-design-ef02-11",
+          "v1-science-material-properties-and-design-ef02-12",
+          "v1-science-material-properties-and-design-ef02-13",
+          "v1-science-material-properties-and-design-ef02-14",
+          "v1-science-material-properties-and-design-ef02-15",
+          "v1-science-material-properties-and-design-ef02-16",
+          "v1-science-material-properties-and-design-ef02-17",
+          "v1-science-material-properties-and-design-ef02-18",
+          "v1-science-material-properties-and-design-ef02-19",
+          "v1-science-material-properties-and-design-ef02-20"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v1-science-material-properties-and-design-ef02-21",
+          "v1-science-material-properties-and-design-ef02-22",
+          "v1-science-material-properties-and-design-ef02-23",
+          "v1-science-material-properties-and-design-ef02-24",
+          "v1-science-material-properties-and-design-ef02-25",
+          "v1-science-material-properties-and-design-ef02-26",
+          "v1-science-material-properties-and-design-ef02-27",
+          "v1-science-material-properties-and-design-ef02-28"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v1-science-material-properties-and-design-ef02-29",
+          "v1-science-material-properties-and-design-ef02-30",
+          "v1-science-material-properties-and-design-ef02-31",
+          "v1-science-material-properties-and-design-ef02-32",
+          "v1-science-material-properties-and-design-ef02-33",
+          "v1-science-material-properties-and-design-ef02-34"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v1-science-material-properties-and-design-ef02-35",
+          "v1-science-material-properties-and-design-ef02-36",
+          "v1-science-material-properties-and-design-ef02-37",
+          "v1-science-material-properties-and-design-ef02-38",
+          "v1-science-material-properties-and-design-ef02-39",
+          "v1-science-material-properties-and-design-ef02-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF02CI02",
+        "descriptor": "Propor o uso de diferentes materiais para a construção de objetos de uso cotidiano, tendo em vista algumas propriedades desses materiais (flexibilidade, dureza, transparência etc.).",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 337
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v1-science-material-properties-and-design-ef02-01",
+      "statement": "Uma tira de papel se dobra com facilidade sem se partir durante a observação. Que propriedade foi observada?",
+      "prompt": "Uma tira de papel se dobra com facilidade sem se partir durante a observação. Que propriedade foi observada?",
+      "options": [
+        "Flexibilidade.",
+        "Transparência",
+        "Dureza",
+        "Cor"
+      ],
+      "correctAnswer": "Flexibilidade.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Transparência": [
+          "FLEXIBLE_MATERIAL"
+        ],
+        "Dureza": [
+          "FLEXIBLE_MATERIAL"
+        ],
+        "Cor": [
+          "FLEXIBLE_MATERIAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "FOLDABLE_PAPER_STRIP",
+      "explanation": "Dobrar com facilidade é uma evidência de flexibilidade nas condições observadas.",
+      "hint": "Pense em como a tira muda de forma.",
+      "errorFocus": "FLEXIBLE_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: Dobrar com facilidade é uma evidência de flexibilidade nas condições observadas.",
+        "incorrect": "Dobrar com facilidade é uma evidência de flexibilidade nas condições observadas.",
+        "hint": "Pense em como a tira muda de forma.",
+        "errorFocus": "FLEXIBLE_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-02",
+      "statement": "Através de uma folha escolar transparente é possível ver uma figura com clareza. Qual propriedade ela apresenta?",
+      "prompt": "Através de uma folha escolar transparente é possível ver uma figura com clareza. Qual propriedade ela apresenta?",
+      "options": [
+        "Dureza",
+        "Transparência.",
+        "Flexibilidade apenas",
+        "Opacidade"
+      ],
+      "correctAnswer": "Transparência.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Dureza": [
+          "TRANSPARENCY"
+        ],
+        "Flexibilidade apenas": [
+          "TRANSPARENCY"
+        ],
+        "Opacidade": [
+          "TRANSPARENCY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SEE_THROUGH_SCHOOL_FILM",
+      "explanation": "Ver a figura através da amostra indica transparência.",
+      "hint": "Observe se a figura continua visível atrás dela.",
+      "errorFocus": "TRANSPARENCY",
+      "feedback": {
+        "correct": "Boa observação: Ver a figura através da amostra indica transparência.",
+        "incorrect": "Ver a figura através da amostra indica transparência.",
+        "hint": "Observe se a figura continua visível atrás dela.",
+        "errorFocus": "TRANSPARENCY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-03",
+      "statement": "Um pedaço de papelão impede que se veja a imagem atrás dele. Como ele se comporta quanto à passagem da visão?",
+      "prompt": "Um pedaço de papelão impede que se veja a imagem atrás dele. Como ele se comporta quanto à passagem da visão?",
+      "options": [
+        "É transparente",
+        "É líquido",
+        "É opaco.",
+        "É um código"
+      ],
+      "correctAnswer": "É opaco.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "É transparente": [
+          "OPAQUE_MATERIAL"
+        ],
+        "É líquido": [
+          "OPAQUE_MATERIAL"
+        ],
+        "É um código": [
+          "OPAQUE_MATERIAL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "CARDBOARD_BLOCKS_VIEW",
+      "explanation": "Um material opaco bloqueia a visão através dele.",
+      "hint": "A imagem fica visível através do papelão?",
+      "errorFocus": "OPAQUE_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: Um material opaco bloqueia a visão através dele.",
+        "incorrect": "Um material opaco bloqueia a visão através dele.",
+        "hint": "A imagem fica visível através do papelão?",
+        "errorFocus": "OPAQUE_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-04",
+      "statement": "Uma maquete precisa de um visor para que se veja o desenho do interior. Qual característica ajuda mais?",
+      "prompt": "Uma maquete precisa de um visor para que se veja o desenho do interior. Qual característica ajuda mais?",
+      "options": [
+        "Ser totalmente opaco",
+        "Bloquear toda a luz e a visão",
+        "Ser identificado por um número",
+        "Deixar ver através do material."
+      ],
+      "correctAnswer": "Deixar ver através do material.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ser totalmente opaco": [
+          "PROPERTY_FOR_PURPOSE"
+        ],
+        "Bloquear toda a luz e a visão": [
+          "PROPERTY_FOR_PURPOSE"
+        ],
+        "Ser identificado por um número": [
+          "PROPERTY_FOR_PURPOSE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "WINDOW_MODEL_CHOICE",
+      "explanation": "Um visor precisa permitir ver o que está atrás, então transparência é útil ao objetivo.",
+      "hint": "Qual é a função do visor?",
+      "errorFocus": "PROPERTY_FOR_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: Um visor precisa permitir ver o que está atrás, então transparência é útil ao objetivo.",
+        "incorrect": "Um visor precisa permitir ver o que está atrás, então transparência é útil ao objetivo.",
+        "hint": "Qual é a função do visor?",
+        "errorFocus": "PROPERTY_FOR_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-05",
+      "statement": "Uma base de maquete precisa sustentar uma peça leve e manter sua forma. Que observação ajuda a escolher o material?",
+      "prompt": "Uma base de maquete precisa sustentar uma peça leve e manter sua forma. Que observação ajuda a escolher o material?",
+      "options": [
+        "Se mantém a forma e resiste à deformação no uso previsto.",
+        "Se tem o nome mais curto",
+        "Se deixa ver através em qualquer situação",
+        "Se dobra sem nenhuma resistência"
+      ],
+      "correctAnswer": "Se mantém a forma e resiste à deformação no uso previsto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Se tem o nome mais curto": [
+          "SHAPE_RETENTION"
+        ],
+        "Se deixa ver através em qualquer situação": [
+          "SHAPE_RETENTION"
+        ],
+        "Se dobra sem nenhuma resistência": [
+          "SHAPE_RETENTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "RIGID_BOOK_BASE",
+      "explanation": "A finalidade pede uma base que mantenha a forma no uso previsto; o teste deve ser leve e seguro.",
+      "hint": "Relacione a base à função de sustentar.",
+      "errorFocus": "SHAPE_RETENTION",
+      "feedback": {
+        "correct": "Boa observação: A finalidade pede uma base que mantenha a forma no uso previsto; o teste deve ser leve e seguro.",
+        "incorrect": "A finalidade pede uma base que mantenha a forma no uso previsto; o teste deve ser leve e seguro.",
+        "hint": "Relacione a base à função de sustentar.",
+        "errorFocus": "SHAPE_RETENTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-06",
+      "statement": "Uma amostra de tecido se dobra mais facilmente que uma placa de papelão. O que a comparação sustenta?",
+      "prompt": "Uma amostra de tecido se dobra mais facilmente que uma placa de papelão. O que a comparação sustenta?",
+      "options": [
+        "Todo tecido é sempre melhor para qualquer objeto",
+        "O tecido foi mais flexível neste teste.",
+        "O papelão é transparente",
+        "A placa não pode ter nenhuma outra propriedade"
+      ],
+      "correctAnswer": "O tecido foi mais flexível neste teste.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todo tecido é sempre melhor para qualquer objeto": [
+          "COMPARISON_SCOPE"
+        ],
+        "O papelão é transparente": [
+          "COMPARISON_SCOPE"
+        ],
+        "A placa não pode ter nenhuma outra propriedade": [
+          "COMPARISON_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CLOTH_AND_CARD_FLEX",
+      "explanation": "A conclusão descreve as amostras comparadas nas condições do teste.",
+      "hint": "Fale das amostras, não de todos os materiais do mundo.",
+      "errorFocus": "COMPARISON_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão descreve as amostras comparadas nas condições do teste.",
+        "incorrect": "A conclusão descreve as amostras comparadas nas condições do teste.",
+        "hint": "Fale das amostras, não de todos os materiais do mundo.",
+        "errorFocus": "COMPARISON_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-07",
+      "statement": "Uma tela difusora deixa passar luz, mas a figura atrás aparece pouco nítida. Como classificá-la?",
+      "prompt": "Uma tela difusora deixa passar luz, mas a figura atrás aparece pouco nítida. Como classificá-la?",
+      "options": [
+        "Totalmente transparente",
+        "Opaca em todas as condições",
+        "Translúcida.",
+        "Dura por definição"
+      ],
+      "correctAnswer": "Translúcida.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Totalmente transparente": [
+          "TRANSLUCENT_DISTINCTION"
+        ],
+        "Opaca em todas as condições": [
+          "TRANSLUCENT_DISTINCTION"
+        ],
+        "Dura por definição": [
+          "TRANSLUCENT_DISTINCTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "TRANSLUCENT_SCREEN",
+      "explanation": "Um material translúcido deixa passar luz sem permitir ver com nitidez como um transparente.",
+      "hint": "A luz passa, mas a imagem fica nítida?",
+      "errorFocus": "TRANSLUCENT_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Um material translúcido deixa passar luz sem permitir ver com nitidez como um transparente.",
+        "incorrect": "Um material translúcido deixa passar luz sem permitir ver com nitidez como um transparente.",
+        "hint": "A luz passa, mas a imagem fica nítida?",
+        "errorFocus": "TRANSLUCENT_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-08",
+      "statement": "Uma turma compara amostras intactas e observa que uma delas dobra mais facilmente. Qual registro é adequado?",
+      "prompt": "Uma turma compara amostras intactas e observa que uma delas dobra mais facilmente. Qual registro é adequado?",
+      "options": [
+        "Ela sempre será a mais forte em qualquer uso",
+        "Todas as peças desse material são idênticas",
+        "O teste prova que a amostra é transparente",
+        "Essa amostra foi mais flexível no teste realizado."
+      ],
+      "correctAnswer": "Essa amostra foi mais flexível no teste realizado.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ela sempre será a mais forte em qualquer uso": [
+          "OBSERVATION_LIMIT"
+        ],
+        "Todas as peças desse material são idênticas": [
+          "OBSERVATION_LIMIT"
+        ],
+        "O teste prova que a amostra é transparente": [
+          "OBSERVATION_LIMIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SAFE_SAMPLE_TEST",
+      "explanation": "A conclusão deve corresponder à propriedade observada e às condições do teste.",
+      "hint": "Use “neste teste” para delimitar a afirmação.",
+      "errorFocus": "OBSERVATION_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: A conclusão deve corresponder à propriedade observada e às condições do teste.",
+        "incorrect": "A conclusão deve corresponder à propriedade observada e às condições do teste.",
+        "hint": "Use “neste teste” para delimitar a afirmação.",
+        "errorFocus": "OBSERVATION_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-09",
+      "statement": "Uma capa de caderno precisa dobrar junto com o caderno sem perder sua função. Qual propriedade é útil?",
+      "prompt": "Uma capa de caderno precisa dobrar junto com o caderno sem perder sua função. Qual propriedade é útil?",
+      "options": [
+        "Flexibilidade adequada ao uso.",
+        "Opacidade obrigatória",
+        "Dureza máxima em qualquer caso",
+        "Identificação por código"
+      ],
+      "correctAnswer": "Flexibilidade adequada ao uso.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Opacidade obrigatória": [
+          "FLEXIBLE_COVER"
+        ],
+        "Dureza máxima em qualquer caso": [
+          "FLEXIBLE_COVER"
+        ],
+        "Identificação por código": [
+          "FLEXIBLE_COVER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "RAINY_DAY_NOTEBOOK_COVER",
+      "explanation": "Uma capa que acompanha o caderno precisa dobrar no uso previsto.",
+      "hint": "Imagine abrir e fechar o caderno.",
+      "errorFocus": "FLEXIBLE_COVER",
+      "feedback": {
+        "correct": "Boa observação: Uma capa que acompanha o caderno precisa dobrar no uso previsto.",
+        "incorrect": "Uma capa que acompanha o caderno precisa dobrar no uso previsto.",
+        "hint": "Imagine abrir e fechar o caderno.",
+        "errorFocus": "FLEXIBLE_COVER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-10",
+      "statement": "Um estojo de brinquedo tem uma pequena janela para ver o lápis dentro. Qual material da ficha atende melhor a esse detalhe?",
+      "prompt": "Um estojo de brinquedo tem uma pequena janela para ver o lápis dentro. Qual material da ficha atende melhor a esse detalhe?",
+      "options": [
+        "Uma amostra opaca",
+        "Uma amostra transparente e segura para uso escolar.",
+        "Uma pedra rígida sem visor",
+        "Um material que bloqueia a visão"
+      ],
+      "correctAnswer": "Uma amostra transparente e segura para uso escolar.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Uma amostra opaca": [
+          "TRANSPARENT_WINDOW"
+        ],
+        "Uma pedra rígida sem visor": [
+          "TRANSPARENT_WINDOW"
+        ],
+        "Um material que bloqueia a visão": [
+          "TRANSPARENT_WINDOW"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "PENCIL_CASE_WINDOW",
+      "explanation": "A janela precisa permitir ver o conteúdo; a escolha vale para a amostra e o uso descrito.",
+      "hint": "A função é mostrar o que está dentro.",
+      "errorFocus": "TRANSPARENT_WINDOW",
+      "feedback": {
+        "correct": "Boa observação: A janela precisa permitir ver o conteúdo; a escolha vale para a amostra e o uso descrito.",
+        "incorrect": "A janela precisa permitir ver o conteúdo; a escolha vale para a amostra e o uso descrito.",
+        "hint": "A função é mostrar o que está dentro.",
+        "errorFocus": "TRANSPARENT_WINDOW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-11",
+      "statement": "Uma ficha informa que um bloco de madeira mantém sua forma quando colocado na mesa. O que isso ajuda a descrever?",
+      "prompt": "Uma ficha informa que um bloco de madeira mantém sua forma quando colocado na mesa. O que isso ajuda a descrever?",
+      "options": [
+        "Sua transparência",
+        "Sua quantidade",
+        "Sua rigidez no uso observado.",
+        "Sua posição ordinal"
+      ],
+      "correctAnswer": "Sua rigidez no uso observado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Sua transparência": [
+          "RIGIDITY_OBSERVATION"
+        ],
+        "Sua quantidade": [
+          "RIGIDITY_OBSERVATION"
+        ],
+        "Sua posição ordinal": [
+          "RIGIDITY_OBSERVATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "WOODEN_BLOCK_SURFACE",
+      "explanation": "Manter a forma pode ser relevante para uma peça de apoio, sem afirmar dureza absoluta.",
+      "hint": "Observe se o bloco mantém a forma.",
+      "errorFocus": "RIGIDITY_OBSERVATION",
+      "feedback": {
+        "correct": "Boa observação: Manter a forma pode ser relevante para uma peça de apoio, sem afirmar dureza absoluta.",
+        "incorrect": "Manter a forma pode ser relevante para uma peça de apoio, sem afirmar dureza absoluta.",
+        "hint": "Observe se o bloco mantém a forma.",
+        "errorFocus": "RIGIDITY_OBSERVATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-12",
+      "statement": "Um desenho fica visível através da folha A, mas não através da folha B. Qual conclusão é sustentada?",
+      "prompt": "Um desenho fica visível através da folha A, mas não através da folha B. Qual conclusão é sustentada?",
+      "options": [
+        "A folha B é mais flexível em qualquer uso",
+        "As duas são opacas",
+        "A folha A é sempre mais segura para todo objeto",
+        "A folha A foi mais transparente que a B neste teste."
+      ],
+      "correctAnswer": "A folha A foi mais transparente que a B neste teste.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A folha B é mais flexível em qualquer uso": [
+          "TRANSPARENCY_COMPARISON"
+        ],
+        "As duas são opacas": [
+          "TRANSPARENCY_COMPARISON"
+        ],
+        "A folha A é sempre mais segura para todo objeto": [
+          "TRANSPARENCY_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PAPER_AND_FILM_LIGHT",
+      "explanation": "A evidência compara a visão através das duas amostras, não outras propriedades.",
+      "hint": "Compare o que o desenho mostra.",
+      "errorFocus": "TRANSPARENCY_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: A evidência compara a visão através das duas amostras, não outras propriedades.",
+        "incorrect": "A evidência compara a visão através das duas amostras, não outras propriedades.",
+        "hint": "Compare o que o desenho mostra.",
+        "errorFocus": "TRANSPARENCY_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-13",
+      "statement": "Para um marcador que deve acompanhar páginas sem quebrar facilmente ao ser dobrado de leve, qual propriedade observar?",
+      "prompt": "Para um marcador que deve acompanhar páginas sem quebrar facilmente ao ser dobrado de leve, qual propriedade observar?",
+      "options": [
+        "Flexibilidade no manuseio previsto.",
+        "Ser opaco e rígido em qualquer condição",
+        "Ter código de identificação",
+        "Deixar passar toda a luz"
+      ],
+      "correctAnswer": "Flexibilidade no manuseio previsto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ser opaco e rígido em qualquer condição": [
+          "BOOKMARK_FLEX"
+        ],
+        "Ter código de identificação": [
+          "BOOKMARK_FLEX"
+        ],
+        "Deixar passar toda a luz": [
+          "BOOKMARK_FLEX"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "FLEXIBLE_BOOKMARK",
+      "explanation": "A função prevê uma dobra leve; a flexibilidade pode ser relevante.",
+      "hint": "Pense em como o marcador será usado.",
+      "errorFocus": "BOOKMARK_FLEX",
+      "feedback": {
+        "correct": "Boa observação: A função prevê uma dobra leve; a flexibilidade pode ser relevante.",
+        "incorrect": "A função prevê uma dobra leve; a flexibilidade pode ser relevante.",
+        "hint": "Pense em como o marcador será usado.",
+        "errorFocus": "BOOKMARK_FLEX"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-14",
+      "statement": "Uma caixa de papelão esconde os objetos que estão dentro. Qual propriedade de visão ela apresenta?",
+      "prompt": "Uma caixa de papelão esconde os objetos que estão dentro. Qual propriedade de visão ela apresenta?",
+      "options": [
+        "Transparência",
+        "Opacidade.",
+        "Translucidez obrigatória",
+        "Flexibilidade do conteúdo"
+      ],
+      "correctAnswer": "Opacidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Transparência": [
+          "STORAGE_OPAQUE"
+        ],
+        "Translucidez obrigatória": [
+          "STORAGE_OPAQUE"
+        ],
+        "Flexibilidade do conteúdo": [
+          "STORAGE_OPAQUE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "OPAQUE_STORAGE_BOX",
+      "explanation": "Não ver através da caixa é compatível com uma superfície opaca.",
+      "hint": "A caixa deixa enxergar o conteúdo?",
+      "errorFocus": "STORAGE_OPAQUE",
+      "feedback": {
+        "correct": "Boa observação: Não ver através da caixa é compatível com uma superfície opaca.",
+        "incorrect": "Não ver através da caixa é compatível com uma superfície opaca.",
+        "hint": "A caixa deixa enxergar o conteúdo?",
+        "errorFocus": "STORAGE_OPAQUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-15",
+      "statement": "Uma folha macia e flexível será usada como cobertura de uma maquete, não como base. Qual justificativa faz sentido?",
+      "prompt": "Uma folha macia e flexível será usada como cobertura de uma maquete, não como base. Qual justificativa faz sentido?",
+      "options": [
+        "A flexibilidade prova que serve para todo objeto",
+        "Uma cobertura precisa sempre ser opaca",
+        "Ela pode se ajustar à cobertura, mas talvez não mantenha sozinha a forma de uma base.",
+        "A folha não pode ter outra propriedade"
+      ],
+      "correctAnswer": "Ela pode se ajustar à cobertura, mas talvez não mantenha sozinha a forma de uma base.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A flexibilidade prova que serve para todo objeto": [
+          "PROPERTY_CONTEXT"
+        ],
+        "Uma cobertura precisa sempre ser opaca": [
+          "PROPERTY_CONTEXT"
+        ],
+        "A folha não pode ter outra propriedade": [
+          "PROPERTY_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SOFT_SHEET_VS_BASE",
+      "explanation": "Uma propriedade pode ajudar em uma função e não ser suficiente para outra.",
+      "hint": "Compare cobertura e base.",
+      "errorFocus": "PROPERTY_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: Uma propriedade pode ajudar em uma função e não ser suficiente para outra.",
+        "incorrect": "Uma propriedade pode ajudar em uma função e não ser suficiente para outra.",
+        "hint": "Compare cobertura e base.",
+        "errorFocus": "PROPERTY_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-16",
+      "statement": "Uma caixa didática precisa de uma parte que deixe passar luz e mostre uma figura atrás. Que tipo de amostra é mais adequada?",
+      "prompt": "Uma caixa didática precisa de uma parte que deixe passar luz e mostre uma figura atrás. Que tipo de amostra é mais adequada?",
+      "options": [
+        "Opaca",
+        "Que não deixa ver nem passar luz",
+        "Uma etiqueta numérica",
+        "Transparente."
+      ],
+      "correctAnswer": "Transparente.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Opaca": [
+          "VISOR_SELECTION"
+        ],
+        "Que não deixa ver nem passar luz": [
+          "VISOR_SELECTION"
+        ],
+        "Uma etiqueta numérica": [
+          "VISOR_SELECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SELECT",
+      "contextFamily": "LIGHT_BOX_VISOR",
+      "explanation": "O objetivo pede passagem de luz e visão nítida da figura.",
+      "hint": "A descrição pede ver a figura.",
+      "errorFocus": "VISOR_SELECTION",
+      "feedback": {
+        "correct": "Boa observação: O objetivo pede passagem de luz e visão nítida da figura.",
+        "incorrect": "O objetivo pede passagem de luz e visão nítida da figura.",
+        "hint": "A descrição pede ver a figura.",
+        "errorFocus": "VISOR_SELECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-17",
+      "statement": "O cartão X dobra com pouca força e o cartão Y mantém a forma durante o teste leve. O que a comparação mostra?",
+      "prompt": "O cartão X dobra com pouca força e o cartão Y mantém a forma durante o teste leve. O que a comparação mostra?",
+      "options": [
+        "X foi mais flexível que Y nessas condições.",
+        "Y é transparente",
+        "X é necessariamente mais resistente a riscos",
+        "Ambos têm a mesma flexibilidade"
+      ],
+      "correctAnswer": "X foi mais flexível que Y nessas condições.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Y é transparente": [
+          "FLEXIBILITY_EVIDENCE"
+        ],
+        "X é necessariamente mais resistente a riscos": [
+          "FLEXIBILITY_EVIDENCE"
+        ],
+        "Ambos têm a mesma flexibilidade": [
+          "FLEXIBILITY_EVIDENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "TWO_FOLDING_CARDS",
+      "explanation": "O teste observa a facilidade de dobrar; não mede transparência nem resistência a riscos.",
+      "hint": "Use apenas a propriedade testada.",
+      "errorFocus": "FLEXIBILITY_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: O teste observa a facilidade de dobrar; não mede transparência nem resistência a riscos.",
+        "incorrect": "O teste observa a facilidade de dobrar; não mede transparência nem resistência a riscos.",
+        "hint": "Use apenas a propriedade testada.",
+        "errorFocus": "FLEXIBILITY_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-18",
+      "statement": "Uma maquete precisa de um painel que mantenha a forma sobre dois apoios. O que a equipe deve comparar?",
+      "prompt": "Uma maquete precisa de um painel que mantenha a forma sobre dois apoios. O que a equipe deve comparar?",
+      "options": [
+        "Qual amostra tem a cor favorita",
+        "Como as amostras mantêm a forma sob o mesmo apoio leve.",
+        "Qual deixa ver através, sem considerar a função",
+        "Qual pode ser cortada com lâmina"
+      ],
+      "correctAnswer": "Como as amostras mantêm a forma sob o mesmo apoio leve.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Qual amostra tem a cor favorita": [
+          "FAIR_SHAPE_TEST"
+        ],
+        "Qual deixa ver através, sem considerar a função": [
+          "FAIR_SHAPE_TEST"
+        ],
+        "Qual pode ser cortada com lâmina": [
+          "FAIR_SHAPE_TEST"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MODEL_ROOF_PANEL",
+      "explanation": "Comparar nas mesmas condições ajuda a escolher um painel que mantenha sua forma.",
+      "hint": "Mantenha os apoios e o teste iguais.",
+      "errorFocus": "FAIR_SHAPE_TEST",
+      "feedback": {
+        "correct": "Boa observação: Comparar nas mesmas condições ajuda a escolher um painel que mantenha sua forma.",
+        "incorrect": "Comparar nas mesmas condições ajuda a escolher um painel que mantenha sua forma.",
+        "hint": "Mantenha os apoios e o teste iguais.",
+        "errorFocus": "FAIR_SHAPE_TEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-19",
+      "statement": "Um anúncio diz que um material é “o melhor para qualquer objeto”. Qual avaliação é mais cuidadosa?",
+      "prompt": "Um anúncio diz que um material é “o melhor para qualquer objeto”. Qual avaliação é mais cuidadosa?",
+      "options": [
+        "A frase prova que ele serve a todos os objetos",
+        "A cor do anúncio confirma a afirmação",
+        "É preciso relacionar propriedades e finalidade e pedir evidências para cada uso.",
+        "Todo material tem exatamente as mesmas propriedades"
+      ],
+      "correctAnswer": "É preciso relacionar propriedades e finalidade e pedir evidências para cada uso.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A frase prova que ele serve a todos os objetos": [
+          "NO_UNIVERSAL_MATERIAL"
+        ],
+        "A cor do anúncio confirma a afirmação": [
+          "NO_UNIVERSAL_MATERIAL"
+        ],
+        "Todo material tem exatamente as mesmas propriedades": [
+          "NO_UNIVERSAL_MATERIAL"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MATERIAL_ADVERTISEMENT",
+      "explanation": "A adequação depende da função, das propriedades e das condições de uso.",
+      "hint": "Pergunte: melhor para qual finalidade?",
+      "errorFocus": "NO_UNIVERSAL_MATERIAL",
+      "feedback": {
+        "correct": "Boa observação: A adequação depende da função, das propriedades e das condições de uso.",
+        "incorrect": "A adequação depende da função, das propriedades e das condições de uso.",
+        "hint": "Pergunte: melhor para qual finalidade?",
+        "errorFocus": "NO_UNIVERSAL_MATERIAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-20",
+      "statement": "Duas amostras são comparadas por uma ficha de observação já preparada; uma marca superficial aparece apenas em uma delas após teste escolar seguro. O que se pode registrar?",
+      "prompt": "Duas amostras são comparadas por uma ficha de observação já preparada; uma marca superficial aparece apenas em uma delas após teste escolar seguro. O que se pode registrar?",
+      "options": [
+        "Uma delas é indestrutível",
+        "O teste prova todas as propriedades dos materiais",
+        "A amostra marcada é transparente",
+        "As amostras responderam de modo diferente ao procedimento descrito."
+      ],
+      "correctAnswer": "As amostras responderam de modo diferente ao procedimento descrito.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Uma delas é indestrutível": [
+          "HARDNESS_LIMIT"
+        ],
+        "O teste prova todas as propriedades dos materiais": [
+          "HARDNESS_LIMIT"
+        ],
+        "A amostra marcada é transparente": [
+          "HARDNESS_LIMIT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SAFE_HARDNESS_COMPARISON",
+      "explanation": "O resultado informa a resposta ao procedimento, sem provar uma propriedade absoluta ou universal.",
+      "hint": "Descreva somente a marca observada e o teste.",
+      "errorFocus": "HARDNESS_LIMIT",
+      "feedback": {
+        "correct": "Boa observação: O resultado informa a resposta ao procedimento, sem provar uma propriedade absoluta ou universal.",
+        "incorrect": "O resultado informa a resposta ao procedimento, sem provar uma propriedade absoluta ou universal.",
+        "hint": "Descreva somente a marca observada e o teste.",
+        "errorFocus": "HARDNESS_LIMIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-21",
+      "statement": "Uma equipe planeja uma janela para observar personagens em uma maquete de teatro. Qual proposta é mais coerente?",
+      "prompt": "Uma equipe planeja uma janela para observar personagens em uma maquete de teatro. Qual proposta é mais coerente?",
+      "options": [
+        "Usar uma amostra transparente escolar e verificar se a cena pode ser vista através dela.",
+        "Usar apenas papelão opaco",
+        "Escolher pelo nome sem testar",
+        "Cobrir o visor com material que bloqueia a visão"
+      ],
+      "correctAnswer": "Usar uma amostra transparente escolar e verificar se a cena pode ser vista através dela.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Usar apenas papelão opaco": [
+          "DESIGN_BY_TRANSPARENCY"
+        ],
+        "Escolher pelo nome sem testar": [
+          "DESIGN_BY_TRANSPARENCY"
+        ],
+        "Cobrir o visor com material que bloqueia a visão": [
+          "DESIGN_BY_TRANSPARENCY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "PUPPET_THEATER_SCREEN",
+      "explanation": "A função exige visão através do painel; uma amostra e um teste seguro dão evidência.",
+      "hint": "Conecte o visor ao que a audiência precisa ver.",
+      "errorFocus": "DESIGN_BY_TRANSPARENCY",
+      "feedback": {
+        "correct": "Boa observação: A função exige visão através do painel; uma amostra e um teste seguro dão evidência.",
+        "incorrect": "A função exige visão através do painel; uma amostra e um teste seguro dão evidência.",
+        "hint": "Conecte o visor ao que a audiência precisa ver.",
+        "errorFocus": "DESIGN_BY_TRANSPARENCY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-22",
+      "statement": "Para uma alça de maquete feita de papel, qual proposta considera melhor a finalidade?",
+      "prompt": "Para uma alça de maquete feita de papel, qual proposta considera melhor a finalidade?",
+      "options": [
+        "Escolher uma tira só pela cor",
+        "Comparar tiras de materiais escolares seguros quanto à flexibilidade e ao suporte leve previsto.",
+        "Testar puxando com força até romper",
+        "Supor que a mais rígida serve para qualquer alça"
+      ],
+      "correctAnswer": "Comparar tiras de materiais escolares seguros quanto à flexibilidade e ao suporte leve previsto.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Escolher uma tira só pela cor": [
+          "SAFE_FUNCTION_TEST"
+        ],
+        "Testar puxando com força até romper": [
+          "SAFE_FUNCTION_TEST"
+        ],
+        "Supor que a mais rígida serve para qualquer alça": [
+          "SAFE_FUNCTION_TEST"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BAG_HANDLE_MATERIAL_CARDS",
+      "explanation": "A escolha considera função e propriedades usando comparação segura, sem teste perigoso.",
+      "hint": "Planeje um teste leve e igual para cada amostra.",
+      "errorFocus": "SAFE_FUNCTION_TEST",
+      "feedback": {
+        "correct": "Boa observação: A escolha considera função e propriedades usando comparação segura, sem teste perigoso.",
+        "incorrect": "A escolha considera função e propriedades usando comparação segura, sem teste perigoso.",
+        "hint": "Planeje um teste leve e igual para cada amostra.",
+        "errorFocus": "SAFE_FUNCTION_TEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-23",
+      "statement": "Uma caixa de lanche de brinquedo deve esconder o conteúdo e manter a forma. Que combinação de propriedades pode ser considerada?",
+      "prompt": "Uma caixa de lanche de brinquedo deve esconder o conteúdo e manter a forma. Que combinação de propriedades pode ser considerada?",
+      "options": [
+        "Transparência e flexibilidade máxima em todas as partes",
+        "Somente cor, sem observar a função",
+        "Opacidade para esconder e rigidez suficiente para manter a forma no modelo.",
+        "Dureza absoluta comprovada por quebra"
+      ],
+      "correctAnswer": "Opacidade para esconder e rigidez suficiente para manter a forma no modelo.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Transparência e flexibilidade máxima em todas as partes": [
+          "MULTIPLE_REQUIREMENTS"
+        ],
+        "Somente cor, sem observar a função": [
+          "MULTIPLE_REQUIREMENTS"
+        ],
+        "Dureza absoluta comprovada por quebra": [
+          "MULTIPLE_REQUIREMENTS"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LUNCHBOX_VISIBILITY",
+      "explanation": "O projeto tem duas finalidades distintas e pode usar propriedades complementares.",
+      "hint": "Liste o que a caixa precisa fazer.",
+      "errorFocus": "MULTIPLE_REQUIREMENTS",
+      "feedback": {
+        "correct": "Boa observação: O projeto tem duas finalidades distintas e pode usar propriedades complementares.",
+        "incorrect": "O projeto tem duas finalidades distintas e pode usar propriedades complementares.",
+        "hint": "Liste o que a caixa precisa fazer.",
+        "errorFocus": "MULTIPLE_REQUIREMENTS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-24",
+      "statement": "Uma turma testa uma folha transparente com desenho claro e uma opaca com desenho escuro. O que melhoraria a comparação?",
+      "prompt": "Uma turma testa uma folha transparente com desenho claro e uma opaca com desenho escuro. O que melhoraria a comparação?",
+      "options": [
+        "Mudar todos os materiais e a luz ao mesmo tempo",
+        "Usar uma amostra de cada tamanho sem registrar",
+        "Escolher a folha mais bonita",
+        "Usar o mesmo desenho, iluminação e posição para ambas as amostras."
+      ],
+      "correctAnswer": "Usar o mesmo desenho, iluminação e posição para ambas as amostras.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Mudar todos os materiais e a luz ao mesmo tempo": [
+          "CONTROLLED_VISIBILITY_TEST"
+        ],
+        "Usar uma amostra de cada tamanho sem registrar": [
+          "CONTROLLED_VISIBILITY_TEST"
+        ],
+        "Escolher a folha mais bonita": [
+          "CONTROLLED_VISIBILITY_TEST"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "ANALYZE",
+      "contextFamily": "FAIR_MATERIAL_COMPARISON",
+      "explanation": "Manter condições semelhantes ajuda a atribuir a diferença à amostra observada.",
+      "hint": "Pense no que deve ficar igual nas duas observações.",
+      "errorFocus": "CONTROLLED_VISIBILITY_TEST",
+      "feedback": {
+        "correct": "Boa observação: Manter condições semelhantes ajuda a atribuir a diferença à amostra observada.",
+        "incorrect": "Manter condições semelhantes ajuda a atribuir a diferença à amostra observada.",
+        "hint": "Pense no que deve ficar igual nas duas observações.",
+        "errorFocus": "CONTROLLED_VISIBILITY_TEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-25",
+      "statement": "Um mapa de papel precisa de uma capa que dobre com ele e proteja o desenho durante uso leve. Qual plano é melhor?",
+      "prompt": "Um mapa de papel precisa de uma capa que dobre com ele e proteja o desenho durante uso leve. Qual plano é melhor?",
+      "options": [
+        "Comparar amostras flexíveis e seguras e observar se acompanham a dobra sem impedir a leitura.",
+        "Escolher um material rígido sem conferir a dobra",
+        "Usar vidro quebrável para testar transparência",
+        "Afirmar que qualquer material flexível sempre protege"
+      ],
+      "correctAnswer": "Comparar amostras flexíveis e seguras e observar se acompanham a dobra sem impedir a leitura.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Escolher um material rígido sem conferir a dobra": [
+          "MULTI_PROPERTY_SELECTION"
+        ],
+        "Usar vidro quebrável para testar transparência": [
+          "MULTI_PROPERTY_SELECTION"
+        ],
+        "Afirmar que qualquer material flexível sempre protege": [
+          "MULTI_PROPERTY_SELECTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "FOLDING_MAP_CASE",
+      "explanation": "O projeto combina flexibilidade e função de proteção, com verificação segura e limites claros.",
+      "hint": "Considere dobrar e ainda conseguir ler o mapa.",
+      "errorFocus": "MULTI_PROPERTY_SELECTION",
+      "feedback": {
+        "correct": "Boa observação: O projeto combina flexibilidade e função de proteção, com verificação segura e limites claros.",
+        "incorrect": "O projeto combina flexibilidade e função de proteção, com verificação segura e limites claros.",
+        "hint": "Considere dobrar e ainda conseguir ler o mapa.",
+        "errorFocus": "MULTI_PROPERTY_SELECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-26",
+      "statement": "Uma placa de maquete precisa ser lida de frente e manter-se apoiada. Qual evidência é relevante?",
+      "prompt": "Uma placa de maquete precisa ser lida de frente e manter-se apoiada. Qual evidência é relevante?",
+      "options": [
+        "O nome comercial do material",
+        "Se o texto pode ser visto e se o painel mantém a forma no suporte leve.",
+        "A quantidade de cores no desenho",
+        "Uma afirmação de que todo material funciona igual"
+      ],
+      "correctAnswer": "Se o texto pode ser visto e se o painel mantém a forma no suporte leve.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O nome comercial do material": [
+          "SIGN_FUNCTION_EVIDENCE"
+        ],
+        "A quantidade de cores no desenho": [
+          "SIGN_FUNCTION_EVIDENCE"
+        ],
+        "Uma afirmação de que todo material funciona igual": [
+          "SIGN_FUNCTION_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "CLASSROOM_SIGN_PANEL",
+      "explanation": "A placa precisa permitir leitura e manter a forma no uso previsto.",
+      "hint": "Teste as duas funções da placa.",
+      "errorFocus": "SIGN_FUNCTION_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A placa precisa permitir leitura e manter a forma no uso previsto.",
+        "incorrect": "A placa precisa permitir leitura e manter a forma no uso previsto.",
+        "hint": "Teste as duas funções da placa.",
+        "errorFocus": "SIGN_FUNCTION_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-27",
+      "statement": "Um projeto quer reaproveitar uma embalagem limpa como organizador leve. Como escolher uma divisória?",
+      "prompt": "Um projeto quer reaproveitar uma embalagem limpa como organizador leve. Como escolher uma divisória?",
+      "options": [
+        "Selecionar sem observar a embalagem",
+        "Usar qualquer material porque todos são idênticos",
+        "Comparar materiais seguros quanto a manter a forma e encaixar no espaço, considerando a finalidade.",
+        "Cortar embalagem com ferramenta sem supervisão"
+      ],
+      "correctAnswer": "Comparar materiais seguros quanto a manter a forma e encaixar no espaço, considerando a finalidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Selecionar sem observar a embalagem": [
+          "REUSE_DESIGN_PROPERTIES"
+        ],
+        "Usar qualquer material porque todos são idênticos": [
+          "REUSE_DESIGN_PROPERTIES"
+        ],
+        "Cortar embalagem com ferramenta sem supervisão": [
+          "REUSE_DESIGN_PROPERTIES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REUSABLE_PACKAGE_DESIGN",
+      "explanation": "A proposta relaciona propriedades, dimensão do projeto e segurança.",
+      "hint": "Que característica ajudará a divisória a funcionar?",
+      "errorFocus": "REUSE_DESIGN_PROPERTIES",
+      "feedback": {
+        "correct": "Boa observação: A proposta relaciona propriedades, dimensão do projeto e segurança.",
+        "incorrect": "A proposta relaciona propriedades, dimensão do projeto e segurança.",
+        "hint": "Que característica ajudará a divisória a funcionar?",
+        "errorFocus": "REUSE_DESIGN_PROPERTIES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-28",
+      "statement": "Qual conclusão de um relatório sobre papel, tecido e folha plástica é mais bem fundamentada?",
+      "prompt": "Qual conclusão de um relatório sobre papel, tecido e folha plástica é mais bem fundamentada?",
+      "options": [
+        "Esse material é o melhor para todo objeto",
+        "Um único teste revela todas as propriedades",
+        "A aparência basta para provar a função",
+        "A amostra escolhida atendeu melhor à finalidade definida nos testes descritos."
+      ],
+      "correctAnswer": "A amostra escolhida atendeu melhor à finalidade definida nos testes descritos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Esse material é o melhor para todo objeto": [
+          "CONCLUSION_SCOPE"
+        ],
+        "Um único teste revela todas as propriedades": [
+          "CONCLUSION_SCOPE"
+        ],
+        "A aparência basta para provar a função": [
+          "CONCLUSION_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "MATERIAL_CHOICE_REPORT",
+      "explanation": "Uma conclusão válida relaciona evidência e finalidade e evita generalização sem dados.",
+      "hint": "Inclua o teste e o uso pretendido na conclusão.",
+      "errorFocus": "CONCLUSION_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Uma conclusão válida relaciona evidência e finalidade e evita generalização sem dados.",
+        "incorrect": "Uma conclusão válida relaciona evidência e finalidade e evita generalização sem dados.",
+        "hint": "Inclua o teste e o uso pretendido na conclusão.",
+        "errorFocus": "CONCLUSION_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-29",
+      "statement": "Qual associação entre propriedade e observação está correta?",
+      "prompt": "Qual associação entre propriedade e observação está correta?",
+      "options": [
+        "Transparência: conseguir ver uma figura através da amostra.",
+        "Flexibilidade: bloquear a visão",
+        "Opacidade: dobrar com facilidade",
+        "Dureza: contar quantos objetos há"
+      ],
+      "correctAnswer": "Transparência: conseguir ver uma figura através da amostra.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Flexibilidade: bloquear a visão": [
+          "PROPERTY_MATCH_LOCK"
+        ],
+        "Opacidade: dobrar com facilidade": [
+          "PROPERTY_MATCH_LOCK"
+        ],
+        "Dureza: contar quantos objetos há": [
+          "PROPERTY_MATCH_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_PROPERTY_MATCH",
+      "explanation": "Ver através da amostra é evidência de transparência; as demais descrições misturam conceitos.",
+      "hint": "Associe cada palavra à observação correspondente.",
+      "errorFocus": "PROPERTY_MATCH_LOCK",
+      "feedback": {
+        "correct": "Boa observação: Ver através da amostra é evidência de transparência; as demais descrições misturam conceitos.",
+        "incorrect": "Ver através da amostra é evidência de transparência; as demais descrições misturam conceitos.",
+        "hint": "Associe cada palavra à observação correspondente.",
+        "errorFocus": "PROPERTY_MATCH_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-30",
+      "statement": "Uma amostra é flexível. O que ainda é necessário para decidir se serve para um objeto?",
+      "prompt": "Uma amostra é flexível. O que ainda é necessário para decidir se serve para um objeto?",
+      "options": [
+        "Concluir que serve para tudo",
+        "Conhecer a função do objeto e comparar outras propriedades relevantes.",
+        "Ignorar o uso e escolher pela cor",
+        "Afirmar que flexibilidade garante transparência"
+      ],
+      "correctAnswer": "Conhecer a função do objeto e comparar outras propriedades relevantes.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Concluir que serve para tudo": [
+          "PROPERTY_NOT_ENOUGH"
+        ],
+        "Ignorar o uso e escolher pela cor": [
+          "PROPERTY_NOT_ENOUGH"
+        ],
+        "Afirmar que flexibilidade garante transparência": [
+          "PROPERTY_NOT_ENOUGH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_MATERIAL_PURPOSE",
+      "explanation": "Uma propriedade isolada não determina adequação a todas as funções.",
+      "hint": "Pergunte para que o objeto será usado.",
+      "errorFocus": "PROPERTY_NOT_ENOUGH",
+      "feedback": {
+        "correct": "Boa observação: Uma propriedade isolada não determina adequação a todas as funções.",
+        "incorrect": "Uma propriedade isolada não determina adequação a todas as funções.",
+        "hint": "Pergunte para que o objeto será usado.",
+        "errorFocus": "PROPERTY_NOT_ENOUGH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-31",
+      "statement": "Um pedaço de papelão manteve a forma em um teste leve. Qual frase é mais cuidadosa?",
+      "prompt": "Um pedaço de papelão manteve a forma em um teste leve. Qual frase é mais cuidadosa?",
+      "options": [
+        "Todo papelão é indestrutível",
+        "O material nunca muda de forma",
+        "A amostra manteve a forma neste teste leve.",
+        "O teste prova transparência"
+      ],
+      "correctAnswer": "A amostra manteve a forma neste teste leve.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todo papelão é indestrutível": [
+          "LIMITED_EVIDENCE"
+        ],
+        "O material nunca muda de forma": [
+          "LIMITED_EVIDENCE"
+        ],
+        "O teste prova transparência": [
+          "LIMITED_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_TEST_SCOPE",
+      "explanation": "A afirmação deve indicar a amostra e as condições observadas.",
+      "hint": "Evite transformar um teste limitado em regra absoluta.",
+      "errorFocus": "LIMITED_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A afirmação deve indicar a amostra e as condições observadas.",
+        "incorrect": "A afirmação deve indicar a amostra e as condições observadas.",
+        "hint": "Evite transformar um teste limitado em regra absoluta.",
+        "errorFocus": "LIMITED_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-32",
+      "statement": "Uma tela deixa passar luz, mas não permite ver claramente os detalhes atrás dela. Ela é…",
+      "prompt": "Uma tela deixa passar luz, mas não permite ver claramente os detalhes atrás dela. Ela é…",
+      "options": [
+        "transparente com visão nítida",
+        "opaca sem passagem de luz",
+        "flexível por definição",
+        "translúcida."
+      ],
+      "correctAnswer": "translúcida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "transparente com visão nítida": [
+          "TRANSLUCENT_LOCK"
+        ],
+        "opaca sem passagem de luz": [
+          "TRANSLUCENT_LOCK"
+        ],
+        "flexível por definição": [
+          "TRANSLUCENT_LOCK"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "LOCK_IN_TRANSLUCENT",
+      "explanation": "Translúcido descreve passagem de luz sem visão nítida dos detalhes.",
+      "hint": "Diferencie passagem de luz de imagem nítida.",
+      "errorFocus": "TRANSLUCENT_LOCK",
+      "feedback": {
+        "correct": "Boa observação: Translúcido descreve passagem de luz sem visão nítida dos detalhes.",
+        "incorrect": "Translúcido descreve passagem de luz sem visão nítida dos detalhes.",
+        "hint": "Diferencie passagem de luz de imagem nítida.",
+        "errorFocus": "TRANSLUCENT_LOCK"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-33",
+      "statement": "Qual plano deve ser rejeitado numa investigação escolar de dureza?",
+      "prompt": "Qual plano deve ser rejeitado numa investigação escolar de dureza?",
+      "options": [
+        "Quebrar uma peça de vidro para comparar os fragmentos.",
+        "Observar fichas técnicas seguras",
+        "Comparar amostras intactas com procedimento leve preparado",
+        "Registrar o resultado de um teste conduzido por adulto"
+      ],
+      "correctAnswer": "Quebrar uma peça de vidro para comparar os fragmentos.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Observar fichas técnicas seguras": [
+          "UNSAFE_MATERIAL_TEST"
+        ],
+        "Comparar amostras intactas com procedimento leve preparado": [
+          "UNSAFE_MATERIAL_TEST"
+        ],
+        "Registrar o resultado de um teste conduzido por adulto": [
+          "UNSAFE_MATERIAL_TEST"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_UNSAFE_TEST",
+      "explanation": "Quebrar vidro cria risco de corte; a comparação deve usar métodos e amostras seguros.",
+      "hint": "Pense no risco de fragmentos cortantes.",
+      "errorFocus": "UNSAFE_MATERIAL_TEST",
+      "feedback": {
+        "correct": "Boa observação: Quebrar vidro cria risco de corte; a comparação deve usar métodos e amostras seguros.",
+        "incorrect": "Quebrar vidro cria risco de corte; a comparação deve usar métodos e amostras seguros.",
+        "hint": "Pense no risco de fragmentos cortantes.",
+        "errorFocus": "UNSAFE_MATERIAL_TEST"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-34",
+      "statement": "Uma escolha de material bem justificada deve relacionar…",
+      "prompt": "Uma escolha de material bem justificada deve relacionar…",
+      "options": [
+        "somente o nome do material",
+        "a finalidade do objeto, uma propriedade observada e a evidência disponível.",
+        "apenas uma preferência de cor",
+        "uma promessa sem teste ou finalidade"
+      ],
+      "correctAnswer": "a finalidade do objeto, uma propriedade observada e a evidência disponível.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "somente o nome do material": [
+          "DESIGN_JUSTIFICATION"
+        ],
+        "apenas uma preferência de cor": [
+          "DESIGN_JUSTIFICATION"
+        ],
+        "uma promessa sem teste ou finalidade": [
+          "DESIGN_JUSTIFICATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LOCK_IN_DESIGN_REASON",
+      "explanation": "Uma justificativa conecta a necessidade do objeto à propriedade e às evidências.",
+      "hint": "Reúna uso, propriedade e observação.",
+      "errorFocus": "DESIGN_JUSTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: Uma justificativa conecta a necessidade do objeto à propriedade e às evidências.",
+        "incorrect": "Uma justificativa conecta a necessidade do objeto à propriedade e às evidências.",
+        "hint": "Reúna uso, propriedade e observação.",
+        "errorFocus": "DESIGN_JUSTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-35",
+      "statement": "Qual palavra descreve a facilidade de um material se dobrar no teste?",
+      "prompt": "Qual palavra descreve a facilidade de um material se dobrar no teste?",
+      "options": [
+        "Transparência",
+        "Opacidade",
+        "Flexibilidade.",
+        "Quantidade"
+      ],
+      "correctAnswer": "Flexibilidade.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Transparência": [
+          "REVIEW_FLEX"
+        ],
+        "Opacidade": [
+          "REVIEW_FLEX"
+        ],
+        "Quantidade": [
+          "REVIEW_FLEX"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_FLEXIBILITY",
+      "explanation": "Flexibilidade diz respeito a dobrar ou mudar de forma nas condições observadas.",
+      "hint": "Lembre-se de uma tira que se dobra.",
+      "errorFocus": "REVIEW_FLEX",
+      "feedback": {
+        "correct": "Boa observação: Flexibilidade diz respeito a dobrar ou mudar de forma nas condições observadas.",
+        "incorrect": "Flexibilidade diz respeito a dobrar ou mudar de forma nas condições observadas.",
+        "hint": "Lembre-se de uma tira que se dobra.",
+        "errorFocus": "REVIEW_FLEX"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-36",
+      "statement": "Se vemos nitidamente uma figura através da amostra, qual propriedade observamos?",
+      "prompt": "Se vemos nitidamente uma figura através da amostra, qual propriedade observamos?",
+      "options": [
+        "Dureza",
+        "Ordem",
+        "Opacidade",
+        "Transparência."
+      ],
+      "correctAnswer": "Transparência.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Dureza": [
+          "REVIEW_TRANSPARENCY"
+        ],
+        "Ordem": [
+          "REVIEW_TRANSPARENCY"
+        ],
+        "Opacidade": [
+          "REVIEW_TRANSPARENCY"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_TRANSPARENCY",
+      "explanation": "Ver através com nitidez indica transparência.",
+      "hint": "A figura continua visível atrás da amostra?",
+      "errorFocus": "REVIEW_TRANSPARENCY",
+      "feedback": {
+        "correct": "Boa observação: Ver através com nitidez indica transparência.",
+        "incorrect": "Ver através com nitidez indica transparência.",
+        "hint": "A figura continua visível atrás da amostra?",
+        "errorFocus": "REVIEW_TRANSPARENCY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-37",
+      "statement": "Um material que não deixa ver a figura atrás dele é…",
+      "prompt": "Um material que não deixa ver a figura atrás dele é…",
+      "options": [
+        "opaco.",
+        "transparente",
+        "translúcido com visão nítida",
+        "flexível necessariamente"
+      ],
+      "correctAnswer": "opaco.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "transparente": [
+          "REVIEW_OPAQUE"
+        ],
+        "translúcido com visão nítida": [
+          "REVIEW_OPAQUE"
+        ],
+        "flexível necessariamente": [
+          "REVIEW_OPAQUE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "REVIEW_OPAQUE",
+      "explanation": "Opaco descreve bloqueio da visão através do material.",
+      "hint": "A figura pode ser vista através dele?",
+      "errorFocus": "REVIEW_OPAQUE",
+      "feedback": {
+        "correct": "Boa observação: Opaco descreve bloqueio da visão através do material.",
+        "incorrect": "Opaco descreve bloqueio da visão através do material.",
+        "hint": "A figura pode ser vista através dele?",
+        "errorFocus": "REVIEW_OPAQUE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-38",
+      "statement": "Para um visor de maquete, qual característica ajuda a ver o interior?",
+      "prompt": "Para um visor de maquete, qual característica ajuda a ver o interior?",
+      "options": [
+        "Opacidade total",
+        "Transparência adequada à finalidade.",
+        "Uma etiqueta com número",
+        "Dureza sem qualquer outro critério"
+      ],
+      "correctAnswer": "Transparência adequada à finalidade.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Opacidade total": [
+          "REVIEW_PURPOSE"
+        ],
+        "Uma etiqueta com número": [
+          "REVIEW_PURPOSE"
+        ],
+        "Dureza sem qualquer outro critério": [
+          "REVIEW_PURPOSE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "REVIEW_WINDOW_USE",
+      "explanation": "A propriedade escolhida deve ajudar o visor a cumprir sua função.",
+      "hint": "O visor deve permitir ver o quê?",
+      "errorFocus": "REVIEW_PURPOSE",
+      "feedback": {
+        "correct": "Boa observação: A propriedade escolhida deve ajudar o visor a cumprir sua função.",
+        "incorrect": "A propriedade escolhida deve ajudar o visor a cumprir sua função.",
+        "hint": "O visor deve permitir ver o quê?",
+        "errorFocus": "REVIEW_PURPOSE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-39",
+      "statement": "Um estudante diz “este material sempre serve para tudo” após um único teste. Qual revisão melhora a afirmação?",
+      "prompt": "Um estudante diz “este material sempre serve para tudo” após um único teste. Qual revisão melhora a afirmação?",
+      "options": [
+        "“O teste prova todas as propriedades.”",
+        "“Todo objeto precisa deste material.”",
+        "“A amostra atendeu a esta finalidade nas condições observadas.”",
+        "“A finalidade não importa.”"
+      ],
+      "correctAnswer": "“A amostra atendeu a esta finalidade nas condições observadas.”",
+      "answerPosition": "C",
+      "misconceptions": {
+        "“O teste prova todas as propriedades.”": [
+          "REVIEW_SCOPE"
+        ],
+        "“Todo objeto precisa deste material.”": [
+          "REVIEW_SCOPE"
+        ],
+        "“A finalidade não importa.”": [
+          "REVIEW_SCOPE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_ABSOLUTE_CLAIM",
+      "explanation": "Uma conclusão proporcional limita a afirmação à amostra, ao teste e ao uso.",
+      "hint": "Inclua “nesta finalidade” e “neste teste”.",
+      "errorFocus": "REVIEW_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Uma conclusão proporcional limita a afirmação à amostra, ao teste e ao uso.",
+        "incorrect": "Uma conclusão proporcional limita a afirmação à amostra, ao teste e ao uso.",
+        "hint": "Inclua “nesta finalidade” e “neste teste”.",
+        "errorFocus": "REVIEW_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v1-science-material-properties-and-design-ef02-40",
+      "statement": "O que deve orientar a escolha de material para um objeto cotidiano?",
+      "prompt": "O que deve orientar a escolha de material para um objeto cotidiano?",
+      "options": [
+        "Somente a cor",
+        "Uma regra absoluta para todos os objetos",
+        "Um teste perigoso de quebra",
+        "A finalidade, as propriedades relevantes e a segurança do uso."
+      ],
+      "correctAnswer": "A finalidade, as propriedades relevantes e a segurança do uso.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Somente a cor": [
+          "REVIEW_MATERIAL_SELECTION"
+        ],
+        "Uma regra absoluta para todos os objetos": [
+          "REVIEW_MATERIAL_SELECTION"
+        ],
+        "Um teste perigoso de quebra": [
+          "REVIEW_MATERIAL_SELECTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_SAFE_CHOICE",
+      "explanation": "A escolha considera o que o objeto precisa fazer e evidências seguras sobre o material.",
+      "hint": "Junte função, propriedades e segurança.",
+      "errorFocus": "REVIEW_MATERIAL_SELECTION",
+      "feedback": {
+        "correct": "Boa observação: A escolha considera o que o objeto precisa fazer e evidências seguras sobre o material.",
+        "incorrect": "A escolha considera o que o objeto precisa fazer e evidências seguras sobre o material.",
+        "hint": "Junte função, propriedades e segurança.",
+        "errorFocus": "REVIEW_MATERIAL_SELECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Disponibilizar amostras grandes ou fotografias com descrição verbal e etiquetas táteis; não depender somente da cor para comparar materiais.",
+          "Oferecer tabela com pictogramas para propriedade, finalidade e justificativa; aceitar resposta oral, por seleção de cartões, desenho ou comunicação alternativa.",
+          "Usar materiais escolares seguros, sem vidro quebrado, lâminas, produtos químicos, fogo ou testes de força que possam ferir; um adulto prepara qualquer amostra que exija manuseio especial."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

@@ -1,0 +1,2083 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v3-science-cells-structure-and-function-ef06",
+  "canonicalSkillCode": "AUTHORING_EF06CI05_CELL_AS_STRUCTURAL_AND_FUNCTIONAL_UNIT",
+  "subject": "SCIENCE",
+  "domain": "VIDA E EVOLUÇÃO",
+  "topic": "organização básica das células e sua função estrutural e funcional nos seres vivos",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 6
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF06CI05",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Explicar a organização básica das células e seu papel como unidade estrutural e funcional dos seres vivos.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 346
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Células: unidades que formam e mantêm os seres vivos",
+    "objective": "Explicar, com apoio de imagens ou modelos, a organização básica de uma célula e por que ela é considerada unidade estrutural e funcional dos seres vivos, reconhecendo semelhanças e diferenças sem tratar todos os tipos celulares como idênticos.",
+    "summary": "Os seres vivos são constituídos por uma ou muitas células. Uma célula é uma unidade estrutural porque participa da composição do organismo e funcional porque realiza atividades necessárias à vida. Modelos ajudam a representar estruturas, mas simplificam tamanho, forma e funcionamento. Células de diferentes organismos e tecidos podem variar; comparações precisam respeitar o que a imagem ou fonte mostra.",
+    "explanation": "Uma célula é a menor unidade que reúne organização e atividades próprias da vida. Ela contribui para formar um organismo e realiza funções como obter e utilizar materiais, manter condições internas e responder ao ambiente. Em muitas células estudadas no 6º ano, como as de animais e plantas, a membrana delimita a célula, o citoplasma ocupa seu interior e o núcleo contém material genético. Células vegetais também apresentam parede celular; cloroplastos aparecem em células que realizam fotossíntese, não em toda célula de uma planta. Há outros tipos celulares com organização diferente, como bactérias, que não possuem núcleo delimitado por membrana. Modelos e desenhos são representações: podem destacar estruturas, mas não mostram tudo nem costumam manter proporções reais. Por isso, use a legenda e a fonte para explicar o que cada imagem permite afirmar.",
+    "workedExample": "Um esquema mostra células da epiderme de uma folha com parede celular, membrana, citoplasma e núcleo. O esquema sustenta que essas células têm organização e partes representadas; não permite concluir que todas as células de uma planta tenham cloroplastos, pois a figura não os mostra e células de raízes, por exemplo, não recebem luz para realizar fotossíntese. A conclusão deve se limitar ao tipo de célula apresentado.",
+    "commonMistake": "Afirmar que todas as células têm o mesmo formato, as mesmas estruturas ou um núcleo delimitado por membrana; confundir um desenho simplificado com uma fotografia em escala.",
+    "priorKnowledge": [
+      "Reconhecer que plantas, animais e outros seres vivos têm partes organizadas e desempenham funções.",
+      "Ler legendas simples, comparar imagens e distinguir uma representação de um objeto real."
+    ],
+    "keyConcepts": [
+      "célula",
+      "unidade estrutural",
+      "unidade funcional",
+      "membrana",
+      "citoplasma",
+      "núcleo",
+      "organismo unicelular",
+      "organismo pluricelular",
+      "modelo e evidência"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "CELL_AS_DECORATIVE_PART",
+        "action": "Relacione cada estrutura mostrada a uma função geral da célula e explique como células participam da composição dos seres vivos, em vez de apenas nomear partes."
+      },
+      {
+        "errorFocus": "ALL_CELLS_IDENTICAL",
+        "action": "Compare duas imagens identificadas e marque uma semelhança e uma diferença sustentadas pelas legendas; evite usar um exemplo como regra de todos os tipos celulares."
+      },
+      {
+        "errorFocus": "NUCLEUS_IN_EVERY_CELL",
+        "action": "Diferencie células eucarióticas, com núcleo delimitado, de células procarióticas, sem núcleo delimitado por membrana; use apenas o nível de detalhe necessário à questão."
+      },
+      {
+        "errorFocus": "MODEL_AS_SCALE_PHOTOGRAPH",
+        "action": "Leia a legenda do modelo, identifique o que foi ampliado ou simplificado e reescreva a conclusão como representação, não como fotografia em escala."
+      }
+    ],
+    "accessibilitySupports": [
+      "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+      "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+      "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ef06ci05-cell-model-comparison",
+        "title": "Comparar modelos celulares com legenda",
+        "instructions": "Conjunto didático de diagramas identificados de células animal e vegetal, com escala declarada como esquemática e estruturas nomeadas.\n1. Leia a legenda e localize estruturas que aparecem nos dois modelos.\n2. Registre uma semelhança e uma diferença sem concluir que todos os tipos de célula sejam iguais aos exemplos.\n3. Explique o que o modelo ajuda a estudar e uma informação que ele não permite concluir.",
+        "steps": [
+          "Leia a legenda e localize estruturas que aparecem nos dois modelos.",
+          "Registre uma semelhança e uma diferença sem concluir que todos os tipos de célula sejam iguais aos exemplos.",
+          "Explique o que o modelo ajuda a estudar e uma informação que ele não permite concluir."
+        ],
+        "evidence": "Quadro comparativo que atribui cada afirmação aos diagramas, diferencia estrutura comum e específica e declara ao menos um limite da representação.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "nomeia partes sem relacioná-las aos modelos.",
+            "developing": "registra semelhança e diferença com apoio da legenda.",
+            "proficient": "sustenta a comparação nas imagens e explica um limite sem generalizar para todas as células."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ef06ci05-cell-to-organism-model",
+        "title": "Representar célula como unidade de organização e função",
+        "instructions": "Cartões didáticos com célula, tecido, órgão, sistema e organismo, acompanhados de exemplos e sem uso de material biológico.\n1. Organize os cartões em uma sequência possível do nível celular ao organismo usando o exemplo fornecido.\n2. Escolha uma célula do modelo e descreva uma função geral apoiada pela explicação da aula.\n3. Apresente uma conclusão sobre como células participam da estrutura e do funcionamento do ser vivo e indique uma simplificação do modelo.",
+        "steps": [
+          "Organize os cartões em uma sequência possível do nível celular ao organismo usando o exemplo fornecido.",
+          "Escolha uma célula do modelo e descreva uma função geral apoiada pela explicação da aula.",
+          "Apresente uma conclusão sobre como células participam da estrutura e do funcionamento do ser vivo e indique uma simplificação do modelo."
+        ],
+        "evidence": "Representação anotada que identifica a célula como nível básico, liga organização a função e distingue modelo didático de observação direta.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "organiza cartões sem explicar a relação entre níveis.",
+            "developing": "identifica a célula como parte do organismo e descreve uma função com apoio.",
+            "proficient": "explica os papéis estrutural e funcional com evidência e registra o limite da representação."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 50,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v3-science-cells-structure-and-function-ef06-01",
+          "v3-science-cells-structure-and-function-ef06-02",
+          "v3-science-cells-structure-and-function-ef06-03",
+          "v3-science-cells-structure-and-function-ef06-04",
+          "v3-science-cells-structure-and-function-ef06-05",
+          "v3-science-cells-structure-and-function-ef06-06",
+          "v3-science-cells-structure-and-function-ef06-07",
+          "v3-science-cells-structure-and-function-ef06-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v3-science-cells-structure-and-function-ef06-09",
+          "v3-science-cells-structure-and-function-ef06-10",
+          "v3-science-cells-structure-and-function-ef06-11",
+          "v3-science-cells-structure-and-function-ef06-12",
+          "v3-science-cells-structure-and-function-ef06-13",
+          "v3-science-cells-structure-and-function-ef06-14",
+          "v3-science-cells-structure-and-function-ef06-15",
+          "v3-science-cells-structure-and-function-ef06-16",
+          "v3-science-cells-structure-and-function-ef06-17",
+          "v3-science-cells-structure-and-function-ef06-18",
+          "v3-science-cells-structure-and-function-ef06-19",
+          "v3-science-cells-structure-and-function-ef06-20"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v3-science-cells-structure-and-function-ef06-21",
+          "v3-science-cells-structure-and-function-ef06-22",
+          "v3-science-cells-structure-and-function-ef06-23",
+          "v3-science-cells-structure-and-function-ef06-24",
+          "v3-science-cells-structure-and-function-ef06-25",
+          "v3-science-cells-structure-and-function-ef06-26",
+          "v3-science-cells-structure-and-function-ef06-27",
+          "v3-science-cells-structure-and-function-ef06-28"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v3-science-cells-structure-and-function-ef06-29",
+          "v3-science-cells-structure-and-function-ef06-30",
+          "v3-science-cells-structure-and-function-ef06-31",
+          "v3-science-cells-structure-and-function-ef06-32",
+          "v3-science-cells-structure-and-function-ef06-33",
+          "v3-science-cells-structure-and-function-ef06-34"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v3-science-cells-structure-and-function-ef06-35",
+          "v3-science-cells-structure-and-function-ef06-36",
+          "v3-science-cells-structure-and-function-ef06-37",
+          "v3-science-cells-structure-and-function-ef06-38",
+          "v3-science-cells-structure-and-function-ef06-39",
+          "v3-science-cells-structure-and-function-ef06-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF06CI05",
+        "descriptor": "Explicar a organização básica das células e seu papel como unidade estrutural e funcional dos seres vivos.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 346
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-01",
+      "statement": "Um cartaz apresenta a célula como unidade básica dos seres vivos. Qual ideia essa frase expressa?",
+      "prompt": "Um cartaz apresenta a célula como unidade básica dos seres vivos. Qual ideia essa frase expressa?",
+      "options": [
+        "Os seres vivos são constituídos por uma ou mais células.",
+        "Toda célula é um organismo pluricelular.",
+        "Uma célula é apenas uma imagem decorativa.",
+        "Todos os seres vivos têm exatamente o mesmo número de células."
+      ],
+      "correctAnswer": "Os seres vivos são constituídos por uma ou mais células.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Toda célula é um organismo pluricelular.": [
+          "CELL_AS_STRUCTURAL_UNIT"
+        ],
+        "Uma célula é apenas uma imagem decorativa.": [
+          "CELL_AS_STRUCTURAL_UNIT"
+        ],
+        "Todos os seres vivos têm exatamente o mesmo número de células.": [
+          "CELL_AS_STRUCTURAL_UNIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "CELL_AS_UNIT_CARD",
+      "explanation": "A célula participa da composição dos seres vivos, embora o número e os tipos celulares variem.",
+      "hint": "Pense em que unidade compõe os organismos.",
+      "errorFocus": "CELL_AS_STRUCTURAL_UNIT",
+      "feedback": {
+        "correct": "Boa observação: A célula participa da composição dos seres vivos, embora o número e os tipos celulares variem.",
+        "incorrect": "A célula participa da composição dos seres vivos, embora o número e os tipos celulares variem.",
+        "hint": "Pense em que unidade compõe os organismos.",
+        "errorFocus": "CELL_AS_STRUCTURAL_UNIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-02",
+      "statement": "Uma fonte identifica uma levedura como organismo unicelular. Quantas células compõem esse organismo no exemplo?",
+      "prompt": "Uma fonte identifica uma levedura como organismo unicelular. Quantas células compõem esse organismo no exemplo?",
+      "options": [
+        "Muitas células formando tecidos",
+        "Uma célula",
+        "Nenhuma célula",
+        "Um órgão completo"
+      ],
+      "correctAnswer": "Uma célula",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Muitas células formando tecidos": [
+          "UNICELLULAR_MEANING"
+        ],
+        "Nenhuma célula": [
+          "UNICELLULAR_MEANING"
+        ],
+        "Um órgão completo": [
+          "UNICELLULAR_MEANING"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "UNICELLULAR_MICROGRAPH",
+      "explanation": "Unicelular significa que o organismo é formado por uma célula.",
+      "hint": "Observe o prefixo “uni”.",
+      "errorFocus": "UNICELLULAR_MEANING",
+      "feedback": {
+        "correct": "Boa observação: Unicelular significa que o organismo é formado por uma célula.",
+        "incorrect": "Unicelular significa que o organismo é formado por uma célula.",
+        "hint": "Observe o prefixo “uni”.",
+        "errorFocus": "UNICELLULAR_MEANING"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-03",
+      "statement": "Em um diagrama de célula animal, qual estrutura delimita a célula e participa da troca com o meio?",
+      "prompt": "Em um diagrama de célula animal, qual estrutura delimita a célula e participa da troca com o meio?",
+      "options": [
+        "Parede de madeira",
+        "Folha externa do organismo",
+        "Membrana celular",
+        "Tecido muscular"
+      ],
+      "correctAnswer": "Membrana celular",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Parede de madeira": [
+          "MEMBRANE_BASIC_ROLE"
+        ],
+        "Folha externa do organismo": [
+          "MEMBRANE_BASIC_ROLE"
+        ],
+        "Tecido muscular": [
+          "MEMBRANE_BASIC_ROLE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "ANIMAL_CELL_LABELS",
+      "explanation": "A membrana delimita a célula e participa da regulação de trocas.",
+      "hint": "Procure a estrutura que contorna a célula.",
+      "errorFocus": "MEMBRANE_BASIC_ROLE",
+      "feedback": {
+        "correct": "Boa observação: A membrana delimita a célula e participa da regulação de trocas.",
+        "incorrect": "A membrana delimita a célula e participa da regulação de trocas.",
+        "hint": "Procure a estrutura que contorna a célula.",
+        "errorFocus": "MEMBRANE_BASIC_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-04",
+      "statement": "Uma legenda aponta o espaço interno da célula onde se encontram estruturas celulares. Qual nome ela indica?",
+      "prompt": "Uma legenda aponta o espaço interno da célula onde se encontram estruturas celulares. Qual nome ela indica?",
+      "options": [
+        "Atmosfera",
+        "Pele do organismo",
+        "Parede de vidro",
+        "Citoplasma"
+      ],
+      "correctAnswer": "Citoplasma",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Atmosfera": [
+          "CYTOPLASM_LABEL"
+        ],
+        "Pele do organismo": [
+          "CYTOPLASM_LABEL"
+        ],
+        "Parede de vidro": [
+          "CYTOPLASM_LABEL"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "CYTOPLASM_DIAGRAM",
+      "explanation": "O citoplasma ocupa o interior celular e contém estruturas representadas no modelo.",
+      "hint": "Leia o rótulo da região interna.",
+      "errorFocus": "CYTOPLASM_LABEL",
+      "feedback": {
+        "correct": "Boa observação: O citoplasma ocupa o interior celular e contém estruturas representadas no modelo.",
+        "incorrect": "O citoplasma ocupa o interior celular e contém estruturas representadas no modelo.",
+        "hint": "Leia o rótulo da região interna.",
+        "errorFocus": "CYTOPLASM_LABEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-05",
+      "statement": "Um modelo de célula animal mostra um núcleo delimitado por membrana. O que esse modelo representa?",
+      "prompt": "Um modelo de célula animal mostra um núcleo delimitado por membrana. O que esse modelo representa?",
+      "options": [
+        "Uma característica da organização dessa célula eucariótica.",
+        "Uma característica obrigatória de todas as células existentes.",
+        "A prova de que bactérias têm o mesmo núcleo.",
+        "Um órgão fora da célula."
+      ],
+      "correctAnswer": "Uma característica da organização dessa célula eucariótica.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Uma característica obrigatória de todas as células existentes.": [
+          "NUCLEUS_SCOPE"
+        ],
+        "A prova de que bactérias têm o mesmo núcleo.": [
+          "NUCLEUS_SCOPE"
+        ],
+        "Um órgão fora da célula.": [
+          "NUCLEUS_SCOPE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "NUCLEUS_IN_EUKARYOTE",
+      "explanation": "O núcleo delimitado é representado em células eucarióticas; não deve ser generalizado para toda célula.",
+      "hint": "Limite a afirmação ao tipo de célula do diagrama.",
+      "errorFocus": "NUCLEUS_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: O núcleo delimitado é representado em células eucarióticas; não deve ser generalizado para toda célula.",
+        "incorrect": "O núcleo delimitado é representado em células eucarióticas; não deve ser generalizado para toda célula.",
+        "hint": "Limite a afirmação ao tipo de célula do diagrama.",
+        "errorFocus": "NUCLEUS_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-06",
+      "statement": "Modelos didáticos de células animal e vegetal mostram membrana e citoplasma. Que conclusão é sustentada?",
+      "prompt": "Modelos didáticos de células animal e vegetal mostram membrana e citoplasma. Que conclusão é sustentada?",
+      "options": [
+        "As duas células são idênticas em todas as partes.",
+        "Os dois modelos apresentam essas estruturas em comum.",
+        "Somente células animais têm membrana.",
+        "O modelo prova que não existem outros tipos celulares."
+      ],
+      "correctAnswer": "Os dois modelos apresentam essas estruturas em comum.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "As duas células são idênticas em todas as partes.": [
+          "COMMON_STRUCTURE_NOT_IDENTITY"
+        ],
+        "Somente células animais têm membrana.": [
+          "COMMON_STRUCTURE_NOT_IDENTITY"
+        ],
+        "O modelo prova que não existem outros tipos celulares.": [
+          "COMMON_STRUCTURE_NOT_IDENTITY"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PLANT_AND_ANIMAL_MODELS",
+      "explanation": "A presença de estruturas comuns não torna os tipos celulares totalmente idênticos.",
+      "hint": "Escolha a conclusão que distingue semelhança de identidade.",
+      "errorFocus": "COMMON_STRUCTURE_NOT_IDENTITY",
+      "feedback": {
+        "correct": "Boa observação: A presença de estruturas comuns não torna os tipos celulares totalmente idênticos.",
+        "incorrect": "A presença de estruturas comuns não torna os tipos celulares totalmente idênticos.",
+        "hint": "Escolha a conclusão que distingue semelhança de identidade.",
+        "errorFocus": "COMMON_STRUCTURE_NOT_IDENTITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-07",
+      "statement": "Um esquema amplia uma célula para facilitar o estudo. Como devemos interpretar seu tamanho no papel?",
+      "prompt": "Um esquema amplia uma célula para facilitar o estudo. Como devemos interpretar seu tamanho no papel?",
+      "options": [
+        "Como medida exata sem escala.",
+        "Como prova de que células têm tamanho de uma folha.",
+        "Como uma representação ampliada, não como tamanho real.",
+        "Como fotografia sem simplificações."
+      ],
+      "correctAnswer": "Como uma representação ampliada, não como tamanho real.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Como medida exata sem escala.": [
+          "MODEL_SCALE"
+        ],
+        "Como prova de que células têm tamanho de uma folha.": [
+          "MODEL_SCALE"
+        ],
+        "Como fotografia sem simplificações.": [
+          "MODEL_SCALE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "CELL_MODEL_SCALE",
+      "explanation": "Um esquema pode ampliar e simplificar; a escala precisa ser conferida.",
+      "hint": "Veja se o material informa escala ou ampliação.",
+      "errorFocus": "MODEL_SCALE",
+      "feedback": {
+        "correct": "Boa observação: Um esquema pode ampliar e simplificar; a escala precisa ser conferida.",
+        "incorrect": "Um esquema pode ampliar e simplificar; a escala precisa ser conferida.",
+        "hint": "Veja se o material informa escala ou ampliação.",
+        "errorFocus": "MODEL_SCALE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-08",
+      "statement": "Uma ficha diz que células são unidades estruturais e funcionais. O que “funcionais” acrescenta à explicação?",
+      "prompt": "Uma ficha diz que células são unidades estruturais e funcionais. O que “funcionais” acrescenta à explicação?",
+      "options": [
+        "As células só existem em desenhos.",
+        "A estrutura deixa de ser importante.",
+        "Todas as células realizam exatamente a mesma atividade.",
+        "As células também realizam atividades necessárias ao funcionamento dos seres vivos."
+      ],
+      "correctAnswer": "As células também realizam atividades necessárias ao funcionamento dos seres vivos.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "As células só existem em desenhos.": [
+          "FUNCTIONAL_UNIT"
+        ],
+        "A estrutura deixa de ser importante.": [
+          "FUNCTIONAL_UNIT"
+        ],
+        "Todas as células realizam exatamente a mesma atividade.": [
+          "FUNCTIONAL_UNIT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "STRUCTURE_FUNCTION_NOTE",
+      "explanation": "O papel funcional indica atividades celulares, além da contribuição estrutural.",
+      "hint": "Pense no que as células fazem, além de compor o organismo.",
+      "errorFocus": "FUNCTIONAL_UNIT",
+      "feedback": {
+        "correct": "Boa observação: O papel funcional indica atividades celulares, além da contribuição estrutural.",
+        "incorrect": "O papel funcional indica atividades celulares, além da contribuição estrutural.",
+        "hint": "Pense no que as células fazem, além de compor o organismo.",
+        "errorFocus": "FUNCTIONAL_UNIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-09",
+      "statement": "Um cartão didático aponta a camada que separa o interior celular do meio externo. Qual estrutura é essa?",
+      "prompt": "Um cartão didático aponta a camada que separa o interior celular do meio externo. Qual estrutura é essa?",
+      "options": [
+        "Membrana celular",
+        "Núcleo do tecido",
+        "Órgão externo",
+        "Sistema digestório"
+      ],
+      "correctAnswer": "Membrana celular",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Núcleo do tecido": [
+          "MEMBRANE_IDENTIFICATION"
+        ],
+        "Órgão externo": [
+          "MEMBRANE_IDENTIFICATION"
+        ],
+        "Sistema digestório": [
+          "MEMBRANE_IDENTIFICATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "MEMBRANE_CARD",
+      "explanation": "A membrana delimita a célula e participa das trocas com o meio.",
+      "hint": "Procure a camada indicada na borda celular.",
+      "errorFocus": "MEMBRANE_IDENTIFICATION",
+      "feedback": {
+        "correct": "Boa observação: A membrana delimita a célula e participa das trocas com o meio.",
+        "incorrect": "A membrana delimita a célula e participa das trocas com o meio.",
+        "hint": "Procure a camada indicada na borda celular.",
+        "errorFocus": "MEMBRANE_IDENTIFICATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-10",
+      "statement": "Um diagrama identifica uma célula de raiz e não mostra cloroplastos. Qual inferência é mais adequada?",
+      "prompt": "Um diagrama identifica uma célula de raiz e não mostra cloroplastos. Qual inferência é mais adequada?",
+      "options": [
+        "Todas as células vegetais têm cloroplastos visíveis.",
+        "A imagem não sustenta afirmar que essa célula realiza fotossíntese com cloroplastos.",
+        "A célula não é uma célula vegetal.",
+        "A raiz recebe sempre a mesma luz que uma folha."
+      ],
+      "correctAnswer": "A imagem não sustenta afirmar que essa célula realiza fotossíntese com cloroplastos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Todas as células vegetais têm cloroplastos visíveis.": [
+          "CHLOROPLAST_SCOPE"
+        ],
+        "A célula não é uma célula vegetal.": [
+          "CHLOROPLAST_SCOPE"
+        ],
+        "A raiz recebe sempre a mesma luz que uma folha.": [
+          "CHLOROPLAST_SCOPE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "ROOT_CELL_DIAGRAM",
+      "explanation": "Células de raiz normalmente não realizam fotossíntese; a conclusão deve seguir o tipo celular e a evidência.",
+      "hint": "Considere o órgão e o que o diagrama realmente mostra.",
+      "errorFocus": "CHLOROPLAST_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: Células de raiz normalmente não realizam fotossíntese; a conclusão deve seguir o tipo celular e a evidência.",
+        "incorrect": "Células de raiz normalmente não realizam fotossíntese; a conclusão deve seguir o tipo celular e a evidência.",
+        "hint": "Considere o órgão e o que o diagrama realmente mostra.",
+        "errorFocus": "CHLOROPLAST_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-11",
+      "statement": "Um modelo vegetal mostra parede celular e membrana. Qual descrição distingue as duas estruturas?",
+      "prompt": "Um modelo vegetal mostra parede celular e membrana. Qual descrição distingue as duas estruturas?",
+      "options": [
+        "A parede substitui o citoplasma.",
+        "A membrana é um tecido do organismo.",
+        "A parede fica externamente à membrana nesse modelo vegetal.",
+        "As duas palavras nomeiam o núcleo."
+      ],
+      "correctAnswer": "A parede fica externamente à membrana nesse modelo vegetal.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "A parede substitui o citoplasma.": [
+          "WALL_MEMBRANE_DISTINCTION"
+        ],
+        "A membrana é um tecido do organismo.": [
+          "WALL_MEMBRANE_DISTINCTION"
+        ],
+        "As duas palavras nomeiam o núcleo.": [
+          "WALL_MEMBRANE_DISTINCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "CELL_WALL_VS_MEMBRANE",
+      "explanation": "O modelo mostra estruturas diferentes; a parede celular não elimina a membrana.",
+      "hint": "Observe as camadas indicadas no desenho.",
+      "errorFocus": "WALL_MEMBRANE_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: O modelo mostra estruturas diferentes; a parede celular não elimina a membrana.",
+        "incorrect": "O modelo mostra estruturas diferentes; a parede celular não elimina a membrana.",
+        "hint": "Observe as camadas indicadas no desenho.",
+        "errorFocus": "WALL_MEMBRANE_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-12",
+      "statement": "Um esquema representa materiais entrando e saindo por uma célula. Que papel geral está sendo ilustrado?",
+      "prompt": "Um esquema representa materiais entrando e saindo por uma célula. Que papel geral está sendo ilustrado?",
+      "options": [
+        "A célula funciona sem qualquer interação.",
+        "O esquema prova que toda substância atravessa livremente.",
+        "A troca transforma a célula em órgão.",
+        "A célula interage com o meio e realiza trocas necessárias a suas atividades."
+      ],
+      "correctAnswer": "A célula interage com o meio e realiza trocas necessárias a suas atividades.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A célula funciona sem qualquer interação.": [
+          "EXCHANGE_NOT_UNRESTRICTED"
+        ],
+        "O esquema prova que toda substância atravessa livremente.": [
+          "EXCHANGE_NOT_UNRESTRICTED"
+        ],
+        "A troca transforma a célula em órgão.": [
+          "EXCHANGE_NOT_UNRESTRICTED"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CELL_EXCHANGE_MODEL",
+      "explanation": "As células realizam trocas reguladas; a imagem não significa passagem ilimitada de qualquer material.",
+      "hint": "Use “regula” em vez de “deixa tudo passar”.",
+      "errorFocus": "EXCHANGE_NOT_UNRESTRICTED",
+      "feedback": {
+        "correct": "Boa observação: As células realizam trocas reguladas; a imagem não significa passagem ilimitada de qualquer material.",
+        "incorrect": "As células realizam trocas reguladas; a imagem não significa passagem ilimitada de qualquer material.",
+        "hint": "Use “regula” em vez de “deixa tudo passar”.",
+        "errorFocus": "EXCHANGE_NOT_UNRESTRICTED"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-13",
+      "statement": "Uma fonte identifica uma bactéria como ser unicelular sem núcleo delimitado por membrana. Qual afirmação acompanha a fonte?",
+      "prompt": "Uma fonte identifica uma bactéria como ser unicelular sem núcleo delimitado por membrana. Qual afirmação acompanha a fonte?",
+      "options": [
+        "Esse tipo de célula tem organização diferente da célula animal representada.",
+        "Toda célula possui núcleo delimitado.",
+        "Bactérias são tecidos animais.",
+        "A fonte afirma que bactérias não são celulares."
+      ],
+      "correctAnswer": "Esse tipo de célula tem organização diferente da célula animal representada.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Toda célula possui núcleo delimitado.": [
+          "PROKARYOTE_DISTINCTION"
+        ],
+        "Bactérias são tecidos animais.": [
+          "PROKARYOTE_DISTINCTION"
+        ],
+        "A fonte afirma que bactérias não são celulares.": [
+          "PROKARYOTE_DISTINCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "BACTERIUM_SOURCE_CARD",
+      "explanation": "Bactérias são organismos celulares; sua organização não inclui núcleo delimitado por membrana.",
+      "hint": "Compare a fonte com o modelo eucariótico.",
+      "errorFocus": "PROKARYOTE_DISTINCTION",
+      "feedback": {
+        "correct": "Boa observação: Bactérias são organismos celulares; sua organização não inclui núcleo delimitado por membrana.",
+        "incorrect": "Bactérias são organismos celulares; sua organização não inclui núcleo delimitado por membrana.",
+        "hint": "Compare a fonte com o modelo eucariótico.",
+        "errorFocus": "PROKARYOTE_DISTINCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-14",
+      "statement": "Uma imagem feita em microscópio tem legenda “células da folha”. Qual informação a legenda acrescenta?",
+      "prompt": "Uma imagem feita em microscópio tem legenda “células da folha”. Qual informação a legenda acrescenta?",
+      "options": [
+        "A escala real sem qualquer medição.",
+        "O tipo de amostra representada.",
+        "A função de todas as células do planeta.",
+        "A prova de que a imagem é um desenho em escala."
+      ],
+      "correctAnswer": "O tipo de amostra representada.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A escala real sem qualquer medição.": [
+          "IMAGE_CONTEXT"
+        ],
+        "A função de todas as células do planeta.": [
+          "IMAGE_CONTEXT"
+        ],
+        "A prova de que a imagem é um desenho em escala.": [
+          "IMAGE_CONTEXT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "CELL_IMAGE_LABEL",
+      "explanation": "A legenda situa a amostra, mas não autoriza extrapolar para todas as células.",
+      "hint": "Use a identificação da amostra e limite a conclusão.",
+      "errorFocus": "IMAGE_CONTEXT",
+      "feedback": {
+        "correct": "Boa observação: A legenda situa a amostra, mas não autoriza extrapolar para todas as células.",
+        "incorrect": "A legenda situa a amostra, mas não autoriza extrapolar para todas as células.",
+        "hint": "Use a identificação da amostra e limite a conclusão.",
+        "errorFocus": "IMAGE_CONTEXT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-15",
+      "statement": "Dois esquemas mostram célula animal e vegetal; a parede celular aparece apenas no vegetal. O que isso sustenta?",
+      "prompt": "Dois esquemas mostram célula animal e vegetal; a parede celular aparece apenas no vegetal. O que isso sustenta?",
+      "options": [
+        "Todas as células vegetais têm o mesmo formato.",
+        "A membrana não aparece em células animais.",
+        "A parede celular está representada nesse modelo vegetal e não no animal apresentado.",
+        "A parede é a única estrutura de uma célula vegetal."
+      ],
+      "correctAnswer": "A parede celular está representada nesse modelo vegetal e não no animal apresentado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Todas as células vegetais têm o mesmo formato.": [
+          "COMPARE_SPECIFIC_EVIDENCE"
+        ],
+        "A membrana não aparece em células animais.": [
+          "COMPARE_SPECIFIC_EVIDENCE"
+        ],
+        "A parede é a única estrutura de uma célula vegetal.": [
+          "COMPARE_SPECIFIC_EVIDENCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "PLANT_CELL_WALL",
+      "explanation": "A comparação vale para estruturas e modelos identificados, não para qualquer aspecto celular.",
+      "hint": "Fale somente da parede mostrada.",
+      "errorFocus": "COMPARE_SPECIFIC_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A comparação vale para estruturas e modelos identificados, não para qualquer aspecto celular.",
+        "incorrect": "A comparação vale para estruturas e modelos identificados, não para qualquer aspecto celular.",
+        "hint": "Fale somente da parede mostrada.",
+        "errorFocus": "COMPARE_SPECIFIC_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-16",
+      "statement": "Uma explicação diz que células realizam atividades necessárias à vida. Qual expressão da habilidade isso exemplifica?",
+      "prompt": "Uma explicação diz que células realizam atividades necessárias à vida. Qual expressão da habilidade isso exemplifica?",
+      "options": [
+        "Unidade de medida de temperatura",
+        "Camada da atmosfera",
+        "Parte não viva do desenho",
+        "Unidade funcional"
+      ],
+      "correctAnswer": "Unidade funcional",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Unidade de medida de temperatura": [
+          "FUNCTION_TERM"
+        ],
+        "Camada da atmosfera": [
+          "FUNCTION_TERM"
+        ],
+        "Parte não viva do desenho": [
+          "FUNCTION_TERM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "CELL_FUNCTION_ORGANISM",
+      "explanation": "A função refere-se às atividades que as células realizam.",
+      "hint": "Relacione “funcional” a atividades.",
+      "errorFocus": "FUNCTION_TERM",
+      "feedback": {
+        "correct": "Boa observação: A função refere-se às atividades que as células realizam.",
+        "incorrect": "A função refere-se às atividades que as células realizam.",
+        "hint": "Relacione “funcional” a atividades.",
+        "errorFocus": "FUNCTION_TERM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-17",
+      "statement": "Um modelo mostra núcleo, citoplasma e membrana, mas não informa escala nem tipo de célula. Qual anotação é mais rigorosa?",
+      "prompt": "Um modelo mostra núcleo, citoplasma e membrana, mas não informa escala nem tipo de célula. Qual anotação é mais rigorosa?",
+      "options": [
+        "O modelo representa essas estruturas, mas a escala e o tipo celular não foram informados.",
+        "É uma fotografia em tamanho real de qualquer célula.",
+        "Toda célula tem exatamente três estruturas.",
+        "O núcleo ocupa sempre metade da célula."
+      ],
+      "correctAnswer": "O modelo representa essas estruturas, mas a escala e o tipo celular não foram informados.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "É uma fotografia em tamanho real de qualquer célula.": [
+          "MODEL_LIMITS_EXPLICIT"
+        ],
+        "Toda célula tem exatamente três estruturas.": [
+          "MODEL_LIMITS_EXPLICIT"
+        ],
+        "O núcleo ocupa sempre metade da célula.": [
+          "MODEL_LIMITS_EXPLICIT"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MODEL_LIMITS_LABEL",
+      "explanation": "Registrar o que o modelo não informa evita extrapolações.",
+      "hint": "Separe o que está mostrado do que está ausente.",
+      "errorFocus": "MODEL_LIMITS_EXPLICIT",
+      "feedback": {
+        "correct": "Boa observação: Registrar o que o modelo não informa evita extrapolações.",
+        "incorrect": "Registrar o que o modelo não informa evita extrapolações.",
+        "hint": "Separe o que está mostrado do que está ausente.",
+        "errorFocus": "MODEL_LIMITS_EXPLICIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-18",
+      "statement": "Um organismo unicelular realiza suas atividades com uma célula. O que essa situação mostra?",
+      "prompt": "Um organismo unicelular realiza suas atividades com uma célula. O que essa situação mostra?",
+      "options": [
+        "Toda função exige muitos órgãos.",
+        "Uma célula pode ser a unidade estrutural e funcional de um organismo unicelular.",
+        "Uma célula nunca pode funcionar como organismo.",
+        "O organismo precisa ter tecidos visíveis."
+      ],
+      "correctAnswer": "Uma célula pode ser a unidade estrutural e funcional de um organismo unicelular.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Toda função exige muitos órgãos.": [
+          "UNICELLULAR_AS_ORGANISM"
+        ],
+        "Uma célula nunca pode funcionar como organismo.": [
+          "UNICELLULAR_AS_ORGANISM"
+        ],
+        "O organismo precisa ter tecidos visíveis.": [
+          "UNICELLULAR_AS_ORGANISM"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "UNICELLULAR_FUNCTION",
+      "explanation": "Em organismos unicelulares, uma célula compõe e realiza as funções do organismo.",
+      "hint": "Observe que o exemplo tem uma única célula.",
+      "errorFocus": "UNICELLULAR_AS_ORGANISM",
+      "feedback": {
+        "correct": "Boa observação: Em organismos unicelulares, uma célula compõe e realiza as funções do organismo.",
+        "incorrect": "Em organismos unicelulares, uma célula compõe e realiza as funções do organismo.",
+        "hint": "Observe que o exemplo tem uma única célula.",
+        "errorFocus": "UNICELLULAR_AS_ORGANISM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-19",
+      "statement": "Duas imagens identificadas mostram células com formatos diferentes. Qual explicação é compatível com a evidência?",
+      "prompt": "Duas imagens identificadas mostram células com formatos diferentes. Qual explicação é compatível com a evidência?",
+      "options": [
+        "Uma das imagens necessariamente está errada.",
+        "Todas as células têm formato circular.",
+        "Células podem apresentar formas diferentes em tipos e contextos distintos.",
+        "O formato sozinho identifica todas as funções."
+      ],
+      "correctAnswer": "Células podem apresentar formas diferentes em tipos e contextos distintos.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma das imagens necessariamente está errada.": [
+          "CELL_VARIATION"
+        ],
+        "Todas as células têm formato circular.": [
+          "CELL_VARIATION"
+        ],
+        "O formato sozinho identifica todas as funções.": [
+          "CELL_VARIATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "SPECIALIZED_CELL_SHAPES",
+      "explanation": "A diversidade de formas não contradiz a organização celular; função e tipo precisam de contexto.",
+      "hint": "Evite transformar um formato em regra universal.",
+      "errorFocus": "CELL_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A diversidade de formas não contradiz a organização celular; função e tipo precisam de contexto.",
+        "incorrect": "A diversidade de formas não contradiz a organização celular; função e tipo precisam de contexto.",
+        "hint": "Evite transformar um formato em regra universal.",
+        "errorFocus": "CELL_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-20",
+      "statement": "Uma sequência didática organiza células semelhantes formando um tecido. Que papel da célula aparece?",
+      "prompt": "Uma sequência didática organiza células semelhantes formando um tecido. Que papel da célula aparece?",
+      "options": [
+        "Substituir todos os órgãos do organismo.",
+        "Ser apenas uma unidade de contagem sem função.",
+        "Impedir a existência de tecidos.",
+        "Participar da organização estrutural de níveis maiores do organismo."
+      ],
+      "correctAnswer": "Participar da organização estrutural de níveis maiores do organismo.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Substituir todos os órgãos do organismo.": [
+          "STRUCTURAL_HIERARCHY"
+        ],
+        "Ser apenas uma unidade de contagem sem função.": [
+          "STRUCTURAL_HIERARCHY"
+        ],
+        "Impedir a existência de tecidos.": [
+          "STRUCTURAL_HIERARCHY"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "TISSUE_CARD_SEQUENCE",
+      "explanation": "O exemplo mostra células participando da composição de tecidos.",
+      "hint": "Observe a sequência do cartão celular ao tecido.",
+      "errorFocus": "STRUCTURAL_HIERARCHY",
+      "feedback": {
+        "correct": "Boa observação: O exemplo mostra células participando da composição de tecidos.",
+        "incorrect": "O exemplo mostra células participando da composição de tecidos.",
+        "hint": "Observe a sequência do cartão celular ao tecido.",
+        "errorFocus": "STRUCTURAL_HIERARCHY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-21",
+      "statement": "Uma turma observa imagem microscópica de uma amostra identificada como tecido vegetal. Qual conclusão pode ser apresentada?",
+      "prompt": "Uma turma observa imagem microscópica de uma amostra identificada como tecido vegetal. Qual conclusão pode ser apresentada?",
+      "options": [
+        "A amostra contém células organizadas no tecido mostrado.",
+        "Todas as células vegetais têm o mesmo aspecto.",
+        "A imagem identifica cada atividade celular em detalhe.",
+        "A amostra representa todos os organismos vivos."
+      ],
+      "correctAnswer": "A amostra contém células organizadas no tecido mostrado.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as células vegetais têm o mesmo aspecto.": [
+          "SAMPLE_NOT_UNIVERSAL"
+        ],
+        "A imagem identifica cada atividade celular em detalhe.": [
+          "SAMPLE_NOT_UNIVERSAL"
+        ],
+        "A amostra representa todos os organismos vivos.": [
+          "SAMPLE_NOT_UNIVERSAL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "MICROSCOPE_IMAGE_CAPTION",
+      "explanation": "A imagem sustenta uma afirmação sobre a amostra, não sobre todos os seres vivos.",
+      "hint": "Inclua a expressão “na amostra observada”.",
+      "errorFocus": "SAMPLE_NOT_UNIVERSAL",
+      "feedback": {
+        "correct": "Boa observação: A imagem sustenta uma afirmação sobre a amostra, não sobre todos os seres vivos.",
+        "incorrect": "A imagem sustenta uma afirmação sobre a amostra, não sobre todos os seres vivos.",
+        "hint": "Inclua a expressão “na amostra observada”.",
+        "errorFocus": "SAMPLE_NOT_UNIVERSAL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-22",
+      "statement": "Uma exposição didática mostra células formando um tecido. Como o exemplo apoia o papel estrutural da célula?",
+      "prompt": "Uma exposição didática mostra células formando um tecido. Como o exemplo apoia o papel estrutural da célula?",
+      "options": [
+        "Mostra que tecido é feito de objetos sem células.",
+        "Mostra células como componentes que se organizam para formar parte do organismo.",
+        "Prova que todos os tecidos têm o mesmo tipo celular.",
+        "Indica que célula e organismo são sinônimos."
+      ],
+      "correctAnswer": "Mostra células como componentes que se organizam para formar parte do organismo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Mostra que tecido é feito de objetos sem células.": [
+          "STRUCTURAL_ROLE_TRANSFER"
+        ],
+        "Prova que todos os tecidos têm o mesmo tipo celular.": [
+          "STRUCTURAL_ROLE_TRANSFER"
+        ],
+        "Indica que célula e organismo são sinônimos.": [
+          "STRUCTURAL_ROLE_TRANSFER"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CELL_AND_TISSUE_EXHIBIT",
+      "explanation": "A organização de células em tecido ilustra contribuição estrutural sem igualar os níveis.",
+      "hint": "Diferencie célula, tecido e organismo.",
+      "errorFocus": "STRUCTURAL_ROLE_TRANSFER",
+      "feedback": {
+        "correct": "Boa observação: A organização de células em tecido ilustra contribuição estrutural sem igualar os níveis.",
+        "incorrect": "A organização de células em tecido ilustra contribuição estrutural sem igualar os níveis.",
+        "hint": "Diferencie célula, tecido e organismo.",
+        "errorFocus": "STRUCTURAL_ROLE_TRANSFER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-23",
+      "statement": "Uma bactéria e uma célula animal são representadas em modelos diferentes. Qual comparação evita uma afirmação incorreta?",
+      "prompt": "Uma bactéria e uma célula animal são representadas em modelos diferentes. Qual comparação evita uma afirmação incorreta?",
+      "options": [
+        "As duas têm exatamente a mesma organização interna.",
+        "A bactéria é uma célula animal menor.",
+        "Ambas são celulares, mas o modelo animal mostra núcleo delimitado e a bactéria não.",
+        "Nenhuma bactéria tem membrana celular."
+      ],
+      "correctAnswer": "Ambas são celulares, mas o modelo animal mostra núcleo delimitado e a bactéria não.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "As duas têm exatamente a mesma organização interna.": [
+          "CELL_TYPE_COMPARISON"
+        ],
+        "A bactéria é uma célula animal menor.": [
+          "CELL_TYPE_COMPARISON"
+        ],
+        "Nenhuma bactéria tem membrana celular.": [
+          "CELL_TYPE_COMPARISON"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "BACTERIA_VS_ANIMAL_MODEL",
+      "explanation": "As duas são células, mas procariontes e eucariontes têm diferenças de organização.",
+      "hint": "Compare o núcleo conforme os modelos identificados.",
+      "errorFocus": "CELL_TYPE_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: As duas são células, mas procariontes e eucariontes têm diferenças de organização.",
+        "incorrect": "As duas são células, mas procariontes e eucariontes têm diferenças de organização.",
+        "hint": "Compare o núcleo conforme os modelos identificados.",
+        "errorFocus": "CELL_TYPE_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-24",
+      "statement": "Uma imagem compara células de folha e raiz. A fonte mostra cloroplastos na folha, mas não na raiz. Qual conclusão é proporcional?",
+      "prompt": "Uma imagem compara células de folha e raiz. A fonte mostra cloroplastos na folha, mas não na raiz. Qual conclusão é proporcional?",
+      "options": [
+        "Toda célula de planta tem cloroplastos.",
+        "A célula de raiz não é viva.",
+        "Todas as células vegetais fazem fotossíntese do mesmo modo.",
+        "O modelo indica cloroplastos na célula de folha apresentada; não generaliza para toda célula vegetal."
+      ],
+      "correctAnswer": "O modelo indica cloroplastos na célula de folha apresentada; não generaliza para toda célula vegetal.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Toda célula de planta tem cloroplastos.": [
+          "PLANT_CELL_VARIATION"
+        ],
+        "A célula de raiz não é viva.": [
+          "PLANT_CELL_VARIATION"
+        ],
+        "Todas as células vegetais fazem fotossíntese do mesmo modo.": [
+          "PLANT_CELL_VARIATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LEAF_ROOT_FUNCTION",
+      "explanation": "A evidência é específica às células mostradas e respeita diferenças de tecido.",
+      "hint": "Atribua os cloroplastos à célula descrita na figura.",
+      "errorFocus": "PLANT_CELL_VARIATION",
+      "feedback": {
+        "correct": "Boa observação: A evidência é específica às células mostradas e respeita diferenças de tecido.",
+        "incorrect": "A evidência é específica às células mostradas e respeita diferenças de tecido.",
+        "hint": "Atribua os cloroplastos à célula descrita na figura.",
+        "errorFocus": "PLANT_CELL_VARIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-25",
+      "statement": "Um estudante diz que a célula é funcional porque “está dentro do corpo”. Que complemento melhora a justificativa?",
+      "prompt": "Um estudante diz que a célula é funcional porque “está dentro do corpo”. Que complemento melhora a justificativa?",
+      "options": [
+        "Explicar uma atividade celular, além de indicar que ela compõe o organismo.",
+        "Repetir que toda célula é um órgão.",
+        "Dizer que células não realizam atividades.",
+        "Descrever apenas o tamanho do desenho."
+      ],
+      "correctAnswer": "Explicar uma atividade celular, além de indicar que ela compõe o organismo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Repetir que toda célula é um órgão.": [
+          "FUNCTION_REQUIRES_ACTIVITY"
+        ],
+        "Dizer que células não realizam atividades.": [
+          "FUNCTION_REQUIRES_ACTIVITY"
+        ],
+        "Descrever apenas o tamanho do desenho.": [
+          "FUNCTION_REQUIRES_ACTIVITY"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "CELL_AS_FUNCTIONAL_EVIDENCE",
+      "explanation": "O papel funcional envolve atividades da célula, não somente sua localização.",
+      "hint": "Acrescente o que a célula faz.",
+      "errorFocus": "FUNCTION_REQUIRES_ACTIVITY",
+      "feedback": {
+        "correct": "Boa observação: O papel funcional envolve atividades da célula, não somente sua localização.",
+        "incorrect": "O papel funcional envolve atividades da célula, não somente sua localização.",
+        "hint": "Acrescente o que a célula faz.",
+        "errorFocus": "FUNCTION_REQUIRES_ACTIVITY"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-26",
+      "statement": "Uma maquete usa esferas grandes para representar organelas. Qual cuidado deve acompanhar a apresentação?",
+      "prompt": "Uma maquete usa esferas grandes para representar organelas. Qual cuidado deve acompanhar a apresentação?",
+      "options": [
+        "Afirmar que as organelas têm tamanho igual às esferas.",
+        "Explicar que formas e tamanhos foram simplificados para facilitar o estudo.",
+        "Dizer que toda célula contém exatamente essas esferas.",
+        "Usar a maquete como fotografia microscópica."
+      ],
+      "correctAnswer": "Explicar que formas e tamanhos foram simplificados para facilitar o estudo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Afirmar que as organelas têm tamanho igual às esferas.": [
+          "MODEL_AS_REPRESENTATION"
+        ],
+        "Dizer que toda célula contém exatamente essas esferas.": [
+          "MODEL_AS_REPRESENTATION"
+        ],
+        "Usar a maquete como fotografia microscópica.": [
+          "MODEL_AS_REPRESENTATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "MODEL_NOT_PHOTOGRAPH",
+      "explanation": "Uma maquete é um modelo que pode ampliar, simplificar e selecionar partes.",
+      "hint": "Nomeie uma simplificação do modelo.",
+      "errorFocus": "MODEL_AS_REPRESENTATION",
+      "feedback": {
+        "correct": "Boa observação: Uma maquete é um modelo que pode ampliar, simplificar e selecionar partes.",
+        "incorrect": "Uma maquete é um modelo que pode ampliar, simplificar e selecionar partes.",
+        "hint": "Nomeie uma simplificação do modelo.",
+        "errorFocus": "MODEL_AS_REPRESENTATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-27",
+      "statement": "Um painel escolar precisa explicar por que células são unidades estruturais e funcionais. Qual texto atende aos dois papéis?",
+      "prompt": "Um painel escolar precisa explicar por que células são unidades estruturais e funcionais. Qual texto atende aos dois papéis?",
+      "options": [
+        "Células só servem para dar nomes a desenhos.",
+        "Apenas órgãos compõem os organismos.",
+        "Células compõem os seres vivos e realizam atividades necessárias ao seu funcionamento.",
+        "Todas as células têm forma e função idênticas."
+      ],
+      "correctAnswer": "Células compõem os seres vivos e realizam atividades necessárias ao seu funcionamento.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Células só servem para dar nomes a desenhos.": [
+          "BOTH_CELL_ROLES"
+        ],
+        "Apenas órgãos compõem os organismos.": [
+          "BOTH_CELL_ROLES"
+        ],
+        "Todas as células têm forma e função idênticas.": [
+          "BOTH_CELL_ROLES"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "CELL_STRUCTURE_PUBLIC_EXPLANATION",
+      "explanation": "A explicação reúne contribuição estrutural e atividades funcionais.",
+      "hint": "Inclua “compõem” e “realizam atividades”.",
+      "errorFocus": "BOTH_CELL_ROLES",
+      "feedback": {
+        "correct": "Boa observação: A explicação reúne contribuição estrutural e atividades funcionais.",
+        "incorrect": "A explicação reúne contribuição estrutural e atividades funcionais.",
+        "hint": "Inclua “compõem” e “realizam atividades”.",
+        "errorFocus": "BOTH_CELL_ROLES"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-28",
+      "statement": "Uma imagem microscópica tem barra de escala e legenda de amostra. Qual uso da escala é apropriado?",
+      "prompt": "Uma imagem microscópica tem barra de escala e legenda de amostra. Qual uso da escala é apropriado?",
+      "options": [
+        "Concluir a função de toda célula pela cor.",
+        "Afirmar que todas as imagens têm a mesma ampliação.",
+        "Substituir a identificação da amostra.",
+        "Estimar o tamanho representado na imagem conforme a barra informada."
+      ],
+      "correctAnswer": "Estimar o tamanho representado na imagem conforme a barra informada.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Concluir a função de toda célula pela cor.": [
+          "SCALE_EVIDENCE"
+        ],
+        "Afirmar que todas as imagens têm a mesma ampliação.": [
+          "SCALE_EVIDENCE"
+        ],
+        "Substituir a identificação da amostra.": [
+          "SCALE_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "MICROSCOPE_SCALE_BAR",
+      "explanation": "A barra de escala ajuda a estimar medidas daquela imagem, com o contexto indicado.",
+      "hint": "Use a barra, não o tamanho impresso da figura.",
+      "errorFocus": "SCALE_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: A barra de escala ajuda a estimar medidas daquela imagem, com o contexto indicado.",
+        "incorrect": "A barra de escala ajuda a estimar medidas daquela imagem, com o contexto indicado.",
+        "hint": "Use a barra, não o tamanho impresso da figura.",
+        "errorFocus": "SCALE_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-29",
+      "statement": "Qual frase reúne corretamente os papéis estrutural e funcional da célula?",
+      "prompt": "Qual frase reúne corretamente os papéis estrutural e funcional da célula?",
+      "options": [
+        "Células participam da composição dos seres vivos e realizam atividades necessárias à vida.",
+        "Células só aparecem em modelos.",
+        "Toda célula é um órgão completo.",
+        "Células têm sempre a mesma forma e função."
+      ],
+      "correctAnswer": "Células participam da composição dos seres vivos e realizam atividades necessárias à vida.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Células só aparecem em modelos.": [
+          "LOCK_IN_DUAL_ROLE"
+        ],
+        "Toda célula é um órgão completo.": [
+          "LOCK_IN_DUAL_ROLE"
+        ],
+        "Células têm sempre a mesma forma e função.": [
+          "LOCK_IN_DUAL_ROLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_CELL_UNIT",
+      "explanation": "A frase explica contribuição estrutural e função celular.",
+      "hint": "Procure as duas ideias na mesma alternativa.",
+      "errorFocus": "LOCK_IN_DUAL_ROLE",
+      "feedback": {
+        "correct": "Boa observação: A frase explica contribuição estrutural e função celular.",
+        "incorrect": "A frase explica contribuição estrutural e função celular.",
+        "hint": "Procure as duas ideias na mesma alternativa.",
+        "errorFocus": "LOCK_IN_DUAL_ROLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-30",
+      "statement": "Um desenho de bactéria não mostra núcleo delimitado por membrana. Qual interpretação é adequada?",
+      "prompt": "Um desenho de bactéria não mostra núcleo delimitado por membrana. Qual interpretação é adequada?",
+      "options": [
+        "O desenho prova que a bactéria não tem material genético.",
+        "O modelo representa uma célula procariótica sem núcleo delimitado.",
+        "Toda célula precisa de núcleo delimitado.",
+        "Bactérias são tecidos sem células."
+      ],
+      "correctAnswer": "O modelo representa uma célula procariótica sem núcleo delimitado.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O desenho prova que a bactéria não tem material genético.": [
+          "LOCK_IN_PROKARYOTE"
+        ],
+        "Toda célula precisa de núcleo delimitado.": [
+          "LOCK_IN_PROKARYOTE"
+        ],
+        "Bactérias são tecidos sem células.": [
+          "LOCK_IN_PROKARYOTE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_BACTERIAL_NUCLEUS",
+      "explanation": "Células procarióticas têm material genético, mas não um núcleo delimitado por membrana.",
+      "hint": "Diferencie material genético de núcleo delimitado.",
+      "errorFocus": "LOCK_IN_PROKARYOTE",
+      "feedback": {
+        "correct": "Boa observação: Células procarióticas têm material genético, mas não um núcleo delimitado por membrana.",
+        "incorrect": "Células procarióticas têm material genético, mas não um núcleo delimitado por membrana.",
+        "hint": "Diferencie material genético de núcleo delimitado.",
+        "errorFocus": "LOCK_IN_PROKARYOTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-31",
+      "statement": "Dois modelos eucarióticos mostram membrana, mas diferem em outras estruturas. O que se pode afirmar?",
+      "prompt": "Dois modelos eucarióticos mostram membrana, mas diferem em outras estruturas. O que se pode afirmar?",
+      "options": [
+        "Os modelos são completamente idênticos.",
+        "Só uma célula pode ter membrana.",
+        "A membrana aparece em ambos os modelos, embora outras características possam variar.",
+        "A presença da membrana determina o mesmo formato."
+      ],
+      "correctAnswer": "A membrana aparece em ambos os modelos, embora outras características possam variar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Os modelos são completamente idênticos.": [
+          "LOCK_IN_COMMON_AND_DIFFERENT"
+        ],
+        "Só uma célula pode ter membrana.": [
+          "LOCK_IN_COMMON_AND_DIFFERENT"
+        ],
+        "A presença da membrana determina o mesmo formato.": [
+          "LOCK_IN_COMMON_AND_DIFFERENT"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "LOCK_IN_SHARED_MEMBRANE",
+      "explanation": "Uma semelhança específica não elimina diferenças entre tipos celulares.",
+      "hint": "Aponte a estrutura comum e deixe as diferenças abertas.",
+      "errorFocus": "LOCK_IN_COMMON_AND_DIFFERENT",
+      "feedback": {
+        "correct": "Boa observação: Uma semelhança específica não elimina diferenças entre tipos celulares.",
+        "incorrect": "Uma semelhança específica não elimina diferenças entre tipos celulares.",
+        "hint": "Aponte a estrutura comum e deixe as diferenças abertas.",
+        "errorFocus": "LOCK_IN_COMMON_AND_DIFFERENT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-32",
+      "statement": "Por que dizer que células são funcionais exige mais do que desenhar suas partes?",
+      "prompt": "Por que dizer que células são funcionais exige mais do que desenhar suas partes?",
+      "options": [
+        "Porque estruturas celulares não existem.",
+        "Porque a função depende apenas da cor do desenho.",
+        "Porque todas as células são órgãos.",
+        "Porque é necessário explicar atividades realizadas pelas células."
+      ],
+      "correctAnswer": "Porque é necessário explicar atividades realizadas pelas células.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Porque estruturas celulares não existem.": [
+          "LOCK_IN_FUNCTION_EVIDENCE"
+        ],
+        "Porque a função depende apenas da cor do desenho.": [
+          "LOCK_IN_FUNCTION_EVIDENCE"
+        ],
+        "Porque todas as células são órgãos.": [
+          "LOCK_IN_FUNCTION_EVIDENCE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_FUNCTION",
+      "explanation": "Função descreve atividade; a imagem isolada pode não demonstrar todos os processos.",
+      "hint": "Pense no significado de “funcional”.",
+      "errorFocus": "LOCK_IN_FUNCTION_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Função descreve atividade; a imagem isolada pode não demonstrar todos os processos.",
+        "incorrect": "Função descreve atividade; a imagem isolada pode não demonstrar todos os processos.",
+        "hint": "Pense no significado de “funcional”.",
+        "errorFocus": "LOCK_IN_FUNCTION_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-33",
+      "statement": "Uma maquete mostra parede, membrana e núcleo. Qual conclusão não é autorizada somente pela maquete?",
+      "prompt": "Uma maquete mostra parede, membrana e núcleo. Qual conclusão não é autorizada somente pela maquete?",
+      "options": [
+        "Que todas as células têm as mesmas estruturas e proporções do modelo.",
+        "Que a maquete representa partes selecionadas.",
+        "Que há estruturas nomeadas na legenda.",
+        "Que o modelo ajuda a discutir organização básica."
+      ],
+      "correctAnswer": "Que todas as células têm as mesmas estruturas e proporções do modelo.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Que a maquete representa partes selecionadas.": [
+          "LOCK_IN_NO_OVERGENERALIZATION"
+        ],
+        "Que há estruturas nomeadas na legenda.": [
+          "LOCK_IN_NO_OVERGENERALIZATION"
+        ],
+        "Que o modelo ajuda a discutir organização básica.": [
+          "LOCK_IN_NO_OVERGENERALIZATION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_MODEL_LIMIT",
+      "explanation": "A representação seleciona características; não prova universalidade nem escala real.",
+      "hint": "Escolha a conclusão que extrapola o modelo.",
+      "errorFocus": "LOCK_IN_NO_OVERGENERALIZATION",
+      "feedback": {
+        "correct": "Boa observação: A representação seleciona características; não prova universalidade nem escala real.",
+        "incorrect": "A representação seleciona características; não prova universalidade nem escala real.",
+        "hint": "Escolha a conclusão que extrapola o modelo.",
+        "errorFocus": "LOCK_IN_NO_OVERGENERALIZATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-34",
+      "statement": "Uma sequência mostra célula, tecido e órgão. Qual descrição preserva a diferença entre níveis?",
+      "prompt": "Uma sequência mostra célula, tecido e órgão. Qual descrição preserva a diferença entre níveis?",
+      "options": [
+        "Célula e órgão são o mesmo nível.",
+        "Células compõem tecidos, que podem formar partes maiores do organismo.",
+        "Tecidos não contêm células.",
+        "Um órgão é uma única célula em todos os casos."
+      ],
+      "correctAnswer": "Células compõem tecidos, que podem formar partes maiores do organismo.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Célula e órgão são o mesmo nível.": [
+          "LOCK_IN_LEVELS"
+        ],
+        "Tecidos não contêm células.": [
+          "LOCK_IN_LEVELS"
+        ],
+        "Um órgão é uma única célula em todos os casos.": [
+          "LOCK_IN_LEVELS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LOCK_IN_CELL_TISSUE",
+      "explanation": "A sequência representa níveis relacionados, mas distintos.",
+      "hint": "Leia a ordem dos cartões.",
+      "errorFocus": "LOCK_IN_LEVELS",
+      "feedback": {
+        "correct": "Boa observação: A sequência representa níveis relacionados, mas distintos.",
+        "incorrect": "A sequência representa níveis relacionados, mas distintos.",
+        "hint": "Leia a ordem dos cartões.",
+        "errorFocus": "LOCK_IN_LEVELS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-35",
+      "statement": "Qual unidade básica participa da composição dos seres vivos?",
+      "prompt": "Qual unidade básica participa da composição dos seres vivos?",
+      "options": [
+        "O planeta",
+        "O tecido de papel",
+        "A célula",
+        "A legenda"
+      ],
+      "correctAnswer": "A célula",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O planeta": [
+          "REVIEW_BASIC_UNIT"
+        ],
+        "O tecido de papel": [
+          "REVIEW_BASIC_UNIT"
+        ],
+        "A legenda": [
+          "REVIEW_BASIC_UNIT"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_CELL_UNIT",
+      "explanation": "A célula é a unidade estrutural básica dos seres vivos.",
+      "hint": "Lembre-se do tema central da aula.",
+      "errorFocus": "REVIEW_BASIC_UNIT",
+      "feedback": {
+        "correct": "Boa observação: A célula é a unidade estrutural básica dos seres vivos.",
+        "incorrect": "A célula é a unidade estrutural básica dos seres vivos.",
+        "hint": "Lembre-se do tema central da aula.",
+        "errorFocus": "REVIEW_BASIC_UNIT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-36",
+      "statement": "Que estrutura delimita a célula e participa das trocas com o meio?",
+      "prompt": "Que estrutura delimita a célula e participa das trocas com o meio?",
+      "options": [
+        "Órgão",
+        "Tecido",
+        "Atmosfera",
+        "Membrana celular"
+      ],
+      "correctAnswer": "Membrana celular",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Órgão": [
+          "REVIEW_MEMBRANE"
+        ],
+        "Tecido": [
+          "REVIEW_MEMBRANE"
+        ],
+        "Atmosfera": [
+          "REVIEW_MEMBRANE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "REVIEW_MEMBRANE",
+      "explanation": "A membrana delimita a célula e regula trocas.",
+      "hint": "Pense no contorno celular.",
+      "errorFocus": "REVIEW_MEMBRANE",
+      "feedback": {
+        "correct": "Boa observação: A membrana delimita a célula e regula trocas.",
+        "incorrect": "A membrana delimita a célula e regula trocas.",
+        "hint": "Pense no contorno celular.",
+        "errorFocus": "REVIEW_MEMBRANE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-37",
+      "statement": "Como se chama um organismo formado por uma célula?",
+      "prompt": "Como se chama um organismo formado por uma célula?",
+      "options": [
+        "Unicelular",
+        "Pluricelular",
+        "Multitecidual",
+        "Inorgânico"
+      ],
+      "correctAnswer": "Unicelular",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Pluricelular": [
+          "REVIEW_UNICELLULAR"
+        ],
+        "Multitecidual": [
+          "REVIEW_UNICELLULAR"
+        ],
+        "Inorgânico": [
+          "REVIEW_UNICELLULAR"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "REVIEW_UNICELLULAR",
+      "explanation": "“Uni” indica uma célula no organismo do exemplo.",
+      "hint": "Observe o prefixo da palavra.",
+      "errorFocus": "REVIEW_UNICELLULAR",
+      "feedback": {
+        "correct": "Boa observação: “Uni” indica uma célula no organismo do exemplo.",
+        "incorrect": "“Uni” indica uma célula no organismo do exemplo.",
+        "hint": "Observe o prefixo da palavra.",
+        "errorFocus": "REVIEW_UNICELLULAR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-38",
+      "statement": "O núcleo delimitado por membrana é mostrado em qual tipo geral de célula?",
+      "prompt": "O núcleo delimitado por membrana é mostrado em qual tipo geral de célula?",
+      "options": [
+        "Em toda célula sem exceção.",
+        "Em células eucarióticas, como muitos exemplos animal e vegetal.",
+        "Apenas em tecidos sem células.",
+        "Somente em imagens sem legenda."
+      ],
+      "correctAnswer": "Em células eucarióticas, como muitos exemplos animal e vegetal.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Em toda célula sem exceção.": [
+          "REVIEW_NUCLEUS"
+        ],
+        "Apenas em tecidos sem células.": [
+          "REVIEW_NUCLEUS"
+        ],
+        "Somente em imagens sem legenda.": [
+          "REVIEW_NUCLEUS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REVIEW_NUCLEUS_SCOPE",
+      "explanation": "A formulação evita estender o núcleo delimitado a células procarióticas.",
+      "hint": "Lembre-se dos dois tipos de organização celular.",
+      "errorFocus": "REVIEW_NUCLEUS",
+      "feedback": {
+        "correct": "Boa observação: A formulação evita estender o núcleo delimitado a células procarióticas.",
+        "incorrect": "A formulação evita estender o núcleo delimitado a células procarióticas.",
+        "hint": "Lembre-se dos dois tipos de organização celular.",
+        "errorFocus": "REVIEW_NUCLEUS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-39",
+      "statement": "Um esquema amplia uma célula sem indicar escala. O que a imagem não permite concluir?",
+      "prompt": "Um esquema amplia uma célula sem indicar escala. O que a imagem não permite concluir?",
+      "options": [
+        "Que o modelo representa estruturas selecionadas.",
+        "Que a legenda pode identificar a amostra.",
+        "O tamanho real da célula a partir do tamanho do desenho.",
+        "Que modelos simplificam a realidade."
+      ],
+      "correctAnswer": "O tamanho real da célula a partir do tamanho do desenho.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Que o modelo representa estruturas selecionadas.": [
+          "REVIEW_SCALE"
+        ],
+        "Que a legenda pode identificar a amostra.": [
+          "REVIEW_SCALE"
+        ],
+        "Que modelos simplificam a realidade.": [
+          "REVIEW_SCALE"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_MODEL_SCALE",
+      "explanation": "Sem escala, o tamanho impresso não informa o tamanho real.",
+      "hint": "Procure a barra de escala ou a ausência dela.",
+      "errorFocus": "REVIEW_SCALE",
+      "feedback": {
+        "correct": "Boa observação: Sem escala, o tamanho impresso não informa o tamanho real.",
+        "incorrect": "Sem escala, o tamanho impresso não informa o tamanho real.",
+        "hint": "Procure a barra de escala ou a ausência dela.",
+        "errorFocus": "REVIEW_SCALE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v3-science-cells-structure-and-function-ef06-40",
+      "statement": "Qual resumo explica por que a célula é estrutural e funcional?",
+      "prompt": "Qual resumo explica por que a célula é estrutural e funcional?",
+      "options": [
+        "Ela é apenas uma parte visível ao microscópio.",
+        "Ela tem a mesma forma em todos os organismos.",
+        "Ela substitui tecidos, órgãos e sistemas.",
+        "Ela participa da composição dos seres vivos e realiza atividades necessárias à vida."
+      ],
+      "correctAnswer": "Ela participa da composição dos seres vivos e realiza atividades necessárias à vida.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Ela é apenas uma parte visível ao microscópio.": [
+          "REVIEW_SYNTHESIS"
+        ],
+        "Ela tem a mesma forma em todos os organismos.": [
+          "REVIEW_SYNTHESIS"
+        ],
+        "Ela substitui tecidos, órgãos e sistemas.": [
+          "REVIEW_SYNTHESIS"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_STRUCTURE_FUNCTION",
+      "explanation": "O resumo reúne os dois papéis sem apagar a diversidade celular.",
+      "hint": "Combine composição e atividade.",
+      "errorFocus": "REVIEW_SYNTHESIS",
+      "feedback": {
+        "correct": "Boa observação: O resumo reúne os dois papéis sem apagar a diversidade celular.",
+        "incorrect": "O resumo reúne os dois papéis sem apagar a diversidade celular.",
+        "hint": "Combine composição e atividade.",
+        "errorFocus": "REVIEW_SYNTHESIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Usar diagramas de alto contraste, rótulos ampliados, descrição textual das partes e modelo tátil sem exigir visão de cores para distinguir estruturas.",
+          "Disponibilizar leitura em voz alta, glossário visual e instruções em etapas; permitir respostas por fala, cartões, desenho, escrita ou tecnologia assistiva.",
+          "Aceitar observação de imagens ou modelos digitais quando microscópio, manuseio ou acomodação visual não estiverem disponíveis; não solicitar amostras biológicas do corpo dos estudantes."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}

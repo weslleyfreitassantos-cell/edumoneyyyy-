@@ -1,0 +1,2083 @@
+{
+  "packVersion": "tec-escola-core-v5-question-first",
+  "contentVersion": 1,
+  "lessonVersion": 1,
+  "contentId": "v4-science-heat-transfer-materials-ef07",
+  "canonicalSkillCode": "AUTHORING_EF07CI03_HEAT_TRANSFER_MATERIALS_AND_SOLUTIONS",
+  "subject": "SCIENCE",
+  "domain": "MATÉRIA E ENERGIA",
+  "topic": "condução, convecção e radiação; materiais condutores e isolantes em usos cotidianos e soluções tecnológicas",
+  "databasePackId": "TECESCOLA_CORE_V5_QUESTION_FIRST",
+  "officialMappingStatus": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "publicationStatus": "STAGING_INACTIVE",
+  "active": false,
+  "contentAuthoringStatus": "AUTHORED",
+  "expectedPurposeCounts": {
+    "PROBE": 8,
+    "PRACTICE": 12,
+    "TRANSFER": 8,
+    "LOCK_IN": 6,
+    "REVIEW": 6
+  },
+  "expectedQuestionCount": 40,
+  "expectedContextCount": 40,
+  "expectedAnswerPositionCounts": {
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
+  },
+  "sourceContext": {
+    "officialCode": "EF07CI03",
+    "relation": "AUTHORING_CONTEXT_ONLY",
+    "mappingStatus": "CANONICAL_GAP",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Utilizar o conhecimento das formas de propagação do calor para justificar a utilização de determinados materiais (condutores e isolantes) na vida cotidiana, explicar o princípio de funcionamento de alguns equipamentos (garrafa térmica, coletor solar etc.) e/ou construir soluções tecnológicas a partir desse conhecimento.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 348
+    },
+    "note": "Conteúdo autoral em staging; o vínculo canônico, a revisão pedagógica e a publicação continuam pendentes."
+  },
+  "sourceReconciliation": {
+    "sourceQuestionCount": 0,
+    "feedbackAdded": 0,
+    "sourceReconciliationStatus": "NO_SOURCE_QUESTION_REUSED",
+    "newQuestions": 40,
+    "reusedQuestionsCountedAsNew": false
+  },
+  "lesson": {
+    "title": "Como o calor se transfere e como os materiais ajudam",
+    "objective": "Distinguir condução, convecção e radiação em situações representadas; usar propriedades de condutores e isolantes para justificar materiais e explicar equipamentos ou propor uma solução segura.",
+    "summary": "O calor é energia transferida devido a uma diferença de temperatura. Ele pode se transferir por condução, convecção e radiação. Condutores favorecem a transferência térmica; isolantes a reduzem, mas não a impedem para sempre. Equipamentos combinam materiais, formas e espaços para controlar perdas ou ganhos de energia. Modelos e dados ajudam a comparar soluções sem exigir que estudantes manuseiem superfícies quentes.",
+    "explanation": "Quando há diferença de temperatura, energia térmica pode ser transferida do corpo ou região mais quente para a mais fria. Na condução, a transferência ocorre por contato entre partículas, sendo comum em sólidos; metais costumam conduzir calor melhor que materiais isolantes como madeira seca, espuma ou alguns plásticos. Na convecção, o movimento de um fluido, como ar ou água, transporta energia. Na radiação, ondas eletromagnéticas transferem energia e não precisam de contato nem de um meio material, como ocorre com a energia do Sol. Isolantes diminuem a taxa de transferência, mas não bloqueiam o calor indefinidamente. Uma garrafa térmica reduz condução, convecção e radiação usando paredes separadas, superfícies refletoras e fechamento; ainda pode haver trocas. Um coletor solar absorve radiação e transfere energia a um fluido ou reservatório, conforme seu projeto. Em atividades escolares, testes com líquidos aquecidos ou equipamentos devem ser planejados e conduzidos por adulto, sem contato dos estudantes com materiais quentes.",
+    "workedExample": "Uma equipe compara dois modelos de capa para um recipiente: um envolve o recipiente com espuma isolante e outro com uma folha metálica refletora voltada para fora. Em um teste didático conduzido pelo professor, ambos reduzem a variação de temperatura em relação ao recipiente sem proteção, mas por mecanismos que podem diferir. A conclusão adequada usa os dados do teste, informa o tempo e reconhece que a capa reduz — não elimina — a transferência de energia.",
+    "commonMistake": "Dizer que isolantes bloqueiam totalmente o calor, que o frio se desloca como uma substância ou que a radiação solar depende de contato com o ar.",
+    "priorKnowledge": [
+      "Comparar temperaturas com instrumentos ou dados fornecidos e reconhecer que elas podem mudar ao longo do tempo.",
+      "Identificar materiais comuns e descrever propriedades observáveis sem tocar em superfícies quentes."
+    ],
+    "keyConcepts": [
+      "transferência de calor",
+      "condução",
+      "convecção",
+      "radiação",
+      "condutor térmico",
+      "isolante térmico",
+      "diferença de temperatura",
+      "controle de perdas",
+      "modelo tecnológico"
+    ],
+    "remediations": [
+      {
+        "errorFocus": "INSULATOR_AS_PERFECT_BARRIER",
+        "action": "Compare dados de dois instantes e reformule “impede o calor” como “reduz a taxa de transferência”, citando o intervalo observado."
+      },
+      {
+        "errorFocus": "COLD_AS_SUBSTANCE",
+        "action": "Descreva a direção da transferência de energia do mais quente para o mais frio e identifique qual temperatura mudou, sem tratar frio como material que flui."
+      },
+      {
+        "errorFocus": "RADIATION_REQUIRES_CONTACT",
+        "action": "Use o exemplo Sol-Terra para separar radiação de condução por contato e convecção pelo movimento de um fluido."
+      },
+      {
+        "errorFocus": "MATERIAL_ONLY_EXPLAINS_DEVICE",
+        "action": "Analise também forma, superfícies, espaços, fechamento e ambiente; indique qual mecanismo cada característica ajuda a reduzir ou favorecer."
+      }
+    ],
+    "accessibilitySupports": [
+      "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+      "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+      "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+    ],
+    "authenticActivities": [
+      {
+        "id": "ef07ci03-compare-insulation-data",
+        "title": "Comparar soluções isolantes com dados seguros",
+        "instructions": "Tabela preparada pelo professor a partir de recipientes fechados e líquidos em temperaturas seguras para demonstração, com medições feitas por adulto e sem manuseio estudantil de materiais quentes.\n1. Leia os materiais, o intervalo e as temperaturas iniciais e finais de cada condição.\n2. Calcule ou compare as mudanças de temperatura e identifique qual solução reduziu mais a transferência no teste.\n3. Explique um mecanismo provável, diferencie redução de bloqueio total e declare um limite do experimento.",
+        "steps": [
+          "Leia os materiais, o intervalo e as temperaturas iniciais e finais de cada condição.",
+          "Calcule ou compare as mudanças de temperatura e identifique qual solução reduziu mais a transferência no teste.",
+          "Explique um mecanismo provável, diferencie redução de bloqueio total e declare um limite do experimento."
+        ],
+        "evidence": "Conclusão baseada na tabela que compara variação de temperatura, relaciona um material a um mecanismo e delimita a conclusão ao tempo e às condições testadas.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "escolhe uma solução sem usar os dados.",
+            "developing": "compara temperaturas com apoio, mas não explicita o limite do teste.",
+            "proficient": "usa dados, justifica o material com mecanismo plausível e reconhece que isolamento não elimina toda troca."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      },
+      {
+        "id": "ef07ci03-design-thermal-solution",
+        "title": "Projetar um modelo de coletor ou recipiente térmico",
+        "instructions": "Desafio de projeto em papel com materiais listados, desenhos de corte e fichas de propriedades; não se usa chama, rede elétrica nem líquido quente com estudantes.\n1. Defina se o modelo deve favorecer a absorção de radiação solar ou reduzir a perda de energia de um conteúdo fictício.\n2. Escolha materiais e camadas, marcando onde espera condução, convecção ou radiação.\n3. Apresente o desenho, justifique cada escolha, preveja uma medida de teste seguro e indique um limite ou custo da solução.",
+        "steps": [
+          "Defina se o modelo deve favorecer a absorção de radiação solar ou reduzir a perda de energia de um conteúdo fictício.",
+          "Escolha materiais e camadas, marcando onde espera condução, convecção ou radiação.",
+          "Apresente o desenho, justifique cada escolha, preveja uma medida de teste seguro e indique um limite ou custo da solução."
+        ],
+        "evidence": "Desenho técnico anotado que relaciona materiais e mecanismos, apresenta uma previsão testável e explicita um limite sem prometer isolamento perfeito.",
+        "privacyGuard": "Usar materiais escolares seguros, fictícios ou autorizados; não coletar nem compartilhar dados pessoais.",
+        "rubric": [
+          {
+            "criterion": "Realização da tarefa",
+            "emerging": "desenha um equipamento sem relacionar material e transferência.",
+            "developing": "relaciona um material a um mecanismo e prevê um teste com apoio.",
+            "proficient": "articula camadas e mecanismos, formula previsão observável e considera segurança e limites."
+          },
+          {
+            "criterion": "Registro e explicação da evidência",
+            "emerging": "Identifica uma parte da evidência com demonstração e apoio.",
+            "developing": "Registra a evidência principal usando pistas ou lembretes.",
+            "proficient": "Registra a evidência observável e a relaciona ao resultado da tarefa."
+          }
+        ]
+      }
+    ],
+    "estimatedMinutes": 55,
+    "progression": [
+      {
+        "phase": "PROBE",
+        "questionIds": [
+          "v4-science-heat-transfer-materials-ef07-01",
+          "v4-science-heat-transfer-materials-ef07-02",
+          "v4-science-heat-transfer-materials-ef07-03",
+          "v4-science-heat-transfer-materials-ef07-04",
+          "v4-science-heat-transfer-materials-ef07-05",
+          "v4-science-heat-transfer-materials-ef07-06",
+          "v4-science-heat-transfer-materials-ef07-07",
+          "v4-science-heat-transfer-materials-ef07-08"
+        ]
+      },
+      {
+        "phase": "PRACTICE",
+        "questionIds": [
+          "v4-science-heat-transfer-materials-ef07-09",
+          "v4-science-heat-transfer-materials-ef07-10",
+          "v4-science-heat-transfer-materials-ef07-11",
+          "v4-science-heat-transfer-materials-ef07-12",
+          "v4-science-heat-transfer-materials-ef07-13",
+          "v4-science-heat-transfer-materials-ef07-14",
+          "v4-science-heat-transfer-materials-ef07-15",
+          "v4-science-heat-transfer-materials-ef07-16",
+          "v4-science-heat-transfer-materials-ef07-17",
+          "v4-science-heat-transfer-materials-ef07-18",
+          "v4-science-heat-transfer-materials-ef07-19",
+          "v4-science-heat-transfer-materials-ef07-20"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "questionIds": [
+          "v4-science-heat-transfer-materials-ef07-21",
+          "v4-science-heat-transfer-materials-ef07-22",
+          "v4-science-heat-transfer-materials-ef07-23",
+          "v4-science-heat-transfer-materials-ef07-24",
+          "v4-science-heat-transfer-materials-ef07-25",
+          "v4-science-heat-transfer-materials-ef07-26",
+          "v4-science-heat-transfer-materials-ef07-27",
+          "v4-science-heat-transfer-materials-ef07-28"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "questionIds": [
+          "v4-science-heat-transfer-materials-ef07-29",
+          "v4-science-heat-transfer-materials-ef07-30",
+          "v4-science-heat-transfer-materials-ef07-31",
+          "v4-science-heat-transfer-materials-ef07-32",
+          "v4-science-heat-transfer-materials-ef07-33",
+          "v4-science-heat-transfer-materials-ef07-34"
+        ]
+      },
+      {
+        "phase": "REVIEW",
+        "questionIds": [
+          "v4-science-heat-transfer-materials-ef07-35",
+          "v4-science-heat-transfer-materials-ef07-36",
+          "v4-science-heat-transfer-materials-ef07-37",
+          "v4-science-heat-transfer-materials-ef07-38",
+          "v4-science-heat-transfer-materials-ef07-39",
+          "v4-science-heat-transfer-materials-ef07-40"
+        ]
+      }
+    ],
+    "reviewWindowsDays": [
+      1,
+      3,
+      7
+    ],
+    "reviewScheduleStatus": "SUGGESTED_NOT_AUTOMATED",
+    "sourceDossier": [
+      {
+        "officialCode": "EF07CI03",
+        "descriptor": "Utilizar o conhecimento das formas de propagação do calor para justificar a utilização de determinados materiais (condutores e isolantes) na vida cotidiana, explicar o princípio de funcionamento de alguns equipamentos (garrafa térmica, coletor solar etc.) e/ou construir soluções tecnológicas a partir desse conhecimento.",
+        "officialSource": {
+          "id": "BNCC_EI_EF_2018",
+          "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+          "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+          "page": 348
+        },
+        "checkedAt": "2026-10-16",
+        "relation": "AUTHORING_CONTEXT_ONLY"
+      }
+    ],
+    "copyrightNote": "Material autoral; o descritor BNCC é citado apenas como referência curricular e não como exercício reproduzido."
+  },
+  "questions": [
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-01",
+      "statement": "Em um desenho, uma colher metálica toca uma bebida morna. Qual mecanismo pode transferir energia por contato ao longo da colher?",
+      "prompt": "Em um desenho, uma colher metálica toca uma bebida morna. Qual mecanismo pode transferir energia por contato ao longo da colher?",
+      "options": [
+        "Condução",
+        "Convecção dentro do metal",
+        "Radiação apenas por ondas de rádio",
+        "Evaporação"
+      ],
+      "correctAnswer": "Condução",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Convecção dentro do metal": [
+          "CONDUCTION_CONTACT"
+        ],
+        "Radiação apenas por ondas de rádio": [
+          "CONDUCTION_CONTACT"
+        ],
+        "Evaporação": [
+          "CONDUCTION_CONTACT"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "METAL_SPOON_IN_WARM_DRINK",
+      "explanation": "A condução transfere energia por contato entre partes do material.",
+      "hint": "Observe que a colher está em contato com a bebida.",
+      "errorFocus": "CONDUCTION_CONTACT",
+      "feedback": {
+        "correct": "Boa observação: A condução transfere energia por contato entre partes do material.",
+        "incorrect": "A condução transfere energia por contato entre partes do material.",
+        "hint": "Observe que a colher está em contato com a bebida.",
+        "errorFocus": "CONDUCTION_CONTACT"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-02",
+      "statement": "A energia do Sol chega a um telhado através do espaço. Qual forma de transferência está envolvida?",
+      "prompt": "A energia do Sol chega a um telhado através do espaço. Qual forma de transferência está envolvida?",
+      "options": [
+        "Condução por contato com o espaço",
+        "Radiação",
+        "Convecção de ar entre o Sol e a Terra",
+        "Atrito"
+      ],
+      "correctAnswer": "Radiação",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Condução por contato com o espaço": [
+          "RADIATION_NO_MEDIUM"
+        ],
+        "Convecção de ar entre o Sol e a Terra": [
+          "RADIATION_NO_MEDIUM"
+        ],
+        "Atrito": [
+          "RADIATION_NO_MEDIUM"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SUNLIGHT_TO_ROOF",
+      "explanation": "A radiação pode transferir energia sem contato nem meio material entre as fontes.",
+      "hint": "Considere como a energia solar atravessa o espaço.",
+      "errorFocus": "RADIATION_NO_MEDIUM",
+      "feedback": {
+        "correct": "Boa observação: A radiação pode transferir energia sem contato nem meio material entre as fontes.",
+        "incorrect": "A radiação pode transferir energia sem contato nem meio material entre as fontes.",
+        "hint": "Considere como a energia solar atravessa o espaço.",
+        "errorFocus": "RADIATION_NO_MEDIUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-03",
+      "statement": "Um diagrama mostra ar aquecido subindo e ar mais frio descendo. Qual mecanismo descreve esse transporte pelo movimento do fluido?",
+      "prompt": "Um diagrama mostra ar aquecido subindo e ar mais frio descendo. Qual mecanismo descreve esse transporte pelo movimento do fluido?",
+      "options": [
+        "Condução apenas em um sólido imóvel",
+        "Radiação sem movimento de matéria",
+        "Convecção",
+        "Reflexão do som"
+      ],
+      "correctAnswer": "Convecção",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Condução apenas em um sólido imóvel": [
+          "CONVECTION_FLUID_MOTION"
+        ],
+        "Radiação sem movimento de matéria": [
+          "CONVECTION_FLUID_MOTION"
+        ],
+        "Reflexão do som": [
+          "CONVECTION_FLUID_MOTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "WARM_AIR_BALLOON_DIAGRAM",
+      "explanation": "Na convecção, o movimento do fluido transporta energia.",
+      "hint": "Procure o movimento do ar no desenho.",
+      "errorFocus": "CONVECTION_FLUID_MOTION",
+      "feedback": {
+        "correct": "Boa observação: Na convecção, o movimento do fluido transporta energia.",
+        "incorrect": "Na convecção, o movimento do fluido transporta energia.",
+        "hint": "Procure o movimento do ar no desenho.",
+        "errorFocus": "CONVECTION_FLUID_MOTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-04",
+      "statement": "Uma ficha diz que uma panela tem corpo metálico e cabo de madeira seca. Qual material costuma ser melhor isolante térmico no uso descrito?",
+      "prompt": "Uma ficha diz que uma panela tem corpo metálico e cabo de madeira seca. Qual material costuma ser melhor isolante térmico no uso descrito?",
+      "options": [
+        "Metal",
+        "Água em movimento",
+        "Superfície polida de metal",
+        "Madeira seca"
+      ],
+      "correctAnswer": "Madeira seca",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Metal": [
+          "CONDUCTOR_INSULATOR"
+        ],
+        "Água em movimento": [
+          "CONDUCTOR_INSULATOR"
+        ],
+        "Superfície polida de metal": [
+          "CONDUCTOR_INSULATOR"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "PAN_HANDLE_MATERIAL_CARD",
+      "explanation": "Metal conduz calor melhor que madeira seca, que pode reduzir a transferência no cabo.",
+      "hint": "Compare a condutividade térmica dos dois materiais.",
+      "errorFocus": "CONDUCTOR_INSULATOR",
+      "feedback": {
+        "correct": "Boa observação: Metal conduz calor melhor que madeira seca, que pode reduzir a transferência no cabo.",
+        "incorrect": "Metal conduz calor melhor que madeira seca, que pode reduzir a transferência no cabo.",
+        "hint": "Compare a condutividade térmica dos dois materiais.",
+        "errorFocus": "CONDUCTOR_INSULATOR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-05",
+      "statement": "Uma luva térmica reduz a transferência de calor da assadeira para a mão. Qual propriedade é desejável no material da luva?",
+      "prompt": "Uma luva térmica reduz a transferência de calor da assadeira para a mão. Qual propriedade é desejável no material da luva?",
+      "options": [
+        "Baixa condução térmica no uso previsto.",
+        "Alta condução térmica",
+        "Produzir convecção dentro da mão",
+        "Refletir todo o som"
+      ],
+      "correctAnswer": "Baixa condução térmica no uso previsto.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Alta condução térmica": [
+          "INSULATOR_USE"
+        ],
+        "Produzir convecção dentro da mão": [
+          "INSULATOR_USE"
+        ],
+        "Refletir todo o som": [
+          "INSULATOR_USE"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "THERMAL_MITTEN_LABEL",
+      "explanation": "Um material isolante reduz a taxa de transferência por condução no contato.",
+      "hint": "Pense em diminuir a transferência pelo contato.",
+      "errorFocus": "INSULATOR_USE",
+      "feedback": {
+        "correct": "Boa observação: Um material isolante reduz a taxa de transferência por condução no contato.",
+        "incorrect": "Um material isolante reduz a taxa de transferência por condução no contato.",
+        "hint": "Pense em diminuir a transferência pelo contato.",
+        "errorFocus": "INSULATOR_USE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-06",
+      "statement": "Um gráfico mostra que o conteúdo de um recipiente isolado ainda muda de temperatura lentamente. O que isso indica?",
+      "prompt": "Um gráfico mostra que o conteúdo de um recipiente isolado ainda muda de temperatura lentamente. O que isso indica?",
+      "options": [
+        "O isolante falhou porque a temperatura mudou.",
+        "O isolante reduziu, mas não eliminou, a transferência de energia.",
+        "Calor deixou de ser transferido para sempre.",
+        "A mudança prova que frio entrou como substância."
+      ],
+      "correctAnswer": "O isolante reduziu, mas não eliminou, a transferência de energia.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O isolante falhou porque a temperatura mudou.": [
+          "INSULATION_NOT_ZERO"
+        ],
+        "Calor deixou de ser transferido para sempre.": [
+          "INSULATION_NOT_ZERO"
+        ],
+        "A mudança prova que frio entrou como substância.": [
+          "INSULATION_NOT_ZERO"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "INSULATION_TIME_GRAPH",
+      "explanation": "Isolantes reduzem a taxa de transferência, sem garantir isolamento perfeito por tempo ilimitado.",
+      "hint": "Observe a variação ao longo do tempo.",
+      "errorFocus": "INSULATION_NOT_ZERO",
+      "feedback": {
+        "correct": "Boa observação: Isolantes reduzem a taxa de transferência, sem garantir isolamento perfeito por tempo ilimitado.",
+        "incorrect": "Isolantes reduzem a taxa de transferência, sem garantir isolamento perfeito por tempo ilimitado.",
+        "hint": "Observe a variação ao longo do tempo.",
+        "errorFocus": "INSULATION_NOT_ZERO"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-07",
+      "statement": "Um esquema de garrafa térmica mostra duas paredes separadas por uma região com pouco material. Que efeito essa separação busca?",
+      "prompt": "Um esquema de garrafa térmica mostra duas paredes separadas por uma região com pouco material. Que efeito essa separação busca?",
+      "options": [
+        "Criar um caminho sólido direto para condução intensa.",
+        "Fazer a temperatura não mudar nunca.",
+        "Reduzir algumas formas de transferência entre as paredes.",
+        "Aumentar a convecção entre as paredes."
+      ],
+      "correctAnswer": "Reduzir algumas formas de transferência entre as paredes.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Criar um caminho sólido direto para condução intensa.": [
+          "THERMOS_GAP"
+        ],
+        "Fazer a temperatura não mudar nunca.": [
+          "THERMOS_GAP"
+        ],
+        "Aumentar a convecção entre as paredes.": [
+          "THERMOS_GAP"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "THERMOS_DOUBLE_WALL",
+      "explanation": "A região separadora reduz condução e convecção, conforme o projeto.",
+      "hint": "Veja o que a separação interrompe.",
+      "errorFocus": "THERMOS_GAP",
+      "feedback": {
+        "correct": "Boa observação: A região separadora reduz condução e convecção, conforme o projeto.",
+        "incorrect": "A região separadora reduz condução e convecção, conforme o projeto.",
+        "hint": "Veja o que a separação interrompe.",
+        "errorFocus": "THERMOS_GAP"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-08",
+      "statement": "Um coletor solar usa uma superfície escura voltada para a luz. Qual função essa superfície pode cumprir?",
+      "prompt": "Um coletor solar usa uma superfície escura voltada para a luz. Qual função essa superfície pode cumprir?",
+      "options": [
+        "Impedir toda radiação de chegar ao coletor.",
+        "Eliminar qualquer perda de calor.",
+        "Conduzir energia do Sol por contato direto.",
+        "Absorver parte da radiação incidente e transferir energia ao sistema."
+      ],
+      "correctAnswer": "Absorver parte da radiação incidente e transferir energia ao sistema.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Impedir toda radiação de chegar ao coletor.": [
+          "SOLAR_ABSORPTION"
+        ],
+        "Eliminar qualquer perda de calor.": [
+          "SOLAR_ABSORPTION"
+        ],
+        "Conduzir energia do Sol por contato direto.": [
+          "SOLAR_ABSORPTION"
+        ]
+      },
+      "purpose": "PROBE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "RELATE",
+      "contextFamily": "SOLAR_COLLECTOR_BLACK_SURFACE",
+      "explanation": "A superfície absorve radiação e pode aquecer o coletor, conforme o projeto.",
+      "hint": "Siga a energia da luz até o material.",
+      "errorFocus": "SOLAR_ABSORPTION",
+      "feedback": {
+        "correct": "Boa observação: A superfície absorve radiação e pode aquecer o coletor, conforme o projeto.",
+        "incorrect": "A superfície absorve radiação e pode aquecer o coletor, conforme o projeto.",
+        "hint": "Siga a energia da luz até o material.",
+        "errorFocus": "SOLAR_ABSORPTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-09",
+      "statement": "Uma espátula de madeira seca é usada para mexer uma mistura em demonstração. Por que a madeira pode ser escolhida para o cabo?",
+      "prompt": "Uma espátula de madeira seca é usada para mexer uma mistura em demonstração. Por que a madeira pode ser escolhida para o cabo?",
+      "options": [
+        "Ela conduz calor menos rapidamente que muitos metais.",
+        "Ela impede qualquer transferência em todas as condições.",
+        "Ela produz calor por convecção.",
+        "Ela é um metal refletor."
+      ],
+      "correctAnswer": "Ela conduz calor menos rapidamente que muitos metais.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Ela impede qualquer transferência em todas as condições.": [
+          "WOOD_INSULATION_REASON"
+        ],
+        "Ela produz calor por convecção.": [
+          "WOOD_INSULATION_REASON"
+        ],
+        "Ela é um metal refletor.": [
+          "WOOD_INSULATION_REASON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "WOODEN_SPATULA",
+      "explanation": "A madeira pode reduzir a condução ao cabo, mas não é uma barreira perfeita.",
+      "hint": "Use “reduz” em vez de “impede totalmente”.",
+      "errorFocus": "WOOD_INSULATION_REASON",
+      "feedback": {
+        "correct": "Boa observação: A madeira pode reduzir a condução ao cabo, mas não é uma barreira perfeita.",
+        "incorrect": "A madeira pode reduzir a condução ao cabo, mas não é uma barreira perfeita.",
+        "hint": "Use “reduz” em vez de “impede totalmente”.",
+        "errorFocus": "WOOD_INSULATION_REASON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-10",
+      "statement": "Em um modelo, uma extremidade de uma barra sólida recebe energia e a outra aquece depois. Qual mecanismo é mais compatível com a barra?",
+      "prompt": "Em um modelo, uma extremidade de uma barra sólida recebe energia e a outra aquece depois. Qual mecanismo é mais compatível com a barra?",
+      "options": [
+        "Convecção de toda a barra sólida",
+        "Condução",
+        "Radiação somente pelo movimento do ar",
+        "Condensação"
+      ],
+      "correctAnswer": "Condução",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Convecção de toda a barra sólida": [
+          "SOLID_CONDUCTION"
+        ],
+        "Radiação somente pelo movimento do ar": [
+          "SOLID_CONDUCTION"
+        ],
+        "Condensação": [
+          "SOLID_CONDUCTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "THERMAL_TRANSFER_SOLID_ROD",
+      "explanation": "A condução transfere energia através do sólido por interações entre suas partículas.",
+      "hint": "A barra é sólida e há transferência ao longo do material.",
+      "errorFocus": "SOLID_CONDUCTION",
+      "feedback": {
+        "correct": "Boa observação: A condução transfere energia através do sólido por interações entre suas partículas.",
+        "incorrect": "A condução transfere energia através do sólido por interações entre suas partículas.",
+        "hint": "A barra é sólida e há transferência ao longo do material.",
+        "errorFocus": "SOLID_CONDUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-11",
+      "statement": "Um desenho de água aquecida mostra porções do líquido circulando. Qual processo está representado?",
+      "prompt": "Um desenho de água aquecida mostra porções do líquido circulando. Qual processo está representado?",
+      "options": [
+        "Condução sem movimento de fluido",
+        "Radiação que exige contato entre moléculas",
+        "Convecção no líquido",
+        "Reflexão da luz"
+      ],
+      "correctAnswer": "Convecção no líquido",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Condução sem movimento de fluido": [
+          "LIQUID_CONVECTION"
+        ],
+        "Radiação que exige contato entre moléculas": [
+          "LIQUID_CONVECTION"
+        ],
+        "Reflexão da luz": [
+          "LIQUID_CONVECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "BOILING_WATER_DIAGRAM",
+      "explanation": "O movimento do líquido transporta energia e caracteriza convecção.",
+      "hint": "Observe as setas de circulação.",
+      "errorFocus": "LIQUID_CONVECTION",
+      "feedback": {
+        "correct": "Boa observação: O movimento do líquido transporta energia e caracteriza convecção.",
+        "incorrect": "O movimento do líquido transporta energia e caracteriza convecção.",
+        "hint": "Observe as setas de circulação.",
+        "errorFocus": "LIQUID_CONVECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-12",
+      "statement": "Uma folha metálica refletora e uma espuma são comparadas em uma capa para reduzir aquecimento por luz incidente. Qual análise é mais completa?",
+      "prompt": "Uma folha metálica refletora e uma espuma são comparadas em uma capa para reduzir aquecimento por luz incidente. Qual análise é mais completa?",
+      "options": [
+        "Os dois materiais funcionam do mesmo modo em qualquer montagem.",
+        "A espuma elimina toda radiação.",
+        "A folha metálica impede qualquer condução.",
+        "A espuma reduz condução e a folha pode refletir parte da radiação; o projeto e os dados importam."
+      ],
+      "correctAnswer": "A espuma reduz condução e a folha pode refletir parte da radiação; o projeto e os dados importam.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Os dois materiais funcionam do mesmo modo em qualquer montagem.": [
+          "MULTIPLE_MECHANISMS"
+        ],
+        "A espuma elimina toda radiação.": [
+          "MULTIPLE_MECHANISMS"
+        ],
+        "A folha metálica impede qualquer condução.": [
+          "MULTIPLE_MECHANISMS"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "FOIL_VS_FOAM",
+      "explanation": "Materiais podem atuar sobre mecanismos distintos; o resultado depende da montagem e das condições.",
+      "hint": "Relacione cada material a um tipo de transferência.",
+      "errorFocus": "MULTIPLE_MECHANISMS",
+      "feedback": {
+        "correct": "Boa observação: Materiais podem atuar sobre mecanismos distintos; o resultado depende da montagem e das condições.",
+        "incorrect": "Materiais podem atuar sobre mecanismos distintos; o resultado depende da montagem e das condições.",
+        "hint": "Relacione cada material a um tipo de transferência.",
+        "errorFocus": "MULTIPLE_MECHANISMS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-13",
+      "statement": "A luz solar atravessa uma janela e aquece objetos internos. Qual mecanismo trouxe energia do Sol até a janela?",
+      "prompt": "A luz solar atravessa uma janela e aquece objetos internos. Qual mecanismo trouxe energia do Sol até a janela?",
+      "options": [
+        "Radiação",
+        "Condução através do espaço",
+        "Convecção do Sol até a Terra",
+        "Atrito entre planetas"
+      ],
+      "correctAnswer": "Radiação",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Condução através do espaço": [
+          "RADIATION_WINDOW"
+        ],
+        "Convecção do Sol até a Terra": [
+          "RADIATION_WINDOW"
+        ],
+        "Atrito entre planetas": [
+          "RADIATION_WINDOW"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "EASY",
+      "cognitiveProcess": "IDENTIFY",
+      "contextFamily": "SUNLIGHT_WINDOW",
+      "explanation": "A energia solar se propaga por radiação antes de interagir com a janela.",
+      "hint": "Considere o trajeto antes do contato com o vidro.",
+      "errorFocus": "RADIATION_WINDOW",
+      "feedback": {
+        "correct": "Boa observação: A energia solar se propaga por radiação antes de interagir com a janela.",
+        "incorrect": "A energia solar se propaga por radiação antes de interagir com a janela.",
+        "hint": "Considere o trajeto antes do contato com o vidro.",
+        "errorFocus": "RADIATION_WINDOW"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-14",
+      "statement": "Uma capa de tecido em volta de um copo reduz a rapidez com que a bebida troca energia com o ambiente. Como classificá-la no exemplo?",
+      "prompt": "Uma capa de tecido em volta de um copo reduz a rapidez com que a bebida troca energia com o ambiente. Como classificá-la no exemplo?",
+      "options": [
+        "Como fonte que cria energia sem limite.",
+        "Como camada isolante que reduz a transferência.",
+        "Como condutor que acelera toda troca.",
+        "Como dispositivo que remove o calor para sempre."
+      ],
+      "correctAnswer": "Como camada isolante que reduz a transferência.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Como fonte que cria energia sem limite.": [
+          "SLEEVE_REDUCES_TRANSFER"
+        ],
+        "Como condutor que acelera toda troca.": [
+          "SLEEVE_REDUCES_TRANSFER"
+        ],
+        "Como dispositivo que remove o calor para sempre.": [
+          "SLEEVE_REDUCES_TRANSFER"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "CUP_SLEEVE",
+      "explanation": "A capa pode reduzir a taxa de transferência sem anulá-la.",
+      "hint": "Escolha a função proporcional ao efeito descrito.",
+      "errorFocus": "SLEEVE_REDUCES_TRANSFER",
+      "feedback": {
+        "correct": "Boa observação: A capa pode reduzir a taxa de transferência sem anulá-la.",
+        "incorrect": "A capa pode reduzir a taxa de transferência sem anulá-la.",
+        "hint": "Escolha a função proporcional ao efeito descrito.",
+        "errorFocus": "SLEEVE_REDUCES_TRANSFER"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-15",
+      "statement": "A tampa de uma garrafa térmica fecha a abertura superior. Qual transferência ajuda a reduzir?",
+      "prompt": "A tampa de uma garrafa térmica fecha a abertura superior. Qual transferência ajuda a reduzir?",
+      "options": [
+        "Toda radiação solar no ambiente.",
+        "A condução em qualquer parte do recipiente a zero.",
+        "Convecção e troca de ar pela abertura.",
+        "A existência de diferença de temperatura."
+      ],
+      "correctAnswer": "Convecção e troca de ar pela abertura.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Toda radiação solar no ambiente.": [
+          "STOPPER_CONVECTION"
+        ],
+        "A condução em qualquer parte do recipiente a zero.": [
+          "STOPPER_CONVECTION"
+        ],
+        "A existência de diferença de temperatura.": [
+          "STOPPER_CONVECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "INTERPRET",
+      "contextFamily": "THERMOS_STOPPER",
+      "explanation": "Fechar a abertura reduz circulação e troca de ar, sem eliminar todas as transferências.",
+      "hint": "Pense no movimento do ar pela abertura.",
+      "errorFocus": "STOPPER_CONVECTION",
+      "feedback": {
+        "correct": "Boa observação: Fechar a abertura reduz circulação e troca de ar, sem eliminar todas as transferências.",
+        "incorrect": "Fechar a abertura reduz circulação e troca de ar, sem eliminar todas as transferências.",
+        "hint": "Pense no movimento do ar pela abertura.",
+        "errorFocus": "STOPPER_CONVECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-16",
+      "statement": "Uma tabela compara recipientes com e sem isolamento após o mesmo intervalo. Qual dado é essencial antes de atribuir diferença ao material?",
+      "prompt": "Uma tabela compara recipientes com e sem isolamento após o mesmo intervalo. Qual dado é essencial antes de atribuir diferença ao material?",
+      "options": [
+        "Comparar apenas a cor das tabelas.",
+        "Ignorar temperatura inicial.",
+        "Assumir que todos os recipientes têm o mesmo desenho.",
+        "Confirmar que condições iniciais, conteúdo e intervalo foram comparáveis."
+      ],
+      "correctAnswer": "Confirmar que condições iniciais, conteúdo e intervalo foram comparáveis.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Comparar apenas a cor das tabelas.": [
+          "FAIR_COMPARISON"
+        ],
+        "Ignorar temperatura inicial.": [
+          "FAIR_COMPARISON"
+        ],
+        "Assumir que todos os recipientes têm o mesmo desenho.": [
+          "FAIR_COMPARISON"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "THERMOMETER_TABLE",
+      "explanation": "Uma comparação justa considera variáveis de partida e tempo de observação.",
+      "hint": "Verifique se o teste alterou somente o fator estudado.",
+      "errorFocus": "FAIR_COMPARISON",
+      "feedback": {
+        "correct": "Boa observação: Uma comparação justa considera variáveis de partida e tempo de observação.",
+        "incorrect": "Uma comparação justa considera variáveis de partida e tempo de observação.",
+        "hint": "Verifique se o teste alterou somente o fator estudado.",
+        "errorFocus": "FAIR_COMPARISON"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-17",
+      "statement": "Uma jaqueta mantém ar preso em pequenas camadas entre tecidos. Como o ar imóvel contribui no modelo?",
+      "prompt": "Uma jaqueta mantém ar preso em pequenas camadas entre tecidos. Como o ar imóvel contribui no modelo?",
+      "options": [
+        "Pode reduzir a condução e a convecção intensa entre o corpo e o ambiente.",
+        "Aumenta sempre a circulação de ar pelo tecido.",
+        "Conduz calor melhor que qualquer metal.",
+        "Transforma radiação em som."
+      ],
+      "correctAnswer": "Pode reduzir a condução e a convecção intensa entre o corpo e o ambiente.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Aumenta sempre a circulação de ar pelo tecido.": [
+          "TRAPPED_AIR_INSULATION"
+        ],
+        "Conduz calor melhor que qualquer metal.": [
+          "TRAPPED_AIR_INSULATION"
+        ],
+        "Transforma radiação em som.": [
+          "TRAPPED_AIR_INSULATION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "CLASSIFY",
+      "contextFamily": "AIR_GAP_JACKET",
+      "explanation": "Camadas de ar pouco movimentadas podem reduzir a transferência térmica.",
+      "hint": "Considere o efeito de uma camada de ar quase parada.",
+      "errorFocus": "TRAPPED_AIR_INSULATION",
+      "feedback": {
+        "correct": "Boa observação: Camadas de ar pouco movimentadas podem reduzir a transferência térmica.",
+        "incorrect": "Camadas de ar pouco movimentadas podem reduzir a transferência térmica.",
+        "hint": "Considere o efeito de uma camada de ar quase parada.",
+        "errorFocus": "TRAPPED_AIR_INSULATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-18",
+      "statement": "Um coletor solar aquece um fluido que circula até um reservatório. Qual processo leva energia pelo fluido em movimento?",
+      "prompt": "Um coletor solar aquece um fluido que circula até um reservatório. Qual processo leva energia pelo fluido em movimento?",
+      "options": [
+        "Condução apenas pelo vácuo",
+        "Convecção",
+        "Radiação dentro de um sólido imóvel",
+        "Reflexão do som"
+      ],
+      "correctAnswer": "Convecção",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Condução apenas pelo vácuo": [
+          "FLUID_LOOP_CONVECTION"
+        ],
+        "Radiação dentro de um sólido imóvel": [
+          "FLUID_LOOP_CONVECTION"
+        ],
+        "Reflexão do som": [
+          "FLUID_LOOP_CONVECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COLLECTOR_FLUID_LOOP",
+      "explanation": "O movimento do fluido transporta energia térmica pelo sistema.",
+      "hint": "Observe o circuito do fluido.",
+      "errorFocus": "FLUID_LOOP_CONVECTION",
+      "feedback": {
+        "correct": "Boa observação: O movimento do fluido transporta energia térmica pelo sistema.",
+        "incorrect": "O movimento do fluido transporta energia térmica pelo sistema.",
+        "hint": "Observe o circuito do fluido.",
+        "errorFocus": "FLUID_LOOP_CONVECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-19",
+      "statement": "Uma maçaneta metálica parece mais fria que madeira no mesmo ambiente. Qual explicação é compatível com a sensação?",
+      "prompt": "Uma maçaneta metálica parece mais fria que madeira no mesmo ambiente. Qual explicação é compatível com a sensação?",
+      "options": [
+        "O metal contém mais frio que a madeira.",
+        "A madeira está necessariamente mais quente que o ambiente.",
+        "O metal transfere energia da mão mais rapidamente que a madeira.",
+        "A sensação prova que o metal tem temperatura menor."
+      ],
+      "correctAnswer": "O metal transfere energia da mão mais rapidamente que a madeira.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O metal contém mais frio que a madeira.": [
+          "COLD_NOT_SUBSTANCE"
+        ],
+        "A madeira está necessariamente mais quente que o ambiente.": [
+          "COLD_NOT_SUBSTANCE"
+        ],
+        "A sensação prova que o metal tem temperatura menor.": [
+          "COLD_NOT_SUBSTANCE"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "COLD_HAND_METAL",
+      "explanation": "A sensação depende da rapidez de transferência; não mostra, sozinha, temperaturas diferentes.",
+      "hint": "Separe sensação de medida de temperatura.",
+      "errorFocus": "COLD_NOT_SUBSTANCE",
+      "feedback": {
+        "correct": "Boa observação: A sensação depende da rapidez de transferência; não mostra, sozinha, temperaturas diferentes.",
+        "incorrect": "A sensação depende da rapidez de transferência; não mostra, sozinha, temperaturas diferentes.",
+        "hint": "Separe sensação de medida de temperatura.",
+        "errorFocus": "COLD_NOT_SUBSTANCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-20",
+      "statement": "Um esquema mostra uma superfície refletora em uma garrafa térmica. Qual efeito ela busca reduzir?",
+      "prompt": "Um esquema mostra uma superfície refletora em uma garrafa térmica. Qual efeito ela busca reduzir?",
+      "options": [
+        "A condução por contato direto em todos os pontos.",
+        "A convecção em qualquer fluido do ambiente.",
+        "A diferença de temperatura entre interior e exterior.",
+        "A transferência por radiação entre superfícies."
+      ],
+      "correctAnswer": "A transferência por radiação entre superfícies.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A condução por contato direto em todos os pontos.": [
+          "RADIATION_REFLECTION"
+        ],
+        "A convecção em qualquer fluido do ambiente.": [
+          "RADIATION_REFLECTION"
+        ],
+        "A diferença de temperatura entre interior e exterior.": [
+          "RADIATION_REFLECTION"
+        ]
+      },
+      "purpose": "PRACTICE",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "REFLECTIVE_THERMOS_SURFACE",
+      "explanation": "Superfícies refletoras podem reduzir parte da troca por radiação.",
+      "hint": "Associe reflexão de ondas à radiação térmica.",
+      "errorFocus": "RADIATION_REFLECTION",
+      "feedback": {
+        "correct": "Boa observação: Superfícies refletoras podem reduzir parte da troca por radiação.",
+        "incorrect": "Superfícies refletoras podem reduzir parte da troca por radiação.",
+        "hint": "Associe reflexão de ondas à radiação térmica.",
+        "errorFocus": "RADIATION_REFLECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-21",
+      "statement": "Uma equipe desenha uma caixa para manter um lanche na temperatura por mais tempo. Qual proposta usa o conceito de isolamento de modo proporcional?",
+      "prompt": "Uma equipe desenha uma caixa para manter um lanche na temperatura por mais tempo. Qual proposta usa o conceito de isolamento de modo proporcional?",
+      "options": [
+        "Adicionar uma camada de material isolante e comparar a mudança de temperatura em teste seguro.",
+        "Prometer que nenhuma energia será transferida.",
+        "Usar metal fino em contato direto para acelerar a troca.",
+        "Retirar a tampa para aumentar a circulação de ar."
+      ],
+      "correctAnswer": "Adicionar uma camada de material isolante e comparar a mudança de temperatura em teste seguro.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Prometer que nenhuma energia será transferida.": [
+          "SAFE_INSULATION_DESIGN"
+        ],
+        "Usar metal fino em contato direto para acelerar a troca.": [
+          "SAFE_INSULATION_DESIGN"
+        ],
+        "Retirar a tampa para aumentar a circulação de ar.": [
+          "SAFE_INSULATION_DESIGN"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DESIGN",
+      "contextFamily": "LUNCH_CONTAINER_LINER",
+      "explanation": "Uma camada isolante pode reduzir a transferência; o efeito precisa ser comparado em condições seguras.",
+      "hint": "Escolha uma proposta testável e sem promessa absoluta.",
+      "errorFocus": "SAFE_INSULATION_DESIGN",
+      "feedback": {
+        "correct": "Boa observação: Uma camada isolante pode reduzir a transferência; o efeito precisa ser comparado em condições seguras.",
+        "incorrect": "Uma camada isolante pode reduzir a transferência; o efeito precisa ser comparado em condições seguras.",
+        "hint": "Escolha uma proposta testável e sem promessa absoluta.",
+        "errorFocus": "SAFE_INSULATION_DESIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-22",
+      "statement": "Um coletor solar tem placa absorvedora e tubos com fluido. Como as partes contribuem juntas?",
+      "prompt": "Um coletor solar tem placa absorvedora e tubos com fluido. Como as partes contribuem juntas?",
+      "options": [
+        "Os tubos impedem toda transferência de calor.",
+        "A placa absorve radiação e o fluido em movimento transporta energia.",
+        "O fluido conduz energia do Sol por contato direto no espaço.",
+        "A placa produz energia sem receber radiação."
+      ],
+      "correctAnswer": "A placa absorve radiação e o fluido em movimento transporta energia.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Os tubos impedem toda transferência de calor.": [
+          "COLLECTOR_SYSTEM"
+        ],
+        "O fluido conduz energia do Sol por contato direto no espaço.": [
+          "COLLECTOR_SYSTEM"
+        ],
+        "A placa produz energia sem receber radiação.": [
+          "COLLECTOR_SYSTEM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "SOLAR_WATER_COLLECTOR",
+      "explanation": "A explicação articula absorção de radiação e transporte de energia pelo fluido.",
+      "hint": "Siga a energia da luz até o fluido.",
+      "errorFocus": "COLLECTOR_SYSTEM",
+      "feedback": {
+        "correct": "Boa observação: A explicação articula absorção de radiação e transporte de energia pelo fluido.",
+        "incorrect": "A explicação articula absorção de radiação e transporte de energia pelo fluido.",
+        "hint": "Siga a energia da luz até o fluido.",
+        "errorFocus": "COLLECTOR_SYSTEM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-23",
+      "statement": "Uma escola quer reduzir aquecimento solar em uma sala. Qual evidência ajudaria a escolher entre sombra externa e película refletora?",
+      "prompt": "Uma escola quer reduzir aquecimento solar em uma sala. Qual evidência ajudaria a escolher entre sombra externa e película refletora?",
+      "options": [
+        "Escolher pela cor preferida sem medir.",
+        "Usar a temperatura de outra cidade como único dado.",
+        "Comparar medições sob condições semelhantes antes e depois de cada solução.",
+        "Assumir que qualquer película elimina toda radiação."
+      ],
+      "correctAnswer": "Comparar medições sob condições semelhantes antes e depois de cada solução.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Escolher pela cor preferida sem medir.": [
+          "SOLUTION_TEST_EVIDENCE"
+        ],
+        "Usar a temperatura de outra cidade como único dado.": [
+          "SOLUTION_TEST_EVIDENCE"
+        ],
+        "Assumir que qualquer película elimina toda radiação.": [
+          "SOLUTION_TEST_EVIDENCE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "WINDOW_INSULATION_PROPOSAL",
+      "explanation": "Dados comparáveis ajudam a estimar o efeito sem prometer eliminação total.",
+      "hint": "Planeje uma comparação com o mesmo horário e condições semelhantes.",
+      "errorFocus": "SOLUTION_TEST_EVIDENCE",
+      "feedback": {
+        "correct": "Boa observação: Dados comparáveis ajudam a estimar o efeito sem prometer eliminação total.",
+        "incorrect": "Dados comparáveis ajudam a estimar o efeito sem prometer eliminação total.",
+        "hint": "Planeje uma comparação com o mesmo horário e condições semelhantes.",
+        "errorFocus": "SOLUTION_TEST_EVIDENCE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-24",
+      "statement": "Uma bolsa térmica tem camadas de espuma e uma superfície refletora. Qual explicação respeita os mecanismos?",
+      "prompt": "Uma bolsa térmica tem camadas de espuma e uma superfície refletora. Qual explicação respeita os mecanismos?",
+      "options": [
+        "A bolsa impede qualquer troca por todos os mecanismos.",
+        "A espuma é a fonte de energia do conteúdo.",
+        "A superfície refletora elimina a convecção em todo o ambiente.",
+        "A espuma reduz condução e a superfície pode reduzir parte da radiação."
+      ],
+      "correctAnswer": "A espuma reduz condução e a superfície pode reduzir parte da radiação.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A bolsa impede qualquer troca por todos os mecanismos.": [
+          "LAYERED_INSULATION"
+        ],
+        "A espuma é a fonte de energia do conteúdo.": [
+          "LAYERED_INSULATION"
+        ],
+        "A superfície refletora elimina a convecção em todo o ambiente.": [
+          "LAYERED_INSULATION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "THERMAL_BAG_LAYER",
+      "explanation": "Camadas podem atuar sobre diferentes mecanismos, mas ainda há trocas.",
+      "hint": "Associe cada camada a um mecanismo plausível.",
+      "errorFocus": "LAYERED_INSULATION",
+      "feedback": {
+        "correct": "Boa observação: Camadas podem atuar sobre diferentes mecanismos, mas ainda há trocas.",
+        "incorrect": "Camadas podem atuar sobre diferentes mecanismos, mas ainda há trocas.",
+        "hint": "Associe cada camada a um mecanismo plausível.",
+        "errorFocus": "LAYERED_INSULATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-25",
+      "statement": "Um modelo de coletor solar usa material escuro, cobertura transparente e tubos. Qual explicação integra as partes?",
+      "prompt": "Um modelo de coletor solar usa material escuro, cobertura transparente e tubos. Qual explicação integra as partes?",
+      "options": [
+        "A superfície absorve radiação, a cobertura pode reduzir perdas e o fluido transporta energia.",
+        "Todas as partes servem apenas para conduzir calor para fora.",
+        "A cobertura impede a entrada de radiação solar.",
+        "O fluido parado cria convecção sem diferença de temperatura."
+      ],
+      "correctAnswer": "A superfície absorve radiação, a cobertura pode reduzir perdas e o fluido transporta energia.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Todas as partes servem apenas para conduzir calor para fora.": [
+          "INTEGRATED_DEVICE_MODEL"
+        ],
+        "A cobertura impede a entrada de radiação solar.": [
+          "INTEGRATED_DEVICE_MODEL"
+        ],
+        "O fluido parado cria convecção sem diferença de temperatura.": [
+          "INTEGRATED_DEVICE_MODEL"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "TRANSFER",
+      "contextFamily": "SCHOOL_COLLECTOR_MODEL",
+      "explanation": "A descrição combina absorção, redução de perdas e transporte pelo fluido conforme o projeto.",
+      "hint": "Siga a entrada, retenção e transporte da energia.",
+      "errorFocus": "INTEGRATED_DEVICE_MODEL",
+      "feedback": {
+        "correct": "Boa observação: A descrição combina absorção, redução de perdas e transporte pelo fluido conforme o projeto.",
+        "incorrect": "A descrição combina absorção, redução de perdas e transporte pelo fluido conforme o projeto.",
+        "hint": "Siga a entrada, retenção e transporte da energia.",
+        "errorFocus": "INTEGRATED_DEVICE_MODEL"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-26",
+      "statement": "Dados de professor mostram que uma capa isolante diminuiu a variação de temperatura em 10 minutos. Qual conclusão é autorizada?",
+      "prompt": "Dados de professor mostram que uma capa isolante diminuiu a variação de temperatura em 10 minutos. Qual conclusão é autorizada?",
+      "options": [
+        "A capa manterá qualquer objeto na mesma temperatura para sempre.",
+        "A capa reduziu a variação nas condições e no intervalo testados.",
+        "O resultado prova que todas as capas funcionam igual.",
+        "O isolante não permite transferência nenhuma."
+      ],
+      "correctAnswer": "A capa reduziu a variação nas condições e no intervalo testados.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "A capa manterá qualquer objeto na mesma temperatura para sempre.": [
+          "DATA_SCOPE"
+        ],
+        "O resultado prova que todas as capas funcionam igual.": [
+          "DATA_SCOPE"
+        ],
+        "O isolante não permite transferência nenhuma.": [
+          "DATA_SCOPE"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "SAFE_LAB_DATASET",
+      "explanation": "A conclusão deve mencionar a condição testada e o intervalo observado.",
+      "hint": "Inclua o tempo e o conjunto testado.",
+      "errorFocus": "DATA_SCOPE",
+      "feedback": {
+        "correct": "Boa observação: A conclusão deve mencionar a condição testada e o intervalo observado.",
+        "incorrect": "A conclusão deve mencionar a condição testada e o intervalo observado.",
+        "hint": "Inclua o tempo e o conjunto testado.",
+        "errorFocus": "DATA_SCOPE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-27",
+      "statement": "Uma garrafa tem parede dupla, espaço entre paredes, revestimento refletor e tampa. Que análise é mais completa?",
+      "prompt": "Uma garrafa tem parede dupla, espaço entre paredes, revestimento refletor e tampa. Que análise é mais completa?",
+      "options": [
+        "Uma única camada torna todas as trocas impossíveis.",
+        "O espaço entre paredes aumenta necessariamente a convecção interna.",
+        "Cada elemento pode reduzir mecanismos diferentes, embora pontes e abertura ainda permitam trocas.",
+        "A tampa serve apenas para mudar a cor do líquido."
+      ],
+      "correctAnswer": "Cada elemento pode reduzir mecanismos diferentes, embora pontes e abertura ainda permitam trocas.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Uma única camada torna todas as trocas impossíveis.": [
+          "THERMOS_MULTIMECHANISM"
+        ],
+        "O espaço entre paredes aumenta necessariamente a convecção interna.": [
+          "THERMOS_MULTIMECHANISM"
+        ],
+        "A tampa serve apenas para mudar a cor do líquido.": [
+          "THERMOS_MULTIMECHANISM"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "THERMOS_DESIGN_CROSS_SECTION",
+      "explanation": "O equipamento reduz condução, convecção e radiação de maneiras distintas, mas não é perfeito.",
+      "hint": "Analise paredes, espaço, superfície e abertura.",
+      "errorFocus": "THERMOS_MULTIMECHANISM",
+      "feedback": {
+        "correct": "Boa observação: O equipamento reduz condução, convecção e radiação de maneiras distintas, mas não é perfeito.",
+        "incorrect": "O equipamento reduz condução, convecção e radiação de maneiras distintas, mas não é perfeito.",
+        "hint": "Analise paredes, espaço, superfície e abertura.",
+        "errorFocus": "THERMOS_MULTIMECHANISM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-28",
+      "statement": "Uma caixa de transporte usa espuma e tampa ajustada. Qual previsão pode ser testada com dados?",
+      "prompt": "Uma caixa de transporte usa espuma e tampa ajustada. Qual previsão pode ser testada com dados?",
+      "options": [
+        "A temperatura nunca mudará.",
+        "A espuma criará frio permanentemente.",
+        "A tampa fará a radiação solar desaparecer.",
+        "O conteúdo pode mudar de temperatura mais lentamente que em uma caixa sem essas características."
+      ],
+      "correctAnswer": "O conteúdo pode mudar de temperatura mais lentamente que em uma caixa sem essas características.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A temperatura nunca mudará.": [
+          "TESTABLE_PREDICTION"
+        ],
+        "A espuma criará frio permanentemente.": [
+          "TESTABLE_PREDICTION"
+        ],
+        "A tampa fará a radiação solar desaparecer.": [
+          "TESTABLE_PREDICTION"
+        ]
+      },
+      "purpose": "TRANSFER",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "COLD_BOX_DATA",
+      "explanation": "A previsão fala em mudança mais lenta e pode ser verificada por medições comparáveis.",
+      "hint": "Use “mais lentamente” e compare os dados.",
+      "errorFocus": "TESTABLE_PREDICTION",
+      "feedback": {
+        "correct": "Boa observação: A previsão fala em mudança mais lenta e pode ser verificada por medições comparáveis.",
+        "incorrect": "A previsão fala em mudança mais lenta e pode ser verificada por medições comparáveis.",
+        "hint": "Use “mais lentamente” e compare os dados.",
+        "errorFocus": "TESTABLE_PREDICTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-29",
+      "statement": "Qual correspondência entre mecanismo e descrição está correta?",
+      "prompt": "Qual correspondência entre mecanismo e descrição está correta?",
+      "options": [
+        "Condução: contato; convecção: fluido em movimento; radiação: ondas sem necessidade de meio material.",
+        "Condução: vazio; convecção: luz; radiação: contato sólido.",
+        "Condução: som; convecção: reflexão; radiação: atrito.",
+        "Os três mecanismos exigem movimento de sólido."
+      ],
+      "correctAnswer": "Condução: contato; convecção: fluido em movimento; radiação: ondas sem necessidade de meio material.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Condução: vazio; convecção: luz; radiação: contato sólido.": [
+          "LOCK_IN_MECHANISM_MATCH"
+        ],
+        "Condução: som; convecção: reflexão; radiação: atrito.": [
+          "LOCK_IN_MECHANISM_MATCH"
+        ],
+        "Os três mecanismos exigem movimento de sólido.": [
+          "LOCK_IN_MECHANISM_MATCH"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "DISTINGUISH",
+      "contextFamily": "LOCK_IN_THREE_MECHANISMS",
+      "explanation": "Cada mecanismo tem modo característico de transferência.",
+      "hint": "Associe contato, movimento de fluido e ondas.",
+      "errorFocus": "LOCK_IN_MECHANISM_MATCH",
+      "feedback": {
+        "correct": "Boa observação: Cada mecanismo tem modo característico de transferência.",
+        "incorrect": "Cada mecanismo tem modo característico de transferência.",
+        "hint": "Associe contato, movimento de fluido e ondas.",
+        "errorFocus": "LOCK_IN_MECHANISM_MATCH"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-30",
+      "statement": "Uma estudante afirma que um isolante “não deixa o calor passar”. Qual revisão é cientificamente mais cuidadosa?",
+      "prompt": "Uma estudante afirma que um isolante “não deixa o calor passar”. Qual revisão é cientificamente mais cuidadosa?",
+      "options": [
+        "O isolante cria uma barreira absoluta para sempre.",
+        "O isolante reduz a taxa de transferência nas condições descritas.",
+        "O isolante transforma calor em frio.",
+        "O isolante funciona sem depender do material ou da montagem."
+      ],
+      "correctAnswer": "O isolante reduz a taxa de transferência nas condições descritas.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "O isolante cria uma barreira absoluta para sempre.": [
+          "LOCK_IN_NO_ABSOLUTE"
+        ],
+        "O isolante transforma calor em frio.": [
+          "LOCK_IN_NO_ABSOLUTE"
+        ],
+        "O isolante funciona sem depender do material ou da montagem.": [
+          "LOCK_IN_NO_ABSOLUTE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "LOCK_IN_INSULATOR_LIMIT",
+      "explanation": "Isolamento é redução de transferência, não bloqueio total garantido.",
+      "hint": "Troque “não deixa passar” por uma afirmação proporcional.",
+      "errorFocus": "LOCK_IN_NO_ABSOLUTE",
+      "feedback": {
+        "correct": "Boa observação: Isolamento é redução de transferência, não bloqueio total garantido.",
+        "incorrect": "Isolamento é redução de transferência, não bloqueio total garantido.",
+        "hint": "Troque “não deixa passar” por uma afirmação proporcional.",
+        "errorFocus": "LOCK_IN_NO_ABSOLUTE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-31",
+      "statement": "Por que a energia do Sol pode chegar à Terra mesmo atravessando o espaço?",
+      "prompt": "Por que a energia do Sol pode chegar à Terra mesmo atravessando o espaço?",
+      "options": [
+        "Porque há contato sólido entre Sol e Terra.",
+        "Porque o espaço é um fluido em convecção.",
+        "Porque a radiação não precisa de um meio material para se propagar.",
+        "Porque o frio transporta a energia."
+      ],
+      "correctAnswer": "Porque a radiação não precisa de um meio material para se propagar.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Porque há contato sólido entre Sol e Terra.": [
+          "LOCK_IN_RADIATION_MEDIUM"
+        ],
+        "Porque o espaço é um fluido em convecção.": [
+          "LOCK_IN_RADIATION_MEDIUM"
+        ],
+        "Porque o frio transporta a energia.": [
+          "LOCK_IN_RADIATION_MEDIUM"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "EXPLAIN",
+      "contextFamily": "LOCK_IN_RADIATION",
+      "explanation": "Radiação pode se propagar no vácuo; condução e convecção requerem matéria.",
+      "hint": "Compare radiação com contato e movimento de fluidos.",
+      "errorFocus": "LOCK_IN_RADIATION_MEDIUM",
+      "feedback": {
+        "correct": "Boa observação: Radiação pode se propagar no vácuo; condução e convecção requerem matéria.",
+        "incorrect": "Radiação pode se propagar no vácuo; condução e convecção requerem matéria.",
+        "hint": "Compare radiação com contato e movimento de fluidos.",
+        "errorFocus": "LOCK_IN_RADIATION_MEDIUM"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-32",
+      "statement": "Um teste compara duas capas térmicas, mas usa conteúdos iniciais com temperaturas diferentes. Qual problema aparece?",
+      "prompt": "Um teste compara duas capas térmicas, mas usa conteúdos iniciais com temperaturas diferentes. Qual problema aparece?",
+      "options": [
+        "A diferença prova que ambas funcionam igual.",
+        "A temperatura inicial não influencia comparação alguma.",
+        "O teste demonstra que isolamento é impossível.",
+        "Não é possível atribuir a diferença somente às capas sem controlar a condição inicial."
+      ],
+      "correctAnswer": "Não é possível atribuir a diferença somente às capas sem controlar a condição inicial.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "A diferença prova que ambas funcionam igual.": [
+          "LOCK_IN_CONTROL_VARIABLE"
+        ],
+        "A temperatura inicial não influencia comparação alguma.": [
+          "LOCK_IN_CONTROL_VARIABLE"
+        ],
+        "O teste demonstra que isolamento é impossível.": [
+          "LOCK_IN_CONTROL_VARIABLE"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "JUSTIFY",
+      "contextFamily": "LOCK_IN_FAIR_TEST",
+      "explanation": "Uma comparação justa precisa considerar temperaturas e demais condições iniciais.",
+      "hint": "Procure uma variável que já começou diferente.",
+      "errorFocus": "LOCK_IN_CONTROL_VARIABLE",
+      "feedback": {
+        "correct": "Boa observação: Uma comparação justa precisa considerar temperaturas e demais condições iniciais.",
+        "incorrect": "Uma comparação justa precisa considerar temperaturas e demais condições iniciais.",
+        "hint": "Procure uma variável que já começou diferente.",
+        "errorFocus": "LOCK_IN_CONTROL_VARIABLE"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-33",
+      "statement": "Uma panela tem cabo metálico sem proteção térmica. Qual risco decorre da propriedade do material?",
+      "prompt": "Uma panela tem cabo metálico sem proteção térmica. Qual risco decorre da propriedade do material?",
+      "options": [
+        "O cabo pode conduzir energia da panela e aquecer.",
+        "O metal impede todo fluxo de energia.",
+        "A convecção só ocorre em metais sólidos.",
+        "A radiação torna o cabo necessariamente frio."
+      ],
+      "correctAnswer": "O cabo pode conduzir energia da panela e aquecer.",
+      "answerPosition": "A",
+      "misconceptions": {
+        "O metal impede todo fluxo de energia.": [
+          "LOCK_IN_SAFETY_CONDUCTION"
+        ],
+        "A convecção só ocorre em metais sólidos.": [
+          "LOCK_IN_SAFETY_CONDUCTION"
+        ],
+        "A radiação torna o cabo necessariamente frio.": [
+          "LOCK_IN_SAFETY_CONDUCTION"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "APPLY",
+      "contextFamily": "LOCK_IN_METAL_CABLE",
+      "explanation": "Metais conduzem calor; não se deve tocar em utensílios aquecidos.",
+      "hint": "Relacione o contato metálico à condução e à segurança.",
+      "errorFocus": "LOCK_IN_SAFETY_CONDUCTION",
+      "feedback": {
+        "correct": "Boa observação: Metais conduzem calor; não se deve tocar em utensílios aquecidos.",
+        "incorrect": "Metais conduzem calor; não se deve tocar em utensílios aquecidos.",
+        "hint": "Relacione o contato metálico à condução e à segurança.",
+        "errorFocus": "LOCK_IN_SAFETY_CONDUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-34",
+      "statement": "Qual frase explica melhor uma garrafa térmica sem prometer desempenho perfeito?",
+      "prompt": "Qual frase explica melhor uma garrafa térmica sem prometer desempenho perfeito?",
+      "options": [
+        "Ela elimina para sempre qualquer troca de calor.",
+        "Ela combina paredes, espaço, superfícies e fechamento para reduzir diferentes transferências de energia.",
+        "Ela funciona apenas porque o frio fica preso dentro.",
+        "Ela impede radiação e condução em qualquer condição."
+      ],
+      "correctAnswer": "Ela combina paredes, espaço, superfícies e fechamento para reduzir diferentes transferências de energia.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Ela elimina para sempre qualquer troca de calor.": [
+          "LOCK_IN_THERMOS_SYNTHESIS"
+        ],
+        "Ela funciona apenas porque o frio fica preso dentro.": [
+          "LOCK_IN_THERMOS_SYNTHESIS"
+        ],
+        "Ela impede radiação e condução em qualquer condição.": [
+          "LOCK_IN_THERMOS_SYNTHESIS"
+        ]
+      },
+      "purpose": "LOCK_IN",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "LOCK_IN_DEVICE_PURPOSE",
+      "explanation": "O equipamento reduz mecanismos diversos; ainda pode haver transferência ao longo do tempo.",
+      "hint": "Inclua mais de uma característica e use “reduzir”.",
+      "errorFocus": "LOCK_IN_THERMOS_SYNTHESIS",
+      "feedback": {
+        "correct": "Boa observação: O equipamento reduz mecanismos diversos; ainda pode haver transferência ao longo do tempo.",
+        "incorrect": "O equipamento reduz mecanismos diversos; ainda pode haver transferência ao longo do tempo.",
+        "hint": "Inclua mais de uma característica e use “reduzir”.",
+        "errorFocus": "LOCK_IN_THERMOS_SYNTHESIS"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-35",
+      "statement": "Que mecanismo transfere energia térmica por contato através de uma barra sólida?",
+      "prompt": "Que mecanismo transfere energia térmica por contato através de uma barra sólida?",
+      "options": [
+        "Convecção",
+        "Radiação",
+        "Condução",
+        "Evaporação"
+      ],
+      "correctAnswer": "Condução",
+      "answerPosition": "C",
+      "misconceptions": {
+        "Convecção": [
+          "REVIEW_CONDUCTION"
+        ],
+        "Radiação": [
+          "REVIEW_CONDUCTION"
+        ],
+        "Evaporação": [
+          "REVIEW_CONDUCTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_CONDUCTION",
+      "explanation": "A condução ocorre por contato entre partes do material.",
+      "hint": "Lembre-se da barra sólida.",
+      "errorFocus": "REVIEW_CONDUCTION",
+      "feedback": {
+        "correct": "Boa observação: A condução ocorre por contato entre partes do material.",
+        "incorrect": "A condução ocorre por contato entre partes do material.",
+        "hint": "Lembre-se da barra sólida.",
+        "errorFocus": "REVIEW_CONDUCTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-36",
+      "statement": "Que mecanismo envolve o movimento de um fluido transportando energia?",
+      "prompt": "Que mecanismo envolve o movimento de um fluido transportando energia?",
+      "options": [
+        "Condução",
+        "Reflexão",
+        "Solidificação",
+        "Convecção"
+      ],
+      "correctAnswer": "Convecção",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Condução": [
+          "REVIEW_CONVECTION"
+        ],
+        "Reflexão": [
+          "REVIEW_CONVECTION"
+        ],
+        "Solidificação": [
+          "REVIEW_CONVECTION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_CONVECTION",
+      "explanation": "O movimento de ar ou água transporta energia por convecção.",
+      "hint": "Pense nas setas de fluido em movimento.",
+      "errorFocus": "REVIEW_CONVECTION",
+      "feedback": {
+        "correct": "Boa observação: O movimento de ar ou água transporta energia por convecção.",
+        "incorrect": "O movimento de ar ou água transporta energia por convecção.",
+        "hint": "Pense nas setas de fluido em movimento.",
+        "errorFocus": "REVIEW_CONVECTION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-37",
+      "statement": "Que mecanismo permite que energia do Sol atravesse o espaço até a Terra?",
+      "prompt": "Que mecanismo permite que energia do Sol atravesse o espaço até a Terra?",
+      "options": [
+        "Radiação",
+        "Condução por contato",
+        "Convecção do espaço",
+        "Atrito"
+      ],
+      "correctAnswer": "Radiação",
+      "answerPosition": "A",
+      "misconceptions": {
+        "Condução por contato": [
+          "REVIEW_RADIATION"
+        ],
+        "Convecção do espaço": [
+          "REVIEW_RADIATION"
+        ],
+        "Atrito": [
+          "REVIEW_RADIATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "EASY",
+      "cognitiveProcess": "RECALL",
+      "contextFamily": "REVIEW_RADIATION",
+      "explanation": "A radiação não precisa de um meio material.",
+      "hint": "Recorde como a energia solar chega ao planeta.",
+      "errorFocus": "REVIEW_RADIATION",
+      "feedback": {
+        "correct": "Boa observação: A radiação não precisa de um meio material.",
+        "incorrect": "A radiação não precisa de um meio material.",
+        "hint": "Recorde como a energia solar chega ao planeta.",
+        "errorFocus": "REVIEW_RADIATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-38",
+      "statement": "Por que metais são usados em algumas partes de utensílios que precisam transferir calor?",
+      "prompt": "Por que metais são usados em algumas partes de utensílios que precisam transferir calor?",
+      "options": [
+        "Porque metais são isolantes perfeitos.",
+        "Porque muitos metais são bons condutores térmicos.",
+        "Porque metais não podem mudar de temperatura.",
+        "Porque o metal produz energia sem fonte."
+      ],
+      "correctAnswer": "Porque muitos metais são bons condutores térmicos.",
+      "answerPosition": "B",
+      "misconceptions": {
+        "Porque metais são isolantes perfeitos.": [
+          "REVIEW_CONDUCTOR"
+        ],
+        "Porque metais não podem mudar de temperatura.": [
+          "REVIEW_CONDUCTOR"
+        ],
+        "Porque o metal produz energia sem fonte.": [
+          "REVIEW_CONDUCTOR"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "MEDIUM",
+      "cognitiveProcess": "COMPARE",
+      "contextFamily": "REVIEW_CONDUCTOR",
+      "explanation": "Metais geralmente conduzem calor bem; o uso depende da função e da segurança.",
+      "hint": "Relacione material e rapidez de transferência.",
+      "errorFocus": "REVIEW_CONDUCTOR",
+      "feedback": {
+        "correct": "Boa observação: Metais geralmente conduzem calor bem; o uso depende da função e da segurança.",
+        "incorrect": "Metais geralmente conduzem calor bem; o uso depende da função e da segurança.",
+        "hint": "Relacione material e rapidez de transferência.",
+        "errorFocus": "REVIEW_CONDUCTOR"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-39",
+      "statement": "Uma tabela mostra que o conteúdo ainda mudou de temperatura dentro de uma caixa isolante. Qual conclusão é adequada?",
+      "prompt": "Uma tabela mostra que o conteúdo ainda mudou de temperatura dentro de uma caixa isolante. Qual conclusão é adequada?",
+      "options": [
+        "O teste prova que a caixa não tem utilidade.",
+        "O isolante bloqueou todo calor para sempre.",
+        "O isolamento reduziu a transferência, mas não a eliminou no intervalo observado.",
+        "A mudança ocorreu porque o frio entrou como substância."
+      ],
+      "correctAnswer": "O isolamento reduziu a transferência, mas não a eliminou no intervalo observado.",
+      "answerPosition": "C",
+      "misconceptions": {
+        "O teste prova que a caixa não tem utilidade.": [
+          "REVIEW_INSULATION"
+        ],
+        "O isolante bloqueou todo calor para sempre.": [
+          "REVIEW_INSULATION"
+        ],
+        "A mudança ocorreu porque o frio entrou como substância.": [
+          "REVIEW_INSULATION"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "EVALUATE",
+      "contextFamily": "REVIEW_INSULATION",
+      "explanation": "A variação continua possível; o isolante pode torná-la mais lenta.",
+      "hint": "Compare “reduziu” com “eliminou”.",
+      "errorFocus": "REVIEW_INSULATION",
+      "feedback": {
+        "correct": "Boa observação: A variação continua possível; o isolante pode torná-la mais lenta.",
+        "incorrect": "A variação continua possível; o isolante pode torná-la mais lenta.",
+        "hint": "Compare “reduziu” com “eliminou”.",
+        "errorFocus": "REVIEW_INSULATION"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    },
+    {
+      "id": "v4-science-heat-transfer-materials-ef07-40",
+      "statement": "Ao projetar uma solução térmica, que elementos devem orientar a escolha?",
+      "prompt": "Ao projetar uma solução térmica, que elementos devem orientar a escolha?",
+      "options": [
+        "Apenas cor e aparência.",
+        "Uma promessa de isolamento absoluto.",
+        "Somente o nome do equipamento.",
+        "Mecanismo de transferência, propriedades dos materiais, dados de teste e segurança."
+      ],
+      "correctAnswer": "Mecanismo de transferência, propriedades dos materiais, dados de teste e segurança.",
+      "answerPosition": "D",
+      "misconceptions": {
+        "Apenas cor e aparência.": [
+          "REVIEW_DESIGN"
+        ],
+        "Uma promessa de isolamento absoluto.": [
+          "REVIEW_DESIGN"
+        ],
+        "Somente o nome do equipamento.": [
+          "REVIEW_DESIGN"
+        ]
+      },
+      "purpose": "REVIEW",
+      "difficulty": "HARD",
+      "cognitiveProcess": "SYNTHESIZE",
+      "contextFamily": "REVIEW_THERMAL_DESIGN",
+      "explanation": "Uma escolha fundamentada relaciona mecanismo, material, evidência e condições seguras.",
+      "hint": "Reúna ciência, teste e segurança.",
+      "errorFocus": "REVIEW_DESIGN",
+      "feedback": {
+        "correct": "Boa observação: Uma escolha fundamentada relaciona mecanismo, material, evidência e condições seguras.",
+        "incorrect": "Uma escolha fundamentada relaciona mecanismo, material, evidência e condições seguras.",
+        "hint": "Reúna ciência, teste e segurança.",
+        "errorFocus": "REVIEW_DESIGN"
+      },
+      "accessibility": {
+        "textOnly": true,
+        "supports": [
+          "Apresentar diagramas com alto contraste, rótulos em texto e padrões além de cores para identificar condução, convecção e radiação; descrever animações verbalmente.",
+          "Fornecer tabelas de dados em formato legível por leitor de tela, unidades explícitas e calculadora quando necessário; aceitar explicação oral, escrita, diagramada ou por comunicação alternativa.",
+          "Usar somente modelos frios, dados já coletados ou demonstração conduzida por adulto; não exigir toque em recipientes quentes, chama, eletricidade de rede ou equipamentos pressurizados."
+        ]
+      },
+      "authored": true
+    }
+  ]
+}
