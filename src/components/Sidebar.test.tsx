@@ -131,9 +131,42 @@ describe('Sidebar', () => {
     expect(
       screen.getByRole('region', { name: 'Educação Inclusiva' }),
     ).toBeTruthy();
+    const inclusiveGroup = screen.getByRole('button', {
+      name: 'Educação Inclusiva',
+    });
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Painel Inclusivo' }),
+    ).toBeNull();
+
+    fireEvent.click(inclusiveGroup);
+
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('true');
     expect(
       screen.getByRole('link', { name: 'Painel Inclusivo' }).getAttribute('href'),
     ).toBe('/inclusive-education');
+    const inclusiveLinks = [
+      'Painel Inclusivo',
+      'PEI dos Alunos',
+      'AEE / PAEE',
+      'Biblioteca de Atividades',
+      'Exercícios Interativos',
+      'Materiais para Download',
+      'Evolução Pedagógica',
+      'Vídeos didáticos',
+    ].map((label) => screen.getByRole('link', { name: label }));
+    expect(
+      new Set(
+        inclusiveLinks.map((link) => link.querySelector('svg')?.outerHTML),
+      ).size,
+    ).toBe(inclusiveLinks.length);
+
+    fireEvent.click(inclusiveGroup);
+
+    expect(inclusiveGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Painel Inclusivo' }),
+    ).toBeNull();
 
     cleanup();
     renderSidebar({
