@@ -5,6 +5,7 @@
   "records": [
     {
       "officialCode": "EI01CG01",
+      "verificationId": "BNCC_EI01CG01_MEC_P049_V1",
       "stage": "EDUCACAO_INFANTIL",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "componentCode": "CG",
@@ -19,7 +20,7 @@
       },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
-      "mappingStatus": "CANONICAL_GAP",
+      "mappingStatus": "HIERARCHY_ONLY",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "AUTHOR_EXPERIENTIAL_EVIDENCE_NOT_TRADITIONAL_CHILD_QUIZ",
@@ -27,6 +28,7 @@
     },
     {
       "officialCode": "EI01CG02",
+      "verificationId": "BNCC_EI01CG02_MEC_P049_V1",
       "stage": "EDUCACAO_INFANTIL",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "componentCode": "CG",
@@ -49,6 +51,7 @@
     },
     {
       "officialCode": "EI01CG03",
+      "verificationId": "BNCC_EI01CG03_MEC_P049_V1",
       "stage": "EDUCACAO_INFANTIL",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "componentCode": "CG",
@@ -71,6 +74,7 @@
     },
     {
       "officialCode": "EI01CG04",
+      "verificationId": "BNCC_EI01CG04_MEC_P049_V1",
       "stage": "EDUCACAO_INFANTIL",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "componentCode": "CG",
@@ -90,6 +94,54 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "AUTHOR_EXPERIENTIAL_EVIDENCE_NOT_TRADITIONAL_CHILD_QUIZ",
       "evidenceCheckedAt": "2026-10-16"
+    },
+    {
+      "officialCode": "EI02CG01",
+      "verificationId": "BNCC_EI02CG01_MEC_P049_V1",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "componentCode": "CG",
+      "ageRange": "Crianças bem pequenas, 1 ano e 7 meses a 3 anos e 11 meses",
+      "fieldOfExperience": "Corpo, gestos e movimentos",
+      "descriptor": "Apropriar-se de gestos e movimentos de sua cultura no cuidado de si e nos jogos e brincadeiras.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 49
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "HIERARCHY_ONLY",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHOR_EXPERIENTIAL_EVIDENCE_NOT_TRADITIONAL_CHILD_QUIZ",
+      "evidenceCheckedAt": "2026-10-18",
+      "evidenceSource": "Official BNCC 2018 PDF, page 49; descriptor checked against the official code row and local catalog."
+    },
+    {
+      "officialCode": "EI03CG01",
+      "verificationId": "BNCC_EI03CG01_MEC_P049_V1",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "componentCode": "CG",
+      "ageRange": "Crianças pequenas, 4 anos a 5 anos e 11 meses",
+      "fieldOfExperience": "Corpo, gestos e movimentos",
+      "descriptor": "Criar com o corpo formas diversificadas de expressão de sentimentos, sensações e emoções, tanto nas situações do cotidiano quanto em brincadeiras, dança, teatro, música.",
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 49
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "HIERARCHY_ONLY",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHOR_EXPERIENTIAL_EVIDENCE_NOT_TRADITIONAL_CHILD_QUIZ",
+      "evidenceCheckedAt": "2026-10-18",
+      "evidenceSource": "Official BNCC 2018 PDF, page 49; descriptor checked against the official code row and local catalog."
     },
     {
       "verificationId": "BNCC_EF06CI01_MEC_P346_V1",
@@ -4490,7 +4542,7 @@
       "mappingStatus": "CANONICAL_GAP",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
       "studentPublicationStatus": "STAGING_INACTIVE",
-      "contentDecision": "NO_AUTHORING_PACKAGE_UNTIL_CANONICAL_REVIEW",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-16"
     },
     {
@@ -7716,7 +7768,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7734,7 +7791,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7752,7 +7814,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7770,7 +7837,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Distinguir as letras do alfabeto de outros sinais gráficos.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7788,7 +7860,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Reconhecer o sistema de escrita alfabética como representação dos sons da fala.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7806,7 +7883,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Segmentar oralmente palavras em sílabas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7824,7 +7906,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Identificar fonemas e sua representação por letras.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7842,7 +7929,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Relacionar elementos sonoros (sílabas, fonemas, partes de palavras) com sua representação escrita.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7860,7 +7952,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas iniciais.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7878,7 +7975,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Nomear as letras do alfabeto e recitá-lo na ordem das letras.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7896,7 +7998,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, maiúsculas e minúsculas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7914,7 +8021,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Reconhecer a separação das palavras, na escrita, por espaços em branco.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7932,7 +8044,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas mediais e finais.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7950,7 +8067,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Identificar outros sinais no texto além das letras, como pontos finais, de interrogação e exclamação e seus efeitos na entonação.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7968,7 +8090,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Agrupar palavras pelo critério de aproximação de significado (sinonímia) e separar palavras pelo critério de oposição de significado (antonímia).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -7986,7 +8113,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8004,7 +8136,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8022,7 +8159,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Registrar, em colaboração com os colegas e com a ajuda do professor, cantigas, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8040,7 +8182,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8058,7 +8205,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Identificar e reproduzir, em listas, agendas, calendários, regras, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 107 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 107
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 107 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8076,7 +8228,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Escrever, em colaboração com os colegas e com a ajuda do professor, listas de regras e regulamentos que organizam a vida na comunidade escolar, dentre outros gêneros do campo da atuação cidadã, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 109 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 109
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 109 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8094,7 +8251,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, diagramas, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 111 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 111
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 111 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8112,7 +8274,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, entrevistas, curiosidades, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 111 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 111
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 111 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8130,7 +8297,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Identificar e reproduzir, em enunciados de tarefas escolares, diagramas, entrevistas, curiosidades, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8148,7 +8320,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Produzir, tendo o professor como escriba, recontagens de histórias lidas pelo professor, histórias imaginadas ou baseadas em livros de imagens, observando a forma de composição de textos narrativos (personagens, enredo, tempo e espaço).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8166,7 +8343,12 @@
       "componentCode": "LP",
       "gradeOrRange": "01",
       "descriptor": "Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8184,7 +8366,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Utilizar, ao produzir o texto, grafia correta de palavras conhecidas ou com estruturas silábicas já dominadas, letras maiúsculas em início de frases e em substantivos próprios, segmentação entre as palavras, ponto final, ponto de interrogação e ponto de exclamação.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8202,7 +8389,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8220,7 +8412,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 101 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 101
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 101 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8238,7 +8435,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, identificando que existem vogais em todas as sílabas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8256,7 +8458,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Ler e escrever corretamente palavras com marcas de nasalidade (til, m, n).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8274,7 +8481,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Perceber o princípio acrofônico que opera nos nomes das letras do alfabeto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8292,7 +8504,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Escrever palavras, frases, textos curtos nas formas imprensa e cursiva.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8310,7 +8527,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Segmentar corretamente as palavras ao escrever frases e textos.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8328,7 +8550,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Usar adequadamente ponto final, ponto de interrogação e ponto de exclamação.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8346,7 +8573,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Identificar sinônimos de palavras de texto lido, determinando a diferença de sentido entre eles, e formar antônimos de palavras encontradas em texto lido pelo acréscimo do prefixo de negação in-/im-.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8364,7 +8596,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Formar o aumentativo e o diminutivo de palavras com os sufixos -ão e -inho/-zinho.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 103 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 103
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 103 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8382,7 +8619,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Ler e compreender com certa autonomia cantigas, letras de canção, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8400,7 +8642,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Planejar e produzir bilhetes e cartas, em meio impresso e/ou digital, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8418,7 +8665,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Planejar e produzir pequenos relatos de observação de processos, de fatos, de experiências pessoais, mantendo as características do gênero, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8436,7 +8688,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Cantar cantigas e canções, obedecendo ao ritmo e à melodia.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 105 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 105
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 105 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8454,7 +8711,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Identificar e reproduzir, em bilhetes, recados, avisos, cartas, e-mails , receitas (modo de fazer), relatos (digitais ou impressos), a formatação e diagramação específica de cada um desses gêneros.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 107 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 107
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 107 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8472,7 +8734,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Identificar e reproduzir, em relatos de experiências pessoais, a sequência dos fatos, utilizando expressões que marquem a passagem do tempo (“antes”, “depois”, “ontem”, “hoje”, “amanhã”, “outro dia”, “antigamente”, “há muito tempo” etc.), e o nível de informatividade necessário.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 107 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 107
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 107 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8490,7 +8757,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Planejar e produzir cartazes e folhetos para divulgar eventos da escola ou da comunidade, utilizando linguagem persuasiva e elementos textuais e visuais (tamanho da letra, leiaute, imagens) adequados ao gênero, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 109 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 109
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 109 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8508,7 +8780,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, notícias curtas para público infantil, para compor jornal falado que possa ser repassado oralmente ou em meio digital, em áudio ou vídeo, dentre outros gêneros do campo jornalístico, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 109 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 109
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 109 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8526,7 +8803,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Reconhecer a função de textos utilizados para apresentar informações coletadas em atividades de pesquisa (enquetes, pequenas entrevistas, registros de experimentações).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 111 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 111
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 111 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8544,7 +8826,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Explorar, com a mediação do professor, textos informativos de diferentes ambientes digitais de pesquisa, conhecendo suas possibilidades.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 111 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 111
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 111 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8562,7 +8849,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, pequenos relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, dentre outros gêneros do campo investigativo, digitais ou impressos, considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 111 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 111
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 111 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8580,7 +8872,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Planejar e produzir, com certa autonomia, pequenos registros de observação de resultados de pesquisa, coerentes com um tema investigado.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 111 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 111
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 111 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8598,7 +8895,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, relatos de experimentos, registros de observação, entrevistas, dentre outros gêneros do campo investigativo, que possam ser repassados oralmente por meio de ferramentas digitais, em áudio ou vídeo, considerando a situação comunicativa e o tema/assunto/ finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 111 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 111
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 111 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8616,7 +8918,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Identificar e reproduzir, em relatos de experimentos, entrevistas, verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica de cada um desses gêneros, inclusive em suas versões orais.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8634,7 +8941,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Ler e compreender, com certa autonomia, textos literários, de gêneros variados, desenvolvendo o gosto pela leitura.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8652,7 +8964,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Reescrever textos narrativos literários lidos pelo professor.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8670,7 +8987,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução, além de palavras, expressões e frases que caracterizam personagens e ambientes.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8688,7 +9010,12 @@
       "componentCode": "LP",
       "gradeOrRange": "02",
       "descriptor": "Observar, em poemas visuais, o formato do texto na página, as ilustrações e outros efeitos visuais.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 113 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 113
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 113 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8706,7 +9033,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Ler e escrever palavras com correspondências regulares contextuais entre grafemas e fonemas – c/qu; g/gu; r/rr; s/ss; o (e não u) e e (e não i) em sílaba átona em final de palavra – e com marcas de nasalidade (til, m, n).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 117 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 117
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 117 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8724,7 +9056,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 117 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 117
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 117 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8742,7 +9079,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Ler e escrever corretamente palavras com os dígrafos lh, nh, ch.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 117 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 117
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 117 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8760,7 +9102,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Usar acento gráfico (agudo ou circunflexo) em monossílabos tônicos terminados em a, e, o e em palavras oxítonas terminadas em a, e, o, seguidas ou não de s.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8778,7 +9125,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar o número de sílabas de palavras, classificando-as em monossílabas, dissílabas, trissílabas e polissílabas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8796,7 +9148,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar a sílaba tônica em palavras, classificando-as em oxítonas, paroxítonas e proparoxítonas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8814,7 +9171,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar a função na leitura e usar na escrita ponto final, ponto de interrogação, ponto de exclamação e, em diálogos (discurso direto), dois-pontos e travessão.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8832,7 +9194,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar e diferenciar, em textos, substantivos e verbos e suas funções na oração: agente, ação, objeto da ação.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8850,7 +9217,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar, em textos, adjetivos e sua função de atribuição de propriedades aos substantivos.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 121 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 121
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 121 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8868,7 +9240,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Reconhecer prefixos e sufixos produtivos na formação de palavras derivadas de substantivos, de adjetivos e de verbos, utilizando-os para compreender palavras e para formar novas palavras.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 121 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 121
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 121 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8886,7 +9263,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Ler e compreender, com autonomia, textos injuntivos instrucionais (receitas, instruções de montagem etc.), com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico- visuais, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 121 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 121
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 121 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8904,7 +9286,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Ler e compreender, com autonomia, cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 123 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 123
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 123 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8922,7 +9309,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Planejar e produzir cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções dos gêneros carta e diário e considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 123 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 123
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 123 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8940,7 +9332,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Planejar e produzir textos injuntivos instrucionais, com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráfico-visuais, considerando a situação comunicativa e o tema/ assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 123 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 123
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 123 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8958,7 +9355,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Assistir, em vídeo digital, a programa de culinária infantil e, a partir dele, planejar e produzir receitas em áudio ou vídeo.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 123 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 123
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 123 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8976,7 +9378,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar e reproduzir, em textos injuntivos instrucionais (receitas, instruções de montagem, digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e a diagramação específica dos textos desses gêneros (lista de ingredientes ou materiais e instruções de execução – \"modo de fazer\").",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 125 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 125
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 125 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -8994,7 +9401,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar e reproduzir, em gêneros epistolares e diários, a formatação própria desses textos (relatos de acontecimentos, expressão de vivências, emoções, opiniões ou críticas) e a diagramação específica dos textos desses gêneros (data, saudação, corpo do texto, despedida, assinatura).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 125 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 125
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 125 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9012,7 +9424,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Ler e compreender, com autonomia, cartas dirigidas a veículos da mídia impressa ou digital (cartas de leitor e de reclamação a jornais, revistas) e notícias, dentre outros gêneros do campo jornalístico, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 125 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 125
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 125 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9030,7 +9447,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar e discutir o propósito do uso de recursos de persuasão (cores, imagens, escolha de palavras, jogo de palavras, tamanho de letras) em textos publicitários e de propaganda, como elementos de convencimento.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 127 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 127
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 127 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9048,7 +9470,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Produzir cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), dentre outros gêneros do campo político-cidadão, com opiniões e críticas, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 127 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 127
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 127 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9066,7 +9493,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Produzir anúncios publicitários, textos de campanhas de conscientização destinados ao público infantil, observando os recursos de persuasão utilizados nos textos publicitários e de propaganda (cores, imagens, slogan , escolha de palavras, jogo de palavras, tamanho e tipo de letras, diagramação).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 127 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 127
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 127 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9084,7 +9516,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Planejar e produzir, em colaboração com os colegas, telejornal para público infantil com algumas notícias e textos de campanhas que possam ser repassados oralmente ou em meio digital, em áudio ou vídeo, considerando a situação comunicativa, a organização específica da fala nesses gêneros e o tema/assunto/ finalidade dos textos.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 129 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 129
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 129 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9102,7 +9539,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Analisar o uso de adjetivos em cartas dirigidas a veículos da mídia impressa ou digital (cartas do leitor ou de reclamação a jornais ou revistas), digitais ou impressas.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 129 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 129
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 129 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9120,7 +9562,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Ler/ouvir e compreender, com autonomia, relatos de observações e de pesquisas em fontes de informações, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 131 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 131
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 131 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9138,7 +9585,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Planejar e produzir textos para apresentar resultados de observações e de pesquisas em fontes de informações, incluindo, quando pertinente, imagens, diagramas e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 131 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 131
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 131 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9156,7 +9608,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Identificar e reproduzir, em relatórios de observação e pesquisa, a formatação e diagramação específica desses gêneros (passos ou listas de itens, tabelas, ilustrações, gráficos, resumo dos resultados), inclusive em suas versões orais.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 133 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 133
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 133 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9174,7 +9631,12 @@
       "componentCode": "LP",
       "gradeOrRange": "03",
       "descriptor": "Recitar cordel e cantar repentes e emboladas, observando as rimas e obedecendo ao ritmo e à melodia.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 135 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 135
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 135 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9192,7 +9654,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Grafar palavras utilizando regras de correspondência fonema- -grafema regulares diretas e contextuais.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 117 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 117
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 117 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9210,7 +9677,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Ler e escrever, corretamente, palavras com sílabas VV e CVV em casos nos quais a combinação VV (ditongo) é reduzida na língua oral (ai, ei, ou).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 117 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 117
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 117 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9228,7 +9700,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Localizar palavras no dicionário para esclarecer significados, reconhecendo o significado mais plausível para o contexto que deu origem à consulta.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 117 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 117
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 117 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9246,7 +9723,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Usar acento gráfico (agudo ou circunflexo) em paroxítonas terminadas em -i(s), -l, -r, -ão(s).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9264,7 +9746,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar a função na leitura e usar, adequadamente, na escrita ponto final, de interrogação, de exclamação, dois-pontos e travessão em diálogos (discurso direto), vírgula em enumerações e em separação de vocativo e de aposto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9282,7 +9769,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar em textos e usar na produção textual a concordância entre substantivo ou pronome pessoal e verbo (concordância verbal).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 119 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 119
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 119 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9300,7 +9792,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar em textos e usar na produção textual a concordância entre artigo, substantivo e adjetivo (concordância no grupo nominal).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 121 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 121
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 121 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9318,7 +9815,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Reconhecer e grafar, corretamente, palavras derivadas com os sufixos -agem, -oso, -eza, -izar/-isar (regulares morfológicas).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 121 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 121
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 121 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9336,7 +9838,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Ler e compreender, com autonomia, boletos, faturas e carnês, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero (campos, itens elencados, medidas de consumo, código de barras) e considerando a situação comunicativa e a finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 121 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 121
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 121 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9354,7 +9861,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Ler e compreender, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 123 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 123
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 123 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9372,7 +9884,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Planejar e produzir, com autonomia, cartas pessoais de reclamação, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e com a estrutura própria desses textos (problema, opinião, argumentos), considerando a situação comunicativa e o tema/assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 123 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 123
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 123 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9390,7 +9907,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Assistir, em vídeo digital, a programa infantil com instruções de montagem, de jogos e brincadeiras e, a partir dele, planejar e produzir tutoriais em áudio ou vídeo.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 123 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 123
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 123 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9408,7 +9930,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar e reproduzir, em textos injuntivos instrucionais (instruções de jogos digitais ou impressos), a formatação própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e formato específico dos textos orais ou escritos desses gêneros (lista/ apresentação de materiais e instruções/passos de jogo).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 125 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 125
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 125 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9426,7 +9953,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar, em notícias, fatos, participantes, local e momento/tempo da ocorrência do fato noticiado.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 125 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 125
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 125 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9444,7 +9976,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Distinguir fatos de opiniões/sugestões em textos (informativos, jornalísticos, publicitários etc.).",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 127 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 127
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 127 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9462,7 +9999,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Produzir notícias sobre fatos ocorridos no universo escolar, digitais ou impressas, para o jornal da escola, noticiando os fatos e seus atores e comentando decorrências, de acordo com as convenções do gênero notícia e considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 127 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 127
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 127 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9480,7 +10022,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Produzir jornais radiofônicos ou televisivos e entrevistas veiculadas em rádio, TV e na internet, orientando-se por roteiro ou texto e demonstrando conhecimento dos gêneros jornal falado/televisivo e entrevista.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 129 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 129
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 129 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9498,7 +10045,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Analisar o padrão entonacional e a expressão facial e corporal de âncoras de jornais radiofônicos ou televisivos e de entrevistadores/entrevistados.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 129 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 129
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 129 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9516,7 +10068,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Ler e compreender textos expositivos de divulgação científica para crianças, considerando a situação comunicativa e o tema/ assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 131 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 131
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 131 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9534,7 +10091,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Reconhecer a função de gráficos, diagramas e tabelas em textos, como forma de apresentação de dados e informações.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 131 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 131
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 131 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9552,7 +10114,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Planejar e produzir textos sobre temas de interesse, com base em resultados de observações e pesquisas em fontes de informações impressas ou eletrônicas, incluindo, quando pertinente, imagens e gráficos ou tabelas simples, considerando a situação comunicativa e o tema/assunto do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 131 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 131
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 131 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9570,7 +10137,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Planejar e produzir, com certa autonomia, verbetes de enciclopédia infantil, digitais ou impressos, considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 131 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 131
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 131 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9588,7 +10160,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar e reproduzir, em verbetes de enciclopédia infantil, digitais ou impressos, a formatação e diagramação específica desse gênero (título do verbete, definição, detalhamento, curiosidades), considerando a situação comunicativa e o tema/ assunto/finalidade do texto.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 133 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 133
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 133 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9606,7 +10183,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar e reproduzir, em seu formato, tabelas, diagramas e gráficos em relatórios de observação e pesquisa, como forma de apresentação de dados e informações.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 133 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 133
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 133 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9624,7 +10206,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Representar cenas de textos dramáticos, reproduzindo as falas das personagens, de acordo com as rubricas de interpretação e movimento indicadas pelo autor.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 135 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 135
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 135 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9642,7 +10229,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Observar, em poemas concretos, o formato, a distribuição e a diagramação das letras do texto na página.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 137 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 137
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 137 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -9660,7 +10252,12 @@
       "componentCode": "LP",
       "gradeOrRange": "04",
       "descriptor": "Identificar, em textos dramáticos, marcadores das falas das personagens e de cena.",
-      "officialSource": { "id": "BNCC_EI_EF_2018", "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018", "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf", "page": 137 },
+      "officialSource": {
+        "id": "BNCC_EI_EF_2018",
+        "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+        "page": 137
+      },
       "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE_AFTER_PAGE_OFFSET_NORMALIZATION",
       "sourcePageNote": "O catálogo local registra a habilidade na página 137 da BNCC; a ocorrência foi conferida no PDF oficial do MEC.",
       "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
@@ -12682,6 +13279,29 @@
       "studentPublicationStatus": "STAGING_INACTIVE",
       "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
       "evidenceCheckedAt": "2026-10-17"
+    },
+    {
+      "verificationId": "BNCC_EM13CHS103_MEC_P136_V1",
+      "officialCode": "EM13CHS103",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "componentCode": "CHS",
+      "gradeOrRange": "1-3",
+      "descriptor": "Elaborar hipóteses, selecionar evidências e compor argumentos relativos a processos políticos, econômicos, sociais, ambientais, culturais e epistemológicos, com base na sistematização de dados e informações de natureza qualitativa e quantitativa (expressões artísticas, textos filosóficos e sociológicos, documentos históricos, gráficos, mapas, tabelas etc.).",
+      "officialSource": {
+        "id": "BNCC_EM_2018",
+        "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+        "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+        "page": 136
+      },
+      "localCatalogMatch": "EXACT_DESCRIPTOR_AND_CODE",
+      "sourcePageNote": "Descritor conferido no documento oficial do MEC para o Ensino Médio; a página e a URL correspondem ao catálogo BNCC local.",
+      "technicalVerificationStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+      "mappingStatus": "CANONICAL_GAP",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "studentPublicationStatus": "STAGING_INACTIVE",
+      "contentDecision": "AUTHORING_CONTEXT_ONLY_UNTIL_CANONICAL_REVIEW",
+      "evidenceCheckedAt": "2026-10-18"
     }
   ]
 }

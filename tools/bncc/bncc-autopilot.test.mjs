@@ -52,7 +52,7 @@ describe('BNCC autopilot', () => {
 
   it('discovers source-verified declarative authoring packages and validates their complete paths', () => {
     const specs = discoverAuthoredCurriculumSpecs();
-    expect([...specs.keys()]).toEqual(['EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01GE01', 'EF01HI01', 'EF01LP01', 'EF01LP02']);
+    expect([...specs.keys()]).toEqual(['EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01GE01', 'EF01HI01', 'EF01LP01', 'EF01LP02', 'EF02CI01']);
     for (const officialCode of specs.keys()) {
       const pack = buildAuthoredCurriculumPack(officialCode);
       const validation = validateAuthoredCurriculumPack(pack);

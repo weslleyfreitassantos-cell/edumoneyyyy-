@@ -1,0 +1,375 @@
+{
+  "schemaVersion": "tec-escola.bncc.legacy-package-recovery.v1",
+  "campaign": "TECESCOLA_BNCC_AUTOPILOT_RECOVERY_AND_SCALE",
+  "snapshotDate": "2026-10-18",
+  "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+  "humanApprovalGranted": false,
+  "publicationAuthorized": false,
+  "packages": [
+    {
+      "officialCode": "EF01CI01",
+      "file": "content/adaptive/tec-escola-core-v5/science-materials-conscious-use-fi-v8.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "concept-coverage-and-progressive-explanation",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "answer-position-diversity",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Mantida a explicação progressiva existente e complementada com uma síntese acessível no campo padrão da aula.",
+        "Criadas etapas observáveis para a investigação segura de materiais.",
+        "Distribuídas as posições das respostas corretas sem alterar alternativas ou gabaritos."
+      ],
+      "questionCount": 40,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF01CI02",
+      "file": "content/adaptive/tec-escola-core-v5/v1-science-body-parts-fi.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Tornadas explícitas as etapas da representação corporal já proposta.",
+        "Acrescentados apoios de acesso e estratégias de retomada sem exigir que todos expressem ou movimentem o corpo da mesma forma."
+      ],
+      "questionCount": 40,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF01CI04",
+      "file": "content/adaptive/tec-escola-core-v5/v1-science-human-diversity-fi.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Mantido o uso de personagens fictícios e explicitados passos de observação e convivência sem comparação entre estudantes.",
+        "Acrescentados apoios de acessibilidade e recuperação alinhados ao objetivo de respeito às diferenças."
+      ],
+      "questionCount": 40,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF01CI05",
+      "file": "content/adaptive/tec-escola-core-v5/v1-science-time-scales-fi.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Explicitadas etapas de trabalho com rotina e calendário fictícios.",
+        "Acrescentadas alternativas visuais e de resposta para diferentes formas de leitura e organização temporal."
+      ],
+      "questionCount": 40,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI01",
+      "file": "content/adaptive/tec-escola-core-v5/v31-history-population-groups-expansion-v31.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Substituída atividade genérica por investigação de fontes sobre grupos, migrações e formação municipal, sem requisitar histórias familiares.",
+        "Personalizados critérios de síntese e apoios de acessibilidade."
+      ],
+      "questionCount": 190,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI02",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-time-sources.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Reescrito o exemplo para selecionar fontes e registrar data, procedência e limites.",
+        "Atividade passou a exigir comparação de fontes de naturezas distintas."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI03",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-local-perspectives.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade diferencia perspectivas situadas sem tratar grupos como homogêneos.",
+        "Exemplo e recuperação foram alinhados à comparação de pontos de vista."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI04",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-local-heritage.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Exemplo e prática agora investigam razões e vozes envolvidas no reconhecimento de patrimônio.",
+        "Mantida a distinção entre conteúdo autoral e vínculo canônico não reivindicado."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI05",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-local-landmarks.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Exemplo distingue marco histórico de objeto antigo e apresenta significado situado.",
+        "Atividade agora pede fonte, contexto, interpretação e limite."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI06",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-memory-records.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade analisa seleção e ausência em registros de memória.",
+        "Acrescentados apoios de acesso e recuperação sobre autoria, escolha e representação."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI07",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-community-comparisons.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade compara práticas comunitárias sem estereotipar ou homogeneizar grupos.",
+        "Exemplo passa a distinguir contexto, semelhanças e diferenças internas."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI08",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-city-country-life.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade compara modos de vida sem representar cidade e campo como opostos fixos.",
+        "Exemplo e critérios foram ligados a fontes e condições de vida situadas."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI09",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-public-spaces-map.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade produz mapa funcional com legenda e limite, sem coletar endereços residenciais.",
+        "Acessibilidade e recuperação incluem diferentes formas de orientação espacial."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI10",
+      "file": "content/adaptive/tec-escola-core-v5/v13-history-space-distinctions.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade diferencia espaço doméstico, público e área de conservação por regras e funções.",
+        "Exemplo preserva o caráter contextual do acesso e das normas."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI11",
+      "file": "content/adaptive/tec-escola-core-v5/v14-history-work-technology.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade compara tarefas e tecnologias sem hierarquizar campo e cidade nem reduzir tecnologia a aparelhos digitais.",
+        "Critérios agora observam saberes, organização e evidências."
+      ],
+      "questionCount": 50,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EF03HI12",
+      "file": "content/adaptive/tec-escola-core-v5/v14-history-work-leisure-change.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "official-source-and-descriptor",
+        "progression-maps-assessments",
+        "authentic-practice-and-observable-evidence",
+        "targeted-remediation",
+        "accessibility-supports",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "repairNotes": [
+        "Atividade distingue mudanças e permanências em trabalho e lazer a partir de fontes de tempos e espaços definidos.",
+        "Exemplo explicita que mudanças não beneficiam todos da mesma forma."
+      ],
+      "questionCount": 45,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "officialMappingStatus": "NOT_CLAIMED",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    }
+  ]
+}

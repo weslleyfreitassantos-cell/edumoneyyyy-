@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre modos de vida na cidade e no campo para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Modos de vida na cidade e no campo",
     "objective": "Comparar modos de vida na cidade e no campo no presente e no passado, reconhecendo mudanças, permanências e diversidade de experiências.",
     "summary": "Cidade e campo não são espaços iguais nem isolados. Observar trabalho, moradia, circulação, lazer e tecnologia em diferentes tempos ajuda a identificar mudanças sem criar estereótipos.",
     "explanation": "## O que investigar\nIdentificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: uma fonte descreve uma horta próxima à cidade e outra mostra o transporte de alimentos entre áreas rurais e urbanas. A comparação pode investigar relações e mudanças sem afirmar que todo trabalho rural ou urbano é igual.",
     "commonMistake": "Tratar cidade e campo como realidades opostas e imutáveis, ou dizer que uma fotografia antiga representa todas as pessoas de um período.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-city-country-life-003",
           "v13-history-city-country-life-004",
           "v13-history-city-country-life-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-city-country-life-018",
           "v13-history-city-country-life-019",
           "v13-history-city-country-life-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-city-country-life-030",
           "v13-history-city-country-life-031",
           "v13-history-city-country-life-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-city-country-life-038",
           "v13-history-city-country-life-039",
           "v13-history-city-country-life-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-city-country-life-048",
           "v13-history-city-country-life-049",
           "v13-history-city-country-life-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Tratar cidade e campo como realidades opostas e imutáveis.",
+        "action": "Procure uma conexão entre os contextos e compare a prática no período e lugar indicados pela fonte."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Usar uma imagem como retrato de todas as pessoas de um período.",
+        "action": "Identifique o recorte da imagem e liste uma informação que exigiria fonte adicional."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Hierarquizar modos de vida sem evidência.",
+        "action": "Reescreva a comparação em termos de práticas, recursos e condições observáveis, sem usar ranking."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-city-country-life-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Comparar modos de vida em diferentes contextos",
         "objective": "Comparar modos de vida na cidade e no campo no presente e no passado, reconhecendo mudanças, permanências e diversidade de experiências.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Fontes históricas ou atuais sobre práticas urbanas e rurais em períodos identificados.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Escolha uma prática documentada e identifique lugar, período, autoria e condições descritas. Compare fontes sobre cidade e campo no mesmo aspecto e registre relações, mudanças e permanências. Produza síntese que evite opor os contextos como se fossem uniformes e indique limites das fontes.",
+        "evidence": "Comparação contextualizada que descreve prática, relação entre espaços, mudança ou permanência e limite documental.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Contexto",
+            "emerging": "Apresenta cidade ou campo como cenário genérico.",
+            "developing": "Localiza uma prática com apoio.",
+            "proficient": "Identifica período, lugar e condições de vida relevantes."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Mudança e relação",
+            "emerging": "Trata os contextos como opostos fixos.",
+            "developing": "Aponta uma relação com apoio.",
+            "proficient": "Compara mudanças, permanências e conexões sustentadas."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Diversidade",
+            "emerging": "Generaliza uma fonte para todas as pessoas.",
+            "developing": "Limita a conclusão após orientação.",
+            "proficient": "Reconhece variação interna e limita afirmações ao recorte."
           }
+        ],
+        "steps": [
+          "Escolha uma prática documentada e identifique lugar, período, autoria e condições descritas.",
+          "Compare fontes sobre cidade e campo no mesmo aspecto e registre relações, mudanças e permanências.",
+          "Produza síntese que evite opor os contextos como se fossem uniformes e indique limites das fontes."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Identificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Oferecer imagens descritas, mapas acessíveis e fontes em formatos equivalentes, com lugar e período visíveis.",
+      "Permitir quadro comparativo, fala, desenho ou texto e evitar pressupor experiência pessoal urbana ou rural."
     ]
   },
   "questions": [

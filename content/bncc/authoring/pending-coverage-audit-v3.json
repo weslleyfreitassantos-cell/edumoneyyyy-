@@ -14,14 +14,14 @@
     "HUMAN_REVIEW_BLOCKED": 121
   },
   "byQueueStatus": {
-    "MAPPING_REVIEW_REQUIRED": 666,
-    "SOURCE_TEXT_REVIEW_REQUIRED": 1055
+    "MAPPING_REVIEW_REQUIRED": 673,
+    "SOURCE_TEXT_REVIEW_REQUIRED": 1048
   },
   "byNextAction": {
-    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": 561,
-    "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW": 4,
-    "CANONICAL_MAPPING_REVIEW_REQUIRED": 982,
-    "CURRICULAR_HIERARCHY_REVIEW_REQUIRED": 100,
+    "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW": 562,
+    "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW": 6,
+    "CANONICAL_MAPPING_REVIEW_REQUIRED": 981,
+    "CURRICULAR_HIERARCHY_REVIEW_REQUIRED": 98,
     "HUMAN_MAPPING_REVIEW_REQUIRED": 74
   },
   "samples": {
@@ -43,7 +43,9 @@
       "EI01CG01",
       "EI01CG02",
       "EI01CG03",
-      "EI01CG04"
+      "EI01CG04",
+      "EI02CG01",
+      "EI03CG01"
     ],
     "CANONICAL_MAPPING_REVIEW_REQUIRED": [
       "EF03MA01",
@@ -16965,7 +16967,7 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
       "exactSourceVerified": true,
       "nextAction": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
@@ -16977,7 +16979,7 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
       "exactSourceVerified": true,
       "nextAction": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
@@ -16989,7 +16991,7 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
       "exactSourceVerified": true,
       "nextAction": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
@@ -17001,7 +17003,7 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
       "exactSourceVerified": true,
       "nextAction": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
@@ -17313,9 +17315,9 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CURRICULAR_HIERARCHY_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -17697,9 +17699,9 @@
       "componentCode": "CG",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
       "mappingStatus": "HIERARCHY_ONLY",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CURRICULAR_HIERARCHY_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_EXPERIENTIAL_EVIDENCE_AND_PEDAGOGICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },
@@ -18237,9 +18239,9 @@
       "componentCode": "CHS",
       "kind": "SKILL",
       "mappingStatus": "CANONICAL_GAP",
-      "queueStatus": "SOURCE_TEXT_REVIEW_REQUIRED",
-      "exactSourceVerified": false,
-      "nextAction": "CANONICAL_MAPPING_REVIEW_REQUIRED",
+      "queueStatus": "MAPPING_REVIEW_REQUIRED",
+      "exactSourceVerified": true,
+      "nextAction": "AUTHOR_CONTENT_AFTER_CANONICAL_REVIEW",
       "studentPublicationStatus": "STAGING_INACTIVE",
       "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
     },

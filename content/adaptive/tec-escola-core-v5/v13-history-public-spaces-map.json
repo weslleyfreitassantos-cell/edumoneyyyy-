@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre mapeamento dos espaços públicos para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Mapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Mapeamento dos espaços públicos",
     "objective": "Mapear espaços públicos da região, identificar suas funções e registrar acessibilidade, uso e limites do mapa com fontes públicas.",
     "summary": "Mapas ajudam a localizar ruas, praças, escolas, hospitais e prédios públicos. Para interpretar um mapa, é preciso observar legenda, escala, função e acesso sem expor rotinas pessoais.",
     "explanation": "## O que investigar\nMapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: um mapa escolar usa símbolos distintos para praça, escola e unidade de saúde. A legenda ajuda a interpretar funções, mas o mapa não informa sozinho horários, acessibilidade de todas as entradas ou a experiência de quem usa cada lugar.",
     "commonMistake": "Confundir localização com função, usar um mapa sem legenda ou transformar o mapeamento escolar em coleta de endereços pessoais.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-public-spaces-map-003",
           "v13-history-public-spaces-map-004",
           "v13-history-public-spaces-map-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-public-spaces-map-018",
           "v13-history-public-spaces-map-019",
           "v13-history-public-spaces-map-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-public-spaces-map-030",
           "v13-history-public-spaces-map-031",
           "v13-history-public-spaces-map-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-public-spaces-map-038",
           "v13-history-public-spaces-map-039",
           "v13-history-public-spaces-map-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-public-spaces-map-048",
           "v13-history-public-spaces-map-049",
           "v13-history-public-spaces-map-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Ler símbolos sem consultar a legenda.",
+        "action": "Compare cada símbolo à legenda e confirme uma função na fonte antes de classificar o espaço."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Confundir localização com função do espaço.",
+        "action": "Registre separadamente onde o espaço aparece e qual função a fonte ou sinalização informa."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Inferir acessibilidade completa a partir de um mapa simples.",
+        "action": "Marque o que está representado, o que foi observado e o que precisaria de verificação adicional."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-public-spaces-map-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Mapear espaços públicos e suas funções",
         "objective": "Mapear espaços públicos da região, identificar suas funções e registrar acessibilidade, uso e limites do mapa com fontes públicas.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Mapa público simplificado ou planta didática autorizada, sem endereços residenciais nem trajetos pessoais.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Escolha um mapa autorizado e identifique escala, legenda, fonte e data quando disponíveis. Marque espaços públicos e descreva suas funções usando os símbolos de forma consistente. Registre uma informação de acessibilidade observável e um limite do mapa, sem inferir dados não representados.",
+        "evidence": "Mapa com legenda e fonte, espaços públicos classificados por função, nota de acessibilidade e limite explícito.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Leitura cartográfica",
+            "emerging": "Marca pontos sem usar legenda.",
+            "developing": "Usa alguns símbolos com apoio.",
+            "proficient": "Aplica legenda e referência espacial de modo consistente."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Funções públicas",
+            "emerging": "Confunde local e função.",
+            "developing": "Nomeia funções com apoio.",
+            "proficient": "Relaciona espaços a funções documentadas."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Acessibilidade e limites",
+            "emerging": "Afirma acesso sem evidência.",
+            "developing": "Registra uma condição observada.",
+            "proficient": "Distingue observação, fonte e dado ausente, protegendo informações pessoais."
           }
+        ],
+        "steps": [
+          "Escolha um mapa autorizado e identifique escala, legenda, fonte e data quando disponíveis.",
+          "Marque espaços públicos e descreva suas funções usando os símbolos de forma consistente.",
+          "Registre uma informação de acessibilidade observável e um limite do mapa, sem inferir dados não representados."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Mapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Fornecer mapa de alto contraste, símbolos táteis ou ampliados e descrição verbal das relações espaciais.",
+      "Permitir uso de mapa digital acessível, modelo físico ou resposta oral; não solicitar endereço de casa ou rota individual."
     ]
   },
   "questions": [

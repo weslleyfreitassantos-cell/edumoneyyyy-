@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre fontes e acontecimentos da história local para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Selecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Fontes e acontecimentos da história local",
     "objective": "Selecionar fontes de diferentes naturezas e registrar acontecimentos da cidade ou região, indicando tempo, lugar, procedência e limites da evidência.",
     "summary": "A história local pode ser investigada com fotografias, mapas, relatos, objetos, jornais e outros registros. Cada fonte mostra um aspecto e precisa ser identificada antes de sustentar uma conclusão.",
     "explanation": "## O que investigar\nSelecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: para estudar a inauguração de uma ponte, uma fotografia pode mostrar a cerimônia, um documento pode informar a data e um relato pode descrever uma experiência. Cada fonte responde a perguntas diferentes e nenhuma, sozinha, conta toda a história.",
     "commonMistake": "Tratar qualquer fonte como prova completa, esquecer sua data ou registrar uma hipótese como se fosse um acontecimento confirmado.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-time-sources-003",
           "v13-history-time-sources-004",
           "v13-history-time-sources-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-time-sources-018",
           "v13-history-time-sources-019",
           "v13-history-time-sources-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-time-sources-030",
           "v13-history-time-sources-031",
           "v13-history-time-sources-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-time-sources-038",
           "v13-history-time-sources-039",
           "v13-history-time-sources-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-time-sources-048",
           "v13-history-time-sources-049",
           "v13-history-time-sources-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Confundir fonte, acontecimento e hipótese.",
+        "action": "Preencha três colunas separadas: o que a fonte mostra, o que o acontecimento sugere e o que ainda é hipótese."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Tratar toda fonte como prova completa.",
+        "action": "Registre quem produziu a fonte, quando e para qual público antes de indicar o que ela pode ou não sustentar."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Combinar duas fontes sem comparar o mesmo aspecto.",
+        "action": "Escolha um aspecto comum às fontes e compare apenas as informações que tratam desse recorte."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-time-sources-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Selecionar e registrar fontes históricas",
         "objective": "Selecionar fontes de diferentes naturezas e registrar acontecimentos da cidade ou região, indicando tempo, lugar, procedência e limites da evidência.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Fontes didáticas de tipos distintos sobre um acontecimento local, fornecidas pelo professor ou por acervo público.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Formule uma pergunta sobre o acontecimento e escolha duas fontes de naturezas distintas que possam respondê-la. Registre tipo, autoria, data, lugar, informação sustentada e limite de cada fonte. Compare convergências e diferenças e escreva uma conclusão que deixe explícita uma pergunta ainda aberta.",
+        "evidence": "Ficha comparativa com pergunta, procedência, informação sustentada e limite de cada fonte.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Seleção e procedência",
+            "emerging": "Escolhe fonte sem identificar sua origem.",
+            "developing": "Registra parte da procedência.",
+            "proficient": "Relaciona a escolha da fonte à pergunta e registra autoria, tipo e data disponíveis."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Evidência e limite",
+            "emerging": "Trata a fonte como registro completo.",
+            "developing": "Identifica uma informação e um limite com apoio.",
+            "proficient": "Distingue informação sustentada, silêncio da fonte e inferência."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Síntese",
+            "emerging": "Mistura fontes sem atribuição.",
+            "developing": "Compara um aspecto após orientação.",
+            "proficient": "Atribui afirmações e conclui proporcionalmente às evidências."
           }
+        ],
+        "steps": [
+          "Formule uma pergunta sobre o acontecimento e escolha duas fontes de naturezas distintas que possam respondê-la.",
+          "Registre tipo, autoria, data, lugar, informação sustentada e limite de cada fonte.",
+          "Compare convergências e diferenças e escreva uma conclusão que deixe explícita uma pergunta ainda aberta."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Selecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Oferecer fontes em texto ampliado, áudio, descrição de imagem ou transcrição, mantendo visíveis autoria e data.",
+      "Permitir quadro, mapa visual, resposta oral ou escrita e fornecer vocabulário de apoio para procedência, evidência e limite."
     ]
   },
   "questions": [

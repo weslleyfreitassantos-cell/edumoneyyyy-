@@ -40,7 +40,8 @@
       "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
       "page": 335
     },
-    "note": "O descritor é contexto de autoria; o vínculo canônico, a revisão pedagógica e a publicação permanecem pendentes."
+    "note": "O descritor é contexto de autoria; o vínculo canônico, a revisão pedagógica e a publicação permanecem pendentes.",
+    "sourceVerificationRecord": "BNCC_EF01CI02_MEC_P335_V1"
   },
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -84,17 +85,18 @@
           "v1-science-body-parts-fi-01",
           "v1-science-body-parts-fi-02",
           "v1-science-body-parts-fi-03",
-          "v1-science-body-parts-fi-04",
-          "v1-science-body-parts-fi-05",
-          "v1-science-body-parts-fi-06",
-          "v1-science-body-parts-fi-07",
-          "v1-science-body-parts-fi-08"
-        ]
+          "v1-science-body-parts-fi-04"
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "APPLICATION",
         "focus": "Explicar funções e cuidados em atividades do cotidiano.",
         "questionIds": [
+          "v1-science-body-parts-fi-05",
+          "v1-science-body-parts-fi-06",
+          "v1-science-body-parts-fi-07",
+          "v1-science-body-parts-fi-08",
           "v1-science-body-parts-fi-09",
           "v1-science-body-parts-fi-10",
           "v1-science-body-parts-fi-11",
@@ -102,50 +104,54 @@
           "v1-science-body-parts-fi-13",
           "v1-science-body-parts-fi-14",
           "v1-science-body-parts-fi-15",
-          "v1-science-body-parts-fi-16",
-          "v1-science-body-parts-fi-17",
-          "v1-science-body-parts-fi-18",
-          "v1-science-body-parts-fi-19",
-          "v1-science-body-parts-fi-20"
-        ]
+          "v1-science-body-parts-fi-16"
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
         "focus": "Aplicar o conhecimento em situações de segurança e inclusão.",
         "questionIds": [
+          "v1-science-body-parts-fi-17",
+          "v1-science-body-parts-fi-18",
+          "v1-science-body-parts-fi-19",
+          "v1-science-body-parts-fi-20",
           "v1-science-body-parts-fi-21",
           "v1-science-body-parts-fi-22",
           "v1-science-body-parts-fi-23",
-          "v1-science-body-parts-fi-24",
-          "v1-science-body-parts-fi-25",
-          "v1-science-body-parts-fi-26",
-          "v1-science-body-parts-fi-27",
-          "v1-science-body-parts-fi-28"
-        ]
+          "v1-science-body-parts-fi-24"
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "CONSOLIDATION",
         "focus": "Distinguir função, aparência, observação e diagnóstico.",
         "questionIds": [
+          "v1-science-body-parts-fi-25",
+          "v1-science-body-parts-fi-26",
+          "v1-science-body-parts-fi-27",
+          "v1-science-body-parts-fi-28",
           "v1-science-body-parts-fi-29",
-          "v1-science-body-parts-fi-30",
-          "v1-science-body-parts-fi-31",
-          "v1-science-body-parts-fi-32",
-          "v1-science-body-parts-fi-33",
-          "v1-science-body-parts-fi-34"
-        ]
+          "v1-science-body-parts-fi-30"
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
         "focus": "Retomar partes, sentidos, movimento e cuidado em contextos novos.",
         "questionIds": [
+          "v1-science-body-parts-fi-31",
+          "v1-science-body-parts-fi-32",
+          "v1-science-body-parts-fi-33",
+          "v1-science-body-parts-fi-34",
           "v1-science-body-parts-fi-35",
           "v1-science-body-parts-fi-36",
           "v1-science-body-parts-fi-37",
           "v1-science-body-parts-fi-38",
           "v1-science-body-parts-fi-39",
           "v1-science-body-parts-fi-40"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -165,37 +171,55 @@
     "remediations": [
       {
         "misconception": "PART_FUNCTION_CONFUSION",
-        "prompt": "Ligue cartões de ações a partes do corpo e explique por que cada ligação faz sentido."
+        "prompt": "Ligue cartões de ações a partes do corpo e explique por que cada ligação faz sentido.",
+        "errorFocus": "Confundir o nome de uma parte com a função que ela pode desempenhar.",
+        "action": "Use cartões de parte e ação, explique uma associação com evidência e indique quando mais de uma parte participa."
       },
       {
         "misconception": "BODY_STANDARDIZATION",
-        "prompt": "Adapte uma brincadeira para duas formas diferentes de participação e registre como ambas alcançam o objetivo."
+        "prompt": "Adapte uma brincadeira para duas formas diferentes de participação e registre como ambas alcançam o objetivo.",
+        "errorFocus": "Tratar uma ação como se dependesse de uma única parte do corpo.",
+        "action": "Observe ou represente a ação em etapas e registre as partes envolvidas sem exigir demonstração corporal do estudante."
       },
       {
         "misconception": "OBSERVATION_AS_DIAGNOSIS",
-        "prompt": "Separe em duas colunas o que pode ser observado e o que exigiria avaliação de um profissional."
+        "prompt": "Separe em duas colunas o que pode ser observado e o que exigiria avaliação de um profissional.",
+        "errorFocus": "Supor que todas as pessoas percebem ou se movimentam da mesma forma.",
+        "action": "Compare duas formas de participação representadas e descreva adaptações sem classificar uma como melhor."
       }
     ],
     "authenticActivities": [
       {
         "id": "body-map-with-accessible-choices",
-        "title": "Mapa do corpo com diferentes formas de participação",
-        "instructions": "Em pequenos grupos, use desenho, colagem, gestos ou comunicação alternativa para representar partes do corpo e uma função observável. Convide cada participante a escolher como quer contribuir.",
-        "evidence": "Mapa ou registro multimodal com pelo menos seis partes, funções e uma adaptação de participação.",
+        "title": "Representar partes do corpo e funções observáveis",
+        "instructions": "Escolha uma silhueta ou personagem fictício e marque partes do corpo sem comparar corpos reais da turma. Associe cada parte a uma função observável usando fala, desenho, cartões, gesto ou comunicação alternativa. Revise uma associação com apoio de fonte ou demonstração segura e registre uma adaptação de participação possível.",
+        "evidence": "Mapa multimodal que nomeia e representa pelo menos seis partes, associa funções justificáveis e registra uma forma acessível de participação.",
         "privacyGuard": "Não registrar diagnósticos, fotos corporais ou informações de saúde; usar materiais e exemplos genéricos.",
         "rubric": [
           {
-            "criterion": "Relação parte-função",
-            "emerging": "Nomeia partes sem relacioná-las às funções.",
-            "developing": "Relaciona algumas partes às funções com apoio.",
-            "proficient": "Relaciona partes e funções com explicações observáveis."
+            "criterion": "Localização e nomeação",
+            "emerging": "Marca partes sem nomeá-las.",
+            "developing": "Nomeia partes com apoio visual.",
+            "proficient": "Localiza e nomeia partes usando a representação escolhida."
           },
           {
-            "criterion": "Inclusão e segurança",
-            "emerging": "Propõe uma única forma de participação.",
-            "developing": "Aceita uma adaptação sugerida.",
-            "proficient": "Oferece escolhas de participação e evita diagnóstico ou exposição."
+            "criterion": "Relação entre parte e função",
+            "emerging": "Associa uma função sem relação observável.",
+            "developing": "Relaciona parte e função com apoio.",
+            "proficient": "Explica relações observáveis e reconhece que ações podem envolver mais de uma parte."
+          },
+          {
+            "criterion": "Participação respeitosa",
+            "emerging": "Pressupõe que todos realizem o mesmo movimento.",
+            "developing": "Aceita uma forma alternativa após mediação.",
+            "proficient": "Escolhe e reconhece diferentes formas de representar ou participar."
           }
+        ],
+        "context": "Silhueta ou personagem fictício, cartões de partes do corpo e formas variadas de comunicação.",
+        "steps": [
+          "Escolha uma silhueta ou personagem fictício e marque partes do corpo sem comparar corpos reais da turma.",
+          "Associe cada parte a uma função observável usando fala, desenho, cartões, gesto ou comunicação alternativa.",
+          "Revise uma associação com apoio de fonte ou demonstração segura e registre uma adaptação de participação possível."
         ]
       }
     ],
@@ -221,7 +245,11 @@
         "use": "Fonte oficial usada para rastreabilidade do descritor; nenhum texto, questão ou ilustração foi copiado."
       }
     ],
-    "copyrightNote": "Situações, alternativas, explicações e atividade são autorais e hipotéticas; o descritor oficial permanece apenas como contexto de autoria."
+    "copyrightNote": "Situações, alternativas, explicações e atividade são autorais e hipotéticas; o descritor oficial permanece apenas como contexto de autoria.",
+    "accessibilitySupports": [
+      "Permitir representação por personagem, silhueta, cartões, objetos táteis, descrição oral ou comunicação alternativa, sem tocar no corpo de colegas.",
+      "Usar imagens nítidas com contraste, linguagem direta e tempo de resposta flexível; não inferir capacidade a partir da aparência ou do movimento."
+    ]
   },
   "questions": [
     {

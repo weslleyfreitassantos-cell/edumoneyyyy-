@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "tec-escola.bncc.early-childhood-observation-review.v1",
+  "campaign": "TECESCOLA_BNCC_AUTOPILOT_RECOVERY_AND_SCALE",
+  "snapshotDate": "2026-10-18",
+  "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+  "quizRequired": false,
+  "humanApprovalGranted": false,
+  "publicationAuthorized": false,
+  "packages": [
+    {
+      "officialCode": "EI01CG01",
+      "file": "content/bncc/authoring/early-childhood-experiential-v1.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "observation-experience-structure",
+        "observation-criteria",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "observationExperiences": 2,
+      "observationCriteria": 5,
+      "quizRequired": false,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EI01CG02",
+      "file": "content/bncc/authoring/early-childhood-experiential-v4.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "observation-experience-structure",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "observationExperiences": 2,
+      "observationCriteria": 6,
+      "quizRequired": false,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EI01CG03",
+      "file": "content/bncc/authoring/early-childhood-experiential-v5.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "observation-experience-structure",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "observationExperiences": 2,
+      "observationCriteria": 6,
+      "quizRequired": false,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EI01CG04",
+      "file": "content/bncc/authoring/early-childhood-experiential-v6.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "observation-experience-structure",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "observationExperiences": 2,
+      "observationCriteria": 6,
+      "quizRequired": false,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EI02CG01",
+      "file": "content/bncc/authoring/early-childhood-experiential-v2.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "observation-experience-structure",
+        "observation-criteria",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "observationExperiences": 2,
+      "observationCriteria": 5,
+      "quizRequired": false,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    },
+    {
+      "officialCode": "EI03CG01",
+      "file": "content/bncc/authoring/early-childhood-experiential-v3.json",
+      "status": "AUTOMATED_SCREEN_PASS",
+      "beforeIncompleteChecks": [
+        "observation-experience-structure",
+        "inactive-staging-governance"
+      ],
+      "afterIncompleteChecks": [],
+      "observationExperiences": 2,
+      "observationCriteria": 6,
+      "quizRequired": false,
+      "active": false,
+      "publicationStatus": "STAGING_INACTIVE",
+      "humanPedagogicalReviewStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING"
+    }
+  ]
+}

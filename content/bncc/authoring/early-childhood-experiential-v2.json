@@ -34,17 +34,50 @@
       "Participa de gestos ou movimentos de uma brincadeira, cuidado ou prática cultural do grupo, por imitação, repetição, variação ou observação participante.",
       "Escolhe continuar, modificar ou interromper a ação, comunicando preferência por fala, gesto, olhar ou outro modo disponível.",
       "Relaciona movimentos a uma situação de cuidado, jogo ou brincadeira sem que o adulto imponha uma única forma correta.",
-      "Tem suas referências culturais acolhidas e pode participar com adaptações de espaço, tempo, objetos e apoio."
+      "Tem suas referências culturais acolhidas e pode participar com adaptações de espaço, tempo, objetos e apoio.",
+      "A criança pode observar, variar ou recusar a prática cultural sem perder o acolhimento ou a possibilidade de participação."
     ],
     "evidenceRecord": {
-      "requiredFields": ["date", "context", "culturalReferenceOrGame", "observedGestureOrMovement", "childChoice", "educatorSupport", "nextInvitation"],
-      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "requiredFields": [
+        "date",
+        "context",
+        "culturalReferenceOrGame",
+        "observedGestureOrMovement",
+        "childChoice",
+        "educatorSupport",
+        "nextInvitation"
+      ],
+      "allowedFormats": [
+        "short_text",
+        "voice_note_reference",
+        "secure_photo_reference"
+      ],
       "privacy": "Registrar somente o necessário no contexto institucional autorizado; não classificar a criança por desempenho, não expor sua imagem e não inferir desenvolvimento além do observado."
     },
     "adaptations": [
       "Permitir que a criança observe antes de participar e ofereça diferentes formas de comunicação.",
       "Adaptar objetos, espaço, ritmo e apoio corporal conforme necessidades individuais e orientação da equipe.",
       "Valorizar gestos familiares e variações culturais sem exigir que a criança reproduza uma prática desconhecida."
+    ],
+    "observationExperiences": [
+      {
+        "title": "Brincadeira cultural escolhida pelo grupo",
+        "steps": [
+          "Apresente uma brincadeira conhecida com breve contexto de origem ou uso, sem exigir que todas as crianças a conheçam.",
+          "Convide a observar, experimentar, variar ou propor um gesto, com alternativas de participação.",
+          "Registre escolhas e adaptações sem corrigir diferenças culturais como se houvesse uma única forma correta."
+        ],
+        "observableEvidence": "Descrição de gesto ou movimento escolhido, transformado ou observado e da forma como as referências culturais foram acolhidas."
+      },
+      {
+        "title": "Cuidado cotidiano em brincadeira simbólica",
+        "steps": [
+          "Disponibilize objetos seguros para uma situação de cuidado simbólico, como guardar objetos ou cuidar de uma boneca.",
+          "Convide a criança a escolher materiais e gestos, podendo observar, participar, alterar ou parar.",
+          "Reconheça a ação sem impor uma sequência padronizada e ofereça apoio de comunicação quando solicitado."
+        ],
+        "observableEvidence": "Registro da escolha de objetos, gesto ou sequência e do modo como a autonomia e a participação foram respeitadas."
+      }
     ]
   },
   "contentStatus": {
@@ -53,5 +86,6 @@
     "officialMappingStatus": "NOT_CLAIMED",
     "studentQuiz": "NOT_CREATED",
     "humanApproval": "NOT_GRANTED"
-  }
+  },
+  "active": false
 }

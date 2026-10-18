@@ -37,11 +37,23 @@
       "Demonstra sinais de conforto, desconforto, interesse ou necessidade de pausa que são percebidos e respondidos pelo adulto.",
       "Aceita, recusa ou modifica uma possibilidade de participação sem que o adulto force autonomia ou atribua intenção além do observado.",
       "Reconhece gradualmente a sequência de uma rotina por antecipação corporal, atenção compartilhada ou repetição voluntária.",
-      "Tem sua dignidade, privacidade, segurança corporal e forma de comunicação preservadas durante o cuidado."
+      "Tem sua dignidade, privacidade, segurança corporal e forma de comunicação preservadas durante o cuidado.",
+      "A recusa, a pausa ou a participação parcial são respeitadas sem forçar autonomia nem comprometer a segurança do cuidado."
     ],
     "evidenceRecord": {
-      "requiredFields": ["date", "careContext", "anticipatedStep", "observedParticipation", "comfortSignals", "educatorResponse", "nextSupport"],
-      "allowedFormats": ["short_text", "voice_note_reference"],
+      "requiredFields": [
+        "date",
+        "careContext",
+        "anticipatedStep",
+        "observedParticipation",
+        "comfortSignals",
+        "educatorResponse",
+        "nextSupport"
+      ],
+      "allowedFormats": [
+        "short_text",
+        "voice_note_reference"
+      ],
       "privacy": "Registrar somente o necessário no contexto institucional autorizado; não registrar imagens de momentos íntimos de cuidado, não incluir diagnóstico e não inferir desenvolvimento além do observado."
     },
     "adaptations": [
@@ -49,6 +61,26 @@
       "Ajustar temperatura, iluminação, ruído, posição, ritmo e quantidade de pessoas para ampliar conforto e segurança.",
       "Oferecer apoio físico somente quando necessário e autorizado, sem puxar, apressar ou restringir movimentos sem motivo de segurança.",
       "Aceitar participação parcial, observação, pausa, recusa e retomada posterior, preservando a rotina essencial de cuidado."
+    ],
+    "observationExperiences": [
+      {
+        "title": "Antecipar uma etapa do cuidado",
+        "steps": [
+          "Avise a próxima etapa com fala, gesto ou objeto de referência antes de iniciar, sempre que for seguro.",
+          "Aguarde sinais de conforto, interesse, pausa ou recusa e ajuste o ritmo e a posição.",
+          "Registre somente a participação observada e a resposta do adulto, sem imagens de momentos íntimos."
+        ],
+        "observableEvidence": "Registro mínimo da etapa antecipada, da forma observável de participação ou pausa e do apoio responsivo oferecido, sem inferir independência."
+      },
+      {
+        "title": "Oferecer escolha simples durante a rotina",
+        "steps": [
+          "Disponibilize duas opções seguras relacionadas à rotina, quando isso não comprometer o cuidado essencial.",
+          "Aguarde uma escolha, recusa ou sinal de pausa pelo modo de comunicação do bebê.",
+          "Respeite a resposta, mantenha privacidade e retome a rotina com apoio adequado, sem forçar autonomia."
+        ],
+        "observableEvidence": "Descrição da escolha ou recusa observada e do ajuste realizado, sem registrar imagens ou detalhes desnecessários do cuidado."
+      }
     ]
   },
   "contentStatus": {
@@ -57,5 +89,6 @@
     "officialMappingStatus": "NOT_CLAIMED",
     "studentQuiz": "NOT_CREATED",
     "humanApproval": "NOT_GRANTED"
-  }
+  },
+  "active": false
 }

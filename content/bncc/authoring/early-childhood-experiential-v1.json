@@ -34,17 +34,49 @@
       "Movimenta uma ou mais partes do corpo em resposta à situação ou à interação.",
       "Produz movimentos que podem comunicar interesse, desconforto, necessidade ou desejo, sem exigir uma interpretação única.",
       "Tem seus sinais acolhidos pelo adulto, com tempo, segurança e respeito ao ritmo individual.",
-      "Pode repetir, variar ou interromper a ação sem punição ou pressão por desempenho."
+      "Pode repetir, variar ou interromper a ação sem punição ou pressão por desempenho.",
+      "O registro descreve movimento ou sinal observável sem afirmar uma intenção que não foi comunicada."
     ],
     "evidenceRecord": {
-      "requiredFields": ["date", "context", "observedMovement", "possibleCommunication", "educatorResponse", "nextInvitation"],
-      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "requiredFields": [
+        "date",
+        "context",
+        "observedMovement",
+        "possibleCommunication",
+        "educatorResponse",
+        "nextInvitation"
+      ],
+      "allowedFormats": [
+        "short_text",
+        "voice_note_reference",
+        "secure_photo_reference"
+      ],
       "privacy": "Registrar somente o necessário no contexto institucional autorizado; não incluir diagnóstico, exposição pública ou inferência além do observado."
     },
     "adaptations": [
       "Reduzir estímulos sonoros ou visuais quando houver sinais de sobrecarga.",
       "Permitir observação em colo, no chão ou em outra posição segura indicada pela equipe.",
       "Aceitar respostas corporais breves, repetidas, sutis ou ausência de resposta naquele momento."
+    ],
+    "observationExperiences": [
+      {
+        "title": "Canção com movimento e pausa",
+        "steps": [
+          "Escolha uma canção curta e conhecida e deixe o bebê em posição segura.",
+          "Acompanhe o ritmo com movimentos suaves, sem exigir imitação, e faça pausas para perceber sinais.",
+          "Responda a movimentos, vocalizações, aproximação, recusa ou ausência de resposta sem atribuir uma intenção única."
+        ],
+        "observableEvidence": "Registro descritivo do movimento ou sinal observado, da pausa oferecida e da resposta do adulto, sem interpretar a intenção além do observável."
+      },
+      {
+        "title": "Exploração de objeto seguro",
+        "steps": [
+          "Disponibilize um objeto íntegro e apropriado à faixa etária em distância segura.",
+          "Aguarde se o bebê olha, alcança, toca, recusa ou solicita continuidade por seu modo de comunicação.",
+          "Ajuste distância, posição ou estímulos e encerre ou retome conforme sinais de interesse e conforto."
+        ],
+        "observableEvidence": "Descrição da forma de aproximação, recusa, pausa ou retomada e do apoio oferecido pelo adulto."
+      }
     ]
   },
   "contentStatus": {
@@ -53,5 +85,6 @@
     "officialMappingStatus": "NOT_CLAIMED",
     "studentQuiz": "NOT_CREATED",
     "humanApproval": "NOT_GRANTED"
-  }
+  },
+  "active": false
 }

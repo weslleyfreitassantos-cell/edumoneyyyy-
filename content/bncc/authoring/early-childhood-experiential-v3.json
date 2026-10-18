@@ -37,11 +37,24 @@
       "Escolhe diferentes formas de participação e comunica preferência por fala, gesto, olhar, movimento, silêncio ou outro recurso disponível.",
       "Relaciona a expressão corporal a uma brincadeira, dança, teatro, música ou situação do cotidiano sem que o adulto imponha uma interpretação única.",
       "Experimenta formas individuais e coletivas de expressão, respeitando seu próprio ritmo e os limites corporais dos demais.",
-      "Tem suas referências culturais, formas de comunicação e necessidades de acessibilidade acolhidas durante a experiência."
+      "Tem suas referências culturais, formas de comunicação e necessidades de acessibilidade acolhidas durante a experiência.",
+      "A criança escolhe se deseja compartilhar a expressão e não recebe uma interpretação adulta como significado obrigatório."
     ],
     "evidenceRecord": {
-      "requiredFields": ["date", "context", "chosenExpressionMode", "observedCreationOrTransformation", "childCommunication", "educatorSupport", "nextInvitation"],
-      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "requiredFields": [
+        "date",
+        "context",
+        "chosenExpressionMode",
+        "observedCreationOrTransformation",
+        "childCommunication",
+        "educatorSupport",
+        "nextInvitation"
+      ],
+      "allowedFormats": [
+        "short_text",
+        "voice_note_reference",
+        "secure_photo_reference"
+      ],
       "privacy": "Registrar somente o necessário no contexto institucional autorizado; não classificar a criança por desempenho, não expor sua imagem e não inferir desenvolvimento além do observado.",
       "reviewNote": "A evidência deve descrever o que foi observado e comunicado, preservando a autoria da criança e evitando interpretar uma emoção como fato interno."
     },
@@ -50,6 +63,26 @@
       "Adaptar iluminação, ruído, espaço, materiais, ritmo e apoio corporal conforme necessidades individuais e orientação da equipe.",
       "Oferecer antecipação visual, pausas e repetição voluntária sem exigir contato visual, imitação ou apresentação diante do grupo.",
       "Valorizar referências culturais e expressões diversas sem comparar crianças ou definir uma forma correta de demonstrar emoção."
+    ],
+    "observationExperiences": [
+      {
+        "title": "Criar movimentos para uma música",
+        "steps": [
+          "Convide a escolher, ouvir ou observar uma música e ofereça espaço e materiais seguros.",
+          "Disponibilize tempo para criar, combinar ou transformar gestos sem solicitar apresentação pública.",
+          "Aceite participação por movimento, fala, olhar, comunicação alternativa, observação ou recusa."
+        ],
+        "observableEvidence": "Descrição da forma de expressão escolhida pela criança e das opções de participação oferecidas, sem interpretar a emoção por ela."
+      },
+      {
+        "title": "Transformar uma cena ou história",
+        "steps": [
+          "Apresente uma história ou situação cotidiana e materiais cênicos seguros.",
+          "Convide a representar, transformar ou apenas observar a cena por uma forma de comunicação escolhida.",
+          "Pergunte se a criança deseja registrar ou comentar sua criação e respeite a opção de não explicar."
+        ],
+        "observableEvidence": "Registro da criação ou transformação e da forma como a criança escolheu participar, sem atribuir significado não comunicado."
+      }
     ]
   },
   "contentStatus": {
@@ -58,5 +91,6 @@
     "officialMappingStatus": "NOT_CLAIMED",
     "studentQuiz": "NOT_CREATED",
     "humanApproval": "NOT_GRANTED"
-  }
+  },
+  "active": false
 }

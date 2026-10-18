@@ -32,7 +32,7 @@ describe('BNCC V13 history curricular sets', () => {
         relationDecision: 'NOT_ASSERTED',
       });
       expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
-      expect(pack.publicationStatus).toBe('STAGING');
+      expect(pack.publicationStatus).toBe('STAGING_INACTIVE');
       expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
       for (const question of pack.questions) {
         expect(ids.has(question.id)).toBe(false);

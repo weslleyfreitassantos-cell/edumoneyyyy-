@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre patrimônios históricos e culturais do lugar para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Patrimônios históricos e culturais do lugar",
     "objective": "Identificar patrimônios históricos e culturais e discutir, com fontes e vozes da comunidade, razões culturais, sociais e políticas para seu reconhecimento.",
     "summary": "Patrimônio não é apenas um prédio antigo. É uma referência reconhecida por pessoas e grupos, material ou imaterial, cujo significado e preservação envolvem memória, cultura, escolhas políticas e participação.",
     "explanation": "## O que investigar\nIdentificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: um antigo mercado conserva a fachada e também aparece em relatos de trabalhadores e moradores. A investigação pode comparar valor arquitetônico, usos e memórias, sem presumir que apenas um bem oficialmente protegido seja patrimônio para todos.",
     "commonMistake": "Considerar patrimônio apenas o que é antigo ou oficialmente tombado, ignorando práticas culturais, grupos responsáveis e disputas de significado.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-local-heritage-003",
           "v13-history-local-heritage-004",
           "v13-history-local-heritage-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-local-heritage-018",
           "v13-history-local-heritage-019",
           "v13-history-local-heritage-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-local-heritage-030",
           "v13-history-local-heritage-031",
           "v13-history-local-heritage-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-local-heritage-038",
           "v13-history-local-heritage-039",
           "v13-history-local-heritage-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-local-heritage-048",
           "v13-history-local-heritage-049",
           "v13-history-local-heritage-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Considerar patrimônio apenas o que é antigo ou tombado.",
+        "action": "Compare registros oficiais com relatos de usos e memórias, distinguindo critérios em vez de escolher uma única definição."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Supor que uma fonte representa todas as pessoas da comunidade.",
+        "action": "Liste quem produziu cada fonte e formule uma pergunta de consulta para uma voz ainda ausente."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Propor preservação sem considerar usos e cuidado das pessoas envolvidas.",
+        "action": "Relacione a proposta a uma evidência e indique quem deve participar da decisão."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-local-heritage-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Investigar reconhecimento e sentidos do patrimônio",
         "objective": "Identificar patrimônios históricos e culturais e discutir, com fontes e vozes da comunidade, razões culturais, sociais e políticas para seu reconhecimento.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Caso didático ou fonte pública sobre um bem, espaço ou prática cultural local.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Escolha um caso documentado e identifique que fonte registra sua história, uso ou reconhecimento. Compare duas razões para sua importância e registre quais pessoas ou grupos aparecem nas fontes. Proponha uma forma de cuidado ou documentação e indique que vozes ainda precisam ser consultadas.",
+        "evidence": "Dossiê breve com fontes, razões de reconhecimento, diversidade de vozes e uma lacuna de consulta.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Fontes e razões",
+            "emerging": "Chama algo de patrimônio sem justificar.",
+            "developing": "Aponta uma razão com apoio.",
+            "proficient": "Relaciona razões culturais, sociais ou históricas a fontes específicas."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Vozes e reconhecimento",
+            "emerging": "Supõe consenso ou representação completa.",
+            "developing": "Identifica algumas vozes após orientação.",
+            "proficient": "Indica quem aparece, quem falta e que limites existem."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Cuidado e documentação",
+            "emerging": "Propõe ação sem considerar contexto.",
+            "developing": "Propõe cuidado com apoio.",
+            "proficient": "Propõe ação respeitosa e proporcional às evidências e às pessoas envolvidas."
           }
+        ],
+        "steps": [
+          "Escolha um caso documentado e identifique que fonte registra sua história, uso ou reconhecimento.",
+          "Compare duas razões para sua importância e registre quais pessoas ou grupos aparecem nas fontes.",
+          "Proponha uma forma de cuidado ou documentação e indique que vozes ainda precisam ser consultadas."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Fornecer imagens descritas, relatos transcritos e fontes curtas em formatos legíveis, sem exigir visita a locais.",
+      "Aceitar mapa de ideias, fala, desenho ou texto e permitir análise de caso fictício quando acesso físico não for possível."
     ]
   },
   "questions": [

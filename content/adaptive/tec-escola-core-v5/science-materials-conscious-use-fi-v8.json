@@ -30,7 +30,7 @@
     "officialCode": "EF01CI01",
     "relation": "AUTHORING_CONTEXT_ONLY",
     "mappingStatus": "CANONICAL_GAP",
-    "sourceStatus": "OFFICIAL_SOURCE_CONTEXT_RECORDED_SOURCE_TEXT_REVIEW_REQUIRED",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
     "descriptor": "Comparar características de diferentes materiais presentes em objetos de uso cotidiano, discutindo sua origem, os modos como são descartados e como podem ser usados de forma mais consciente.",
     "officialSource": {
       "id": "BNCC_EI_EF_2018",
@@ -38,7 +38,8 @@
       "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
       "page": 335
     },
-    "note": "O descritor é usado como contexto de autoria; o vínculo canônico e a revisão do texto-fonte permanecem pendentes."
+    "note": "O descritor é usado como contexto de autoria; o vínculo canônico e a revisão do texto-fonte permanecem pendentes.",
+    "sourceVerificationRecord": "BNCC_EF01CI01_MEC_P335_V1"
   },
   "lesson": {
     "title": "Materiais no cotidiano: origem, uso e destino",
@@ -65,21 +66,27 @@
         "trigger": "Confunde origem e objeto pronto",
         "explanation": "Separe matéria-prima, transformação, objeto e uso em quatro etapas.",
         "workedExample": "Árvore pode fornecer matéria-prima vegetal; depois de transformada, ela pode compor papelão; o papelão forma uma caixa que é usada e depois encaminhada conforme a coleta.",
-        "selfCheck": "Consigo indicar a matéria-prima sem dizer que o objeto pronto foi retirado diretamente dela?"
+        "selfCheck": "Consigo indicar a matéria-prima sem dizer que o objeto pronto foi retirado diretamente dela?",
+        "errorFocus": "Deduzir a origem do material somente pela aparência.",
+        "action": "Separe o que foi observado da informação obtida em fonte e marque cada afirmação como observação, fonte ou hipótese."
       },
       {
         "id": "FUNCTION_PROPERTY",
         "trigger": "Escolhe sem relacionar propriedade e função",
         "explanation": "Nomeie a função e escolha uma propriedade necessária para cumpri-la.",
         "workedExample": "Para proteger um livro da chuva, a resistência à água é mais relevante que a cor da capa.",
-        "selfCheck": "Minha justificativa explica qual propriedade ajuda no uso?"
+        "selfCheck": "Minha justificativa explica qual propriedade ajuda no uso?",
+        "errorFocus": "Generalizar o descarte de um material para todos os municípios.",
+        "action": "Consulte a orientação local disponível e compare-a com a recomendação geral, registrando qual fonte sustenta cada decisão."
       },
       {
         "id": "DESTINATION_CONTEXT",
         "trigger": "Generaliza o destino do resíduo",
         "explanation": "Verifique a regra local, a condição do material e o período da coleta.",
         "workedExample": "Uma embalagem pode ter símbolo de reciclagem, mas a turma ainda precisa saber se a coleta local recebe aquele material e se exige limpeza.",
-        "selfCheck": "Indiquei a cidade ou serviço, o material e a condição necessários?"
+        "selfCheck": "Indiquei a cidade ou serviço, o material e a condição necessários?",
+        "errorFocus": "Confundir propriedade do material com finalidade do objeto.",
+        "action": "Compare a propriedade observada com o uso do objeto e explique a relação sem afirmar que ela é a única possível."
       }
     ],
     "everydayApplication": "Observar embalagens, recipientes e materiais usados na escola ou em casa; decidir quando reduzir, reutilizar, reparar ou encaminhar um resíduo, sempre considerando segurança e regras locais.",
@@ -109,17 +116,18 @@
           "v8-sci-materials-probe-01",
           "v8-sci-materials-probe-02",
           "v8-sci-materials-probe-03",
-          "v8-sci-materials-probe-04",
-          "v8-sci-materials-practice-01",
-          "v8-sci-materials-practice-02",
-          "v8-sci-materials-practice-03",
-          "v8-sci-materials-practice-04"
-        ]
+          "v8-sci-materials-probe-04"
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "APPLICATION",
         "focus": "Comparar propriedades e decidir sobre redução, reparo e reutilização.",
         "questionIds": [
+          "v8-sci-materials-practice-01",
+          "v8-sci-materials-practice-02",
+          "v8-sci-materials-practice-03",
+          "v8-sci-materials-practice-04",
           "v8-sci-materials-practice-05",
           "v8-sci-materials-practice-06",
           "v8-sci-materials-practice-07",
@@ -127,50 +135,54 @@
           "v8-sci-materials-practice-09",
           "v8-sci-materials-practice-10",
           "v8-sci-materials-practice-11",
-          "v8-sci-materials-practice-12",
-          "v8-sci-materials-transfer-01",
-          "v8-sci-materials-transfer-02",
-          "v8-sci-materials-transfer-03",
-          "v8-sci-materials-transfer-04"
-        ]
+          "v8-sci-materials-practice-12"
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
         "focus": "Avaliar alternativas de consumo e descarte em contextos diferentes.",
         "questionIds": [
+          "v8-sci-materials-transfer-01",
+          "v8-sci-materials-transfer-02",
+          "v8-sci-materials-transfer-03",
+          "v8-sci-materials-transfer-04",
           "v8-sci-materials-transfer-05",
           "v8-sci-materials-transfer-06",
           "v8-sci-materials-transfer-07",
-          "v8-sci-materials-transfer-08",
-          "v8-sci-materials-lock-01",
-          "v8-sci-materials-lock-02",
-          "v8-sci-materials-lock-03",
-          "v8-sci-materials-lock-04"
-        ]
+          "v8-sci-materials-transfer-08"
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "INTEGRATION",
         "focus": "Justificar decisões com segurança, acesso e limites dos dados.",
         "questionIds": [
+          "v8-sci-materials-lock-01",
+          "v8-sci-materials-lock-02",
+          "v8-sci-materials-lock-03",
+          "v8-sci-materials-lock-04",
           "v8-sci-materials-lock-05",
-          "v8-sci-materials-lock-06",
-          "v8-sci-materials-review-01",
-          "v8-sci-materials-review-02",
-          "v8-sci-materials-review-03",
-          "v8-sci-materials-review-04"
-        ]
+          "v8-sci-materials-lock-06"
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
         "focus": "Retomar origem, uso, destino e consumo consciente.",
         "questionIds": [
+          "v8-sci-materials-review-01",
+          "v8-sci-materials-review-02",
+          "v8-sci-materials-review-03",
+          "v8-sci-materials-review-04",
           "v8-sci-materials-review-05",
           "v8-sci-materials-review-06",
           "v8-sci-materials-review-07",
           "v8-sci-materials-review-08",
           "v8-sci-materials-review-09",
           "v8-sci-materials-review-10"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -214,31 +226,43 @@
     "authenticActivities": [
       {
         "id": "materials-origin-use-destination-map",
-        "title": "Mapa de material, uso e destino",
-        "instructions": "Em pequenos grupos, escolha dois objetos seguros do cotidiano escolar. Observe de que material parecem ser feitos, compare uma propriedade ligada ao uso e consulte um adulto sobre a orientação local para reutilização ou descarte. Registre a comparação por desenho, tabela, fala gravada sem dados pessoais ou texto curto.",
-        "evidence": "Registro multimodal com dois objetos, uma propriedade observada, uma hipótese sobre a origem, uma decisão de redução, reutilização, reparo ou encaminhamento e uma conclusão limitada ao contexto.",
+        "title": "Investigar materiais de objetos cotidianos",
+        "instructions": "Escolha dois objetos seguros e registre o que é observável em cada material, sem presumir sua origem. Compare uma propriedade relacionada ao uso e consulte uma fonte local ou um adulto sobre a origem ou destinação quando a informação não estiver no objeto. Apresente uma decisão de uso consciente e indique o que a observação, sozinha, não permite concluir.",
+        "evidence": "Registro multimodal que compara dois objetos por uma propriedade observável, atribui a informação de origem ou descarte à fonte consultada e limita a conclusão ao que foi observado.",
         "privacyGuard": "Não fotografar pessoas, documentos ou resíduos perigosos; não registrar nomes, endereços ou informações de coleta individual.",
         "rubric": [
           {
-            "criterion": "Comparação com critério",
-            "emerging": "Lista objetos sem indicar uma propriedade.",
-            "developing": "Relaciona uma propriedade ao uso com apoio.",
-            "proficient": "Compara propriedades relevantes e explica o vínculo com a função."
+            "criterion": "Observação e comparação",
+            "emerging": "Nomeia objetos sem apontar propriedades observáveis.",
+            "developing": "Compara uma propriedade com apoio.",
+            "proficient": "Compara uma propriedade relevante e liga a evidência ao uso."
           },
           {
-            "criterion": "Origem e destino",
-            "emerging": "Trata o objeto pronto como se fosse retirado diretamente da natureza.",
-            "developing": "Distingue origem e destino com orientação.",
-            "proficient": "Registra origem como hipótese contextual e consulta regras locais antes de decidir."
+            "criterion": "Origem e destinação",
+            "emerging": "Adivinha a origem ou o descarte pela aparência.",
+            "developing": "Consulta uma fonte, mas não distingue dado de hipótese.",
+            "proficient": "Atribui a informação à fonte e explicita limites."
           },
           {
-            "criterion": "Consumo consciente e segurança",
-            "emerging": "Propõe descarte ou reutilização sem verificar segurança.",
-            "developing": "Escolhe uma alternativa segura após mediação.",
-            "proficient": "Considera reduzir, reutilizar, reparar e encaminhar conforme condição do objeto e orientação local."
+            "criterion": "Escolha consciente",
+            "emerging": "Propõe uma ação sem justificativa.",
+            "developing": "Propõe reduzir, reutilizar, reparar ou encaminhar com apoio.",
+            "proficient": "Justifica uma ação adequada ao contexto sem generalizar a regra local."
           }
+        ],
+        "context": "Objetos seguros disponibilizados pela escola e fontes locais de orientação para reutilização ou descarte.",
+        "steps": [
+          "Escolha dois objetos seguros e registre o que é observável em cada material, sem presumir sua origem.",
+          "Compare uma propriedade relacionada ao uso e consulte uma fonte local ou um adulto sobre a origem ou destinação quando a informação não estiver no objeto.",
+          "Apresente uma decisão de uso consciente e indique o que a observação, sozinha, não permite concluir."
         ]
       }
+    ],
+    "explanation": "Compare primeiro uma propriedade que possa ser observada; depois relacione-a ao uso do objeto. Para falar de origem, procure informação de fonte confiável em vez de adivinhar pela aparência. Ao discutir descarte, considere orientação local e alternativas de reduzir, reutilizar ou reparar, sem concluir que todo material segue o mesmo destino.",
+    "commonMistake": "Inferir a origem ou o destino de um material apenas pela aparência, ou tratar uma regra local de descarte como universal.",
+    "accessibilitySupports": [
+      "Oferecer objetos com propriedades perceptíveis por mais de um canal e descrever verbalmente o que não puder ser tocado com segurança.",
+      "Aceitar registro por desenho, fala, comunicação alternativa, tabela ou texto; fornecer instruções curtas e fonte em formato legível."
     ]
   },
   "questions": [
@@ -268,8 +292,8 @@
       "contextFamily": "material-use",
       "statement": "Uma garrafa de vidro e uma garrafa de plástico podem guardar água. O que a comparação permite dizer?",
       "options": [
-        "As duas podem cumprir a mesma função, embora sejam feitas de materiais diferentes.",
         "O vidro e o plástico são exatamente o mesmo material.",
+        "As duas podem cumprir a mesma função, embora sejam feitas de materiais diferentes.",
         "A função de um objeto depende apenas de sua cor.",
         "Todo plástico deve ser descartado imediatamente."
       ],
@@ -286,9 +310,9 @@
       "contextFamily": "origin-natural",
       "statement": "Uma caixa de papelão é feita de um material cuja origem está ligada às árvores. Qual é uma descrição adequada?",
       "options": [
-        "O papelão tem origem vegetal, embora passe por transformação industrial.",
         "O papelão seja retirado pronto de uma árvore.",
         "A caixa não tenha relação com nenhum recurso natural.",
+        "O papelão tem origem vegetal, embora passe por transformação industrial.",
         "Todo papelão seja feito de metal."
       ],
       "correctAnswer": "O papelão tem origem vegetal, embora passe por transformação industrial.",
@@ -304,10 +328,10 @@
       "contextFamily": "conscious-choice",
       "statement": "Uma turma pode usar uma folha nova ou o verso limpo de uma folha já usada para um rascunho. Qual escolha reduz o desperdício?",
       "options": [
-        "Usar o verso limpo para o rascunho e guardar a folha para outra finalidade.",
         "Usar duas folhas novas para o mesmo rascunho.",
         "Amassar folhas limpas sem usá-las.",
-        "Escolher a folha apenas pela cor."
+        "Escolher a folha apenas pela cor.",
+        "Usar o verso limpo para o rascunho e guardar a folha para outra finalidade."
       ],
       "correctAnswer": "Usar o verso limpo para o rascunho e guardar a folha para outra finalidade.",
       "explanation": "A resposta correta usa somente as informações observáveis ou a comparação indicada no enunciado.",
@@ -340,8 +364,8 @@
       "contextFamily": "sort-disposal",
       "statement": "Após uma atividade, há uma casca de fruta, uma garrafa de vidro limpa e um guardanapo muito sujo. O que deve orientar a separação?",
       "options": [
-        "A natureza do material e as condições em que cada resíduo está.",
         "O tamanho dos resíduos apenas.",
+        "A natureza do material e as condições em que cada resíduo está.",
         "A ordem em que foram colocados na mesa.",
         "O som produzido ao tocar cada item."
       ],
@@ -358,9 +382,9 @@
       "contextFamily": "reuse-container",
       "statement": "Um pote resistente e limpo pode ser usado para guardar lápis. Por que essa é uma alternativa consciente?",
       "options": [
-        "Porque prolonga o uso de um objeto antes de descartá-lo.",
         "Porque transforma o pote em um material natural.",
         "Porque impede qualquer outro resíduo de existir.",
+        "Porque prolonga o uso de um objeto antes de descartá-lo.",
         "Porque todo pote deve guardar lápis."
       ],
       "correctAnswer": "Porque prolonga o uso de um objeto antes de descartá-lo.",
@@ -376,10 +400,10 @@
       "contextFamily": "recycle-limit",
       "statement": "Uma embalagem traz o símbolo de reciclagem, mas está cheia de restos de comida. Qual atitude é mais cuidadosa?",
       "options": [
-        "Verificar a orientação local e as condições necessárias para encaminhar a embalagem.",
         "Colocar qualquer embalagem suja em qualquer coleta.",
         "Concluir que o símbolo garante reciclagem imediata.",
-        "Queimar a embalagem para eliminá-la."
+        "Queimar a embalagem para eliminá-la.",
+        "Verificar a orientação local e as condições necessárias para encaminhar a embalagem."
       ],
       "correctAnswer": "Verificar a orientação local e as condições necessárias para encaminhar a embalagem.",
       "explanation": "A resposta conecta a propriedade, a origem ou o destino do material ao contexto apresentado e evita conclusões além dos dados.",
@@ -412,8 +436,8 @@
       "contextFamily": "durability-use",
       "statement": "Para proteger um livro durante muitas aulas, uma capa resistente pode ser mais adequada que uma folha fina. O que a decisão considera?",
       "options": [
-        "A durabilidade esperada e a função que o objeto precisa cumprir.",
         "Apenas o peso da capa.",
+        "A durabilidade esperada e a função que o objeto precisa cumprir.",
         "Apenas o preço, sem considerar o uso.",
         "A cor mais brilhante, independentemente da função."
       ],
@@ -430,9 +454,9 @@
       "contextFamily": "waste-reduction",
       "statement": "Em uma atividade, cada grupo recebe copos descartáveis novos, embora um conjunto de copos laváveis esteja disponível. Qual mudança reduz resíduos?",
       "options": [
-        "Usar os copos laváveis quando a segurança e a orientação da escola permitirem.",
         "Distribuir dois copos descartáveis por pessoa.",
         "Descartar os copos laváveis sem uso.",
+        "Usar os copos laváveis quando a segurança e a orientação da escola permitirem.",
         "Usar copos novos apenas para que tenham a mesma cor."
       ],
       "correctAnswer": "Usar os copos laváveis quando a segurança e a orientação da escola permitirem.",
@@ -448,10 +472,10 @@
       "contextFamily": "material-change",
       "statement": "Uma lata vazia foi amassada para ocupar menos espaço, mas continua sendo uma lata de metal. O que mudou?",
       "options": [
-        "A forma e o volume ocupado mudaram, mas o material continua sendo metal.",
         "O metal virou papel.",
         "A lata deixou de ter qualquer origem.",
-        "A lata passou a ser biodegradável."
+        "A lata passou a ser biodegradável.",
+        "A forma e o volume ocupado mudaram, mas o material continua sendo metal."
       ],
       "correctAnswer": "A forma e o volume ocupado mudaram, mas o material continua sendo metal.",
       "explanation": "A resposta conecta a propriedade, a origem ou o destino do material ao contexto apresentado e evita conclusões além dos dados.",
@@ -484,8 +508,8 @@
       "contextFamily": "repair-choice",
       "statement": "A alça de uma mochila soltou, mas o tecido principal está íntegro. Qual opção pode evitar descarte desnecessário?",
       "options": [
-        "Avaliar o reparo da alça antes de substituir a mochila inteira.",
         "Descartar a mochila sem verificar o defeito.",
+        "Avaliar o reparo da alça antes de substituir a mochila inteira.",
         "Comprar outra mochila e jogar a antiga fora automaticamente.",
         "Cortar o tecido restante para não consertar."
       ],
@@ -502,9 +526,9 @@
       "contextFamily": "evidence-table",
       "statement": "Uma tabela registra que a turma A reutilizou 12 folhas e a turma B reutilizou 7. Qual conclusão é apoiada pelos dados?",
       "options": [
-        "No período registrado, a turma A reutilizou 5 folhas a mais que a turma B.",
         "A turma A nunca desperdiça papel.",
         "A turma B não sabe usar papel.",
+        "No período registrado, a turma A reutilizou 5 folhas a mais que a turma B.",
         "Reutilizar papel sempre resolve todo problema ambiental."
       ],
       "correctAnswer": "No período registrado, a turma A reutilizou 5 folhas a mais que a turma B.",
@@ -520,10 +544,10 @@
       "contextFamily": "material-and-access",
       "statement": "Uma atividade precisa de um recipiente fácil de segurar. Além do material, o que deve ser considerado?",
       "options": [
-        "O tamanho, o peso, a segurança e as necessidades das pessoas que o utilizarão.",
         "A marca do recipiente apenas.",
         "A aparência sem considerar o uso.",
-        "Uma única forma obrigatória para todos."
+        "Uma única forma obrigatória para todos.",
+        "O tamanho, o peso, a segurança e as necessidades das pessoas que o utilizarão."
       ],
       "correctAnswer": "O tamanho, o peso, a segurança e as necessidades das pessoas que o utilizarão.",
       "explanation": "A resposta conecta a propriedade, a origem ou o destino do material ao contexto apresentado e evita conclusões além dos dados.",
@@ -556,8 +580,8 @@
       "contextFamily": "packaging-comparison",
       "statement": "Duas embalagens protegem o mesmo produto: uma usa muito material e outra usa apenas o necessário. Qual análise é mais completa?",
       "options": [
-        "Comparar proteção, quantidade de material, possibilidade de reutilização e destino após o uso.",
         "Escolher sempre a embalagem maior.",
+        "Comparar proteção, quantidade de material, possibilidade de reutilização e destino após o uso.",
         "Considerar somente a cor da embalagem.",
         "Concluir que toda embalagem leve é melhor em qualquer situação."
       ],
@@ -574,9 +598,9 @@
       "contextFamily": "community-map",
       "statement": "Uma turma mapeou pontos de coleta e percebeu que alguns ficam longe de parte das famílias. O que a análise deve considerar?",
       "options": [
-        "A distância e o acesso das pessoas, além do tipo de material aceito em cada ponto.",
         "Somente o ponto mais bonito no mapa.",
         "A quantidade de pontos sem verificar o que recebem.",
+        "A distância e o acesso das pessoas, além do tipo de material aceito em cada ponto.",
         "A distância apenas para quem mora perto da escola."
       ],
       "correctAnswer": "A distância e o acesso das pessoas, além do tipo de material aceito em cada ponto.",
@@ -592,10 +616,10 @@
       "contextFamily": "water-container",
       "statement": "Durante uma excursão, a turma pode levar garrafas reutilizáveis ou comprar várias garrafas descartáveis. Qual justificativa é mais responsável?",
       "options": [
-        "Levar garrafas reutilizáveis, desde que haja água segura e organização para higienizá-las.",
         "Escolher reutilizáveis sem verificar água e higiene.",
         "Comprar descartáveis apenas porque são iguais.",
-        "Ficar sem água para não produzir resíduo."
+        "Ficar sem água para não produzir resíduo.",
+        "Levar garrafas reutilizáveis, desde que haja água segura e organização para higienizá-las."
       ],
       "correctAnswer": "Levar garrafas reutilizáveis, desde que haja água segura e organização para higienizá-las.",
       "explanation": "A resposta usa critérios verificáveis, considera o contexto e evita prometer mais do que os dados permitem.",
@@ -628,8 +652,8 @@
       "contextFamily": "advertising-claim",
       "statement": "Um anúncio diz que uma embalagem é “100% sustentável”, sem explicar material, origem ou destino. Como ler essa afirmação?",
       "options": [
-        "Solicitar dados sobre o que a frase significa e quais etapas foram consideradas.",
         "Aceitar a frase como prova completa.",
+        "Solicitar dados sobre o que a frase significa e quais etapas foram consideradas.",
         "Rejeitar qualquer embalagem sem investigar.",
         "Concluir que uma palavra resolve toda a análise."
       ],
@@ -646,9 +670,9 @@
       "contextFamily": "home-routine",
       "statement": "Em casa, uma família quer diminuir o desperdício de alimentos e embalagens. Qual primeira ação produz informação útil?",
       "options": [
-        "Observar e registrar por alguns dias quais resíduos aparecem e em que situações.",
         "Comprar produtos diferentes sem observar o que acontece.",
         "Descartar tudo sem separar para não contar.",
+        "Observar e registrar por alguns dias quais resíduos aparecem e em que situações.",
         "Escolher uma solução sem conhecer o problema."
       ],
       "correctAnswer": "Observar e registrar por alguns dias quais resíduos aparecem e em que situações.",
@@ -664,10 +688,10 @@
       "contextFamily": "design-alternative",
       "statement": "Uma equipe precisa criar um porta-lápis com material disponível. Qual proposta permite comparar alternativas?",
       "options": [
-        "Definir critérios de estabilidade, segurança, durabilidade e quantidade de material para testar protótipos.",
         "Escolher o protótipo mais colorido sem testar.",
         "Usar o máximo de material para garantir resultado.",
-        "Avaliar somente quem terminou primeiro."
+        "Avaliar somente quem terminou primeiro.",
+        "Definir critérios de estabilidade, segurança, durabilidade e quantidade de material para testar protótipos."
       ],
       "correctAnswer": "Definir critérios de estabilidade, segurança, durabilidade e quantidade de material para testar protótipos.",
       "explanation": "A resposta usa critérios verificáveis, considera o contexto e evita prometer mais do que os dados permitem.",
@@ -700,8 +724,8 @@
       "contextFamily": "source-destination",
       "statement": "Qual sequência representa melhor o caminho de um objeto de papel?",
       "options": [
-        "Matéria-prima transformada em papel, uso do objeto e encaminhamento conforme a coleta disponível.",
         "Objeto pronto retirado diretamente de uma árvore e descartado sem uso.",
+        "Matéria-prima transformada em papel, uso do objeto e encaminhamento conforme a coleta disponível.",
         "Uso, matéria-prima, fabricação e depois nenhum destino.",
         "Cor do objeto, tamanho, preço e origem desconhecida."
       ],
@@ -718,9 +742,9 @@
       "contextFamily": "data-limit",
       "statement": "Uma escola reduziu o uso de copos descartáveis em uma semana. Qual afirmação é mais cuidadosa?",
       "options": [
-        "A escola usou menos copos no período observado; é preciso acompanhar outros períodos para avaliar a mudança.",
         "A escola resolveu todo problema de resíduos.",
         "A mudança funcionará sempre em qualquer lugar.",
+        "A escola usou menos copos no período observado; é preciso acompanhar outros períodos para avaliar a mudança.",
         "A redução não tem relação com nenhuma decisão."
       ],
       "correctAnswer": "A escola usou menos copos no período observado; é preciso acompanhar outros períodos para avaliar a mudança.",
@@ -736,10 +760,10 @@
       "contextFamily": "safe-reuse",
       "statement": "Antes de reutilizar um pote encontrado na escola para guardar materiais, o que é necessário?",
       "options": [
-        "Verificar limpeza, integridade, tamanho, finalidade e orientação de segurança.",
         "Usar o pote sem olhar seu estado.",
         "Escolher apenas o pote com etiqueta mais bonita.",
-        "Usar qualquer recipiente para guardar alimentos também."
+        "Usar qualquer recipiente para guardar alimentos também.",
+        "Verificar limpeza, integridade, tamanho, finalidade e orientação de segurança."
       ],
       "correctAnswer": "Verificar limpeza, integridade, tamanho, finalidade e orientação de segurança.",
       "explanation": "A resposta mantém a relação entre evidência, função, segurança e alcance da conclusão.",
@@ -772,8 +796,8 @@
       "contextFamily": "responsible-language",
       "statement": "Qual frase comunica uma conclusão sem exagero?",
       "options": [
-        "Neste teste, o papel reaproveitado foi suficiente para os rascunhos da turma.",
         "Papel reaproveitado é sempre melhor em qualquer uso.",
+        "Neste teste, o papel reaproveitado foi suficiente para os rascunhos da turma.",
         "Uma atividade prova que todo papel deve ser igual.",
         "O resultado não permite aprender nada."
       ],
@@ -790,9 +814,9 @@
       "contextFamily": "review-observe",
       "statement": "Qual frase é uma observação sobre uma embalagem?",
       "options": [
-        "A embalagem tem duas partes de plástico e uma tampa.",
         "A embalagem foi produzida sem impacto.",
         "A embalagem será reciclada com certeza.",
+        "A embalagem tem duas partes de plástico e uma tampa.",
         "A embalagem é a melhor de todas."
       ],
       "correctAnswer": "A embalagem tem duas partes de plástico e uma tampa.",
@@ -808,10 +832,10 @@
       "contextFamily": "review-origin",
       "statement": "O que significa investigar a origem de um material?",
       "options": [
-        "Descobrir quais matérias-primas e transformações participaram de sua produção.",
         "Saber apenas sua cor.",
         "Descobrir quem segurou o objeto por último.",
-        "Medir somente seu tamanho."
+        "Medir somente seu tamanho.",
+        "Descobrir quais matérias-primas e transformações participaram de sua produção."
       ],
       "correctAnswer": "Descobrir quais matérias-primas e transformações participaram de sua produção.",
       "explanation": "A resposta retoma o princípio de observar, comparar e decidir considerando origem, uso, destino, segurança e limites.",
@@ -844,8 +868,8 @@
       "contextFamily": "review-reuse",
       "statement": "Reutilizar um objeto significa:",
       "options": [
-        "Usá-lo novamente para a mesma ou outra finalidade adequada, prolongando seu uso.",
         "Transformá-lo sempre em outro material.",
+        "Usá-lo novamente para a mesma ou outra finalidade adequada, prolongando seu uso.",
         "Descartá-lo assim que for usado uma vez.",
         "Garantir que ele nunca precise de limpeza."
       ],
@@ -862,9 +886,9 @@
       "contextFamily": "review-recycle",
       "statement": "O que deve ser verificado antes de encaminhar um resíduo para coleta?",
       "options": [
-        "A regra local, o material e as condições exigidas para recebimento.",
         "Somente o formato do resíduo.",
         "Somente o símbolo da embalagem.",
+        "A regra local, o material e as condições exigidas para recebimento.",
         "A opinião de quem estiver mais perto."
       ],
       "correctAnswer": "A regra local, o material e as condições exigidas para recebimento.",
@@ -880,10 +904,10 @@
       "contextFamily": "review-conscious",
       "statement": "Uma atitude de consumo consciente procura:",
       "options": [
-        "Atender à necessidade usando recursos com cuidado e evitando desperdício.",
         "Comprar sempre a maior quantidade.",
         "Escolher sempre o item mais colorido.",
-        "Descartar objetos que ainda podem ser usados."
+        "Descartar objetos que ainda podem ser usados.",
+        "Atender à necessidade usando recursos com cuidado e evitando desperdício."
       ],
       "correctAnswer": "Atender à necessidade usando recursos com cuidado e evitando desperdício.",
       "explanation": "A resposta retoma o princípio de observar, comparar e decidir considerando origem, uso, destino, segurança e limites.",
@@ -916,8 +940,8 @@
       "contextFamily": "review-access",
       "statement": "Uma alternativa de descarte só pode ser usada por parte das famílias. O que isso indica?",
       "options": [
-        "A análise deve considerar acesso e condições reais, não apenas a existência da alternativa.",
         "Que a alternativa funciona igualmente para todos.",
+        "A análise deve considerar acesso e condições reais, não apenas a existência da alternativa.",
         "Que distância não importa.",
         "Que qualquer regra local serve em todo lugar."
       ],
@@ -934,9 +958,9 @@
       "contextFamily": "review-safety",
       "statement": "Qual é uma regra importante ao reutilizar recipientes?",
       "options": [
-        "Adequar o recipiente à finalidade e verificar limpeza, integridade e segurança.",
         "Usar qualquer recipiente para qualquer conteúdo.",
         "Ignorar rachaduras se a cor for bonita.",
+        "Adequar o recipiente à finalidade e verificar limpeza, integridade e segurança.",
         "Compartilhar recipientes sem higienização."
       ],
       "correctAnswer": "Adequar o recipiente à finalidade e verificar limpeza, integridade e segurança.",
@@ -952,15 +976,16 @@
       "contextFamily": "review-limit",
       "statement": "Por que uma conclusão deve informar o período e o contexto?",
       "options": [
-        "Para que outras pessoas saibam até onde os dados podem ser aplicados.",
         "Para deixar a frase mais longa.",
         "Para transformar uma observação em regra universal.",
-        "Para evitar comparar qualquer dado."
+        "Para evitar comparar qualquer dado.",
+        "Para que outras pessoas saibam até onde os dados podem ser aplicados."
       ],
       "correctAnswer": "Para que outras pessoas saibam até onde os dados podem ser aplicados.",
       "explanation": "A resposta retoma o princípio de observar, comparar e decidir considerando origem, uso, destino, segurança e limites.",
       "hint": "Volte à ideia principal da pergunta e evite generalizações.",
       "errorFocus": "Misturar origem, função, destino e conclusão sem considerar o contexto."
     }
-  ]
+  ],
+  "active": false
 }

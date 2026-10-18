@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre marcos históricos e seus significados para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar os marcos históricos do lugar em que vive e compreender seus significados.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Marcos históricos e seus significados",
     "objective": "Identificar marcos históricos do lugar e explicar seus significados a partir de fontes, usos e memórias situadas.",
     "summary": "Marcos históricos são referências que ajudam pessoas e grupos a lembrar acontecimentos, trajetórias e transformações. Seu significado precisa ser investigado, não presumido pela aparência.",
     "explanation": "## O que investigar\nIdentificar os marcos históricos do lugar em que vive e compreender seus significados.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: uma placa registra a abertura de uma escola em certo ano. Ela pode ser um marco para investigar mudanças no acesso à educação, mas a placa, sozinha, não informa quem frequentava a escola nem como diferentes pessoas viveram aquele período.",
     "commonMistake": "Confundir marco histórico com qualquer objeto antigo ou presumir um único significado sem consultar o contexto e as pessoas relacionadas ao lugar.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-local-landmarks-003",
           "v13-history-local-landmarks-004",
           "v13-history-local-landmarks-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-local-landmarks-018",
           "v13-history-local-landmarks-019",
           "v13-history-local-landmarks-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-local-landmarks-030",
           "v13-history-local-landmarks-031",
           "v13-history-local-landmarks-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-local-landmarks-038",
           "v13-history-local-landmarks-039",
           "v13-history-local-landmarks-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-local-landmarks-048",
           "v13-history-local-landmarks-049",
           "v13-history-local-landmarks-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Confundir objeto antigo com marco histórico.",
+        "action": "Procure a relação documentada entre o objeto, um acontecimento, um período e seu significado para a pergunta."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Atribuir um único significado a todas as pessoas.",
+        "action": "Compare duas fontes situadas e marque qual grupo ou autoria sustenta cada interpretação."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Concluir que uma placa descreve toda a experiência histórica.",
+        "action": "Registre uma informação que a placa fornece e outra que exigiria fonte adicional."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-local-landmarks-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Interpretar um marco histórico com fontes",
         "objective": "Identificar marcos históricos do lugar e explicar seus significados a partir de fontes, usos e memórias situadas.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Placa, edifício, registro ou caso didático fornecido pelo professor, sem exigir deslocamento ou coleta de endereço.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Identifique o marco e registre o lugar e o período informados pela fonte. Compare seu significado declarado com outra fonte ou relato que amplie o contexto. Explique por que pode ser considerado marco e registre o que ainda não é possível afirmar.",
+        "evidence": "Ficha de interpretação com identificação, fonte, significado sustentado e limite explícito.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Identificação e contexto",
+            "emerging": "Chama qualquer objeto antigo de marco.",
+            "developing": "Identifica um marco com apoio.",
+            "proficient": "Relaciona o marco a evento, período e fonte."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Significado",
+            "emerging": "Atribui sentido sem evidência.",
+            "developing": "Aponta um significado documentado.",
+            "proficient": "Compara significados situados e atribui cada um à fonte."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Limite",
+            "emerging": "Generaliza a partir de uma placa ou objeto.",
+            "developing": "Reconhece uma lacuna após mediação.",
+            "proficient": "Distingue o que a fonte informa do que permanece desconhecido."
           }
+        ],
+        "steps": [
+          "Identifique o marco e registre o lugar e o período informados pela fonte.",
+          "Compare seu significado declarado com outra fonte ou relato que amplie o contexto.",
+          "Explique por que pode ser considerado marco e registre o que ainda não é possível afirmar."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Identificar os marcos históricos do lugar em que vive e compreender seus significados.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Oferecer descrição textual e visual do marco, fonte em formato acessível e glossário de período, registro e significado.",
+      "Permitir resposta em ficha visual, áudio, desenho ou texto e usar casos didáticos sem exigir visita ou localização real."
     ]
   },
   "questions": [

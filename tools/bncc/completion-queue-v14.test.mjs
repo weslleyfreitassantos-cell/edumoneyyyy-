@@ -24,14 +24,25 @@ describe('BNCC V14 completion queue', () => {
   it('uses the completeness rubric without silently promoting legacy count-only candidates', () => {
     const artifact = buildCompletionQueue();
     const byCode = new Map(artifact.tasks.map((task) => [task.officialCode, task]));
-    for (const code of ['EF01LP01', 'EF01LP02', 'EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01GE01', 'EF01HI01']) {
+    for (const code of ['EF01LP01', 'EF01LP02', 'EF01CI03', 'EF01CI06', 'EF01CO01', 'EF01CO02', 'EF01CO03', 'EF01CO04', 'EF01CO05', 'EF01CO06', 'EF01CO07', 'EF01GE01', 'EF01HI01', 'EF02CI01', 'EM13CHS103']) {
       expect(byCode.get(code)?.state).toBe('CONTENT_TECHNICALLY_COMPLETE');
       expect(byCode.get(code)?.technicalCompleteness.qualityRubric.status).toBe('AUTOMATED_SCREEN_PASS');
       expect(byCode.get(code)?.technicalCompleteness.humanPedagogicalApproved).toBe(false);
       expect(byCode.get(code)?.gates.active).toBe(false);
     }
-    expect(artifact.summary.legacyCountBasedTechnicalComplete).toBeGreaterThan(artifact.summary.contentTechnicallyComplete);
-    expect(artifact.summary.automatedScreenIncomplete).toBeGreaterThan(0);
+    for (const code of ['EI01CG01', 'EI02CG01', 'EI03CG01', 'EI01CG02', 'EI01CG03', 'EI01CG04']) {
+      const task = byCode.get(code);
+      expect(task?.state).toBe('CONTENT_TECHNICALLY_COMPLETE');
+      expect(task?.requirements.mode).toBe('EDUCATOR_MEDIATED_OBSERVATION');
+      expect(task?.requirements.questions).toBe(0);
+      expect(task?.technicalCompleteness.qualityRubric.mode).toBe('EDUCATOR_MEDIATED_OBSERVATION');
+      expect(task?.technicalCompleteness.qualityRubric.status).toBe('AUTOMATED_SCREEN_PASS');
+      expect(task?.evidence.stagedPackages[0].questionCount).toBe(0);
+      expect(task?.gates.active).toBe(false);
+    }
+    expect(artifact.summary.legacyCountBasedTechnicalComplete).toBe(artifact.summary.contentTechnicallyComplete);
+    expect(artifact.summary.automatedScreenIncomplete).toBe(0);
+    expect(artifact.tasks.every((task) => task.state !== 'CONTENT_TECHNICALLY_COMPLETE' || task.technicalCompleteness.qualityRubric.status === 'AUTOMATED_SCREEN_PASS')).toBe(true);
     expect(byCode.get('EF01CO07')?.executionClassification).toBe('COMPLETE_OR_REPAIR_STAGED_PACKAGE');
   });
 

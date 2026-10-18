@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "tec-escola.bncc.high-school-evidence-recovery.v1",
+  "generatedAt": "2026-10-18",
+  "packageFile": "content/adaptive/tec-escola-core-v5/humanities-evidence-arguments-hs-v8.json",
+  "officialCode": "EM13CHS103",
+  "sourceVerificationId": "BNCC_EM13CHS103_MEC_P136_V1",
+  "before": {
+    "questionCount": 40,
+    "uniqueQuestionIds": 40,
+    "uniqueQuestionStems": 40,
+    "answerPositionCounts": [
+      40,
+      0,
+      0,
+      0
+    ],
+    "purposeCounts": {
+      "PROBE": 4,
+      "PRACTICE": 12,
+      "TRANSFER": 8,
+      "LOCK_IN": 6,
+      "REVIEW": 10
+    },
+    "evidenceMode": "OBJECTIVE_LEARNING_PATH",
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "active": false
+  },
+  "after": {
+    "questionCount": 40,
+    "uniqueQuestionIds": 40,
+    "uniqueQuestionStems": 40,
+    "answerPositionCounts": [
+      10,
+      10,
+      10,
+      10
+    ],
+    "purposeCounts": {
+      "PROBE": 4,
+      "PRACTICE": 12,
+      "TRANSFER": 8,
+      "LOCK_IN": 6,
+      "REVIEW": 10
+    },
+    "evidenceMode": "OBJECTIVE_LEARNING_PATH",
+    "publicationStatus": "STAGING_INACTIVE",
+    "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+    "officialMappingStatus": "NOT_CLAIMED",
+    "active": false
+  },
+  "questionIdsAndCorrectAnswersPreserved": true,
+  "questionOptionsReorderedOnlyToBalanceAnswerPositions": true,
+  "automatedScreen": {
+    "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+    "mode": "OBJECTIVE_LEARNING_PATH",
+    "status": "AUTOMATED_SCREEN_PASS",
+    "structuralValidationStatus": "STRUCTURAL_VALIDATION_PASS",
+    "automatedQualityScreenStatus": "AUTOMATED_QUALITY_SCREEN_PASS",
+    "contentTechnicalPreparationStatus": "CONTENT_TECHNICALLY_PREPARED",
+    "humanPedagogicalApprovalStatus": "HUMAN_PEDAGOGICAL_REVIEW_PENDING",
+    "checks": [
+      {
+        "id": "official-source-and-descriptor",
+        "pass": true
+      },
+      {
+        "id": "concept-coverage-and-progressive-explanation",
+        "pass": true
+      },
+      {
+        "id": "prerequisites-declared",
+        "pass": true
+      },
+      {
+        "id": "progression-maps-assessments",
+        "pass": true
+      },
+      {
+        "id": "authentic-practice-and-observable-evidence",
+        "pass": true
+      },
+      {
+        "id": "assessment-coverage-and-answer-feedback",
+        "pass": true
+      },
+      {
+        "id": "question-statement-diversity",
+        "pass": true
+      },
+      {
+        "id": "answer-position-diversity",
+        "pass": true
+      },
+      {
+        "id": "targeted-remediation",
+        "pass": true
+      },
+      {
+        "id": "accessibility-supports",
+        "pass": true
+      },
+      {
+        "id": "inactive-staging-governance",
+        "pass": true
+      }
+    ],
+    "incomplete": [],
+    "humanReview": {
+      "status": "PEDAGOGICAL_REVIEW_PENDING",
+      "requiredJudgments": [
+        "CONCEPTUAL_ACCURACY_AND_SCOPE",
+        "AGE_AND_CONTEXT_SUITABILITY",
+        "INCLUSION_AND_NON_STIGMATIZING_LANGUAGE",
+        "ASSESSMENT_VALIDITY",
+        "OFFICIAL_MAPPING_AND_PUBLICATION_APPROVAL"
+      ],
+      "automatedApprovalClaimed": false
+    }
+  },
+  "humanPedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "canonicalMappingStatus": "CANONICAL_GAP",
+  "publicationStatus": "STAGING_INACTIVE",
+  "publicationAuthorized": false,
+  "repairNotes": [
+    "Corrigido o contexto da fonte para a BNCC oficial do Ensino Médio e conferida a transcrição do descritor.",
+    "Convertida a progressão existente para fases explícitas que mapeiam as questões já existentes por finalidade.",
+    "Acrescentadas atividade autêntica, apoios de acessibilidade e ações de retomada alinhadas ao argumento baseado em evidências.",
+    "Reordenadas alternativas sem mudar gabaritos, conteúdo ou quantidade das 40 questões para eliminar viés de posição."
+  ]
+}

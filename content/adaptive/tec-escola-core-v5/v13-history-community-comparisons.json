@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre semelhanças e diferenças entre comunidades para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Semelhanças e diferenças entre comunidades",
     "objective": "Comparar comunidades da cidade ou região e descrever o papel de diferentes grupos sociais sem apagar diferenças internas ou generalizar experiências.",
     "summary": "Comunidades podem compartilhar espaços e necessidades, mas têm histórias, práticas e formas de organização diversas. Comparar exige observar critérios e descrever os papéis dos grupos com evidências.",
     "explanation": "## O que investigar\nIdentificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: duas comunidades usam a mesma praça, mas organizam feira, leitura ou esporte em horários diferentes. A comparação pode descrever usos documentados sem afirmar que todos os moradores participam ou pensam da mesma maneira.",
     "commonMistake": "Confundir diferença com desigualdade de valor, tratar uma comunidade como homogênea ou atribuir a um grupo o papel de todas as pessoas.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-community-comparisons-003",
           "v13-history-community-comparisons-004",
           "v13-history-community-comparisons-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-community-comparisons-018",
           "v13-history-community-comparisons-019",
           "v13-history-community-comparisons-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-community-comparisons-030",
           "v13-history-community-comparisons-031",
           "v13-history-community-comparisons-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-community-comparisons-038",
           "v13-history-community-comparisons-039",
           "v13-history-community-comparisons-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-community-comparisons-048",
           "v13-history-community-comparisons-049",
           "v13-history-community-comparisons-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Generalizar uma prática observada para toda a comunidade.",
+        "action": "Acrescente o recorte de lugar, período e fonte e reescreva a conclusão sem quantificadores absolutos não sustentados."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Comparar comunidades por um critério implícito ou desigual.",
+        "action": "Escolha o mesmo aspecto para os dois casos e indique quais informações faltam para uma comparação justa."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Tratar diferença cultural como hierarquia.",
+        "action": "Descreva a função contextual de cada prática sem classificar uma como melhor ou mais desenvolvida."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-community-comparisons-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Comparar comunidades sem generalizar",
         "objective": "Comparar comunidades da cidade ou região e descrever o papel de diferentes grupos sociais sem apagar diferenças internas ou generalizar experiências.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Dois estudos de caso didáticos, fontes públicas ou registros autorizados sobre comunidades distintas.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Defina um aspecto comum a comparar e identifique lugar, período e autoria de cada fonte. Registre semelhanças e diferenças apoiadas nas fontes, incluindo variações dentro de cada comunidade quando disponíveis. Escreva uma síntese que preserve contexto e indique o que as fontes não permitem generalizar.",
+        "evidence": "Quadro comparativo com recorte explícito, evidências atribuídas e limites de representação.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Recorte comparativo",
+            "emerging": "Compara comunidades sem definir aspecto ou período.",
+            "developing": "Define um aspecto com apoio.",
+            "proficient": "Compara o mesmo aspecto em contextos identificados."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Diversidade interna",
+            "emerging": "Generaliza uma prática a todos os membros.",
+            "developing": "Reconhece variação com mediação.",
+            "proficient": "Evita homogeneização e usa evidência para descrever variações."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Síntese",
+            "emerging": "Atribui valor superior a uma comunidade.",
+            "developing": "Registra diferença sem hierarquia após orientação.",
+            "proficient": "Explica semelhanças e diferenças sem ranking e explicita limites."
           }
+        ],
+        "steps": [
+          "Defina um aspecto comum a comparar e identifique lugar, período e autoria de cada fonte.",
+          "Registre semelhanças e diferenças apoiadas nas fontes, incluindo variações dentro de cada comunidade quando disponíveis.",
+          "Escreva uma síntese que preserve contexto e indique o que as fontes não permitem generalizar."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Identificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Apresentar os casos em fontes equivalentes e acessíveis, com legenda de lugar, período e autoria.",
+      "Permitir tabela visual, cartões, áudio ou resposta escrita; não pedir que estudantes representem ou falem em nome de comunidades."
     ]
   },
   "questions": [

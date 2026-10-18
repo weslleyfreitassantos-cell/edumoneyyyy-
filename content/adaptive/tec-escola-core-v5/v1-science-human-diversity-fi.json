@@ -60,16 +60,17 @@
           "v5-sci-diversity-probe-01",
           "v5-sci-diversity-probe-02",
           "v5-sci-diversity-probe-03",
-          "v5-sci-diversity-practice-01",
-          "v5-sci-diversity-practice-02",
-          "v5-sci-diversity-practice-03",
           "v1-science-diversity-probe-04"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "APPLICATION",
         "focus": "Comparar uma diferença e uma semelhança sem ranking ou generalização.",
         "questionIds": [
+          "v5-sci-diversity-practice-01",
+          "v5-sci-diversity-practice-02",
+          "v5-sci-diversity-practice-03",
           "v5-sci-diversity-practice-04",
           "v5-sci-diversity-practice-05",
           "v5-sci-diversity-practice-06",
@@ -79,7 +80,8 @@
           "v5-sci-diversity-practice-10",
           "v5-sci-diversity-practice-11",
           "v1-science-diversity-practice-12"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -93,7 +95,8 @@
           "v5-sci-diversity-transfer-06",
           "v5-sci-diversity-transfer-07",
           "v1-science-diversity-transfer-08"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "INTEGRATION",
@@ -105,7 +108,8 @@
           "v5-sci-diversity-lock-04",
           "v5-sci-diversity-lock-05",
           "v1-science-diversity-lock-06"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -121,7 +125,8 @@
           "v5-sci-diversity-review-08",
           "v5-sci-diversity-review-09",
           "v1-science-diversity-review-10"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -149,61 +154,76 @@
     "remediations": [
       {
         "misconception": "ABILITY_FROM_APPEARANCE",
-        "prompt": "Sublinhe o que a imagem mostra e risque o que você imaginou. Reescreva a resposta usando apenas uma evidência."
+        "prompt": "Sublinhe o que a imagem mostra e risque o que você imaginou. Reescreva a resposta usando apenas uma evidência.",
+        "errorFocus": "Inferir personalidade ou capacidade a partir de uma característica física.",
+        "action": "Sublinhe o que está visível e risque a inferência; reescreva usando apenas a evidência da cena."
       },
       {
         "misconception": "DIFFERENCE_AS_RANK",
-        "prompt": "Troque “melhor/pior” por uma descrição observável. Depois diga uma ação ou semelhança que a história apresenta."
+        "prompt": "Troque “melhor/pior” por uma descrição observável. Depois diga uma ação ou semelhança que a história apresenta.",
+        "errorFocus": "Transformar diferenças em ranking ou padrão de valor.",
+        "action": "Reformule a comparação como descrição neutra e identifique uma atividade compartilhada sem exigir que todos participem."
       },
       {
         "misconception": "PERSON_AS_BARRIER",
-        "prompt": "Localize o obstáculo no ambiente ou na regra. Proponha uma mudança acessível sem decidir pela pessoa."
+        "prompt": "Localize o obstáculo no ambiente ou na regra. Proponha uma mudança acessível sem decidir pela pessoa.",
+        "errorFocus": "Pressupor que uma personagem deseja ajuda ou exposição.",
+        "action": "Revise a situação e proponha uma pergunta ou alternativa que preserve escolha, privacidade e autonomia."
       },
       {
         "misconception": "FORCED_DISCLOSURE",
-        "prompt": "Reformule a pergunta para permitir que o personagem passe a vez ou participe de outro modo sem explicar o motivo."
+        "prompt": "Reformule a pergunta para permitir que o personagem passe a vez ou participe de outro modo sem explicar o motivo.",
+        "errorFocus": "Inferir personalidade ou capacidade a partir de uma característica física.",
+        "action": "Sublinhe o que está visível e risque a inferência; reescreva usando apenas a evidência da cena."
       },
       {
         "misconception": "HELP_WITHOUT_PERMISSION",
-        "prompt": "Antes de agir, escreva uma pergunta curta que ofereça ajuda e aceite um “não”."
+        "prompt": "Antes de agir, escreva uma pergunta curta que ofereça ajuda e aceite um “não”.",
+        "errorFocus": "Transformar diferenças em ranking ou padrão de valor.",
+        "action": "Reformule a comparação como descrição neutra e identifique uma atividade compartilhada sem exigir que todos participem."
       }
     ],
     "authenticActivities": [
       {
         "id": "v5-science-fictional-portraits-observation",
-        "title": "O que a história mostra?",
+        "title": "Observar diversidade com personagens fictícios",
         "objective": "Comparar personagens fictícios com base em evidências e propor uma regra de convivência que não classifique nem exponha estudantes.",
-        "context": "Atividade mediada pelo professor com cartões ou ilustrações de personagens inventados e características não hierarquizadas.",
+        "context": "Cartões de personagens fictícios e situações de convivência construídas para a atividade, sem fotos ou relatos pessoais.",
         "materials": [
           "Cartões fictícios selecionados pelo educador",
           "Quadro com as colunas “mostra” e “ainda não sabemos”",
           "Folhas para registrar uma descrição respeitosa"
         ],
-        "instructions": "Em dupla, escolha dois cartões fictícios. Registre uma característica observável, uma informação que o desenho não permite concluir e uma atividade que os personagens podem realizar juntos. A turma cria um combinado para impedir apelidos e respeitar a opção de não responder. Não usar autorretratos, fotos, comparação entre colegas, toque, diagnóstico ou relatos pessoais.",
-        "evidence": "Registro que separa observação e suposição, comparação sem ranking e proposta de convivência com participação voluntária.",
+        "instructions": "Escolha dois cartões fictícios e registre características que aparecem de forma direta, distinguindo observação de suposição. Identifique uma semelhança e uma diferença sem criar ranking, diagnóstico ou previsão de capacidade. Proponha uma ação de convivência que permita participação e respeito à escolha de não responder.",
+        "evidence": "Registro que separa observação de suposição, compara personagens sem hierarquia e propõe uma ação de convivência com participação voluntária.",
         "safety": "Usar personagens inventados ou materiais aprovados pelo educador; evitar atributos usados para ridicularizar grupos; interromper comentários depreciativos e oferecer outra forma de participação.",
         "privacyGuard": "Não coletar ou registrar aparência, saúde, deficiência, diagnóstico, imagem, identidade ou experiência pessoal de estudantes. Não pedir que alguém represente um grupo real nem explique seu corpo ou recurso assistivo.",
         "ageRange": "1º ano do Ensino Fundamental, com leitura e mediação docente.",
         "mediation": "O professor modela a diferença entre evidência e suposição, protege a opção de passar a vez e aborda imediatamente qualquer comentário que diminua uma pessoa. A rubrica avalia o raciocínio sobre o material fictício, não a aparência de alunos.",
         "rubric": [
           {
-            "criterion": "Observação e evidência",
-            "emerging": "Confunde o que vê com uma explicação inventada.",
-            "developing": "Nomeia um elemento visível após uma pergunta orientadora.",
-            "proficient": "Descreve um elemento e identifica algo que a imagem não permite concluir."
+            "criterion": "Observação",
+            "emerging": "Apresenta suposição como fato visível.",
+            "developing": "Separa observação e suposição com apoio.",
+            "proficient": "Sustenta a descrição em evidência da representação."
           },
           {
             "criterion": "Comparação respeitosa",
-            "emerging": "Usa diferença para ranquear ou excluir.",
-            "developing": "Compara sem ranking com mediação.",
-            "proficient": "Nomeia diferença e semelhança apoiadas na história, sem generalizar."
+            "emerging": "Cria ranking ou generaliza capacidades.",
+            "developing": "Compara sem ranking após mediação.",
+            "proficient": "Reconhece diferenças sem atribuir valor ou capacidade não observada."
           },
           {
-            "criterion": "Participação e privacidade",
-            "emerging": "Propõe exposição, toque ou participação forçada.",
-            "developing": "Aceita uma opção de escolha após apoio.",
-            "proficient": "Propõe participação voluntária e preserva o direito de não revelar informações."
+            "criterion": "Convivência e autonomia",
+            "emerging": "Propõe participação obrigatória.",
+            "developing": "Propõe uma ação respeitosa com apoio.",
+            "proficient": "Inclui alternativas e respeita a opção de não participar ou responder."
           }
+        ],
+        "steps": [
+          "Escolha dois cartões fictícios e registre características que aparecem de forma direta, distinguindo observação de suposição.",
+          "Identifique uma semelhança e uma diferença sem criar ranking, diagnóstico ou previsão de capacidade.",
+          "Proponha uma ação de convivência que permita participação e respeito à escolha de não responder."
         ]
       }
     ],
@@ -256,7 +276,11 @@
         "use": "Referência de salvaguarda para autonomia corporal; a atividade evita examinar ou comparar corpos reais."
       }
     ],
-    "copyrightNote": "Personagens, enunciados, alternativas, explicações e atividade são originais e fictícios. As fontes orientam salvaguardas e escopo. A extração BNCC de origem apresenta contaminação textual documentada; mapeamento oficial e revisão pedagógica humana não foram aprovados."
+    "copyrightNote": "Personagens, enunciados, alternativas, explicações e atividade são originais e fictícios. As fontes orientam salvaguardas e escopo. A extração BNCC de origem apresenta contaminação textual documentada; mapeamento oficial e revisão pedagógica humana não foram aprovados.",
+    "accessibilitySupports": [
+      "Disponibilizar cartões em formatos legíveis, descrição verbal e personagens com variedade de características sem caricatura.",
+      "Permitir resposta por desenho, seleção de cartões, fala, escrita ou comunicação alternativa; não solicitar autorretratos, comparação entre colegas ou dados pessoais."
+    ]
   },
   "questions": [
     {
@@ -1433,7 +1457,8 @@
       "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
       "page": 335
     },
-    "note": "Conteúdo autoral contextualizado para EF01CI04; o mapeamento canônico e a revisão pedagógica continuam pendentes."
+    "note": "Conteúdo autoral contextualizado para EF01CI04; o mapeamento canônico e a revisão pedagógica continuam pendentes.",
+    "sourceVerificationRecord": "BNCC_EF01CI04_MEC_P335_V1"
   },
   "sourceReconciliation": {
     "sourceQuestionCount": 0,

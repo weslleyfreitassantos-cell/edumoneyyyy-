@@ -24,7 +24,7 @@
   },
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceQuestionFeedback": [
     {
@@ -46,7 +46,7 @@
     "objective": "Relacionar grupos populacionais, migrações e eventos de transformação do município, distinguindo evidência, interpretação e hipótese.",
     "summary": "A história local reúne trajetórias de pessoas, relações entre grupos e mudanças no território. O estudo compara fontes e limita conclusões ao que elas registram.",
     "explanation": "## 1. Comece pela pergunta histórica\nDefina o acontecimento, processo, lugar e período que quer investigar. “O que aconteceu?” pode ser amplo demais; uma pergunta delimitada ajuda a escolher fontes pertinentes sem forçá-las a responder tudo.\n\n## 2. Identifique quem produziu cada fonte\nRegistre autoria, posição, público, finalidade, data e gênero. Uma ata, carta, mapa, notícia, fotografia e relato oral não são espelhos neutros nem provas intercambiáveis. A posição de quem produziu uma fonte não a torna automaticamente verdadeira ou falsa.\n\n## 3. Compare afirmações específicas\nSepare observação, interpretação e conclusão. Duas fontes podem tratar do mesmo tema e destacar aspectos diferentes; isso não é necessariamente contradição. Para haver contradição, as afirmações precisam referir-se ao mesmo aspecto, lugar e período e não poder ser verdadeiras ao mesmo tempo.\n\n## 4. Procure convergências e divergências\nUma fonte pode corroborar uma data e divergir sobre a causa. Avalie cada afirmação separadamente. Verifique o que foi observado, o que foi selecionado, quais critérios foram usados e se as fontes dependem uma da outra. Mais fontes não significam automaticamente mais independência.\n\n## 5. Reconheça ausências sem inventar vozes\nUma coleção pode privilegiar registros institucionais e não preservar experiências de outros grupos. Isso é uma lacuna do acervo consultado, não prova de que essas pessoas não agiram ou não existiram. Busque outros gêneros e coleções com procedência; nunca invente depoimentos para preencher silêncios.\n\n## Exemplo resolvido\nEm um cenário didático hipotético, uma ata registra que a reunião aprovou uma mudança de horário. Uma carta de participante informa que ela saiu antes da votação. Primeiro, delimitamos as afirmações: a ata trata da decisão coletiva; a carta, da experiência de uma participante. Não há contradição necessária. A ata não prova que todas as pessoas permaneceram, e a carta não determina o resultado da votação. Para entender participação, precisaríamos de lista de presença, regras de votação e outras evidências.\n\n## 6. Escreva uma síntese com limites\nUse uma estrutura: “A fonte A, produzida por ___ em ___, registra ___. A fonte B, de ___, registra ___. Elas convergem em ___ e diferem em ___. Como o conjunto não informa ___, não podemos concluir ___.” A síntese explica o que cada material sustenta e deixa as perguntas em aberto visíveis.\n\n## Grupos, deslocamentos e território\nObserve quem aparece no registro, de onde veio, que relações estabeleceu e quais mudanças ocorreram no espaço. Migração, abertura de vias, instalação de empresas e desmatamento podem participar da formação de um município, mas cada relação precisa de evidência e de período definidos.",
-    "workedExample": "Uma fotografia mostra novas casas depois da abertura de uma estrada e uma entrevista relata a chegada de famílias. A síntese pode relacionar circulação, moradia e migração como processos documentados, mas não pode afirmar que a estrada foi a única causa sem fontes adicionais.",
+    "workedExample": "Uma fotografia mostra novas casas depois da abertura de uma estrada e uma entrevista relata a chegada de famílias. A síntese pode relacionar circulação, moradia e migração como processos documentados, mas não pode afirmar que a estrada foi a única causa sem fontes adicionais.\n\nExemplo hipotético: uma fotografia registra novas moradias depois da abertura de uma estrada e um relatório municipal descreve o período. As fontes permitem investigar mudança e deslocamento, mas não provam que a estrada foi a única causa nem representam todas as famílias.",
     "commonMistake": "Escolher uma fonte como verdadeira apenas por ser oficial, longa ou antiga; tratar toda diferença como contradição; generalizar uma experiência; confundir norma, decisão e prática; ou preencher ausências do acervo com suposições.",
     "tips": [
       "Defina lugar, período e pergunta.",
@@ -79,8 +79,24 @@
           "v5-history-compare-perspectives-01",
           "v5-history-compare-perspectives-02",
           "v5-history-compare-perspectives-03",
-          "v5-history-compare-perspectives-04"
-        ]
+          "v5-history-compare-perspectives-04",
+          "v29-history-compare-perspectives-001",
+          "v29-history-compare-perspectives-002",
+          "v29-history-compare-perspectives-003",
+          "v29-history-compare-perspectives-004",
+          "v29-history-compare-perspectives-005",
+          "v29-history-compare-perspectives-006",
+          "v29-history-compare-perspectives-007",
+          "v29-history-compare-perspectives-008",
+          "v29-history-compare-perspectives-009",
+          "v29-history-compare-perspectives-010",
+          "v31-history-population-groups-001",
+          "v31-history-population-groups-002",
+          "v31-history-population-groups-003",
+          "v31-history-population-groups-004",
+          "v31-history-population-groups-005"
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -97,8 +113,64 @@
           "v5-history-compare-perspectives-13",
           "v5-history-compare-perspectives-14",
           "v5-history-compare-perspectives-15",
-          "v5-history-compare-perspectives-16"
-        ]
+          "v5-history-compare-perspectives-16",
+          "v29-history-compare-perspectives-011",
+          "v29-history-compare-perspectives-012",
+          "v29-history-compare-perspectives-013",
+          "v29-history-compare-perspectives-014",
+          "v29-history-compare-perspectives-015",
+          "v29-history-compare-perspectives-016",
+          "v29-history-compare-perspectives-017",
+          "v29-history-compare-perspectives-018",
+          "v29-history-compare-perspectives-019",
+          "v29-history-compare-perspectives-020",
+          "v29-history-compare-perspectives-021",
+          "v29-history-compare-perspectives-022",
+          "v29-history-compare-perspectives-023",
+          "v29-history-compare-perspectives-024",
+          "v29-history-compare-perspectives-025",
+          "v29-history-compare-perspectives-026",
+          "v29-history-compare-perspectives-027",
+          "v29-history-compare-perspectives-028",
+          "v29-history-compare-perspectives-029",
+          "v29-history-compare-perspectives-030",
+          "v29-history-compare-perspectives-031",
+          "v29-history-compare-perspectives-032",
+          "v29-history-compare-perspectives-033",
+          "v29-history-compare-perspectives-034",
+          "v29-history-compare-perspectives-035",
+          "v29-history-compare-perspectives-036",
+          "v29-history-compare-perspectives-037",
+          "v29-history-compare-perspectives-038",
+          "v29-history-compare-perspectives-039",
+          "v29-history-compare-perspectives-040",
+          "v29-history-compare-perspectives-041",
+          "v29-history-compare-perspectives-042",
+          "v29-history-compare-perspectives-043",
+          "v29-history-compare-perspectives-044",
+          "v29-history-compare-perspectives-045",
+          "v29-history-compare-perspectives-046",
+          "v29-history-compare-perspectives-047",
+          "v29-history-compare-perspectives-048",
+          "v29-history-compare-perspectives-049",
+          "v29-history-compare-perspectives-050",
+          "v31-history-population-groups-006",
+          "v31-history-population-groups-007",
+          "v31-history-population-groups-008",
+          "v31-history-population-groups-009",
+          "v31-history-population-groups-010",
+          "v31-history-population-groups-011",
+          "v31-history-population-groups-012",
+          "v31-history-population-groups-013",
+          "v31-history-population-groups-014",
+          "v31-history-population-groups-015",
+          "v31-history-population-groups-016",
+          "v31-history-population-groups-017",
+          "v31-history-population-groups-018",
+          "v31-history-population-groups-019",
+          "v31-history-population-groups-020"
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -136,8 +208,21 @@
           "v29-history-compare-perspectives-072",
           "v29-history-compare-perspectives-073",
           "v29-history-compare-perspectives-074",
-          "v29-history-compare-perspectives-075"
-        ]
+          "v29-history-compare-perspectives-075",
+          "v31-history-population-groups-021",
+          "v31-history-population-groups-022",
+          "v31-history-population-groups-023",
+          "v31-history-population-groups-024",
+          "v31-history-population-groups-025",
+          "v31-history-population-groups-026",
+          "v31-history-population-groups-027",
+          "v31-history-population-groups-028",
+          "v31-history-population-groups-029",
+          "v31-history-population-groups-030",
+          "v31-history-population-groups-031",
+          "v31-history-population-groups-032"
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "CONSOLIDATION",
@@ -148,8 +233,27 @@
           "v5-history-compare-perspectives-27",
           "v5-history-compare-perspectives-28",
           "v5-history-compare-perspectives-29",
-          "v5-history-compare-perspectives-30"
-        ]
+          "v5-history-compare-perspectives-30",
+          "v29-history-compare-perspectives-076",
+          "v29-history-compare-perspectives-077",
+          "v29-history-compare-perspectives-078",
+          "v29-history-compare-perspectives-079",
+          "v29-history-compare-perspectives-080",
+          "v29-history-compare-perspectives-081",
+          "v29-history-compare-perspectives-082",
+          "v29-history-compare-perspectives-083",
+          "v29-history-compare-perspectives-084",
+          "v29-history-compare-perspectives-085",
+          "v31-history-population-groups-033",
+          "v31-history-population-groups-034",
+          "v31-history-population-groups-035",
+          "v31-history-population-groups-036",
+          "v31-history-population-groups-037",
+          "v31-history-population-groups-038",
+          "v31-history-population-groups-039",
+          "v31-history-population-groups-040"
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "REVIEW",
@@ -164,8 +268,34 @@
           "v5-history-compare-perspectives-37",
           "v5-history-compare-perspectives-38",
           "v5-history-compare-perspectives-39",
-          "v5-history-compare-perspectives-40"
-        ]
+          "v5-history-compare-perspectives-40",
+          "v29-history-compare-perspectives-086",
+          "v29-history-compare-perspectives-087",
+          "v29-history-compare-perspectives-088",
+          "v29-history-compare-perspectives-089",
+          "v29-history-compare-perspectives-090",
+          "v29-history-compare-perspectives-091",
+          "v29-history-compare-perspectives-092",
+          "v29-history-compare-perspectives-093",
+          "v29-history-compare-perspectives-094",
+          "v29-history-compare-perspectives-095",
+          "v29-history-compare-perspectives-096",
+          "v29-history-compare-perspectives-097",
+          "v29-history-compare-perspectives-098",
+          "v29-history-compare-perspectives-099",
+          "v29-history-compare-perspectives-100",
+          "v31-history-population-groups-041",
+          "v31-history-population-groups-042",
+          "v31-history-population-groups-043",
+          "v31-history-population-groups-044",
+          "v31-history-population-groups-045",
+          "v31-history-population-groups-046",
+          "v31-history-population-groups-047",
+          "v31-history-population-groups-048",
+          "v31-history-population-groups-049",
+          "v31-history-population-groups-050"
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -210,80 +340,101 @@
       {
         "id": "SOURCE_COMPARISON_MATRIX",
         "misconception": "Comparar fontes sem delimitar o aspecto comum.",
-        "prompt": "Monte colunas para autoria, data, lugar, gênero, afirmação e limite. Compare apenas afirmações sobre o mesmo aspecto."
+        "prompt": "Monte colunas para autoria, data, lugar, gênero, afirmação e limite. Compare apenas afirmações sobre o mesmo aspecto.",
+        "errorFocus": "Generalizar uma fonte individual para todos os grupos populacionais.",
+        "action": "Identifique quem produziu a fonte, quem aparece e quem não aparece antes de formular uma conclusão limitada."
       },
       {
         "id": "CHECK_REFERENT",
         "misconception": "Tratar diferenças como contradição sem verificar o referente.",
-        "prompt": "Para cada frase, sublinhe o evento, o período, o lugar e a unidade observada. Depois verifique se as frases realmente se excluem."
+        "prompt": "Para cada frase, sublinhe o evento, o período, o lugar e a unidade observada. Depois verifique se as frases realmente se excluem.",
+        "errorFocus": "Afirmar que um evento causou uma mudança sem evidência suficiente.",
+        "action": "Separe sequência temporal de relação causal e procure qual fonte sustenta cada afirmação."
       },
       {
         "id": "SCOPE_A_CLAIM",
         "misconception": "Generalizar a experiência de uma pessoa ou documento.",
-        "prompt": "Reescreva a conclusão começando por “nesta fonte” ou “neste caso”. Liste qual fonte adicional seria necessária para ampliar o alcance."
+        "prompt": "Reescreva a conclusão começando por “nesta fonte” ou “neste caso”. Liste qual fonte adicional seria necessária para ampliar o alcance.",
+        "errorFocus": "Usar migração como explicação única para a formação do município.",
+        "action": "Organize eventos e grupos em uma matriz e registre outras causas possíveis apenas como hipóteses a verificar."
       },
       {
         "id": "SEPARATE_GENRES",
         "misconception": "Tratar regra, relato, tabela e decisão como evidências equivalentes.",
-        "prompt": "Nomeie o gênero, o que ele registra diretamente e uma pergunta que ele não responde sozinho."
+        "prompt": "Nomeie o gênero, o que ele registra diretamente e uma pergunta que ele não responde sozinho.",
+        "errorFocus": "Generalizar uma fonte individual para todos os grupos populacionais.",
+        "action": "Identifique quem produziu a fonte, quem aparece e quem não aparece antes de formular uma conclusão limitada."
       },
       {
         "id": "EVALUATE_CORROBORATION",
         "misconception": "Supor que uma fonte confirma todos os detalhes de outra.",
-        "prompt": "Divida a conclusão em afirmações menores e marque qual fonte sustenta cada uma; procure dependência entre os registros."
+        "prompt": "Divida a conclusão em afirmações menores e marque qual fonte sustenta cada uma; procure dependência entre os registros.",
+        "errorFocus": "Afirmar que um evento causou uma mudança sem evidência suficiente.",
+        "action": "Separe sequência temporal de relação causal e procure qual fonte sustenta cada afirmação."
       },
       {
         "id": "STATE_ARCHIVE_GAP",
         "misconception": "Transformar silêncio documental em prova de inexistência.",
-        "prompt": "Descreva a ausência na coleção consultada, identifique outros acervos possíveis e não invente o conteúdo de documentos ausentes."
+        "prompt": "Descreva a ausência na coleção consultada, identifique outros acervos possíveis e não invente o conteúdo de documentos ausentes.",
+        "errorFocus": "Usar migração como explicação única para a formação do município.",
+        "action": "Organize eventos e grupos em uma matriz e registre outras causas possíveis apenas como hipóteses a verificar."
       },
       {
         "id": "MAP_GROUPS_AND_EVENTS",
         "misconception": "Misturar grupos, eventos e consequências em uma única afirmação.",
-        "prompt": "Monte uma tabela com grupo, evento, período, evidência e limite antes de escrever a síntese."
+        "prompt": "Monte uma tabela com grupo, evento, período, evidência e limite antes de escrever a síntese.",
+        "errorFocus": "Generalizar uma fonte individual para todos os grupos populacionais.",
+        "action": "Identifique quem produziu a fonte, quem aparece e quem não aparece antes de formular uma conclusão limitada."
       },
       {
         "id": "AVOID_SINGLE_CAUSE",
         "misconception": "Atribuir a formação do município a um único evento.",
-        "prompt": "Liste processos simultâneos e indique qual fonte sustenta cada relação."
+        "prompt": "Liste processos simultâneos e indique qual fonte sustenta cada relação.",
+        "errorFocus": "Afirmar que um evento causou uma mudança sem evidência suficiente.",
+        "action": "Separe sequência temporal de relação causal e procure qual fonte sustenta cada afirmação."
       }
     ],
     "authenticActivities": [
       {
         "id": "v5-history-compare-perspectives-source-matrix",
-        "title": "Matriz de comparação de fontes",
+        "title": "Investigar grupos e transformações do município",
         "objective": "Produzir uma síntese que compare duas fontes contextualizadas e delimite o que elas sustentam.",
-        "context": "Atividade mediada por docente usando fontes públicas ou materiais didáticos com procedência identificada. Os cenários hipotéticos do pacote são exercícios autorais, não documentos históricos reais.",
+        "context": "Conjunto didático de fontes públicas ou hipotéticas sobre mudanças em um município, sem solicitar memórias familiares.",
         "materials": [
           "Duas fontes sobre uma pergunta delimitada",
           "Matriz de autoria, data, lugar, gênero, afirmação e limite",
           "Marcadores de convergência e divergência"
         ],
-        "instructions": "Leia as fontes individualmente; identifique autoria, data, lugar, público e propósito; selecione uma afirmação de cada; verifique se tratam do mesmo recorte; registre convergências, diferenças e lacunas. Não solicite histórias familiares, não encene grupos históricos e ofereça fontes acessíveis em formatos alternativos.",
-        "evidence": "Matriz preenchida e síntese escrita que atribui cada afirmação à fonte correspondente, indica um limite e não generaliza além do material consultado.",
+        "instructions": "Identifique autoria, data, lugar e propósito de duas fontes sobre a formação ou transformação do município. Compare afirmações sobre o mesmo aspecto e registre grupos, deslocamentos ou eventos somente quando sustentados pelas fontes. Produza uma síntese com convergências, divergências e uma lacuna; não atribua uma causa única sem evidência.",
+        "evidence": "Matriz de fontes e síntese que atribui afirmações às fontes, registra limites e evita generalizar experiências de grupos.",
         "safety": "Selecionar fontes adequadas à faixa etária, contextualizar violências e relações de poder, não exigir exposição de identidade ou opinião familiar e oferecer alternativa equivalente de participação.",
         "privacyGuard": "Não coletar dados pessoais, origem familiar ou relatos de estudantes. Avaliar a comparação entre fontes fornecidas pelo docente.",
         "ageRange": "Ensino Fundamental II ou Ensino Médio, com fontes e mediação adequadas ao contexto da turma.",
         "mediation": "O docente verifica procedência, ajuda a distinguir evidência de inferência e explicita que materiais autorais hipotéticos não são documentos de arquivo.",
         "rubric": [
           {
-            "criterion": "Contextualização",
-            "emerging": "Não identifica quem produziu as fontes ou seu recorte.",
-            "developing": "Identifica alguns elementos com apoio.",
-            "proficient": "Registra autoria, data, lugar e gênero relevantes para a pergunta."
+            "criterion": "Identificação de grupos",
+            "emerging": "Nomeia grupos sem evidência ou contexto.",
+            "developing": "Localiza grupos em uma fonte com apoio.",
+            "proficient": "Relaciona grupos e contexto às fontes consultadas."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Escolhe uma narrativa sem comparar afirmações.",
-            "developing": "Aponta uma semelhança ou diferença, mas mistura recortes.",
-            "proficient": "Compara afirmações compatíveis e distingue convergência de divergência."
+            "criterion": "Relações e mudanças",
+            "emerging": "Afirma uma causa única sem apoio.",
+            "developing": "Aponta relação possível com apoio.",
+            "proficient": "Distingue evento, relação sustentada e hipótese."
           },
           {
-            "criterion": "Síntese e limites",
-            "emerging": "Generaliza ou inventa informação ausente.",
-            "developing": "Apresenta conclusão localizada após orientação.",
-            "proficient": "Atribui afirmações às fontes, explicita lacuna e limita a conclusão ao que foi consultado."
+            "criterion": "Limites e diversidade",
+            "emerging": "Generaliza um relato para toda a população.",
+            "developing": "Reconhece uma lacuna após mediação.",
+            "proficient": "Limita a conclusão e reconhece que fontes não representam todos os grupos."
           }
+        ],
+        "steps": [
+          "Identifique autoria, data, lugar e propósito de duas fontes sobre a formação ou transformação do município.",
+          "Compare afirmações sobre o mesmo aspecto e registre grupos, deslocamentos ou eventos somente quando sustentados pelas fontes.",
+          "Produza uma síntese com convergências, divergências e uma lacuna; não atribua uma causa única sem evidência."
         ]
       },
       {
@@ -296,31 +447,36 @@
           "Linha do tempo acessível",
           "Mapa ou fotografia com legenda"
         ],
-        "instructions": "Registre cada evento, o grupo envolvido, o local, a evidência e uma pergunta que permanece aberta. Compare fontes antes de propor relações.",
-        "evidence": "Linha do tempo com atribuição das fontes, uma relação sustentada e uma conclusão limitada ao recorte.",
+        "instructions": "Liste eventos documentados e associe a cada um a fonte, o período, o lugar e o grupo citado. Ordene os eventos sem converter sequência temporal em causalidade automática. Marque uma relação sustentada e uma pergunta que as fontes ainda não respondem.",
+        "evidence": "Linha do tempo com eventos atribuídos às fontes, uma relação sustentada e uma lacuna registrada.",
         "safety": "Evitar exposição de origem familiar, tratar migrações com linguagem respeitosa e oferecer fontes alternativas acessíveis.",
         "privacyGuard": "Não coletar nacionalidade, endereço, origem familiar ou relatos pessoais dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere a procedência, ajuda a diferenciar observação e hipótese e não apresenta o pacote como mapeamento oficial aprovado.",
         "rubric": [
           {
-            "criterion": "Organização",
-            "emerging": "Mistura eventos e períodos.",
-            "developing": "Organiza parte da sequência com apoio.",
-            "proficient": "Organiza eventos, grupos, lugares e períodos com clareza."
+            "criterion": "Ordenação e atribuição",
+            "emerging": "Lista eventos sem período ou fonte.",
+            "developing": "Ordena eventos com apoio.",
+            "proficient": "Ordena e atribui cada evento à fonte correspondente."
           },
           {
-            "criterion": "Evidência",
-            "emerging": "Afirma sem indicar fonte.",
-            "developing": "Indica uma fonte, mas não delimita seu alcance.",
-            "proficient": "Atribui cada relação à fonte e registra limites."
+            "criterion": "Relação histórica",
+            "emerging": "Afirma causalidade pela ordem dos eventos.",
+            "developing": "Aponta relação possível com mediação.",
+            "proficient": "Distingue sequência, relação sustentada e hipótese."
           },
           {
-            "criterion": "Síntese",
-            "emerging": "Generaliza ou inventa causa.",
-            "developing": "Relaciona processos após orientação.",
-            "proficient": "Relaciona processos documentados sem declarar uma causa única não sustentada."
+            "criterion": "Lacuna",
+            "emerging": "Completa informação ausente por suposição.",
+            "developing": "Marca uma pergunta em aberto com apoio.",
+            "proficient": "Registra uma lacuna que delimita a interpretação."
           }
+        ],
+        "steps": [
+          "Liste eventos documentados e associe a cada um a fonte, o período, o lugar e o grupo citado.",
+          "Ordene os eventos sem converter sequência temporal em causalidade automática.",
+          "Marque uma relação sustentada e uma pergunta que as fontes ainda não respondem."
         ]
       }
     ],
@@ -337,7 +493,11 @@
         "license": "Excertos e situações didáticas autorais; não são documentos históricos nem reivindicam alinhamento oficial."
       }
     ],
-    "copyrightNote": "Questões, cenários, excertos, explicações e atividade são autorais. Fontes citadas nos itens são descritas como hipotéticas e não devem ser apresentadas como documentos reais. Revisão pedagógica pendente; alinhamento oficial não reivindicado. Lote V29 autoral com 100 questões; publicação mantida em STAGING e revisão pedagógica pendente. Lote V31 autoral sobre História local; contexto oficial registrado apenas para revisão, sem reivindicação de mapeamento."
+    "copyrightNote": "Questões, cenários, excertos, explicações e atividade são autorais. Fontes citadas nos itens são descritas como hipotéticas e não devem ser apresentadas como documentos reais. Revisão pedagógica pendente; alinhamento oficial não reivindicado. Lote V29 autoral com 100 questões; publicação mantida em STAGING e revisão pedagógica pendente. Lote V31 autoral sobre História local; contexto oficial registrado apenas para revisão, sem reivindicação de mapeamento.",
+    "accessibilitySupports": [
+      "Disponibilizar fontes em texto ampliado, leitura em voz alta, descrição de imagens e quadro de autoria/data/lugar.",
+      "Aceitar matriz por cartões, áudio sem dados pessoais, desenho ou texto; não pedir relatos familiares ou informações sensíveis."
+    ]
   },
   "questions": [
     {
@@ -4719,6 +4879,15 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre grupos populacionais, migração e formação do município para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde à skill canônica; a proposta permanece pendente."
-  }
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde à skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar os grupos populacionais que formam a cidade, o município e a região, as relações estabelecidas entre eles e os eventos que marcam a formação da cidade, como fenômenos migratórios (vida rural/vida urbana), desmatamentos, estabelecimento de grandes empresas etc.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
+  },
+  "active": false
 }

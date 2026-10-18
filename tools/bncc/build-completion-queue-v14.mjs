@@ -14,6 +14,7 @@ const INPUTS = {
   catalog: 'content/bncc/official/catalog-2018.json',
   sourceVerification: 'content/bncc/authoring/source-verification-v2.json',
   packages: 'content/adaptive/tec-escola-core-v5',
+  experientialPackages: 'content/bncc/authoring',
 };
 const OUTPUT_QUEUE = 'content/bncc/authoring/completion-queue-v14.json';
 const OUTPUT_CHECKPOINT = 'content/bncc/authoring/bncc-v14-checkpoint.json';
@@ -87,6 +88,45 @@ function listStagedEvidence({ sourceByCode, sizingByCode, auditByCode }) {
         && (pack.questions?.length ?? 0) >= (requirements.questions ?? 0)
         && (pack.lesson?.authenticActivities?.length ?? 0) >= (requirements.activities ?? 1)
         && (pack.lesson?.progression?.length ?? 0) >= 1
+        && auditRecord.exactSourceVerified),
+      qualityRubric: rubric,
+    };
+    evidence.set(code, [...(evidence.get(code) ?? []), item]);
+  }
+
+  const experientialDir = path.join(ROOT, INPUTS.experientialPackages);
+  for (const entry of fs.readdirSync(experientialDir).filter((name) => /^early-childhood-experiential-v\d+\.json$/.test(name)).sort()) {
+    let pack;
+    try { pack = JSON.parse(fs.readFileSync(path.join(experientialDir, entry), 'utf8')); } catch { continue; }
+    const code = pack.officialCode;
+    if (!code) continue;
+    const auditRecord = auditByCode.get(code);
+    const requirements = auditRecord ? requirementsFor(auditRecord, sizingByCode) : {};
+    if (requirements.mode !== 'EDUCATOR_MEDIATED_OBSERVATION') continue;
+    const sourceRecord = sourceByCode.get(code);
+    const rubric = evaluateCurriculumPackageRubric(pack, { requirements, officialSourceRecord: sourceRecord });
+    const contentStatus = pack.contentStatus ?? {};
+    const observationExperiences = pack.learningDesign?.observationExperiences ?? [];
+    const observationCriteria = pack.learningDesign?.observationCriteria ?? [];
+    const item = {
+      file: path.relative(ROOT, path.join(experientialDir, entry)).replaceAll(path.sep, '/'),
+      contentId: pack.officialCode,
+      mode: requirements.mode,
+      questionCount: pack.questions?.length ?? 0,
+      lessonCount: pack.learningDesign?.objective ? 1 : 0,
+      activityCount: observationExperiences.length,
+      assessmentCount: observationCriteria.length,
+      active: pack.active === true,
+      publicationStatus: contentStatus.publicationStatus,
+      pedagogicalReviewStatus: contentStatus.pedagogicalReviewStatus,
+      officialMappingStatus: contentStatus.officialMappingStatus,
+      legacyCountBasedComplete: Boolean(auditRecord
+        && pack.active === false
+        && contentStatus.publicationStatus === 'STAGING_INACTIVE'
+        && contentStatus.pedagogicalReviewStatus === 'PEDAGOGICAL_REVIEW_PENDING'
+        && contentStatus.officialMappingStatus === 'NOT_CLAIMED'
+        && observationExperiences.length >= (requirements.observationalExperiences ?? 1)
+        && observationCriteria.length >= (requirements.observationCriteria ?? 3)
         && auditRecord.exactSourceVerified),
       qualityRubric: rubric,
     };
@@ -203,7 +243,7 @@ function buildCompletionQueue() {
   const artifact = {
     schemaVersion: 'tec-escola.bncc.completion-queue.v14',
     campaignId: 'TECESCOLA_BNCC_AUTONOMOUS_COMPLETION_ENGINE_V14',
-    generatedAt: '2026-10-17',
+    generatedAt: process.env.BNCC_SNAPSHOT_DATE ?? new Date().toISOString().slice(0, 10),
     sourceInputs: INPUTS,
     policy: {
       contentMayBePreparedWithoutCanonicalMapping: true,

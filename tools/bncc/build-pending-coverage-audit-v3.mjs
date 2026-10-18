@@ -25,7 +25,7 @@ export function buildPendingCoverageAuditV3() {
   const records = pending.map((node) => {
     const mapping = mappings.get(node.code) ?? { status: 'UNACCOUNTED' };
     const queueItem = queue.get(node.code);
-    const queueStatus = verified.has(node.code) && ['HUMAN_REVIEW_BLOCKED', 'CANONICAL_GAP'].includes(mapping.status)
+    const queueStatus = verified.has(node.code) && ['HUMAN_REVIEW_BLOCKED', 'CANONICAL_GAP', 'HIERARCHY_ONLY'].includes(mapping.status)
       ? 'MAPPING_REVIEW_REQUIRED'
       : queueItem?.status ?? 'NOT_IN_QUEUE';
     return {

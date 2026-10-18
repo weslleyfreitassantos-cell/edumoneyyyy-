@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre espaços domésticos, públicos e de conservação para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Espaços domésticos, públicos e de conservação",
     "objective": "Distinguir espaços domésticos, públicos e áreas de conservação ambiental, relacionando função, regras, acesso e cuidado coletivo.",
     "summary": "Os espaços têm funções, regras e responsabilidades diferentes. Distinguir casa, praça, escola, parque e área de conservação ajuda a cuidar do lugar e respeitar direitos de acesso.",
     "explanation": "## O que investigar\nIdentificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: uma casa tem áreas de uso doméstico; uma praça é espaço público com regras de convivência; uma área de conservação pode ter visitação regulada para proteger espécies e ambientes. A classificação depende de função, regime de acesso e normas, não apenas de estar ao ar livre.",
     "commonMistake": "Tratar todo espaço aberto como público, ignorar regras de conservação ou confundir direito de uso coletivo com entrada irrestrita.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-space-distinctions-003",
           "v13-history-space-distinctions-004",
           "v13-history-space-distinctions-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-space-distinctions-018",
           "v13-history-space-distinctions-019",
           "v13-history-space-distinctions-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-space-distinctions-030",
           "v13-history-space-distinctions-031",
           "v13-history-space-distinctions-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-space-distinctions-038",
           "v13-history-space-distinctions-039",
           "v13-history-space-distinctions-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-space-distinctions-048",
           "v13-history-space-distinctions-049",
           "v13-history-space-distinctions-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Tratar todo espaço aberto como público.",
+        "action": "Verifique finalidade, propriedade ou gestão e regra de acesso antes de classificar o caso."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Confundir direito de uso coletivo com entrada irrestrita.",
+        "action": "Localize a regra de acesso e explique como ela se relaciona à função do espaço."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Ignorar a finalidade de conservação ambiental.",
+        "action": "Identifique qual ambiente ou bem a regra pretende proteger e relacione a conclusão à fonte."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-space-distinctions-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Distinguir espaços, funções e regras de uso",
         "objective": "Distinguir espaços domésticos, públicos e áreas de conservação ambiental, relacionando função, regras, acesso e cuidado coletivo.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Cartões de lugares fictícios e fontes públicas sobre uso, acesso e conservação.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Classifique cada caso com base em função, acesso e regra documentada, não apenas na aparência. Compare um espaço doméstico, um público e uma área de conservação e registre quem define ou aplica suas regras. Justifique uma decisão de cuidado e indique quando as fontes não permitem concluir quem pode acessar.",
+        "evidence": "Quadro de classificação com função, regra, tipo de espaço e fonte ou limite de cada decisão.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Classificação",
+            "emerging": "Classifica pelo aspecto visual apenas.",
+            "developing": "Usa função ou acesso com apoio.",
+            "proficient": "Considera função, acesso e regra documentada."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Regras e cuidado",
+            "emerging": "Confunde uso público com entrada irrestrita.",
+            "developing": "Identifica uma regra com apoio.",
+            "proficient": "Relaciona regra à finalidade e ao cuidado do espaço."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Evidência",
+            "emerging": "Apresenta conclusão sem fonte.",
+            "developing": "Aponta fonte após orientação.",
+            "proficient": "Atribui a regra à fonte e explicita lacunas."
           }
+        ],
+        "steps": [
+          "Classifique cada caso com base em função, acesso e regra documentada, não apenas na aparência.",
+          "Compare um espaço doméstico, um público e uma área de conservação e registre quem define ou aplica suas regras.",
+          "Justifique uma decisão de cuidado e indique quando as fontes não permitem concluir quem pode acessar."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Identificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Apresentar casos por texto, imagem descrita, símbolos ou áudio e deixar claras as regras relevantes em linguagem direta.",
+      "Aceitar classificação em tabela, cartões, áudio ou texto; não pressupor acesso físico a espaços ou experiência prévia."
     ]
   },
   "questions": [

@@ -21,24 +21,25 @@
   "expectedQuestionCount": 40,
   "expectedContextCount": 40,
   "expectedAnswerPositionCounts": {
-    "A": 40,
-    "B": 0,
-    "C": 0,
-    "D": 0
+    "A": 10,
+    "B": 10,
+    "C": 10,
+    "D": 10
   },
   "sourceContext": {
     "officialCode": "EM13CHS103",
     "relation": "AUTHORING_CONTEXT_ONLY",
     "mappingStatus": "CANONICAL_GAP",
-    "sourceStatus": "OFFICIAL_SOURCE_CONTEXT_RECORDED_SOURCE_TEXT_REVIEW_REQUIRED",
-    "descriptor": "Elaborar hipóteses, selecionar evidências e compor argumentos relativos a processos políticos, econômicos, sociais, ambientais, culturais e epistemológicos, com base na sistematização de dados e informações de natureza qualitativa e quantitativa.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Elaborar hipóteses, selecionar evidências e compor argumentos relativos a processos políticos, econômicos, sociais, ambientais, culturais e epistemológicos, com base na sistematização de dados e informações de natureza qualitativa e quantitativa (expressões artísticas, textos filosóficos e sociológicos, documentos históricos, gráficos, mapas, tabelas etc.).",
     "officialSource": {
-      "id": "BNCC_EI_EF_2018",
-      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
-      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
-      "page": 560
+      "id": "BNCC_EM_2018",
+      "documentVersion": "BNCC Ensino Médio, versão homologada 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf",
+      "page": 136
     },
-    "note": "O descritor é usado como contexto de autoria; o vínculo canônico e a revisão do texto-fonte permanecem pendentes."
+    "note": "Descritor conferido na fonte oficial do MEC. O vínculo canônico, a revisão pedagógica humana e qualquer publicação continuam pendentes.",
+    "sourceVerificationId": "BNCC_EM13CHS103_MEC_P136_V1"
   },
   "lesson": {
     "title": "Da hipótese ao argumento: como usar evidências",
@@ -65,21 +66,27 @@
         "trigger": "Apresenta opinião sem ligação com evidência",
         "explanation": "Use o roteiro afirmação, dado, raciocínio e limite.",
         "workedExample": "Afirmação: as faltas diminuíram. Dado: registros caíram de 18 para 11 no período. Raciocínio: a diferença aparece na comparação. Limite: outros fatores ainda não foram isolados.",
-        "selfCheck": "Mostrei qual dado apoia a afirmação e até onde ele vale?"
+        "selfCheck": "Mostrei qual dado apoia a afirmação e até onde ele vale?",
+        "errorFocus": "Apresenta opinião sem ligação com evidência",
+        "action": "Use o roteiro afirmação, dado, raciocínio e limite. Afirmação: as faltas diminuíram. Dado: registros caíram de 18 para 11 no período. Raciocínio: a diferença aparece na comparação. Limite: outros fatores ainda não foram isolados. Mostrei qual dado apoia a afirmação e até onde ele vale?"
       },
       {
         "id": "CAUSE_OR_ASSOCIATION",
         "trigger": "Conclui causa de duas mudanças simultâneas",
         "explanation": "Liste variáveis que mudaram juntas e indique que comparação diferenciaria as hipóteses.",
         "workedExample": "Se faltas e transporte mudaram ao mesmo tempo, verifique calendário, turmas e outros acessos antes de atribuir o efeito apenas ao transporte.",
-        "selfCheck": "Minha conclusão reconhece outras explicações plausíveis?"
+        "selfCheck": "Minha conclusão reconhece outras explicações plausíveis?",
+        "errorFocus": "Conclui causa de duas mudanças simultâneas",
+        "action": "Liste variáveis que mudaram juntas e indique que comparação diferenciaria as hipóteses. Se faltas e transporte mudaram ao mesmo tempo, verifique calendário, turmas e outros acessos antes de atribuir o efeito apenas ao transporte. Minha conclusão reconhece outras explicações plausíveis?"
       },
       {
         "id": "SOURCE_CONTEXT",
         "trigger": "Compara fontes sem contexto",
         "explanation": "Registre autoria, data, população, método, unidade e interesses antes de juntar resultados.",
         "workedExample": "Uma entrevista descreve experiência; uma tabela conta ocorrências. Elas podem dialogar, mas não são a mesma medida.",
-        "selfCheck": "Expliquei o que cada fonte realmente permite observar?"
+        "selfCheck": "Expliquei o que cada fonte realmente permite observar?",
+        "errorFocus": "Compara fontes sem contexto",
+        "action": "Registre autoria, data, população, método, unidade e interesses antes de juntar resultados. Uma entrevista descreve experiência; uma tabela conta ocorrências. Elas podem dialogar, mas não são a mesma medida. Expliquei o que cada fonte realmente permite observar?"
       }
     ],
     "everydayApplication": "Ler notícias, gráficos, mapas, pesquisas escolares e relatos públicos, identificando evidências, limites, interesses e alternativas antes de formar uma opinião ou recomendar uma ação.",
@@ -103,23 +110,23 @@
     ],
     "progression": [
       {
-        "stage": "FOUNDATION",
-        "focus": "Distinguir dados, hipóteses, tipos de fonte e partes do argumento.",
+        "phase": "PROBE",
+        "focus": "Distinguir afirmação, hipótese, dado, evidência e fonte.",
         "questionIds": [
           "v8-hum-evidence-probe-01",
           "v8-hum-evidence-probe-02",
           "v8-hum-evidence-probe-03",
-          "v8-hum-evidence-probe-04",
-          "v8-hum-evidence-practice-01",
-          "v8-hum-evidence-practice-02",
-          "v8-hum-evidence-practice-03",
-          "v8-hum-evidence-practice-04"
+          "v8-hum-evidence-probe-04"
         ]
       },
       {
-        "stage": "APPLICATION",
-        "focus": "Interpretar fontes e construir comparações com contexto.",
+        "phase": "PRACTICE",
+        "focus": "Interpretar medidas e fontes em contexto, registrando método, escala e população.",
         "questionIds": [
+          "v8-hum-evidence-practice-01",
+          "v8-hum-evidence-practice-02",
+          "v8-hum-evidence-practice-03",
+          "v8-hum-evidence-practice-04",
           "v8-hum-evidence-practice-05",
           "v8-hum-evidence-practice-06",
           "v8-hum-evidence-practice-07",
@@ -127,43 +134,43 @@
           "v8-hum-evidence-practice-09",
           "v8-hum-evidence-practice-10",
           "v8-hum-evidence-practice-11",
-          "v8-hum-evidence-practice-12",
+          "v8-hum-evidence-practice-12"
+        ]
+      },
+      {
+        "phase": "TRANSFER",
+        "focus": "Construir argumentos proporcionais a evidências em contextos sociais, ambientais e históricos.",
+        "questionIds": [
           "v8-hum-evidence-transfer-01",
           "v8-hum-evidence-transfer-02",
           "v8-hum-evidence-transfer-03",
-          "v8-hum-evidence-transfer-04"
-        ]
-      },
-      {
-        "stage": "TRANSFER",
-        "focus": "Compor argumentos em problemas públicos, históricos, ambientais e sociais.",
-        "questionIds": [
+          "v8-hum-evidence-transfer-04",
           "v8-hum-evidence-transfer-05",
           "v8-hum-evidence-transfer-06",
           "v8-hum-evidence-transfer-07",
-          "v8-hum-evidence-transfer-08",
+          "v8-hum-evidence-transfer-08"
+        ]
+      },
+      {
+        "phase": "LOCK_IN",
+        "focus": "Confrontar hipóteses, explicações alternativas, incerteza e limites.",
+        "questionIds": [
           "v8-hum-evidence-lock-01",
           "v8-hum-evidence-lock-02",
           "v8-hum-evidence-lock-03",
-          "v8-hum-evidence-lock-04"
+          "v8-hum-evidence-lock-04",
+          "v8-hum-evidence-lock-05",
+          "v8-hum-evidence-lock-06"
         ]
       },
       {
-        "stage": "INTEGRATION",
-        "focus": "Revisar hipóteses, comunicar incerteza e proteger participantes.",
+        "phase": "REVIEW",
+        "focus": "Retomar conceitos e revisar conclusões à luz de novas evidências.",
         "questionIds": [
-          "v8-hum-evidence-lock-05",
-          "v8-hum-evidence-lock-06",
           "v8-hum-evidence-review-01",
           "v8-hum-evidence-review-02",
           "v8-hum-evidence-review-03",
-          "v8-hum-evidence-review-04"
-        ]
-      },
-      {
-        "stage": "SPACED_REVIEW_CANDIDATE",
-        "focus": "Retomar fonte, evidência, causalidade e limites.",
-        "questionIds": [
+          "v8-hum-evidence-review-04",
           "v8-hum-evidence-review-05",
           "v8-hum-evidence-review-06",
           "v8-hum-evidence-review-07",
@@ -210,7 +217,46 @@
         "use": "Contexto de autoria; não representa aprovação de mapeamento canônico nem revisão pedagógica humana."
       }
     ],
-    "copyrightNote": "Questões, exemplos e cenários são autorais. A fonte oficial orienta o contexto; a revisão do texto-fonte, o mapeamento canônico e a aprovação pedagógica permanecem pendentes."
+    "copyrightNote": "Questões, exemplos e cenários são autorais. A fonte oficial orienta o contexto; a revisão do texto-fonte, o mapeamento canônico e a aprovação pedagógica permanecem pendentes.",
+    "explanation": "Investigue uma pergunta transformando-a em hipótese clara, que possa ser confrontada. Antes de comparar dados, registre autoria, data, população, unidade, escala e método: uma contagem, um relato e um mapa podem iluminar aspectos diferentes sem serem medidas equivalentes. Selecione evidências relevantes, descreva o que mostram e explique por que apoiam (ou não) a afirmação. Verifique explicações alternativas, diferencie associação de causalidade e comunique incerteza. Um argumento responsável reúne afirmação, evidência, raciocínio e limites; ele pode ser revisto quando novas fontes ou dados aparecem. Em temas sensíveis, use dados fictícios ou anonimizados e não exponha participantes.",
+    "commonMistake": "Tratar uma correlação ou uma fonte isolada como prova de causa, ignorando método, contexto, alternativas e limites.",
+    "authenticActivities": [
+      {
+        "title": "Construir e revisar um argumento baseado em fontes",
+        "context": "Dossiê didático com dados fictícios ou anonimizados, fontes qualitativas e quantitativas identificadas e uma pergunta social, histórica ou ambiental delimitada.",
+        "steps": [
+          "Formule uma hipótese verificável e registre, para cada fonte, autoria, data, população, método, unidade e limite conhecido.",
+          "Selecione evidências de pelo menos duas naturezas, descreva o padrão observado e organize uma matriz que separe dado, interpretação e hipótese.",
+          "Redija ou apresente afirmação, evidência, raciocínio e limite; confronte uma explicação alternativa e indique que evidência adicional poderia mudar a conclusão."
+        ],
+        "evidence": "Dossiê argumentativo rastreável, com fontes atribuídas, hipótese revisável, evidências qualitativas e quantitativas, raciocínio explícito, explicação alternativa e limite da conclusão.",
+        "rubric": [
+          {
+            "criterion": "Qualidade e contexto das evidências",
+            "emerging": "Apresenta informação sem identificar fonte ou contexto.",
+            "developing": "Identifica fontes e descreve evidências com apoio, mas deixa lacunas de método ou alcance.",
+            "proficient": "Atribui cada evidência à fonte e considera método, população, período, unidade e alcance."
+          },
+          {
+            "criterion": "Raciocínio e explicações alternativas",
+            "emerging": "Apresenta opinião ou afirma causalidade sem ligação demonstrada.",
+            "developing": "Relaciona evidência e afirmação, mas considera poucas alternativas.",
+            "proficient": "Explica a relação entre evidência e afirmação, compara uma alternativa e diferencia associação de causalidade."
+          },
+          {
+            "criterion": "Limites e comunicação",
+            "emerging": "Generaliza além dos dados e omite incerteza.",
+            "developing": "Indica uma limitação após orientação.",
+            "proficient": "Delimita a conclusão, comunica incerteza e identifica que dado poderia revisar o argumento."
+          }
+        ]
+      }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar tabelas em alto contraste e formato textual compatível com leitor de tela; descrever gráficos, mapas e imagens com texto alternativo e legenda que preserve escala e fonte.",
+      "Oferecer glossário, instruções em etapas, exemplos parcialmente resolvidos e tempo flexível; aceitar argumento escrito, oral, visual ou por comunicação alternativa, sem reduzir o critério de evidência.",
+      "Usar cenários fictícios ou dados anonimizados em temas sensíveis; permitir que o estudante escolha entre contextos equivalentes e não solicite relato pessoal ou identificação de participantes."
+    ]
   },
   "questions": [
     {
@@ -229,7 +275,13 @@
       "correctAnswer": "Valores populacionais registrados para as cidades naquele ano.",
       "explanation": "A resposta distingue registro, interpretação, hipótese e tipo de informação sem concluir além do enunciado.",
       "hint": "Separe o dado registrado das explicações possíveis.",
-      "errorFocus": "Tratar qualquer interpretação como se estivesse na tabela."
+      "errorFocus": "Tratar qualquer interpretação como se estivesse na tabela.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-probe-02",
@@ -239,15 +291,21 @@
       "contextFamily": "claim-evidence",
       "statement": "Qual frase apresenta uma afirmação apoiada por evidência?",
       "options": [
-        "O gráfico registra aumento de 10 para 16; por isso, o período final teve valor maior.",
         "O gráfico prova que tudo melhorou.",
+        "O gráfico registra aumento de 10 para 16; por isso, o período final teve valor maior.",
         "Os valores cresceram porque as pessoas quiseram.",
         "A linha mais colorida é a mais verdadeira."
       ],
       "correctAnswer": "O gráfico registra aumento de 10 para 16; por isso, o período final teve valor maior.",
       "explanation": "A resposta distingue registro, interpretação, hipótese e tipo de informação sem concluir além do enunciado.",
       "hint": "Procure uma ligação explícita entre dado e afirmação.",
-      "errorFocus": "Confundir cor, intenção ou causa não medida com evidência."
+      "errorFocus": "Confundir cor, intenção ou causa não medida com evidência.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-probe-03",
@@ -257,15 +315,21 @@
       "contextFamily": "hypothesis",
       "statement": "Uma hipótese em uma investigação é:",
       "options": [
-        "Uma explicação provisória que pode ser confrontada com evidências.",
         "Uma opinião que não precisa de dados.",
         "Uma conclusão definitiva antes da coleta.",
+        "Uma explicação provisória que pode ser confrontada com evidências.",
         "Uma frase que substitui o problema."
       ],
       "correctAnswer": "Uma explicação provisória que pode ser confrontada com evidências.",
       "explanation": "A resposta distingue registro, interpretação, hipótese e tipo de informação sem concluir além do enunciado.",
       "hint": "Hipótese é uma possibilidade testável, não uma certeza.",
-      "errorFocus": "Tratar hipótese como resultado final."
+      "errorFocus": "Tratar hipótese como resultado final.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-probe-04",
@@ -275,15 +339,21 @@
       "contextFamily": "qualitative-quantitative",
       "statement": "Qual exemplo é predominantemente qualitativo?",
       "options": [
-        "Relatos de moradores descrevendo como percebem uma mudança no bairro.",
         "Uma contagem de 240 moradores.",
         "Uma média de 6,2 km.",
-        "Uma tabela com 18 ocorrências."
+        "Uma tabela com 18 ocorrências.",
+        "Relatos de moradores descrevendo como percebem uma mudança no bairro."
       ],
       "correctAnswer": "Relatos de moradores descrevendo como percebem uma mudança no bairro.",
       "explanation": "A resposta distingue registro, interpretação, hipótese e tipo de informação sem concluir além do enunciado.",
       "hint": "Observe se a informação descreve experiências ou apresenta medida numérica.",
-      "errorFocus": "Confundir qualquer fonte com dado quantitativo."
+      "errorFocus": "Confundir qualquer fonte com dado quantitativo.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-01",
@@ -301,7 +371,13 @@
       "correctAnswer": "A escala pode ampliar visualmente a diferença; compare também os valores e a origem do eixo.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Leia eixo, unidade e intervalo antes de interpretar.",
-      "errorFocus": "Confundir aparência visual com magnitude do dado."
+      "errorFocus": "Confundir aparência visual com magnitude do dado.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-02",
@@ -311,15 +387,21 @@
       "contextFamily": "sample-size",
       "statement": "Uma pesquisa ouviu 20 estudantes de uma escola e apresentou a opinião como se fosse a de toda a cidade. Qual é o problema?",
       "options": [
-        "A amostra e o contexto não sustentam automaticamente a generalização para a cidade inteira.",
         "Toda amostra é inútil.",
+        "A amostra e o contexto não sustentam automaticamente a generalização para a cidade inteira.",
         "Vinte respostas sempre representam qualquer população.",
         "A conclusão fica correta se o gráfico for colorido."
       ],
       "correctAnswer": "A amostra e o contexto não sustentam automaticamente a generalização para a cidade inteira.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Pergunte quem foi ouvido e para quem a conclusão vale.",
-      "errorFocus": "Generalizar sem considerar população e amostra."
+      "errorFocus": "Generalizar sem considerar população e amostra.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-03",
@@ -329,15 +411,21 @@
       "contextFamily": "correlation",
       "statement": "Em dois meses, aumentaram tanto o uso de bicicletas quanto a venda de frutas. O que se pode afirmar com segurança?",
       "options": [
-        "As duas medidas aumentaram no período; os dados, sozinhos, não provam que uma causou a outra.",
         "Bicicletas causaram toda a venda de frutas.",
         "A venda de frutas causou o uso de bicicletas.",
+        "As duas medidas aumentaram no período; os dados, sozinhos, não provam que uma causou a outra.",
         "Qualquer associação é uma causa."
       ],
       "correctAnswer": "As duas medidas aumentaram no período; os dados, sozinhos, não provam que uma causou a outra.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Descreva o padrão e mantenha a causalidade como hipótese.",
-      "errorFocus": "Inferir causa diretamente de associação."
+      "errorFocus": "Inferir causa diretamente de associação.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-04",
@@ -347,15 +435,21 @@
       "contextFamily": "source-bias",
       "statement": "Uma empresa publica um relatório sobre a eficácia de seu próprio produto. Como usar a fonte criticamente?",
       "options": [
-        "Analisar método, dados, interesses envolvidos e comparar com outras fontes.",
         "Aceitar tudo por ser relatório.",
         "Rejeitar tudo sem ler os dados.",
-        "Usar apenas o título para concluir."
+        "Usar apenas o título para concluir.",
+        "Analisar método, dados, interesses envolvidos e comparar com outras fontes."
       ],
       "correctAnswer": "Analisar método, dados, interesses envolvidos e comparar com outras fontes.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Fonte tem perspectiva; isso pede análise, não aceitação ou rejeição automática.",
-      "errorFocus": "Confundir interesse declarado com prova de falsidade."
+      "errorFocus": "Confundir interesse declarado com prova de falsidade.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-05",
@@ -373,7 +467,13 @@
       "correctAnswer": "Considerar uma taxa ou proporção adequada, além dos valores absolutos.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Compare denominadores quando os tamanhos dos grupos variam.",
-      "errorFocus": "Comparar contagens sem contexto."
+      "errorFocus": "Comparar contagens sem contexto.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-06",
@@ -383,15 +483,21 @@
       "contextFamily": "missing-data",
       "statement": "Uma série temporal tem três meses sem registro. Qual cuidado é necessário?",
       "options": [
-        "Indicar a ausência e evitar afirmar uma tendência contínua sem examinar o impacto.",
         "Preencher os meses com qualquer número.",
+        "Indicar a ausência e evitar afirmar uma tendência contínua sem examinar o impacto.",
         "Apagar os meses para deixar o gráfico regular.",
         "Tratar ausência como valor zero sem justificativa."
       ],
       "correctAnswer": "Indicar a ausência e evitar afirmar uma tendência contínua sem examinar o impacto.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Dado ausente não é automaticamente zero.",
-      "errorFocus": "Inventar ou apagar dados faltantes."
+      "errorFocus": "Inventar ou apagar dados faltantes.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-07",
@@ -401,15 +507,21 @@
       "contextFamily": "counterexample",
       "statement": "Uma hipótese diz que todos os estudantes preferem estudar de manhã. Uma resposta que contraria a hipótese é:",
       "options": [
-        "Um grupo de estudantes relata preferência por estudar à tarde ou à noite.",
         "Outro estudante confirma a preferência da manhã.",
         "A pergunta é repetida sem resposta.",
+        "Um grupo de estudantes relata preferência por estudar à tarde ou à noite.",
         "O horário é mantido em segredo."
       ],
       "correctAnswer": "Um grupo de estudantes relata preferência por estudar à tarde ou à noite.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Um contraexemplo precisa apresentar uma evidência relevante.",
-      "errorFocus": "Confundir confirmação com refutação."
+      "errorFocus": "Confundir confirmação com refutação.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-08",
@@ -419,15 +531,21 @@
       "contextFamily": "argument-structure",
       "statement": "Qual estrutura torna um argumento mais verificável?",
       "options": [
-        "Afirmação, evidência usada, explicação da relação e limite da conclusão.",
         "Afirmação forte sem fonte.",
         "Lista de opiniões sem relação.",
-        "Conclusão primeiro, sem indicar dados."
+        "Conclusão primeiro, sem indicar dados.",
+        "Afirmação, evidência usada, explicação da relação e limite da conclusão."
       ],
       "correctAnswer": "Afirmação, evidência usada, explicação da relação e limite da conclusão.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Mostre como o dado apoia a afirmação.",
-      "errorFocus": "Pular a ponte entre evidência e conclusão."
+      "errorFocus": "Pular a ponte entre evidência e conclusão.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-09",
@@ -445,7 +563,13 @@
       "correctAnswer": "Comparar localização, população, distância e critérios de disponibilidade.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Mapa é evidência espacial, mas precisa de contexto.",
-      "errorFocus": "Ler a representação sem considerar escala e população."
+      "errorFocus": "Ler a representação sem considerar escala e população.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-10",
@@ -455,15 +579,21 @@
       "contextFamily": "interview-code",
       "statement": "Ao analisar entrevistas, uma equipe agrupa falas por temas. Qual procedimento é mais cuidadoso?",
       "options": [
-        "Definir critérios, registrar exemplos e verificar se as categorias representam as falas.",
         "Escolher apenas a fala mais chamativa.",
+        "Definir critérios, registrar exemplos e verificar se as categorias representam as falas.",
         "Alterar falas para caber na hipótese.",
         "Contar uma categoria sem explicar sua definição."
       ],
       "correctAnswer": "Definir critérios, registrar exemplos e verificar se as categorias representam as falas.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Categorias precisam ser transparentes e rastreáveis.",
-      "errorFocus": "Forçar dados qualitativos a confirmar uma ideia."
+      "errorFocus": "Forçar dados qualitativos a confirmar uma ideia.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-11",
@@ -473,15 +603,21 @@
       "contextFamily": "alternative-explanation",
       "statement": "Uma queda nas faltas coincide com mudança no transporte escolar. Qual pergunta ajuda a testar explicações alternativas?",
       "options": [
-        "Que outros fatores mudaram no mesmo período e como podem ter influenciado as faltas?",
         "Qual fator parece mais interessante?",
         "Como provar a primeira explicação sem comparar?",
+        "Que outros fatores mudaram no mesmo período e como podem ter influenciado as faltas?",
         "Por que toda coincidência é suficiente?"
       ],
       "correctAnswer": "Que outros fatores mudaram no mesmo período e como podem ter influenciado as faltas?",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Liste variáveis que mudaram junto.",
-      "errorFocus": "Ignorar explicações alternativas."
+      "errorFocus": "Ignorar explicações alternativas.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-practice-12",
@@ -491,15 +627,21 @@
       "contextFamily": "ethical-data",
       "statement": "Ao apresentar relatos de estudantes sobre um tema sensível, qual cuidado é fundamental?",
       "options": [
-        "Proteger identidade, explicar o uso autorizado e evitar expor pessoas ao apresentar evidências.",
         "Publicar nomes para aumentar impacto.",
         "Selecionar relatos sem consentimento.",
-        "Usar qualquer detalhe pessoal como ilustração."
+        "Usar qualquer detalhe pessoal como ilustração.",
+        "Proteger identidade, explicar o uso autorizado e evitar expor pessoas ao apresentar evidências."
       ],
       "correctAnswer": "Proteger identidade, explicar o uso autorizado e evitar expor pessoas ao apresentar evidências.",
       "explanation": "A resposta usa a fonte e o contexto de modo verificável, reconhecendo limites, alternativas ou cuidados éticos.",
       "hint": "Argumento consistente também exige responsabilidade ética.",
-      "errorFocus": "Tratar dados pessoais como recurso livre."
+      "errorFocus": "Tratar dados pessoais como recurso livre.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-01",
@@ -517,7 +659,13 @@
       "correctAnswer": "Explicitar critérios, combinar dados quantitativos e relatos e reconhecer limites antes de recomendar uma unidade.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Uma decisão complexa precisa de critérios e evidências diferentes.",
-      "errorFocus": "Reduzir decisão pública a um indicador isolado."
+      "errorFocus": "Reduzir decisão pública a um indicador isolado.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-02",
@@ -527,15 +675,21 @@
       "contextFamily": "historical-source",
       "statement": "Duas fontes descrevem um mesmo evento histórico de perspectivas opostas. Como construir uma hipótese?",
       "options": [
-        "Comparar autoria, época, interesses, convergências e diferenças antes de propor uma explicação provisória.",
         "Escolher a fonte mais longa como verdadeira.",
+        "Comparar autoria, época, interesses, convergências e diferenças antes de propor uma explicação provisória.",
         "Somar frases incompatíveis sem contexto.",
         "Descartar a fonte que usa linguagem diferente."
       ],
       "correctAnswer": "Comparar autoria, época, interesses, convergências e diferenças antes de propor uma explicação provisória.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Contextualize cada narrativa antes de comparar.",
-      "errorFocus": "Hierarquizar fonte por tamanho ou estilo."
+      "errorFocus": "Hierarquizar fonte por tamanho ou estilo.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-03",
@@ -545,15 +699,21 @@
       "contextFamily": "environmental-data",
       "statement": "Uma comunidade avalia a qualidade da água com medições, relatos e mapa de pontos de coleta. Qual argumento é mais forte?",
       "options": [
-        "Relacionar medidas e locais, confrontar relatos com o período observado e indicar incertezas e próximos dados.",
         "Afirmar uma causa única com uma medição.",
         "Usar só o relato mais alarmante.",
+        "Relacionar medidas e locais, confrontar relatos com o período observado e indicar incertezas e próximos dados.",
         "Ignorar diferenças entre pontos."
       ],
       "correctAnswer": "Relacionar medidas e locais, confrontar relatos com o período observado e indicar incertezas e próximos dados.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Conecte evidências sem esconder sua escala e incerteza.",
-      "errorFocus": "Construir certeza ampla com evidência parcial."
+      "errorFocus": "Construir certeza ampla com evidência parcial.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-04",
@@ -563,15 +723,21 @@
       "contextFamily": "social-indicator",
       "statement": "Um índice social melhorou, mas a média esconde diferenças entre grupos. O que a análise deve fazer?",
       "options": [
-        "Desagregar os dados por grupos e discutir como a média pode ocultar desigualdades.",
         "Concluir que todos melhoraram igualmente.",
         "Abandonar o índice sem investigar.",
-        "Usar apenas o grupo com maior valor."
+        "Usar apenas o grupo com maior valor.",
+        "Desagregar os dados por grupos e discutir como a média pode ocultar desigualdades."
       ],
       "correctAnswer": "Desagregar os dados por grupos e discutir como a média pode ocultar desigualdades.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Média geral pode ocultar distribuição.",
-      "errorFocus": "Confundir média com experiência de todos."
+      "errorFocus": "Confundir média com experiência de todos.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-05",
@@ -589,7 +755,13 @@
       "correctAnswer": "Distinguir visualizações, pessoas únicas, interações e o período observado.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Defina exatamente o que cada métrica conta.",
-      "errorFocus": "Tratar métricas diferentes como equivalentes."
+      "errorFocus": "Tratar métricas diferentes como equivalentes.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-06",
@@ -599,15 +771,21 @@
       "contextFamily": "public-hearing",
       "statement": "Em uma audiência pública, grupos apresentam números e relatos diferentes. Qual postura favorece um argumento responsável?",
       "options": [
-        "Perguntar sobre métodos, reconhecer experiências distintas e tornar os critérios de decisão explícitos.",
         "Escolher o grupo que fala mais alto.",
+        "Perguntar sobre métodos, reconhecer experiências distintas e tornar os critérios de decisão explícitos.",
         "Excluir relatos por não serem números.",
         "Aceitar a primeira estatística sem verificar."
       ],
       "correctAnswer": "Perguntar sobre métodos, reconhecer experiências distintas e tornar os critérios de decisão explícitos.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Argumentos públicos devem ser examináveis e inclusivos.",
-      "errorFocus": "Confundir força retórica com qualidade da evidência."
+      "errorFocus": "Confundir força retórica com qualidade da evidência.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-07",
@@ -617,15 +795,21 @@
       "contextFamily": "scenario-model",
       "statement": "Um modelo projeta aumento de temperatura para as próximas décadas. Como comunicar o resultado?",
       "options": [
-        "Informar pressupostos, horizonte, incerteza e o que o modelo não determina sozinho.",
         "Apresentar a projeção como data certa.",
         "Omitir o método para facilitar a mensagem.",
+        "Informar pressupostos, horizonte, incerteza e o que o modelo não determina sozinho.",
         "Dizer que qualquer cenário tem o mesmo significado."
       ],
       "correctAnswer": "Informar pressupostos, horizonte, incerteza e o que o modelo não determina sozinho.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Modelo depende de dados e pressupostos.",
-      "errorFocus": "Transformar projeção condicionada em previsão inevitável."
+      "errorFocus": "Transformar projeção condicionada em previsão inevitável.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-transfer-08",
@@ -635,15 +819,21 @@
       "contextFamily": "argument-revision",
       "statement": "Após encontrar dados que contradizem parte do argumento, qual é a melhor resposta?",
       "options": [
-        "Revisar a afirmação, explicar a divergência e investigar se o alcance ou a hipótese precisam mudar.",
         "Apagar o dado contrário.",
         "Manter a conclusão sem comentário.",
-        "Trocar a pergunta para esconder o conflito."
+        "Trocar a pergunta para esconder o conflito.",
+        "Revisar a afirmação, explicar a divergência e investigar se o alcance ou a hipótese precisam mudar."
       ],
       "correctAnswer": "Revisar a afirmação, explicar a divergência e investigar se o alcance ou a hipótese precisam mudar.",
       "explanation": "A resposta compõe argumento com fontes de naturezas diferentes, explicita critérios e limita o alcance da conclusão.",
       "hint": "Evidência contrária pode melhorar o argumento.",
-      "errorFocus": "Proteger a conclusão em vez de revisar o raciocínio."
+      "errorFocus": "Proteger a conclusão em vez de revisar o raciocínio.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-lock-01",
@@ -661,7 +851,13 @@
       "correctAnswer": "Entre as pessoas consultadas e no período estudado, apareceu o padrão descrito; outras populações exigem investigação.",
       "explanation": "A resposta torna o argumento verificável, proporcional aos dados e responsável diante de limites e divergências.",
       "hint": "Indique grupo e período antes de ampliar a afirmação.",
-      "errorFocus": "Generalizar ou descartar completamente a evidência."
+      "errorFocus": "Generalizar ou descartar completamente a evidência.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-lock-02",
@@ -671,15 +867,21 @@
       "contextFamily": "source-triangulation",
       "statement": "Por que combinar uma tabela, entrevistas e um mapa pode ser útil?",
       "options": [
-        "Cada fonte mostra uma dimensão do problema, permitindo comparar convergências, diferenças e limites.",
         "Mais fontes sempre eliminam incerteza.",
+        "Cada fonte mostra uma dimensão do problema, permitindo comparar convergências, diferenças e limites.",
         "Uma fonte se torna verdadeira por haver outras.",
         "Fontes diferentes não podem ser comparadas."
       ],
       "correctAnswer": "Cada fonte mostra uma dimensão do problema, permitindo comparar convergências, diferenças e limites.",
       "explanation": "A resposta torna o argumento verificável, proporcional aos dados e responsável diante de limites e divergências.",
       "hint": "Combine sem tratar todas as fontes como a mesma medida.",
-      "errorFocus": "Confundir triangulação com certeza automática."
+      "errorFocus": "Confundir triangulação com certeza automática.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-lock-03",
@@ -689,15 +891,21 @@
       "contextFamily": "causal-care",
       "statement": "Qual pergunta é necessária antes de dizer que uma política causou uma mudança?",
       "options": [
-        "Que comparação ou evidência permite separar o efeito da política de outras mudanças no período?",
         "A mudança ocorreu depois?",
         "O gráfico tem uma linha crescente?",
+        "Que comparação ou evidência permite separar o efeito da política de outras mudanças no período?",
         "Alguém acredita na política?"
       ],
       "correctAnswer": "Que comparação ou evidência permite separar o efeito da política de outras mudanças no período?",
       "explanation": "A resposta torna o argumento verificável, proporcional aos dados e responsável diante de limites e divergências.",
       "hint": "Depois não significa necessariamente por causa.",
-      "errorFocus": "Inferir causalidade de sequência temporal simples."
+      "errorFocus": "Inferir causalidade de sequência temporal simples.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-lock-04",
@@ -707,15 +915,21 @@
       "contextFamily": "reproducible",
       "statement": "Um argumento é mais confiável quando outra pessoa consegue:",
       "options": [
-        "Localizar as fontes, entender os critérios e refazer a comparação com os dados disponíveis.",
         "Repetir apenas a opinião do autor.",
         "Adivinhar os dados ausentes.",
-        "Confiar no design do relatório."
+        "Confiar no design do relatório.",
+        "Localizar as fontes, entender os critérios e refazer a comparação com os dados disponíveis."
       ],
       "correctAnswer": "Localizar as fontes, entender os critérios e refazer a comparação com os dados disponíveis.",
       "explanation": "A resposta torna o argumento verificável, proporcional aos dados e responsável diante de limites e divergências.",
       "hint": "Pense no caminho que liga evidência e conclusão.",
-      "errorFocus": "Confundir credibilidade com aparência."
+      "errorFocus": "Confundir credibilidade com aparência.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-lock-05",
@@ -733,7 +947,13 @@
       "correctAnswer": "Os dados sugerem uma diferença no período observado, mas a amostra e as medidas não permitem afirmar a causa.",
       "explanation": "A resposta torna o argumento verificável, proporcional aos dados e responsável diante de limites e divergências.",
       "hint": "Incerteza delimita, não apaga, o que foi observado.",
-      "errorFocus": "Tratar incerteza como ausência total de conhecimento."
+      "errorFocus": "Tratar incerteza como ausência total de conhecimento.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-lock-06",
@@ -743,15 +963,21 @@
       "contextFamily": "ethical-argument",
       "statement": "Qual prática é incompatível com um argumento responsável?",
       "options": [
-        "Omitir deliberadamente uma evidência relevante porque ela enfraquece a conclusão.",
         "Indicar uma limitação.",
+        "Omitir deliberadamente uma evidência relevante porque ela enfraquece a conclusão.",
         "Comparar duas fontes.",
         "Revisar hipótese diante de novo dado."
       ],
       "correctAnswer": "Omitir deliberadamente uma evidência relevante porque ela enfraquece a conclusão.",
       "explanation": "A resposta torna o argumento verificável, proporcional aos dados e responsável diante de limites e divergências.",
       "hint": "Considere transparência e rastreabilidade.",
-      "errorFocus": "Selecionar evidências de forma enganosa."
+      "errorFocus": "Selecionar evidências de forma enganosa.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-01",
@@ -761,15 +987,21 @@
       "contextFamily": "review-data",
       "statement": "O que uma tabela fornece?",
       "options": [
-        "Dados organizados segundo categorias, medidas ou períodos definidos.",
         "Uma causa automática.",
         "Uma opinião universal.",
+        "Dados organizados segundo categorias, medidas ou períodos definidos.",
         "Uma previsão certa."
       ],
       "correctAnswer": "Dados organizados segundo categorias, medidas ou períodos definidos.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-02",
@@ -779,15 +1011,21 @@
       "contextFamily": "review-hypothesis",
       "statement": "Uma hipótese deve ser:",
       "options": [
-        "Clara o bastante para ser confrontada com evidências.",
         "Impossível de verificar.",
         "Uma certeza final.",
-        "Uma frase sem relação com a pergunta."
+        "Uma frase sem relação com a pergunta.",
+        "Clara o bastante para ser confrontada com evidências."
       ],
       "correctAnswer": "Clara o bastante para ser confrontada com evidências.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-03",
@@ -805,7 +1043,13 @@
       "correctAnswer": "Quem foi pesquisado, quantas pessoas participaram e em qual contexto.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-04",
@@ -815,15 +1059,21 @@
       "contextFamily": "review-source",
       "statement": "Ler uma fonte criticamente envolve:",
       "options": [
-        "Considerar autoria, contexto, método, interesses e evidências apresentadas.",
         "Aceitar ou rejeitar sem examinar.",
+        "Considerar autoria, contexto, método, interesses e evidências apresentadas.",
         "Usar apenas a manchete.",
         "Ignorar a data."
       ],
       "correctAnswer": "Considerar autoria, contexto, método, interesses e evidências apresentadas.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-05",
@@ -833,15 +1083,21 @@
       "contextFamily": "review-correlation",
       "statement": "Associação entre duas medidas:",
       "options": [
-        "Mostra que variaram juntas, mas não prova sozinha uma relação de causa.",
         "Prova sempre a causa.",
         "Não pode ser observada.",
+        "Mostra que variaram juntas, mas não prova sozinha uma relação de causa.",
         "É igual a opinião."
       ],
       "correctAnswer": "Mostra que variaram juntas, mas não prova sozinha uma relação de causa.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-06",
@@ -851,15 +1107,21 @@
       "contextFamily": "review-argument",
       "statement": "Um argumento precisa ligar:",
       "options": [
-        "Afirmação, evidência e raciocínio.",
         "Título, cor e opinião.",
         "Causa, certeza e propaganda.",
-        "Pergunta, desenho e gosto."
+        "Pergunta, desenho e gosto.",
+        "Afirmação, evidência e raciocínio."
       ],
       "correctAnswer": "Afirmação, evidência e raciocínio.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-07",
@@ -877,7 +1139,13 @@
       "correctAnswer": "Indicado e analisado antes de ser interpretado.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-08",
@@ -887,15 +1155,21 @@
       "contextFamily": "review-alternative",
       "statement": "Uma explicação alternativa é:",
       "options": [
-        "Outra possibilidade que também pode explicar o padrão observado.",
         "Um erro que deve ser ocultado.",
+        "Outra possibilidade que também pode explicar o padrão observado.",
         "Uma conclusão obrigatória.",
         "Um dado sem relação."
       ],
       "correctAnswer": "Outra possibilidade que também pode explicar o padrão observado.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-09",
@@ -905,15 +1179,21 @@
       "contextFamily": "review-ethics",
       "statement": "Ao usar relato de uma pessoa, proteja:",
       "options": [
-        "Identidade, uso autorizado e contexto necessário para não expor a pessoa.",
         "Somente a estética.",
         "A publicação do nome.",
+        "Identidade, uso autorizado e contexto necessário para não expor a pessoa.",
         "O dado pessoal sem limite."
       ],
       "correctAnswer": "Identidade, uso autorizado e contexto necessário para não expor a pessoa.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     },
     {
       "id": "v8-hum-evidence-review-10",
@@ -923,15 +1203,23 @@
       "contextFamily": "review-limit",
       "statement": "Uma boa conclusão informa:",
       "options": [
-        "O que os dados sustentam e o que ainda não permitem afirmar.",
         "Somente uma certeza.",
         "Nenhuma limitação.",
-        "A opinião mais popular."
+        "A opinião mais popular.",
+        "O que os dados sustentam e o que ainda não permitem afirmar."
       ],
       "correctAnswer": "O que os dados sustentam e o que ainda não permitem afirmar.",
       "explanation": "A revisão retoma a relação entre fonte, evidência, hipótese, argumento, ética e limite.",
       "hint": "Releia o papel da evidência na construção de uma conclusão.",
-      "errorFocus": "Confundir dado, hipótese, causa e opinião."
+      "errorFocus": "Confundir dado, hipótese, causa e opinião.",
+      "accessibility": {
+        "supports": [
+          "Apresentar texto e dados também em formato acessível, com unidades, fonte e rótulos legíveis.",
+          "Permitir resposta por seleção, fala, escrita ou tecnologia assistiva e oferecer tempo flexível."
+        ]
+      }
     }
-  ]
+  ],
+  "active": false,
+  "evidenceMode": "OBJECTIVE_LEARNING_PATH"
 }

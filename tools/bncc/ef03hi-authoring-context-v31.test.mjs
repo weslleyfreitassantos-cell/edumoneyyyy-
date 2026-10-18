@@ -19,7 +19,7 @@ describe('EF03HI01 V31 authoring context', () => {
       relationDecision: 'NOT_ASSERTED',
     });
     expect(pack.officialMappingStatus).toBe('NOT_CLAIMED');
-    expect(pack.publicationStatus).toBe('STAGING');
+    expect(pack.publicationStatus).toBe('STAGING_INACTIVE');
     expect(pack.pedagogicalReviewStatus).toBe('PEDAGOGICAL_REVIEW_PENDING');
     expect(pack.questions).toHaveLength(190);
   });

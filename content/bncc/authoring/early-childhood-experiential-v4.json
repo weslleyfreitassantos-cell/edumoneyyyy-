@@ -37,11 +37,24 @@
       "Demonstra interesse, recusa ou necessidade de continuidade por sinais corporais e tem esses sinais acolhidos pelo adulto.",
       "Experimenta uma variação de posição, ritmo, objeto ou distância sem que o adulto exija deslocamento, imitação ou desempenho.",
       "Participa por períodos breves ou prolongados, podendo repetir, alterar, interromper ou observar a proposta.",
-      "Tem acesso a um espaço previsível, seguro e ajustado às suas necessidades de comunicação, sensorialidade e movimento."
+      "Tem acesso a um espaço previsível, seguro e ajustado às suas necessidades de comunicação, sensorialidade e movimento.",
+      "A exploração pode ocorrer por olhar, toque, movimento parcial, pausa ou observação, sem exigência de deslocamento."
     ],
     "evidenceRecord": {
-      "requiredFields": ["date", "context", "offeredInvitation", "observedBodyExploration", "childSignals", "educatorAdjustment", "nextInvitation"],
-      "allowedFormats": ["short_text", "voice_note_reference", "secure_photo_reference"],
+      "requiredFields": [
+        "date",
+        "context",
+        "offeredInvitation",
+        "observedBodyExploration",
+        "childSignals",
+        "educatorAdjustment",
+        "nextInvitation"
+      ],
+      "allowedFormats": [
+        "short_text",
+        "voice_note_reference",
+        "secure_photo_reference"
+      ],
       "privacy": "Registrar somente o necessário no contexto institucional autorizado; não incluir diagnóstico, não expor a imagem da criança e não inferir desenvolvimento além do observado."
     },
     "adaptations": [
@@ -49,6 +62,26 @@
       "Oferecer apoio postural, posição e espaço conforme orientação da equipe responsável, sem forçar movimentos.",
       "Permitir participação por olhar, gesto, vocalização, toque, pausa ou outro recurso de comunicação disponível.",
       "Manter objetos grandes, íntegros, laváveis e apropriados à faixa etária, com supervisão contínua do adulto."
+    ],
+    "observationExperiences": [
+      {
+        "title": "Explorar objeto ao alcance seguro",
+        "steps": [
+          "Organize superfície estável e posição segura conforme orientação da equipe.",
+          "Disponibilize um objeto grande, íntegro e adequado, deixando a criança olhar, tocar, alcançar ou recusar.",
+          "Ajuste a distância ou interrompa a proposta diante de sinais de cansaço ou desconforto."
+        ],
+        "observableEvidence": "Descrição dos movimentos, olhares, pausas e ajustes de apoio, sem tratar deslocamento como requisito de êxito."
+      },
+      {
+        "title": "Alternar gesto, canção e pausa",
+        "steps": [
+          "Apresente uma canção curta com gesto lento e previsível.",
+          "Alterne movimento e pausa para que o bebê acompanhe, observe, interrompa ou retome.",
+          "Responda aos sinais de interesse e pare quando houver desconforto ou necessidade de descanso."
+        ],
+        "observableEvidence": "Registro da participação voluntária, variação ou pausa e da resposta responsiva do adulto."
+      }
     ]
   },
   "contentStatus": {
@@ -57,5 +90,6 @@
     "officialMappingStatus": "NOT_CLAIMED",
     "studentQuiz": "NOT_CREATED",
     "humanApproval": "NOT_GRANTED"
-  }
+  },
+  "active": false
 }

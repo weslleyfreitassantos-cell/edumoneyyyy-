@@ -1,10 +1,10 @@
 {
-  "schemaVersion": "tec-escola.bncc.mass-authoring-checkpoint.v1",
+  "schemaVersion": "tec-escola.bncc.mass-authoring-checkpoint.v2",
   "campaign": "TECESCOLA_BNCC_AUTOPILOT_MASS_AUTHORING",
   "snapshotDate": "2026-10-18",
   "branch": "codex/bncc-question-first-adaptive-tutor-v5",
   "baseHead": "530c01ef10cdde65f12b828f12d14071528f4098",
-  "state": "PR_UPDATE_PENDING_WITH_FULL_SUITE_TIMEOUTS",
+  "state": "RECOVERED_LEGACY_GAPS_AND_OBSERVATION_MODE; CONTINUE_SCALE; HUMAN_REVIEW_PENDING",
   "authoringInfrastructure": {
     "declarativeRegistry": true,
     "sourceExactMatchRequired": true,
@@ -36,16 +36,22 @@
     "pedagogicalReviewPending": true
   },
   "completenessReevaluation": {
-    "beforeLegacyCountScreenComplete": 20,
-    "beforePackagesPassingStrictRubric": 4,
-    "legacyPackagesFailingStrictRubric": 16,
-    "afterStrictTechnicalComplete": 17,
-    "afterLegacyCountScreenComplete": 33,
-    "contentMissingAgainst1721Nodes": 1704,
-    "verifiedSourceTasks": 561,
-    "verifiedTasksWithoutRegisteredProducer": 528,
+    "priorCountScreenComplete": 20,
+    "priorRubricPassCount": 4,
+    "priorLegacyPackagesFailingStrictRubric": 16,
+    "priorRubricVersion": "tec-escola.bncc.technical-completeness.v1",
+    "currentRubricVersion": "tec-escola.bncc.technical-completeness.v2",
+    "contentTechnicallyPrepared": 41,
+    "legacyCountScreenComplete": 41,
+    "legacyCountOnlyNotPrepared": 0,
+    "contentMissingAgainstQueue": 1680,
+    "sourceVerifiedTasks": 568,
+    "verifiedTasksWithoutRegisteredProducer": 480,
     "queueNodes": 1721,
-    "queueHash": "91976273f5e305753ae8fb5492fb37fb76393bb734a1e69af58e3be3cc23637a"
+    "queueHash": "ad2277b1fff64c7e161498da314bc714d4ef69a52b217aa79210702c90298505",
+    "humanPedagogicalApproved": 0,
+    "canonicalMappingVerified": 0,
+    "publicationAuthorized": 0
   },
   "validationSnapshot": {
     "officialSourceAndCatalogIntegrity": "PASS",
@@ -54,7 +60,7 @@
     "knowledgeFactoryV4": "PASS",
     "typecheck": "PASS",
     "build": "PASS",
-    "fullTestSuite": "FAIL_22_OF_2585",
+    "fullTestSuite": "PASS_2548_OF_2548_56_SKIPPED",
     "fullTestSuitePassed": 2507,
     "fullTestSuiteFailed": 22,
     "fullTestSuiteSkipped": 56,
@@ -63,17 +69,66 @@
     "fullTestSuiteFilesSkipped": 11,
     "fullTestSuiteTimedOut": 21,
     "fullTestSuiteStaleExpectationFixedAfterRun": 1,
-    "focusedCampaignTests": "PASS_120_OF_120"
+    "focusedCampaignTests": "PASS_64_OF_64",
+    "curriculumPackageRubricV2": "PASS",
+    "legacyPackageRecovery": "16_OF_16_PASS",
+    "earlyChildhoodObservationMode": "6_OF_6_PASS_NO_QUIZ_REQUIRED",
+    "completionQueueV14": "PASS_1721_TASKS_41_TECHNICALLY_PREPARED",
+    "highSchoolEvidenceRecovery": "EM13CHS103_AUTOMATED_SCREEN_PASS"
   },
   "nextAuthorableBatch": [
-    "EF01CI01",
-    "EF01CI02",
-    "EF01CI04",
-    "EF01CI05"
+    "EF01ER01",
+    "EF01GE02",
+    "EF01HI02",
+    "EF01LP07",
+    "EF01MA01",
+    "EF02CI02"
   ],
   "executorActive": false,
   "supervisorActive": false,
   "productionWrites": "NONE",
   "publicationAuthorized": false,
-  "mergeAuthorized": false
+  "mergeAuthorized": false,
+  "reconciliation": {
+    "rubricVersion": "tec-escola.bncc.technical-completeness.v2",
+    "sourceOfCurrentCounts": "content/bncc/authoring/completion-queue-v14.json",
+    "queueHash": "ad2277b1fff64c7e161498da314bc714d4ef69a52b217aa79210702c90298505",
+    "reconciledAt": "2026-10-18T14:33:25.920Z",
+    "priorRubricMetricsRetainedAsHistory": true,
+    "historicalMetricVersion": "tec-escola.bncc.technical-completeness.v1"
+  },
+  "legacyPackageRecovery": {
+    "target": 16,
+    "reviewed": 16,
+    "repaired": 16,
+    "stillIncomplete": 0,
+    "evidenceFile": "content/bncc/authoring/legacy-package-recovery-v1.json",
+    "rubricVersion": "tec-escola.bncc.technical-completeness.v2"
+  },
+  "earlyChildhoodObservationRecovery": {
+    "target": 6,
+    "reviewed": 6,
+    "technicallyPrepared": 6,
+    "stillIncomplete": 0,
+    "questionCountRequired": 0,
+    "humanReviewPending": true,
+    "evidenceFile": "content/bncc/authoring/early-childhood-observation-review-v1.json"
+  },
+  "highSchoolEvidenceRecovery": {
+    "officialCode": "EM13CHS103",
+    "sourceVerificationId": "BNCC_EM13CHS103_MEC_P136_V1",
+    "questionCount": 40,
+    "rubricStatus": "AUTOMATED_SCREEN_PASS",
+    "answerPositionCounts": [
+      10,
+      10,
+      10,
+      10
+    ],
+    "humanReviewPending": true,
+    "mappingStatus": "CANONICAL_GAP",
+    "publicationStatus": "STAGING_INACTIVE",
+    "publicationAuthorized": false,
+    "evidenceFile": "content/bncc/authoring/high-school-evidence-recovery-v1.json"
+  }
 }

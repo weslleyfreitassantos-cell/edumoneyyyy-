@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre registros de memória na cidade para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Registros de memória na cidade",
     "objective": "Identificar registros de memória na cidade e discutir, com fontes, os critérios e grupos envolvidos na escolha de nomes e monumentos.",
     "summary": "Nomes de ruas, monumentos e edifícios registram escolhas sobre o que uma cidade lembra. Investigar esses registros ajuda a perceber homenagens, disputas, ausências e mudanças.",
     "explanation": "## O que investigar\nIdentificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: um conselho escolhe nomes para duas ruas e a ata explica critérios usados. A ata documenta a decisão e seus autores, mas não prova que todos concordaram nem reúne todas as memórias relacionadas ao lugar.",
     "commonMistake": "Tratar o nome de um lugar como natural e neutro, sem investigar quem escolheu, quem foi homenageado e quais memórias ficaram ausentes.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-memory-records-003",
           "v13-history-memory-records-004",
           "v13-history-memory-records-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-memory-records-018",
           "v13-history-memory-records-019",
           "v13-history-memory-records-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-memory-records-030",
           "v13-history-memory-records-031",
           "v13-history-memory-records-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-memory-records-038",
           "v13-history-memory-records-039",
           "v13-history-memory-records-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-memory-records-048",
           "v13-history-memory-records-049",
           "v13-history-memory-records-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Tratar um registro de memória como representação completa de uma comunidade.",
+        "action": "Separe quem aparece no registro de quem poderia estar ausente e formule uma pergunta de pesquisa sem presumir resposta."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Confundir a data do registro com a data do acontecimento lembrado.",
+        "action": "Marque em colunas diferentes quando ocorreu o acontecimento e quando o registro foi produzido."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Supor consenso sobre monumentos ou nomes públicos.",
+        "action": "Identifique a fonte da decisão e procure evidência de participação ou de divergência antes de afirmar consenso."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-memory-records-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Analisar registros públicos de memória",
         "objective": "Identificar registros de memória na cidade e discutir, com fontes, os critérios e grupos envolvidos na escolha de nomes e monumentos.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Ata, placa, nome de espaço ou fonte didática sobre uma decisão de memória pública.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Identifique quem produziu ou escolheu o registro e quando essa decisão ocorreu. Compare o registro com outra fonte que apresente uso, memória ou perspectiva diferente. Descreva o que foi preservado, o que ficou ausente e que consulta respeitosa poderia ampliar o registro.",
+        "evidence": "Registro comparativo que atribui a decisão à fonte e explicita presença, ausência e limite sem presumir consenso.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Autoria e escolha",
+            "emerging": "Trata o registro como espontâneo ou neutro.",
+            "developing": "Identifica autores com apoio.",
+            "proficient": "Explica quem selecionou o registro e quais critérios aparecem."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Memória e ausência",
+            "emerging": "Supõe que o registro representa todos.",
+            "developing": "Nomeia uma ausência após orientação.",
+            "proficient": "Distingue memória registrada, grupos representados e lacunas."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Consulta e respeito",
+            "emerging": "Propõe exposição de relatos pessoais sem cuidado.",
+            "developing": "Sugere outra fonte com apoio.",
+            "proficient": "Propõe consulta voluntária, pública e respeitosa, sem pressionar pessoas."
           }
+        ],
+        "steps": [
+          "Identifique quem produziu ou escolheu o registro e quando essa decisão ocorreu.",
+          "Compare o registro com outra fonte que apresente uso, memória ou perspectiva diferente.",
+          "Descreva o que foi preservado, o que ficou ausente e que consulta respeitosa poderia ampliar o registro."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Identificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar transcrição, áudio, fonte em alto contraste e quadro para autoria, decisão e período.",
+      "Permitir resposta por diagrama, fala, texto ou cartões e trabalhar com exemplos públicos ou fictícios, sem coletar memórias pessoais."
     ]
   },
   "questions": [

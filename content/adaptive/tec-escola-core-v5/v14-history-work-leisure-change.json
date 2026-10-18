@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre trabalho, lazer, mudanças e permanências para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Comparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Trabalho, lazer, mudanças e permanências",
     "objective": "Comparar relações de trabalho e lazer em diferentes tempos e espaços, identificando mudanças, permanências, condições de acesso e limites das fontes.",
     "summary": "Trabalho e lazer se organizam de acordo com tempo, espaço, recursos e condições sociais. Comparar épocas exige observar tanto o que mudou quanto o que permaneceu, sem idealizar o passado ou generalizar o presente.",
     "explanation": "## O que investigar\nComparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: uma fotografia antiga registra trabalhadores em um domingo e uma fonte atual descreve o uso de um parque. A comparação pode investigar horários e acesso ao lazer, mas exige outras fontes para afirmar como as condições mudaram para diferentes grupos.",
     "commonMistake": "Imaginar que o passado foi igual para todas as pessoas ou que toda mudança tecnológica ampliou o lazer de todos.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -82,7 +90,8 @@
           "v14-history-work-leisure-change-003",
           "v14-history-work-leisure-change-004",
           "v14-history-work-leisure-change-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -103,7 +112,8 @@
           "v14-history-work-leisure-change-018",
           "v14-history-work-leisure-change-019",
           "v14-history-work-leisure-change-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -121,7 +131,8 @@
           "v14-history-work-leisure-change-030",
           "v14-history-work-leisure-change-031",
           "v14-history-work-leisure-change-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -135,7 +146,8 @@
           "v14-history-work-leisure-change-038",
           "v14-history-work-leisure-change-039",
           "v14-history-work-leisure-change-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -146,7 +158,8 @@
           "v14-history-work-leisure-change-043",
           "v14-history-work-leisure-change-044",
           "v14-history-work-leisure-change-045"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -167,55 +180,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Imaginar que todas as pessoas viveram o passado da mesma maneira.",
+        "action": "Identifique quem aparece em cada fonte e limite a descrição ao grupo e período documentados."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Tratar uma mudança tecnológica como benefício igual para todos.",
+        "action": "Compare condições de acesso nos dois períodos e registre quais grupos ou evidências ainda faltam."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Confundir mudança de cenário com mudança comprovada nas relações de trabalho ou lazer.",
+        "action": "Escolha um aspecto comum às fontes e compare evidências desse aspecto antes de concluir."
       }
     ],
     "authenticActivities": [
       {
         "id": "v14-history-work-leisure-change-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Comparar trabalho e lazer em tempos distintos",
         "objective": "Comparar relações de trabalho e lazer em diferentes tempos e espaços, identificando mudanças, permanências, condições de acesso e limites das fontes.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Fontes didáticas ou públicas de dois períodos e espaços identificados sobre trabalho ou lazer.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Identifique período, lugar, autoria e grupo retratado em cada fonte. Compare um aspecto de trabalho e/ou lazer e registre mudanças e permanências sustentadas. Considere condições de acesso e indique quem ou que período não está representado.",
+        "evidence": "Quadro temporal com fontes atribuídas, mudança, permanência, condições de acesso e limite documental.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Contexto temporal",
+            "emerging": "Compara passado e presente sem identificar períodos.",
+            "developing": "Localiza os períodos com apoio.",
+            "proficient": "Usa período e espaço para contextualizar cada fonte."
           },
           {
-            "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "criterion": "Mudança e permanência",
+            "emerging": "Supõe que tudo mudou ou permaneceu igual.",
+            "developing": "Identifica um aspecto com apoio.",
+            "proficient": "Distingue mudança e permanência apoiadas nas fontes."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Acesso e diversidade",
+            "emerging": "Generaliza a experiência de um grupo.",
+            "developing": "Reconhece uma diferença após mediação.",
+            "proficient": "Considera condições de acesso e limita a conclusão aos grupos documentados."
           }
+        ],
+        "steps": [
+          "Identifique período, lugar, autoria e grupo retratado em cada fonte.",
+          "Compare um aspecto de trabalho e/ou lazer e registre mudanças e permanências sustentadas.",
+          "Considere condições de acesso e indique quem ou que período não está representado."
         ]
       }
     ],
@@ -230,6 +254,10 @@
         "descriptor": "Comparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Oferecer linha do tempo visual e fontes em formatos equivalentes com data, lugar e autoria destacados.",
+      "Permitir síntese oral, escrita ou visual e disponibilizar vocabulário de apoio sem solicitar relatos pessoais ou familiares."
     ]
   },
   "questions": [

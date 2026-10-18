@@ -25,7 +25,7 @@
   "active": false,
   "officialMappingStatus": "NOT_CLAIMED",
   "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
-  "publicationStatus": "STAGING",
+  "publicationStatus": "STAGING_INACTIVE",
   "contentAuthoringStatus": "AUTHORED",
   "sourceReconciliation": {
     "sourceQuestionCount": 0,
@@ -41,14 +41,22 @@
     "relation": "AUTHORING_CONTEXT_ONLY",
     "relationDecision": "NOT_ASSERTED",
     "authoringPurpose": "Desenvolver materiais autorais sobre pontos de vista na história local para revisão humana.",
-    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente."
+    "evidenceBoundary": "O pacote não declara que o código oficial corresponde a uma skill canônica; a proposta permanece pendente.",
+    "sourceStatus": "OFFICIAL_SOURCE_VERIFIED_EXACT",
+    "descriptor": "Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.",
+    "officialSource": {
+      "id": "BNCC_EI_EF_2018",
+      "documentVersion": "BNCC Educação Infantil e Ensino Fundamental, versão final 2018",
+      "url": "https://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf",
+      "page": 413
+    }
   },
   "lesson": {
     "title": "Pontos de vista na história local",
     "objective": "Identificar e comparar pontos de vista sobre acontecimentos locais, relacionando cada perspectiva ao grupo, às condições sociais e à fonte que a sustenta.",
     "summary": "Um mesmo acontecimento pode ser narrado de modos diferentes. Comparar perspectivas exige reconhecer quem fala, o que foi vivido, quais condições estão em jogo e quais vozes ainda faltam.",
     "explanation": "## O que investigar\nIdentificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.\n\n## Como trabalhar\nComece identificando o acontecimento, o lugar, o período e quem produziu cada fonte. Depois compare as informações, reconheça perspectivas e registre apenas o que a evidência sustenta.\n\n## Como avançar\nUse observações simples no início, passe para comparações e termine com sínteses que indicam convergências, diferenças, lacunas e próximos passos. A ausência de uma informação deve permanecer visível; não invente detalhes para completar a narrativa.",
-    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.",
+    "workedExample": "Uma fonte registra a data de uma obra, outra descreve a experiência de um grupo e uma terceira mostra a transformação do espaço. O registro cuidadoso atribui cada informação à fonte, compara os recortes e evita afirmar uma causa ou uma opinião como se fossem fatos universais.\n\nExemplo hipotético: uma associação chama a abertura de uma praça de conquista, enquanto uma comerciante relata dificuldade temporária de acesso. Compare o que cada fonte destaca, seu lugar de fala e o recorte; não transforme nenhuma experiência em opinião de todo um grupo.",
     "commonMistake": "Confundir ponto de vista com verdade absoluta, tratar um grupo como homogêneo ou apagar culturas africanas, indígenas e de migrantes da história local.",
     "tips": [
       "Defina lugar, acontecimento e período antes de comparar.",
@@ -81,7 +89,8 @@
           "v13-history-local-perspectives-003",
           "v13-history-local-perspectives-004",
           "v13-history-local-perspectives-005"
-        ]
+        ],
+        "phase": "PROBE"
       },
       {
         "stage": "PRACTICE",
@@ -102,7 +111,8 @@
           "v13-history-local-perspectives-018",
           "v13-history-local-perspectives-019",
           "v13-history-local-perspectives-020"
-        ]
+        ],
+        "phase": "PRACTICE"
       },
       {
         "stage": "TRANSFER",
@@ -120,7 +130,8 @@
           "v13-history-local-perspectives-030",
           "v13-history-local-perspectives-031",
           "v13-history-local-perspectives-032"
-        ]
+        ],
+        "phase": "TRANSFER"
       },
       {
         "stage": "LOCK_IN",
@@ -134,7 +145,8 @@
           "v13-history-local-perspectives-038",
           "v13-history-local-perspectives-039",
           "v13-history-local-perspectives-040"
-        ]
+        ],
+        "phase": "LOCK_IN"
       },
       {
         "stage": "SPACED_REVIEW_CANDIDATE",
@@ -150,7 +162,8 @@
           "v13-history-local-perspectives-048",
           "v13-history-local-perspectives-049",
           "v13-history-local-perspectives-050"
-        ]
+        ],
+        "phase": "REVIEW"
       }
     ],
     "microExplanations": [
@@ -171,55 +184,66 @@
       {
         "id": "SOURCE_TABLE",
         "misconception": "Misturar fonte, fato e hipótese.",
-        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite."
+        "prompt": "Preencha uma tabela com fonte, autor, data, informação sustentada e limite.",
+        "errorFocus": "Confundir perspectiva com verdade absoluta.",
+        "action": "Atribua cada afirmação à sua fonte e identifique qual evidência poderia confirmá-la ou limitá-la."
       },
       {
         "id": "PERSPECTIVE_TABLE",
         "misconception": "Tratar um grupo como uma voz única.",
-        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas."
+        "prompt": "Liste quem fala, quais experiências aparecem e quais vozes ainda precisam ser buscadas.",
+        "errorFocus": "Tratar um grupo social como se todos compartilhassem a mesma experiência.",
+        "action": "Reescreva a síntese com referência às fontes específicas e registre quem não está representado."
       },
       {
         "id": "CLAIM_REVIEW",
         "misconception": "Escrever conclusão maior que a evidência.",
-        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio."
+        "prompt": "Sublinhe cada afirmação e indique a fonte que a sustenta; reescreva as que não têm apoio.",
+        "errorFocus": "Interpretar diferenças de relato como contradição automática.",
+        "action": "Compare data, lugar e aspecto descrito antes de decidir se os relatos divergem ou tratam de recortes diferentes."
       }
     ],
     "authenticActivities": [
       {
         "id": "v13-history-local-perspectives-local-inquiry",
-        "title": "Investigação acessível da história local",
+        "title": "Comparar perspectivas sobre um acontecimento",
         "objective": "Identificar e comparar pontos de vista sobre acontecimentos locais, relacionando cada perspectiva ao grupo, às condições sociais e à fonte que a sustenta.",
-        "context": "Atividade mediada pelo docente com fontes públicas ou materiais didáticos identificados; não exige relatos familiares nem dados pessoais.",
+        "context": "Dois relatos didáticos ou públicos com perspectivas distintas sobre o mesmo acontecimento local.",
         "materials": [
           "Duas ou três fontes com data e procedência",
           "Tabela ou linha do tempo acessível",
           "Mapa, imagem ou áudio com descrição/transcrição"
         ],
-        "instructions": "Escolha um acontecimento do lugar, identifique as fontes, registre convergências e diferenças e escreva uma conclusão proporcional ao que foi documentado.",
-        "evidence": "Registro com fonte, autoria, período, evidência, limite e uma pergunta ainda aberta.",
+        "instructions": "Leia os relatos e identifique autoria, posição, público e informação que cada um destaca. Compare um aspecto comum e marque convergências, divergências e elementos ausentes. Escreva uma síntese que atribua cada ponto de vista à sua fonte e reconheça diferenças internas.",
+        "evidence": "Quadro de perspectivas com atribuição das afirmações, comparação do mesmo aspecto e síntese sem generalização.",
         "safety": "Usar linguagem respeitosa, não expor origem familiar e oferecer alternativas de participação e formato.",
         "privacyGuard": "Não coletar endereço, nacionalidade, origem familiar ou relatos pessoais identificáveis dos estudantes.",
         "ageRange": "3º ano do Ensino Fundamental, com mediação e linguagem adequadas.",
         "mediation": "O docente confere procedência e acessibilidade, ajuda a diferenciar observação e hipótese e mantém a autoria em revisão.",
         "rubric": [
           {
-            "criterion": "Fontes",
-            "emerging": "Não identifica a procedência.",
-            "developing": "Identifica parte das fontes com apoio.",
-            "proficient": "Registra tipo, autoria, período e procedência."
+            "criterion": "Atribuição de perspectiva",
+            "emerging": "Apresenta opinião como fato sem indicar autoria.",
+            "developing": "Identifica uma perspectiva com apoio.",
+            "proficient": "Relaciona cada perspectiva à fonte e ao contexto disponível."
           },
           {
             "criterion": "Comparação",
-            "emerging": "Mistura informações de fontes diferentes.",
-            "developing": "Compara alguns aspectos após orientação.",
-            "proficient": "Explica convergências, diferenças e lacunas."
+            "emerging": "Declara uma fonte correta sem comparar.",
+            "developing": "Aponta semelhança ou diferença com apoio.",
+            "proficient": "Compara o mesmo aspecto e distingue divergência de contradição."
           },
           {
-            "criterion": "Conclusão",
-            "emerging": "Generaliza além do registro.",
-            "developing": "Limita a conclusão com apoio.",
-            "proficient": "Sustenta a síntese e explicita o que permanece aberto."
+            "criterion": "Pluralidade",
+            "emerging": "Trata um grupo como homogêneo.",
+            "developing": "Reconhece uma diferença após mediação.",
+            "proficient": "Limita a conclusão e reconhece que uma fonte não representa todas as pessoas."
           }
+        ],
+        "steps": [
+          "Leia os relatos e identifique autoria, posição, público e informação que cada um destaca.",
+          "Compare um aspecto comum e marque convergências, divergências e elementos ausentes.",
+          "Escreva uma síntese que atribua cada ponto de vista à sua fonte e reconheça diferenças internas."
         ]
       }
     ],
@@ -234,6 +258,10 @@
         "descriptor": "Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.",
         "usage": "Contexto oficial para autoria independente; não é aprovação do mapeamento canônico."
       }
+    ],
+    "accessibilitySupports": [
+      "Disponibilizar relatos em formatos equivalentes, com autoria claramente identificada e linguagem acessível.",
+      "Permitir organizador gráfico, resposta oral ou escrita e tempo para releitura; não solicitar que estudantes revelem sua posição pessoal."
     ]
   },
   "questions": [
