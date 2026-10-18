@@ -12,7 +12,7 @@
     "units": "55fd9812026b62f9d3c468c545d66ccb78072db1c17083193416b895db8897f9",
     "v3Content": "fc946699790a9eec112669dd67ce4f854593b745469fa9e082f539c3c927fef0",
     "v3Graph": "15872d1f4656ca2268b0861f7a5cb7649d1abe0d9d0fb10c052df00fb058565a",
-    "v5QuestionFirstPacks": "09c02c3332e813737dc04ab83dbf9cc52f58185598bec848169a8b6dc396f947",
+    "v5QuestionFirstPacks": "bb2d6f5a043e095b57dfbf3de1fb0fcb1991f24f9e98defb5388afea97e73a69",
     "waveTwoCandidateSources": "865019f0c5d6a27da799e9b830564367e3b6f65b0f49ba134e36351c8be9c1f0"
   },
   "normativeContext": {
@@ -110,13 +110,19 @@
     },
     "questionsBelowAnyMinimum": 0,
     "v3QuestionTotal": 160,
-    "v5QuestionTotal": 6291,
+    "v5QuestionTotal": 6331,
     "consolidatedQuestionTotal": 6678,
     "duplicateQuestionsCollapsed": 0,
     "v5PacksOutsideV3AuditedTargets": [
       {
         "file": "v1-science-body-parts-fi.json",
         "skillCode": "AUTHORING_EF01CI02_BODY_FUNCTIONS",
+        "questionCount": 40,
+        "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
+      },
+      {
+        "file": "v1-science-time-scales-fi.json",
+        "skillCode": "AUTHORING_EF01CI05_TIME_SCALES",
         "questionCount": 40,
         "sourceReconciliation": "PENDING_SOURCE_COUNT_OR_TARGET_RECONCILIATION"
       },
@@ -18841,5 +18847,5 @@
     "otherVpsServicesTouched": false,
     "humanPedagogicalApprovalClaimed": false
   },
-  "inventoryHash": "dcc6f62dfb8bfe469dc447d2885f27b7cd331269e45cd6a5d7eee76a65f58795"
+  "inventoryHash": "d7945a1c7c80bce7f6face5fb2ab76b6cbf334b764c53c7ffd22ea9dbc5bf751"
 }
