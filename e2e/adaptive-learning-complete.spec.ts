@@ -200,6 +200,12 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(teacherPage);
       await login(teacherPage, teacher);
       await teacherPage.goto('/dashboard');
+      const accessSection = teacherPage.locator('section[aria-label="Acesso"]');
+      const accessToggle = accessSection.getByRole('button', { name: 'Acesso', exact: true });
+      await expect(accessToggle).toBeVisible({ timeout: 30_000 });
+      if (await accessToggle.getAttribute('aria-expanded') !== 'true') {
+        await accessToggle.click();
+      }
       await expect(teacherPage.getByRole('link', { name: 'Desempenho', exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByRole('link', { name: 'Desempenho', exact: true }).click();
       await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });

@@ -18,6 +18,23 @@ const PATHS = {
 };
 const CAMPAIGN_ID = 'TECESCOLA_BNCC_AUTOPILOT';
 const SCHEMA_VERSION = 'tec-escola.bncc.autopilot-state.v1';
+const RUN_STATUS = Object.freeze({
+  IDLE: 'IDLE',
+  RUNNING: 'RUNNING',
+  CAMPAIGN_COMPLETE: 'CAMPAIGN_COMPLETE',
+  EXECUTION_BUDGET_REACHED: 'EXECUTION_BUDGET_REACHED',
+  HUMAN_REVIEW_BLOCKED: 'HUMAN_REVIEW_BLOCKED',
+  VALIDATION_FAILED: 'VALIDATION_FAILED',
+  USER_STOPPED: 'USER_STOPPED',
+  NO_EXECUTABLE_TASKS: 'NO_EXECUTABLE_TASKS',
+  SYSTEM_UNRECOVERABLE: 'SYSTEM_UNRECOVERABLE',
+});
+const LEGACY_RUN_STATUS = {
+  LIMIT_REACHED: RUN_STATUS.EXECUTION_BUDGET_REACHED,
+  SAFE_BUDGET_REACHED: RUN_STATUS.EXECUTION_BUDGET_REACHED,
+  STOPPED_BY_USER: RUN_STATUS.USER_STOPPED,
+  NO_SAFE_WORK_REMAINING: RUN_STATUS.NO_EXECUTABLE_TASKS,
+};
 const DEFAULTS = {
   maxTasks: Number(process.env.BNCC_AUTOPILOT_MAX_TASKS ?? 8),
   maxCycles: Number(process.env.BNCC_AUTOPILOT_MAX_CYCLES ?? 32),
@@ -128,7 +145,7 @@ function createInitialState(queue) {
     executionId: crypto.randomUUID(),
     createdAt: now(),
     updatedAt: now(),
-    runStatus: 'IDLE',
+    runStatus: RUN_STATUS.IDLE,
     currentTask: null,
     lastCompletedTask: completed.at(-1) ?? null,
     nextTask: queue.tasks.find((task) => !completed.includes(task.taskId))?.taskId ?? null,
@@ -159,6 +176,7 @@ function loadState(queue) {
   if (!fs.existsSync(statePath)) return createInitialState(queue);
   const state = readJson(PATHS.state);
   if (state.schemaVersion !== SCHEMA_VERSION || state.campaignId !== CAMPAIGN_ID) throw new Error('AUTOPILOT_STATE_SCHEMA_INVALID');
+  state.runStatus = LEGACY_RUN_STATUS[state.runStatus] ?? state.runStatus;
   return reconcileStateWithQueue(queue, state);
 }
 
@@ -213,10 +231,30 @@ function queueSummary(queue, state) {
     lastCompletedTask: state.lastCompletedTask,
     nextTask: state.nextTask,
     runStatus: state.runStatus,
+    stopReason: state.runStatus,
+    resumable: state.runStatus === RUN_STATUS.EXECUTION_BUDGET_REACHED,
     stopRequested: fs.existsSync(absolute(PATHS.stop)),
     metricReconciliation: reconcileMetrics(queue),
     policy: state.policy,
   };
+}
+
+function determineRunStatus({ queue, state, stopRequested = false, cycles = 0, tasksProcessed = 0, options = DEFAULTS, elapsedMs = 0 }) {
+  if (stopRequested) return RUN_STATUS.USER_STOPPED;
+  if (queue.tasks.length > 0 && queue.tasks.every((task) => task.state === 'CONTENT_TECHNICALLY_COMPLETE')) {
+    return RUN_STATUS.CAMPAIGN_COMPLETE;
+  }
+  if (
+    tasksProcessed >= options.maxTasks ||
+    cycles >= options.maxCycles ||
+    elapsedMs >= options.maxSeconds * 1000
+  ) {
+    return RUN_STATUS.EXECUTION_BUDGET_REACHED;
+  }
+  if ((state.metrics.failedTasks ?? 0) > 0) return RUN_STATUS.VALIDATION_FAILED;
+  if ((state.blockedTasks?.length ?? 0) > 0) return RUN_STATUS.HUMAN_REVIEW_BLOCKED;
+  if (!selectNextTask(queue, state)) return RUN_STATUS.NO_EXECUTABLE_TASKS;
+  return RUN_STATUS.SYSTEM_UNRECOVERABLE;
 }
 
 function reconcileMetrics(queue) {
@@ -245,8 +283,9 @@ function hasSafeAuthoringCandidate(task) {
 
 function selectNextTask(queue, state) {
   const blocked = new Set(state.blockedTasks.map((item) => item.taskId));
+  const taskRecords = state.taskRecords ?? {};
   return queue.tasks.find((task) => {
-    const record = state.taskRecords[task.taskId];
+    const record = taskRecords[task.taskId];
     return hasSafeAuthoringCandidate(task)
       && !blocked.has(task.taskId)
       && (!['CONTENT_PARTIAL', 'BLOCKED_REVIEW'].includes(record?.status)
@@ -415,16 +454,17 @@ function run(mode, options) {
   const release = acquireLock();
   const startedAt = Date.now();
   const initialHead = gitHead();
+  let state = null;
   try {
     let queue = refreshQueue();
-    const state = loadState(queue);
-    state.runStatus = 'RUNNING';
+    state = loadState(queue);
+    state.runStatus = RUN_STATUS.RUNNING;
     saveState(state);
     let cycles = 0;
     let tasksProcessed = 0;
     while (cycles < options.maxCycles && tasksProcessed < options.maxTasks && Date.now() - startedAt < options.maxSeconds * 1000) {
       if (fs.existsSync(absolute(PATHS.stop))) {
-        state.runStatus = 'STOPPED_BY_USER';
+        state.runStatus = RUN_STATUS.USER_STOPPED;
         state.currentTask = null;
         saveState(state);
         appendLog({ event: 'run_stopped', reason: 'USER_STOP_FLAG' });
@@ -436,10 +476,10 @@ function run(mode, options) {
       cycles += 1;
       const task = selectNextTask(queue, state);
       if (!task) {
-        state.runStatus = 'NO_SAFE_WORK_REMAINING';
+        state.runStatus = determineRunStatus({ queue, state, cycles, tasksProcessed, options, elapsedMs: Date.now() - startedAt });
         state.nextTask = null;
         saveState(state);
-        appendLog({ event: 'run_stopped', reason: 'NO_SAFE_WORK_REMAINING' });
+        appendLog({ event: 'run_stopped', reason: state.runStatus });
         break;
       }
       const result = processTask(task, state, options);
@@ -447,14 +487,23 @@ function run(mode, options) {
       if (result.status === 'FAILED_RECOVERABLE' && (state.taskRecords[task.taskId]?.attempts ?? 0) < options.retryLimit) continue;
       if (mode === 'once') break;
     }
-    if (state.runStatus === 'RUNNING') {
-      state.runStatus = tasksProcessed >= options.maxTasks || cycles >= options.maxCycles
-        ? 'LIMIT_REACHED'
-        : 'SAFE_BUDGET_REACHED';
+    if (state.runStatus === RUN_STATUS.RUNNING) {
+      queue = refreshQueue();
+      reconcileStateWithQueue(queue, state);
+      state.runStatus = determineRunStatus({ queue, state, cycles, tasksProcessed, options, elapsedMs: Date.now() - startedAt });
     }
     state.currentTask = null;
     saveState(state);
     return { mode, cycles, tasksProcessed, summary: queueSummary(refreshQueue(), state) };
+  } catch (error) {
+    if (state) {
+      state.runStatus = RUN_STATUS.SYSTEM_UNRECOVERABLE;
+      state.currentTask = null;
+      state.lastError = error instanceof Error ? error.message : String(error);
+      saveState(state);
+      appendLog({ event: 'run_failed', reason: RUN_STATUS.SYSTEM_UNRECOVERABLE, error: state.lastError });
+    }
+    throw error;
   } finally {
     release();
   }
@@ -491,4 +540,4 @@ function main() {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
 
-export { createInitialState, parseOptions, queueSummary, reconcileMetrics, selectNextTask, validateExistingPackage };
+export { createInitialState, determineRunStatus, parseOptions, queueSummary, reconcileMetrics, selectNextTask, validateExistingPackage };

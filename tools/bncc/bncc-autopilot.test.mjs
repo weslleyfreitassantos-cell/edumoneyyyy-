@@ -4,7 +4,7 @@ import { buildPack, validatePack } from './build-ef01ci02-authoring-pack.mjs';
 import { buildEf01Ci04Pack, validateEf01Ci04Pack } from './build-ef01ci04-authoring-pack.mjs';
 import { buildEf01Ci05Pack, validateEf01Ci05Pack } from './build-ef01ci05-authoring-pack.mjs';
 import { getAuthoringProducer, listAuthoringProducers } from './bncc-authoring-producers.mjs';
-import { createInitialState, parseOptions, selectNextTask, validateExistingPackage } from './bncc-autopilot.mjs';
+import { createInitialState, determineRunStatus, parseOptions, selectNextTask, validateExistingPackage } from './bncc-autopilot.mjs';
 
 describe('BNCC autopilot', () => {
   it('parses bounded execution options without enabling unbounded loops', () => {
@@ -64,5 +64,18 @@ describe('BNCC autopilot', () => {
     state.taskRecords.BNCC_EF01CI03 = { taskId: 'BNCC_EF01CI03', status: 'CONTENT_PARTIAL' };
     state.blockedTasks = [{ taskId: 'BNCC_EF01CI02', reason: 'TEST', attempts: 1 }];
     expect(selectNextTask(queue, state)?.taskId).toBe('BNCC_EF01CI04');
+  });
+
+  it('reports resumable budget exhaustion separately from terminal campaign states', () => {
+    const task = { taskId: 'BNCC_EF01CO03', state: 'PENDING', evidence: { source: 'VERIFIED' } };
+    const queue = { tasks: [task] };
+    const state = { metrics: { failedTasks: 0 }, blockedTasks: [] };
+    const options = { maxTasks: 1, maxCycles: 8, maxSeconds: 900 };
+
+    expect(determineRunStatus({ queue, state, tasksProcessed: 1, options })).toBe('EXECUTION_BUDGET_REACHED');
+    expect(determineRunStatus({ queue: { tasks: [{ ...task, state: 'CONTENT_TECHNICALLY_COMPLETE' }] }, state, options })).toBe('CAMPAIGN_COMPLETE');
+    expect(determineRunStatus({ queue, state: { ...state, blockedTasks: [{ taskId: task.taskId }] }, options })).toBe('HUMAN_REVIEW_BLOCKED');
+    expect(determineRunStatus({ queue, state: { ...state, metrics: { failedTasks: 1 } }, options })).toBe('VALIDATION_FAILED');
+    expect(determineRunStatus({ queue: { tasks: [{ ...task, evidence: { source: 'UNVERIFIED' } }] }, state, options })).toBe('NO_EXECUTABLE_TASKS');
   });
 });
